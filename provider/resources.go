@@ -37,10 +37,6 @@ import (
 //go:embed cmd/pulumi-resource-junipermist/bridge-metadata.json
 var bridgeMetadata []byte
 
-func computeIDField(field resource.PropertyKey) tfbridge.ComputeID {
-	return tfbridge.DelegateIDField(field, "mist", "https://github.com/pulumi/pulumi-junipermist")
-}
-
 // all of the token components used below.
 const (
 	mainPkg = "junipermist"
@@ -48,7 +44,7 @@ const (
 )
 
 // Provider returns additional overlaid schema and metadata associated with the provider
-func Provider(ctx context.Context) tfbridge.ProviderInfo {
+func Provider(_ context.Context) tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                 pfbridge.ShimProvider(junipermist.Provider()),
