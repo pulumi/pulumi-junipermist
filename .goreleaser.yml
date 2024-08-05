@@ -32,7 +32,8 @@ builds:
     - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-mist/provider/pkg/version.Version={{.Tag}}
+  - -X
+    github.com/pulumi/pulumi-junipermist/provider/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-junipermist/
 changelog:
   filters:
@@ -48,4 +49,4 @@ release:
   disable: false
 snapshot:
   name_template: "{{ .Tag }}-SNAPSHOT"
-project_name: "pulumi-mist"
+project_name: "pulumi-junipermist"

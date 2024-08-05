@@ -32,7 +32,7 @@ jobs:
         issue-type: pull-request
         permission: write
         reaction-token: ${{ secrets.GITHUB_TOKEN }}
-        repository: pulumi/pulumi-mist
+        repository: pulumi/pulumi-junipermist
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
 name: command-dispatch
 on:
