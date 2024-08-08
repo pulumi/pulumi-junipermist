@@ -420,13 +420,13 @@ class Rftemplate(pulumi.CustomResource):
                  ant_gain24: Optional[pulumi.Input[int]] = None,
                  ant_gain5: Optional[pulumi.Input[int]] = None,
                  ant_gain6: Optional[pulumi.Input[int]] = None,
-                 band24: Optional[pulumi.Input[pulumi.InputType['RftemplateBand24Args']]] = None,
+                 band24: Optional[pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']]] = None,
                  band24_usage: Optional[pulumi.Input[str]] = None,
-                 band5: Optional[pulumi.Input[pulumi.InputType['RftemplateBand5Args']]] = None,
-                 band5_on24_radio: Optional[pulumi.Input[pulumi.InputType['RftemplateBand5On24RadioArgs']]] = None,
-                 band6: Optional[pulumi.Input[pulumi.InputType['RftemplateBand6Args']]] = None,
+                 band5: Optional[pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']]] = None,
+                 band5_on24_radio: Optional[pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']]] = None,
+                 band6: Optional[pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
-                 model_specific: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['RftemplateModelSpecificArgs']]]]] = None,
+                 model_specific: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  scanning_enabled: Optional[pulumi.Input[bool]] = None,
@@ -436,13 +436,13 @@ class Rftemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RftemplateBand24Args']] band24: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: Radio Band AP settings
         :param pulumi.Input[str] band24_usage: enum: `24`, `5`, `6`, `auto`
-        :param pulumi.Input[pulumi.InputType['RftemplateBand5Args']] band5: Radio Band AP settings
-        :param pulumi.Input[pulumi.InputType['RftemplateBand5On24RadioArgs']] band5_on24_radio: Radio Band AP settings
-        :param pulumi.Input[pulumi.InputType['RftemplateBand6Args']] band6: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: Radio Band AP settings
         :param pulumi.Input[str] country_code: optional, country code to use. If specified, this gets applied to all sites using the RF Template
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['RftemplateModelSpecificArgs']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[str] name: The name of the RF template
         :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
         """
@@ -473,13 +473,13 @@ class Rftemplate(pulumi.CustomResource):
                  ant_gain24: Optional[pulumi.Input[int]] = None,
                  ant_gain5: Optional[pulumi.Input[int]] = None,
                  ant_gain6: Optional[pulumi.Input[int]] = None,
-                 band24: Optional[pulumi.Input[pulumi.InputType['RftemplateBand24Args']]] = None,
+                 band24: Optional[pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']]] = None,
                  band24_usage: Optional[pulumi.Input[str]] = None,
-                 band5: Optional[pulumi.Input[pulumi.InputType['RftemplateBand5Args']]] = None,
-                 band5_on24_radio: Optional[pulumi.Input[pulumi.InputType['RftemplateBand5On24RadioArgs']]] = None,
-                 band6: Optional[pulumi.Input[pulumi.InputType['RftemplateBand6Args']]] = None,
+                 band5: Optional[pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']]] = None,
+                 band5_on24_radio: Optional[pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']]] = None,
+                 band6: Optional[pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
-                 model_specific: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['RftemplateModelSpecificArgs']]]]] = None,
+                 model_specific: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  scanning_enabled: Optional[pulumi.Input[bool]] = None,
@@ -520,13 +520,13 @@ class Rftemplate(pulumi.CustomResource):
             ant_gain24: Optional[pulumi.Input[int]] = None,
             ant_gain5: Optional[pulumi.Input[int]] = None,
             ant_gain6: Optional[pulumi.Input[int]] = None,
-            band24: Optional[pulumi.Input[pulumi.InputType['RftemplateBand24Args']]] = None,
+            band24: Optional[pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']]] = None,
             band24_usage: Optional[pulumi.Input[str]] = None,
-            band5: Optional[pulumi.Input[pulumi.InputType['RftemplateBand5Args']]] = None,
-            band5_on24_radio: Optional[pulumi.Input[pulumi.InputType['RftemplateBand5On24RadioArgs']]] = None,
-            band6: Optional[pulumi.Input[pulumi.InputType['RftemplateBand6Args']]] = None,
+            band5: Optional[pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']]] = None,
+            band5_on24_radio: Optional[pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']]] = None,
+            band6: Optional[pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']]] = None,
             country_code: Optional[pulumi.Input[str]] = None,
-            model_specific: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['RftemplateModelSpecificArgs']]]]] = None,
+            model_specific: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             scanning_enabled: Optional[pulumi.Input[bool]] = None) -> 'Rftemplate':
@@ -537,13 +537,13 @@ class Rftemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RftemplateBand24Args']] band24: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: Radio Band AP settings
         :param pulumi.Input[str] band24_usage: enum: `24`, `5`, `6`, `auto`
-        :param pulumi.Input[pulumi.InputType['RftemplateBand5Args']] band5: Radio Band AP settings
-        :param pulumi.Input[pulumi.InputType['RftemplateBand5On24RadioArgs']] band5_on24_radio: Radio Band AP settings
-        :param pulumi.Input[pulumi.InputType['RftemplateBand6Args']] band6: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand5Args', 'RftemplateBand5ArgsDict']] band5: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand5On24RadioArgs', 'RftemplateBand5On24RadioArgsDict']] band5_on24_radio: Radio Band AP settings
+        :param pulumi.Input[Union['RftemplateBand6Args', 'RftemplateBand6ArgsDict']] band6: Radio Band AP settings
         :param pulumi.Input[str] country_code: optional, country code to use. If specified, this gets applied to all sites using the RF Template
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['RftemplateModelSpecificArgs']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['RftemplateModelSpecificArgs', 'RftemplateModelSpecificArgsDict']]]] model_specific: overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
         :param pulumi.Input[str] name: The name of the RF template
         :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
         """

@@ -264,7 +264,7 @@ public class Base extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Base(String name) {
+    public Base(java.lang.String name) {
         this(name, BaseArgs.Empty);
     }
     /**
@@ -272,7 +272,7 @@ public class Base extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Base(String name, BaseArgs args) {
+    public Base(java.lang.String name, BaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -281,15 +281,22 @@ public class Base extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Base(String name, BaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:device/base:base", name, args == null ? BaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Base(java.lang.String name, BaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:device/base:base", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Base(String name, Output<String> id, @Nullable BaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:device/base:base", name, state, makeResourceOptions(options, id));
+    private Base(java.lang.String name, Output<java.lang.String> id, @Nullable BaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:device/base:base", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BaseArgs makeArgs(BaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BaseArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -305,7 +312,7 @@ public class Base extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Base get(String name, Output<String> id, @Nullable BaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Base get(java.lang.String name, Output<java.lang.String> id, @Nullable BaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Base(name, id, state, options);
     }
 }
