@@ -104,7 +104,7 @@ public class Vpn extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Vpn(String name) {
+    public Vpn(java.lang.String name) {
         this(name, VpnArgs.Empty);
     }
     /**
@@ -112,7 +112,7 @@ public class Vpn extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Vpn(String name, VpnArgs args) {
+    public Vpn(java.lang.String name, VpnArgs args) {
         this(name, args, null);
     }
     /**
@@ -121,15 +121,22 @@ public class Vpn extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Vpn(String name, VpnArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/vpn:Vpn", name, args == null ? VpnArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Vpn(java.lang.String name, VpnArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/vpn:Vpn", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Vpn(String name, Output<String> id, @Nullable VpnState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/vpn:Vpn", name, state, makeResourceOptions(options, id));
+    private Vpn(java.lang.String name, Output<java.lang.String> id, @Nullable VpnState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/vpn:Vpn", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static VpnArgs makeArgs(VpnArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? VpnArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -145,7 +152,7 @@ public class Vpn extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Vpn get(String name, Output<String> id, @Nullable VpnState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Vpn get(java.lang.String name, Output<java.lang.String> id, @Nullable VpnState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Vpn(name, id, state, options);
     }
 }

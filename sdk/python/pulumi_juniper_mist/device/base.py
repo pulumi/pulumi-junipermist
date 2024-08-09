@@ -493,7 +493,7 @@ class Base(pulumi.CustomResource):
                  aptemplate_id: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  gatewaytemplate_id: Optional[pulumi.Input[str]] = None,
-                 latlng: Optional[pulumi.Input[pulumi.InputType['BaseLatlngArgs']]] = None,
+                 latlng: Optional[pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networktemplate_id: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
@@ -520,10 +520,10 @@ class Base(pulumi.CustomResource):
             timezone="Europe/Paris",
             address="41 Rue de Villiers, 92100 Neuilly sur Seine, France",
             notes="Created with Terraform, Updated with Terraform",
-            latlng=junipermist.device.BaseLatlngArgs(
-                lat=48.899268,
-                lng=2.214447,
-            ),
+            latlng={
+                "lat": 48.899268,
+                "lng": 2.214447,
+            },
             sitegroup_ids=[
                 test_group["id"],
                 test_group2["id"],
@@ -570,10 +570,10 @@ class Base(pulumi.CustomResource):
             timezone="Europe/Paris",
             address="41 Rue de Villiers, 92100 Neuilly sur Seine, France",
             notes="Created with Terraform, Updated with Terraform",
-            latlng=junipermist.device.BaseLatlngArgs(
-                lat=48.899268,
-                lng=2.214447,
-            ),
+            latlng={
+                "lat": 48.899268,
+                "lng": 2.214447,
+            },
             sitegroup_ids=[
                 test_group["id"],
                 test_group2["id"],
@@ -603,7 +603,7 @@ class Base(pulumi.CustomResource):
                  aptemplate_id: Optional[pulumi.Input[str]] = None,
                  country_code: Optional[pulumi.Input[str]] = None,
                  gatewaytemplate_id: Optional[pulumi.Input[str]] = None,
-                 latlng: Optional[pulumi.Input[pulumi.InputType['BaseLatlngArgs']]] = None,
+                 latlng: Optional[pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networktemplate_id: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
@@ -656,7 +656,7 @@ class Base(pulumi.CustomResource):
             aptemplate_id: Optional[pulumi.Input[str]] = None,
             country_code: Optional[pulumi.Input[str]] = None,
             gatewaytemplate_id: Optional[pulumi.Input[str]] = None,
-            latlng: Optional[pulumi.Input[pulumi.InputType['BaseLatlngArgs']]] = None,
+            latlng: Optional[pulumi.Input[Union['BaseLatlngArgs', 'BaseLatlngArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networktemplate_id: Optional[pulumi.Input[str]] = None,
             notes: Optional[pulumi.Input[str]] = None,

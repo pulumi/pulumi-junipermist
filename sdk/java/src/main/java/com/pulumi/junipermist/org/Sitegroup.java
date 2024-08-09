@@ -72,7 +72,7 @@ public class Sitegroup extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Sitegroup(String name) {
+    public Sitegroup(java.lang.String name) {
         this(name, SitegroupArgs.Empty);
     }
     /**
@@ -80,7 +80,7 @@ public class Sitegroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Sitegroup(String name, SitegroupArgs args) {
+    public Sitegroup(java.lang.String name, SitegroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -89,15 +89,22 @@ public class Sitegroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Sitegroup(String name, SitegroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/sitegroup:Sitegroup", name, args == null ? SitegroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Sitegroup(java.lang.String name, SitegroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/sitegroup:Sitegroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Sitegroup(String name, Output<String> id, @Nullable SitegroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/sitegroup:Sitegroup", name, state, makeResourceOptions(options, id));
+    private Sitegroup(java.lang.String name, Output<java.lang.String> id, @Nullable SitegroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/sitegroup:Sitegroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SitegroupArgs makeArgs(SitegroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SitegroupArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -113,7 +120,7 @@ public class Sitegroup extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Sitegroup get(String name, Output<String> id, @Nullable SitegroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Sitegroup get(java.lang.String name, Output<java.lang.String> id, @Nullable SitegroupState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Sitegroup(name, id, state, options);
     }
 }

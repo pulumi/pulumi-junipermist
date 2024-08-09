@@ -310,9 +310,9 @@ class Servicepolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 appqoe: Optional[pulumi.Input[pulumi.InputType['ServicepolicyAppqoeArgs']]] = None,
-                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicepolicyEwfArgs']]]]] = None,
-                 idp: Optional[pulumi.Input[pulumi.InputType['ServicepolicyIdpArgs']]] = None,
+                 appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
+                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
+                 idp: Optional[pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
                  local_routing: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -326,7 +326,7 @@ class Servicepolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: enum: `allow`, `deny`
-        :param pulumi.Input[pulumi.InputType['ServicepolicyAppqoeArgs']] appqoe: For SRX Only
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: For SRX Only
         :param pulumi.Input[bool] local_routing: access within the same VRF
         :param pulumi.Input[str] path_preference: by default, we derive all paths available and use them
                optionally, you can customize by using `path_preference`
@@ -356,9 +356,9 @@ class Servicepolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
-                 appqoe: Optional[pulumi.Input[pulumi.InputType['ServicepolicyAppqoeArgs']]] = None,
-                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicepolicyEwfArgs']]]]] = None,
-                 idp: Optional[pulumi.Input[pulumi.InputType['ServicepolicyIdpArgs']]] = None,
+                 appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
+                 ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
+                 idp: Optional[pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
                  local_routing: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
@@ -397,9 +397,9 @@ class Servicepolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
-            appqoe: Optional[pulumi.Input[pulumi.InputType['ServicepolicyAppqoeArgs']]] = None,
-            ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicepolicyEwfArgs']]]]] = None,
-            idp: Optional[pulumi.Input[pulumi.InputType['ServicepolicyIdpArgs']]] = None,
+            appqoe: Optional[pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']]] = None,
+            ewfs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServicepolicyEwfArgs', 'ServicepolicyEwfArgsDict']]]]] = None,
+            idp: Optional[pulumi.Input[Union['ServicepolicyIdpArgs', 'ServicepolicyIdpArgsDict']]] = None,
             local_routing: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
@@ -414,7 +414,7 @@ class Servicepolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: enum: `allow`, `deny`
-        :param pulumi.Input[pulumi.InputType['ServicepolicyAppqoeArgs']] appqoe: For SRX Only
+        :param pulumi.Input[Union['ServicepolicyAppqoeArgs', 'ServicepolicyAppqoeArgsDict']] appqoe: For SRX Only
         :param pulumi.Input[bool] local_routing: access within the same VRF
         :param pulumi.Input[str] path_preference: by default, we derive all paths available and use them
                optionally, you can customize by using `path_preference`

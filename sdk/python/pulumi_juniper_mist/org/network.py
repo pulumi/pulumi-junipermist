@@ -411,17 +411,17 @@ class Network(pulumi.CustomResource):
                  disallow_mist_services: Optional[pulumi.Input[bool]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
                  gateway6: Optional[pulumi.Input[str]] = None,
-                 internal_access: Optional[pulumi.Input[pulumi.InputType['NetworkInternalAccessArgs']]] = None,
-                 internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkInternetAccessArgs']]] = None,
+                 internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
+                 internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
                  isolation: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  subnet6: Optional[pulumi.Input[str]] = None,
-                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkTenantsArgs']]]]] = None,
+                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
-                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkVpnAccessArgs']]]]] = None,
+                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages the WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
@@ -442,10 +442,10 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input[pulumi.InputType['NetworkInternetAccessArgs']] internet_access: whether this network has direct internet access
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: whether this network has direct internet access
         :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkVpnAccessArgs']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         ...
     @overload
@@ -487,17 +487,17 @@ class Network(pulumi.CustomResource):
                  disallow_mist_services: Optional[pulumi.Input[bool]] = None,
                  gateway: Optional[pulumi.Input[str]] = None,
                  gateway6: Optional[pulumi.Input[str]] = None,
-                 internal_access: Optional[pulumi.Input[pulumi.InputType['NetworkInternalAccessArgs']]] = None,
-                 internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkInternetAccessArgs']]] = None,
+                 internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
+                 internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
                  isolation: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
                  subnet6: Optional[pulumi.Input[str]] = None,
-                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkTenantsArgs']]]]] = None,
+                 tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
-                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkVpnAccessArgs']]]]] = None,
+                 vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -538,17 +538,17 @@ class Network(pulumi.CustomResource):
             disallow_mist_services: Optional[pulumi.Input[bool]] = None,
             gateway: Optional[pulumi.Input[str]] = None,
             gateway6: Optional[pulumi.Input[str]] = None,
-            internal_access: Optional[pulumi.Input[pulumi.InputType['NetworkInternalAccessArgs']]] = None,
-            internet_access: Optional[pulumi.Input[pulumi.InputType['NetworkInternetAccessArgs']]] = None,
+            internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
+            internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
             isolation: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
             subnet6: Optional[pulumi.Input[str]] = None,
-            tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkTenantsArgs']]]]] = None,
+            tenants: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]]] = None,
             vlan_id: Optional[pulumi.Input[str]] = None,
-            vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkVpnAccessArgs']]]]] = None) -> 'Network':
+            vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -557,10 +557,10 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input[pulumi.InputType['NetworkInternetAccessArgs']] internet_access: whether this network has direct internet access
+        :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: whether this network has direct internet access
         :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworkVpnAccessArgs']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

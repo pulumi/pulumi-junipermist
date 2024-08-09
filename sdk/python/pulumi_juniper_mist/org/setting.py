@@ -778,31 +778,31 @@ class Setting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ap_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 api_policy: Optional[pulumi.Input[pulumi.InputType['SettingApiPolicyArgs']]] = None,
+                 api_policy: Optional[pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
                  cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 celona: Optional[pulumi.Input[pulumi.InputType['SettingCelonaArgs']]] = None,
-                 cloudshark: Optional[pulumi.Input[pulumi.InputType['SettingCloudsharkArgs']]] = None,
-                 cradlepoint: Optional[pulumi.Input[pulumi.InputType['SettingCradlepointArgs']]] = None,
-                 device_cert: Optional[pulumi.Input[pulumi.InputType['SettingDeviceCertArgs']]] = None,
+                 celona: Optional[pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
+                 cloudshark: Optional[pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
+                 cradlepoint: Optional[pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']]] = None,
+                 device_cert: Optional[pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disable_pcap: Optional[pulumi.Input[bool]] = None,
                  disable_remote_shell: Optional[pulumi.Input[bool]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 installer: Optional[pulumi.Input[pulumi.InputType['SettingInstallerArgs']]] = None,
-                 jcloud: Optional[pulumi.Input[pulumi.InputType['SettingJcloudArgs']]] = None,
-                 mgmt: Optional[pulumi.Input[pulumi.InputType['SettingMgmtArgs']]] = None,
-                 mist_nac: Optional[pulumi.Input[pulumi.InputType['SettingMistNacArgs']]] = None,
+                 installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
+                 jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
+                 mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
+                 mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
-                 mxedge_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingMxedgeMgmtArgs']]] = None,
+                 mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['SettingPasswordPolicyArgs']]] = None,
-                 pcap: Optional[pulumi.Input[pulumi.InputType['SettingPcapArgs']]] = None,
-                 security: Optional[pulumi.Input[pulumi.InputType['SettingSecurityArgs']]] = None,
-                 switch_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingSwitchMgmtArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
+                 pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
+                 security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
+                 switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 synthetic_test: Optional[pulumi.Input[pulumi.InputType['SettingSyntheticTestArgs']]] = None,
+                 synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  ui_idle_timeout: Optional[pulumi.Input[int]] = None,
-                 vpn_options: Optional[pulumi.Input[pulumi.InputType['SettingVpnOptionsArgs']]] = None,
+                 vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
                  __props__=None):
         """
         This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
@@ -817,10 +817,10 @@ class Setting(pulumi.CustomResource):
             org_id=terraform_test["id"],
             name="vpn_one",
             paths={
-                "AWS_Hub_Profile1-WAN1": junipermist.org.VpnPathsArgs(
-                    bfd_profile="broadband",
-                ),
-                "AWS_Hub_Profile1-WAN2": junipermist.org.VpnPathsArgs(),
+                "AWS_Hub_Profile1-WAN1": {
+                    "bfd_profile": "broadband",
+                },
+                "AWS_Hub_Profile1-WAN2": {},
             })
         ```
 
@@ -829,7 +829,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
-        :param pulumi.Input[pulumi.InputType['SettingDeviceCertArgs']] device_cert: common device cert, optional
+        :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
         :param pulumi.Input[int] device_updown_threshold: enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
                immediate)
@@ -837,8 +837,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[pulumi.InputType['SettingMgmtArgs']] mgmt: management-related properties
-        :param pulumi.Input[pulumi.InputType['SettingPasswordPolicyArgs']] password_policy: password policy
+        :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
+        :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[int] ui_idle_timeout: automatically logout the user when UI session is inactive. `0` means disabled
@@ -862,10 +862,10 @@ class Setting(pulumi.CustomResource):
             org_id=terraform_test["id"],
             name="vpn_one",
             paths={
-                "AWS_Hub_Profile1-WAN1": junipermist.org.VpnPathsArgs(
-                    bfd_profile="broadband",
-                ),
-                "AWS_Hub_Profile1-WAN2": junipermist.org.VpnPathsArgs(),
+                "AWS_Hub_Profile1-WAN1": {
+                    "bfd_profile": "broadband",
+                },
+                "AWS_Hub_Profile1-WAN2": {},
             })
         ```
 
@@ -885,31 +885,31 @@ class Setting(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ap_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 api_policy: Optional[pulumi.Input[pulumi.InputType['SettingApiPolicyArgs']]] = None,
+                 api_policy: Optional[pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
                  cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 celona: Optional[pulumi.Input[pulumi.InputType['SettingCelonaArgs']]] = None,
-                 cloudshark: Optional[pulumi.Input[pulumi.InputType['SettingCloudsharkArgs']]] = None,
-                 cradlepoint: Optional[pulumi.Input[pulumi.InputType['SettingCradlepointArgs']]] = None,
-                 device_cert: Optional[pulumi.Input[pulumi.InputType['SettingDeviceCertArgs']]] = None,
+                 celona: Optional[pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
+                 cloudshark: Optional[pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
+                 cradlepoint: Optional[pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']]] = None,
+                 device_cert: Optional[pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disable_pcap: Optional[pulumi.Input[bool]] = None,
                  disable_remote_shell: Optional[pulumi.Input[bool]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 installer: Optional[pulumi.Input[pulumi.InputType['SettingInstallerArgs']]] = None,
-                 jcloud: Optional[pulumi.Input[pulumi.InputType['SettingJcloudArgs']]] = None,
-                 mgmt: Optional[pulumi.Input[pulumi.InputType['SettingMgmtArgs']]] = None,
-                 mist_nac: Optional[pulumi.Input[pulumi.InputType['SettingMistNacArgs']]] = None,
+                 installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
+                 jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
+                 mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
+                 mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
-                 mxedge_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingMxedgeMgmtArgs']]] = None,
+                 mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 password_policy: Optional[pulumi.Input[pulumi.InputType['SettingPasswordPolicyArgs']]] = None,
-                 pcap: Optional[pulumi.Input[pulumi.InputType['SettingPcapArgs']]] = None,
-                 security: Optional[pulumi.Input[pulumi.InputType['SettingSecurityArgs']]] = None,
-                 switch_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingSwitchMgmtArgs']]] = None,
+                 password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
+                 pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
+                 security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
+                 switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 synthetic_test: Optional[pulumi.Input[pulumi.InputType['SettingSyntheticTestArgs']]] = None,
+                 synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  ui_idle_timeout: Optional[pulumi.Input[int]] = None,
-                 vpn_options: Optional[pulumi.Input[pulumi.InputType['SettingVpnOptionsArgs']]] = None,
+                 vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -959,32 +959,32 @@ class Setting(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             ap_updown_threshold: Optional[pulumi.Input[int]] = None,
-            api_policy: Optional[pulumi.Input[pulumi.InputType['SettingApiPolicyArgs']]] = None,
+            api_policy: Optional[pulumi.Input[Union['SettingApiPolicyArgs', 'SettingApiPolicyArgsDict']]] = None,
             cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            celona: Optional[pulumi.Input[pulumi.InputType['SettingCelonaArgs']]] = None,
-            cloudshark: Optional[pulumi.Input[pulumi.InputType['SettingCloudsharkArgs']]] = None,
-            cradlepoint: Optional[pulumi.Input[pulumi.InputType['SettingCradlepointArgs']]] = None,
-            device_cert: Optional[pulumi.Input[pulumi.InputType['SettingDeviceCertArgs']]] = None,
+            celona: Optional[pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
+            cloudshark: Optional[pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
+            cradlepoint: Optional[pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']]] = None,
+            device_cert: Optional[pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
             device_updown_threshold: Optional[pulumi.Input[int]] = None,
             disable_pcap: Optional[pulumi.Input[bool]] = None,
             disable_remote_shell: Optional[pulumi.Input[bool]] = None,
             gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
-            installer: Optional[pulumi.Input[pulumi.InputType['SettingInstallerArgs']]] = None,
-            jcloud: Optional[pulumi.Input[pulumi.InputType['SettingJcloudArgs']]] = None,
-            juniper: Optional[pulumi.Input[pulumi.InputType['SettingJuniperArgs']]] = None,
-            mgmt: Optional[pulumi.Input[pulumi.InputType['SettingMgmtArgs']]] = None,
-            mist_nac: Optional[pulumi.Input[pulumi.InputType['SettingMistNacArgs']]] = None,
+            installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
+            jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
+            juniper: Optional[pulumi.Input[Union['SettingJuniperArgs', 'SettingJuniperArgsDict']]] = None,
+            mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
+            mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
             mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
-            mxedge_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingMxedgeMgmtArgs']]] = None,
+            mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            password_policy: Optional[pulumi.Input[pulumi.InputType['SettingPasswordPolicyArgs']]] = None,
-            pcap: Optional[pulumi.Input[pulumi.InputType['SettingPcapArgs']]] = None,
-            security: Optional[pulumi.Input[pulumi.InputType['SettingSecurityArgs']]] = None,
-            switch_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingSwitchMgmtArgs']]] = None,
+            password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
+            pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
+            security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
+            switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
             switch_updown_threshold: Optional[pulumi.Input[int]] = None,
-            synthetic_test: Optional[pulumi.Input[pulumi.InputType['SettingSyntheticTestArgs']]] = None,
+            synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             ui_idle_timeout: Optional[pulumi.Input[int]] = None,
-            vpn_options: Optional[pulumi.Input[pulumi.InputType['SettingVpnOptionsArgs']]] = None) -> 'Setting':
+            vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None) -> 'Setting':
         """
         Get an existing Setting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -995,7 +995,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
-        :param pulumi.Input[pulumi.InputType['SettingDeviceCertArgs']] device_cert: common device cert, optional
+        :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
         :param pulumi.Input[int] device_updown_threshold: enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
                immediate)
@@ -1003,8 +1003,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[pulumi.InputType['SettingMgmtArgs']] mgmt: management-related properties
-        :param pulumi.Input[pulumi.InputType['SettingPasswordPolicyArgs']] password_policy: password policy
+        :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
+        :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[int] ui_idle_timeout: automatically logout the user when UI session is inactive. `0` means disabled

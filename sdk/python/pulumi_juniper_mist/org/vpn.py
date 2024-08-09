@@ -106,7 +106,7 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['VpnPathsArgs']]]]] = None,
+                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages the Org VPN.
@@ -140,7 +140,7 @@ class Vpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['VpnPathsArgs']]]]] = None,
+                 paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -169,7 +169,7 @@ class Vpn(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['VpnPathsArgs']]]]] = None) -> 'Vpn':
+            paths: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VpnPathsArgs', 'VpnPathsArgsDict']]]]] = None) -> 'Vpn':
         """
         Get an existing Vpn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

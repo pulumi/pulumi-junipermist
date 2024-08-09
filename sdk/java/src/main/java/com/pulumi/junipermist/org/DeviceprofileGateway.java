@@ -446,7 +446,7 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DeviceprofileGateway(String name) {
+    public DeviceprofileGateway(java.lang.String name) {
         this(name, DeviceprofileGatewayArgs.Empty);
     }
     /**
@@ -454,7 +454,7 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DeviceprofileGateway(String name, DeviceprofileGatewayArgs args) {
+    public DeviceprofileGateway(java.lang.String name, DeviceprofileGatewayArgs args) {
         this(name, args, null);
     }
     /**
@@ -463,15 +463,22 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DeviceprofileGateway(String name, DeviceprofileGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/deviceprofileGateway:DeviceprofileGateway", name, args == null ? DeviceprofileGatewayArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DeviceprofileGateway(java.lang.String name, DeviceprofileGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/deviceprofileGateway:DeviceprofileGateway", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DeviceprofileGateway(String name, Output<String> id, @Nullable DeviceprofileGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/deviceprofileGateway:DeviceprofileGateway", name, state, makeResourceOptions(options, id));
+    private DeviceprofileGateway(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceprofileGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/deviceprofileGateway:DeviceprofileGateway", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DeviceprofileGatewayArgs makeArgs(DeviceprofileGatewayArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeviceprofileGatewayArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -487,7 +494,7 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DeviceprofileGateway get(String name, Output<String> id, @Nullable DeviceprofileGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DeviceprofileGateway get(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceprofileGatewayState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DeviceprofileGateway(name, id, state, options);
     }
 }

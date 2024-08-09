@@ -1205,43 +1205,43 @@ class Setting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytic: Optional[pulumi.Input[pulumi.InputType['SettingAnalyticArgs']]] = None,
+                 analytic: Optional[pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
                  ap_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 auto_upgrade: Optional[pulumi.Input[pulumi.InputType['SettingAutoUpgradeArgs']]] = None,
-                 ble_config: Optional[pulumi.Input[pulumi.InputType['SettingBleConfigArgs']]] = None,
+                 auto_upgrade: Optional[pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
+                 ble_config: Optional[pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']]] = None,
                  config_auto_revert: Optional[pulumi.Input[bool]] = None,
-                 config_push_policy: Optional[pulumi.Input[pulumi.InputType['SettingConfigPushPolicyArgs']]] = None,
-                 critical_url_monitoring: Optional[pulumi.Input[pulumi.InputType['SettingCriticalUrlMonitoringArgs']]] = None,
+                 config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
+                 critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 engagement: Optional[pulumi.Input[pulumi.InputType['SettingEngagementArgs']]] = None,
-                 gateway_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingGatewayMgmtArgs']]] = None,
+                 engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
+                 gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 led: Optional[pulumi.Input[pulumi.InputType['SettingLedArgs']]] = None,
-                 occupancy: Optional[pulumi.Input[pulumi.InputType['SettingOccupancyArgs']]] = None,
+                 led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
+                 occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['SettingProxyArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
                  report_gatt: Optional[pulumi.Input[bool]] = None,
-                 rogue: Optional[pulumi.Input[pulumi.InputType['SettingRogueArgs']]] = None,
-                 rtsa: Optional[pulumi.Input[pulumi.InputType['SettingRtsaArgs']]] = None,
-                 simple_alert: Optional[pulumi.Input[pulumi.InputType['SettingSimpleAlertArgs']]] = None,
+                 rogue: Optional[pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']]] = None,
+                 rtsa: Optional[pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']]] = None,
+                 simple_alert: Optional[pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 skyatp: Optional[pulumi.Input[pulumi.InputType['SettingSkyatpArgs']]] = None,
-                 srx_app: Optional[pulumi.Input[pulumi.InputType['SettingSrxAppArgs']]] = None,
+                 skyatp: Optional[pulumi.Input[Union['SettingSkyatpArgs', 'SettingSkyatpArgsDict']]] = None,
+                 srx_app: Optional[pulumi.Input[Union['SettingSrxAppArgs', 'SettingSrxAppArgsDict']]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ssr: Optional[pulumi.Input[pulumi.InputType['SettingSsrArgs']]] = None,
+                 ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 synthetic_test: Optional[pulumi.Input[pulumi.InputType['SettingSyntheticTestArgs']]] = None,
+                 synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: Optional[pulumi.Input[bool]] = None,
-                 uplink_port_config: Optional[pulumi.Input[pulumi.InputType['SettingUplinkPortConfigArgs']]] = None,
+                 uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 vna: Optional[pulumi.Input[pulumi.InputType['SettingVnaArgs']]] = None,
-                 vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['SettingVsInstanceArgs']]]]] = None,
-                 wan_vna: Optional[pulumi.Input[pulumi.InputType['SettingWanVnaArgs']]] = None,
-                 wids: Optional[pulumi.Input[pulumi.InputType['SettingWidsArgs']]] = None,
-                 wifi: Optional[pulumi.Input[pulumi.InputType['SettingWifiArgs']]] = None,
-                 wired_vna: Optional[pulumi.Input[pulumi.InputType['SettingWiredVnaArgs']]] = None,
-                 zone_occupancy_alert: Optional[pulumi.Input[pulumi.InputType['SettingZoneOccupancyAlertArgs']]] = None,
+                 vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
+                 vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]]] = None,
+                 wan_vna: Optional[pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']]] = None,
+                 wids: Optional[pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']]] = None,
+                 wifi: Optional[pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']]] = None,
+                 wired_vna: Optional[pulumi.Input[Union['SettingWiredVnaArgs', 'SettingWiredVnaArgsDict']]] = None,
+                 zone_occupancy_alert: Optional[pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']]] = None,
                  __props__=None):
         """
         This resource manages the Site Settings.The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
@@ -1249,26 +1249,26 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[pulumi.InputType['SettingAutoUpgradeArgs']] auto_upgrade: Auto Upgrade Settings
-        :param pulumi.Input[pulumi.InputType['SettingBleConfigArgs']] ble_config: BLE AP settings
+        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
+        :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
-        :param pulumi.Input[pulumi.InputType['SettingConfigPushPolicyArgs']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input[pulumi.InputType['SettingCriticalUrlMonitoringArgs']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
+        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
-        :param pulumi.Input[pulumi.InputType['SettingEngagementArgs']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
-        :param pulumi.Input[pulumi.InputType['SettingGatewayMgmtArgs']] gateway_mgmt: Gateway Site settings
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[pulumi.InputType['SettingLedArgs']] led: LED AP settings
-        :param pulumi.Input[pulumi.InputType['SettingOccupancyArgs']] occupancy: Occupancy Analytics settings
+        :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
+        :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
         :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
-        :param pulumi.Input[pulumi.InputType['SettingProxyArgs']] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
         :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
-        :param pulumi.Input[pulumi.InputType['SettingRogueArgs']] rogue: Rogue site settings
-        :param pulumi.Input[pulumi.InputType['SettingRtsaArgs']] rtsa: managed mobility
-        :param pulumi.Input[pulumi.InputType['SettingSimpleAlertArgs']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
+        :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
+        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: managed mobility
+        :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
                window, there are more than Y distinct client encountring over X failures
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
                Org:Setting)
@@ -1276,10 +1276,10 @@ class Setting(pulumi.CustomResource):
                `device_updown_threshold` is ignored.
         :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['SettingVsInstanceArgs']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
-        :param pulumi.Input[pulumi.InputType['SettingWidsArgs']] wids: WIDS site settings
-        :param pulumi.Input[pulumi.InputType['SettingWifiArgs']] wifi: Wi-Fi site settings
-        :param pulumi.Input[pulumi.InputType['SettingZoneOccupancyAlertArgs']] zone_occupancy_alert: Zone Occupancy alert site settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
+        :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
+        :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Zone Occupancy alert site settings
         """
         ...
     @overload
@@ -1305,43 +1305,43 @@ class Setting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 analytic: Optional[pulumi.Input[pulumi.InputType['SettingAnalyticArgs']]] = None,
+                 analytic: Optional[pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
                  ap_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 auto_upgrade: Optional[pulumi.Input[pulumi.InputType['SettingAutoUpgradeArgs']]] = None,
-                 ble_config: Optional[pulumi.Input[pulumi.InputType['SettingBleConfigArgs']]] = None,
+                 auto_upgrade: Optional[pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
+                 ble_config: Optional[pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']]] = None,
                  config_auto_revert: Optional[pulumi.Input[bool]] = None,
-                 config_push_policy: Optional[pulumi.Input[pulumi.InputType['SettingConfigPushPolicyArgs']]] = None,
-                 critical_url_monitoring: Optional[pulumi.Input[pulumi.InputType['SettingCriticalUrlMonitoringArgs']]] = None,
+                 config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
+                 critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 engagement: Optional[pulumi.Input[pulumi.InputType['SettingEngagementArgs']]] = None,
-                 gateway_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingGatewayMgmtArgs']]] = None,
+                 engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
+                 gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 led: Optional[pulumi.Input[pulumi.InputType['SettingLedArgs']]] = None,
-                 occupancy: Optional[pulumi.Input[pulumi.InputType['SettingOccupancyArgs']]] = None,
+                 led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
+                 occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
-                 proxy: Optional[pulumi.Input[pulumi.InputType['SettingProxyArgs']]] = None,
+                 proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
                  report_gatt: Optional[pulumi.Input[bool]] = None,
-                 rogue: Optional[pulumi.Input[pulumi.InputType['SettingRogueArgs']]] = None,
-                 rtsa: Optional[pulumi.Input[pulumi.InputType['SettingRtsaArgs']]] = None,
-                 simple_alert: Optional[pulumi.Input[pulumi.InputType['SettingSimpleAlertArgs']]] = None,
+                 rogue: Optional[pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']]] = None,
+                 rtsa: Optional[pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']]] = None,
+                 simple_alert: Optional[pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 skyatp: Optional[pulumi.Input[pulumi.InputType['SettingSkyatpArgs']]] = None,
-                 srx_app: Optional[pulumi.Input[pulumi.InputType['SettingSrxAppArgs']]] = None,
+                 skyatp: Optional[pulumi.Input[Union['SettingSkyatpArgs', 'SettingSkyatpArgsDict']]] = None,
+                 srx_app: Optional[pulumi.Input[Union['SettingSrxAppArgs', 'SettingSrxAppArgsDict']]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ssr: Optional[pulumi.Input[pulumi.InputType['SettingSsrArgs']]] = None,
+                 ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 synthetic_test: Optional[pulumi.Input[pulumi.InputType['SettingSyntheticTestArgs']]] = None,
+                 synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  track_anonymous_devices: Optional[pulumi.Input[bool]] = None,
-                 uplink_port_config: Optional[pulumi.Input[pulumi.InputType['SettingUplinkPortConfigArgs']]] = None,
+                 uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 vna: Optional[pulumi.Input[pulumi.InputType['SettingVnaArgs']]] = None,
-                 vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['SettingVsInstanceArgs']]]]] = None,
-                 wan_vna: Optional[pulumi.Input[pulumi.InputType['SettingWanVnaArgs']]] = None,
-                 wids: Optional[pulumi.Input[pulumi.InputType['SettingWidsArgs']]] = None,
-                 wifi: Optional[pulumi.Input[pulumi.InputType['SettingWifiArgs']]] = None,
-                 wired_vna: Optional[pulumi.Input[pulumi.InputType['SettingWiredVnaArgs']]] = None,
-                 zone_occupancy_alert: Optional[pulumi.Input[pulumi.InputType['SettingZoneOccupancyAlertArgs']]] = None,
+                 vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
+                 vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]]] = None,
+                 wan_vna: Optional[pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']]] = None,
+                 wids: Optional[pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']]] = None,
+                 wifi: Optional[pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']]] = None,
+                 wired_vna: Optional[pulumi.Input[Union['SettingWiredVnaArgs', 'SettingWiredVnaArgsDict']]] = None,
+                 zone_occupancy_alert: Optional[pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1404,47 +1404,47 @@ class Setting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            analytic: Optional[pulumi.Input[pulumi.InputType['SettingAnalyticArgs']]] = None,
+            analytic: Optional[pulumi.Input[Union['SettingAnalyticArgs', 'SettingAnalyticArgsDict']]] = None,
             ap_updown_threshold: Optional[pulumi.Input[int]] = None,
-            auto_upgrade: Optional[pulumi.Input[pulumi.InputType['SettingAutoUpgradeArgs']]] = None,
+            auto_upgrade: Optional[pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']]] = None,
             blacklist_url: Optional[pulumi.Input[str]] = None,
-            ble_config: Optional[pulumi.Input[pulumi.InputType['SettingBleConfigArgs']]] = None,
+            ble_config: Optional[pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']]] = None,
             config_auto_revert: Optional[pulumi.Input[bool]] = None,
-            config_push_policy: Optional[pulumi.Input[pulumi.InputType['SettingConfigPushPolicyArgs']]] = None,
-            critical_url_monitoring: Optional[pulumi.Input[pulumi.InputType['SettingCriticalUrlMonitoringArgs']]] = None,
+            config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
+            critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
             device_updown_threshold: Optional[pulumi.Input[int]] = None,
             disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            engagement: Optional[pulumi.Input[pulumi.InputType['SettingEngagementArgs']]] = None,
-            gateway_mgmt: Optional[pulumi.Input[pulumi.InputType['SettingGatewayMgmtArgs']]] = None,
+            engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
+            gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
             gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
-            led: Optional[pulumi.Input[pulumi.InputType['SettingLedArgs']]] = None,
-            occupancy: Optional[pulumi.Input[pulumi.InputType['SettingOccupancyArgs']]] = None,
+            led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
+            occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             persist_config_on_device: Optional[pulumi.Input[bool]] = None,
-            proxy: Optional[pulumi.Input[pulumi.InputType['SettingProxyArgs']]] = None,
+            proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
             report_gatt: Optional[pulumi.Input[bool]] = None,
-            rogue: Optional[pulumi.Input[pulumi.InputType['SettingRogueArgs']]] = None,
-            rtsa: Optional[pulumi.Input[pulumi.InputType['SettingRtsaArgs']]] = None,
-            simple_alert: Optional[pulumi.Input[pulumi.InputType['SettingSimpleAlertArgs']]] = None,
+            rogue: Optional[pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']]] = None,
+            rtsa: Optional[pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']]] = None,
+            simple_alert: Optional[pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
-            skyatp: Optional[pulumi.Input[pulumi.InputType['SettingSkyatpArgs']]] = None,
-            srx_app: Optional[pulumi.Input[pulumi.InputType['SettingSrxAppArgs']]] = None,
+            skyatp: Optional[pulumi.Input[Union['SettingSkyatpArgs', 'SettingSkyatpArgsDict']]] = None,
+            srx_app: Optional[pulumi.Input[Union['SettingSrxAppArgs', 'SettingSrxAppArgsDict']]] = None,
             ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            ssr: Optional[pulumi.Input[pulumi.InputType['SettingSsrArgs']]] = None,
+            ssr: Optional[pulumi.Input[Union['SettingSsrArgs', 'SettingSsrArgsDict']]] = None,
             switch_updown_threshold: Optional[pulumi.Input[int]] = None,
-            synthetic_test: Optional[pulumi.Input[pulumi.InputType['SettingSyntheticTestArgs']]] = None,
+            synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             track_anonymous_devices: Optional[pulumi.Input[bool]] = None,
-            uplink_port_config: Optional[pulumi.Input[pulumi.InputType['SettingUplinkPortConfigArgs']]] = None,
+            uplink_port_config: Optional[pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']]] = None,
             vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            vna: Optional[pulumi.Input[pulumi.InputType['SettingVnaArgs']]] = None,
-            vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['SettingVsInstanceArgs']]]]] = None,
-            wan_vna: Optional[pulumi.Input[pulumi.InputType['SettingWanVnaArgs']]] = None,
+            vna: Optional[pulumi.Input[Union['SettingVnaArgs', 'SettingVnaArgsDict']]] = None,
+            vs_instance: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]]] = None,
+            wan_vna: Optional[pulumi.Input[Union['SettingWanVnaArgs', 'SettingWanVnaArgsDict']]] = None,
             watched_station_url: Optional[pulumi.Input[str]] = None,
             whitelist_url: Optional[pulumi.Input[str]] = None,
-            wids: Optional[pulumi.Input[pulumi.InputType['SettingWidsArgs']]] = None,
-            wifi: Optional[pulumi.Input[pulumi.InputType['SettingWifiArgs']]] = None,
-            wired_vna: Optional[pulumi.Input[pulumi.InputType['SettingWiredVnaArgs']]] = None,
-            zone_occupancy_alert: Optional[pulumi.Input[pulumi.InputType['SettingZoneOccupancyAlertArgs']]] = None) -> 'Setting':
+            wids: Optional[pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']]] = None,
+            wifi: Optional[pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']]] = None,
+            wired_vna: Optional[pulumi.Input[Union['SettingWiredVnaArgs', 'SettingWiredVnaArgsDict']]] = None,
+            zone_occupancy_alert: Optional[pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']]] = None) -> 'Setting':
         """
         Get an existing Setting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1453,26 +1453,26 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
-        :param pulumi.Input[pulumi.InputType['SettingAutoUpgradeArgs']] auto_upgrade: Auto Upgrade Settings
-        :param pulumi.Input[pulumi.InputType['SettingBleConfigArgs']] ble_config: BLE AP settings
+        :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
+        :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
-        :param pulumi.Input[pulumi.InputType['SettingConfigPushPolicyArgs']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input[pulumi.InputType['SettingCriticalUrlMonitoringArgs']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
+        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
-        :param pulumi.Input[pulumi.InputType['SettingEngagementArgs']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
-        :param pulumi.Input[pulumi.InputType['SettingGatewayMgmtArgs']] gateway_mgmt: Gateway Site settings
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[pulumi.InputType['SettingLedArgs']] led: LED AP settings
-        :param pulumi.Input[pulumi.InputType['SettingOccupancyArgs']] occupancy: Occupancy Analytics settings
+        :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
+        :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
         :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
-        :param pulumi.Input[pulumi.InputType['SettingProxyArgs']] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
         :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
-        :param pulumi.Input[pulumi.InputType['SettingRogueArgs']] rogue: Rogue site settings
-        :param pulumi.Input[pulumi.InputType['SettingRtsaArgs']] rtsa: managed mobility
-        :param pulumi.Input[pulumi.InputType['SettingSimpleAlertArgs']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
+        :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
+        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: managed mobility
+        :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
                window, there are more than Y distinct client encountring over X failures
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
                Org:Setting)
@@ -1480,10 +1480,10 @@ class Setting(pulumi.CustomResource):
                `device_updown_threshold` is ignored.
         :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['SettingVsInstanceArgs']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
-        :param pulumi.Input[pulumi.InputType['SettingWidsArgs']] wids: WIDS site settings
-        :param pulumi.Input[pulumi.InputType['SettingWifiArgs']] wifi: Wi-Fi site settings
-        :param pulumi.Input[pulumi.InputType['SettingZoneOccupancyAlertArgs']] zone_occupancy_alert: Zone Occupancy alert site settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
+        :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
+        :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Zone Occupancy alert site settings
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

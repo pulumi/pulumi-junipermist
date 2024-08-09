@@ -88,7 +88,7 @@ public class GatewayCluster extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GatewayCluster(String name) {
+    public GatewayCluster(java.lang.String name) {
         this(name, GatewayClusterArgs.Empty);
     }
     /**
@@ -96,7 +96,7 @@ public class GatewayCluster extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GatewayCluster(String name, GatewayClusterArgs args) {
+    public GatewayCluster(java.lang.String name, GatewayClusterArgs args) {
         this(name, args, null);
     }
     /**
@@ -105,15 +105,22 @@ public class GatewayCluster extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GatewayCluster(String name, GatewayClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:device/gatewayCluster:GatewayCluster", name, args == null ? GatewayClusterArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GatewayCluster(java.lang.String name, GatewayClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:device/gatewayCluster:GatewayCluster", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GatewayCluster(String name, Output<String> id, @Nullable GatewayClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:device/gatewayCluster:GatewayCluster", name, state, makeResourceOptions(options, id));
+    private GatewayCluster(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:device/gatewayCluster:GatewayCluster", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GatewayClusterArgs makeArgs(GatewayClusterArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GatewayClusterArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -129,7 +136,7 @@ public class GatewayCluster extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GatewayCluster get(String name, Output<String> id, @Nullable GatewayClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GatewayCluster get(java.lang.String name, Output<java.lang.String> id, @Nullable GatewayClusterState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GatewayCluster(name, id, state, options);
     }
 }
