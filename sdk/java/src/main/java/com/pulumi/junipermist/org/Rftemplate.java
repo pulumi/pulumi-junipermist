@@ -247,7 +247,7 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Rftemplate(String name) {
+    public Rftemplate(java.lang.String name) {
         this(name, RftemplateArgs.Empty);
     }
     /**
@@ -255,7 +255,7 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Rftemplate(String name, RftemplateArgs args) {
+    public Rftemplate(java.lang.String name, RftemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -264,15 +264,22 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Rftemplate(String name, RftemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/rftemplate:Rftemplate", name, args == null ? RftemplateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Rftemplate(java.lang.String name, RftemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/rftemplate:Rftemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Rftemplate(String name, Output<String> id, @Nullable RftemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/rftemplate:Rftemplate", name, state, makeResourceOptions(options, id));
+    private Rftemplate(java.lang.String name, Output<java.lang.String> id, @Nullable RftemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/rftemplate:Rftemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RftemplateArgs makeArgs(RftemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RftemplateArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -288,7 +295,7 @@ public class Rftemplate extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Rftemplate get(String name, Output<String> id, @Nullable RftemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Rftemplate get(java.lang.String name, Output<java.lang.String> id, @Nullable RftemplateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Rftemplate(name, id, state, options);
     }
 }

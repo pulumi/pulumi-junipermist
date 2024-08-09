@@ -197,7 +197,7 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Wxtag(String name) {
+    public Wxtag(java.lang.String name) {
         this(name, WxtagArgs.Empty);
     }
     /**
@@ -205,7 +205,7 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Wxtag(String name, WxtagArgs args) {
+    public Wxtag(java.lang.String name, WxtagArgs args) {
         this(name, args, null);
     }
     /**
@@ -214,15 +214,22 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Wxtag(String name, WxtagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/wxtag:Wxtag", name, args == null ? WxtagArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public Wxtag(java.lang.String name, WxtagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/wxtag:Wxtag", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Wxtag(String name, Output<String> id, @Nullable WxtagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("junipermist:org/wxtag:Wxtag", name, state, makeResourceOptions(options, id));
+    private Wxtag(java.lang.String name, Output<java.lang.String> id, @Nullable WxtagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("junipermist:org/wxtag:Wxtag", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WxtagArgs makeArgs(WxtagArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WxtagArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -238,7 +245,7 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Wxtag get(String name, Output<String> id, @Nullable WxtagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Wxtag get(java.lang.String name, Output<java.lang.String> id, @Nullable WxtagState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Wxtag(name, id, state, options);
     }
 }

@@ -661,47 +661,47 @@ class Networktemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworktemplateAclPolicyArgs']]]]] = None,
-                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateAclTagsArgs']]]]] = None,
+                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworktemplateAclPolicyArgs', 'NetworktemplateAclPolicyArgsDict']]]]] = None,
+                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 dhcp_snooping: Optional[pulumi.Input[pulumi.InputType['NetworktemplateDhcpSnoopingArgs']]] = None,
+                 dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutesArgs']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutes6Args']]]]] = None,
-                 mist_nac: Optional[pulumi.Input[pulumi.InputType['NetworktemplateMistNacArgs']]] = None,
+                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]]] = None,
+                 mist_nac: Optional[pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateNetworksArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortMirroringArgs']]]]] = None,
-                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortUsagesArgs']]]]] = None,
-                 radius_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateRadiusConfigArgs']]] = None,
-                 remote_syslog: Optional[pulumi.Input[pulumi.InputType['NetworktemplateRemoteSyslogArgs']]] = None,
-                 snmp_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSnmpConfigArgs']]] = None,
-                 switch_matching: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSwitchMatchingArgs']]] = None,
-                 switch_mgmt: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSwitchMgmtArgs']]] = None,
-                 vrf_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateVrfConfigArgs']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateVrfInstancesArgs']]]]] = None,
+                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]]] = None,
+                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
+                 radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
+                 remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+                 snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
+                 switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
+                 switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
+                 vrf_config: Optional[pulumi.Input[Union['NetworktemplateVrfConfigArgs', 'NetworktemplateVrfConfigArgsDict']]] = None,
+                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource managed the Org Network Templates (Switch templates).A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateAclTagsArgs']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutes6Args']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input[pulumi.InputType['NetworktemplateMistNacArgs']] mist_nac: enable mist_nac to use radsec
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateNetworksArgs']]]] networks: Property key is network name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: enable mist_nac to use radsec
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortMirroringArgs']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
-        :param pulumi.Input[pulumi.InputType['NetworktemplateRadiusConfigArgs']] radius_config: Junos Radius config
-        :param pulumi.Input[pulumi.InputType['NetworktemplateSwitchMatchingArgs']] switch_matching: Switch template
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateVrfInstancesArgs']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         ...
     @overload
@@ -727,28 +727,28 @@ class Networktemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworktemplateAclPolicyArgs']]]]] = None,
-                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateAclTagsArgs']]]]] = None,
+                 acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworktemplateAclPolicyArgs', 'NetworktemplateAclPolicyArgsDict']]]]] = None,
+                 acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 dhcp_snooping: Optional[pulumi.Input[pulumi.InputType['NetworktemplateDhcpSnoopingArgs']]] = None,
+                 dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutesArgs']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutes6Args']]]]] = None,
-                 mist_nac: Optional[pulumi.Input[pulumi.InputType['NetworktemplateMistNacArgs']]] = None,
+                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]]] = None,
+                 mist_nac: Optional[pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateNetworksArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortMirroringArgs']]]]] = None,
-                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortUsagesArgs']]]]] = None,
-                 radius_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateRadiusConfigArgs']]] = None,
-                 remote_syslog: Optional[pulumi.Input[pulumi.InputType['NetworktemplateRemoteSyslogArgs']]] = None,
-                 snmp_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSnmpConfigArgs']]] = None,
-                 switch_matching: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSwitchMatchingArgs']]] = None,
-                 switch_mgmt: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSwitchMgmtArgs']]] = None,
-                 vrf_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateVrfConfigArgs']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateVrfInstancesArgs']]]]] = None,
+                 port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]]] = None,
+                 port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
+                 radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
+                 remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+                 snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
+                 switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
+                 switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
+                 vrf_config: Optional[pulumi.Input[Union['NetworktemplateVrfConfigArgs', 'NetworktemplateVrfConfigArgsDict']]] = None,
+                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -792,28 +792,28 @@ class Networktemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworktemplateAclPolicyArgs']]]]] = None,
-            acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateAclTagsArgs']]]]] = None,
+            acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworktemplateAclPolicyArgs', 'NetworktemplateAclPolicyArgsDict']]]]] = None,
+            acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            dhcp_snooping: Optional[pulumi.Input[pulumi.InputType['NetworktemplateDhcpSnoopingArgs']]] = None,
+            dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutesArgs']]]]] = None,
-            extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutes6Args']]]]] = None,
-            mist_nac: Optional[pulumi.Input[pulumi.InputType['NetworktemplateMistNacArgs']]] = None,
+            extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
+            extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]]] = None,
+            mist_nac: Optional[pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateNetworksArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
             ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortMirroringArgs']]]]] = None,
-            port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortUsagesArgs']]]]] = None,
-            radius_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateRadiusConfigArgs']]] = None,
-            remote_syslog: Optional[pulumi.Input[pulumi.InputType['NetworktemplateRemoteSyslogArgs']]] = None,
-            snmp_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSnmpConfigArgs']]] = None,
-            switch_matching: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSwitchMatchingArgs']]] = None,
-            switch_mgmt: Optional[pulumi.Input[pulumi.InputType['NetworktemplateSwitchMgmtArgs']]] = None,
-            vrf_config: Optional[pulumi.Input[pulumi.InputType['NetworktemplateVrfConfigArgs']]] = None,
-            vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateVrfInstancesArgs']]]]] = None) -> 'Networktemplate':
+            port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]]] = None,
+            port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
+            radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
+            remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+            snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
+            switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
+            switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
+            vrf_config: Optional[pulumi.Input[Union['NetworktemplateVrfConfigArgs', 'NetworktemplateVrfConfigArgsDict']]] = None,
+            vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]]] = None) -> 'Networktemplate':
         """
         Get an existing Networktemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -821,19 +821,19 @@ class Networktemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateAclTagsArgs']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateExtraRoutes6Args']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input[pulumi.InputType['NetworktemplateMistNacArgs']] mist_nac: enable mist_nac to use radsec
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateNetworksArgs']]]] networks: Property key is network name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: enable mist_nac to use radsec
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplatePortMirroringArgs']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
-        :param pulumi.Input[pulumi.InputType['NetworktemplateRadiusConfigArgs']] radius_config: Junos Radius config
-        :param pulumi.Input[pulumi.InputType['NetworktemplateSwitchMatchingArgs']] switch_matching: Switch template
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['NetworktemplateVrfInstancesArgs']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
