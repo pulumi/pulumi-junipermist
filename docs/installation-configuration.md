@@ -6,7 +6,7 @@ layout: package
 
 ## Installation
 
-The junipermist provider is available as a package in all Pulumi languages:
+The Juniper Mist provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/juniper-mist`](https://www.npmjs.com/package/@pulumi/juniper-mist)
 * Python: [`pulumi-juniper-mist`](https://pypi.org/project/pulumi-juniper-mist/)
