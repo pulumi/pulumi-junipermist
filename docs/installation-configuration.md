@@ -23,7 +23,7 @@ Use the navigation tree to the left to read about the available resources and da
 
 It is possible to use API Token or Username/Password authentication (without 2FA), but only one method should be configured.
 
-This version is supporting the following Mist Clouds:
+This version supports the following Mist Clouds:
 * Global 01 (api.mist.com)
 * Global 02 (api.gc1.mist.com)
 * Global 03 (api.ac2.mist.com)
@@ -38,7 +38,7 @@ This version is supporting the following Mist Clouds:
 ### Credentials
 
 Users are encouraged to pass the API Token or the username and password via the
-environment variables (see below). If authentication information are provided
+environment variables (see below). If authentication information is provided
 in the provider configuration and in the environment variables, the Provider
 configuration will be used.
 
