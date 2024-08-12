@@ -258,9 +258,9 @@ class Nacrule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 matching: Optional[pulumi.Input[pulumi.InputType['NacruleMatchingArgs']]] = None,
+                 matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 not_matching: Optional[pulumi.Input[pulumi.InputType['NacruleNotMatchingArgs']]] = None,
+                 not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -301,9 +301,9 @@ class Nacrule(pulumi.CustomResource):
                  action: Optional[pulumi.Input[str]] = None,
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 matching: Optional[pulumi.Input[pulumi.InputType['NacruleMatchingArgs']]] = None,
+                 matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 not_matching: Optional[pulumi.Input[pulumi.InputType['NacruleNotMatchingArgs']]] = None,
+                 not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -342,9 +342,9 @@ class Nacrule(pulumi.CustomResource):
             action: Optional[pulumi.Input[str]] = None,
             apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            matching: Optional[pulumi.Input[pulumi.InputType['NacruleMatchingArgs']]] = None,
+            matching: Optional[pulumi.Input[Union['NacruleMatchingArgs', 'NacruleMatchingArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            not_matching: Optional[pulumi.Input[pulumi.InputType['NacruleNotMatchingArgs']]] = None,
+            not_matching: Optional[pulumi.Input[Union['NacruleNotMatchingArgs', 'NacruleNotMatchingArgsDict']]] = None,
             order: Optional[pulumi.Input[int]] = None,
             org_id: Optional[pulumi.Input[str]] = None) -> 'Nacrule':
         """

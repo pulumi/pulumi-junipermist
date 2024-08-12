@@ -104,7 +104,7 @@ class GatewayCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayClusterNodeArgs']]]]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -120,12 +120,12 @@ class GatewayCluster(pulumi.CustomResource):
             site_id=terraform_site2["id"],
             device_id="00000000-0000-0000-1000-4c96143de700",
             nodes=[
-                junipermist.device.GatewayClusterNodeArgs(
-                    mac="4c961000000",
-                ),
-                junipermist.device.GatewayClusterNodeArgs(
-                    mac="4c961000001",
-                ),
+                {
+                    "mac": "4c961000000",
+                },
+                {
+                    "mac": "4c961000001",
+                },
             ])
         ```
 
@@ -151,12 +151,12 @@ class GatewayCluster(pulumi.CustomResource):
             site_id=terraform_site2["id"],
             device_id="00000000-0000-0000-1000-4c96143de700",
             nodes=[
-                junipermist.device.GatewayClusterNodeArgs(
-                    mac="4c961000000",
-                ),
-                junipermist.device.GatewayClusterNodeArgs(
-                    mac="4c961000001",
-                ),
+                {
+                    "mac": "4c961000000",
+                },
+                {
+                    "mac": "4c961000001",
+                },
             ])
         ```
 
@@ -176,7 +176,7 @@ class GatewayCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayClusterNodeArgs']]]]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -207,7 +207,7 @@ class GatewayCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             device_id: Optional[pulumi.Input[str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GatewayClusterNodeArgs']]]]] = None,
+            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
             site_id: Optional[pulumi.Input[str]] = None) -> 'GatewayCluster':
         """
         Get an existing GatewayCluster resource's state with the given name, id, and optional extra

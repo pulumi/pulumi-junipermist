@@ -818,32 +818,32 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayBgpConfigArgs']]]]] = None,
+                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]]] = None,
                  created_time: Optional[pulumi.Input[float]] = None,
-                 dhcpd_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayDhcpdConfigArgs']]] = None,
+                 dhcpd_config: Optional[pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']]] = None,
                  dns_override: Optional[pulumi.Input[bool]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutesArgs']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutes6Args']]]]] = None,
-                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIdpProfilesArgs']]]]] = None,
-                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIpConfigsArgs']]]]] = None,
+                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]]] = None,
+                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]]] = None,
+                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]]] = None,
                  modified_time: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceprofileGatewayNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]]] = None,
                  ntp_override: Optional[pulumi.Input[bool]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayOobIpConfigArgs']]] = None,
+                 oob_ip_config: Optional[pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPathPreferencesArgs']]]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPortConfigArgs']]]]] = None,
+                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayRoutingPoliciesArgs']]]]] = None,
-                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceprofileGatewayServicePolicyArgs']]]]] = None,
-                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelConfigsArgs']]]]] = None,
-                 tunnel_provider_options: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelProviderOptionsArgs']]] = None,
-                 vrf_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfConfigArgs']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfInstancesArgs']]]]] = None,
+                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]]] = None,
+                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]]] = None,
+                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
+                 tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
+                 vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
+                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages the Gateway Device Profiles (HUB Profiles).A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
@@ -853,18 +853,18 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutesArgs']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutes6Args']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIdpProfilesArgs']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIpConfigsArgs']]]] ip_configs: Property key is the network name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[pulumi.InputType['DeviceprofileGatewayOobIpConfigArgs']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPathPreferencesArgs']]]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPortConfigArgs']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[str] router_id: auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayRoutingPoliciesArgs']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelConfigsArgs']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfInstancesArgs']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         ...
     @overload
@@ -891,32 +891,32 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayBgpConfigArgs']]]]] = None,
+                 bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]]] = None,
                  created_time: Optional[pulumi.Input[float]] = None,
-                 dhcpd_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayDhcpdConfigArgs']]] = None,
+                 dhcpd_config: Optional[pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']]] = None,
                  dns_override: Optional[pulumi.Input[bool]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutesArgs']]]]] = None,
-                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutes6Args']]]]] = None,
-                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIdpProfilesArgs']]]]] = None,
-                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIpConfigsArgs']]]]] = None,
+                 extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]]] = None,
+                 extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]]] = None,
+                 idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]]] = None,
+                 ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]]] = None,
                  modified_time: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceprofileGatewayNetworkArgs']]]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]]] = None,
                  ntp_override: Optional[pulumi.Input[bool]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 oob_ip_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayOobIpConfigArgs']]] = None,
+                 oob_ip_config: Optional[pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPathPreferencesArgs']]]]] = None,
-                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPortConfigArgs']]]]] = None,
+                 path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]]] = None,
+                 port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]]] = None,
                  router_id: Optional[pulumi.Input[str]] = None,
-                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayRoutingPoliciesArgs']]]]] = None,
-                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceprofileGatewayServicePolicyArgs']]]]] = None,
-                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelConfigsArgs']]]]] = None,
-                 tunnel_provider_options: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelProviderOptionsArgs']]] = None,
-                 vrf_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfConfigArgs']]] = None,
-                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfInstancesArgs']]]]] = None,
+                 routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]]] = None,
+                 service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]]] = None,
+                 tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
+                 tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
+                 vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
+                 vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -967,33 +967,33 @@ class DeviceprofileGateway(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayBgpConfigArgs']]]]] = None,
+            bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]]] = None,
             created_time: Optional[pulumi.Input[float]] = None,
-            dhcpd_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayDhcpdConfigArgs']]] = None,
+            dhcpd_config: Optional[pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']]] = None,
             dns_override: Optional[pulumi.Input[bool]] = None,
             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutesArgs']]]]] = None,
-            extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutes6Args']]]]] = None,
-            idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIdpProfilesArgs']]]]] = None,
-            ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIpConfigsArgs']]]]] = None,
+            extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]]] = None,
+            extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]]] = None,
+            idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]]] = None,
+            ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]]] = None,
             modified_time: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceprofileGatewayNetworkArgs']]]]] = None,
+            networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]]] = None,
             ntp_override: Optional[pulumi.Input[bool]] = None,
             ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            oob_ip_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayOobIpConfigArgs']]] = None,
+            oob_ip_config: Optional[pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPathPreferencesArgs']]]]] = None,
-            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPortConfigArgs']]]]] = None,
+            path_preferences: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]]] = None,
+            port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]]] = None,
             router_id: Optional[pulumi.Input[str]] = None,
-            routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayRoutingPoliciesArgs']]]]] = None,
-            service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceprofileGatewayServicePolicyArgs']]]]] = None,
-            tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelConfigsArgs']]]]] = None,
-            tunnel_provider_options: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelProviderOptionsArgs']]] = None,
+            routing_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]]] = None,
+            service_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayServicePolicyArgs', 'DeviceprofileGatewayServicePolicyArgsDict']]]]] = None,
+            tunnel_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]]] = None,
+            tunnel_provider_options: Optional[pulumi.Input[Union['DeviceprofileGatewayTunnelProviderOptionsArgs', 'DeviceprofileGatewayTunnelProviderOptionsArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vrf_config: Optional[pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfConfigArgs']]] = None,
-            vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfInstancesArgs']]]]] = None) -> 'DeviceprofileGateway':
+            vrf_config: Optional[pulumi.Input[Union['DeviceprofileGatewayVrfConfigArgs', 'DeviceprofileGatewayVrfConfigArgsDict']]] = None,
+            vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]]] = None) -> 'DeviceprofileGateway':
         """
         Get an existing DeviceprofileGateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1004,19 +1004,19 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutesArgs']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayExtraRoutes6Args']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIdpProfilesArgs']]]] idp_profiles: Property key is the profile name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayIpConfigsArgs']]]] ip_configs: Property key is the network name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
-        :param pulumi.Input[pulumi.InputType['DeviceprofileGatewayOobIpConfigArgs']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPathPreferencesArgs']]]] path_preferences: Property key is the path name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayPortConfigArgs']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+        :param pulumi.Input[Union['DeviceprofileGatewayOobIpConfigArgs', 'DeviceprofileGatewayOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPathPreferencesArgs', 'DeviceprofileGatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayPortConfigArgs', 'DeviceprofileGatewayPortConfigArgsDict']]]] port_config: Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
         :param pulumi.Input[str] router_id: auto assigned if not set
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayRoutingPoliciesArgs']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayTunnelConfigsArgs']]]] tunnel_configs: Property key is the tunnel name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayRoutingPoliciesArgs', 'DeviceprofileGatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayTunnelConfigsArgs', 'DeviceprofileGatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: Device Type. enum: `gateway`
-        :param pulumi.Input[Mapping[str, pulumi.Input[pulumi.InputType['DeviceprofileGatewayVrfInstancesArgs']]]] vrf_instances: Property key is the network name
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayVrfInstancesArgs', 'DeviceprofileGatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

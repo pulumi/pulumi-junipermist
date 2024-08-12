@@ -627,7 +627,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  sle_enabled: Optional[pulumi.Input[bool]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]]]] = None,
+                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
                  ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[bool]] = None,
                  traffic_class: Optional[pulumi.Input[str]] = None,
                  traffic_type: Optional[pulumi.Input[str]] = None,
@@ -647,7 +647,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] failover_policy: enum: `non_revertable`, `none`, `revertable`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: if `type`==`custom`, web filtering
         :param pulumi.Input[bool] sle_enabled: whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         :param pulumi.Input[str] traffic_class: when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
         :param pulumi.Input[str] traffic_type: values from `/api/v1/consts/traffic_types`
         :param pulumi.Input[str] type: enum: `app_categories`, `apps`, `custom`, `urls`
@@ -691,7 +691,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  sle_enabled: Optional[pulumi.Input[bool]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]]]] = None,
+                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
                  ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[bool]] = None,
                  traffic_class: Optional[pulumi.Input[str]] = None,
                  traffic_type: Optional[pulumi.Input[str]] = None,
@@ -752,7 +752,7 @@ class Service(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             sle_enabled: Optional[pulumi.Input[bool]] = None,
-            specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]]]] = None,
+            specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]]] = None,
             ssr_relaxed_tcp_state_enforcement: Optional[pulumi.Input[bool]] = None,
             traffic_class: Optional[pulumi.Input[str]] = None,
             traffic_type: Optional[pulumi.Input[str]] = None,
@@ -773,7 +773,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] failover_policy: enum: `non_revertable`, `none`, `revertable`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: if `type`==`custom`, web filtering
         :param pulumi.Input[bool] sle_enabled: whether to enable measure SLE
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceSpecArgs', 'ServiceSpecArgsDict']]]] specs: when `type`==`custom`, optional, if it doesn't exist, http and https is assumed
         :param pulumi.Input[str] traffic_class: when `traffic_type`==`custom`. enum: `best_effort`, `high`, `low`, `medium`
         :param pulumi.Input[str] traffic_type: values from `/api/v1/consts/traffic_types`
         :param pulumi.Input[str] type: enum: `app_categories`, `apps`, `custom`, `urls`
