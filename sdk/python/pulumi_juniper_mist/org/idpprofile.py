@@ -139,7 +139,7 @@ class Idpprofile(pulumi.CustomResource):
                  base_profile: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IdpprofileOverwriteArgs']]]]] = None,
+                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
                  __props__=None):
         """
         This resource manages WAN Assurance Idp Profiles.An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
@@ -175,7 +175,7 @@ class Idpprofile(pulumi.CustomResource):
                  base_profile: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
-                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IdpprofileOverwriteArgs']]]]] = None,
+                 overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -206,7 +206,7 @@ class Idpprofile(pulumi.CustomResource):
             base_profile: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
-            overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IdpprofileOverwriteArgs']]]]] = None) -> 'Idpprofile':
+            overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None) -> 'Idpprofile':
         """
         Get an existing Idpprofile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

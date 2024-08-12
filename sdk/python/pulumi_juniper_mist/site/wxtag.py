@@ -361,7 +361,7 @@ class Wxtag(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  op: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WxtagSpecArgs']]]]] = None,
+                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
@@ -391,7 +391,7 @@ class Wxtag(pulumi.CustomResource):
                `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[str] op: required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WxtagSpecArgs']]]] specs: if `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: if `type`==`spec`
         :param pulumi.Input[str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
                `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
@@ -448,7 +448,7 @@ class Wxtag(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  op: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
-                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WxtagSpecArgs']]]]] = None,
+                 specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
@@ -491,7 +491,7 @@ class Wxtag(pulumi.CustomResource):
             op: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
-            specs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WxtagSpecArgs']]]]] = None,
+            specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             vlan_id: Optional[pulumi.Input[str]] = None) -> 'Wxtag':
@@ -507,7 +507,7 @@ class Wxtag(pulumi.CustomResource):
                `psk_name`, `psk_role`, `radius_attr`, `radius_class`, `radius_group`, `radius_username`, `sdkclient_uuid`, `wlan_id`
         :param pulumi.Input[str] name: The name
         :param pulumi.Input[str] op: required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WxtagSpecArgs']]]] specs: if `type`==`spec`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]] specs: if `type`==`spec`
         :param pulumi.Input[str] type: enum: `client`, `match`, `resource`, `spec`, `subnet`, `vlan`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: required if `type`==`match` and * `match`==`ap_id`: list of AP IDs * `match`==`app`: list of Application Names *
                `match`==`asset_mac`: list of Asset MAC Addresses * `match`==`client_mac`: list of Client MAC Addresses *
