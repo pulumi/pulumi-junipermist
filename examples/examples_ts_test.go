@@ -4,29 +4,20 @@
 package examples
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 
-	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/opttest"
 )
 
-/*
-func TestAccProjectTS(t *testing.T) {
-	test := getTSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "project", "ts"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
-*/
-
-func getTSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions(t)
-	baseTS := base.With(integration.ProgramTestOptions{
-		Dependencies: []string{
-			"@pulumi/juniper-mist",
-		},
-	})
-
-	return baseTS
+func TestOrgWlanTs(t *testing.T) {
+	checkBaseEnvVars(t)
+	test := pulumitest.NewPulumiTest(t, "org-wlan-ts",
+		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
+		opttest.YarnLink("@pulumi/juniper-mist"),
+	)
+	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))	
+	test.Up()
 }
