@@ -3,6 +3,8 @@ package examples
 import (
 	"os"
 	"testing"
+
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
 const (
@@ -25,6 +27,13 @@ func getCwd(t *testing.T) string {
 	}
 
 	return cwd
+}
+
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	return integration.ProgramTestOptions{
+		RunUpdateTest:        false,
+		ExpectRefreshChanges: true,
+	}
 }
 
 func checkBaseEnvVars(t *testing.T) {
