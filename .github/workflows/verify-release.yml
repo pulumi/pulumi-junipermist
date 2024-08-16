@@ -30,9 +30,9 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  MIST_ORG_ID: ${{ secrets.MIST_ORG_ID}}
   MIST_API_TOKEN: ${{ secrets.MIST_API_TOKEN}}
   MIST_HOST: ${{ secrets.MIST_HOST}}
+  MIST_ORG_ID: ${{ secrets.MIST_ORG_ID}}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
