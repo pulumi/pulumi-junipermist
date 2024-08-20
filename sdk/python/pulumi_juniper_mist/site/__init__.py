@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .base import *
 from .networktemplate import *
 from .setting import *
 from .wlan import *

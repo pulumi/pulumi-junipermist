@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "junipermist:site/base:base":
+		r = &Base{}
 	case "junipermist:site/networktemplate:Networktemplate":
 		r = &Networktemplate{}
 	case "junipermist:site/setting:Setting":
@@ -44,6 +46,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"site/base",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"site/networktemplate",

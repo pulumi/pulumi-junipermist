@@ -137,6 +137,7 @@ __all__ = [
     'WlanSchedule',
     'WlanScheduleHours',
     'WxtagSpec',
+    'BaseLatlng',
 ]
 
 @pulumi.output_type
@@ -9565,5 +9566,24 @@ class WxtagSpec(dict):
         tcp / udp / icmp / gre / any / ":protocol_number", `protocol_number` is between 1-254
         """
         return pulumi.get(self, "protocol")
+
+
+@pulumi.output_type
+class BaseLatlng(dict):
+    def __init__(__self__, *,
+                 lat: float,
+                 lng: float):
+        pulumi.set(__self__, "lat", lat)
+        pulumi.set(__self__, "lng", lng)
+
+    @property
+    @pulumi.getter
+    def lat(self) -> float:
+        return pulumi.get(self, "lat")
+
+    @property
+    @pulumi.getter
+    def lng(self) -> float:
+        return pulumi.get(self, "lng")
 
 

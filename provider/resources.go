@@ -66,7 +66,7 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 
 		Config: map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"mist_site": {Tok: makeResource("device", "base")},
+			"mist_site": {Tok: makeResource("site", "base")},
 			"mist_org":  {Tok: makeResource("org", "base")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},

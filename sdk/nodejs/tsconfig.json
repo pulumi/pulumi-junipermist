@@ -70,6 +70,7 @@
         "org/wxrule.ts",
         "org/wxtag.ts",
         "provider.ts",
+        "site/base.ts",
         "site/index.ts",
         "site/networktemplate.ts",
         "site/setting.ts",

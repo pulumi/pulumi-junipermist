@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.JuniperMist.Device
+namespace Pulumi.JuniperMist.Site
 {
     /// <summary>
     /// This resources manages the Site basic information.This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
@@ -48,8 +48,7 @@ namespace Pulumi.JuniperMist.Device
     /// });
     /// ```
     /// </summary>
-    [Obsolete(@"junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base")]
-    [JuniperMistResourceType("junipermist:device/base:base")]
+    [JuniperMistResourceType("junipermist:site/base:base")]
     public partial class Base : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -142,12 +141,12 @@ namespace Pulumi.JuniperMist.Device
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Base(string name, BaseArgs args, CustomResourceOptions? options = null)
-            : base("junipermist:device/base:base", name, args ?? new BaseArgs(), MakeResourceOptions(options, ""))
+            : base("junipermist:site/base:base", name, args ?? new BaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Base(string name, Input<string> id, BaseState? state = null, CustomResourceOptions? options = null)
-            : base("junipermist:device/base:base", name, state, MakeResourceOptions(options, id))
+            : base("junipermist:site/base:base", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -157,6 +156,10 @@ namespace Pulumi.JuniperMist.Device
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumi/pulumi-junipermist",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "junipermist:device/base:base" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
