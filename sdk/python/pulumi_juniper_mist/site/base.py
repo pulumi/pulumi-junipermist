@@ -483,12 +483,7 @@ class _BaseState:
         pulumi.set(self, "timezone", value)
 
 
-warnings.warn("""junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""", DeprecationWarning)
-
-
 class Base(pulumi.CustomResource):
-    warnings.warn("""junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""", DeprecationWarning)
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -619,7 +614,6 @@ class Base(pulumi.CustomResource):
                  sitetemplate_id: Optional[pulumi.Input[str]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        pulumi.log.warn("""Base is deprecated: junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -647,8 +641,10 @@ class Base(pulumi.CustomResource):
             __props__.__dict__["sitegroup_ids"] = sitegroup_ids
             __props__.__dict__["sitetemplate_id"] = sitetemplate_id
             __props__.__dict__["timezone"] = timezone
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="junipermist:device/base:base")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Base, __self__).__init__(
-            'junipermist:device/base:base',
+            'junipermist:site/base:base',
             resource_name,
             __props__,
             opts)

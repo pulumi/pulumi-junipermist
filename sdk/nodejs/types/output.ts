@@ -10008,6 +10008,11 @@ export namespace org {
 }
 
 export namespace site {
+    export interface BaseLatlng {
+        lat: number;
+        lng: number;
+    }
+
     export interface NetworktemplateAclPolicy {
         /**
          * - for GBP-based policy, all srcTags and dstTags have to be gbp-based

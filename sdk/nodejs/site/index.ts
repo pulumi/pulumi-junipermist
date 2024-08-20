@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BaseArgs, BaseState } from "./base";
+export type Base = import("./base").Base;
+export const Base: typeof import("./base").Base = null as any;
+utilities.lazyLoad(exports, ["Base"], () => require("./base"));
+
 export { NetworktemplateArgs, NetworktemplateState } from "./networktemplate";
 export type Networktemplate = import("./networktemplate").Networktemplate;
 export const Networktemplate: typeof import("./networktemplate").Networktemplate = null as any;
@@ -35,6 +40,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "junipermist:site/base:base":
+                return new Base(name, <any>undefined, { urn })
             case "junipermist:site/networktemplate:Networktemplate":
                 return new Networktemplate(name, <any>undefined, { urn })
             case "junipermist:site/setting:Setting":
@@ -50,6 +57,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("junipermist", "site/base", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/networktemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/setting", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wlan", _module)

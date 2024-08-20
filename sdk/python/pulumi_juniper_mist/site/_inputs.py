@@ -136,6 +136,7 @@ __all__ = [
     'WlanScheduleArgs',
     'WlanScheduleHoursArgs',
     'WxtagSpecArgs',
+    'BaseLatlngArgs',
 ]
 
 @pulumi.input_type
@@ -10050,5 +10051,32 @@ class WxtagSpecArgs:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+
+@pulumi.input_type
+class BaseLatlngArgs:
+    def __init__(__self__, *,
+                 lat: pulumi.Input[float],
+                 lng: pulumi.Input[float]):
+        pulumi.set(__self__, "lat", lat)
+        pulumi.set(__self__, "lng", lng)
+
+    @property
+    @pulumi.getter
+    def lat(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "lat")
+
+    @lat.setter
+    def lat(self, value: pulumi.Input[float]):
+        pulumi.set(self, "lat", value)
+
+    @property
+    @pulumi.getter
+    def lng(self) -> pulumi.Input[float]:
+        return pulumi.get(self, "lng")
+
+    @lng.setter
+    def lng(self, value: pulumi.Input[float]):
+        pulumi.set(self, "lng", value)
 
 

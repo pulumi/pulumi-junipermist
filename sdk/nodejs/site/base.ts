@@ -35,8 +35,6 @@ import * as utilities from "../utilities";
  *     gatewaytemplateId: test_api.id,
  * });
  * ```
- *
- * @deprecated junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base
  */
 export class Base extends pulumi.CustomResource {
     /**
@@ -49,12 +47,11 @@ export class Base extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BaseState, opts?: pulumi.CustomResourceOptions): Base {
-        pulumi.log.warn("Base is deprecated: junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base")
         return new Base(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'junipermist:device/base:base';
+    public static readonly __pulumiType = 'junipermist:site/base:base';
 
     /**
      * Returns true if the given object is an instance of Base.  This is designed to work even
@@ -87,7 +84,7 @@ export class Base extends pulumi.CustomResource {
      * Gateway Template ID, used by gateways
      */
     public readonly gatewaytemplateId!: pulumi.Output<string | undefined>;
-    public readonly latlng!: pulumi.Output<outputs.device.BaseLatlng | undefined>;
+    public readonly latlng!: pulumi.Output<outputs.site.BaseLatlng | undefined>;
     public readonly name!: pulumi.Output<string>;
     /**
      * Network Template ID, this takes precedence over Site Settings
@@ -126,11 +123,8 @@ export class Base extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base */
     constructor(name: string, args: BaseArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base */
     constructor(name: string, argsOrState?: BaseArgs | BaseState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("Base is deprecated: junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -175,6 +169,8 @@ export class Base extends pulumi.CustomResource {
             resourceInputs["timezone"] = args ? args.timezone : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "junipermist:device/base:base" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Base.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -203,7 +199,7 @@ export interface BaseState {
      * Gateway Template ID, used by gateways
      */
     gatewaytemplateId?: pulumi.Input<string>;
-    latlng?: pulumi.Input<inputs.device.BaseLatlng>;
+    latlng?: pulumi.Input<inputs.site.BaseLatlng>;
     name?: pulumi.Input<string>;
     /**
      * Network Template ID, this takes precedence over Site Settings
@@ -260,7 +256,7 @@ export interface BaseArgs {
      * Gateway Template ID, used by gateways
      */
     gatewaytemplateId?: pulumi.Input<string>;
-    latlng?: pulumi.Input<inputs.device.BaseLatlng>;
+    latlng?: pulumi.Input<inputs.site.BaseLatlng>;
     name?: pulumi.Input<string>;
     /**
      * Network Template ID, this takes precedence over Site Settings

@@ -2319,7 +2319,14 @@
                 }
             },
             "mist_site": {
-                "current": "junipermist:device/base:base",
+                "current": "junipermist:site/base:base",
+                "past": [
+                    {
+                        "name": "junipermist:device/base:base",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "sitegroup_ids": {
                         "maxItemsOne": false
@@ -3464,7 +3471,15 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "mist_site": {
+                "aliases": [
+                    "junipermist:device/base:base"
+                ]
+            }
+        }
+    },
     "ids": {
         "resources": {
             "mist_device_ap": [

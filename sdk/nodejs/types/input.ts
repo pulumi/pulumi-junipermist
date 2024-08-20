@@ -8093,6 +8093,11 @@ export namespace org {
 }
 
 export namespace site {
+    export interface BaseLatlng {
+        lat: pulumi.Input<number>;
+        lng: pulumi.Input<number>;
+    }
+
     export interface NetworktemplateAclPolicy {
         /**
          * - for GBP-based policy, all srcTags and dstTags have to be gbp-based

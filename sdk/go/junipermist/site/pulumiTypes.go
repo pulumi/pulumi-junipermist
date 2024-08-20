@@ -21935,6 +21935,154 @@ func (o WxtagSpecArrayOutput) Index(i pulumi.IntInput) WxtagSpecOutput {
 	}).(WxtagSpecOutput)
 }
 
+type BaseLatlng struct {
+	Lat float64 `pulumi:"lat"`
+	Lng float64 `pulumi:"lng"`
+}
+
+// BaseLatlngInput is an input type that accepts BaseLatlngArgs and BaseLatlngOutput values.
+// You can construct a concrete instance of `BaseLatlngInput` via:
+//
+//	BaseLatlngArgs{...}
+type BaseLatlngInput interface {
+	pulumi.Input
+
+	ToBaseLatlngOutput() BaseLatlngOutput
+	ToBaseLatlngOutputWithContext(context.Context) BaseLatlngOutput
+}
+
+type BaseLatlngArgs struct {
+	Lat pulumi.Float64Input `pulumi:"lat"`
+	Lng pulumi.Float64Input `pulumi:"lng"`
+}
+
+func (BaseLatlngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseLatlng)(nil)).Elem()
+}
+
+func (i BaseLatlngArgs) ToBaseLatlngOutput() BaseLatlngOutput {
+	return i.ToBaseLatlngOutputWithContext(context.Background())
+}
+
+func (i BaseLatlngArgs) ToBaseLatlngOutputWithContext(ctx context.Context) BaseLatlngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaseLatlngOutput)
+}
+
+func (i BaseLatlngArgs) ToBaseLatlngPtrOutput() BaseLatlngPtrOutput {
+	return i.ToBaseLatlngPtrOutputWithContext(context.Background())
+}
+
+func (i BaseLatlngArgs) ToBaseLatlngPtrOutputWithContext(ctx context.Context) BaseLatlngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaseLatlngOutput).ToBaseLatlngPtrOutputWithContext(ctx)
+}
+
+// BaseLatlngPtrInput is an input type that accepts BaseLatlngArgs, BaseLatlngPtr and BaseLatlngPtrOutput values.
+// You can construct a concrete instance of `BaseLatlngPtrInput` via:
+//
+//	        BaseLatlngArgs{...}
+//
+//	or:
+//
+//	        nil
+type BaseLatlngPtrInput interface {
+	pulumi.Input
+
+	ToBaseLatlngPtrOutput() BaseLatlngPtrOutput
+	ToBaseLatlngPtrOutputWithContext(context.Context) BaseLatlngPtrOutput
+}
+
+type baseLatlngPtrType BaseLatlngArgs
+
+func BaseLatlngPtr(v *BaseLatlngArgs) BaseLatlngPtrInput {
+	return (*baseLatlngPtrType)(v)
+}
+
+func (*baseLatlngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BaseLatlng)(nil)).Elem()
+}
+
+func (i *baseLatlngPtrType) ToBaseLatlngPtrOutput() BaseLatlngPtrOutput {
+	return i.ToBaseLatlngPtrOutputWithContext(context.Background())
+}
+
+func (i *baseLatlngPtrType) ToBaseLatlngPtrOutputWithContext(ctx context.Context) BaseLatlngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BaseLatlngPtrOutput)
+}
+
+type BaseLatlngOutput struct{ *pulumi.OutputState }
+
+func (BaseLatlngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BaseLatlng)(nil)).Elem()
+}
+
+func (o BaseLatlngOutput) ToBaseLatlngOutput() BaseLatlngOutput {
+	return o
+}
+
+func (o BaseLatlngOutput) ToBaseLatlngOutputWithContext(ctx context.Context) BaseLatlngOutput {
+	return o
+}
+
+func (o BaseLatlngOutput) ToBaseLatlngPtrOutput() BaseLatlngPtrOutput {
+	return o.ToBaseLatlngPtrOutputWithContext(context.Background())
+}
+
+func (o BaseLatlngOutput) ToBaseLatlngPtrOutputWithContext(ctx context.Context) BaseLatlngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BaseLatlng) *BaseLatlng {
+		return &v
+	}).(BaseLatlngPtrOutput)
+}
+
+func (o BaseLatlngOutput) Lat() pulumi.Float64Output {
+	return o.ApplyT(func(v BaseLatlng) float64 { return v.Lat }).(pulumi.Float64Output)
+}
+
+func (o BaseLatlngOutput) Lng() pulumi.Float64Output {
+	return o.ApplyT(func(v BaseLatlng) float64 { return v.Lng }).(pulumi.Float64Output)
+}
+
+type BaseLatlngPtrOutput struct{ *pulumi.OutputState }
+
+func (BaseLatlngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BaseLatlng)(nil)).Elem()
+}
+
+func (o BaseLatlngPtrOutput) ToBaseLatlngPtrOutput() BaseLatlngPtrOutput {
+	return o
+}
+
+func (o BaseLatlngPtrOutput) ToBaseLatlngPtrOutputWithContext(ctx context.Context) BaseLatlngPtrOutput {
+	return o
+}
+
+func (o BaseLatlngPtrOutput) Elem() BaseLatlngOutput {
+	return o.ApplyT(func(v *BaseLatlng) BaseLatlng {
+		if v != nil {
+			return *v
+		}
+		var ret BaseLatlng
+		return ret
+	}).(BaseLatlngOutput)
+}
+
+func (o BaseLatlngPtrOutput) Lat() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BaseLatlng) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Lat
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o BaseLatlngPtrOutput) Lng() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *BaseLatlng) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Lng
+	}).(pulumi.Float64PtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclPolicyInput)(nil)).Elem(), NetworktemplateAclPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclPolicyArrayInput)(nil)).Elem(), NetworktemplateAclPolicyArray{})
@@ -22188,6 +22336,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleHoursPtrInput)(nil)).Elem(), WlanScheduleHoursArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WxtagSpecInput)(nil)).Elem(), WxtagSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WxtagSpecArrayInput)(nil)).Elem(), WxtagSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BaseLatlngInput)(nil)).Elem(), BaseLatlngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BaseLatlngPtrInput)(nil)).Elem(), BaseLatlngArgs{})
 	pulumi.RegisterOutputType(NetworktemplateAclPolicyOutput{})
 	pulumi.RegisterOutputType(NetworktemplateAclPolicyArrayOutput{})
 	pulumi.RegisterOutputType(NetworktemplateAclPolicyActionOutput{})
@@ -22440,4 +22590,6 @@ func init() {
 	pulumi.RegisterOutputType(WlanScheduleHoursPtrOutput{})
 	pulumi.RegisterOutputType(WxtagSpecOutput{})
 	pulumi.RegisterOutputType(WxtagSpecArrayOutput{})
+	pulumi.RegisterOutputType(BaseLatlngOutput{})
+	pulumi.RegisterOutputType(BaseLatlngPtrOutput{})
 }

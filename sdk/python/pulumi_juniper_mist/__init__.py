@@ -243,6 +243,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "site/base",
+  "fqn": "pulumi_juniper_mist.site",
+  "classes": {
+   "junipermist:site/base:base": "Base"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "site/networktemplate",
   "fqn": "pulumi_juniper_mist.site",
   "classes": {
