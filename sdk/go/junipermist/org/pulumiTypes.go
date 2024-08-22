@@ -4612,7 +4612,7 @@ type DeviceprofileGatewayDhcpdConfigConfig struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// if `type`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address
+	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings map[string]DeviceprofileGatewayDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
 	// if `type`==`local` - optional, `ip` will be used if not provided
 	Gateway *string `pulumi:"gateway"`
@@ -4661,7 +4661,7 @@ type DeviceprofileGatewayDhcpdConfigConfigArgs struct {
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// if `type`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address
+	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings DeviceprofileGatewayDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
 	// if `type`==`local` - optional, `ip` will be used if not provided
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
@@ -4755,7 +4755,7 @@ func (o DeviceprofileGatewayDhcpdConfigConfigOutput) DnsSuffixes() pulumi.String
 	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the MAC Address
+// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 func (o DeviceprofileGatewayDhcpdConfigConfigOutput) FixedBindings() DeviceprofileGatewayDhcpdConfigConfigFixedBindingsMapOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfig) map[string]DeviceprofileGatewayDhcpdConfigConfigFixedBindings {
 		return v.FixedBindings
@@ -14516,7 +14516,7 @@ type GatewaytemplateDhcpdConfigConfig struct {
 	DnsServers []string `pulumi:"dnsServers"`
 	// if `type`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address
+	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings map[string]GatewaytemplateDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
 	// if `type`==`local` - optional, `ip` will be used if not provided
 	Gateway *string `pulumi:"gateway"`
@@ -14565,7 +14565,7 @@ type GatewaytemplateDhcpdConfigConfigArgs struct {
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
 	// if `type`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address
+	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings GatewaytemplateDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
 	// if `type`==`local` - optional, `ip` will be used if not provided
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
@@ -14659,7 +14659,7 @@ func (o GatewaytemplateDhcpdConfigConfigOutput) DnsSuffixes() pulumi.StringArray
 	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the MAC Address
+// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 func (o GatewaytemplateDhcpdConfigConfigOutput) FixedBindings() GatewaytemplateDhcpdConfigConfigFixedBindingsMapOutput {
 	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfig) map[string]GatewaytemplateDhcpdConfigConfigFixedBindings {
 		return v.FixedBindings

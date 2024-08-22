@@ -53,14 +53,14 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Property key is the MAC Address
+     * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,GatewayDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return Property key is the MAC Address
+     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewayDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -370,7 +370,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param fixedBindings Property key is the MAC Address
+         * @param fixedBindings Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param fixedBindings Property key is the MAC Address
+         * @param fixedBindings Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 

@@ -16,28 +16,21 @@ __all__ = ['GatewayClusterArgs', 'GatewayCluster']
 @pulumi.input_type
 class GatewayClusterArgs:
     def __init__(__self__, *,
-                 device_id: pulumi.Input[str],
                  nodes: pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]],
                  site_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a GatewayCluster resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: when replacing a node, either mac has to remain the same as existing cluster
         """
-        pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "site_id", site_id)
 
     @property
-    @pulumi.getter(name="deviceId")
-    def device_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "device_id")
-
-    @device_id.setter
-    def device_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "device_id", value)
-
-    @property
     @pulumi.getter
     def nodes(self) -> pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]:
+        """
+        when replacing a node, either mac has to remain the same as existing cluster
+        """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
@@ -62,6 +55,7 @@ class _GatewayClusterState:
                  site_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayCluster resources.
+        :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: when replacing a node, either mac has to remain the same as existing cluster
         """
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
@@ -82,6 +76,9 @@ class _GatewayClusterState:
     @property
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]]:
+        """
+        when replacing a node, either mac has to remain the same as existing cluster
+        """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
@@ -103,12 +100,17 @@ class GatewayCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Gateway Clusters.It can be used to form or unset a cluster with two Gateways assigned to the same site.Please check the Juniper Documentation first to validate the cabling between the Gateways
+        This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+        Once the Cluster is formed, it can be create just like a Gateway with the `device.Gateway` resource:
+        1. Claim the gateways and assign them to a site with the `org.Inventory` resource
+        2. Form the Cluster with the `device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)
+        3. Configure the Cluster with the `device.Gateway` resource
+
+        Please check the Juniper Documentation first to validate the cabling between the Gateways
 
         ## Example Usage
 
@@ -118,7 +120,6 @@ class GatewayCluster(pulumi.CustomResource):
 
         cluster_one = junipermist.device.GatewayCluster("cluster_one",
             site_id=terraform_site2["id"],
-            device_id="00000000-0000-0000-1000-4c96143de700",
             nodes=[
                 {
                     "mac": "4c961000000",
@@ -131,6 +132,7 @@ class GatewayCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: when replacing a node, either mac has to remain the same as existing cluster
         """
         ...
     @overload
@@ -139,7 +141,13 @@ class GatewayCluster(pulumi.CustomResource):
                  args: GatewayClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Gateway Clusters.It can be used to form or unset a cluster with two Gateways assigned to the same site.Please check the Juniper Documentation first to validate the cabling between the Gateways
+        This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+        Once the Cluster is formed, it can be create just like a Gateway with the `device.Gateway` resource:
+        1. Claim the gateways and assign them to a site with the `org.Inventory` resource
+        2. Form the Cluster with the `device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)
+        3. Configure the Cluster with the `device.Gateway` resource
+
+        Please check the Juniper Documentation first to validate the cabling between the Gateways
 
         ## Example Usage
 
@@ -149,7 +157,6 @@ class GatewayCluster(pulumi.CustomResource):
 
         cluster_one = junipermist.device.GatewayCluster("cluster_one",
             site_id=terraform_site2["id"],
-            device_id="00000000-0000-0000-1000-4c96143de700",
             nodes=[
                 {
                     "mac": "4c961000000",
@@ -175,7 +182,6 @@ class GatewayCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -187,15 +193,13 @@ class GatewayCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GatewayClusterArgs.__new__(GatewayClusterArgs)
 
-            if device_id is None and not opts.urn:
-                raise TypeError("Missing required property 'device_id'")
-            __props__.__dict__["device_id"] = device_id
             if nodes is None and not opts.urn:
                 raise TypeError("Missing required property 'nodes'")
             __props__.__dict__["nodes"] = nodes
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
+            __props__.__dict__["device_id"] = None
         super(GatewayCluster, __self__).__init__(
             'junipermist:device/gatewayCluster:GatewayCluster',
             resource_name,
@@ -216,6 +220,7 @@ class GatewayCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: when replacing a node, either mac has to remain the same as existing cluster
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -234,6 +239,9 @@ class GatewayCluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.GatewayClusterNode']]:
+        """
+        when replacing a node, either mac has to remain the same as existing cluster
+        """
         return pulumi.get(self, "nodes")
 
     @property

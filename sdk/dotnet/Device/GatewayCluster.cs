@@ -10,7 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Device
 {
     /// <summary>
-    /// This resource manages the Gateway Clusters.It can be used to form or unset a cluster with two Gateways assigned to the same site.Please check the Juniper Documentation first to validate the cabling between the Gateways
+    /// This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+    /// Once the Cluster is formed, it can be create just like a Gateway with the `junipermist.device.Gateway` resource:
+    /// 1. Claim the gateways and assign them to a site with the `junipermist.org.Inventory` resource
+    /// 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)
+    /// 3. Configure the Cluster with the `junipermist.device.Gateway` resource
+    /// 
+    /// Please check the Juniper Documentation first to validate the cabling between the Gateways
     /// 
     /// ## Example Usage
     /// 
@@ -25,7 +31,6 @@ namespace Pulumi.JuniperMist.Device
     ///     var clusterOne = new JuniperMist.Device.GatewayCluster("cluster_one", new()
     ///     {
     ///         SiteId = terraformSite2.Id,
-    ///         DeviceId = "00000000-0000-0000-1000-4c96143de700",
     ///         Nodes = new[]
     ///         {
     ///             new JuniperMist.Device.Inputs.GatewayClusterNodeArgs
@@ -48,6 +53,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
+        /// <summary>
+        /// when replacing a node, either mac has to remain the same as existing cluster
+        /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<Outputs.GatewayClusterNode>> Nodes { get; private set; } = null!;
 
@@ -101,11 +109,12 @@ namespace Pulumi.JuniperMist.Device
 
     public sealed class GatewayClusterArgs : global::Pulumi.ResourceArgs
     {
-        [Input("deviceId", required: true)]
-        public Input<string> DeviceId { get; set; } = null!;
-
         [Input("nodes", required: true)]
         private InputList<Inputs.GatewayClusterNodeArgs>? _nodes;
+
+        /// <summary>
+        /// when replacing a node, either mac has to remain the same as existing cluster
+        /// </summary>
         public InputList<Inputs.GatewayClusterNodeArgs> Nodes
         {
             get => _nodes ?? (_nodes = new InputList<Inputs.GatewayClusterNodeArgs>());
@@ -128,6 +137,10 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("nodes")]
         private InputList<Inputs.GatewayClusterNodeGetArgs>? _nodes;
+
+        /// <summary>
+        /// when replacing a node, either mac has to remain the same as existing cluster
+        /// </summary>
         public InputList<Inputs.GatewayClusterNodeGetArgs> Nodes
         {
             get => _nodes ?? (_nodes = new InputList<Inputs.GatewayClusterNodeGetArgs>());

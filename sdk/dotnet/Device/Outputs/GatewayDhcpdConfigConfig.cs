@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// Property key is the MAC Address
+        /// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayDhcpdConfigConfigFixedBindings>? FixedBindings;
         /// <summary>

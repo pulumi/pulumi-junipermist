@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayDhcpdConfigConfigFixedBindingsArgs>? _fixedBindings;
 
         /// <summary>
-        /// Property key is the MAC Address
+        /// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         /// </summary>
         public InputMap<Inputs.GatewayDhcpdConfigConfigFixedBindingsArgs> FixedBindings
         {
