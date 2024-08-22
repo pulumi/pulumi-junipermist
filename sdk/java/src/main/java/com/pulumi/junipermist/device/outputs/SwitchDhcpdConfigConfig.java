@@ -29,7 +29,7 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return Property key is the MAC Address
+     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings;
@@ -118,7 +118,7 @@ public final class SwitchDhcpdConfigConfig {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return Property key is the MAC Address
+     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings() {

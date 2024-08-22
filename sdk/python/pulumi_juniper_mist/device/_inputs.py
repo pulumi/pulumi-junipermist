@@ -2729,7 +2729,7 @@ class GatewayClusterNodeArgs:
     def __init__(__self__, *,
                  mac: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] mac: when replacing a noce, either mac has to remain the same as existing cluster
+        :param pulumi.Input[str] mac: Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         pulumi.set(__self__, "mac", mac)
 
@@ -2737,7 +2737,7 @@ class GatewayClusterNodeArgs:
     @pulumi.getter
     def mac(self) -> pulumi.Input[str]:
         """
-        when replacing a noce, either mac has to remain the same as existing cluster
+        Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "mac")
 
@@ -2803,7 +2803,7 @@ class GatewayDhcpdConfigConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: if `type`==`local` - optional, if not defined, system one will be used
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: if `type`==`local` - optional, if not defined, system one will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: Property key is the MAC Address
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         :param pulumi.Input[str] gateway: if `type`==`local` - optional, `ip` will be used if not provided
         :param pulumi.Input[str] ip_end: if `type`==`local`
         :param pulumi.Input[str] ip_end6: if `type6`==`local`
@@ -2882,7 +2882,7 @@ class GatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigFixedBindingsArgs']]]]:
         """
-        Property key is the MAC Address
+        Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 
@@ -7940,7 +7940,7 @@ class SwitchDhcpdConfigConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: if `type`==`local` - optional, if not defined, system one will be used
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: if `type`==`local` - optional, if not defined, system one will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: Property key is the MAC Address
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         :param pulumi.Input[str] gateway: if `type`==`local` - optional, `ip` will be used if not provided
         :param pulumi.Input[str] ip_end: if `type`==`local`
         :param pulumi.Input[str] ip_end6: if `type6`==`local`
@@ -8019,7 +8019,7 @@ class SwitchDhcpdConfigConfigArgs:
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigFixedBindingsArgs']]]]:
         """
-        Property key is the MAC Address
+        Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 

@@ -12,7 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Gateway Clusters.It can be used to form or unset a cluster with two Gateways assigned to the same site.Please check the Juniper Documentation first to validate the cabling between the Gateways
+// This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+// Once the Cluster is formed, it can be create just like a Gateway with the `device.Gateway` resource:
+// 1. Claim the gateways and assign them to a site with the `org.Inventory` resource
+// 2. Form the Cluster with the `device.GatewayCluster` resource by providing the `siteId` and the two nodes MAC Addresses (the first in the list will be the node0)
+// 3. Configure the Cluster with the `device.Gateway` resource
+//
+// # Please check the Juniper Documentation first to validate the cabling between the Gateways
 //
 // ## Example Usage
 //
@@ -29,8 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := device.NewGatewayCluster(ctx, "cluster_one", &device.GatewayClusterArgs{
-//				SiteId:   pulumi.Any(terraformSite2.Id),
-//				DeviceId: pulumi.String("00000000-0000-0000-1000-4c96143de700"),
+//				SiteId: pulumi.Any(terraformSite2.Id),
 //				Nodes: device.GatewayClusterNodeArray{
 //					&device.GatewayClusterNodeArgs{
 //						Mac: pulumi.String("4c961000000"),
@@ -51,9 +56,10 @@ import (
 type GatewayCluster struct {
 	pulumi.CustomResourceState
 
-	DeviceId pulumi.StringOutput           `pulumi:"deviceId"`
-	Nodes    GatewayClusterNodeArrayOutput `pulumi:"nodes"`
-	SiteId   pulumi.StringOutput           `pulumi:"siteId"`
+	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
+	// when replacing a node, either mac has to remain the same as existing cluster
+	Nodes  GatewayClusterNodeArrayOutput `pulumi:"nodes"`
+	SiteId pulumi.StringOutput           `pulumi:"siteId"`
 }
 
 // NewGatewayCluster registers a new resource with the given unique name, arguments, and options.
@@ -63,9 +69,6 @@ func NewGatewayCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DeviceId == nil {
-		return nil, errors.New("invalid value for required argument 'DeviceId'")
-	}
 	if args.Nodes == nil {
 		return nil, errors.New("invalid value for required argument 'Nodes'")
 	}
@@ -95,15 +98,17 @@ func GetGatewayCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayCluster resources.
 type gatewayClusterState struct {
-	DeviceId *string              `pulumi:"deviceId"`
-	Nodes    []GatewayClusterNode `pulumi:"nodes"`
-	SiteId   *string              `pulumi:"siteId"`
+	DeviceId *string `pulumi:"deviceId"`
+	// when replacing a node, either mac has to remain the same as existing cluster
+	Nodes  []GatewayClusterNode `pulumi:"nodes"`
+	SiteId *string              `pulumi:"siteId"`
 }
 
 type GatewayClusterState struct {
 	DeviceId pulumi.StringPtrInput
-	Nodes    GatewayClusterNodeArrayInput
-	SiteId   pulumi.StringPtrInput
+	// when replacing a node, either mac has to remain the same as existing cluster
+	Nodes  GatewayClusterNodeArrayInput
+	SiteId pulumi.StringPtrInput
 }
 
 func (GatewayClusterState) ElementType() reflect.Type {
@@ -111,16 +116,16 @@ func (GatewayClusterState) ElementType() reflect.Type {
 }
 
 type gatewayClusterArgs struct {
-	DeviceId string               `pulumi:"deviceId"`
-	Nodes    []GatewayClusterNode `pulumi:"nodes"`
-	SiteId   string               `pulumi:"siteId"`
+	// when replacing a node, either mac has to remain the same as existing cluster
+	Nodes  []GatewayClusterNode `pulumi:"nodes"`
+	SiteId string               `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a GatewayCluster resource.
 type GatewayClusterArgs struct {
-	DeviceId pulumi.StringInput
-	Nodes    GatewayClusterNodeArrayInput
-	SiteId   pulumi.StringInput
+	// when replacing a node, either mac has to remain the same as existing cluster
+	Nodes  GatewayClusterNodeArrayInput
+	SiteId pulumi.StringInput
 }
 
 func (GatewayClusterArgs) ElementType() reflect.Type {
@@ -214,6 +219,7 @@ func (o GatewayClusterOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayCluster) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
+// when replacing a node, either mac has to remain the same as existing cluster
 func (o GatewayClusterOutput) Nodes() GatewayClusterNodeArrayOutput {
 	return o.ApplyT(func(v *GatewayCluster) GatewayClusterNodeArrayOutput { return v.Nodes }).(GatewayClusterNodeArrayOutput)
 }

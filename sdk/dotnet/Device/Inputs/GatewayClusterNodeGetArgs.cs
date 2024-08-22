@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayClusterNodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// when replacing a noce, either mac has to remain the same as existing cluster
+        /// Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         /// </summary>
         [Input("mac", required: true)]
         public Input<string> Mac { get; set; } = null!;

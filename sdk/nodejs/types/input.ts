@@ -608,7 +608,7 @@ export namespace device {
 
     export interface GatewayClusterNode {
         /**
-         * when replacing a noce, either mac has to remain the same as existing cluster
+         * Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         mac: pulumi.Input<string>;
     }
@@ -631,7 +631,7 @@ export namespace device {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address
+         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfigFixedBindings>}>;
         /**
@@ -1795,7 +1795,7 @@ export namespace device {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address
+         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigFixedBindings>}>;
         /**
@@ -3428,7 +3428,7 @@ export namespace org {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address
+         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfigFixedBindings>}>;
         /**
@@ -4563,7 +4563,7 @@ export namespace org {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address
+         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfigFixedBindings>}>;
         /**

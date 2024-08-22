@@ -2628,7 +2628,7 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         """
         :param Sequence[str] dns_servers: if `type`==`local` - optional, if not defined, system one will be used
         :param Sequence[str] dns_suffixes: if `type`==`local` - optional, if not defined, system one will be used
-        :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: Property key is the MAC Address
+        :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         :param str gateway: if `type`==`local` - optional, `ip` will be used if not provided
         :param str ip_end: if `type`==`local`
         :param str ip_end6: if `type6`==`local`
@@ -2699,7 +2699,7 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigFixedBindings']]:
         """
-        Property key is the MAC Address
+        Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 
@@ -7395,7 +7395,7 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         """
         :param Sequence[str] dns_servers: if `type`==`local` - optional, if not defined, system one will be used
         :param Sequence[str] dns_suffixes: if `type`==`local` - optional, if not defined, system one will be used
-        :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: Property key is the MAC Address
+        :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigFixedBindingsArgs'] fixed_bindings: Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         :param str gateway: if `type`==`local` - optional, `ip` will be used if not provided
         :param str ip_end: if `type`==`local`
         :param str ip_end6: if `type6`==`local`
@@ -7466,7 +7466,7 @@ class GatewaytemplateDhcpdConfigConfig(dict):
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigFixedBindings']]:
         """
-        Property key is the MAC Address
+        Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 

@@ -7,7 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Gateway Clusters.It can be used to form or unset a cluster with two Gateways assigned to the same site.Please check the Juniper Documentation first to validate the cabling between the Gateways
+ * This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+ * Once the Cluster is formed, it can be create just like a Gateway with the `junipermist.device.Gateway` resource:
+ * 1. Claim the gateways and assign them to a site with the `junipermist.org.Inventory` resource
+ * 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `siteId` and the two nodes MAC Addresses (the first in the list will be the node0)
+ * 3. Configure the Cluster with the `junipermist.device.Gateway` resource
+ *
+ * Please check the Juniper Documentation first to validate the cabling between the Gateways
  *
  * ## Example Usage
  *
@@ -17,7 +23,6 @@ import * as utilities from "../utilities";
  *
  * const clusterOne = new junipermist.device.GatewayCluster("cluster_one", {
  *     siteId: terraformSite2.id,
- *     deviceId: "00000000-0000-0000-1000-4c96143de700",
  *     nodes: [
  *         {
  *             mac: "4c961000000",
@@ -57,7 +62,10 @@ export class GatewayCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === GatewayCluster.__pulumiType;
     }
 
-    public readonly deviceId!: pulumi.Output<string>;
+    public /*out*/ readonly deviceId!: pulumi.Output<string>;
+    /**
+     * when replacing a node, either mac has to remain the same as existing cluster
+     */
     public readonly nodes!: pulumi.Output<outputs.device.GatewayClusterNode[]>;
     public readonly siteId!: pulumi.Output<string>;
 
@@ -79,18 +87,15 @@ export class GatewayCluster extends pulumi.CustomResource {
             resourceInputs["siteId"] = state ? state.siteId : undefined;
         } else {
             const args = argsOrState as GatewayClusterArgs | undefined;
-            if ((!args || args.deviceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'deviceId'");
-            }
             if ((!args || args.nodes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodes'");
             }
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
+            resourceInputs["deviceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GatewayCluster.__pulumiType, name, resourceInputs, opts);
@@ -102,6 +107,9 @@ export class GatewayCluster extends pulumi.CustomResource {
  */
 export interface GatewayClusterState {
     deviceId?: pulumi.Input<string>;
+    /**
+     * when replacing a node, either mac has to remain the same as existing cluster
+     */
     nodes?: pulumi.Input<pulumi.Input<inputs.device.GatewayClusterNode>[]>;
     siteId?: pulumi.Input<string>;
 }
@@ -110,7 +118,9 @@ export interface GatewayClusterState {
  * The set of arguments for constructing a GatewayCluster resource.
  */
 export interface GatewayClusterArgs {
-    deviceId: pulumi.Input<string>;
+    /**
+     * when replacing a node, either mac has to remain the same as existing cluster
+     */
     nodes: pulumi.Input<pulumi.Input<inputs.device.GatewayClusterNode>[]>;
     siteId: pulumi.Input<string>;
 }

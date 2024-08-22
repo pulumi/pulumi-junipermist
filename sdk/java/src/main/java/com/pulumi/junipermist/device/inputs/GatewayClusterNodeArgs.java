@@ -15,14 +15,14 @@ public final class GatewayClusterNodeArgs extends com.pulumi.resources.ResourceA
     public static final GatewayClusterNodeArgs Empty = new GatewayClusterNodeArgs();
 
     /**
-     * when replacing a noce, either mac has to remain the same as existing cluster
+     * Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="mac", required=true)
     private Output<String> mac;
 
     /**
-     * @return when replacing a noce, either mac has to remain the same as existing cluster
+     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Output<String> mac() {
@@ -54,7 +54,7 @@ public final class GatewayClusterNodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mac when replacing a noce, either mac has to remain the same as existing cluster
+         * @param mac Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GatewayClusterNodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param mac when replacing a noce, either mac has to remain the same as existing cluster
+         * @param mac Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 

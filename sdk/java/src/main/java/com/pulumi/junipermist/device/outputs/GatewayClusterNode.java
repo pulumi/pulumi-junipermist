@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GatewayClusterNode {
     /**
-     * @return when replacing a noce, either mac has to remain the same as existing cluster
+     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     private String mac;
 
     private GatewayClusterNode() {}
     /**
-     * @return when replacing a noce, either mac has to remain the same as existing cluster
+     * @return Gateway MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public String mac() {

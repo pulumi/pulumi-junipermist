@@ -16,7 +16,13 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Gateway Clusters.It can be used to form or unset a cluster with two Gateways assigned to the same site.Please check the Juniper Documentation first to validate the cabling between the Gateways
+ * This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+ * Once the Cluster is formed, it can be create just like a Gateway with the `junipermist.device.Gateway` resource:
+ * 1. Claim the gateways and assign them to a site with the `junipermist.org.Inventory` resource
+ * 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)
+ * 3. Configure the Cluster with the `junipermist.device.Gateway` resource
+ * 
+ * Please check the Juniper Documentation first to validate the cabling between the Gateways
  * 
  * ## Example Usage
  * 
@@ -46,7 +52,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var clusterOne = new GatewayCluster("clusterOne", GatewayClusterArgs.builder()
  *             .siteId(terraformSite2.id())
- *             .deviceId("00000000-0000-0000-1000-4c96143de700")
  *             .nodes(            
  *                 GatewayClusterNodeArgs.builder()
  *                     .mac("4c961000000")
@@ -71,9 +76,17 @@ public class GatewayCluster extends com.pulumi.resources.CustomResource {
     public Output<String> deviceId() {
         return this.deviceId;
     }
+    /**
+     * when replacing a node, either mac has to remain the same as existing cluster
+     * 
+     */
     @Export(name="nodes", refs={List.class,GatewayClusterNode.class}, tree="[0,1]")
     private Output<List<GatewayClusterNode>> nodes;
 
+    /**
+     * @return when replacing a node, either mac has to remain the same as existing cluster
+     * 
+     */
     public Output<List<GatewayClusterNode>> nodes() {
         return this.nodes;
     }

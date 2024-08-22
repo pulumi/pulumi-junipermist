@@ -16,16 +16,17 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final GatewayClusterArgs Empty = new GatewayClusterArgs();
 
-    @Import(name="deviceId", required=true)
-    private Output<String> deviceId;
-
-    public Output<String> deviceId() {
-        return this.deviceId;
-    }
-
+    /**
+     * when replacing a node, either mac has to remain the same as existing cluster
+     * 
+     */
     @Import(name="nodes", required=true)
     private Output<List<GatewayClusterNodeArgs>> nodes;
 
+    /**
+     * @return when replacing a node, either mac has to remain the same as existing cluster
+     * 
+     */
     public Output<List<GatewayClusterNodeArgs>> nodes() {
         return this.nodes;
     }
@@ -40,7 +41,6 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
     private GatewayClusterArgs() {}
 
     private GatewayClusterArgs(GatewayClusterArgs $) {
-        this.deviceId = $.deviceId;
         this.nodes = $.nodes;
         this.siteId = $.siteId;
     }
@@ -63,24 +63,33 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
             $ = new GatewayClusterArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder deviceId(Output<String> deviceId) {
-            $.deviceId = deviceId;
-            return this;
-        }
-
-        public Builder deviceId(String deviceId) {
-            return deviceId(Output.of(deviceId));
-        }
-
+        /**
+         * @param nodes when replacing a node, either mac has to remain the same as existing cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(Output<List<GatewayClusterNodeArgs>> nodes) {
             $.nodes = nodes;
             return this;
         }
 
+        /**
+         * @param nodes when replacing a node, either mac has to remain the same as existing cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(List<GatewayClusterNodeArgs> nodes) {
             return nodes(Output.of(nodes));
         }
 
+        /**
+         * @param nodes when replacing a node, either mac has to remain the same as existing cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodes(GatewayClusterNodeArgs... nodes) {
             return nodes(List.of(nodes));
         }
@@ -95,9 +104,6 @@ public final class GatewayClusterArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GatewayClusterArgs build() {
-            if ($.deviceId == null) {
-                throw new MissingRequiredPropertyException("GatewayClusterArgs", "deviceId");
-            }
             if ($.nodes == null) {
                 throw new MissingRequiredPropertyException("GatewayClusterArgs", "nodes");
             }
