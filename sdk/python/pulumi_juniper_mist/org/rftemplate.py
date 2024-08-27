@@ -434,6 +434,30 @@ class Rftemplate(pulumi.CustomResource):
         """
         This manages the RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/rftemplate:Rftemplate Using terraform import, import `mist_org_rftemplate` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the rftemplate_id
+
+        ```sh
+        $ pulumi import junipermist:org/rftemplate:Rftemplate rftemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_rftemplate` with `id={org_id}.{rftemplate_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_rftemplate.rftemplate_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RftemplateBand24Args', 'RftemplateBand24ArgsDict']] band24: Radio Band AP settings
@@ -454,6 +478,30 @@ class Rftemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This manages the RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/rftemplate:Rftemplate Using terraform import, import `mist_org_rftemplate` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the rftemplate_id
+
+        ```sh
+        $ pulumi import junipermist:org/rftemplate:Rftemplate rftemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_rftemplate` with `id={org_id}.{rftemplate_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_rftemplate.rftemplate_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param RftemplateArgs args: The arguments to use to populate this resource's properties.

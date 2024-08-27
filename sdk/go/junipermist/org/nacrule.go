@@ -13,6 +13,30 @@ import (
 )
 
 // This resource manages the NAC Rules (Auth Policies).A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import junipermist:org/nacrule:Nacrule Using terraform import, import `mist_org_nacrule` using the `import` command:
+// ```
+//
+// Gateway cluster can be imported by specifying the org_id and the nacrule_id
+//
+// ```sh
+// $ pulumi import junipermist:org/nacrule:Nacrule nacrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+// ```
+//
+// In Terraform v1.5.0 and later, use an import block to import `mist_org_nacrule` with `id={org_id}.{nacrule_id}`:
+//
+// tf
+//
+// import {
+//
+//	to = mist_org_nacrule.nacrule_one
+//
+//	id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+//
+// }
 type Nacrule struct {
 	pulumi.CustomResourceState
 

@@ -2955,6 +2955,30 @@ class Wlan(pulumi.CustomResource):
             interface="all")
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:site/wlan:Wlan Using terraform import, import `mist_site_wlan` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id and the wlan_id
+
+        ```sh
+        $ pulumi import junipermist:site/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_site_wlan` with `id={site_id}.{wlan_id}`:
+
+        tf
+
+        import {
+
+          to = mist_site_wlan.wlan_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] acct_immediate_update: enable coa-immediate-update and address-change-immediate-update on the access profile.
@@ -3086,6 +3110,30 @@ class Wlan(pulumi.CustomResource):
             },
             interface="all")
         ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:site/wlan:Wlan Using terraform import, import `mist_site_wlan` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id and the wlan_id
+
+        ```sh
+        $ pulumi import junipermist:site/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_site_wlan` with `id={site_id}.{wlan_id}`:
+
+        tf
+
+        import {
+
+          to = mist_site_wlan.wlan_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param WlanArgs args: The arguments to use to populate this resource's properties.

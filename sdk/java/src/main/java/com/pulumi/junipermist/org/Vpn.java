@@ -78,6 +78,30 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import junipermist:org/vpn:Vpn Using terraform import, import `mist_org_vpn` using the `import` command:
+ * ```
+ * 
+ * Gateway cluster can be imported by specifying the org_id and the vpn_id
+ * 
+ * ```sh
+ * $ pulumi import junipermist:org/vpn:Vpn vpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+ * ```
+ * 
+ * In Terraform v1.5.0 and later, use an import block to import `mist_org_vpn` with `id={org_id}.{vpn_id}`:
+ * 
+ * tf
+ * 
+ * import {
+ * 
+ *   to = mist_org_vpn.vpn_one
+ * 
+ *   id = &#34;17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309&#34;
+ * 
+ * }
+ * 
  */
 @ResourceType(type="junipermist:org/vpn:Vpn")
 public class Vpn extends com.pulumi.resources.CustomResource {

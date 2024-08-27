@@ -53,6 +53,13 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 InventoryDeviceArgs.builder()
  *                     .claim_code("<device_claim_code>")
+ *                     .build(),
+ *                 InventoryDeviceArgs.builder()
+ *                     .mac("<device_mac_address>")
+ *                     .site_id(terraformSite.id())
+ *                     .build(),
+ *                 InventoryDeviceArgs.builder()
+ *                     .mac("<device_mac_address>")
  *                     .build())
  *             .build());
  * 
@@ -61,6 +68,30 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import junipermist:org/inventory:Inventory Using terraform import, import `mist_org_inventory` using the `import` command:
+ * ```
+ * 
+ * Gateway cluster can be imported by specifying the org_id
+ * 
+ * ```sh
+ * $ pulumi import junipermist:org/inventory:Inventory inventory_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
+ * ```
+ * 
+ * In Terraform v1.5.0 and later, use an import block to import `mist_org_inventory` with `id={org_id}`:
+ * 
+ * tf
+ * 
+ * import {
+ * 
+ *   to = mist_org_inventory.inventory_one
+ * 
+ *   id = &#34;17b46405-3a6d-4715-8bb4-6bb6d06f316a&#34;
+ * 
+ * }
  * 
  */
 @ResourceType(type="junipermist:org/inventory:Inventory")

@@ -53,10 +53,33 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import junipermist:device/gatewayCluster:GatewayCluster Using terraform import, import `mist_device_gateway_cluster` using the `import` command:
+// ```
+//
+// Gateway cluster can be imported by specifying the org_id and the cluster_id
+//
+// ```sh
+// $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+// ```
+//
+// In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway_cluster` with `id={org_id}.{cluster_id}`:
+//
+// tf
+//
+// import {
+//
+//	to = mist_device_gateway_cluster.cluster_one
+//
+//	id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+//
+// }
 type GatewayCluster struct {
 	pulumi.CustomResourceState
 
-	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// when replacing a node, either mac has to remain the same as existing cluster
 	Nodes  GatewayClusterNodeArrayOutput `pulumi:"nodes"`
 	SiteId pulumi.StringOutput           `pulumi:"siteId"`
@@ -98,14 +121,12 @@ func GetGatewayCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GatewayCluster resources.
 type gatewayClusterState struct {
-	DeviceId *string `pulumi:"deviceId"`
 	// when replacing a node, either mac has to remain the same as existing cluster
 	Nodes  []GatewayClusterNode `pulumi:"nodes"`
 	SiteId *string              `pulumi:"siteId"`
 }
 
 type GatewayClusterState struct {
-	DeviceId pulumi.StringPtrInput
 	// when replacing a node, either mac has to remain the same as existing cluster
 	Nodes  GatewayClusterNodeArrayInput
 	SiteId pulumi.StringPtrInput
@@ -213,10 +234,6 @@ func (o GatewayClusterOutput) ToGatewayClusterOutput() GatewayClusterOutput {
 
 func (o GatewayClusterOutput) ToGatewayClusterOutputWithContext(ctx context.Context) GatewayClusterOutput {
 	return o
-}
-
-func (o GatewayClusterOutput) DeviceId() pulumi.StringOutput {
-	return o.ApplyT(func(v *GatewayCluster) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
 // when replacing a node, either mac has to remain the same as existing cluster

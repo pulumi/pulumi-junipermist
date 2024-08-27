@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        /// if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         /// </summary>
         [Input("dslType")]
         public Input<string>? DslType { get; set; }

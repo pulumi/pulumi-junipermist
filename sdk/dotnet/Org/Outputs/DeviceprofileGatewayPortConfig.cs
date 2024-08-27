@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        /// if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         /// </summary>
         public readonly string? DslType;
         /// <summary>

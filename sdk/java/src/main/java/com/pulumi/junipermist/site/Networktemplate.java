@@ -39,7 +39,97 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.junipermist.site.Networktemplate;
+ * import com.pulumi.junipermist.site.NetworktemplateArgs;
+ * import com.pulumi.junipermist.site.inputs.NetworktemplateRadiusConfigArgs;
+ * import com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMatchingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var networktemplateOne = new Networktemplate("networktemplateOne", NetworktemplateArgs.builder()
+ *             .siteId(terraformTest.id())
+ *             .dnsServers(            
+ *                 "8.8.8.8",
+ *                 "1.1.1.1")
+ *             .dnsSuffixes("mycorp.com")
+ *             .ntpServers("pool.ntp.org")
+ *             .additionalConfigCmds(            
+ *                 "set system hostnam test",
+ *                 "set system services ssh root-login allow")
+ *             .networks(Map.ofEntries(
+ *                 Map.entry("network_one", Map.of("vlanId", 10)),
+ *                 Map.entry("network_two", Map.of("vlanId", 11))
+ *             ))
+ *             .portUsages(Map.of("trunk", Map.ofEntries(
+ *                 Map.entry("allNetworks", true),
+ *                 Map.entry("enableQos", true),
+ *                 Map.entry("mode", "port_usage_one"),
+ *                 Map.entry("portNetwork", "network_one")
+ *             )))
+ *             .radiusConfig(NetworktemplateRadiusConfigArgs.builder()
+ *                 .acct_interim_interval(60)
+ *                 .coa_enabled(true)
+ *                 .network("network_one")
+ *                 .acct_servers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .auth_servers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                 .build())
+ *             .switchMatching(NetworktemplateSwitchMatchingArgs.builder()
+ *                 .enable(true)
+ *                 .rules(NetworktemplateSwitchMatchingRuleArgs.builder()
+ *                     .name("switch_rule_one")
+ *                     .matchType("match_name[0:3]")
+ *                     .matchValue("abc")
+ *                     .portConfig(Map.of("ge-0/0/0-10", Map.of("usage", "port_usage_one")))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import junipermist:site/networktemplate:Networktemplate Using terraform import, import `mist_site_networktemplate` using the `import` command:
+ * ```
+ * 
+ * Gateway cluster can be imported by specifying the site_id
+ * 
+ * ```sh
+ * $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
+ * ```
+ * 
+ * In Terraform v1.5.0 and later, use an import block to import `mist_site_networktemplate` with `id={site_id}`:
+ * 
+ * tf
+ * 
+ * import {
+ * 
+ *   to = mist_site_networktemplate.networktemplate_one
+ * 
+ *   id = &#34;17b46405-3a6d-4715-8bb4-6bb6d06f316a&#34;
+ * 
+ * }
  * 
  */
 @ResourceType(type="junipermist:site/networktemplate:Networktemplate")

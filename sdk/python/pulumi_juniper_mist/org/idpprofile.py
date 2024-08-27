@@ -144,6 +144,30 @@ class Idpprofile(pulumi.CustomResource):
         """
         This resource manages WAN Assurance Idp Profiles.An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/idpprofile:Idpprofile Using terraform import, import `mist_org_idpprofile` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the idpprofile_id
+
+        ```sh
+        $ pulumi import junipermist:org/idpprofile:Idpprofile idpprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_idpprofile` with `id={org_id}.{idpprofile_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_idpprofile.idpprofile_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] base_profile: enum: `critical`, `standard`, `strict`
@@ -156,6 +180,30 @@ class Idpprofile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages WAN Assurance Idp Profiles.An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/idpprofile:Idpprofile Using terraform import, import `mist_org_idpprofile` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the idpprofile_id
+
+        ```sh
+        $ pulumi import junipermist:org/idpprofile:Idpprofile idpprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_idpprofile` with `id={org_id}.{idpprofile_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_idpprofile.idpprofile_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param IdpprofileArgs args: The arguments to use to populate this resource's properties.

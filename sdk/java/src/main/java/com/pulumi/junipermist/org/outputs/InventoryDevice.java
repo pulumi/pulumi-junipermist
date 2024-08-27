@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,7 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InventoryDevice {
-    private String claimCode;
+    /**
+     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * 
+     */
+    private @Nullable String claimCode;
     /**
      * @return Device Hostname
      * 
@@ -24,23 +27,23 @@ public final class InventoryDevice {
      */
     private @Nullable String id;
     /**
-     * @return MAC address
+     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
      * 
      */
     private @Nullable String mac;
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     private @Nullable String model;
     private @Nullable String orgId;
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     private @Nullable String serial;
     /**
-     * @return site id if assigned, null if not assigned
+     * @return Site ID. Used to assign device to a Site
      * 
      */
     private @Nullable String siteId;
@@ -52,8 +55,12 @@ public final class InventoryDevice {
     private @Nullable String vcMac;
 
     private InventoryDevice() {}
-    public String claimCode() {
-        return this.claimCode;
+    /**
+     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * 
+     */
+    public Optional<String> claimCode() {
+        return Optional.ofNullable(this.claimCode);
     }
     /**
      * @return Device Hostname
@@ -70,14 +77,14 @@ public final class InventoryDevice {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return MAC address
+     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
      * 
      */
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
     }
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public Optional<String> model() {
@@ -87,14 +94,14 @@ public final class InventoryDevice {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     public Optional<String> serial() {
         return Optional.ofNullable(this.serial);
     }
     /**
-     * @return site id if assigned, null if not assigned
+     * @return Site ID. Used to assign device to a Site
      * 
      */
     public Optional<String> siteId() {
@@ -120,7 +127,7 @@ public final class InventoryDevice {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String claimCode;
+        private @Nullable String claimCode;
         private @Nullable String hostname;
         private @Nullable String id;
         private @Nullable String mac;
@@ -146,10 +153,8 @@ public final class InventoryDevice {
         }
 
         @CustomType.Setter
-        public Builder claimCode(String claimCode) {
-            if (claimCode == null) {
-              throw new MissingRequiredPropertyException("InventoryDevice", "claimCode");
-            }
+        public Builder claimCode(@Nullable String claimCode) {
+
             this.claimCode = claimCode;
             return this;
         }

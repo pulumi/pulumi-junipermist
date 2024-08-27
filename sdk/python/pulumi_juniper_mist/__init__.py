@@ -163,6 +163,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/psk",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/psk:Psk": "Psk"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/rftemplate",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
@@ -207,6 +215,14 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
    "junipermist:org/vpn:Vpn": "Vpn"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/webhook",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/webhook:Webhook": "Webhook"
   }
  },
  {
@@ -259,10 +275,26 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "site/psk",
+  "fqn": "pulumi_juniper_mist.site",
+  "classes": {
+   "junipermist:site/psk:Psk": "Psk"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "site/setting",
   "fqn": "pulumi_juniper_mist.site",
   "classes": {
    "junipermist:site/setting:Setting": "Setting"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "site/webhook",
+  "fqn": "pulumi_juniper_mist.site",
+  "classes": {
+   "junipermist:site/webhook:Webhook": "Webhook"
   }
  },
  {

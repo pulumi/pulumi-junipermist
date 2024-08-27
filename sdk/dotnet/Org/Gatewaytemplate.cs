@@ -11,6 +11,30 @@ namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
     /// This resource manages the Gateway Templates.A Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate Using terraform import, import `mist_org_gatewaytemplate` using the `import` command:
+    /// ```
+    /// 
+    /// Gateway cluster can be imported by specifying the org_id and the gatewaytemplate_id
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate gatewaytemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+    /// ```
+    /// 
+    /// In Terraform v1.5.0 and later, use an import block to import `mist_org_gatewaytemplate` with `id={org_id}.{gatewaytemplate_id}`:
+    /// 
+    /// tf
+    /// 
+    /// import {
+    /// 
+    ///   to = mist_org_gatewaytemplate.gatewaytemplate_one
+    /// 
+    ///   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+    /// 
+    /// }
     /// </summary>
     [JuniperMistResourceType("junipermist:org/gatewaytemplate:Gatewaytemplate")]
     public partial class Gatewaytemplate : global::Pulumi.CustomResource

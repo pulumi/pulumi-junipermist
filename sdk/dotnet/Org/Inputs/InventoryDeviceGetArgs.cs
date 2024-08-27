@@ -12,8 +12,11 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class InventoryDeviceGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("claimCode", required: true)]
-        public Input<string> ClaimCode { get; set; } = null!;
+        /// <summary>
+        /// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        /// </summary>
+        [Input("claimCode")]
+        public Input<string>? ClaimCode { get; set; }
 
         /// <summary>
         /// Device Hostname
@@ -28,13 +31,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// MAC address
+        /// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
@@ -43,13 +46,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// device serial
+        /// Device serial
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
 
         /// <summary>
-        /// site id if assigned, null if not assigned
+        /// Site ID. Used to assign device to a Site
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }

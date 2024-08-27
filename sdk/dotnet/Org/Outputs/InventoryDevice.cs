@@ -13,7 +13,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class InventoryDevice
     {
-        public readonly string ClaimCode;
+        /// <summary>
+        /// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        /// </summary>
+        public readonly string? ClaimCode;
         /// <summary>
         /// Device Hostname
         /// </summary>
@@ -23,20 +26,20 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// MAC address
+        /// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
         /// </summary>
         public readonly string? Mac;
         /// <summary>
-        /// device model
+        /// Device model
         /// </summary>
         public readonly string? Model;
         public readonly string? OrgId;
         /// <summary>
-        /// device serial
+        /// Device serial
         /// </summary>
         public readonly string? Serial;
         /// <summary>
-        /// site id if assigned, null if not assigned
+        /// Site ID. Used to assign device to a Site
         /// </summary>
         public readonly string? SiteId;
         public readonly string? Type;
@@ -47,7 +50,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
         [OutputConstructor]
         private InventoryDevice(
-            string claimCode,
+            string? claimCode,
 
             string? hostname,
 

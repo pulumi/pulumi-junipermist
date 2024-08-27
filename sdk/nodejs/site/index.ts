@@ -10,15 +10,35 @@ export type Base = import("./base").Base;
 export const Base: typeof import("./base").Base = null as any;
 utilities.lazyLoad(exports, ["Base"], () => require("./base"));
 
+export { GetPsksArgs, GetPsksResult, GetPsksOutputArgs } from "./getPsks";
+export const getPsks: typeof import("./getPsks").getPsks = null as any;
+export const getPsksOutput: typeof import("./getPsks").getPsksOutput = null as any;
+utilities.lazyLoad(exports, ["getPsks","getPsksOutput"], () => require("./getPsks"));
+
+export { GetWebhooksArgs, GetWebhooksResult, GetWebhooksOutputArgs } from "./getWebhooks";
+export const getWebhooks: typeof import("./getWebhooks").getWebhooks = null as any;
+export const getWebhooksOutput: typeof import("./getWebhooks").getWebhooksOutput = null as any;
+utilities.lazyLoad(exports, ["getWebhooks","getWebhooksOutput"], () => require("./getWebhooks"));
+
 export { NetworktemplateArgs, NetworktemplateState } from "./networktemplate";
 export type Networktemplate = import("./networktemplate").Networktemplate;
 export const Networktemplate: typeof import("./networktemplate").Networktemplate = null as any;
 utilities.lazyLoad(exports, ["Networktemplate"], () => require("./networktemplate"));
 
+export { PskArgs, PskState } from "./psk";
+export type Psk = import("./psk").Psk;
+export const Psk: typeof import("./psk").Psk = null as any;
+utilities.lazyLoad(exports, ["Psk"], () => require("./psk"));
+
 export { SettingArgs, SettingState } from "./setting";
 export type Setting = import("./setting").Setting;
 export const Setting: typeof import("./setting").Setting = null as any;
 utilities.lazyLoad(exports, ["Setting"], () => require("./setting"));
+
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
 
 export { WlanArgs, WlanState } from "./wlan";
 export type Wlan = import("./wlan").Wlan;
@@ -44,8 +64,12 @@ const _module = {
                 return new Base(name, <any>undefined, { urn })
             case "junipermist:site/networktemplate:Networktemplate":
                 return new Networktemplate(name, <any>undefined, { urn })
+            case "junipermist:site/psk:Psk":
+                return new Psk(name, <any>undefined, { urn })
             case "junipermist:site/setting:Setting":
                 return new Setting(name, <any>undefined, { urn })
+            case "junipermist:site/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             case "junipermist:site/wlan:Wlan":
                 return new Wlan(name, <any>undefined, { urn })
             case "junipermist:site/wxrule:Wxrule":
@@ -59,7 +83,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("junipermist", "site/base", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/networktemplate", _module)
+pulumi.runtime.registerResourceModule("junipermist", "site/psk", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/setting", _module)
+pulumi.runtime.registerResourceModule("junipermist", "site/webhook", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wlan", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wxrule", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wxtag", _module)

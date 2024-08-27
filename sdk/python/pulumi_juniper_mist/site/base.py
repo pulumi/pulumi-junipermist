@@ -533,6 +533,30 @@ class Base(pulumi.CustomResource):
             gatewaytemplate_id=test_api["id"])
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:site/base:base Using terraform import, import `mist_site` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id
+
+        ```sh
+        $ pulumi import junipermist:site/base:base site_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_site` with `id={site_id}`:
+
+        tf
+
+        import {
+
+          to = mist_site.site_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: full address of the site
@@ -582,6 +606,30 @@ class Base(pulumi.CustomResource):
             rftemplate_id=test_rf["id"],
             gatewaytemplate_id=test_api["id"])
         ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:site/base:base Using terraform import, import `mist_site` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id
+
+        ```sh
+        $ pulumi import junipermist:site/base:base site_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_site` with `id={site_id}`:
+
+        tf
+
+        import {
+
+          to = mist_site.site_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a
+
+        }
 
         :param str resource_name: The name of the resource.
         :param BaseArgs args: The arguments to use to populate this resource's properties.

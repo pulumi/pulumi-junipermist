@@ -365,6 +365,30 @@ class Wxrule(pulumi.CustomResource):
             order=1)
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:site/wxrule:Wxrule Using terraform import, import `mist_site_wxrule` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id and the wxrule_id
+
+        ```sh
+        $ pulumi import junipermist:site/wxrule:Wxrule wxrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_site_wxrule` with `id={site_id}.{wxrule_id}`:
+
+        tf
+
+        import {
+
+          to = mist_site_wxrule.wxrule_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
@@ -398,6 +422,30 @@ class Wxrule(pulumi.CustomResource):
             dst_deny_wxtags=[wxtag_two["id"]],
             order=1)
         ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:site/wxrule:Wxrule Using terraform import, import `mist_site_wxrule` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id and the wxrule_id
+
+        ```sh
+        $ pulumi import junipermist:site/wxrule:Wxrule wxrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_site_wxrule` with `id={site_id}.{wxrule_id}`:
+
+        tf
+
+        import {
+
+          to = mist_site_wxrule.wxrule_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param WxruleArgs args: The arguments to use to populate this resource's properties.
