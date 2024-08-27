@@ -1921,6 +1921,14 @@
                     }
                 }
             },
+            "mist_org_psk": {
+                "current": "junipermist:org/psk:Psk",
+                "fields": {
+                    "macs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_org_rftemplate": {
                 "current": "junipermist:org/rftemplate:Rftemplate",
                 "fields": {
@@ -2099,6 +2107,17 @@
             },
             "mist_org_vpn": {
                 "current": "junipermist:org/vpn:Vpn"
+            },
+            "mist_org_webhook": {
+                "current": "junipermist:org/webhook:Webhook",
+                "fields": {
+                    "oauth2_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "topics": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "mist_org_wlan": {
                 "current": "junipermist:org/wlan:Wlan",
@@ -2629,6 +2648,9 @@
                     }
                 }
             },
+            "mist_site_psk": {
+                "current": "junipermist:site/psk:Psk"
+            },
             "mist_site_setting": {
                 "current": "junipermist:site/setting:Setting",
                 "fields": {
@@ -2728,6 +2750,17 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "mist_site_webhook": {
+                "current": "junipermist:site/webhook:Webhook",
+                "fields": {
+                    "oauth2_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "topics": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3378,6 +3411,21 @@
                     }
                 }
             },
+            "mist_org_psks": {
+                "current": "junipermist:org/getPsks:getPsks",
+                "fields": {
+                    "org_psks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "macs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "mist_org_rftemplates": {
                 "current": "junipermist:org/getRftemplates:getRftemplates",
                 "fields": {
@@ -3438,6 +3486,24 @@
                     }
                 }
             },
+            "mist_org_webhooks": {
+                "current": "junipermist:org/getWebhooks:getWebhooks",
+                "fields": {
+                    "org_webhooks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "oauth2_scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "topics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "mist_org_wlantemplates": {
                 "current": "junipermist:org/getWlantemplates:getWlantemplates",
                 "fields": {
@@ -3451,6 +3517,32 @@
                 "fields": {
                     "org_wxtags": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_site_psks": {
+                "current": "junipermist:site/getPsks:getPsks",
+                "fields": {
+                    "site_psks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_site_webhooks": {
+                "current": "junipermist:site/getWebhooks:getWebhooks",
+                "fields": {
+                    "site_webhooks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "oauth2_scopes": {
+                                    "maxItemsOne": false
+                                },
+                                "topics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3486,9 +3578,6 @@
                 "device_id"
             ],
             "mist_device_gateway": [
-                "device_id"
-            ],
-            "mist_device_gateway_cluster": [
                 "device_id"
             ],
             "mist_device_switch": [
