@@ -219,6 +219,30 @@ class Wlantemplate(pulumi.CustomResource):
         """
         This resource manages the Org WLAN Templates.A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/wlantemplate:Wlantemplate Using terraform import, import `mist_org_wlantemplate` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the wlantemplate_id
+
+        ```sh
+        $ pulumi import junipermist:org/wlantemplate:Wlantemplate wlantemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_wlantemplate` with `id={org_id}.{wlantemplate_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_wlantemplate.wlantemplate_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['WlantemplateAppliesArgs', 'WlantemplateAppliesArgsDict']] applies: where this template should be applied to, can be org*id, site*ids, sitegroup_ids
@@ -234,6 +258,30 @@ class Wlantemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org WLAN Templates.A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/wlantemplate:Wlantemplate Using terraform import, import `mist_org_wlantemplate` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the wlantemplate_id
+
+        ```sh
+        $ pulumi import junipermist:org/wlantemplate:Wlantemplate wlantemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_wlantemplate` with `id={org_id}.{wlantemplate_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_wlantemplate.wlantemplate_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param WlantemplateArgs args: The arguments to use to populate this resource's properties.

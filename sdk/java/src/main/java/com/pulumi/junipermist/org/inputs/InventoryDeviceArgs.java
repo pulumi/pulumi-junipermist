@@ -5,7 +5,6 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +15,19 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
 
     public static final InventoryDeviceArgs Empty = new InventoryDeviceArgs();
 
-    @Import(name="claimCode", required=true)
-    private Output<String> claimCode;
+    /**
+     * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * 
+     */
+    @Import(name="claimCode")
+    private @Nullable Output<String> claimCode;
 
-    public Output<String> claimCode() {
-        return this.claimCode;
+    /**
+     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * 
+     */
+    public Optional<Output<String>> claimCode() {
+        return Optional.ofNullable(this.claimCode);
     }
 
     /**
@@ -54,14 +61,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * MAC address
+     * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return MAC address
+     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
      * 
      */
     public Optional<Output<String>> mac() {
@@ -69,14 +76,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * device model
+     * Device model
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return device model
+     * @return Device model
      * 
      */
     public Optional<Output<String>> model() {
@@ -91,14 +98,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * device serial
+     * Device serial
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return device serial
+     * @return Device serial
      * 
      */
     public Optional<Output<String>> serial() {
@@ -106,14 +113,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * site id if assigned, null if not assigned
+     * Site ID. Used to assign device to a Site
      * 
      */
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
     /**
-     * @return site id if assigned, null if not assigned
+     * @return Site ID. Used to assign device to a Site
      * 
      */
     public Optional<Output<String>> siteId() {
@@ -175,11 +182,23 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
             $ = new InventoryDeviceArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder claimCode(Output<String> claimCode) {
+        /**
+         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder claimCode(@Nullable Output<String> claimCode) {
             $.claimCode = claimCode;
             return this;
         }
 
+        /**
+         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         * 
+         * @return builder
+         * 
+         */
         public Builder claimCode(String claimCode) {
             return claimCode(Output.of(claimCode));
         }
@@ -227,7 +246,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac MAC address
+         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
          * 
          * @return builder
          * 
@@ -238,7 +257,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac MAC address
+         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
          * 
          * @return builder
          * 
@@ -248,7 +267,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param model device model
+         * @param model Device model
          * 
          * @return builder
          * 
@@ -259,7 +278,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param model device model
+         * @param model Device model
          * 
          * @return builder
          * 
@@ -278,7 +297,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serial device serial
+         * @param serial Device serial
          * 
          * @return builder
          * 
@@ -289,7 +308,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serial device serial
+         * @param serial Device serial
          * 
          * @return builder
          * 
@@ -299,7 +318,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteId site id if assigned, null if not assigned
+         * @param siteId Site ID. Used to assign device to a Site
          * 
          * @return builder
          * 
@@ -310,7 +329,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param siteId site id if assigned, null if not assigned
+         * @param siteId Site ID. Used to assign device to a Site
          * 
          * @return builder
          * 
@@ -350,9 +369,6 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public InventoryDeviceArgs build() {
-            if ($.claimCode == null) {
-                throw new MissingRequiredPropertyException("InventoryDeviceArgs", "claimCode");
-            }
             return $;
         }
     }

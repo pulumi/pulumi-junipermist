@@ -28,7 +28,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+     * @return if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     private @Nullable String dslType;
@@ -181,7 +181,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+     * @return if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     public Optional<String> dslType() {

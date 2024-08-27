@@ -54,14 +54,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+     * if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     @Import(name="dslType")
     private @Nullable Output<String> dslType;
 
     /**
-     * @return if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+     * @return if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
      * 
      */
     public Optional<Output<String>> dslType() {
@@ -587,7 +587,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslType if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+         * @param dslType if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
          * 
          * @return builder
          * 
@@ -598,7 +598,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslType if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+         * @param dslType if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
          * 
          * @return builder
          * 

@@ -26,6 +26,8 @@ import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
 import com.pulumi.junipermist.org.inputs.GetNetworksPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
 import com.pulumi.junipermist.org.inputs.GetNetworktemplatesPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetPsksArgs;
+import com.pulumi.junipermist.org.inputs.GetPsksPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
 import com.pulumi.junipermist.org.inputs.GetRftemplatesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
@@ -36,6 +38,8 @@ import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
 import com.pulumi.junipermist.org.inputs.GetSitegroupsPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
 import com.pulumi.junipermist.org.inputs.GetVpnsPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
+import com.pulumi.junipermist.org.inputs.GetWebhooksPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
 import com.pulumi.junipermist.org.inputs.GetWlantemplatesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetWxtagsArgs;
@@ -49,11 +53,13 @@ import com.pulumi.junipermist.org.outputs.GetNacrulesResult;
 import com.pulumi.junipermist.org.outputs.GetNactagsResult;
 import com.pulumi.junipermist.org.outputs.GetNetworksResult;
 import com.pulumi.junipermist.org.outputs.GetNetworktemplatesResult;
+import com.pulumi.junipermist.org.outputs.GetPsksResult;
 import com.pulumi.junipermist.org.outputs.GetRftemplatesResult;
 import com.pulumi.junipermist.org.outputs.GetServicepoliciesResult;
 import com.pulumi.junipermist.org.outputs.GetServicesResult;
 import com.pulumi.junipermist.org.outputs.GetSitegroupsResult;
 import com.pulumi.junipermist.org.outputs.GetVpnsResult;
+import com.pulumi.junipermist.org.outputs.GetWebhooksResult;
 import com.pulumi.junipermist.org.outputs.GetWlantemplatesResult;
 import com.pulumi.junipermist.org.outputs.GetWxtagsResult;
 import java.util.concurrent.CompletableFuture;
@@ -1572,6 +1578,178 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getNetworktemplates:getNetworktemplates", TypeShape.of(GetNetworktemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .role("vip")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPsksResult> getPsks(GetPsksArgs args) {
+        return getPsks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .role("vip")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPsksResult> getPsksPlain(GetPsksPlainArgs args) {
+        return getPsksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .role("vip")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPsksResult> getPsks(GetPsksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .role("vip")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPsksResult> getPsksPlain(GetPsksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This resource provides the list of RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
      * 
      * ## Example Usage
@@ -2270,6 +2448,174 @@ public final class OrgFunctions {
      */
     public static CompletableFuture<GetVpnsResult> getVpnsPlain(GetVpnsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getVpns:getVpns", TypeShape.of(GetVpnsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = OrgFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebhooksResult> getWebhooks(GetWebhooksArgs args) {
+        return getWebhooks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Org Webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = OrgFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWebhooksResult> getWebhooksPlain(GetWebhooksPlainArgs args) {
+        return getWebhooksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Org Webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = OrgFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebhooksResult> getWebhooks(GetWebhooksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getWebhooks:getWebhooks", TypeShape.of(GetWebhooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = OrgFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWebhooksResult> getWebhooksPlain(GetWebhooksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getWebhooks:getWebhooks", TypeShape.of(GetWebhooksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.

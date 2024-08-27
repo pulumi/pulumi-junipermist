@@ -824,6 +824,30 @@ class Setting(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/setting:Setting Using terraform import, import `mist_org_setting` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id
+
+        ```sh
+        $ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_setting` with `id={org_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_setting.setting_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
@@ -868,6 +892,30 @@ class Setting(pulumi.CustomResource):
                 "AWS_Hub_Profile1-WAN2": {},
             })
         ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/setting:Setting Using terraform import, import `mist_org_setting` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id
+
+        ```sh
+        $ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_setting` with `id={org_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_setting.setting_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param SettingArgs args: The arguments to use to populate this resource's properties.

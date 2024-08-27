@@ -4458,7 +4458,7 @@ class GatewayPortConfig(dict):
         """
         :param str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param bool disabled: port admin up (true) / down (false)
-        :param str dsl_type: if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        :param str dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         :param int dsl_vci: if `wan_type`==`dsl`
                16 bit int
         :param int dsl_vpi: if `wan_type`==`dsl`
@@ -4586,7 +4586,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="dslType")
     def dsl_type(self) -> Optional[str]:
         """
-        if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         """
         return pulumi.get(self, "dsl_type")
 

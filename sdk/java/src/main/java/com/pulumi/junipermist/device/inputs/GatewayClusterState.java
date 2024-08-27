@@ -17,13 +17,6 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
 
     public static final GatewayClusterState Empty = new GatewayClusterState();
 
-    @Import(name="deviceId")
-    private @Nullable Output<String> deviceId;
-
-    public Optional<Output<String>> deviceId() {
-        return Optional.ofNullable(this.deviceId);
-    }
-
     /**
      * when replacing a node, either mac has to remain the same as existing cluster
      * 
@@ -49,7 +42,6 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
     private GatewayClusterState() {}
 
     private GatewayClusterState(GatewayClusterState $) {
-        this.deviceId = $.deviceId;
         this.nodes = $.nodes;
         this.siteId = $.siteId;
     }
@@ -70,15 +62,6 @@ public final class GatewayClusterState extends com.pulumi.resources.ResourceArgs
 
         public Builder(GatewayClusterState defaults) {
             $ = new GatewayClusterState(Objects.requireNonNull(defaults));
-        }
-
-        public Builder deviceId(@Nullable Output<String> deviceId) {
-            $.deviceId = deviceId;
-            return this;
-        }
-
-        public Builder deviceId(String deviceId) {
-            return deviceId(Output.of(deviceId));
         }
 
         /**

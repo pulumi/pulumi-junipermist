@@ -689,6 +689,30 @@ class DeviceprofileAp(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp Using terraform import, import `mist_org_deviceprofile_ap` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the deviceprofile_id
+
+        ```sh
+        $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp deviceprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_deviceprofile_ap` with `id={org_id}.{deviceprofile_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_deviceprofile_ap.deviceprofile_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DeviceprofileApAeroscoutArgs', 'DeviceprofileApAeroscoutArgsDict']] aeroscout: Aeroscout AP settings
@@ -732,6 +756,30 @@ class DeviceprofileAp(pulumi.CustomResource):
                 "type": "native",
             })
         ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp Using terraform import, import `mist_org_deviceprofile_ap` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the deviceprofile_id
+
+        ```sh
+        $ pulumi import junipermist:org/deviceprofileAp:DeviceprofileAp deviceprofile_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_deviceprofile_ap` with `id={org_id}.{deviceprofile_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_deviceprofile_ap.deviceprofile_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param DeviceprofileApArgs args: The arguments to use to populate this resource's properties.

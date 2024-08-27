@@ -4579,7 +4579,7 @@ class DeviceprofileGatewayPortConfigArgs:
         """
         :param pulumi.Input[str] usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param pulumi.Input[bool] disabled: port admin up (true) / down (false)
-        :param pulumi.Input[str] dsl_type: if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        :param pulumi.Input[str] dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         :param pulumi.Input[int] dsl_vci: if `wan_type`==`dsl`
                16 bit int
         :param pulumi.Input[int] dsl_vpi: if `wan_type`==`dsl`
@@ -4723,7 +4723,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="dslType")
     def dsl_type(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         """
         return pulumi.get(self, "dsl_type")
 
@@ -9637,7 +9637,7 @@ class GatewaytemplatePortConfigArgs:
         """
         :param pulumi.Input[str] usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param pulumi.Input[bool] disabled: port admin up (true) / down (false)
-        :param pulumi.Input[str] dsl_type: if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        :param pulumi.Input[str] dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         :param pulumi.Input[int] dsl_vci: if `wan_type`==`dsl`
                16 bit int
         :param pulumi.Input[int] dsl_vpi: if `wan_type`==`dsl`
@@ -9781,7 +9781,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="dslType")
     def dsl_type(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         """
         return pulumi.get(self, "dsl_type")
 
@@ -12505,7 +12505,7 @@ class IdpprofileOverwriteMatchingArgs:
 @pulumi.input_type
 class InventoryDeviceArgs:
     def __init__(__self__, *,
-                 claim_code: pulumi.Input[str],
+                 claim_code: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
@@ -12516,15 +12516,17 @@ class InventoryDeviceArgs:
                  type: Optional[pulumi.Input[str]] = None,
                  vc_mac: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] claim_code: Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
         :param pulumi.Input[str] hostname: Device Hostname
         :param pulumi.Input[str] id: Mist Device ID
-        :param pulumi.Input[str] mac: MAC address
-        :param pulumi.Input[str] model: device model
-        :param pulumi.Input[str] serial: device serial
-        :param pulumi.Input[str] site_id: site id if assigned, null if not assigned
+        :param pulumi.Input[str] mac: Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+        :param pulumi.Input[str] model: Device model
+        :param pulumi.Input[str] serial: Device serial
+        :param pulumi.Input[str] site_id: Site ID. Used to assign device to a Site
         :param pulumi.Input[str] vc_mac: Virtual Chassis MAC Address
         """
-        pulumi.set(__self__, "claim_code", claim_code)
+        if claim_code is not None:
+            pulumi.set(__self__, "claim_code", claim_code)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if id is not None:
@@ -12546,11 +12548,14 @@ class InventoryDeviceArgs:
 
     @property
     @pulumi.getter(name="claimCode")
-    def claim_code(self) -> pulumi.Input[str]:
+    def claim_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        """
         return pulumi.get(self, "claim_code")
 
     @claim_code.setter
-    def claim_code(self, value: pulumi.Input[str]):
+    def claim_code(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "claim_code", value)
 
     @property
@@ -12581,7 +12586,7 @@ class InventoryDeviceArgs:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        MAC address
+        Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
         """
         return pulumi.get(self, "mac")
 
@@ -12593,7 +12598,7 @@ class InventoryDeviceArgs:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input[str]]:
         """
-        device model
+        Device model
         """
         return pulumi.get(self, "model")
 
@@ -12614,7 +12619,7 @@ class InventoryDeviceArgs:
     @pulumi.getter
     def serial(self) -> Optional[pulumi.Input[str]]:
         """
-        device serial
+        Device serial
         """
         return pulumi.get(self, "serial")
 
@@ -12626,7 +12631,7 @@ class InventoryDeviceArgs:
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[pulumi.Input[str]]:
         """
-        site id if assigned, null if not assigned
+        Site ID. Used to assign device to a Site
         """
         return pulumi.get(self, "site_id")
 

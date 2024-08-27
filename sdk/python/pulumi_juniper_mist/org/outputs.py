@@ -293,6 +293,7 @@ __all__ = [
     'GetNactagsOrgNactagResult',
     'GetNetworksOrgNetworkResult',
     'GetNetworktemplatesOrgNetworktemplateResult',
+    'GetPsksOrgPskResult',
     'GetRftemplatesOrgRftemplateResult',
     'GetServicepoliciesOrgServicepolicyResult',
     'GetServicepoliciesOrgServicepolicyAppqoeResult',
@@ -302,6 +303,7 @@ __all__ = [
     'GetSitegroupsOrgSitegroupResult',
     'GetVpnsOrgVpnResult',
     'GetVpnsOrgVpnPathsResult',
+    'GetWebhooksOrgWebhookResult',
     'GetWlantemplatesOrgWlantemplateResult',
     'GetWxtagsOrgWxtagResult',
 ]
@@ -4333,7 +4335,7 @@ class DeviceprofileGatewayPortConfig(dict):
         """
         :param str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param bool disabled: port admin up (true) / down (false)
-        :param str dsl_type: if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        :param str dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         :param int dsl_vci: if `wan_type`==`dsl`
                16 bit int
         :param int dsl_vpi: if `wan_type`==`dsl`
@@ -4461,7 +4463,7 @@ class DeviceprofileGatewayPortConfig(dict):
     @pulumi.getter(name="dslType")
     def dsl_type(self) -> Optional[str]:
         """
-        if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         """
         return pulumi.get(self, "dsl_type")
 
@@ -9100,7 +9102,7 @@ class GatewaytemplatePortConfig(dict):
         """
         :param str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param bool disabled: port admin up (true) / down (false)
-        :param str dsl_type: if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        :param str dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         :param int dsl_vci: if `wan_type`==`dsl`
                16 bit int
         :param int dsl_vpi: if `wan_type`==`dsl`
@@ -9228,7 +9230,7 @@ class GatewaytemplatePortConfig(dict):
     @pulumi.getter(name="dslType")
     def dsl_type(self) -> Optional[str]:
         """
-        if `wan_type`==`lte`. enum: `adsl`, `vdsl`
+        if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         """
         return pulumi.get(self, "dsl_type")
 
@@ -11778,7 +11780,7 @@ class InventoryDevice(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 claim_code: str,
+                 claim_code: Optional[str] = None,
                  hostname: Optional[str] = None,
                  id: Optional[str] = None,
                  mac: Optional[str] = None,
@@ -11789,15 +11791,17 @@ class InventoryDevice(dict):
                  type: Optional[str] = None,
                  vc_mac: Optional[str] = None):
         """
+        :param str claim_code: Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
         :param str hostname: Device Hostname
         :param str id: Mist Device ID
-        :param str mac: MAC address
-        :param str model: device model
-        :param str serial: device serial
-        :param str site_id: site id if assigned, null if not assigned
+        :param str mac: Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+        :param str model: Device model
+        :param str serial: Device serial
+        :param str site_id: Site ID. Used to assign device to a Site
         :param str vc_mac: Virtual Chassis MAC Address
         """
-        pulumi.set(__self__, "claim_code", claim_code)
+        if claim_code is not None:
+            pulumi.set(__self__, "claim_code", claim_code)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if id is not None:
@@ -11819,7 +11823,10 @@ class InventoryDevice(dict):
 
     @property
     @pulumi.getter(name="claimCode")
-    def claim_code(self) -> str:
+    def claim_code(self) -> Optional[str]:
+        """
+        Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        """
         return pulumi.get(self, "claim_code")
 
     @property
@@ -11842,7 +11849,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def mac(self) -> Optional[str]:
         """
-        MAC address
+        Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
         """
         return pulumi.get(self, "mac")
 
@@ -11850,7 +11857,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def model(self) -> Optional[str]:
         """
-        device model
+        Device model
         """
         return pulumi.get(self, "model")
 
@@ -11863,7 +11870,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def serial(self) -> Optional[str]:
         """
-        device serial
+        Device serial
         """
         return pulumi.get(self, "serial")
 
@@ -11871,7 +11878,7 @@ class InventoryDevice(dict):
     @pulumi.getter(name="siteId")
     def site_id(self) -> Optional[str]:
         """
-        site id if assigned, null if not assigned
+        Site ID. Used to assign device to a Site
         """
         return pulumi.get(self, "site_id")
 
@@ -22978,6 +22985,212 @@ class GetNetworktemplatesOrgNetworktemplateResult(dict):
 
 
 @pulumi.output_type
+class GetPsksOrgPskResult(dict):
+    def __init__(__self__, *,
+                 admin_sso_id: str,
+                 created_time: float,
+                 email: str,
+                 expire_time: int,
+                 expiry_notification_time: int,
+                 id: str,
+                 mac: str,
+                 macs: Sequence[str],
+                 max_usage: int,
+                 modified_time: float,
+                 name: str,
+                 note: str,
+                 notify_expiry: bool,
+                 notify_on_create_or_edit: bool,
+                 old_passphrase: str,
+                 org_id: str,
+                 passphrase: str,
+                 role: str,
+                 ssid: str,
+                 usage: str,
+                 vlan_id: str):
+        """
+        :param str admin_sso_id: sso id for psk created from psk portal
+        :param str email: email to send psk expiring notifications to
+        :param int expire_time: Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+        :param int expiry_notification_time: Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+        :param str mac: if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        :param Sequence[str] macs: if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        :param int max_usage: For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+        :param bool notify_expiry: If set to true, reminder notification will be sent when psk is about to expire
+        :param bool notify_on_create_or_edit: If set to true, notification will be sent when psk is created or edited
+        :param str old_passphrase: previous passphrase of the PSK if it has been rotated
+        :param str passphrase: passphrase of the PSK (8-63 character or 64 in hex)
+        :param str ssid: SSID this PSK should be applicable to
+        :param str usage: enum: `macs`, `multi`, `single`
+        """
+        pulumi.set(__self__, "admin_sso_id", admin_sso_id)
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "expiry_notification_time", expiry_notification_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "macs", macs)
+        pulumi.set(__self__, "max_usage", max_usage)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "note", note)
+        pulumi.set(__self__, "notify_expiry", notify_expiry)
+        pulumi.set(__self__, "notify_on_create_or_edit", notify_on_create_or_edit)
+        pulumi.set(__self__, "old_passphrase", old_passphrase)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "passphrase", passphrase)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "ssid", ssid)
+        pulumi.set(__self__, "usage", usage)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @property
+    @pulumi.getter(name="adminSsoId")
+    def admin_sso_id(self) -> str:
+        """
+        sso id for psk created from psk portal
+        """
+        return pulumi.get(self, "admin_sso_id")
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> float:
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        email to send psk expiring notifications to
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> int:
+        """
+        Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="expiryNotificationTime")
+    def expiry_notification_time(self) -> int:
+        """
+        Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+        """
+        return pulumi.get(self, "expiry_notification_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> str:
+        """
+        if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+        """
+        return pulumi.get(self, "mac")
+
+    @property
+    @pulumi.getter
+    def macs(self) -> Sequence[str]:
+        """
+        if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+        """
+        return pulumi.get(self, "macs")
+
+    @property
+    @pulumi.getter(name="maxUsage")
+    def max_usage(self) -> int:
+        """
+        For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+        """
+        return pulumi.get(self, "max_usage")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> float:
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def note(self) -> str:
+        return pulumi.get(self, "note")
+
+    @property
+    @pulumi.getter(name="notifyExpiry")
+    def notify_expiry(self) -> bool:
+        """
+        If set to true, reminder notification will be sent when psk is about to expire
+        """
+        return pulumi.get(self, "notify_expiry")
+
+    @property
+    @pulumi.getter(name="notifyOnCreateOrEdit")
+    def notify_on_create_or_edit(self) -> bool:
+        """
+        If set to true, notification will be sent when psk is created or edited
+        """
+        return pulumi.get(self, "notify_on_create_or_edit")
+
+    @property
+    @pulumi.getter(name="oldPassphrase")
+    def old_passphrase(self) -> str:
+        """
+        previous passphrase of the PSK if it has been rotated
+        """
+        return pulumi.get(self, "old_passphrase")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> str:
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def passphrase(self) -> str:
+        """
+        passphrase of the PSK (8-63 character or 64 in hex)
+        """
+        return pulumi.get(self, "passphrase")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def ssid(self) -> str:
+        """
+        SSID this PSK should be applicable to
+        """
+        return pulumi.get(self, "ssid")
+
+    @property
+    @pulumi.getter
+    def usage(self) -> str:
+        """
+        enum: `macs`, `multi`, `single`
+        """
+        return pulumi.get(self, "usage")
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> str:
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
 class GetRftemplatesOrgRftemplateResult(dict):
     def __init__(__self__, *,
                  created_time: float,
@@ -23395,6 +23608,224 @@ class GetVpnsOrgVpnPathsResult(dict):
     @pulumi.getter
     def pod(self) -> int:
         return pulumi.get(self, "pod")
+
+
+@pulumi.output_type
+class GetWebhooksOrgWebhookResult(dict):
+    def __init__(__self__, *,
+                 created_time: float,
+                 enabled: bool,
+                 headers: Mapping[str, str],
+                 id: str,
+                 modified_time: float,
+                 name: str,
+                 oauth2_client_id: str,
+                 oauth2_client_secret: str,
+                 oauth2_grant_type: str,
+                 oauth2_password: str,
+                 oauth2_scopes: Sequence[str],
+                 oauth2_token_url: str,
+                 oauth2_username: str,
+                 org_id: str,
+                 secret: str,
+                 site_id: str,
+                 splunk_token: str,
+                 topics: Sequence[str],
+                 type: str,
+                 url: str,
+                 verify_cert: bool):
+        """
+        :param bool enabled: whether webhook is enabled
+        :param Mapping[str, str] headers: if `type`=`http-post`, additional custom HTTP headers to add
+               the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        :param str name: name of the webhook
+        :param str oauth2_client_id: required when `oauth2_grant_type`==`client_credentials`
+        :param str oauth2_client_secret: required when `oauth2_grant_type`==`client_credentials`
+        :param str oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        :param str oauth2_password: required when `oauth2_grant_type`==`password`
+        :param Sequence[str] oauth2_scopes: required when `type`==`oauth2`, if provided, will be used in the token request
+        :param str oauth2_token_url: required when `type`==`oauth2`
+        :param str oauth2_username: required when `oauth2_grant_type`==`password`
+        :param str secret: only if `type`=`http-post`
+        :param str splunk_token: required if `type`=`splunk`
+               If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        :param Sequence[str] topics: N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+        :param str type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        :param bool verify_cert: when url uses HTTPS, whether to verify the certificate
+        """
+        pulumi.set(__self__, "created_time", created_time)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "headers", headers)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "modified_time", modified_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "oauth2_client_id", oauth2_client_id)
+        pulumi.set(__self__, "oauth2_client_secret", oauth2_client_secret)
+        pulumi.set(__self__, "oauth2_grant_type", oauth2_grant_type)
+        pulumi.set(__self__, "oauth2_password", oauth2_password)
+        pulumi.set(__self__, "oauth2_scopes", oauth2_scopes)
+        pulumi.set(__self__, "oauth2_token_url", oauth2_token_url)
+        pulumi.set(__self__, "oauth2_username", oauth2_username)
+        pulumi.set(__self__, "org_id", org_id)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "site_id", site_id)
+        pulumi.set(__self__, "splunk_token", splunk_token)
+        pulumi.set(__self__, "topics", topics)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "verify_cert", verify_cert)
+
+    @property
+    @pulumi.getter(name="createdTime")
+    def created_time(self) -> float:
+        return pulumi.get(self, "created_time")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        whether webhook is enabled
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Mapping[str, str]:
+        """
+        if `type`=`http-post`, additional custom HTTP headers to add
+        the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="modifiedTime")
+    def modified_time(self) -> float:
+        return pulumi.get(self, "modified_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        name of the webhook
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="oauth2ClientId")
+    def oauth2_client_id(self) -> str:
+        """
+        required when `oauth2_grant_type`==`client_credentials`
+        """
+        return pulumi.get(self, "oauth2_client_id")
+
+    @property
+    @pulumi.getter(name="oauth2ClientSecret")
+    def oauth2_client_secret(self) -> str:
+        """
+        required when `oauth2_grant_type`==`client_credentials`
+        """
+        return pulumi.get(self, "oauth2_client_secret")
+
+    @property
+    @pulumi.getter(name="oauth2GrantType")
+    def oauth2_grant_type(self) -> str:
+        """
+        required when `type`==`oauth2`. enum: `client_credentials`, `password`
+        """
+        return pulumi.get(self, "oauth2_grant_type")
+
+    @property
+    @pulumi.getter(name="oauth2Password")
+    def oauth2_password(self) -> str:
+        """
+        required when `oauth2_grant_type`==`password`
+        """
+        return pulumi.get(self, "oauth2_password")
+
+    @property
+    @pulumi.getter(name="oauth2Scopes")
+    def oauth2_scopes(self) -> Sequence[str]:
+        """
+        required when `type`==`oauth2`, if provided, will be used in the token request
+        """
+        return pulumi.get(self, "oauth2_scopes")
+
+    @property
+    @pulumi.getter(name="oauth2TokenUrl")
+    def oauth2_token_url(self) -> str:
+        """
+        required when `type`==`oauth2`
+        """
+        return pulumi.get(self, "oauth2_token_url")
+
+    @property
+    @pulumi.getter(name="oauth2Username")
+    def oauth2_username(self) -> str:
+        """
+        required when `oauth2_grant_type`==`password`
+        """
+        return pulumi.get(self, "oauth2_username")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> str:
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        only if `type`=`http-post`
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> str:
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter(name="splunkToken")
+    def splunk_token(self) -> str:
+        """
+        required if `type`=`splunk`
+        If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        """
+        return pulumi.get(self, "splunk_token")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Sequence[str]:
+        """
+        N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="verifyCert")
+    def verify_cert(self) -> bool:
+        """
+        when url uses HTTPS, whether to verify the certificate
+        """
+        return pulumi.get(self, "verify_cert")
 
 
 @pulumi.output_type

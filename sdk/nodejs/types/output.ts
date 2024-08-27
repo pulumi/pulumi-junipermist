@@ -1165,7 +1165,7 @@ export namespace device {
          */
         disabled: boolean;
         /**
-         * if `wanType`==`lte`. enum: `adsl`, `vdsl`
+         * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
         dslType: string;
         /**
@@ -5463,7 +5463,7 @@ export namespace org {
          */
         disabled: boolean;
         /**
-         * if `wanType`==`lte`. enum: `adsl`, `vdsl`
+         * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
         dslType: string;
         /**
@@ -6598,7 +6598,7 @@ export namespace org {
          */
         disabled: boolean;
         /**
-         * if `wanType`==`lte`. enum: `adsl`, `vdsl`
+         * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
         dslType: string;
         /**
@@ -7389,6 +7389,69 @@ export namespace org {
         orgId: string;
     }
 
+    export interface GetPsksOrgPsk {
+        /**
+         * sso id for psk created from psk portal
+         */
+        adminSsoId: string;
+        createdTime: number;
+        /**
+         * email to send psk expiring notifications to
+         */
+        email: string;
+        /**
+         * Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+         */
+        expireTime: number;
+        /**
+         * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+         */
+        expiryNotificationTime: number;
+        id: string;
+        /**
+         * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         */
+        mac: string;
+        /**
+         * if `usage`==`macs`, this list contains N number of client mac addresses or mac patterns(11:22:*) or both. This list is capped at 5000
+         */
+        macs: string[];
+        /**
+         * For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
+         */
+        maxUsage: number;
+        modifiedTime: number;
+        name: string;
+        note: string;
+        /**
+         * If set to true, reminder notification will be sent when psk is about to expire
+         */
+        notifyExpiry: boolean;
+        /**
+         * If set to true, notification will be sent when psk is created or edited
+         */
+        notifyOnCreateOrEdit: boolean;
+        /**
+         * previous passphrase of the PSK if it has been rotated
+         */
+        oldPassphrase: string;
+        orgId: string;
+        /**
+         * passphrase of the PSK (8-63 character or 64 in hex)
+         */
+        passphrase: string;
+        role: string;
+        /**
+         * SSID this PSK should be applicable to
+         */
+        ssid: string;
+        /**
+         * enum: `macs`, `multi`, `single`
+         */
+        usage: string;
+        vlanId: string;
+    }
+
     export interface GetRftemplatesOrgRftemplate {
         createdTime: number;
         id: string;
@@ -7491,6 +7554,77 @@ export namespace org {
         pod: number;
     }
 
+    export interface GetWebhooksOrgWebhook {
+        createdTime: number;
+        /**
+         * whether webhook is enabled
+         */
+        enabled: boolean;
+        /**
+         * if `type`=`http-post`, additional custom HTTP headers to add
+         * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+         */
+        headers: {[key: string]: string};
+        id: string;
+        modifiedTime: number;
+        /**
+         * name of the webhook
+         */
+        name: string;
+        /**
+         * required when `oauth2GrantType`==`clientCredentials`
+         */
+        oauth2ClientId: string;
+        /**
+         * required when `oauth2GrantType`==`clientCredentials`
+         */
+        oauth2ClientSecret: string;
+        /**
+         * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+         */
+        oauth2GrantType: string;
+        /**
+         * required when `oauth2GrantType`==`password`
+         */
+        oauth2Password: string;
+        /**
+         * required when `type`==`oauth2`, if provided, will be used in the token request
+         */
+        oauth2Scopes: string[];
+        /**
+         * required when `type`==`oauth2`
+         */
+        oauth2TokenUrl: string;
+        /**
+         * required when `oauth2GrantType`==`password`
+         */
+        oauth2Username: string;
+        orgId: string;
+        /**
+         * only if `type`=`http-post`
+         */
+        secret: string;
+        siteId: string;
+        /**
+         * required if `type`=`splunk`
+         * If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+         */
+        splunkToken: string;
+        /**
+         * N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+         */
+        topics: string[];
+        /**
+         * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+         */
+        type: string;
+        url: string;
+        /**
+         * when url uses HTTPS, whether to verify the certificate
+         */
+        verifyCert: boolean;
+    }
+
     export interface GetWlantemplatesOrgWlantemplate {
         createdTime: number;
         id: string;
@@ -7526,6 +7660,9 @@ export namespace org {
     }
 
     export interface InventoryDevice {
+        /**
+         * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         */
         claimCode: string;
         /**
          * Device Hostname
@@ -7536,22 +7673,22 @@ export namespace org {
          */
         id: string;
         /**
-         * MAC address
+         * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used
          */
         mac: string;
         /**
-         * device model
+         * Device model
          */
         model: string;
         orgId: string;
         /**
-         * device serial
+         * Device serial
          */
         serial: string;
         /**
-         * site id if assigned, null if not assigned
+         * Site ID. Used to assign device to a Site
          */
-        siteId: string;
+        siteId?: string;
         type: string;
         /**
          * Virtual Chassis MAC Address
@@ -10011,6 +10148,133 @@ export namespace site {
     export interface BaseLatlng {
         lat: number;
         lng: number;
+    }
+
+    export interface GetPsksSitePsk {
+        /**
+         * sso id for psk created from psk portal
+         */
+        adminSsoId: string;
+        createdTime: number;
+        /**
+         * email to send psk expiring notifications to
+         */
+        email: string;
+        /**
+         * Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+         */
+        expireTime: number;
+        /**
+         * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+         */
+        expiryNotificationTime: number;
+        id: string;
+        /**
+         * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+         */
+        mac: string;
+        modifiedTime: number;
+        name: string;
+        note: string;
+        /**
+         * If set to true, reminder notification will be sent when psk is about to expire
+         */
+        notifyExpiry: boolean;
+        /**
+         * If set to true, notification will be sent when psk is created or edited
+         */
+        notifyOnCreateOrEdit: boolean;
+        /**
+         * previous passphrase of the PSK if it has been rotated
+         */
+        oldPassphrase: string;
+        orgId: string;
+        /**
+         * passphrase of the PSK (8-63 character or 64 in hex)
+         */
+        passphrase: string;
+        role: string;
+        siteId: string;
+        /**
+         * SSID this PSK should be applicable to
+         */
+        ssid: string;
+        /**
+         * enum: `macs`, `multi`, `single`
+         */
+        usage: string;
+        vlanId: string;
+    }
+
+    export interface GetWebhooksSiteWebhook {
+        createdTime: number;
+        /**
+         * whether webhook is enabled
+         */
+        enabled: boolean;
+        /**
+         * if `type`=`http-post`, additional custom HTTP headers to add
+         * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+         */
+        headers: {[key: string]: string};
+        id: string;
+        modifiedTime: number;
+        /**
+         * name of the webhook
+         */
+        name: string;
+        /**
+         * required when `oauth2GrantType`==`clientCredentials`
+         */
+        oauth2ClientId: string;
+        /**
+         * required when `oauth2GrantType`==`clientCredentials`
+         */
+        oauth2ClientSecret: string;
+        /**
+         * required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+         */
+        oauth2GrantType: string;
+        /**
+         * required when `oauth2GrantType`==`password`
+         */
+        oauth2Password: string;
+        /**
+         * required when `type`==`oauth2`, if provided, will be used in the token request
+         */
+        oauth2Scopes: string[];
+        /**
+         * required when `type`==`oauth2`
+         */
+        oauth2TokenUrl: string;
+        /**
+         * required when `oauth2GrantType`==`password`
+         */
+        oauth2Username: string;
+        orgId: string;
+        /**
+         * only if `type`=`http-post`
+         */
+        secret: string;
+        siteId: string;
+        /**
+         * required if `type`=`splunk`
+         * If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+         */
+        splunkToken: string;
+        /**
+         * N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+         */
+        topics: string[];
+        /**
+         * enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+         */
+        type: string;
+        url: string;
+        /**
+         * when url uses HTTPS, whether to verify the certificate
+         */
+        verifyCert: boolean;
     }
 
     export interface NetworktemplateAclPolicy {

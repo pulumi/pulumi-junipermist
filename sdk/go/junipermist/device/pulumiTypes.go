@@ -8649,7 +8649,7 @@ type GatewayPortConfig struct {
 	DisableAutoneg *bool   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
 	Disabled *bool `pulumi:"disabled"`
-	// if `wanType`==`lte`. enum: `adsl`, `vdsl`
+	// if `wanType`==`dsl`. enum: `adsl`, `vdsl`
 	DslType *string `pulumi:"dslType"`
 	// if `wanType`==`dsl`
 	// 16 bit int
@@ -8727,7 +8727,7 @@ type GatewayPortConfigArgs struct {
 	DisableAutoneg pulumi.BoolPtrInput   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// if `wanType`==`lte`. enum: `adsl`, `vdsl`
+	// if `wanType`==`dsl`. enum: `adsl`, `vdsl`
 	DslType pulumi.StringPtrInput `pulumi:"dslType"`
 	// if `wanType`==`dsl`
 	// 16 bit int
@@ -8853,7 +8853,7 @@ func (o GatewayPortConfigOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// if `wanType`==`lte`. enum: `adsl`, `vdsl`
+// if `wanType`==`dsl`. enum: `adsl`, `vdsl`
 func (o GatewayPortConfigOutput) DslType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.DslType }).(pulumi.StringPtrOutput)
 }

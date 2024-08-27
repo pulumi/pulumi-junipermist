@@ -46,13 +46,34 @@ namespace Pulumi.JuniperMist.Device
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:device/gatewayCluster:GatewayCluster Using terraform import, import `mist_device_gateway_cluster` using the `import` command:
+    /// ```
+    /// 
+    /// Gateway cluster can be imported by specifying the org_id and the cluster_id
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+    /// ```
+    /// 
+    /// In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway_cluster` with `id={org_id}.{cluster_id}`:
+    /// 
+    /// tf
+    /// 
+    /// import {
+    /// 
+    ///   to = mist_device_gateway_cluster.cluster_one
+    /// 
+    ///   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+    /// 
+    /// }
     /// </summary>
     [JuniperMistResourceType("junipermist:device/gatewayCluster:GatewayCluster")]
     public partial class GatewayCluster : global::Pulumi.CustomResource
     {
-        [Output("deviceId")]
-        public Output<string> DeviceId { get; private set; } = null!;
-
         /// <summary>
         /// when replacing a node, either mac has to remain the same as existing cluster
         /// </summary>
@@ -132,9 +153,6 @@ namespace Pulumi.JuniperMist.Device
 
     public sealed class GatewayClusterState : global::Pulumi.ResourceArgs
     {
-        [Input("deviceId")]
-        public Input<string>? DeviceId { get; set; }
-
         [Input("nodes")]
         private InputList<Inputs.GatewayClusterNodeGetArgs>? _nodes;
 

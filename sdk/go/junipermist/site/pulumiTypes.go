@@ -22083,6 +22083,512 @@ func (o BaseLatlngPtrOutput) Lng() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+type GetPsksSitePsk struct {
+	// sso id for psk created from psk portal
+	AdminSsoId  string  `pulumi:"adminSsoId"`
+	CreatedTime float64 `pulumi:"createdTime"`
+	// email to send psk expiring notifications to
+	Email string `pulumi:"email"`
+	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+	ExpireTime int `pulumi:"expireTime"`
+	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+	ExpiryNotificationTime int    `pulumi:"expiryNotificationTime"`
+	Id                     string `pulumi:"id"`
+	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	Mac          string  `pulumi:"mac"`
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	Name         string  `pulumi:"name"`
+	Note         string  `pulumi:"note"`
+	// If set to true, reminder notification will be sent when psk is about to expire
+	NotifyExpiry bool `pulumi:"notifyExpiry"`
+	// If set to true, notification will be sent when psk is created or edited
+	NotifyOnCreateOrEdit bool `pulumi:"notifyOnCreateOrEdit"`
+	// previous passphrase of the PSK if it has been rotated
+	OldPassphrase string `pulumi:"oldPassphrase"`
+	OrgId         string `pulumi:"orgId"`
+	// passphrase of the PSK (8-63 character or 64 in hex)
+	Passphrase string `pulumi:"passphrase"`
+	Role       string `pulumi:"role"`
+	SiteId     string `pulumi:"siteId"`
+	// SSID this PSK should be applicable to
+	Ssid string `pulumi:"ssid"`
+	// enum: `macs`, `multi`, `single`
+	Usage  string `pulumi:"usage"`
+	VlanId string `pulumi:"vlanId"`
+}
+
+// GetPsksSitePskInput is an input type that accepts GetPsksSitePskArgs and GetPsksSitePskOutput values.
+// You can construct a concrete instance of `GetPsksSitePskInput` via:
+//
+//	GetPsksSitePskArgs{...}
+type GetPsksSitePskInput interface {
+	pulumi.Input
+
+	ToGetPsksSitePskOutput() GetPsksSitePskOutput
+	ToGetPsksSitePskOutputWithContext(context.Context) GetPsksSitePskOutput
+}
+
+type GetPsksSitePskArgs struct {
+	// sso id for psk created from psk portal
+	AdminSsoId  pulumi.StringInput  `pulumi:"adminSsoId"`
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// email to send psk expiring notifications to
+	Email pulumi.StringInput `pulumi:"email"`
+	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+	ExpireTime pulumi.IntInput `pulumi:"expireTime"`
+	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+	ExpiryNotificationTime pulumi.IntInput    `pulumi:"expiryNotificationTime"`
+	Id                     pulumi.StringInput `pulumi:"id"`
+	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+	Mac          pulumi.StringInput  `pulumi:"mac"`
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	Note         pulumi.StringInput  `pulumi:"note"`
+	// If set to true, reminder notification will be sent when psk is about to expire
+	NotifyExpiry pulumi.BoolInput `pulumi:"notifyExpiry"`
+	// If set to true, notification will be sent when psk is created or edited
+	NotifyOnCreateOrEdit pulumi.BoolInput `pulumi:"notifyOnCreateOrEdit"`
+	// previous passphrase of the PSK if it has been rotated
+	OldPassphrase pulumi.StringInput `pulumi:"oldPassphrase"`
+	OrgId         pulumi.StringInput `pulumi:"orgId"`
+	// passphrase of the PSK (8-63 character or 64 in hex)
+	Passphrase pulumi.StringInput `pulumi:"passphrase"`
+	Role       pulumi.StringInput `pulumi:"role"`
+	SiteId     pulumi.StringInput `pulumi:"siteId"`
+	// SSID this PSK should be applicable to
+	Ssid pulumi.StringInput `pulumi:"ssid"`
+	// enum: `macs`, `multi`, `single`
+	Usage  pulumi.StringInput `pulumi:"usage"`
+	VlanId pulumi.StringInput `pulumi:"vlanId"`
+}
+
+func (GetPsksSitePskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPsksSitePsk)(nil)).Elem()
+}
+
+func (i GetPsksSitePskArgs) ToGetPsksSitePskOutput() GetPsksSitePskOutput {
+	return i.ToGetPsksSitePskOutputWithContext(context.Background())
+}
+
+func (i GetPsksSitePskArgs) ToGetPsksSitePskOutputWithContext(ctx context.Context) GetPsksSitePskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPsksSitePskOutput)
+}
+
+// GetPsksSitePskArrayInput is an input type that accepts GetPsksSitePskArray and GetPsksSitePskArrayOutput values.
+// You can construct a concrete instance of `GetPsksSitePskArrayInput` via:
+//
+//	GetPsksSitePskArray{ GetPsksSitePskArgs{...} }
+type GetPsksSitePskArrayInput interface {
+	pulumi.Input
+
+	ToGetPsksSitePskArrayOutput() GetPsksSitePskArrayOutput
+	ToGetPsksSitePskArrayOutputWithContext(context.Context) GetPsksSitePskArrayOutput
+}
+
+type GetPsksSitePskArray []GetPsksSitePskInput
+
+func (GetPsksSitePskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPsksSitePsk)(nil)).Elem()
+}
+
+func (i GetPsksSitePskArray) ToGetPsksSitePskArrayOutput() GetPsksSitePskArrayOutput {
+	return i.ToGetPsksSitePskArrayOutputWithContext(context.Background())
+}
+
+func (i GetPsksSitePskArray) ToGetPsksSitePskArrayOutputWithContext(ctx context.Context) GetPsksSitePskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPsksSitePskArrayOutput)
+}
+
+type GetPsksSitePskOutput struct{ *pulumi.OutputState }
+
+func (GetPsksSitePskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPsksSitePsk)(nil)).Elem()
+}
+
+func (o GetPsksSitePskOutput) ToGetPsksSitePskOutput() GetPsksSitePskOutput {
+	return o
+}
+
+func (o GetPsksSitePskOutput) ToGetPsksSitePskOutputWithContext(ctx context.Context) GetPsksSitePskOutput {
+	return o
+}
+
+// sso id for psk created from psk portal
+func (o GetPsksSitePskOutput) AdminSsoId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.AdminSsoId }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPsksSitePsk) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// email to send psk expiring notifications to
+func (o GetPsksSitePskOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
+func (o GetPsksSitePskOutput) ExpireTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) int { return v.ExpireTime }).(pulumi.IntOutput)
+}
+
+// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
+func (o GetPsksSitePskOutput) ExpiryNotificationTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) int { return v.ExpiryNotificationTime }).(pulumi.IntOutput)
+}
+
+func (o GetPsksSitePskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
+func (o GetPsksSitePskOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetPsksSitePsk) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetPsksSitePskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) Note() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Note }).(pulumi.StringOutput)
+}
+
+// If set to true, reminder notification will be sent when psk is about to expire
+func (o GetPsksSitePskOutput) NotifyExpiry() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) bool { return v.NotifyExpiry }).(pulumi.BoolOutput)
+}
+
+// If set to true, notification will be sent when psk is created or edited
+func (o GetPsksSitePskOutput) NotifyOnCreateOrEdit() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) bool { return v.NotifyOnCreateOrEdit }).(pulumi.BoolOutput)
+}
+
+// previous passphrase of the PSK if it has been rotated
+func (o GetPsksSitePskOutput) OldPassphrase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.OldPassphrase }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// passphrase of the PSK (8-63 character or 64 in hex)
+func (o GetPsksSitePskOutput) Passphrase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Passphrase }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Role }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// SSID this PSK should be applicable to
+func (o GetPsksSitePskOutput) Ssid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Ssid }).(pulumi.StringOutput)
+}
+
+// enum: `macs`, `multi`, `single`
+func (o GetPsksSitePskOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+func (o GetPsksSitePskOutput) VlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPsksSitePsk) string { return v.VlanId }).(pulumi.StringOutput)
+}
+
+type GetPsksSitePskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPsksSitePskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPsksSitePsk)(nil)).Elem()
+}
+
+func (o GetPsksSitePskArrayOutput) ToGetPsksSitePskArrayOutput() GetPsksSitePskArrayOutput {
+	return o
+}
+
+func (o GetPsksSitePskArrayOutput) ToGetPsksSitePskArrayOutputWithContext(ctx context.Context) GetPsksSitePskArrayOutput {
+	return o
+}
+
+func (o GetPsksSitePskArrayOutput) Index(i pulumi.IntInput) GetPsksSitePskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPsksSitePsk {
+		return vs[0].([]GetPsksSitePsk)[vs[1].(int)]
+	}).(GetPsksSitePskOutput)
+}
+
+type GetWebhooksSiteWebhook struct {
+	CreatedTime float64 `pulumi:"createdTime"`
+	// whether webhook is enabled
+	Enabled bool `pulumi:"enabled"`
+	// if `type`=`http-post`, additional custom HTTP headers to add
+	// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+	Headers      map[string]string `pulumi:"headers"`
+	Id           string            `pulumi:"id"`
+	ModifiedTime float64           `pulumi:"modifiedTime"`
+	// name of the webhook
+	Name string `pulumi:"name"`
+	// required when `oauth2GrantType`==`clientCredentials`
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	// required when `oauth2GrantType`==`clientCredentials`
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	Oauth2GrantType string `pulumi:"oauth2GrantType"`
+	// required when `oauth2GrantType`==`password`
+	Oauth2Password string `pulumi:"oauth2Password"`
+	// required when `type`==`oauth2`, if provided, will be used in the token request
+	Oauth2Scopes []string `pulumi:"oauth2Scopes"`
+	// required when `type`==`oauth2`
+	Oauth2TokenUrl string `pulumi:"oauth2TokenUrl"`
+	// required when `oauth2GrantType`==`password`
+	Oauth2Username string `pulumi:"oauth2Username"`
+	OrgId          string `pulumi:"orgId"`
+	// only if `type`=`http-post`
+	Secret string `pulumi:"secret"`
+	SiteId string `pulumi:"siteId"`
+	// required if `type`=`splunk`
+	// If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	SplunkToken string `pulumi:"splunkToken"`
+	// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+	Topics []string `pulumi:"topics"`
+	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	Type string `pulumi:"type"`
+	Url  string `pulumi:"url"`
+	// when url uses HTTPS, whether to verify the certificate
+	VerifyCert bool `pulumi:"verifyCert"`
+}
+
+// GetWebhooksSiteWebhookInput is an input type that accepts GetWebhooksSiteWebhookArgs and GetWebhooksSiteWebhookOutput values.
+// You can construct a concrete instance of `GetWebhooksSiteWebhookInput` via:
+//
+//	GetWebhooksSiteWebhookArgs{...}
+type GetWebhooksSiteWebhookInput interface {
+	pulumi.Input
+
+	ToGetWebhooksSiteWebhookOutput() GetWebhooksSiteWebhookOutput
+	ToGetWebhooksSiteWebhookOutputWithContext(context.Context) GetWebhooksSiteWebhookOutput
+}
+
+type GetWebhooksSiteWebhookArgs struct {
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// whether webhook is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// if `type`=`http-post`, additional custom HTTP headers to add
+	// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+	Headers      pulumi.StringMapInput `pulumi:"headers"`
+	Id           pulumi.StringInput    `pulumi:"id"`
+	ModifiedTime pulumi.Float64Input   `pulumi:"modifiedTime"`
+	// name of the webhook
+	Name pulumi.StringInput `pulumi:"name"`
+	// required when `oauth2GrantType`==`clientCredentials`
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	// required when `oauth2GrantType`==`clientCredentials`
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+	Oauth2GrantType pulumi.StringInput `pulumi:"oauth2GrantType"`
+	// required when `oauth2GrantType`==`password`
+	Oauth2Password pulumi.StringInput `pulumi:"oauth2Password"`
+	// required when `type`==`oauth2`, if provided, will be used in the token request
+	Oauth2Scopes pulumi.StringArrayInput `pulumi:"oauth2Scopes"`
+	// required when `type`==`oauth2`
+	Oauth2TokenUrl pulumi.StringInput `pulumi:"oauth2TokenUrl"`
+	// required when `oauth2GrantType`==`password`
+	Oauth2Username pulumi.StringInput `pulumi:"oauth2Username"`
+	OrgId          pulumi.StringInput `pulumi:"orgId"`
+	// only if `type`=`http-post`
+	Secret pulumi.StringInput `pulumi:"secret"`
+	SiteId pulumi.StringInput `pulumi:"siteId"`
+	// required if `type`=`splunk`
+	// If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	SplunkToken pulumi.StringInput `pulumi:"splunkToken"`
+	// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+	Topics pulumi.StringArrayInput `pulumi:"topics"`
+	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+	Type pulumi.StringInput `pulumi:"type"`
+	Url  pulumi.StringInput `pulumi:"url"`
+	// when url uses HTTPS, whether to verify the certificate
+	VerifyCert pulumi.BoolInput `pulumi:"verifyCert"`
+}
+
+func (GetWebhooksSiteWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWebhooksSiteWebhook)(nil)).Elem()
+}
+
+func (i GetWebhooksSiteWebhookArgs) ToGetWebhooksSiteWebhookOutput() GetWebhooksSiteWebhookOutput {
+	return i.ToGetWebhooksSiteWebhookOutputWithContext(context.Background())
+}
+
+func (i GetWebhooksSiteWebhookArgs) ToGetWebhooksSiteWebhookOutputWithContext(ctx context.Context) GetWebhooksSiteWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWebhooksSiteWebhookOutput)
+}
+
+// GetWebhooksSiteWebhookArrayInput is an input type that accepts GetWebhooksSiteWebhookArray and GetWebhooksSiteWebhookArrayOutput values.
+// You can construct a concrete instance of `GetWebhooksSiteWebhookArrayInput` via:
+//
+//	GetWebhooksSiteWebhookArray{ GetWebhooksSiteWebhookArgs{...} }
+type GetWebhooksSiteWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetWebhooksSiteWebhookArrayOutput() GetWebhooksSiteWebhookArrayOutput
+	ToGetWebhooksSiteWebhookArrayOutputWithContext(context.Context) GetWebhooksSiteWebhookArrayOutput
+}
+
+type GetWebhooksSiteWebhookArray []GetWebhooksSiteWebhookInput
+
+func (GetWebhooksSiteWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWebhooksSiteWebhook)(nil)).Elem()
+}
+
+func (i GetWebhooksSiteWebhookArray) ToGetWebhooksSiteWebhookArrayOutput() GetWebhooksSiteWebhookArrayOutput {
+	return i.ToGetWebhooksSiteWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetWebhooksSiteWebhookArray) ToGetWebhooksSiteWebhookArrayOutputWithContext(ctx context.Context) GetWebhooksSiteWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWebhooksSiteWebhookArrayOutput)
+}
+
+type GetWebhooksSiteWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetWebhooksSiteWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWebhooksSiteWebhook)(nil)).Elem()
+}
+
+func (o GetWebhooksSiteWebhookOutput) ToGetWebhooksSiteWebhookOutput() GetWebhooksSiteWebhookOutput {
+	return o
+}
+
+func (o GetWebhooksSiteWebhookOutput) ToGetWebhooksSiteWebhookOutputWithContext(ctx context.Context) GetWebhooksSiteWebhookOutput {
+	return o
+}
+
+func (o GetWebhooksSiteWebhookOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// whether webhook is enabled
+func (o GetWebhooksSiteWebhookOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// if `type`=`http-post`, additional custom HTTP headers to add
+// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+func (o GetWebhooksSiteWebhookOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+func (o GetWebhooksSiteWebhookOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetWebhooksSiteWebhookOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+// name of the webhook
+func (o GetWebhooksSiteWebhookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// required when `oauth2GrantType`==`clientCredentials`
+func (o GetWebhooksSiteWebhookOutput) Oauth2ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
+}
+
+// required when `oauth2GrantType`==`clientCredentials`
+func (o GetWebhooksSiteWebhookOutput) Oauth2ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
+}
+
+// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
+func (o GetWebhooksSiteWebhookOutput) Oauth2GrantType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2GrantType }).(pulumi.StringOutput)
+}
+
+// required when `oauth2GrantType`==`password`
+func (o GetWebhooksSiteWebhookOutput) Oauth2Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2Password }).(pulumi.StringOutput)
+}
+
+// required when `type`==`oauth2`, if provided, will be used in the token request
+func (o GetWebhooksSiteWebhookOutput) Oauth2Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) []string { return v.Oauth2Scopes }).(pulumi.StringArrayOutput)
+}
+
+// required when `type`==`oauth2`
+func (o GetWebhooksSiteWebhookOutput) Oauth2TokenUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2TokenUrl }).(pulumi.StringOutput)
+}
+
+// required when `oauth2GrantType`==`password`
+func (o GetWebhooksSiteWebhookOutput) Oauth2Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2Username }).(pulumi.StringOutput)
+}
+
+func (o GetWebhooksSiteWebhookOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// only if `type`=`http-post`
+func (o GetWebhooksSiteWebhookOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+func (o GetWebhooksSiteWebhookOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// required if `type`=`splunk`
+// If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+func (o GetWebhooksSiteWebhookOutput) SplunkToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SplunkToken }).(pulumi.StringOutput)
+}
+
+// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+func (o GetWebhooksSiteWebhookOutput) Topics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) []string { return v.Topics }).(pulumi.StringArrayOutput)
+}
+
+// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
+func (o GetWebhooksSiteWebhookOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetWebhooksSiteWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// when url uses HTTPS, whether to verify the certificate
+func (o GetWebhooksSiteWebhookOutput) VerifyCert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWebhooksSiteWebhook) bool { return v.VerifyCert }).(pulumi.BoolOutput)
+}
+
+type GetWebhooksSiteWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWebhooksSiteWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWebhooksSiteWebhook)(nil)).Elem()
+}
+
+func (o GetWebhooksSiteWebhookArrayOutput) ToGetWebhooksSiteWebhookArrayOutput() GetWebhooksSiteWebhookArrayOutput {
+	return o
+}
+
+func (o GetWebhooksSiteWebhookArrayOutput) ToGetWebhooksSiteWebhookArrayOutputWithContext(ctx context.Context) GetWebhooksSiteWebhookArrayOutput {
+	return o
+}
+
+func (o GetWebhooksSiteWebhookArrayOutput) Index(i pulumi.IntInput) GetWebhooksSiteWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWebhooksSiteWebhook {
+		return vs[0].([]GetWebhooksSiteWebhook)[vs[1].(int)]
+	}).(GetWebhooksSiteWebhookOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclPolicyInput)(nil)).Elem(), NetworktemplateAclPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateAclPolicyArrayInput)(nil)).Elem(), NetworktemplateAclPolicyArray{})
@@ -22338,6 +22844,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WxtagSpecArrayInput)(nil)).Elem(), WxtagSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BaseLatlngInput)(nil)).Elem(), BaseLatlngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BaseLatlngPtrInput)(nil)).Elem(), BaseLatlngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPsksSitePskInput)(nil)).Elem(), GetPsksSitePskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPsksSitePskArrayInput)(nil)).Elem(), GetPsksSitePskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksSiteWebhookInput)(nil)).Elem(), GetWebhooksSiteWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksSiteWebhookArrayInput)(nil)).Elem(), GetWebhooksSiteWebhookArray{})
 	pulumi.RegisterOutputType(NetworktemplateAclPolicyOutput{})
 	pulumi.RegisterOutputType(NetworktemplateAclPolicyArrayOutput{})
 	pulumi.RegisterOutputType(NetworktemplateAclPolicyActionOutput{})
@@ -22592,4 +23102,8 @@ func init() {
 	pulumi.RegisterOutputType(WxtagSpecArrayOutput{})
 	pulumi.RegisterOutputType(BaseLatlngOutput{})
 	pulumi.RegisterOutputType(BaseLatlngPtrOutput{})
+	pulumi.RegisterOutputType(GetPsksSitePskOutput{})
+	pulumi.RegisterOutputType(GetPsksSitePskArrayOutput{})
+	pulumi.RegisterOutputType(GetWebhooksSiteWebhookOutput{})
+	pulumi.RegisterOutputType(GetWebhooksSiteWebhookArrayOutput{})
 }

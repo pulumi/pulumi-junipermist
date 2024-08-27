@@ -87,6 +87,30 @@ class Inventory(pulumi.CustomResource):
         """
         This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/inventory:Inventory Using terraform import, import `mist_org_inventory` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id
+
+        ```sh
+        $ pulumi import junipermist:org/inventory:Inventory inventory_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_inventory` with `id={org_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_inventory.inventory_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -98,6 +122,30 @@ class Inventory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:org/inventory:Inventory Using terraform import, import `mist_org_inventory` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id
+
+        ```sh
+        $ pulumi import junipermist:org/inventory:Inventory inventory_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_org_inventory` with `id={org_id}`:
+
+        tf
+
+        import {
+
+          to = mist_org_inventory.inventory_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param InventoryArgs args: The arguments to use to populate this resource's properties.

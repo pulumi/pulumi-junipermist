@@ -13,6 +13,30 @@ import (
 )
 
 // This resource managed the Org Network Templates (Switch templates).A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import junipermist:org/networktemplate:Networktemplate Using terraform import, import `mist_org_networktemplate` using the `import` command:
+// ```
+//
+// Gateway cluster can be imported by specifying the org_id and the networktemplate_id
+//
+// ```sh
+// $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+// ```
+//
+// In Terraform v1.5.0 and later, use an import block to import `mist_org_networktemplate` with `id={org_id}.{networktemplate_id}`:
+//
+// tf
+//
+// import {
+//
+//	to = mist_org_networktemplate.networktemplate_one
+//
+//	id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+//
+// }
 type Networktemplate struct {
 	pulumi.CustomResourceState
 

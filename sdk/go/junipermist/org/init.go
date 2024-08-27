@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Network{}
 	case "junipermist:org/networktemplate:Networktemplate":
 		r = &Networktemplate{}
+	case "junipermist:org/psk:Psk":
+		r = &Psk{}
 	case "junipermist:org/rftemplate:Rftemplate":
 		r = &Rftemplate{}
 	case "junipermist:org/service:Service":
@@ -55,6 +57,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Sitegroup{}
 	case "junipermist:org/vpn:Vpn":
 		r = &Vpn{}
+	case "junipermist:org/webhook:Webhook":
+		r = &Webhook{}
 	case "junipermist:org/wlan:Wlan":
 		r = &Wlan{}
 	case "junipermist:org/wlantemplate:Wlantemplate":
@@ -133,6 +137,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"junipermist",
+		"org/psk",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
 		"org/rftemplate",
 		&module{version},
 	)
@@ -159,6 +168,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/vpn",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/webhook",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

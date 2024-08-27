@@ -33,6 +33,30 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import junipermist:device/gatewayCluster:GatewayCluster Using terraform import, import `mist_device_gateway_cluster` using the `import` command:
+ * ```
+ *
+ * Gateway cluster can be imported by specifying the org_id and the cluster_id
+ *
+ * ```sh
+ * $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+ * ```
+ *
+ * In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway_cluster` with `id={org_id}.{cluster_id}`:
+ *
+ * tf
+ *
+ * import {
+ *
+ *   to = mist_device_gateway_cluster.cluster_one
+ *
+ *   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+ *
+ * }
  */
 export class GatewayCluster extends pulumi.CustomResource {
     /**
@@ -62,7 +86,6 @@ export class GatewayCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === GatewayCluster.__pulumiType;
     }
 
-    public /*out*/ readonly deviceId!: pulumi.Output<string>;
     /**
      * when replacing a node, either mac has to remain the same as existing cluster
      */
@@ -82,7 +105,6 @@ export class GatewayCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayClusterState | undefined;
-            resourceInputs["deviceId"] = state ? state.deviceId : undefined;
             resourceInputs["nodes"] = state ? state.nodes : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
         } else {
@@ -95,7 +117,6 @@ export class GatewayCluster extends pulumi.CustomResource {
             }
             resourceInputs["nodes"] = args ? args.nodes : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
-            resourceInputs["deviceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GatewayCluster.__pulumiType, name, resourceInputs, opts);
@@ -106,7 +127,6 @@ export class GatewayCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GatewayCluster resources.
  */
 export interface GatewayClusterState {
-    deviceId?: pulumi.Input<string>;
     /**
      * when replacing a node, either mac has to remain the same as existing cluster
      */

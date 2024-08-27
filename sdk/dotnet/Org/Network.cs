@@ -32,6 +32,30 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:org/network:Network Using terraform import, import `mist_org_network` using the `import` command:
+    /// ```
+    /// 
+    /// Gateway cluster can be imported by specifying the org_id and the network_id
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:org/network:Network network_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+    /// ```
+    /// 
+    /// In Terraform v1.5.0 and later, use an import block to import `mist_org_network` with `id={org_id}.{network_id}`:
+    /// 
+    /// tf
+    /// 
+    /// import {
+    /// 
+    ///   to = mist_org_network.network_one
+    /// 
+    ///   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+    /// 
+    /// }
     /// </summary>
     [JuniperMistResourceType("junipermist:org/network:Network")]
     public partial class Network : global::Pulumi.CustomResource

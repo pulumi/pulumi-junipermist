@@ -1128,6 +1128,30 @@ class Gateway(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:device/gateway:Gateway Using terraform import, import `mist_device_gateway` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id and the device_id
+
+        ```sh
+        $ pulumi import junipermist:device/gateway:Gateway gateway_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway` with `id={site_id}.{device_id}`:
+
+        tf
+
+        import {
+
+          to = mist_device_gateway.gateway_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
@@ -1181,6 +1205,30 @@ class Gateway(pulumi.CustomResource):
                 "set apply-groups custom-main",
             ])
         ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:device/gateway:Gateway Using terraform import, import `mist_device_gateway` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the site_id and the device_id
+
+        ```sh
+        $ pulumi import junipermist:device/gateway:Gateway gateway_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway` with `id={site_id}.{device_id}`:
+
+        tf
+
+        import {
+
+          to = mist_device_gateway.gateway_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
 
         :param str resource_name: The name of the resource.
         :param GatewayArgs args: The arguments to use to populate this resource's properties.

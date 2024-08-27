@@ -11,6 +11,30 @@ namespace Pulumi.JuniperMist.Device
 {
     /// <summary>
     /// This resource manages the Switch configuration.It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:device/switch:Switch Using terraform import, import `mist_device_switch` using the `import` command:
+    /// ```
+    /// 
+    /// Gateway cluster can be imported by specifying the site_id and the device_id
+    /// 
+    /// ```sh
+    /// $ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+    /// ```
+    /// 
+    /// In Terraform v1.5.0 and later, use an import block to import `mist_device_switch` with `id={site_id}.{device_id}`:
+    /// 
+    /// tf
+    /// 
+    /// import {
+    /// 
+    ///   to = mist_device_switch.switch_one
+    /// 
+    ///   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+    /// 
+    /// }
     /// </summary>
     [JuniperMistResourceType("junipermist:device/switch:Switch")]
     public partial class Switch : global::Pulumi.CustomResource

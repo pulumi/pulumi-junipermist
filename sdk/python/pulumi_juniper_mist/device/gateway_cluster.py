@@ -50,28 +50,16 @@ class GatewayClusterArgs:
 @pulumi.input_type
 class _GatewayClusterState:
     def __init__(__self__, *,
-                 device_id: Optional[pulumi.Input[str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]]] = None,
                  site_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewayCluster resources.
         :param pulumi.Input[Sequence[pulumi.Input['GatewayClusterNodeArgs']]] nodes: when replacing a node, either mac has to remain the same as existing cluster
         """
-        if device_id is not None:
-            pulumi.set(__self__, "device_id", device_id)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
-
-    @property
-    @pulumi.getter(name="deviceId")
-    def device_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "device_id")
-
-    @device_id.setter
-    def device_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "device_id", value)
 
     @property
     @pulumi.getter
@@ -130,6 +118,30 @@ class GatewayCluster(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:device/gatewayCluster:GatewayCluster Using terraform import, import `mist_device_gateway_cluster` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the cluster_id
+
+        ```sh
+        $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway_cluster` with `id={org_id}.{cluster_id}`:
+
+        tf
+
+        import {
+
+          to = mist_device_gateway_cluster.cluster_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]] nodes: when replacing a node, either mac has to remain the same as existing cluster
@@ -167,6 +179,30 @@ class GatewayCluster(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        ```sh
+        $ pulumi import junipermist:device/gatewayCluster:GatewayCluster Using terraform import, import `mist_device_gateway_cluster` using the `import` command:
+        ```
+
+        Gateway cluster can be imported by specifying the org_id and the cluster_id
+
+        ```sh
+        $ pulumi import junipermist:device/gatewayCluster:GatewayCluster cluster_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+        ```
+
+        In Terraform v1.5.0 and later, use an import block to import `mist_device_gateway_cluster` with `id={org_id}.{cluster_id}`:
+
+        tf
+
+        import {
+
+          to = mist_device_gateway_cluster.cluster_one
+
+          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+
+        }
+
         :param str resource_name: The name of the resource.
         :param GatewayClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -199,7 +235,6 @@ class GatewayCluster(pulumi.CustomResource):
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
-            __props__.__dict__["device_id"] = None
         super(GatewayCluster, __self__).__init__(
             'junipermist:device/gatewayCluster:GatewayCluster',
             resource_name,
@@ -210,7 +245,6 @@ class GatewayCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            device_id: Optional[pulumi.Input[str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewayClusterNodeArgs', 'GatewayClusterNodeArgsDict']]]]] = None,
             site_id: Optional[pulumi.Input[str]] = None) -> 'GatewayCluster':
         """
@@ -226,15 +260,9 @@ class GatewayCluster(pulumi.CustomResource):
 
         __props__ = _GatewayClusterState.__new__(_GatewayClusterState)
 
-        __props__.__dict__["device_id"] = device_id
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["site_id"] = site_id
         return GatewayCluster(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="deviceId")
-    def device_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter

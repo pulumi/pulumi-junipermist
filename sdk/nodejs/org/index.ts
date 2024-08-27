@@ -75,6 +75,11 @@ export const getNetworktemplates: typeof import("./getNetworktemplates").getNetw
 export const getNetworktemplatesOutput: typeof import("./getNetworktemplates").getNetworktemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworktemplates","getNetworktemplatesOutput"], () => require("./getNetworktemplates"));
 
+export { GetPsksArgs, GetPsksResult, GetPsksOutputArgs } from "./getPsks";
+export const getPsks: typeof import("./getPsks").getPsks = null as any;
+export const getPsksOutput: typeof import("./getPsks").getPsksOutput = null as any;
+utilities.lazyLoad(exports, ["getPsks","getPsksOutput"], () => require("./getPsks"));
+
 export { GetRftemplatesArgs, GetRftemplatesResult, GetRftemplatesOutputArgs } from "./getRftemplates";
 export const getRftemplates: typeof import("./getRftemplates").getRftemplates = null as any;
 export const getRftemplatesOutput: typeof import("./getRftemplates").getRftemplatesOutput = null as any;
@@ -99,6 +104,11 @@ export { GetVpnsArgs, GetVpnsResult, GetVpnsOutputArgs } from "./getVpns";
 export const getVpns: typeof import("./getVpns").getVpns = null as any;
 export const getVpnsOutput: typeof import("./getVpns").getVpnsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpns","getVpnsOutput"], () => require("./getVpns"));
+
+export { GetWebhooksArgs, GetWebhooksResult, GetWebhooksOutputArgs } from "./getWebhooks";
+export const getWebhooks: typeof import("./getWebhooks").getWebhooks = null as any;
+export const getWebhooksOutput: typeof import("./getWebhooks").getWebhooksOutput = null as any;
+utilities.lazyLoad(exports, ["getWebhooks","getWebhooksOutput"], () => require("./getWebhooks"));
 
 export { GetWlantemplatesArgs, GetWlantemplatesResult, GetWlantemplatesOutputArgs } from "./getWlantemplates";
 export const getWlantemplates: typeof import("./getWlantemplates").getWlantemplates = null as any;
@@ -140,6 +150,11 @@ export type Networktemplate = import("./networktemplate").Networktemplate;
 export const Networktemplate: typeof import("./networktemplate").Networktemplate = null as any;
 utilities.lazyLoad(exports, ["Networktemplate"], () => require("./networktemplate"));
 
+export { PskArgs, PskState } from "./psk";
+export type Psk = import("./psk").Psk;
+export const Psk: typeof import("./psk").Psk = null as any;
+utilities.lazyLoad(exports, ["Psk"], () => require("./psk"));
+
 export { RftemplateArgs, RftemplateState } from "./rftemplate";
 export type Rftemplate = import("./rftemplate").Rftemplate;
 export const Rftemplate: typeof import("./rftemplate").Rftemplate = null as any;
@@ -169,6 +184,11 @@ export { VpnArgs, VpnState } from "./vpn";
 export type Vpn = import("./vpn").Vpn;
 export const Vpn: typeof import("./vpn").Vpn = null as any;
 utilities.lazyLoad(exports, ["Vpn"], () => require("./vpn"));
+
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
 
 export { WlanArgs, WlanState } from "./wlan";
 export type Wlan = import("./wlan").Wlan;
@@ -217,6 +237,8 @@ const _module = {
                 return new Network(name, <any>undefined, { urn })
             case "junipermist:org/networktemplate:Networktemplate":
                 return new Networktemplate(name, <any>undefined, { urn })
+            case "junipermist:org/psk:Psk":
+                return new Psk(name, <any>undefined, { urn })
             case "junipermist:org/rftemplate:Rftemplate":
                 return new Rftemplate(name, <any>undefined, { urn })
             case "junipermist:org/service:Service":
@@ -229,6 +251,8 @@ const _module = {
                 return new Sitegroup(name, <any>undefined, { urn })
             case "junipermist:org/vpn:Vpn":
                 return new Vpn(name, <any>undefined, { urn })
+            case "junipermist:org/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             case "junipermist:org/wlan:Wlan":
                 return new Wlan(name, <any>undefined, { urn })
             case "junipermist:org/wlantemplate:Wlantemplate":
@@ -253,12 +277,14 @@ pulumi.runtime.registerResourceModule("junipermist", "org/nacrule", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nactag", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/network", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/networktemplate", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/psk", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/rftemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/service", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/servicepolicy", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/setting", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/sitegroup", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/vpn", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/webhook", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wlan", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wlantemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wxrule", _module)

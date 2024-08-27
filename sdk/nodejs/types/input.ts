@@ -1031,7 +1031,7 @@ export namespace device {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * if `wanType`==`lte`. enum: `adsl`, `vdsl`
+         * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
         dslType?: pulumi.Input<string>;
         /**
@@ -3821,7 +3821,7 @@ export namespace org {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * if `wanType`==`lte`. enum: `adsl`, `vdsl`
+         * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
         dslType?: pulumi.Input<string>;
         /**
@@ -4956,7 +4956,7 @@ export namespace org {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * if `wanType`==`lte`. enum: `adsl`, `vdsl`
+         * if `wanType`==`dsl`. enum: `adsl`, `vdsl`
          */
         dslType?: pulumi.Input<string>;
         /**
@@ -5612,7 +5612,10 @@ export namespace org {
     }
 
     export interface InventoryDevice {
-        claimCode: pulumi.Input<string>;
+        /**
+         * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         */
+        claimCode?: pulumi.Input<string>;
         /**
          * Device Hostname
          */
@@ -5622,20 +5625,20 @@ export namespace org {
          */
         id?: pulumi.Input<string>;
         /**
-         * MAC address
+         * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used
          */
         mac?: pulumi.Input<string>;
         /**
-         * device model
+         * Device model
          */
         model?: pulumi.Input<string>;
         orgId?: pulumi.Input<string>;
         /**
-         * device serial
+         * Device serial
          */
         serial?: pulumi.Input<string>;
         /**
-         * site id if assigned, null if not assigned
+         * Site ID. Used to assign device to a Site
          */
         siteId?: pulumi.Input<string>;
         type?: pulumi.Input<string>;

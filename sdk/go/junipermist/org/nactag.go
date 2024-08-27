@@ -45,6 +45,30 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import junipermist:org/nactag:Nactag Using terraform import, import `mist_org_nactag` using the `import` command:
+// ```
+//
+// Gateway cluster can be imported by specifying the org_id and the nactag_id
+//
+// ```sh
+// $ pulumi import junipermist:org/nactag:Nactag nactag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
+// ```
+//
+// In Terraform v1.5.0 and later, use an import block to import `mist_org_nactag` with `id={org_id}.{nactag_id}`:
+//
+// tf
+//
+// import {
+//
+//	to = mist_org_nactag.nactag_one
+//
+//	id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
+//
+// }
 type Nactag struct {
 	pulumi.CustomResourceState
 
