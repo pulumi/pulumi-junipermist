@@ -18,6 +18,7 @@ func TestOrgWlanTs(t *testing.T) {
 		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
 		opttest.YarnLink("@pulumi/juniper-mist"),
 	)
-	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))	
+	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
+	test.SetConfig("mist:host", os.Getenv(EnvMistHost))
 	test.Up()
 }
