@@ -247,18 +247,6 @@ class Base(pulumi.CustomResource):
         $ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
 
-        In Terraform v1.5.0 and later, use an import block to import `mist_org` with `id={org_id}` :
-
-        tf
-
-        import {
-
-          to = mist_org.org_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
-
-        }
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
@@ -293,18 +281,6 @@ class Base(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
-
-        In Terraform v1.5.0 and later, use an import block to import `mist_org` with `id={org_id}` :
-
-        tf
-
-        import {
-
-          to = mist_org.org_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
-
-        }
 
         :param str resource_name: The name of the resource.
         :param BaseArgs args: The arguments to use to populate this resource's properties.

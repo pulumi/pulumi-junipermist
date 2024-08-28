@@ -20,18 +20,6 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
  * ```
- *
- * In Terraform v1.5.0 and later, use an import block to import `mist_site_networktemplate` with `id={site_id}`:
- *
- * tf
- *
- * import {
- *
- *   to = mist_site_networktemplate.networktemplate_one
- *
- *   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a"
- *
- * }
  */
 export class Networktemplate extends pulumi.CustomResource {
     /**

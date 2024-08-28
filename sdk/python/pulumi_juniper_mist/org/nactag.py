@@ -538,18 +538,6 @@ class Nactag(pulumi.CustomResource):
         $ pulumi import junipermist:org/nactag:Nactag nactag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
-        In Terraform v1.5.0 and later, use an import block to import `mist_org_nactag` with `id={org_id}.{nactag_id}`:
-
-        tf
-
-        import {
-
-          to = mist_org_nactag.nactag_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-
-        }
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_usermac_override: can be set to true to allow the override by usermac result
@@ -607,18 +595,6 @@ class Nactag(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/nactag:Nactag nactag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
-
-        In Terraform v1.5.0 and later, use an import block to import `mist_org_nactag` with `id={org_id}.{nactag_id}`:
-
-        tf
-
-        import {
-
-          to = mist_org_nactag.nactag_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-
-        }
 
         :param str resource_name: The name of the resource.
         :param NactagArgs args: The arguments to use to populate this resource's properties.

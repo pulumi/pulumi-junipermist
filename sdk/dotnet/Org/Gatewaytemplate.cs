@@ -23,18 +23,6 @@ namespace Pulumi.JuniperMist.Org
     /// ```sh
     /// $ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate gatewaytemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
     /// ```
-    /// 
-    /// In Terraform v1.5.0 and later, use an import block to import `mist_org_gatewaytemplate` with `id={org_id}.{gatewaytemplate_id}`:
-    /// 
-    /// tf
-    /// 
-    /// import {
-    /// 
-    ///   to = mist_org_gatewaytemplate.gatewaytemplate_one
-    /// 
-    ///   id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-    /// 
-    /// }
     /// </summary>
     [JuniperMistResourceType("junipermist:org/gatewaytemplate:Gatewaytemplate")]
     public partial class Gatewaytemplate : global::Pulumi.CustomResource
