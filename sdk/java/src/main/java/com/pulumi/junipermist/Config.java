@@ -30,8 +30,8 @@ public final class Config {
  * URL of the Mist Cloud, e.g. `api.mist.com`.
  * 
  */
-    public Optional<String> host() {
-        return Codegen.stringProp("host").config(config).get();
+    public String host() {
+        return Codegen.stringProp("host").config(config).require();
     }
 /**
  * For username/password authentication, the Mist Account password.

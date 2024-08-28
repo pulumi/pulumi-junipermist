@@ -1446,18 +1446,6 @@ class Switch(pulumi.CustomResource):
         $ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
-        In Terraform v1.5.0 and later, use an import block to import `mist_device_switch` with `id={site_id}.{device_id}`:
-
-        tf
-
-        import {
-
-          to = mist_device_switch.switch_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-
-        }
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchAclTagsArgs', 'SwitchAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
@@ -1510,18 +1498,6 @@ class Switch(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
-
-        In Terraform v1.5.0 and later, use an import block to import `mist_device_switch` with `id={site_id}.{device_id}`:
-
-        tf
-
-        import {
-
-          to = mist_device_switch.switch_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-
-        }
 
         :param str resource_name: The name of the resource.
         :param SwitchArgs args: The arguments to use to populate this resource's properties.

@@ -32,7 +32,7 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * URL of the Mist Cloud, e.g. `api.mist.com`.
      */
-    public readonly host!: pulumi.Output<string | undefined>;
+    public readonly host!: pulumi.Output<string>;
     /**
      * For username/password authentication, the Mist Account password.
      */
@@ -55,10 +55,13 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            if ((!args || args.host === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'host'");
+            }
             resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
             resourceInputs["apitoken"] = args?.apitoken ? pulumi.secret(args.apitoken) : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
@@ -89,7 +92,7 @@ export interface ProviderArgs {
     /**
      * URL of the Mist Cloud, e.g. `api.mist.com`.
      */
-    host?: pulumi.Input<string>;
+    host: pulumi.Input<string>;
     /**
      * For username/password authentication, the Mist Account password.
      */

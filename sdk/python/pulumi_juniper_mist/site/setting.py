@@ -1258,18 +1258,6 @@ class Setting(pulumi.CustomResource):
         $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
 
-        In Terraform v1.5.0 and later, use an import block to import `mist_site_setting` with `id={site_id}`:
-
-        tf
-
-        import {
-
-          to = mist_site_setting.site_setting_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a
-
-        }
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
@@ -1325,18 +1313,6 @@ class Setting(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
         ```
-
-        In Terraform v1.5.0 and later, use an import block to import `mist_site_setting` with `id={site_id}`:
-
-        tf
-
-        import {
-
-          to = mist_site_setting.site_setting_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a
-
-        }
 
         :param str resource_name: The name of the resource.
         :param SettingArgs args: The arguments to use to populate this resource's properties.

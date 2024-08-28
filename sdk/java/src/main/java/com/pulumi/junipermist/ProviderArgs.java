@@ -5,6 +5,7 @@ package com.pulumi.junipermist;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -52,15 +53,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * URL of the Mist Cloud, e.g. `api.mist.com`.
      * 
      */
-    @Import(name="host")
-    private @Nullable Output<String> host;
+    @Import(name="host", required=true)
+    private Output<String> host;
 
     /**
      * @return URL of the Mist Cloud, e.g. `api.mist.com`.
      * 
      */
-    public Optional<Output<String>> host() {
-        return Optional.ofNullable(this.host);
+    public Output<String> host() {
+        return this.host;
     }
 
     /**
@@ -191,7 +192,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder host(@Nullable Output<String> host) {
+        public Builder host(Output<String> host) {
             $.host = host;
             return this;
         }
@@ -274,6 +275,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "host");
+            }
             return $;
         }
     }

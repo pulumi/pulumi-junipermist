@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -21,7 +22,7 @@ type Provider struct {
 	// For API Token authentication, the Mist API Token.
 	Apitoken pulumi.StringPtrOutput `pulumi:"apitoken"`
 	// URL of the Mist Cloud, e.g. `api.mist.com`.
-	Host pulumi.StringPtrOutput `pulumi:"host"`
+	Host pulumi.StringOutput `pulumi:"host"`
 	// For username/password authentication, the Mist Account password.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
@@ -36,9 +37,12 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		args = &ProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
+	}
 	if args.Apitoken != nil {
 		args.Apitoken = pulumi.ToSecret(args.Apitoken).(pulumi.StringPtrInput)
 	}
@@ -66,7 +70,7 @@ type providerArgs struct {
 	// For API Token authentication, the Mist API Token.
 	Apitoken *string `pulumi:"apitoken"`
 	// URL of the Mist Cloud, e.g. `api.mist.com`.
-	Host *string `pulumi:"host"`
+	Host string `pulumi:"host"`
 	// For username/password authentication, the Mist Account password.
 	Password *string `pulumi:"password"`
 	// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
@@ -85,7 +89,7 @@ type ProviderArgs struct {
 	// For API Token authentication, the Mist API Token.
 	Apitoken pulumi.StringPtrInput
 	// URL of the Mist Cloud, e.g. `api.mist.com`.
-	Host pulumi.StringPtrInput
+	Host pulumi.StringInput
 	// For username/password authentication, the Mist Account password.
 	Password pulumi.StringPtrInput
 	// Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
@@ -139,8 +143,8 @@ func (o ProviderOutput) Apitoken() pulumi.StringPtrOutput {
 }
 
 // URL of the Mist Cloud, e.g. `api.mist.com`.
-func (o ProviderOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Host }).(pulumi.StringPtrOutput)
+func (o ProviderOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
 // For username/password authentication, the Mist Account password.

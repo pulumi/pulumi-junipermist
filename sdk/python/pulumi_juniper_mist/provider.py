@@ -14,36 +14,47 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 host: pulumi.Input[str],
                  api_timeout: Optional[pulumi.Input[float]] = None,
                  apitoken: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  proxy: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[str] host: URL of the Mist Cloud, e.g. `api.mist.com`.
         :param pulumi.Input[float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
                results in infinite timeout.
         :param pulumi.Input[str] apitoken: For API Token authentication, the Mist API Token.
-        :param pulumi.Input[str] host: URL of the Mist Cloud, e.g. `api.mist.com`.
         :param pulumi.Input[str] password: For username/password authentication, the Mist Account password.
         :param pulumi.Input[str] proxy: Requests use the configured proxy to reach the Mist Cloud. The value may be either a complete URL or a
                `[username:password@]host[:port]`, in which case the `http` scheme is assumed. The schemes `http`, `https`, and `socks5`
                are supported.
         :param pulumi.Input[str] username: For username/password authentication, the Mist Account username.
         """
+        pulumi.set(__self__, "host", host)
         if api_timeout is not None:
             pulumi.set(__self__, "api_timeout", api_timeout)
         if apitoken is not None:
             pulumi.set(__self__, "apitoken", apitoken)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        URL of the Mist Cloud, e.g. `api.mist.com`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter(name="apiTimeout")
@@ -69,18 +80,6 @@ class ProviderArgs:
     @apitoken.setter
     def apitoken(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "apitoken", value)
-
-    @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        """
-        URL of the Mist Cloud, e.g. `api.mist.com`.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
 
     @property
     @pulumi.getter
@@ -155,7 +154,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ProviderArgs] = None,
+                 args: ProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the mist package. By default, resources use package-wide configuration
@@ -195,6 +194,8 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["api_timeout"] = pulumi.Output.from_input(api_timeout).apply(pulumi.runtime.to_json) if api_timeout is not None else None
             __props__.__dict__["apitoken"] = None if apitoken is None else pulumi.Output.secret(apitoken)
+            if host is None and not opts.urn:
+                raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["proxy"] = proxy
@@ -217,7 +218,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def host(self) -> pulumi.Output[Optional[str]]:
+    def host(self) -> pulumi.Output[str]:
         """
         URL of the Mist Cloud, e.g. `api.mist.com`.
         """

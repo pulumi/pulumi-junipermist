@@ -451,18 +451,6 @@ class Network(pulumi.CustomResource):
         $ pulumi import junipermist:org/network:Network network_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
 
-        In Terraform v1.5.0 and later, use an import block to import `mist_org_network` with `id={org_id}.{network_id}`:
-
-        tf
-
-        import {
-
-          to = mist_org_network.network_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-
-        }
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
@@ -504,18 +492,6 @@ class Network(pulumi.CustomResource):
         ```sh
         $ pulumi import junipermist:org/network:Network network_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
         ```
-
-        In Terraform v1.5.0 and later, use an import block to import `mist_org_network` with `id={org_id}.{network_id}`:
-
-        tf
-
-        import {
-
-          to = mist_org_network.network_one
-
-          id = "17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309"
-
-        }
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

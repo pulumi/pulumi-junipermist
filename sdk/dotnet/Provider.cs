@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist
         /// URL of the Mist Cloud, e.g. `api.mist.com`.
         /// </summary>
         [Output("host")]
-        public Output<string?> Host { get; private set; } = null!;
+        public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
         /// For username/password authentication, the Mist Account password.
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("junipermist", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -110,8 +110,8 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// URL of the Mist Cloud, e.g. `api.mist.com`.
         /// </summary>
-        [Input("host")]
-        public Input<string>? Host { get; set; }
+        [Input("host", required: true)]
+        public Input<string> Host { get; set; } = null!;
 
         [Input("password")]
         private Input<string>? _password;
