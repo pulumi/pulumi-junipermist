@@ -1,5 +1,5 @@
 {
-  "name": "juniper-mist-org-wlan-ts",
+  "name": "juniper-mist-org-rftemplate-ts",
   "main": "index.ts",
   "devDependencies": {
     "@types/node": "^18",
