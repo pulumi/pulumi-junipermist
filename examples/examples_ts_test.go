@@ -37,3 +37,18 @@ func TestOrgWlanIsolationTs(t *testing.T) {
 	}
 	assertpreview.HasNoChanges(t, preview)
 }
+func TestOrgRftemplateTs(t *testing.T) {
+	//Regression test for https://github.com/pulumi/pulumi-junipermist/issues/47
+	checkBaseEnvVars(t)
+	test := pulumitest.NewPulumiTest(t, "org-rftemplate-ts",
+		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
+		opttest.YarnLink("@pulumi/juniper-mist"),
+	)
+	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
+	test.Up()
+	preview, error := test.CurrentStack().Preview(test.Context())
+	if error != nil {
+		t.Fatalf("failed to preview: %v", error)
+	}
+	assertpreview.HasNoChanges(t, preview)
+}
