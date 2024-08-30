@@ -109,11 +109,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ```sh
- * $ pulumi import junipermist:org/networktemplate:Networktemplate Using terraform import, import `mist_org_networktemplate` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_org_networktemplate` with:
  * 
- * Gateway cluster can be imported by specifying the org_id and the networktemplate_id
+ * Org Network Template can be imported by specifying the org_id and the networktemplate_id
  * 
  * ```sh
  * $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
@@ -326,9 +324,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {
         return Codegen.optional(this.switchMatching);
     }
+    /**
+     * Switch settings
+     * 
+     */
     @Export(name="switchMgmt", refs={NetworktemplateSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMgmt> switchMgmt;
 
+    /**
+     * @return Switch settings
+     * 
+     */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
     }

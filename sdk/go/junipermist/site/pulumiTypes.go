@@ -1676,7 +1676,9 @@ type NetworktemplatePortUsages struct {
 	// Only if `mode`!=`dynamic`
 	StormControl *NetworktemplatePortUsagesStormControl `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-	StpEdge *bool `pulumi:"stpEdge"`
+	StpEdge       *bool `pulumi:"stpEdge"`
+	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
+	StpP2p        *bool `pulumi:"stpP2p"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork *string `pulumi:"voipNetwork"`
 }
@@ -1758,7 +1760,9 @@ type NetworktemplatePortUsagesArgs struct {
 	// Only if `mode`!=`dynamic`
 	StormControl NetworktemplatePortUsagesStormControlPtrInput `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-	StpEdge pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
+	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
 }
@@ -1971,6 +1975,14 @@ func (o NetworktemplatePortUsagesOutput) StormControl() NetworktemplatePortUsage
 // Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
 func (o NetworktemplatePortUsagesOutput) StpEdge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.StpEdge }).(pulumi.BoolPtrOutput)
+}
+
+func (o NetworktemplatePortUsagesOutput) StpNoRootPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.StpNoRootPort }).(pulumi.BoolPtrOutput)
+}
+
+func (o NetworktemplatePortUsagesOutput) StpP2p() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
@@ -7597,13 +7609,28 @@ func (o NetworktemplateSwitchMatchingRulePortMirroringMapOutput) MapIndex(k pulu
 }
 
 type NetworktemplateSwitchMgmt struct {
-	ConfigRevert *int `pulumi:"configRevert"`
+	// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+	ApAffinityThreshold *int `pulumi:"apAffinityThreshold"`
+	// Set Banners for switches. Allows markup formatting
+	CliBanner *string `pulumi:"cliBanner"`
+	// Sets timeout for switches
+	CliIdleTimeout *int `pulumi:"cliIdleTimeout"`
+	// the rollback timer for commit confirmed
+	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
+	// Enable to provide the FQDN with DHCP option 81
+	DhcpOptionFqdn *bool `pulumi:"dhcpOptionFqdn"`
+	// Property key is the user name. For Local user authentication
+	LocalAccounts   map[string]NetworktemplateSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
+	MxedgeProxyHost *string                                           `pulumi:"mxedgeProxyHost"`
+	MxedgeProxyPort *int                                              `pulumi:"mxedgeProxyPort"`
 	// restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe    *NetworktemplateSwitchMgmtProtectRe `pulumi:"protectRe"`
 	RootPassword *string                             `pulumi:"rootPassword"`
 	Tacacs       *NetworktemplateSwitchMgmtTacacs    `pulumi:"tacacs"`
+	// to use mxedge as proxy
+	UseMxedgeProxy *bool `pulumi:"useMxedgeProxy"`
 }
 
 // NetworktemplateSwitchMgmtInput is an input type that accepts NetworktemplateSwitchMgmtArgs and NetworktemplateSwitchMgmtOutput values.
@@ -7618,13 +7645,28 @@ type NetworktemplateSwitchMgmtInput interface {
 }
 
 type NetworktemplateSwitchMgmtArgs struct {
-	ConfigRevert pulumi.IntPtrInput `pulumi:"configRevert"`
+	// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+	ApAffinityThreshold pulumi.IntPtrInput `pulumi:"apAffinityThreshold"`
+	// Set Banners for switches. Allows markup formatting
+	CliBanner pulumi.StringPtrInput `pulumi:"cliBanner"`
+	// Sets timeout for switches
+	CliIdleTimeout pulumi.IntPtrInput `pulumi:"cliIdleTimeout"`
+	// the rollback timer for commit confirmed
+	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
+	// Enable to provide the FQDN with DHCP option 81
+	DhcpOptionFqdn pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
+	// Property key is the user name. For Local user authentication
+	LocalAccounts   NetworktemplateSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
+	MxedgeProxyHost pulumi.StringPtrInput                          `pulumi:"mxedgeProxyHost"`
+	MxedgeProxyPort pulumi.IntPtrInput                             `pulumi:"mxedgeProxyPort"`
 	// restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe    NetworktemplateSwitchMgmtProtectRePtrInput `pulumi:"protectRe"`
 	RootPassword pulumi.StringPtrInput                      `pulumi:"rootPassword"`
 	Tacacs       NetworktemplateSwitchMgmtTacacsPtrInput    `pulumi:"tacacs"`
+	// to use mxedge as proxy
+	UseMxedgeProxy pulumi.BoolPtrInput `pulumi:"useMxedgeProxy"`
 }
 
 func (NetworktemplateSwitchMgmtArgs) ElementType() reflect.Type {
@@ -7704,8 +7746,44 @@ func (o NetworktemplateSwitchMgmtOutput) ToNetworktemplateSwitchMgmtPtrOutputWit
 	}).(NetworktemplateSwitchMgmtPtrOutput)
 }
 
-func (o NetworktemplateSwitchMgmtOutput) ConfigRevert() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.ConfigRevert }).(pulumi.IntPtrOutput)
+// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+func (o NetworktemplateSwitchMgmtOutput) ApAffinityThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.ApAffinityThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Set Banners for switches. Allows markup formatting
+func (o NetworktemplateSwitchMgmtOutput) CliBanner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *string { return v.CliBanner }).(pulumi.StringPtrOutput)
+}
+
+// Sets timeout for switches
+func (o NetworktemplateSwitchMgmtOutput) CliIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.CliIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+// the rollback timer for commit confirmed
+func (o NetworktemplateSwitchMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.ConfigRevertTimer }).(pulumi.IntPtrOutput)
+}
+
+// Enable to provide the FQDN with DHCP option 81
+func (o NetworktemplateSwitchMgmtOutput) DhcpOptionFqdn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.DhcpOptionFqdn }).(pulumi.BoolPtrOutput)
+}
+
+// Property key is the user name. For Local user authentication
+func (o NetworktemplateSwitchMgmtOutput) LocalAccounts() NetworktemplateSwitchMgmtLocalAccountsMapOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) map[string]NetworktemplateSwitchMgmtLocalAccounts {
+		return v.LocalAccounts
+	}).(NetworktemplateSwitchMgmtLocalAccountsMapOutput)
+}
+
+func (o NetworktemplateSwitchMgmtOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *string { return v.MxedgeProxyHost }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateSwitchMgmtOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *int { return v.MxedgeProxyPort }).(pulumi.IntPtrOutput)
 }
 
 // restrict inbound-traffic to host
@@ -7721,6 +7799,11 @@ func (o NetworktemplateSwitchMgmtOutput) RootPassword() pulumi.StringPtrOutput {
 
 func (o NetworktemplateSwitchMgmtOutput) Tacacs() NetworktemplateSwitchMgmtTacacsPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *NetworktemplateSwitchMgmtTacacs { return v.Tacacs }).(NetworktemplateSwitchMgmtTacacsPtrOutput)
+}
+
+// to use mxedge as proxy
+func (o NetworktemplateSwitchMgmtOutput) UseMxedgeProxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.UseMxedgeProxy }).(pulumi.BoolPtrOutput)
 }
 
 type NetworktemplateSwitchMgmtPtrOutput struct{ *pulumi.OutputState }
@@ -7747,12 +7830,81 @@ func (o NetworktemplateSwitchMgmtPtrOutput) Elem() NetworktemplateSwitchMgmtOutp
 	}).(NetworktemplateSwitchMgmtOutput)
 }
 
-func (o NetworktemplateSwitchMgmtPtrOutput) ConfigRevert() pulumi.IntPtrOutput {
+// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+func (o NetworktemplateSwitchMgmtPtrOutput) ApAffinityThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *int {
 		if v == nil {
 			return nil
 		}
-		return v.ConfigRevert
+		return v.ApAffinityThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set Banners for switches. Allows markup formatting
+func (o NetworktemplateSwitchMgmtPtrOutput) CliBanner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CliBanner
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets timeout for switches
+func (o NetworktemplateSwitchMgmtPtrOutput) CliIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CliIdleTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// the rollback timer for commit confirmed
+func (o NetworktemplateSwitchMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigRevertTimer
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable to provide the FQDN with DHCP option 81
+func (o NetworktemplateSwitchMgmtPtrOutput) DhcpOptionFqdn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpOptionFqdn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Property key is the user name. For Local user authentication
+func (o NetworktemplateSwitchMgmtPtrOutput) LocalAccounts() NetworktemplateSwitchMgmtLocalAccountsMapOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) map[string]NetworktemplateSwitchMgmtLocalAccounts {
+		if v == nil {
+			return nil
+		}
+		return v.LocalAccounts
+	}).(NetworktemplateSwitchMgmtLocalAccountsMapOutput)
+}
+
+func (o NetworktemplateSwitchMgmtPtrOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MxedgeProxyHost
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateSwitchMgmtPtrOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MxedgeProxyPort
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -7784,6 +7936,119 @@ func (o NetworktemplateSwitchMgmtPtrOutput) Tacacs() NetworktemplateSwitchMgmtTa
 		}
 		return v.Tacacs
 	}).(NetworktemplateSwitchMgmtTacacsPtrOutput)
+}
+
+// to use mxedge as proxy
+func (o NetworktemplateSwitchMgmtPtrOutput) UseMxedgeProxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMxedgeProxy
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NetworktemplateSwitchMgmtLocalAccounts struct {
+	Password *string `pulumi:"password"`
+	// enum: `admin`, `helpdesk`, `none`, `read`
+	Role *string `pulumi:"role"`
+}
+
+// NetworktemplateSwitchMgmtLocalAccountsInput is an input type that accepts NetworktemplateSwitchMgmtLocalAccountsArgs and NetworktemplateSwitchMgmtLocalAccountsOutput values.
+// You can construct a concrete instance of `NetworktemplateSwitchMgmtLocalAccountsInput` via:
+//
+//	NetworktemplateSwitchMgmtLocalAccountsArgs{...}
+type NetworktemplateSwitchMgmtLocalAccountsInput interface {
+	pulumi.Input
+
+	ToNetworktemplateSwitchMgmtLocalAccountsOutput() NetworktemplateSwitchMgmtLocalAccountsOutput
+	ToNetworktemplateSwitchMgmtLocalAccountsOutputWithContext(context.Context) NetworktemplateSwitchMgmtLocalAccountsOutput
+}
+
+type NetworktemplateSwitchMgmtLocalAccountsArgs struct {
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// enum: `admin`, `helpdesk`, `none`, `read`
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (NetworktemplateSwitchMgmtLocalAccountsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (i NetworktemplateSwitchMgmtLocalAccountsArgs) ToNetworktemplateSwitchMgmtLocalAccountsOutput() NetworktemplateSwitchMgmtLocalAccountsOutput {
+	return i.ToNetworktemplateSwitchMgmtLocalAccountsOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateSwitchMgmtLocalAccountsArgs) ToNetworktemplateSwitchMgmtLocalAccountsOutputWithContext(ctx context.Context) NetworktemplateSwitchMgmtLocalAccountsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMgmtLocalAccountsOutput)
+}
+
+// NetworktemplateSwitchMgmtLocalAccountsMapInput is an input type that accepts NetworktemplateSwitchMgmtLocalAccountsMap and NetworktemplateSwitchMgmtLocalAccountsMapOutput values.
+// You can construct a concrete instance of `NetworktemplateSwitchMgmtLocalAccountsMapInput` via:
+//
+//	NetworktemplateSwitchMgmtLocalAccountsMap{ "key": NetworktemplateSwitchMgmtLocalAccountsArgs{...} }
+type NetworktemplateSwitchMgmtLocalAccountsMapInput interface {
+	pulumi.Input
+
+	ToNetworktemplateSwitchMgmtLocalAccountsMapOutput() NetworktemplateSwitchMgmtLocalAccountsMapOutput
+	ToNetworktemplateSwitchMgmtLocalAccountsMapOutputWithContext(context.Context) NetworktemplateSwitchMgmtLocalAccountsMapOutput
+}
+
+type NetworktemplateSwitchMgmtLocalAccountsMap map[string]NetworktemplateSwitchMgmtLocalAccountsInput
+
+func (NetworktemplateSwitchMgmtLocalAccountsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (i NetworktemplateSwitchMgmtLocalAccountsMap) ToNetworktemplateSwitchMgmtLocalAccountsMapOutput() NetworktemplateSwitchMgmtLocalAccountsMapOutput {
+	return i.ToNetworktemplateSwitchMgmtLocalAccountsMapOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateSwitchMgmtLocalAccountsMap) ToNetworktemplateSwitchMgmtLocalAccountsMapOutputWithContext(ctx context.Context) NetworktemplateSwitchMgmtLocalAccountsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMgmtLocalAccountsMapOutput)
+}
+
+type NetworktemplateSwitchMgmtLocalAccountsOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateSwitchMgmtLocalAccountsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (o NetworktemplateSwitchMgmtLocalAccountsOutput) ToNetworktemplateSwitchMgmtLocalAccountsOutput() NetworktemplateSwitchMgmtLocalAccountsOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMgmtLocalAccountsOutput) ToNetworktemplateSwitchMgmtLocalAccountsOutputWithContext(ctx context.Context) NetworktemplateSwitchMgmtLocalAccountsOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMgmtLocalAccountsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmtLocalAccounts) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// enum: `admin`, `helpdesk`, `none`, `read`
+func (o NetworktemplateSwitchMgmtLocalAccountsOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmtLocalAccounts) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type NetworktemplateSwitchMgmtLocalAccountsMapOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateSwitchMgmtLocalAccountsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (o NetworktemplateSwitchMgmtLocalAccountsMapOutput) ToNetworktemplateSwitchMgmtLocalAccountsMapOutput() NetworktemplateSwitchMgmtLocalAccountsMapOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMgmtLocalAccountsMapOutput) ToNetworktemplateSwitchMgmtLocalAccountsMapOutputWithContext(ctx context.Context) NetworktemplateSwitchMgmtLocalAccountsMapOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMgmtLocalAccountsMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateSwitchMgmtLocalAccountsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateSwitchMgmtLocalAccounts {
+		return vs[0].(map[string]NetworktemplateSwitchMgmtLocalAccounts)[vs[1].(string)]
+	}).(NetworktemplateSwitchMgmtLocalAccountsOutput)
 }
 
 type NetworktemplateSwitchMgmtProtectRe struct {
@@ -8823,9 +9088,9 @@ func (o NetworktemplateVrfConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type NetworktemplateVrfInstances struct {
-	Networks []string `pulumi:"networks"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-	VrfExtraRoutes map[string]NetworktemplateVrfInstancesVrfExtraRoutes `pulumi:"vrfExtraRoutes"`
+	ExtraRoutes map[string]NetworktemplateVrfInstancesExtraRoutes `pulumi:"extraRoutes"`
+	Networks    []string                                          `pulumi:"networks"`
 }
 
 // NetworktemplateVrfInstancesInput is an input type that accepts NetworktemplateVrfInstancesArgs and NetworktemplateVrfInstancesOutput values.
@@ -8840,9 +9105,9 @@ type NetworktemplateVrfInstancesInput interface {
 }
 
 type NetworktemplateVrfInstancesArgs struct {
-	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-	VrfExtraRoutes NetworktemplateVrfInstancesVrfExtraRoutesMapInput `pulumi:"vrfExtraRoutes"`
+	ExtraRoutes NetworktemplateVrfInstancesExtraRoutesMapInput `pulumi:"extraRoutes"`
+	Networks    pulumi.StringArrayInput                        `pulumi:"networks"`
 }
 
 func (NetworktemplateVrfInstancesArgs) ElementType() reflect.Type {
@@ -8896,15 +9161,15 @@ func (o NetworktemplateVrfInstancesOutput) ToNetworktemplateVrfInstancesOutputWi
 	return o
 }
 
-func (o NetworktemplateVrfInstancesOutput) Networks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NetworktemplateVrfInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
+// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+func (o NetworktemplateVrfInstancesOutput) ExtraRoutes() NetworktemplateVrfInstancesExtraRoutesMapOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstances) map[string]NetworktemplateVrfInstancesExtraRoutes {
+		return v.ExtraRoutes
+	}).(NetworktemplateVrfInstancesExtraRoutesMapOutput)
 }
 
-// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-func (o NetworktemplateVrfInstancesOutput) VrfExtraRoutes() NetworktemplateVrfInstancesVrfExtraRoutesMapOutput {
-	return o.ApplyT(func(v NetworktemplateVrfInstances) map[string]NetworktemplateVrfInstancesVrfExtraRoutes {
-		return v.VrfExtraRoutes
-	}).(NetworktemplateVrfInstancesVrfExtraRoutesMapOutput)
+func (o NetworktemplateVrfInstancesOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstances) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
 type NetworktemplateVrfInstancesMapOutput struct{ *pulumi.OutputState }
@@ -8927,101 +9192,101 @@ func (o NetworktemplateVrfInstancesMapOutput) MapIndex(k pulumi.StringInput) Net
 	}).(NetworktemplateVrfInstancesOutput)
 }
 
-type NetworktemplateVrfInstancesVrfExtraRoutes struct {
+type NetworktemplateVrfInstancesExtraRoutes struct {
 	// Next-hop address
 	Via string `pulumi:"via"`
 }
 
-// NetworktemplateVrfInstancesVrfExtraRoutesInput is an input type that accepts NetworktemplateVrfInstancesVrfExtraRoutesArgs and NetworktemplateVrfInstancesVrfExtraRoutesOutput values.
-// You can construct a concrete instance of `NetworktemplateVrfInstancesVrfExtraRoutesInput` via:
+// NetworktemplateVrfInstancesExtraRoutesInput is an input type that accepts NetworktemplateVrfInstancesExtraRoutesArgs and NetworktemplateVrfInstancesExtraRoutesOutput values.
+// You can construct a concrete instance of `NetworktemplateVrfInstancesExtraRoutesInput` via:
 //
-//	NetworktemplateVrfInstancesVrfExtraRoutesArgs{...}
-type NetworktemplateVrfInstancesVrfExtraRoutesInput interface {
+//	NetworktemplateVrfInstancesExtraRoutesArgs{...}
+type NetworktemplateVrfInstancesExtraRoutesInput interface {
 	pulumi.Input
 
-	ToNetworktemplateVrfInstancesVrfExtraRoutesOutput() NetworktemplateVrfInstancesVrfExtraRoutesOutput
-	ToNetworktemplateVrfInstancesVrfExtraRoutesOutputWithContext(context.Context) NetworktemplateVrfInstancesVrfExtraRoutesOutput
+	ToNetworktemplateVrfInstancesExtraRoutesOutput() NetworktemplateVrfInstancesExtraRoutesOutput
+	ToNetworktemplateVrfInstancesExtraRoutesOutputWithContext(context.Context) NetworktemplateVrfInstancesExtraRoutesOutput
 }
 
-type NetworktemplateVrfInstancesVrfExtraRoutesArgs struct {
+type NetworktemplateVrfInstancesExtraRoutesArgs struct {
 	// Next-hop address
 	Via pulumi.StringInput `pulumi:"via"`
 }
 
-func (NetworktemplateVrfInstancesVrfExtraRoutesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworktemplateVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (NetworktemplateVrfInstancesExtraRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutes)(nil)).Elem()
 }
 
-func (i NetworktemplateVrfInstancesVrfExtraRoutesArgs) ToNetworktemplateVrfInstancesVrfExtraRoutesOutput() NetworktemplateVrfInstancesVrfExtraRoutesOutput {
-	return i.ToNetworktemplateVrfInstancesVrfExtraRoutesOutputWithContext(context.Background())
+func (i NetworktemplateVrfInstancesExtraRoutesArgs) ToNetworktemplateVrfInstancesExtraRoutesOutput() NetworktemplateVrfInstancesExtraRoutesOutput {
+	return i.ToNetworktemplateVrfInstancesExtraRoutesOutputWithContext(context.Background())
 }
 
-func (i NetworktemplateVrfInstancesVrfExtraRoutesArgs) ToNetworktemplateVrfInstancesVrfExtraRoutesOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesVrfExtraRoutesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesVrfExtraRoutesOutput)
+func (i NetworktemplateVrfInstancesExtraRoutesArgs) ToNetworktemplateVrfInstancesExtraRoutesOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesExtraRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesExtraRoutesOutput)
 }
 
-// NetworktemplateVrfInstancesVrfExtraRoutesMapInput is an input type that accepts NetworktemplateVrfInstancesVrfExtraRoutesMap and NetworktemplateVrfInstancesVrfExtraRoutesMapOutput values.
-// You can construct a concrete instance of `NetworktemplateVrfInstancesVrfExtraRoutesMapInput` via:
+// NetworktemplateVrfInstancesExtraRoutesMapInput is an input type that accepts NetworktemplateVrfInstancesExtraRoutesMap and NetworktemplateVrfInstancesExtraRoutesMapOutput values.
+// You can construct a concrete instance of `NetworktemplateVrfInstancesExtraRoutesMapInput` via:
 //
-//	NetworktemplateVrfInstancesVrfExtraRoutesMap{ "key": NetworktemplateVrfInstancesVrfExtraRoutesArgs{...} }
-type NetworktemplateVrfInstancesVrfExtraRoutesMapInput interface {
+//	NetworktemplateVrfInstancesExtraRoutesMap{ "key": NetworktemplateVrfInstancesExtraRoutesArgs{...} }
+type NetworktemplateVrfInstancesExtraRoutesMapInput interface {
 	pulumi.Input
 
-	ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutput() NetworktemplateVrfInstancesVrfExtraRoutesMapOutput
-	ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutputWithContext(context.Context) NetworktemplateVrfInstancesVrfExtraRoutesMapOutput
+	ToNetworktemplateVrfInstancesExtraRoutesMapOutput() NetworktemplateVrfInstancesExtraRoutesMapOutput
+	ToNetworktemplateVrfInstancesExtraRoutesMapOutputWithContext(context.Context) NetworktemplateVrfInstancesExtraRoutesMapOutput
 }
 
-type NetworktemplateVrfInstancesVrfExtraRoutesMap map[string]NetworktemplateVrfInstancesVrfExtraRoutesInput
+type NetworktemplateVrfInstancesExtraRoutesMap map[string]NetworktemplateVrfInstancesExtraRoutesInput
 
-func (NetworktemplateVrfInstancesVrfExtraRoutesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworktemplateVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (NetworktemplateVrfInstancesExtraRoutesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateVrfInstancesExtraRoutes)(nil)).Elem()
 }
 
-func (i NetworktemplateVrfInstancesVrfExtraRoutesMap) ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutput() NetworktemplateVrfInstancesVrfExtraRoutesMapOutput {
-	return i.ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutputWithContext(context.Background())
+func (i NetworktemplateVrfInstancesExtraRoutesMap) ToNetworktemplateVrfInstancesExtraRoutesMapOutput() NetworktemplateVrfInstancesExtraRoutesMapOutput {
+	return i.ToNetworktemplateVrfInstancesExtraRoutesMapOutputWithContext(context.Background())
 }
 
-func (i NetworktemplateVrfInstancesVrfExtraRoutesMap) ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesVrfExtraRoutesMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesVrfExtraRoutesMapOutput)
+func (i NetworktemplateVrfInstancesExtraRoutesMap) ToNetworktemplateVrfInstancesExtraRoutesMapOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesExtraRoutesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateVrfInstancesExtraRoutesMapOutput)
 }
 
-type NetworktemplateVrfInstancesVrfExtraRoutesOutput struct{ *pulumi.OutputState }
+type NetworktemplateVrfInstancesExtraRoutesOutput struct{ *pulumi.OutputState }
 
-func (NetworktemplateVrfInstancesVrfExtraRoutesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworktemplateVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (NetworktemplateVrfInstancesExtraRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutes)(nil)).Elem()
 }
 
-func (o NetworktemplateVrfInstancesVrfExtraRoutesOutput) ToNetworktemplateVrfInstancesVrfExtraRoutesOutput() NetworktemplateVrfInstancesVrfExtraRoutesOutput {
+func (o NetworktemplateVrfInstancesExtraRoutesOutput) ToNetworktemplateVrfInstancesExtraRoutesOutput() NetworktemplateVrfInstancesExtraRoutesOutput {
 	return o
 }
 
-func (o NetworktemplateVrfInstancesVrfExtraRoutesOutput) ToNetworktemplateVrfInstancesVrfExtraRoutesOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesVrfExtraRoutesOutput {
+func (o NetworktemplateVrfInstancesExtraRoutesOutput) ToNetworktemplateVrfInstancesExtraRoutesOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesExtraRoutesOutput {
 	return o
 }
 
 // Next-hop address
-func (o NetworktemplateVrfInstancesVrfExtraRoutesOutput) Via() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworktemplateVrfInstancesVrfExtraRoutes) string { return v.Via }).(pulumi.StringOutput)
+func (o NetworktemplateVrfInstancesExtraRoutesOutput) Via() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateVrfInstancesExtraRoutes) string { return v.Via }).(pulumi.StringOutput)
 }
 
-type NetworktemplateVrfInstancesVrfExtraRoutesMapOutput struct{ *pulumi.OutputState }
+type NetworktemplateVrfInstancesExtraRoutesMapOutput struct{ *pulumi.OutputState }
 
-func (NetworktemplateVrfInstancesVrfExtraRoutesMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NetworktemplateVrfInstancesVrfExtraRoutes)(nil)).Elem()
+func (NetworktemplateVrfInstancesExtraRoutesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateVrfInstancesExtraRoutes)(nil)).Elem()
 }
 
-func (o NetworktemplateVrfInstancesVrfExtraRoutesMapOutput) ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutput() NetworktemplateVrfInstancesVrfExtraRoutesMapOutput {
+func (o NetworktemplateVrfInstancesExtraRoutesMapOutput) ToNetworktemplateVrfInstancesExtraRoutesMapOutput() NetworktemplateVrfInstancesExtraRoutesMapOutput {
 	return o
 }
 
-func (o NetworktemplateVrfInstancesVrfExtraRoutesMapOutput) ToNetworktemplateVrfInstancesVrfExtraRoutesMapOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesVrfExtraRoutesMapOutput {
+func (o NetworktemplateVrfInstancesExtraRoutesMapOutput) ToNetworktemplateVrfInstancesExtraRoutesMapOutputWithContext(ctx context.Context) NetworktemplateVrfInstancesExtraRoutesMapOutput {
 	return o
 }
 
-func (o NetworktemplateVrfInstancesVrfExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateVrfInstancesVrfExtraRoutesOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateVrfInstancesVrfExtraRoutes {
-		return vs[0].(map[string]NetworktemplateVrfInstancesVrfExtraRoutes)[vs[1].(string)]
-	}).(NetworktemplateVrfInstancesVrfExtraRoutesOutput)
+func (o NetworktemplateVrfInstancesExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateVrfInstancesExtraRoutesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateVrfInstancesExtraRoutes {
+		return vs[0].(map[string]NetworktemplateVrfInstancesExtraRoutes)[vs[1].(string)]
+	}).(NetworktemplateVrfInstancesExtraRoutesOutput)
 }
 
 type SettingAnalytic struct {
@@ -19492,7 +19757,9 @@ type WlanPortal struct {
 	Password *string `pulumi:"password"`
 	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled *bool `pulumi:"predefinedSponsorsEnabled"`
-	Privacy                   *bool `pulumi:"privacy"`
+	// whether to hide sponsor’s email from list of sponsors
+	PredefinedSponsorsHideEmail *bool `pulumi:"predefinedSponsorsHideEmail"`
+	Privacy                     *bool `pulumi:"privacy"`
 	// when `smsProvider`==`puzzel`
 	PuzzelPassword *string `pulumi:"puzzelPassword"`
 	// when `smsProvider`==`puzzel`
@@ -19515,7 +19782,7 @@ type WlanPortal struct {
 	// interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire *float64 `pulumi:"sponsorExpire"`
 	// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-	SponsorLinkValidityDuration *int `pulumi:"sponsorLinkValidityDuration"`
+	SponsorLinkValidityDuration *string `pulumi:"sponsorLinkValidityDuration"`
 	// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll *bool `pulumi:"sponsorNotifyAll"`
 	// if enabled, guest will get email about sponsor's action (approve/deny)
@@ -19653,7 +19920,9 @@ type WlanPortalArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled pulumi.BoolPtrInput `pulumi:"predefinedSponsorsEnabled"`
-	Privacy                   pulumi.BoolPtrInput `pulumi:"privacy"`
+	// whether to hide sponsor’s email from list of sponsors
+	PredefinedSponsorsHideEmail pulumi.BoolPtrInput `pulumi:"predefinedSponsorsHideEmail"`
+	Privacy                     pulumi.BoolPtrInput `pulumi:"privacy"`
 	// when `smsProvider`==`puzzel`
 	PuzzelPassword pulumi.StringPtrInput `pulumi:"puzzelPassword"`
 	// when `smsProvider`==`puzzel`
@@ -19676,7 +19945,7 @@ type WlanPortalArgs struct {
 	// interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
 	SponsorExpire pulumi.Float64PtrInput `pulumi:"sponsorExpire"`
 	// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-	SponsorLinkValidityDuration pulumi.IntPtrInput `pulumi:"sponsorLinkValidityDuration"`
+	SponsorLinkValidityDuration pulumi.StringPtrInput `pulumi:"sponsorLinkValidityDuration"`
 	// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll pulumi.BoolPtrInput `pulumi:"sponsorNotifyAll"`
 	// if enabled, guest will get email about sponsor's action (approve/deny)
@@ -20011,6 +20280,11 @@ func (o WlanPortalOutput) PredefinedSponsorsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.PredefinedSponsorsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// whether to hide sponsor’s email from list of sponsors
+func (o WlanPortalOutput) PredefinedSponsorsHideEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *bool { return v.PredefinedSponsorsHideEmail }).(pulumi.BoolPtrOutput)
+}
+
 func (o WlanPortalOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.Privacy }).(pulumi.BoolPtrOutput)
 }
@@ -20070,8 +20344,8 @@ func (o WlanPortalOutput) SponsorExpire() pulumi.Float64PtrOutput {
 }
 
 // how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-func (o WlanPortalOutput) SponsorLinkValidityDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanPortal) *int { return v.SponsorLinkValidityDuration }).(pulumi.IntPtrOutput)
+func (o WlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *string { return v.SponsorLinkValidityDuration }).(pulumi.StringPtrOutput)
 }
 
 // whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
@@ -20618,6 +20892,16 @@ func (o WlanPortalPtrOutput) PredefinedSponsorsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// whether to hide sponsor’s email from list of sponsors
+func (o WlanPortalPtrOutput) PredefinedSponsorsHideEmail() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PredefinedSponsorsHideEmail
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o WlanPortalPtrOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -20737,13 +21021,13 @@ func (o WlanPortalPtrOutput) SponsorExpire() pulumi.Float64PtrOutput {
 }
 
 // how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-func (o WlanPortalPtrOutput) SponsorLinkValidityDuration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *int {
+func (o WlanPortalPtrOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SponsorLinkValidityDuration
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 // whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
@@ -22694,6 +22978,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRulePortMirroringMapInput)(nil)).Elem(), NetworktemplateSwitchMatchingRulePortMirroringMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtInput)(nil)).Elem(), NetworktemplateSwitchMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtPtrInput)(nil)).Elem(), NetworktemplateSwitchMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtLocalAccountsInput)(nil)).Elem(), NetworktemplateSwitchMgmtLocalAccountsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtLocalAccountsMapInput)(nil)).Elem(), NetworktemplateSwitchMgmtLocalAccountsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtProtectReInput)(nil)).Elem(), NetworktemplateSwitchMgmtProtectReArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtProtectRePtrInput)(nil)).Elem(), NetworktemplateSwitchMgmtProtectReArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMgmtProtectReCustomInput)(nil)).Elem(), NetworktemplateSwitchMgmtProtectReCustomArgs{})
@@ -22710,8 +22996,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfConfigPtrInput)(nil)).Elem(), NetworktemplateVrfConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesInput)(nil)).Elem(), NetworktemplateVrfInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesMapInput)(nil)).Elem(), NetworktemplateVrfInstancesMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesVrfExtraRoutesInput)(nil)).Elem(), NetworktemplateVrfInstancesVrfExtraRoutesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesVrfExtraRoutesMapInput)(nil)).Elem(), NetworktemplateVrfInstancesVrfExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutesInput)(nil)).Elem(), NetworktemplateVrfInstancesExtraRoutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateVrfInstancesExtraRoutesMapInput)(nil)).Elem(), NetworktemplateVrfInstancesExtraRoutesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAnalyticInput)(nil)).Elem(), SettingAnalyticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAnalyticPtrInput)(nil)).Elem(), SettingAnalyticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingAutoUpgradeInput)(nil)).Elem(), SettingAutoUpgradeArgs{})
@@ -22952,6 +23238,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRulePortMirroringMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtPtrOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtLocalAccountsOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtLocalAccountsMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtProtectReOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtProtectRePtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMgmtProtectReCustomOutput{})
@@ -22968,8 +23256,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateVrfConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateVrfInstancesOutput{})
 	pulumi.RegisterOutputType(NetworktemplateVrfInstancesMapOutput{})
-	pulumi.RegisterOutputType(NetworktemplateVrfInstancesVrfExtraRoutesOutput{})
-	pulumi.RegisterOutputType(NetworktemplateVrfInstancesVrfExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateVrfInstancesExtraRoutesOutput{})
+	pulumi.RegisterOutputType(NetworktemplateVrfInstancesExtraRoutesMapOutput{})
 	pulumi.RegisterOutputType(SettingAnalyticOutput{})
 	pulumi.RegisterOutputType(SettingAnalyticPtrOutput{})
 	pulumi.RegisterOutputType(SettingAutoUpgradeOutput{})

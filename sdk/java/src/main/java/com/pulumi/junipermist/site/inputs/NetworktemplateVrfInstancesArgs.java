@@ -5,7 +5,7 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesVrfExtraRoutesArgs;
+import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesExtraRoutesArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +18,21 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
 
     public static final NetworktemplateVrfInstancesArgs Empty = new NetworktemplateVrfInstancesArgs();
 
+    /**
+     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
+    @Import(name="extraRoutes")
+    private @Nullable Output<Map<String,NetworktemplateVrfInstancesExtraRoutesArgs>> extraRoutes;
+
+    /**
+     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,NetworktemplateVrfInstancesExtraRoutesArgs>>> extraRoutes() {
+        return Optional.ofNullable(this.extraRoutes);
+    }
+
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
@@ -25,26 +40,11 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.networks);
     }
 
-    /**
-     * Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-     * 
-     */
-    @Import(name="vrfExtraRoutes")
-    private @Nullable Output<Map<String,NetworktemplateVrfInstancesVrfExtraRoutesArgs>> vrfExtraRoutes;
-
-    /**
-     * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-     * 
-     */
-    public Optional<Output<Map<String,NetworktemplateVrfInstancesVrfExtraRoutesArgs>>> vrfExtraRoutes() {
-        return Optional.ofNullable(this.vrfExtraRoutes);
-    }
-
     private NetworktemplateVrfInstancesArgs() {}
 
     private NetworktemplateVrfInstancesArgs(NetworktemplateVrfInstancesArgs $) {
+        this.extraRoutes = $.extraRoutes;
         this.networks = $.networks;
-        this.vrfExtraRoutes = $.vrfExtraRoutes;
     }
 
     public static Builder builder() {
@@ -65,6 +65,27 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
             $ = new NetworktemplateVrfInstancesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraRoutes(@Nullable Output<Map<String,NetworktemplateVrfInstancesExtraRoutesArgs>> extraRoutes) {
+            $.extraRoutes = extraRoutes;
+            return this;
+        }
+
+        /**
+         * @param extraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extraRoutes(Map<String,NetworktemplateVrfInstancesExtraRoutesArgs> extraRoutes) {
+            return extraRoutes(Output.of(extraRoutes));
+        }
+
         public Builder networks(@Nullable Output<List<String>> networks) {
             $.networks = networks;
             return this;
@@ -76,27 +97,6 @@ public final class NetworktemplateVrfInstancesArgs extends com.pulumi.resources.
 
         public Builder networks(String... networks) {
             return networks(List.of(networks));
-        }
-
-        /**
-         * @param vrfExtraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vrfExtraRoutes(@Nullable Output<Map<String,NetworktemplateVrfInstancesVrfExtraRoutesArgs>> vrfExtraRoutes) {
-            $.vrfExtraRoutes = vrfExtraRoutes;
-            return this;
-        }
-
-        /**
-         * @param vrfExtraRoutes Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vrfExtraRoutes(Map<String,NetworktemplateVrfInstancesVrfExtraRoutesArgs> vrfExtraRoutes) {
-            return vrfExtraRoutes(Output.of(vrfExtraRoutes));
         }
 
         public NetworktemplateVrfInstancesArgs build() {

@@ -12,8 +12,53 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSwitchMgmtArgs : global::Pulumi.ResourceArgs
     {
-        [Input("configRevert")]
-        public Input<int>? ConfigRevert { get; set; }
+        /// <summary>
+        /// ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        /// </summary>
+        [Input("apAffinityThreshold")]
+        public Input<int>? ApAffinityThreshold { get; set; }
+
+        /// <summary>
+        /// Set Banners for switches. Allows markup formatting
+        /// </summary>
+        [Input("cliBanner")]
+        public Input<string>? CliBanner { get; set; }
+
+        /// <summary>
+        /// Sets timeout for switches
+        /// </summary>
+        [Input("cliIdleTimeout")]
+        public Input<int>? CliIdleTimeout { get; set; }
+
+        /// <summary>
+        /// the rollback timer for commit confirmed
+        /// </summary>
+        [Input("configRevertTimer")]
+        public Input<int>? ConfigRevertTimer { get; set; }
+
+        /// <summary>
+        /// Enable to provide the FQDN with DHCP option 81
+        /// </summary>
+        [Input("dhcpOptionFqdn")]
+        public Input<bool>? DhcpOptionFqdn { get; set; }
+
+        [Input("localAccounts")]
+        private InputMap<Inputs.NetworktemplateSwitchMgmtLocalAccountsArgs>? _localAccounts;
+
+        /// <summary>
+        /// Property key is the user name. For Local user authentication
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateSwitchMgmtLocalAccountsArgs> LocalAccounts
+        {
+            get => _localAccounts ?? (_localAccounts = new InputMap<Inputs.NetworktemplateSwitchMgmtLocalAccountsArgs>());
+            set => _localAccounts = value;
+        }
+
+        [Input("mxedgeProxyHost")]
+        public Input<string>? MxedgeProxyHost { get; set; }
+
+        [Input("mxedgeProxyPort")]
+        public Input<int>? MxedgeProxyPort { get; set; }
 
         /// <summary>
         /// restrict inbound-traffic to host
@@ -37,6 +82,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("tacacs")]
         public Input<Inputs.NetworktemplateSwitchMgmtTacacsArgs>? Tacacs { get; set; }
+
+        /// <summary>
+        /// to use mxedge as proxy
+        /// </summary>
+        [Input("useMxedgeProxy")]
+        public Input<bool>? UseMxedgeProxy { get; set; }
 
         public NetworktemplateSwitchMgmtArgs()
         {

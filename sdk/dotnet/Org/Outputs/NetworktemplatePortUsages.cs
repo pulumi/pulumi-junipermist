@@ -141,6 +141,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         /// </summary>
         public readonly bool? StpEdge;
+        public readonly bool? StpNoRootPort;
+        public readonly bool? StpP2p;
         /// <summary>
         /// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         /// </summary>
@@ -210,6 +212,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? stpEdge,
 
+            bool? stpNoRootPort,
+
+            bool? stpP2p,
+
             string? voipNetwork)
         {
             AllNetworks = allNetworks;
@@ -243,6 +249,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Speed = speed;
             StormControl = stormControl;
             StpEdge = stpEdge;
+            StpNoRootPort = stpNoRootPort;
+            StpP2p = stpP2p;
             VoipNetwork = voipNetwork;
         }
     }

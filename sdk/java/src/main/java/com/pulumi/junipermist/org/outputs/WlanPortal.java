@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -241,6 +240,11 @@ public final class WlanPortal {
      * 
      */
     private @Nullable Boolean predefinedSponsorsEnabled;
+    /**
+     * @return whether to hide sponsor’s email from list of sponsors
+     * 
+     */
+    private @Nullable Boolean predefinedSponsorsHideEmail;
     private @Nullable Boolean privacy;
     /**
      * @return when `sms_provider`==`puzzel`
@@ -297,7 +301,7 @@ public final class WlanPortal {
      * @return how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
      * 
      */
-    private @Nullable Integer sponsorLinkValidityDuration;
+    private @Nullable String sponsorLinkValidityDuration;
     /**
      * @return whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
@@ -685,6 +689,13 @@ public final class WlanPortal {
     public Optional<Boolean> predefinedSponsorsEnabled() {
         return Optional.ofNullable(this.predefinedSponsorsEnabled);
     }
+    /**
+     * @return whether to hide sponsor’s email from list of sponsors
+     * 
+     */
+    public Optional<Boolean> predefinedSponsorsHideEmail() {
+        return Optional.ofNullable(this.predefinedSponsorsHideEmail);
+    }
     public Optional<Boolean> privacy() {
         return Optional.ofNullable(this.privacy);
     }
@@ -765,7 +776,7 @@ public final class WlanPortal {
      * @return how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
      * 
      */
-    public Optional<Integer> sponsorLinkValidityDuration() {
+    public Optional<String> sponsorLinkValidityDuration() {
         return Optional.ofNullable(this.sponsorLinkValidityDuration);
     }
     /**
@@ -924,6 +935,7 @@ public final class WlanPortal {
         private @Nullable Double passphraseExpire;
         private @Nullable String password;
         private @Nullable Boolean predefinedSponsorsEnabled;
+        private @Nullable Boolean predefinedSponsorsHideEmail;
         private @Nullable Boolean privacy;
         private @Nullable String puzzelPassword;
         private @Nullable String puzzelServiceId;
@@ -936,7 +948,7 @@ public final class WlanPortal {
         private @Nullable List<String> sponsorEmailDomains;
         private @Nullable Boolean sponsorEnabled;
         private @Nullable Double sponsorExpire;
-        private @Nullable Integer sponsorLinkValidityDuration;
+        private @Nullable String sponsorLinkValidityDuration;
         private @Nullable Boolean sponsorNotifyAll;
         private @Nullable Boolean sponsorStatusNotify;
         private @Nullable Map<String,String> sponsors;
@@ -999,6 +1011,7 @@ public final class WlanPortal {
     	      this.passphraseExpire = defaults.passphraseExpire;
     	      this.password = defaults.password;
     	      this.predefinedSponsorsEnabled = defaults.predefinedSponsorsEnabled;
+    	      this.predefinedSponsorsHideEmail = defaults.predefinedSponsorsHideEmail;
     	      this.privacy = defaults.privacy;
     	      this.puzzelPassword = defaults.puzzelPassword;
     	      this.puzzelServiceId = defaults.puzzelServiceId;
@@ -1306,6 +1319,12 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
+        public Builder predefinedSponsorsHideEmail(@Nullable Boolean predefinedSponsorsHideEmail) {
+
+            this.predefinedSponsorsHideEmail = predefinedSponsorsHideEmail;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privacy(@Nullable Boolean privacy) {
 
             this.privacy = privacy;
@@ -1381,7 +1400,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder sponsorLinkValidityDuration(@Nullable Integer sponsorLinkValidityDuration) {
+        public Builder sponsorLinkValidityDuration(@Nullable String sponsorLinkValidityDuration) {
 
             this.sponsorLinkValidityDuration = sponsorLinkValidityDuration;
             return this;
@@ -1522,6 +1541,7 @@ public final class WlanPortal {
             _resultValue.passphraseExpire = passphraseExpire;
             _resultValue.password = password;
             _resultValue.predefinedSponsorsEnabled = predefinedSponsorsEnabled;
+            _resultValue.predefinedSponsorsHideEmail = predefinedSponsorsHideEmail;
             _resultValue.privacy = privacy;
             _resultValue.puzzelPassword = puzzelPassword;
             _resultValue.puzzelServiceId = puzzelServiceId;

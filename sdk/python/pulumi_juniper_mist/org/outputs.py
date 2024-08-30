@@ -211,6 +211,7 @@ __all__ = [
     'NetworktemplateSwitchMatchingRulePortConfig',
     'NetworktemplateSwitchMatchingRulePortMirroring',
     'NetworktemplateSwitchMgmt',
+    'NetworktemplateSwitchMgmtLocalAccounts',
     'NetworktemplateSwitchMgmtProtectRe',
     'NetworktemplateSwitchMgmtProtectReCustom',
     'NetworktemplateSwitchMgmtTacacs',
@@ -13450,6 +13451,10 @@ class NetworktemplatePortUsages(dict):
             suggest = "storm_control"
         elif key == "stpEdge":
             suggest = "stp_edge"
+        elif key == "stpNoRootPort":
+            suggest = "stp_no_root_port"
+        elif key == "stpP2p":
+            suggest = "stp_p2p"
         elif key == "voipNetwork":
             suggest = "voip_network"
 
@@ -13496,6 +13501,8 @@ class NetworktemplatePortUsages(dict):
                  speed: Optional[str] = None,
                  storm_control: Optional['outputs.NetworktemplatePortUsagesStormControl'] = None,
                  stp_edge: Optional[bool] = None,
+                 stp_no_root_port: Optional[bool] = None,
+                 stp_p2p: Optional[bool] = None,
                  voip_network: Optional[str] = None):
         """
         :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
@@ -13597,6 +13604,10 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "storm_control", storm_control)
         if stp_edge is not None:
             pulumi.set(__self__, "stp_edge", stp_edge)
+        if stp_no_root_port is not None:
+            pulumi.set(__self__, "stp_no_root_port", stp_no_root_port)
+        if stp_p2p is not None:
+            pulumi.set(__self__, "stp_p2p", stp_p2p)
         if voip_network is not None:
             pulumi.set(__self__, "voip_network", voip_network)
 
@@ -13851,6 +13862,16 @@ class NetworktemplatePortUsages(dict):
         Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         """
         return pulumi.get(self, "stp_edge")
+
+    @property
+    @pulumi.getter(name="stpNoRootPort")
+    def stp_no_root_port(self) -> Optional[bool]:
+        return pulumi.get(self, "stp_no_root_port")
+
+    @property
+    @pulumi.getter(name="stpP2p")
+    def stp_p2p(self) -> Optional[bool]:
+        return pulumi.get(self, "stp_p2p")
 
     @property
     @pulumi.getter(name="voipNetwork")
@@ -16467,12 +16488,28 @@ class NetworktemplateSwitchMgmt(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configRevert":
-            suggest = "config_revert"
+        if key == "apAffinityThreshold":
+            suggest = "ap_affinity_threshold"
+        elif key == "cliBanner":
+            suggest = "cli_banner"
+        elif key == "cliIdleTimeout":
+            suggest = "cli_idle_timeout"
+        elif key == "configRevertTimer":
+            suggest = "config_revert_timer"
+        elif key == "dhcpOptionFqdn":
+            suggest = "dhcp_option_fqdn"
+        elif key == "localAccounts":
+            suggest = "local_accounts"
+        elif key == "mxedgeProxyHost":
+            suggest = "mxedge_proxy_host"
+        elif key == "mxedgeProxyPort":
+            suggest = "mxedge_proxy_port"
         elif key == "protectRe":
             suggest = "protect_re"
         elif key == "rootPassword":
             suggest = "root_password"
+        elif key == "useMxedgeProxy":
+            suggest = "use_mxedge_proxy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworktemplateSwitchMgmt. Access the value via the '{suggest}' property getter instead.")
@@ -16486,28 +16523,112 @@ class NetworktemplateSwitchMgmt(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config_revert: Optional[int] = None,
+                 ap_affinity_threshold: Optional[int] = None,
+                 cli_banner: Optional[str] = None,
+                 cli_idle_timeout: Optional[int] = None,
+                 config_revert_timer: Optional[int] = None,
+                 dhcp_option_fqdn: Optional[bool] = None,
+                 local_accounts: Optional[Mapping[str, 'outputs.NetworktemplateSwitchMgmtLocalAccounts']] = None,
+                 mxedge_proxy_host: Optional[str] = None,
+                 mxedge_proxy_port: Optional[int] = None,
                  protect_re: Optional['outputs.NetworktemplateSwitchMgmtProtectRe'] = None,
                  root_password: Optional[str] = None,
-                 tacacs: Optional['outputs.NetworktemplateSwitchMgmtTacacs'] = None):
+                 tacacs: Optional['outputs.NetworktemplateSwitchMgmtTacacs'] = None,
+                 use_mxedge_proxy: Optional[bool] = None):
         """
+        :param int ap_affinity_threshold: ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        :param str cli_banner: Set Banners for switches. Allows markup formatting
+        :param int cli_idle_timeout: Sets timeout for switches
+        :param int config_revert_timer: the rollback timer for commit confirmed
+        :param bool dhcp_option_fqdn: Enable to provide the FQDN with DHCP option 81
+        :param Mapping[str, 'NetworktemplateSwitchMgmtLocalAccountsArgs'] local_accounts: Property key is the user name. For Local user authentication
         :param 'NetworktemplateSwitchMgmtProtectReArgs' protect_re: restrict inbound-traffic to host
                when enabled, all traffic that is not essential to our operation will be dropped 
                e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        :param bool use_mxedge_proxy: to use mxedge as proxy
         """
-        if config_revert is not None:
-            pulumi.set(__self__, "config_revert", config_revert)
+        if ap_affinity_threshold is not None:
+            pulumi.set(__self__, "ap_affinity_threshold", ap_affinity_threshold)
+        if cli_banner is not None:
+            pulumi.set(__self__, "cli_banner", cli_banner)
+        if cli_idle_timeout is not None:
+            pulumi.set(__self__, "cli_idle_timeout", cli_idle_timeout)
+        if config_revert_timer is not None:
+            pulumi.set(__self__, "config_revert_timer", config_revert_timer)
+        if dhcp_option_fqdn is not None:
+            pulumi.set(__self__, "dhcp_option_fqdn", dhcp_option_fqdn)
+        if local_accounts is not None:
+            pulumi.set(__self__, "local_accounts", local_accounts)
+        if mxedge_proxy_host is not None:
+            pulumi.set(__self__, "mxedge_proxy_host", mxedge_proxy_host)
+        if mxedge_proxy_port is not None:
+            pulumi.set(__self__, "mxedge_proxy_port", mxedge_proxy_port)
         if protect_re is not None:
             pulumi.set(__self__, "protect_re", protect_re)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
         if tacacs is not None:
             pulumi.set(__self__, "tacacs", tacacs)
+        if use_mxedge_proxy is not None:
+            pulumi.set(__self__, "use_mxedge_proxy", use_mxedge_proxy)
 
     @property
-    @pulumi.getter(name="configRevert")
-    def config_revert(self) -> Optional[int]:
-        return pulumi.get(self, "config_revert")
+    @pulumi.getter(name="apAffinityThreshold")
+    def ap_affinity_threshold(self) -> Optional[int]:
+        """
+        ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        """
+        return pulumi.get(self, "ap_affinity_threshold")
+
+    @property
+    @pulumi.getter(name="cliBanner")
+    def cli_banner(self) -> Optional[str]:
+        """
+        Set Banners for switches. Allows markup formatting
+        """
+        return pulumi.get(self, "cli_banner")
+
+    @property
+    @pulumi.getter(name="cliIdleTimeout")
+    def cli_idle_timeout(self) -> Optional[int]:
+        """
+        Sets timeout for switches
+        """
+        return pulumi.get(self, "cli_idle_timeout")
+
+    @property
+    @pulumi.getter(name="configRevertTimer")
+    def config_revert_timer(self) -> Optional[int]:
+        """
+        the rollback timer for commit confirmed
+        """
+        return pulumi.get(self, "config_revert_timer")
+
+    @property
+    @pulumi.getter(name="dhcpOptionFqdn")
+    def dhcp_option_fqdn(self) -> Optional[bool]:
+        """
+        Enable to provide the FQDN with DHCP option 81
+        """
+        return pulumi.get(self, "dhcp_option_fqdn")
+
+    @property
+    @pulumi.getter(name="localAccounts")
+    def local_accounts(self) -> Optional[Mapping[str, 'outputs.NetworktemplateSwitchMgmtLocalAccounts']]:
+        """
+        Property key is the user name. For Local user authentication
+        """
+        return pulumi.get(self, "local_accounts")
+
+    @property
+    @pulumi.getter(name="mxedgeProxyHost")
+    def mxedge_proxy_host(self) -> Optional[str]:
+        return pulumi.get(self, "mxedge_proxy_host")
+
+    @property
+    @pulumi.getter(name="mxedgeProxyPort")
+    def mxedge_proxy_port(self) -> Optional[int]:
+        return pulumi.get(self, "mxedge_proxy_port")
 
     @property
     @pulumi.getter(name="protectRe")
@@ -16528,6 +16649,41 @@ class NetworktemplateSwitchMgmt(dict):
     @pulumi.getter
     def tacacs(self) -> Optional['outputs.NetworktemplateSwitchMgmtTacacs']:
         return pulumi.get(self, "tacacs")
+
+    @property
+    @pulumi.getter(name="useMxedgeProxy")
+    def use_mxedge_proxy(self) -> Optional[bool]:
+        """
+        to use mxedge as proxy
+        """
+        return pulumi.get(self, "use_mxedge_proxy")
+
+
+@pulumi.output_type
+class NetworktemplateSwitchMgmtLocalAccounts(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 role: Optional[str] = None):
+        """
+        :param str role: enum: `admin`, `helpdesk`, `none`, `read`
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        enum: `admin`, `helpdesk`, `none`, `read`
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -20986,6 +21142,8 @@ class WlanPortal(dict):
             suggest = "passphrase_expire"
         elif key == "predefinedSponsorsEnabled":
             suggest = "predefined_sponsors_enabled"
+        elif key == "predefinedSponsorsHideEmail":
+            suggest = "predefined_sponsors_hide_email"
         elif key == "puzzelPassword":
             suggest = "puzzel_password"
         elif key == "puzzelServiceId":
@@ -21095,6 +21253,7 @@ class WlanPortal(dict):
                  passphrase_expire: Optional[float] = None,
                  password: Optional[str] = None,
                  predefined_sponsors_enabled: Optional[bool] = None,
+                 predefined_sponsors_hide_email: Optional[bool] = None,
                  privacy: Optional[bool] = None,
                  puzzel_password: Optional[str] = None,
                  puzzel_service_id: Optional[str] = None,
@@ -21107,7 +21266,7 @@ class WlanPortal(dict):
                  sponsor_email_domains: Optional[Sequence[str]] = None,
                  sponsor_enabled: Optional[bool] = None,
                  sponsor_expire: Optional[float] = None,
-                 sponsor_link_validity_duration: Optional[int] = None,
+                 sponsor_link_validity_duration: Optional[str] = None,
                  sponsor_notify_all: Optional[bool] = None,
                  sponsor_status_notify: Optional[bool] = None,
                  sponsors: Optional[Mapping[str, str]] = None,
@@ -21173,6 +21332,7 @@ class WlanPortal(dict):
         :param float passphrase_expire: interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
         :param str password: passphrase
         :param bool predefined_sponsors_enabled: whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        :param bool predefined_sponsors_hide_email: whether to hide sponsor’s email from list of sponsors
         :param str puzzel_password: when `sms_provider`==`puzzel`
         :param str puzzel_service_id: when `sms_provider`==`puzzel`
         :param str puzzel_username: when `sms_provider`==`puzzel`
@@ -21183,7 +21343,7 @@ class WlanPortal(dict):
         :param Sequence[str] sponsor_email_domains: list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         :param bool sponsor_enabled: whether sponsor is enabled
         :param float sponsor_expire: interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-        :param int sponsor_link_validity_duration: how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        :param str sponsor_link_validity_duration: how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         :param bool sponsor_notify_all: whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         :param bool sponsor_status_notify: if enabled, guest will get email about sponsor's action (approve/deny)
         :param Mapping[str, str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
@@ -21288,6 +21448,8 @@ class WlanPortal(dict):
             pulumi.set(__self__, "password", password)
         if predefined_sponsors_enabled is not None:
             pulumi.set(__self__, "predefined_sponsors_enabled", predefined_sponsors_enabled)
+        if predefined_sponsors_hide_email is not None:
+            pulumi.set(__self__, "predefined_sponsors_hide_email", predefined_sponsors_hide_email)
         if privacy is not None:
             pulumi.set(__self__, "privacy", privacy)
         if puzzel_password is not None:
@@ -21703,6 +21865,14 @@ class WlanPortal(dict):
         return pulumi.get(self, "predefined_sponsors_enabled")
 
     @property
+    @pulumi.getter(name="predefinedSponsorsHideEmail")
+    def predefined_sponsors_hide_email(self) -> Optional[bool]:
+        """
+        whether to hide sponsor’s email from list of sponsors
+        """
+        return pulumi.get(self, "predefined_sponsors_hide_email")
+
+    @property
     @pulumi.getter
     def privacy(self) -> Optional[bool]:
         return pulumi.get(self, "privacy")
@@ -21794,7 +21964,7 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="sponsorLinkValidityDuration")
-    def sponsor_link_validity_duration(self) -> Optional[int]:
+    def sponsor_link_validity_duration(self) -> Optional[str]:
         """
         how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         """

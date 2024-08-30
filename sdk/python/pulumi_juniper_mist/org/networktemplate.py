@@ -52,6 +52,7 @@ class NetworktemplateArgs:
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
+        :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -306,6 +307,9 @@ class NetworktemplateArgs:
     @property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']]:
+        """
+        Switch settings
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
@@ -373,6 +377,7 @@ class _NetworktemplateState:
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
+        :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
         if acl_policies is not None:
@@ -628,6 +633,9 @@ class _NetworktemplateState:
     @property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']]:
+        """
+        Switch settings
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
@@ -689,11 +697,9 @@ class Networktemplate(pulumi.CustomResource):
 
         ## Import
 
-        ```sh
-        $ pulumi import junipermist:org/networktemplate:Networktemplate Using terraform import, import `mist_org_networktemplate` using the `import` command:
-        ```
+        Using `pulumi import`, import `mist_org_networktemplate` with:
 
-        Gateway cluster can be imported by specifying the org_id and the networktemplate_id
+        Org Network Template can be imported by specifying the org_id and the networktemplate_id
 
         ```sh
         $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
@@ -713,6 +719,7 @@ class Networktemplate(pulumi.CustomResource):
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
+        :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         ...
@@ -726,11 +733,9 @@ class Networktemplate(pulumi.CustomResource):
 
         ## Import
 
-        ```sh
-        $ pulumi import junipermist:org/networktemplate:Networktemplate Using terraform import, import `mist_org_networktemplate` using the `import` command:
-        ```
+        Using `pulumi import`, import `mist_org_networktemplate` with:
 
-        Gateway cluster can be imported by specifying the org_id and the networktemplate_id
+        Org Network Template can be imported by specifying the org_id and the networktemplate_id
 
         ```sh
         $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
@@ -857,6 +862,7 @@ class Networktemplate(pulumi.CustomResource):
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
+        :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1019,6 +1025,9 @@ class Networktemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Output[Optional['outputs.NetworktemplateSwitchMgmt']]:
+        """
+        Switch settings
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @property

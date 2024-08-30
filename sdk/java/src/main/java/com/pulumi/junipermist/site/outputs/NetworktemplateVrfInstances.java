@@ -4,7 +4,7 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstancesVrfExtraRoutes;
+import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstancesExtraRoutes;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -13,23 +13,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateVrfInstances {
-    private @Nullable List<String> networks;
     /**
      * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
      * 
      */
-    private @Nullable Map<String,NetworktemplateVrfInstancesVrfExtraRoutes> vrfExtraRoutes;
+    private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes;
+    private @Nullable List<String> networks;
 
     private NetworktemplateVrfInstances() {}
-    public List<String> networks() {
-        return this.networks == null ? List.of() : this.networks;
-    }
     /**
      * @return Property key is the destination CIDR (e.g. &#34;10.0.0.0/8&#34;)
      * 
      */
-    public Map<String,NetworktemplateVrfInstancesVrfExtraRoutes> vrfExtraRoutes() {
-        return this.vrfExtraRoutes == null ? Map.of() : this.vrfExtraRoutes;
+    public Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes() {
+        return this.extraRoutes == null ? Map.of() : this.extraRoutes;
+    }
+    public List<String> networks() {
+        return this.networks == null ? List.of() : this.networks;
     }
 
     public static Builder builder() {
@@ -41,15 +41,21 @@ public final class NetworktemplateVrfInstances {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes;
         private @Nullable List<String> networks;
-        private @Nullable Map<String,NetworktemplateVrfInstancesVrfExtraRoutes> vrfExtraRoutes;
         public Builder() {}
         public Builder(NetworktemplateVrfInstances defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.extraRoutes = defaults.extraRoutes;
     	      this.networks = defaults.networks;
-    	      this.vrfExtraRoutes = defaults.vrfExtraRoutes;
         }
 
+        @CustomType.Setter
+        public Builder extraRoutes(@Nullable Map<String,NetworktemplateVrfInstancesExtraRoutes> extraRoutes) {
+
+            this.extraRoutes = extraRoutes;
+            return this;
+        }
         @CustomType.Setter
         public Builder networks(@Nullable List<String> networks) {
 
@@ -59,16 +65,10 @@ public final class NetworktemplateVrfInstances {
         public Builder networks(String... networks) {
             return networks(List.of(networks));
         }
-        @CustomType.Setter
-        public Builder vrfExtraRoutes(@Nullable Map<String,NetworktemplateVrfInstancesVrfExtraRoutes> vrfExtraRoutes) {
-
-            this.vrfExtraRoutes = vrfExtraRoutes;
-            return this;
-        }
         public NetworktemplateVrfInstances build() {
             final var _resultValue = new NetworktemplateVrfInstances();
+            _resultValue.extraRoutes = extraRoutes;
             _resultValue.networks = networks;
-            _resultValue.vrfExtraRoutes = vrfExtraRoutes;
             return _resultValue;
         }
     }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Site.Inputs
 {
 
-    public sealed class NetworktemplateVrfInstancesVrfExtraRoutesGetArgs : global::Pulumi.ResourceArgs
+    public sealed class NetworktemplateVrfInstancesExtraRoutesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Next-hop address
@@ -18,9 +18,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("via", required: true)]
         public Input<string> Via { get; set; } = null!;
 
-        public NetworktemplateVrfInstancesVrfExtraRoutesGetArgs()
+        public NetworktemplateVrfInstancesExtraRoutesGetArgs()
         {
         }
-        public static new NetworktemplateVrfInstancesVrfExtraRoutesGetArgs Empty => new NetworktemplateVrfInstancesVrfExtraRoutesGetArgs();
+        public static new NetworktemplateVrfInstancesExtraRoutesGetArgs Empty => new NetworktemplateVrfInstancesExtraRoutesGetArgs();
     }
 }

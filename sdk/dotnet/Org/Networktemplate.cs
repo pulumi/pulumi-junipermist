@@ -14,11 +14,9 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Import
     /// 
-    /// ```sh
-    /// $ pulumi import junipermist:org/networktemplate:Networktemplate Using terraform import, import `mist_org_networktemplate` using the `import` command:
-    /// ```
+    /// Using `pulumi import`, import `mist_org_networktemplate` with:
     /// 
-    /// Gateway cluster can be imported by specifying the org_id and the networktemplate_id
+    /// Org Network Template can be imported by specifying the org_id and the networktemplate_id
     /// 
     /// ```sh
     /// $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
@@ -118,6 +116,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
 
+        /// <summary>
+        /// Switch settings
+        /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
@@ -331,6 +332,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
 
+        /// <summary>
+        /// Switch settings
+        /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
@@ -511,6 +515,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
 
+        /// <summary>
+        /// Switch settings
+        /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 

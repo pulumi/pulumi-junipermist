@@ -14,11 +14,9 @@ namespace Pulumi.JuniperMist.Site
     /// 
     /// ## Import
     /// 
-    /// ```sh
-    /// $ pulumi import junipermist:site/networktemplate:Networktemplate Using terraform import, import `mist_site_networktemplate` using the `import` command:
-    /// ```
+    /// Using `pulumi import`, import `mist_site_networktemplate` with:
     /// 
-    /// Gateway cluster can be imported by specifying the site_id
+    /// Site Network Template can be imported by specifying the site_id
     /// 
     /// ```sh
     /// $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
@@ -103,6 +101,12 @@ namespace Pulumi.JuniperMist.Site
         [Output("remoteSyslog")]
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Output("removeExistingConfigs")]
+        public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
+
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
@@ -115,6 +119,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
 
+        /// <summary>
+        /// Switch settings
+        /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
@@ -316,6 +323,12 @@ namespace Pulumi.JuniperMist.Site
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Input("removeExistingConfigs")]
+        public Input<bool>? RemoveExistingConfigs { get; set; }
+
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -328,6 +341,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
 
+        /// <summary>
+        /// Switch settings
+        /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
@@ -496,6 +512,12 @@ namespace Pulumi.JuniperMist.Site
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
 
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Input("removeExistingConfigs")]
+        public Input<bool>? RemoveExistingConfigs { get; set; }
+
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -508,6 +530,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
 
+        /// <summary>
+        /// Switch settings
+        /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 

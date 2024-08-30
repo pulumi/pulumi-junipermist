@@ -11,11 +11,9 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import junipermist:site/networktemplate:Networktemplate Using terraform import, import `mist_site_networktemplate` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_site_networktemplate` with:
  *
- * Gateway cluster can be imported by specifying the site_id
+ * Site Network Template can be imported by specifying the site_id
  *
  * ```sh
  * $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
@@ -95,12 +93,19 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly radiusConfig!: pulumi.Output<outputs.site.NetworktemplateRadiusConfig | undefined>;
     public readonly remoteSyslog!: pulumi.Output<outputs.site.NetworktemplateRemoteSyslog | undefined>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     public readonly siteId!: pulumi.Output<string>;
     public readonly snmpConfig!: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
      * Switch template
      */
     public readonly switchMatching!: pulumi.Output<outputs.site.NetworktemplateSwitchMatching | undefined>;
+    /**
+     * Switch settings
+     */
     public readonly switchMgmt!: pulumi.Output<outputs.site.NetworktemplateSwitchMgmt | undefined>;
     public readonly uplinkPortConfig!: pulumi.Output<outputs.site.NetworktemplateUplinkPortConfig | undefined>;
     public readonly vrfConfig!: pulumi.Output<outputs.site.NetworktemplateVrfConfig | undefined>;
@@ -137,6 +142,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["portUsages"] = state ? state.portUsages : undefined;
             resourceInputs["radiusConfig"] = state ? state.radiusConfig : undefined;
             resourceInputs["remoteSyslog"] = state ? state.remoteSyslog : undefined;
+            resourceInputs["removeExistingConfigs"] = state ? state.removeExistingConfigs : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["snmpConfig"] = state ? state.snmpConfig : undefined;
             resourceInputs["switchMatching"] = state ? state.switchMatching : undefined;
@@ -161,6 +167,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["portUsages"] = args ? args.portUsages : undefined;
             resourceInputs["radiusConfig"] = args ? args.radiusConfig : undefined;
             resourceInputs["remoteSyslog"] = args ? args.remoteSyslog : undefined;
+            resourceInputs["removeExistingConfigs"] = args ? args.removeExistingConfigs : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["snmpConfig"] = args ? args.snmpConfig : undefined;
             resourceInputs["switchMatching"] = args ? args.switchMatching : undefined;
@@ -224,12 +231,19 @@ export interface NetworktemplateState {
      */
     radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    removeExistingConfigs?: pulumi.Input<boolean>;
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
      * Switch template
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
+    /**
+     * Switch settings
+     */
     switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
     uplinkPortConfig?: pulumi.Input<inputs.site.NetworktemplateUplinkPortConfig>;
     vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;
@@ -289,12 +303,19 @@ export interface NetworktemplateArgs {
      */
     radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    removeExistingConfigs?: pulumi.Input<boolean>;
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
      * Switch template
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
+    /**
+     * Switch settings
+     */
     switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
     uplinkPortConfig?: pulumi.Input<inputs.site.NetworktemplateUplinkPortConfig>;
     vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;

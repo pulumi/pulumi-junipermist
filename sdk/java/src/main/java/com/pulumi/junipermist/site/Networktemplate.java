@@ -27,6 +27,7 @@ import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMgmt;
 import com.pulumi.junipermist.site.outputs.NetworktemplateUplinkPortConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateVrfConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstances;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -109,11 +110,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ```sh
- * $ pulumi import junipermist:site/networktemplate:Networktemplate Using terraform import, import `mist_site_networktemplate` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_site_networktemplate` with:
  * 
- * Gateway cluster can be imported by specifying the site_id
+ * Site Network Template can be imported by specifying the site_id
  * 
  * ```sh
  * $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
@@ -294,6 +293,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<NetworktemplateRemoteSyslog>> remoteSyslog() {
         return Codegen.optional(this.remoteSyslog);
     }
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    @Export(name="removeExistingConfigs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> removeExistingConfigs;
+
+    /**
+     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    public Output<Boolean> removeExistingConfigs() {
+        return this.removeExistingConfigs;
+    }
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
@@ -320,9 +333,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {
         return Codegen.optional(this.switchMatching);
     }
+    /**
+     * Switch settings
+     * 
+     */
     @Export(name="switchMgmt", refs={NetworktemplateSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMgmt> switchMgmt;
 
+    /**
+     * @return Switch settings
+     * 
+     */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
     }

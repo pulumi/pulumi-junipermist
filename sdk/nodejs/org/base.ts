@@ -18,11 +18,9 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import junipermist:org/base:base Using terraform import, import `mist_org` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_org` with:
  *
- * Gateway cluster can be imported by specifying the org_id
+ * Organization can be imported by specifying the org_id
  *
  * ```sh
  * $ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

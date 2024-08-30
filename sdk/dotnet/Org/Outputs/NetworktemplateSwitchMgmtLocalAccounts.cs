@@ -7,21 +7,26 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.JuniperMist.Site.Outputs
+namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class NetworktemplateVrfInstancesVrfExtraRoutes
+    public sealed class NetworktemplateSwitchMgmtLocalAccounts
     {
+        public readonly string? Password;
         /// <summary>
-        /// Next-hop address
+        /// enum: `admin`, `helpdesk`, `none`, `read`
         /// </summary>
-        public readonly string Via;
+        public readonly string? Role;
 
         [OutputConstructor]
-        private NetworktemplateVrfInstancesVrfExtraRoutes(string via)
+        private NetworktemplateSwitchMgmtLocalAccounts(
+            string? password,
+
+            string? role)
         {
-            Via = via;
+            Password = password;
+            Role = role;
         }
     }
 }

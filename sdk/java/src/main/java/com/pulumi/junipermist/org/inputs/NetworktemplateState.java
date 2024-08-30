@@ -256,9 +256,17 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.switchMatching);
     }
 
+    /**
+     * Switch settings
+     * 
+     */
     @Import(name="switchMgmt")
     private @Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt;
 
+    /**
+     * @return Switch settings
+     * 
+     */
     public Optional<Output<NetworktemplateSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
     }
@@ -679,11 +687,23 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return switchMatching(Output.of(switchMatching));
         }
 
+        /**
+         * @param switchMgmt Switch settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(@Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt) {
             $.switchMgmt = switchMgmt;
             return this;
         }
 
+        /**
+         * @param switchMgmt Switch settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(NetworktemplateSwitchMgmtArgs switchMgmt) {
             return switchMgmt(Output.of(switchMgmt));
         }

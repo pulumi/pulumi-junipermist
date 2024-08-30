@@ -27,11 +27,9 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ```sh
- * $ pulumi import junipermist:org/webhook:Webhook Using terraform import, import `mist_org_webhook` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_org_webhook` with:
  * 
- * Gateway cluster can be imported by specifying the org_id and the webhook_id
+ * Org Webhook can be imported by specifying the org_id and the webhook_id
  * 
  * ```sh
  * $ pulumi import junipermist:org/webhook:Webhook webhook_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

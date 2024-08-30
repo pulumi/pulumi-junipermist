@@ -9,14 +9,14 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class NetworktemplateVrfInstancesVrfExtraRoutes {
+public final class NetworktemplateVrfInstancesExtraRoutes {
     /**
      * @return Next-hop address
      * 
      */
     private String via;
 
-    private NetworktemplateVrfInstancesVrfExtraRoutes() {}
+    private NetworktemplateVrfInstancesExtraRoutes() {}
     /**
      * @return Next-hop address
      * 
@@ -29,14 +29,14 @@ public final class NetworktemplateVrfInstancesVrfExtraRoutes {
         return new Builder();
     }
 
-    public static Builder builder(NetworktemplateVrfInstancesVrfExtraRoutes defaults) {
+    public static Builder builder(NetworktemplateVrfInstancesExtraRoutes defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String via;
         public Builder() {}
-        public Builder(NetworktemplateVrfInstancesVrfExtraRoutes defaults) {
+        public Builder(NetworktemplateVrfInstancesExtraRoutes defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.via = defaults.via;
         }
@@ -44,13 +44,13 @@ public final class NetworktemplateVrfInstancesVrfExtraRoutes {
         @CustomType.Setter
         public Builder via(String via) {
             if (via == null) {
-              throw new MissingRequiredPropertyException("NetworktemplateVrfInstancesVrfExtraRoutes", "via");
+              throw new MissingRequiredPropertyException("NetworktemplateVrfInstancesExtraRoutes", "via");
             }
             this.via = via;
             return this;
         }
-        public NetworktemplateVrfInstancesVrfExtraRoutes build() {
-            final var _resultValue = new NetworktemplateVrfInstancesVrfExtraRoutes();
+        public NetworktemplateVrfInstancesExtraRoutes build() {
+            final var _resultValue = new NetworktemplateVrfInstancesExtraRoutes();
             _resultValue.via = via;
             return _resultValue;
         }

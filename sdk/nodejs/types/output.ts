@@ -8167,6 +8167,8 @@ export namespace org {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge: boolean;
+        stpNoRootPort: boolean;
+        stpP2p: boolean;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -8734,7 +8736,32 @@ export namespace org {
     }
 
     export interface NetworktemplateSwitchMgmt {
-        configRevert: number;
+        /**
+         * ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         */
+        apAffinityThreshold: number;
+        /**
+         * Set Banners for switches. Allows markup formatting
+         */
+        cliBanner?: string;
+        /**
+         * Sets timeout for switches
+         */
+        cliIdleTimeout?: number;
+        /**
+         * the rollback timer for commit confirmed
+         */
+        configRevertTimer: number;
+        /**
+         * Enable to provide the FQDN with DHCP option 81
+         */
+        dhcpOptionFqdn: boolean;
+        /**
+         * Property key is the user name. For Local user authentication
+         */
+        localAccounts?: {[key: string]: outputs.org.NetworktemplateSwitchMgmtLocalAccounts};
+        mxedgeProxyHost?: string;
+        mxedgeProxyPort: number;
         /**
          * restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -8743,6 +8770,18 @@ export namespace org {
         protectRe?: outputs.org.NetworktemplateSwitchMgmtProtectRe;
         rootPassword?: string;
         tacacs?: outputs.org.NetworktemplateSwitchMgmtTacacs;
+        /**
+         * to use mxedge as proxy
+         */
+        useMxedgeProxy?: boolean;
+    }
+
+    export interface NetworktemplateSwitchMgmtLocalAccounts {
+        password?: string;
+        /**
+         * enum: `admin`, `helpdesk`, `none`, `read`
+         */
+        role: string;
     }
 
     export interface NetworktemplateSwitchMgmtProtectRe {
@@ -9823,7 +9862,7 @@ export namespace org {
         /**
          * whether email (access code verification) is enabled as a login method
          */
-        emailEnabled?: boolean;
+        emailEnabled: boolean;
         /**
          * whether guest portal is enabled
          */
@@ -9930,6 +9969,10 @@ export namespace org {
          * whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled: boolean;
+        /**
+         * whether to hide sponsor’s email from list of sponsors
+         */
+        predefinedSponsorsHideEmail: boolean;
         privacy: boolean;
         /**
          * when `smsProvider`==`puzzel`
@@ -9975,7 +10018,7 @@ export namespace org {
         /**
          * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
-        sponsorLinkValidityDuration: number;
+        sponsorLinkValidityDuration: string;
         /**
          * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
@@ -10585,6 +10628,8 @@ export namespace site {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge: boolean;
+        stpNoRootPort: boolean;
+        stpP2p: boolean;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -11152,7 +11197,32 @@ export namespace site {
     }
 
     export interface NetworktemplateSwitchMgmt {
-        configRevert: number;
+        /**
+         * ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         */
+        apAffinityThreshold: number;
+        /**
+         * Set Banners for switches. Allows markup formatting
+         */
+        cliBanner?: string;
+        /**
+         * Sets timeout for switches
+         */
+        cliIdleTimeout?: number;
+        /**
+         * the rollback timer for commit confirmed
+         */
+        configRevertTimer: number;
+        /**
+         * Enable to provide the FQDN with DHCP option 81
+         */
+        dhcpOptionFqdn: boolean;
+        /**
+         * Property key is the user name. For Local user authentication
+         */
+        localAccounts?: {[key: string]: outputs.site.NetworktemplateSwitchMgmtLocalAccounts};
+        mxedgeProxyHost?: string;
+        mxedgeProxyPort: number;
         /**
          * restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -11161,6 +11231,18 @@ export namespace site {
         protectRe?: outputs.site.NetworktemplateSwitchMgmtProtectRe;
         rootPassword?: string;
         tacacs?: outputs.site.NetworktemplateSwitchMgmtTacacs;
+        /**
+         * to use mxedge as proxy
+         */
+        useMxedgeProxy?: boolean;
+    }
+
+    export interface NetworktemplateSwitchMgmtLocalAccounts {
+        password?: string;
+        /**
+         * enum: `admin`, `helpdesk`, `none`, `read`
+         */
+        role: string;
     }
 
     export interface NetworktemplateSwitchMgmtProtectRe {
@@ -11240,14 +11322,14 @@ export namespace site {
     }
 
     export interface NetworktemplateVrfInstances {
-        networks?: string[];
         /**
          * Property key is the destination CIDR (e.g. "10.0.0.0/8")
          */
-        vrfExtraRoutes?: {[key: string]: outputs.site.NetworktemplateVrfInstancesVrfExtraRoutes};
+        extraRoutes?: {[key: string]: outputs.site.NetworktemplateVrfInstancesExtraRoutes};
+        networks?: string[];
     }
 
-    export interface NetworktemplateVrfInstancesVrfExtraRoutes {
+    export interface NetworktemplateVrfInstancesExtraRoutes {
         /**
          * Next-hop address
          */
@@ -12170,7 +12252,7 @@ export namespace site {
         /**
          * whether email (access code verification) is enabled as a login method
          */
-        emailEnabled?: boolean;
+        emailEnabled: boolean;
         /**
          * whether guest portal is enabled
          */
@@ -12277,6 +12359,10 @@ export namespace site {
          * whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled: boolean;
+        /**
+         * whether to hide sponsor’s email from list of sponsors
+         */
+        predefinedSponsorsHideEmail: boolean;
         privacy: boolean;
         /**
          * when `smsProvider`==`puzzel`
@@ -12322,7 +12408,7 @@ export namespace site {
         /**
          * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
-        sponsorLinkValidityDuration: number;
+        sponsorLinkValidityDuration: string;
         /**
          * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
