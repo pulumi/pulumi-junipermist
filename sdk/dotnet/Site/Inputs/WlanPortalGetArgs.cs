@@ -335,6 +335,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("predefinedSponsorsEnabled")]
         public Input<bool>? PredefinedSponsorsEnabled { get; set; }
 
+        /// <summary>
+        /// whether to hide sponsor’s email from list of sponsors
+        /// </summary>
+        [Input("predefinedSponsorsHideEmail")]
+        public Input<bool>? PredefinedSponsorsHideEmail { get; set; }
+
         [Input("privacy")]
         public Input<bool>? Privacy { get; set; }
 
@@ -421,7 +427,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         /// </summary>
         [Input("sponsorLinkValidityDuration")]
-        public Input<int>? SponsorLinkValidityDuration { get; set; }
+        public Input<string>? SponsorLinkValidityDuration { get; set; }
 
         /// <summary>
         /// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.

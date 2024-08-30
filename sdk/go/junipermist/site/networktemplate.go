@@ -15,11 +15,9 @@ import (
 //
 // ## Import
 //
-// ```sh
-// $ pulumi import junipermist:site/networktemplate:Networktemplate Using terraform import, import `mist_site_networktemplate` using the `import` command:
-// ```
+// Using `pulumi import`, import `mist_site_networktemplate` with:
 //
-// Gateway cluster can be imported by specifying the site_id
+// Site Network Template can be imported by specifying the site_id
 //
 // ```sh
 // $ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
@@ -53,10 +51,13 @@ type Networktemplate struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
-	SiteId       pulumi.StringOutput                  `pulumi:"siteId"`
-	SnmpConfig   NetworktemplateSnmpConfigPtrOutput   `pulumi:"snmpConfig"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolOutput                  `pulumi:"removeExistingConfigs"`
+	SiteId                pulumi.StringOutput                `pulumi:"siteId"`
+	SnmpConfig            NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
 	// Switch template
-	SwitchMatching   NetworktemplateSwitchMatchingPtrOutput   `pulumi:"switchMatching"`
+	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
+	// Switch settings
 	SwitchMgmt       NetworktemplateSwitchMgmtPtrOutput       `pulumi:"switchMgmt"`
 	UplinkPortConfig NetworktemplateUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
 	VrfConfig        NetworktemplateVrfConfigPtrOutput        `pulumi:"vrfConfig"`
@@ -120,10 +121,13 @@ type networktemplateState struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	SiteId       *string                      `pulumi:"siteId"`
-	SnmpConfig   *NetworktemplateSnmpConfig   `pulumi:"snmpConfig"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
+	SiteId                *string                    `pulumi:"siteId"`
+	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
-	SwitchMatching   *NetworktemplateSwitchMatching   `pulumi:"switchMatching"`
+	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
+	// Switch settings
 	SwitchMgmt       *NetworktemplateSwitchMgmt       `pulumi:"switchMgmt"`
 	UplinkPortConfig *NetworktemplateUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	VrfConfig        *NetworktemplateVrfConfig        `pulumi:"vrfConfig"`
@@ -158,10 +162,13 @@ type NetworktemplateState struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	SiteId       pulumi.StringPtrInput
-	SnmpConfig   NetworktemplateSnmpConfigPtrInput
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolPtrInput
+	SiteId                pulumi.StringPtrInput
+	SnmpConfig            NetworktemplateSnmpConfigPtrInput
 	// Switch template
-	SwitchMatching   NetworktemplateSwitchMatchingPtrInput
+	SwitchMatching NetworktemplateSwitchMatchingPtrInput
+	// Switch settings
 	SwitchMgmt       NetworktemplateSwitchMgmtPtrInput
 	UplinkPortConfig NetworktemplateUplinkPortConfigPtrInput
 	VrfConfig        NetworktemplateVrfConfigPtrInput
@@ -200,10 +207,13 @@ type networktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	SiteId       *string                      `pulumi:"siteId"`
-	SnmpConfig   *NetworktemplateSnmpConfig   `pulumi:"snmpConfig"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
+	SiteId                *string                    `pulumi:"siteId"`
+	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
-	SwitchMatching   *NetworktemplateSwitchMatching   `pulumi:"switchMatching"`
+	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
+	// Switch settings
 	SwitchMgmt       *NetworktemplateSwitchMgmt       `pulumi:"switchMgmt"`
 	UplinkPortConfig *NetworktemplateUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	VrfConfig        *NetworktemplateVrfConfig        `pulumi:"vrfConfig"`
@@ -239,10 +249,13 @@ type NetworktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	SiteId       pulumi.StringPtrInput
-	SnmpConfig   NetworktemplateSnmpConfigPtrInput
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolPtrInput
+	SiteId                pulumi.StringPtrInput
+	SnmpConfig            NetworktemplateSnmpConfigPtrInput
 	// Switch template
-	SwitchMatching   NetworktemplateSwitchMatchingPtrInput
+	SwitchMatching NetworktemplateSwitchMatchingPtrInput
+	// Switch settings
 	SwitchMgmt       NetworktemplateSwitchMgmtPtrInput
 	UplinkPortConfig NetworktemplateUplinkPortConfigPtrInput
 	VrfConfig        NetworktemplateVrfConfigPtrInput
@@ -408,6 +421,11 @@ func (o NetworktemplateOutput) RemoteSyslog() NetworktemplateRemoteSyslogPtrOutp
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRemoteSyslogPtrOutput { return v.RemoteSyslog }).(NetworktemplateRemoteSyslogPtrOutput)
 }
 
+// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+func (o NetworktemplateOutput) RemoveExistingConfigs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
+}
+
 func (o NetworktemplateOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -421,6 +439,7 @@ func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtr
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }
 
+// Switch settings
 func (o NetworktemplateOutput) SwitchMgmt() NetworktemplateSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMgmtPtrOutput { return v.SwitchMgmt }).(NetworktemplateSwitchMgmtPtrOutput)
 }

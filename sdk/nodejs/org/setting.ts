@@ -29,11 +29,9 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import junipermist:org/setting:Setting Using terraform import, import `mist_org_setting` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_org_setting` with:
  *
- * Gateway cluster can be imported by specifying the org_id
+ * Org Setting can be imported by specifying the org_id
  *
  * ```sh
  * $ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

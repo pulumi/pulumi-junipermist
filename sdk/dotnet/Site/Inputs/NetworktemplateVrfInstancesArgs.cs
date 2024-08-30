@@ -12,24 +12,24 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateVrfInstancesArgs : global::Pulumi.ResourceArgs
     {
+        [Input("extraRoutes")]
+        private InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesArgs>? _extraRoutes;
+
+        /// <summary>
+        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesArgs> ExtraRoutes
+        {
+            get => _extraRoutes ?? (_extraRoutes = new InputMap<Inputs.NetworktemplateVrfInstancesExtraRoutesArgs>());
+            set => _extraRoutes = value;
+        }
+
         [Input("networks")]
         private InputList<string>? _networks;
         public InputList<string> Networks
         {
             get => _networks ?? (_networks = new InputList<string>());
             set => _networks = value;
-        }
-
-        [Input("vrfExtraRoutes")]
-        private InputMap<Inputs.NetworktemplateVrfInstancesVrfExtraRoutesArgs>? _vrfExtraRoutes;
-
-        /// <summary>
-        /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
-        /// </summary>
-        public InputMap<Inputs.NetworktemplateVrfInstancesVrfExtraRoutesArgs> VrfExtraRoutes
-        {
-            get => _vrfExtraRoutes ?? (_vrfExtraRoutes = new InputMap<Inputs.NetworktemplateVrfInstancesVrfExtraRoutesArgs>());
-            set => _vrfExtraRoutes = value;
         }
 
         public NetworktemplateVrfInstancesArgs()

@@ -194,6 +194,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
         /// </summary>
         public readonly bool? PredefinedSponsorsEnabled;
+        /// <summary>
+        /// whether to hide sponsor’s email from list of sponsors
+        /// </summary>
+        public readonly bool? PredefinedSponsorsHideEmail;
         public readonly bool? Privacy;
         /// <summary>
         /// when `sms_provider`==`puzzel`
@@ -239,7 +243,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// <summary>
         /// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         /// </summary>
-        public readonly int? SponsorLinkValidityDuration;
+        public readonly string? SponsorLinkValidityDuration;
         /// <summary>
         /// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         /// </summary>
@@ -389,6 +393,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? predefinedSponsorsEnabled,
 
+            bool? predefinedSponsorsHideEmail,
+
             bool? privacy,
 
             string? puzzelPassword,
@@ -413,7 +419,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             double? sponsorExpire,
 
-            int? sponsorLinkValidityDuration,
+            string? sponsorLinkValidityDuration,
 
             bool? sponsorNotifyAll,
 
@@ -489,6 +495,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             PassphraseExpire = passphraseExpire;
             Password = password;
             PredefinedSponsorsEnabled = predefinedSponsorsEnabled;
+            PredefinedSponsorsHideEmail = predefinedSponsorsHideEmail;
             Privacy = privacy;
             PuzzelPassword = puzzelPassword;
             PuzzelServiceId = puzzelServiceId;

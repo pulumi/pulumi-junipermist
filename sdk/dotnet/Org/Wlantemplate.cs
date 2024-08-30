@@ -14,11 +14,9 @@ namespace Pulumi.JuniperMist.Org
     /// 
     /// ## Import
     /// 
-    /// ```sh
-    /// $ pulumi import junipermist:org/wlantemplate:Wlantemplate Using terraform import, import `mist_org_wlantemplate` using the `import` command:
-    /// ```
+    /// Using `pulumi import`, import `mist_org_wlantemplate` with:
     /// 
-    /// Gateway cluster can be imported by specifying the org_id and the wlantemplate_id
+    /// Org WLAN Template can be imported by specifying the org_id and the wlantemplate_id
     /// 
     /// ```sh
     /// $ pulumi import junipermist:org/wlantemplate:Wlantemplate wlantemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

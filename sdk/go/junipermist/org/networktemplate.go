@@ -16,11 +16,9 @@ import (
 //
 // ## Import
 //
-// ```sh
-// $ pulumi import junipermist:org/networktemplate:Networktemplate Using terraform import, import `mist_org_networktemplate` using the `import` command:
-// ```
+// Using `pulumi import`, import `mist_org_networktemplate` with:
 //
-// Gateway cluster can be imported by specifying the org_id and the networktemplate_id
+// Org Network Template can be imported by specifying the org_id and the networktemplate_id
 //
 // ```sh
 // $ pulumi import junipermist:org/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309
@@ -59,8 +57,9 @@ type Networktemplate struct {
 	SnmpConfig   NetworktemplateSnmpConfigPtrOutput   `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
-	SwitchMgmt     NetworktemplateSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
-	VrfConfig      NetworktemplateVrfConfigPtrOutput      `pulumi:"vrfConfig"`
+	// Switch settings
+	SwitchMgmt NetworktemplateSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
+	VrfConfig  NetworktemplateVrfConfigPtrOutput  `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances NetworktemplateVrfInstancesMapOutput `pulumi:"vrfInstances"`
 }
@@ -129,8 +128,9 @@ type networktemplateState struct {
 	SnmpConfig   *NetworktemplateSnmpConfig   `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
-	SwitchMgmt     *NetworktemplateSwitchMgmt     `pulumi:"switchMgmt"`
-	VrfConfig      *NetworktemplateVrfConfig      `pulumi:"vrfConfig"`
+	// Switch settings
+	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
+	VrfConfig  *NetworktemplateVrfConfig  `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]NetworktemplateVrfInstances `pulumi:"vrfInstances"`
 }
@@ -167,8 +167,9 @@ type NetworktemplateState struct {
 	SnmpConfig   NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
-	SwitchMgmt     NetworktemplateSwitchMgmtPtrInput
-	VrfConfig      NetworktemplateVrfConfigPtrInput
+	// Switch settings
+	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
+	VrfConfig  NetworktemplateVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances NetworktemplateVrfInstancesMapInput
 }
@@ -209,8 +210,9 @@ type networktemplateArgs struct {
 	SnmpConfig   *NetworktemplateSnmpConfig   `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
-	SwitchMgmt     *NetworktemplateSwitchMgmt     `pulumi:"switchMgmt"`
-	VrfConfig      *NetworktemplateVrfConfig      `pulumi:"vrfConfig"`
+	// Switch settings
+	SwitchMgmt *NetworktemplateSwitchMgmt `pulumi:"switchMgmt"`
+	VrfConfig  *NetworktemplateVrfConfig  `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]NetworktemplateVrfInstances `pulumi:"vrfInstances"`
 }
@@ -248,8 +250,9 @@ type NetworktemplateArgs struct {
 	SnmpConfig   NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
-	SwitchMgmt     NetworktemplateSwitchMgmtPtrInput
-	VrfConfig      NetworktemplateVrfConfigPtrInput
+	// Switch settings
+	SwitchMgmt NetworktemplateSwitchMgmtPtrInput
+	VrfConfig  NetworktemplateVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances NetworktemplateVrfInstancesMapInput
 }
@@ -429,6 +432,7 @@ func (o NetworktemplateOutput) SwitchMatching() NetworktemplateSwitchMatchingPtr
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMatchingPtrOutput { return v.SwitchMatching }).(NetworktemplateSwitchMatchingPtrOutput)
 }
 
+// Switch settings
 func (o NetworktemplateOutput) SwitchMgmt() NetworktemplateSwitchMgmtPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateSwitchMgmtPtrOutput { return v.SwitchMgmt }).(NetworktemplateSwitchMgmtPtrOutput)
 }

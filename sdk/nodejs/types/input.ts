@@ -6119,6 +6119,8 @@ export namespace org {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: pulumi.Input<boolean>;
+        stpNoRootPort?: pulumi.Input<boolean>;
+        stpP2p?: pulumi.Input<boolean>;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -6686,7 +6688,32 @@ export namespace org {
     }
 
     export interface NetworktemplateSwitchMgmt {
-        configRevert?: pulumi.Input<number>;
+        /**
+         * ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         */
+        apAffinityThreshold?: pulumi.Input<number>;
+        /**
+         * Set Banners for switches. Allows markup formatting
+         */
+        cliBanner?: pulumi.Input<string>;
+        /**
+         * Sets timeout for switches
+         */
+        cliIdleTimeout?: pulumi.Input<number>;
+        /**
+         * the rollback timer for commit confirmed
+         */
+        configRevertTimer?: pulumi.Input<number>;
+        /**
+         * Enable to provide the FQDN with DHCP option 81
+         */
+        dhcpOptionFqdn?: pulumi.Input<boolean>;
+        /**
+         * Property key is the user name. For Local user authentication
+         */
+        localAccounts?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMgmtLocalAccounts>}>;
+        mxedgeProxyHost?: pulumi.Input<string>;
+        mxedgeProxyPort?: pulumi.Input<number>;
         /**
          * restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -6695,6 +6722,18 @@ export namespace org {
         protectRe?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmtProtectRe>;
         rootPassword?: pulumi.Input<string>;
         tacacs?: pulumi.Input<inputs.org.NetworktemplateSwitchMgmtTacacs>;
+        /**
+         * to use mxedge as proxy
+         */
+        useMxedgeProxy?: pulumi.Input<boolean>;
+    }
+
+    export interface NetworktemplateSwitchMgmtLocalAccounts {
+        password?: pulumi.Input<string>;
+        /**
+         * enum: `admin`, `helpdesk`, `none`, `read`
+         */
+        role?: pulumi.Input<string>;
     }
 
     export interface NetworktemplateSwitchMgmtProtectRe {
@@ -7882,6 +7921,10 @@ export namespace org {
          * whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled?: pulumi.Input<boolean>;
+        /**
+         * whether to hide sponsor’s email from list of sponsors
+         */
+        predefinedSponsorsHideEmail?: pulumi.Input<boolean>;
         privacy?: pulumi.Input<boolean>;
         /**
          * when `smsProvider`==`puzzel`
@@ -7927,7 +7970,7 @@ export namespace org {
         /**
          * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
-        sponsorLinkValidityDuration?: pulumi.Input<number>;
+        sponsorLinkValidityDuration?: pulumi.Input<string>;
         /**
          * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
@@ -8409,6 +8452,8 @@ export namespace site {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: pulumi.Input<boolean>;
+        stpNoRootPort?: pulumi.Input<boolean>;
+        stpP2p?: pulumi.Input<boolean>;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -8976,7 +9021,32 @@ export namespace site {
     }
 
     export interface NetworktemplateSwitchMgmt {
-        configRevert?: pulumi.Input<number>;
+        /**
+         * ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         */
+        apAffinityThreshold?: pulumi.Input<number>;
+        /**
+         * Set Banners for switches. Allows markup formatting
+         */
+        cliBanner?: pulumi.Input<string>;
+        /**
+         * Sets timeout for switches
+         */
+        cliIdleTimeout?: pulumi.Input<number>;
+        /**
+         * the rollback timer for commit confirmed
+         */
+        configRevertTimer?: pulumi.Input<number>;
+        /**
+         * Enable to provide the FQDN with DHCP option 81
+         */
+        dhcpOptionFqdn?: pulumi.Input<boolean>;
+        /**
+         * Property key is the user name. For Local user authentication
+         */
+        localAccounts?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMgmtLocalAccounts>}>;
+        mxedgeProxyHost?: pulumi.Input<string>;
+        mxedgeProxyPort?: pulumi.Input<number>;
         /**
          * restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -8985,6 +9055,18 @@ export namespace site {
         protectRe?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmtProtectRe>;
         rootPassword?: pulumi.Input<string>;
         tacacs?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmtTacacs>;
+        /**
+         * to use mxedge as proxy
+         */
+        useMxedgeProxy?: pulumi.Input<boolean>;
+    }
+
+    export interface NetworktemplateSwitchMgmtLocalAccounts {
+        password?: pulumi.Input<string>;
+        /**
+         * enum: `admin`, `helpdesk`, `none`, `read`
+         */
+        role?: pulumi.Input<string>;
     }
 
     export interface NetworktemplateSwitchMgmtProtectRe {
@@ -9064,14 +9146,14 @@ export namespace site {
     }
 
     export interface NetworktemplateVrfInstances {
-        networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Property key is the destination CIDR (e.g. "10.0.0.0/8")
          */
-        vrfExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateVrfInstancesVrfExtraRoutes>}>;
+        extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateVrfInstancesExtraRoutes>}>;
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface NetworktemplateVrfInstancesVrfExtraRoutes {
+    export interface NetworktemplateVrfInstancesExtraRoutes {
         /**
          * Next-hop address
          */
@@ -10101,6 +10183,10 @@ export namespace site {
          * whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
          */
         predefinedSponsorsEnabled?: pulumi.Input<boolean>;
+        /**
+         * whether to hide sponsor’s email from list of sponsors
+         */
+        predefinedSponsorsHideEmail?: pulumi.Input<boolean>;
         privacy?: pulumi.Input<boolean>;
         /**
          * when `smsProvider`==`puzzel`
@@ -10146,7 +10232,7 @@ export namespace site {
         /**
          * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
-        sponsorLinkValidityDuration?: pulumi.Input<number>;
+        sponsorLinkValidityDuration?: pulumi.Input<string>;
         /**
          * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */

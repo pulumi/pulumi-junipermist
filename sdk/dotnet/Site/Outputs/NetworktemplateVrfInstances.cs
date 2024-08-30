@@ -13,20 +13,20 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class NetworktemplateVrfInstances
     {
-        public readonly ImmutableArray<string> Networks;
         /// <summary>
         /// Property key is the destination CIDR (e.g. "10.0.0.0/8")
         /// </summary>
-        public readonly ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesVrfExtraRoutes>? VrfExtraRoutes;
+        public readonly ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesExtraRoutes>? ExtraRoutes;
+        public readonly ImmutableArray<string> Networks;
 
         [OutputConstructor]
         private NetworktemplateVrfInstances(
-            ImmutableArray<string> networks,
+            ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesExtraRoutes>? extraRoutes,
 
-            ImmutableDictionary<string, Outputs.NetworktemplateVrfInstancesVrfExtraRoutes>? vrfExtraRoutes)
+            ImmutableArray<string> networks)
         {
+            ExtraRoutes = extraRoutes;
             Networks = networks;
-            VrfExtraRoutes = vrfExtraRoutes;
         }
     }
 }

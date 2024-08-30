@@ -27,11 +27,9 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import junipermist:site/wxtag:Wxtag Using terraform import, import `mist_site_wxtag` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_site_wxtag` with:
  *
- * Gateway cluster can be imported by specifying the site_id and the wxtag_id
+ * Site WxTag can be imported by specifying the site_id and the wxtag_id
  *
  * ```sh
  * $ pulumi import junipermist:site/wxtag:Wxtag wxtag_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309

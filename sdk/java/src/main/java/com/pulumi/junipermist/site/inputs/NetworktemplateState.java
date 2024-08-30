@@ -22,6 +22,7 @@ import com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMgmtArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateUplinkPortConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateVrfConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -221,6 +222,21 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.remoteSyslog);
     }
 
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    @Import(name="removeExistingConfigs")
+    private @Nullable Output<Boolean> removeExistingConfigs;
+
+    /**
+     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    public Optional<Output<Boolean>> removeExistingConfigs() {
+        return Optional.ofNullable(this.removeExistingConfigs);
+    }
+
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
@@ -250,9 +266,17 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.switchMatching);
     }
 
+    /**
+     * Switch settings
+     * 
+     */
     @Import(name="switchMgmt")
     private @Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt;
 
+    /**
+     * @return Switch settings
+     * 
+     */
     public Optional<Output<NetworktemplateSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
     }
@@ -304,6 +328,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.portUsages = $.portUsages;
         this.radiusConfig = $.radiusConfig;
         this.remoteSyslog = $.remoteSyslog;
+        this.removeExistingConfigs = $.removeExistingConfigs;
         this.siteId = $.siteId;
         this.snmpConfig = $.snmpConfig;
         this.switchMatching = $.switchMatching;
@@ -632,6 +657,27 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return remoteSyslog(Output.of(remoteSyslog));
         }
 
+        /**
+         * @param removeExistingConfigs by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeExistingConfigs(@Nullable Output<Boolean> removeExistingConfigs) {
+            $.removeExistingConfigs = removeExistingConfigs;
+            return this;
+        }
+
+        /**
+         * @param removeExistingConfigs by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeExistingConfigs(Boolean removeExistingConfigs) {
+            return removeExistingConfigs(Output.of(removeExistingConfigs));
+        }
+
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
@@ -671,11 +717,23 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return switchMatching(Output.of(switchMatching));
         }
 
+        /**
+         * @param switchMgmt Switch settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(@Nullable Output<NetworktemplateSwitchMgmtArgs> switchMgmt) {
             $.switchMgmt = switchMgmt;
             return this;
         }
 
+        /**
+         * @param switchMgmt Switch settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(NetworktemplateSwitchMgmtArgs switchMgmt) {
             return switchMgmt(Output.of(switchMgmt));
         }

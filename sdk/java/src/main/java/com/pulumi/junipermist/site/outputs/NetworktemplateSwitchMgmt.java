@@ -4,17 +4,51 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMgmtLocalAccounts;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMgmtProtectRe;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMgmtTacacs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworktemplateSwitchMgmt {
-    private @Nullable Integer configRevert;
+    /**
+     * @return ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * 
+     */
+    private @Nullable Integer apAffinityThreshold;
+    /**
+     * @return Set Banners for switches. Allows markup formatting
+     * 
+     */
+    private @Nullable String cliBanner;
+    /**
+     * @return Sets timeout for switches
+     * 
+     */
+    private @Nullable Integer cliIdleTimeout;
+    /**
+     * @return the rollback timer for commit confirmed
+     * 
+     */
+    private @Nullable Integer configRevertTimer;
+    /**
+     * @return Enable to provide the FQDN with DHCP option 81
+     * 
+     */
+    private @Nullable Boolean dhcpOptionFqdn;
+    /**
+     * @return Property key is the user name. For Local user authentication
+     * 
+     */
+    private @Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts;
+    private @Nullable String mxedgeProxyHost;
+    private @Nullable Integer mxedgeProxyPort;
     /**
      * @return restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
@@ -24,10 +58,60 @@ public final class NetworktemplateSwitchMgmt {
     private @Nullable NetworktemplateSwitchMgmtProtectRe protectRe;
     private @Nullable String rootPassword;
     private @Nullable NetworktemplateSwitchMgmtTacacs tacacs;
+    /**
+     * @return to use mxedge as proxy
+     * 
+     */
+    private @Nullable Boolean useMxedgeProxy;
 
     private NetworktemplateSwitchMgmt() {}
-    public Optional<Integer> configRevert() {
-        return Optional.ofNullable(this.configRevert);
+    /**
+     * @return ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * 
+     */
+    public Optional<Integer> apAffinityThreshold() {
+        return Optional.ofNullable(this.apAffinityThreshold);
+    }
+    /**
+     * @return Set Banners for switches. Allows markup formatting
+     * 
+     */
+    public Optional<String> cliBanner() {
+        return Optional.ofNullable(this.cliBanner);
+    }
+    /**
+     * @return Sets timeout for switches
+     * 
+     */
+    public Optional<Integer> cliIdleTimeout() {
+        return Optional.ofNullable(this.cliIdleTimeout);
+    }
+    /**
+     * @return the rollback timer for commit confirmed
+     * 
+     */
+    public Optional<Integer> configRevertTimer() {
+        return Optional.ofNullable(this.configRevertTimer);
+    }
+    /**
+     * @return Enable to provide the FQDN with DHCP option 81
+     * 
+     */
+    public Optional<Boolean> dhcpOptionFqdn() {
+        return Optional.ofNullable(this.dhcpOptionFqdn);
+    }
+    /**
+     * @return Property key is the user name. For Local user authentication
+     * 
+     */
+    public Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts() {
+        return this.localAccounts == null ? Map.of() : this.localAccounts;
+    }
+    public Optional<String> mxedgeProxyHost() {
+        return Optional.ofNullable(this.mxedgeProxyHost);
+    }
+    public Optional<Integer> mxedgeProxyPort() {
+        return Optional.ofNullable(this.mxedgeProxyPort);
     }
     /**
      * @return restrict inbound-traffic to host
@@ -44,6 +128,13 @@ public final class NetworktemplateSwitchMgmt {
     public Optional<NetworktemplateSwitchMgmtTacacs> tacacs() {
         return Optional.ofNullable(this.tacacs);
     }
+    /**
+     * @return to use mxedge as proxy
+     * 
+     */
+    public Optional<Boolean> useMxedgeProxy() {
+        return Optional.ofNullable(this.useMxedgeProxy);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,23 +145,81 @@ public final class NetworktemplateSwitchMgmt {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Integer configRevert;
+        private @Nullable Integer apAffinityThreshold;
+        private @Nullable String cliBanner;
+        private @Nullable Integer cliIdleTimeout;
+        private @Nullable Integer configRevertTimer;
+        private @Nullable Boolean dhcpOptionFqdn;
+        private @Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts;
+        private @Nullable String mxedgeProxyHost;
+        private @Nullable Integer mxedgeProxyPort;
         private @Nullable NetworktemplateSwitchMgmtProtectRe protectRe;
         private @Nullable String rootPassword;
         private @Nullable NetworktemplateSwitchMgmtTacacs tacacs;
+        private @Nullable Boolean useMxedgeProxy;
         public Builder() {}
         public Builder(NetworktemplateSwitchMgmt defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.configRevert = defaults.configRevert;
+    	      this.apAffinityThreshold = defaults.apAffinityThreshold;
+    	      this.cliBanner = defaults.cliBanner;
+    	      this.cliIdleTimeout = defaults.cliIdleTimeout;
+    	      this.configRevertTimer = defaults.configRevertTimer;
+    	      this.dhcpOptionFqdn = defaults.dhcpOptionFqdn;
+    	      this.localAccounts = defaults.localAccounts;
+    	      this.mxedgeProxyHost = defaults.mxedgeProxyHost;
+    	      this.mxedgeProxyPort = defaults.mxedgeProxyPort;
     	      this.protectRe = defaults.protectRe;
     	      this.rootPassword = defaults.rootPassword;
     	      this.tacacs = defaults.tacacs;
+    	      this.useMxedgeProxy = defaults.useMxedgeProxy;
         }
 
         @CustomType.Setter
-        public Builder configRevert(@Nullable Integer configRevert) {
+        public Builder apAffinityThreshold(@Nullable Integer apAffinityThreshold) {
 
-            this.configRevert = configRevert;
+            this.apAffinityThreshold = apAffinityThreshold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cliBanner(@Nullable String cliBanner) {
+
+            this.cliBanner = cliBanner;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cliIdleTimeout(@Nullable Integer cliIdleTimeout) {
+
+            this.cliIdleTimeout = cliIdleTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder configRevertTimer(@Nullable Integer configRevertTimer) {
+
+            this.configRevertTimer = configRevertTimer;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dhcpOptionFqdn(@Nullable Boolean dhcpOptionFqdn) {
+
+            this.dhcpOptionFqdn = dhcpOptionFqdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localAccounts(@Nullable Map<String,NetworktemplateSwitchMgmtLocalAccounts> localAccounts) {
+
+            this.localAccounts = localAccounts;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mxedgeProxyHost(@Nullable String mxedgeProxyHost) {
+
+            this.mxedgeProxyHost = mxedgeProxyHost;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mxedgeProxyPort(@Nullable Integer mxedgeProxyPort) {
+
+            this.mxedgeProxyPort = mxedgeProxyPort;
             return this;
         }
         @CustomType.Setter
@@ -91,12 +240,26 @@ public final class NetworktemplateSwitchMgmt {
             this.tacacs = tacacs;
             return this;
         }
+        @CustomType.Setter
+        public Builder useMxedgeProxy(@Nullable Boolean useMxedgeProxy) {
+
+            this.useMxedgeProxy = useMxedgeProxy;
+            return this;
+        }
         public NetworktemplateSwitchMgmt build() {
             final var _resultValue = new NetworktemplateSwitchMgmt();
-            _resultValue.configRevert = configRevert;
+            _resultValue.apAffinityThreshold = apAffinityThreshold;
+            _resultValue.cliBanner = cliBanner;
+            _resultValue.cliIdleTimeout = cliIdleTimeout;
+            _resultValue.configRevertTimer = configRevertTimer;
+            _resultValue.dhcpOptionFqdn = dhcpOptionFqdn;
+            _resultValue.localAccounts = localAccounts;
+            _resultValue.mxedgeProxyHost = mxedgeProxyHost;
+            _resultValue.mxedgeProxyPort = mxedgeProxyPort;
             _resultValue.protectRe = protectRe;
             _resultValue.rootPassword = rootPassword;
             _resultValue.tacacs = tacacs;
+            _resultValue.useMxedgeProxy = useMxedgeProxy;
             return _resultValue;
         }
     }

@@ -1248,11 +1248,9 @@ class Setting(pulumi.CustomResource):
 
         ## Import
 
-        ```sh
-        $ pulumi import junipermist:site/setting:Setting Using terraform import, import `mist_site_setting` using the `import` command:
-        ```
+        Using `pulumi import`, import `mist_site_setting` with:
 
-        Gateway cluster can be imported by specifying the site_id
+        Site Setting can be imported by specifying the site_id
 
         ```sh
         $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a
@@ -1304,11 +1302,9 @@ class Setting(pulumi.CustomResource):
 
         ## Import
 
-        ```sh
-        $ pulumi import junipermist:site/setting:Setting Using terraform import, import `mist_site_setting` using the `import` command:
-        ```
+        Using `pulumi import`, import `mist_site_setting` with:
 
-        Gateway cluster can be imported by specifying the site_id
+        Site Setting can be imported by specifying the site_id
 
         ```sh
         $ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a

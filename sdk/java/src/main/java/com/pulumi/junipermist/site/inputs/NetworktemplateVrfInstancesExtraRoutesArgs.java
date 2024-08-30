@@ -10,9 +10,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class NetworktemplateVrfInstancesVrfExtraRoutesArgs extends com.pulumi.resources.ResourceArgs {
+public final class NetworktemplateVrfInstancesExtraRoutesArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final NetworktemplateVrfInstancesVrfExtraRoutesArgs Empty = new NetworktemplateVrfInstancesVrfExtraRoutesArgs();
+    public static final NetworktemplateVrfInstancesExtraRoutesArgs Empty = new NetworktemplateVrfInstancesExtraRoutesArgs();
 
     /**
      * Next-hop address
@@ -29,28 +29,28 @@ public final class NetworktemplateVrfInstancesVrfExtraRoutesArgs extends com.pul
         return this.via;
     }
 
-    private NetworktemplateVrfInstancesVrfExtraRoutesArgs() {}
+    private NetworktemplateVrfInstancesExtraRoutesArgs() {}
 
-    private NetworktemplateVrfInstancesVrfExtraRoutesArgs(NetworktemplateVrfInstancesVrfExtraRoutesArgs $) {
+    private NetworktemplateVrfInstancesExtraRoutesArgs(NetworktemplateVrfInstancesExtraRoutesArgs $) {
         this.via = $.via;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(NetworktemplateVrfInstancesVrfExtraRoutesArgs defaults) {
+    public static Builder builder(NetworktemplateVrfInstancesExtraRoutesArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private NetworktemplateVrfInstancesVrfExtraRoutesArgs $;
+        private NetworktemplateVrfInstancesExtraRoutesArgs $;
 
         public Builder() {
-            $ = new NetworktemplateVrfInstancesVrfExtraRoutesArgs();
+            $ = new NetworktemplateVrfInstancesExtraRoutesArgs();
         }
 
-        public Builder(NetworktemplateVrfInstancesVrfExtraRoutesArgs defaults) {
-            $ = new NetworktemplateVrfInstancesVrfExtraRoutesArgs(Objects.requireNonNull(defaults));
+        public Builder(NetworktemplateVrfInstancesExtraRoutesArgs defaults) {
+            $ = new NetworktemplateVrfInstancesExtraRoutesArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -74,9 +74,9 @@ public final class NetworktemplateVrfInstancesVrfExtraRoutesArgs extends com.pul
             return via(Output.of(via));
         }
 
-        public NetworktemplateVrfInstancesVrfExtraRoutesArgs build() {
+        public NetworktemplateVrfInstancesExtraRoutesArgs build() {
             if ($.via == null) {
-                throw new MissingRequiredPropertyException("NetworktemplateVrfInstancesVrfExtraRoutesArgs", "via");
+                throw new MissingRequiredPropertyException("NetworktemplateVrfInstancesExtraRoutesArgs", "via");
             }
             return $;
         }

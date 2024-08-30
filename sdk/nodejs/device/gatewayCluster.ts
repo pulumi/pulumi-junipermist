@@ -36,9 +36,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import junipermist:device/gatewayCluster:GatewayCluster Using terraform import, import `mist_device_gateway_cluster` using the `import` command:
- * ```
+ * Using `pulumi import`, import `mist_device_gateway_cluster` with:
  *
  * Gateway cluster can be imported by specifying the org_id and the cluster_id
  *

@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -690,6 +689,21 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.predefinedSponsorsEnabled);
     }
 
+    /**
+     * whether to hide sponsor’s email from list of sponsors
+     * 
+     */
+    @Import(name="predefinedSponsorsHideEmail")
+    private @Nullable Output<Boolean> predefinedSponsorsHideEmail;
+
+    /**
+     * @return whether to hide sponsor’s email from list of sponsors
+     * 
+     */
+    public Optional<Output<Boolean>> predefinedSponsorsHideEmail() {
+        return Optional.ofNullable(this.predefinedSponsorsHideEmail);
+    }
+
     @Import(name="privacy")
     private @Nullable Output<Boolean> privacy;
 
@@ -859,13 +873,13 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="sponsorLinkValidityDuration")
-    private @Nullable Output<Integer> sponsorLinkValidityDuration;
+    private @Nullable Output<String> sponsorLinkValidityDuration;
 
     /**
      * @return how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
      * 
      */
-    public Optional<Output<Integer>> sponsorLinkValidityDuration() {
+    public Optional<Output<String>> sponsorLinkValidityDuration() {
         return Optional.ofNullable(this.sponsorLinkValidityDuration);
     }
 
@@ -1135,6 +1149,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         this.passphraseExpire = $.passphraseExpire;
         this.password = $.password;
         this.predefinedSponsorsEnabled = $.predefinedSponsorsEnabled;
+        this.predefinedSponsorsHideEmail = $.predefinedSponsorsHideEmail;
         this.privacy = $.privacy;
         this.puzzelPassword = $.puzzelPassword;
         this.puzzelServiceId = $.puzzelServiceId;
@@ -2157,6 +2172,27 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
             return predefinedSponsorsEnabled(Output.of(predefinedSponsorsEnabled));
         }
 
+        /**
+         * @param predefinedSponsorsHideEmail whether to hide sponsor’s email from list of sponsors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predefinedSponsorsHideEmail(@Nullable Output<Boolean> predefinedSponsorsHideEmail) {
+            $.predefinedSponsorsHideEmail = predefinedSponsorsHideEmail;
+            return this;
+        }
+
+        /**
+         * @param predefinedSponsorsHideEmail whether to hide sponsor’s email from list of sponsors
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predefinedSponsorsHideEmail(Boolean predefinedSponsorsHideEmail) {
+            return predefinedSponsorsHideEmail(Output.of(predefinedSponsorsHideEmail));
+        }
+
         public Builder privacy(@Nullable Output<Boolean> privacy) {
             $.privacy = privacy;
             return this;
@@ -2401,7 +2437,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder sponsorLinkValidityDuration(@Nullable Output<Integer> sponsorLinkValidityDuration) {
+        public Builder sponsorLinkValidityDuration(@Nullable Output<String> sponsorLinkValidityDuration) {
             $.sponsorLinkValidityDuration = sponsorLinkValidityDuration;
             return this;
         }
@@ -2412,7 +2448,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder sponsorLinkValidityDuration(Integer sponsorLinkValidityDuration) {
+        public Builder sponsorLinkValidityDuration(String sponsorLinkValidityDuration) {
             return sponsorLinkValidityDuration(Output.of(sponsorLinkValidityDuration));
         }
 

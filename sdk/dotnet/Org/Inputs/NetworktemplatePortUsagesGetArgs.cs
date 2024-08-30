@@ -220,6 +220,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("stpEdge")]
         public Input<bool>? StpEdge { get; set; }
 
+        [Input("stpNoRootPort")]
+        public Input<bool>? StpNoRootPort { get; set; }
+
+        [Input("stpP2p")]
+        public Input<bool>? StpP2p { get; set; }
+
         /// <summary>
         /// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         /// </summary>
