@@ -9,8 +9,8 @@ import (
 	"testing"
 
 	"github.com/pulumi/providertest/pulumitest"
-	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/opttest"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
 )
 
 func TestOrgWlanTs(t *testing.T) {
@@ -31,11 +31,7 @@ func TestOrgWlanIsolationTs(t *testing.T) {
 	)
 	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
 	test.Up()
-	preview, error := test.CurrentStack().Preview(test.Context())
-	if error != nil {
-		t.Fatalf("failed to preview: %v", error)
-	}
-	assertpreview.HasNoChanges(t, preview)
+	test.Preview(optpreview.ExpectNoChanges())
 }
 func TestOrgRftemplateTs(t *testing.T) {
 	//Regression test for https://github.com/pulumi/pulumi-junipermist/issues/47
@@ -46,9 +42,5 @@ func TestOrgRftemplateTs(t *testing.T) {
 	)
 	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
 	test.Up()
-	preview, error := test.CurrentStack().Preview(test.Context())
-	if error != nil {
-		t.Fatalf("failed to preview: %v", error)
-	}
-	assertpreview.HasNoChanges(t, preview)
+	test.Preview(optpreview.ExpectNoChanges())
 }
