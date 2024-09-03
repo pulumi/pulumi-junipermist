@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -38,7 +37,6 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
-        /// 
         /// 
         /// ## Example Usage
         /// 

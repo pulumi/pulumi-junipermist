@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -38,7 +37,6 @@ namespace Pulumi.JuniperMist
 
         /// <summary>
         /// This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
-        /// 
         /// 
         /// ## Example Usage
         /// 
