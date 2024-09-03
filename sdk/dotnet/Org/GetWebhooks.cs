@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of Org Webhooks.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -38,7 +37,6 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of Org Webhooks.
-        /// 
         /// 
         /// ## Example Usage
         /// 

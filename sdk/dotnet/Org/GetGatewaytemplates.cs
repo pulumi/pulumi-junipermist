@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of Gateway Templates.A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -38,7 +37,6 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of Gateway Templates.A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
-        /// 
         /// 
         /// ## Example Usage
         /// 

@@ -14,7 +14,6 @@ namespace Pulumi.JuniperMist
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -35,7 +34,6 @@ namespace Pulumi.JuniperMist
 
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
-        /// 
         /// 
         /// ## Example Usage
         /// 
