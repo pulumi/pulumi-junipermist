@@ -3391,7 +3391,23 @@
                 "current": "junipermist:org/getNactags:getNactags",
                 "fields": {
                     "org_nactags": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "egress_vlan_names": {
+                                    "maxItemsOne": false
+                                },
+                                "radius_attrs": {
+                                    "maxItemsOne": false
+                                },
+                                "radius_vendor_attrs": {
+                                    "maxItemsOne": false
+                                },
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },

@@ -24,7 +24,12 @@ export function getNactags(args: GetNactagsArgs, opts?: pulumi.InvokeOptions): P
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getNactags:getNactags", {
+        "limit": args.limit,
+        "match": args.match,
+        "name": args.name,
         "orgId": args.orgId,
+        "page": args.page,
+        "type": args.type,
     }, opts);
 }
 
@@ -32,7 +37,12 @@ export function getNactags(args: GetNactagsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getNactags.
  */
 export interface GetNactagsArgs {
+    limit?: number;
+    match?: string;
+    name?: string;
     orgId: string;
+    page?: number;
+    type?: string;
 }
 
 /**
@@ -43,8 +53,13 @@ export interface GetNactagsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly limit?: number;
+    readonly match?: string;
+    readonly name?: string;
     readonly orgId: string;
     readonly orgNactags: outputs.org.GetNactagsOrgNactag[];
+    readonly page?: number;
+    readonly type?: string;
 }
 /**
  * This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
@@ -68,5 +83,10 @@ export function getNactagsOutput(args: GetNactagsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getNactags.
  */
 export interface GetNactagsOutputArgs {
+    limit?: pulumi.Input<number>;
+    match?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
+    page?: pulumi.Input<number>;
+    type?: pulumi.Input<string>;
 }
