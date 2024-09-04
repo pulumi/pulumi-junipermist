@@ -50,15 +50,25 @@ func GetNactags(ctx *pulumi.Context, args *GetNactagsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNactags.
 type GetNactagsArgs struct {
-	OrgId string `pulumi:"orgId"`
+	Limit *int    `pulumi:"limit"`
+	Match *string `pulumi:"match"`
+	Name  *string `pulumi:"name"`
+	OrgId string  `pulumi:"orgId"`
+	Page  *int    `pulumi:"page"`
+	Type  *string `pulumi:"type"`
 }
 
 // A collection of values returned by getNactags.
 type GetNactagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string                `pulumi:"id"`
+	Limit      *int                  `pulumi:"limit"`
+	Match      *string               `pulumi:"match"`
+	Name       *string               `pulumi:"name"`
 	OrgId      string                `pulumi:"orgId"`
 	OrgNactags []GetNactagsOrgNactag `pulumi:"orgNactags"`
+	Page       *int                  `pulumi:"page"`
+	Type       *string               `pulumi:"type"`
 }
 
 func GetNactagsOutput(ctx *pulumi.Context, args GetNactagsOutputArgs, opts ...pulumi.InvokeOption) GetNactagsResultOutput {
@@ -76,7 +86,12 @@ func GetNactagsOutput(ctx *pulumi.Context, args GetNactagsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNactags.
 type GetNactagsOutputArgs struct {
-	OrgId pulumi.StringInput `pulumi:"orgId"`
+	Limit pulumi.IntPtrInput    `pulumi:"limit"`
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	Name  pulumi.StringPtrInput `pulumi:"name"`
+	OrgId pulumi.StringInput    `pulumi:"orgId"`
+	Page  pulumi.IntPtrInput    `pulumi:"page"`
+	Type  pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetNactagsOutputArgs) ElementType() reflect.Type {
@@ -103,12 +118,32 @@ func (o GetNactagsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetNactagsResultOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNactagsResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+func (o GetNactagsResultOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNactagsResult) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+func (o GetNactagsResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNactagsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 func (o GetNactagsResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
 func (o GetNactagsResultOutput) OrgNactags() GetNactagsOrgNactagArrayOutput {
 	return o.ApplyT(func(v GetNactagsResult) []GetNactagsOrgNactag { return v.OrgNactags }).(GetNactagsOrgNactagArrayOutput)
+}
+
+func (o GetNactagsResultOutput) Page() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetNactagsResult) *int { return v.Page }).(pulumi.IntPtrOutput)
+}
+
+func (o GetNactagsResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNactagsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func init() {

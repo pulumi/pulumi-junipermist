@@ -48837,11 +48837,44 @@ func (o GetNacrulesOrgNacruleArrayOutput) Index(i pulumi.IntInput) GetNacrulesOr
 }
 
 type GetNactagsOrgNactag struct {
-	CreatedTime  float64 `pulumi:"createdTime"`
-	Id           string  `pulumi:"id"`
+	// can be set to true to allow the override by usermac result
+	AllowUsermacOverride bool    `pulumi:"allowUsermacOverride"`
+	CreatedTime          float64 `pulumi:"createdTime"`
+	// if `type`==`egressVlanNames`, list of egress vlans to return
+	EgressVlanNames []string `pulumi:"egressVlanNames"`
+	// if `type`==`gbpTag`
+	GbpTag int    `pulumi:"gbpTag"`
+	Id     string `pulumi:"id"`
+	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `clientMac`, `idpRole`, `mdmStatus`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	Match string `pulumi:"match"`
+	// This field is applicable only when `type`==`match`
+	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+	//   * `true`: means all values should be matched (i.e., match-all behavior)
+	//
+	// Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`'
+	MatchAll     bool    `pulumi:"matchAll"`
 	ModifiedTime float64 `pulumi:"modifiedTime"`
 	Name         string  `pulumi:"name"`
 	OrgId        string  `pulumi:"orgId"`
+	// if `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs".
+	// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+	// Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+	RadiusAttrs []string `pulumi:"radiusAttrs"`
+	// if `type`==`radiusGroup`
+	RadiusGroup string `pulumi:"radiusGroup"`
+	// if `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs".
+	// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+	// Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+	RadiusVendorAttrs []string `pulumi:"radiusVendorAttrs"`
+	// if `type`==`session_timeout, in seconds
+	SessionTimeout int `pulumi:"sessionTimeout"`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+	Type         string `pulumi:"type"`
+	UsernameAttr string `pulumi:"usernameAttr"`
+	// if `type`==`match`
+	Values []string `pulumi:"values"`
+	// if `type`==`vlan`
+	Vlan string `pulumi:"vlan"`
 }
 
 // GetNactagsOrgNactagInput is an input type that accepts GetNactagsOrgNactagArgs and GetNactagsOrgNactagOutput values.
@@ -48856,11 +48889,44 @@ type GetNactagsOrgNactagInput interface {
 }
 
 type GetNactagsOrgNactagArgs struct {
-	CreatedTime  pulumi.Float64Input `pulumi:"createdTime"`
-	Id           pulumi.StringInput  `pulumi:"id"`
+	// can be set to true to allow the override by usermac result
+	AllowUsermacOverride pulumi.BoolInput    `pulumi:"allowUsermacOverride"`
+	CreatedTime          pulumi.Float64Input `pulumi:"createdTime"`
+	// if `type`==`egressVlanNames`, list of egress vlans to return
+	EgressVlanNames pulumi.StringArrayInput `pulumi:"egressVlanNames"`
+	// if `type`==`gbpTag`
+	GbpTag pulumi.IntInput    `pulumi:"gbpTag"`
+	Id     pulumi.StringInput `pulumi:"id"`
+	// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `clientMac`, `idpRole`, `mdmStatus`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+	Match pulumi.StringInput `pulumi:"match"`
+	// This field is applicable only when `type`==`match`
+	//   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+	//   * `true`: means all values should be matched (i.e., match-all behavior)
+	//
+	// Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`'
+	MatchAll     pulumi.BoolInput    `pulumi:"matchAll"`
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
 	Name         pulumi.StringInput  `pulumi:"name"`
 	OrgId        pulumi.StringInput  `pulumi:"orgId"`
+	// if `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs".
+	// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+	// Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+	RadiusAttrs pulumi.StringArrayInput `pulumi:"radiusAttrs"`
+	// if `type`==`radiusGroup`
+	RadiusGroup pulumi.StringInput `pulumi:"radiusGroup"`
+	// if `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs".
+	// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+	// Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+	RadiusVendorAttrs pulumi.StringArrayInput `pulumi:"radiusVendorAttrs"`
+	// if `type`==`session_timeout, in seconds
+	SessionTimeout pulumi.IntInput `pulumi:"sessionTimeout"`
+	// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+	Type         pulumi.StringInput `pulumi:"type"`
+	UsernameAttr pulumi.StringInput `pulumi:"usernameAttr"`
+	// if `type`==`match`
+	Values pulumi.StringArrayInput `pulumi:"values"`
+	// if `type`==`vlan`
+	Vlan pulumi.StringInput `pulumi:"vlan"`
 }
 
 func (GetNactagsOrgNactagArgs) ElementType() reflect.Type {
@@ -48914,12 +48980,41 @@ func (o GetNactagsOrgNactagOutput) ToGetNactagsOrgNactagOutputWithContext(ctx co
 	return o
 }
 
+// can be set to true to allow the override by usermac result
+func (o GetNactagsOrgNactagOutput) AllowUsermacOverride() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) bool { return v.AllowUsermacOverride }).(pulumi.BoolOutput)
+}
+
 func (o GetNactagsOrgNactagOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetNactagsOrgNactag) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
+// if `type`==`egressVlanNames`, list of egress vlans to return
+func (o GetNactagsOrgNactagOutput) EgressVlanNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) []string { return v.EgressVlanNames }).(pulumi.StringArrayOutput)
+}
+
+// if `type`==`gbpTag`
+func (o GetNactagsOrgNactagOutput) GbpTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) int { return v.GbpTag }).(pulumi.IntOutput)
+}
+
 func (o GetNactagsOrgNactagOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `clientMac`, `idpRole`, `mdmStatus`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+func (o GetNactagsOrgNactagOutput) Match() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Match }).(pulumi.StringOutput)
+}
+
+// This field is applicable only when `type`==`match`
+//   - `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+//   - `true`: means all values should be matched (i.e., match-all behavior)
+//
+// Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`'
+func (o GetNactagsOrgNactagOutput) MatchAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) bool { return v.MatchAll }).(pulumi.BoolOutput)
 }
 
 func (o GetNactagsOrgNactagOutput) ModifiedTime() pulumi.Float64Output {
@@ -48932,6 +49027,49 @@ func (o GetNactagsOrgNactagOutput) Name() pulumi.StringOutput {
 
 func (o GetNactagsOrgNactagOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// if `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs".
+// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+// Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+func (o GetNactagsOrgNactagOutput) RadiusAttrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) []string { return v.RadiusAttrs }).(pulumi.StringArrayOutput)
+}
+
+// if `type`==`radiusGroup`
+func (o GetNactagsOrgNactagOutput) RadiusGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.RadiusGroup }).(pulumi.StringOutput)
+}
+
+// if `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs".
+// It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+// Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+func (o GetNactagsOrgNactagOutput) RadiusVendorAttrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) []string { return v.RadiusVendorAttrs }).(pulumi.StringArrayOutput)
+}
+
+// if `type`==`session_timeout, in seconds
+func (o GetNactagsOrgNactagOutput) SessionTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) int { return v.SessionTimeout }).(pulumi.IntOutput)
+}
+
+// enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+func (o GetNactagsOrgNactagOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetNactagsOrgNactagOutput) UsernameAttr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.UsernameAttr }).(pulumi.StringOutput)
+}
+
+// if `type`==`match`
+func (o GetNactagsOrgNactagOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// if `type`==`vlan`
+func (o GetNactagsOrgNactagOutput) Vlan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNactagsOrgNactag) string { return v.Vlan }).(pulumi.StringOutput)
 }
 
 type GetNactagsOrgNactagArrayOutput struct{ *pulumi.OutputState }

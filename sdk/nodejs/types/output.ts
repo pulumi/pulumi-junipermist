@@ -7366,11 +7366,69 @@ export namespace org {
     }
 
     export interface GetNactagsOrgNactag {
+        /**
+         * can be set to true to allow the override by usermac result
+         */
+        allowUsermacOverride: boolean;
         createdTime: number;
+        /**
+         * if `type`==`egressVlanNames`, list of egress vlans to return
+         */
+        egressVlanNames: string[];
+        /**
+         * if `type`==`gbpTag`
+         */
+        gbpTag: number;
         id: string;
+        /**
+         * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `clientMac`, `idpRole`, `mdmStatus`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         */
+        match: string;
+        /**
+         * This field is applicable only when `type`==`match`
+         *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
+         *   * `true`: means all values should be matched (i.e., match-all behavior)
+         *
+         *
+         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`'
+         */
+        matchAll: boolean;
         modifiedTime: number;
         name: string;
         orgId: string;
+        /**
+         * if `type`==`radiusAttrs`, user can specify a list of one or more standard attributes in the field "radiusAttrs". 
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radiusAttrs in the result of a given rule.
+         */
+        radiusAttrs: string[];
+        /**
+         * if `type`==`radiusGroup`
+         */
+        radiusGroup: string;
+        /**
+         * if `type`==`radiusVendorAttrs`, user can specify a list of one or more vendor-specific attributes in the field "radiusVendorAttrs". 
+         * It is the responsibility of the user to provide a syntactically correct string, otherwise it may not work as expected.
+         * Note that it is allowed to have more than one radiusVendorAttrs in the result of a given rule.
+         */
+        radiusVendorAttrs: string[];
+        /**
+         * if `type`==`session_timeout, in seconds
+         */
+        sessionTimeout: number;
+        /**
+         * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
+         */
+        type: string;
+        usernameAttr: string;
+        /**
+         * if `type`==`match`
+         */
+        values: string[];
+        /**
+         * if `type`==`vlan`
+         */
+        vlan: string;
     }
 
     export interface GetNetworksOrgNetwork {

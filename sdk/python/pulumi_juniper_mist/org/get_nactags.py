@@ -22,16 +22,31 @@ class GetNactagsResult:
     """
     A collection of values returned by getNactags.
     """
-    def __init__(__self__, id=None, org_id=None, org_nactags=None):
+    def __init__(__self__, id=None, limit=None, match=None, name=None, org_id=None, org_nactags=None, page=None, type=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if limit and not isinstance(limit, int):
+            raise TypeError("Expected argument 'limit' to be a int")
+        pulumi.set(__self__, "limit", limit)
+        if match and not isinstance(match, str):
+            raise TypeError("Expected argument 'match' to be a str")
+        pulumi.set(__self__, "match", match)
+        if name and not isinstance(name, str):
+            raise TypeError("Expected argument 'name' to be a str")
+        pulumi.set(__self__, "name", name)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_nactags and not isinstance(org_nactags, list):
             raise TypeError("Expected argument 'org_nactags' to be a list")
         pulumi.set(__self__, "org_nactags", org_nactags)
+        if page and not isinstance(page, int):
+            raise TypeError("Expected argument 'page' to be a int")
+        pulumi.set(__self__, "page", page)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -40,6 +55,21 @@ class GetNactagsResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[int]:
+        return pulumi.get(self, "limit")
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[str]:
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgId")
@@ -51,6 +81,16 @@ class GetNactagsResult:
     def org_nactags(self) -> Sequence['outputs.GetNactagsOrgNactagResult']:
         return pulumi.get(self, "org_nactags")
 
+    @property
+    @pulumi.getter
+    def page(self) -> Optional[int]:
+        return pulumi.get(self, "page")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        return pulumi.get(self, "type")
+
 
 class AwaitableGetNactagsResult(GetNactagsResult):
     # pylint: disable=using-constant-test
@@ -59,11 +99,21 @@ class AwaitableGetNactagsResult(GetNactagsResult):
             yield self
         return GetNactagsResult(
             id=self.id,
+            limit=self.limit,
+            match=self.match,
+            name=self.name,
             org_id=self.org_id,
-            org_nactags=self.org_nactags)
+            org_nactags=self.org_nactags,
+            page=self.page,
+            type=self.type)
 
 
-def get_nactags(org_id: Optional[str] = None,
+def get_nactags(limit: Optional[int] = None,
+                match: Optional[str] = None,
+                name: Optional[str] = None,
+                org_id: Optional[str] = None,
+                page: Optional[int] = None,
+                type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNactagsResult:
     """
     This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
@@ -78,18 +128,33 @@ def get_nactags(org_id: Optional[str] = None,
     ```
     """
     __args__ = dict()
+    __args__['limit'] = limit
+    __args__['match'] = match
+    __args__['name'] = name
     __args__['orgId'] = org_id
+    __args__['page'] = page
+    __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('junipermist:org/getNactags:getNactags', __args__, opts=opts, typ=GetNactagsResult).value
 
     return AwaitableGetNactagsResult(
         id=pulumi.get(__ret__, 'id'),
+        limit=pulumi.get(__ret__, 'limit'),
+        match=pulumi.get(__ret__, 'match'),
+        name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
-        org_nactags=pulumi.get(__ret__, 'org_nactags'))
+        org_nactags=pulumi.get(__ret__, 'org_nactags'),
+        page=pulumi.get(__ret__, 'page'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_nactags)
-def get_nactags_output(org_id: Optional[pulumi.Input[str]] = None,
+def get_nactags_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
+                       match: Optional[pulumi.Input[Optional[str]]] = None,
+                       name: Optional[pulumi.Input[Optional[str]]] = None,
+                       org_id: Optional[pulumi.Input[str]] = None,
+                       page: Optional[pulumi.Input[Optional[int]]] = None,
+                       type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNactagsResult]:
     """
     This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes

@@ -6,9 +6,12 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.GetNactagsOrgNactag;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNactagsResult {
@@ -17,8 +20,13 @@ public final class GetNactagsResult {
      * 
      */
     private String id;
+    private @Nullable Integer limit;
+    private @Nullable String match;
+    private @Nullable String name;
     private String orgId;
     private List<GetNactagsOrgNactag> orgNactags;
+    private @Nullable Integer page;
+    private @Nullable String type;
 
     private GetNactagsResult() {}
     /**
@@ -28,11 +36,26 @@ public final class GetNactagsResult {
     public String id() {
         return this.id;
     }
+    public Optional<Integer> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+    public Optional<String> match() {
+        return Optional.ofNullable(this.match);
+    }
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
     public String orgId() {
         return this.orgId;
     }
     public List<GetNactagsOrgNactag> orgNactags() {
         return this.orgNactags;
+    }
+    public Optional<Integer> page() {
+        return Optional.ofNullable(this.page);
+    }
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -45,14 +68,24 @@ public final class GetNactagsResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Integer limit;
+        private @Nullable String match;
+        private @Nullable String name;
         private String orgId;
         private List<GetNactagsOrgNactag> orgNactags;
+        private @Nullable Integer page;
+        private @Nullable String type;
         public Builder() {}
         public Builder(GetNactagsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.limit = defaults.limit;
+    	      this.match = defaults.match;
+    	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.orgNactags = defaults.orgNactags;
+    	      this.page = defaults.page;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -61,6 +94,24 @@ public final class GetNactagsResult {
               throw new MissingRequiredPropertyException("GetNactagsResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder limit(@Nullable Integer limit) {
+
+            this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder match(@Nullable String match) {
+
+            this.match = match;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -82,11 +133,28 @@ public final class GetNactagsResult {
         public Builder orgNactags(GetNactagsOrgNactag... orgNactags) {
             return orgNactags(List.of(orgNactags));
         }
+        @CustomType.Setter
+        public Builder page(@Nullable Integer page) {
+
+            this.page = page;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder type(@Nullable String type) {
+
+            this.type = type;
+            return this;
+        }
         public GetNactagsResult build() {
             final var _resultValue = new GetNactagsResult();
             _resultValue.id = id;
+            _resultValue.limit = limit;
+            _resultValue.match = match;
+            _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.orgNactags = orgNactags;
+            _resultValue.page = page;
+            _resultValue.type = type;
             return _resultValue;
         }
     }

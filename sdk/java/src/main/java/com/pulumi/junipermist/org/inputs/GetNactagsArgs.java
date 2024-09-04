@@ -6,13 +6,37 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNactagsArgs Empty = new GetNactagsArgs();
+
+    @Import(name="limit")
+    private @Nullable Output<Integer> limit;
+
+    public Optional<Output<Integer>> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    @Import(name="match")
+    private @Nullable Output<String> match;
+
+    public Optional<Output<String>> match() {
+        return Optional.ofNullable(this.match);
+    }
+
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
 
     @Import(name="orgId", required=true)
     private Output<String> orgId;
@@ -21,10 +45,29 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
         return this.orgId;
     }
 
+    @Import(name="page")
+    private @Nullable Output<Integer> page;
+
+    public Optional<Output<Integer>> page() {
+        return Optional.ofNullable(this.page);
+    }
+
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private GetNactagsArgs() {}
 
     private GetNactagsArgs(GetNactagsArgs $) {
+        this.limit = $.limit;
+        this.match = $.match;
+        this.name = $.name;
         this.orgId = $.orgId;
+        this.page = $.page;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -45,6 +88,33 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetNactagsArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder limit(@Nullable Output<Integer> limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        public Builder limit(Integer limit) {
+            return limit(Output.of(limit));
+        }
+
+        public Builder match(@Nullable Output<String> match) {
+            $.match = match;
+            return this;
+        }
+
+        public Builder match(String match) {
+            return match(Output.of(match));
+        }
+
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
@@ -52,6 +122,24 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        public Builder page(@Nullable Output<Integer> page) {
+            $.page = page;
+            return this;
+        }
+
+        public Builder page(Integer page) {
+            return page(Output.of(page));
+        }
+
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public GetNactagsArgs build() {
