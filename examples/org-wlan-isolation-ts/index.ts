@@ -22,5 +22,8 @@ new junipermist.site.Wlan("wlan_one", {
     type: "psk",
     psk: "secretpsk!",
   },
+  portal: {
+    enabled: false,
+  },
   interface: "all",
 });
