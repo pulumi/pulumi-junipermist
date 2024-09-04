@@ -25,6 +25,7 @@ func TestOrgWlanTs(t *testing.T) {
 func TestOrgWlanIsolationTs(t *testing.T) {
 	// Regression test for https://github.com/pulumi/pulumi-junipermist/issues/49
 	// Regression test for https://github.com/pulumi/pulumi-junipermist/issues/58
+	// Regression test for https://github.com/pulumi/pulumi-junipermist/issues/64
 	checkBaseEnvVars(t)
 	test := pulumitest.NewPulumiTest(t, "org-wlan-isolation-ts",
 		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
