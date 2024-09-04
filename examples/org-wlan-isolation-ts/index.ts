@@ -15,6 +15,8 @@ new junipermist.site.Wlan("wlan_one", {
   wlanLimitDownEnabled: false,
   clientLimitDownEnabled: false,
   clientLimitUpEnabled: false,
+  limitBcast: true,
+  allowSsdp: true,
   isolation: true,
   auth: {
     type: "psk",
