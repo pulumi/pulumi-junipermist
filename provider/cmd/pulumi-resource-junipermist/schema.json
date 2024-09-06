@@ -18902,7 +18902,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.\nProperty key is the sponsor email, Property value is the sponsor name\n"
+                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled`\n            is `true` and `sponsor_email_domains` is empty.\n\n            Property key is the sponsor email, Property value is the sponsor name\n"
                 },
                 "ssoDefaultRole": {
                     "type": "string",
@@ -24222,7 +24222,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.\nProperty key is the sponsor email, Property value is the sponsor name\n"
+                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled`\n            is `true` and `sponsor_email_domains` is empty.\n\n            Property key is the sponsor email, Property value is the sponsor name\n"
                 },
                 "ssoDefaultRole": {
                     "type": "string",
@@ -31021,7 +31021,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:org/WlanSchedule:WlanSchedule",
@@ -31466,7 +31466,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:org/WlanSchedule:WlanSchedule",
@@ -31862,7 +31862,7 @@
                     },
                     "roamMode": {
                         "type": "string",
-                        "description": "enum: `11r`, `OKC`, `none`\n"
+                        "description": "enum: `11r`, `OKC`, `NONE`\n"
                     },
                     "schedule": {
                         "$ref": "#/types/junipermist:org/WlanSchedule:WlanSchedule",
@@ -34249,7 +34249,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:site/WlanSchedule:WlanSchedule",
@@ -34691,7 +34691,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:site/WlanSchedule:WlanSchedule",
@@ -35086,7 +35086,7 @@
                     },
                     "roamMode": {
                         "type": "string",
-                        "description": "enum: `11r`, `OKC`, `none`\n"
+                        "description": "enum: `11r`, `OKC`, `NONE`\n"
                     },
                     "schedule": {
                         "$ref": "#/types/junipermist:site/WlanSchedule:WlanSchedule",
