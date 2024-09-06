@@ -8641,8 +8641,10 @@ class WlanPortal(dict):
         :param str sponsor_link_validity_duration: how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         :param bool sponsor_notify_all: whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         :param bool sponsor_status_notify: if enabled, guest will get email about sponsor's action (approve/deny)
-        :param Mapping[str, str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-               Property key is the sponsor email, Property value is the sponsor name
+        :param Mapping[str, str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled`
+                           is `true` and `sponsor_email_domains` is empty.
+               
+                           Property key is the sponsor email, Property value is the sponsor name
         :param str sso_default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param str sso_idp_cert: IDP Cert (used to verify the signed response)
         :param str sso_idp_sign_algo: signing algorithm for SAML Assertion
@@ -9285,8 +9287,10 @@ class WlanPortal(dict):
     @pulumi.getter
     def sponsors(self) -> Optional[Mapping[str, str]]:
         """
-        object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-        Property key is the sponsor email, Property value is the sponsor name
+        object of allowed sponsors email with name. Required if `sponsor_enabled`
+                    is `true` and `sponsor_email_domains` is empty.
+
+                    Property key is the sponsor email, Property value is the sponsor name
         """
         return pulumi.get(self, "sponsors")
 

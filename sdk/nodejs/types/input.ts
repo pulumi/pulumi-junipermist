@@ -7980,8 +7980,10 @@ export namespace org {
          */
         sponsorStatusNotify?: pulumi.Input<boolean>;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -10242,8 +10244,10 @@ export namespace site {
          */
         sponsorStatusNotify?: pulumi.Input<boolean>;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**

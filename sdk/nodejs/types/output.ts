@@ -10086,8 +10086,10 @@ export namespace org {
          */
         sponsorStatusNotify: boolean;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors: {[key: string]: string};
         /**
@@ -12476,8 +12478,10 @@ export namespace site {
          */
         sponsorStatusNotify: boolean;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors: {[key: string]: string};
         /**

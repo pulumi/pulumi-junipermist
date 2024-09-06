@@ -45047,8 +45047,10 @@ type WlanPortal struct {
 	SponsorNotifyAll *bool `pulumi:"sponsorNotifyAll"`
 	// if enabled, guest will get email about sponsor's action (approve/deny)
 	SponsorStatusNotify *bool `pulumi:"sponsorStatusNotify"`
-	// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-	// Property key is the sponsor email, Property value is the sponsor name
+	// object of allowed sponsors email with name. Required if `sponsorEnabled`
+	//             is `true` and `sponsorEmailDomains` is empty.
+	//
+	//             Property key is the sponsor email, Property value is the sponsor name
 	Sponsors map[string]string `pulumi:"sponsors"`
 	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole *string `pulumi:"ssoDefaultRole"`
@@ -45210,8 +45212,10 @@ type WlanPortalArgs struct {
 	SponsorNotifyAll pulumi.BoolPtrInput `pulumi:"sponsorNotifyAll"`
 	// if enabled, guest will get email about sponsor's action (approve/deny)
 	SponsorStatusNotify pulumi.BoolPtrInput `pulumi:"sponsorStatusNotify"`
-	// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-	// Property key is the sponsor email, Property value is the sponsor name
+	// object of allowed sponsors email with name. Required if `sponsorEnabled`
+	//             is `true` and `sponsorEmailDomains` is empty.
+	//
+	//             Property key is the sponsor email, Property value is the sponsor name
 	Sponsors pulumi.StringMapInput `pulumi:"sponsors"`
 	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole pulumi.StringPtrInput `pulumi:"ssoDefaultRole"`
@@ -45618,8 +45622,11 @@ func (o WlanPortalOutput) SponsorStatusNotify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorStatusNotify }).(pulumi.BoolPtrOutput)
 }
 
-// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-// Property key is the sponsor email, Property value is the sponsor name
+// object of allowed sponsors email with name. Required if `sponsorEnabled`
+//
+//	is `true` and `sponsorEmailDomains` is empty.
+//
+//	Property key is the sponsor email, Property value is the sponsor name
 func (o WlanPortalOutput) Sponsors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WlanPortal) map[string]string { return v.Sponsors }).(pulumi.StringMapOutput)
 }
@@ -46310,8 +46317,11 @@ func (o WlanPortalPtrOutput) SponsorStatusNotify() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-// Property key is the sponsor email, Property value is the sponsor name
+// object of allowed sponsors email with name. Required if `sponsorEnabled`
+//
+//	is `true` and `sponsorEmailDomains` is empty.
+//
+//	Property key is the sponsor email, Property value is the sponsor name
 func (o WlanPortalPtrOutput) Sponsors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WlanPortal) map[string]string {
 		if v == nil {
