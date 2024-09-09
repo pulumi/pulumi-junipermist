@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +16,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
      * @return if `protocol`==`icmp`
      * 
      */
-    private String address;
+    private @Nullable String address;
     private @Nullable String appType;
     /**
      * @return if `protocol`==`http`
@@ -43,8 +42,8 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
      * @return if `protocol`==`icmp`
      * 
      */
-    public String address() {
-        return this.address;
+    public Optional<String> address() {
+        return Optional.ofNullable(this.address);
     }
     public Optional<String> appType() {
         return Optional.ofNullable(this.appType);
@@ -89,7 +88,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String address;
+        private @Nullable String address;
         private @Nullable String appType;
         private @Nullable List<String> hostnames;
         private @Nullable String name;
@@ -111,10 +110,8 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
         }
 
         @CustomType.Setter
-        public Builder address(String address) {
-            if (address == null) {
-              throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomApp", "address");
-            }
+        public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }

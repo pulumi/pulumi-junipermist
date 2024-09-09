@@ -33,6 +33,7 @@ class SettingArgs:
                  occupancy: Optional[pulumi.Input['SettingOccupancyArgs']] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['SettingProxyArgs']] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  report_gatt: Optional[pulumi.Input[bool]] = None,
                  rogue: Optional[pulumi.Input['SettingRogueArgs']] = None,
                  rtsa: Optional[pulumi.Input['SettingRtsaArgs']] = None,
@@ -61,7 +62,7 @@ class SettingArgs:
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
@@ -71,6 +72,7 @@ class SettingArgs:
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
         :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
         :param pulumi.Input['SettingProxyArgs'] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input['SettingRogueArgs'] rogue: Rogue site settings
@@ -121,6 +123,8 @@ class SettingArgs:
             pulumi.set(__self__, "persist_config_on_device", persist_config_on_device)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
+        if remove_existing_configs is not None:
+            pulumi.set(__self__, "remove_existing_configs", remove_existing_configs)
         if report_gatt is not None:
             pulumi.set(__self__, "report_gatt", report_gatt)
         if rogue is not None:
@@ -256,7 +260,7 @@ class SettingArgs:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -360,6 +364,18 @@ class SettingArgs:
     @proxy.setter
     def proxy(self, value: Optional[pulumi.Input['SettingProxyArgs']]):
         pulumi.set(self, "proxy", value)
+
+    @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        """
+        return pulumi.get(self, "remove_existing_configs")
+
+    @remove_existing_configs.setter
+    def remove_existing_configs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_existing_configs", value)
 
     @property
     @pulumi.getter(name="reportGatt")
@@ -603,6 +619,7 @@ class _SettingState:
                  org_id: Optional[pulumi.Input[str]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['SettingProxyArgs']] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  report_gatt: Optional[pulumi.Input[bool]] = None,
                  rogue: Optional[pulumi.Input['SettingRogueArgs']] = None,
                  rtsa: Optional[pulumi.Input['SettingRtsaArgs']] = None,
@@ -634,7 +651,7 @@ class _SettingState:
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
@@ -644,6 +661,7 @@ class _SettingState:
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
         :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
         :param pulumi.Input['SettingProxyArgs'] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input['SettingRogueArgs'] rogue: Rogue site settings
@@ -697,6 +715,8 @@ class _SettingState:
             pulumi.set(__self__, "persist_config_on_device", persist_config_on_device)
         if proxy is not None:
             pulumi.set(__self__, "proxy", proxy)
+        if remove_existing_configs is not None:
+            pulumi.set(__self__, "remove_existing_configs", remove_existing_configs)
         if report_gatt is not None:
             pulumi.set(__self__, "report_gatt", report_gatt)
         if rogue is not None:
@@ -838,7 +858,7 @@ class _SettingState:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -951,6 +971,18 @@ class _SettingState:
     @proxy.setter
     def proxy(self, value: Optional[pulumi.Input['SettingProxyArgs']]):
         pulumi.set(self, "proxy", value)
+
+    @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        """
+        return pulumi.get(self, "remove_existing_configs")
+
+    @remove_existing_configs.setter
+    def remove_existing_configs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_existing_configs", value)
 
     @property
     @pulumi.getter(name="reportGatt")
@@ -1221,6 +1253,7 @@ class Setting(pulumi.CustomResource):
                  occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  report_gatt: Optional[pulumi.Input[bool]] = None,
                  rogue: Optional[pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']]] = None,
                  rtsa: Optional[pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']]] = None,
@@ -1264,7 +1297,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
@@ -1274,6 +1307,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
         :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
         :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
@@ -1341,6 +1375,7 @@ class Setting(pulumi.CustomResource):
                  occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  report_gatt: Optional[pulumi.Input[bool]] = None,
                  rogue: Optional[pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']]] = None,
                  rtsa: Optional[pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']]] = None,
@@ -1387,6 +1422,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["occupancy"] = occupancy
             __props__.__dict__["persist_config_on_device"] = persist_config_on_device
             __props__.__dict__["proxy"] = proxy
+            __props__.__dict__["remove_existing_configs"] = remove_existing_configs
             __props__.__dict__["report_gatt"] = report_gatt
             __props__.__dict__["rogue"] = rogue
             __props__.__dict__["rtsa"] = rtsa
@@ -1442,6 +1478,7 @@ class Setting(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[str]] = None,
             persist_config_on_device: Optional[pulumi.Input[bool]] = None,
             proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
+            remove_existing_configs: Optional[pulumi.Input[bool]] = None,
             report_gatt: Optional[pulumi.Input[bool]] = None,
             rogue: Optional[pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']]] = None,
             rtsa: Optional[pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']]] = None,
@@ -1478,7 +1515,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
@@ -1488,6 +1525,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
         :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
         :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
@@ -1527,6 +1565,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["persist_config_on_device"] = persist_config_on_device
         __props__.__dict__["proxy"] = proxy
+        __props__.__dict__["remove_existing_configs"] = remove_existing_configs
         __props__.__dict__["report_gatt"] = report_gatt
         __props__.__dict__["rogue"] = rogue
         __props__.__dict__["rtsa"] = rtsa
@@ -1614,7 +1653,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> pulumi.Output[int]:
         """
-        sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -1687,6 +1726,14 @@ class Setting(pulumi.CustomResource):
         Proxy Configuration to talk to Mist
         """
         return pulumi.get(self, "proxy")
+
+    @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> pulumi.Output[bool]:
+        """
+        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        """
+        return pulumi.get(self, "remove_existing_configs")
 
     @property
     @pulumi.getter(name="reportGatt")

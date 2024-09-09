@@ -172,28 +172,14 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="srcWxtags", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> srcWxtags;
+    private Output</* @Nullable */ List<String>> srcWxtags;
 
     /**
      * @return tag list to determine if this rule would match
      * 
      */
-    public Output<List<String>> srcWxtags() {
-        return this.srcWxtags;
-    }
-    /**
-     * Only for Org Level WxRule
-     * 
-     */
-    @Export(name="templateId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> templateId;
-
-    /**
-     * @return Only for Org Level WxRule
-     * 
-     */
-    public Output<Optional<String>> templateId() {
-        return Codegen.optional(this.templateId);
+    public Output<Optional<List<String>>> srcWxtags() {
+        return Codegen.optional(this.srcWxtags);
     }
 
     /**

@@ -119,15 +119,15 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
      * tag list to determine if this rule would match
      * 
      */
-    @Import(name="srcWxtags", required=true)
-    private Output<List<String>> srcWxtags;
+    @Import(name="srcWxtags")
+    private @Nullable Output<List<String>> srcWxtags;
 
     /**
      * @return tag list to determine if this rule would match
      * 
      */
-    public Output<List<String>> srcWxtags() {
-        return this.srcWxtags;
+    public Optional<Output<List<String>>> srcWxtags() {
+        return Optional.ofNullable(this.srcWxtags);
     }
 
     /**
@@ -350,7 +350,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder srcWxtags(Output<List<String>> srcWxtags) {
+        public Builder srcWxtags(@Nullable Output<List<String>> srcWxtags) {
             $.srcWxtags = srcWxtags;
             return this;
         }
@@ -405,9 +405,6 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.orgId == null) {
                 throw new MissingRequiredPropertyException("WxruleArgs", "orgId");
-            }
-            if ($.srcWxtags == null) {
-                throw new MissingRequiredPropertyException("WxruleArgs", "srcWxtags");
             }
             if ($.templateId == null) {
                 throw new MissingRequiredPropertyException("WxruleArgs", "templateId");

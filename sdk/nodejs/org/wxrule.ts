@@ -88,7 +88,7 @@ export class Wxrule extends pulumi.CustomResource {
     /**
      * tag list to determine if this rule would match
      */
-    public readonly srcWxtags!: pulumi.Output<string[]>;
+    public readonly srcWxtags!: pulumi.Output<string[] | undefined>;
     /**
      * Only for Org Level WxRule
      */
@@ -127,9 +127,6 @@ export class Wxrule extends pulumi.CustomResource {
             }
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
-            }
-            if ((!args || args.srcWxtags === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'srcWxtags'");
             }
             if ((!args || args.templateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateId'");
@@ -217,7 +214,7 @@ export interface WxruleArgs {
     /**
      * tag list to determine if this rule would match
      */
-    srcWxtags: pulumi.Input<pulumi.Input<string>[]>;
+    srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Only for Org Level WxRule
      */

@@ -253,8 +253,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? SponsorStatusNotify;
         /// <summary>
-        /// object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-        /// Property key is the sponsor email, Property value is the sponsor name
+        /// object of allowed sponsors email with name. Required if `sponsor_enabled`
+        ///             is `true` and `sponsor_email_domains` is empty.
+        /// 
+        ///             Property key is the sponsor email, Property value is the sponsor name
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Sponsors;
         /// <summary>

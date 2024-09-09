@@ -149,14 +149,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
     @Import(name="deviceUpdownThreshold")
     private @Nullable Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * @return by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
     public Optional<Output<Integer>> deviceUpdownThreshold() {
@@ -290,6 +290,21 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<SettingProxyArgs>> proxy() {
         return Optional.ofNullable(this.proxy);
+    }
+
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    @Import(name="removeExistingConfigs")
+    private @Nullable Output<Boolean> removeExistingConfigs;
+
+    /**
+     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    public Optional<Output<Boolean>> removeExistingConfigs() {
+        return Optional.ofNullable(this.removeExistingConfigs);
     }
 
     /**
@@ -578,6 +593,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.orgId = $.orgId;
         this.persistConfigOnDevice = $.persistConfigOnDevice;
         this.proxy = $.proxy;
+        this.removeExistingConfigs = $.removeExistingConfigs;
         this.reportGatt = $.reportGatt;
         this.rogue = $.rogue;
         this.rtsa = $.rtsa;
@@ -766,7 +782,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+         * @param deviceUpdownThreshold by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
          * 
          * @return builder
          * 
@@ -777,7 +793,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+         * @param deviceUpdownThreshold by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
          * 
          * @return builder
          * 
@@ -973,6 +989,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder proxy(SettingProxyArgs proxy) {
             return proxy(Output.of(proxy));
+        }
+
+        /**
+         * @param removeExistingConfigs by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeExistingConfigs(@Nullable Output<Boolean> removeExistingConfigs) {
+            $.removeExistingConfigs = removeExistingConfigs;
+            return this;
+        }
+
+        /**
+         * @param removeExistingConfigs by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeExistingConfigs(Boolean removeExistingConfigs) {
+            return removeExistingConfigs(Output.of(removeExistingConfigs));
         }
 
         /**

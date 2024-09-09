@@ -26,6 +26,7 @@ import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatching;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMgmt;
 import com.pulumi.junipermist.org.outputs.NetworktemplateVrfConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateVrfInstances;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -303,6 +304,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<NetworktemplateRemoteSyslog>> remoteSyslog() {
         return Codegen.optional(this.remoteSyslog);
+    }
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    @Export(name="removeExistingConfigs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> removeExistingConfigs;
+
+    /**
+     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    public Output<Boolean> removeExistingConfigs() {
+        return this.removeExistingConfigs;
     }
     @Export(name="snmpConfig", refs={NetworktemplateSnmpConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSnmpConfig> snmpConfig;

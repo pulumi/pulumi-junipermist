@@ -107,6 +107,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("remoteSyslog")]
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Output("removeExistingConfigs")]
+        public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
+
         [Output("snmpConfig")]
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
@@ -323,6 +329,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Input("removeExistingConfigs")]
+        public Input<bool>? RemoveExistingConfigs { get; set; }
+
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
@@ -505,6 +517,12 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("remoteSyslog")]
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
+
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Input("removeExistingConfigs")]
+        public Input<bool>? RemoveExistingConfigs { get; set; }
 
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }

@@ -102,12 +102,6 @@ namespace Pulumi.JuniperMist.Site
         [Output("srcWxtags")]
         public Output<ImmutableArray<string>> SrcWxtags { get; private set; } = null!;
 
-        /// <summary>
-        /// Only for Org Level WxRule
-        /// </summary>
-        [Output("templateId")]
-        public Output<string?> TemplateId { get; private set; } = null!;
-
 
         /// <summary>
         /// Create a Wxrule resource with the given unique name, arguments, and options.
@@ -217,7 +211,7 @@ namespace Pulumi.JuniperMist.Site
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 
-        [Input("srcWxtags", required: true)]
+        [Input("srcWxtags")]
         private InputList<string>? _srcWxtags;
 
         /// <summary>
@@ -228,12 +222,6 @@ namespace Pulumi.JuniperMist.Site
             get => _srcWxtags ?? (_srcWxtags = new InputList<string>());
             set => _srcWxtags = value;
         }
-
-        /// <summary>
-        /// Only for Org Level WxRule
-        /// </summary>
-        [Input("templateId")]
-        public Input<string>? TemplateId { get; set; }
 
         public WxruleArgs()
         {
@@ -319,12 +307,6 @@ namespace Pulumi.JuniperMist.Site
             get => _srcWxtags ?? (_srcWxtags = new InputList<string>());
             set => _srcWxtags = value;
         }
-
-        /// <summary>
-        /// Only for Org Level WxRule
-        /// </summary>
-        [Input("templateId")]
-        public Input<string>? TemplateId { get; set; }
 
         public WxruleState()
         {

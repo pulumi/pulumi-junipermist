@@ -445,8 +445,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<string>? _sponsors;
 
         /// <summary>
-        /// object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-        /// Property key is the sponsor email, Property value is the sponsor name
+        /// object of allowed sponsors email with name. Required if `sponsor_enabled`
+        ///             is `true` and `sponsor_email_domains` is empty.
+        /// 
+        ///             Property key is the sponsor email, Property value is the sponsor name
         /// </summary>
         public InputMap<string> Sponsors
         {

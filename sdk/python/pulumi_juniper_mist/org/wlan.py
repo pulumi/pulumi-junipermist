@@ -184,7 +184,7 @@ class WlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
-        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `none`
+        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
@@ -1210,7 +1210,7 @@ class WlanArgs:
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `11r`, `OKC`, `none`
+        enum: `11r`, `OKC`, `NONE`
         """
         return pulumi.get(self, "roam_mode")
 
@@ -1564,7 +1564,7 @@ class _WlanState:
         :param pulumi.Input[str] portal_template_url: N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
                To update portal_template, use Wlan Portal Template.
         :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
-        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `none`
+        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[str] ssid: the name of the SSID
@@ -2641,7 +2641,7 @@ class _WlanState:
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `11r`, `OKC`, `none`
+        enum: `11r`, `OKC`, `NONE`
         """
         return pulumi.get(self, "roam_mode")
 
@@ -3060,7 +3060,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
-        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `none`
+        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[str] ssid: the name of the SSID
@@ -3519,7 +3519,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[str] portal_template_url: N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
                To update portal_template, use Wlan Portal Template.
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
-        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `none`
+        :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[str] ssid: the name of the SSID
@@ -4218,7 +4218,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> pulumi.Output[str]:
         """
-        enum: `11r`, `OKC`, `none`
+        enum: `11r`, `OKC`, `NONE`
         """
         return pulumi.get(self, "roam_mode")
 

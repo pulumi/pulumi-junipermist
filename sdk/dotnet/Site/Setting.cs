@@ -68,7 +68,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingCriticalUrlMonitoring?> CriticalUrlMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        /// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         /// </summary>
         [Output("deviceUpdownThreshold")]
         public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
@@ -124,6 +124,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("proxy")]
         public Output<Outputs.SettingProxy?> Proxy { get; private set; } = null!;
+
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Output("removeExistingConfigs")]
+        public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
 
         /// <summary>
         /// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
@@ -321,7 +327,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        /// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
@@ -380,6 +386,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.SettingProxyArgs>? Proxy { get; set; }
+
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Input("removeExistingConfigs")]
+        public Input<bool>? RemoveExistingConfigs { get; set; }
 
         /// <summary>
         /// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
@@ -553,7 +565,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringGetArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+        /// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
@@ -615,6 +627,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.SettingProxyGetArgs>? Proxy { get; set; }
+
+        /// <summary>
+        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// </summary>
+        [Input("removeExistingConfigs")]
+        public Input<bool>? RemoveExistingConfigs { get; set; }
 
         /// <summary>
         /// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,

@@ -79,6 +79,36 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.configRevertTimer);
     }
 
+    /**
+     * for both SSR and SRX disable console port
+     * 
+     */
+    @Import(name="disableConsole")
+    private @Nullable Output<Boolean> disableConsole;
+
+    /**
+     * @return for both SSR and SRX disable console port
+     * 
+     */
+    public Optional<Output<Boolean>> disableConsole() {
+        return Optional.ofNullable(this.disableConsole);
+    }
+
+    /**
+     * for both SSR and SRX disable management interface
+     * 
+     */
+    @Import(name="disableOob")
+    private @Nullable Output<Boolean> disableOob;
+
+    /**
+     * @return for both SSR and SRX disable management interface
+     * 
+     */
+    public Optional<Output<Boolean>> disableOob() {
+        return Optional.ofNullable(this.disableOob);
+    }
+
     @Import(name="probeHosts")
     private @Nullable Output<List<String>> probeHosts;
 
@@ -123,6 +153,8 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         this.appUsage = $.appUsage;
         this.autoSignatureUpdate = $.autoSignatureUpdate;
         this.configRevertTimer = $.configRevertTimer;
+        this.disableConsole = $.disableConsole;
+        this.disableOob = $.disableOob;
         this.probeHosts = $.probeHosts;
         this.rootPassword = $.rootPassword;
         this.securityLogSourceAddress = $.securityLogSourceAddress;
@@ -236,6 +268,48 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
          */
         public Builder configRevertTimer(Integer configRevertTimer) {
             return configRevertTimer(Output.of(configRevertTimer));
+        }
+
+        /**
+         * @param disableConsole for both SSR and SRX disable console port
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableConsole(@Nullable Output<Boolean> disableConsole) {
+            $.disableConsole = disableConsole;
+            return this;
+        }
+
+        /**
+         * @param disableConsole for both SSR and SRX disable console port
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableConsole(Boolean disableConsole) {
+            return disableConsole(Output.of(disableConsole));
+        }
+
+        /**
+         * @param disableOob for both SSR and SRX disable management interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableOob(@Nullable Output<Boolean> disableOob) {
+            $.disableOob = disableOob;
+            return this;
+        }
+
+        /**
+         * @param disableOob for both SSR and SRX disable management interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableOob(Boolean disableOob) {
+            return disableOob(Output.of(disableOob));
         }
 
         public Builder probeHosts(@Nullable Output<List<String>> probeHosts) {

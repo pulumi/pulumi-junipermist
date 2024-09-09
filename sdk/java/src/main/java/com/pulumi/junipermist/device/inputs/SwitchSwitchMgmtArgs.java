@@ -5,10 +5,13 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.device.inputs.SwitchSwitchMgmtLocalAccountsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchSwitchMgmtProtectReArgs;
 import com.pulumi.junipermist.device.inputs.SwitchSwitchMgmtTacacsArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,11 +21,108 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
 
     public static final SwitchSwitchMgmtArgs Empty = new SwitchSwitchMgmtArgs();
 
-    @Import(name="configRevert")
-    private @Nullable Output<Integer> configRevert;
+    /**
+     * ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * 
+     */
+    @Import(name="apAffinityThreshold")
+    private @Nullable Output<Integer> apAffinityThreshold;
 
-    public Optional<Output<Integer>> configRevert() {
-        return Optional.ofNullable(this.configRevert);
+    /**
+     * @return ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * 
+     */
+    public Optional<Output<Integer>> apAffinityThreshold() {
+        return Optional.ofNullable(this.apAffinityThreshold);
+    }
+
+    /**
+     * Set Banners for switches. Allows markup formatting
+     * 
+     */
+    @Import(name="cliBanner")
+    private @Nullable Output<String> cliBanner;
+
+    /**
+     * @return Set Banners for switches. Allows markup formatting
+     * 
+     */
+    public Optional<Output<String>> cliBanner() {
+        return Optional.ofNullable(this.cliBanner);
+    }
+
+    /**
+     * Sets timeout for switches
+     * 
+     */
+    @Import(name="cliIdleTimeout")
+    private @Nullable Output<Integer> cliIdleTimeout;
+
+    /**
+     * @return Sets timeout for switches
+     * 
+     */
+    public Optional<Output<Integer>> cliIdleTimeout() {
+        return Optional.ofNullable(this.cliIdleTimeout);
+    }
+
+    /**
+     * the rollback timer for commit confirmed
+     * 
+     */
+    @Import(name="configRevertTimer")
+    private @Nullable Output<Integer> configRevertTimer;
+
+    /**
+     * @return the rollback timer for commit confirmed
+     * 
+     */
+    public Optional<Output<Integer>> configRevertTimer() {
+        return Optional.ofNullable(this.configRevertTimer);
+    }
+
+    /**
+     * Enable to provide the FQDN with DHCP option 81
+     * 
+     */
+    @Import(name="dhcpOptionFqdn")
+    private @Nullable Output<Boolean> dhcpOptionFqdn;
+
+    /**
+     * @return Enable to provide the FQDN with DHCP option 81
+     * 
+     */
+    public Optional<Output<Boolean>> dhcpOptionFqdn() {
+        return Optional.ofNullable(this.dhcpOptionFqdn);
+    }
+
+    /**
+     * Property key is the user name. For Local user authentication
+     * 
+     */
+    @Import(name="localAccounts")
+    private @Nullable Output<Map<String,SwitchSwitchMgmtLocalAccountsArgs>> localAccounts;
+
+    /**
+     * @return Property key is the user name. For Local user authentication
+     * 
+     */
+    public Optional<Output<Map<String,SwitchSwitchMgmtLocalAccountsArgs>>> localAccounts() {
+        return Optional.ofNullable(this.localAccounts);
+    }
+
+    @Import(name="mxedgeProxyHost")
+    private @Nullable Output<String> mxedgeProxyHost;
+
+    public Optional<Output<String>> mxedgeProxyHost() {
+        return Optional.ofNullable(this.mxedgeProxyHost);
+    }
+
+    @Import(name="mxedgeProxyPort")
+    private @Nullable Output<Integer> mxedgeProxyPort;
+
+    public Optional<Output<Integer>> mxedgeProxyPort() {
+        return Optional.ofNullable(this.mxedgeProxyPort);
     }
 
     /**
@@ -58,13 +158,36 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.tacacs);
     }
 
+    /**
+     * to use mxedge as proxy
+     * 
+     */
+    @Import(name="useMxedgeProxy")
+    private @Nullable Output<Boolean> useMxedgeProxy;
+
+    /**
+     * @return to use mxedge as proxy
+     * 
+     */
+    public Optional<Output<Boolean>> useMxedgeProxy() {
+        return Optional.ofNullable(this.useMxedgeProxy);
+    }
+
     private SwitchSwitchMgmtArgs() {}
 
     private SwitchSwitchMgmtArgs(SwitchSwitchMgmtArgs $) {
-        this.configRevert = $.configRevert;
+        this.apAffinityThreshold = $.apAffinityThreshold;
+        this.cliBanner = $.cliBanner;
+        this.cliIdleTimeout = $.cliIdleTimeout;
+        this.configRevertTimer = $.configRevertTimer;
+        this.dhcpOptionFqdn = $.dhcpOptionFqdn;
+        this.localAccounts = $.localAccounts;
+        this.mxedgeProxyHost = $.mxedgeProxyHost;
+        this.mxedgeProxyPort = $.mxedgeProxyPort;
         this.protectRe = $.protectRe;
         this.rootPassword = $.rootPassword;
         this.tacacs = $.tacacs;
+        this.useMxedgeProxy = $.useMxedgeProxy;
     }
 
     public static Builder builder() {
@@ -85,13 +208,148 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
             $ = new SwitchSwitchMgmtArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder configRevert(@Nullable Output<Integer> configRevert) {
-            $.configRevert = configRevert;
+        /**
+         * @param apAffinityThreshold ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apAffinityThreshold(@Nullable Output<Integer> apAffinityThreshold) {
+            $.apAffinityThreshold = apAffinityThreshold;
             return this;
         }
 
-        public Builder configRevert(Integer configRevert) {
-            return configRevert(Output.of(configRevert));
+        /**
+         * @param apAffinityThreshold ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apAffinityThreshold(Integer apAffinityThreshold) {
+            return apAffinityThreshold(Output.of(apAffinityThreshold));
+        }
+
+        /**
+         * @param cliBanner Set Banners for switches. Allows markup formatting
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cliBanner(@Nullable Output<String> cliBanner) {
+            $.cliBanner = cliBanner;
+            return this;
+        }
+
+        /**
+         * @param cliBanner Set Banners for switches. Allows markup formatting
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cliBanner(String cliBanner) {
+            return cliBanner(Output.of(cliBanner));
+        }
+
+        /**
+         * @param cliIdleTimeout Sets timeout for switches
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cliIdleTimeout(@Nullable Output<Integer> cliIdleTimeout) {
+            $.cliIdleTimeout = cliIdleTimeout;
+            return this;
+        }
+
+        /**
+         * @param cliIdleTimeout Sets timeout for switches
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cliIdleTimeout(Integer cliIdleTimeout) {
+            return cliIdleTimeout(Output.of(cliIdleTimeout));
+        }
+
+        /**
+         * @param configRevertTimer the rollback timer for commit confirmed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configRevertTimer(@Nullable Output<Integer> configRevertTimer) {
+            $.configRevertTimer = configRevertTimer;
+            return this;
+        }
+
+        /**
+         * @param configRevertTimer the rollback timer for commit confirmed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configRevertTimer(Integer configRevertTimer) {
+            return configRevertTimer(Output.of(configRevertTimer));
+        }
+
+        /**
+         * @param dhcpOptionFqdn Enable to provide the FQDN with DHCP option 81
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcpOptionFqdn(@Nullable Output<Boolean> dhcpOptionFqdn) {
+            $.dhcpOptionFqdn = dhcpOptionFqdn;
+            return this;
+        }
+
+        /**
+         * @param dhcpOptionFqdn Enable to provide the FQDN with DHCP option 81
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dhcpOptionFqdn(Boolean dhcpOptionFqdn) {
+            return dhcpOptionFqdn(Output.of(dhcpOptionFqdn));
+        }
+
+        /**
+         * @param localAccounts Property key is the user name. For Local user authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localAccounts(@Nullable Output<Map<String,SwitchSwitchMgmtLocalAccountsArgs>> localAccounts) {
+            $.localAccounts = localAccounts;
+            return this;
+        }
+
+        /**
+         * @param localAccounts Property key is the user name. For Local user authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localAccounts(Map<String,SwitchSwitchMgmtLocalAccountsArgs> localAccounts) {
+            return localAccounts(Output.of(localAccounts));
+        }
+
+        public Builder mxedgeProxyHost(@Nullable Output<String> mxedgeProxyHost) {
+            $.mxedgeProxyHost = mxedgeProxyHost;
+            return this;
+        }
+
+        public Builder mxedgeProxyHost(String mxedgeProxyHost) {
+            return mxedgeProxyHost(Output.of(mxedgeProxyHost));
+        }
+
+        public Builder mxedgeProxyPort(@Nullable Output<Integer> mxedgeProxyPort) {
+            $.mxedgeProxyPort = mxedgeProxyPort;
+            return this;
+        }
+
+        public Builder mxedgeProxyPort(Integer mxedgeProxyPort) {
+            return mxedgeProxyPort(Output.of(mxedgeProxyPort));
         }
 
         /**
@@ -135,6 +393,27 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
 
         public Builder tacacs(SwitchSwitchMgmtTacacsArgs tacacs) {
             return tacacs(Output.of(tacacs));
+        }
+
+        /**
+         * @param useMxedgeProxy to use mxedge as proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useMxedgeProxy(@Nullable Output<Boolean> useMxedgeProxy) {
+            $.useMxedgeProxy = useMxedgeProxy;
+            return this;
+        }
+
+        /**
+         * @param useMxedgeProxy to use mxedge as proxy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useMxedgeProxy(Boolean useMxedgeProxy) {
+            return useMxedgeProxy(Output.of(useMxedgeProxy));
         }
 
         public SwitchSwitchMgmtArgs build() {

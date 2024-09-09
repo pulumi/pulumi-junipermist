@@ -1046,14 +1046,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `11r`, `OKC`, `none`
+     * enum: `11r`, `OKC`, `NONE`
      * 
      */
     @Import(name="roamMode")
     private @Nullable Output<String> roamMode;
 
     /**
-     * @return enum: `11r`, `OKC`, `none`
+     * @return enum: `11r`, `OKC`, `NONE`
      * 
      */
     public Optional<Output<String>> roamMode() {
@@ -2886,7 +2886,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roamMode enum: `11r`, `OKC`, `none`
+         * @param roamMode enum: `11r`, `OKC`, `NONE`
          * 
          * @return builder
          * 
@@ -2897,7 +2897,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roamMode enum: `11r`, `OKC`, `none`
+         * @param roamMode enum: `11r`, `OKC`, `NONE`
          * 
          * @return builder
          * 

@@ -74,7 +74,7 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly criticalUrlMonitoring!: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
-     * sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     public readonly deviceUpdownThreshold!: pulumi.Output<number>;
     /**
@@ -111,6 +111,10 @@ export class Setting extends pulumi.CustomResource {
      * Proxy Configuration to talk to Mist
      */
     public readonly proxy!: pulumi.Output<outputs.site.SettingProxy | undefined>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     /**
      * whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)
@@ -206,6 +210,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["persistConfigOnDevice"] = state ? state.persistConfigOnDevice : undefined;
             resourceInputs["proxy"] = state ? state.proxy : undefined;
+            resourceInputs["removeExistingConfigs"] = state ? state.removeExistingConfigs : undefined;
             resourceInputs["reportGatt"] = state ? state.reportGatt : undefined;
             resourceInputs["rogue"] = state ? state.rogue : undefined;
             resourceInputs["rtsa"] = state ? state.rtsa : undefined;
@@ -250,6 +255,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["occupancy"] = args ? args.occupancy : undefined;
             resourceInputs["persistConfigOnDevice"] = args ? args.persistConfigOnDevice : undefined;
             resourceInputs["proxy"] = args ? args.proxy : undefined;
+            resourceInputs["removeExistingConfigs"] = args ? args.removeExistingConfigs : undefined;
             resourceInputs["reportGatt"] = args ? args.reportGatt : undefined;
             resourceInputs["rogue"] = args ? args.rogue : undefined;
             resourceInputs["rtsa"] = args ? args.rtsa : undefined;
@@ -312,7 +318,7 @@ export interface SettingState {
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
     /**
-     * sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -349,6 +355,10 @@ export interface SettingState {
      * Proxy Configuration to talk to Mist
      */
     proxy?: pulumi.Input<inputs.site.SettingProxy>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    removeExistingConfigs?: pulumi.Input<boolean>;
     /**
      * whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)
@@ -444,7 +454,7 @@ export interface SettingArgs {
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
     /**
-     * sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -480,6 +490,10 @@ export interface SettingArgs {
      * Proxy Configuration to talk to Mist
      */
     proxy?: pulumi.Input<inputs.site.SettingProxy>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    removeExistingConfigs?: pulumi.Input<boolean>;
     /**
      * whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)

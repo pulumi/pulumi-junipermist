@@ -175,6 +175,8 @@ public final class SwitchPortUsages {
      * 
      */
     private @Nullable Boolean stpEdge;
+    private @Nullable Boolean stpNoRootPort;
+    private @Nullable Boolean stpP2p;
     /**
      * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
@@ -403,6 +405,12 @@ public final class SwitchPortUsages {
     public Optional<Boolean> stpEdge() {
         return Optional.ofNullable(this.stpEdge);
     }
+    public Optional<Boolean> stpNoRootPort() {
+        return Optional.ofNullable(this.stpNoRootPort);
+    }
+    public Optional<Boolean> stpP2p() {
+        return Optional.ofNullable(this.stpP2p);
+    }
     /**
      * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
@@ -451,6 +459,8 @@ public final class SwitchPortUsages {
         private @Nullable String speed;
         private @Nullable SwitchPortUsagesStormControl stormControl;
         private @Nullable Boolean stpEdge;
+        private @Nullable Boolean stpNoRootPort;
+        private @Nullable Boolean stpP2p;
         private @Nullable String voipNetwork;
         public Builder() {}
         public Builder(SwitchPortUsages defaults) {
@@ -486,6 +496,8 @@ public final class SwitchPortUsages {
     	      this.speed = defaults.speed;
     	      this.stormControl = defaults.stormControl;
     	      this.stpEdge = defaults.stpEdge;
+    	      this.stpNoRootPort = defaults.stpNoRootPort;
+    	      this.stpP2p = defaults.stpP2p;
     	      this.voipNetwork = defaults.voipNetwork;
         }
 
@@ -685,6 +697,18 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder stpNoRootPort(@Nullable Boolean stpNoRootPort) {
+
+            this.stpNoRootPort = stpNoRootPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder stpP2p(@Nullable Boolean stpP2p) {
+
+            this.stpP2p = stpP2p;
+            return this;
+        }
+        @CustomType.Setter
         public Builder voipNetwork(@Nullable String voipNetwork) {
 
             this.voipNetwork = voipNetwork;
@@ -723,6 +747,8 @@ public final class SwitchPortUsages {
             _resultValue.speed = speed;
             _resultValue.stormControl = stormControl;
             _resultValue.stpEdge = stpEdge;
+            _resultValue.stpNoRootPort = stpNoRootPort;
+            _resultValue.stpP2p = stpP2p;
             _resultValue.voipNetwork = voipNetwork;
             return _resultValue;
         }

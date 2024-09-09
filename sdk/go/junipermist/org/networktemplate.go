@@ -54,7 +54,9 @@ type Networktemplate struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
-	SnmpConfig   NetworktemplateSnmpConfigPtrOutput   `pulumi:"snmpConfig"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolOutput                  `pulumi:"removeExistingConfigs"`
+	SnmpConfig            NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
 	// Switch settings
@@ -125,7 +127,9 @@ type networktemplateState struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	SnmpConfig   *NetworktemplateSnmpConfig   `pulumi:"snmpConfig"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
+	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
@@ -164,7 +168,9 @@ type NetworktemplateState struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	SnmpConfig   NetworktemplateSnmpConfigPtrInput
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolPtrInput
+	SnmpConfig            NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
@@ -207,7 +213,9 @@ type networktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
-	SnmpConfig   *NetworktemplateSnmpConfig   `pulumi:"snmpConfig"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
+	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
@@ -247,7 +255,9 @@ type NetworktemplateArgs struct {
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
-	SnmpConfig   NetworktemplateSnmpConfigPtrInput
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolPtrInput
+	SnmpConfig            NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
@@ -421,6 +431,11 @@ func (o NetworktemplateOutput) RadiusConfig() NetworktemplateRadiusConfigPtrOutp
 
 func (o NetworktemplateOutput) RemoteSyslog() NetworktemplateRemoteSyslogPtrOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateRemoteSyslogPtrOutput { return v.RemoteSyslog }).(NetworktemplateRemoteSyslogPtrOutput)
+}
+
+// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+func (o NetworktemplateOutput) RemoveExistingConfigs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
 }
 
 func (o NetworktemplateOutput) SnmpConfig() NetworktemplateSnmpConfigPtrOutput {

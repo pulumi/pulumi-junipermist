@@ -132,6 +132,8 @@ __all__ = [
     'WlanInjectDhcpOption82',
     'WlanMistNac',
     'WlanPortal',
+    'WlanPortalTemplatePortalTemplate',
+    'WlanPortalTemplatePortalTemplateLocales',
     'WlanQos',
     'WlanRadsec',
     'WlanRadsecServer',
@@ -5521,6 +5523,10 @@ class SettingGatewayMgmt(dict):
             suggest = "auto_signature_update"
         elif key == "configRevertTimer":
             suggest = "config_revert_timer"
+        elif key == "disableConsole":
+            suggest = "disable_console"
+        elif key == "disableOob":
+            suggest = "disable_oob"
         elif key == "probeHosts":
             suggest = "probe_hosts"
         elif key == "rootPassword":
@@ -5547,6 +5553,8 @@ class SettingGatewayMgmt(dict):
                  app_usage: Optional[bool] = None,
                  auto_signature_update: Optional['outputs.SettingGatewayMgmtAutoSignatureUpdate'] = None,
                  config_revert_timer: Optional[int] = None,
+                 disable_console: Optional[bool] = None,
+                 disable_oob: Optional[bool] = None,
                  probe_hosts: Optional[Sequence[str]] = None,
                  root_password: Optional[str] = None,
                  security_log_source_address: Optional[str] = None,
@@ -5555,6 +5563,8 @@ class SettingGatewayMgmt(dict):
         :param Sequence[str] admin_sshkeys: for SSR only, as direct root access is not allowed
         :param bool app_usage: consumes uplink bandwidth, requires WA license
         :param int config_revert_timer: he rollback timer for commit confirmed
+        :param bool disable_console: for both SSR and SRX disable console port
+        :param bool disable_oob: for both SSR and SRX disable management interface
         :param str root_password: for SRX only
         """
         if admin_sshkeys is not None:
@@ -5567,6 +5577,10 @@ class SettingGatewayMgmt(dict):
             pulumi.set(__self__, "auto_signature_update", auto_signature_update)
         if config_revert_timer is not None:
             pulumi.set(__self__, "config_revert_timer", config_revert_timer)
+        if disable_console is not None:
+            pulumi.set(__self__, "disable_console", disable_console)
+        if disable_oob is not None:
+            pulumi.set(__self__, "disable_oob", disable_oob)
         if probe_hosts is not None:
             pulumi.set(__self__, "probe_hosts", probe_hosts)
         if root_password is not None:
@@ -5609,6 +5623,22 @@ class SettingGatewayMgmt(dict):
         he rollback timer for commit confirmed
         """
         return pulumi.get(self, "config_revert_timer")
+
+    @property
+    @pulumi.getter(name="disableConsole")
+    def disable_console(self) -> Optional[bool]:
+        """
+        for both SSR and SRX disable console port
+        """
+        return pulumi.get(self, "disable_console")
+
+    @property
+    @pulumi.getter(name="disableOob")
+    def disable_oob(self) -> Optional[bool]:
+        """
+        for both SSR and SRX disable management interface
+        """
+        return pulumi.get(self, "disable_oob")
 
     @property
     @pulumi.getter(name="probeHosts")
@@ -5706,7 +5736,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 address: str,
+                 address: Optional[str] = None,
                  app_type: Optional[str] = None,
                  hostnames: Optional[Sequence[str]] = None,
                  name: Optional[str] = None,
@@ -5720,7 +5750,8 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
         :param str protocol: enum: `http`, `udp`
         :param str url: if `protocol`==`http`
         """
-        pulumi.set(__self__, "address", address)
+        if address is not None:
+            pulumi.set(__self__, "address", address)
         if app_type is not None:
             pulumi.set(__self__, "app_type", app_type)
         if hostnames is not None:
@@ -5738,7 +5769,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> Optional[str]:
         """
         if `protocol`==`icmp`
         """
@@ -8641,8 +8672,10 @@ class WlanPortal(dict):
         :param str sponsor_link_validity_duration: how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         :param bool sponsor_notify_all: whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         :param bool sponsor_status_notify: if enabled, guest will get email about sponsor's action (approve/deny)
-        :param Mapping[str, str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-               Property key is the sponsor email, Property value is the sponsor name
+        :param Mapping[str, str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled`
+                           is `true` and `sponsor_email_domains` is empty.
+               
+                           Property key is the sponsor email, Property value is the sponsor name
         :param str sso_default_role: default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         :param str sso_idp_cert: IDP Cert (used to verify the signed response)
         :param str sso_idp_sign_algo: signing algorithm for SAML Assertion
@@ -9285,8 +9318,10 @@ class WlanPortal(dict):
     @pulumi.getter
     def sponsors(self) -> Optional[Mapping[str, str]]:
         """
-        object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-        Property key is the sponsor email, Property value is the sponsor name
+        object of allowed sponsors email with name. Required if `sponsor_enabled`
+                    is `true` and `sponsor_email_domains` is empty.
+
+                    Property key is the sponsor email, Property value is the sponsor name
         """
         return pulumi.get(self, "sponsors")
 
@@ -9382,6 +9417,2738 @@ class WlanPortal(dict):
         when `sms_provider`==`twilio`, Account SID provided by Twilio
         """
         return pulumi.get(self, "twilio_sid")
+
+
+@pulumi.output_type
+class WlanPortalTemplatePortalTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessCodeAlternateEmail":
+            suggest = "access_code_alternate_email"
+        elif key == "authButtonAmazon":
+            suggest = "auth_button_amazon"
+        elif key == "authButtonAzure":
+            suggest = "auth_button_azure"
+        elif key == "authButtonEmail":
+            suggest = "auth_button_email"
+        elif key == "authButtonFacebook":
+            suggest = "auth_button_facebook"
+        elif key == "authButtonGoogle":
+            suggest = "auth_button_google"
+        elif key == "authButtonMicrosoft":
+            suggest = "auth_button_microsoft"
+        elif key == "authButtonPassphrase":
+            suggest = "auth_button_passphrase"
+        elif key == "authButtonSms":
+            suggest = "auth_button_sms"
+        elif key == "authButtonSponsor":
+            suggest = "auth_button_sponsor"
+        elif key == "authLabel":
+            suggest = "auth_label"
+        elif key == "backLink":
+            suggest = "back_link"
+        elif key == "colorDark":
+            suggest = "color_dark"
+        elif key == "colorLight":
+            suggest = "color_light"
+        elif key == "companyError":
+            suggest = "company_error"
+        elif key == "companyLabel":
+            suggest = "company_label"
+        elif key == "emailAccessDomainError":
+            suggest = "email_access_domain_error"
+        elif key == "emailCancel":
+            suggest = "email_cancel"
+        elif key == "emailCodeCancel":
+            suggest = "email_code_cancel"
+        elif key == "emailCodeError":
+            suggest = "email_code_error"
+        elif key == "emailCodeFieldLabel":
+            suggest = "email_code_field_label"
+        elif key == "emailCodeMessage":
+            suggest = "email_code_message"
+        elif key == "emailCodeSubmit":
+            suggest = "email_code_submit"
+        elif key == "emailCodeTitle":
+            suggest = "email_code_title"
+        elif key == "emailError":
+            suggest = "email_error"
+        elif key == "emailFieldLabel":
+            suggest = "email_field_label"
+        elif key == "emailLabel":
+            suggest = "email_label"
+        elif key == "emailMessage":
+            suggest = "email_message"
+        elif key == "emailSubmit":
+            suggest = "email_submit"
+        elif key == "emailTitle":
+            suggest = "email_title"
+        elif key == "multiAuth":
+            suggest = "multi_auth"
+        elif key == "nameError":
+            suggest = "name_error"
+        elif key == "nameLabel":
+            suggest = "name_label"
+        elif key == "optOutDefault":
+            suggest = "opt_out_default"
+        elif key == "optoutLabel":
+            suggest = "optout_label"
+        elif key == "pageTitle":
+            suggest = "page_title"
+        elif key == "passphraseCancel":
+            suggest = "passphrase_cancel"
+        elif key == "passphraseError":
+            suggest = "passphrase_error"
+        elif key == "passphraseLabel":
+            suggest = "passphrase_label"
+        elif key == "passphraseMessage":
+            suggest = "passphrase_message"
+        elif key == "passphraseSubmit":
+            suggest = "passphrase_submit"
+        elif key == "passphraseTitle":
+            suggest = "passphrase_title"
+        elif key == "poweredBy":
+            suggest = "powered_by"
+        elif key == "privacyPolicyAcceptLabel":
+            suggest = "privacy_policy_accept_label"
+        elif key == "privacyPolicyError":
+            suggest = "privacy_policy_error"
+        elif key == "privacyPolicyLink":
+            suggest = "privacy_policy_link"
+        elif key == "privacyPolicyText":
+            suggest = "privacy_policy_text"
+        elif key == "requiredFieldLabel":
+            suggest = "required_field_label"
+        elif key == "responsiveLayout":
+            suggest = "responsive_layout"
+        elif key == "signInLabel":
+            suggest = "sign_in_label"
+        elif key == "smsCarrierDefault":
+            suggest = "sms_carrier_default"
+        elif key == "smsCarrierError":
+            suggest = "sms_carrier_error"
+        elif key == "smsCarrierFieldLabel":
+            suggest = "sms_carrier_field_label"
+        elif key == "smsCodeCancel":
+            suggest = "sms_code_cancel"
+        elif key == "smsCodeError":
+            suggest = "sms_code_error"
+        elif key == "smsCodeFieldLabel":
+            suggest = "sms_code_field_label"
+        elif key == "smsCodeMessage":
+            suggest = "sms_code_message"
+        elif key == "smsCodeSubmit":
+            suggest = "sms_code_submit"
+        elif key == "smsCodeTitle":
+            suggest = "sms_code_title"
+        elif key == "smsCountryFieldLabel":
+            suggest = "sms_country_field_label"
+        elif key == "smsCountryFormat":
+            suggest = "sms_country_format"
+        elif key == "smsHaveAccessCode":
+            suggest = "sms_have_access_code"
+        elif key == "smsIsTwilio":
+            suggest = "sms_is_twilio"
+        elif key == "smsMessageFormat":
+            suggest = "sms_message_format"
+        elif key == "smsNumberCancel":
+            suggest = "sms_number_cancel"
+        elif key == "smsNumberError":
+            suggest = "sms_number_error"
+        elif key == "smsNumberFieldLabel":
+            suggest = "sms_number_field_label"
+        elif key == "smsNumberFormat":
+            suggest = "sms_number_format"
+        elif key == "smsNumberMessage":
+            suggest = "sms_number_message"
+        elif key == "smsNumberSubmit":
+            suggest = "sms_number_submit"
+        elif key == "smsNumberTitle":
+            suggest = "sms_number_title"
+        elif key == "smsUsernameFormat":
+            suggest = "sms_username_format"
+        elif key == "smsValidityDuration":
+            suggest = "sms_validity_duration"
+        elif key == "sponsorBackLink":
+            suggest = "sponsor_back_link"
+        elif key == "sponsorCancel":
+            suggest = "sponsor_cancel"
+        elif key == "sponsorEmail":
+            suggest = "sponsor_email"
+        elif key == "sponsorEmailError":
+            suggest = "sponsor_email_error"
+        elif key == "sponsorEmailTemplate":
+            suggest = "sponsor_email_template"
+        elif key == "sponsorInfoApproved":
+            suggest = "sponsor_info_approved"
+        elif key == "sponsorInfoDenied":
+            suggest = "sponsor_info_denied"
+        elif key == "sponsorInfoPending":
+            suggest = "sponsor_info_pending"
+        elif key == "sponsorName":
+            suggest = "sponsor_name"
+        elif key == "sponsorNameError":
+            suggest = "sponsor_name_error"
+        elif key == "sponsorNotePending":
+            suggest = "sponsor_note_pending"
+        elif key == "sponsorRequestAccess":
+            suggest = "sponsor_request_access"
+        elif key == "sponsorStatusApproved":
+            suggest = "sponsor_status_approved"
+        elif key == "sponsorStatusDenied":
+            suggest = "sponsor_status_denied"
+        elif key == "sponsorStatusPending":
+            suggest = "sponsor_status_pending"
+        elif key == "sponsorSubmit":
+            suggest = "sponsor_submit"
+        elif key == "sponsorsError":
+            suggest = "sponsors_error"
+        elif key == "sponsorsFieldLabel":
+            suggest = "sponsors_field_label"
+        elif key == "tosAcceptLabel":
+            suggest = "tos_accept_label"
+        elif key == "tosError":
+            suggest = "tos_error"
+        elif key == "tosLink":
+            suggest = "tos_link"
+        elif key == "tosText":
+            suggest = "tos_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WlanPortalTemplatePortalTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WlanPortalTemplatePortalTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WlanPortalTemplatePortalTemplate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_code_alternate_email: Optional[str] = None,
+                 alignment: Optional[str] = None,
+                 auth_button_amazon: Optional[str] = None,
+                 auth_button_azure: Optional[str] = None,
+                 auth_button_email: Optional[str] = None,
+                 auth_button_facebook: Optional[str] = None,
+                 auth_button_google: Optional[str] = None,
+                 auth_button_microsoft: Optional[str] = None,
+                 auth_button_passphrase: Optional[str] = None,
+                 auth_button_sms: Optional[str] = None,
+                 auth_button_sponsor: Optional[str] = None,
+                 auth_label: Optional[str] = None,
+                 back_link: Optional[str] = None,
+                 color: Optional[str] = None,
+                 color_dark: Optional[str] = None,
+                 color_light: Optional[str] = None,
+                 company: Optional[bool] = None,
+                 company_error: Optional[str] = None,
+                 company_label: Optional[str] = None,
+                 email: Optional[bool] = None,
+                 email_access_domain_error: Optional[str] = None,
+                 email_cancel: Optional[str] = None,
+                 email_code_cancel: Optional[str] = None,
+                 email_code_error: Optional[str] = None,
+                 email_code_field_label: Optional[str] = None,
+                 email_code_message: Optional[str] = None,
+                 email_code_submit: Optional[str] = None,
+                 email_code_title: Optional[str] = None,
+                 email_error: Optional[str] = None,
+                 email_field_label: Optional[str] = None,
+                 email_label: Optional[str] = None,
+                 email_message: Optional[str] = None,
+                 email_submit: Optional[str] = None,
+                 email_title: Optional[str] = None,
+                 field1: Optional[bool] = None,
+                 field1error: Optional[str] = None,
+                 field1label: Optional[str] = None,
+                 field1required: Optional[bool] = None,
+                 field2: Optional[bool] = None,
+                 field2error: Optional[str] = None,
+                 field2label: Optional[str] = None,
+                 field2required: Optional[bool] = None,
+                 field3: Optional[bool] = None,
+                 field3error: Optional[str] = None,
+                 field3label: Optional[str] = None,
+                 field3required: Optional[bool] = None,
+                 field4: Optional[bool] = None,
+                 field4error: Optional[str] = None,
+                 field4label: Optional[str] = None,
+                 field4required: Optional[bool] = None,
+                 locales: Optional[Mapping[str, 'outputs.WlanPortalTemplatePortalTemplateLocales']] = None,
+                 message: Optional[str] = None,
+                 multi_auth: Optional[bool] = None,
+                 name: Optional[bool] = None,
+                 name_error: Optional[str] = None,
+                 name_label: Optional[str] = None,
+                 opt_out_default: Optional[bool] = None,
+                 optout: Optional[bool] = None,
+                 optout_label: Optional[str] = None,
+                 page_title: Optional[str] = None,
+                 passphrase_cancel: Optional[str] = None,
+                 passphrase_error: Optional[str] = None,
+                 passphrase_label: Optional[str] = None,
+                 passphrase_message: Optional[str] = None,
+                 passphrase_submit: Optional[str] = None,
+                 passphrase_title: Optional[str] = None,
+                 powered_by: Optional[bool] = None,
+                 privacy: Optional[bool] = None,
+                 privacy_policy_accept_label: Optional[str] = None,
+                 privacy_policy_error: Optional[str] = None,
+                 privacy_policy_link: Optional[str] = None,
+                 privacy_policy_text: Optional[str] = None,
+                 required_field_label: Optional[str] = None,
+                 responsive_layout: Optional[bool] = None,
+                 sign_in_label: Optional[str] = None,
+                 sms_carrier_default: Optional[str] = None,
+                 sms_carrier_error: Optional[str] = None,
+                 sms_carrier_field_label: Optional[str] = None,
+                 sms_code_cancel: Optional[str] = None,
+                 sms_code_error: Optional[str] = None,
+                 sms_code_field_label: Optional[str] = None,
+                 sms_code_message: Optional[str] = None,
+                 sms_code_submit: Optional[str] = None,
+                 sms_code_title: Optional[str] = None,
+                 sms_country_field_label: Optional[str] = None,
+                 sms_country_format: Optional[str] = None,
+                 sms_have_access_code: Optional[str] = None,
+                 sms_is_twilio: Optional[bool] = None,
+                 sms_message_format: Optional[str] = None,
+                 sms_number_cancel: Optional[str] = None,
+                 sms_number_error: Optional[str] = None,
+                 sms_number_field_label: Optional[str] = None,
+                 sms_number_format: Optional[str] = None,
+                 sms_number_message: Optional[str] = None,
+                 sms_number_submit: Optional[str] = None,
+                 sms_number_title: Optional[str] = None,
+                 sms_username_format: Optional[str] = None,
+                 sms_validity_duration: Optional[int] = None,
+                 sponsor_back_link: Optional[str] = None,
+                 sponsor_cancel: Optional[str] = None,
+                 sponsor_email: Optional[str] = None,
+                 sponsor_email_error: Optional[str] = None,
+                 sponsor_email_template: Optional[str] = None,
+                 sponsor_info_approved: Optional[str] = None,
+                 sponsor_info_denied: Optional[str] = None,
+                 sponsor_info_pending: Optional[str] = None,
+                 sponsor_name: Optional[str] = None,
+                 sponsor_name_error: Optional[str] = None,
+                 sponsor_note_pending: Optional[str] = None,
+                 sponsor_request_access: Optional[str] = None,
+                 sponsor_status_approved: Optional[str] = None,
+                 sponsor_status_denied: Optional[str] = None,
+                 sponsor_status_pending: Optional[str] = None,
+                 sponsor_submit: Optional[str] = None,
+                 sponsors_error: Optional[str] = None,
+                 sponsors_field_label: Optional[str] = None,
+                 tos: Optional[bool] = None,
+                 tos_accept_label: Optional[str] = None,
+                 tos_error: Optional[str] = None,
+                 tos_link: Optional[str] = None,
+                 tos_text: Optional[str] = None):
+        """
+        :param str alignment: defines alignment on portal. enum: `center`, `left`, `right`
+        :param str auth_button_amazon: label for Amazon auth button
+        :param str auth_button_azure: label for Azure auth button
+        :param str auth_button_email: label for Email auth button
+        :param str auth_button_facebook: label for Facebook auth button
+        :param str auth_button_google: label for Google auth button
+        :param str auth_button_microsoft: label for Microsoft auth button
+        :param str auth_button_passphrase: label for passphrase auth button
+        :param str auth_button_sms: label for SMS auth button
+        :param str auth_button_sponsor: label for Sponsor auth button
+        :param str back_link: label of the link to go back to /logon
+        :param str color: Portal main color
+        :param bool company: whether company field is required
+        :param str company_error: error message when company not provided
+        :param str company_label: label of company field
+        :param bool email: whether email field is required
+        :param str email_access_domain_error: error message when a user has valid social login but doesn't match specified email domains.
+        :param str email_cancel: Label for cancel confirmation code submission using email auth
+        :param str email_error: error message when email not provided
+        :param str email_label: label of email field
+        :param str email_submit: Label for confirmation code submit button using email auth
+        :param str email_title: Title for the Email registration
+        :param bool field1: whether to ask field1
+        :param str field1error: error message when field1 not provided
+        :param str field1label: label of field1
+        :param bool field1required: whether field1 is required field
+        :param bool field2: whether to ask field2
+        :param str field2error: error message when field2 not provided
+        :param str field2label: label of field2
+        :param bool field2required: whether field2 is required field
+        :param bool field3: whether to ask field3
+        :param str field3error: error message when field3 not provided
+        :param str field3label: label of field3
+        :param bool field3required: whether field3 is required field
+        :param bool field4: whether to ask field4
+        :param str field4error: error message when field4 not provided
+        :param str field4label: label of field4
+        :param bool field4required: whether field4 is required field
+        :param Mapping[str, 'WlanPortalTemplatePortalTemplateLocalesArgs'] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
+                     "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
+                     "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
+                     "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
+                     "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+        :param bool name: whether name field is required
+        :param str name_error: error message when name not provided
+        :param str name_label: label of name field
+        :param bool opt_out_default: Default value for the `Do not store` checkbox
+        :param bool optout: whether to display Do Not Store My Personal Information
+        :param str optout_label: label for Do Not Store My Personal Information
+        :param str passphrase_cancel: Label for the Passphrase cancel button
+        :param str passphrase_error: error message when invalid passphrase is provided
+        :param str passphrase_label: Passphrase
+        :param str passphrase_submit: Label for the Passphrase submit button
+        :param str passphrase_title: Title for passphrase details page
+        :param bool powered_by: whether to show \\"Powered by Mist\\"
+        :param bool privacy: wheter to require the Privacy Term acceptance
+        :param str privacy_policy_accept_label: prefix of the label of the link to go to Privacy Policy
+        :param str privacy_policy_error: error message when Privacy Policy not accepted
+        :param str privacy_policy_link: label of the link to go to Privacy Policy
+        :param str privacy_policy_text: text of the Privacy Policy
+        :param str required_field_label: label to denote required field
+        :param str sign_in_label: label of the button to /signin
+        :param str sms_carrier_field_label: label for mobile carrier drop-down list
+        :param str sms_code_cancel: Label for cancel confirmation code submission
+        :param str sms_code_error: error message when confirmation code is invalid
+        :param str sms_code_submit: Label for confirmation code submit button
+        :param str sms_have_access_code: Label for checkbox to specify that the user has access code
+        :param str sms_message_format: format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        :param str sms_number_cancel: label for canceling mobile details for SMS auth
+        :param str sms_number_field_label: label for field to provide mobile number
+        :param str sms_number_submit: label for submit button for code generation
+        :param str sms_number_title: Title for phone number details
+        :param int sms_validity_duration: how long confirmation code should be considered valid (in minutes)
+        :param str sponsor_email: label for Sponsor Email
+        :param str sponsor_email_template: html template to replace/override default sponsor email template 
+               Sponsor Email Template supports following template variables:
+                 * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+                 * `deny_url`: Renders URL to reject the request
+                 * `guest_email`: Renders Email ID of the guest
+                 * `guest_name`: Renders Name of the guest
+                 * `field1`: Renders value of the Custom Field 1
+                 * `field2`: Renders value of the Custom Field 2
+                 * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
+                 * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+        :param str sponsor_name: label for Sponsor Name
+        :param str sponsor_request_access: submit button label request Wifi Access and notify sponsor about guest request
+        :param str sponsor_status_approved: text to display if sponsor approves request
+        :param str sponsor_status_denied: text to display when sponsor denies request
+        :param str sponsor_status_pending: text to display if request is still pending
+        :param str sponsor_submit: submit button label to notify sponsor about guest request
+        :param str tos_accept_label: prefix of the label of the link to go to tos
+        :param str tos_error: error message when tos not accepted
+        :param str tos_link: label of the link to go to tos
+        :param str tos_text: text of the Terms of Service
+        """
+        if access_code_alternate_email is not None:
+            pulumi.set(__self__, "access_code_alternate_email", access_code_alternate_email)
+        if alignment is not None:
+            pulumi.set(__self__, "alignment", alignment)
+        if auth_button_amazon is not None:
+            pulumi.set(__self__, "auth_button_amazon", auth_button_amazon)
+        if auth_button_azure is not None:
+            pulumi.set(__self__, "auth_button_azure", auth_button_azure)
+        if auth_button_email is not None:
+            pulumi.set(__self__, "auth_button_email", auth_button_email)
+        if auth_button_facebook is not None:
+            pulumi.set(__self__, "auth_button_facebook", auth_button_facebook)
+        if auth_button_google is not None:
+            pulumi.set(__self__, "auth_button_google", auth_button_google)
+        if auth_button_microsoft is not None:
+            pulumi.set(__self__, "auth_button_microsoft", auth_button_microsoft)
+        if auth_button_passphrase is not None:
+            pulumi.set(__self__, "auth_button_passphrase", auth_button_passphrase)
+        if auth_button_sms is not None:
+            pulumi.set(__self__, "auth_button_sms", auth_button_sms)
+        if auth_button_sponsor is not None:
+            pulumi.set(__self__, "auth_button_sponsor", auth_button_sponsor)
+        if auth_label is not None:
+            pulumi.set(__self__, "auth_label", auth_label)
+        if back_link is not None:
+            pulumi.set(__self__, "back_link", back_link)
+        if color is not None:
+            pulumi.set(__self__, "color", color)
+        if color_dark is not None:
+            pulumi.set(__self__, "color_dark", color_dark)
+        if color_light is not None:
+            pulumi.set(__self__, "color_light", color_light)
+        if company is not None:
+            pulumi.set(__self__, "company", company)
+        if company_error is not None:
+            pulumi.set(__self__, "company_error", company_error)
+        if company_label is not None:
+            pulumi.set(__self__, "company_label", company_label)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if email_access_domain_error is not None:
+            pulumi.set(__self__, "email_access_domain_error", email_access_domain_error)
+        if email_cancel is not None:
+            pulumi.set(__self__, "email_cancel", email_cancel)
+        if email_code_cancel is not None:
+            pulumi.set(__self__, "email_code_cancel", email_code_cancel)
+        if email_code_error is not None:
+            pulumi.set(__self__, "email_code_error", email_code_error)
+        if email_code_field_label is not None:
+            pulumi.set(__self__, "email_code_field_label", email_code_field_label)
+        if email_code_message is not None:
+            pulumi.set(__self__, "email_code_message", email_code_message)
+        if email_code_submit is not None:
+            pulumi.set(__self__, "email_code_submit", email_code_submit)
+        if email_code_title is not None:
+            pulumi.set(__self__, "email_code_title", email_code_title)
+        if email_error is not None:
+            pulumi.set(__self__, "email_error", email_error)
+        if email_field_label is not None:
+            pulumi.set(__self__, "email_field_label", email_field_label)
+        if email_label is not None:
+            pulumi.set(__self__, "email_label", email_label)
+        if email_message is not None:
+            pulumi.set(__self__, "email_message", email_message)
+        if email_submit is not None:
+            pulumi.set(__self__, "email_submit", email_submit)
+        if email_title is not None:
+            pulumi.set(__self__, "email_title", email_title)
+        if field1 is not None:
+            pulumi.set(__self__, "field1", field1)
+        if field1error is not None:
+            pulumi.set(__self__, "field1error", field1error)
+        if field1label is not None:
+            pulumi.set(__self__, "field1label", field1label)
+        if field1required is not None:
+            pulumi.set(__self__, "field1required", field1required)
+        if field2 is not None:
+            pulumi.set(__self__, "field2", field2)
+        if field2error is not None:
+            pulumi.set(__self__, "field2error", field2error)
+        if field2label is not None:
+            pulumi.set(__self__, "field2label", field2label)
+        if field2required is not None:
+            pulumi.set(__self__, "field2required", field2required)
+        if field3 is not None:
+            pulumi.set(__self__, "field3", field3)
+        if field3error is not None:
+            pulumi.set(__self__, "field3error", field3error)
+        if field3label is not None:
+            pulumi.set(__self__, "field3label", field3label)
+        if field3required is not None:
+            pulumi.set(__self__, "field3required", field3required)
+        if field4 is not None:
+            pulumi.set(__self__, "field4", field4)
+        if field4error is not None:
+            pulumi.set(__self__, "field4error", field4error)
+        if field4label is not None:
+            pulumi.set(__self__, "field4label", field4label)
+        if field4required is not None:
+            pulumi.set(__self__, "field4required", field4required)
+        if locales is not None:
+            pulumi.set(__self__, "locales", locales)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if multi_auth is not None:
+            pulumi.set(__self__, "multi_auth", multi_auth)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_error is not None:
+            pulumi.set(__self__, "name_error", name_error)
+        if name_label is not None:
+            pulumi.set(__self__, "name_label", name_label)
+        if opt_out_default is not None:
+            pulumi.set(__self__, "opt_out_default", opt_out_default)
+        if optout is not None:
+            pulumi.set(__self__, "optout", optout)
+        if optout_label is not None:
+            pulumi.set(__self__, "optout_label", optout_label)
+        if page_title is not None:
+            pulumi.set(__self__, "page_title", page_title)
+        if passphrase_cancel is not None:
+            pulumi.set(__self__, "passphrase_cancel", passphrase_cancel)
+        if passphrase_error is not None:
+            pulumi.set(__self__, "passphrase_error", passphrase_error)
+        if passphrase_label is not None:
+            pulumi.set(__self__, "passphrase_label", passphrase_label)
+        if passphrase_message is not None:
+            pulumi.set(__self__, "passphrase_message", passphrase_message)
+        if passphrase_submit is not None:
+            pulumi.set(__self__, "passphrase_submit", passphrase_submit)
+        if passphrase_title is not None:
+            pulumi.set(__self__, "passphrase_title", passphrase_title)
+        if powered_by is not None:
+            pulumi.set(__self__, "powered_by", powered_by)
+        if privacy is not None:
+            pulumi.set(__self__, "privacy", privacy)
+        if privacy_policy_accept_label is not None:
+            pulumi.set(__self__, "privacy_policy_accept_label", privacy_policy_accept_label)
+        if privacy_policy_error is not None:
+            pulumi.set(__self__, "privacy_policy_error", privacy_policy_error)
+        if privacy_policy_link is not None:
+            pulumi.set(__self__, "privacy_policy_link", privacy_policy_link)
+        if privacy_policy_text is not None:
+            pulumi.set(__self__, "privacy_policy_text", privacy_policy_text)
+        if required_field_label is not None:
+            pulumi.set(__self__, "required_field_label", required_field_label)
+        if responsive_layout is not None:
+            pulumi.set(__self__, "responsive_layout", responsive_layout)
+        if sign_in_label is not None:
+            pulumi.set(__self__, "sign_in_label", sign_in_label)
+        if sms_carrier_default is not None:
+            pulumi.set(__self__, "sms_carrier_default", sms_carrier_default)
+        if sms_carrier_error is not None:
+            pulumi.set(__self__, "sms_carrier_error", sms_carrier_error)
+        if sms_carrier_field_label is not None:
+            pulumi.set(__self__, "sms_carrier_field_label", sms_carrier_field_label)
+        if sms_code_cancel is not None:
+            pulumi.set(__self__, "sms_code_cancel", sms_code_cancel)
+        if sms_code_error is not None:
+            pulumi.set(__self__, "sms_code_error", sms_code_error)
+        if sms_code_field_label is not None:
+            pulumi.set(__self__, "sms_code_field_label", sms_code_field_label)
+        if sms_code_message is not None:
+            pulumi.set(__self__, "sms_code_message", sms_code_message)
+        if sms_code_submit is not None:
+            pulumi.set(__self__, "sms_code_submit", sms_code_submit)
+        if sms_code_title is not None:
+            pulumi.set(__self__, "sms_code_title", sms_code_title)
+        if sms_country_field_label is not None:
+            pulumi.set(__self__, "sms_country_field_label", sms_country_field_label)
+        if sms_country_format is not None:
+            pulumi.set(__self__, "sms_country_format", sms_country_format)
+        if sms_have_access_code is not None:
+            pulumi.set(__self__, "sms_have_access_code", sms_have_access_code)
+        if sms_is_twilio is not None:
+            pulumi.set(__self__, "sms_is_twilio", sms_is_twilio)
+        if sms_message_format is not None:
+            pulumi.set(__self__, "sms_message_format", sms_message_format)
+        if sms_number_cancel is not None:
+            pulumi.set(__self__, "sms_number_cancel", sms_number_cancel)
+        if sms_number_error is not None:
+            pulumi.set(__self__, "sms_number_error", sms_number_error)
+        if sms_number_field_label is not None:
+            pulumi.set(__self__, "sms_number_field_label", sms_number_field_label)
+        if sms_number_format is not None:
+            pulumi.set(__self__, "sms_number_format", sms_number_format)
+        if sms_number_message is not None:
+            pulumi.set(__self__, "sms_number_message", sms_number_message)
+        if sms_number_submit is not None:
+            pulumi.set(__self__, "sms_number_submit", sms_number_submit)
+        if sms_number_title is not None:
+            pulumi.set(__self__, "sms_number_title", sms_number_title)
+        if sms_username_format is not None:
+            pulumi.set(__self__, "sms_username_format", sms_username_format)
+        if sms_validity_duration is not None:
+            pulumi.set(__self__, "sms_validity_duration", sms_validity_duration)
+        if sponsor_back_link is not None:
+            pulumi.set(__self__, "sponsor_back_link", sponsor_back_link)
+        if sponsor_cancel is not None:
+            pulumi.set(__self__, "sponsor_cancel", sponsor_cancel)
+        if sponsor_email is not None:
+            pulumi.set(__self__, "sponsor_email", sponsor_email)
+        if sponsor_email_error is not None:
+            pulumi.set(__self__, "sponsor_email_error", sponsor_email_error)
+        if sponsor_email_template is not None:
+            pulumi.set(__self__, "sponsor_email_template", sponsor_email_template)
+        if sponsor_info_approved is not None:
+            pulumi.set(__self__, "sponsor_info_approved", sponsor_info_approved)
+        if sponsor_info_denied is not None:
+            pulumi.set(__self__, "sponsor_info_denied", sponsor_info_denied)
+        if sponsor_info_pending is not None:
+            pulumi.set(__self__, "sponsor_info_pending", sponsor_info_pending)
+        if sponsor_name is not None:
+            pulumi.set(__self__, "sponsor_name", sponsor_name)
+        if sponsor_name_error is not None:
+            pulumi.set(__self__, "sponsor_name_error", sponsor_name_error)
+        if sponsor_note_pending is not None:
+            pulumi.set(__self__, "sponsor_note_pending", sponsor_note_pending)
+        if sponsor_request_access is not None:
+            pulumi.set(__self__, "sponsor_request_access", sponsor_request_access)
+        if sponsor_status_approved is not None:
+            pulumi.set(__self__, "sponsor_status_approved", sponsor_status_approved)
+        if sponsor_status_denied is not None:
+            pulumi.set(__self__, "sponsor_status_denied", sponsor_status_denied)
+        if sponsor_status_pending is not None:
+            pulumi.set(__self__, "sponsor_status_pending", sponsor_status_pending)
+        if sponsor_submit is not None:
+            pulumi.set(__self__, "sponsor_submit", sponsor_submit)
+        if sponsors_error is not None:
+            pulumi.set(__self__, "sponsors_error", sponsors_error)
+        if sponsors_field_label is not None:
+            pulumi.set(__self__, "sponsors_field_label", sponsors_field_label)
+        if tos is not None:
+            pulumi.set(__self__, "tos", tos)
+        if tos_accept_label is not None:
+            pulumi.set(__self__, "tos_accept_label", tos_accept_label)
+        if tos_error is not None:
+            pulumi.set(__self__, "tos_error", tos_error)
+        if tos_link is not None:
+            pulumi.set(__self__, "tos_link", tos_link)
+        if tos_text is not None:
+            pulumi.set(__self__, "tos_text", tos_text)
+
+    @property
+    @pulumi.getter(name="accessCodeAlternateEmail")
+    def access_code_alternate_email(self) -> Optional[str]:
+        return pulumi.get(self, "access_code_alternate_email")
+
+    @property
+    @pulumi.getter
+    def alignment(self) -> Optional[str]:
+        """
+        defines alignment on portal. enum: `center`, `left`, `right`
+        """
+        return pulumi.get(self, "alignment")
+
+    @property
+    @pulumi.getter(name="authButtonAmazon")
+    def auth_button_amazon(self) -> Optional[str]:
+        """
+        label for Amazon auth button
+        """
+        return pulumi.get(self, "auth_button_amazon")
+
+    @property
+    @pulumi.getter(name="authButtonAzure")
+    def auth_button_azure(self) -> Optional[str]:
+        """
+        label for Azure auth button
+        """
+        return pulumi.get(self, "auth_button_azure")
+
+    @property
+    @pulumi.getter(name="authButtonEmail")
+    def auth_button_email(self) -> Optional[str]:
+        """
+        label for Email auth button
+        """
+        return pulumi.get(self, "auth_button_email")
+
+    @property
+    @pulumi.getter(name="authButtonFacebook")
+    def auth_button_facebook(self) -> Optional[str]:
+        """
+        label for Facebook auth button
+        """
+        return pulumi.get(self, "auth_button_facebook")
+
+    @property
+    @pulumi.getter(name="authButtonGoogle")
+    def auth_button_google(self) -> Optional[str]:
+        """
+        label for Google auth button
+        """
+        return pulumi.get(self, "auth_button_google")
+
+    @property
+    @pulumi.getter(name="authButtonMicrosoft")
+    def auth_button_microsoft(self) -> Optional[str]:
+        """
+        label for Microsoft auth button
+        """
+        return pulumi.get(self, "auth_button_microsoft")
+
+    @property
+    @pulumi.getter(name="authButtonPassphrase")
+    def auth_button_passphrase(self) -> Optional[str]:
+        """
+        label for passphrase auth button
+        """
+        return pulumi.get(self, "auth_button_passphrase")
+
+    @property
+    @pulumi.getter(name="authButtonSms")
+    def auth_button_sms(self) -> Optional[str]:
+        """
+        label for SMS auth button
+        """
+        return pulumi.get(self, "auth_button_sms")
+
+    @property
+    @pulumi.getter(name="authButtonSponsor")
+    def auth_button_sponsor(self) -> Optional[str]:
+        """
+        label for Sponsor auth button
+        """
+        return pulumi.get(self, "auth_button_sponsor")
+
+    @property
+    @pulumi.getter(name="authLabel")
+    def auth_label(self) -> Optional[str]:
+        return pulumi.get(self, "auth_label")
+
+    @property
+    @pulumi.getter(name="backLink")
+    def back_link(self) -> Optional[str]:
+        """
+        label of the link to go back to /logon
+        """
+        return pulumi.get(self, "back_link")
+
+    @property
+    @pulumi.getter
+    def color(self) -> Optional[str]:
+        """
+        Portal main color
+        """
+        return pulumi.get(self, "color")
+
+    @property
+    @pulumi.getter(name="colorDark")
+    def color_dark(self) -> Optional[str]:
+        return pulumi.get(self, "color_dark")
+
+    @property
+    @pulumi.getter(name="colorLight")
+    def color_light(self) -> Optional[str]:
+        return pulumi.get(self, "color_light")
+
+    @property
+    @pulumi.getter
+    def company(self) -> Optional[bool]:
+        """
+        whether company field is required
+        """
+        return pulumi.get(self, "company")
+
+    @property
+    @pulumi.getter(name="companyError")
+    def company_error(self) -> Optional[str]:
+        """
+        error message when company not provided
+        """
+        return pulumi.get(self, "company_error")
+
+    @property
+    @pulumi.getter(name="companyLabel")
+    def company_label(self) -> Optional[str]:
+        """
+        label of company field
+        """
+        return pulumi.get(self, "company_label")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[bool]:
+        """
+        whether email field is required
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="emailAccessDomainError")
+    def email_access_domain_error(self) -> Optional[str]:
+        """
+        error message when a user has valid social login but doesn't match specified email domains.
+        """
+        return pulumi.get(self, "email_access_domain_error")
+
+    @property
+    @pulumi.getter(name="emailCancel")
+    def email_cancel(self) -> Optional[str]:
+        """
+        Label for cancel confirmation code submission using email auth
+        """
+        return pulumi.get(self, "email_cancel")
+
+    @property
+    @pulumi.getter(name="emailCodeCancel")
+    def email_code_cancel(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_cancel")
+
+    @property
+    @pulumi.getter(name="emailCodeError")
+    def email_code_error(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_error")
+
+    @property
+    @pulumi.getter(name="emailCodeFieldLabel")
+    def email_code_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_field_label")
+
+    @property
+    @pulumi.getter(name="emailCodeMessage")
+    def email_code_message(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_message")
+
+    @property
+    @pulumi.getter(name="emailCodeSubmit")
+    def email_code_submit(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_submit")
+
+    @property
+    @pulumi.getter(name="emailCodeTitle")
+    def email_code_title(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_title")
+
+    @property
+    @pulumi.getter(name="emailError")
+    def email_error(self) -> Optional[str]:
+        """
+        error message when email not provided
+        """
+        return pulumi.get(self, "email_error")
+
+    @property
+    @pulumi.getter(name="emailFieldLabel")
+    def email_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "email_field_label")
+
+    @property
+    @pulumi.getter(name="emailLabel")
+    def email_label(self) -> Optional[str]:
+        """
+        label of email field
+        """
+        return pulumi.get(self, "email_label")
+
+    @property
+    @pulumi.getter(name="emailMessage")
+    def email_message(self) -> Optional[str]:
+        return pulumi.get(self, "email_message")
+
+    @property
+    @pulumi.getter(name="emailSubmit")
+    def email_submit(self) -> Optional[str]:
+        """
+        Label for confirmation code submit button using email auth
+        """
+        return pulumi.get(self, "email_submit")
+
+    @property
+    @pulumi.getter(name="emailTitle")
+    def email_title(self) -> Optional[str]:
+        """
+        Title for the Email registration
+        """
+        return pulumi.get(self, "email_title")
+
+    @property
+    @pulumi.getter
+    def field1(self) -> Optional[bool]:
+        """
+        whether to ask field1
+        """
+        return pulumi.get(self, "field1")
+
+    @property
+    @pulumi.getter
+    def field1error(self) -> Optional[str]:
+        """
+        error message when field1 not provided
+        """
+        return pulumi.get(self, "field1error")
+
+    @property
+    @pulumi.getter
+    def field1label(self) -> Optional[str]:
+        """
+        label of field1
+        """
+        return pulumi.get(self, "field1label")
+
+    @property
+    @pulumi.getter
+    def field1required(self) -> Optional[bool]:
+        """
+        whether field1 is required field
+        """
+        return pulumi.get(self, "field1required")
+
+    @property
+    @pulumi.getter
+    def field2(self) -> Optional[bool]:
+        """
+        whether to ask field2
+        """
+        return pulumi.get(self, "field2")
+
+    @property
+    @pulumi.getter
+    def field2error(self) -> Optional[str]:
+        """
+        error message when field2 not provided
+        """
+        return pulumi.get(self, "field2error")
+
+    @property
+    @pulumi.getter
+    def field2label(self) -> Optional[str]:
+        """
+        label of field2
+        """
+        return pulumi.get(self, "field2label")
+
+    @property
+    @pulumi.getter
+    def field2required(self) -> Optional[bool]:
+        """
+        whether field2 is required field
+        """
+        return pulumi.get(self, "field2required")
+
+    @property
+    @pulumi.getter
+    def field3(self) -> Optional[bool]:
+        """
+        whether to ask field3
+        """
+        return pulumi.get(self, "field3")
+
+    @property
+    @pulumi.getter
+    def field3error(self) -> Optional[str]:
+        """
+        error message when field3 not provided
+        """
+        return pulumi.get(self, "field3error")
+
+    @property
+    @pulumi.getter
+    def field3label(self) -> Optional[str]:
+        """
+        label of field3
+        """
+        return pulumi.get(self, "field3label")
+
+    @property
+    @pulumi.getter
+    def field3required(self) -> Optional[bool]:
+        """
+        whether field3 is required field
+        """
+        return pulumi.get(self, "field3required")
+
+    @property
+    @pulumi.getter
+    def field4(self) -> Optional[bool]:
+        """
+        whether to ask field4
+        """
+        return pulumi.get(self, "field4")
+
+    @property
+    @pulumi.getter
+    def field4error(self) -> Optional[str]:
+        """
+        error message when field4 not provided
+        """
+        return pulumi.get(self, "field4error")
+
+    @property
+    @pulumi.getter
+    def field4label(self) -> Optional[str]:
+        """
+        label of field4
+        """
+        return pulumi.get(self, "field4label")
+
+    @property
+    @pulumi.getter
+    def field4required(self) -> Optional[bool]:
+        """
+        whether field4 is required field
+        """
+        return pulumi.get(self, "field4required")
+
+    @property
+    @pulumi.getter
+    def locales(self) -> Optional[Mapping[str, 'outputs.WlanPortalTemplatePortalTemplateLocales']]:
+        """
+        Can be used to localize the portal based on the User Agent. Allowed property key values are:
+              "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
+              "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
+              "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
+              "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+        """
+        return pulumi.get(self, "locales")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="multiAuth")
+    def multi_auth(self) -> Optional[bool]:
+        return pulumi.get(self, "multi_auth")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[bool]:
+        """
+        whether name field is required
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameError")
+    def name_error(self) -> Optional[str]:
+        """
+        error message when name not provided
+        """
+        return pulumi.get(self, "name_error")
+
+    @property
+    @pulumi.getter(name="nameLabel")
+    def name_label(self) -> Optional[str]:
+        """
+        label of name field
+        """
+        return pulumi.get(self, "name_label")
+
+    @property
+    @pulumi.getter(name="optOutDefault")
+    def opt_out_default(self) -> Optional[bool]:
+        """
+        Default value for the `Do not store` checkbox
+        """
+        return pulumi.get(self, "opt_out_default")
+
+    @property
+    @pulumi.getter
+    def optout(self) -> Optional[bool]:
+        """
+        whether to display Do Not Store My Personal Information
+        """
+        return pulumi.get(self, "optout")
+
+    @property
+    @pulumi.getter(name="optoutLabel")
+    def optout_label(self) -> Optional[str]:
+        """
+        label for Do Not Store My Personal Information
+        """
+        return pulumi.get(self, "optout_label")
+
+    @property
+    @pulumi.getter(name="pageTitle")
+    def page_title(self) -> Optional[str]:
+        return pulumi.get(self, "page_title")
+
+    @property
+    @pulumi.getter(name="passphraseCancel")
+    def passphrase_cancel(self) -> Optional[str]:
+        """
+        Label for the Passphrase cancel button
+        """
+        return pulumi.get(self, "passphrase_cancel")
+
+    @property
+    @pulumi.getter(name="passphraseError")
+    def passphrase_error(self) -> Optional[str]:
+        """
+        error message when invalid passphrase is provided
+        """
+        return pulumi.get(self, "passphrase_error")
+
+    @property
+    @pulumi.getter(name="passphraseLabel")
+    def passphrase_label(self) -> Optional[str]:
+        """
+        Passphrase
+        """
+        return pulumi.get(self, "passphrase_label")
+
+    @property
+    @pulumi.getter(name="passphraseMessage")
+    def passphrase_message(self) -> Optional[str]:
+        return pulumi.get(self, "passphrase_message")
+
+    @property
+    @pulumi.getter(name="passphraseSubmit")
+    def passphrase_submit(self) -> Optional[str]:
+        """
+        Label for the Passphrase submit button
+        """
+        return pulumi.get(self, "passphrase_submit")
+
+    @property
+    @pulumi.getter(name="passphraseTitle")
+    def passphrase_title(self) -> Optional[str]:
+        """
+        Title for passphrase details page
+        """
+        return pulumi.get(self, "passphrase_title")
+
+    @property
+    @pulumi.getter(name="poweredBy")
+    def powered_by(self) -> Optional[bool]:
+        """
+        whether to show \\"Powered by Mist\\"
+        """
+        return pulumi.get(self, "powered_by")
+
+    @property
+    @pulumi.getter
+    def privacy(self) -> Optional[bool]:
+        """
+        wheter to require the Privacy Term acceptance
+        """
+        return pulumi.get(self, "privacy")
+
+    @property
+    @pulumi.getter(name="privacyPolicyAcceptLabel")
+    def privacy_policy_accept_label(self) -> Optional[str]:
+        """
+        prefix of the label of the link to go to Privacy Policy
+        """
+        return pulumi.get(self, "privacy_policy_accept_label")
+
+    @property
+    @pulumi.getter(name="privacyPolicyError")
+    def privacy_policy_error(self) -> Optional[str]:
+        """
+        error message when Privacy Policy not accepted
+        """
+        return pulumi.get(self, "privacy_policy_error")
+
+    @property
+    @pulumi.getter(name="privacyPolicyLink")
+    def privacy_policy_link(self) -> Optional[str]:
+        """
+        label of the link to go to Privacy Policy
+        """
+        return pulumi.get(self, "privacy_policy_link")
+
+    @property
+    @pulumi.getter(name="privacyPolicyText")
+    def privacy_policy_text(self) -> Optional[str]:
+        """
+        text of the Privacy Policy
+        """
+        return pulumi.get(self, "privacy_policy_text")
+
+    @property
+    @pulumi.getter(name="requiredFieldLabel")
+    def required_field_label(self) -> Optional[str]:
+        """
+        label to denote required field
+        """
+        return pulumi.get(self, "required_field_label")
+
+    @property
+    @pulumi.getter(name="responsiveLayout")
+    def responsive_layout(self) -> Optional[bool]:
+        return pulumi.get(self, "responsive_layout")
+
+    @property
+    @pulumi.getter(name="signInLabel")
+    def sign_in_label(self) -> Optional[str]:
+        """
+        label of the button to /signin
+        """
+        return pulumi.get(self, "sign_in_label")
+
+    @property
+    @pulumi.getter(name="smsCarrierDefault")
+    def sms_carrier_default(self) -> Optional[str]:
+        return pulumi.get(self, "sms_carrier_default")
+
+    @property
+    @pulumi.getter(name="smsCarrierError")
+    def sms_carrier_error(self) -> Optional[str]:
+        return pulumi.get(self, "sms_carrier_error")
+
+    @property
+    @pulumi.getter(name="smsCarrierFieldLabel")
+    def sms_carrier_field_label(self) -> Optional[str]:
+        """
+        label for mobile carrier drop-down list
+        """
+        return pulumi.get(self, "sms_carrier_field_label")
+
+    @property
+    @pulumi.getter(name="smsCodeCancel")
+    def sms_code_cancel(self) -> Optional[str]:
+        """
+        Label for cancel confirmation code submission
+        """
+        return pulumi.get(self, "sms_code_cancel")
+
+    @property
+    @pulumi.getter(name="smsCodeError")
+    def sms_code_error(self) -> Optional[str]:
+        """
+        error message when confirmation code is invalid
+        """
+        return pulumi.get(self, "sms_code_error")
+
+    @property
+    @pulumi.getter(name="smsCodeFieldLabel")
+    def sms_code_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "sms_code_field_label")
+
+    @property
+    @pulumi.getter(name="smsCodeMessage")
+    def sms_code_message(self) -> Optional[str]:
+        return pulumi.get(self, "sms_code_message")
+
+    @property
+    @pulumi.getter(name="smsCodeSubmit")
+    def sms_code_submit(self) -> Optional[str]:
+        """
+        Label for confirmation code submit button
+        """
+        return pulumi.get(self, "sms_code_submit")
+
+    @property
+    @pulumi.getter(name="smsCodeTitle")
+    def sms_code_title(self) -> Optional[str]:
+        return pulumi.get(self, "sms_code_title")
+
+    @property
+    @pulumi.getter(name="smsCountryFieldLabel")
+    def sms_country_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "sms_country_field_label")
+
+    @property
+    @pulumi.getter(name="smsCountryFormat")
+    def sms_country_format(self) -> Optional[str]:
+        return pulumi.get(self, "sms_country_format")
+
+    @property
+    @pulumi.getter(name="smsHaveAccessCode")
+    def sms_have_access_code(self) -> Optional[str]:
+        """
+        Label for checkbox to specify that the user has access code
+        """
+        return pulumi.get(self, "sms_have_access_code")
+
+    @property
+    @pulumi.getter(name="smsIsTwilio")
+    def sms_is_twilio(self) -> Optional[bool]:
+        return pulumi.get(self, "sms_is_twilio")
+
+    @property
+    @pulumi.getter(name="smsMessageFormat")
+    def sms_message_format(self) -> Optional[str]:
+        """
+        format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        """
+        return pulumi.get(self, "sms_message_format")
+
+    @property
+    @pulumi.getter(name="smsNumberCancel")
+    def sms_number_cancel(self) -> Optional[str]:
+        """
+        label for canceling mobile details for SMS auth
+        """
+        return pulumi.get(self, "sms_number_cancel")
+
+    @property
+    @pulumi.getter(name="smsNumberError")
+    def sms_number_error(self) -> Optional[str]:
+        return pulumi.get(self, "sms_number_error")
+
+    @property
+    @pulumi.getter(name="smsNumberFieldLabel")
+    def sms_number_field_label(self) -> Optional[str]:
+        """
+        label for field to provide mobile number
+        """
+        return pulumi.get(self, "sms_number_field_label")
+
+    @property
+    @pulumi.getter(name="smsNumberFormat")
+    def sms_number_format(self) -> Optional[str]:
+        return pulumi.get(self, "sms_number_format")
+
+    @property
+    @pulumi.getter(name="smsNumberMessage")
+    def sms_number_message(self) -> Optional[str]:
+        return pulumi.get(self, "sms_number_message")
+
+    @property
+    @pulumi.getter(name="smsNumberSubmit")
+    def sms_number_submit(self) -> Optional[str]:
+        """
+        label for submit button for code generation
+        """
+        return pulumi.get(self, "sms_number_submit")
+
+    @property
+    @pulumi.getter(name="smsNumberTitle")
+    def sms_number_title(self) -> Optional[str]:
+        """
+        Title for phone number details
+        """
+        return pulumi.get(self, "sms_number_title")
+
+    @property
+    @pulumi.getter(name="smsUsernameFormat")
+    def sms_username_format(self) -> Optional[str]:
+        return pulumi.get(self, "sms_username_format")
+
+    @property
+    @pulumi.getter(name="smsValidityDuration")
+    def sms_validity_duration(self) -> Optional[int]:
+        """
+        how long confirmation code should be considered valid (in minutes)
+        """
+        return pulumi.get(self, "sms_validity_duration")
+
+    @property
+    @pulumi.getter(name="sponsorBackLink")
+    def sponsor_back_link(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_back_link")
+
+    @property
+    @pulumi.getter(name="sponsorCancel")
+    def sponsor_cancel(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_cancel")
+
+    @property
+    @pulumi.getter(name="sponsorEmail")
+    def sponsor_email(self) -> Optional[str]:
+        """
+        label for Sponsor Email
+        """
+        return pulumi.get(self, "sponsor_email")
+
+    @property
+    @pulumi.getter(name="sponsorEmailError")
+    def sponsor_email_error(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_email_error")
+
+    @property
+    @pulumi.getter(name="sponsorEmailTemplate")
+    def sponsor_email_template(self) -> Optional[str]:
+        """
+        html template to replace/override default sponsor email template 
+        Sponsor Email Template supports following template variables:
+          * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+          * `deny_url`: Renders URL to reject the request
+          * `guest_email`: Renders Email ID of the guest
+          * `guest_name`: Renders Name of the guest
+          * `field1`: Renders value of the Custom Field 1
+          * `field2`: Renders value of the Custom Field 2
+          * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
+          * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+        """
+        return pulumi.get(self, "sponsor_email_template")
+
+    @property
+    @pulumi.getter(name="sponsorInfoApproved")
+    def sponsor_info_approved(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_info_approved")
+
+    @property
+    @pulumi.getter(name="sponsorInfoDenied")
+    def sponsor_info_denied(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_info_denied")
+
+    @property
+    @pulumi.getter(name="sponsorInfoPending")
+    def sponsor_info_pending(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_info_pending")
+
+    @property
+    @pulumi.getter(name="sponsorName")
+    def sponsor_name(self) -> Optional[str]:
+        """
+        label for Sponsor Name
+        """
+        return pulumi.get(self, "sponsor_name")
+
+    @property
+    @pulumi.getter(name="sponsorNameError")
+    def sponsor_name_error(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_name_error")
+
+    @property
+    @pulumi.getter(name="sponsorNotePending")
+    def sponsor_note_pending(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_note_pending")
+
+    @property
+    @pulumi.getter(name="sponsorRequestAccess")
+    def sponsor_request_access(self) -> Optional[str]:
+        """
+        submit button label request Wifi Access and notify sponsor about guest request
+        """
+        return pulumi.get(self, "sponsor_request_access")
+
+    @property
+    @pulumi.getter(name="sponsorStatusApproved")
+    def sponsor_status_approved(self) -> Optional[str]:
+        """
+        text to display if sponsor approves request
+        """
+        return pulumi.get(self, "sponsor_status_approved")
+
+    @property
+    @pulumi.getter(name="sponsorStatusDenied")
+    def sponsor_status_denied(self) -> Optional[str]:
+        """
+        text to display when sponsor denies request
+        """
+        return pulumi.get(self, "sponsor_status_denied")
+
+    @property
+    @pulumi.getter(name="sponsorStatusPending")
+    def sponsor_status_pending(self) -> Optional[str]:
+        """
+        text to display if request is still pending
+        """
+        return pulumi.get(self, "sponsor_status_pending")
+
+    @property
+    @pulumi.getter(name="sponsorSubmit")
+    def sponsor_submit(self) -> Optional[str]:
+        """
+        submit button label to notify sponsor about guest request
+        """
+        return pulumi.get(self, "sponsor_submit")
+
+    @property
+    @pulumi.getter(name="sponsorsError")
+    def sponsors_error(self) -> Optional[str]:
+        return pulumi.get(self, "sponsors_error")
+
+    @property
+    @pulumi.getter(name="sponsorsFieldLabel")
+    def sponsors_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "sponsors_field_label")
+
+    @property
+    @pulumi.getter
+    def tos(self) -> Optional[bool]:
+        return pulumi.get(self, "tos")
+
+    @property
+    @pulumi.getter(name="tosAcceptLabel")
+    def tos_accept_label(self) -> Optional[str]:
+        """
+        prefix of the label of the link to go to tos
+        """
+        return pulumi.get(self, "tos_accept_label")
+
+    @property
+    @pulumi.getter(name="tosError")
+    def tos_error(self) -> Optional[str]:
+        """
+        error message when tos not accepted
+        """
+        return pulumi.get(self, "tos_error")
+
+    @property
+    @pulumi.getter(name="tosLink")
+    def tos_link(self) -> Optional[str]:
+        """
+        label of the link to go to tos
+        """
+        return pulumi.get(self, "tos_link")
+
+    @property
+    @pulumi.getter(name="tosText")
+    def tos_text(self) -> Optional[str]:
+        """
+        text of the Terms of Service
+        """
+        return pulumi.get(self, "tos_text")
+
+
+@pulumi.output_type
+class WlanPortalTemplatePortalTemplateLocales(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authButtonAmazon":
+            suggest = "auth_button_amazon"
+        elif key == "authButtonAzure":
+            suggest = "auth_button_azure"
+        elif key == "authButtonEmail":
+            suggest = "auth_button_email"
+        elif key == "authButtonFacebook":
+            suggest = "auth_button_facebook"
+        elif key == "authButtonGoogle":
+            suggest = "auth_button_google"
+        elif key == "authButtonMicrosoft":
+            suggest = "auth_button_microsoft"
+        elif key == "authButtonPassphrase":
+            suggest = "auth_button_passphrase"
+        elif key == "authButtonSms":
+            suggest = "auth_button_sms"
+        elif key == "authButtonSponsor":
+            suggest = "auth_button_sponsor"
+        elif key == "authLabel":
+            suggest = "auth_label"
+        elif key == "backLink":
+            suggest = "back_link"
+        elif key == "companyError":
+            suggest = "company_error"
+        elif key == "companyLabel":
+            suggest = "company_label"
+        elif key == "emailAccessDomainError":
+            suggest = "email_access_domain_error"
+        elif key == "emailCancel":
+            suggest = "email_cancel"
+        elif key == "emailCodeCancel":
+            suggest = "email_code_cancel"
+        elif key == "emailCodeError":
+            suggest = "email_code_error"
+        elif key == "emailCodeFieldLabel":
+            suggest = "email_code_field_label"
+        elif key == "emailCodeMessage":
+            suggest = "email_code_message"
+        elif key == "emailCodeSubmit":
+            suggest = "email_code_submit"
+        elif key == "emailCodeTitle":
+            suggest = "email_code_title"
+        elif key == "emailError":
+            suggest = "email_error"
+        elif key == "emailFieldLabel":
+            suggest = "email_field_label"
+        elif key == "emailLabel":
+            suggest = "email_label"
+        elif key == "emailMessage":
+            suggest = "email_message"
+        elif key == "emailSubmit":
+            suggest = "email_submit"
+        elif key == "emailTitle":
+            suggest = "email_title"
+        elif key == "nameError":
+            suggest = "name_error"
+        elif key == "nameLabel":
+            suggest = "name_label"
+        elif key == "optoutLabel":
+            suggest = "optout_label"
+        elif key == "pageTitle":
+            suggest = "page_title"
+        elif key == "passphraseCancel":
+            suggest = "passphrase_cancel"
+        elif key == "passphraseError":
+            suggest = "passphrase_error"
+        elif key == "passphraseLabel":
+            suggest = "passphrase_label"
+        elif key == "passphraseMessage":
+            suggest = "passphrase_message"
+        elif key == "passphraseSubmit":
+            suggest = "passphrase_submit"
+        elif key == "passphraseTitle":
+            suggest = "passphrase_title"
+        elif key == "privacyPolicyAcceptLabel":
+            suggest = "privacy_policy_accept_label"
+        elif key == "privacyPolicyError":
+            suggest = "privacy_policy_error"
+        elif key == "privacyPolicyLink":
+            suggest = "privacy_policy_link"
+        elif key == "privacyPolicyText":
+            suggest = "privacy_policy_text"
+        elif key == "requiredFieldLabel":
+            suggest = "required_field_label"
+        elif key == "signInLabel":
+            suggest = "sign_in_label"
+        elif key == "smsCarrierDefault":
+            suggest = "sms_carrier_default"
+        elif key == "smsCarrierError":
+            suggest = "sms_carrier_error"
+        elif key == "smsCarrierFieldLabel":
+            suggest = "sms_carrier_field_label"
+        elif key == "smsCodeCancel":
+            suggest = "sms_code_cancel"
+        elif key == "smsCodeError":
+            suggest = "sms_code_error"
+        elif key == "smsCodeFieldLabel":
+            suggest = "sms_code_field_label"
+        elif key == "smsCodeMessage":
+            suggest = "sms_code_message"
+        elif key == "smsCodeSubmit":
+            suggest = "sms_code_submit"
+        elif key == "smsCodeTitle":
+            suggest = "sms_code_title"
+        elif key == "smsCountryFieldLabel":
+            suggest = "sms_country_field_label"
+        elif key == "smsCountryFormat":
+            suggest = "sms_country_format"
+        elif key == "smsHaveAccessCode":
+            suggest = "sms_have_access_code"
+        elif key == "smsMessageFormat":
+            suggest = "sms_message_format"
+        elif key == "smsNumberCancel":
+            suggest = "sms_number_cancel"
+        elif key == "smsNumberError":
+            suggest = "sms_number_error"
+        elif key == "smsNumberFieldLabel":
+            suggest = "sms_number_field_label"
+        elif key == "smsNumberFormat":
+            suggest = "sms_number_format"
+        elif key == "smsNumberMessage":
+            suggest = "sms_number_message"
+        elif key == "smsNumberSubmit":
+            suggest = "sms_number_submit"
+        elif key == "smsNumberTitle":
+            suggest = "sms_number_title"
+        elif key == "smsUsernameFormat":
+            suggest = "sms_username_format"
+        elif key == "sponsorBackLink":
+            suggest = "sponsor_back_link"
+        elif key == "sponsorCancel":
+            suggest = "sponsor_cancel"
+        elif key == "sponsorEmail":
+            suggest = "sponsor_email"
+        elif key == "sponsorEmailError":
+            suggest = "sponsor_email_error"
+        elif key == "sponsorInfoApproved":
+            suggest = "sponsor_info_approved"
+        elif key == "sponsorInfoDenied":
+            suggest = "sponsor_info_denied"
+        elif key == "sponsorInfoPending":
+            suggest = "sponsor_info_pending"
+        elif key == "sponsorName":
+            suggest = "sponsor_name"
+        elif key == "sponsorNameError":
+            suggest = "sponsor_name_error"
+        elif key == "sponsorNotePending":
+            suggest = "sponsor_note_pending"
+        elif key == "sponsorRequestAccess":
+            suggest = "sponsor_request_access"
+        elif key == "sponsorStatusApproved":
+            suggest = "sponsor_status_approved"
+        elif key == "sponsorStatusDenied":
+            suggest = "sponsor_status_denied"
+        elif key == "sponsorStatusPending":
+            suggest = "sponsor_status_pending"
+        elif key == "sponsorSubmit":
+            suggest = "sponsor_submit"
+        elif key == "sponsorsError":
+            suggest = "sponsors_error"
+        elif key == "sponsorsFieldLabel":
+            suggest = "sponsors_field_label"
+        elif key == "tosAcceptLabel":
+            suggest = "tos_accept_label"
+        elif key == "tosError":
+            suggest = "tos_error"
+        elif key == "tosLink":
+            suggest = "tos_link"
+        elif key == "tosText":
+            suggest = "tos_text"
+        elif key == "uthButtonAmazon":
+            suggest = "uth_button_amazon"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WlanPortalTemplatePortalTemplateLocales. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WlanPortalTemplatePortalTemplateLocales.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WlanPortalTemplatePortalTemplateLocales.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_button_amazon: Optional[str] = None,
+                 auth_button_azure: Optional[str] = None,
+                 auth_button_email: Optional[str] = None,
+                 auth_button_facebook: Optional[str] = None,
+                 auth_button_google: Optional[str] = None,
+                 auth_button_microsoft: Optional[str] = None,
+                 auth_button_passphrase: Optional[str] = None,
+                 auth_button_sms: Optional[str] = None,
+                 auth_button_sponsor: Optional[str] = None,
+                 auth_label: Optional[str] = None,
+                 back_link: Optional[str] = None,
+                 company_error: Optional[str] = None,
+                 company_label: Optional[str] = None,
+                 email_access_domain_error: Optional[str] = None,
+                 email_cancel: Optional[str] = None,
+                 email_code_cancel: Optional[str] = None,
+                 email_code_error: Optional[str] = None,
+                 email_code_field_label: Optional[str] = None,
+                 email_code_message: Optional[str] = None,
+                 email_code_submit: Optional[str] = None,
+                 email_code_title: Optional[str] = None,
+                 email_error: Optional[str] = None,
+                 email_field_label: Optional[str] = None,
+                 email_label: Optional[str] = None,
+                 email_message: Optional[str] = None,
+                 email_submit: Optional[str] = None,
+                 email_title: Optional[str] = None,
+                 field1error: Optional[str] = None,
+                 field1label: Optional[str] = None,
+                 field2error: Optional[str] = None,
+                 field2label: Optional[str] = None,
+                 field3error: Optional[str] = None,
+                 field3label: Optional[str] = None,
+                 field4error: Optional[str] = None,
+                 field4label: Optional[str] = None,
+                 message: Optional[str] = None,
+                 name_error: Optional[str] = None,
+                 name_label: Optional[str] = None,
+                 optout_label: Optional[str] = None,
+                 page_title: Optional[str] = None,
+                 passphrase_cancel: Optional[str] = None,
+                 passphrase_error: Optional[str] = None,
+                 passphrase_label: Optional[str] = None,
+                 passphrase_message: Optional[str] = None,
+                 passphrase_submit: Optional[str] = None,
+                 passphrase_title: Optional[str] = None,
+                 privacy_policy_accept_label: Optional[str] = None,
+                 privacy_policy_error: Optional[str] = None,
+                 privacy_policy_link: Optional[str] = None,
+                 privacy_policy_text: Optional[str] = None,
+                 required_field_label: Optional[str] = None,
+                 sign_in_label: Optional[str] = None,
+                 sms_carrier_default: Optional[str] = None,
+                 sms_carrier_error: Optional[str] = None,
+                 sms_carrier_field_label: Optional[str] = None,
+                 sms_code_cancel: Optional[str] = None,
+                 sms_code_error: Optional[str] = None,
+                 sms_code_field_label: Optional[str] = None,
+                 sms_code_message: Optional[str] = None,
+                 sms_code_submit: Optional[str] = None,
+                 sms_code_title: Optional[str] = None,
+                 sms_country_field_label: Optional[str] = None,
+                 sms_country_format: Optional[str] = None,
+                 sms_have_access_code: Optional[str] = None,
+                 sms_message_format: Optional[str] = None,
+                 sms_number_cancel: Optional[str] = None,
+                 sms_number_error: Optional[str] = None,
+                 sms_number_field_label: Optional[str] = None,
+                 sms_number_format: Optional[str] = None,
+                 sms_number_message: Optional[str] = None,
+                 sms_number_submit: Optional[str] = None,
+                 sms_number_title: Optional[str] = None,
+                 sms_username_format: Optional[str] = None,
+                 sponsor_back_link: Optional[str] = None,
+                 sponsor_cancel: Optional[str] = None,
+                 sponsor_email: Optional[str] = None,
+                 sponsor_email_error: Optional[str] = None,
+                 sponsor_info_approved: Optional[str] = None,
+                 sponsor_info_denied: Optional[str] = None,
+                 sponsor_info_pending: Optional[str] = None,
+                 sponsor_name: Optional[str] = None,
+                 sponsor_name_error: Optional[str] = None,
+                 sponsor_note_pending: Optional[str] = None,
+                 sponsor_request_access: Optional[str] = None,
+                 sponsor_status_approved: Optional[str] = None,
+                 sponsor_status_denied: Optional[str] = None,
+                 sponsor_status_pending: Optional[str] = None,
+                 sponsor_submit: Optional[str] = None,
+                 sponsors_error: Optional[str] = None,
+                 sponsors_field_label: Optional[str] = None,
+                 tos_accept_label: Optional[str] = None,
+                 tos_error: Optional[str] = None,
+                 tos_link: Optional[str] = None,
+                 tos_text: Optional[str] = None,
+                 uth_button_amazon: Optional[str] = None):
+        """
+        :param str auth_button_amazon: label for Amazon auth button
+        :param str auth_button_azure: label for Azure auth button
+        :param str auth_button_email: label for Email auth button
+        :param str auth_button_facebook: label for Facebook auth button
+        :param str auth_button_google: label for Google auth button
+        :param str auth_button_microsoft: label for Microsoft auth button
+        :param str auth_button_passphrase: label for passphrase auth button
+        :param str auth_button_sms: label for SMS auth button
+        :param str auth_button_sponsor: label for Sponsor auth button
+        :param str back_link: label of the link to go back to /logon
+        :param str company_error: error message when company not provided
+        :param str company_label: label of company field
+        :param str email_access_domain_error: error message when a user has valid social login but doesn't match specified email domains.
+        :param str email_cancel: Label for cancel confirmation code submission using email auth
+        :param str email_error: error message when email not provided
+        :param str email_label: label of email field
+        :param str email_submit: Label for confirmation code submit button using email auth
+        :param str email_title: Title for the Email registration
+        :param str field1error: error message when field1 not provided
+        :param str field1label: label of field1
+        :param str field2error: error message when field2 not provided
+        :param str field2label: label of field2
+        :param str field3error: error message when field3 not provided
+        :param str field3label: label of field3
+        :param str field4error: error message when field4 not provided
+        :param str field4label: label of field4
+        :param str name_error: error message when name not provided
+        :param str name_label: label of name field
+        :param str optout_label: label for Do Not Store My Personal Information
+        :param str passphrase_cancel: Label for the Passphrase cancel button
+        :param str passphrase_error: error message when invalid passphrase is provided
+        :param str passphrase_label: Passphrase
+        :param str passphrase_submit: Label for the Passphrase submit button
+        :param str passphrase_title: Title for passphrase details page
+        :param str privacy_policy_accept_label: prefix of the label of the link to go to Privacy Policy
+        :param str privacy_policy_error: error message when Privacy Policy not accepted
+        :param str privacy_policy_link: label of the link to go to Privacy Policy
+        :param str privacy_policy_text: text of the Privacy Policy
+        :param str required_field_label: label to denote required field
+        :param str sign_in_label: label of the button to /signin
+        :param str sms_carrier_field_label: label for mobile carrier drop-down list
+        :param str sms_code_cancel: Label for cancel confirmation code submission
+        :param str sms_code_error: error message when confirmation code is invalid
+        :param str sms_code_submit: Label for confirmation code submit button
+        :param str sms_have_access_code: Label for checkbox to specify that the user has access code
+        :param str sms_message_format: format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        :param str sms_number_cancel: label for canceling mobile details for SMS auth
+        :param str sms_number_field_label: label for field to provide mobile number
+        :param str sms_number_submit: label for submit button for code generation
+        :param str sms_number_title: Title for phone number details
+        :param str sponsor_email: label for Sponsor Email
+        :param str sponsor_name: label for Sponsor Name
+        :param str sponsor_request_access: submit button label request Wifi Access and notify sponsor about guest request
+        :param str sponsor_status_approved: text to display if sponsor approves request
+        :param str sponsor_status_denied: text to display when sponsor denies request
+        :param str sponsor_status_pending: text to display if request is still pending
+        :param str sponsor_submit: submit button label to notify sponsor about guest request
+        :param str tos_accept_label: prefix of the label of the link to go to tos
+        :param str tos_error: error message when tos not accepted
+        :param str tos_link: label of the link to go to tos
+        :param str tos_text: text of the Terms of Service
+        :param str uth_button_amazon: label for Amazon auth button
+        """
+        if auth_button_amazon is not None:
+            pulumi.set(__self__, "auth_button_amazon", auth_button_amazon)
+        if auth_button_azure is not None:
+            pulumi.set(__self__, "auth_button_azure", auth_button_azure)
+        if auth_button_email is not None:
+            pulumi.set(__self__, "auth_button_email", auth_button_email)
+        if auth_button_facebook is not None:
+            pulumi.set(__self__, "auth_button_facebook", auth_button_facebook)
+        if auth_button_google is not None:
+            pulumi.set(__self__, "auth_button_google", auth_button_google)
+        if auth_button_microsoft is not None:
+            pulumi.set(__self__, "auth_button_microsoft", auth_button_microsoft)
+        if auth_button_passphrase is not None:
+            pulumi.set(__self__, "auth_button_passphrase", auth_button_passphrase)
+        if auth_button_sms is not None:
+            pulumi.set(__self__, "auth_button_sms", auth_button_sms)
+        if auth_button_sponsor is not None:
+            pulumi.set(__self__, "auth_button_sponsor", auth_button_sponsor)
+        if auth_label is not None:
+            pulumi.set(__self__, "auth_label", auth_label)
+        if back_link is not None:
+            pulumi.set(__self__, "back_link", back_link)
+        if company_error is not None:
+            pulumi.set(__self__, "company_error", company_error)
+        if company_label is not None:
+            pulumi.set(__self__, "company_label", company_label)
+        if email_access_domain_error is not None:
+            pulumi.set(__self__, "email_access_domain_error", email_access_domain_error)
+        if email_cancel is not None:
+            pulumi.set(__self__, "email_cancel", email_cancel)
+        if email_code_cancel is not None:
+            pulumi.set(__self__, "email_code_cancel", email_code_cancel)
+        if email_code_error is not None:
+            pulumi.set(__self__, "email_code_error", email_code_error)
+        if email_code_field_label is not None:
+            pulumi.set(__self__, "email_code_field_label", email_code_field_label)
+        if email_code_message is not None:
+            pulumi.set(__self__, "email_code_message", email_code_message)
+        if email_code_submit is not None:
+            pulumi.set(__self__, "email_code_submit", email_code_submit)
+        if email_code_title is not None:
+            pulumi.set(__self__, "email_code_title", email_code_title)
+        if email_error is not None:
+            pulumi.set(__self__, "email_error", email_error)
+        if email_field_label is not None:
+            pulumi.set(__self__, "email_field_label", email_field_label)
+        if email_label is not None:
+            pulumi.set(__self__, "email_label", email_label)
+        if email_message is not None:
+            pulumi.set(__self__, "email_message", email_message)
+        if email_submit is not None:
+            pulumi.set(__self__, "email_submit", email_submit)
+        if email_title is not None:
+            pulumi.set(__self__, "email_title", email_title)
+        if field1error is not None:
+            pulumi.set(__self__, "field1error", field1error)
+        if field1label is not None:
+            pulumi.set(__self__, "field1label", field1label)
+        if field2error is not None:
+            pulumi.set(__self__, "field2error", field2error)
+        if field2label is not None:
+            pulumi.set(__self__, "field2label", field2label)
+        if field3error is not None:
+            pulumi.set(__self__, "field3error", field3error)
+        if field3label is not None:
+            pulumi.set(__self__, "field3label", field3label)
+        if field4error is not None:
+            pulumi.set(__self__, "field4error", field4error)
+        if field4label is not None:
+            pulumi.set(__self__, "field4label", field4label)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if name_error is not None:
+            pulumi.set(__self__, "name_error", name_error)
+        if name_label is not None:
+            pulumi.set(__self__, "name_label", name_label)
+        if optout_label is not None:
+            pulumi.set(__self__, "optout_label", optout_label)
+        if page_title is not None:
+            pulumi.set(__self__, "page_title", page_title)
+        if passphrase_cancel is not None:
+            pulumi.set(__self__, "passphrase_cancel", passphrase_cancel)
+        if passphrase_error is not None:
+            pulumi.set(__self__, "passphrase_error", passphrase_error)
+        if passphrase_label is not None:
+            pulumi.set(__self__, "passphrase_label", passphrase_label)
+        if passphrase_message is not None:
+            pulumi.set(__self__, "passphrase_message", passphrase_message)
+        if passphrase_submit is not None:
+            pulumi.set(__self__, "passphrase_submit", passphrase_submit)
+        if passphrase_title is not None:
+            pulumi.set(__self__, "passphrase_title", passphrase_title)
+        if privacy_policy_accept_label is not None:
+            pulumi.set(__self__, "privacy_policy_accept_label", privacy_policy_accept_label)
+        if privacy_policy_error is not None:
+            pulumi.set(__self__, "privacy_policy_error", privacy_policy_error)
+        if privacy_policy_link is not None:
+            pulumi.set(__self__, "privacy_policy_link", privacy_policy_link)
+        if privacy_policy_text is not None:
+            pulumi.set(__self__, "privacy_policy_text", privacy_policy_text)
+        if required_field_label is not None:
+            pulumi.set(__self__, "required_field_label", required_field_label)
+        if sign_in_label is not None:
+            pulumi.set(__self__, "sign_in_label", sign_in_label)
+        if sms_carrier_default is not None:
+            pulumi.set(__self__, "sms_carrier_default", sms_carrier_default)
+        if sms_carrier_error is not None:
+            pulumi.set(__self__, "sms_carrier_error", sms_carrier_error)
+        if sms_carrier_field_label is not None:
+            pulumi.set(__self__, "sms_carrier_field_label", sms_carrier_field_label)
+        if sms_code_cancel is not None:
+            pulumi.set(__self__, "sms_code_cancel", sms_code_cancel)
+        if sms_code_error is not None:
+            pulumi.set(__self__, "sms_code_error", sms_code_error)
+        if sms_code_field_label is not None:
+            pulumi.set(__self__, "sms_code_field_label", sms_code_field_label)
+        if sms_code_message is not None:
+            pulumi.set(__self__, "sms_code_message", sms_code_message)
+        if sms_code_submit is not None:
+            pulumi.set(__self__, "sms_code_submit", sms_code_submit)
+        if sms_code_title is not None:
+            pulumi.set(__self__, "sms_code_title", sms_code_title)
+        if sms_country_field_label is not None:
+            pulumi.set(__self__, "sms_country_field_label", sms_country_field_label)
+        if sms_country_format is not None:
+            pulumi.set(__self__, "sms_country_format", sms_country_format)
+        if sms_have_access_code is not None:
+            pulumi.set(__self__, "sms_have_access_code", sms_have_access_code)
+        if sms_message_format is not None:
+            pulumi.set(__self__, "sms_message_format", sms_message_format)
+        if sms_number_cancel is not None:
+            pulumi.set(__self__, "sms_number_cancel", sms_number_cancel)
+        if sms_number_error is not None:
+            pulumi.set(__self__, "sms_number_error", sms_number_error)
+        if sms_number_field_label is not None:
+            pulumi.set(__self__, "sms_number_field_label", sms_number_field_label)
+        if sms_number_format is not None:
+            pulumi.set(__self__, "sms_number_format", sms_number_format)
+        if sms_number_message is not None:
+            pulumi.set(__self__, "sms_number_message", sms_number_message)
+        if sms_number_submit is not None:
+            pulumi.set(__self__, "sms_number_submit", sms_number_submit)
+        if sms_number_title is not None:
+            pulumi.set(__self__, "sms_number_title", sms_number_title)
+        if sms_username_format is not None:
+            pulumi.set(__self__, "sms_username_format", sms_username_format)
+        if sponsor_back_link is not None:
+            pulumi.set(__self__, "sponsor_back_link", sponsor_back_link)
+        if sponsor_cancel is not None:
+            pulumi.set(__self__, "sponsor_cancel", sponsor_cancel)
+        if sponsor_email is not None:
+            pulumi.set(__self__, "sponsor_email", sponsor_email)
+        if sponsor_email_error is not None:
+            pulumi.set(__self__, "sponsor_email_error", sponsor_email_error)
+        if sponsor_info_approved is not None:
+            pulumi.set(__self__, "sponsor_info_approved", sponsor_info_approved)
+        if sponsor_info_denied is not None:
+            pulumi.set(__self__, "sponsor_info_denied", sponsor_info_denied)
+        if sponsor_info_pending is not None:
+            pulumi.set(__self__, "sponsor_info_pending", sponsor_info_pending)
+        if sponsor_name is not None:
+            pulumi.set(__self__, "sponsor_name", sponsor_name)
+        if sponsor_name_error is not None:
+            pulumi.set(__self__, "sponsor_name_error", sponsor_name_error)
+        if sponsor_note_pending is not None:
+            pulumi.set(__self__, "sponsor_note_pending", sponsor_note_pending)
+        if sponsor_request_access is not None:
+            pulumi.set(__self__, "sponsor_request_access", sponsor_request_access)
+        if sponsor_status_approved is not None:
+            pulumi.set(__self__, "sponsor_status_approved", sponsor_status_approved)
+        if sponsor_status_denied is not None:
+            pulumi.set(__self__, "sponsor_status_denied", sponsor_status_denied)
+        if sponsor_status_pending is not None:
+            pulumi.set(__self__, "sponsor_status_pending", sponsor_status_pending)
+        if sponsor_submit is not None:
+            pulumi.set(__self__, "sponsor_submit", sponsor_submit)
+        if sponsors_error is not None:
+            pulumi.set(__self__, "sponsors_error", sponsors_error)
+        if sponsors_field_label is not None:
+            pulumi.set(__self__, "sponsors_field_label", sponsors_field_label)
+        if tos_accept_label is not None:
+            pulumi.set(__self__, "tos_accept_label", tos_accept_label)
+        if tos_error is not None:
+            pulumi.set(__self__, "tos_error", tos_error)
+        if tos_link is not None:
+            pulumi.set(__self__, "tos_link", tos_link)
+        if tos_text is not None:
+            pulumi.set(__self__, "tos_text", tos_text)
+        if uth_button_amazon is not None:
+            pulumi.set(__self__, "uth_button_amazon", uth_button_amazon)
+
+    @property
+    @pulumi.getter(name="authButtonAmazon")
+    def auth_button_amazon(self) -> Optional[str]:
+        """
+        label for Amazon auth button
+        """
+        return pulumi.get(self, "auth_button_amazon")
+
+    @property
+    @pulumi.getter(name="authButtonAzure")
+    def auth_button_azure(self) -> Optional[str]:
+        """
+        label for Azure auth button
+        """
+        return pulumi.get(self, "auth_button_azure")
+
+    @property
+    @pulumi.getter(name="authButtonEmail")
+    def auth_button_email(self) -> Optional[str]:
+        """
+        label for Email auth button
+        """
+        return pulumi.get(self, "auth_button_email")
+
+    @property
+    @pulumi.getter(name="authButtonFacebook")
+    def auth_button_facebook(self) -> Optional[str]:
+        """
+        label for Facebook auth button
+        """
+        return pulumi.get(self, "auth_button_facebook")
+
+    @property
+    @pulumi.getter(name="authButtonGoogle")
+    def auth_button_google(self) -> Optional[str]:
+        """
+        label for Google auth button
+        """
+        return pulumi.get(self, "auth_button_google")
+
+    @property
+    @pulumi.getter(name="authButtonMicrosoft")
+    def auth_button_microsoft(self) -> Optional[str]:
+        """
+        label for Microsoft auth button
+        """
+        return pulumi.get(self, "auth_button_microsoft")
+
+    @property
+    @pulumi.getter(name="authButtonPassphrase")
+    def auth_button_passphrase(self) -> Optional[str]:
+        """
+        label for passphrase auth button
+        """
+        return pulumi.get(self, "auth_button_passphrase")
+
+    @property
+    @pulumi.getter(name="authButtonSms")
+    def auth_button_sms(self) -> Optional[str]:
+        """
+        label for SMS auth button
+        """
+        return pulumi.get(self, "auth_button_sms")
+
+    @property
+    @pulumi.getter(name="authButtonSponsor")
+    def auth_button_sponsor(self) -> Optional[str]:
+        """
+        label for Sponsor auth button
+        """
+        return pulumi.get(self, "auth_button_sponsor")
+
+    @property
+    @pulumi.getter(name="authLabel")
+    def auth_label(self) -> Optional[str]:
+        return pulumi.get(self, "auth_label")
+
+    @property
+    @pulumi.getter(name="backLink")
+    def back_link(self) -> Optional[str]:
+        """
+        label of the link to go back to /logon
+        """
+        return pulumi.get(self, "back_link")
+
+    @property
+    @pulumi.getter(name="companyError")
+    def company_error(self) -> Optional[str]:
+        """
+        error message when company not provided
+        """
+        return pulumi.get(self, "company_error")
+
+    @property
+    @pulumi.getter(name="companyLabel")
+    def company_label(self) -> Optional[str]:
+        """
+        label of company field
+        """
+        return pulumi.get(self, "company_label")
+
+    @property
+    @pulumi.getter(name="emailAccessDomainError")
+    def email_access_domain_error(self) -> Optional[str]:
+        """
+        error message when a user has valid social login but doesn't match specified email domains.
+        """
+        return pulumi.get(self, "email_access_domain_error")
+
+    @property
+    @pulumi.getter(name="emailCancel")
+    def email_cancel(self) -> Optional[str]:
+        """
+        Label for cancel confirmation code submission using email auth
+        """
+        return pulumi.get(self, "email_cancel")
+
+    @property
+    @pulumi.getter(name="emailCodeCancel")
+    def email_code_cancel(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_cancel")
+
+    @property
+    @pulumi.getter(name="emailCodeError")
+    def email_code_error(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_error")
+
+    @property
+    @pulumi.getter(name="emailCodeFieldLabel")
+    def email_code_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_field_label")
+
+    @property
+    @pulumi.getter(name="emailCodeMessage")
+    def email_code_message(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_message")
+
+    @property
+    @pulumi.getter(name="emailCodeSubmit")
+    def email_code_submit(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_submit")
+
+    @property
+    @pulumi.getter(name="emailCodeTitle")
+    def email_code_title(self) -> Optional[str]:
+        return pulumi.get(self, "email_code_title")
+
+    @property
+    @pulumi.getter(name="emailError")
+    def email_error(self) -> Optional[str]:
+        """
+        error message when email not provided
+        """
+        return pulumi.get(self, "email_error")
+
+    @property
+    @pulumi.getter(name="emailFieldLabel")
+    def email_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "email_field_label")
+
+    @property
+    @pulumi.getter(name="emailLabel")
+    def email_label(self) -> Optional[str]:
+        """
+        label of email field
+        """
+        return pulumi.get(self, "email_label")
+
+    @property
+    @pulumi.getter(name="emailMessage")
+    def email_message(self) -> Optional[str]:
+        return pulumi.get(self, "email_message")
+
+    @property
+    @pulumi.getter(name="emailSubmit")
+    def email_submit(self) -> Optional[str]:
+        """
+        Label for confirmation code submit button using email auth
+        """
+        return pulumi.get(self, "email_submit")
+
+    @property
+    @pulumi.getter(name="emailTitle")
+    def email_title(self) -> Optional[str]:
+        """
+        Title for the Email registration
+        """
+        return pulumi.get(self, "email_title")
+
+    @property
+    @pulumi.getter
+    def field1error(self) -> Optional[str]:
+        """
+        error message when field1 not provided
+        """
+        return pulumi.get(self, "field1error")
+
+    @property
+    @pulumi.getter
+    def field1label(self) -> Optional[str]:
+        """
+        label of field1
+        """
+        return pulumi.get(self, "field1label")
+
+    @property
+    @pulumi.getter
+    def field2error(self) -> Optional[str]:
+        """
+        error message when field2 not provided
+        """
+        return pulumi.get(self, "field2error")
+
+    @property
+    @pulumi.getter
+    def field2label(self) -> Optional[str]:
+        """
+        label of field2
+        """
+        return pulumi.get(self, "field2label")
+
+    @property
+    @pulumi.getter
+    def field3error(self) -> Optional[str]:
+        """
+        error message when field3 not provided
+        """
+        return pulumi.get(self, "field3error")
+
+    @property
+    @pulumi.getter
+    def field3label(self) -> Optional[str]:
+        """
+        label of field3
+        """
+        return pulumi.get(self, "field3label")
+
+    @property
+    @pulumi.getter
+    def field4error(self) -> Optional[str]:
+        """
+        error message when field4 not provided
+        """
+        return pulumi.get(self, "field4error")
+
+    @property
+    @pulumi.getter
+    def field4label(self) -> Optional[str]:
+        """
+        label of field4
+        """
+        return pulumi.get(self, "field4label")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="nameError")
+    def name_error(self) -> Optional[str]:
+        """
+        error message when name not provided
+        """
+        return pulumi.get(self, "name_error")
+
+    @property
+    @pulumi.getter(name="nameLabel")
+    def name_label(self) -> Optional[str]:
+        """
+        label of name field
+        """
+        return pulumi.get(self, "name_label")
+
+    @property
+    @pulumi.getter(name="optoutLabel")
+    def optout_label(self) -> Optional[str]:
+        """
+        label for Do Not Store My Personal Information
+        """
+        return pulumi.get(self, "optout_label")
+
+    @property
+    @pulumi.getter(name="pageTitle")
+    def page_title(self) -> Optional[str]:
+        return pulumi.get(self, "page_title")
+
+    @property
+    @pulumi.getter(name="passphraseCancel")
+    def passphrase_cancel(self) -> Optional[str]:
+        """
+        Label for the Passphrase cancel button
+        """
+        return pulumi.get(self, "passphrase_cancel")
+
+    @property
+    @pulumi.getter(name="passphraseError")
+    def passphrase_error(self) -> Optional[str]:
+        """
+        error message when invalid passphrase is provided
+        """
+        return pulumi.get(self, "passphrase_error")
+
+    @property
+    @pulumi.getter(name="passphraseLabel")
+    def passphrase_label(self) -> Optional[str]:
+        """
+        Passphrase
+        """
+        return pulumi.get(self, "passphrase_label")
+
+    @property
+    @pulumi.getter(name="passphraseMessage")
+    def passphrase_message(self) -> Optional[str]:
+        return pulumi.get(self, "passphrase_message")
+
+    @property
+    @pulumi.getter(name="passphraseSubmit")
+    def passphrase_submit(self) -> Optional[str]:
+        """
+        Label for the Passphrase submit button
+        """
+        return pulumi.get(self, "passphrase_submit")
+
+    @property
+    @pulumi.getter(name="passphraseTitle")
+    def passphrase_title(self) -> Optional[str]:
+        """
+        Title for passphrase details page
+        """
+        return pulumi.get(self, "passphrase_title")
+
+    @property
+    @pulumi.getter(name="privacyPolicyAcceptLabel")
+    def privacy_policy_accept_label(self) -> Optional[str]:
+        """
+        prefix of the label of the link to go to Privacy Policy
+        """
+        return pulumi.get(self, "privacy_policy_accept_label")
+
+    @property
+    @pulumi.getter(name="privacyPolicyError")
+    def privacy_policy_error(self) -> Optional[str]:
+        """
+        error message when Privacy Policy not accepted
+        """
+        return pulumi.get(self, "privacy_policy_error")
+
+    @property
+    @pulumi.getter(name="privacyPolicyLink")
+    def privacy_policy_link(self) -> Optional[str]:
+        """
+        label of the link to go to Privacy Policy
+        """
+        return pulumi.get(self, "privacy_policy_link")
+
+    @property
+    @pulumi.getter(name="privacyPolicyText")
+    def privacy_policy_text(self) -> Optional[str]:
+        """
+        text of the Privacy Policy
+        """
+        return pulumi.get(self, "privacy_policy_text")
+
+    @property
+    @pulumi.getter(name="requiredFieldLabel")
+    def required_field_label(self) -> Optional[str]:
+        """
+        label to denote required field
+        """
+        return pulumi.get(self, "required_field_label")
+
+    @property
+    @pulumi.getter(name="signInLabel")
+    def sign_in_label(self) -> Optional[str]:
+        """
+        label of the button to /signin
+        """
+        return pulumi.get(self, "sign_in_label")
+
+    @property
+    @pulumi.getter(name="smsCarrierDefault")
+    def sms_carrier_default(self) -> Optional[str]:
+        return pulumi.get(self, "sms_carrier_default")
+
+    @property
+    @pulumi.getter(name="smsCarrierError")
+    def sms_carrier_error(self) -> Optional[str]:
+        return pulumi.get(self, "sms_carrier_error")
+
+    @property
+    @pulumi.getter(name="smsCarrierFieldLabel")
+    def sms_carrier_field_label(self) -> Optional[str]:
+        """
+        label for mobile carrier drop-down list
+        """
+        return pulumi.get(self, "sms_carrier_field_label")
+
+    @property
+    @pulumi.getter(name="smsCodeCancel")
+    def sms_code_cancel(self) -> Optional[str]:
+        """
+        Label for cancel confirmation code submission
+        """
+        return pulumi.get(self, "sms_code_cancel")
+
+    @property
+    @pulumi.getter(name="smsCodeError")
+    def sms_code_error(self) -> Optional[str]:
+        """
+        error message when confirmation code is invalid
+        """
+        return pulumi.get(self, "sms_code_error")
+
+    @property
+    @pulumi.getter(name="smsCodeFieldLabel")
+    def sms_code_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "sms_code_field_label")
+
+    @property
+    @pulumi.getter(name="smsCodeMessage")
+    def sms_code_message(self) -> Optional[str]:
+        return pulumi.get(self, "sms_code_message")
+
+    @property
+    @pulumi.getter(name="smsCodeSubmit")
+    def sms_code_submit(self) -> Optional[str]:
+        """
+        Label for confirmation code submit button
+        """
+        return pulumi.get(self, "sms_code_submit")
+
+    @property
+    @pulumi.getter(name="smsCodeTitle")
+    def sms_code_title(self) -> Optional[str]:
+        return pulumi.get(self, "sms_code_title")
+
+    @property
+    @pulumi.getter(name="smsCountryFieldLabel")
+    def sms_country_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "sms_country_field_label")
+
+    @property
+    @pulumi.getter(name="smsCountryFormat")
+    def sms_country_format(self) -> Optional[str]:
+        return pulumi.get(self, "sms_country_format")
+
+    @property
+    @pulumi.getter(name="smsHaveAccessCode")
+    def sms_have_access_code(self) -> Optional[str]:
+        """
+        Label for checkbox to specify that the user has access code
+        """
+        return pulumi.get(self, "sms_have_access_code")
+
+    @property
+    @pulumi.getter(name="smsMessageFormat")
+    def sms_message_format(self) -> Optional[str]:
+        """
+        format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        """
+        return pulumi.get(self, "sms_message_format")
+
+    @property
+    @pulumi.getter(name="smsNumberCancel")
+    def sms_number_cancel(self) -> Optional[str]:
+        """
+        label for canceling mobile details for SMS auth
+        """
+        return pulumi.get(self, "sms_number_cancel")
+
+    @property
+    @pulumi.getter(name="smsNumberError")
+    def sms_number_error(self) -> Optional[str]:
+        return pulumi.get(self, "sms_number_error")
+
+    @property
+    @pulumi.getter(name="smsNumberFieldLabel")
+    def sms_number_field_label(self) -> Optional[str]:
+        """
+        label for field to provide mobile number
+        """
+        return pulumi.get(self, "sms_number_field_label")
+
+    @property
+    @pulumi.getter(name="smsNumberFormat")
+    def sms_number_format(self) -> Optional[str]:
+        return pulumi.get(self, "sms_number_format")
+
+    @property
+    @pulumi.getter(name="smsNumberMessage")
+    def sms_number_message(self) -> Optional[str]:
+        return pulumi.get(self, "sms_number_message")
+
+    @property
+    @pulumi.getter(name="smsNumberSubmit")
+    def sms_number_submit(self) -> Optional[str]:
+        """
+        label for submit button for code generation
+        """
+        return pulumi.get(self, "sms_number_submit")
+
+    @property
+    @pulumi.getter(name="smsNumberTitle")
+    def sms_number_title(self) -> Optional[str]:
+        """
+        Title for phone number details
+        """
+        return pulumi.get(self, "sms_number_title")
+
+    @property
+    @pulumi.getter(name="smsUsernameFormat")
+    def sms_username_format(self) -> Optional[str]:
+        return pulumi.get(self, "sms_username_format")
+
+    @property
+    @pulumi.getter(name="sponsorBackLink")
+    def sponsor_back_link(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_back_link")
+
+    @property
+    @pulumi.getter(name="sponsorCancel")
+    def sponsor_cancel(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_cancel")
+
+    @property
+    @pulumi.getter(name="sponsorEmail")
+    def sponsor_email(self) -> Optional[str]:
+        """
+        label for Sponsor Email
+        """
+        return pulumi.get(self, "sponsor_email")
+
+    @property
+    @pulumi.getter(name="sponsorEmailError")
+    def sponsor_email_error(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_email_error")
+
+    @property
+    @pulumi.getter(name="sponsorInfoApproved")
+    def sponsor_info_approved(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_info_approved")
+
+    @property
+    @pulumi.getter(name="sponsorInfoDenied")
+    def sponsor_info_denied(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_info_denied")
+
+    @property
+    @pulumi.getter(name="sponsorInfoPending")
+    def sponsor_info_pending(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_info_pending")
+
+    @property
+    @pulumi.getter(name="sponsorName")
+    def sponsor_name(self) -> Optional[str]:
+        """
+        label for Sponsor Name
+        """
+        return pulumi.get(self, "sponsor_name")
+
+    @property
+    @pulumi.getter(name="sponsorNameError")
+    def sponsor_name_error(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_name_error")
+
+    @property
+    @pulumi.getter(name="sponsorNotePending")
+    def sponsor_note_pending(self) -> Optional[str]:
+        return pulumi.get(self, "sponsor_note_pending")
+
+    @property
+    @pulumi.getter(name="sponsorRequestAccess")
+    def sponsor_request_access(self) -> Optional[str]:
+        """
+        submit button label request Wifi Access and notify sponsor about guest request
+        """
+        return pulumi.get(self, "sponsor_request_access")
+
+    @property
+    @pulumi.getter(name="sponsorStatusApproved")
+    def sponsor_status_approved(self) -> Optional[str]:
+        """
+        text to display if sponsor approves request
+        """
+        return pulumi.get(self, "sponsor_status_approved")
+
+    @property
+    @pulumi.getter(name="sponsorStatusDenied")
+    def sponsor_status_denied(self) -> Optional[str]:
+        """
+        text to display when sponsor denies request
+        """
+        return pulumi.get(self, "sponsor_status_denied")
+
+    @property
+    @pulumi.getter(name="sponsorStatusPending")
+    def sponsor_status_pending(self) -> Optional[str]:
+        """
+        text to display if request is still pending
+        """
+        return pulumi.get(self, "sponsor_status_pending")
+
+    @property
+    @pulumi.getter(name="sponsorSubmit")
+    def sponsor_submit(self) -> Optional[str]:
+        """
+        submit button label to notify sponsor about guest request
+        """
+        return pulumi.get(self, "sponsor_submit")
+
+    @property
+    @pulumi.getter(name="sponsorsError")
+    def sponsors_error(self) -> Optional[str]:
+        return pulumi.get(self, "sponsors_error")
+
+    @property
+    @pulumi.getter(name="sponsorsFieldLabel")
+    def sponsors_field_label(self) -> Optional[str]:
+        return pulumi.get(self, "sponsors_field_label")
+
+    @property
+    @pulumi.getter(name="tosAcceptLabel")
+    def tos_accept_label(self) -> Optional[str]:
+        """
+        prefix of the label of the link to go to tos
+        """
+        return pulumi.get(self, "tos_accept_label")
+
+    @property
+    @pulumi.getter(name="tosError")
+    def tos_error(self) -> Optional[str]:
+        """
+        error message when tos not accepted
+        """
+        return pulumi.get(self, "tos_error")
+
+    @property
+    @pulumi.getter(name="tosLink")
+    def tos_link(self) -> Optional[str]:
+        """
+        label of the link to go to tos
+        """
+        return pulumi.get(self, "tos_link")
+
+    @property
+    @pulumi.getter(name="tosText")
+    def tos_text(self) -> Optional[str]:
+        """
+        text of the Terms of Service
+        """
+        return pulumi.get(self, "tos_text")
+
+    @property
+    @pulumi.getter(name="uthButtonAmazon")
+    def uth_button_amazon(self) -> Optional[str]:
+        """
+        label for Amazon auth button
+        """
+        return pulumi.get(self, "uth_button_amazon")
 
 
 @pulumi.output_type

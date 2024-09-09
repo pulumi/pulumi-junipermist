@@ -914,16 +914,20 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-     * Property key is the sponsor email, Property value is the sponsor name
+     * object of allowed sponsors email with name. Required if `sponsor_enabled`
+     *             is `true` and `sponsor_email_domains` is empty.
+     * 
+     *             Property key is the sponsor email, Property value is the sponsor name
      * 
      */
     @Import(name="sponsors")
     private @Nullable Output<Map<String,String>> sponsors;
 
     /**
-     * @return object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-     * Property key is the sponsor email, Property value is the sponsor name
+     * @return object of allowed sponsors email with name. Required if `sponsor_enabled`
+     *             is `true` and `sponsor_email_domains` is empty.
+     * 
+     *             Property key is the sponsor email, Property value is the sponsor name
      * 
      */
     public Optional<Output<Map<String,String>>> sponsors() {
@@ -2495,8 +2499,10 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsors object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * @param sponsors object of allowed sponsors email with name. Required if `sponsor_enabled`
+         *             is `true` and `sponsor_email_domains` is empty.
+         * 
+         *             Property key is the sponsor email, Property value is the sponsor name
          * 
          * @return builder
          * 
@@ -2507,8 +2513,10 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sponsors object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * @param sponsors object of allowed sponsors email with name. Required if `sponsor_enabled`
+         *             is `true` and `sponsor_email_domains` is empty.
+         * 
+         *             Property key is the sponsor email, Property value is the sponsor name
          * 
          * @return builder
          * 

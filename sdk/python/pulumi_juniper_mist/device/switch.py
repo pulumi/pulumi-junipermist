@@ -82,6 +82,7 @@ class SwitchArgs:
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
+        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[bool] use_router_id_as_source_ip: whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input['SwitchVirtualChassisArgs'] virtual_chassis: required for preprovisioned Virtual Chassis
@@ -535,6 +536,9 @@ class SwitchArgs:
     @property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> Optional[pulumi.Input['SwitchSwitchMgmtArgs']]:
+        """
+        Switch settings
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
@@ -716,6 +720,7 @@ class _SwitchState:
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[str] serial: device Serial
+        :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[str] type: Device Type. enum: `switch`
         :param pulumi.Input[bool] use_router_id_as_source_ip: whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -1271,6 +1276,9 @@ class _SwitchState:
     @property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> Optional[pulumi.Input['SwitchSwitchMgmtArgs']]:
+        """
+        Switch settings
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @switch_mgmt.setter
@@ -1468,6 +1476,7 @@ class Switch(pulumi.CustomResource):
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[bool] use_router_id_as_source_ip: whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Union['SwitchVirtualChassisArgs', 'SwitchVirtualChassisArgsDict']] virtual_chassis: required for preprovisioned Virtual Chassis
@@ -1709,6 +1718,7 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[str] serial: device Serial
+        :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[str] type: Device Type. enum: `switch`
         :param pulumi.Input[bool] use_router_id_as_source_ip: whether to use it for snmp / syslog / tacplus / radius
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -2054,6 +2064,9 @@ class Switch(pulumi.CustomResource):
     @property
     @pulumi.getter(name="switchMgmt")
     def switch_mgmt(self) -> pulumi.Output[Optional['outputs.SwitchSwitchMgmt']]:
+        """
+        Switch settings
+        """
         return pulumi.get(self, "switch_mgmt")
 
     @property

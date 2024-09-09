@@ -215,7 +215,7 @@ namespace Pulumi.JuniperMist.Org
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
-        [Input("srcWxtags", required: true)]
+        [Input("srcWxtags")]
         private InputList<string>? _srcWxtags;
 
         /// <summary>

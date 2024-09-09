@@ -225,7 +225,7 @@ type Wlan struct {
 	Qos               WlanQosPtrOutput    `pulumi:"qos"`
 	// Radsec settings
 	Radsec WlanRadsecPtrOutput `pulumi:"radsec"`
-	// enum: `11r`, `OKC`, `none`
+	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringOutput `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
 	Schedule WlanSchedulePtrOutput `pulumi:"schedule"`
@@ -457,7 +457,7 @@ type wlanState struct {
 	Qos               *WlanQos `pulumi:"qos"`
 	// Radsec settings
 	Radsec *WlanRadsec `pulumi:"radsec"`
-	// enum: `11r`, `OKC`, `none`
+	// enum: `11r`, `OKC`, `NONE`
 	RoamMode *string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
 	Schedule *WlanSchedule `pulumi:"schedule"`
@@ -651,7 +651,7 @@ type WlanState struct {
 	Qos               WlanQosPtrInput
 	// Radsec settings
 	Radsec WlanRadsecPtrInput
-	// enum: `11r`, `OKC`, `none`
+	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringPtrInput
 	// WLAN operating schedule, default is disabled
 	Schedule WlanSchedulePtrInput
@@ -840,7 +840,7 @@ type wlanArgs struct {
 	Qos                   *WlanQos `pulumi:"qos"`
 	// Radsec settings
 	Radsec *WlanRadsec `pulumi:"radsec"`
-	// enum: `11r`, `OKC`, `none`
+	// enum: `11r`, `OKC`, `NONE`
 	RoamMode *string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
 	Schedule *WlanSchedule `pulumi:"schedule"`
@@ -1024,7 +1024,7 @@ type WlanArgs struct {
 	Qos                   WlanQosPtrInput
 	// Radsec settings
 	Radsec WlanRadsecPtrInput
-	// enum: `11r`, `OKC`, `none`
+	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringPtrInput
 	// WLAN operating schedule, default is disabled
 	Schedule WlanSchedulePtrInput
@@ -1521,7 +1521,7 @@ func (o WlanOutput) Radsec() WlanRadsecPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanRadsecPtrOutput { return v.Radsec }).(WlanRadsecPtrOutput)
 }
 
-// enum: `11r`, `OKC`, `none`
+// enum: `11r`, `OKC`, `NONE`
 func (o WlanOutput) RoamMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringOutput { return v.RoamMode }).(pulumi.StringOutput)
 }

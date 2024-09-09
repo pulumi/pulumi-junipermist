@@ -43,6 +43,7 @@ from .sitegroup import *
 from .vpn import *
 from .webhook import *
 from .wlan import *
+from .wlan_portal_template import *
 from .wlantemplate import *
 from .wxrule import *
 from .wxtag import *

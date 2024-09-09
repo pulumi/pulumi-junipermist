@@ -3886,6 +3886,8 @@ export namespace device {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge: boolean;
+        stpNoRootPort: boolean;
+        stpP2p: boolean;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -4351,7 +4353,32 @@ export namespace device {
     }
 
     export interface SwitchSwitchMgmt {
-        configRevert: number;
+        /**
+         * ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         */
+        apAffinityThreshold: number;
+        /**
+         * Set Banners for switches. Allows markup formatting
+         */
+        cliBanner?: string;
+        /**
+         * Sets timeout for switches
+         */
+        cliIdleTimeout?: number;
+        /**
+         * the rollback timer for commit confirmed
+         */
+        configRevertTimer: number;
+        /**
+         * Enable to provide the FQDN with DHCP option 81
+         */
+        dhcpOptionFqdn: boolean;
+        /**
+         * Property key is the user name. For Local user authentication
+         */
+        localAccounts?: {[key: string]: outputs.device.SwitchSwitchMgmtLocalAccounts};
+        mxedgeProxyHost?: string;
+        mxedgeProxyPort: number;
         /**
          * restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -4360,6 +4387,18 @@ export namespace device {
         protectRe?: outputs.device.SwitchSwitchMgmtProtectRe;
         rootPassword?: string;
         tacacs?: outputs.device.SwitchSwitchMgmtTacacs;
+        /**
+         * to use mxedge as proxy
+         */
+        useMxedgeProxy?: boolean;
+    }
+
+    export interface SwitchSwitchMgmtLocalAccounts {
+        password?: string;
+        /**
+         * enum: `admin`, `helpdesk`, `none`, `read`
+         */
+        role: string;
     }
 
     export interface SwitchSwitchMgmtProtectRe {
@@ -8774,15 +8813,15 @@ export namespace org {
         /**
          * at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
          */
-        inputNetworksIngresses?: string[];
+        inputNetworksIngresses: string[];
         /**
          * at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
          */
-        inputPortIdsEgresses?: string[];
+        inputPortIdsEgresses: string[];
         /**
          * at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
          */
-        inputPortIdsIngresses?: string[];
+        inputPortIdsIngresses: string[];
         /**
          * exaclty one of the `outputPortId` or `outputNetwork` should be provided
          */
@@ -10086,8 +10125,10 @@ export namespace org {
          */
         sponsorStatusNotify: boolean;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors: {[key: string]: string};
         /**
@@ -10135,6 +10176,670 @@ export namespace org {
          * when `smsProvider`==`twilio`, Account SID provided by Twilio
          */
         twilioSid: string;
+    }
+
+    export interface WlanPortalTemplatePortalTemplate {
+        accessCodeAlternateEmail: string;
+        /**
+         * defines alignment on portal. enum: `center`, `left`, `right`
+         */
+        alignment: string;
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon: string;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure: string;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail: string;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook: string;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle: string;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft: string;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase: string;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms: string;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor: string;
+        authLabel: string;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: string;
+        /**
+         * Portal main color
+         */
+        color: string;
+        colorDark: string;
+        colorLight: string;
+        /**
+         * whether company field is required
+         */
+        company: boolean;
+        /**
+         * error message when company not provided
+         */
+        companyError: string;
+        /**
+         * label of company field
+         */
+        companyLabel: string;
+        /**
+         * whether email field is required
+         */
+        email: boolean;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError: string;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel: string;
+        emailCodeCancel: string;
+        emailCodeError: string;
+        emailCodeFieldLabel: string;
+        emailCodeMessage: string;
+        emailCodeSubmit: string;
+        emailCodeTitle: string;
+        /**
+         * error message when email not provided
+         */
+        emailError: string;
+        emailFieldLabel: string;
+        /**
+         * label of email field
+         */
+        emailLabel: string;
+        emailMessage: string;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit: string;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle: string;
+        /**
+         * whether to ask field1
+         */
+        field1: boolean;
+        /**
+         * error message when field1 not provided
+         */
+        field1error: string;
+        /**
+         * label of field1
+         */
+        field1label: string;
+        /**
+         * whether field1 is required field
+         */
+        field1required?: boolean;
+        /**
+         * whether to ask field2
+         */
+        field2: boolean;
+        /**
+         * error message when field2 not provided
+         */
+        field2error: string;
+        /**
+         * label of field2
+         */
+        field2label: string;
+        /**
+         * whether field2 is required field
+         */
+        field2required?: boolean;
+        /**
+         * whether to ask field3
+         */
+        field3: boolean;
+        /**
+         * error message when field3 not provided
+         */
+        field3error: string;
+        /**
+         * label of field3
+         */
+        field3label: string;
+        /**
+         * whether field3 is required field
+         */
+        field3required?: boolean;
+        /**
+         * whether to ask field4
+         */
+        field4: boolean;
+        /**
+         * error message when field4 not provided
+         */
+        field4error: string;
+        /**
+         * label of field4
+         */
+        field4label: string;
+        /**
+         * whether field4 is required field
+         */
+        field4required?: boolean;
+        /**
+         * Can be used to localize the portal based on the User Agent. Allowed property key values are:
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `zh-Hans`, `zh-Hant`
+         */
+        locales?: {[key: string]: outputs.org.WlanPortalTemplatePortalTemplateLocales};
+        message: string;
+        multiAuth: boolean;
+        /**
+         * whether name field is required
+         */
+        name: boolean;
+        /**
+         * error message when name not provided
+         */
+        nameError: string;
+        /**
+         * label of name field
+         */
+        nameLabel: string;
+        /**
+         * Default value for the `Do not store` checkbox
+         */
+        optOutDefault: boolean;
+        /**
+         * whether to display Do Not Store My Personal Information
+         */
+        optout: boolean;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel: string;
+        pageTitle: string;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel: string;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError: string;
+        /**
+         * Passphrase
+         */
+        passphraseLabel: string;
+        passphraseMessage: string;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit: string;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle: string;
+        /**
+         * whether to show \"Powered by Mist\"
+         */
+        poweredBy: boolean;
+        /**
+         * wheter to require the Privacy Term acceptance
+         */
+        privacy: boolean;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel: string;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError: string;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink: string;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText: string;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel: string;
+        responsiveLayout: boolean;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel: string;
+        smsCarrierDefault: string;
+        smsCarrierError: string;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel: string;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel: string;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError: string;
+        smsCodeFieldLabel: string;
+        smsCodeMessage: string;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit: string;
+        smsCodeTitle: string;
+        smsCountryFieldLabel: string;
+        smsCountryFormat: string;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode: string;
+        smsIsTwilio: boolean;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: string;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel: string;
+        smsNumberError: string;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel: string;
+        smsNumberFormat: string;
+        smsNumberMessage: string;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit: string;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle: string;
+        smsUsernameFormat: string;
+        /**
+         * how long confirmation code should be considered valid (in minutes)
+         */
+        smsValidityDuration?: number;
+        sponsorBackLink: string;
+        sponsorCancel: string;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail: string;
+        sponsorEmailError: string;
+        /**
+         * html template to replace/override default sponsor email template 
+         * Sponsor Email Template supports following template variables:
+         *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+         *   * `denyUrl`: Renders URL to reject the request
+         *   * `guestEmail`: Renders Email ID of the guest
+         *   * `guestName`: Renders Name of the guest
+         *   * `field1`: Renders value of the Custom Field 1
+         *   * `field2`: Renders value of the Custom Field 2
+         *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+         *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+         */
+        sponsorEmailTemplate: string;
+        sponsorInfoApproved: string;
+        sponsorInfoDenied: string;
+        sponsorInfoPending: string;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName: string;
+        sponsorNameError: string;
+        sponsorNotePending: string;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess: string;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved: string;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied: string;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending: string;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit: string;
+        sponsorsError: string;
+        sponsorsFieldLabel: string;
+        tos: boolean;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel: string;
+        /**
+         * error message when tos not accepted
+         */
+        tosError: string;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink: string;
+        /**
+         * text of the Terms of Service
+         */
+        tosText: string;
+    }
+
+    export interface WlanPortalTemplatePortalTemplateLocales {
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon?: string;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure?: string;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail?: string;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook?: string;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle?: string;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft?: string;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase?: string;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms?: string;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor?: string;
+        authLabel?: string;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: string;
+        /**
+         * error message when company not provided
+         */
+        companyError?: string;
+        /**
+         * label of company field
+         */
+        companyLabel?: string;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError?: string;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel?: string;
+        emailCodeCancel?: string;
+        emailCodeError?: string;
+        emailCodeFieldLabel?: string;
+        emailCodeMessage?: string;
+        emailCodeSubmit?: string;
+        emailCodeTitle?: string;
+        /**
+         * error message when email not provided
+         */
+        emailError?: string;
+        emailFieldLabel?: string;
+        /**
+         * label of email field
+         */
+        emailLabel?: string;
+        emailMessage?: string;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit?: string;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle?: string;
+        /**
+         * error message when field1 not provided
+         */
+        field1error?: string;
+        /**
+         * label of field1
+         */
+        field1label?: string;
+        /**
+         * error message when field2 not provided
+         */
+        field2error?: string;
+        /**
+         * label of field2
+         */
+        field2label?: string;
+        /**
+         * error message when field3 not provided
+         */
+        field3error?: string;
+        /**
+         * label of field3
+         */
+        field3label?: string;
+        /**
+         * error message when field4 not provided
+         */
+        field4error?: string;
+        /**
+         * label of field4
+         */
+        field4label?: string;
+        message?: string;
+        /**
+         * error message when name not provided
+         */
+        nameError?: string;
+        /**
+         * label of name field
+         */
+        nameLabel?: string;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel?: string;
+        pageTitle?: string;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel?: string;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError?: string;
+        /**
+         * Passphrase
+         */
+        passphraseLabel?: string;
+        passphraseMessage?: string;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit?: string;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle?: string;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel?: string;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError?: string;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink?: string;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText?: string;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel?: string;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel?: string;
+        smsCarrierDefault?: string;
+        smsCarrierError?: string;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel?: string;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel?: string;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError?: string;
+        smsCodeFieldLabel?: string;
+        smsCodeMessage?: string;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit?: string;
+        smsCodeTitle?: string;
+        smsCountryFieldLabel?: string;
+        smsCountryFormat?: string;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode?: string;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: string;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel?: string;
+        smsNumberError?: string;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel?: string;
+        smsNumberFormat?: string;
+        smsNumberMessage?: string;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit?: string;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle?: string;
+        smsUsernameFormat?: string;
+        sponsorBackLink?: string;
+        sponsorCancel?: string;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail?: string;
+        sponsorEmailError?: string;
+        sponsorInfoApproved?: string;
+        sponsorInfoDenied?: string;
+        sponsorInfoPending?: string;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName?: string;
+        sponsorNameError?: string;
+        sponsorNotePending?: string;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess?: string;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved?: string;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied?: string;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending?: string;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit?: string;
+        sponsorsError?: string;
+        sponsorsFieldLabel?: string;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel?: string;
+        /**
+         * error message when tos not accepted
+         */
+        tosError?: string;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink?: string;
+        /**
+         * text of the Terms of Service
+         */
+        tosText?: string;
+        /**
+         * label for Amazon auth button
+         */
+        uthButtonAmazon?: string;
     }
 
     export interface WlanQos {
@@ -11235,15 +11940,15 @@ export namespace site {
         /**
          * at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
          */
-        inputNetworksIngresses?: string[];
+        inputNetworksIngresses: string[];
         /**
          * at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
          */
-        inputPortIdsEgresses?: string[];
+        inputPortIdsEgresses: string[];
         /**
          * at least one of the `inputPortIdsIngress`, `inputPortIdsEgress` or `inputNetworksIngress ` should be specified
          */
-        inputPortIdsIngresses?: string[];
+        inputPortIdsIngresses: string[];
         /**
          * exaclty one of the `outputPortId` or `outputNetwork` should be provided
          */
@@ -11624,6 +12329,14 @@ export namespace site {
          * he rollback timer for commit confirmed
          */
         configRevertTimer: number;
+        /**
+         * for both SSR and SRX disable console port
+         */
+        disableConsole: boolean;
+        /**
+         * for both SSR and SRX disable management interface
+         */
+        disableOob: boolean;
         probeHosts: string[];
         /**
          * for SRX only
@@ -12476,8 +13189,10 @@ export namespace site {
          */
         sponsorStatusNotify: boolean;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors: {[key: string]: string};
         /**
@@ -12525,6 +13240,670 @@ export namespace site {
          * when `smsProvider`==`twilio`, Account SID provided by Twilio
          */
         twilioSid: string;
+    }
+
+    export interface WlanPortalTemplatePortalTemplate {
+        accessCodeAlternateEmail: string;
+        /**
+         * defines alignment on portal. enum: `center`, `left`, `right`
+         */
+        alignment: string;
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon: string;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure: string;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail: string;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook: string;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle: string;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft: string;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase: string;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms: string;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor: string;
+        authLabel: string;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: string;
+        /**
+         * Portal main color
+         */
+        color: string;
+        colorDark: string;
+        colorLight: string;
+        /**
+         * whether company field is required
+         */
+        company: boolean;
+        /**
+         * error message when company not provided
+         */
+        companyError: string;
+        /**
+         * label of company field
+         */
+        companyLabel: string;
+        /**
+         * whether email field is required
+         */
+        email: boolean;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError: string;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel: string;
+        emailCodeCancel: string;
+        emailCodeError: string;
+        emailCodeFieldLabel: string;
+        emailCodeMessage: string;
+        emailCodeSubmit: string;
+        emailCodeTitle: string;
+        /**
+         * error message when email not provided
+         */
+        emailError: string;
+        emailFieldLabel: string;
+        /**
+         * label of email field
+         */
+        emailLabel: string;
+        emailMessage: string;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit: string;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle: string;
+        /**
+         * whether to ask field1
+         */
+        field1: boolean;
+        /**
+         * error message when field1 not provided
+         */
+        field1error: string;
+        /**
+         * label of field1
+         */
+        field1label: string;
+        /**
+         * whether field1 is required field
+         */
+        field1required?: boolean;
+        /**
+         * whether to ask field2
+         */
+        field2: boolean;
+        /**
+         * error message when field2 not provided
+         */
+        field2error: string;
+        /**
+         * label of field2
+         */
+        field2label: string;
+        /**
+         * whether field2 is required field
+         */
+        field2required?: boolean;
+        /**
+         * whether to ask field3
+         */
+        field3: boolean;
+        /**
+         * error message when field3 not provided
+         */
+        field3error: string;
+        /**
+         * label of field3
+         */
+        field3label: string;
+        /**
+         * whether field3 is required field
+         */
+        field3required?: boolean;
+        /**
+         * whether to ask field4
+         */
+        field4: boolean;
+        /**
+         * error message when field4 not provided
+         */
+        field4error: string;
+        /**
+         * label of field4
+         */
+        field4label: string;
+        /**
+         * whether field4 is required field
+         */
+        field4required?: boolean;
+        /**
+         * Can be used to localize the portal based on the User Agent. Allowed property key values are:
+         *       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
+         *       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
+         *       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
+         *       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+         */
+        locales?: {[key: string]: outputs.site.WlanPortalTemplatePortalTemplateLocales};
+        message: string;
+        multiAuth: boolean;
+        /**
+         * whether name field is required
+         */
+        name: boolean;
+        /**
+         * error message when name not provided
+         */
+        nameError: string;
+        /**
+         * label of name field
+         */
+        nameLabel: string;
+        /**
+         * Default value for the `Do not store` checkbox
+         */
+        optOutDefault: boolean;
+        /**
+         * whether to display Do Not Store My Personal Information
+         */
+        optout: boolean;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel: string;
+        pageTitle: string;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel: string;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError: string;
+        /**
+         * Passphrase
+         */
+        passphraseLabel: string;
+        passphraseMessage: string;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit: string;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle: string;
+        /**
+         * whether to show \"Powered by Mist\"
+         */
+        poweredBy: boolean;
+        /**
+         * wheter to require the Privacy Term acceptance
+         */
+        privacy: boolean;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel: string;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError: string;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink: string;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText: string;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel: string;
+        responsiveLayout: boolean;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel: string;
+        smsCarrierDefault: string;
+        smsCarrierError: string;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel: string;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel: string;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError: string;
+        smsCodeFieldLabel: string;
+        smsCodeMessage: string;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit: string;
+        smsCodeTitle: string;
+        smsCountryFieldLabel: string;
+        smsCountryFormat: string;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode: string;
+        smsIsTwilio: boolean;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: string;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel: string;
+        smsNumberError: string;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel: string;
+        smsNumberFormat: string;
+        smsNumberMessage: string;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit: string;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle: string;
+        smsUsernameFormat: string;
+        /**
+         * how long confirmation code should be considered valid (in minutes)
+         */
+        smsValidityDuration?: number;
+        sponsorBackLink: string;
+        sponsorCancel: string;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail: string;
+        sponsorEmailError: string;
+        /**
+         * html template to replace/override default sponsor email template 
+         * Sponsor Email Template supports following template variables:
+         *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+         *   * `denyUrl`: Renders URL to reject the request
+         *   * `guestEmail`: Renders Email ID of the guest
+         *   * `guestName`: Renders Name of the guest
+         *   * `field1`: Renders value of the Custom Field 1
+         *   * `field2`: Renders value of the Custom Field 2
+         *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+         *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+         */
+        sponsorEmailTemplate: string;
+        sponsorInfoApproved: string;
+        sponsorInfoDenied: string;
+        sponsorInfoPending: string;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName: string;
+        sponsorNameError: string;
+        sponsorNotePending: string;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess: string;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved: string;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied: string;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending: string;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit: string;
+        sponsorsError: string;
+        sponsorsFieldLabel: string;
+        tos: boolean;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel: string;
+        /**
+         * error message when tos not accepted
+         */
+        tosError: string;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink: string;
+        /**
+         * text of the Terms of Service
+         */
+        tosText: string;
+    }
+
+    export interface WlanPortalTemplatePortalTemplateLocales {
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon?: string;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure?: string;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail?: string;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook?: string;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle?: string;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft?: string;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase?: string;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms?: string;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor?: string;
+        authLabel?: string;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: string;
+        /**
+         * error message when company not provided
+         */
+        companyError?: string;
+        /**
+         * label of company field
+         */
+        companyLabel?: string;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError?: string;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel?: string;
+        emailCodeCancel?: string;
+        emailCodeError?: string;
+        emailCodeFieldLabel?: string;
+        emailCodeMessage?: string;
+        emailCodeSubmit?: string;
+        emailCodeTitle?: string;
+        /**
+         * error message when email not provided
+         */
+        emailError?: string;
+        emailFieldLabel?: string;
+        /**
+         * label of email field
+         */
+        emailLabel?: string;
+        emailMessage?: string;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit?: string;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle?: string;
+        /**
+         * error message when field1 not provided
+         */
+        field1error?: string;
+        /**
+         * label of field1
+         */
+        field1label?: string;
+        /**
+         * error message when field2 not provided
+         */
+        field2error?: string;
+        /**
+         * label of field2
+         */
+        field2label?: string;
+        /**
+         * error message when field3 not provided
+         */
+        field3error?: string;
+        /**
+         * label of field3
+         */
+        field3label?: string;
+        /**
+         * error message when field4 not provided
+         */
+        field4error?: string;
+        /**
+         * label of field4
+         */
+        field4label?: string;
+        message?: string;
+        /**
+         * error message when name not provided
+         */
+        nameError?: string;
+        /**
+         * label of name field
+         */
+        nameLabel?: string;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel?: string;
+        pageTitle?: string;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel?: string;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError?: string;
+        /**
+         * Passphrase
+         */
+        passphraseLabel?: string;
+        passphraseMessage?: string;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit?: string;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle?: string;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel?: string;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError?: string;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink?: string;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText?: string;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel?: string;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel?: string;
+        smsCarrierDefault?: string;
+        smsCarrierError?: string;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel?: string;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel?: string;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError?: string;
+        smsCodeFieldLabel?: string;
+        smsCodeMessage?: string;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit?: string;
+        smsCodeTitle?: string;
+        smsCountryFieldLabel?: string;
+        smsCountryFormat?: string;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode?: string;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: string;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel?: string;
+        smsNumberError?: string;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel?: string;
+        smsNumberFormat?: string;
+        smsNumberMessage?: string;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit?: string;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle?: string;
+        smsUsernameFormat?: string;
+        sponsorBackLink?: string;
+        sponsorCancel?: string;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail?: string;
+        sponsorEmailError?: string;
+        sponsorInfoApproved?: string;
+        sponsorInfoDenied?: string;
+        sponsorInfoPending?: string;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName?: string;
+        sponsorNameError?: string;
+        sponsorNotePending?: string;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess?: string;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved?: string;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied?: string;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending?: string;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit?: string;
+        sponsorsError?: string;
+        sponsorsFieldLabel?: string;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel?: string;
+        /**
+         * error message when tos not accepted
+         */
+        tosError?: string;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink?: string;
+        /**
+         * text of the Terms of Service
+         */
+        tosText?: string;
+        /**
+         * label for Amazon auth button
+         */
+        uthButtonAmazon?: string;
     }
 
     export interface WlanQos {

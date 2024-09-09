@@ -33,6 +33,7 @@ class NetworktemplateArgs:
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
                  remote_syslog: Optional[pulumi.Input['NetworktemplateRemoteSyslogArgs']] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  snmp_config: Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']] = None,
                  switch_matching: Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']] = None,
@@ -51,6 +52,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -88,6 +90,8 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "radius_config", radius_config)
         if remote_syslog is not None:
             pulumi.set(__self__, "remote_syslog", remote_syslog)
+        if remove_existing_configs is not None:
+            pulumi.set(__self__, "remove_existing_configs", remove_existing_configs)
         if snmp_config is not None:
             pulumi.set(__self__, "snmp_config", snmp_config)
         if switch_matching is not None:
@@ -284,6 +288,18 @@ class NetworktemplateArgs:
         pulumi.set(self, "remote_syslog", value)
 
     @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        """
+        return pulumi.get(self, "remove_existing_configs")
+
+    @remove_existing_configs.setter
+    def remove_existing_configs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_existing_configs", value)
+
+    @property
     @pulumi.getter(name="snmpConfig")
     def snmp_config(self) -> Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']]:
         return pulumi.get(self, "snmp_config")
@@ -358,6 +374,7 @@ class _NetworktemplateState:
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
                  remote_syslog: Optional[pulumi.Input['NetworktemplateRemoteSyslogArgs']] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  snmp_config: Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']] = None,
                  switch_matching: Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']] = None,
@@ -376,6 +393,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
@@ -414,6 +432,8 @@ class _NetworktemplateState:
             pulumi.set(__self__, "radius_config", radius_config)
         if remote_syslog is not None:
             pulumi.set(__self__, "remote_syslog", remote_syslog)
+        if remove_existing_configs is not None:
+            pulumi.set(__self__, "remove_existing_configs", remove_existing_configs)
         if snmp_config is not None:
             pulumi.set(__self__, "snmp_config", snmp_config)
         if switch_matching is not None:
@@ -610,6 +630,18 @@ class _NetworktemplateState:
         pulumi.set(self, "remote_syslog", value)
 
     @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        """
+        return pulumi.get(self, "remove_existing_configs")
+
+    @remove_existing_configs.setter
+    def remove_existing_configs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_existing_configs", value)
+
+    @property
     @pulumi.getter(name="snmpConfig")
     def snmp_config(self) -> Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']]:
         return pulumi.get(self, "snmp_config")
@@ -686,6 +718,7 @@ class Networktemplate(pulumi.CustomResource):
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
                  remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
                  switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
@@ -718,6 +751,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -773,6 +807,7 @@ class Networktemplate(pulumi.CustomResource):
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
                  remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+                 remove_existing_configs: Optional[pulumi.Input[bool]] = None,
                  snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
                  switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
@@ -806,6 +841,7 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["port_usages"] = port_usages
             __props__.__dict__["radius_config"] = radius_config
             __props__.__dict__["remote_syslog"] = remote_syslog
+            __props__.__dict__["remove_existing_configs"] = remove_existing_configs
             __props__.__dict__["snmp_config"] = snmp_config
             __props__.__dict__["switch_matching"] = switch_matching
             __props__.__dict__["switch_mgmt"] = switch_mgmt
@@ -838,6 +874,7 @@ class Networktemplate(pulumi.CustomResource):
             port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
             radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
             remote_syslog: Optional[pulumi.Input[Union['NetworktemplateRemoteSyslogArgs', 'NetworktemplateRemoteSyslogArgsDict']]] = None,
+            remove_existing_configs: Optional[pulumi.Input[bool]] = None,
             snmp_config: Optional[pulumi.Input[Union['NetworktemplateSnmpConfigArgs', 'NetworktemplateSnmpConfigArgsDict']]] = None,
             switch_matching: Optional[pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']]] = None,
             switch_mgmt: Optional[pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']]] = None,
@@ -861,6 +898,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
+        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
         :param pulumi.Input[Union['NetworktemplateSwitchMgmtArgs', 'NetworktemplateSwitchMgmtArgsDict']] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
@@ -886,6 +924,7 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["port_usages"] = port_usages
         __props__.__dict__["radius_config"] = radius_config
         __props__.__dict__["remote_syslog"] = remote_syslog
+        __props__.__dict__["remove_existing_configs"] = remove_existing_configs
         __props__.__dict__["snmp_config"] = snmp_config
         __props__.__dict__["switch_matching"] = switch_matching
         __props__.__dict__["switch_mgmt"] = switch_mgmt
@@ -1008,6 +1047,14 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="remoteSyslog")
     def remote_syslog(self) -> pulumi.Output[Optional['outputs.NetworktemplateRemoteSyslog']]:
         return pulumi.get(self, "remote_syslog")
+
+    @property
+    @pulumi.getter(name="removeExistingConfigs")
+    def remove_existing_configs(self) -> pulumi.Output[bool]:
+        """
+        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        """
+        return pulumi.get(self, "remove_existing_configs")
 
     @property
     @pulumi.getter(name="snmpConfig")

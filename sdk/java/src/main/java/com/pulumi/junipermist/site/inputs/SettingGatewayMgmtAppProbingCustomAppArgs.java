@@ -5,7 +5,6 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,15 +20,15 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
      * if `protocol`==`icmp`
      * 
      */
-    @Import(name="address", required=true)
-    private Output<String> address;
+    @Import(name="address")
+    private @Nullable Output<String> address;
 
     /**
      * @return if `protocol`==`icmp`
      * 
      */
-    public Output<String> address() {
-        return this.address;
+    public Optional<Output<String>> address() {
+        return Optional.ofNullable(this.address);
     }
 
     @Import(name="appType")
@@ -142,7 +141,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder address(Output<String> address) {
+        public Builder address(@Nullable Output<String> address) {
             $.address = address;
             return this;
         }
@@ -267,9 +266,6 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         public SettingGatewayMgmtAppProbingCustomAppArgs build() {
-            if ($.address == null) {
-                throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomAppArgs", "address");
-            }
             return $;
         }
     }

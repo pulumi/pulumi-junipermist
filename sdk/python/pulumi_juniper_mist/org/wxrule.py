@@ -17,27 +17,26 @@ class WxruleArgs:
                  action: pulumi.Input[str],
                  order: pulumi.Input[int],
                  org_id: pulumi.Input[str],
-                 src_wxtags: pulumi.Input[Sequence[pulumi.Input[str]]],
                  template_id: pulumi.Input[str],
                  apply_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None):
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Wxrule resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "order", order)
         pulumi.set(__self__, "org_id", org_id)
-        pulumi.set(__self__, "src_wxtags", src_wxtags)
         pulumi.set(__self__, "template_id", template_id)
         if apply_tags is not None:
             pulumi.set(__self__, "apply_tags", apply_tags)
@@ -49,6 +48,8 @@ class WxruleArgs:
             pulumi.set(__self__, "dst_deny_wxtags", dst_deny_wxtags)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if src_wxtags is not None:
+            pulumi.set(__self__, "src_wxtags", src_wxtags)
 
     @property
     @pulumi.getter
@@ -82,18 +83,6 @@ class WxruleArgs:
     @org_id.setter
     def org_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "org_id", value)
-
-    @property
-    @pulumi.getter(name="srcWxtags")
-    def src_wxtags(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        tag list to determine if this rule would match
-        """
-        return pulumi.get(self, "src_wxtags")
-
-    @src_wxtags.setter
-    def src_wxtags(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "src_wxtags", value)
 
     @property
     @pulumi.getter(name="templateId")
@@ -160,6 +149,18 @@ class WxruleArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="srcWxtags")
+    def src_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        tag list to determine if this rule would match
+        """
+        return pulumi.get(self, "src_wxtags")
+
+    @src_wxtags.setter
+    def src_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_wxtags", value)
 
 
 @pulumi.input_type
@@ -456,8 +457,6 @@ class Wxrule(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
-            if src_wxtags is None and not opts.urn:
-                raise TypeError("Missing required property 'src_wxtags'")
             __props__.__dict__["src_wxtags"] = src_wxtags
             if template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'template_id'")
@@ -570,7 +569,7 @@ class Wxrule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="srcWxtags")
-    def src_wxtags(self) -> pulumi.Output[Sequence[str]]:
+    def src_wxtags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         tag list to determine if this rule would match
         """

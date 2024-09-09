@@ -313,8 +313,10 @@ public final class WlanPortal {
      */
     private @Nullable Boolean sponsorStatusNotify;
     /**
-     * @return object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-     * Property key is the sponsor email, Property value is the sponsor name
+     * @return object of allowed sponsors email with name. Required if `sponsor_enabled`
+     *             is `true` and `sponsor_email_domains` is empty.
+     * 
+     *             Property key is the sponsor email, Property value is the sponsor name
      * 
      */
     private @Nullable Map<String,String> sponsors;
@@ -794,8 +796,10 @@ public final class WlanPortal {
         return Optional.ofNullable(this.sponsorStatusNotify);
     }
     /**
-     * @return object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.
-     * Property key is the sponsor email, Property value is the sponsor name
+     * @return object of allowed sponsors email with name. Required if `sponsor_enabled`
+     *             is `true` and `sponsor_email_domains` is empty.
+     * 
+     *             Property key is the sponsor email, Property value is the sponsor name
      * 
      */
     public Map<String,String> sponsors() {

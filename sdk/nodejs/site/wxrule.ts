@@ -88,11 +88,7 @@ export class Wxrule extends pulumi.CustomResource {
     /**
      * tag list to determine if this rule would match
      */
-    public readonly srcWxtags!: pulumi.Output<string[]>;
-    /**
-     * Only for Org Level WxRule
-     */
-    public readonly templateId!: pulumi.Output<string | undefined>;
+    public readonly srcWxtags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Wxrule resource with the given unique name, arguments, and options.
@@ -117,7 +113,6 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["srcWxtags"] = state ? state.srcWxtags : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
         } else {
             const args = argsOrState as WxruleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -129,9 +124,6 @@ export class Wxrule extends pulumi.CustomResource {
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.srcWxtags === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'srcWxtags'");
-            }
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["applyTags"] = args ? args.applyTags : undefined;
             resourceInputs["blockedApps"] = args ? args.blockedApps : undefined;
@@ -141,7 +133,6 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["order"] = args ? args.order : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["srcWxtags"] = args ? args.srcWxtags : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
             resourceInputs["orgId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -181,10 +172,6 @@ export interface WxruleState {
      * tag list to determine if this rule would match
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only for Org Level WxRule
-     */
-    templateId?: pulumi.Input<string>;
 }
 
 /**
@@ -217,9 +204,5 @@ export interface WxruleArgs {
     /**
      * tag list to determine if this rule would match
      */
-    srcWxtags: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only for Org Level WxRule
-     */
-    templateId?: pulumi.Input<string>;
+    srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
 }
