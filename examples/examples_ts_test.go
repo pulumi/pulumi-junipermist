@@ -74,3 +74,12 @@ func TestSiteNetworkTemplateTs(t *testing.T) {
 	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
 	test.Up()
 }
+func TestSiteWlanPortalTemplateTs(t *testing.T) {
+	checkBaseEnvVars(t)
+	test := pulumitest.NewPulumiTest(t, "site-wlan-portal-template-ts",
+		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
+		opttest.YarnLink("@pulumi/juniper-mist"),
+	)
+	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
+	test.Up()
+}
