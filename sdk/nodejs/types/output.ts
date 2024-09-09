@@ -12364,7 +12364,7 @@ export namespace site {
         /**
          * if `protocol`==`http`
          */
-        hostnames?: string[];
+        hostnames: string[];
         name?: string;
         network?: string;
         /**
