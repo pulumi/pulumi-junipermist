@@ -18366,7 +18366,9 @@ type SwitchPortUsages struct {
 	// Only if `mode`!=`dynamic`
 	StormControl *SwitchPortUsagesStormControl `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-	StpEdge *bool `pulumi:"stpEdge"`
+	StpEdge       *bool `pulumi:"stpEdge"`
+	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
+	StpP2p        *bool `pulumi:"stpP2p"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork *string `pulumi:"voipNetwork"`
 }
@@ -18448,7 +18450,9 @@ type SwitchPortUsagesArgs struct {
 	// Only if `mode`!=`dynamic`
 	StormControl SwitchPortUsagesStormControlPtrInput `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-	StpEdge pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
+	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
 }
@@ -18661,6 +18665,14 @@ func (o SwitchPortUsagesOutput) StormControl() SwitchPortUsagesStormControlPtrOu
 // Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
 func (o SwitchPortUsagesOutput) StpEdge() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpEdge }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchPortUsagesOutput) StpNoRootPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpNoRootPort }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchPortUsagesOutput) StpP2p() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
@@ -23754,13 +23766,28 @@ func (o SwitchStpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type SwitchSwitchMgmt struct {
-	ConfigRevert *int `pulumi:"configRevert"`
+	// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+	ApAffinityThreshold *int `pulumi:"apAffinityThreshold"`
+	// Set Banners for switches. Allows markup formatting
+	CliBanner *string `pulumi:"cliBanner"`
+	// Sets timeout for switches
+	CliIdleTimeout *int `pulumi:"cliIdleTimeout"`
+	// the rollback timer for commit confirmed
+	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
+	// Enable to provide the FQDN with DHCP option 81
+	DhcpOptionFqdn *bool `pulumi:"dhcpOptionFqdn"`
+	// Property key is the user name. For Local user authentication
+	LocalAccounts   map[string]SwitchSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
+	MxedgeProxyHost *string                                  `pulumi:"mxedgeProxyHost"`
+	MxedgeProxyPort *int                                     `pulumi:"mxedgeProxyPort"`
 	// restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe    *SwitchSwitchMgmtProtectRe `pulumi:"protectRe"`
 	RootPassword *string                    `pulumi:"rootPassword"`
 	Tacacs       *SwitchSwitchMgmtTacacs    `pulumi:"tacacs"`
+	// to use mxedge as proxy
+	UseMxedgeProxy *bool `pulumi:"useMxedgeProxy"`
 }
 
 // SwitchSwitchMgmtInput is an input type that accepts SwitchSwitchMgmtArgs and SwitchSwitchMgmtOutput values.
@@ -23775,13 +23802,28 @@ type SwitchSwitchMgmtInput interface {
 }
 
 type SwitchSwitchMgmtArgs struct {
-	ConfigRevert pulumi.IntPtrInput `pulumi:"configRevert"`
+	// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+	ApAffinityThreshold pulumi.IntPtrInput `pulumi:"apAffinityThreshold"`
+	// Set Banners for switches. Allows markup formatting
+	CliBanner pulumi.StringPtrInput `pulumi:"cliBanner"`
+	// Sets timeout for switches
+	CliIdleTimeout pulumi.IntPtrInput `pulumi:"cliIdleTimeout"`
+	// the rollback timer for commit confirmed
+	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
+	// Enable to provide the FQDN with DHCP option 81
+	DhcpOptionFqdn pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
+	// Property key is the user name. For Local user authentication
+	LocalAccounts   SwitchSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
+	MxedgeProxyHost pulumi.StringPtrInput                 `pulumi:"mxedgeProxyHost"`
+	MxedgeProxyPort pulumi.IntPtrInput                    `pulumi:"mxedgeProxyPort"`
 	// restrict inbound-traffic to host
 	// when enabled, all traffic that is not essential to our operation will be dropped
 	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
 	ProtectRe    SwitchSwitchMgmtProtectRePtrInput `pulumi:"protectRe"`
 	RootPassword pulumi.StringPtrInput             `pulumi:"rootPassword"`
 	Tacacs       SwitchSwitchMgmtTacacsPtrInput    `pulumi:"tacacs"`
+	// to use mxedge as proxy
+	UseMxedgeProxy pulumi.BoolPtrInput `pulumi:"useMxedgeProxy"`
 }
 
 func (SwitchSwitchMgmtArgs) ElementType() reflect.Type {
@@ -23861,8 +23903,42 @@ func (o SwitchSwitchMgmtOutput) ToSwitchSwitchMgmtPtrOutputWithContext(ctx conte
 	}).(SwitchSwitchMgmtPtrOutput)
 }
 
-func (o SwitchSwitchMgmtOutput) ConfigRevert() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchSwitchMgmt) *int { return v.ConfigRevert }).(pulumi.IntPtrOutput)
+// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+func (o SwitchSwitchMgmtOutput) ApAffinityThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *int { return v.ApAffinityThreshold }).(pulumi.IntPtrOutput)
+}
+
+// Set Banners for switches. Allows markup formatting
+func (o SwitchSwitchMgmtOutput) CliBanner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *string { return v.CliBanner }).(pulumi.StringPtrOutput)
+}
+
+// Sets timeout for switches
+func (o SwitchSwitchMgmtOutput) CliIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *int { return v.CliIdleTimeout }).(pulumi.IntPtrOutput)
+}
+
+// the rollback timer for commit confirmed
+func (o SwitchSwitchMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *int { return v.ConfigRevertTimer }).(pulumi.IntPtrOutput)
+}
+
+// Enable to provide the FQDN with DHCP option 81
+func (o SwitchSwitchMgmtOutput) DhcpOptionFqdn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *bool { return v.DhcpOptionFqdn }).(pulumi.BoolPtrOutput)
+}
+
+// Property key is the user name. For Local user authentication
+func (o SwitchSwitchMgmtOutput) LocalAccounts() SwitchSwitchMgmtLocalAccountsMapOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) map[string]SwitchSwitchMgmtLocalAccounts { return v.LocalAccounts }).(SwitchSwitchMgmtLocalAccountsMapOutput)
+}
+
+func (o SwitchSwitchMgmtOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *string { return v.MxedgeProxyHost }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchSwitchMgmtOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *int { return v.MxedgeProxyPort }).(pulumi.IntPtrOutput)
 }
 
 // restrict inbound-traffic to host
@@ -23878,6 +23954,11 @@ func (o SwitchSwitchMgmtOutput) RootPassword() pulumi.StringPtrOutput {
 
 func (o SwitchSwitchMgmtOutput) Tacacs() SwitchSwitchMgmtTacacsPtrOutput {
 	return o.ApplyT(func(v SwitchSwitchMgmt) *SwitchSwitchMgmtTacacs { return v.Tacacs }).(SwitchSwitchMgmtTacacsPtrOutput)
+}
+
+// to use mxedge as proxy
+func (o SwitchSwitchMgmtOutput) UseMxedgeProxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmt) *bool { return v.UseMxedgeProxy }).(pulumi.BoolPtrOutput)
 }
 
 type SwitchSwitchMgmtPtrOutput struct{ *pulumi.OutputState }
@@ -23904,12 +23985,81 @@ func (o SwitchSwitchMgmtPtrOutput) Elem() SwitchSwitchMgmtOutput {
 	}).(SwitchSwitchMgmtOutput)
 }
 
-func (o SwitchSwitchMgmtPtrOutput) ConfigRevert() pulumi.IntPtrOutput {
+// ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+func (o SwitchSwitchMgmtPtrOutput) ApAffinityThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SwitchSwitchMgmt) *int {
 		if v == nil {
 			return nil
 		}
-		return v.ConfigRevert
+		return v.ApAffinityThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set Banners for switches. Allows markup formatting
+func (o SwitchSwitchMgmtPtrOutput) CliBanner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CliBanner
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets timeout for switches
+func (o SwitchSwitchMgmtPtrOutput) CliIdleTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CliIdleTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// the rollback timer for commit confirmed
+func (o SwitchSwitchMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigRevertTimer
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable to provide the FQDN with DHCP option 81
+func (o SwitchSwitchMgmtPtrOutput) DhcpOptionFqdn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpOptionFqdn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Property key is the user name. For Local user authentication
+func (o SwitchSwitchMgmtPtrOutput) LocalAccounts() SwitchSwitchMgmtLocalAccountsMapOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) map[string]SwitchSwitchMgmtLocalAccounts {
+		if v == nil {
+			return nil
+		}
+		return v.LocalAccounts
+	}).(SwitchSwitchMgmtLocalAccountsMapOutput)
+}
+
+func (o SwitchSwitchMgmtPtrOutput) MxedgeProxyHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MxedgeProxyHost
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchSwitchMgmtPtrOutput) MxedgeProxyPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MxedgeProxyPort
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -23941,6 +24091,119 @@ func (o SwitchSwitchMgmtPtrOutput) Tacacs() SwitchSwitchMgmtTacacsPtrOutput {
 		}
 		return v.Tacacs
 	}).(SwitchSwitchMgmtTacacsPtrOutput)
+}
+
+// to use mxedge as proxy
+func (o SwitchSwitchMgmtPtrOutput) UseMxedgeProxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMxedgeProxy
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SwitchSwitchMgmtLocalAccounts struct {
+	Password *string `pulumi:"password"`
+	// enum: `admin`, `helpdesk`, `none`, `read`
+	Role *string `pulumi:"role"`
+}
+
+// SwitchSwitchMgmtLocalAccountsInput is an input type that accepts SwitchSwitchMgmtLocalAccountsArgs and SwitchSwitchMgmtLocalAccountsOutput values.
+// You can construct a concrete instance of `SwitchSwitchMgmtLocalAccountsInput` via:
+//
+//	SwitchSwitchMgmtLocalAccountsArgs{...}
+type SwitchSwitchMgmtLocalAccountsInput interface {
+	pulumi.Input
+
+	ToSwitchSwitchMgmtLocalAccountsOutput() SwitchSwitchMgmtLocalAccountsOutput
+	ToSwitchSwitchMgmtLocalAccountsOutputWithContext(context.Context) SwitchSwitchMgmtLocalAccountsOutput
+}
+
+type SwitchSwitchMgmtLocalAccountsArgs struct {
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// enum: `admin`, `helpdesk`, `none`, `read`
+	Role pulumi.StringPtrInput `pulumi:"role"`
+}
+
+func (SwitchSwitchMgmtLocalAccountsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (i SwitchSwitchMgmtLocalAccountsArgs) ToSwitchSwitchMgmtLocalAccountsOutput() SwitchSwitchMgmtLocalAccountsOutput {
+	return i.ToSwitchSwitchMgmtLocalAccountsOutputWithContext(context.Background())
+}
+
+func (i SwitchSwitchMgmtLocalAccountsArgs) ToSwitchSwitchMgmtLocalAccountsOutputWithContext(ctx context.Context) SwitchSwitchMgmtLocalAccountsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchSwitchMgmtLocalAccountsOutput)
+}
+
+// SwitchSwitchMgmtLocalAccountsMapInput is an input type that accepts SwitchSwitchMgmtLocalAccountsMap and SwitchSwitchMgmtLocalAccountsMapOutput values.
+// You can construct a concrete instance of `SwitchSwitchMgmtLocalAccountsMapInput` via:
+//
+//	SwitchSwitchMgmtLocalAccountsMap{ "key": SwitchSwitchMgmtLocalAccountsArgs{...} }
+type SwitchSwitchMgmtLocalAccountsMapInput interface {
+	pulumi.Input
+
+	ToSwitchSwitchMgmtLocalAccountsMapOutput() SwitchSwitchMgmtLocalAccountsMapOutput
+	ToSwitchSwitchMgmtLocalAccountsMapOutputWithContext(context.Context) SwitchSwitchMgmtLocalAccountsMapOutput
+}
+
+type SwitchSwitchMgmtLocalAccountsMap map[string]SwitchSwitchMgmtLocalAccountsInput
+
+func (SwitchSwitchMgmtLocalAccountsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (i SwitchSwitchMgmtLocalAccountsMap) ToSwitchSwitchMgmtLocalAccountsMapOutput() SwitchSwitchMgmtLocalAccountsMapOutput {
+	return i.ToSwitchSwitchMgmtLocalAccountsMapOutputWithContext(context.Background())
+}
+
+func (i SwitchSwitchMgmtLocalAccountsMap) ToSwitchSwitchMgmtLocalAccountsMapOutputWithContext(ctx context.Context) SwitchSwitchMgmtLocalAccountsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchSwitchMgmtLocalAccountsMapOutput)
+}
+
+type SwitchSwitchMgmtLocalAccountsOutput struct{ *pulumi.OutputState }
+
+func (SwitchSwitchMgmtLocalAccountsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (o SwitchSwitchMgmtLocalAccountsOutput) ToSwitchSwitchMgmtLocalAccountsOutput() SwitchSwitchMgmtLocalAccountsOutput {
+	return o
+}
+
+func (o SwitchSwitchMgmtLocalAccountsOutput) ToSwitchSwitchMgmtLocalAccountsOutputWithContext(ctx context.Context) SwitchSwitchMgmtLocalAccountsOutput {
+	return o
+}
+
+func (o SwitchSwitchMgmtLocalAccountsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmtLocalAccounts) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// enum: `admin`, `helpdesk`, `none`, `read`
+func (o SwitchSwitchMgmtLocalAccountsOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchSwitchMgmtLocalAccounts) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+type SwitchSwitchMgmtLocalAccountsMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchSwitchMgmtLocalAccountsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchSwitchMgmtLocalAccounts)(nil)).Elem()
+}
+
+func (o SwitchSwitchMgmtLocalAccountsMapOutput) ToSwitchSwitchMgmtLocalAccountsMapOutput() SwitchSwitchMgmtLocalAccountsMapOutput {
+	return o
+}
+
+func (o SwitchSwitchMgmtLocalAccountsMapOutput) ToSwitchSwitchMgmtLocalAccountsMapOutputWithContext(ctx context.Context) SwitchSwitchMgmtLocalAccountsMapOutput {
+	return o
+}
+
+func (o SwitchSwitchMgmtLocalAccountsMapOutput) MapIndex(k pulumi.StringInput) SwitchSwitchMgmtLocalAccountsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchSwitchMgmtLocalAccounts {
+		return vs[0].(map[string]SwitchSwitchMgmtLocalAccounts)[vs[1].(string)]
+	}).(SwitchSwitchMgmtLocalAccountsOutput)
 }
 
 type SwitchSwitchMgmtProtectRe struct {
@@ -37588,6 +37851,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchStpConfigPtrInput)(nil)).Elem(), SwitchStpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtInput)(nil)).Elem(), SwitchSwitchMgmtArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtPtrInput)(nil)).Elem(), SwitchSwitchMgmtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtLocalAccountsInput)(nil)).Elem(), SwitchSwitchMgmtLocalAccountsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtLocalAccountsMapInput)(nil)).Elem(), SwitchSwitchMgmtLocalAccountsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtProtectReInput)(nil)).Elem(), SwitchSwitchMgmtProtectReArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtProtectRePtrInput)(nil)).Elem(), SwitchSwitchMgmtProtectReArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchSwitchMgmtProtectReCustomInput)(nil)).Elem(), SwitchSwitchMgmtProtectReCustomArgs{})
@@ -38045,6 +38310,8 @@ func init() {
 	pulumi.RegisterOutputType(SwitchStpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchSwitchMgmtOutput{})
 	pulumi.RegisterOutputType(SwitchSwitchMgmtPtrOutput{})
+	pulumi.RegisterOutputType(SwitchSwitchMgmtLocalAccountsOutput{})
+	pulumi.RegisterOutputType(SwitchSwitchMgmtLocalAccountsMapOutput{})
 	pulumi.RegisterOutputType(SwitchSwitchMgmtProtectReOutput{})
 	pulumi.RegisterOutputType(SwitchSwitchMgmtProtectRePtrOutput{})
 	pulumi.RegisterOutputType(SwitchSwitchMgmtProtectReCustomOutput{})

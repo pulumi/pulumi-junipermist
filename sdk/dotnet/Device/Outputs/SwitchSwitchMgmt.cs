@@ -13,7 +13,32 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchSwitchMgmt
     {
-        public readonly int? ConfigRevert;
+        /// <summary>
+        /// ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        /// </summary>
+        public readonly int? ApAffinityThreshold;
+        /// <summary>
+        /// Set Banners for switches. Allows markup formatting
+        /// </summary>
+        public readonly string? CliBanner;
+        /// <summary>
+        /// Sets timeout for switches
+        /// </summary>
+        public readonly int? CliIdleTimeout;
+        /// <summary>
+        /// the rollback timer for commit confirmed
+        /// </summary>
+        public readonly int? ConfigRevertTimer;
+        /// <summary>
+        /// Enable to provide the FQDN with DHCP option 81
+        /// </summary>
+        public readonly bool? DhcpOptionFqdn;
+        /// <summary>
+        /// Property key is the user name. For Local user authentication
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.SwitchSwitchMgmtLocalAccounts>? LocalAccounts;
+        public readonly string? MxedgeProxyHost;
+        public readonly int? MxedgeProxyPort;
         /// <summary>
         /// restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
@@ -22,21 +47,49 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly Outputs.SwitchSwitchMgmtProtectRe? ProtectRe;
         public readonly string? RootPassword;
         public readonly Outputs.SwitchSwitchMgmtTacacs? Tacacs;
+        /// <summary>
+        /// to use mxedge as proxy
+        /// </summary>
+        public readonly bool? UseMxedgeProxy;
 
         [OutputConstructor]
         private SwitchSwitchMgmt(
-            int? configRevert,
+            int? apAffinityThreshold,
+
+            string? cliBanner,
+
+            int? cliIdleTimeout,
+
+            int? configRevertTimer,
+
+            bool? dhcpOptionFqdn,
+
+            ImmutableDictionary<string, Outputs.SwitchSwitchMgmtLocalAccounts>? localAccounts,
+
+            string? mxedgeProxyHost,
+
+            int? mxedgeProxyPort,
 
             Outputs.SwitchSwitchMgmtProtectRe? protectRe,
 
             string? rootPassword,
 
-            Outputs.SwitchSwitchMgmtTacacs? tacacs)
+            Outputs.SwitchSwitchMgmtTacacs? tacacs,
+
+            bool? useMxedgeProxy)
         {
-            ConfigRevert = configRevert;
+            ApAffinityThreshold = apAffinityThreshold;
+            CliBanner = cliBanner;
+            CliIdleTimeout = cliIdleTimeout;
+            ConfigRevertTimer = configRevertTimer;
+            DhcpOptionFqdn = dhcpOptionFqdn;
+            LocalAccounts = localAccounts;
+            MxedgeProxyHost = mxedgeProxyHost;
+            MxedgeProxyPort = mxedgeProxyPort;
             ProtectRe = protectRe;
             RootPassword = rootPassword;
             Tacacs = tacacs;
+            UseMxedgeProxy = useMxedgeProxy;
         }
     }
 }

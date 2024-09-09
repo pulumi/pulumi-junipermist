@@ -440,9 +440,17 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.stpConfig);
     }
 
+    /**
+     * Switch settings
+     * 
+     */
     @Import(name="switchMgmt")
     private @Nullable Output<SwitchSwitchMgmtArgs> switchMgmt;
 
+    /**
+     * @return Switch settings
+     * 
+     */
     public Optional<Output<SwitchSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
     }
@@ -1209,11 +1217,23 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
             return stpConfig(Output.of(stpConfig));
         }
 
+        /**
+         * @param switchMgmt Switch settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(@Nullable Output<SwitchSwitchMgmtArgs> switchMgmt) {
             $.switchMgmt = switchMgmt;
             return this;
         }
 
+        /**
+         * @param switchMgmt Switch settings
+         * 
+         * @return builder
+         * 
+         */
         public Builder switchMgmt(SwitchSwitchMgmtArgs switchMgmt) {
             return switchMgmt(Output.of(switchMgmt));
         }

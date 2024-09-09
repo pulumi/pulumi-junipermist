@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// <summary>
         /// if `protocol`==`icmp`
         /// </summary>
-        public readonly string Address;
+        public readonly string? Address;
         public readonly string? AppType;
         /// <summary>
         /// if `protocol`==`http`
@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private SettingGatewayMgmtAppProbingCustomApp(
-            string address,
+            string? address,
 
             string? appType,
 

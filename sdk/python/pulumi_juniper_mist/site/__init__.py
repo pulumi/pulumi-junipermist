@@ -13,6 +13,7 @@ from .psk import *
 from .setting import *
 from .webhook import *
 from .wlan import *
+from .wlan_portal_template import *
 from .wxrule import *
 from .wxtag import *
 from ._inputs import *

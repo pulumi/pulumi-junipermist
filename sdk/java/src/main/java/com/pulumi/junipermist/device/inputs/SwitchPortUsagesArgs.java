@@ -493,6 +493,20 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.stpEdge);
     }
 
+    @Import(name="stpNoRootPort")
+    private @Nullable Output<Boolean> stpNoRootPort;
+
+    public Optional<Output<Boolean>> stpNoRootPort() {
+        return Optional.ofNullable(this.stpNoRootPort);
+    }
+
+    @Import(name="stpP2p")
+    private @Nullable Output<Boolean> stpP2p;
+
+    public Optional<Output<Boolean>> stpP2p() {
+        return Optional.ofNullable(this.stpP2p);
+    }
+
     /**
      * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
@@ -542,6 +556,8 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
         this.speed = $.speed;
         this.stormControl = $.stormControl;
         this.stpEdge = $.stpEdge;
+        this.stpNoRootPort = $.stpNoRootPort;
+        this.stpP2p = $.stpP2p;
         this.voipNetwork = $.voipNetwork;
     }
 
@@ -1250,6 +1266,24 @@ public final class SwitchPortUsagesArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder stpEdge(Boolean stpEdge) {
             return stpEdge(Output.of(stpEdge));
+        }
+
+        public Builder stpNoRootPort(@Nullable Output<Boolean> stpNoRootPort) {
+            $.stpNoRootPort = stpNoRootPort;
+            return this;
+        }
+
+        public Builder stpNoRootPort(Boolean stpNoRootPort) {
+            return stpNoRootPort(Output.of(stpNoRootPort));
+        }
+
+        public Builder stpP2p(@Nullable Output<Boolean> stpP2p) {
+            $.stpP2p = stpP2p;
+            return this;
+        }
+
+        public Builder stpP2p(Boolean stpP2p) {
+            return stpP2p(Output.of(stpP2p));
         }
 
         /**

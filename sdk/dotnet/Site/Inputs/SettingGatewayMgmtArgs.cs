@@ -42,6 +42,18 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("configRevertTimer")]
         public Input<int>? ConfigRevertTimer { get; set; }
 
+        /// <summary>
+        /// for both SSR and SRX disable console port
+        /// </summary>
+        [Input("disableConsole")]
+        public Input<bool>? DisableConsole { get; set; }
+
+        /// <summary>
+        /// for both SSR and SRX disable management interface
+        /// </summary>
+        [Input("disableOob")]
+        public Input<bool>? DisableOob { get; set; }
+
         [Input("probeHosts")]
         private InputList<string>? _probeHosts;
         public InputList<string> ProbeHosts

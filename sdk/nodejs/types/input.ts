@@ -2245,6 +2245,8 @@ export namespace device {
          * Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
          */
         stpEdge?: pulumi.Input<boolean>;
+        stpNoRootPort?: pulumi.Input<boolean>;
+        stpP2p?: pulumi.Input<boolean>;
         /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
@@ -2710,7 +2712,32 @@ export namespace device {
     }
 
     export interface SwitchSwitchMgmt {
-        configRevert?: pulumi.Input<number>;
+        /**
+         * ap_affinity_threshold apAffinityThreshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         */
+        apAffinityThreshold?: pulumi.Input<number>;
+        /**
+         * Set Banners for switches. Allows markup formatting
+         */
+        cliBanner?: pulumi.Input<string>;
+        /**
+         * Sets timeout for switches
+         */
+        cliIdleTimeout?: pulumi.Input<number>;
+        /**
+         * the rollback timer for commit confirmed
+         */
+        configRevertTimer?: pulumi.Input<number>;
+        /**
+         * Enable to provide the FQDN with DHCP option 81
+         */
+        dhcpOptionFqdn?: pulumi.Input<boolean>;
+        /**
+         * Property key is the user name. For Local user authentication
+         */
+        localAccounts?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchSwitchMgmtLocalAccounts>}>;
+        mxedgeProxyHost?: pulumi.Input<string>;
+        mxedgeProxyPort?: pulumi.Input<number>;
         /**
          * restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped 
@@ -2719,6 +2746,18 @@ export namespace device {
         protectRe?: pulumi.Input<inputs.device.SwitchSwitchMgmtProtectRe>;
         rootPassword?: pulumi.Input<string>;
         tacacs?: pulumi.Input<inputs.device.SwitchSwitchMgmtTacacs>;
+        /**
+         * to use mxedge as proxy
+         */
+        useMxedgeProxy?: pulumi.Input<boolean>;
+    }
+
+    export interface SwitchSwitchMgmtLocalAccounts {
+        password?: pulumi.Input<string>;
+        /**
+         * enum: `admin`, `helpdesk`, `none`, `read`
+         */
+        role?: pulumi.Input<string>;
     }
 
     export interface SwitchSwitchMgmtProtectRe {
@@ -7980,8 +8019,10 @@ export namespace org {
          */
         sponsorStatusNotify?: pulumi.Input<boolean>;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -8029,6 +8070,670 @@ export namespace org {
          * when `smsProvider`==`twilio`, Account SID provided by Twilio
          */
         twilioSid?: pulumi.Input<string>;
+    }
+
+    export interface WlanPortalTemplatePortalTemplate {
+        accessCodeAlternateEmail?: pulumi.Input<string>;
+        /**
+         * defines alignment on portal. enum: `center`, `left`, `right`
+         */
+        alignment?: pulumi.Input<string>;
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon?: pulumi.Input<string>;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure?: pulumi.Input<string>;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail?: pulumi.Input<string>;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook?: pulumi.Input<string>;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle?: pulumi.Input<string>;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft?: pulumi.Input<string>;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase?: pulumi.Input<string>;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms?: pulumi.Input<string>;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor?: pulumi.Input<string>;
+        authLabel?: pulumi.Input<string>;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: pulumi.Input<string>;
+        /**
+         * Portal main color
+         */
+        color?: pulumi.Input<string>;
+        colorDark?: pulumi.Input<string>;
+        colorLight?: pulumi.Input<string>;
+        /**
+         * whether company field is required
+         */
+        company?: pulumi.Input<boolean>;
+        /**
+         * error message when company not provided
+         */
+        companyError?: pulumi.Input<string>;
+        /**
+         * label of company field
+         */
+        companyLabel?: pulumi.Input<string>;
+        /**
+         * whether email field is required
+         */
+        email?: pulumi.Input<boolean>;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel?: pulumi.Input<string>;
+        emailCodeCancel?: pulumi.Input<string>;
+        emailCodeError?: pulumi.Input<string>;
+        emailCodeFieldLabel?: pulumi.Input<string>;
+        emailCodeMessage?: pulumi.Input<string>;
+        emailCodeSubmit?: pulumi.Input<string>;
+        emailCodeTitle?: pulumi.Input<string>;
+        /**
+         * error message when email not provided
+         */
+        emailError?: pulumi.Input<string>;
+        emailFieldLabel?: pulumi.Input<string>;
+        /**
+         * label of email field
+         */
+        emailLabel?: pulumi.Input<string>;
+        emailMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit?: pulumi.Input<string>;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle?: pulumi.Input<string>;
+        /**
+         * whether to ask field1
+         */
+        field1?: pulumi.Input<boolean>;
+        /**
+         * error message when field1 not provided
+         */
+        field1error?: pulumi.Input<string>;
+        /**
+         * label of field1
+         */
+        field1label?: pulumi.Input<string>;
+        /**
+         * whether field1 is required field
+         */
+        field1required?: pulumi.Input<boolean>;
+        /**
+         * whether to ask field2
+         */
+        field2?: pulumi.Input<boolean>;
+        /**
+         * error message when field2 not provided
+         */
+        field2error?: pulumi.Input<string>;
+        /**
+         * label of field2
+         */
+        field2label?: pulumi.Input<string>;
+        /**
+         * whether field2 is required field
+         */
+        field2required?: pulumi.Input<boolean>;
+        /**
+         * whether to ask field3
+         */
+        field3?: pulumi.Input<boolean>;
+        /**
+         * error message when field3 not provided
+         */
+        field3error?: pulumi.Input<string>;
+        /**
+         * label of field3
+         */
+        field3label?: pulumi.Input<string>;
+        /**
+         * whether field3 is required field
+         */
+        field3required?: pulumi.Input<boolean>;
+        /**
+         * whether to ask field4
+         */
+        field4?: pulumi.Input<boolean>;
+        /**
+         * error message when field4 not provided
+         */
+        field4error?: pulumi.Input<string>;
+        /**
+         * label of field4
+         */
+        field4label?: pulumi.Input<string>;
+        /**
+         * whether field4 is required field
+         */
+        field4required?: pulumi.Input<boolean>;
+        /**
+         * Can be used to localize the portal based on the User Agent. Allowed property key values are:
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `zh-Hans`, `zh-Hant`
+         */
+        locales?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplateLocales>}>;
+        message?: pulumi.Input<string>;
+        multiAuth?: pulumi.Input<boolean>;
+        /**
+         * whether name field is required
+         */
+        name?: pulumi.Input<boolean>;
+        /**
+         * error message when name not provided
+         */
+        nameError?: pulumi.Input<string>;
+        /**
+         * label of name field
+         */
+        nameLabel?: pulumi.Input<string>;
+        /**
+         * Default value for the `Do not store` checkbox
+         */
+        optOutDefault?: pulumi.Input<boolean>;
+        /**
+         * whether to display Do Not Store My Personal Information
+         */
+        optout?: pulumi.Input<boolean>;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel?: pulumi.Input<string>;
+        pageTitle?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel?: pulumi.Input<string>;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError?: pulumi.Input<string>;
+        /**
+         * Passphrase
+         */
+        passphraseLabel?: pulumi.Input<string>;
+        passphraseMessage?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit?: pulumi.Input<string>;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle?: pulumi.Input<string>;
+        /**
+         * whether to show \"Powered by Mist\"
+         */
+        poweredBy?: pulumi.Input<boolean>;
+        /**
+         * wheter to require the Privacy Term acceptance
+         */
+        privacy?: pulumi.Input<boolean>;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink?: pulumi.Input<string>;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText?: pulumi.Input<string>;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel?: pulumi.Input<string>;
+        responsiveLayout?: pulumi.Input<boolean>;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel?: pulumi.Input<string>;
+        smsCarrierDefault?: pulumi.Input<string>;
+        smsCarrierError?: pulumi.Input<string>;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel?: pulumi.Input<string>;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError?: pulumi.Input<string>;
+        smsCodeFieldLabel?: pulumi.Input<string>;
+        smsCodeMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit?: pulumi.Input<string>;
+        smsCodeTitle?: pulumi.Input<string>;
+        smsCountryFieldLabel?: pulumi.Input<string>;
+        smsCountryFormat?: pulumi.Input<string>;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode?: pulumi.Input<string>;
+        smsIsTwilio?: pulumi.Input<boolean>;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: pulumi.Input<string>;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel?: pulumi.Input<string>;
+        smsNumberError?: pulumi.Input<string>;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel?: pulumi.Input<string>;
+        smsNumberFormat?: pulumi.Input<string>;
+        smsNumberMessage?: pulumi.Input<string>;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit?: pulumi.Input<string>;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle?: pulumi.Input<string>;
+        smsUsernameFormat?: pulumi.Input<string>;
+        /**
+         * how long confirmation code should be considered valid (in minutes)
+         */
+        smsValidityDuration?: pulumi.Input<number>;
+        sponsorBackLink?: pulumi.Input<string>;
+        sponsorCancel?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail?: pulumi.Input<string>;
+        sponsorEmailError?: pulumi.Input<string>;
+        /**
+         * html template to replace/override default sponsor email template 
+         * Sponsor Email Template supports following template variables:
+         *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+         *   * `denyUrl`: Renders URL to reject the request
+         *   * `guestEmail`: Renders Email ID of the guest
+         *   * `guestName`: Renders Name of the guest
+         *   * `field1`: Renders value of the Custom Field 1
+         *   * `field2`: Renders value of the Custom Field 2
+         *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+         *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+         */
+        sponsorEmailTemplate?: pulumi.Input<string>;
+        sponsorInfoApproved?: pulumi.Input<string>;
+        sponsorInfoDenied?: pulumi.Input<string>;
+        sponsorInfoPending?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName?: pulumi.Input<string>;
+        sponsorNameError?: pulumi.Input<string>;
+        sponsorNotePending?: pulumi.Input<string>;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess?: pulumi.Input<string>;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved?: pulumi.Input<string>;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied?: pulumi.Input<string>;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending?: pulumi.Input<string>;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit?: pulumi.Input<string>;
+        sponsorsError?: pulumi.Input<string>;
+        sponsorsFieldLabel?: pulumi.Input<string>;
+        tos?: pulumi.Input<boolean>;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when tos not accepted
+         */
+        tosError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink?: pulumi.Input<string>;
+        /**
+         * text of the Terms of Service
+         */
+        tosText?: pulumi.Input<string>;
+    }
+
+    export interface WlanPortalTemplatePortalTemplateLocales {
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon?: pulumi.Input<string>;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure?: pulumi.Input<string>;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail?: pulumi.Input<string>;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook?: pulumi.Input<string>;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle?: pulumi.Input<string>;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft?: pulumi.Input<string>;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase?: pulumi.Input<string>;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms?: pulumi.Input<string>;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor?: pulumi.Input<string>;
+        authLabel?: pulumi.Input<string>;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: pulumi.Input<string>;
+        /**
+         * error message when company not provided
+         */
+        companyError?: pulumi.Input<string>;
+        /**
+         * label of company field
+         */
+        companyLabel?: pulumi.Input<string>;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel?: pulumi.Input<string>;
+        emailCodeCancel?: pulumi.Input<string>;
+        emailCodeError?: pulumi.Input<string>;
+        emailCodeFieldLabel?: pulumi.Input<string>;
+        emailCodeMessage?: pulumi.Input<string>;
+        emailCodeSubmit?: pulumi.Input<string>;
+        emailCodeTitle?: pulumi.Input<string>;
+        /**
+         * error message when email not provided
+         */
+        emailError?: pulumi.Input<string>;
+        emailFieldLabel?: pulumi.Input<string>;
+        /**
+         * label of email field
+         */
+        emailLabel?: pulumi.Input<string>;
+        emailMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit?: pulumi.Input<string>;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle?: pulumi.Input<string>;
+        /**
+         * error message when field1 not provided
+         */
+        field1error?: pulumi.Input<string>;
+        /**
+         * label of field1
+         */
+        field1label?: pulumi.Input<string>;
+        /**
+         * error message when field2 not provided
+         */
+        field2error?: pulumi.Input<string>;
+        /**
+         * label of field2
+         */
+        field2label?: pulumi.Input<string>;
+        /**
+         * error message when field3 not provided
+         */
+        field3error?: pulumi.Input<string>;
+        /**
+         * label of field3
+         */
+        field3label?: pulumi.Input<string>;
+        /**
+         * error message when field4 not provided
+         */
+        field4error?: pulumi.Input<string>;
+        /**
+         * label of field4
+         */
+        field4label?: pulumi.Input<string>;
+        message?: pulumi.Input<string>;
+        /**
+         * error message when name not provided
+         */
+        nameError?: pulumi.Input<string>;
+        /**
+         * label of name field
+         */
+        nameLabel?: pulumi.Input<string>;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel?: pulumi.Input<string>;
+        pageTitle?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel?: pulumi.Input<string>;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError?: pulumi.Input<string>;
+        /**
+         * Passphrase
+         */
+        passphraseLabel?: pulumi.Input<string>;
+        passphraseMessage?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit?: pulumi.Input<string>;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle?: pulumi.Input<string>;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink?: pulumi.Input<string>;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText?: pulumi.Input<string>;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel?: pulumi.Input<string>;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel?: pulumi.Input<string>;
+        smsCarrierDefault?: pulumi.Input<string>;
+        smsCarrierError?: pulumi.Input<string>;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel?: pulumi.Input<string>;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError?: pulumi.Input<string>;
+        smsCodeFieldLabel?: pulumi.Input<string>;
+        smsCodeMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit?: pulumi.Input<string>;
+        smsCodeTitle?: pulumi.Input<string>;
+        smsCountryFieldLabel?: pulumi.Input<string>;
+        smsCountryFormat?: pulumi.Input<string>;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode?: pulumi.Input<string>;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: pulumi.Input<string>;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel?: pulumi.Input<string>;
+        smsNumberError?: pulumi.Input<string>;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel?: pulumi.Input<string>;
+        smsNumberFormat?: pulumi.Input<string>;
+        smsNumberMessage?: pulumi.Input<string>;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit?: pulumi.Input<string>;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle?: pulumi.Input<string>;
+        smsUsernameFormat?: pulumi.Input<string>;
+        sponsorBackLink?: pulumi.Input<string>;
+        sponsorCancel?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail?: pulumi.Input<string>;
+        sponsorEmailError?: pulumi.Input<string>;
+        sponsorInfoApproved?: pulumi.Input<string>;
+        sponsorInfoDenied?: pulumi.Input<string>;
+        sponsorInfoPending?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName?: pulumi.Input<string>;
+        sponsorNameError?: pulumi.Input<string>;
+        sponsorNotePending?: pulumi.Input<string>;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess?: pulumi.Input<string>;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved?: pulumi.Input<string>;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied?: pulumi.Input<string>;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending?: pulumi.Input<string>;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit?: pulumi.Input<string>;
+        sponsorsError?: pulumi.Input<string>;
+        sponsorsFieldLabel?: pulumi.Input<string>;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when tos not accepted
+         */
+        tosError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink?: pulumi.Input<string>;
+        /**
+         * text of the Terms of Service
+         */
+        tosText?: pulumi.Input<string>;
+        /**
+         * label for Amazon auth button
+         */
+        uthButtonAmazon?: pulumi.Input<string>;
     }
 
     export interface WlanQos {
@@ -9390,6 +10095,14 @@ export namespace site {
          * he rollback timer for commit confirmed
          */
         configRevertTimer?: pulumi.Input<number>;
+        /**
+         * for both SSR and SRX disable console port
+         */
+        disableConsole?: pulumi.Input<boolean>;
+        /**
+         * for both SSR and SRX disable management interface
+         */
+        disableOob?: pulumi.Input<boolean>;
         probeHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * for SRX only
@@ -9412,7 +10125,7 @@ export namespace site {
         /**
          * if `protocol`==`icmp`
          */
-        address: pulumi.Input<string>;
+        address?: pulumi.Input<string>;
         appType?: pulumi.Input<string>;
         /**
          * if `protocol`==`http`
@@ -10242,8 +10955,10 @@ export namespace site {
          */
         sponsorStatusNotify?: pulumi.Input<boolean>;
         /**
-         * object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-         * Property key is the sponsor email, Property value is the sponsor name
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -10291,6 +11006,670 @@ export namespace site {
          * when `smsProvider`==`twilio`, Account SID provided by Twilio
          */
         twilioSid?: pulumi.Input<string>;
+    }
+
+    export interface WlanPortalTemplatePortalTemplate {
+        accessCodeAlternateEmail?: pulumi.Input<string>;
+        /**
+         * defines alignment on portal. enum: `center`, `left`, `right`
+         */
+        alignment?: pulumi.Input<string>;
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon?: pulumi.Input<string>;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure?: pulumi.Input<string>;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail?: pulumi.Input<string>;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook?: pulumi.Input<string>;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle?: pulumi.Input<string>;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft?: pulumi.Input<string>;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase?: pulumi.Input<string>;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms?: pulumi.Input<string>;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor?: pulumi.Input<string>;
+        authLabel?: pulumi.Input<string>;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: pulumi.Input<string>;
+        /**
+         * Portal main color
+         */
+        color?: pulumi.Input<string>;
+        colorDark?: pulumi.Input<string>;
+        colorLight?: pulumi.Input<string>;
+        /**
+         * whether company field is required
+         */
+        company?: pulumi.Input<boolean>;
+        /**
+         * error message when company not provided
+         */
+        companyError?: pulumi.Input<string>;
+        /**
+         * label of company field
+         */
+        companyLabel?: pulumi.Input<string>;
+        /**
+         * whether email field is required
+         */
+        email?: pulumi.Input<boolean>;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel?: pulumi.Input<string>;
+        emailCodeCancel?: pulumi.Input<string>;
+        emailCodeError?: pulumi.Input<string>;
+        emailCodeFieldLabel?: pulumi.Input<string>;
+        emailCodeMessage?: pulumi.Input<string>;
+        emailCodeSubmit?: pulumi.Input<string>;
+        emailCodeTitle?: pulumi.Input<string>;
+        /**
+         * error message when email not provided
+         */
+        emailError?: pulumi.Input<string>;
+        emailFieldLabel?: pulumi.Input<string>;
+        /**
+         * label of email field
+         */
+        emailLabel?: pulumi.Input<string>;
+        emailMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit?: pulumi.Input<string>;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle?: pulumi.Input<string>;
+        /**
+         * whether to ask field1
+         */
+        field1?: pulumi.Input<boolean>;
+        /**
+         * error message when field1 not provided
+         */
+        field1error?: pulumi.Input<string>;
+        /**
+         * label of field1
+         */
+        field1label?: pulumi.Input<string>;
+        /**
+         * whether field1 is required field
+         */
+        field1required?: pulumi.Input<boolean>;
+        /**
+         * whether to ask field2
+         */
+        field2?: pulumi.Input<boolean>;
+        /**
+         * error message when field2 not provided
+         */
+        field2error?: pulumi.Input<string>;
+        /**
+         * label of field2
+         */
+        field2label?: pulumi.Input<string>;
+        /**
+         * whether field2 is required field
+         */
+        field2required?: pulumi.Input<boolean>;
+        /**
+         * whether to ask field3
+         */
+        field3?: pulumi.Input<boolean>;
+        /**
+         * error message when field3 not provided
+         */
+        field3error?: pulumi.Input<string>;
+        /**
+         * label of field3
+         */
+        field3label?: pulumi.Input<string>;
+        /**
+         * whether field3 is required field
+         */
+        field3required?: pulumi.Input<boolean>;
+        /**
+         * whether to ask field4
+         */
+        field4?: pulumi.Input<boolean>;
+        /**
+         * error message when field4 not provided
+         */
+        field4error?: pulumi.Input<string>;
+        /**
+         * label of field4
+         */
+        field4label?: pulumi.Input<string>;
+        /**
+         * whether field4 is required field
+         */
+        field4required?: pulumi.Input<boolean>;
+        /**
+         * Can be used to localize the portal based on the User Agent. Allowed property key values are:
+         *       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
+         *       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
+         *       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
+         *       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+         */
+        locales?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplateLocales>}>;
+        message?: pulumi.Input<string>;
+        multiAuth?: pulumi.Input<boolean>;
+        /**
+         * whether name field is required
+         */
+        name?: pulumi.Input<boolean>;
+        /**
+         * error message when name not provided
+         */
+        nameError?: pulumi.Input<string>;
+        /**
+         * label of name field
+         */
+        nameLabel?: pulumi.Input<string>;
+        /**
+         * Default value for the `Do not store` checkbox
+         */
+        optOutDefault?: pulumi.Input<boolean>;
+        /**
+         * whether to display Do Not Store My Personal Information
+         */
+        optout?: pulumi.Input<boolean>;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel?: pulumi.Input<string>;
+        pageTitle?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel?: pulumi.Input<string>;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError?: pulumi.Input<string>;
+        /**
+         * Passphrase
+         */
+        passphraseLabel?: pulumi.Input<string>;
+        passphraseMessage?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit?: pulumi.Input<string>;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle?: pulumi.Input<string>;
+        /**
+         * whether to show \"Powered by Mist\"
+         */
+        poweredBy?: pulumi.Input<boolean>;
+        /**
+         * wheter to require the Privacy Term acceptance
+         */
+        privacy?: pulumi.Input<boolean>;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink?: pulumi.Input<string>;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText?: pulumi.Input<string>;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel?: pulumi.Input<string>;
+        responsiveLayout?: pulumi.Input<boolean>;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel?: pulumi.Input<string>;
+        smsCarrierDefault?: pulumi.Input<string>;
+        smsCarrierError?: pulumi.Input<string>;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel?: pulumi.Input<string>;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError?: pulumi.Input<string>;
+        smsCodeFieldLabel?: pulumi.Input<string>;
+        smsCodeMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit?: pulumi.Input<string>;
+        smsCodeTitle?: pulumi.Input<string>;
+        smsCountryFieldLabel?: pulumi.Input<string>;
+        smsCountryFormat?: pulumi.Input<string>;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode?: pulumi.Input<string>;
+        smsIsTwilio?: pulumi.Input<boolean>;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: pulumi.Input<string>;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel?: pulumi.Input<string>;
+        smsNumberError?: pulumi.Input<string>;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel?: pulumi.Input<string>;
+        smsNumberFormat?: pulumi.Input<string>;
+        smsNumberMessage?: pulumi.Input<string>;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit?: pulumi.Input<string>;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle?: pulumi.Input<string>;
+        smsUsernameFormat?: pulumi.Input<string>;
+        /**
+         * how long confirmation code should be considered valid (in minutes)
+         */
+        smsValidityDuration?: pulumi.Input<number>;
+        sponsorBackLink?: pulumi.Input<string>;
+        sponsorCancel?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail?: pulumi.Input<string>;
+        sponsorEmailError?: pulumi.Input<string>;
+        /**
+         * html template to replace/override default sponsor email template 
+         * Sponsor Email Template supports following template variables:
+         *   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+         *   * `denyUrl`: Renders URL to reject the request
+         *   * `guestEmail`: Renders Email ID of the guest
+         *   * `guestName`: Renders Name of the guest
+         *   * `field1`: Renders value of the Custom Field 1
+         *   * `field2`: Renders value of the Custom Field 2
+         *   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+         *   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+         */
+        sponsorEmailTemplate?: pulumi.Input<string>;
+        sponsorInfoApproved?: pulumi.Input<string>;
+        sponsorInfoDenied?: pulumi.Input<string>;
+        sponsorInfoPending?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName?: pulumi.Input<string>;
+        sponsorNameError?: pulumi.Input<string>;
+        sponsorNotePending?: pulumi.Input<string>;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess?: pulumi.Input<string>;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved?: pulumi.Input<string>;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied?: pulumi.Input<string>;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending?: pulumi.Input<string>;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit?: pulumi.Input<string>;
+        sponsorsError?: pulumi.Input<string>;
+        sponsorsFieldLabel?: pulumi.Input<string>;
+        tos?: pulumi.Input<boolean>;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when tos not accepted
+         */
+        tosError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink?: pulumi.Input<string>;
+        /**
+         * text of the Terms of Service
+         */
+        tosText?: pulumi.Input<string>;
+    }
+
+    export interface WlanPortalTemplatePortalTemplateLocales {
+        /**
+         * label for Amazon auth button
+         */
+        authButtonAmazon?: pulumi.Input<string>;
+        /**
+         * label for Azure auth button
+         */
+        authButtonAzure?: pulumi.Input<string>;
+        /**
+         * label for Email auth button
+         */
+        authButtonEmail?: pulumi.Input<string>;
+        /**
+         * label for Facebook auth button
+         */
+        authButtonFacebook?: pulumi.Input<string>;
+        /**
+         * label for Google auth button
+         */
+        authButtonGoogle?: pulumi.Input<string>;
+        /**
+         * label for Microsoft auth button
+         */
+        authButtonMicrosoft?: pulumi.Input<string>;
+        /**
+         * label for passphrase auth button
+         */
+        authButtonPassphrase?: pulumi.Input<string>;
+        /**
+         * label for SMS auth button
+         */
+        authButtonSms?: pulumi.Input<string>;
+        /**
+         * label for Sponsor auth button
+         */
+        authButtonSponsor?: pulumi.Input<string>;
+        authLabel?: pulumi.Input<string>;
+        /**
+         * label of the link to go back to /logon
+         */
+        backLink?: pulumi.Input<string>;
+        /**
+         * error message when company not provided
+         */
+        companyError?: pulumi.Input<string>;
+        /**
+         * label of company field
+         */
+        companyLabel?: pulumi.Input<string>;
+        /**
+         * error message when a user has valid social login but doesn't match specified email domains.
+         */
+        emailAccessDomainError?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission using email auth
+         */
+        emailCancel?: pulumi.Input<string>;
+        emailCodeCancel?: pulumi.Input<string>;
+        emailCodeError?: pulumi.Input<string>;
+        emailCodeFieldLabel?: pulumi.Input<string>;
+        emailCodeMessage?: pulumi.Input<string>;
+        emailCodeSubmit?: pulumi.Input<string>;
+        emailCodeTitle?: pulumi.Input<string>;
+        /**
+         * error message when email not provided
+         */
+        emailError?: pulumi.Input<string>;
+        emailFieldLabel?: pulumi.Input<string>;
+        /**
+         * label of email field
+         */
+        emailLabel?: pulumi.Input<string>;
+        emailMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button using email auth
+         */
+        emailSubmit?: pulumi.Input<string>;
+        /**
+         * Title for the Email registration
+         */
+        emailTitle?: pulumi.Input<string>;
+        /**
+         * error message when field1 not provided
+         */
+        field1error?: pulumi.Input<string>;
+        /**
+         * label of field1
+         */
+        field1label?: pulumi.Input<string>;
+        /**
+         * error message when field2 not provided
+         */
+        field2error?: pulumi.Input<string>;
+        /**
+         * label of field2
+         */
+        field2label?: pulumi.Input<string>;
+        /**
+         * error message when field3 not provided
+         */
+        field3error?: pulumi.Input<string>;
+        /**
+         * label of field3
+         */
+        field3label?: pulumi.Input<string>;
+        /**
+         * error message when field4 not provided
+         */
+        field4error?: pulumi.Input<string>;
+        /**
+         * label of field4
+         */
+        field4label?: pulumi.Input<string>;
+        message?: pulumi.Input<string>;
+        /**
+         * error message when name not provided
+         */
+        nameError?: pulumi.Input<string>;
+        /**
+         * label of name field
+         */
+        nameLabel?: pulumi.Input<string>;
+        /**
+         * label for Do Not Store My Personal Information
+         */
+        optoutLabel?: pulumi.Input<string>;
+        pageTitle?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase cancel button
+         */
+        passphraseCancel?: pulumi.Input<string>;
+        /**
+         * error message when invalid passphrase is provided
+         */
+        passphraseError?: pulumi.Input<string>;
+        /**
+         * Passphrase
+         */
+        passphraseLabel?: pulumi.Input<string>;
+        passphraseMessage?: pulumi.Input<string>;
+        /**
+         * Label for the Passphrase submit button
+         */
+        passphraseSubmit?: pulumi.Input<string>;
+        /**
+         * Title for passphrase details page
+         */
+        passphraseTitle?: pulumi.Input<string>;
+        /**
+         * prefix of the label of the link to go to Privacy Policy
+         */
+        privacyPolicyAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when Privacy Policy not accepted
+         */
+        privacyPolicyError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to Privacy Policy
+         */
+        privacyPolicyLink?: pulumi.Input<string>;
+        /**
+         * text of the Privacy Policy
+         */
+        privacyPolicyText?: pulumi.Input<string>;
+        /**
+         * label to denote required field
+         */
+        requiredFieldLabel?: pulumi.Input<string>;
+        /**
+         * label of the button to /signin
+         */
+        signInLabel?: pulumi.Input<string>;
+        smsCarrierDefault?: pulumi.Input<string>;
+        smsCarrierError?: pulumi.Input<string>;
+        /**
+         * label for mobile carrier drop-down list
+         */
+        smsCarrierFieldLabel?: pulumi.Input<string>;
+        /**
+         * Label for cancel confirmation code submission
+         */
+        smsCodeCancel?: pulumi.Input<string>;
+        /**
+         * error message when confirmation code is invalid
+         */
+        smsCodeError?: pulumi.Input<string>;
+        smsCodeFieldLabel?: pulumi.Input<string>;
+        smsCodeMessage?: pulumi.Input<string>;
+        /**
+         * Label for confirmation code submit button
+         */
+        smsCodeSubmit?: pulumi.Input<string>;
+        smsCodeTitle?: pulumi.Input<string>;
+        smsCountryFieldLabel?: pulumi.Input<string>;
+        smsCountryFormat?: pulumi.Input<string>;
+        /**
+         * Label for checkbox to specify that the user has access code
+         */
+        smsHaveAccessCode?: pulumi.Input<string>;
+        /**
+         * format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+         */
+        smsMessageFormat?: pulumi.Input<string>;
+        /**
+         * label for canceling mobile details for SMS auth
+         */
+        smsNumberCancel?: pulumi.Input<string>;
+        smsNumberError?: pulumi.Input<string>;
+        /**
+         * label for field to provide mobile number
+         */
+        smsNumberFieldLabel?: pulumi.Input<string>;
+        smsNumberFormat?: pulumi.Input<string>;
+        smsNumberMessage?: pulumi.Input<string>;
+        /**
+         * label for submit button for code generation
+         */
+        smsNumberSubmit?: pulumi.Input<string>;
+        /**
+         * Title for phone number details
+         */
+        smsNumberTitle?: pulumi.Input<string>;
+        smsUsernameFormat?: pulumi.Input<string>;
+        sponsorBackLink?: pulumi.Input<string>;
+        sponsorCancel?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Email
+         */
+        sponsorEmail?: pulumi.Input<string>;
+        sponsorEmailError?: pulumi.Input<string>;
+        sponsorInfoApproved?: pulumi.Input<string>;
+        sponsorInfoDenied?: pulumi.Input<string>;
+        sponsorInfoPending?: pulumi.Input<string>;
+        /**
+         * label for Sponsor Name
+         */
+        sponsorName?: pulumi.Input<string>;
+        sponsorNameError?: pulumi.Input<string>;
+        sponsorNotePending?: pulumi.Input<string>;
+        /**
+         * submit button label request Wifi Access and notify sponsor about guest request
+         */
+        sponsorRequestAccess?: pulumi.Input<string>;
+        /**
+         * text to display if sponsor approves request
+         */
+        sponsorStatusApproved?: pulumi.Input<string>;
+        /**
+         * text to display when sponsor denies request
+         */
+        sponsorStatusDenied?: pulumi.Input<string>;
+        /**
+         * text to display if request is still pending
+         */
+        sponsorStatusPending?: pulumi.Input<string>;
+        /**
+         * submit button label to notify sponsor about guest request
+         */
+        sponsorSubmit?: pulumi.Input<string>;
+        sponsorsError?: pulumi.Input<string>;
+        sponsorsFieldLabel?: pulumi.Input<string>;
+        /**
+         * prefix of the label of the link to go to tos
+         */
+        tosAcceptLabel?: pulumi.Input<string>;
+        /**
+         * error message when tos not accepted
+         */
+        tosError?: pulumi.Input<string>;
+        /**
+         * label of the link to go to tos
+         */
+        tosLink?: pulumi.Input<string>;
+        /**
+         * text of the Terms of Service
+         */
+        tosText?: pulumi.Input<string>;
+        /**
+         * label for Amazon auth button
+         */
+        uthButtonAmazon?: pulumi.Input<string>;
     }
 
     export interface WlanQos {

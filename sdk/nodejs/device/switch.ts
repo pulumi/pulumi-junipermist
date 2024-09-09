@@ -159,6 +159,9 @@ export class Switch extends pulumi.CustomResource {
     public readonly siteId!: pulumi.Output<string>;
     public readonly snmpConfig!: pulumi.Output<outputs.device.SwitchSnmpConfig | undefined>;
     public readonly stpConfig!: pulumi.Output<outputs.device.SwitchStpConfig | undefined>;
+    /**
+     * Switch settings
+     */
     public readonly switchMgmt!: pulumi.Output<outputs.device.SwitchSwitchMgmt | undefined>;
     /**
      * Device Type. enum: `switch`
@@ -439,6 +442,9 @@ export interface SwitchState {
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig>;
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig>;
+    /**
+     * Switch settings
+     */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt>;
     /**
      * Device Type. enum: `switch`
@@ -574,6 +580,9 @@ export interface SwitchArgs {
     siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.device.SwitchSnmpConfig>;
     stpConfig?: pulumi.Input<inputs.device.SwitchStpConfig>;
+    /**
+     * Switch settings
+     */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt>;
     /**
      * whether to use it for snmp / syslog / tacplus / radius

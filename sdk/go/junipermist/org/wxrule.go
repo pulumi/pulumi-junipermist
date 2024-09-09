@@ -97,9 +97,6 @@ func NewWxrule(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
-	if args.SrcWxtags == nil {
-		return nil, errors.New("invalid value for required argument 'SrcWxtags'")
-	}
 	if args.TemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateId'")
 	}

@@ -27,6 +27,14 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// he rollback timer for commit confirmed
         /// </summary>
         public readonly int? ConfigRevertTimer;
+        /// <summary>
+        /// for both SSR and SRX disable console port
+        /// </summary>
+        public readonly bool? DisableConsole;
+        /// <summary>
+        /// for both SSR and SRX disable management interface
+        /// </summary>
+        public readonly bool? DisableOob;
         public readonly ImmutableArray<string> ProbeHosts;
         /// <summary>
         /// for SRX only
@@ -47,6 +55,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             int? configRevertTimer,
 
+            bool? disableConsole,
+
+            bool? disableOob,
+
             ImmutableArray<string> probeHosts,
 
             string? rootPassword,
@@ -60,6 +72,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
             AppUsage = appUsage;
             AutoSignatureUpdate = autoSignatureUpdate;
             ConfigRevertTimer = configRevertTimer;
+            DisableConsole = disableConsole;
+            DisableOob = disableOob;
             ProbeHosts = probeHosts;
             RootPassword = rootPassword;
             SecurityLogSourceAddress = securityLogSourceAddress;

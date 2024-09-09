@@ -119,30 +119,15 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
      * tag list to determine if this rule would match
      * 
      */
-    @Import(name="srcWxtags", required=true)
-    private Output<List<String>> srcWxtags;
+    @Import(name="srcWxtags")
+    private @Nullable Output<List<String>> srcWxtags;
 
     /**
      * @return tag list to determine if this rule would match
      * 
      */
-    public Output<List<String>> srcWxtags() {
-        return this.srcWxtags;
-    }
-
-    /**
-     * Only for Org Level WxRule
-     * 
-     */
-    @Import(name="templateId")
-    private @Nullable Output<String> templateId;
-
-    /**
-     * @return Only for Org Level WxRule
-     * 
-     */
-    public Optional<Output<String>> templateId() {
-        return Optional.ofNullable(this.templateId);
+    public Optional<Output<List<String>>> srcWxtags() {
+        return Optional.ofNullable(this.srcWxtags);
     }
 
     private WxruleArgs() {}
@@ -157,7 +142,6 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         this.order = $.order;
         this.siteId = $.siteId;
         this.srcWxtags = $.srcWxtags;
-        this.templateId = $.templateId;
     }
 
     public static Builder builder() {
@@ -350,7 +334,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder srcWxtags(Output<List<String>> srcWxtags) {
+        public Builder srcWxtags(@Nullable Output<List<String>> srcWxtags) {
             $.srcWxtags = srcWxtags;
             return this;
         }
@@ -375,27 +359,6 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
             return srcWxtags(List.of(srcWxtags));
         }
 
-        /**
-         * @param templateId Only for Org Level WxRule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder templateId(@Nullable Output<String> templateId) {
-            $.templateId = templateId;
-            return this;
-        }
-
-        /**
-         * @param templateId Only for Org Level WxRule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder templateId(String templateId) {
-            return templateId(Output.of(templateId));
-        }
-
         public WxruleArgs build() {
             if ($.action == null) {
                 throw new MissingRequiredPropertyException("WxruleArgs", "action");
@@ -405,9 +368,6 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.siteId == null) {
                 throw new MissingRequiredPropertyException("WxruleArgs", "siteId");
-            }
-            if ($.srcWxtags == null) {
-                throw new MissingRequiredPropertyException("WxruleArgs", "srcWxtags");
             }
             return $;
         }

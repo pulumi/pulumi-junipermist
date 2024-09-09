@@ -40,7 +40,7 @@ type Setting struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrOutput `pulumi:"configPushPolicy"`
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrOutput `pulumi:"criticalUrlMonitoring"`
-	// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
@@ -60,6 +60,8 @@ type Setting struct {
 	PersistConfigOnDevice pulumi.BoolOutput `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrOutput `pulumi:"proxy"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolOutput `pulumi:"removeExistingConfigs"`
 	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolOutput `pulumi:"reportGatt"`
@@ -148,7 +150,7 @@ type settingState struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
@@ -168,6 +170,8 @@ type settingState struct {
 	PersistConfigOnDevice *bool `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
 	Proxy *SettingProxy `pulumi:"proxy"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
 	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt *bool `pulumi:"reportGatt"`
@@ -224,7 +228,7 @@ type SettingState struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
@@ -244,6 +248,8 @@ type SettingState struct {
 	PersistConfigOnDevice pulumi.BoolPtrInput
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrInput
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolPtrInput
 	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolPtrInput
@@ -303,7 +309,7 @@ type settingArgs struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
@@ -322,6 +328,8 @@ type settingArgs struct {
 	PersistConfigOnDevice *bool `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
 	Proxy *SettingProxy `pulumi:"proxy"`
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
 	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt *bool `pulumi:"reportGatt"`
@@ -376,7 +384,7 @@ type SettingArgs struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
@@ -395,6 +403,8 @@ type SettingArgs struct {
 	PersistConfigOnDevice pulumi.BoolPtrInput
 	// Proxy Configuration to talk to Mist
 	Proxy SettingProxyPtrInput
+	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+	RemoveExistingConfigs pulumi.BoolPtrInput
 	// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
 	// serial number, battery %, temperature, humidity)
 	ReportGatt pulumi.BoolPtrInput
@@ -559,7 +569,7 @@ func (o SettingOutput) CriticalUrlMonitoring() SettingCriticalUrlMonitoringPtrOu
 	return o.ApplyT(func(v *Setting) SettingCriticalUrlMonitoringPtrOutput { return v.CriticalUrlMonitoring }).(SettingCriticalUrlMonitoringPtrOutput)
 }
 
-// sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
 func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
 }
@@ -607,6 +617,11 @@ func (o SettingOutput) PersistConfigOnDevice() pulumi.BoolOutput {
 // Proxy Configuration to talk to Mist
 func (o SettingOutput) Proxy() SettingProxyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingProxyPtrOutput { return v.Proxy }).(SettingProxyPtrOutput)
+}
+
+// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+func (o SettingOutput) RemoveExistingConfigs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
 }
 
 // whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,

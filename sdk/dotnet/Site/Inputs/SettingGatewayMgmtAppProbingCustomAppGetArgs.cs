@@ -15,8 +15,8 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// <summary>
         /// if `protocol`==`icmp`
         /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
+        [Input("address")]
+        public Input<string>? Address { get; set; }
 
         [Input("appType")]
         public Input<string>? AppType { get; set; }

@@ -235,6 +235,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/wlanPortalTemplate",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/wlanPortalTemplate:WlanPortalTemplate": "WlanPortalTemplate"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/wlantemplate",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
@@ -303,6 +311,14 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.site",
   "classes": {
    "junipermist:site/wlan:Wlan": "Wlan"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "site/wlanPortalTemplate",
+  "fqn": "pulumi_juniper_mist.site",
+  "classes": {
+   "junipermist:site/wlanPortalTemplate:WlanPortalTemplate": "WlanPortalTemplate"
   }
  },
  {

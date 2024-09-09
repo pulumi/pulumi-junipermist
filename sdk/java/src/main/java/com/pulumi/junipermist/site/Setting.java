@@ -212,14 +212,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.criticalUrlMonitoring);
     }
     /**
-     * sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
     @Export(name="deviceUpdownThreshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes
+     * @return by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
      * 
      */
     public Output<Integer> deviceUpdownThreshold() {
@@ -344,6 +344,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SettingProxy>> proxy() {
         return Codegen.optional(this.proxy);
+    }
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    @Export(name="removeExistingConfigs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> removeExistingConfigs;
+
+    /**
+     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * 
+     */
+    public Output<Boolean> removeExistingConfigs() {
+        return this.removeExistingConfigs;
     }
     /**
      * whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,

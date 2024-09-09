@@ -152,6 +152,7 @@ __all__ = [
     'SwitchSnmpConfigView',
     'SwitchStpConfig',
     'SwitchSwitchMgmt',
+    'SwitchSwitchMgmtLocalAccounts',
     'SwitchSwitchMgmtProtectRe',
     'SwitchSwitchMgmtProtectReCustom',
     'SwitchSwitchMgmtTacacs',
@@ -8897,6 +8898,10 @@ class SwitchPortUsages(dict):
             suggest = "storm_control"
         elif key == "stpEdge":
             suggest = "stp_edge"
+        elif key == "stpNoRootPort":
+            suggest = "stp_no_root_port"
+        elif key == "stpP2p":
+            suggest = "stp_p2p"
         elif key == "voipNetwork":
             suggest = "voip_network"
 
@@ -8943,6 +8948,8 @@ class SwitchPortUsages(dict):
                  speed: Optional[str] = None,
                  storm_control: Optional['outputs.SwitchPortUsagesStormControl'] = None,
                  stp_edge: Optional[bool] = None,
+                 stp_no_root_port: Optional[bool] = None,
+                 stp_p2p: Optional[bool] = None,
                  voip_network: Optional[str] = None):
         """
         :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
@@ -9044,6 +9051,10 @@ class SwitchPortUsages(dict):
             pulumi.set(__self__, "storm_control", storm_control)
         if stp_edge is not None:
             pulumi.set(__self__, "stp_edge", stp_edge)
+        if stp_no_root_port is not None:
+            pulumi.set(__self__, "stp_no_root_port", stp_no_root_port)
+        if stp_p2p is not None:
+            pulumi.set(__self__, "stp_p2p", stp_p2p)
         if voip_network is not None:
             pulumi.set(__self__, "voip_network", voip_network)
 
@@ -9298,6 +9309,16 @@ class SwitchPortUsages(dict):
         Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         """
         return pulumi.get(self, "stp_edge")
+
+    @property
+    @pulumi.getter(name="stpNoRootPort")
+    def stp_no_root_port(self) -> Optional[bool]:
+        return pulumi.get(self, "stp_no_root_port")
+
+    @property
+    @pulumi.getter(name="stpP2p")
+    def stp_p2p(self) -> Optional[bool]:
+        return pulumi.get(self, "stp_p2p")
 
     @property
     @pulumi.getter(name="voipNetwork")
@@ -11501,12 +11522,28 @@ class SwitchSwitchMgmt(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configRevert":
-            suggest = "config_revert"
+        if key == "apAffinityThreshold":
+            suggest = "ap_affinity_threshold"
+        elif key == "cliBanner":
+            suggest = "cli_banner"
+        elif key == "cliIdleTimeout":
+            suggest = "cli_idle_timeout"
+        elif key == "configRevertTimer":
+            suggest = "config_revert_timer"
+        elif key == "dhcpOptionFqdn":
+            suggest = "dhcp_option_fqdn"
+        elif key == "localAccounts":
+            suggest = "local_accounts"
+        elif key == "mxedgeProxyHost":
+            suggest = "mxedge_proxy_host"
+        elif key == "mxedgeProxyPort":
+            suggest = "mxedge_proxy_port"
         elif key == "protectRe":
             suggest = "protect_re"
         elif key == "rootPassword":
             suggest = "root_password"
+        elif key == "useMxedgeProxy":
+            suggest = "use_mxedge_proxy"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SwitchSwitchMgmt. Access the value via the '{suggest}' property getter instead.")
@@ -11520,28 +11557,112 @@ class SwitchSwitchMgmt(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config_revert: Optional[int] = None,
+                 ap_affinity_threshold: Optional[int] = None,
+                 cli_banner: Optional[str] = None,
+                 cli_idle_timeout: Optional[int] = None,
+                 config_revert_timer: Optional[int] = None,
+                 dhcp_option_fqdn: Optional[bool] = None,
+                 local_accounts: Optional[Mapping[str, 'outputs.SwitchSwitchMgmtLocalAccounts']] = None,
+                 mxedge_proxy_host: Optional[str] = None,
+                 mxedge_proxy_port: Optional[int] = None,
                  protect_re: Optional['outputs.SwitchSwitchMgmtProtectRe'] = None,
                  root_password: Optional[str] = None,
-                 tacacs: Optional['outputs.SwitchSwitchMgmtTacacs'] = None):
+                 tacacs: Optional['outputs.SwitchSwitchMgmtTacacs'] = None,
+                 use_mxedge_proxy: Optional[bool] = None):
         """
+        :param int ap_affinity_threshold: ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        :param str cli_banner: Set Banners for switches. Allows markup formatting
+        :param int cli_idle_timeout: Sets timeout for switches
+        :param int config_revert_timer: the rollback timer for commit confirmed
+        :param bool dhcp_option_fqdn: Enable to provide the FQDN with DHCP option 81
+        :param Mapping[str, 'SwitchSwitchMgmtLocalAccountsArgs'] local_accounts: Property key is the user name. For Local user authentication
         :param 'SwitchSwitchMgmtProtectReArgs' protect_re: restrict inbound-traffic to host
                when enabled, all traffic that is not essential to our operation will be dropped 
                e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        :param bool use_mxedge_proxy: to use mxedge as proxy
         """
-        if config_revert is not None:
-            pulumi.set(__self__, "config_revert", config_revert)
+        if ap_affinity_threshold is not None:
+            pulumi.set(__self__, "ap_affinity_threshold", ap_affinity_threshold)
+        if cli_banner is not None:
+            pulumi.set(__self__, "cli_banner", cli_banner)
+        if cli_idle_timeout is not None:
+            pulumi.set(__self__, "cli_idle_timeout", cli_idle_timeout)
+        if config_revert_timer is not None:
+            pulumi.set(__self__, "config_revert_timer", config_revert_timer)
+        if dhcp_option_fqdn is not None:
+            pulumi.set(__self__, "dhcp_option_fqdn", dhcp_option_fqdn)
+        if local_accounts is not None:
+            pulumi.set(__self__, "local_accounts", local_accounts)
+        if mxedge_proxy_host is not None:
+            pulumi.set(__self__, "mxedge_proxy_host", mxedge_proxy_host)
+        if mxedge_proxy_port is not None:
+            pulumi.set(__self__, "mxedge_proxy_port", mxedge_proxy_port)
         if protect_re is not None:
             pulumi.set(__self__, "protect_re", protect_re)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
         if tacacs is not None:
             pulumi.set(__self__, "tacacs", tacacs)
+        if use_mxedge_proxy is not None:
+            pulumi.set(__self__, "use_mxedge_proxy", use_mxedge_proxy)
 
     @property
-    @pulumi.getter(name="configRevert")
-    def config_revert(self) -> Optional[int]:
-        return pulumi.get(self, "config_revert")
+    @pulumi.getter(name="apAffinityThreshold")
+    def ap_affinity_threshold(self) -> Optional[int]:
+        """
+        ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        """
+        return pulumi.get(self, "ap_affinity_threshold")
+
+    @property
+    @pulumi.getter(name="cliBanner")
+    def cli_banner(self) -> Optional[str]:
+        """
+        Set Banners for switches. Allows markup formatting
+        """
+        return pulumi.get(self, "cli_banner")
+
+    @property
+    @pulumi.getter(name="cliIdleTimeout")
+    def cli_idle_timeout(self) -> Optional[int]:
+        """
+        Sets timeout for switches
+        """
+        return pulumi.get(self, "cli_idle_timeout")
+
+    @property
+    @pulumi.getter(name="configRevertTimer")
+    def config_revert_timer(self) -> Optional[int]:
+        """
+        the rollback timer for commit confirmed
+        """
+        return pulumi.get(self, "config_revert_timer")
+
+    @property
+    @pulumi.getter(name="dhcpOptionFqdn")
+    def dhcp_option_fqdn(self) -> Optional[bool]:
+        """
+        Enable to provide the FQDN with DHCP option 81
+        """
+        return pulumi.get(self, "dhcp_option_fqdn")
+
+    @property
+    @pulumi.getter(name="localAccounts")
+    def local_accounts(self) -> Optional[Mapping[str, 'outputs.SwitchSwitchMgmtLocalAccounts']]:
+        """
+        Property key is the user name. For Local user authentication
+        """
+        return pulumi.get(self, "local_accounts")
+
+    @property
+    @pulumi.getter(name="mxedgeProxyHost")
+    def mxedge_proxy_host(self) -> Optional[str]:
+        return pulumi.get(self, "mxedge_proxy_host")
+
+    @property
+    @pulumi.getter(name="mxedgeProxyPort")
+    def mxedge_proxy_port(self) -> Optional[int]:
+        return pulumi.get(self, "mxedge_proxy_port")
 
     @property
     @pulumi.getter(name="protectRe")
@@ -11562,6 +11683,41 @@ class SwitchSwitchMgmt(dict):
     @pulumi.getter
     def tacacs(self) -> Optional['outputs.SwitchSwitchMgmtTacacs']:
         return pulumi.get(self, "tacacs")
+
+    @property
+    @pulumi.getter(name="useMxedgeProxy")
+    def use_mxedge_proxy(self) -> Optional[bool]:
+        """
+        to use mxedge as proxy
+        """
+        return pulumi.get(self, "use_mxedge_proxy")
+
+
+@pulumi.output_type
+class SwitchSwitchMgmtLocalAccounts(dict):
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 role: Optional[str] = None):
+        """
+        :param str role: enum: `admin`, `helpdesk`, `none`, `read`
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[str]:
+        """
+        enum: `admin`, `helpdesk`, `none`, `read`
+        """
+        return pulumi.get(self, "role")
 
 
 @pulumi.output_type

@@ -364,7 +364,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly radsec!: pulumi.Output<outputs.org.WlanRadsec | undefined>;
     /**
-     * enum: `11r`, `OKC`, `none`
+     * enum: `11r`, `OKC`, `NONE`
      */
     public readonly roamMode!: pulumi.Output<string>;
     /**
@@ -936,7 +936,7 @@ export interface WlanState {
      */
     radsec?: pulumi.Input<inputs.org.WlanRadsec>;
     /**
-     * enum: `11r`, `OKC`, `none`
+     * enum: `11r`, `OKC`, `NONE`
      */
     roamMode?: pulumi.Input<string>;
     /**
@@ -1282,7 +1282,7 @@ export interface WlanArgs {
      */
     radsec?: pulumi.Input<inputs.org.WlanRadsec>;
     /**
-     * enum: `11r`, `OKC`, `none`
+     * enum: `11r`, `OKC`, `NONE`
      */
     roamMode?: pulumi.Input<string>;
     /**

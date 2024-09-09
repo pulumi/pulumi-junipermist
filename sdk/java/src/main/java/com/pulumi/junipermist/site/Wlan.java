@@ -1105,14 +1105,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.radsec);
     }
     /**
-     * enum: `11r`, `OKC`, `none`
+     * enum: `11r`, `OKC`, `NONE`
      * 
      */
     @Export(name="roamMode", refs={String.class}, tree="[0]")
     private Output<String> roamMode;
 
     /**
-     * @return enum: `11r`, `OKC`, `none`
+     * @return enum: `11r`, `OKC`, `NONE`
      * 
      */
     public Output<String> roamMode() {

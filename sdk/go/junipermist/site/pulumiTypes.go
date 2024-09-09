@@ -11833,8 +11833,12 @@ type SettingGatewayMgmt struct {
 	AppUsage            *bool                                  `pulumi:"appUsage"`
 	AutoSignatureUpdate *SettingGatewayMgmtAutoSignatureUpdate `pulumi:"autoSignatureUpdate"`
 	// he rollback timer for commit confirmed
-	ConfigRevertTimer *int     `pulumi:"configRevertTimer"`
-	ProbeHosts        []string `pulumi:"probeHosts"`
+	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
+	// for both SSR and SRX disable console port
+	DisableConsole *bool `pulumi:"disableConsole"`
+	// for both SSR and SRX disable management interface
+	DisableOob *bool    `pulumi:"disableOob"`
+	ProbeHosts []string `pulumi:"probeHosts"`
 	// for SRX only
 	RootPassword               *string `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   *string `pulumi:"securityLogSourceAddress"`
@@ -11860,8 +11864,12 @@ type SettingGatewayMgmtArgs struct {
 	AppUsage            pulumi.BoolPtrInput                           `pulumi:"appUsage"`
 	AutoSignatureUpdate SettingGatewayMgmtAutoSignatureUpdatePtrInput `pulumi:"autoSignatureUpdate"`
 	// he rollback timer for commit confirmed
-	ConfigRevertTimer pulumi.IntPtrInput      `pulumi:"configRevertTimer"`
-	ProbeHosts        pulumi.StringArrayInput `pulumi:"probeHosts"`
+	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
+	// for both SSR and SRX disable console port
+	DisableConsole pulumi.BoolPtrInput `pulumi:"disableConsole"`
+	// for both SSR and SRX disable management interface
+	DisableOob pulumi.BoolPtrInput     `pulumi:"disableOob"`
+	ProbeHosts pulumi.StringArrayInput `pulumi:"probeHosts"`
 	// for SRX only
 	RootPassword               pulumi.StringPtrInput `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   pulumi.StringPtrInput `pulumi:"securityLogSourceAddress"`
@@ -11968,6 +11976,16 @@ func (o SettingGatewayMgmtOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *int { return v.ConfigRevertTimer }).(pulumi.IntPtrOutput)
 }
 
+// for both SSR and SRX disable console port
+func (o SettingGatewayMgmtOutput) DisableConsole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.DisableConsole }).(pulumi.BoolPtrOutput)
+}
+
+// for both SSR and SRX disable management interface
+func (o SettingGatewayMgmtOutput) DisableOob() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmt) *bool { return v.DisableOob }).(pulumi.BoolPtrOutput)
+}
+
 func (o SettingGatewayMgmtOutput) ProbeHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHosts }).(pulumi.StringArrayOutput)
 }
@@ -12055,6 +12073,26 @@ func (o SettingGatewayMgmtPtrOutput) ConfigRevertTimer() pulumi.IntPtrOutput {
 		}
 		return v.ConfigRevertTimer
 	}).(pulumi.IntPtrOutput)
+}
+
+// for both SSR and SRX disable console port
+func (o SettingGatewayMgmtPtrOutput) DisableConsole() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableConsole
+	}).(pulumi.BoolPtrOutput)
+}
+
+// for both SSR and SRX disable management interface
+func (o SettingGatewayMgmtPtrOutput) DisableOob() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOob
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o SettingGatewayMgmtPtrOutput) ProbeHosts() pulumi.StringArrayOutput {
@@ -12263,7 +12301,7 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type SettingGatewayMgmtAppProbingCustomApp struct {
 	// if `protocol`==`icmp`
-	Address string  `pulumi:"address"`
+	Address *string `pulumi:"address"`
 	AppType *string `pulumi:"appType"`
 	// if `protocol`==`http`
 	Hostnames []string `pulumi:"hostnames"`
@@ -12289,7 +12327,7 @@ type SettingGatewayMgmtAppProbingCustomAppInput interface {
 
 type SettingGatewayMgmtAppProbingCustomAppArgs struct {
 	// if `protocol`==`icmp`
-	Address pulumi.StringInput    `pulumi:"address"`
+	Address pulumi.StringPtrInput `pulumi:"address"`
 	AppType pulumi.StringPtrInput `pulumi:"appType"`
 	// if `protocol`==`http`
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
@@ -12354,8 +12392,8 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) ToSettingGatewayMgmtAppProb
 }
 
 // if `protocol`==`icmp`
-func (o SettingGatewayMgmtAppProbingCustomAppOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) string { return v.Address }).(pulumi.StringOutput)
+func (o SettingGatewayMgmtAppProbingCustomAppOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) AppType() pulumi.StringPtrOutput {
@@ -19787,8 +19825,10 @@ type WlanPortal struct {
 	SponsorNotifyAll *bool `pulumi:"sponsorNotifyAll"`
 	// if enabled, guest will get email about sponsor's action (approve/deny)
 	SponsorStatusNotify *bool `pulumi:"sponsorStatusNotify"`
-	// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-	// Property key is the sponsor email, Property value is the sponsor name
+	// object of allowed sponsors email with name. Required if `sponsorEnabled`
+	//             is `true` and `sponsorEmailDomains` is empty.
+	//
+	//             Property key is the sponsor email, Property value is the sponsor name
 	Sponsors map[string]string `pulumi:"sponsors"`
 	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole *string `pulumi:"ssoDefaultRole"`
@@ -19950,8 +19990,10 @@ type WlanPortalArgs struct {
 	SponsorNotifyAll pulumi.BoolPtrInput `pulumi:"sponsorNotifyAll"`
 	// if enabled, guest will get email about sponsor's action (approve/deny)
 	SponsorStatusNotify pulumi.BoolPtrInput `pulumi:"sponsorStatusNotify"`
-	// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-	// Property key is the sponsor email, Property value is the sponsor name
+	// object of allowed sponsors email with name. Required if `sponsorEnabled`
+	//             is `true` and `sponsorEmailDomains` is empty.
+	//
+	//             Property key is the sponsor email, Property value is the sponsor name
 	Sponsors pulumi.StringMapInput `pulumi:"sponsors"`
 	// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole pulumi.StringPtrInput `pulumi:"ssoDefaultRole"`
@@ -20358,8 +20400,11 @@ func (o WlanPortalOutput) SponsorStatusNotify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorStatusNotify }).(pulumi.BoolPtrOutput)
 }
 
-// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-// Property key is the sponsor email, Property value is the sponsor name
+// object of allowed sponsors email with name. Required if `sponsorEnabled`
+//
+//	is `true` and `sponsorEmailDomains` is empty.
+//
+//	Property key is the sponsor email, Property value is the sponsor name
 func (o WlanPortalOutput) Sponsors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WlanPortal) map[string]string { return v.Sponsors }).(pulumi.StringMapOutput)
 }
@@ -21050,8 +21095,11 @@ func (o WlanPortalPtrOutput) SponsorStatusNotify() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// object of allowed sponsors email with name. Required if `sponsorEnabled` is `true` and `sponsorEmailDomains` is empty.
-// Property key is the sponsor email, Property value is the sponsor name
+// object of allowed sponsors email with name. Required if `sponsorEnabled`
+//
+//	is `true` and `sponsorEmailDomains` is empty.
+//
+//	Property key is the sponsor email, Property value is the sponsor name
 func (o WlanPortalPtrOutput) Sponsors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WlanPortal) map[string]string {
 		if v == nil {
@@ -21178,6 +21226,3163 @@ func (o WlanPortalPtrOutput) TwilioSid() pulumi.StringPtrOutput {
 		}
 		return v.TwilioSid
 	}).(pulumi.StringPtrOutput)
+}
+
+type WlanPortalTemplatePortalTemplate struct {
+	AccessCodeAlternateEmail *string `pulumi:"accessCodeAlternateEmail"`
+	// defines alignment on portal. enum: `center`, `left`, `right`
+	Alignment *string `pulumi:"alignment"`
+	// label for Amazon auth button
+	AuthButtonAmazon *string `pulumi:"authButtonAmazon"`
+	// label for Azure auth button
+	AuthButtonAzure *string `pulumi:"authButtonAzure"`
+	// label for Email auth button
+	AuthButtonEmail *string `pulumi:"authButtonEmail"`
+	// label for Facebook auth button
+	AuthButtonFacebook *string `pulumi:"authButtonFacebook"`
+	// label for Google auth button
+	AuthButtonGoogle *string `pulumi:"authButtonGoogle"`
+	// label for Microsoft auth button
+	AuthButtonMicrosoft *string `pulumi:"authButtonMicrosoft"`
+	// label for passphrase auth button
+	AuthButtonPassphrase *string `pulumi:"authButtonPassphrase"`
+	// label for SMS auth button
+	AuthButtonSms *string `pulumi:"authButtonSms"`
+	// label for Sponsor auth button
+	AuthButtonSponsor *string `pulumi:"authButtonSponsor"`
+	AuthLabel         *string `pulumi:"authLabel"`
+	// label of the link to go back to /logon
+	BackLink *string `pulumi:"backLink"`
+	// Portal main color
+	Color      *string `pulumi:"color"`
+	ColorDark  *string `pulumi:"colorDark"`
+	ColorLight *string `pulumi:"colorLight"`
+	// whether company field is required
+	Company *bool `pulumi:"company"`
+	// error message when company not provided
+	CompanyError *string `pulumi:"companyError"`
+	// label of company field
+	CompanyLabel *string `pulumi:"companyLabel"`
+	// whether email field is required
+	Email *bool `pulumi:"email"`
+	// error message when a user has valid social login but doesn't match specified email domains.
+	EmailAccessDomainError *string `pulumi:"emailAccessDomainError"`
+	// Label for cancel confirmation code submission using email auth
+	EmailCancel         *string `pulumi:"emailCancel"`
+	EmailCodeCancel     *string `pulumi:"emailCodeCancel"`
+	EmailCodeError      *string `pulumi:"emailCodeError"`
+	EmailCodeFieldLabel *string `pulumi:"emailCodeFieldLabel"`
+	EmailCodeMessage    *string `pulumi:"emailCodeMessage"`
+	EmailCodeSubmit     *string `pulumi:"emailCodeSubmit"`
+	EmailCodeTitle      *string `pulumi:"emailCodeTitle"`
+	// error message when email not provided
+	EmailError      *string `pulumi:"emailError"`
+	EmailFieldLabel *string `pulumi:"emailFieldLabel"`
+	// label of email field
+	EmailLabel   *string `pulumi:"emailLabel"`
+	EmailMessage *string `pulumi:"emailMessage"`
+	// Label for confirmation code submit button using email auth
+	EmailSubmit *string `pulumi:"emailSubmit"`
+	// Title for the Email registration
+	EmailTitle *string `pulumi:"emailTitle"`
+	// whether to ask field1
+	Field1 *bool `pulumi:"field1"`
+	// error message when field1 not provided
+	Field1error *string `pulumi:"field1error"`
+	// label of field1
+	Field1label *string `pulumi:"field1label"`
+	// whether field1 is required field
+	Field1required *bool `pulumi:"field1required"`
+	// whether to ask field2
+	Field2 *bool `pulumi:"field2"`
+	// error message when field2 not provided
+	Field2error *string `pulumi:"field2error"`
+	// label of field2
+	Field2label *string `pulumi:"field2label"`
+	// whether field2 is required field
+	Field2required *bool `pulumi:"field2required"`
+	// whether to ask field3
+	Field3 *bool `pulumi:"field3"`
+	// error message when field3 not provided
+	Field3error *string `pulumi:"field3error"`
+	// label of field3
+	Field3label *string `pulumi:"field3label"`
+	// whether field3 is required field
+	Field3required *bool `pulumi:"field3required"`
+	// whether to ask field4
+	Field4 *bool `pulumi:"field4"`
+	// error message when field4 not provided
+	Field4error *string `pulumi:"field4error"`
+	// label of field4
+	Field4label *string `pulumi:"field4label"`
+	// whether field4 is required field
+	Field4required *bool `pulumi:"field4required"`
+	// Can be used to localize the portal based on the User Agent. Allowed property key values are:
+	//       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES",
+	//       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP",
+	//       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU",
+	//       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+	Locales   map[string]WlanPortalTemplatePortalTemplateLocales `pulumi:"locales"`
+	Message   *string                                            `pulumi:"message"`
+	MultiAuth *bool                                              `pulumi:"multiAuth"`
+	// whether name field is required
+	Name *bool `pulumi:"name"`
+	// error message when name not provided
+	NameError *string `pulumi:"nameError"`
+	// label of name field
+	NameLabel *string `pulumi:"nameLabel"`
+	// Default value for the `Do not store` checkbox
+	OptOutDefault *bool `pulumi:"optOutDefault"`
+	// whether to display Do Not Store My Personal Information
+	Optout *bool `pulumi:"optout"`
+	// label for Do Not Store My Personal Information
+	OptoutLabel *string `pulumi:"optoutLabel"`
+	PageTitle   *string `pulumi:"pageTitle"`
+	// Label for the Passphrase cancel button
+	PassphraseCancel *string `pulumi:"passphraseCancel"`
+	// error message when invalid passphrase is provided
+	PassphraseError *string `pulumi:"passphraseError"`
+	// Passphrase
+	PassphraseLabel   *string `pulumi:"passphraseLabel"`
+	PassphraseMessage *string `pulumi:"passphraseMessage"`
+	// Label for the Passphrase submit button
+	PassphraseSubmit *string `pulumi:"passphraseSubmit"`
+	// Title for passphrase details page
+	PassphraseTitle *string `pulumi:"passphraseTitle"`
+	// whether to show \"Powered by Mist\"
+	PoweredBy *bool `pulumi:"poweredBy"`
+	// wheter to require the Privacy Term acceptance
+	Privacy *bool `pulumi:"privacy"`
+	// prefix of the label of the link to go to Privacy Policy
+	PrivacyPolicyAcceptLabel *string `pulumi:"privacyPolicyAcceptLabel"`
+	// error message when Privacy Policy not accepted
+	PrivacyPolicyError *string `pulumi:"privacyPolicyError"`
+	// label of the link to go to Privacy Policy
+	PrivacyPolicyLink *string `pulumi:"privacyPolicyLink"`
+	// text of the Privacy Policy
+	PrivacyPolicyText *string `pulumi:"privacyPolicyText"`
+	// label to denote required field
+	RequiredFieldLabel *string `pulumi:"requiredFieldLabel"`
+	ResponsiveLayout   *bool   `pulumi:"responsiveLayout"`
+	// label of the button to /signin
+	SignInLabel       *string `pulumi:"signInLabel"`
+	SmsCarrierDefault *string `pulumi:"smsCarrierDefault"`
+	SmsCarrierError   *string `pulumi:"smsCarrierError"`
+	// label for mobile carrier drop-down list
+	SmsCarrierFieldLabel *string `pulumi:"smsCarrierFieldLabel"`
+	// Label for cancel confirmation code submission
+	SmsCodeCancel *string `pulumi:"smsCodeCancel"`
+	// error message when confirmation code is invalid
+	SmsCodeError      *string `pulumi:"smsCodeError"`
+	SmsCodeFieldLabel *string `pulumi:"smsCodeFieldLabel"`
+	SmsCodeMessage    *string `pulumi:"smsCodeMessage"`
+	// Label for confirmation code submit button
+	SmsCodeSubmit        *string `pulumi:"smsCodeSubmit"`
+	SmsCodeTitle         *string `pulumi:"smsCodeTitle"`
+	SmsCountryFieldLabel *string `pulumi:"smsCountryFieldLabel"`
+	SmsCountryFormat     *string `pulumi:"smsCountryFormat"`
+	// Label for checkbox to specify that the user has access code
+	SmsHaveAccessCode *string `pulumi:"smsHaveAccessCode"`
+	SmsIsTwilio       *bool   `pulumi:"smsIsTwilio"`
+	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
+	// label for canceling mobile details for SMS auth
+	SmsNumberCancel *string `pulumi:"smsNumberCancel"`
+	SmsNumberError  *string `pulumi:"smsNumberError"`
+	// label for field to provide mobile number
+	SmsNumberFieldLabel *string `pulumi:"smsNumberFieldLabel"`
+	SmsNumberFormat     *string `pulumi:"smsNumberFormat"`
+	SmsNumberMessage    *string `pulumi:"smsNumberMessage"`
+	// label for submit button for code generation
+	SmsNumberSubmit *string `pulumi:"smsNumberSubmit"`
+	// Title for phone number details
+	SmsNumberTitle    *string `pulumi:"smsNumberTitle"`
+	SmsUsernameFormat *string `pulumi:"smsUsernameFormat"`
+	// how long confirmation code should be considered valid (in minutes)
+	SmsValidityDuration *int    `pulumi:"smsValidityDuration"`
+	SponsorBackLink     *string `pulumi:"sponsorBackLink"`
+	SponsorCancel       *string `pulumi:"sponsorCancel"`
+	// label for Sponsor Email
+	SponsorEmail      *string `pulumi:"sponsorEmail"`
+	SponsorEmailError *string `pulumi:"sponsorEmailError"`
+	// html template to replace/override default sponsor email template
+	// Sponsor Email Template supports following template variables:
+	//   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+	//   * `denyUrl`: Renders URL to reject the request
+	//   * `guestEmail`: Renders Email ID of the guest
+	//   * `guestName`: Renders Name of the guest
+	//   * `field1`: Renders value of the Custom Field 1
+	//   * `field2`: Renders value of the Custom Field 2
+	//   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+	//   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+	SponsorEmailTemplate *string `pulumi:"sponsorEmailTemplate"`
+	SponsorInfoApproved  *string `pulumi:"sponsorInfoApproved"`
+	SponsorInfoDenied    *string `pulumi:"sponsorInfoDenied"`
+	SponsorInfoPending   *string `pulumi:"sponsorInfoPending"`
+	// label for Sponsor Name
+	SponsorName        *string `pulumi:"sponsorName"`
+	SponsorNameError   *string `pulumi:"sponsorNameError"`
+	SponsorNotePending *string `pulumi:"sponsorNotePending"`
+	// submit button label request Wifi Access and notify sponsor about guest request
+	SponsorRequestAccess *string `pulumi:"sponsorRequestAccess"`
+	// text to display if sponsor approves request
+	SponsorStatusApproved *string `pulumi:"sponsorStatusApproved"`
+	// text to display when sponsor denies request
+	SponsorStatusDenied *string `pulumi:"sponsorStatusDenied"`
+	// text to display if request is still pending
+	SponsorStatusPending *string `pulumi:"sponsorStatusPending"`
+	// submit button label to notify sponsor about guest request
+	SponsorSubmit      *string `pulumi:"sponsorSubmit"`
+	SponsorsError      *string `pulumi:"sponsorsError"`
+	SponsorsFieldLabel *string `pulumi:"sponsorsFieldLabel"`
+	Tos                *bool   `pulumi:"tos"`
+	// prefix of the label of the link to go to tos
+	TosAcceptLabel *string `pulumi:"tosAcceptLabel"`
+	// error message when tos not accepted
+	TosError *string `pulumi:"tosError"`
+	// label of the link to go to tos
+	TosLink *string `pulumi:"tosLink"`
+	// text of the Terms of Service
+	TosText *string `pulumi:"tosText"`
+}
+
+// WlanPortalTemplatePortalTemplateInput is an input type that accepts WlanPortalTemplatePortalTemplateArgs and WlanPortalTemplatePortalTemplateOutput values.
+// You can construct a concrete instance of `WlanPortalTemplatePortalTemplateInput` via:
+//
+//	WlanPortalTemplatePortalTemplateArgs{...}
+type WlanPortalTemplatePortalTemplateInput interface {
+	pulumi.Input
+
+	ToWlanPortalTemplatePortalTemplateOutput() WlanPortalTemplatePortalTemplateOutput
+	ToWlanPortalTemplatePortalTemplateOutputWithContext(context.Context) WlanPortalTemplatePortalTemplateOutput
+}
+
+type WlanPortalTemplatePortalTemplateArgs struct {
+	AccessCodeAlternateEmail pulumi.StringPtrInput `pulumi:"accessCodeAlternateEmail"`
+	// defines alignment on portal. enum: `center`, `left`, `right`
+	Alignment pulumi.StringPtrInput `pulumi:"alignment"`
+	// label for Amazon auth button
+	AuthButtonAmazon pulumi.StringPtrInput `pulumi:"authButtonAmazon"`
+	// label for Azure auth button
+	AuthButtonAzure pulumi.StringPtrInput `pulumi:"authButtonAzure"`
+	// label for Email auth button
+	AuthButtonEmail pulumi.StringPtrInput `pulumi:"authButtonEmail"`
+	// label for Facebook auth button
+	AuthButtonFacebook pulumi.StringPtrInput `pulumi:"authButtonFacebook"`
+	// label for Google auth button
+	AuthButtonGoogle pulumi.StringPtrInput `pulumi:"authButtonGoogle"`
+	// label for Microsoft auth button
+	AuthButtonMicrosoft pulumi.StringPtrInput `pulumi:"authButtonMicrosoft"`
+	// label for passphrase auth button
+	AuthButtonPassphrase pulumi.StringPtrInput `pulumi:"authButtonPassphrase"`
+	// label for SMS auth button
+	AuthButtonSms pulumi.StringPtrInput `pulumi:"authButtonSms"`
+	// label for Sponsor auth button
+	AuthButtonSponsor pulumi.StringPtrInput `pulumi:"authButtonSponsor"`
+	AuthLabel         pulumi.StringPtrInput `pulumi:"authLabel"`
+	// label of the link to go back to /logon
+	BackLink pulumi.StringPtrInput `pulumi:"backLink"`
+	// Portal main color
+	Color      pulumi.StringPtrInput `pulumi:"color"`
+	ColorDark  pulumi.StringPtrInput `pulumi:"colorDark"`
+	ColorLight pulumi.StringPtrInput `pulumi:"colorLight"`
+	// whether company field is required
+	Company pulumi.BoolPtrInput `pulumi:"company"`
+	// error message when company not provided
+	CompanyError pulumi.StringPtrInput `pulumi:"companyError"`
+	// label of company field
+	CompanyLabel pulumi.StringPtrInput `pulumi:"companyLabel"`
+	// whether email field is required
+	Email pulumi.BoolPtrInput `pulumi:"email"`
+	// error message when a user has valid social login but doesn't match specified email domains.
+	EmailAccessDomainError pulumi.StringPtrInput `pulumi:"emailAccessDomainError"`
+	// Label for cancel confirmation code submission using email auth
+	EmailCancel         pulumi.StringPtrInput `pulumi:"emailCancel"`
+	EmailCodeCancel     pulumi.StringPtrInput `pulumi:"emailCodeCancel"`
+	EmailCodeError      pulumi.StringPtrInput `pulumi:"emailCodeError"`
+	EmailCodeFieldLabel pulumi.StringPtrInput `pulumi:"emailCodeFieldLabel"`
+	EmailCodeMessage    pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
+	EmailCodeSubmit     pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
+	EmailCodeTitle      pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
+	// error message when email not provided
+	EmailError      pulumi.StringPtrInput `pulumi:"emailError"`
+	EmailFieldLabel pulumi.StringPtrInput `pulumi:"emailFieldLabel"`
+	// label of email field
+	EmailLabel   pulumi.StringPtrInput `pulumi:"emailLabel"`
+	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	// Label for confirmation code submit button using email auth
+	EmailSubmit pulumi.StringPtrInput `pulumi:"emailSubmit"`
+	// Title for the Email registration
+	EmailTitle pulumi.StringPtrInput `pulumi:"emailTitle"`
+	// whether to ask field1
+	Field1 pulumi.BoolPtrInput `pulumi:"field1"`
+	// error message when field1 not provided
+	Field1error pulumi.StringPtrInput `pulumi:"field1error"`
+	// label of field1
+	Field1label pulumi.StringPtrInput `pulumi:"field1label"`
+	// whether field1 is required field
+	Field1required pulumi.BoolPtrInput `pulumi:"field1required"`
+	// whether to ask field2
+	Field2 pulumi.BoolPtrInput `pulumi:"field2"`
+	// error message when field2 not provided
+	Field2error pulumi.StringPtrInput `pulumi:"field2error"`
+	// label of field2
+	Field2label pulumi.StringPtrInput `pulumi:"field2label"`
+	// whether field2 is required field
+	Field2required pulumi.BoolPtrInput `pulumi:"field2required"`
+	// whether to ask field3
+	Field3 pulumi.BoolPtrInput `pulumi:"field3"`
+	// error message when field3 not provided
+	Field3error pulumi.StringPtrInput `pulumi:"field3error"`
+	// label of field3
+	Field3label pulumi.StringPtrInput `pulumi:"field3label"`
+	// whether field3 is required field
+	Field3required pulumi.BoolPtrInput `pulumi:"field3required"`
+	// whether to ask field4
+	Field4 pulumi.BoolPtrInput `pulumi:"field4"`
+	// error message when field4 not provided
+	Field4error pulumi.StringPtrInput `pulumi:"field4error"`
+	// label of field4
+	Field4label pulumi.StringPtrInput `pulumi:"field4label"`
+	// whether field4 is required field
+	Field4required pulumi.BoolPtrInput `pulumi:"field4required"`
+	// Can be used to localize the portal based on the User Agent. Allowed property key values are:
+	//       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES",
+	//       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP",
+	//       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU",
+	//       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+	Locales   WlanPortalTemplatePortalTemplateLocalesMapInput `pulumi:"locales"`
+	Message   pulumi.StringPtrInput                           `pulumi:"message"`
+	MultiAuth pulumi.BoolPtrInput                             `pulumi:"multiAuth"`
+	// whether name field is required
+	Name pulumi.BoolPtrInput `pulumi:"name"`
+	// error message when name not provided
+	NameError pulumi.StringPtrInput `pulumi:"nameError"`
+	// label of name field
+	NameLabel pulumi.StringPtrInput `pulumi:"nameLabel"`
+	// Default value for the `Do not store` checkbox
+	OptOutDefault pulumi.BoolPtrInput `pulumi:"optOutDefault"`
+	// whether to display Do Not Store My Personal Information
+	Optout pulumi.BoolPtrInput `pulumi:"optout"`
+	// label for Do Not Store My Personal Information
+	OptoutLabel pulumi.StringPtrInput `pulumi:"optoutLabel"`
+	PageTitle   pulumi.StringPtrInput `pulumi:"pageTitle"`
+	// Label for the Passphrase cancel button
+	PassphraseCancel pulumi.StringPtrInput `pulumi:"passphraseCancel"`
+	// error message when invalid passphrase is provided
+	PassphraseError pulumi.StringPtrInput `pulumi:"passphraseError"`
+	// Passphrase
+	PassphraseLabel   pulumi.StringPtrInput `pulumi:"passphraseLabel"`
+	PassphraseMessage pulumi.StringPtrInput `pulumi:"passphraseMessage"`
+	// Label for the Passphrase submit button
+	PassphraseSubmit pulumi.StringPtrInput `pulumi:"passphraseSubmit"`
+	// Title for passphrase details page
+	PassphraseTitle pulumi.StringPtrInput `pulumi:"passphraseTitle"`
+	// whether to show \"Powered by Mist\"
+	PoweredBy pulumi.BoolPtrInput `pulumi:"poweredBy"`
+	// wheter to require the Privacy Term acceptance
+	Privacy pulumi.BoolPtrInput `pulumi:"privacy"`
+	// prefix of the label of the link to go to Privacy Policy
+	PrivacyPolicyAcceptLabel pulumi.StringPtrInput `pulumi:"privacyPolicyAcceptLabel"`
+	// error message when Privacy Policy not accepted
+	PrivacyPolicyError pulumi.StringPtrInput `pulumi:"privacyPolicyError"`
+	// label of the link to go to Privacy Policy
+	PrivacyPolicyLink pulumi.StringPtrInput `pulumi:"privacyPolicyLink"`
+	// text of the Privacy Policy
+	PrivacyPolicyText pulumi.StringPtrInput `pulumi:"privacyPolicyText"`
+	// label to denote required field
+	RequiredFieldLabel pulumi.StringPtrInput `pulumi:"requiredFieldLabel"`
+	ResponsiveLayout   pulumi.BoolPtrInput   `pulumi:"responsiveLayout"`
+	// label of the button to /signin
+	SignInLabel       pulumi.StringPtrInput `pulumi:"signInLabel"`
+	SmsCarrierDefault pulumi.StringPtrInput `pulumi:"smsCarrierDefault"`
+	SmsCarrierError   pulumi.StringPtrInput `pulumi:"smsCarrierError"`
+	// label for mobile carrier drop-down list
+	SmsCarrierFieldLabel pulumi.StringPtrInput `pulumi:"smsCarrierFieldLabel"`
+	// Label for cancel confirmation code submission
+	SmsCodeCancel pulumi.StringPtrInput `pulumi:"smsCodeCancel"`
+	// error message when confirmation code is invalid
+	SmsCodeError      pulumi.StringPtrInput `pulumi:"smsCodeError"`
+	SmsCodeFieldLabel pulumi.StringPtrInput `pulumi:"smsCodeFieldLabel"`
+	SmsCodeMessage    pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
+	// Label for confirmation code submit button
+	SmsCodeSubmit        pulumi.StringPtrInput `pulumi:"smsCodeSubmit"`
+	SmsCodeTitle         pulumi.StringPtrInput `pulumi:"smsCodeTitle"`
+	SmsCountryFieldLabel pulumi.StringPtrInput `pulumi:"smsCountryFieldLabel"`
+	SmsCountryFormat     pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
+	// Label for checkbox to specify that the user has access code
+	SmsHaveAccessCode pulumi.StringPtrInput `pulumi:"smsHaveAccessCode"`
+	SmsIsTwilio       pulumi.BoolPtrInput   `pulumi:"smsIsTwilio"`
+	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
+	// label for canceling mobile details for SMS auth
+	SmsNumberCancel pulumi.StringPtrInput `pulumi:"smsNumberCancel"`
+	SmsNumberError  pulumi.StringPtrInput `pulumi:"smsNumberError"`
+	// label for field to provide mobile number
+	SmsNumberFieldLabel pulumi.StringPtrInput `pulumi:"smsNumberFieldLabel"`
+	SmsNumberFormat     pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
+	SmsNumberMessage    pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
+	// label for submit button for code generation
+	SmsNumberSubmit pulumi.StringPtrInput `pulumi:"smsNumberSubmit"`
+	// Title for phone number details
+	SmsNumberTitle    pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
+	SmsUsernameFormat pulumi.StringPtrInput `pulumi:"smsUsernameFormat"`
+	// how long confirmation code should be considered valid (in minutes)
+	SmsValidityDuration pulumi.IntPtrInput    `pulumi:"smsValidityDuration"`
+	SponsorBackLink     pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
+	SponsorCancel       pulumi.StringPtrInput `pulumi:"sponsorCancel"`
+	// label for Sponsor Email
+	SponsorEmail      pulumi.StringPtrInput `pulumi:"sponsorEmail"`
+	SponsorEmailError pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
+	// html template to replace/override default sponsor email template
+	// Sponsor Email Template supports following template variables:
+	//   * `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+	//   * `denyUrl`: Renders URL to reject the request
+	//   * `guestEmail`: Renders Email ID of the guest
+	//   * `guestName`: Renders Name of the guest
+	//   * `field1`: Renders value of the Custom Field 1
+	//   * `field2`: Renders value of the Custom Field 2
+	//   * `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+	//   * `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+	SponsorEmailTemplate pulumi.StringPtrInput `pulumi:"sponsorEmailTemplate"`
+	SponsorInfoApproved  pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
+	SponsorInfoDenied    pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
+	SponsorInfoPending   pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
+	// label for Sponsor Name
+	SponsorName        pulumi.StringPtrInput `pulumi:"sponsorName"`
+	SponsorNameError   pulumi.StringPtrInput `pulumi:"sponsorNameError"`
+	SponsorNotePending pulumi.StringPtrInput `pulumi:"sponsorNotePending"`
+	// submit button label request Wifi Access and notify sponsor about guest request
+	SponsorRequestAccess pulumi.StringPtrInput `pulumi:"sponsorRequestAccess"`
+	// text to display if sponsor approves request
+	SponsorStatusApproved pulumi.StringPtrInput `pulumi:"sponsorStatusApproved"`
+	// text to display when sponsor denies request
+	SponsorStatusDenied pulumi.StringPtrInput `pulumi:"sponsorStatusDenied"`
+	// text to display if request is still pending
+	SponsorStatusPending pulumi.StringPtrInput `pulumi:"sponsorStatusPending"`
+	// submit button label to notify sponsor about guest request
+	SponsorSubmit      pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
+	SponsorsError      pulumi.StringPtrInput `pulumi:"sponsorsError"`
+	SponsorsFieldLabel pulumi.StringPtrInput `pulumi:"sponsorsFieldLabel"`
+	Tos                pulumi.BoolPtrInput   `pulumi:"tos"`
+	// prefix of the label of the link to go to tos
+	TosAcceptLabel pulumi.StringPtrInput `pulumi:"tosAcceptLabel"`
+	// error message when tos not accepted
+	TosError pulumi.StringPtrInput `pulumi:"tosError"`
+	// label of the link to go to tos
+	TosLink pulumi.StringPtrInput `pulumi:"tosLink"`
+	// text of the Terms of Service
+	TosText pulumi.StringPtrInput `pulumi:"tosText"`
+}
+
+func (WlanPortalTemplatePortalTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlanPortalTemplatePortalTemplate)(nil)).Elem()
+}
+
+func (i WlanPortalTemplatePortalTemplateArgs) ToWlanPortalTemplatePortalTemplateOutput() WlanPortalTemplatePortalTemplateOutput {
+	return i.ToWlanPortalTemplatePortalTemplateOutputWithContext(context.Background())
+}
+
+func (i WlanPortalTemplatePortalTemplateArgs) ToWlanPortalTemplatePortalTemplateOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanPortalTemplatePortalTemplateOutput)
+}
+
+func (i WlanPortalTemplatePortalTemplateArgs) ToWlanPortalTemplatePortalTemplatePtrOutput() WlanPortalTemplatePortalTemplatePtrOutput {
+	return i.ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i WlanPortalTemplatePortalTemplateArgs) ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanPortalTemplatePortalTemplateOutput).ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(ctx)
+}
+
+// WlanPortalTemplatePortalTemplatePtrInput is an input type that accepts WlanPortalTemplatePortalTemplateArgs, WlanPortalTemplatePortalTemplatePtr and WlanPortalTemplatePortalTemplatePtrOutput values.
+// You can construct a concrete instance of `WlanPortalTemplatePortalTemplatePtrInput` via:
+//
+//	        WlanPortalTemplatePortalTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type WlanPortalTemplatePortalTemplatePtrInput interface {
+	pulumi.Input
+
+	ToWlanPortalTemplatePortalTemplatePtrOutput() WlanPortalTemplatePortalTemplatePtrOutput
+	ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(context.Context) WlanPortalTemplatePortalTemplatePtrOutput
+}
+
+type wlanPortalTemplatePortalTemplatePtrType WlanPortalTemplatePortalTemplateArgs
+
+func WlanPortalTemplatePortalTemplatePtr(v *WlanPortalTemplatePortalTemplateArgs) WlanPortalTemplatePortalTemplatePtrInput {
+	return (*wlanPortalTemplatePortalTemplatePtrType)(v)
+}
+
+func (*wlanPortalTemplatePortalTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlanPortalTemplatePortalTemplate)(nil)).Elem()
+}
+
+func (i *wlanPortalTemplatePortalTemplatePtrType) ToWlanPortalTemplatePortalTemplatePtrOutput() WlanPortalTemplatePortalTemplatePtrOutput {
+	return i.ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *wlanPortalTemplatePortalTemplatePtrType) ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanPortalTemplatePortalTemplatePtrOutput)
+}
+
+type WlanPortalTemplatePortalTemplateOutput struct{ *pulumi.OutputState }
+
+func (WlanPortalTemplatePortalTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlanPortalTemplatePortalTemplate)(nil)).Elem()
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ToWlanPortalTemplatePortalTemplateOutput() WlanPortalTemplatePortalTemplateOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ToWlanPortalTemplatePortalTemplateOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplateOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ToWlanPortalTemplatePortalTemplatePtrOutput() WlanPortalTemplatePortalTemplatePtrOutput {
+	return o.ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanPortalTemplatePortalTemplate) *WlanPortalTemplatePortalTemplate {
+		return &v
+	}).(WlanPortalTemplatePortalTemplatePtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) AccessCodeAlternateEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AccessCodeAlternateEmail }).(pulumi.StringPtrOutput)
+}
+
+// defines alignment on portal. enum: `center`, `left`, `right`
+func (o WlanPortalTemplatePortalTemplateOutput) Alignment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Alignment }).(pulumi.StringPtrOutput)
+}
+
+// label for Amazon auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonAmazon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonAmazon }).(pulumi.StringPtrOutput)
+}
+
+// label for Azure auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonAzure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonAzure }).(pulumi.StringPtrOutput)
+}
+
+// label for Email auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonEmail }).(pulumi.StringPtrOutput)
+}
+
+// label for Facebook auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonFacebook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonFacebook }).(pulumi.StringPtrOutput)
+}
+
+// label for Google auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonGoogle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonGoogle }).(pulumi.StringPtrOutput)
+}
+
+// label for Microsoft auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonMicrosoft() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonMicrosoft }).(pulumi.StringPtrOutput)
+}
+
+// label for passphrase auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonPassphrase }).(pulumi.StringPtrOutput)
+}
+
+// label for SMS auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonSms() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonSms }).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor auth button
+func (o WlanPortalTemplatePortalTemplateOutput) AuthButtonSponsor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthButtonSponsor }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) AuthLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.AuthLabel }).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go back to /logon
+func (o WlanPortalTemplatePortalTemplateOutput) BackLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.BackLink }).(pulumi.StringPtrOutput)
+}
+
+// Portal main color
+func (o WlanPortalTemplatePortalTemplateOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Color }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ColorDark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.ColorDark }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ColorLight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.ColorLight }).(pulumi.StringPtrOutput)
+}
+
+// whether company field is required
+func (o WlanPortalTemplatePortalTemplateOutput) Company() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Company }).(pulumi.BoolPtrOutput)
+}
+
+// error message when company not provided
+func (o WlanPortalTemplatePortalTemplateOutput) CompanyError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.CompanyError }).(pulumi.StringPtrOutput)
+}
+
+// label of company field
+func (o WlanPortalTemplatePortalTemplateOutput) CompanyLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.CompanyLabel }).(pulumi.StringPtrOutput)
+}
+
+// whether email field is required
+func (o WlanPortalTemplatePortalTemplateOutput) Email() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Email }).(pulumi.BoolPtrOutput)
+}
+
+// error message when a user has valid social login but doesn't match specified email domains.
+func (o WlanPortalTemplatePortalTemplateOutput) EmailAccessDomainError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailAccessDomainError }).(pulumi.StringPtrOutput)
+}
+
+// Label for cancel confirmation code submission using email auth
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCancel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeCancel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeMessage }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeSubmit }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailCodeTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailCodeTitle }).(pulumi.StringPtrOutput)
+}
+
+// error message when email not provided
+func (o WlanPortalTemplatePortalTemplateOutput) EmailError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+// label of email field
+func (o WlanPortalTemplatePortalTemplateOutput) EmailLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// Label for confirmation code submit button using email auth
+func (o WlanPortalTemplatePortalTemplateOutput) EmailSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailSubmit }).(pulumi.StringPtrOutput)
+}
+
+// Title for the Email registration
+func (o WlanPortalTemplatePortalTemplateOutput) EmailTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.EmailTitle }).(pulumi.StringPtrOutput)
+}
+
+// whether to ask field1
+func (o WlanPortalTemplatePortalTemplateOutput) Field1() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field1 }).(pulumi.BoolPtrOutput)
+}
+
+// error message when field1 not provided
+func (o WlanPortalTemplatePortalTemplateOutput) Field1error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field1error }).(pulumi.StringPtrOutput)
+}
+
+// label of field1
+func (o WlanPortalTemplatePortalTemplateOutput) Field1label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field1label }).(pulumi.StringPtrOutput)
+}
+
+// whether field1 is required field
+func (o WlanPortalTemplatePortalTemplateOutput) Field1required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field1required }).(pulumi.BoolPtrOutput)
+}
+
+// whether to ask field2
+func (o WlanPortalTemplatePortalTemplateOutput) Field2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field2 }).(pulumi.BoolPtrOutput)
+}
+
+// error message when field2 not provided
+func (o WlanPortalTemplatePortalTemplateOutput) Field2error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field2error }).(pulumi.StringPtrOutput)
+}
+
+// label of field2
+func (o WlanPortalTemplatePortalTemplateOutput) Field2label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field2label }).(pulumi.StringPtrOutput)
+}
+
+// whether field2 is required field
+func (o WlanPortalTemplatePortalTemplateOutput) Field2required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field2required }).(pulumi.BoolPtrOutput)
+}
+
+// whether to ask field3
+func (o WlanPortalTemplatePortalTemplateOutput) Field3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field3 }).(pulumi.BoolPtrOutput)
+}
+
+// error message when field3 not provided
+func (o WlanPortalTemplatePortalTemplateOutput) Field3error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field3error }).(pulumi.StringPtrOutput)
+}
+
+// label of field3
+func (o WlanPortalTemplatePortalTemplateOutput) Field3label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field3label }).(pulumi.StringPtrOutput)
+}
+
+// whether field3 is required field
+func (o WlanPortalTemplatePortalTemplateOutput) Field3required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field3required }).(pulumi.BoolPtrOutput)
+}
+
+// whether to ask field4
+func (o WlanPortalTemplatePortalTemplateOutput) Field4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field4 }).(pulumi.BoolPtrOutput)
+}
+
+// error message when field4 not provided
+func (o WlanPortalTemplatePortalTemplateOutput) Field4error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field4error }).(pulumi.StringPtrOutput)
+}
+
+// label of field4
+func (o WlanPortalTemplatePortalTemplateOutput) Field4label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Field4label }).(pulumi.StringPtrOutput)
+}
+
+// whether field4 is required field
+func (o WlanPortalTemplatePortalTemplateOutput) Field4required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Field4required }).(pulumi.BoolPtrOutput)
+}
+
+// Can be used to localize the portal based on the User Agent. Allowed property key values are:
+//
+//	"ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES",
+//	"fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP",
+//	"ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU",
+//	"sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+func (o WlanPortalTemplatePortalTemplateOutput) Locales() WlanPortalTemplatePortalTemplateLocalesMapOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) map[string]WlanPortalTemplatePortalTemplateLocales {
+		return v.Locales
+	}).(WlanPortalTemplatePortalTemplateLocalesMapOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) MultiAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.MultiAuth }).(pulumi.BoolPtrOutput)
+}
+
+// whether name field is required
+func (o WlanPortalTemplatePortalTemplateOutput) Name() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Name }).(pulumi.BoolPtrOutput)
+}
+
+// error message when name not provided
+func (o WlanPortalTemplatePortalTemplateOutput) NameError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.NameError }).(pulumi.StringPtrOutput)
+}
+
+// label of name field
+func (o WlanPortalTemplatePortalTemplateOutput) NameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.NameLabel }).(pulumi.StringPtrOutput)
+}
+
+// Default value for the `Do not store` checkbox
+func (o WlanPortalTemplatePortalTemplateOutput) OptOutDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.OptOutDefault }).(pulumi.BoolPtrOutput)
+}
+
+// whether to display Do Not Store My Personal Information
+func (o WlanPortalTemplatePortalTemplateOutput) Optout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Optout }).(pulumi.BoolPtrOutput)
+}
+
+// label for Do Not Store My Personal Information
+func (o WlanPortalTemplatePortalTemplateOutput) OptoutLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.OptoutLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) PageTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PageTitle }).(pulumi.StringPtrOutput)
+}
+
+// Label for the Passphrase cancel button
+func (o WlanPortalTemplatePortalTemplateOutput) PassphraseCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseCancel }).(pulumi.StringPtrOutput)
+}
+
+// error message when invalid passphrase is provided
+func (o WlanPortalTemplatePortalTemplateOutput) PassphraseError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseError }).(pulumi.StringPtrOutput)
+}
+
+// Passphrase
+func (o WlanPortalTemplatePortalTemplateOutput) PassphraseLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) PassphraseMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseMessage }).(pulumi.StringPtrOutput)
+}
+
+// Label for the Passphrase submit button
+func (o WlanPortalTemplatePortalTemplateOutput) PassphraseSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseSubmit }).(pulumi.StringPtrOutput)
+}
+
+// Title for passphrase details page
+func (o WlanPortalTemplatePortalTemplateOutput) PassphraseTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PassphraseTitle }).(pulumi.StringPtrOutput)
+}
+
+// whether to show \"Powered by Mist\"
+func (o WlanPortalTemplatePortalTemplateOutput) PoweredBy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.PoweredBy }).(pulumi.BoolPtrOutput)
+}
+
+// wheter to require the Privacy Term acceptance
+func (o WlanPortalTemplatePortalTemplateOutput) Privacy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Privacy }).(pulumi.BoolPtrOutput)
+}
+
+// prefix of the label of the link to go to Privacy Policy
+func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyAcceptLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyAcceptLabel }).(pulumi.StringPtrOutput)
+}
+
+// error message when Privacy Policy not accepted
+func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyError }).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go to Privacy Policy
+func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyLink }).(pulumi.StringPtrOutput)
+}
+
+// text of the Privacy Policy
+func (o WlanPortalTemplatePortalTemplateOutput) PrivacyPolicyText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.PrivacyPolicyText }).(pulumi.StringPtrOutput)
+}
+
+// label to denote required field
+func (o WlanPortalTemplatePortalTemplateOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.RequiredFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) ResponsiveLayout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.ResponsiveLayout }).(pulumi.BoolPtrOutput)
+}
+
+// label of the button to /signin
+func (o WlanPortalTemplatePortalTemplateOutput) SignInLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SignInLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierDefault }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierError }).(pulumi.StringPtrOutput)
+}
+
+// label for mobile carrier drop-down list
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCarrierFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCarrierFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+// Label for cancel confirmation code submission
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeCancel }).(pulumi.StringPtrOutput)
+}
+
+// error message when confirmation code is invalid
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeMessage }).(pulumi.StringPtrOutput)
+}
+
+// Label for confirmation code submit button
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeSubmit }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCodeTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCodeTitle }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCountryFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCountryFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsCountryFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsCountryFormat }).(pulumi.StringPtrOutput)
+}
+
+// Label for checkbox to specify that the user has access code
+func (o WlanPortalTemplatePortalTemplateOutput) SmsHaveAccessCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsHaveAccessCode }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsIsTwilio() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.SmsIsTwilio }).(pulumi.BoolPtrOutput)
+}
+
+// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+func (o WlanPortalTemplatePortalTemplateOutput) SmsMessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsMessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// label for canceling mobile details for SMS auth
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberCancel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberError }).(pulumi.StringPtrOutput)
+}
+
+// label for field to provide mobile number
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberMessage }).(pulumi.StringPtrOutput)
+}
+
+// label for submit button for code generation
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberSubmit }).(pulumi.StringPtrOutput)
+}
+
+// Title for phone number details
+func (o WlanPortalTemplatePortalTemplateOutput) SmsNumberTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsNumberTitle }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SmsUsernameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SmsUsernameFormat }).(pulumi.StringPtrOutput)
+}
+
+// how long confirmation code should be considered valid (in minutes)
+func (o WlanPortalTemplatePortalTemplateOutput) SmsValidityDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *int { return v.SmsValidityDuration }).(pulumi.IntPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorBackLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorBackLink }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorCancel }).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor Email
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmailError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmailError }).(pulumi.StringPtrOutput)
+}
+
+// html template to replace/override default sponsor email template
+// Sponsor Email Template supports following template variables:
+//   - `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+//   - `denyUrl`: Renders URL to reject the request
+//   - `guestEmail`: Renders Email ID of the guest
+//   - `guestName`: Renders Name of the guest
+//   - `field1`: Renders value of the Custom Field 1
+//   - `field2`: Renders value of the Custom Field 2
+//   - `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+//   - `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorEmailTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorEmailTemplate }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoApproved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoApproved }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoDenied }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorInfoPending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorInfoPending }).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor Name
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorName }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorNameError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorNameError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorNotePending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorNotePending }).(pulumi.StringPtrOutput)
+}
+
+// submit button label request Wifi Access and notify sponsor about guest request
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorRequestAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorRequestAccess }).(pulumi.StringPtrOutput)
+}
+
+// text to display if sponsor approves request
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorStatusApproved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorStatusApproved }).(pulumi.StringPtrOutput)
+}
+
+// text to display when sponsor denies request
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorStatusDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorStatusDenied }).(pulumi.StringPtrOutput)
+}
+
+// text to display if request is still pending
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorStatusPending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorStatusPending }).(pulumi.StringPtrOutput)
+}
+
+// submit button label to notify sponsor about guest request
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorSubmit }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorsError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorsError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) SponsorsFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.SponsorsFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateOutput) Tos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *bool { return v.Tos }).(pulumi.BoolPtrOutput)
+}
+
+// prefix of the label of the link to go to tos
+func (o WlanPortalTemplatePortalTemplateOutput) TosAcceptLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosAcceptLabel }).(pulumi.StringPtrOutput)
+}
+
+// error message when tos not accepted
+func (o WlanPortalTemplatePortalTemplateOutput) TosError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosError }).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go to tos
+func (o WlanPortalTemplatePortalTemplateOutput) TosLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosLink }).(pulumi.StringPtrOutput)
+}
+
+// text of the Terms of Service
+func (o WlanPortalTemplatePortalTemplateOutput) TosText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.TosText }).(pulumi.StringPtrOutput)
+}
+
+type WlanPortalTemplatePortalTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (WlanPortalTemplatePortalTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WlanPortalTemplatePortalTemplate)(nil)).Elem()
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) ToWlanPortalTemplatePortalTemplatePtrOutput() WlanPortalTemplatePortalTemplatePtrOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) ToWlanPortalTemplatePortalTemplatePtrOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplatePtrOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Elem() WlanPortalTemplatePortalTemplateOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) WlanPortalTemplatePortalTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret WlanPortalTemplatePortalTemplate
+		return ret
+	}).(WlanPortalTemplatePortalTemplateOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AccessCodeAlternateEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessCodeAlternateEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// defines alignment on portal. enum: `center`, `left`, `right`
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Alignment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alignment
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Amazon auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonAmazon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonAmazon
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Azure auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonAzure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonAzure
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Email auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Facebook auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonFacebook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonFacebook
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Google auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonGoogle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonGoogle
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Microsoft auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonMicrosoft() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonMicrosoft
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for passphrase auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonPassphrase
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for SMS auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonSms() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonSms
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor auth button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthButtonSponsor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthButtonSponsor
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) AuthLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go back to /logon
+func (o WlanPortalTemplatePortalTemplatePtrOutput) BackLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// Portal main color
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Color() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Color
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) ColorDark() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ColorDark
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) ColorLight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ColorLight
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether company field is required
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Company() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Company
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when company not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyError
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of company field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) CompanyLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CompanyLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether email field is required
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Email() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when a user has valid social login but doesn't match specified email domains.
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailAccessDomainError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAccessDomainError
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for cancel confirmation code submission using email auth
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCancel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCodeCancel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCodeError
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCodeFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCodeMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCodeSubmit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailCodeTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailCodeTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// error message when email not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailError
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of email field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for confirmation code submit button using email auth
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailSubmit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the Email registration
+func (o WlanPortalTemplatePortalTemplatePtrOutput) EmailTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether to ask field1
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field1
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when field1 not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field1error
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of field1
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field1label
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether field1 is required field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field1required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field1required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to ask field2
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field2
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when field2 not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field2error
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of field2
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field2label
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether field2 is required field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field2required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field2required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to ask field3
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field3
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when field3 not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field3error
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of field3
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field3label
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether field3 is required field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field3required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field3required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to ask field4
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when field4 not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field4error
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of field4
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field4label
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether field4 is required field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Field4required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Field4required
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Can be used to localize the portal based on the User Agent. Allowed property key values are:
+//
+//	"ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES",
+//	"fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP",
+//	"ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU",
+//	"sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Locales() WlanPortalTemplatePortalTemplateLocalesMapOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) map[string]WlanPortalTemplatePortalTemplateLocales {
+		if v == nil {
+			return nil
+		}
+		return v.Locales
+	}).(WlanPortalTemplatePortalTemplateLocalesMapOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) MultiAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MultiAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether name field is required
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Name() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.BoolPtrOutput)
+}
+
+// error message when name not provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) NameError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameError
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of name field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) NameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Default value for the `Do not store` checkbox
+func (o WlanPortalTemplatePortalTemplatePtrOutput) OptOutDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OptOutDefault
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to display Do Not Store My Personal Information
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Optout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Optout
+	}).(pulumi.BoolPtrOutput)
+}
+
+// label for Do Not Store My Personal Information
+func (o WlanPortalTemplatePortalTemplatePtrOutput) OptoutLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OptoutLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PageTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PageTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for the Passphrase cancel button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PassphraseCancel
+	}).(pulumi.StringPtrOutput)
+}
+
+// error message when invalid passphrase is provided
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PassphraseError
+	}).(pulumi.StringPtrOutput)
+}
+
+// Passphrase
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PassphraseLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PassphraseMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for the Passphrase submit button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PassphraseSubmit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for passphrase details page
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PassphraseTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PassphraseTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+// whether to show \"Powered by Mist\"
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PoweredBy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PoweredBy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// wheter to require the Privacy Term acceptance
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Privacy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Privacy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// prefix of the label of the link to go to Privacy Policy
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyAcceptLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivacyPolicyAcceptLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// error message when Privacy Policy not accepted
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivacyPolicyError
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go to Privacy Policy
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivacyPolicyLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// text of the Privacy Policy
+func (o WlanPortalTemplatePortalTemplatePtrOutput) PrivacyPolicyText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivacyPolicyText
+	}).(pulumi.StringPtrOutput)
+}
+
+// label to denote required field
+func (o WlanPortalTemplatePortalTemplatePtrOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) ResponsiveLayout() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ResponsiveLayout
+	}).(pulumi.BoolPtrOutput)
+}
+
+// label of the button to /signin
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SignInLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignInLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCarrierDefault
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCarrierError
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for mobile carrier drop-down list
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCarrierFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCarrierFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for cancel confirmation code submission
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCodeCancel
+	}).(pulumi.StringPtrOutput)
+}
+
+// error message when confirmation code is invalid
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCodeError
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCodeFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCodeMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for confirmation code submit button
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCodeSubmit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCodeTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCodeTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCountryFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCountryFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsCountryFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsCountryFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label for checkbox to specify that the user has access code
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsHaveAccessCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsHaveAccessCode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsIsTwilio() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SmsIsTwilio
+	}).(pulumi.BoolPtrOutput)
+}
+
+// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsMessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsMessageFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for canceling mobile details for SMS auth
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberCancel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberError
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for field to provide mobile number
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for submit button for code generation
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberSubmit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for phone number details
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsNumberTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsNumberTitle
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsUsernameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SmsUsernameFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// how long confirmation code should be considered valid (in minutes)
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SmsValidityDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SmsValidityDuration
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorBackLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorBackLink
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorCancel
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor Email
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmailError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorEmailError
+	}).(pulumi.StringPtrOutput)
+}
+
+// html template to replace/override default sponsor email template
+// Sponsor Email Template supports following template variables:
+//   - `approveUrl`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
+//   - `denyUrl`: Renders URL to reject the request
+//   - `guestEmail`: Renders Email ID of the guest
+//   - `guestName`: Renders Name of the guest
+//   - `field1`: Renders value of the Custom Field 1
+//   - `field2`: Renders value of the Custom Field 2
+//   - `sponsorLinkValidityDuration`: Renders validity time of the request (i.e. Approve/Deny URL)
+//   - `authExpireMinutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorEmailTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorEmailTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoApproved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorInfoApproved
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorInfoDenied
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorInfoPending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorInfoPending
+	}).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor Name
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorNameError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorNameError
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorNotePending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorNotePending
+	}).(pulumi.StringPtrOutput)
+}
+
+// submit button label request Wifi Access and notify sponsor about guest request
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorRequestAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorRequestAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// text to display if sponsor approves request
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusApproved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorStatusApproved
+	}).(pulumi.StringPtrOutput)
+}
+
+// text to display when sponsor denies request
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorStatusDenied
+	}).(pulumi.StringPtrOutput)
+}
+
+// text to display if request is still pending
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorStatusPending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorStatusPending
+	}).(pulumi.StringPtrOutput)
+}
+
+// submit button label to notify sponsor about guest request
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorSubmit
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorsError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorsError
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) SponsorsFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SponsorsFieldLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Tos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Tos
+	}).(pulumi.BoolPtrOutput)
+}
+
+// prefix of the label of the link to go to tos
+func (o WlanPortalTemplatePortalTemplatePtrOutput) TosAcceptLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TosAcceptLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// error message when tos not accepted
+func (o WlanPortalTemplatePortalTemplatePtrOutput) TosError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TosError
+	}).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go to tos
+func (o WlanPortalTemplatePortalTemplatePtrOutput) TosLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TosLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// text of the Terms of Service
+func (o WlanPortalTemplatePortalTemplatePtrOutput) TosText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TosText
+	}).(pulumi.StringPtrOutput)
+}
+
+type WlanPortalTemplatePortalTemplateLocales struct {
+	// label for Amazon auth button
+	AuthButtonAmazon *string `pulumi:"authButtonAmazon"`
+	// label for Azure auth button
+	AuthButtonAzure *string `pulumi:"authButtonAzure"`
+	// label for Email auth button
+	AuthButtonEmail *string `pulumi:"authButtonEmail"`
+	// label for Facebook auth button
+	AuthButtonFacebook *string `pulumi:"authButtonFacebook"`
+	// label for Google auth button
+	AuthButtonGoogle *string `pulumi:"authButtonGoogle"`
+	// label for Microsoft auth button
+	AuthButtonMicrosoft *string `pulumi:"authButtonMicrosoft"`
+	// label for passphrase auth button
+	AuthButtonPassphrase *string `pulumi:"authButtonPassphrase"`
+	// label for SMS auth button
+	AuthButtonSms *string `pulumi:"authButtonSms"`
+	// label for Sponsor auth button
+	AuthButtonSponsor *string `pulumi:"authButtonSponsor"`
+	AuthLabel         *string `pulumi:"authLabel"`
+	// label of the link to go back to /logon
+	BackLink *string `pulumi:"backLink"`
+	// error message when company not provided
+	CompanyError *string `pulumi:"companyError"`
+	// label of company field
+	CompanyLabel *string `pulumi:"companyLabel"`
+	// error message when a user has valid social login but doesn't match specified email domains.
+	EmailAccessDomainError *string `pulumi:"emailAccessDomainError"`
+	// Label for cancel confirmation code submission using email auth
+	EmailCancel         *string `pulumi:"emailCancel"`
+	EmailCodeCancel     *string `pulumi:"emailCodeCancel"`
+	EmailCodeError      *string `pulumi:"emailCodeError"`
+	EmailCodeFieldLabel *string `pulumi:"emailCodeFieldLabel"`
+	EmailCodeMessage    *string `pulumi:"emailCodeMessage"`
+	EmailCodeSubmit     *string `pulumi:"emailCodeSubmit"`
+	EmailCodeTitle      *string `pulumi:"emailCodeTitle"`
+	// error message when email not provided
+	EmailError      *string `pulumi:"emailError"`
+	EmailFieldLabel *string `pulumi:"emailFieldLabel"`
+	// label of email field
+	EmailLabel   *string `pulumi:"emailLabel"`
+	EmailMessage *string `pulumi:"emailMessage"`
+	// Label for confirmation code submit button using email auth
+	EmailSubmit *string `pulumi:"emailSubmit"`
+	// Title for the Email registration
+	EmailTitle *string `pulumi:"emailTitle"`
+	// error message when field1 not provided
+	Field1error *string `pulumi:"field1error"`
+	// label of field1
+	Field1label *string `pulumi:"field1label"`
+	// error message when field2 not provided
+	Field2error *string `pulumi:"field2error"`
+	// label of field2
+	Field2label *string `pulumi:"field2label"`
+	// error message when field3 not provided
+	Field3error *string `pulumi:"field3error"`
+	// label of field3
+	Field3label *string `pulumi:"field3label"`
+	// error message when field4 not provided
+	Field4error *string `pulumi:"field4error"`
+	// label of field4
+	Field4label *string `pulumi:"field4label"`
+	Message     *string `pulumi:"message"`
+	// error message when name not provided
+	NameError *string `pulumi:"nameError"`
+	// label of name field
+	NameLabel *string `pulumi:"nameLabel"`
+	// label for Do Not Store My Personal Information
+	OptoutLabel *string `pulumi:"optoutLabel"`
+	PageTitle   *string `pulumi:"pageTitle"`
+	// Label for the Passphrase cancel button
+	PassphraseCancel *string `pulumi:"passphraseCancel"`
+	// error message when invalid passphrase is provided
+	PassphraseError *string `pulumi:"passphraseError"`
+	// Passphrase
+	PassphraseLabel   *string `pulumi:"passphraseLabel"`
+	PassphraseMessage *string `pulumi:"passphraseMessage"`
+	// Label for the Passphrase submit button
+	PassphraseSubmit *string `pulumi:"passphraseSubmit"`
+	// Title for passphrase details page
+	PassphraseTitle *string `pulumi:"passphraseTitle"`
+	// prefix of the label of the link to go to Privacy Policy
+	PrivacyPolicyAcceptLabel *string `pulumi:"privacyPolicyAcceptLabel"`
+	// error message when Privacy Policy not accepted
+	PrivacyPolicyError *string `pulumi:"privacyPolicyError"`
+	// label of the link to go to Privacy Policy
+	PrivacyPolicyLink *string `pulumi:"privacyPolicyLink"`
+	// text of the Privacy Policy
+	PrivacyPolicyText *string `pulumi:"privacyPolicyText"`
+	// label to denote required field
+	RequiredFieldLabel *string `pulumi:"requiredFieldLabel"`
+	// label of the button to /signin
+	SignInLabel       *string `pulumi:"signInLabel"`
+	SmsCarrierDefault *string `pulumi:"smsCarrierDefault"`
+	SmsCarrierError   *string `pulumi:"smsCarrierError"`
+	// label for mobile carrier drop-down list
+	SmsCarrierFieldLabel *string `pulumi:"smsCarrierFieldLabel"`
+	// Label for cancel confirmation code submission
+	SmsCodeCancel *string `pulumi:"smsCodeCancel"`
+	// error message when confirmation code is invalid
+	SmsCodeError      *string `pulumi:"smsCodeError"`
+	SmsCodeFieldLabel *string `pulumi:"smsCodeFieldLabel"`
+	SmsCodeMessage    *string `pulumi:"smsCodeMessage"`
+	// Label for confirmation code submit button
+	SmsCodeSubmit        *string `pulumi:"smsCodeSubmit"`
+	SmsCodeTitle         *string `pulumi:"smsCodeTitle"`
+	SmsCountryFieldLabel *string `pulumi:"smsCountryFieldLabel"`
+	SmsCountryFormat     *string `pulumi:"smsCountryFormat"`
+	// Label for checkbox to specify that the user has access code
+	SmsHaveAccessCode *string `pulumi:"smsHaveAccessCode"`
+	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
+	// label for canceling mobile details for SMS auth
+	SmsNumberCancel *string `pulumi:"smsNumberCancel"`
+	SmsNumberError  *string `pulumi:"smsNumberError"`
+	// label for field to provide mobile number
+	SmsNumberFieldLabel *string `pulumi:"smsNumberFieldLabel"`
+	SmsNumberFormat     *string `pulumi:"smsNumberFormat"`
+	SmsNumberMessage    *string `pulumi:"smsNumberMessage"`
+	// label for submit button for code generation
+	SmsNumberSubmit *string `pulumi:"smsNumberSubmit"`
+	// Title for phone number details
+	SmsNumberTitle    *string `pulumi:"smsNumberTitle"`
+	SmsUsernameFormat *string `pulumi:"smsUsernameFormat"`
+	SponsorBackLink   *string `pulumi:"sponsorBackLink"`
+	SponsorCancel     *string `pulumi:"sponsorCancel"`
+	// label for Sponsor Email
+	SponsorEmail        *string `pulumi:"sponsorEmail"`
+	SponsorEmailError   *string `pulumi:"sponsorEmailError"`
+	SponsorInfoApproved *string `pulumi:"sponsorInfoApproved"`
+	SponsorInfoDenied   *string `pulumi:"sponsorInfoDenied"`
+	SponsorInfoPending  *string `pulumi:"sponsorInfoPending"`
+	// label for Sponsor Name
+	SponsorName        *string `pulumi:"sponsorName"`
+	SponsorNameError   *string `pulumi:"sponsorNameError"`
+	SponsorNotePending *string `pulumi:"sponsorNotePending"`
+	// submit button label request Wifi Access and notify sponsor about guest request
+	SponsorRequestAccess *string `pulumi:"sponsorRequestAccess"`
+	// text to display if sponsor approves request
+	SponsorStatusApproved *string `pulumi:"sponsorStatusApproved"`
+	// text to display when sponsor denies request
+	SponsorStatusDenied *string `pulumi:"sponsorStatusDenied"`
+	// text to display if request is still pending
+	SponsorStatusPending *string `pulumi:"sponsorStatusPending"`
+	// submit button label to notify sponsor about guest request
+	SponsorSubmit      *string `pulumi:"sponsorSubmit"`
+	SponsorsError      *string `pulumi:"sponsorsError"`
+	SponsorsFieldLabel *string `pulumi:"sponsorsFieldLabel"`
+	// prefix of the label of the link to go to tos
+	TosAcceptLabel *string `pulumi:"tosAcceptLabel"`
+	// error message when tos not accepted
+	TosError *string `pulumi:"tosError"`
+	// label of the link to go to tos
+	TosLink *string `pulumi:"tosLink"`
+	// text of the Terms of Service
+	TosText *string `pulumi:"tosText"`
+	// label for Amazon auth button
+	UthButtonAmazon *string `pulumi:"uthButtonAmazon"`
+}
+
+// WlanPortalTemplatePortalTemplateLocalesInput is an input type that accepts WlanPortalTemplatePortalTemplateLocalesArgs and WlanPortalTemplatePortalTemplateLocalesOutput values.
+// You can construct a concrete instance of `WlanPortalTemplatePortalTemplateLocalesInput` via:
+//
+//	WlanPortalTemplatePortalTemplateLocalesArgs{...}
+type WlanPortalTemplatePortalTemplateLocalesInput interface {
+	pulumi.Input
+
+	ToWlanPortalTemplatePortalTemplateLocalesOutput() WlanPortalTemplatePortalTemplateLocalesOutput
+	ToWlanPortalTemplatePortalTemplateLocalesOutputWithContext(context.Context) WlanPortalTemplatePortalTemplateLocalesOutput
+}
+
+type WlanPortalTemplatePortalTemplateLocalesArgs struct {
+	// label for Amazon auth button
+	AuthButtonAmazon pulumi.StringPtrInput `pulumi:"authButtonAmazon"`
+	// label for Azure auth button
+	AuthButtonAzure pulumi.StringPtrInput `pulumi:"authButtonAzure"`
+	// label for Email auth button
+	AuthButtonEmail pulumi.StringPtrInput `pulumi:"authButtonEmail"`
+	// label for Facebook auth button
+	AuthButtonFacebook pulumi.StringPtrInput `pulumi:"authButtonFacebook"`
+	// label for Google auth button
+	AuthButtonGoogle pulumi.StringPtrInput `pulumi:"authButtonGoogle"`
+	// label for Microsoft auth button
+	AuthButtonMicrosoft pulumi.StringPtrInput `pulumi:"authButtonMicrosoft"`
+	// label for passphrase auth button
+	AuthButtonPassphrase pulumi.StringPtrInput `pulumi:"authButtonPassphrase"`
+	// label for SMS auth button
+	AuthButtonSms pulumi.StringPtrInput `pulumi:"authButtonSms"`
+	// label for Sponsor auth button
+	AuthButtonSponsor pulumi.StringPtrInput `pulumi:"authButtonSponsor"`
+	AuthLabel         pulumi.StringPtrInput `pulumi:"authLabel"`
+	// label of the link to go back to /logon
+	BackLink pulumi.StringPtrInput `pulumi:"backLink"`
+	// error message when company not provided
+	CompanyError pulumi.StringPtrInput `pulumi:"companyError"`
+	// label of company field
+	CompanyLabel pulumi.StringPtrInput `pulumi:"companyLabel"`
+	// error message when a user has valid social login but doesn't match specified email domains.
+	EmailAccessDomainError pulumi.StringPtrInput `pulumi:"emailAccessDomainError"`
+	// Label for cancel confirmation code submission using email auth
+	EmailCancel         pulumi.StringPtrInput `pulumi:"emailCancel"`
+	EmailCodeCancel     pulumi.StringPtrInput `pulumi:"emailCodeCancel"`
+	EmailCodeError      pulumi.StringPtrInput `pulumi:"emailCodeError"`
+	EmailCodeFieldLabel pulumi.StringPtrInput `pulumi:"emailCodeFieldLabel"`
+	EmailCodeMessage    pulumi.StringPtrInput `pulumi:"emailCodeMessage"`
+	EmailCodeSubmit     pulumi.StringPtrInput `pulumi:"emailCodeSubmit"`
+	EmailCodeTitle      pulumi.StringPtrInput `pulumi:"emailCodeTitle"`
+	// error message when email not provided
+	EmailError      pulumi.StringPtrInput `pulumi:"emailError"`
+	EmailFieldLabel pulumi.StringPtrInput `pulumi:"emailFieldLabel"`
+	// label of email field
+	EmailLabel   pulumi.StringPtrInput `pulumi:"emailLabel"`
+	EmailMessage pulumi.StringPtrInput `pulumi:"emailMessage"`
+	// Label for confirmation code submit button using email auth
+	EmailSubmit pulumi.StringPtrInput `pulumi:"emailSubmit"`
+	// Title for the Email registration
+	EmailTitle pulumi.StringPtrInput `pulumi:"emailTitle"`
+	// error message when field1 not provided
+	Field1error pulumi.StringPtrInput `pulumi:"field1error"`
+	// label of field1
+	Field1label pulumi.StringPtrInput `pulumi:"field1label"`
+	// error message when field2 not provided
+	Field2error pulumi.StringPtrInput `pulumi:"field2error"`
+	// label of field2
+	Field2label pulumi.StringPtrInput `pulumi:"field2label"`
+	// error message when field3 not provided
+	Field3error pulumi.StringPtrInput `pulumi:"field3error"`
+	// label of field3
+	Field3label pulumi.StringPtrInput `pulumi:"field3label"`
+	// error message when field4 not provided
+	Field4error pulumi.StringPtrInput `pulumi:"field4error"`
+	// label of field4
+	Field4label pulumi.StringPtrInput `pulumi:"field4label"`
+	Message     pulumi.StringPtrInput `pulumi:"message"`
+	// error message when name not provided
+	NameError pulumi.StringPtrInput `pulumi:"nameError"`
+	// label of name field
+	NameLabel pulumi.StringPtrInput `pulumi:"nameLabel"`
+	// label for Do Not Store My Personal Information
+	OptoutLabel pulumi.StringPtrInput `pulumi:"optoutLabel"`
+	PageTitle   pulumi.StringPtrInput `pulumi:"pageTitle"`
+	// Label for the Passphrase cancel button
+	PassphraseCancel pulumi.StringPtrInput `pulumi:"passphraseCancel"`
+	// error message when invalid passphrase is provided
+	PassphraseError pulumi.StringPtrInput `pulumi:"passphraseError"`
+	// Passphrase
+	PassphraseLabel   pulumi.StringPtrInput `pulumi:"passphraseLabel"`
+	PassphraseMessage pulumi.StringPtrInput `pulumi:"passphraseMessage"`
+	// Label for the Passphrase submit button
+	PassphraseSubmit pulumi.StringPtrInput `pulumi:"passphraseSubmit"`
+	// Title for passphrase details page
+	PassphraseTitle pulumi.StringPtrInput `pulumi:"passphraseTitle"`
+	// prefix of the label of the link to go to Privacy Policy
+	PrivacyPolicyAcceptLabel pulumi.StringPtrInput `pulumi:"privacyPolicyAcceptLabel"`
+	// error message when Privacy Policy not accepted
+	PrivacyPolicyError pulumi.StringPtrInput `pulumi:"privacyPolicyError"`
+	// label of the link to go to Privacy Policy
+	PrivacyPolicyLink pulumi.StringPtrInput `pulumi:"privacyPolicyLink"`
+	// text of the Privacy Policy
+	PrivacyPolicyText pulumi.StringPtrInput `pulumi:"privacyPolicyText"`
+	// label to denote required field
+	RequiredFieldLabel pulumi.StringPtrInput `pulumi:"requiredFieldLabel"`
+	// label of the button to /signin
+	SignInLabel       pulumi.StringPtrInput `pulumi:"signInLabel"`
+	SmsCarrierDefault pulumi.StringPtrInput `pulumi:"smsCarrierDefault"`
+	SmsCarrierError   pulumi.StringPtrInput `pulumi:"smsCarrierError"`
+	// label for mobile carrier drop-down list
+	SmsCarrierFieldLabel pulumi.StringPtrInput `pulumi:"smsCarrierFieldLabel"`
+	// Label for cancel confirmation code submission
+	SmsCodeCancel pulumi.StringPtrInput `pulumi:"smsCodeCancel"`
+	// error message when confirmation code is invalid
+	SmsCodeError      pulumi.StringPtrInput `pulumi:"smsCodeError"`
+	SmsCodeFieldLabel pulumi.StringPtrInput `pulumi:"smsCodeFieldLabel"`
+	SmsCodeMessage    pulumi.StringPtrInput `pulumi:"smsCodeMessage"`
+	// Label for confirmation code submit button
+	SmsCodeSubmit        pulumi.StringPtrInput `pulumi:"smsCodeSubmit"`
+	SmsCodeTitle         pulumi.StringPtrInput `pulumi:"smsCodeTitle"`
+	SmsCountryFieldLabel pulumi.StringPtrInput `pulumi:"smsCountryFieldLabel"`
+	SmsCountryFormat     pulumi.StringPtrInput `pulumi:"smsCountryFormat"`
+	// Label for checkbox to specify that the user has access code
+	SmsHaveAccessCode pulumi.StringPtrInput `pulumi:"smsHaveAccessCode"`
+	// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
+	// label for canceling mobile details for SMS auth
+	SmsNumberCancel pulumi.StringPtrInput `pulumi:"smsNumberCancel"`
+	SmsNumberError  pulumi.StringPtrInput `pulumi:"smsNumberError"`
+	// label for field to provide mobile number
+	SmsNumberFieldLabel pulumi.StringPtrInput `pulumi:"smsNumberFieldLabel"`
+	SmsNumberFormat     pulumi.StringPtrInput `pulumi:"smsNumberFormat"`
+	SmsNumberMessage    pulumi.StringPtrInput `pulumi:"smsNumberMessage"`
+	// label for submit button for code generation
+	SmsNumberSubmit pulumi.StringPtrInput `pulumi:"smsNumberSubmit"`
+	// Title for phone number details
+	SmsNumberTitle    pulumi.StringPtrInput `pulumi:"smsNumberTitle"`
+	SmsUsernameFormat pulumi.StringPtrInput `pulumi:"smsUsernameFormat"`
+	SponsorBackLink   pulumi.StringPtrInput `pulumi:"sponsorBackLink"`
+	SponsorCancel     pulumi.StringPtrInput `pulumi:"sponsorCancel"`
+	// label for Sponsor Email
+	SponsorEmail        pulumi.StringPtrInput `pulumi:"sponsorEmail"`
+	SponsorEmailError   pulumi.StringPtrInput `pulumi:"sponsorEmailError"`
+	SponsorInfoApproved pulumi.StringPtrInput `pulumi:"sponsorInfoApproved"`
+	SponsorInfoDenied   pulumi.StringPtrInput `pulumi:"sponsorInfoDenied"`
+	SponsorInfoPending  pulumi.StringPtrInput `pulumi:"sponsorInfoPending"`
+	// label for Sponsor Name
+	SponsorName        pulumi.StringPtrInput `pulumi:"sponsorName"`
+	SponsorNameError   pulumi.StringPtrInput `pulumi:"sponsorNameError"`
+	SponsorNotePending pulumi.StringPtrInput `pulumi:"sponsorNotePending"`
+	// submit button label request Wifi Access and notify sponsor about guest request
+	SponsorRequestAccess pulumi.StringPtrInput `pulumi:"sponsorRequestAccess"`
+	// text to display if sponsor approves request
+	SponsorStatusApproved pulumi.StringPtrInput `pulumi:"sponsorStatusApproved"`
+	// text to display when sponsor denies request
+	SponsorStatusDenied pulumi.StringPtrInput `pulumi:"sponsorStatusDenied"`
+	// text to display if request is still pending
+	SponsorStatusPending pulumi.StringPtrInput `pulumi:"sponsorStatusPending"`
+	// submit button label to notify sponsor about guest request
+	SponsorSubmit      pulumi.StringPtrInput `pulumi:"sponsorSubmit"`
+	SponsorsError      pulumi.StringPtrInput `pulumi:"sponsorsError"`
+	SponsorsFieldLabel pulumi.StringPtrInput `pulumi:"sponsorsFieldLabel"`
+	// prefix of the label of the link to go to tos
+	TosAcceptLabel pulumi.StringPtrInput `pulumi:"tosAcceptLabel"`
+	// error message when tos not accepted
+	TosError pulumi.StringPtrInput `pulumi:"tosError"`
+	// label of the link to go to tos
+	TosLink pulumi.StringPtrInput `pulumi:"tosLink"`
+	// text of the Terms of Service
+	TosText pulumi.StringPtrInput `pulumi:"tosText"`
+	// label for Amazon auth button
+	UthButtonAmazon pulumi.StringPtrInput `pulumi:"uthButtonAmazon"`
+}
+
+func (WlanPortalTemplatePortalTemplateLocalesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlanPortalTemplatePortalTemplateLocales)(nil)).Elem()
+}
+
+func (i WlanPortalTemplatePortalTemplateLocalesArgs) ToWlanPortalTemplatePortalTemplateLocalesOutput() WlanPortalTemplatePortalTemplateLocalesOutput {
+	return i.ToWlanPortalTemplatePortalTemplateLocalesOutputWithContext(context.Background())
+}
+
+func (i WlanPortalTemplatePortalTemplateLocalesArgs) ToWlanPortalTemplatePortalTemplateLocalesOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplateLocalesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanPortalTemplatePortalTemplateLocalesOutput)
+}
+
+// WlanPortalTemplatePortalTemplateLocalesMapInput is an input type that accepts WlanPortalTemplatePortalTemplateLocalesMap and WlanPortalTemplatePortalTemplateLocalesMapOutput values.
+// You can construct a concrete instance of `WlanPortalTemplatePortalTemplateLocalesMapInput` via:
+//
+//	WlanPortalTemplatePortalTemplateLocalesMap{ "key": WlanPortalTemplatePortalTemplateLocalesArgs{...} }
+type WlanPortalTemplatePortalTemplateLocalesMapInput interface {
+	pulumi.Input
+
+	ToWlanPortalTemplatePortalTemplateLocalesMapOutput() WlanPortalTemplatePortalTemplateLocalesMapOutput
+	ToWlanPortalTemplatePortalTemplateLocalesMapOutputWithContext(context.Context) WlanPortalTemplatePortalTemplateLocalesMapOutput
+}
+
+type WlanPortalTemplatePortalTemplateLocalesMap map[string]WlanPortalTemplatePortalTemplateLocalesInput
+
+func (WlanPortalTemplatePortalTemplateLocalesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WlanPortalTemplatePortalTemplateLocales)(nil)).Elem()
+}
+
+func (i WlanPortalTemplatePortalTemplateLocalesMap) ToWlanPortalTemplatePortalTemplateLocalesMapOutput() WlanPortalTemplatePortalTemplateLocalesMapOutput {
+	return i.ToWlanPortalTemplatePortalTemplateLocalesMapOutputWithContext(context.Background())
+}
+
+func (i WlanPortalTemplatePortalTemplateLocalesMap) ToWlanPortalTemplatePortalTemplateLocalesMapOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplateLocalesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanPortalTemplatePortalTemplateLocalesMapOutput)
+}
+
+type WlanPortalTemplatePortalTemplateLocalesOutput struct{ *pulumi.OutputState }
+
+func (WlanPortalTemplatePortalTemplateLocalesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WlanPortalTemplatePortalTemplateLocales)(nil)).Elem()
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) ToWlanPortalTemplatePortalTemplateLocalesOutput() WlanPortalTemplatePortalTemplateLocalesOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) ToWlanPortalTemplatePortalTemplateLocalesOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplateLocalesOutput {
+	return o
+}
+
+// label for Amazon auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonAmazon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonAmazon }).(pulumi.StringPtrOutput)
+}
+
+// label for Azure auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonAzure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonAzure }).(pulumi.StringPtrOutput)
+}
+
+// label for Email auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonEmail }).(pulumi.StringPtrOutput)
+}
+
+// label for Facebook auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonFacebook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonFacebook }).(pulumi.StringPtrOutput)
+}
+
+// label for Google auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonGoogle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonGoogle }).(pulumi.StringPtrOutput)
+}
+
+// label for Microsoft auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonMicrosoft() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonMicrosoft }).(pulumi.StringPtrOutput)
+}
+
+// label for passphrase auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonPassphrase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonPassphrase }).(pulumi.StringPtrOutput)
+}
+
+// label for SMS auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonSms() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonSms }).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthButtonSponsor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthButtonSponsor }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) AuthLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.AuthLabel }).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go back to /logon
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) BackLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.BackLink }).(pulumi.StringPtrOutput)
+}
+
+// error message when company not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) CompanyError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.CompanyError }).(pulumi.StringPtrOutput)
+}
+
+// label of company field
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) CompanyLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.CompanyLabel }).(pulumi.StringPtrOutput)
+}
+
+// error message when a user has valid social login but doesn't match specified email domains.
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailAccessDomainError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailAccessDomainError }).(pulumi.StringPtrOutput)
+}
+
+// Label for cancel confirmation code submission using email auth
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCancel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeCancel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeMessage }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeSubmit }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailCodeTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailCodeTitle }).(pulumi.StringPtrOutput)
+}
+
+// error message when email not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+// label of email field
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailMessage }).(pulumi.StringPtrOutput)
+}
+
+// Label for confirmation code submit button using email auth
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailSubmit }).(pulumi.StringPtrOutput)
+}
+
+// Title for the Email registration
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) EmailTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.EmailTitle }).(pulumi.StringPtrOutput)
+}
+
+// error message when field1 not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field1error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field1error }).(pulumi.StringPtrOutput)
+}
+
+// label of field1
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field1label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field1label }).(pulumi.StringPtrOutput)
+}
+
+// error message when field2 not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field2error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field2error }).(pulumi.StringPtrOutput)
+}
+
+// label of field2
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field2label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field2label }).(pulumi.StringPtrOutput)
+}
+
+// error message when field3 not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field3error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field3error }).(pulumi.StringPtrOutput)
+}
+
+// label of field3
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field3label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field3label }).(pulumi.StringPtrOutput)
+}
+
+// error message when field4 not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field4error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field4error }).(pulumi.StringPtrOutput)
+}
+
+// label of field4
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Field4label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Field4label }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// error message when name not provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) NameError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.NameError }).(pulumi.StringPtrOutput)
+}
+
+// label of name field
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) NameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.NameLabel }).(pulumi.StringPtrOutput)
+}
+
+// label for Do Not Store My Personal Information
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) OptoutLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.OptoutLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PageTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PageTitle }).(pulumi.StringPtrOutput)
+}
+
+// Label for the Passphrase cancel button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseCancel }).(pulumi.StringPtrOutput)
+}
+
+// error message when invalid passphrase is provided
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseError }).(pulumi.StringPtrOutput)
+}
+
+// Passphrase
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseMessage }).(pulumi.StringPtrOutput)
+}
+
+// Label for the Passphrase submit button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseSubmit }).(pulumi.StringPtrOutput)
+}
+
+// Title for passphrase details page
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PassphraseTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PassphraseTitle }).(pulumi.StringPtrOutput)
+}
+
+// prefix of the label of the link to go to Privacy Policy
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyAcceptLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyAcceptLabel }).(pulumi.StringPtrOutput)
+}
+
+// error message when Privacy Policy not accepted
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyError }).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go to Privacy Policy
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyLink }).(pulumi.StringPtrOutput)
+}
+
+// text of the Privacy Policy
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) PrivacyPolicyText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.PrivacyPolicyText }).(pulumi.StringPtrOutput)
+}
+
+// label to denote required field
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) RequiredFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.RequiredFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+// label of the button to /signin
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SignInLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SignInLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierDefault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierDefault }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierError }).(pulumi.StringPtrOutput)
+}
+
+// label for mobile carrier drop-down list
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCarrierFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCarrierFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+// Label for cancel confirmation code submission
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeCancel }).(pulumi.StringPtrOutput)
+}
+
+// error message when confirmation code is invalid
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeMessage }).(pulumi.StringPtrOutput)
+}
+
+// Label for confirmation code submit button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeSubmit }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCodeTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCodeTitle }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCountryFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCountryFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsCountryFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsCountryFormat }).(pulumi.StringPtrOutput)
+}
+
+// Label for checkbox to specify that the user has access code
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsHaveAccessCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsHaveAccessCode }).(pulumi.StringPtrOutput)
+}
+
+// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsMessageFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsMessageFormat }).(pulumi.StringPtrOutput)
+}
+
+// label for canceling mobile details for SMS auth
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberCancel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberError }).(pulumi.StringPtrOutput)
+}
+
+// label for field to provide mobile number
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberMessage }).(pulumi.StringPtrOutput)
+}
+
+// label for submit button for code generation
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberSubmit }).(pulumi.StringPtrOutput)
+}
+
+// Title for phone number details
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsNumberTitle() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsNumberTitle }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SmsUsernameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SmsUsernameFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorBackLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorBackLink }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorCancel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorCancel }).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor Email
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorEmail }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorEmailError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorEmailError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoApproved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoApproved }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoDenied }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorInfoPending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorInfoPending }).(pulumi.StringPtrOutput)
+}
+
+// label for Sponsor Name
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorName }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorNameError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorNameError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorNotePending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorNotePending }).(pulumi.StringPtrOutput)
+}
+
+// submit button label request Wifi Access and notify sponsor about guest request
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorRequestAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorRequestAccess }).(pulumi.StringPtrOutput)
+}
+
+// text to display if sponsor approves request
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorStatusApproved() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorStatusApproved }).(pulumi.StringPtrOutput)
+}
+
+// text to display when sponsor denies request
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorStatusDenied() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorStatusDenied }).(pulumi.StringPtrOutput)
+}
+
+// text to display if request is still pending
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorStatusPending() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorStatusPending }).(pulumi.StringPtrOutput)
+}
+
+// submit button label to notify sponsor about guest request
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorSubmit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorSubmit }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorsError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorsError }).(pulumi.StringPtrOutput)
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) SponsorsFieldLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.SponsorsFieldLabel }).(pulumi.StringPtrOutput)
+}
+
+// prefix of the label of the link to go to tos
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosAcceptLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosAcceptLabel }).(pulumi.StringPtrOutput)
+}
+
+// error message when tos not accepted
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosError }).(pulumi.StringPtrOutput)
+}
+
+// label of the link to go to tos
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosLink }).(pulumi.StringPtrOutput)
+}
+
+// text of the Terms of Service
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosText }).(pulumi.StringPtrOutput)
+}
+
+// label for Amazon auth button
+func (o WlanPortalTemplatePortalTemplateLocalesOutput) UthButtonAmazon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.UthButtonAmazon }).(pulumi.StringPtrOutput)
+}
+
+type WlanPortalTemplatePortalTemplateLocalesMapOutput struct{ *pulumi.OutputState }
+
+func (WlanPortalTemplatePortalTemplateLocalesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WlanPortalTemplatePortalTemplateLocales)(nil)).Elem()
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesMapOutput) ToWlanPortalTemplatePortalTemplateLocalesMapOutput() WlanPortalTemplatePortalTemplateLocalesMapOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesMapOutput) ToWlanPortalTemplatePortalTemplateLocalesMapOutputWithContext(ctx context.Context) WlanPortalTemplatePortalTemplateLocalesMapOutput {
+	return o
+}
+
+func (o WlanPortalTemplatePortalTemplateLocalesMapOutput) MapIndex(k pulumi.StringInput) WlanPortalTemplatePortalTemplateLocalesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WlanPortalTemplatePortalTemplateLocales {
+		return vs[0].(map[string]WlanPortalTemplatePortalTemplateLocales)[vs[1].(string)]
+	}).(WlanPortalTemplatePortalTemplateLocalesOutput)
 }
 
 type WlanQos struct {
@@ -23116,6 +26321,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanMistNacPtrInput)(nil)).Elem(), WlanMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanPortalInput)(nil)).Elem(), WlanPortalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanPortalPtrInput)(nil)).Elem(), WlanPortalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanPortalTemplatePortalTemplateInput)(nil)).Elem(), WlanPortalTemplatePortalTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanPortalTemplatePortalTemplatePtrInput)(nil)).Elem(), WlanPortalTemplatePortalTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanPortalTemplatePortalTemplateLocalesInput)(nil)).Elem(), WlanPortalTemplatePortalTemplateLocalesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanPortalTemplatePortalTemplateLocalesMapInput)(nil)).Elem(), WlanPortalTemplatePortalTemplateLocalesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanQosInput)(nil)).Elem(), WlanQosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanQosPtrInput)(nil)).Elem(), WlanQosArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRadsecInput)(nil)).Elem(), WlanRadsecArgs{})
@@ -23376,6 +26585,10 @@ func init() {
 	pulumi.RegisterOutputType(WlanMistNacPtrOutput{})
 	pulumi.RegisterOutputType(WlanPortalOutput{})
 	pulumi.RegisterOutputType(WlanPortalPtrOutput{})
+	pulumi.RegisterOutputType(WlanPortalTemplatePortalTemplateOutput{})
+	pulumi.RegisterOutputType(WlanPortalTemplatePortalTemplatePtrOutput{})
+	pulumi.RegisterOutputType(WlanPortalTemplatePortalTemplateLocalesOutput{})
+	pulumi.RegisterOutputType(WlanPortalTemplatePortalTemplateLocalesMapOutput{})
 	pulumi.RegisterOutputType(WlanQosOutput{})
 	pulumi.RegisterOutputType(WlanQosPtrOutput{})
 	pulumi.RegisterOutputType(WlanRadsecOutput{})

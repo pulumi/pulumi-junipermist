@@ -33,6 +33,16 @@ public final class SettingGatewayMgmt {
      * 
      */
     private @Nullable Integer configRevertTimer;
+    /**
+     * @return for both SSR and SRX disable console port
+     * 
+     */
+    private @Nullable Boolean disableConsole;
+    /**
+     * @return for both SSR and SRX disable management interface
+     * 
+     */
+    private @Nullable Boolean disableOob;
     private @Nullable List<String> probeHosts;
     /**
      * @return for SRX only
@@ -70,6 +80,20 @@ public final class SettingGatewayMgmt {
     public Optional<Integer> configRevertTimer() {
         return Optional.ofNullable(this.configRevertTimer);
     }
+    /**
+     * @return for both SSR and SRX disable console port
+     * 
+     */
+    public Optional<Boolean> disableConsole() {
+        return Optional.ofNullable(this.disableConsole);
+    }
+    /**
+     * @return for both SSR and SRX disable management interface
+     * 
+     */
+    public Optional<Boolean> disableOob() {
+        return Optional.ofNullable(this.disableOob);
+    }
     public List<String> probeHosts() {
         return this.probeHosts == null ? List.of() : this.probeHosts;
     }
@@ -101,6 +125,8 @@ public final class SettingGatewayMgmt {
         private @Nullable Boolean appUsage;
         private @Nullable SettingGatewayMgmtAutoSignatureUpdate autoSignatureUpdate;
         private @Nullable Integer configRevertTimer;
+        private @Nullable Boolean disableConsole;
+        private @Nullable Boolean disableOob;
         private @Nullable List<String> probeHosts;
         private @Nullable String rootPassword;
         private @Nullable String securityLogSourceAddress;
@@ -113,6 +139,8 @@ public final class SettingGatewayMgmt {
     	      this.appUsage = defaults.appUsage;
     	      this.autoSignatureUpdate = defaults.autoSignatureUpdate;
     	      this.configRevertTimer = defaults.configRevertTimer;
+    	      this.disableConsole = defaults.disableConsole;
+    	      this.disableOob = defaults.disableOob;
     	      this.probeHosts = defaults.probeHosts;
     	      this.rootPassword = defaults.rootPassword;
     	      this.securityLogSourceAddress = defaults.securityLogSourceAddress;
@@ -153,6 +181,18 @@ public final class SettingGatewayMgmt {
             return this;
         }
         @CustomType.Setter
+        public Builder disableConsole(@Nullable Boolean disableConsole) {
+
+            this.disableConsole = disableConsole;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableOob(@Nullable Boolean disableOob) {
+
+            this.disableOob = disableOob;
+            return this;
+        }
+        @CustomType.Setter
         public Builder probeHosts(@Nullable List<String> probeHosts) {
 
             this.probeHosts = probeHosts;
@@ -186,6 +226,8 @@ public final class SettingGatewayMgmt {
             _resultValue.appUsage = appUsage;
             _resultValue.autoSignatureUpdate = autoSignatureUpdate;
             _resultValue.configRevertTimer = configRevertTimer;
+            _resultValue.disableConsole = disableConsole;
+            _resultValue.disableOob = disableOob;
             _resultValue.probeHosts = probeHosts;
             _resultValue.rootPassword = rootPassword;
             _resultValue.securityLogSourceAddress = securityLogSourceAddress;

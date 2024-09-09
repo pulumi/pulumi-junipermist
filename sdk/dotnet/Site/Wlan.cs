@@ -496,7 +496,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.WlanRadsec?> Radsec { get; private set; } = null!;
 
         /// <summary>
-        /// enum: `11r`, `OKC`, `none`
+        /// enum: `11r`, `OKC`, `NONE`
         /// </summary>
         [Output("roamMode")]
         public Output<string> RoamMode { get; private set; } = null!;
@@ -1112,7 +1112,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanRadsecArgs>? Radsec { get; set; }
 
         /// <summary>
-        /// enum: `11r`, `OKC`, `none`
+        /// enum: `11r`, `OKC`, `NONE`
         /// </summary>
         [Input("roamMode")]
         public Input<string>? RoamMode { get; set; }
@@ -1723,7 +1723,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.WlanRadsecGetArgs>? Radsec { get; set; }
 
         /// <summary>
-        /// enum: `11r`, `OKC`, `none`
+        /// enum: `11r`, `OKC`, `NONE`
         /// </summary>
         [Input("roamMode")]
         public Input<string>? RoamMode { get; set; }

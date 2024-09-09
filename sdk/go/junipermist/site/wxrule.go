@@ -77,8 +77,6 @@ type Wxrule struct {
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// tag list to determine if this rule would match
 	SrcWxtags pulumi.StringArrayOutput `pulumi:"srcWxtags"`
-	// Only for Org Level WxRule
-	TemplateId pulumi.StringPtrOutput `pulumi:"templateId"`
 }
 
 // NewWxrule registers a new resource with the given unique name, arguments, and options.
@@ -96,9 +94,6 @@ func NewWxrule(ctx *pulumi.Context,
 	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
-	}
-	if args.SrcWxtags == nil {
-		return nil, errors.New("invalid value for required argument 'SrcWxtags'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Wxrule
@@ -139,8 +134,6 @@ type wxruleState struct {
 	SiteId *string `pulumi:"siteId"`
 	// tag list to determine if this rule would match
 	SrcWxtags []string `pulumi:"srcWxtags"`
-	// Only for Org Level WxRule
-	TemplateId *string `pulumi:"templateId"`
 }
 
 type WxruleState struct {
@@ -160,8 +153,6 @@ type WxruleState struct {
 	SiteId pulumi.StringPtrInput
 	// tag list to determine if this rule would match
 	SrcWxtags pulumi.StringArrayInput
-	// Only for Org Level WxRule
-	TemplateId pulumi.StringPtrInput
 }
 
 func (WxruleState) ElementType() reflect.Type {
@@ -184,8 +175,6 @@ type wxruleArgs struct {
 	SiteId string `pulumi:"siteId"`
 	// tag list to determine if this rule would match
 	SrcWxtags []string `pulumi:"srcWxtags"`
-	// Only for Org Level WxRule
-	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a Wxrule resource.
@@ -205,8 +194,6 @@ type WxruleArgs struct {
 	SiteId pulumi.StringInput
 	// tag list to determine if this rule would match
 	SrcWxtags pulumi.StringArrayInput
-	// Only for Org Level WxRule
-	TemplateId pulumi.StringPtrInput
 }
 
 func (WxruleArgs) ElementType() reflect.Type {
@@ -340,11 +327,6 @@ func (o WxruleOutput) SiteId() pulumi.StringOutput {
 // tag list to determine if this rule would match
 func (o WxruleOutput) SrcWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.SrcWxtags }).(pulumi.StringArrayOutput)
-}
-
-// Only for Org Level WxRule
-func (o WxruleOutput) TemplateId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Wxrule) pulumi.StringPtrOutput { return v.TemplateId }).(pulumi.StringPtrOutput)
 }
 
 type WxruleArrayOutput struct{ *pulumi.OutputState }

@@ -2271,6 +2271,9 @@
                     }
                 }
             },
+            "mist_org_wlan_portal_template": {
+                "current": "junipermist:org/wlanPortalTemplate:WlanPortalTemplate"
+            },
             "mist_org_wlantemplate": {
                 "current": "junipermist:org/wlantemplate:Wlantemplate",
                 "fields": {
@@ -2915,6 +2918,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "mist_site_wlan_portal_template": {
+                "current": "junipermist:site/wlanPortalTemplate:WlanPortalTemplate"
             },
             "mist_site_wxrule": {
                 "current": "junipermist:site/wxrule:Wxrule",
@@ -3608,10 +3614,16 @@
             "mist_org_setting": [
                 "org_id"
             ],
+            "mist_org_wlan_portal_template": [
+                "org_id"
+            ],
             "mist_site_networktemplate": [
                 "site_id"
             ],
             "mist_site_setting": [
+                "site_id"
+            ],
+            "mist_site_wlan_portal_template": [
                 "site_id"
             ]
         }

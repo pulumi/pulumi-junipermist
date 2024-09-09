@@ -3785,6 +3785,12 @@
                     "type": "boolean",
                     "description": "Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames\n"
                 },
+                "stpNoRootPort": {
+                    "type": "boolean"
+                },
+                "stpP2p": {
+                    "type": "boolean"
+                },
                 "voipNetwork": {
                     "type": "string",
                     "description": "Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth\n"
@@ -3812,7 +3818,9 @@
                         "poeDisabled",
                         "reauthInterval",
                         "resetDefaultWhen",
-                        "stpEdge"
+                        "stpEdge",
+                        "stpNoRootPort",
+                        "stpP2p"
                     ]
                 }
             }
@@ -4722,7 +4730,37 @@
         },
         "junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt": {
             "properties": {
-                "configRevert": {
+                "apAffinityThreshold": {
+                    "type": "integer",
+                    "description": "ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.\n"
+                },
+                "cliBanner": {
+                    "type": "string",
+                    "description": "Set Banners for switches. Allows markup formatting\n"
+                },
+                "cliIdleTimeout": {
+                    "type": "integer",
+                    "description": "Sets timeout for switches\n"
+                },
+                "configRevertTimer": {
+                    "type": "integer",
+                    "description": "the rollback timer for commit confirmed\n"
+                },
+                "dhcpOptionFqdn": {
+                    "type": "boolean",
+                    "description": "Enable to provide the FQDN with DHCP option 81\n"
+                },
+                "localAccounts": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchSwitchMgmtLocalAccounts:SwitchSwitchMgmtLocalAccounts"
+                    },
+                    "description": "Property key is the user name. For Local user authentication\n"
+                },
+                "mxedgeProxyHost": {
+                    "type": "string"
+                },
+                "mxedgeProxyPort": {
                     "type": "integer"
                 },
                 "protectRe": {
@@ -4735,13 +4773,40 @@
                 },
                 "tacacs": {
                     "$ref": "#/types/junipermist:device/SwitchSwitchMgmtTacacs:SwitchSwitchMgmtTacacs"
+                },
+                "useMxedgeProxy": {
+                    "type": "boolean",
+                    "description": "to use mxedge as proxy\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "configRevert"
+                        "apAffinityThreshold",
+                        "configRevertTimer",
+                        "dhcpOptionFqdn",
+                        "mxedgeProxyPort"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/SwitchSwitchMgmtLocalAccounts:SwitchSwitchMgmtLocalAccounts": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "enum: `admin`, `helpdesk`, `none`, `read`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "role"
                     ]
                 }
             }
@@ -16578,7 +16643,16 @@
                     "description": "exaclty one of the `output_port_id` or `output_network` should be provided\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "inputNetworksIngresses",
+                        "inputPortIdsEgresses",
+                        "inputPortIdsIngresses"
+                    ]
+                }
+            }
         },
         "junipermist:org/NetworktemplateSwitchMgmt:NetworktemplateSwitchMgmt": {
             "properties": {
@@ -18902,7 +18976,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.\nProperty key is the sponsor email, Property value is the sponsor name\n"
+                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled`\n            is `true` and `sponsor_email_domains` is empty.\n\n            Property key is the sponsor email, Property value is the sponsor name\n"
                 },
                 "ssoDefaultRole": {
                     "type": "string",
@@ -19032,6 +19106,929 @@
                     ]
                 }
             }
+        },
+        "junipermist:org/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate": {
+            "properties": {
+                "accessCodeAlternateEmail": {
+                    "type": "string"
+                },
+                "alignment": {
+                    "type": "string",
+                    "description": "defines alignment on portal. enum: `center`, `left`, `right`\n"
+                },
+                "authButtonAmazon": {
+                    "type": "string",
+                    "description": "label for Amazon auth button\n"
+                },
+                "authButtonAzure": {
+                    "type": "string",
+                    "description": "label for Azure auth button\n"
+                },
+                "authButtonEmail": {
+                    "type": "string",
+                    "description": "label for Email auth button\n"
+                },
+                "authButtonFacebook": {
+                    "type": "string",
+                    "description": "label for Facebook auth button\n"
+                },
+                "authButtonGoogle": {
+                    "type": "string",
+                    "description": "label for Google auth button\n"
+                },
+                "authButtonMicrosoft": {
+                    "type": "string",
+                    "description": "label for Microsoft auth button\n"
+                },
+                "authButtonPassphrase": {
+                    "type": "string",
+                    "description": "label for passphrase auth button\n"
+                },
+                "authButtonSms": {
+                    "type": "string",
+                    "description": "label for SMS auth button\n"
+                },
+                "authButtonSponsor": {
+                    "type": "string",
+                    "description": "label for Sponsor auth button\n"
+                },
+                "authLabel": {
+                    "type": "string"
+                },
+                "backLink": {
+                    "type": "string",
+                    "description": "label of the link to go back to /logon\n"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "Portal main color\n"
+                },
+                "colorDark": {
+                    "type": "string"
+                },
+                "colorLight": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "boolean",
+                    "description": "whether company field is required\n"
+                },
+                "companyError": {
+                    "type": "string",
+                    "description": "error message when company not provided\n"
+                },
+                "companyLabel": {
+                    "type": "string",
+                    "description": "label of company field\n"
+                },
+                "email": {
+                    "type": "boolean",
+                    "description": "whether email field is required\n"
+                },
+                "emailAccessDomainError": {
+                    "type": "string",
+                    "description": "error message when a user has valid social login but doesn't match specified email domains.\n"
+                },
+                "emailCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission using email auth\n"
+                },
+                "emailCodeCancel": {
+                    "type": "string"
+                },
+                "emailCodeError": {
+                    "type": "string"
+                },
+                "emailCodeFieldLabel": {
+                    "type": "string"
+                },
+                "emailCodeMessage": {
+                    "type": "string"
+                },
+                "emailCodeSubmit": {
+                    "type": "string"
+                },
+                "emailCodeTitle": {
+                    "type": "string"
+                },
+                "emailError": {
+                    "type": "string",
+                    "description": "error message when email not provided\n"
+                },
+                "emailFieldLabel": {
+                    "type": "string"
+                },
+                "emailLabel": {
+                    "type": "string",
+                    "description": "label of email field\n"
+                },
+                "emailMessage": {
+                    "type": "string"
+                },
+                "emailSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button using email auth\n"
+                },
+                "emailTitle": {
+                    "type": "string",
+                    "description": "Title for the Email registration\n"
+                },
+                "field1": {
+                    "type": "boolean",
+                    "description": "whether to ask field1\n"
+                },
+                "field1error": {
+                    "type": "string",
+                    "description": "error message when field1 not provided\n"
+                },
+                "field1label": {
+                    "type": "string",
+                    "description": "label of field1\n"
+                },
+                "field1required": {
+                    "type": "boolean",
+                    "description": "whether field1 is required field\n"
+                },
+                "field2": {
+                    "type": "boolean",
+                    "description": "whether to ask field2\n"
+                },
+                "field2error": {
+                    "type": "string",
+                    "description": "error message when field2 not provided\n"
+                },
+                "field2label": {
+                    "type": "string",
+                    "description": "label of field2\n"
+                },
+                "field2required": {
+                    "type": "boolean",
+                    "description": "whether field2 is required field\n"
+                },
+                "field3": {
+                    "type": "boolean",
+                    "description": "whether to ask field3\n"
+                },
+                "field3error": {
+                    "type": "string",
+                    "description": "error message when field3 not provided\n"
+                },
+                "field3label": {
+                    "type": "string",
+                    "description": "label of field3\n"
+                },
+                "field3required": {
+                    "type": "boolean",
+                    "description": "whether field3 is required field\n"
+                },
+                "field4": {
+                    "type": "boolean",
+                    "description": "whether to ask field4\n"
+                },
+                "field4error": {
+                    "type": "string",
+                    "description": "error message when field4 not provided\n"
+                },
+                "field4label": {
+                    "type": "string",
+                    "description": "label of field4\n"
+                },
+                "field4required": {
+                    "type": "boolean",
+                    "description": "whether field4 is required field\n"
+                },
+                "locales": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/WlanPortalTemplatePortalTemplateLocales:WlanPortalTemplatePortalTemplateLocales"
+                    },
+                    "description": "Can be used to localize the portal based on the User Agent. Allowed property key values are:\n  `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, \n  `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, \n  `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, \n  `zh-Hans`, `zh-Hant`\n"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "multiAuth": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "boolean",
+                    "description": "whether name field is required\n"
+                },
+                "nameError": {
+                    "type": "string",
+                    "description": "error message when name not provided\n"
+                },
+                "nameLabel": {
+                    "type": "string",
+                    "description": "label of name field\n"
+                },
+                "optOutDefault": {
+                    "type": "boolean",
+                    "description": "Default value for the `Do not store` checkbox\n"
+                },
+                "optout": {
+                    "type": "boolean",
+                    "description": "whether to display Do Not Store My Personal Information\n"
+                },
+                "optoutLabel": {
+                    "type": "string",
+                    "description": "label for Do Not Store My Personal Information\n"
+                },
+                "pageTitle": {
+                    "type": "string"
+                },
+                "passphraseCancel": {
+                    "type": "string",
+                    "description": "Label for the Passphrase cancel button\n"
+                },
+                "passphraseError": {
+                    "type": "string",
+                    "description": "error message when invalid passphrase is provided\n"
+                },
+                "passphraseLabel": {
+                    "type": "string",
+                    "description": "Passphrase\n"
+                },
+                "passphraseMessage": {
+                    "type": "string"
+                },
+                "passphraseSubmit": {
+                    "type": "string",
+                    "description": "Label for the Passphrase submit button\n"
+                },
+                "passphraseTitle": {
+                    "type": "string",
+                    "description": "Title for passphrase details page\n"
+                },
+                "poweredBy": {
+                    "type": "boolean",
+                    "description": "whether to show \\\"Powered by Mist\\\"\n"
+                },
+                "privacy": {
+                    "type": "boolean",
+                    "description": "wheter to require the Privacy Term acceptance\n"
+                },
+                "privacyPolicyAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyError": {
+                    "type": "string",
+                    "description": "error message when Privacy Policy not accepted\n"
+                },
+                "privacyPolicyLink": {
+                    "type": "string",
+                    "description": "label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyText": {
+                    "type": "string",
+                    "description": "text of the Privacy Policy\n"
+                },
+                "requiredFieldLabel": {
+                    "type": "string",
+                    "description": "label to denote required field\n"
+                },
+                "responsiveLayout": {
+                    "type": "boolean"
+                },
+                "signInLabel": {
+                    "type": "string",
+                    "description": "label of the button to /signin\n"
+                },
+                "smsCarrierDefault": {
+                    "type": "string"
+                },
+                "smsCarrierError": {
+                    "type": "string"
+                },
+                "smsCarrierFieldLabel": {
+                    "type": "string",
+                    "description": "label for mobile carrier drop-down list\n"
+                },
+                "smsCodeCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission\n"
+                },
+                "smsCodeError": {
+                    "type": "string",
+                    "description": "error message when confirmation code is invalid\n"
+                },
+                "smsCodeFieldLabel": {
+                    "type": "string"
+                },
+                "smsCodeMessage": {
+                    "type": "string"
+                },
+                "smsCodeSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button\n"
+                },
+                "smsCodeTitle": {
+                    "type": "string"
+                },
+                "smsCountryFieldLabel": {
+                    "type": "string"
+                },
+                "smsCountryFormat": {
+                    "type": "string"
+                },
+                "smsHaveAccessCode": {
+                    "type": "string",
+                    "description": "Label for checkbox to specify that the user has access code\n"
+                },
+                "smsIsTwilio": {
+                    "type": "boolean"
+                },
+                "smsMessageFormat": {
+                    "type": "string",
+                    "description": "format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.\n"
+                },
+                "smsNumberCancel": {
+                    "type": "string",
+                    "description": "label for canceling mobile details for SMS auth\n"
+                },
+                "smsNumberError": {
+                    "type": "string"
+                },
+                "smsNumberFieldLabel": {
+                    "type": "string",
+                    "description": "label for field to provide mobile number\n"
+                },
+                "smsNumberFormat": {
+                    "type": "string"
+                },
+                "smsNumberMessage": {
+                    "type": "string"
+                },
+                "smsNumberSubmit": {
+                    "type": "string",
+                    "description": "label for submit button for code generation\n"
+                },
+                "smsNumberTitle": {
+                    "type": "string",
+                    "description": "Title for phone number details\n"
+                },
+                "smsUsernameFormat": {
+                    "type": "string"
+                },
+                "smsValidityDuration": {
+                    "type": "integer",
+                    "description": "how long confirmation code should be considered valid (in minutes)\n"
+                },
+                "sponsorBackLink": {
+                    "type": "string"
+                },
+                "sponsorCancel": {
+                    "type": "string"
+                },
+                "sponsorEmail": {
+                    "type": "string",
+                    "description": "label for Sponsor Email\n"
+                },
+                "sponsorEmailError": {
+                    "type": "string"
+                },
+                "sponsorEmailTemplate": {
+                    "type": "string",
+                    "description": "html template to replace/override default sponsor email template \nSponsor Email Template supports following template variables:\n  * `approve_url`: Renders URL to approve the request; optionally \u0026minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized\n  * `deny_url`: Renders URL to reject the request\n  * `guest_email`: Renders Email ID of the guest\n  * `guest_name`: Renders Name of the guest\n  * `field1`: Renders value of the Custom Field 1\n  * `field2`: Renders value of the Custom Field 2\n  * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)\n  * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)\n"
+                },
+                "sponsorInfoApproved": {
+                    "type": "string"
+                },
+                "sponsorInfoDenied": {
+                    "type": "string"
+                },
+                "sponsorInfoPending": {
+                    "type": "string"
+                },
+                "sponsorName": {
+                    "type": "string",
+                    "description": "label for Sponsor Name\n"
+                },
+                "sponsorNameError": {
+                    "type": "string"
+                },
+                "sponsorNotePending": {
+                    "type": "string"
+                },
+                "sponsorRequestAccess": {
+                    "type": "string",
+                    "description": "submit button label request Wifi Access and notify sponsor about guest request\n"
+                },
+                "sponsorStatusApproved": {
+                    "type": "string",
+                    "description": "text to display if sponsor approves request\n"
+                },
+                "sponsorStatusDenied": {
+                    "type": "string",
+                    "description": "text to display when sponsor denies request\n"
+                },
+                "sponsorStatusPending": {
+                    "type": "string",
+                    "description": "text to display if request is still pending\n"
+                },
+                "sponsorSubmit": {
+                    "type": "string",
+                    "description": "submit button label to notify sponsor about guest request\n"
+                },
+                "sponsorsError": {
+                    "type": "string"
+                },
+                "sponsorsFieldLabel": {
+                    "type": "string"
+                },
+                "tos": {
+                    "type": "boolean"
+                },
+                "tosAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to tos\n"
+                },
+                "tosError": {
+                    "type": "string",
+                    "description": "error message when tos not accepted\n"
+                },
+                "tosLink": {
+                    "type": "string",
+                    "description": "label of the link to go to tos\n"
+                },
+                "tosText": {
+                    "type": "string",
+                    "description": "text of the Terms of Service\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessCodeAlternateEmail",
+                        "alignment",
+                        "authButtonAmazon",
+                        "authButtonAzure",
+                        "authButtonEmail",
+                        "authButtonFacebook",
+                        "authButtonGoogle",
+                        "authButtonMicrosoft",
+                        "authButtonPassphrase",
+                        "authButtonSms",
+                        "authButtonSponsor",
+                        "authLabel",
+                        "color",
+                        "colorDark",
+                        "colorLight",
+                        "company",
+                        "companyError",
+                        "companyLabel",
+                        "email",
+                        "emailAccessDomainError",
+                        "emailCancel",
+                        "emailCodeCancel",
+                        "emailCodeError",
+                        "emailCodeFieldLabel",
+                        "emailCodeMessage",
+                        "emailCodeSubmit",
+                        "emailCodeTitle",
+                        "emailError",
+                        "emailFieldLabel",
+                        "emailLabel",
+                        "emailMessage",
+                        "emailSubmit",
+                        "emailTitle",
+                        "field1",
+                        "field1error",
+                        "field1label",
+                        "field2",
+                        "field2error",
+                        "field2label",
+                        "field3",
+                        "field3error",
+                        "field3label",
+                        "field4",
+                        "field4error",
+                        "field4label",
+                        "message",
+                        "multiAuth",
+                        "name",
+                        "nameError",
+                        "nameLabel",
+                        "optOutDefault",
+                        "optout",
+                        "optoutLabel",
+                        "pageTitle",
+                        "passphraseCancel",
+                        "passphraseError",
+                        "passphraseLabel",
+                        "passphraseMessage",
+                        "passphraseSubmit",
+                        "passphraseTitle",
+                        "poweredBy",
+                        "privacy",
+                        "privacyPolicyAcceptLabel",
+                        "privacyPolicyError",
+                        "privacyPolicyLink",
+                        "privacyPolicyText",
+                        "requiredFieldLabel",
+                        "responsiveLayout",
+                        "signInLabel",
+                        "smsCarrierDefault",
+                        "smsCarrierError",
+                        "smsCarrierFieldLabel",
+                        "smsCodeCancel",
+                        "smsCodeError",
+                        "smsCodeFieldLabel",
+                        "smsCodeMessage",
+                        "smsCodeSubmit",
+                        "smsCodeTitle",
+                        "smsCountryFieldLabel",
+                        "smsCountryFormat",
+                        "smsHaveAccessCode",
+                        "smsIsTwilio",
+                        "smsNumberCancel",
+                        "smsNumberError",
+                        "smsNumberFieldLabel",
+                        "smsNumberFormat",
+                        "smsNumberMessage",
+                        "smsNumberSubmit",
+                        "smsNumberTitle",
+                        "smsUsernameFormat",
+                        "sponsorBackLink",
+                        "sponsorCancel",
+                        "sponsorEmail",
+                        "sponsorEmailError",
+                        "sponsorEmailTemplate",
+                        "sponsorInfoApproved",
+                        "sponsorInfoDenied",
+                        "sponsorInfoPending",
+                        "sponsorName",
+                        "sponsorNameError",
+                        "sponsorNotePending",
+                        "sponsorRequestAccess",
+                        "sponsorStatusApproved",
+                        "sponsorStatusDenied",
+                        "sponsorStatusPending",
+                        "sponsorSubmit",
+                        "sponsorsError",
+                        "sponsorsFieldLabel",
+                        "tos",
+                        "tosAcceptLabel",
+                        "tosError",
+                        "tosLink",
+                        "tosText"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/WlanPortalTemplatePortalTemplateLocales:WlanPortalTemplatePortalTemplateLocales": {
+            "properties": {
+                "authButtonAmazon": {
+                    "type": "string",
+                    "description": "label for Amazon auth button\n"
+                },
+                "authButtonAzure": {
+                    "type": "string",
+                    "description": "label for Azure auth button\n"
+                },
+                "authButtonEmail": {
+                    "type": "string",
+                    "description": "label for Email auth button\n"
+                },
+                "authButtonFacebook": {
+                    "type": "string",
+                    "description": "label for Facebook auth button\n"
+                },
+                "authButtonGoogle": {
+                    "type": "string",
+                    "description": "label for Google auth button\n"
+                },
+                "authButtonMicrosoft": {
+                    "type": "string",
+                    "description": "label for Microsoft auth button\n"
+                },
+                "authButtonPassphrase": {
+                    "type": "string",
+                    "description": "label for passphrase auth button\n"
+                },
+                "authButtonSms": {
+                    "type": "string",
+                    "description": "label for SMS auth button\n"
+                },
+                "authButtonSponsor": {
+                    "type": "string",
+                    "description": "label for Sponsor auth button\n"
+                },
+                "authLabel": {
+                    "type": "string"
+                },
+                "backLink": {
+                    "type": "string",
+                    "description": "label of the link to go back to /logon\n"
+                },
+                "companyError": {
+                    "type": "string",
+                    "description": "error message when company not provided\n"
+                },
+                "companyLabel": {
+                    "type": "string",
+                    "description": "label of company field\n"
+                },
+                "emailAccessDomainError": {
+                    "type": "string",
+                    "description": "error message when a user has valid social login but doesn't match specified email domains.\n"
+                },
+                "emailCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission using email auth\n"
+                },
+                "emailCodeCancel": {
+                    "type": "string"
+                },
+                "emailCodeError": {
+                    "type": "string"
+                },
+                "emailCodeFieldLabel": {
+                    "type": "string"
+                },
+                "emailCodeMessage": {
+                    "type": "string"
+                },
+                "emailCodeSubmit": {
+                    "type": "string"
+                },
+                "emailCodeTitle": {
+                    "type": "string"
+                },
+                "emailError": {
+                    "type": "string",
+                    "description": "error message when email not provided\n"
+                },
+                "emailFieldLabel": {
+                    "type": "string"
+                },
+                "emailLabel": {
+                    "type": "string",
+                    "description": "label of email field\n"
+                },
+                "emailMessage": {
+                    "type": "string"
+                },
+                "emailSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button using email auth\n"
+                },
+                "emailTitle": {
+                    "type": "string",
+                    "description": "Title for the Email registration\n"
+                },
+                "field1error": {
+                    "type": "string",
+                    "description": "error message when field1 not provided\n"
+                },
+                "field1label": {
+                    "type": "string",
+                    "description": "label of field1\n"
+                },
+                "field2error": {
+                    "type": "string",
+                    "description": "error message when field2 not provided\n"
+                },
+                "field2label": {
+                    "type": "string",
+                    "description": "label of field2\n"
+                },
+                "field3error": {
+                    "type": "string",
+                    "description": "error message when field3 not provided\n"
+                },
+                "field3label": {
+                    "type": "string",
+                    "description": "label of field3\n"
+                },
+                "field4error": {
+                    "type": "string",
+                    "description": "error message when field4 not provided\n"
+                },
+                "field4label": {
+                    "type": "string",
+                    "description": "label of field4\n"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "nameError": {
+                    "type": "string",
+                    "description": "error message when name not provided\n"
+                },
+                "nameLabel": {
+                    "type": "string",
+                    "description": "label of name field\n"
+                },
+                "optoutLabel": {
+                    "type": "string",
+                    "description": "label for Do Not Store My Personal Information\n"
+                },
+                "pageTitle": {
+                    "type": "string"
+                },
+                "passphraseCancel": {
+                    "type": "string",
+                    "description": "Label for the Passphrase cancel button\n"
+                },
+                "passphraseError": {
+                    "type": "string",
+                    "description": "error message when invalid passphrase is provided\n"
+                },
+                "passphraseLabel": {
+                    "type": "string",
+                    "description": "Passphrase\n"
+                },
+                "passphraseMessage": {
+                    "type": "string"
+                },
+                "passphraseSubmit": {
+                    "type": "string",
+                    "description": "Label for the Passphrase submit button\n"
+                },
+                "passphraseTitle": {
+                    "type": "string",
+                    "description": "Title for passphrase details page\n"
+                },
+                "privacyPolicyAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyError": {
+                    "type": "string",
+                    "description": "error message when Privacy Policy not accepted\n"
+                },
+                "privacyPolicyLink": {
+                    "type": "string",
+                    "description": "label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyText": {
+                    "type": "string",
+                    "description": "text of the Privacy Policy\n"
+                },
+                "requiredFieldLabel": {
+                    "type": "string",
+                    "description": "label to denote required field\n"
+                },
+                "signInLabel": {
+                    "type": "string",
+                    "description": "label of the button to /signin\n"
+                },
+                "smsCarrierDefault": {
+                    "type": "string"
+                },
+                "smsCarrierError": {
+                    "type": "string"
+                },
+                "smsCarrierFieldLabel": {
+                    "type": "string",
+                    "description": "label for mobile carrier drop-down list\n"
+                },
+                "smsCodeCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission\n"
+                },
+                "smsCodeError": {
+                    "type": "string",
+                    "description": "error message when confirmation code is invalid\n"
+                },
+                "smsCodeFieldLabel": {
+                    "type": "string"
+                },
+                "smsCodeMessage": {
+                    "type": "string"
+                },
+                "smsCodeSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button\n"
+                },
+                "smsCodeTitle": {
+                    "type": "string"
+                },
+                "smsCountryFieldLabel": {
+                    "type": "string"
+                },
+                "smsCountryFormat": {
+                    "type": "string"
+                },
+                "smsHaveAccessCode": {
+                    "type": "string",
+                    "description": "Label for checkbox to specify that the user has access code\n"
+                },
+                "smsMessageFormat": {
+                    "type": "string",
+                    "description": "format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.\n"
+                },
+                "smsNumberCancel": {
+                    "type": "string",
+                    "description": "label for canceling mobile details for SMS auth\n"
+                },
+                "smsNumberError": {
+                    "type": "string"
+                },
+                "smsNumberFieldLabel": {
+                    "type": "string",
+                    "description": "label for field to provide mobile number\n"
+                },
+                "smsNumberFormat": {
+                    "type": "string"
+                },
+                "smsNumberMessage": {
+                    "type": "string"
+                },
+                "smsNumberSubmit": {
+                    "type": "string",
+                    "description": "label for submit button for code generation\n"
+                },
+                "smsNumberTitle": {
+                    "type": "string",
+                    "description": "Title for phone number details\n"
+                },
+                "smsUsernameFormat": {
+                    "type": "string"
+                },
+                "sponsorBackLink": {
+                    "type": "string"
+                },
+                "sponsorCancel": {
+                    "type": "string"
+                },
+                "sponsorEmail": {
+                    "type": "string",
+                    "description": "label for Sponsor Email\n"
+                },
+                "sponsorEmailError": {
+                    "type": "string"
+                },
+                "sponsorInfoApproved": {
+                    "type": "string"
+                },
+                "sponsorInfoDenied": {
+                    "type": "string"
+                },
+                "sponsorInfoPending": {
+                    "type": "string"
+                },
+                "sponsorName": {
+                    "type": "string",
+                    "description": "label for Sponsor Name\n"
+                },
+                "sponsorNameError": {
+                    "type": "string"
+                },
+                "sponsorNotePending": {
+                    "type": "string"
+                },
+                "sponsorRequestAccess": {
+                    "type": "string",
+                    "description": "submit button label request Wifi Access and notify sponsor about guest request\n"
+                },
+                "sponsorStatusApproved": {
+                    "type": "string",
+                    "description": "text to display if sponsor approves request\n"
+                },
+                "sponsorStatusDenied": {
+                    "type": "string",
+                    "description": "text to display when sponsor denies request\n"
+                },
+                "sponsorStatusPending": {
+                    "type": "string",
+                    "description": "text to display if request is still pending\n"
+                },
+                "sponsorSubmit": {
+                    "type": "string",
+                    "description": "submit button label to notify sponsor about guest request\n"
+                },
+                "sponsorsError": {
+                    "type": "string"
+                },
+                "sponsorsFieldLabel": {
+                    "type": "string"
+                },
+                "tosAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to tos\n"
+                },
+                "tosError": {
+                    "type": "string",
+                    "description": "error message when tos not accepted\n"
+                },
+                "tosLink": {
+                    "type": "string",
+                    "description": "label of the link to go to tos\n"
+                },
+                "tosText": {
+                    "type": "string",
+                    "description": "text of the Terms of Service\n"
+                },
+                "uthButtonAmazon": {
+                    "type": "string",
+                    "description": "label for Amazon auth button\n"
+                }
+            },
+            "type": "object"
         },
         "junipermist:org/WlanQos:WlanQos": {
             "properties": {
@@ -21931,7 +22928,16 @@
                     "description": "exaclty one of the `output_port_id` or `output_network` should be provided\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "inputNetworksIngresses",
+                        "inputPortIdsEgresses",
+                        "inputPortIdsIngresses"
+                    ]
+                }
+            }
         },
         "junipermist:site/NetworktemplateSwitchMgmt:NetworktemplateSwitchMgmt": {
             "properties": {
@@ -22662,6 +23668,14 @@
                     "type": "integer",
                     "description": "he rollback timer for commit confirmed\n"
                 },
+                "disableConsole": {
+                    "type": "boolean",
+                    "description": "for both SSR and SRX disable console port\n"
+                },
+                "disableOob": {
+                    "type": "boolean",
+                    "description": "for both SSR and SRX disable management interface\n"
+                },
                 "probeHosts": {
                     "type": "array",
                     "items": {
@@ -22686,6 +23700,8 @@
                     "requiredOutputs": [
                         "adminSshkeys",
                         "configRevertTimer",
+                        "disableConsole",
+                        "disableOob",
                         "probeHosts"
                     ]
                 }
@@ -22747,9 +23763,6 @@
                 }
             },
             "type": "object",
-            "required": [
-                "address"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -24222,7 +25235,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled` is `true` and `sponsor_email_domains` is empty.\nProperty key is the sponsor email, Property value is the sponsor name\n"
+                    "description": "object of allowed sponsors email with name. Required if `sponsor_enabled`\n            is `true` and `sponsor_email_domains` is empty.\n\n            Property key is the sponsor email, Property value is the sponsor name\n"
                 },
                 "ssoDefaultRole": {
                     "type": "string",
@@ -24352,6 +25365,929 @@
                     ]
                 }
             }
+        },
+        "junipermist:site/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate": {
+            "properties": {
+                "accessCodeAlternateEmail": {
+                    "type": "string"
+                },
+                "alignment": {
+                    "type": "string",
+                    "description": "defines alignment on portal. enum: `center`, `left`, `right`\n"
+                },
+                "authButtonAmazon": {
+                    "type": "string",
+                    "description": "label for Amazon auth button\n"
+                },
+                "authButtonAzure": {
+                    "type": "string",
+                    "description": "label for Azure auth button\n"
+                },
+                "authButtonEmail": {
+                    "type": "string",
+                    "description": "label for Email auth button\n"
+                },
+                "authButtonFacebook": {
+                    "type": "string",
+                    "description": "label for Facebook auth button\n"
+                },
+                "authButtonGoogle": {
+                    "type": "string",
+                    "description": "label for Google auth button\n"
+                },
+                "authButtonMicrosoft": {
+                    "type": "string",
+                    "description": "label for Microsoft auth button\n"
+                },
+                "authButtonPassphrase": {
+                    "type": "string",
+                    "description": "label for passphrase auth button\n"
+                },
+                "authButtonSms": {
+                    "type": "string",
+                    "description": "label for SMS auth button\n"
+                },
+                "authButtonSponsor": {
+                    "type": "string",
+                    "description": "label for Sponsor auth button\n"
+                },
+                "authLabel": {
+                    "type": "string"
+                },
+                "backLink": {
+                    "type": "string",
+                    "description": "label of the link to go back to /logon\n"
+                },
+                "color": {
+                    "type": "string",
+                    "description": "Portal main color\n"
+                },
+                "colorDark": {
+                    "type": "string"
+                },
+                "colorLight": {
+                    "type": "string"
+                },
+                "company": {
+                    "type": "boolean",
+                    "description": "whether company field is required\n"
+                },
+                "companyError": {
+                    "type": "string",
+                    "description": "error message when company not provided\n"
+                },
+                "companyLabel": {
+                    "type": "string",
+                    "description": "label of company field\n"
+                },
+                "email": {
+                    "type": "boolean",
+                    "description": "whether email field is required\n"
+                },
+                "emailAccessDomainError": {
+                    "type": "string",
+                    "description": "error message when a user has valid social login but doesn't match specified email domains.\n"
+                },
+                "emailCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission using email auth\n"
+                },
+                "emailCodeCancel": {
+                    "type": "string"
+                },
+                "emailCodeError": {
+                    "type": "string"
+                },
+                "emailCodeFieldLabel": {
+                    "type": "string"
+                },
+                "emailCodeMessage": {
+                    "type": "string"
+                },
+                "emailCodeSubmit": {
+                    "type": "string"
+                },
+                "emailCodeTitle": {
+                    "type": "string"
+                },
+                "emailError": {
+                    "type": "string",
+                    "description": "error message when email not provided\n"
+                },
+                "emailFieldLabel": {
+                    "type": "string"
+                },
+                "emailLabel": {
+                    "type": "string",
+                    "description": "label of email field\n"
+                },
+                "emailMessage": {
+                    "type": "string"
+                },
+                "emailSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button using email auth\n"
+                },
+                "emailTitle": {
+                    "type": "string",
+                    "description": "Title for the Email registration\n"
+                },
+                "field1": {
+                    "type": "boolean",
+                    "description": "whether to ask field1\n"
+                },
+                "field1error": {
+                    "type": "string",
+                    "description": "error message when field1 not provided\n"
+                },
+                "field1label": {
+                    "type": "string",
+                    "description": "label of field1\n"
+                },
+                "field1required": {
+                    "type": "boolean",
+                    "description": "whether field1 is required field\n"
+                },
+                "field2": {
+                    "type": "boolean",
+                    "description": "whether to ask field2\n"
+                },
+                "field2error": {
+                    "type": "string",
+                    "description": "error message when field2 not provided\n"
+                },
+                "field2label": {
+                    "type": "string",
+                    "description": "label of field2\n"
+                },
+                "field2required": {
+                    "type": "boolean",
+                    "description": "whether field2 is required field\n"
+                },
+                "field3": {
+                    "type": "boolean",
+                    "description": "whether to ask field3\n"
+                },
+                "field3error": {
+                    "type": "string",
+                    "description": "error message when field3 not provided\n"
+                },
+                "field3label": {
+                    "type": "string",
+                    "description": "label of field3\n"
+                },
+                "field3required": {
+                    "type": "boolean",
+                    "description": "whether field3 is required field\n"
+                },
+                "field4": {
+                    "type": "boolean",
+                    "description": "whether to ask field4\n"
+                },
+                "field4error": {
+                    "type": "string",
+                    "description": "error message when field4 not provided\n"
+                },
+                "field4label": {
+                    "type": "string",
+                    "description": "label of field4\n"
+                },
+                "field4required": {
+                    "type": "boolean",
+                    "description": "whether field4 is required field\n"
+                },
+                "locales": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/WlanPortalTemplatePortalTemplateLocales:WlanPortalTemplatePortalTemplateLocales"
+                    },
+                    "description": "Can be used to localize the portal based on the User Agent. Allowed property key values are:\n      \"ar\", \"ca-ES\", \"cs-CZ\", \"da-DK\", \"de-DE\", \"el-GR\", \"en-GB\", \"en-US\", \"es-ES\", \n      \"fi-FI\", \"fr-FR\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it-IT\", \"ja-JP\", \n      \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl-NL\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \n      \"sk-SK\", \"sv-SE\", \"th-TH\", \"tr-TR\", \"uk-UA\", \"vi-VN\", \"zh-Hans\", \"zh-Hant\",\n"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "multiAuth": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "boolean",
+                    "description": "whether name field is required\n"
+                },
+                "nameError": {
+                    "type": "string",
+                    "description": "error message when name not provided\n"
+                },
+                "nameLabel": {
+                    "type": "string",
+                    "description": "label of name field\n"
+                },
+                "optOutDefault": {
+                    "type": "boolean",
+                    "description": "Default value for the `Do not store` checkbox\n"
+                },
+                "optout": {
+                    "type": "boolean",
+                    "description": "whether to display Do Not Store My Personal Information\n"
+                },
+                "optoutLabel": {
+                    "type": "string",
+                    "description": "label for Do Not Store My Personal Information\n"
+                },
+                "pageTitle": {
+                    "type": "string"
+                },
+                "passphraseCancel": {
+                    "type": "string",
+                    "description": "Label for the Passphrase cancel button\n"
+                },
+                "passphraseError": {
+                    "type": "string",
+                    "description": "error message when invalid passphrase is provided\n"
+                },
+                "passphraseLabel": {
+                    "type": "string",
+                    "description": "Passphrase\n"
+                },
+                "passphraseMessage": {
+                    "type": "string"
+                },
+                "passphraseSubmit": {
+                    "type": "string",
+                    "description": "Label for the Passphrase submit button\n"
+                },
+                "passphraseTitle": {
+                    "type": "string",
+                    "description": "Title for passphrase details page\n"
+                },
+                "poweredBy": {
+                    "type": "boolean",
+                    "description": "whether to show \\\"Powered by Mist\\\"\n"
+                },
+                "privacy": {
+                    "type": "boolean",
+                    "description": "wheter to require the Privacy Term acceptance\n"
+                },
+                "privacyPolicyAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyError": {
+                    "type": "string",
+                    "description": "error message when Privacy Policy not accepted\n"
+                },
+                "privacyPolicyLink": {
+                    "type": "string",
+                    "description": "label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyText": {
+                    "type": "string",
+                    "description": "text of the Privacy Policy\n"
+                },
+                "requiredFieldLabel": {
+                    "type": "string",
+                    "description": "label to denote required field\n"
+                },
+                "responsiveLayout": {
+                    "type": "boolean"
+                },
+                "signInLabel": {
+                    "type": "string",
+                    "description": "label of the button to /signin\n"
+                },
+                "smsCarrierDefault": {
+                    "type": "string"
+                },
+                "smsCarrierError": {
+                    "type": "string"
+                },
+                "smsCarrierFieldLabel": {
+                    "type": "string",
+                    "description": "label for mobile carrier drop-down list\n"
+                },
+                "smsCodeCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission\n"
+                },
+                "smsCodeError": {
+                    "type": "string",
+                    "description": "error message when confirmation code is invalid\n"
+                },
+                "smsCodeFieldLabel": {
+                    "type": "string"
+                },
+                "smsCodeMessage": {
+                    "type": "string"
+                },
+                "smsCodeSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button\n"
+                },
+                "smsCodeTitle": {
+                    "type": "string"
+                },
+                "smsCountryFieldLabel": {
+                    "type": "string"
+                },
+                "smsCountryFormat": {
+                    "type": "string"
+                },
+                "smsHaveAccessCode": {
+                    "type": "string",
+                    "description": "Label for checkbox to specify that the user has access code\n"
+                },
+                "smsIsTwilio": {
+                    "type": "boolean"
+                },
+                "smsMessageFormat": {
+                    "type": "string",
+                    "description": "format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.\n"
+                },
+                "smsNumberCancel": {
+                    "type": "string",
+                    "description": "label for canceling mobile details for SMS auth\n"
+                },
+                "smsNumberError": {
+                    "type": "string"
+                },
+                "smsNumberFieldLabel": {
+                    "type": "string",
+                    "description": "label for field to provide mobile number\n"
+                },
+                "smsNumberFormat": {
+                    "type": "string"
+                },
+                "smsNumberMessage": {
+                    "type": "string"
+                },
+                "smsNumberSubmit": {
+                    "type": "string",
+                    "description": "label for submit button for code generation\n"
+                },
+                "smsNumberTitle": {
+                    "type": "string",
+                    "description": "Title for phone number details\n"
+                },
+                "smsUsernameFormat": {
+                    "type": "string"
+                },
+                "smsValidityDuration": {
+                    "type": "integer",
+                    "description": "how long confirmation code should be considered valid (in minutes)\n"
+                },
+                "sponsorBackLink": {
+                    "type": "string"
+                },
+                "sponsorCancel": {
+                    "type": "string"
+                },
+                "sponsorEmail": {
+                    "type": "string",
+                    "description": "label for Sponsor Email\n"
+                },
+                "sponsorEmailError": {
+                    "type": "string"
+                },
+                "sponsorEmailTemplate": {
+                    "type": "string",
+                    "description": "html template to replace/override default sponsor email template \nSponsor Email Template supports following template variables:\n  * `approve_url`: Renders URL to approve the request; optionally \u0026minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized\n  * `deny_url`: Renders URL to reject the request\n  * `guest_email`: Renders Email ID of the guest\n  * `guest_name`: Renders Name of the guest\n  * `field1`: Renders value of the Custom Field 1\n  * `field2`: Renders value of the Custom Field 2\n  * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)\n  * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)\n"
+                },
+                "sponsorInfoApproved": {
+                    "type": "string"
+                },
+                "sponsorInfoDenied": {
+                    "type": "string"
+                },
+                "sponsorInfoPending": {
+                    "type": "string"
+                },
+                "sponsorName": {
+                    "type": "string",
+                    "description": "label for Sponsor Name\n"
+                },
+                "sponsorNameError": {
+                    "type": "string"
+                },
+                "sponsorNotePending": {
+                    "type": "string"
+                },
+                "sponsorRequestAccess": {
+                    "type": "string",
+                    "description": "submit button label request Wifi Access and notify sponsor about guest request\n"
+                },
+                "sponsorStatusApproved": {
+                    "type": "string",
+                    "description": "text to display if sponsor approves request\n"
+                },
+                "sponsorStatusDenied": {
+                    "type": "string",
+                    "description": "text to display when sponsor denies request\n"
+                },
+                "sponsorStatusPending": {
+                    "type": "string",
+                    "description": "text to display if request is still pending\n"
+                },
+                "sponsorSubmit": {
+                    "type": "string",
+                    "description": "submit button label to notify sponsor about guest request\n"
+                },
+                "sponsorsError": {
+                    "type": "string"
+                },
+                "sponsorsFieldLabel": {
+                    "type": "string"
+                },
+                "tos": {
+                    "type": "boolean"
+                },
+                "tosAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to tos\n"
+                },
+                "tosError": {
+                    "type": "string",
+                    "description": "error message when tos not accepted\n"
+                },
+                "tosLink": {
+                    "type": "string",
+                    "description": "label of the link to go to tos\n"
+                },
+                "tosText": {
+                    "type": "string",
+                    "description": "text of the Terms of Service\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessCodeAlternateEmail",
+                        "alignment",
+                        "authButtonAmazon",
+                        "authButtonAzure",
+                        "authButtonEmail",
+                        "authButtonFacebook",
+                        "authButtonGoogle",
+                        "authButtonMicrosoft",
+                        "authButtonPassphrase",
+                        "authButtonSms",
+                        "authButtonSponsor",
+                        "authLabel",
+                        "color",
+                        "colorDark",
+                        "colorLight",
+                        "company",
+                        "companyError",
+                        "companyLabel",
+                        "email",
+                        "emailAccessDomainError",
+                        "emailCancel",
+                        "emailCodeCancel",
+                        "emailCodeError",
+                        "emailCodeFieldLabel",
+                        "emailCodeMessage",
+                        "emailCodeSubmit",
+                        "emailCodeTitle",
+                        "emailError",
+                        "emailFieldLabel",
+                        "emailLabel",
+                        "emailMessage",
+                        "emailSubmit",
+                        "emailTitle",
+                        "field1",
+                        "field1error",
+                        "field1label",
+                        "field2",
+                        "field2error",
+                        "field2label",
+                        "field3",
+                        "field3error",
+                        "field3label",
+                        "field4",
+                        "field4error",
+                        "field4label",
+                        "message",
+                        "multiAuth",
+                        "name",
+                        "nameError",
+                        "nameLabel",
+                        "optOutDefault",
+                        "optout",
+                        "optoutLabel",
+                        "pageTitle",
+                        "passphraseCancel",
+                        "passphraseError",
+                        "passphraseLabel",
+                        "passphraseMessage",
+                        "passphraseSubmit",
+                        "passphraseTitle",
+                        "poweredBy",
+                        "privacy",
+                        "privacyPolicyAcceptLabel",
+                        "privacyPolicyError",
+                        "privacyPolicyLink",
+                        "privacyPolicyText",
+                        "requiredFieldLabel",
+                        "responsiveLayout",
+                        "signInLabel",
+                        "smsCarrierDefault",
+                        "smsCarrierError",
+                        "smsCarrierFieldLabel",
+                        "smsCodeCancel",
+                        "smsCodeError",
+                        "smsCodeFieldLabel",
+                        "smsCodeMessage",
+                        "smsCodeSubmit",
+                        "smsCodeTitle",
+                        "smsCountryFieldLabel",
+                        "smsCountryFormat",
+                        "smsHaveAccessCode",
+                        "smsIsTwilio",
+                        "smsNumberCancel",
+                        "smsNumberError",
+                        "smsNumberFieldLabel",
+                        "smsNumberFormat",
+                        "smsNumberMessage",
+                        "smsNumberSubmit",
+                        "smsNumberTitle",
+                        "smsUsernameFormat",
+                        "sponsorBackLink",
+                        "sponsorCancel",
+                        "sponsorEmail",
+                        "sponsorEmailError",
+                        "sponsorEmailTemplate",
+                        "sponsorInfoApproved",
+                        "sponsorInfoDenied",
+                        "sponsorInfoPending",
+                        "sponsorName",
+                        "sponsorNameError",
+                        "sponsorNotePending",
+                        "sponsorRequestAccess",
+                        "sponsorStatusApproved",
+                        "sponsorStatusDenied",
+                        "sponsorStatusPending",
+                        "sponsorSubmit",
+                        "sponsorsError",
+                        "sponsorsFieldLabel",
+                        "tos",
+                        "tosAcceptLabel",
+                        "tosError",
+                        "tosLink",
+                        "tosText"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/WlanPortalTemplatePortalTemplateLocales:WlanPortalTemplatePortalTemplateLocales": {
+            "properties": {
+                "authButtonAmazon": {
+                    "type": "string",
+                    "description": "label for Amazon auth button\n"
+                },
+                "authButtonAzure": {
+                    "type": "string",
+                    "description": "label for Azure auth button\n"
+                },
+                "authButtonEmail": {
+                    "type": "string",
+                    "description": "label for Email auth button\n"
+                },
+                "authButtonFacebook": {
+                    "type": "string",
+                    "description": "label for Facebook auth button\n"
+                },
+                "authButtonGoogle": {
+                    "type": "string",
+                    "description": "label for Google auth button\n"
+                },
+                "authButtonMicrosoft": {
+                    "type": "string",
+                    "description": "label for Microsoft auth button\n"
+                },
+                "authButtonPassphrase": {
+                    "type": "string",
+                    "description": "label for passphrase auth button\n"
+                },
+                "authButtonSms": {
+                    "type": "string",
+                    "description": "label for SMS auth button\n"
+                },
+                "authButtonSponsor": {
+                    "type": "string",
+                    "description": "label for Sponsor auth button\n"
+                },
+                "authLabel": {
+                    "type": "string"
+                },
+                "backLink": {
+                    "type": "string",
+                    "description": "label of the link to go back to /logon\n"
+                },
+                "companyError": {
+                    "type": "string",
+                    "description": "error message when company not provided\n"
+                },
+                "companyLabel": {
+                    "type": "string",
+                    "description": "label of company field\n"
+                },
+                "emailAccessDomainError": {
+                    "type": "string",
+                    "description": "error message when a user has valid social login but doesn't match specified email domains.\n"
+                },
+                "emailCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission using email auth\n"
+                },
+                "emailCodeCancel": {
+                    "type": "string"
+                },
+                "emailCodeError": {
+                    "type": "string"
+                },
+                "emailCodeFieldLabel": {
+                    "type": "string"
+                },
+                "emailCodeMessage": {
+                    "type": "string"
+                },
+                "emailCodeSubmit": {
+                    "type": "string"
+                },
+                "emailCodeTitle": {
+                    "type": "string"
+                },
+                "emailError": {
+                    "type": "string",
+                    "description": "error message when email not provided\n"
+                },
+                "emailFieldLabel": {
+                    "type": "string"
+                },
+                "emailLabel": {
+                    "type": "string",
+                    "description": "label of email field\n"
+                },
+                "emailMessage": {
+                    "type": "string"
+                },
+                "emailSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button using email auth\n"
+                },
+                "emailTitle": {
+                    "type": "string",
+                    "description": "Title for the Email registration\n"
+                },
+                "field1error": {
+                    "type": "string",
+                    "description": "error message when field1 not provided\n"
+                },
+                "field1label": {
+                    "type": "string",
+                    "description": "label of field1\n"
+                },
+                "field2error": {
+                    "type": "string",
+                    "description": "error message when field2 not provided\n"
+                },
+                "field2label": {
+                    "type": "string",
+                    "description": "label of field2\n"
+                },
+                "field3error": {
+                    "type": "string",
+                    "description": "error message when field3 not provided\n"
+                },
+                "field3label": {
+                    "type": "string",
+                    "description": "label of field3\n"
+                },
+                "field4error": {
+                    "type": "string",
+                    "description": "error message when field4 not provided\n"
+                },
+                "field4label": {
+                    "type": "string",
+                    "description": "label of field4\n"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "nameError": {
+                    "type": "string",
+                    "description": "error message when name not provided\n"
+                },
+                "nameLabel": {
+                    "type": "string",
+                    "description": "label of name field\n"
+                },
+                "optoutLabel": {
+                    "type": "string",
+                    "description": "label for Do Not Store My Personal Information\n"
+                },
+                "pageTitle": {
+                    "type": "string"
+                },
+                "passphraseCancel": {
+                    "type": "string",
+                    "description": "Label for the Passphrase cancel button\n"
+                },
+                "passphraseError": {
+                    "type": "string",
+                    "description": "error message when invalid passphrase is provided\n"
+                },
+                "passphraseLabel": {
+                    "type": "string",
+                    "description": "Passphrase\n"
+                },
+                "passphraseMessage": {
+                    "type": "string"
+                },
+                "passphraseSubmit": {
+                    "type": "string",
+                    "description": "Label for the Passphrase submit button\n"
+                },
+                "passphraseTitle": {
+                    "type": "string",
+                    "description": "Title for passphrase details page\n"
+                },
+                "privacyPolicyAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyError": {
+                    "type": "string",
+                    "description": "error message when Privacy Policy not accepted\n"
+                },
+                "privacyPolicyLink": {
+                    "type": "string",
+                    "description": "label of the link to go to Privacy Policy\n"
+                },
+                "privacyPolicyText": {
+                    "type": "string",
+                    "description": "text of the Privacy Policy\n"
+                },
+                "requiredFieldLabel": {
+                    "type": "string",
+                    "description": "label to denote required field\n"
+                },
+                "signInLabel": {
+                    "type": "string",
+                    "description": "label of the button to /signin\n"
+                },
+                "smsCarrierDefault": {
+                    "type": "string"
+                },
+                "smsCarrierError": {
+                    "type": "string"
+                },
+                "smsCarrierFieldLabel": {
+                    "type": "string",
+                    "description": "label for mobile carrier drop-down list\n"
+                },
+                "smsCodeCancel": {
+                    "type": "string",
+                    "description": "Label for cancel confirmation code submission\n"
+                },
+                "smsCodeError": {
+                    "type": "string",
+                    "description": "error message when confirmation code is invalid\n"
+                },
+                "smsCodeFieldLabel": {
+                    "type": "string"
+                },
+                "smsCodeMessage": {
+                    "type": "string"
+                },
+                "smsCodeSubmit": {
+                    "type": "string",
+                    "description": "Label for confirmation code submit button\n"
+                },
+                "smsCodeTitle": {
+                    "type": "string"
+                },
+                "smsCountryFieldLabel": {
+                    "type": "string"
+                },
+                "smsCountryFormat": {
+                    "type": "string"
+                },
+                "smsHaveAccessCode": {
+                    "type": "string",
+                    "description": "Label for checkbox to specify that the user has access code\n"
+                },
+                "smsMessageFormat": {
+                    "type": "string",
+                    "description": "format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.\n"
+                },
+                "smsNumberCancel": {
+                    "type": "string",
+                    "description": "label for canceling mobile details for SMS auth\n"
+                },
+                "smsNumberError": {
+                    "type": "string"
+                },
+                "smsNumberFieldLabel": {
+                    "type": "string",
+                    "description": "label for field to provide mobile number\n"
+                },
+                "smsNumberFormat": {
+                    "type": "string"
+                },
+                "smsNumberMessage": {
+                    "type": "string"
+                },
+                "smsNumberSubmit": {
+                    "type": "string",
+                    "description": "label for submit button for code generation\n"
+                },
+                "smsNumberTitle": {
+                    "type": "string",
+                    "description": "Title for phone number details\n"
+                },
+                "smsUsernameFormat": {
+                    "type": "string"
+                },
+                "sponsorBackLink": {
+                    "type": "string"
+                },
+                "sponsorCancel": {
+                    "type": "string"
+                },
+                "sponsorEmail": {
+                    "type": "string",
+                    "description": "label for Sponsor Email\n"
+                },
+                "sponsorEmailError": {
+                    "type": "string"
+                },
+                "sponsorInfoApproved": {
+                    "type": "string"
+                },
+                "sponsorInfoDenied": {
+                    "type": "string"
+                },
+                "sponsorInfoPending": {
+                    "type": "string"
+                },
+                "sponsorName": {
+                    "type": "string",
+                    "description": "label for Sponsor Name\n"
+                },
+                "sponsorNameError": {
+                    "type": "string"
+                },
+                "sponsorNotePending": {
+                    "type": "string"
+                },
+                "sponsorRequestAccess": {
+                    "type": "string",
+                    "description": "submit button label request Wifi Access and notify sponsor about guest request\n"
+                },
+                "sponsorStatusApproved": {
+                    "type": "string",
+                    "description": "text to display if sponsor approves request\n"
+                },
+                "sponsorStatusDenied": {
+                    "type": "string",
+                    "description": "text to display when sponsor denies request\n"
+                },
+                "sponsorStatusPending": {
+                    "type": "string",
+                    "description": "text to display if request is still pending\n"
+                },
+                "sponsorSubmit": {
+                    "type": "string",
+                    "description": "submit button label to notify sponsor about guest request\n"
+                },
+                "sponsorsError": {
+                    "type": "string"
+                },
+                "sponsorsFieldLabel": {
+                    "type": "string"
+                },
+                "tosAcceptLabel": {
+                    "type": "string",
+                    "description": "prefix of the label of the link to go to tos\n"
+                },
+                "tosError": {
+                    "type": "string",
+                    "description": "error message when tos not accepted\n"
+                },
+                "tosLink": {
+                    "type": "string",
+                    "description": "label of the link to go to tos\n"
+                },
+                "tosText": {
+                    "type": "string",
+                    "description": "text of the Terms of Service\n"
+                },
+                "uthButtonAmazon": {
+                    "type": "string",
+                    "description": "label for Amazon auth button\n"
+                }
+            },
+            "type": "object"
         },
         "junipermist:site/WlanQos:WlanQos": {
             "properties": {
@@ -26302,7 +28238,8 @@
                     "$ref": "#/types/junipermist:device/SwitchStpConfig:SwitchStpConfig"
                 },
                 "switchMgmt": {
-                    "$ref": "#/types/junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt"
+                    "$ref": "#/types/junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt",
+                    "description": "Switch settings\n"
                 },
                 "type": {
                     "type": "string",
@@ -26523,7 +28460,8 @@
                     "$ref": "#/types/junipermist:device/SwitchStpConfig:SwitchStpConfig"
                 },
                 "switchMgmt": {
-                    "$ref": "#/types/junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt"
+                    "$ref": "#/types/junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt",
+                    "description": "Switch settings\n"
                 },
                 "useRouterIdAsSourceIp": {
                     "type": "boolean",
@@ -26756,7 +28694,8 @@
                         "$ref": "#/types/junipermist:device/SwitchStpConfig:SwitchStpConfig"
                     },
                     "switchMgmt": {
-                        "$ref": "#/types/junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt"
+                        "$ref": "#/types/junipermist:device/SwitchSwitchMgmt:SwitchSwitchMgmt",
+                        "description": "Switch settings\n"
                     },
                     "type": {
                         "type": "string",
@@ -28892,6 +30831,10 @@
                 "remoteSyslog": {
                     "$ref": "#/types/junipermist:org/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog"
                 },
+                "removeExistingConfigs": {
+                    "type": "boolean",
+                    "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
+                },
                 "snmpConfig": {
                     "$ref": "#/types/junipermist:org/NetworktemplateSnmpConfig:NetworktemplateSnmpConfig"
                 },
@@ -28916,7 +30859,8 @@
             },
             "required": [
                 "name",
-                "orgId"
+                "orgId",
+                "removeExistingConfigs"
             ],
             "inputProperties": {
                 "aclPolicies": {
@@ -29012,6 +30956,10 @@
                 },
                 "remoteSyslog": {
                     "$ref": "#/types/junipermist:org/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog"
+                },
+                "removeExistingConfigs": {
+                    "type": "boolean",
+                    "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                 },
                 "snmpConfig": {
                     "$ref": "#/types/junipermist:org/NetworktemplateSnmpConfig:NetworktemplateSnmpConfig"
@@ -29134,6 +31082,10 @@
                     },
                     "remoteSyslog": {
                         "$ref": "#/types/junipermist:org/NetworktemplateRemoteSyslog:NetworktemplateRemoteSyslog"
+                    },
+                    "removeExistingConfigs": {
+                        "type": "boolean",
+                        "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                     },
                     "snmpConfig": {
                         "$ref": "#/types/junipermist:org/NetworktemplateSnmpConfig:NetworktemplateSnmpConfig"
@@ -31021,7 +32973,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:org/WlanSchedule:WlanSchedule",
@@ -31466,7 +33418,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:org/WlanSchedule:WlanSchedule",
@@ -31862,7 +33814,7 @@
                     },
                     "roamMode": {
                         "type": "string",
-                        "description": "enum: `11r`, `OKC`, `none`\n"
+                        "description": "enum: `11r`, `OKC`, `NONE`\n"
                     },
                     "schedule": {
                         "$ref": "#/types/junipermist:org/WlanSchedule:WlanSchedule",
@@ -31935,6 +33887,59 @@
                     "wxtunnelRemoteId": {
                         "type": "string",
                         "description": "when `interface`=`wxtunnel`, remote tunnel identifier\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "junipermist:org/wlanPortalTemplate:WlanPortalTemplate": {
+            "description": "This resource is used customize the WLAN Guest Portal.The WLAN Portal Template can be used to define:\n* Guest Authentication methods and parameters (access duration, ...)\n* Default values of the text fields and labels on the portal\n* Values of the text fields and labels based on the User Agent (`locales` property)\n\n**Notes:**\n* There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.WlanPortalTemplate;\nimport com.pulumi.junipermist.org.WlanPortalTemplateArgs;\nimport com.pulumi.junipermist.org.inputs.WlanPortalTemplatePortalTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new WlanPortalTemplate(\"wlanOne\", WlanPortalTemplateArgs.builder()\n            .orgId(terraformTest.id())\n            .wlanId(wlanOneMistOrg.id())\n            .portalTemplate(WlanPortalTemplatePortalTemplateArgs.builder()\n                .sms_message_format(\"Code {{code}} expires in {{duration}} minutes.\")\n                .sms_validity_duration(\"10\")\n                .page_title(\"Welcome To My Demo Portal\")\n                .locales(Map.of(\"fr-FR\", Map.of(\"pageTitle\", \"Bienvenue sur mon portail de démo\")))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:WlanPortalTemplate\n    name: wlan_one\n    properties:\n      orgId: ${terraformTest.id}\n      wlanId: ${wlanOneMistOrg.id}\n      portalTemplate:\n        sms_message_format: Code {{code}} expires in {{duration}} minutes.\n        sms_validity_duration: '10'\n        page_title: Welcome To My Demo Portal\n        locales:\n          fr-FR:\n            pageTitle: Bienvenue sur mon portail de démo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "orgId": {
+                    "type": "string"
+                },
+                "portalTemplate": {
+                    "$ref": "#/types/junipermist:org/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate",
+                    "description": "portal template wlan settings\n"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "orgId",
+                "portalTemplate",
+                "wlanId"
+            ],
+            "inputProperties": {
+                "orgId": {
+                    "type": "string"
+                },
+                "portalTemplate": {
+                    "$ref": "#/types/junipermist:org/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate",
+                    "description": "portal template wlan settings\n"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "orgId",
+                "portalTemplate",
+                "wlanId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WlanPortalTemplate resources.\n",
+                "properties": {
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "portalTemplate": {
+                        "$ref": "#/types/junipermist:org/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate",
+                        "description": "portal template wlan settings\n"
+                    },
+                    "wlanId": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -32100,7 +34105,6 @@
                 "enabled",
                 "order",
                 "orgId",
-                "srcWxtags",
                 "templateId"
             ],
             "inputProperties": {
@@ -32161,7 +34165,6 @@
                 "action",
                 "order",
                 "orgId",
-                "srcWxtags",
                 "templateId"
             ],
             "stateInputs": {
@@ -33187,7 +35190,7 @@
                 },
                 "deviceUpdownThreshold": {
                     "type": "integer",
-                    "description": "sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes\n"
+                    "description": "by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following\n"
                 },
                 "disabledSystemDefinedPortUsages": {
                     "type": "array",
@@ -33226,6 +35229,10 @@
                 "proxy": {
                     "$ref": "#/types/junipermist:site/SettingProxy:SettingProxy",
                     "description": "Proxy Configuration to talk to Mist\n"
+                },
+                "removeExistingConfigs": {
+                    "type": "boolean",
+                    "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                 },
                 "reportGatt": {
                     "type": "boolean",
@@ -33326,6 +35333,7 @@
                 "gatewayUpdownThreshold",
                 "orgId",
                 "persistConfigOnDevice",
+                "removeExistingConfigs",
                 "reportGatt",
                 "siteId",
                 "sshKeys",
@@ -33364,7 +35372,7 @@
                 },
                 "deviceUpdownThreshold": {
                     "type": "integer",
-                    "description": "sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes\n"
+                    "description": "by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following\n"
                 },
                 "disabledSystemDefinedPortUsages": {
                     "type": "array",
@@ -33400,6 +35408,10 @@
                 "proxy": {
                     "$ref": "#/types/junipermist:site/SettingProxy:SettingProxy",
                     "description": "Proxy Configuration to talk to Mist\n"
+                },
+                "removeExistingConfigs": {
+                    "type": "boolean",
+                    "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                 },
                 "reportGatt": {
                     "type": "boolean",
@@ -33524,7 +35536,7 @@
                     },
                     "deviceUpdownThreshold": {
                         "type": "integer",
-                        "description": "sending AP*DISCONNECTED event in device-updowns only if AP*CONNECTED is not seen within the threshold, in minutes\n"
+                        "description": "by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following\n"
                     },
                     "disabledSystemDefinedPortUsages": {
                         "type": "array",
@@ -33563,6 +35575,10 @@
                     "proxy": {
                         "$ref": "#/types/junipermist:site/SettingProxy:SettingProxy",
                         "description": "Proxy Configuration to talk to Mist\n"
+                    },
+                    "removeExistingConfigs": {
+                        "type": "boolean",
+                        "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                     },
                     "reportGatt": {
                         "type": "boolean",
@@ -34249,7 +36265,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:site/WlanSchedule:WlanSchedule",
@@ -34691,7 +36707,7 @@
                 },
                 "roamMode": {
                     "type": "string",
-                    "description": "enum: `11r`, `OKC`, `none`\n"
+                    "description": "enum: `11r`, `OKC`, `NONE`\n"
                 },
                 "schedule": {
                     "$ref": "#/types/junipermist:site/WlanSchedule:WlanSchedule",
@@ -35086,7 +37102,7 @@
                     },
                     "roamMode": {
                         "type": "string",
-                        "description": "enum: `11r`, `OKC`, `none`\n"
+                        "description": "enum: `11r`, `OKC`, `NONE`\n"
                     },
                     "schedule": {
                         "$ref": "#/types/junipermist:site/WlanSchedule:WlanSchedule",
@@ -35164,6 +37180,59 @@
                 "type": "object"
             }
         },
+        "junipermist:site/wlanPortalTemplate:WlanPortalTemplate": {
+            "description": "This resource is used customize the WLAN Guest Portal.The WLAN Portal Template can be used to define:\n* Guest Authentication methods and parameters (access duration, ...)\n* Default values of the text fields and labels on the portal\n* Values of the text fields and labels based on the User Agent (`locales` property)\n\n**Notes:**\n* There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.WlanPortalTemplate;\nimport com.pulumi.junipermist.site.WlanPortalTemplateArgs;\nimport com.pulumi.junipermist.site.inputs.WlanPortalTemplatePortalTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new WlanPortalTemplate(\"wlanOne\", WlanPortalTemplateArgs.builder()\n            .siteId(terraformTest.id())\n            .wlanId(wlanOneMistSiteWlan.id())\n            .portalTemplate(WlanPortalTemplatePortalTemplateArgs.builder()\n                .sms_message_format(\"Code {{code}} expires in {{duration}} minutes.\")\n                .sms_validity_duration(\"10\")\n                .page_title(\"Welcome To My Demo Portal\")\n                .locales(Map.of(\"fr-FR\", Map.of(\"pageTitle\", \"Bienvenue sur mon portail de démo\")))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:site:WlanPortalTemplate\n    name: wlan_one\n    properties:\n      siteId: ${terraformTest.id}\n      wlanId: ${wlanOneMistSiteWlan.id}\n      portalTemplate:\n        sms_message_format: Code {{code}} expires in {{duration}} minutes.\n        sms_validity_duration: '10'\n        page_title: Welcome To My Demo Portal\n        locales:\n          fr-FR:\n            pageTitle: Bienvenue sur mon portail de démo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "portalTemplate": {
+                    "$ref": "#/types/junipermist:site/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate",
+                    "description": "portal template wlan settings\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "portalTemplate",
+                "siteId",
+                "wlanId"
+            ],
+            "inputProperties": {
+                "portalTemplate": {
+                    "$ref": "#/types/junipermist:site/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate",
+                    "description": "portal template wlan settings\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "portalTemplate",
+                "siteId",
+                "wlanId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WlanPortalTemplate resources.\n",
+                "properties": {
+                    "portalTemplate": {
+                        "$ref": "#/types/junipermist:site/WlanPortalTemplatePortalTemplate:WlanPortalTemplatePortalTemplate",
+                        "description": "portal template wlan settings\n"
+                    },
+                    "siteId": {
+                        "type": "string"
+                    },
+                    "wlanId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "junipermist:site/wxrule:Wxrule": {
             "description": "This resource manages the Site WxRules (WLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wxruleOne = new junipermist.site.Wxrule(\"wxrule_one\", {\n    siteId: terraformTest.id,\n    srcWxtags: [wxtagOne.id],\n    enabled: true,\n    action: \"allow\",\n    dstDenyWxtags: [wxtagTwo.id],\n    order: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwxrule_one = junipermist.site.Wxrule(\"wxrule_one\",\n    site_id=terraform_test[\"id\"],\n    src_wxtags=[wxtag_one[\"id\"]],\n    enabled=True,\n    action=\"allow\",\n    dst_deny_wxtags=[wxtag_two[\"id\"]],\n    order=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wxruleOne = new JuniperMist.Site.Wxrule(\"wxrule_one\", new()\n    {\n        SiteId = terraformTest.Id,\n        SrcWxtags = new[]\n        {\n            wxtagOne.Id,\n        },\n        Enabled = true,\n        Action = \"allow\",\n        DstDenyWxtags = new[]\n        {\n            wxtagTwo.Id,\n        },\n        Order = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := site.NewWxrule(ctx, \"wxrule_one\", \u0026site.WxruleArgs{\n\t\t\tSiteId: pulumi.Any(terraformTest.Id),\n\t\t\tSrcWxtags: pulumi.StringArray{\n\t\t\t\twxtagOne.Id,\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tAction:  pulumi.String(\"allow\"),\n\t\t\tDstDenyWxtags: pulumi.StringArray{\n\t\t\t\twxtagTwo.Id,\n\t\t\t},\n\t\t\tOrder: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Wxrule;\nimport com.pulumi.junipermist.site.WxruleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wxruleOne = new Wxrule(\"wxruleOne\", WxruleArgs.builder()\n            .siteId(terraformTest.id())\n            .srcWxtags(wxtagOne.id())\n            .enabled(true)\n            .action(\"allow\")\n            .dstDenyWxtags(wxtagTwo.id())\n            .order(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wxruleOne:\n    type: junipermist:site:Wxrule\n    name: wxrule_one\n    properties:\n      siteId: ${terraformTest.id}\n      srcWxtags:\n        - ${wxtagOne.id}\n      enabled: true\n      action: allow\n      dstDenyWxtags:\n        - ${wxtagTwo.id}\n      order: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_wxrule` with:\n\nSite WxRule can be imported by specifying the site_id and the wxrule_id\n\n```sh\n$ pulumi import junipermist:site/wxrule:Wxrule wxrule_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
@@ -35217,10 +37286,6 @@
                         "type": "string"
                     },
                     "description": "tag list to determine if this rule would match\n"
-                },
-                "templateId": {
-                    "type": "string",
-                    "description": "Only for Org Level WxRule\n"
                 }
             },
             "required": [
@@ -35228,8 +37293,7 @@
                 "enabled",
                 "order",
                 "orgId",
-                "siteId",
-                "srcWxtags"
+                "siteId"
             ],
             "inputProperties": {
                 "action": {
@@ -35279,17 +37343,12 @@
                         "type": "string"
                     },
                     "description": "tag list to determine if this rule would match\n"
-                },
-                "templateId": {
-                    "type": "string",
-                    "description": "Only for Org Level WxRule\n"
                 }
             },
             "requiredInputs": [
                 "action",
                 "order",
-                "siteId",
-                "srcWxtags"
+                "siteId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Wxrule resources.\n",
@@ -35344,10 +37403,6 @@
                             "type": "string"
                         },
                         "description": "tag list to determine if this rule would match\n"
-                    },
-                    "templateId": {
-                        "type": "string",
-                        "description": "Only for Org Level WxRule\n"
                     }
                 },
                 "type": "object"

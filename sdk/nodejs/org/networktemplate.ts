@@ -95,6 +95,10 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly radiusConfig!: pulumi.Output<outputs.org.NetworktemplateRadiusConfig | undefined>;
     public readonly remoteSyslog!: pulumi.Output<outputs.org.NetworktemplateRemoteSyslog | undefined>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     public readonly snmpConfig!: pulumi.Output<outputs.org.NetworktemplateSnmpConfig | undefined>;
     /**
      * Switch template
@@ -140,6 +144,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["portUsages"] = state ? state.portUsages : undefined;
             resourceInputs["radiusConfig"] = state ? state.radiusConfig : undefined;
             resourceInputs["remoteSyslog"] = state ? state.remoteSyslog : undefined;
+            resourceInputs["removeExistingConfigs"] = state ? state.removeExistingConfigs : undefined;
             resourceInputs["snmpConfig"] = state ? state.snmpConfig : undefined;
             resourceInputs["switchMatching"] = state ? state.switchMatching : undefined;
             resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
@@ -167,6 +172,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["portUsages"] = args ? args.portUsages : undefined;
             resourceInputs["radiusConfig"] = args ? args.radiusConfig : undefined;
             resourceInputs["remoteSyslog"] = args ? args.remoteSyslog : undefined;
+            resourceInputs["removeExistingConfigs"] = args ? args.removeExistingConfigs : undefined;
             resourceInputs["snmpConfig"] = args ? args.snmpConfig : undefined;
             resourceInputs["switchMatching"] = args ? args.switchMatching : undefined;
             resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
@@ -230,6 +236,10 @@ export interface NetworktemplateState {
      */
     radiusConfig?: pulumi.Input<inputs.org.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslog>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    removeExistingConfigs?: pulumi.Input<boolean>;
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig>;
     /**
      * Switch template
@@ -298,6 +308,10 @@ export interface NetworktemplateArgs {
      */
     radiusConfig?: pulumi.Input<inputs.org.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.org.NetworktemplateRemoteSyslog>;
+    /**
+     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     */
+    removeExistingConfigs?: pulumi.Input<boolean>;
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig>;
     /**
      * Switch template

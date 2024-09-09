@@ -585,9 +585,17 @@ public class Switch extends com.pulumi.resources.CustomResource {
     public Output<Optional<SwitchStpConfig>> stpConfig() {
         return Codegen.optional(this.stpConfig);
     }
+    /**
+     * Switch settings
+     * 
+     */
     @Export(name="switchMgmt", refs={SwitchSwitchMgmt.class}, tree="[0]")
     private Output</* @Nullable */ SwitchSwitchMgmt> switchMgmt;
 
+    /**
+     * @return Switch settings
+     * 
+     */
     public Output<Optional<SwitchSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
     }
