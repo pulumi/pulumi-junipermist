@@ -23767,6 +23767,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "address",
+                        "hostnames",
                         "protocol"
                     ]
                 }
