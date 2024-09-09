@@ -46,3 +46,12 @@ func TestOrgRftemplateTs(t *testing.T) {
 	test.Up()
 	test.Preview(optpreview.ExpectNoChanges())
 }
+func TestSiteWxRuleTs(t *testing.T) {
+	checkBaseEnvVars(t)
+	test := pulumitest.NewPulumiTest(t, "site-wxrule-ts",
+		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
+		opttest.YarnLink("@pulumi/juniper-mist"),
+	)
+	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
+	test.Up()
+}
