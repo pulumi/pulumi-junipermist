@@ -16,14 +16,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     public static final InventoryDeviceArgs Empty = new InventoryDeviceArgs();
 
     /**
-     * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      * 
      */
     @Import(name="claimCode")
     private @Nullable Output<String> claimCode;
 
     /**
-     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      * 
      */
     public Optional<Output<String>> claimCode() {
@@ -61,14 +61,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+     * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
      * 
      */
     public Optional<Output<String>> mac() {
@@ -183,7 +183,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
          * 
          * @return builder
          * 

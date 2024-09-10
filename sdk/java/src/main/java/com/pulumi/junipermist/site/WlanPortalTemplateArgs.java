@@ -37,9 +37,17 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
         return this.siteId;
     }
 
+    /**
+     * Site WLAN ID
+     * 
+     */
     @Import(name="wlanId", required=true)
     private Output<String> wlanId;
 
+    /**
+     * @return Site WLAN ID
+     * 
+     */
     public Output<String> wlanId() {
         return this.wlanId;
     }
@@ -100,11 +108,23 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param wlanId Site WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(Output<String> wlanId) {
             $.wlanId = wlanId;
             return this;
         }
 
+        /**
+         * @param wlanId Site WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(String wlanId) {
             return wlanId(Output.of(wlanId));
         }

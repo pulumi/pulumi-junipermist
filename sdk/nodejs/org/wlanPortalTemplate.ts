@@ -48,6 +48,9 @@ export class WlanPortalTemplate extends pulumi.CustomResource {
      * portal template wlan settings
      */
     public readonly portalTemplate!: pulumi.Output<outputs.org.WlanPortalTemplatePortalTemplate>;
+    /**
+     * Site WLAN ID
+     */
     public readonly wlanId!: pulumi.Output<string>;
 
     /**
@@ -95,6 +98,9 @@ export interface WlanPortalTemplateState {
      * portal template wlan settings
      */
     portalTemplate?: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplate>;
+    /**
+     * Site WLAN ID
+     */
     wlanId?: pulumi.Input<string>;
 }
 
@@ -107,5 +113,8 @@ export interface WlanPortalTemplateArgs {
      * portal template wlan settings
      */
     portalTemplate: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplate>;
+    /**
+     * Site WLAN ID
+     */
     wlanId: pulumi.Input<string>;
 }

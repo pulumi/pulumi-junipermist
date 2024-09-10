@@ -89,9 +89,17 @@ public class WlanPortalTemplate extends com.pulumi.resources.CustomResource {
     public Output<String> siteId() {
         return this.siteId;
     }
+    /**
+     * Site WLAN ID
+     * 
+     */
     @Export(name="wlanId", refs={String.class}, tree="[0]")
     private Output<String> wlanId;
 
+    /**
+     * @return Site WLAN ID
+     * 
+     */
     public Output<String> wlanId() {
         return this.wlanId;
     }

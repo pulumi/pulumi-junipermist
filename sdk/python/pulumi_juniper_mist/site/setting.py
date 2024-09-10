@@ -616,7 +616,6 @@ class _SettingState:
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
                  led: Optional[pulumi.Input['SettingLedArgs']] = None,
                  occupancy: Optional[pulumi.Input['SettingOccupancyArgs']] = None,
-                 org_id: Optional[pulumi.Input[str]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['SettingProxyArgs']] = None,
                  remove_existing_configs: Optional[pulumi.Input[bool]] = None,
@@ -709,8 +708,6 @@ class _SettingState:
             pulumi.set(__self__, "led", led)
         if occupancy is not None:
             pulumi.set(__self__, "occupancy", occupancy)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
         if persist_config_on_device is not None:
             pulumi.set(__self__, "persist_config_on_device", persist_config_on_device)
         if proxy is not None:
@@ -938,15 +935,6 @@ class _SettingState:
     @occupancy.setter
     def occupancy(self, value: Optional[pulumi.Input['SettingOccupancyArgs']]):
         pulumi.set(self, "occupancy", value)
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "org_id", value)
 
     @property
     @pulumi.getter(name="persistConfigOnDevice")
@@ -1447,7 +1435,6 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["wired_vna"] = wired_vna
             __props__.__dict__["zone_occupancy_alert"] = zone_occupancy_alert
             __props__.__dict__["blacklist_url"] = None
-            __props__.__dict__["org_id"] = None
             __props__.__dict__["watched_station_url"] = None
             __props__.__dict__["whitelist_url"] = None
         super(Setting, __self__).__init__(
@@ -1475,7 +1462,6 @@ class Setting(pulumi.CustomResource):
             gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
             led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
             occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
-            org_id: Optional[pulumi.Input[str]] = None,
             persist_config_on_device: Optional[pulumi.Input[bool]] = None,
             proxy: Optional[pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']]] = None,
             remove_existing_configs: Optional[pulumi.Input[bool]] = None,
@@ -1562,7 +1548,6 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
         __props__.__dict__["led"] = led
         __props__.__dict__["occupancy"] = occupancy
-        __props__.__dict__["org_id"] = org_id
         __props__.__dict__["persist_config_on_device"] = persist_config_on_device
         __props__.__dict__["proxy"] = proxy
         __props__.__dict__["remove_existing_configs"] = remove_existing_configs
@@ -1705,11 +1690,6 @@ class Setting(pulumi.CustomResource):
         Occupancy Analytics settings
         """
         return pulumi.get(self, "occupancy")
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="persistConfigOnDevice")

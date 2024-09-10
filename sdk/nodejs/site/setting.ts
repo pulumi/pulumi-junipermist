@@ -102,7 +102,6 @@ export class Setting extends pulumi.CustomResource {
      * Occupancy Analytics settings
      */
     public readonly occupancy!: pulumi.Output<outputs.site.SettingOccupancy | undefined>;
-    public /*out*/ readonly orgId!: pulumi.Output<string>;
     /**
      * whether to store the config on AP
      */
@@ -207,7 +206,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
             resourceInputs["led"] = state ? state.led : undefined;
             resourceInputs["occupancy"] = state ? state.occupancy : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["persistConfigOnDevice"] = state ? state.persistConfigOnDevice : undefined;
             resourceInputs["proxy"] = state ? state.proxy : undefined;
             resourceInputs["removeExistingConfigs"] = state ? state.removeExistingConfigs : undefined;
@@ -278,7 +276,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["wiredVna"] = args ? args.wiredVna : undefined;
             resourceInputs["zoneOccupancyAlert"] = args ? args.zoneOccupancyAlert : undefined;
             resourceInputs["blacklistUrl"] = undefined /*out*/;
-            resourceInputs["orgId"] = undefined /*out*/;
             resourceInputs["watchedStationUrl"] = undefined /*out*/;
             resourceInputs["whitelistUrl"] = undefined /*out*/;
         }
@@ -346,7 +343,6 @@ export interface SettingState {
      * Occupancy Analytics settings
      */
     occupancy?: pulumi.Input<inputs.site.SettingOccupancy>;
-    orgId?: pulumi.Input<string>;
     /**
      * whether to store the config on AP
      */

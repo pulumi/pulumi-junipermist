@@ -38,9 +38,17 @@ public final class WlanPortalTemplateState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.portalTemplate);
     }
 
+    /**
+     * Site WLAN ID
+     * 
+     */
     @Import(name="wlanId")
     private @Nullable Output<String> wlanId;
 
+    /**
+     * @return Site WLAN ID
+     * 
+     */
     public Optional<Output<String>> wlanId() {
         return Optional.ofNullable(this.wlanId);
     }
@@ -101,11 +109,23 @@ public final class WlanPortalTemplateState extends com.pulumi.resources.Resource
             return portalTemplate(Output.of(portalTemplate));
         }
 
+        /**
+         * @param wlanId Site WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(@Nullable Output<String> wlanId) {
             $.wlanId = wlanId;
             return this;
         }
 
+        /**
+         * @param wlanId Site WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(String wlanId) {
             return wlanId(Output.of(wlanId));
         }

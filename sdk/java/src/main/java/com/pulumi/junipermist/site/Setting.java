@@ -311,12 +311,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<SettingOccupancy>> occupancy() {
         return Codegen.optional(this.occupancy);
     }
-    @Export(name="orgId", refs={String.class}, tree="[0]")
-    private Output<String> orgId;
-
-    public Output<String> orgId() {
-        return this.orgId;
-    }
     /**
      * whether to store the config on AP
      * 

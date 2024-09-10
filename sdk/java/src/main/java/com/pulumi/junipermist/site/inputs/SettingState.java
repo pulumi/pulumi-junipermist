@@ -255,13 +255,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.occupancy);
     }
 
-    @Import(name="orgId")
-    private @Nullable Output<String> orgId;
-
-    public Optional<Output<String>> orgId() {
-        return Optional.ofNullable(this.orgId);
-    }
-
     /**
      * whether to store the config on AP
      * 
@@ -590,7 +583,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
         this.led = $.led;
         this.occupancy = $.occupancy;
-        this.orgId = $.orgId;
         this.persistConfigOnDevice = $.persistConfigOnDevice;
         this.proxy = $.proxy;
         this.removeExistingConfigs = $.removeExistingConfigs;
@@ -938,15 +930,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder occupancy(SettingOccupancyArgs occupancy) {
             return occupancy(Output.of(occupancy));
-        }
-
-        public Builder orgId(@Nullable Output<String> orgId) {
-            $.orgId = orgId;
-            return this;
-        }
-
-        public Builder orgId(String orgId) {
-            return orgId(Output.of(orgId));
         }
 
         /**

@@ -11794,10 +11794,10 @@ class InventoryDevice(dict):
                  type: Optional[str] = None,
                  vc_mac: Optional[str] = None):
         """
-        :param str claim_code: Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        :param str claim_code: Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
         :param str hostname: Device Hostname
         :param str id: Mist Device ID
-        :param str mac: Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+        :param str mac: Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
         :param str model: Device model
         :param str serial: Device serial
         :param str site_id: Site ID. Used to assign device to a Site
@@ -11828,7 +11828,7 @@ class InventoryDevice(dict):
     @pulumi.getter(name="claimCode")
     def claim_code(self) -> Optional[str]:
         """
-        Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
         """
         return pulumi.get(self, "claim_code")
 
@@ -11852,7 +11852,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def mac(self) -> Optional[str]:
         """
-        Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+        Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
         """
         return pulumi.get(self, "mac")
 

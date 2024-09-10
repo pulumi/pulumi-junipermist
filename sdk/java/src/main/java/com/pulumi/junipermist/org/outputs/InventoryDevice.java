@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InventoryDevice {
     /**
-     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      * 
      */
     private @Nullable String claimCode;
@@ -27,7 +27,7 @@ public final class InventoryDevice {
      */
     private @Nullable String id;
     /**
-     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
      * 
      */
     private @Nullable String mac;
@@ -56,7 +56,7 @@ public final class InventoryDevice {
 
     private InventoryDevice() {}
     /**
-     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      * 
      */
     public Optional<String> claimCode() {
@@ -77,7 +77,7 @@ public final class InventoryDevice {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
      * 
      */
     public Optional<String> mac() {

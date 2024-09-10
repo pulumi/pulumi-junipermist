@@ -25,7 +25,8 @@ type WlanPortalTemplate struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplateOutput `pulumi:"portalTemplate"`
-	WlanId         pulumi.StringOutput                    `pulumi:"wlanId"`
+	// Site WLAN ID
+	WlanId pulumi.StringOutput `pulumi:"wlanId"`
 }
 
 // NewWlanPortalTemplate registers a new resource with the given unique name, arguments, and options.
@@ -70,14 +71,16 @@ type wlanPortalTemplateState struct {
 	OrgId *string `pulumi:"orgId"`
 	// portal template wlan settings
 	PortalTemplate *WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
-	WlanId         *string                           `pulumi:"wlanId"`
+	// Site WLAN ID
+	WlanId *string `pulumi:"wlanId"`
 }
 
 type WlanPortalTemplateState struct {
 	OrgId pulumi.StringPtrInput
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplatePtrInput
-	WlanId         pulumi.StringPtrInput
+	// Site WLAN ID
+	WlanId pulumi.StringPtrInput
 }
 
 func (WlanPortalTemplateState) ElementType() reflect.Type {
@@ -88,7 +91,8 @@ type wlanPortalTemplateArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
-	WlanId         string                           `pulumi:"wlanId"`
+	// Site WLAN ID
+	WlanId string `pulumi:"wlanId"`
 }
 
 // The set of arguments for constructing a WlanPortalTemplate resource.
@@ -96,7 +100,8 @@ type WlanPortalTemplateArgs struct {
 	OrgId pulumi.StringInput
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplateInput
-	WlanId         pulumi.StringInput
+	// Site WLAN ID
+	WlanId pulumi.StringInput
 }
 
 func (WlanPortalTemplateArgs) ElementType() reflect.Type {
@@ -195,6 +200,7 @@ func (o WlanPortalTemplateOutput) PortalTemplate() WlanPortalTemplatePortalTempl
 	return o.ApplyT(func(v *WlanPortalTemplate) WlanPortalTemplatePortalTemplateOutput { return v.PortalTemplate }).(WlanPortalTemplatePortalTemplateOutput)
 }
 
+// Site WLAN ID
 func (o WlanPortalTemplateOutput) WlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WlanPortalTemplate) pulumi.StringOutput { return v.WlanId }).(pulumi.StringOutput)
 }
