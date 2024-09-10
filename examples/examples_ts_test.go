@@ -55,3 +55,12 @@ func TestSiteWxRuleTs(t *testing.T) {
 	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
 	test.Up()
 }
+func TestSiteSettingTs(t *testing.T) {
+	checkBaseEnvVars(t)
+	test := pulumitest.NewPulumiTest(t, "site-setting-ts",
+		opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
+		opttest.YarnLink("@pulumi/juniper-mist"),
+	)
+	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
+	test.Up()
+}
