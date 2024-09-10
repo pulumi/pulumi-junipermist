@@ -24019,13 +24019,13 @@ func (o IdpprofileOverwriteMatchingPtrOutput) Severities() pulumi.StringArrayOut
 }
 
 type InventoryDevice struct {
-	// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+	// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	ClaimCode *string `pulumi:"claimCode"`
 	// Device Hostname
 	Hostname *string `pulumi:"hostname"`
 	// Mist Device ID
 	Id *string `pulumi:"id"`
-	// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used
+	// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
 	Mac *string `pulumi:"mac"`
 	// Device model
 	Model *string `pulumi:"model"`
@@ -24051,13 +24051,13 @@ type InventoryDeviceInput interface {
 }
 
 type InventoryDeviceArgs struct {
-	// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+	// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	ClaimCode pulumi.StringPtrInput `pulumi:"claimCode"`
 	// Device Hostname
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Mist Device ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used
+	// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
 	Mac pulumi.StringPtrInput `pulumi:"mac"`
 	// Device model
 	Model pulumi.StringPtrInput `pulumi:"model"`
@@ -24122,7 +24122,7 @@ func (o InventoryDeviceOutput) ToInventoryDeviceOutputWithContext(ctx context.Co
 	return o
 }
 
-// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 func (o InventoryDeviceOutput) ClaimCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.ClaimCode }).(pulumi.StringPtrOutput)
 }
@@ -24137,7 +24137,7 @@ func (o InventoryDeviceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used
+// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
 func (o InventoryDeviceOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }

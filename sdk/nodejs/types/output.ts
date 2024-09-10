@@ -7758,7 +7758,7 @@ export namespace org {
 
     export interface InventoryDevice {
         /**
-         * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+         * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
          */
         claimCode: string;
         /**
@@ -7770,7 +7770,7 @@ export namespace org {
          */
         id: string;
         /**
-         * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used
+         * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
          */
         mac: string;
         /**

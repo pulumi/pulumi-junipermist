@@ -55,7 +55,6 @@ type Setting struct {
 	Led SettingLedPtrOutput `pulumi:"led"`
 	// Occupancy Analytics settings
 	Occupancy SettingOccupancyPtrOutput `pulumi:"occupancy"`
-	OrgId     pulumi.StringOutput       `pulumi:"orgId"`
 	// whether to store the config on AP
 	PersistConfigOnDevice pulumi.BoolOutput `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
@@ -165,7 +164,6 @@ type settingState struct {
 	Led *SettingLed `pulumi:"led"`
 	// Occupancy Analytics settings
 	Occupancy *SettingOccupancy `pulumi:"occupancy"`
-	OrgId     *string           `pulumi:"orgId"`
 	// whether to store the config on AP
 	PersistConfigOnDevice *bool `pulumi:"persistConfigOnDevice"`
 	// Proxy Configuration to talk to Mist
@@ -243,7 +241,6 @@ type SettingState struct {
 	Led SettingLedPtrInput
 	// Occupancy Analytics settings
 	Occupancy SettingOccupancyPtrInput
-	OrgId     pulumi.StringPtrInput
 	// whether to store the config on AP
 	PersistConfigOnDevice pulumi.BoolPtrInput
 	// Proxy Configuration to talk to Mist
@@ -603,10 +600,6 @@ func (o SettingOutput) Led() SettingLedPtrOutput {
 // Occupancy Analytics settings
 func (o SettingOutput) Occupancy() SettingOccupancyPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingOccupancyPtrOutput { return v.Occupancy }).(SettingOccupancyPtrOutput)
-}
-
-func (o SettingOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
 // whether to store the config on AP

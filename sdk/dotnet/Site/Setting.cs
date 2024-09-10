@@ -110,9 +110,6 @@ namespace Pulumi.JuniperMist.Site
         [Output("occupancy")]
         public Output<Outputs.SettingOccupancy?> Occupancy { get; private set; } = null!;
 
-        [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
-
         /// <summary>
         /// whether to store the config on AP
         /// </summary>
@@ -612,9 +609,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("occupancy")]
         public Input<Inputs.SettingOccupancyGetArgs>? Occupancy { get; set; }
-
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
 
         /// <summary>
         /// whether to store the config on AP

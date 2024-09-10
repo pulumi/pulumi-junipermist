@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class InventoryDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it
+        /// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
         /// </summary>
         [Input("claimCode")]
         public Input<string>? ClaimCode { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used
+        /// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
