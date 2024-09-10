@@ -14734,7 +14734,7 @@
             "properties": {
                 "claimCode": {
                     "type": "string",
-                    "description": "Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it\n"
+                    "description": "Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)\n"
                 },
                 "hostname": {
                     "type": "string",
@@ -14746,7 +14746,7 @@
                 },
                 "mac": {
                     "type": "string",
-                    "description": "Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used\n"
+                    "description": "Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)\n"
                 },
                 "model": {
                     "type": "string",
@@ -33904,7 +33904,8 @@
                     "description": "portal template wlan settings\n"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site WLAN ID\n"
                 }
             },
             "required": [
@@ -33921,7 +33922,8 @@
                     "description": "portal template wlan settings\n"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site WLAN ID\n"
                 }
             },
             "requiredInputs": [
@@ -33940,7 +33942,8 @@
                         "description": "portal template wlan settings\n"
                     },
                     "wlanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Site WLAN ID\n"
                     }
                 },
                 "type": "object"
@@ -35220,9 +35223,6 @@
                     "$ref": "#/types/junipermist:site/SettingOccupancy:SettingOccupancy",
                     "description": "Occupancy Analytics settings\n"
                 },
-                "orgId": {
-                    "type": "string"
-                },
                 "persistConfigOnDevice": {
                     "type": "boolean",
                     "description": "whether to store the config on AP\n"
@@ -35332,7 +35332,6 @@
                 "configAutoRevert",
                 "deviceUpdownThreshold",
                 "gatewayUpdownThreshold",
-                "orgId",
                 "persistConfigOnDevice",
                 "removeExistingConfigs",
                 "reportGatt",
@@ -35565,9 +35564,6 @@
                     "occupancy": {
                         "$ref": "#/types/junipermist:site/SettingOccupancy:SettingOccupancy",
                         "description": "Occupancy Analytics settings\n"
-                    },
-                    "orgId": {
-                        "type": "string"
                     },
                     "persistConfigOnDevice": {
                         "type": "boolean",
@@ -37192,7 +37188,8 @@
                     "type": "string"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site WLAN ID\n"
                 }
             },
             "required": [
@@ -37209,7 +37206,8 @@
                     "type": "string"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site WLAN ID\n"
                 }
             },
             "requiredInputs": [
@@ -37228,7 +37226,8 @@
                         "type": "string"
                     },
                     "wlanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Site WLAN ID\n"
                     }
                 },
                 "type": "object"
