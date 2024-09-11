@@ -195,6 +195,11 @@ export type Wlan = import("./wlan").Wlan;
 export const Wlan: typeof import("./wlan").Wlan = null as any;
 utilities.lazyLoad(exports, ["Wlan"], () => require("./wlan"));
 
+export { WlanPortalImageArgs, WlanPortalImageState } from "./wlanPortalImage";
+export type WlanPortalImage = import("./wlanPortalImage").WlanPortalImage;
+export const WlanPortalImage: typeof import("./wlanPortalImage").WlanPortalImage = null as any;
+utilities.lazyLoad(exports, ["WlanPortalImage"], () => require("./wlanPortalImage"));
+
 export { WlanPortalTemplateArgs, WlanPortalTemplateState } from "./wlanPortalTemplate";
 export type WlanPortalTemplate = import("./wlanPortalTemplate").WlanPortalTemplate;
 export const WlanPortalTemplate: typeof import("./wlanPortalTemplate").WlanPortalTemplate = null as any;
@@ -260,6 +265,8 @@ const _module = {
                 return new Webhook(name, <any>undefined, { urn })
             case "junipermist:org/wlan:Wlan":
                 return new Wlan(name, <any>undefined, { urn })
+            case "junipermist:org/wlanPortalImage:WlanPortalImage":
+                return new WlanPortalImage(name, <any>undefined, { urn })
             case "junipermist:org/wlanPortalTemplate:WlanPortalTemplate":
                 return new WlanPortalTemplate(name, <any>undefined, { urn })
             case "junipermist:org/wlantemplate:Wlantemplate":
@@ -293,6 +300,7 @@ pulumi.runtime.registerResourceModule("junipermist", "org/sitegroup", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/vpn", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/webhook", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wlan", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/wlanPortalImage", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wlanPortalTemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wlantemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wxrule", _module)

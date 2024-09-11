@@ -12368,7 +12368,7 @@ export namespace site {
         name?: string;
         network?: string;
         /**
-         * enum: `http`, `udp`
+         * enum: `http`, `icmp`
          */
         protocol: string;
         /**

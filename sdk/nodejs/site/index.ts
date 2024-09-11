@@ -45,6 +45,11 @@ export type Wlan = import("./wlan").Wlan;
 export const Wlan: typeof import("./wlan").Wlan = null as any;
 utilities.lazyLoad(exports, ["Wlan"], () => require("./wlan"));
 
+export { WlanPortalImageArgs, WlanPortalImageState } from "./wlanPortalImage";
+export type WlanPortalImage = import("./wlanPortalImage").WlanPortalImage;
+export const WlanPortalImage: typeof import("./wlanPortalImage").WlanPortalImage = null as any;
+utilities.lazyLoad(exports, ["WlanPortalImage"], () => require("./wlanPortalImage"));
+
 export { WlanPortalTemplateArgs, WlanPortalTemplateState } from "./wlanPortalTemplate";
 export type WlanPortalTemplate = import("./wlanPortalTemplate").WlanPortalTemplate;
 export const WlanPortalTemplate: typeof import("./wlanPortalTemplate").WlanPortalTemplate = null as any;
@@ -77,6 +82,8 @@ const _module = {
                 return new Webhook(name, <any>undefined, { urn })
             case "junipermist:site/wlan:Wlan":
                 return new Wlan(name, <any>undefined, { urn })
+            case "junipermist:site/wlanPortalImage:WlanPortalImage":
+                return new WlanPortalImage(name, <any>undefined, { urn })
             case "junipermist:site/wlanPortalTemplate:WlanPortalTemplate":
                 return new WlanPortalTemplate(name, <any>undefined, { urn })
             case "junipermist:site/wxrule:Wxrule":
@@ -94,6 +101,7 @@ pulumi.runtime.registerResourceModule("junipermist", "site/psk", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/setting", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/webhook", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wlan", _module)
+pulumi.runtime.registerResourceModule("junipermist", "site/wlanPortalImage", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wlanPortalTemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wxrule", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/wxtag", _module)

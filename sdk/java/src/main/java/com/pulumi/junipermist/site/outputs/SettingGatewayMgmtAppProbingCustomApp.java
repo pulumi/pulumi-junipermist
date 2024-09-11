@@ -26,7 +26,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     private @Nullable String name;
     private @Nullable String network;
     /**
-     * @return enum: `http`, `udp`
+     * @return enum: `http`, `icmp`
      * 
      */
     private @Nullable String protocol;
@@ -62,7 +62,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return enum: `http`, `udp`
+     * @return enum: `http`, `icmp`
      * 
      */
     public Optional<String> protocol() {

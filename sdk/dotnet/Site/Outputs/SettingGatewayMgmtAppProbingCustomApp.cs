@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? Name;
         public readonly string? Network;
         /// <summary>
-        /// enum: `http`, `udp`
+        /// enum: `http`, `icmp`
         /// </summary>
         public readonly string? Protocol;
         /// <summary>

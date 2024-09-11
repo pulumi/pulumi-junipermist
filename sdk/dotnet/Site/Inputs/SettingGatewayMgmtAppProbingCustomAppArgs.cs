@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// enum: `http`, `udp`
+        /// enum: `http`, `icmp`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
