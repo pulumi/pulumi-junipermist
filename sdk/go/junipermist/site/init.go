@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Webhook{}
 	case "junipermist:site/wlan:Wlan":
 		r = &Wlan{}
+	case "junipermist:site/wlanPortalImage:WlanPortalImage":
+		r = &WlanPortalImage{}
 	case "junipermist:site/wlanPortalTemplate:WlanPortalTemplate":
 		r = &WlanPortalTemplate{}
 	case "junipermist:site/wxrule:Wxrule":
@@ -80,6 +82,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"site/wlan",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"site/wlanPortalImage",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

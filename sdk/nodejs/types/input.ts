@@ -10134,7 +10134,7 @@ export namespace site {
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         /**
-         * enum: `http`, `udp`
+         * enum: `http`, `icmp`
          */
         protocol?: pulumi.Input<string>;
         /**

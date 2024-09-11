@@ -5747,7 +5747,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
         """
         :param str address: if `protocol`==`icmp`
         :param Sequence[str] hostnames: if `protocol`==`http`
-        :param str protocol: enum: `http`, `udp`
+        :param str protocol: enum: `http`, `icmp`
         :param str url: if `protocol`==`http`
         """
         if address is not None:
@@ -5802,7 +5802,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        enum: `http`, `udp`
+        enum: `http`, `icmp`
         """
         return pulumi.get(self, "protocol")
 

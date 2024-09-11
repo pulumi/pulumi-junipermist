@@ -12307,7 +12307,7 @@ type SettingGatewayMgmtAppProbingCustomApp struct {
 	Hostnames []string `pulumi:"hostnames"`
 	Name      *string  `pulumi:"name"`
 	Network   *string  `pulumi:"network"`
-	// enum: `http`, `udp`
+	// enum: `http`, `icmp`
 	Protocol *string `pulumi:"protocol"`
 	// if `protocol`==`http`
 	Url *string `pulumi:"url"`
@@ -12333,7 +12333,7 @@ type SettingGatewayMgmtAppProbingCustomAppArgs struct {
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
 	Name      pulumi.StringPtrInput   `pulumi:"name"`
 	Network   pulumi.StringPtrInput   `pulumi:"network"`
-	// enum: `http`, `udp`
+	// enum: `http`, `icmp`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// if `protocol`==`http`
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -12413,7 +12413,7 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Network() pulumi.StringPtrO
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// enum: `http`, `udp`
+// enum: `http`, `icmp`
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }

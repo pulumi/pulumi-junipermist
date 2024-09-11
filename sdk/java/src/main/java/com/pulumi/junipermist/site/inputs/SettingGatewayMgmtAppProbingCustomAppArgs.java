@@ -68,14 +68,14 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
-     * enum: `http`, `udp`
+     * enum: `http`, `icmp`
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return enum: `http`, `udp`
+     * @return enum: `http`, `icmp`
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -215,7 +215,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param protocol enum: `http`, `udp`
+         * @param protocol enum: `http`, `icmp`
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param protocol enum: `http`, `udp`
+         * @param protocol enum: `http`, `icmp`
          * 
          * @return builder
          * 
