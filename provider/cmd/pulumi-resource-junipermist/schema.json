@@ -23752,7 +23752,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "enum: `http`, `udp`\n"
+                    "description": "enum: `http`, `icmp`\n"
                 },
                 "url": {
                     "type": "string",
@@ -33893,6 +33893,55 @@
                 "type": "object"
             }
         },
+        "junipermist:org/wlanPortalImage:WlanPortalImage": {
+            "description": "This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:WlanPortalImage\n    name: wlan_one\n    properties:\n      siteId: ${terraformTest.id}\n      wlanId: ${wlanOneMistOrg.id}\n      file: /Users/johndoe/Documents/image.jpg\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "description": "binary file\n"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "file"
+            ],
+            "inputProperties": {
+                "file": {
+                    "type": "string",
+                    "description": "binary file\n"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "file"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WlanPortalImage resources.\n",
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "description": "binary file\n"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "wlanId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "junipermist:org/wlanPortalTemplate:WlanPortalTemplate": {
             "description": "This resource is used customize the WLAN Guest Portal.The WLAN Portal Template can be used to define:\n* Guest Authentication methods and parameters (access duration, ...)\n* Default values of the text fields and labels on the portal\n* Values of the text fields and labels based on the User Agent (`locales` property)\n\n**Notes:**\n* There is no feedback from the API, so there is no possibility to validate the changes. The resource states is directly generated based on the resource plan.* There is no option to delete or revert the changes. Deleting the resource will just remove it from the states. Once removed, it is possible to create a new one. It will replace the previous template\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.WlanPortalTemplate;\nimport com.pulumi.junipermist.org.WlanPortalTemplateArgs;\nimport com.pulumi.junipermist.org.inputs.WlanPortalTemplatePortalTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new WlanPortalTemplate(\"wlanOne\", WlanPortalTemplateArgs.builder()\n            .orgId(terraformTest.id())\n            .wlanId(wlanOneMistOrg.id())\n            .portalTemplate(WlanPortalTemplatePortalTemplateArgs.builder()\n                .sms_message_format(\"Code {{code}} expires in {{duration}} minutes.\")\n                .sms_validity_duration(\"10\")\n                .page_title(\"Welcome To My Demo Portal\")\n                .locales(Map.of(\"fr-FR\", Map.of(\"pageTitle\", \"Bienvenue sur mon portail de démo\")))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:WlanPortalTemplate\n    name: wlan_one\n    properties:\n      orgId: ${terraformTest.id}\n      wlanId: ${wlanOneMistOrg.id}\n      portalTemplate:\n        sms_message_format: Code {{code}} expires in {{duration}} minutes.\n        sms_validity_duration: '10'\n        page_title: Welcome To My Demo Portal\n        locales:\n          fr-FR:\n            pageTitle: Bienvenue sur mon portail de démo\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -37172,6 +37221,55 @@
                     "wxtunnelRemoteId": {
                         "type": "string",
                         "description": "when `interface`=`wxtunnel`, remote tunnel identifier\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "junipermist:site/wlanPortalImage:WlanPortalImage": {
+            "description": "This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.site.WlanPortalImage(\"wlan_one\", {\n    siteId: terraformTest.id,\n    wlanId: wlanOneMistSiteWlan.id,\n    file: \"/Users/johndoe/Documents/image.jpg\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.site.WlanPortalImage(\"wlan_one\",\n    site_id=terraform_test[\"id\"],\n    wlan_id=wlan_one_mist_site_wlan[\"id\"],\n    file=\"/Users/johndoe/Documents/image.jpg\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Site.WlanPortalImage(\"wlan_one\", new()\n    {\n        SiteId = terraformTest.Id,\n        WlanId = wlanOneMistSiteWlan.Id,\n        File = \"/Users/johndoe/Documents/image.jpg\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := site.NewWlanPortalImage(ctx, \"wlan_one\", \u0026site.WlanPortalImageArgs{\n\t\t\tSiteId: pulumi.Any(terraformTest.Id),\n\t\t\tWlanId: pulumi.Any(wlanOneMistSiteWlan.Id),\n\t\t\tFile:   pulumi.String(\"/Users/johndoe/Documents/image.jpg\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.WlanPortalImage;\nimport com.pulumi.junipermist.site.WlanPortalImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new WlanPortalImage(\"wlanOne\", WlanPortalImageArgs.builder()\n            .siteId(terraformTest.id())\n            .wlanId(wlanOneMistSiteWlan.id())\n            .file(\"/Users/johndoe/Documents/image.jpg\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:site:WlanPortalImage\n    name: wlan_one\n    properties:\n      siteId: ${terraformTest.id}\n      wlanId: ${wlanOneMistSiteWlan.id}\n      file: /Users/johndoe/Documents/image.jpg\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "file": {
+                    "type": "string",
+                    "description": "binary file\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "file"
+            ],
+            "inputProperties": {
+                "file": {
+                    "type": "string",
+                    "description": "binary file\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "wlanId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "file"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WlanPortalImage resources.\n",
+                "properties": {
+                    "file": {
+                        "type": "string",
+                        "description": "binary file\n"
+                    },
+                    "siteId": {
+                        "type": "string"
+                    },
+                    "wlanId": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
