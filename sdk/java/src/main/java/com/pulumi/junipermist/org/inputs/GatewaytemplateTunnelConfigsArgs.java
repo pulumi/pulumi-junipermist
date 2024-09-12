@@ -141,6 +141,21 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         return Optional.ofNullable(this.mode);
     }
 
+    /**
+     * networks reachable via this tunnel
+     * 
+     */
+    @Import(name="networks")
+    private @Nullable Output<List<String>> networks;
+
+    /**
+     * @return networks reachable via this tunnel
+     * 
+     */
+    public Optional<Output<List<String>>> networks() {
+        return Optional.ofNullable(this.networks);
+    }
+
     @Import(name="primary")
     private @Nullable Output<GatewaytemplateTunnelConfigsPrimaryArgs> primary;
 
@@ -247,6 +262,7 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
         this.ipsecProposals = $.ipsecProposals;
         this.localId = $.localId;
         this.mode = $.mode;
+        this.networks = $.networks;
         this.primary = $.primary;
         this.probe = $.probe;
         this.protocol = $.protocol;
@@ -454,6 +470,37 @@ public final class GatewaytemplateTunnelConfigsArgs extends com.pulumi.resources
          */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
+        }
+
+        /**
+         * @param networks networks reachable via this tunnel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(@Nullable Output<List<String>> networks) {
+            $.networks = networks;
+            return this;
+        }
+
+        /**
+         * @param networks networks reachable via this tunnel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(List<String> networks) {
+            return networks(Output.of(networks));
+        }
+
+        /**
+         * @param networks networks reachable via this tunnel
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networks(String... networks) {
+            return networks(List.of(networks));
         }
 
         public Builder primary(@Nullable Output<GatewaytemplateTunnelConfigsPrimaryArgs> primary) {

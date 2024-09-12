@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"errors"
 	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -69,9 +70,12 @@ type Networktemplate struct {
 func NewNetworktemplate(ctx *pulumi.Context,
 	name string, args *NetworktemplateArgs, opts ...pulumi.ResourceOption) (*Networktemplate, error) {
 	if args == nil {
-		args = &NetworktemplateArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.SiteId == nil {
+		return nil, errors.New("invalid value for required argument 'SiteId'")
+	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Networktemplate
 	err := ctx.RegisterResource("junipermist:site/networktemplate:Networktemplate", name, args, &resource, opts...)
@@ -209,7 +213,7 @@ type networktemplateArgs struct {
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
 	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
-	SiteId                *string                    `pulumi:"siteId"`
+	SiteId                string                     `pulumi:"siteId"`
 	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
@@ -251,7 +255,7 @@ type NetworktemplateArgs struct {
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	SiteId                pulumi.StringPtrInput
+	SiteId                pulumi.StringInput
 	SnmpConfig            NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput

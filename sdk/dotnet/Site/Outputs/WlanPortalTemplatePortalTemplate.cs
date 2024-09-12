@@ -179,12 +179,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? Field4required;
         /// <summary>
         /// Can be used to localize the portal based on the User Agent. Allowed property key values are:
-        ///       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
-        ///       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
-        ///       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
-        ///       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+        ///   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+        ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
+        ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+        ///   `zh-Hans`, `zh-Hant`
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.WlanPortalTemplatePortalTemplateLocales>? Locales;
+        /// <summary>
+        /// path to the background image file. File must be a `png` image`
+        /// </summary>
+        public readonly string? Logo;
         public readonly string? Message;
         public readonly bool? MultiAuth;
         /// <summary>
@@ -495,6 +499,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableDictionary<string, Outputs.WlanPortalTemplatePortalTemplateLocales>? locales,
 
+            string? logo,
+
             string? message,
 
             bool? multiAuth,
@@ -686,6 +692,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Field4label = field4label;
             Field4required = field4required;
             Locales = locales;
+            Logo = logo;
             Message = message;
             MultiAuth = multiAuth;
             Name = name;

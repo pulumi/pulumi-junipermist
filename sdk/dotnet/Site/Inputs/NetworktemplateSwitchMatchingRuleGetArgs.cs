@@ -27,6 +27,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
+        /// In-Band Management interface configuration
+        /// </summary>
+        [Input("ipConfig")]
+        public Input<Inputs.NetworktemplateSwitchMatchingRuleIpConfigGetArgs>? IpConfig { get; set; }
+
+        /// <summary>
         /// role to match
         /// </summary>
         [Input("matchRole")]
@@ -43,6 +49,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Out-of-Band Management interface configuration
+        /// </summary>
+        [Input("oobIpConfig")]
+        public Input<Inputs.NetworktemplateSwitchMatchingRuleOobIpConfigGetArgs>? OobIpConfig { get; set; }
 
         [Input("portConfig")]
         private InputMap<Inputs.NetworktemplateSwitchMatchingRulePortConfigGetArgs>? _portConfig;

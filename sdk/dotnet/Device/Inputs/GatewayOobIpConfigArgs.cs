@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? UseMgmtVrf { get; set; }
 
         /// <summary>
-        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }

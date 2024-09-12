@@ -71,6 +71,7 @@ import javax.annotation.Nullable;
  *             .bands(            
  *                 "5",
  *                 "6")
+ *             .vlanEnabled(true)
  *             .vlanId(143)
  *             .wlanLimitUp(10000)
  *             .wlanLimitDown(20000)
@@ -191,14 +192,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.allowMdns;
     }
     /**
-     * only applicable when `limit_bcast`==`tru`e, which allows SSDP
+     * only applicable when `limit_bcast`==`true`, which allows SSDP
      * 
      */
     @Export(name="allowSsdp", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowSsdp;
 
     /**
-     * @return only applicable when `limit_bcast`==`tru`e, which allows SSDP
+     * @return only applicable when `limit_bcast`==`true`, which allows SSDP
      * 
      */
     public Output<Boolean> allowSsdp() {
@@ -411,14 +412,14 @@ public class Wlan extends com.pulumi.resources.CustomResource {
         return this.bandSteerForceBand5;
     }
     /**
-     * list of radios that the wlan should apply to
+     * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      * 
      */
     @Export(name="bands", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> bands;
 
     /**
-     * @return list of radios that the wlan should apply to
+     * @return list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      * 
      */
     public Output<Optional<List<String>>> bands() {

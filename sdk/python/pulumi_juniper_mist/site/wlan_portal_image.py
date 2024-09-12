@@ -15,23 +15,22 @@ __all__ = ['WlanPortalImageArgs', 'WlanPortalImage']
 class WlanPortalImageArgs:
     def __init__(__self__, *,
                  file: pulumi.Input[str],
-                 site_id: Optional[pulumi.Input[str]] = None,
-                 wlan_id: Optional[pulumi.Input[str]] = None):
+                 site_id: pulumi.Input[str],
+                 wlan_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a WlanPortalImage resource.
-        :param pulumi.Input[str] file: binary file
+        :param pulumi.Input[str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         pulumi.set(__self__, "file", file)
-        if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
-        if wlan_id is not None:
-            pulumi.set(__self__, "wlan_id", wlan_id)
+        pulumi.set(__self__, "site_id", site_id)
+        pulumi.set(__self__, "wlan_id", wlan_id)
 
     @property
     @pulumi.getter
     def file(self) -> pulumi.Input[str]:
         """
-        binary file
+        path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         """
         return pulumi.get(self, "file")
 
@@ -41,20 +40,23 @@ class WlanPortalImageArgs:
 
     @property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[str]]:
+    def site_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[str]]):
+    def site_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "site_id", value)
 
     @property
     @pulumi.getter(name="wlanId")
-    def wlan_id(self) -> Optional[pulumi.Input[str]]:
+    def wlan_id(self) -> pulumi.Input[str]:
+        """
+        Site WLAN ID
+        """
         return pulumi.get(self, "wlan_id")
 
     @wlan_id.setter
-    def wlan_id(self, value: Optional[pulumi.Input[str]]):
+    def wlan_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "wlan_id", value)
 
 
@@ -66,7 +68,8 @@ class _WlanPortalImageState:
                  wlan_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WlanPortalImage resources.
-        :param pulumi.Input[str] file: binary file
+        :param pulumi.Input[str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         if file is not None:
             pulumi.set(__self__, "file", file)
@@ -79,7 +82,7 @@ class _WlanPortalImageState:
     @pulumi.getter
     def file(self) -> Optional[pulumi.Input[str]]:
         """
-        binary file
+        path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         """
         return pulumi.get(self, "file")
 
@@ -99,6 +102,9 @@ class _WlanPortalImageState:
     @property
     @pulumi.getter(name="wlanId")
     def wlan_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Site WLAN ID
+        """
         return pulumi.get(self, "wlan_id")
 
     @wlan_id.setter
@@ -132,7 +138,8 @@ class WlanPortalImage(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] file: binary file
+        :param pulumi.Input[str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         ...
     @overload
@@ -185,7 +192,11 @@ class WlanPortalImage(pulumi.CustomResource):
             if file is None and not opts.urn:
                 raise TypeError("Missing required property 'file'")
             __props__.__dict__["file"] = file
+            if site_id is None and not opts.urn:
+                raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
+            if wlan_id is None and not opts.urn:
+                raise TypeError("Missing required property 'wlan_id'")
             __props__.__dict__["wlan_id"] = wlan_id
         super(WlanPortalImage, __self__).__init__(
             'junipermist:site/wlanPortalImage:WlanPortalImage',
@@ -207,7 +218,8 @@ class WlanPortalImage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] file: binary file
+        :param pulumi.Input[str] file: path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+        :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -222,17 +234,20 @@ class WlanPortalImage(pulumi.CustomResource):
     @pulumi.getter
     def file(self) -> pulumi.Output[str]:
         """
-        binary file
+        path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         """
         return pulumi.get(self, "file")
 
     @property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> pulumi.Output[Optional[str]]:
+    def site_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "site_id")
 
     @property
     @pulumi.getter(name="wlanId")
-    def wlan_id(self) -> pulumi.Output[Optional[str]]:
+    def wlan_id(self) -> pulumi.Output[str]:
+        """
+        Site WLAN ID
+        """
         return pulumi.get(self, "wlan_id")
 

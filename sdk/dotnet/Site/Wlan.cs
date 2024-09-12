@@ -31,6 +31,7 @@ namespace Pulumi.JuniperMist.Site
     ///             "5",
     ///             "6",
     ///         },
+    ///         VlanEnabled = true,
     ///         VlanId = "143",
     ///         WlanLimitUp = 10000,
     ///         WlanLimitDown = 20000,
@@ -99,7 +100,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> AllowMdns { get; private set; } = null!;
 
         /// <summary>
-        /// only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        /// only applicable when `limit_bcast`==`true`, which allows SSDP
         /// </summary>
         [Output("allowSsdp")]
         public Output<bool> AllowSsdp { get; private set; } = null!;
@@ -194,7 +195,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> BandSteerForceBand5 { get; private set; } = null!;
 
         /// <summary>
-        /// list of radios that the wlan should apply to
+        /// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         /// </summary>
         [Output("bands")]
         public Output<ImmutableArray<string>> Bands { get; private set; } = null!;
@@ -689,7 +690,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AllowMdns { get; set; }
 
         /// <summary>
-        /// only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        /// only applicable when `limit_bcast`==`true`, which allows SSDP
         /// </summary>
         [Input("allowSsdp")]
         public Input<bool>? AllowSsdp { get; set; }
@@ -799,7 +800,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _bands;
 
         /// <summary>
-        /// list of radios that the wlan should apply to
+        /// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         /// </summary>
         public InputList<string> Bands
         {
@@ -1272,7 +1273,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? AllowMdns { get; set; }
 
         /// <summary>
-        /// only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        /// only applicable when `limit_bcast`==`true`, which allows SSDP
         /// </summary>
         [Input("allowSsdp")]
         public Input<bool>? AllowSsdp { get; set; }
@@ -1382,7 +1383,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _bands;
 
         /// <summary>
-        /// list of radios that the wlan should apply to
+        /// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         /// </summary>
         public InputList<string> Bands
         {

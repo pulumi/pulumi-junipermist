@@ -38,14 +38,14 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Site WLAN ID
+     * Org WLAN ID
      * 
      */
     @Import(name="wlanId", required=true)
     private Output<String> wlanId;
 
     /**
-     * @return Site WLAN ID
+     * @return Org WLAN ID
      * 
      */
     public Output<String> wlanId() {
@@ -109,7 +109,7 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param wlanId Site WLAN ID
+         * @param wlanId Org WLAN ID
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class WlanPortalTemplateArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param wlanId Site WLAN ID
+         * @param wlanId Org WLAN ID
          * 
          * @return builder
          * 

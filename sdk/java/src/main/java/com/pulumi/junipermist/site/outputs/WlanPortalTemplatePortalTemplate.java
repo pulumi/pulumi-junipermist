@@ -219,13 +219,18 @@ public final class WlanPortalTemplatePortalTemplate {
     private @Nullable Boolean field4required;
     /**
      * @return Can be used to localize the portal based on the User Agent. Allowed property key values are:
-     *       &#34;ar&#34;, &#34;ca-ES&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;de-DE&#34;, &#34;el-GR&#34;, &#34;en-GB&#34;, &#34;en-US&#34;, &#34;es-ES&#34;,
-     *       &#34;fi-FI&#34;, &#34;fr-FR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hr-HR&#34;, &#34;hu-HU&#34;, &#34;id-ID&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;,
-     *       &#34;ko-KR&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;pt-BR&#34;, &#34;pt-PT&#34;, &#34;ro-RO&#34;, &#34;ru-RU&#34;,
-     *       &#34;sk-SK&#34;, &#34;sv-SE&#34;, &#34;th-TH&#34;, &#34;tr-TR&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;, &#34;zh-Hans&#34;, &#34;zh-Hant&#34;,
+     *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+     *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+     *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
+     *   `zh-Hans`, `zh-Hant`
      * 
      */
     private @Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales;
+    /**
+     * @return path to the background image file. File must be a `png` image`
+     * 
+     */
+    private @Nullable String logo;
     private @Nullable String message;
     private @Nullable Boolean multiAuth;
     /**
@@ -779,14 +784,21 @@ public final class WlanPortalTemplatePortalTemplate {
     }
     /**
      * @return Can be used to localize the portal based on the User Agent. Allowed property key values are:
-     *       &#34;ar&#34;, &#34;ca-ES&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;de-DE&#34;, &#34;el-GR&#34;, &#34;en-GB&#34;, &#34;en-US&#34;, &#34;es-ES&#34;,
-     *       &#34;fi-FI&#34;, &#34;fr-FR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hr-HR&#34;, &#34;hu-HU&#34;, &#34;id-ID&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;,
-     *       &#34;ko-KR&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;pt-BR&#34;, &#34;pt-PT&#34;, &#34;ro-RO&#34;, &#34;ru-RU&#34;,
-     *       &#34;sk-SK&#34;, &#34;sv-SE&#34;, &#34;th-TH&#34;, &#34;tr-TR&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;, &#34;zh-Hans&#34;, &#34;zh-Hant&#34;,
+     *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+     *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+     *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
+     *   `zh-Hans`, `zh-Hant`
      * 
      */
     public Map<String,WlanPortalTemplatePortalTemplateLocales> locales() {
         return this.locales == null ? Map.of() : this.locales;
+    }
+    /**
+     * @return path to the background image file. File must be a `png` image`
+     * 
+     */
+    public Optional<String> logo() {
+        return Optional.ofNullable(this.logo);
     }
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
@@ -1236,6 +1248,7 @@ public final class WlanPortalTemplatePortalTemplate {
         private @Nullable String field4label;
         private @Nullable Boolean field4required;
         private @Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales;
+        private @Nullable String logo;
         private @Nullable String message;
         private @Nullable Boolean multiAuth;
         private @Nullable Boolean name;
@@ -1360,6 +1373,7 @@ public final class WlanPortalTemplatePortalTemplate {
     	      this.field4label = defaults.field4label;
     	      this.field4required = defaults.field4required;
     	      this.locales = defaults.locales;
+    	      this.logo = defaults.logo;
     	      this.message = defaults.message;
     	      this.multiAuth = defaults.multiAuth;
     	      this.name = defaults.name;
@@ -1736,6 +1750,12 @@ public final class WlanPortalTemplatePortalTemplate {
         public Builder locales(@Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales) {
 
             this.locales = locales;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logo(@Nullable String logo) {
+
+            this.logo = logo;
             return this;
         }
         @CustomType.Setter
@@ -2211,6 +2231,7 @@ public final class WlanPortalTemplatePortalTemplate {
             _resultValue.field4label = field4label;
             _resultValue.field4required = field4required;
             _resultValue.locales = locales;
+            _resultValue.logo = logo;
             _resultValue.message = message;
             _resultValue.multiAuth = multiAuth;
             _resultValue.name = name;

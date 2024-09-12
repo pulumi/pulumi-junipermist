@@ -349,11 +349,6 @@ public final class WlanPortalTemplatePortalTemplateLocales {
      * 
      */
     private @Nullable String tosText;
-    /**
-     * @return label for Amazon auth button
-     * 
-     */
-    private @Nullable String uthButtonAmazon;
 
     private WlanPortalTemplatePortalTemplateLocales() {}
     /**
@@ -882,13 +877,6 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     public Optional<String> tosText() {
         return Optional.ofNullable(this.tosText);
     }
-    /**
-     * @return label for Amazon auth button
-     * 
-     */
-    public Optional<String> uthButtonAmazon() {
-        return Optional.ofNullable(this.uthButtonAmazon);
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -993,7 +981,6 @@ public final class WlanPortalTemplatePortalTemplateLocales {
         private @Nullable String tosError;
         private @Nullable String tosLink;
         private @Nullable String tosText;
-        private @Nullable String uthButtonAmazon;
         public Builder() {}
         public Builder(WlanPortalTemplatePortalTemplateLocales defaults) {
     	      Objects.requireNonNull(defaults);
@@ -1091,7 +1078,6 @@ public final class WlanPortalTemplatePortalTemplateLocales {
     	      this.tosError = defaults.tosError;
     	      this.tosLink = defaults.tosLink;
     	      this.tosText = defaults.tosText;
-    	      this.uthButtonAmazon = defaults.uthButtonAmazon;
         }
 
         @CustomType.Setter
@@ -1658,12 +1644,6 @@ public final class WlanPortalTemplatePortalTemplateLocales {
             this.tosText = tosText;
             return this;
         }
-        @CustomType.Setter
-        public Builder uthButtonAmazon(@Nullable String uthButtonAmazon) {
-
-            this.uthButtonAmazon = uthButtonAmazon;
-            return this;
-        }
         public WlanPortalTemplatePortalTemplateLocales build() {
             final var _resultValue = new WlanPortalTemplatePortalTemplateLocales();
             _resultValue.authButtonAmazon = authButtonAmazon;
@@ -1760,7 +1740,6 @@ public final class WlanPortalTemplatePortalTemplateLocales {
             _resultValue.tosError = tosError;
             _resultValue.tosLink = tosLink;
             _resultValue.tosText = tosText;
-            _resultValue.uthButtonAmazon = uthButtonAmazon;
             return _resultValue;
         }
     }

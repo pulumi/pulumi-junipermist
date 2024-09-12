@@ -11,7 +11,6 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.site.WlanPortalImageArgs;
 import com.pulumi.junipermist.site.inputs.WlanPortalImageState;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -58,30 +57,38 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:site/wlanPortalImage:WlanPortalImage")
 public class WlanPortalImage extends com.pulumi.resources.CustomResource {
     /**
-     * binary file
+     * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      * 
      */
     @Export(name="file", refs={String.class}, tree="[0]")
     private Output<String> file;
 
     /**
-     * @return binary file
+     * @return path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      * 
      */
     public Output<String> file() {
         return this.file;
     }
     @Export(name="siteId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> siteId;
+    private Output<String> siteId;
 
-    public Output<Optional<String>> siteId() {
-        return Codegen.optional(this.siteId);
+    public Output<String> siteId() {
+        return this.siteId;
     }
+    /**
+     * Site WLAN ID
+     * 
+     */
     @Export(name="wlanId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> wlanId;
+    private Output<String> wlanId;
 
-    public Output<Optional<String>> wlanId() {
-        return Codegen.optional(this.wlanId);
+    /**
+     * @return Site WLAN ID
+     * 
+     */
+    public Output<String> wlanId() {
+        return this.wlanId;
     }
 
     /**

@@ -290,10 +290,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// text of the Terms of Service
         /// </summary>
         public readonly string? TosText;
-        /// <summary>
-        /// label for Amazon auth button
-        /// </summary>
-        public readonly string? UthButtonAmazon;
 
         [OutputConstructor]
         private WlanPortalTemplatePortalTemplateLocales(
@@ -483,9 +479,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? tosLink,
 
-            string? tosText,
-
-            string? uthButtonAmazon)
+            string? tosText)
         {
             AuthButtonAmazon = authButtonAmazon;
             AuthButtonAzure = authButtonAzure;
@@ -581,7 +575,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
             TosError = tosError;
             TosLink = tosLink;
             TosText = tosText;
-            UthButtonAmazon = uthButtonAmazon;
         }
     }
 }

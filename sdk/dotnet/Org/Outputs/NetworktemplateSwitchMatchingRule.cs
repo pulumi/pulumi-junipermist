@@ -20,6 +20,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdditionalConfigCmds;
         /// <summary>
+        /// In-Band Management interface configuration
+        /// </summary>
+        public readonly Outputs.NetworktemplateSwitchMatchingRuleIpConfig? IpConfig;
+        /// <summary>
         /// role to match
         /// </summary>
         public readonly string? MatchRole;
@@ -29,6 +33,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? MatchType;
         public readonly string? MatchValue;
         public readonly string? Name;
+        /// <summary>
+        /// Out-of-Band Management interface configuration
+        /// </summary>
+        public readonly Outputs.NetworktemplateSwitchMatchingRuleOobIpConfig? OobIpConfig;
         /// <summary>
         /// Propery key is the interface name or interface range
         /// </summary>
@@ -43,6 +51,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private NetworktemplateSwitchMatchingRule(
             ImmutableArray<string> additionalConfigCmds,
 
+            Outputs.NetworktemplateSwitchMatchingRuleIpConfig? ipConfig,
+
             string? matchRole,
 
             string? matchType,
@@ -51,15 +61,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? name,
 
+            Outputs.NetworktemplateSwitchMatchingRuleOobIpConfig? oobIpConfig,
+
             ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortConfig>? portConfig,
 
             ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? portMirroring)
         {
             AdditionalConfigCmds = additionalConfigCmds;
+            IpConfig = ipConfig;
             MatchRole = matchRole;
             MatchType = matchType;
             MatchValue = matchValue;
             Name = name;
+            OobIpConfig = oobIpConfig;
             PortConfig = portConfig;
             PortMirroring = portMirroring;
         }

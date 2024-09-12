@@ -121,7 +121,7 @@ export class Networktemplate extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: NetworktemplateArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: NetworktemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworktemplateArgs | NetworktemplateState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -152,6 +152,9 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["vrfInstances"] = state ? state.vrfInstances : undefined;
         } else {
             const args = argsOrState as NetworktemplateArgs | undefined;
+            if ((!args || args.siteId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'siteId'");
+            }
             resourceInputs["aclPolicies"] = args ? args.aclPolicies : undefined;
             resourceInputs["aclTags"] = args ? args.aclTags : undefined;
             resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
@@ -307,7 +310,7 @@ export interface NetworktemplateArgs {
      * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
-    siteId?: pulumi.Input<string>;
+    siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
      * Switch template

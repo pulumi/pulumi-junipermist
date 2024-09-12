@@ -281,16 +281,22 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         /// <summary>
         /// Can be used to localize the portal based on the User Agent. Allowed property key values are:
-        ///       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
-        ///       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
-        ///       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
-        ///       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+        ///   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+        ///   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
+        ///   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+        ///   `zh-Hans`, `zh-Hant`
         /// </summary>
         public InputMap<Inputs.WlanPortalTemplatePortalTemplateLocalesArgs> Locales
         {
             get => _locales ?? (_locales = new InputMap<Inputs.WlanPortalTemplatePortalTemplateLocalesArgs>());
             set => _locales = value;
         }
+
+        /// <summary>
+        /// path to the background image file. File must be a `png` image`
+        /// </summary>
+        [Input("logo")]
+        public Input<string>? Logo { get; set; }
 
         [Input("message")]
         public Input<string>? Message { get; set; }

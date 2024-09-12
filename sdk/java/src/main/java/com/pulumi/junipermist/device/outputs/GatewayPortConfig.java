@@ -20,6 +20,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayPortConfig {
+    /**
+     * @return if `aggregated`==`true`. To disable LCP support for the AE interface
+     * 
+     */
+    private @Nullable Boolean aeDisableLacp;
+    /**
+     * @return if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * 
+     */
+    private @Nullable String aeIdx;
+    /**
+     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    private @Nullable Boolean aeLacpForceUp;
+    private @Nullable Boolean aggregated;
+    /**
+     * @return if want to generate port up/down alarm, set it to true
+     * 
+     */
+    private @Nullable Boolean critical;
     private @Nullable String description;
     private @Nullable Boolean disableAutoneg;
     /**
@@ -167,6 +190,39 @@ public final class GatewayPortConfig {
     private @Nullable String wanType;
 
     private GatewayPortConfig() {}
+    /**
+     * @return if `aggregated`==`true`. To disable LCP support for the AE interface
+     * 
+     */
+    public Optional<Boolean> aeDisableLacp() {
+        return Optional.ofNullable(this.aeDisableLacp);
+    }
+    /**
+     * @return if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * 
+     */
+    public Optional<String> aeIdx() {
+        return Optional.ofNullable(this.aeIdx);
+    }
+    /**
+     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    public Optional<Boolean> aeLacpForceUp() {
+        return Optional.ofNullable(this.aeLacpForceUp);
+    }
+    public Optional<Boolean> aggregated() {
+        return Optional.ofNullable(this.aggregated);
+    }
+    /**
+     * @return if want to generate port up/down alarm, set it to true
+     * 
+     */
+    public Optional<Boolean> critical() {
+        return Optional.ofNullable(this.critical);
+    }
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -392,6 +448,11 @@ public final class GatewayPortConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean aeDisableLacp;
+        private @Nullable String aeIdx;
+        private @Nullable Boolean aeLacpForceUp;
+        private @Nullable Boolean aggregated;
+        private @Nullable Boolean critical;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
         private @Nullable Boolean disabled;
@@ -430,6 +491,11 @@ public final class GatewayPortConfig {
         public Builder() {}
         public Builder(GatewayPortConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aeDisableLacp = defaults.aeDisableLacp;
+    	      this.aeIdx = defaults.aeIdx;
+    	      this.aeLacpForceUp = defaults.aeLacpForceUp;
+    	      this.aggregated = defaults.aggregated;
+    	      this.critical = defaults.critical;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
     	      this.disabled = defaults.disabled;
@@ -467,6 +533,36 @@ public final class GatewayPortConfig {
     	      this.wanType = defaults.wanType;
         }
 
+        @CustomType.Setter
+        public Builder aeDisableLacp(@Nullable Boolean aeDisableLacp) {
+
+            this.aeDisableLacp = aeDisableLacp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aeIdx(@Nullable String aeIdx) {
+
+            this.aeIdx = aeIdx;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aeLacpForceUp(@Nullable Boolean aeLacpForceUp) {
+
+            this.aeLacpForceUp = aeLacpForceUp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder aggregated(@Nullable Boolean aggregated) {
+
+            this.aggregated = aggregated;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder critical(@Nullable Boolean critical) {
+
+            this.critical = critical;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
 
@@ -687,6 +783,11 @@ public final class GatewayPortConfig {
         }
         public GatewayPortConfig build() {
             final var _resultValue = new GatewayPortConfig();
+            _resultValue.aeDisableLacp = aeDisableLacp;
+            _resultValue.aeIdx = aeIdx;
+            _resultValue.aeLacpForceUp = aeLacpForceUp;
+            _resultValue.aggregated = aggregated;
+            _resultValue.critical = critical;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
             _resultValue.disabled = disabled;

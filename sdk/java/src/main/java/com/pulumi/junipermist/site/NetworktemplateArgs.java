@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.inputs.NetworktemplateAclPolicyArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateAclTagsArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateDhcpSnoopingArgs;
@@ -237,11 +238,11 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.removeExistingConfigs);
     }
 
-    @Import(name="siteId")
-    private @Nullable Output<String> siteId;
+    @Import(name="siteId", required=true)
+    private Output<String> siteId;
 
-    public Optional<Output<String>> siteId() {
-        return Optional.ofNullable(this.siteId);
+    public Output<String> siteId() {
+        return this.siteId;
     }
 
     @Import(name="snmpConfig")
@@ -678,7 +679,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
             return removeExistingConfigs(Output.of(removeExistingConfigs));
         }
 
-        public Builder siteId(@Nullable Output<String> siteId) {
+        public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
@@ -778,6 +779,9 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public NetworktemplateArgs build() {
+            if ($.siteId == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateArgs", "siteId");
+            }
             return $;
         }
     }

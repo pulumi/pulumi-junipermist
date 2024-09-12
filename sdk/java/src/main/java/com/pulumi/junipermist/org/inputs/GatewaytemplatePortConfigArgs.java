@@ -24,6 +24,77 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
 
     public static final GatewaytemplatePortConfigArgs Empty = new GatewaytemplatePortConfigArgs();
 
+    /**
+     * if `aggregated`==`true`. To disable LCP support for the AE interface
+     * 
+     */
+    @Import(name="aeDisableLacp")
+    private @Nullable Output<Boolean> aeDisableLacp;
+
+    /**
+     * @return if `aggregated`==`true`. To disable LCP support for the AE interface
+     * 
+     */
+    public Optional<Output<Boolean>> aeDisableLacp() {
+        return Optional.ofNullable(this.aeDisableLacp);
+    }
+
+    /**
+     * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * 
+     */
+    @Import(name="aeIdx")
+    private @Nullable Output<String> aeIdx;
+
+    /**
+     * @return if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * 
+     */
+    public Optional<Output<String>> aeIdx() {
+        return Optional.ofNullable(this.aeIdx);
+    }
+
+    /**
+     * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    @Import(name="aeLacpForceUp")
+    private @Nullable Output<Boolean> aeLacpForceUp;
+
+    /**
+     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * 
+     */
+    public Optional<Output<Boolean>> aeLacpForceUp() {
+        return Optional.ofNullable(this.aeLacpForceUp);
+    }
+
+    @Import(name="aggregated")
+    private @Nullable Output<Boolean> aggregated;
+
+    public Optional<Output<Boolean>> aggregated() {
+        return Optional.ofNullable(this.aggregated);
+    }
+
+    /**
+     * if want to generate port up/down alarm, set it to true
+     * 
+     */
+    @Import(name="critical")
+    private @Nullable Output<Boolean> critical;
+
+    /**
+     * @return if want to generate port up/down alarm, set it to true
+     * 
+     */
+    public Optional<Output<Boolean>> critical() {
+        return Optional.ofNullable(this.critical);
+    }
+
     @Import(name="description")
     private @Nullable Output<String> description;
 
@@ -492,6 +563,11 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
     private GatewaytemplatePortConfigArgs() {}
 
     private GatewaytemplatePortConfigArgs(GatewaytemplatePortConfigArgs $) {
+        this.aeDisableLacp = $.aeDisableLacp;
+        this.aeIdx = $.aeIdx;
+        this.aeLacpForceUp = $.aeLacpForceUp;
+        this.aggregated = $.aggregated;
+        this.critical = $.critical;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
         this.disabled = $.disabled;
@@ -545,6 +621,103 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
 
         public Builder(GatewaytemplatePortConfigArgs defaults) {
             $ = new GatewaytemplatePortConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aeDisableLacp if `aggregated`==`true`. To disable LCP support for the AE interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeDisableLacp(@Nullable Output<Boolean> aeDisableLacp) {
+            $.aeDisableLacp = aeDisableLacp;
+            return this;
+        }
+
+        /**
+         * @param aeDisableLacp if `aggregated`==`true`. To disable LCP support for the AE interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeDisableLacp(Boolean aeDisableLacp) {
+            return aeDisableLacp(Output.of(aeDisableLacp));
+        }
+
+        /**
+         * @param aeIdx if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeIdx(@Nullable Output<String> aeIdx) {
+            $.aeIdx = aeIdx;
+            return this;
+        }
+
+        /**
+         * @param aeIdx if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeIdx(String aeIdx) {
+            return aeIdx(Output.of(aeIdx));
+        }
+
+        /**
+         * @param aeLacpForceUp For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeLacpForceUp(@Nullable Output<Boolean> aeLacpForceUp) {
+            $.aeLacpForceUp = aeLacpForceUp;
+            return this;
+        }
+
+        /**
+         * @param aeLacpForceUp For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aeLacpForceUp(Boolean aeLacpForceUp) {
+            return aeLacpForceUp(Output.of(aeLacpForceUp));
+        }
+
+        public Builder aggregated(@Nullable Output<Boolean> aggregated) {
+            $.aggregated = aggregated;
+            return this;
+        }
+
+        public Builder aggregated(Boolean aggregated) {
+            return aggregated(Output.of(aggregated));
+        }
+
+        /**
+         * @param critical if want to generate port up/down alarm, set it to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder critical(@Nullable Output<Boolean> critical) {
+            $.critical = critical;
+            return this;
+        }
+
+        /**
+         * @param critical if want to generate port up/down alarm, set it to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder critical(Boolean critical) {
+            return critical(Output.of(critical));
         }
 
         public Builder description(@Nullable Output<String> description) {

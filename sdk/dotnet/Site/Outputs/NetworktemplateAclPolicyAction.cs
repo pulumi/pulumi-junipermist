@@ -17,13 +17,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// enum: `allow`, `deny`
         /// </summary>
         public readonly string? Action;
-        public readonly string? DstTag;
+        public readonly string DstTag;
 
         [OutputConstructor]
         private NetworktemplateAclPolicyAction(
             string? action,
 
-            string? dstTag)
+            string dstTag)
         {
             Action = action;
             DstTag = dstTag;

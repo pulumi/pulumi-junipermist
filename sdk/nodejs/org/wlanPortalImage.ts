@@ -36,11 +36,14 @@ export class WlanPortalImage extends pulumi.CustomResource {
     }
 
     /**
-     * binary file
+     * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      */
     public readonly file!: pulumi.Output<string>;
-    public readonly orgId!: pulumi.Output<string | undefined>;
-    public readonly wlanId!: pulumi.Output<string | undefined>;
+    public readonly orgId!: pulumi.Output<string>;
+    /**
+     * Org WLAN ID
+     */
+    public readonly wlanId!: pulumi.Output<string>;
 
     /**
      * Create a WlanPortalImage resource with the given unique name, arguments, and options.
@@ -63,6 +66,12 @@ export class WlanPortalImage extends pulumi.CustomResource {
             if ((!args || args.file === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'file'");
             }
+            if ((!args || args.orgId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'orgId'");
+            }
+            if ((!args || args.wlanId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'wlanId'");
+            }
             resourceInputs["file"] = args ? args.file : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["wlanId"] = args ? args.wlanId : undefined;
@@ -77,10 +86,13 @@ export class WlanPortalImage extends pulumi.CustomResource {
  */
 export interface WlanPortalImageState {
     /**
-     * binary file
+     * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      */
     file?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
+    /**
+     * Org WLAN ID
+     */
     wlanId?: pulumi.Input<string>;
 }
 
@@ -89,9 +101,12 @@ export interface WlanPortalImageState {
  */
 export interface WlanPortalImageArgs {
     /**
-     * binary file
+     * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      */
     file: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
-    wlanId?: pulumi.Input<string>;
+    orgId: pulumi.Input<string>;
+    /**
+     * Org WLAN ID
+     */
+    wlanId: pulumi.Input<string>;
 }

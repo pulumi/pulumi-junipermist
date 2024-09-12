@@ -18,8 +18,8 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        [Input("dstTag")]
-        public Input<string>? DstTag { get; set; }
+        [Input("dstTag", required: true)]
+        public Input<string> DstTag { get; set; } = null!;
 
         public SwitchAclPolicyActionGetArgs()
         {

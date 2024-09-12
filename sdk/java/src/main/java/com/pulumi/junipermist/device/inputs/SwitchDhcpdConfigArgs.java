@@ -18,9 +18,17 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
 
     public static final SwitchDhcpdConfigArgs Empty = new SwitchDhcpdConfigArgs();
 
+    /**
+     * Property key is the network name
+     * 
+     */
     @Import(name="config")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigArgs>> config;
 
+    /**
+     * @return Property key is the network name
+     * 
+     */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigArgs>>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -65,11 +73,23 @@ public final class SwitchDhcpdConfigArgs extends com.pulumi.resources.ResourceAr
             $ = new SwitchDhcpdConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param config Property key is the network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(@Nullable Output<Map<String,SwitchDhcpdConfigConfigArgs>> config) {
             $.config = config;
             return this;
         }
 
+        /**
+         * @param config Property key is the network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(Map<String,SwitchDhcpdConfigConfigArgs> config) {
             return config(Output.of(config));
         }
