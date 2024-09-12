@@ -26,6 +26,7 @@ new junipermist.site.WlanPortalTemplate("portal-template", {
   siteId: wlan.siteId,
   wlanId: wlan.id,
   portalTemplate: {
+    logo: "./pulumi_logo.png",
     smsMessageFormat: "Code {{code}} expires in {{duration}} minutes.",
     smsValidityDuration: 10,
     pageTitle: "Welcome To My Demo Portal",
