@@ -17,13 +17,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// enum: `allow`, `deny`
         /// </summary>
         public readonly string? Action;
-        public readonly string? DstTag;
+        public readonly string DstTag;
 
         [OutputConstructor]
         private SwitchAclPolicyAction(
             string? action,
 
-            string? dstTag)
+            string dstTag)
         {
             Action = action;
             DstTag = dstTag;

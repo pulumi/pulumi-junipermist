@@ -53,7 +53,7 @@ public final class GatewaytemplatePathPreferencesPath {
      */
     private @Nullable String type;
     /**
-     * @return required when`type`==`tunnel`
+     * @return optional if `type`==`vpn`
      * 
      */
     private @Nullable String wanName;
@@ -114,7 +114,7 @@ public final class GatewaytemplatePathPreferencesPath {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return required when`type`==`tunnel`
+     * @return optional if `type`==`vpn`
      * 
      */
     public Optional<String> wanName() {

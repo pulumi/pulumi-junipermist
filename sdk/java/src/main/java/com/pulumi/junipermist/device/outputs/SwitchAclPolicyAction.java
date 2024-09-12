@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +17,7 @@ public final class SwitchAclPolicyAction {
      * 
      */
     private @Nullable String action;
-    private @Nullable String dstTag;
+    private String dstTag;
 
     private SwitchAclPolicyAction() {}
     /**
@@ -26,8 +27,8 @@ public final class SwitchAclPolicyAction {
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
-    public Optional<String> dstTag() {
-        return Optional.ofNullable(this.dstTag);
+    public String dstTag() {
+        return this.dstTag;
     }
 
     public static Builder builder() {
@@ -40,7 +41,7 @@ public final class SwitchAclPolicyAction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String action;
-        private @Nullable String dstTag;
+        private String dstTag;
         public Builder() {}
         public Builder(SwitchAclPolicyAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,8 +56,10 @@ public final class SwitchAclPolicyAction {
             return this;
         }
         @CustomType.Setter
-        public Builder dstTag(@Nullable String dstTag) {
-
+        public Builder dstTag(String dstTag) {
+            if (dstTag == null) {
+              throw new MissingRequiredPropertyException("SwitchAclPolicyAction", "dstTag");
+            }
             this.dstTag = dstTag;
             return this;
         }

@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("config")]
         private InputMap<Inputs.SwitchDhcpdConfigConfigGetArgs>? _config;
+
+        /// <summary>
+        /// Property key is the network name
+        /// </summary>
         public InputMap<Inputs.SwitchDhcpdConfigConfigGetArgs> Config
         {
             get => _config ?? (_config = new InputMap<Inputs.SwitchDhcpdConfigConfigGetArgs>());

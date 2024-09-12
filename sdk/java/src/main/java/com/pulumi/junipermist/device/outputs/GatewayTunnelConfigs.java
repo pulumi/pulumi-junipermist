@@ -58,6 +58,11 @@ public final class GatewayTunnelConfigs {
      * 
      */
     private @Nullable String mode;
+    /**
+     * @return networks reachable via this tunnel
+     * 
+     */
+    private @Nullable List<String> networks;
     private @Nullable GatewayTunnelConfigsPrimary primary;
     /**
      * @return Only if `provider`== `custom-ipsec`
@@ -145,6 +150,13 @@ public final class GatewayTunnelConfigs {
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return networks reachable via this tunnel
+     * 
+     */
+    public List<String> networks() {
+        return this.networks == null ? List.of() : this.networks;
+    }
     public Optional<GatewayTunnelConfigsPrimary> primary() {
         return Optional.ofNullable(this.primary);
     }
@@ -207,6 +219,7 @@ public final class GatewayTunnelConfigs {
         private @Nullable List<GatewayTunnelConfigsIpsecProposal> ipsecProposals;
         private @Nullable String localId;
         private @Nullable String mode;
+        private @Nullable List<String> networks;
         private @Nullable GatewayTunnelConfigsPrimary primary;
         private @Nullable GatewayTunnelConfigsProbe probe;
         private @Nullable String protocol;
@@ -225,6 +238,7 @@ public final class GatewayTunnelConfigs {
     	      this.ipsecProposals = defaults.ipsecProposals;
     	      this.localId = defaults.localId;
     	      this.mode = defaults.mode;
+    	      this.networks = defaults.networks;
     	      this.primary = defaults.primary;
     	      this.probe = defaults.probe;
     	      this.protocol = defaults.protocol;
@@ -289,6 +303,15 @@ public final class GatewayTunnelConfigs {
             return this;
         }
         @CustomType.Setter
+        public Builder networks(@Nullable List<String> networks) {
+
+            this.networks = networks;
+            return this;
+        }
+        public Builder networks(String... networks) {
+            return networks(List.of(networks));
+        }
+        @CustomType.Setter
         public Builder primary(@Nullable GatewayTunnelConfigsPrimary primary) {
 
             this.primary = primary;
@@ -340,6 +363,7 @@ public final class GatewayTunnelConfigs {
             _resultValue.ipsecProposals = ipsecProposals;
             _resultValue.localId = localId;
             _resultValue.mode = mode;
+            _resultValue.networks = networks;
             _resultValue.primary = primary;
             _resultValue.probe = probe;
             _resultValue.protocol = protocol;

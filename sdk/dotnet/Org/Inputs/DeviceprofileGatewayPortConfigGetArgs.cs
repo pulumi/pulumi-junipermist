@@ -12,6 +12,35 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayPortConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// if `aggregated`==`true`. To disable LCP support for the AE interface
+        /// </summary>
+        [Input("aeDisableLacp")]
+        public Input<bool>? AeDisableLacp { get; set; }
+
+        /// <summary>
+        /// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        /// </summary>
+        [Input("aeIdx")]
+        public Input<string>? AeIdx { get; set; }
+
+        /// <summary>
+        /// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+        /// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+        /// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// </summary>
+        [Input("aeLacpForceUp")]
+        public Input<bool>? AeLacpForceUp { get; set; }
+
+        [Input("aggregated")]
+        public Input<bool>? Aggregated { get; set; }
+
+        /// <summary>
+        /// if want to generate port up/down alarm, set it to true
+        /// </summary>
+        [Input("critical")]
+        public Input<bool>? Critical { get; set; }
+
         [Input("description")]
         public Input<string>? Description { get; set; }
 

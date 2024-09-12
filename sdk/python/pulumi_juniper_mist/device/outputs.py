@@ -2610,6 +2610,7 @@ class GatewayDhcpdConfig(dict):
                  config: Optional[Mapping[str, 'outputs.GatewayDhcpdConfigConfig']] = None,
                  enabled: Optional[bool] = None):
         """
+        :param Mapping[str, 'GatewayDhcpdConfigConfigArgs'] config: Property key is the network name
         :param bool enabled: if set to `true`, enable the DHCP server
         """
         if config is not None:
@@ -2620,6 +2621,9 @@ class GatewayDhcpdConfig(dict):
     @property
     @pulumi.getter
     def config(self) -> Optional[Mapping[str, 'outputs.GatewayDhcpdConfigConfig']]:
+        """
+        Property key is the network name
+        """
         return pulumi.get(self, "config")
 
     @property
@@ -4001,7 +4005,7 @@ class GatewayOobIpConfig(dict):
         :param 'GatewayOobIpConfigNode1Args' node1: for HA Cluster, node1 can have different IP Config
         :param str type: enum: `dhcp`, `static`
         :param bool use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param bool use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+        :param bool use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
@@ -4072,7 +4076,7 @@ class GatewayOobIpConfig(dict):
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[bool]:
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 
@@ -4258,7 +4262,7 @@ class GatewayPathPreferencesPath(dict):
         :param Sequence[str] networks: required when `type`==`local`
         :param Sequence[str] target_ips: if `type`==`local`, if destination IP is to be replaced
         :param str type: enum: `local`, `tunnel`, `vpn`, `wan`
-        :param str wan_name: required when`type`==`tunnel`
+        :param str wan_name: optional if `type`==`vpn`
         """
         if cost is not None:
             pulumi.set(__self__, "cost", cost)
@@ -4346,7 +4350,7 @@ class GatewayPathPreferencesPath(dict):
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[str]:
         """
-        required when`type`==`tunnel`
+        optional if `type`==`vpn`
         """
         return pulumi.get(self, "wan_name")
 
@@ -4356,7 +4360,13 @@ class GatewayPortConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "disableAutoneg":
+        if key == "aeDisableLacp":
+            suggest = "ae_disable_lacp"
+        elif key == "aeIdx":
+            suggest = "ae_idx"
+        elif key == "aeLacpForceUp":
+            suggest = "ae_lacp_force_up"
+        elif key == "disableAutoneg":
             suggest = "disable_autoneg"
         elif key == "dslType":
             suggest = "dsl_type"
@@ -4422,6 +4432,11 @@ class GatewayPortConfig(dict):
 
     def __init__(__self__, *,
                  usage: str,
+                 ae_disable_lacp: Optional[bool] = None,
+                 ae_idx: Optional[str] = None,
+                 ae_lacp_force_up: Optional[bool] = None,
+                 aggregated: Optional[bool] = None,
+                 critical: Optional[bool] = None,
                  description: Optional[str] = None,
                  disable_autoneg: Optional[bool] = None,
                  disabled: Optional[bool] = None,
@@ -4458,6 +4473,12 @@ class GatewayPortConfig(dict):
                  wan_type: Optional[str] = None):
         """
         :param str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
+        :param bool ae_disable_lacp: if `aggregated`==`true`. To disable LCP support for the AE interface
+        :param str ae_idx: if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        :param bool ae_lacp_force_up: For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n
+               Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n
+               Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        :param bool critical: if want to generate port up/down alarm, set it to true
         :param bool disabled: port admin up (true) / down (false)
         :param str dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
         :param int dsl_vci: if `wan_type`==`dsl`
@@ -4488,6 +4509,16 @@ class GatewayPortConfig(dict):
         :param str wan_type: if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         """
         pulumi.set(__self__, "usage", usage)
+        if ae_disable_lacp is not None:
+            pulumi.set(__self__, "ae_disable_lacp", ae_disable_lacp)
+        if ae_idx is not None:
+            pulumi.set(__self__, "ae_idx", ae_idx)
+        if ae_lacp_force_up is not None:
+            pulumi.set(__self__, "ae_lacp_force_up", ae_lacp_force_up)
+        if aggregated is not None:
+            pulumi.set(__self__, "aggregated", aggregated)
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_autoneg is not None:
@@ -4564,6 +4595,45 @@ class GatewayPortConfig(dict):
         port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         """
         return pulumi.get(self, "usage")
+
+    @property
+    @pulumi.getter(name="aeDisableLacp")
+    def ae_disable_lacp(self) -> Optional[bool]:
+        """
+        if `aggregated`==`true`. To disable LCP support for the AE interface
+        """
+        return pulumi.get(self, "ae_disable_lacp")
+
+    @property
+    @pulumi.getter(name="aeIdx")
+    def ae_idx(self) -> Optional[str]:
+        """
+        if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        """
+        return pulumi.get(self, "ae_idx")
+
+    @property
+    @pulumi.getter(name="aeLacpForceUp")
+    def ae_lacp_force_up(self) -> Optional[bool]:
+        """
+        For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n
+        Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n
+        Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        """
+        return pulumi.get(self, "ae_lacp_force_up")
+
+    @property
+    @pulumi.getter
+    def aggregated(self) -> Optional[bool]:
+        return pulumi.get(self, "aggregated")
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[bool]:
+        """
+        if want to generate port up/down alarm, set it to true
+        """
+        return pulumi.get(self, "critical")
 
     @property
     @pulumi.getter
@@ -5999,6 +6069,7 @@ class GatewayTunnelConfigs(dict):
                  ipsec_proposals: Optional[Sequence['outputs.GatewayTunnelConfigsIpsecProposal']] = None,
                  local_id: Optional[str] = None,
                  mode: Optional[str] = None,
+                 networks: Optional[Sequence[str]] = None,
                  primary: Optional['outputs.GatewayTunnelConfigsPrimary'] = None,
                  probe: Optional['outputs.GatewayTunnelConfigsProbe'] = None,
                  protocol: Optional[str] = None,
@@ -6017,6 +6088,7 @@ class GatewayTunnelConfigs(dict):
                  * `provider`==`jse-ipsec`
                  * `provider`== `custom-ipsec`
         :param str mode: enum: `active-active`, `active-standby`
+        :param Sequence[str] networks: networks reachable via this tunnel
         :param 'GatewayTunnelConfigsProbeArgs' probe: Only if `provider`== `custom-ipsec`
         :param str protocol: Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
         :param str provider: enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
@@ -6042,6 +6114,8 @@ class GatewayTunnelConfigs(dict):
             pulumi.set(__self__, "local_id", local_id)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
         if primary is not None:
             pulumi.set(__self__, "primary", primary)
         if probe is not None:
@@ -6120,6 +6194,14 @@ class GatewayTunnelConfigs(dict):
         enum: `active-active`, `active-standby`
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence[str]]:
+        """
+        networks reachable via this tunnel
+        """
+        return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter
@@ -7201,15 +7283,19 @@ class SwitchAclPolicyAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 action: Optional[str] = None,
-                 dst_tag: Optional[str] = None):
+                 dst_tag: str,
+                 action: Optional[str] = None):
         """
         :param str action: enum: `allow`, `deny`
         """
+        pulumi.set(__self__, "dst_tag", dst_tag)
         if action is not None:
             pulumi.set(__self__, "action", action)
-        if dst_tag is not None:
-            pulumi.set(__self__, "dst_tag", dst_tag)
+
+    @property
+    @pulumi.getter(name="dstTag")
+    def dst_tag(self) -> str:
+        return pulumi.get(self, "dst_tag")
 
     @property
     @pulumi.getter
@@ -7218,11 +7304,6 @@ class SwitchAclPolicyAction(dict):
         enum: `allow`, `deny`
         """
         return pulumi.get(self, "action")
-
-    @property
-    @pulumi.getter(name="dstTag")
-    def dst_tag(self) -> Optional[str]:
-        return pulumi.get(self, "dst_tag")
 
 
 @pulumi.output_type
@@ -7500,6 +7581,7 @@ class SwitchDhcpdConfig(dict):
                  config: Optional[Mapping[str, 'outputs.SwitchDhcpdConfigConfig']] = None,
                  enabled: Optional[bool] = None):
         """
+        :param Mapping[str, 'SwitchDhcpdConfigConfigArgs'] config: Property key is the network name
         :param bool enabled: if set to `true`, enable the DHCP server
         """
         if config is not None:
@@ -7510,6 +7592,9 @@ class SwitchDhcpdConfig(dict):
     @property
     @pulumi.getter
     def config(self) -> Optional[Mapping[str, 'outputs.SwitchDhcpdConfigConfig']]:
+        """
+        Property key is the network name
+        """
         return pulumi.get(self, "config")
 
     @property
@@ -8280,7 +8365,7 @@ class SwitchOobIpConfig(dict):
         :param str network: optional, the network to be used for mgmt
         :param str type: enum: `dhcp`, `static`
         :param bool use_mgmt_vrf: f supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param bool use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+        :param bool use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
@@ -8343,7 +8428,7 @@ class SwitchOobIpConfig(dict):
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[bool]:
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 

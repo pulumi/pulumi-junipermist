@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayDhcpdConfig {
+    /**
+     * @return Property key is the network name
+     * 
+     */
     private @Nullable Map<String,GatewayDhcpdConfigConfig> config;
     /**
      * @return if set to `true`, enable the DHCP server
@@ -22,6 +26,10 @@ public final class GatewayDhcpdConfig {
     private @Nullable Boolean enabled;
 
     private GatewayDhcpdConfig() {}
+    /**
+     * @return Property key is the network name
+     * 
+     */
     public Map<String,GatewayDhcpdConfigConfig> config() {
         return this.config == null ? Map.of() : this.config;
     }

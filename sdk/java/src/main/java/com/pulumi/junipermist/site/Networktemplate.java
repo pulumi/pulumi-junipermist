@@ -386,7 +386,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Networktemplate(java.lang.String name, @Nullable NetworktemplateArgs args) {
+    public Networktemplate(java.lang.String name, NetworktemplateArgs args) {
         this(name, args, null);
     }
     /**
@@ -395,7 +395,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Networktemplate(java.lang.String name, @Nullable NetworktemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Networktemplate(java.lang.String name, NetworktemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("junipermist:site/networktemplate:Networktemplate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -403,7 +403,7 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         super("junipermist:site/networktemplate:Networktemplate", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static NetworktemplateArgs makeArgs(@Nullable NetworktemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static NetworktemplateArgs makeArgs(NetworktemplateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

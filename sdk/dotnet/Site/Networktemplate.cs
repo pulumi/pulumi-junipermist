@@ -145,7 +145,7 @@ namespace Pulumi.JuniperMist.Site
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Networktemplate(string name, NetworktemplateArgs? args = null, CustomResourceOptions? options = null)
+        public Networktemplate(string name, NetworktemplateArgs args, CustomResourceOptions? options = null)
             : base("junipermist:site/networktemplate:Networktemplate", name, args ?? new NetworktemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -329,8 +329,8 @@ namespace Pulumi.JuniperMist.Site
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
 
-        [Input("siteId")]
-        public Input<string>? SiteId { get; set; }
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
 
         [Input("snmpConfig")]
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }

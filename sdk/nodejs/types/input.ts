@@ -614,6 +614,9 @@ export namespace device {
     }
 
     export interface GatewayDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfig>}>;
         /**
          * if set to `true`, enable the DHCP server
@@ -946,7 +949,7 @@ export namespace device {
          */
         useMgmtVrf?: pulumi.Input<boolean>;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut?: pulumi.Input<boolean>;
         vlanId?: pulumi.Input<string>;
@@ -1018,12 +1021,31 @@ export namespace device {
          */
         type?: pulumi.Input<string>;
         /**
-         * required when`type`==`tunnel`
+         * optional if `type`==`vpn`
          */
         wanName?: pulumi.Input<string>;
     }
 
     export interface GatewayPortConfig {
+        /**
+         * if `aggregated`==`true`. To disable LCP support for the AE interface
+         */
+        aeDisableLacp?: pulumi.Input<boolean>;
+        /**
+         * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         */
+        aeIdx?: pulumi.Input<string>;
+        /**
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: pulumi.Input<boolean>;
+        aggregated?: pulumi.Input<boolean>;
+        /**
+         * if want to generate port up/down alarm, set it to true
+         */
+        critical?: pulumi.Input<boolean>;
         description?: pulumi.Input<string>;
         disableAutoneg?: pulumi.Input<boolean>;
         /**
@@ -1425,6 +1447,10 @@ export namespace device {
          * enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
+        /**
+         * networks reachable via this tunnel
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
         primary?: pulumi.Input<inputs.device.GatewayTunnelConfigsPrimary>;
         /**
          * Only if `provider`== `custom-ipsec`
@@ -1699,7 +1725,7 @@ export namespace device {
          * enum: `allow`, `deny`
          */
         action?: pulumi.Input<string>;
-        dstTag?: pulumi.Input<string>;
+        dstTag: pulumi.Input<string>;
     }
 
     export interface SwitchAclTags {
@@ -1778,6 +1804,9 @@ export namespace device {
     }
 
     export interface SwitchDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfig>}>;
         /**
          * if set to `true`, enable the DHCP server
@@ -1982,7 +2011,7 @@ export namespace device {
          */
         useMgmtVrf?: pulumi.Input<boolean>;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut?: pulumi.Input<boolean>;
     }
@@ -3450,6 +3479,9 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfig>}>;
         /**
          * if set to `true`, enable the DHCP server
@@ -3775,7 +3807,7 @@ export namespace org {
          */
         useMgmtVrf?: pulumi.Input<boolean>;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut?: pulumi.Input<boolean>;
         vlanId?: pulumi.Input<string>;
@@ -3847,12 +3879,31 @@ export namespace org {
          */
         type?: pulumi.Input<string>;
         /**
-         * required when`type`==`tunnel`
+         * optional if `type`==`vpn`
          */
         wanName?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayPortConfig {
+        /**
+         * if `aggregated`==`true`. To disable LCP support for the AE interface
+         */
+        aeDisableLacp?: pulumi.Input<boolean>;
+        /**
+         * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         */
+        aeIdx?: pulumi.Input<string>;
+        /**
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: pulumi.Input<boolean>;
+        aggregated?: pulumi.Input<boolean>;
+        /**
+         * if want to generate port up/down alarm, set it to true
+         */
+        critical?: pulumi.Input<boolean>;
         description?: pulumi.Input<string>;
         disableAutoneg?: pulumi.Input<boolean>;
         /**
@@ -4242,6 +4293,10 @@ export namespace org {
          * enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
+        /**
+         * networks reachable via this tunnel
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
         primary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsPrimary>;
         /**
          * Only if `provider`== `custom-ipsec`
@@ -4585,6 +4640,9 @@ export namespace org {
     }
 
     export interface GatewaytemplateDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfig>}>;
         /**
          * if set to `true`, enable the DHCP server
@@ -4910,7 +4968,7 @@ export namespace org {
          */
         useMgmtVrf?: pulumi.Input<boolean>;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut?: pulumi.Input<boolean>;
         vlanId?: pulumi.Input<string>;
@@ -4982,12 +5040,31 @@ export namespace org {
          */
         type?: pulumi.Input<string>;
         /**
-         * required when`type`==`tunnel`
+         * optional if `type`==`vpn`
          */
         wanName?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplatePortConfig {
+        /**
+         * if `aggregated`==`true`. To disable LCP support for the AE interface
+         */
+        aeDisableLacp?: pulumi.Input<boolean>;
+        /**
+         * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         */
+        aeIdx?: pulumi.Input<string>;
+        /**
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp?: pulumi.Input<boolean>;
+        aggregated?: pulumi.Input<boolean>;
+        /**
+         * if want to generate port up/down alarm, set it to true
+         */
+        critical?: pulumi.Input<boolean>;
         description?: pulumi.Input<string>;
         disableAutoneg?: pulumi.Input<boolean>;
         /**
@@ -5377,6 +5454,10 @@ export namespace org {
          * enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
+        /**
+         * networks reachable via this tunnel
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
         primary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsPrimary>;
         /**
          * Only if `provider`== `custom-ipsec`
@@ -5869,7 +5950,7 @@ export namespace org {
          * enum: `allow`, `deny`
          */
         action?: pulumi.Input<string>;
-        dstTag?: pulumi.Input<string>;
+        dstTag: pulumi.Input<string>;
     }
 
     export interface NetworktemplateAclTags {
@@ -6630,6 +6711,10 @@ export namespace org {
          */
         additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * In-Band Management interface configuration
+         */
+        ipConfig?: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRuleIpConfig>;
+        /**
          * role to match
          */
         matchRole?: pulumi.Input<string>;
@@ -6640,6 +6725,10 @@ export namespace org {
         matchValue?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         /**
+         * Out-of-Band Management interface configuration
+         */
+        oobIpConfig?: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRuleOobIpConfig>;
+        /**
          * Propery key is the interface name or interface range
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortConfig>}>;
@@ -6648,6 +6737,32 @@ export namespace org {
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortMirroring>}>;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleIpConfig {
+        /**
+         * VLAN Name for the management interface
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         */
+        useMgmtVrf?: pulumi.Input<boolean>;
+        /**
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         */
+        useMgmtVrfForHostOut?: pulumi.Input<boolean>;
     }
 
     export interface NetworktemplateSwitchMatchingRulePortConfig {
@@ -8245,6 +8360,10 @@ export namespace org {
          *   `zh-Hans`, `zh-Hant`
          */
         locales?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.WlanPortalTemplatePortalTemplateLocales>}>;
+        /**
+         * path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+         */
+        logo?: pulumi.Input<string>;
         message?: pulumi.Input<string>;
         multiAuth?: pulumi.Input<boolean>;
         /**
@@ -8730,10 +8849,6 @@ export namespace org {
          * text of the Terms of Service
          */
         tosText?: pulumi.Input<string>;
-        /**
-         * label for Amazon auth button
-         */
-        uthButtonAmazon?: pulumi.Input<string>;
     }
 
     export interface WlanQos {
@@ -8868,7 +8983,7 @@ export namespace site {
          * enum: `allow`, `deny`
          */
         action?: pulumi.Input<string>;
-        dstTag?: pulumi.Input<string>;
+        dstTag: pulumi.Input<string>;
     }
 
     export interface NetworktemplateAclTags {
@@ -9629,6 +9744,10 @@ export namespace site {
          */
         additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * In-Band Management interface configuration
+         */
+        ipConfig?: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRuleIpConfig>;
+        /**
          * role to match
          */
         matchRole?: pulumi.Input<string>;
@@ -9639,6 +9758,10 @@ export namespace site {
         matchValue?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         /**
+         * Out-of-Band Management interface configuration
+         */
+        oobIpConfig?: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRuleOobIpConfig>;
+        /**
          * Propery key is the interface name or interface range
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortConfig>}>;
@@ -9647,6 +9770,32 @@ export namespace site {
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortMirroring>}>;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleIpConfig {
+        /**
+         * VLAN Name for the management interface
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         */
+        useMgmtVrf?: pulumi.Input<boolean>;
+        /**
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         */
+        useMgmtVrfForHostOut?: pulumi.Input<boolean>;
     }
 
     export interface NetworktemplateSwitchMatchingRulePortConfig {
@@ -11175,12 +11324,16 @@ export namespace site {
         field4required?: pulumi.Input<boolean>;
         /**
          * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
-         *       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
-         *       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
-         *       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `zh-Hans`, `zh-Hant`
          */
         locales?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanPortalTemplatePortalTemplateLocales>}>;
+        /**
+         * path to the background image file. File must be a `png` image`
+         */
+        logo?: pulumi.Input<string>;
         message?: pulumi.Input<string>;
         multiAuth?: pulumi.Input<boolean>;
         /**
@@ -11666,10 +11819,6 @@ export namespace site {
          * text of the Terms of Service
          */
         tosText?: pulumi.Input<string>;
-        /**
-         * label for Amazon auth button
-         */
-        uthButtonAmazon?: pulumi.Input<string>;
     }
 
     export interface WlanQos {

@@ -44,10 +44,11 @@ import (
 type WlanPortalImage struct {
 	pulumi.CustomResourceState
 
-	// binary file
-	File   pulumi.StringOutput    `pulumi:"file"`
-	SiteId pulumi.StringPtrOutput `pulumi:"siteId"`
-	WlanId pulumi.StringPtrOutput `pulumi:"wlanId"`
+	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+	File   pulumi.StringOutput `pulumi:"file"`
+	SiteId pulumi.StringOutput `pulumi:"siteId"`
+	// Site WLAN ID
+	WlanId pulumi.StringOutput `pulumi:"wlanId"`
 }
 
 // NewWlanPortalImage registers a new resource with the given unique name, arguments, and options.
@@ -59,6 +60,12 @@ func NewWlanPortalImage(ctx *pulumi.Context,
 
 	if args.File == nil {
 		return nil, errors.New("invalid value for required argument 'File'")
+	}
+	if args.SiteId == nil {
+		return nil, errors.New("invalid value for required argument 'SiteId'")
+	}
+	if args.WlanId == nil {
+		return nil, errors.New("invalid value for required argument 'WlanId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WlanPortalImage
@@ -83,16 +90,18 @@ func GetWlanPortalImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WlanPortalImage resources.
 type wlanPortalImageState struct {
-	// binary file
+	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
 	File   *string `pulumi:"file"`
 	SiteId *string `pulumi:"siteId"`
+	// Site WLAN ID
 	WlanId *string `pulumi:"wlanId"`
 }
 
 type WlanPortalImageState struct {
-	// binary file
+	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
 	File   pulumi.StringPtrInput
 	SiteId pulumi.StringPtrInput
+	// Site WLAN ID
 	WlanId pulumi.StringPtrInput
 }
 
@@ -101,18 +110,20 @@ func (WlanPortalImageState) ElementType() reflect.Type {
 }
 
 type wlanPortalImageArgs struct {
-	// binary file
-	File   string  `pulumi:"file"`
-	SiteId *string `pulumi:"siteId"`
-	WlanId *string `pulumi:"wlanId"`
+	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
+	File   string `pulumi:"file"`
+	SiteId string `pulumi:"siteId"`
+	// Site WLAN ID
+	WlanId string `pulumi:"wlanId"`
 }
 
 // The set of arguments for constructing a WlanPortalImage resource.
 type WlanPortalImageArgs struct {
-	// binary file
+	// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
 	File   pulumi.StringInput
-	SiteId pulumi.StringPtrInput
-	WlanId pulumi.StringPtrInput
+	SiteId pulumi.StringInput
+	// Site WLAN ID
+	WlanId pulumi.StringInput
 }
 
 func (WlanPortalImageArgs) ElementType() reflect.Type {
@@ -202,17 +213,18 @@ func (o WlanPortalImageOutput) ToWlanPortalImageOutputWithContext(ctx context.Co
 	return o
 }
 
-// binary file
+// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
 func (o WlanPortalImageOutput) File() pulumi.StringOutput {
 	return o.ApplyT(func(v *WlanPortalImage) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }
 
-func (o WlanPortalImageOutput) SiteId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanPortalImage) pulumi.StringPtrOutput { return v.SiteId }).(pulumi.StringPtrOutput)
+func (o WlanPortalImageOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WlanPortalImage) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
 
-func (o WlanPortalImageOutput) WlanId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanPortalImage) pulumi.StringPtrOutput { return v.WlanId }).(pulumi.StringPtrOutput)
+// Site WLAN ID
+func (o WlanPortalImageOutput) WlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WlanPortalImage) pulumi.StringOutput { return v.WlanId }).(pulumi.StringOutput)
 }
 
 type WlanPortalImageArrayOutput struct{ *pulumi.OutputState }

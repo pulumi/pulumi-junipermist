@@ -72,6 +72,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        [Input("networks")]
+        private InputList<string>? _networks;
+
+        /// <summary>
+        /// networks reachable via this tunnel
+        /// </summary>
+        public InputList<string> Networks
+        {
+            get => _networks ?? (_networks = new InputList<string>());
+            set => _networks = value;
+        }
+
         [Input("primary")]
         public Input<Inputs.GatewayTunnelConfigsPrimaryGetArgs>? Primary { get; set; }
 

@@ -25,7 +25,7 @@ type WlanPortalTemplate struct {
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplateOutput `pulumi:"portalTemplate"`
-	// Site WLAN ID
+	// Org WLAN ID
 	WlanId pulumi.StringOutput `pulumi:"wlanId"`
 }
 
@@ -71,7 +71,7 @@ type wlanPortalTemplateState struct {
 	OrgId *string `pulumi:"orgId"`
 	// portal template wlan settings
 	PortalTemplate *WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
-	// Site WLAN ID
+	// Org WLAN ID
 	WlanId *string `pulumi:"wlanId"`
 }
 
@@ -79,7 +79,7 @@ type WlanPortalTemplateState struct {
 	OrgId pulumi.StringPtrInput
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplatePtrInput
-	// Site WLAN ID
+	// Org WLAN ID
 	WlanId pulumi.StringPtrInput
 }
 
@@ -91,7 +91,7 @@ type wlanPortalTemplateArgs struct {
 	OrgId string `pulumi:"orgId"`
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
-	// Site WLAN ID
+	// Org WLAN ID
 	WlanId string `pulumi:"wlanId"`
 }
 
@@ -100,7 +100,7 @@ type WlanPortalTemplateArgs struct {
 	OrgId pulumi.StringInput
 	// portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplateInput
-	// Site WLAN ID
+	// Org WLAN ID
 	WlanId pulumi.StringInput
 }
 
@@ -200,7 +200,7 @@ func (o WlanPortalTemplateOutput) PortalTemplate() WlanPortalTemplatePortalTempl
 	return o.ApplyT(func(v *WlanPortalTemplate) WlanPortalTemplatePortalTemplateOutput { return v.PortalTemplate }).(WlanPortalTemplatePortalTemplateOutput)
 }
 
-// Site WLAN ID
+// Org WLAN ID
 func (o WlanPortalTemplateOutput) WlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WlanPortalTemplate) pulumi.StringOutput { return v.WlanId }).(pulumi.StringOutput)
 }

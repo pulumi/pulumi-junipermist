@@ -18,9 +18,17 @@ public final class GatewayDhcpdConfigArgs extends com.pulumi.resources.ResourceA
 
     public static final GatewayDhcpdConfigArgs Empty = new GatewayDhcpdConfigArgs();
 
+    /**
+     * Property key is the network name
+     * 
+     */
     @Import(name="config")
     private @Nullable Output<Map<String,GatewayDhcpdConfigConfigArgs>> config;
 
+    /**
+     * @return Property key is the network name
+     * 
+     */
     public Optional<Output<Map<String,GatewayDhcpdConfigConfigArgs>>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -65,11 +73,23 @@ public final class GatewayDhcpdConfigArgs extends com.pulumi.resources.ResourceA
             $ = new GatewayDhcpdConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param config Property key is the network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(@Nullable Output<Map<String,GatewayDhcpdConfigConfigArgs>> config) {
             $.config = config;
             return this;
         }
 
+        /**
+         * @param config Property key is the network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(Map<String,GatewayDhcpdConfigConfigArgs> config) {
             return config(Output.of(config));
         }

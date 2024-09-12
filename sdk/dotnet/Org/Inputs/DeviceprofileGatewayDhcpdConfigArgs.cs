@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
     {
         [Input("config")]
         private InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigArgs>? _config;
+
+        /// <summary>
+        /// Property key is the network name
+        /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigArgs> Config
         {
             get => _config ?? (_config = new InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigArgs>());

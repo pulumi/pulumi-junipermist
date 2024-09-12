@@ -108,14 +108,14 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+     * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     @Import(name="useMgmtVrfForHostOut")
     private @Nullable Output<Boolean> useMgmtVrfForHostOut;
 
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrfForHostOut() {
@@ -287,7 +287,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GatewayOobIpConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 

@@ -696,6 +696,21 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         return Optional.ofNullable(this.locales);
     }
 
+    /**
+     * path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+     * 
+     */
+    @Import(name="logo")
+    private @Nullable Output<String> logo;
+
+    /**
+     * @return path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+     * 
+     */
+    public Optional<Output<String>> logo() {
+        return Optional.ofNullable(this.logo);
+    }
+
     @Import(name="message")
     private @Nullable Output<String> message;
 
@@ -1594,6 +1609,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         this.field4label = $.field4label;
         this.field4required = $.field4required;
         this.locales = $.locales;
+        this.logo = $.logo;
         this.message = $.message;
         this.multiAuth = $.multiAuth;
         this.name = $.name;
@@ -2617,6 +2633,27 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
          */
         public Builder locales(Map<String,WlanPortalTemplatePortalTemplateLocalesArgs> locales) {
             return locales(Output.of(locales));
+        }
+
+        /**
+         * @param logo path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logo(@Nullable Output<String> logo) {
+            $.logo = logo;
+            return this;
+        }
+
+        /**
+         * @param logo path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logo(String logo) {
+            return logo(Output.of(logo));
         }
 
         public Builder message(@Nullable Output<String> message) {

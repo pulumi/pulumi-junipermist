@@ -748,6 +748,9 @@ export namespace device {
     }
 
     export interface GatewayDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: {[key: string]: outputs.device.GatewayDhcpdConfigConfig};
         /**
          * if set to `true`, enable the DHCP server
@@ -759,7 +762,7 @@ export namespace device {
         /**
          * if `type`==`local` - optional, if not defined, system one will be used
          */
-        dnsServers?: string[];
+        dnsServers: string[];
         /**
          * if `type`==`local` - optional, if not defined, system one will be used
          */
@@ -1080,7 +1083,7 @@ export namespace device {
          */
         useMgmtVrf: boolean;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut: boolean;
         vlanId?: string;
@@ -1152,12 +1155,31 @@ export namespace device {
          */
         type?: string;
         /**
-         * required when`type`==`tunnel`
+         * optional if `type`==`vpn`
          */
         wanName?: string;
     }
 
     export interface GatewayPortConfig {
+        /**
+         * if `aggregated`==`true`. To disable LCP support for the AE interface
+         */
+        aeDisableLacp: boolean;
+        /**
+         * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         */
+        aeIdx?: string;
+        /**
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp: boolean;
+        aggregated: boolean;
+        /**
+         * if want to generate port up/down alarm, set it to true
+         */
+        critical: boolean;
         description?: string;
         disableAutoneg: boolean;
         /**
@@ -1559,6 +1581,10 @@ export namespace device {
          * enum: `active-active`, `active-standby`
          */
         mode: string;
+        /**
+         * networks reachable via this tunnel
+         */
+        networks?: string[];
         primary?: outputs.device.GatewayTunnelConfigsPrimary;
         /**
          * Only if `provider`== `custom-ipsec`
@@ -3340,7 +3366,7 @@ export namespace device {
          * enum: `allow`, `deny`
          */
         action: string;
-        dstTag?: string;
+        dstTag: string;
     }
 
     export interface SwitchAclTags {
@@ -3383,7 +3409,7 @@ export namespace device {
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`staticGbp` if from matching subnet
          */
-        subnets?: string[];
+        subnets: string[];
         /**
          * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
          */
@@ -3419,6 +3445,9 @@ export namespace device {
     }
 
     export interface SwitchDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: {[key: string]: outputs.device.SwitchDhcpdConfigConfig};
         /**
          * if set to `true`, enable the DHCP server
@@ -3623,7 +3652,7 @@ export namespace device {
          */
         useMgmtVrf: boolean;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut: boolean;
     }
@@ -5092,6 +5121,9 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: {[key: string]: outputs.org.DeviceprofileGatewayDhcpdConfigConfig};
         /**
          * if set to `true`, enable the DHCP server
@@ -5103,7 +5135,7 @@ export namespace org {
         /**
          * if `type`==`local` - optional, if not defined, system one will be used
          */
-        dnsServers?: string[];
+        dnsServers: string[];
         /**
          * if `type`==`local` - optional, if not defined, system one will be used
          */
@@ -5417,7 +5449,7 @@ export namespace org {
          */
         useMgmtVrf: boolean;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut: boolean;
         vlanId?: string;
@@ -5489,12 +5521,31 @@ export namespace org {
          */
         type?: string;
         /**
-         * required when`type`==`tunnel`
+         * optional if `type`==`vpn`
          */
         wanName?: string;
     }
 
     export interface DeviceprofileGatewayPortConfig {
+        /**
+         * if `aggregated`==`true`. To disable LCP support for the AE interface
+         */
+        aeDisableLacp: boolean;
+        /**
+         * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         */
+        aeIdx?: string;
+        /**
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp: boolean;
+        aggregated: boolean;
+        /**
+         * if want to generate port up/down alarm, set it to true
+         */
+        critical: boolean;
         description?: string;
         disableAutoneg: boolean;
         /**
@@ -5884,6 +5935,10 @@ export namespace org {
          * enum: `active-active`, `active-standby`
          */
         mode: string;
+        /**
+         * networks reachable via this tunnel
+         */
+        networks?: string[];
         primary?: outputs.org.DeviceprofileGatewayTunnelConfigsPrimary;
         /**
          * Only if `provider`== `custom-ipsec`
@@ -6227,6 +6282,9 @@ export namespace org {
     }
 
     export interface GatewaytemplateDhcpdConfig {
+        /**
+         * Property key is the network name
+         */
         config?: {[key: string]: outputs.org.GatewaytemplateDhcpdConfigConfig};
         /**
          * if set to `true`, enable the DHCP server
@@ -6238,7 +6296,7 @@ export namespace org {
         /**
          * if `type`==`local` - optional, if not defined, system one will be used
          */
-        dnsServers?: string[];
+        dnsServers: string[];
         /**
          * if `type`==`local` - optional, if not defined, system one will be used
          */
@@ -6552,7 +6610,7 @@ export namespace org {
          */
         useMgmtVrf: boolean;
         /**
-         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
         useMgmtVrfForHostOut: boolean;
         vlanId?: string;
@@ -6624,12 +6682,31 @@ export namespace org {
          */
         type?: string;
         /**
-         * required when`type`==`tunnel`
+         * optional if `type`==`vpn`
          */
         wanName?: string;
     }
 
     export interface GatewaytemplatePortConfig {
+        /**
+         * if `aggregated`==`true`. To disable LCP support for the AE interface
+         */
+        aeDisableLacp: boolean;
+        /**
+         * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         */
+        aeIdx?: string;
+        /**
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         */
+        aeLacpForceUp: boolean;
+        aggregated: boolean;
+        /**
+         * if want to generate port up/down alarm, set it to true
+         */
+        critical: boolean;
         description?: string;
         disableAutoneg: boolean;
         /**
@@ -7019,6 +7096,10 @@ export namespace org {
          * enum: `active-active`, `active-standby`
          */
         mode: string;
+        /**
+         * networks reachable via this tunnel
+         */
+        networks?: string[];
         primary?: outputs.org.GatewaytemplateTunnelConfigsPrimary;
         /**
          * Only if `provider`== `custom-ipsec`
@@ -7975,7 +8056,7 @@ export namespace org {
          * enum: `allow`, `deny`
          */
         action: string;
-        dstTag?: string;
+        dstTag: string;
     }
 
     export interface NetworktemplateAclTags {
@@ -8018,7 +8099,7 @@ export namespace org {
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`staticGbp` if from matching subnet
          */
-        subnets?: string[];
+        subnets: string[];
         /**
          * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
          */
@@ -8736,6 +8817,10 @@ export namespace org {
          */
         additionalConfigCmds?: string[];
         /**
+         * In-Band Management interface configuration
+         */
+        ipConfig?: outputs.org.NetworktemplateSwitchMatchingRuleIpConfig;
+        /**
          * role to match
          */
         matchRole?: string;
@@ -8746,6 +8831,10 @@ export namespace org {
         matchValue?: string;
         name?: string;
         /**
+         * Out-of-Band Management interface configuration
+         */
+        oobIpConfig?: outputs.org.NetworktemplateSwitchMatchingRuleOobIpConfig;
+        /**
          * Propery key is the interface name or interface range
          */
         portConfig?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortConfig};
@@ -8754,6 +8843,32 @@ export namespace org {
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortMirroring};
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleIpConfig {
+        /**
+         * VLAN Name for the management interface
+         */
+        network?: string;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type: string;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type: string;
+        /**
+         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         */
+        useMgmtVrf: boolean;
+        /**
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         */
+        useMgmtVrfForHostOut: boolean;
     }
 
     export interface NetworktemplateSwitchMatchingRulePortConfig {
@@ -8908,7 +9023,7 @@ export namespace org {
          * enum: `any`, `icmp`, `tcp`, `udp`
          */
         protocol: string;
-        subnets?: string[];
+        subnets: string[];
     }
 
     export interface NetworktemplateSwitchMgmtTacacs {
@@ -10351,6 +10466,10 @@ export namespace org {
          *   `zh-Hans`, `zh-Hant`
          */
         locales?: {[key: string]: outputs.org.WlanPortalTemplatePortalTemplateLocales};
+        /**
+         * path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+         */
+        logo: string;
         message: string;
         multiAuth: boolean;
         /**
@@ -10836,10 +10955,6 @@ export namespace org {
          * text of the Terms of Service
          */
         tosText?: string;
-        /**
-         * label for Amazon auth button
-         */
-        uthButtonAmazon?: string;
     }
 
     export interface WlanQos {
@@ -11102,7 +11217,7 @@ export namespace site {
          * enum: `allow`, `deny`
          */
         action: string;
-        dstTag?: string;
+        dstTag: string;
     }
 
     export interface NetworktemplateAclTags {
@@ -11145,7 +11260,7 @@ export namespace site {
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`staticGbp` if from matching subnet
          */
-        subnets?: string[];
+        subnets: string[];
         /**
          * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
          */
@@ -11863,6 +11978,10 @@ export namespace site {
          */
         additionalConfigCmds?: string[];
         /**
+         * In-Band Management interface configuration
+         */
+        ipConfig?: outputs.site.NetworktemplateSwitchMatchingRuleIpConfig;
+        /**
          * role to match
          */
         matchRole?: string;
@@ -11873,6 +11992,10 @@ export namespace site {
         matchValue?: string;
         name?: string;
         /**
+         * Out-of-Band Management interface configuration
+         */
+        oobIpConfig?: outputs.site.NetworktemplateSwitchMatchingRuleOobIpConfig;
+        /**
          * Propery key is the interface name or interface range
          */
         portConfig?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortConfig};
@@ -11881,6 +12004,32 @@ export namespace site {
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleIpConfig {
+        /**
+         * VLAN Name for the management interface
+         */
+        network?: string;
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type: string;
+    }
+
+    export interface NetworktemplateSwitchMatchingRuleOobIpConfig {
+        /**
+         * enum: `dhcp`, `static`
+         */
+        type: string;
+        /**
+         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         */
+        useMgmtVrf: boolean;
+        /**
+         * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         */
+        useMgmtVrfForHostOut: boolean;
     }
 
     export interface NetworktemplateSwitchMatchingRulePortConfig {
@@ -13409,12 +13558,16 @@ export namespace site {
         field4required?: boolean;
         /**
          * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *       "ar", "ca-ES", "cs-CZ", "da-DK", "de-DE", "el-GR", "en-GB", "en-US", "es-ES", 
-         *       "fi-FI", "fr-FR", "he-IL", "hi-IN", "hr-HR", "hu-HU", "id-ID", "it-IT", "ja-JP", 
-         *       "ko-KR", "ms-MY", "nb-NO", "nl-NL", "pl-PL", "pt-BR", "pt-PT", "ro-RO", "ru-RU", 
-         *       "sk-SK", "sv-SE", "th-TH", "tr-TR", "uk-UA", "vi-VN", "zh-Hans", "zh-Hant",
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
+         *   `zh-Hans`, `zh-Hant`
          */
         locales?: {[key: string]: outputs.site.WlanPortalTemplatePortalTemplateLocales};
+        /**
+         * path to the background image file. File must be a `png` image`
+         */
+        logo: string;
         message: string;
         multiAuth: boolean;
         /**
@@ -13900,10 +14053,6 @@ export namespace site {
          * text of the Terms of Service
          */
         tosText?: string;
-        /**
-         * label for Amazon auth button
-         */
-        uthButtonAmazon?: string;
     }
 
     export interface WlanQos {

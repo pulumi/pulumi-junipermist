@@ -16,6 +16,7 @@ __all__ = ['NetworktemplateArgs', 'Networktemplate']
 @pulumi.input_type
 class NetworktemplateArgs:
     def __init__(__self__, *,
+                 site_id: pulumi.Input[str],
                  acl_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclPolicyArgs']]]] = None,
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -32,7 +33,6 @@ class NetworktemplateArgs:
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
                  remote_syslog: Optional[pulumi.Input['NetworktemplateRemoteSyslogArgs']] = None,
                  remove_existing_configs: Optional[pulumi.Input[bool]] = None,
-                 site_id: Optional[pulumi.Input[str]] = None,
                  snmp_config: Optional[pulumi.Input['NetworktemplateSnmpConfigArgs']] = None,
                  switch_matching: Optional[pulumi.Input['NetworktemplateSwitchMatchingArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['NetworktemplateSwitchMgmtArgs']] = None,
@@ -57,6 +57,7 @@ class NetworktemplateArgs:
         :param pulumi.Input['NetworktemplateSwitchMgmtArgs'] switch_mgmt: Switch settings
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateVrfInstancesArgs']]] vrf_instances: Property key is the network name
         """
+        pulumi.set(__self__, "site_id", site_id)
         if acl_policies is not None:
             pulumi.set(__self__, "acl_policies", acl_policies)
         if acl_tags is not None:
@@ -89,8 +90,6 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "remote_syslog", remote_syslog)
         if remove_existing_configs is not None:
             pulumi.set(__self__, "remove_existing_configs", remove_existing_configs)
-        if site_id is not None:
-            pulumi.set(__self__, "site_id", site_id)
         if snmp_config is not None:
             pulumi.set(__self__, "snmp_config", snmp_config)
         if switch_matching is not None:
@@ -103,6 +102,15 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "vrf_config", vrf_config)
         if vrf_instances is not None:
             pulumi.set(__self__, "vrf_instances", vrf_instances)
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "site_id")
+
+    @site_id.setter
+    def site_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "site_id", value)
 
     @property
     @pulumi.getter(name="aclPolicies")
@@ -281,15 +289,6 @@ class NetworktemplateArgs:
     @remove_existing_configs.setter
     def remove_existing_configs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "remove_existing_configs", value)
-
-    @property
-    @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "site_id")
-
-    @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "site_id", value)
 
     @property
     @pulumi.getter(name="snmpConfig")
@@ -761,7 +760,7 @@ class Networktemplate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[NetworktemplateArgs] = None,
+                 args: NetworktemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Site Network configuration (Switch configuration).The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
@@ -839,6 +838,8 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["radius_config"] = radius_config
             __props__.__dict__["remote_syslog"] = remote_syslog
             __props__.__dict__["remove_existing_configs"] = remove_existing_configs
+            if site_id is None and not opts.urn:
+                raise TypeError("Missing required property 'site_id'")
             __props__.__dict__["site_id"] = site_id
             __props__.__dict__["snmp_config"] = snmp_config
             __props__.__dict__["switch_matching"] = switch_matching

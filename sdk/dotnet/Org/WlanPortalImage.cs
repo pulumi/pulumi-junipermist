@@ -16,16 +16,19 @@ namespace Pulumi.JuniperMist.Org
     public partial class WlanPortalImage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// binary file
+        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         /// </summary>
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
 
         [Output("orgId")]
-        public Output<string?> OrgId { get; private set; } = null!;
+        public Output<string> OrgId { get; private set; } = null!;
 
+        /// <summary>
+        /// Org WLAN ID
+        /// </summary>
         [Output("wlanId")]
-        public Output<string?> WlanId { get; private set; } = null!;
+        public Output<string> WlanId { get; private set; } = null!;
 
 
         /// <summary>
@@ -75,16 +78,19 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlanPortalImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// binary file
+        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
 
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
+        [Input("orgId", required: true)]
+        public Input<string> OrgId { get; set; } = null!;
 
-        [Input("wlanId")]
-        public Input<string>? WlanId { get; set; }
+        /// <summary>
+        /// Org WLAN ID
+        /// </summary>
+        [Input("wlanId", required: true)]
+        public Input<string> WlanId { get; set; } = null!;
 
         public WlanPortalImageArgs()
         {
@@ -95,7 +101,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class WlanPortalImageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// binary file
+        /// path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }
@@ -103,6 +109,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        /// <summary>
+        /// Org WLAN ID
+        /// </summary>
         [Input("wlanId")]
         public Input<string>? WlanId { get; set; }
 

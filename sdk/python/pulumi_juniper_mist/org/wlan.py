@@ -112,7 +112,7 @@ class WlanArgs:
         :param pulumi.Input['WlanAirwatchArgs'] airwatch: airwatch wlan settings
         :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: bandwidth limiting for apps (applies to up/down)
         :param pulumi.Input['WlanAppQosArgs'] app_qos: app qos wlan settings
@@ -132,7 +132,7 @@ class WlanArgs:
                is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
         :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
         :param pulumi.Input['WlanBonjourArgs'] bonjour: bonjour gateway wlan settings
         :param pulumi.Input['WlanCiscoCwaArgs'] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -475,7 +475,7 @@ class WlanArgs:
     @pulumi.getter(name="allowSsdp")
     def allow_ssdp(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        only applicable when `limit_bcast`==`true`, which allows SSDP
         """
         return pulumi.get(self, "allow_ssdp")
 
@@ -660,7 +660,7 @@ class WlanArgs:
     @pulumi.getter
     def bands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of radios that the wlan should apply to
+        list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         """
         return pulumi.get(self, "bands")
 
@@ -1488,7 +1488,7 @@ class _WlanState:
         :param pulumi.Input['WlanAirwatchArgs'] airwatch: airwatch wlan settings
         :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
         :param pulumi.Input['WlanAppLimitArgs'] app_limit: bandwidth limiting for apps (applies to up/down)
         :param pulumi.Input['WlanAppQosArgs'] app_qos: app qos wlan settings
@@ -1508,7 +1508,7 @@ class _WlanState:
                is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
         :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
         :param pulumi.Input['WlanBonjourArgs'] bonjour: bonjour gateway wlan settings
         :param pulumi.Input['WlanCiscoCwaArgs'] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -1842,7 +1842,7 @@ class _WlanState:
     @pulumi.getter(name="allowSsdp")
     def allow_ssdp(self) -> Optional[pulumi.Input[bool]]:
         """
-        only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        only applicable when `limit_bcast`==`true`, which allows SSDP
         """
         return pulumi.get(self, "allow_ssdp")
 
@@ -2027,7 +2027,7 @@ class _WlanState:
     @pulumi.getter
     def bands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of radios that the wlan should apply to
+        list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         """
         return pulumi.get(self, "bands")
 
@@ -2956,6 +2956,7 @@ class Wlan(pulumi.CustomResource):
                 "5",
                 "6",
             ],
+            vlan_enabled=True,
             vlan_id="143",
             wlan_limit_up=10000,
             wlan_limit_down=20000,
@@ -2988,7 +2989,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: airwatch wlan settings
         :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: bandwidth limiting for apps (applies to up/down)
         :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: app qos wlan settings
@@ -3008,7 +3009,7 @@ class Wlan(pulumi.CustomResource):
                is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
         :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
         :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: bonjour gateway wlan settings
         :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -3099,6 +3100,7 @@ class Wlan(pulumi.CustomResource):
                 "5",
                 "6",
             ],
+            vlan_enabled=True,
             vlan_id="143",
             wlan_limit_up=10000,
             wlan_limit_down=20000,
@@ -3443,7 +3445,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Union['WlanAirwatchArgs', 'WlanAirwatchArgsDict']] airwatch: airwatch wlan settings
         :param pulumi.Input[bool] allow_ipv6_ndp: only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
         :param pulumi.Input[bool] allow_mdns: only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
-        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        :param pulumi.Input[bool] allow_ssdp: only applicable when `limit_bcast`==`true`, which allows SSDP
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ap_ids: list of device ids
         :param pulumi.Input[Union['WlanAppLimitArgs', 'WlanAppLimitArgsDict']] app_limit: bandwidth limiting for apps (applies to up/down)
         :param pulumi.Input[Union['WlanAppQosArgs', 'WlanAppQosArgsDict']] app_qos: app qos wlan settings
@@ -3463,7 +3465,7 @@ class Wlan(pulumi.CustomResource):
                is also set when setting auth_servers_timeout and is set to default value of 10.
         :param pulumi.Input[bool] band_steer: whether to enable band_steering, this works only when band==both
         :param pulumi.Input[bool] band_steer_force_band5: force dual_band capable client to connect to 5G
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bands: list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         :param pulumi.Input[bool] block_blacklist_clients: whether to block the clients in the blacklist (up to first 256 macs)
         :param pulumi.Input[Union['WlanBonjourArgs', 'WlanBonjourArgsDict']] bonjour: bonjour gateway wlan settings
         :param pulumi.Input[Union['WlanCiscoCwaArgs', 'WlanCiscoCwaArgsDict']] cisco_cwa: Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
@@ -3687,7 +3689,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="allowSsdp")
     def allow_ssdp(self) -> pulumi.Output[bool]:
         """
-        only applicable when `limit_bcast`==`tru`e, which allows SSDP
+        only applicable when `limit_bcast`==`true`, which allows SSDP
         """
         return pulumi.get(self, "allow_ssdp")
 
@@ -3812,7 +3814,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter
     def bands(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        list of radios that the wlan should apply to
+        list of radios that the wlan should apply to. enum: `24`, `5`, `6`
         """
         return pulumi.get(self, "bands")
 

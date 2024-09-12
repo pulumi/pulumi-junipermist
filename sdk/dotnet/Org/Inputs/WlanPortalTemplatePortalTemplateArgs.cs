@@ -292,6 +292,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _locales = value;
         }
 
+        /// <summary>
+        /// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+        /// </summary>
+        [Input("logo")]
+        public Input<string>? Logo { get; set; }
+
         [Input("message")]
         public Input<string>? Message { get; set; }
 

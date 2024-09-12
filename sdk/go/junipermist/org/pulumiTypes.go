@@ -4454,6 +4454,7 @@ func (o DeviceprofileGatewayBgpConfigNeighborsMapOutput) MapIndex(k pulumi.Strin
 }
 
 type DeviceprofileGatewayDhcpdConfig struct {
+	// Property key is the network name
 	Config map[string]DeviceprofileGatewayDhcpdConfigConfig `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled *bool `pulumi:"enabled"`
@@ -4471,6 +4472,7 @@ type DeviceprofileGatewayDhcpdConfigInput interface {
 }
 
 type DeviceprofileGatewayDhcpdConfigArgs struct {
+	// Property key is the network name
 	Config DeviceprofileGatewayDhcpdConfigConfigMapInput `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -4553,6 +4555,7 @@ func (o DeviceprofileGatewayDhcpdConfigOutput) ToDeviceprofileGatewayDhcpdConfig
 	}).(DeviceprofileGatewayDhcpdConfigPtrOutput)
 }
 
+// Property key is the network name
 func (o DeviceprofileGatewayDhcpdConfigOutput) Config() DeviceprofileGatewayDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfig) map[string]DeviceprofileGatewayDhcpdConfigConfig {
 		return v.Config
@@ -4588,6 +4591,7 @@ func (o DeviceprofileGatewayDhcpdConfigPtrOutput) Elem() DeviceprofileGatewayDhc
 	}).(DeviceprofileGatewayDhcpdConfigOutput)
 }
 
+// Property key is the network name
 func (o DeviceprofileGatewayDhcpdConfigPtrOutput) Config() DeviceprofileGatewayDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayDhcpdConfig) map[string]DeviceprofileGatewayDhcpdConfigConfig {
 		if v == nil {
@@ -7294,7 +7298,7 @@ type DeviceprofileGatewayOobIpConfig struct {
 	Type *string `pulumi:"type"`
 	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut *bool   `pulumi:"useMgmtVrfForHostOut"`
 	VlanId               *string `pulumi:"vlanId"`
 }
@@ -7323,7 +7327,7 @@ type DeviceprofileGatewayOobIpConfigArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut pulumi.BoolPtrInput   `pulumi:"useMgmtVrfForHostOut"`
 	VlanId               pulumi.StringPtrInput `pulumi:"vlanId"`
 }
@@ -7435,7 +7439,7 @@ func (o DeviceprofileGatewayOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v DeviceprofileGatewayOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o DeviceprofileGatewayOobIpConfigOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayOobIpConfig) *bool { return v.UseMgmtVrfForHostOut }).(pulumi.BoolPtrOutput)
 }
@@ -7528,7 +7532,7 @@ func (o DeviceprofileGatewayOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o DeviceprofileGatewayOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGatewayOobIpConfig) *bool {
 		if v == nil {
@@ -7911,7 +7915,7 @@ type DeviceprofileGatewayPathPreferencesPath struct {
 	TargetIps []string `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
 	Type *string `pulumi:"type"`
-	// required when`type`==`tunnel`
+	// optional if `type`==`vpn`
 	WanName *string `pulumi:"wanName"`
 }
 
@@ -7944,7 +7948,7 @@ type DeviceprofileGatewayPathPreferencesPathArgs struct {
 	TargetIps pulumi.StringArrayInput `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// required when`type`==`tunnel`
+	// optional if `type`==`vpn`
 	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
 
@@ -8040,7 +8044,7 @@ func (o DeviceprofileGatewayPathPreferencesPathOutput) Type() pulumi.StringPtrOu
 	return o.ApplyT(func(v DeviceprofileGatewayPathPreferencesPath) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// required when`type`==`tunnel`
+// optional if `type`==`vpn`
 func (o DeviceprofileGatewayPathPreferencesPathOutput) WanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayPathPreferencesPath) *string { return v.WanName }).(pulumi.StringPtrOutput)
 }
@@ -8066,6 +8070,17 @@ func (o DeviceprofileGatewayPathPreferencesPathArrayOutput) Index(i pulumi.IntIn
 }
 
 type DeviceprofileGatewayPortConfig struct {
+	// if `aggregated`==`true`. To disable LCP support for the AE interface
+	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
+	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+	AeIdx *string `pulumi:"aeIdx"`
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
+	Aggregated    *bool `pulumi:"aggregated"`
+	// if want to generate port up/down alarm, set it to true
+	Critical       *bool   `pulumi:"critical"`
 	Description    *string `pulumi:"description"`
 	DisableAutoneg *bool   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
@@ -8144,6 +8159,17 @@ type DeviceprofileGatewayPortConfigInput interface {
 }
 
 type DeviceprofileGatewayPortConfigArgs struct {
+	// if `aggregated`==`true`. To disable LCP support for the AE interface
+	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
+	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+	AeIdx pulumi.StringPtrInput `pulumi:"aeIdx"`
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
+	Aggregated    pulumi.BoolPtrInput `pulumi:"aggregated"`
+	// if want to generate port up/down alarm, set it to true
+	Critical       pulumi.BoolPtrInput   `pulumi:"critical"`
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	DisableAutoneg pulumi.BoolPtrInput   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
@@ -8259,6 +8285,32 @@ func (o DeviceprofileGatewayPortConfigOutput) ToDeviceprofileGatewayPortConfigOu
 
 func (o DeviceprofileGatewayPortConfigOutput) ToDeviceprofileGatewayPortConfigOutputWithContext(ctx context.Context) DeviceprofileGatewayPortConfigOutput {
 	return o
+}
+
+// if `aggregated`==`true`. To disable LCP support for the AE interface
+func (o DeviceprofileGatewayPortConfigOutput) AeDisableLacp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *bool { return v.AeDisableLacp }).(pulumi.BoolPtrOutput)
+}
+
+// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+func (o DeviceprofileGatewayPortConfigOutput) AeIdx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *string { return v.AeIdx }).(pulumi.StringPtrOutput)
+}
+
+// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+func (o DeviceprofileGatewayPortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
+}
+
+func (o DeviceprofileGatewayPortConfigOutput) Aggregated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *bool { return v.Aggregated }).(pulumi.BoolPtrOutput)
+}
+
+// if want to generate port up/down alarm, set it to true
+func (o DeviceprofileGatewayPortConfigOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayPortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
 }
 
 func (o DeviceprofileGatewayPortConfigOutput) Description() pulumi.StringPtrOutput {
@@ -11062,8 +11114,10 @@ type DeviceprofileGatewayTunnelConfigs struct {
 	//   * `provider`== `custom-ipsec`
 	LocalId *string `pulumi:"localId"`
 	// enum: `active-active`, `active-standby`
-	Mode    *string                                   `pulumi:"mode"`
-	Primary *DeviceprofileGatewayTunnelConfigsPrimary `pulumi:"primary"`
+	Mode *string `pulumi:"mode"`
+	// networks reachable via this tunnel
+	Networks []string                                  `pulumi:"networks"`
+	Primary  *DeviceprofileGatewayTunnelConfigsPrimary `pulumi:"primary"`
 	// Only if `provider`== `custom-ipsec`
 	Probe *DeviceprofileGatewayTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
@@ -11109,8 +11163,10 @@ type DeviceprofileGatewayTunnelConfigsArgs struct {
 	//   * `provider`== `custom-ipsec`
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
 	// enum: `active-active`, `active-standby`
-	Mode    pulumi.StringPtrInput                            `pulumi:"mode"`
-	Primary DeviceprofileGatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// networks reachable via this tunnel
+	Networks pulumi.StringArrayInput                          `pulumi:"networks"`
+	Primary  DeviceprofileGatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
 	// Only if `provider`== `custom-ipsec`
 	Probe DeviceprofileGatewayTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
@@ -11224,6 +11280,11 @@ func (o DeviceprofileGatewayTunnelConfigsOutput) LocalId() pulumi.StringPtrOutpu
 // enum: `active-active`, `active-standby`
 func (o DeviceprofileGatewayTunnelConfigsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigs) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// networks reachable via this tunnel
+func (o DeviceprofileGatewayTunnelConfigsOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigs) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
 func (o DeviceprofileGatewayTunnelConfigsOutput) Primary() DeviceprofileGatewayTunnelConfigsPrimaryPtrOutput {
@@ -14360,6 +14421,7 @@ func (o GatewaytemplateBgpConfigNeighborsMapOutput) MapIndex(k pulumi.StringInpu
 }
 
 type GatewaytemplateDhcpdConfig struct {
+	// Property key is the network name
 	Config map[string]GatewaytemplateDhcpdConfigConfig `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled *bool `pulumi:"enabled"`
@@ -14377,6 +14439,7 @@ type GatewaytemplateDhcpdConfigInput interface {
 }
 
 type GatewaytemplateDhcpdConfigArgs struct {
+	// Property key is the network name
 	Config GatewaytemplateDhcpdConfigConfigMapInput `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -14459,6 +14522,7 @@ func (o GatewaytemplateDhcpdConfigOutput) ToGatewaytemplateDhcpdConfigPtrOutputW
 	}).(GatewaytemplateDhcpdConfigPtrOutput)
 }
 
+// Property key is the network name
 func (o GatewaytemplateDhcpdConfigOutput) Config() GatewaytemplateDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v GatewaytemplateDhcpdConfig) map[string]GatewaytemplateDhcpdConfigConfig { return v.Config }).(GatewaytemplateDhcpdConfigConfigMapOutput)
 }
@@ -14492,6 +14556,7 @@ func (o GatewaytemplateDhcpdConfigPtrOutput) Elem() GatewaytemplateDhcpdConfigOu
 	}).(GatewaytemplateDhcpdConfigOutput)
 }
 
+// Property key is the network name
 func (o GatewaytemplateDhcpdConfigPtrOutput) Config() GatewaytemplateDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v *GatewaytemplateDhcpdConfig) map[string]GatewaytemplateDhcpdConfigConfig {
 		if v == nil {
@@ -17188,7 +17253,7 @@ type GatewaytemplateOobIpConfig struct {
 	Type *string `pulumi:"type"`
 	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut *bool   `pulumi:"useMgmtVrfForHostOut"`
 	VlanId               *string `pulumi:"vlanId"`
 }
@@ -17217,7 +17282,7 @@ type GatewaytemplateOobIpConfigArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut pulumi.BoolPtrInput   `pulumi:"useMgmtVrfForHostOut"`
 	VlanId               pulumi.StringPtrInput `pulumi:"vlanId"`
 }
@@ -17329,7 +17394,7 @@ func (o GatewaytemplateOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o GatewaytemplateOobIpConfigOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateOobIpConfig) *bool { return v.UseMgmtVrfForHostOut }).(pulumi.BoolPtrOutput)
 }
@@ -17422,7 +17487,7 @@ func (o GatewaytemplateOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o GatewaytemplateOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewaytemplateOobIpConfig) *bool {
 		if v == nil {
@@ -17805,7 +17870,7 @@ type GatewaytemplatePathPreferencesPath struct {
 	TargetIps []string `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
 	Type *string `pulumi:"type"`
-	// required when`type`==`tunnel`
+	// optional if `type`==`vpn`
 	WanName *string `pulumi:"wanName"`
 }
 
@@ -17838,7 +17903,7 @@ type GatewaytemplatePathPreferencesPathArgs struct {
 	TargetIps pulumi.StringArrayInput `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// required when`type`==`tunnel`
+	// optional if `type`==`vpn`
 	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
 
@@ -17934,7 +17999,7 @@ func (o GatewaytemplatePathPreferencesPathOutput) Type() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GatewaytemplatePathPreferencesPath) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// required when`type`==`tunnel`
+// optional if `type`==`vpn`
 func (o GatewaytemplatePathPreferencesPathOutput) WanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplatePathPreferencesPath) *string { return v.WanName }).(pulumi.StringPtrOutput)
 }
@@ -17960,6 +18025,17 @@ func (o GatewaytemplatePathPreferencesPathArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GatewaytemplatePortConfig struct {
+	// if `aggregated`==`true`. To disable LCP support for the AE interface
+	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
+	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+	AeIdx *string `pulumi:"aeIdx"`
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
+	Aggregated    *bool `pulumi:"aggregated"`
+	// if want to generate port up/down alarm, set it to true
+	Critical       *bool   `pulumi:"critical"`
 	Description    *string `pulumi:"description"`
 	DisableAutoneg *bool   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
@@ -18038,6 +18114,17 @@ type GatewaytemplatePortConfigInput interface {
 }
 
 type GatewaytemplatePortConfigArgs struct {
+	// if `aggregated`==`true`. To disable LCP support for the AE interface
+	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
+	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+	AeIdx pulumi.StringPtrInput `pulumi:"aeIdx"`
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
+	Aggregated    pulumi.BoolPtrInput `pulumi:"aggregated"`
+	// if want to generate port up/down alarm, set it to true
+	Critical       pulumi.BoolPtrInput   `pulumi:"critical"`
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	DisableAutoneg pulumi.BoolPtrInput   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
@@ -18153,6 +18240,32 @@ func (o GatewaytemplatePortConfigOutput) ToGatewaytemplatePortConfigOutput() Gat
 
 func (o GatewaytemplatePortConfigOutput) ToGatewaytemplatePortConfigOutputWithContext(ctx context.Context) GatewaytemplatePortConfigOutput {
 	return o
+}
+
+// if `aggregated`==`true`. To disable LCP support for the AE interface
+func (o GatewaytemplatePortConfigOutput) AeDisableLacp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfig) *bool { return v.AeDisableLacp }).(pulumi.BoolPtrOutput)
+}
+
+// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+func (o GatewaytemplatePortConfigOutput) AeIdx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfig) *string { return v.AeIdx }).(pulumi.StringPtrOutput)
+}
+
+// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+func (o GatewaytemplatePortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewaytemplatePortConfigOutput) Aggregated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfig) *bool { return v.Aggregated }).(pulumi.BoolPtrOutput)
+}
+
+// if want to generate port up/down alarm, set it to true
+func (o GatewaytemplatePortConfigOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewaytemplatePortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
 }
 
 func (o GatewaytemplatePortConfigOutput) Description() pulumi.StringPtrOutput {
@@ -20948,8 +21061,10 @@ type GatewaytemplateTunnelConfigs struct {
 	//   * `provider`== `custom-ipsec`
 	LocalId *string `pulumi:"localId"`
 	// enum: `active-active`, `active-standby`
-	Mode    *string                              `pulumi:"mode"`
-	Primary *GatewaytemplateTunnelConfigsPrimary `pulumi:"primary"`
+	Mode *string `pulumi:"mode"`
+	// networks reachable via this tunnel
+	Networks []string                             `pulumi:"networks"`
+	Primary  *GatewaytemplateTunnelConfigsPrimary `pulumi:"primary"`
 	// Only if `provider`== `custom-ipsec`
 	Probe *GatewaytemplateTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
@@ -20995,8 +21110,10 @@ type GatewaytemplateTunnelConfigsArgs struct {
 	//   * `provider`== `custom-ipsec`
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
 	// enum: `active-active`, `active-standby`
-	Mode    pulumi.StringPtrInput                       `pulumi:"mode"`
-	Primary GatewaytemplateTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// networks reachable via this tunnel
+	Networks pulumi.StringArrayInput                     `pulumi:"networks"`
+	Primary  GatewaytemplateTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
 	// Only if `provider`== `custom-ipsec`
 	Probe GatewaytemplateTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
@@ -21108,6 +21225,11 @@ func (o GatewaytemplateTunnelConfigsOutput) LocalId() pulumi.StringPtrOutput {
 // enum: `active-active`, `active-standby`
 func (o GatewaytemplateTunnelConfigsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigs) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// networks reachable via this tunnel
+func (o GatewaytemplateTunnelConfigsOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewaytemplateTunnelConfigs) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
 func (o GatewaytemplateTunnelConfigsOutput) Primary() GatewaytemplateTunnelConfigsPrimaryPtrOutput {
@@ -25977,7 +26099,7 @@ func (o NetworktemplateAclPolicyArrayOutput) Index(i pulumi.IntInput) Networktem
 type NetworktemplateAclPolicyAction struct {
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
-	DstTag *string `pulumi:"dstTag"`
+	DstTag string  `pulumi:"dstTag"`
 }
 
 // NetworktemplateAclPolicyActionInput is an input type that accepts NetworktemplateAclPolicyActionArgs and NetworktemplateAclPolicyActionOutput values.
@@ -25994,7 +26116,7 @@ type NetworktemplateAclPolicyActionInput interface {
 type NetworktemplateAclPolicyActionArgs struct {
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput `pulumi:"action"`
-	DstTag pulumi.StringPtrInput `pulumi:"dstTag"`
+	DstTag pulumi.StringInput    `pulumi:"dstTag"`
 }
 
 func (NetworktemplateAclPolicyActionArgs) ElementType() reflect.Type {
@@ -26053,8 +26175,8 @@ func (o NetworktemplateAclPolicyActionOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclPolicyAction) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-func (o NetworktemplateAclPolicyActionOutput) DstTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplateAclPolicyAction) *string { return v.DstTag }).(pulumi.StringPtrOutput)
+func (o NetworktemplateAclPolicyActionOutput) DstTag() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworktemplateAclPolicyAction) string { return v.DstTag }).(pulumi.StringOutput)
 }
 
 type NetworktemplateAclPolicyActionArrayOutput struct{ *pulumi.OutputState }
@@ -32948,12 +33070,16 @@ type NetworktemplateSwitchMatchingRule struct {
 	//
 	// **Note**: no check is done
 	AdditionalConfigCmds []string `pulumi:"additionalConfigCmds"`
+	// In-Band Management interface configuration
+	IpConfig *NetworktemplateSwitchMatchingRuleIpConfig `pulumi:"ipConfig"`
 	// role to match
 	MatchRole *string `pulumi:"matchRole"`
 	// 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
 	MatchType  *string `pulumi:"matchType"`
 	MatchValue *string `pulumi:"matchValue"`
 	Name       *string `pulumi:"name"`
+	// Out-of-Band Management interface configuration
+	OobIpConfig *NetworktemplateSwitchMatchingRuleOobIpConfig `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig map[string]NetworktemplateSwitchMatchingRulePortConfig `pulumi:"portConfig"`
 	// Property key is the port mirroring instance name
@@ -32977,12 +33103,16 @@ type NetworktemplateSwitchMatchingRuleArgs struct {
 	//
 	// **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput `pulumi:"additionalConfigCmds"`
+	// In-Band Management interface configuration
+	IpConfig NetworktemplateSwitchMatchingRuleIpConfigPtrInput `pulumi:"ipConfig"`
 	// role to match
 	MatchRole pulumi.StringPtrInput `pulumi:"matchRole"`
 	// 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
 	MatchType  pulumi.StringPtrInput `pulumi:"matchType"`
 	MatchValue pulumi.StringPtrInput `pulumi:"matchValue"`
 	Name       pulumi.StringPtrInput `pulumi:"name"`
+	// Out-of-Band Management interface configuration
+	OobIpConfig NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig NetworktemplateSwitchMatchingRulePortConfigMapInput `pulumi:"portConfig"`
 	// Property key is the port mirroring instance name
@@ -33048,6 +33178,13 @@ func (o NetworktemplateSwitchMatchingRuleOutput) AdditionalConfigCmds() pulumi.S
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) []string { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
 
+// In-Band Management interface configuration
+func (o NetworktemplateSwitchMatchingRuleOutput) IpConfig() NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *NetworktemplateSwitchMatchingRuleIpConfig {
+		return v.IpConfig
+	}).(NetworktemplateSwitchMatchingRuleIpConfigPtrOutput)
+}
+
 // role to match
 func (o NetworktemplateSwitchMatchingRuleOutput) MatchRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.MatchRole }).(pulumi.StringPtrOutput)
@@ -33064,6 +33201,13 @@ func (o NetworktemplateSwitchMatchingRuleOutput) MatchValue() pulumi.StringPtrOu
 
 func (o NetworktemplateSwitchMatchingRuleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Out-of-Band Management interface configuration
+func (o NetworktemplateSwitchMatchingRuleOutput) OobIpConfig() NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) *NetworktemplateSwitchMatchingRuleOobIpConfig {
+		return v.OobIpConfig
+	}).(NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput)
 }
 
 // Propery key is the interface name or interface range
@@ -33099,6 +33243,337 @@ func (o NetworktemplateSwitchMatchingRuleArrayOutput) Index(i pulumi.IntInput) N
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworktemplateSwitchMatchingRule {
 		return vs[0].([]NetworktemplateSwitchMatchingRule)[vs[1].(int)]
 	}).(NetworktemplateSwitchMatchingRuleOutput)
+}
+
+type NetworktemplateSwitchMatchingRuleIpConfig struct {
+	// VLAN Name for the management interface
+	Network *string `pulumi:"network"`
+	// enum: `dhcp`, `static`
+	Type *string `pulumi:"type"`
+}
+
+// NetworktemplateSwitchMatchingRuleIpConfigInput is an input type that accepts NetworktemplateSwitchMatchingRuleIpConfigArgs and NetworktemplateSwitchMatchingRuleIpConfigOutput values.
+// You can construct a concrete instance of `NetworktemplateSwitchMatchingRuleIpConfigInput` via:
+//
+//	NetworktemplateSwitchMatchingRuleIpConfigArgs{...}
+type NetworktemplateSwitchMatchingRuleIpConfigInput interface {
+	pulumi.Input
+
+	ToNetworktemplateSwitchMatchingRuleIpConfigOutput() NetworktemplateSwitchMatchingRuleIpConfigOutput
+	ToNetworktemplateSwitchMatchingRuleIpConfigOutputWithContext(context.Context) NetworktemplateSwitchMatchingRuleIpConfigOutput
+}
+
+type NetworktemplateSwitchMatchingRuleIpConfigArgs struct {
+	// VLAN Name for the management interface
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// enum: `dhcp`, `static`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NetworktemplateSwitchMatchingRuleIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateSwitchMatchingRuleIpConfig)(nil)).Elem()
+}
+
+func (i NetworktemplateSwitchMatchingRuleIpConfigArgs) ToNetworktemplateSwitchMatchingRuleIpConfigOutput() NetworktemplateSwitchMatchingRuleIpConfigOutput {
+	return i.ToNetworktemplateSwitchMatchingRuleIpConfigOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateSwitchMatchingRuleIpConfigArgs) ToNetworktemplateSwitchMatchingRuleIpConfigOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMatchingRuleIpConfigOutput)
+}
+
+func (i NetworktemplateSwitchMatchingRuleIpConfigArgs) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return i.ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateSwitchMatchingRuleIpConfigArgs) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMatchingRuleIpConfigOutput).ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateSwitchMatchingRuleIpConfigPtrInput is an input type that accepts NetworktemplateSwitchMatchingRuleIpConfigArgs, NetworktemplateSwitchMatchingRuleIpConfigPtr and NetworktemplateSwitchMatchingRuleIpConfigPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateSwitchMatchingRuleIpConfigPtrInput` via:
+//
+//	        NetworktemplateSwitchMatchingRuleIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateSwitchMatchingRuleIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleIpConfigPtrOutput
+	ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(context.Context) NetworktemplateSwitchMatchingRuleIpConfigPtrOutput
+}
+
+type networktemplateSwitchMatchingRuleIpConfigPtrType NetworktemplateSwitchMatchingRuleIpConfigArgs
+
+func NetworktemplateSwitchMatchingRuleIpConfigPtr(v *NetworktemplateSwitchMatchingRuleIpConfigArgs) NetworktemplateSwitchMatchingRuleIpConfigPtrInput {
+	return (*networktemplateSwitchMatchingRuleIpConfigPtrType)(v)
+}
+
+func (*networktemplateSwitchMatchingRuleIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateSwitchMatchingRuleIpConfig)(nil)).Elem()
+}
+
+func (i *networktemplateSwitchMatchingRuleIpConfigPtrType) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return i.ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateSwitchMatchingRuleIpConfigPtrType) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMatchingRuleIpConfigPtrOutput)
+}
+
+type NetworktemplateSwitchMatchingRuleIpConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateSwitchMatchingRuleIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateSwitchMatchingRuleIpConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigOutput) ToNetworktemplateSwitchMatchingRuleIpConfigOutput() NetworktemplateSwitchMatchingRuleIpConfigOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigOutput) ToNetworktemplateSwitchMatchingRuleIpConfigOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleIpConfigOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigOutput) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return o.ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigOutput) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateSwitchMatchingRuleIpConfig) *NetworktemplateSwitchMatchingRuleIpConfig {
+		return &v
+	}).(NetworktemplateSwitchMatchingRuleIpConfigPtrOutput)
+}
+
+// VLAN Name for the management interface
+func (o NetworktemplateSwitchMatchingRuleIpConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleIpConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o NetworktemplateSwitchMatchingRuleIpConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleIpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NetworktemplateSwitchMatchingRuleIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateSwitchMatchingRuleIpConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) ToNetworktemplateSwitchMatchingRuleIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleIpConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) Elem() NetworktemplateSwitchMatchingRuleIpConfigOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleIpConfig) NetworktemplateSwitchMatchingRuleIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateSwitchMatchingRuleIpConfig
+		return ret
+	}).(NetworktemplateSwitchMatchingRuleIpConfigOutput)
+}
+
+// VLAN Name for the management interface
+func (o NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o NetworktemplateSwitchMatchingRuleIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworktemplateSwitchMatchingRuleOobIpConfig struct {
+	// enum: `dhcp`, `static`
+	Type *string `pulumi:"type"`
+	// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+	UseMgmtVrfForHostOut *bool `pulumi:"useMgmtVrfForHostOut"`
+}
+
+// NetworktemplateSwitchMatchingRuleOobIpConfigInput is an input type that accepts NetworktemplateSwitchMatchingRuleOobIpConfigArgs and NetworktemplateSwitchMatchingRuleOobIpConfigOutput values.
+// You can construct a concrete instance of `NetworktemplateSwitchMatchingRuleOobIpConfigInput` via:
+//
+//	NetworktemplateSwitchMatchingRuleOobIpConfigArgs{...}
+type NetworktemplateSwitchMatchingRuleOobIpConfigInput interface {
+	pulumi.Input
+
+	ToNetworktemplateSwitchMatchingRuleOobIpConfigOutput() NetworktemplateSwitchMatchingRuleOobIpConfigOutput
+	ToNetworktemplateSwitchMatchingRuleOobIpConfigOutputWithContext(context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigOutput
+}
+
+type NetworktemplateSwitchMatchingRuleOobIpConfigArgs struct {
+	// enum: `dhcp`, `static`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+	UseMgmtVrfForHostOut pulumi.BoolPtrInput `pulumi:"useMgmtVrfForHostOut"`
+}
+
+func (NetworktemplateSwitchMatchingRuleOobIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateSwitchMatchingRuleOobIpConfig)(nil)).Elem()
+}
+
+func (i NetworktemplateSwitchMatchingRuleOobIpConfigArgs) ToNetworktemplateSwitchMatchingRuleOobIpConfigOutput() NetworktemplateSwitchMatchingRuleOobIpConfigOutput {
+	return i.ToNetworktemplateSwitchMatchingRuleOobIpConfigOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateSwitchMatchingRuleOobIpConfigArgs) ToNetworktemplateSwitchMatchingRuleOobIpConfigOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMatchingRuleOobIpConfigOutput)
+}
+
+func (i NetworktemplateSwitchMatchingRuleOobIpConfigArgs) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return i.ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateSwitchMatchingRuleOobIpConfigArgs) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMatchingRuleOobIpConfigOutput).ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(ctx)
+}
+
+// NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput is an input type that accepts NetworktemplateSwitchMatchingRuleOobIpConfigArgs, NetworktemplateSwitchMatchingRuleOobIpConfigPtr and NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput values.
+// You can construct a concrete instance of `NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput` via:
+//
+//	        NetworktemplateSwitchMatchingRuleOobIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput
+	ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput
+}
+
+type networktemplateSwitchMatchingRuleOobIpConfigPtrType NetworktemplateSwitchMatchingRuleOobIpConfigArgs
+
+func NetworktemplateSwitchMatchingRuleOobIpConfigPtr(v *NetworktemplateSwitchMatchingRuleOobIpConfigArgs) NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput {
+	return (*networktemplateSwitchMatchingRuleOobIpConfigPtrType)(v)
+}
+
+func (*networktemplateSwitchMatchingRuleOobIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateSwitchMatchingRuleOobIpConfig)(nil)).Elem()
+}
+
+func (i *networktemplateSwitchMatchingRuleOobIpConfigPtrType) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return i.ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networktemplateSwitchMatchingRuleOobIpConfigPtrType) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput)
+}
+
+type NetworktemplateSwitchMatchingRuleOobIpConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateSwitchMatchingRuleOobIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateSwitchMatchingRuleOobIpConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) ToNetworktemplateSwitchMatchingRuleOobIpConfigOutput() NetworktemplateSwitchMatchingRuleOobIpConfigOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) ToNetworktemplateSwitchMatchingRuleOobIpConfigOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return o.ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworktemplateSwitchMatchingRuleOobIpConfig) *NetworktemplateSwitchMatchingRuleOobIpConfig {
+		return &v
+	}).(NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleOobIpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
+}
+
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMatchingRuleOobIpConfig) *bool { return v.UseMgmtVrfForHostOut }).(pulumi.BoolPtrOutput)
+}
+
+type NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworktemplateSwitchMatchingRuleOobIpConfig)(nil)).Elem()
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput() NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) ToNetworktemplateSwitchMatchingRuleOobIpConfigPtrOutputWithContext(ctx context.Context) NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput {
+	return o
+}
+
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) Elem() NetworktemplateSwitchMatchingRuleOobIpConfigOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleOobIpConfig) NetworktemplateSwitchMatchingRuleOobIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworktemplateSwitchMatchingRuleOobIpConfig
+		return ret
+	}).(NetworktemplateSwitchMatchingRuleOobIpConfigOutput)
+}
+
+// enum: `dhcp`, `static`
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleOobIpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleOobIpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMgmtVrf
+	}).(pulumi.BoolPtrOutput)
+}
+
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+func (o NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMatchingRuleOobIpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseMgmtVrfForHostOut
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NetworktemplateSwitchMatchingRulePortConfig struct {
@@ -46544,9 +47019,11 @@ type WlanPortalTemplatePortalTemplate struct {
 	//   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
 	//   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
 	//   `zh-Hans`, `zh-Hant`
-	Locales   map[string]WlanPortalTemplatePortalTemplateLocales `pulumi:"locales"`
-	Message   *string                                            `pulumi:"message"`
-	MultiAuth *bool                                              `pulumi:"multiAuth"`
+	Locales map[string]WlanPortalTemplatePortalTemplateLocales `pulumi:"locales"`
+	// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+	Logo      *string `pulumi:"logo"`
+	Message   *string `pulumi:"message"`
+	MultiAuth *bool   `pulumi:"multiAuth"`
 	// whether name field is required
 	Name *bool `pulumi:"name"`
 	// error message when name not provided
@@ -46773,9 +47250,11 @@ type WlanPortalTemplatePortalTemplateArgs struct {
 	//   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
 	//   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
 	//   `zh-Hans`, `zh-Hant`
-	Locales   WlanPortalTemplatePortalTemplateLocalesMapInput `pulumi:"locales"`
-	Message   pulumi.StringPtrInput                           `pulumi:"message"`
-	MultiAuth pulumi.BoolPtrInput                             `pulumi:"multiAuth"`
+	Locales WlanPortalTemplatePortalTemplateLocalesMapInput `pulumi:"locales"`
+	// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+	Logo      pulumi.StringPtrInput `pulumi:"logo"`
+	Message   pulumi.StringPtrInput `pulumi:"message"`
+	MultiAuth pulumi.BoolPtrInput   `pulumi:"multiAuth"`
 	// whether name field is required
 	Name pulumi.BoolPtrInput `pulumi:"name"`
 	// error message when name not provided
@@ -47222,6 +47701,11 @@ func (o WlanPortalTemplatePortalTemplateOutput) Locales() WlanPortalTemplatePort
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) map[string]WlanPortalTemplatePortalTemplateLocales {
 		return v.Locales
 	}).(WlanPortalTemplatePortalTemplateLocalesMapOutput)
+}
+
+// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+func (o WlanPortalTemplatePortalTemplateOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanPortalTemplatePortalTemplate) *string { return v.Logo }).(pulumi.StringPtrOutput)
 }
 
 func (o WlanPortalTemplatePortalTemplateOutput) Message() pulumi.StringPtrOutput {
@@ -48082,6 +48566,16 @@ func (o WlanPortalTemplatePortalTemplatePtrOutput) Locales() WlanPortalTemplateP
 	}).(WlanPortalTemplatePortalTemplateLocalesMapOutput)
 }
 
+// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+func (o WlanPortalTemplatePortalTemplatePtrOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Logo
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o WlanPortalTemplatePortalTemplatePtrOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortalTemplatePortalTemplate) *string {
 		if v == nil {
@@ -48919,8 +49413,6 @@ type WlanPortalTemplatePortalTemplateLocales struct {
 	TosLink *string `pulumi:"tosLink"`
 	// text of the Terms of Service
 	TosText *string `pulumi:"tosText"`
-	// label for Amazon auth button
-	UthButtonAmazon *string `pulumi:"uthButtonAmazon"`
 }
 
 // WlanPortalTemplatePortalTemplateLocalesInput is an input type that accepts WlanPortalTemplatePortalTemplateLocalesArgs and WlanPortalTemplatePortalTemplateLocalesOutput values.
@@ -49090,8 +49582,6 @@ type WlanPortalTemplatePortalTemplateLocalesArgs struct {
 	TosLink pulumi.StringPtrInput `pulumi:"tosLink"`
 	// text of the Terms of Service
 	TosText pulumi.StringPtrInput `pulumi:"tosText"`
-	// label for Amazon auth button
-	UthButtonAmazon pulumi.StringPtrInput `pulumi:"uthButtonAmazon"`
 }
 
 func (WlanPortalTemplatePortalTemplateLocalesArgs) ElementType() reflect.Type {
@@ -49580,11 +50070,6 @@ func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosLink() pulumi.StringPt
 // text of the Terms of Service
 func (o WlanPortalTemplatePortalTemplateLocalesOutput) TosText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.TosText }).(pulumi.StringPtrOutput)
-}
-
-// label for Amazon auth button
-func (o WlanPortalTemplatePortalTemplateLocalesOutput) UthButtonAmazon() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanPortalTemplatePortalTemplateLocales) *string { return v.UthButtonAmazon }).(pulumi.StringPtrOutput)
 }
 
 type WlanPortalTemplatePortalTemplateLocalesMapOutput struct{ *pulumi.OutputState }
@@ -54658,6 +55143,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingPtrInput)(nil)).Elem(), NetworktemplateSwitchMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRuleInput)(nil)).Elem(), NetworktemplateSwitchMatchingRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRuleArrayInput)(nil)).Elem(), NetworktemplateSwitchMatchingRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRuleIpConfigInput)(nil)).Elem(), NetworktemplateSwitchMatchingRuleIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRuleIpConfigPtrInput)(nil)).Elem(), NetworktemplateSwitchMatchingRuleIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRuleOobIpConfigInput)(nil)).Elem(), NetworktemplateSwitchMatchingRuleOobIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput)(nil)).Elem(), NetworktemplateSwitchMatchingRuleOobIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRulePortConfigInput)(nil)).Elem(), NetworktemplateSwitchMatchingRulePortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRulePortConfigMapInput)(nil)).Elem(), NetworktemplateSwitchMatchingRulePortConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateSwitchMatchingRulePortMirroringInput)(nil)).Elem(), NetworktemplateSwitchMatchingRulePortMirroringArgs{})
@@ -55251,6 +55740,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRuleOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRuleArrayOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRuleIpConfigOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRuleIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRuleOobIpConfigOutput{})
+	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRuleOobIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRulePortConfigOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRulePortConfigMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplateSwitchMatchingRulePortMirroringOutput{})

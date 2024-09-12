@@ -675,10 +675,10 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
 
     /**
      * Can be used to localize the portal based on the User Agent. Allowed property key values are:
-     *       &#34;ar&#34;, &#34;ca-ES&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;de-DE&#34;, &#34;el-GR&#34;, &#34;en-GB&#34;, &#34;en-US&#34;, &#34;es-ES&#34;,
-     *       &#34;fi-FI&#34;, &#34;fr-FR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hr-HR&#34;, &#34;hu-HU&#34;, &#34;id-ID&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;,
-     *       &#34;ko-KR&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;pt-BR&#34;, &#34;pt-PT&#34;, &#34;ro-RO&#34;, &#34;ru-RU&#34;,
-     *       &#34;sk-SK&#34;, &#34;sv-SE&#34;, &#34;th-TH&#34;, &#34;tr-TR&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;, &#34;zh-Hans&#34;, &#34;zh-Hant&#34;,
+     *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+     *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+     *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
+     *   `zh-Hans`, `zh-Hant`
      * 
      */
     @Import(name="locales")
@@ -686,14 +686,29 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
 
     /**
      * @return Can be used to localize the portal based on the User Agent. Allowed property key values are:
-     *       &#34;ar&#34;, &#34;ca-ES&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;de-DE&#34;, &#34;el-GR&#34;, &#34;en-GB&#34;, &#34;en-US&#34;, &#34;es-ES&#34;,
-     *       &#34;fi-FI&#34;, &#34;fr-FR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hr-HR&#34;, &#34;hu-HU&#34;, &#34;id-ID&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;,
-     *       &#34;ko-KR&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;pt-BR&#34;, &#34;pt-PT&#34;, &#34;ro-RO&#34;, &#34;ru-RU&#34;,
-     *       &#34;sk-SK&#34;, &#34;sv-SE&#34;, &#34;th-TH&#34;, &#34;tr-TR&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;, &#34;zh-Hans&#34;, &#34;zh-Hant&#34;,
+     *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+     *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+     *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
+     *   `zh-Hans`, `zh-Hant`
      * 
      */
     public Optional<Output<Map<String,WlanPortalTemplatePortalTemplateLocalesArgs>>> locales() {
         return Optional.ofNullable(this.locales);
+    }
+
+    /**
+     * path to the background image file. File must be a `png` image`
+     * 
+     */
+    @Import(name="logo")
+    private @Nullable Output<String> logo;
+
+    /**
+     * @return path to the background image file. File must be a `png` image`
+     * 
+     */
+    public Optional<Output<String>> logo() {
+        return Optional.ofNullable(this.logo);
     }
 
     @Import(name="message")
@@ -1594,6 +1609,7 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
         this.field4label = $.field4label;
         this.field4required = $.field4required;
         this.locales = $.locales;
+        this.logo = $.logo;
         this.message = $.message;
         this.multiAuth = $.multiAuth;
         this.name = $.name;
@@ -2592,10 +2608,10 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
 
         /**
          * @param locales Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *       &#34;ar&#34;, &#34;ca-ES&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;de-DE&#34;, &#34;el-GR&#34;, &#34;en-GB&#34;, &#34;en-US&#34;, &#34;es-ES&#34;,
-         *       &#34;fi-FI&#34;, &#34;fr-FR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hr-HR&#34;, &#34;hu-HU&#34;, &#34;id-ID&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;,
-         *       &#34;ko-KR&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;pt-BR&#34;, &#34;pt-PT&#34;, &#34;ro-RO&#34;, &#34;ru-RU&#34;,
-         *       &#34;sk-SK&#34;, &#34;sv-SE&#34;, &#34;th-TH&#34;, &#34;tr-TR&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;, &#34;zh-Hans&#34;, &#34;zh-Hant&#34;,
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
+         *   `zh-Hans`, `zh-Hant`
          * 
          * @return builder
          * 
@@ -2607,16 +2623,37 @@ public final class WlanPortalTemplatePortalTemplateArgs extends com.pulumi.resou
 
         /**
          * @param locales Can be used to localize the portal based on the User Agent. Allowed property key values are:
-         *       &#34;ar&#34;, &#34;ca-ES&#34;, &#34;cs-CZ&#34;, &#34;da-DK&#34;, &#34;de-DE&#34;, &#34;el-GR&#34;, &#34;en-GB&#34;, &#34;en-US&#34;, &#34;es-ES&#34;,
-         *       &#34;fi-FI&#34;, &#34;fr-FR&#34;, &#34;he-IL&#34;, &#34;hi-IN&#34;, &#34;hr-HR&#34;, &#34;hu-HU&#34;, &#34;id-ID&#34;, &#34;it-IT&#34;, &#34;ja-JP&#34;,
-         *       &#34;ko-KR&#34;, &#34;ms-MY&#34;, &#34;nb-NO&#34;, &#34;nl-NL&#34;, &#34;pl-PL&#34;, &#34;pt-BR&#34;, &#34;pt-PT&#34;, &#34;ro-RO&#34;, &#34;ru-RU&#34;,
-         *       &#34;sk-SK&#34;, &#34;sv-SE&#34;, &#34;th-TH&#34;, &#34;tr-TR&#34;, &#34;uk-UA&#34;, &#34;vi-VN&#34;, &#34;zh-Hans&#34;, &#34;zh-Hant&#34;,
+         *   `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`,
+         *   `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`,
+         *   `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`,
+         *   `zh-Hans`, `zh-Hant`
          * 
          * @return builder
          * 
          */
         public Builder locales(Map<String,WlanPortalTemplatePortalTemplateLocalesArgs> locales) {
             return locales(Output.of(locales));
+        }
+
+        /**
+         * @param logo path to the background image file. File must be a `png` image`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logo(@Nullable Output<String> logo) {
+            $.logo = logo;
+            return this;
+        }
+
+        /**
+         * @param logo path to the background image file. File must be a `png` image`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logo(String logo) {
+            return logo(Output.of(logo));
         }
 
         public Builder message(@Nullable Output<String> message) {
