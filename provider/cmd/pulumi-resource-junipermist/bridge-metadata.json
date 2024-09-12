@@ -348,6 +348,9 @@
                                 "ipsec_proposals": {
                                     "maxItemsOne": false
                                 },
+                                "networks": {
+                                    "maxItemsOne": false
+                                },
                                 "primary": {
                                     "fields": {
                                         "hosts": {
@@ -1084,6 +1087,9 @@
                                 "ipsec_proposals": {
                                     "maxItemsOne": false
                                 },
+                                "networks": {
+                                    "maxItemsOne": false
+                                },
                                 "primary": {
                                     "fields": {
                                         "hosts": {
@@ -1431,6 +1437,9 @@
                                     "maxItemsOne": false
                                 },
                                 "ipsec_proposals": {
+                                    "maxItemsOne": false
+                                },
+                                "networks": {
                                     "maxItemsOne": false
                                 },
                                 "primary": {

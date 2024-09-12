@@ -1059,7 +1059,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/GatewayDhcpdConfigConfig:GatewayDhcpdConfigConfig"
-                    }
+                    },
+                    "description": "Property key is the network name\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -1167,6 +1168,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "dnsServers",
                         "dnsSuffixes",
                         "leaseTime",
                         "serverIdOverride",
@@ -1664,7 +1666,7 @@
                 },
                 "useMgmtVrfForHostOut": {
                     "type": "boolean",
-                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,\n"
+                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired\n"
                 },
                 "vlanId": {
                     "type": "string"
@@ -1784,7 +1786,7 @@
                 },
                 "wanName": {
                     "type": "string",
-                    "description": "required when`type`==`tunnel`\n"
+                    "description": "optional if `type`==`vpn`\n"
                 }
             },
             "type": "object",
@@ -1799,6 +1801,25 @@
         },
         "junipermist:device/GatewayPortConfig:GatewayPortConfig": {
             "properties": {
+                "aeDisableLacp": {
+                    "type": "boolean",
+                    "description": "if `aggregated`==`true`. To disable LCP support for the AE interface\n"
+                },
+                "aeIdx": {
+                    "type": "string",
+                    "description": "if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)\n"
+                },
+                "aeLacpForceUp": {
+                    "type": "boolean",
+                    "description": "For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n\nUse case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n\nNote: Turning this on will enable force-up on one of the interfaces in the bundle only\n"
+                },
+                "aggregated": {
+                    "type": "boolean"
+                },
+                "critical": {
+                    "type": "boolean",
+                    "description": "if want to generate port up/down alarm, set it to true\n"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -1949,6 +1970,10 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "aeDisableLacp",
+                        "aeLacpForceUp",
+                        "aggregated",
+                        "critical",
                         "disableAutoneg",
                         "disabled",
                         "dslType",
@@ -2498,6 +2523,13 @@
                     "type": "string",
                     "description": "enum: `active-active`, `active-standby`\n"
                 },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "networks reachable via this tunnel\n"
+                },
                 "primary": {
                     "$ref": "#/types/junipermist:device/GatewayTunnelConfigsPrimary:GatewayTunnelConfigsPrimary"
                 },
@@ -2952,10 +2984,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "dstTag"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "action"
+                        "action",
+                        "dstTag"
                     ]
                 }
             }
@@ -3003,7 +3039,15 @@
             "type": "object",
             "required": [
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "subnets",
+                        "type"
+                    ]
+                }
+            }
         },
         "junipermist:device/SwitchAclTagsSpec:SwitchAclTagsSpec": {
             "properties": {
@@ -3058,7 +3102,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchDhcpdConfigConfig:SwitchDhcpdConfigConfig"
-                    }
+                    },
+                    "description": "Property key is the network name\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -3437,7 +3482,7 @@
                 },
                 "useMgmtVrfForHostOut": {
                     "type": "boolean",
-                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,\n"
+                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired\n"
                 }
             },
             "type": "object",
@@ -10908,7 +10953,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfigConfig:DeviceprofileGatewayDhcpdConfigConfig"
-                    }
+                    },
+                    "description": "Property key is the network name\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -11016,6 +11062,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "dnsServers",
                         "dnsSuffixes",
                         "leaseTime",
                         "serverIdOverride",
@@ -11492,7 +11539,7 @@
                 },
                 "useMgmtVrfForHostOut": {
                     "type": "boolean",
-                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,\n"
+                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired\n"
                 },
                 "vlanId": {
                     "type": "string"
@@ -11612,7 +11659,7 @@
                 },
                 "wanName": {
                     "type": "string",
-                    "description": "required when`type`==`tunnel`\n"
+                    "description": "optional if `type`==`vpn`\n"
                 }
             },
             "type": "object",
@@ -11627,6 +11674,25 @@
         },
         "junipermist:org/DeviceprofileGatewayPortConfig:DeviceprofileGatewayPortConfig": {
             "properties": {
+                "aeDisableLacp": {
+                    "type": "boolean",
+                    "description": "if `aggregated`==`true`. To disable LCP support for the AE interface\n"
+                },
+                "aeIdx": {
+                    "type": "string",
+                    "description": "if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)\n"
+                },
+                "aeLacpForceUp": {
+                    "type": "boolean",
+                    "description": "For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n\nUse case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n\nNote: Turning this on will enable force-up on one of the interfaces in the bundle only\n"
+                },
+                "aggregated": {
+                    "type": "boolean"
+                },
+                "critical": {
+                    "type": "boolean",
+                    "description": "if want to generate port up/down alarm, set it to true\n"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -11777,6 +11843,10 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "aeDisableLacp",
+                        "aeLacpForceUp",
+                        "aggregated",
+                        "critical",
                         "disableAutoneg",
                         "disabled",
                         "dslType",
@@ -12294,6 +12364,13 @@
                 "mode": {
                     "type": "string",
                     "description": "enum: `active-active`, `active-standby`\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "networks reachable via this tunnel\n"
                 },
                 "primary": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayTunnelConfigsPrimary:DeviceprofileGatewayTunnelConfigsPrimary"
@@ -12873,7 +12950,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/GatewaytemplateDhcpdConfigConfig:GatewaytemplateDhcpdConfigConfig"
-                    }
+                    },
+                    "description": "Property key is the network name\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -12981,6 +13059,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "dnsServers",
                         "dnsSuffixes",
                         "leaseTime",
                         "serverIdOverride",
@@ -13457,7 +13536,7 @@
                 },
                 "useMgmtVrfForHostOut": {
                     "type": "boolean",
-                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,\n"
+                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired\n"
                 },
                 "vlanId": {
                     "type": "string"
@@ -13577,7 +13656,7 @@
                 },
                 "wanName": {
                     "type": "string",
-                    "description": "required when`type`==`tunnel`\n"
+                    "description": "optional if `type`==`vpn`\n"
                 }
             },
             "type": "object",
@@ -13592,6 +13671,25 @@
         },
         "junipermist:org/GatewaytemplatePortConfig:GatewaytemplatePortConfig": {
             "properties": {
+                "aeDisableLacp": {
+                    "type": "boolean",
+                    "description": "if `aggregated`==`true`. To disable LCP support for the AE interface\n"
+                },
+                "aeIdx": {
+                    "type": "string",
+                    "description": "if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)\n"
+                },
+                "aeLacpForceUp": {
+                    "type": "boolean",
+                    "description": "For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n\nUse case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n\nNote: Turning this on will enable force-up on one of the interfaces in the bundle only\n"
+                },
+                "aggregated": {
+                    "type": "boolean"
+                },
+                "critical": {
+                    "type": "boolean",
+                    "description": "if want to generate port up/down alarm, set it to true\n"
+                },
                 "description": {
                     "type": "string"
                 },
@@ -13742,6 +13840,10 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "aeDisableLacp",
+                        "aeLacpForceUp",
+                        "aggregated",
+                        "critical",
                         "disableAutoneg",
                         "disabled",
                         "dslType",
@@ -14259,6 +14361,13 @@
                 "mode": {
                     "type": "string",
                     "description": "enum: `active-active`, `active-standby`\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "networks reachable via this tunnel\n"
                 },
                 "primary": {
                     "$ref": "#/types/junipermist:org/GatewaytemplateTunnelConfigsPrimary:GatewaytemplateTunnelConfigsPrimary"
@@ -15131,10 +15240,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "dstTag"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "action"
+                        "action",
+                        "dstTag"
                     ]
                 }
             }
@@ -15182,7 +15295,15 @@
             "type": "object",
             "required": [
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "subnets",
+                        "type"
+                    ]
+                }
+            }
         },
         "junipermist:org/NetworktemplateAclTagsSpec:NetworktemplateAclTagsSpec": {
             "properties": {
@@ -16502,6 +16623,10 @@
                     },
                     "description": "additional CLI commands to append to the generated Junos config\n\n**Note**: no check is done\n"
                 },
+                "ipConfig": {
+                    "$ref": "#/types/junipermist:org/NetworktemplateSwitchMatchingRuleIpConfig:NetworktemplateSwitchMatchingRuleIpConfig",
+                    "description": "In-Band Management interface configuration\n"
+                },
                 "matchRole": {
                     "type": "string",
                     "description": "role to match\n"
@@ -16515,6 +16640,10 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "oobIpConfig": {
+                    "$ref": "#/types/junipermist:org/NetworktemplateSwitchMatchingRuleOobIpConfig:NetworktemplateSwitchMatchingRuleOobIpConfig",
+                    "description": "Out-of-Band Management interface configuration\n"
                 },
                 "portConfig": {
                     "type": "object",
@@ -16532,6 +16661,52 @@
                 }
             },
             "type": "object"
+        },
+        "junipermist:org/NetworktemplateSwitchMatchingRuleIpConfig:NetworktemplateSwitchMatchingRuleIpConfig": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "VLAN Name for the management interface\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "enum: `dhcp`, `static`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/NetworktemplateSwitchMatchingRuleOobIpConfig:NetworktemplateSwitchMatchingRuleOobIpConfig": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "enum: `dhcp`, `static`\n"
+                },
+                "useMgmtVrf": {
+                    "type": "boolean",
+                    "description": "f supported on the platform. If enabled, DNS will be using this routing-instance, too\n"
+                },
+                "useMgmtVrfForHostOut": {
+                    "type": "boolean",
+                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type",
+                        "useMgmtVrf",
+                        "useMgmtVrfForHostOut"
+                    ]
+                }
+            }
         },
         "junipermist:org/NetworktemplateSwitchMatchingRulePortConfig:NetworktemplateSwitchMatchingRulePortConfig": {
             "properties": {
@@ -16797,7 +16972,8 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "portRange",
-                        "protocol"
+                        "protocol",
+                        "subnets"
                     ]
                 }
             }
@@ -19304,6 +19480,10 @@
                     },
                     "description": "Can be used to localize the portal based on the User Agent. Allowed property key values are:\n  `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, \n  `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, \n  `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, \n  `zh-Hans`, `zh-Hant`\n"
                 },
+                "logo": {
+                    "type": "string",
+                    "description": "path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).\n"
+                },
                 "message": {
                     "type": "string"
                 },
@@ -19606,6 +19786,7 @@
                         "field4",
                         "field4error",
                         "field4label",
+                        "logo",
                         "message",
                         "multiAuth",
                         "name",
@@ -20022,10 +20203,6 @@
                 "tosText": {
                     "type": "string",
                     "description": "text of the Terms of Service\n"
-                },
-                "uthButtonAmazon": {
-                    "type": "string",
-                    "description": "label for Amazon auth button\n"
                 }
             },
             "type": "object"
@@ -21416,10 +21593,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "dstTag"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "action"
+                        "action",
+                        "dstTag"
                     ]
                 }
             }
@@ -21467,7 +21648,15 @@
             "type": "object",
             "required": [
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "subnets",
+                        "type"
+                    ]
+                }
+            }
         },
         "junipermist:site/NetworktemplateAclTagsSpec:NetworktemplateAclTagsSpec": {
             "properties": {
@@ -22787,6 +22976,10 @@
                     },
                     "description": "additional CLI commands to append to the generated Junos config\n\n**Note**: no check is done\n"
                 },
+                "ipConfig": {
+                    "$ref": "#/types/junipermist:site/NetworktemplateSwitchMatchingRuleIpConfig:NetworktemplateSwitchMatchingRuleIpConfig",
+                    "description": "In-Band Management interface configuration\n"
+                },
                 "matchRole": {
                     "type": "string",
                     "description": "role to match\n"
@@ -22800,6 +22993,10 @@
                 },
                 "name": {
                     "type": "string"
+                },
+                "oobIpConfig": {
+                    "$ref": "#/types/junipermist:site/NetworktemplateSwitchMatchingRuleOobIpConfig:NetworktemplateSwitchMatchingRuleOobIpConfig",
+                    "description": "Out-of-Band Management interface configuration\n"
                 },
                 "portConfig": {
                     "type": "object",
@@ -22817,6 +23014,52 @@
                 }
             },
             "type": "object"
+        },
+        "junipermist:site/NetworktemplateSwitchMatchingRuleIpConfig:NetworktemplateSwitchMatchingRuleIpConfig": {
+            "properties": {
+                "network": {
+                    "type": "string",
+                    "description": "VLAN Name for the management interface\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "enum: `dhcp`, `static`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/NetworktemplateSwitchMatchingRuleOobIpConfig:NetworktemplateSwitchMatchingRuleOobIpConfig": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "enum: `dhcp`, `static`\n"
+                },
+                "useMgmtVrf": {
+                    "type": "boolean",
+                    "description": "f supported on the platform. If enabled, DNS will be using this routing-instance, too\n"
+                },
+                "useMgmtVrfForHostOut": {
+                    "type": "boolean",
+                    "description": "for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "type",
+                        "useMgmtVrf",
+                        "useMgmtVrfForHostOut"
+                    ]
+                }
+            }
         },
         "junipermist:site/NetworktemplateSwitchMatchingRulePortConfig:NetworktemplateSwitchMatchingRulePortConfig": {
             "properties": {
@@ -25562,7 +25805,11 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/WlanPortalTemplatePortalTemplateLocales:WlanPortalTemplatePortalTemplateLocales"
                     },
-                    "description": "Can be used to localize the portal based on the User Agent. Allowed property key values are:\n      \"ar\", \"ca-ES\", \"cs-CZ\", \"da-DK\", \"de-DE\", \"el-GR\", \"en-GB\", \"en-US\", \"es-ES\", \n      \"fi-FI\", \"fr-FR\", \"he-IL\", \"hi-IN\", \"hr-HR\", \"hu-HU\", \"id-ID\", \"it-IT\", \"ja-JP\", \n      \"ko-KR\", \"ms-MY\", \"nb-NO\", \"nl-NL\", \"pl-PL\", \"pt-BR\", \"pt-PT\", \"ro-RO\", \"ru-RU\", \n      \"sk-SK\", \"sv-SE\", \"th-TH\", \"tr-TR\", \"uk-UA\", \"vi-VN\", \"zh-Hans\", \"zh-Hant\",\n"
+                    "description": "Can be used to localize the portal based on the User Agent. Allowed property key values are:\n  `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, \n  `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, \n  `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, \n  `zh-Hans`, `zh-Hant`\n"
+                },
+                "logo": {
+                    "type": "string",
+                    "description": "path to the background image file. File must be a `png` image`\n"
                 },
                 "message": {
                     "type": "string"
@@ -25866,6 +26113,7 @@
                         "field4",
                         "field4error",
                         "field4label",
+                        "logo",
                         "message",
                         "multiAuth",
                         "name",
@@ -26282,10 +26530,6 @@
                 "tosText": {
                     "type": "string",
                     "description": "text of the Terms of Service\n"
-                },
-                "uthButtonAmazon": {
-                    "type": "string",
-                    "description": "label for Amazon auth button\n"
                 }
             },
             "type": "object"
@@ -32655,7 +32899,7 @@
             }
         },
         "junipermist:org/wlan:Wlan": {
-            "description": "This resource manages the Org Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.org.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    orgId: terraformTest.id,\n    templateId: test101.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanId: \"143\",\n    wlanLimitUp: 10000,\n    wlanLimitDown: 20000,\n    clientLimitUp: 512,\n    clientLimitDown: 1000,\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.org.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    org_id=terraform_test[\"id\"],\n    template_id=test101[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_id=\"143\",\n    wlan_limit_up=10000,\n    wlan_limit_down=20000,\n    client_limit_up=512,\n    client_limit_down=1000,\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Org.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        OrgId = terraformTest.Id,\n        TemplateId = test101.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanId = \"143\",\n        WlanLimitUp = 10000,\n        WlanLimitDown = 20000,\n        ClientLimitUp = 512,\n        ClientLimitDown = 1000,\n        Auth = new JuniperMist.Org.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.NewWlan(ctx, \"wlan_one\", \u0026org.WlanArgs{\n\t\t\tSsid:       pulumi.String(\"wlan_one\"),\n\t\t\tOrgId:      pulumi.Any(terraformTest.Id),\n\t\t\tTemplateId: pulumi.Any(test101.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.Int(10000),\n\t\t\tWlanLimitDown:   pulumi.Int(20000),\n\t\t\tClientLimitUp:   pulumi.Int(512),\n\t\t\tClientLimitDown: pulumi.Int(1000),\n\t\t\tAuth: \u0026org.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Wlan;\nimport com.pulumi.junipermist.org.WlanArgs;\nimport com.pulumi.junipermist.org.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .orgId(terraformTest.id())\n            .templateId(test101.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanId(143)\n            .wlanLimitUp(10000)\n            .wlanLimitDown(20000)\n            .clientLimitUp(512)\n            .clientLimitDown(1000)\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      orgId: ${terraformTest.id}\n      templateId: ${test101.id}\n      bands:\n        - '5'\n        - '6'\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_wlan` with:\n\nOrg WLAN can be imported by specifying the org_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:org/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Org Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.org.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    orgId: terraformTest.id,\n    templateId: test101.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanEnabled: true,\n    vlanId: \"143\",\n    wlanLimitUp: 10000,\n    wlanLimitDown: 20000,\n    clientLimitUp: 512,\n    clientLimitDown: 1000,\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.org.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    org_id=terraform_test[\"id\"],\n    template_id=test101[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_enabled=True,\n    vlan_id=\"143\",\n    wlan_limit_up=10000,\n    wlan_limit_down=20000,\n    client_limit_up=512,\n    client_limit_down=1000,\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Org.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        OrgId = terraformTest.Id,\n        TemplateId = test101.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanEnabled = true,\n        VlanId = \"143\",\n        WlanLimitUp = 10000,\n        WlanLimitDown = 20000,\n        ClientLimitUp = 512,\n        ClientLimitDown = 1000,\n        Auth = new JuniperMist.Org.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.NewWlan(ctx, \"wlan_one\", \u0026org.WlanArgs{\n\t\t\tSsid:       pulumi.String(\"wlan_one\"),\n\t\t\tOrgId:      pulumi.Any(terraformTest.Id),\n\t\t\tTemplateId: pulumi.Any(test101.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanEnabled:     pulumi.Bool(true),\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.Int(10000),\n\t\t\tWlanLimitDown:   pulumi.Int(20000),\n\t\t\tClientLimitUp:   pulumi.Int(512),\n\t\t\tClientLimitDown: pulumi.Int(1000),\n\t\t\tAuth: \u0026org.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Wlan;\nimport com.pulumi.junipermist.org.WlanArgs;\nimport com.pulumi.junipermist.org.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .orgId(terraformTest.id())\n            .templateId(test101.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanEnabled(true)\n            .vlanId(143)\n            .wlanLimitUp(10000)\n            .wlanLimitDown(20000)\n            .clientLimitUp(512)\n            .clientLimitDown(1000)\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:org:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      orgId: ${terraformTest.id}\n      templateId: ${test101.id}\n      bands:\n        - '5'\n        - '6'\n      vlanEnabled: true\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_wlan` with:\n\nOrg WLAN can be imported by specifying the org_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:org/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "acctImmediateUpdate": {
                     "type": "boolean",
@@ -32686,7 +32930,7 @@
                 },
                 "allowSsdp": {
                     "type": "boolean",
-                    "description": "only applicable when `limit_bcast`==`tru`e, which allows SSDP\n"
+                    "description": "only applicable when `limit_bcast`==`true`, which allows SSDP\n"
                 },
                 "apIds": {
                     "type": "array",
@@ -32755,7 +32999,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of radios that the wlan should apply to\n"
+                    "description": "list of radios that the wlan should apply to. enum: `24`, `5`, `6`\n"
                 },
                 "blockBlacklistClients": {
                     "type": "boolean",
@@ -33149,7 +33393,7 @@
                 },
                 "allowSsdp": {
                     "type": "boolean",
-                    "description": "only applicable when `limit_bcast`==`tru`e, which allows SSDP\n"
+                    "description": "only applicable when `limit_bcast`==`true`, which allows SSDP\n"
                 },
                 "apIds": {
                     "type": "array",
@@ -33218,7 +33462,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of radios that the wlan should apply to\n"
+                    "description": "list of radios that the wlan should apply to. enum: `24`, `5`, `6`\n"
                 },
                 "blockBlacklistClients": {
                     "type": "boolean",
@@ -33527,7 +33771,7 @@
                     },
                     "allowSsdp": {
                         "type": "boolean",
-                        "description": "only applicable when `limit_bcast`==`tru`e, which allows SSDP\n"
+                        "description": "only applicable when `limit_bcast`==`true`, which allows SSDP\n"
                     },
                     "apIds": {
                         "type": "array",
@@ -33596,7 +33840,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "list of radios that the wlan should apply to\n"
+                        "description": "list of radios that the wlan should apply to. enum: `24`, `5`, `6`\n"
                     },
                     "blockBlacklistClients": {
                         "type": "boolean",
@@ -33898,45 +34142,52 @@
             "properties": {
                 "file": {
                     "type": "string",
-                    "description": "binary file\n"
+                    "description": "path to the background image file. File must be a `jpeg`, `jpg` or `png` image`\n"
                 },
                 "orgId": {
                     "type": "string"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Org WLAN ID\n"
                 }
             },
             "required": [
-                "file"
+                "file",
+                "orgId",
+                "wlanId"
             ],
             "inputProperties": {
                 "file": {
                     "type": "string",
-                    "description": "binary file\n"
+                    "description": "path to the background image file. File must be a `jpeg`, `jpg` or `png` image`\n"
                 },
                 "orgId": {
                     "type": "string"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Org WLAN ID\n"
                 }
             },
             "requiredInputs": [
-                "file"
+                "file",
+                "orgId",
+                "wlanId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering WlanPortalImage resources.\n",
                 "properties": {
                     "file": {
                         "type": "string",
-                        "description": "binary file\n"
+                        "description": "path to the background image file. File must be a `jpeg`, `jpg` or `png` image`\n"
                     },
                     "orgId": {
                         "type": "string"
                     },
                     "wlanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Org WLAN ID\n"
                     }
                 },
                 "type": "object"
@@ -33954,7 +34205,7 @@
                 },
                 "wlanId": {
                     "type": "string",
-                    "description": "Site WLAN ID\n"
+                    "description": "Org WLAN ID\n"
                 }
             },
             "required": [
@@ -33972,7 +34223,7 @@
                 },
                 "wlanId": {
                     "type": "string",
-                    "description": "Site WLAN ID\n"
+                    "description": "Org WLAN ID\n"
                 }
             },
             "requiredInputs": [
@@ -33992,7 +34243,7 @@
                     },
                     "wlanId": {
                         "type": "string",
-                        "description": "Site WLAN ID\n"
+                        "description": "Org WLAN ID\n"
                     }
                 },
                 "type": "object"
@@ -34877,6 +35128,9 @@
                     "description": "Property key is the network name\n"
                 }
             },
+            "requiredInputs": [
+                "siteId"
+            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Networktemplate resources.\n",
                 "properties": {
@@ -35992,7 +36246,7 @@
             }
         },
         "junipermist:site/wlan:Wlan": {
-            "description": "This resource manages the Site Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.site.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    siteId: terraformTest.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanId: \"143\",\n    wlanLimitUp: 10000,\n    wlanLimitDown: 20000,\n    clientLimitUp: 512,\n    clientLimitDown: 1000,\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.site.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    site_id=terraform_test[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_id=\"143\",\n    wlan_limit_up=10000,\n    wlan_limit_down=20000,\n    client_limit_up=512,\n    client_limit_down=1000,\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Site.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        SiteId = terraformTest.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanId = \"143\",\n        WlanLimitUp = 10000,\n        WlanLimitDown = 20000,\n        ClientLimitUp = 512,\n        ClientLimitDown = 1000,\n        Auth = new JuniperMist.Site.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := site.NewWlan(ctx, \"wlan_one\", \u0026site.WlanArgs{\n\t\t\tSsid:   pulumi.String(\"wlan_one\"),\n\t\t\tSiteId: pulumi.Any(terraformTest.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.Int(10000),\n\t\t\tWlanLimitDown:   pulumi.Int(20000),\n\t\t\tClientLimitUp:   pulumi.Int(512),\n\t\t\tClientLimitDown: pulumi.Int(1000),\n\t\t\tAuth: \u0026site.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Wlan;\nimport com.pulumi.junipermist.site.WlanArgs;\nimport com.pulumi.junipermist.site.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .siteId(terraformTest.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanId(143)\n            .wlanLimitUp(10000)\n            .wlanLimitDown(20000)\n            .clientLimitUp(512)\n            .clientLimitDown(1000)\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:site:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      siteId: ${terraformTest.id}\n      bands:\n        - '5'\n        - '6'\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_wlan` with:\n\nSite WLAN can be imported by specifying the site_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:site/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Site Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst wlanOne = new junipermist.site.Wlan(\"wlan_one\", {\n    ssid: \"wlan_one\",\n    siteId: terraformTest.id,\n    bands: [\n        \"5\",\n        \"6\",\n    ],\n    vlanEnabled: true,\n    vlanId: \"143\",\n    wlanLimitUp: 10000,\n    wlanLimitDown: 20000,\n    clientLimitUp: 512,\n    clientLimitDown: 1000,\n    auth: {\n        type: \"psk\",\n        psk: \"secretpsk\",\n    },\n    \"interface\": \"all\",\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nwlan_one = junipermist.site.Wlan(\"wlan_one\",\n    ssid=\"wlan_one\",\n    site_id=terraform_test[\"id\"],\n    bands=[\n        \"5\",\n        \"6\",\n    ],\n    vlan_enabled=True,\n    vlan_id=\"143\",\n    wlan_limit_up=10000,\n    wlan_limit_down=20000,\n    client_limit_up=512,\n    client_limit_down=1000,\n    auth={\n        \"type\": \"psk\",\n        \"psk\": \"secretpsk\",\n    },\n    interface=\"all\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var wlanOne = new JuniperMist.Site.Wlan(\"wlan_one\", new()\n    {\n        Ssid = \"wlan_one\",\n        SiteId = terraformTest.Id,\n        Bands = new[]\n        {\n            \"5\",\n            \"6\",\n        },\n        VlanEnabled = true,\n        VlanId = \"143\",\n        WlanLimitUp = 10000,\n        WlanLimitDown = 20000,\n        ClientLimitUp = 512,\n        ClientLimitDown = 1000,\n        Auth = new JuniperMist.Site.Inputs.WlanAuthArgs\n        {\n            Type = \"psk\",\n            Psk = \"secretpsk\",\n        },\n        Interface = \"all\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/site\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := site.NewWlan(ctx, \"wlan_one\", \u0026site.WlanArgs{\n\t\t\tSsid:   pulumi.String(\"wlan_one\"),\n\t\t\tSiteId: pulumi.Any(terraformTest.Id),\n\t\t\tBands: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"5\"),\n\t\t\t\tpulumi.String(\"6\"),\n\t\t\t},\n\t\t\tVlanEnabled:     pulumi.Bool(true),\n\t\t\tVlanId:          pulumi.String(\"143\"),\n\t\t\tWlanLimitUp:     pulumi.Int(10000),\n\t\t\tWlanLimitDown:   pulumi.Int(20000),\n\t\t\tClientLimitUp:   pulumi.Int(512),\n\t\t\tClientLimitDown: pulumi.Int(1000),\n\t\t\tAuth: \u0026site.WlanAuthArgs{\n\t\t\t\tType: pulumi.String(\"psk\"),\n\t\t\t\tPsk:  pulumi.String(\"secretpsk\"),\n\t\t\t},\n\t\t\tInterface: pulumi.String(\"all\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Wlan;\nimport com.pulumi.junipermist.site.WlanArgs;\nimport com.pulumi.junipermist.site.inputs.WlanAuthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var wlanOne = new Wlan(\"wlanOne\", WlanArgs.builder()\n            .ssid(\"wlan_one\")\n            .siteId(terraformTest.id())\n            .bands(            \n                \"5\",\n                \"6\")\n            .vlanEnabled(true)\n            .vlanId(143)\n            .wlanLimitUp(10000)\n            .wlanLimitDown(20000)\n            .clientLimitUp(512)\n            .clientLimitDown(1000)\n            .auth(WlanAuthArgs.builder()\n                .type(\"psk\")\n                .psk(\"secretpsk\")\n                .build())\n            .interface_(\"all\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  wlanOne:\n    type: junipermist:site:Wlan\n    name: wlan_one\n    properties:\n      ssid: wlan_one\n      siteId: ${terraformTest.id}\n      bands:\n        - '5'\n        - '6'\n      vlanEnabled: true\n      vlanId: 143\n      wlanLimitUp: 10000\n      wlanLimitDown: 20000\n      clientLimitUp: 512\n      clientLimitDown: 1000\n      auth:\n        type: psk\n        psk: secretpsk\n      interface: all\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_wlan` with:\n\nSite WLAN can be imported by specifying the site_id and the wlan_id\n\n```sh\n$ pulumi import junipermist:site/wlan:Wlan wlan_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "acctImmediateUpdate": {
                     "type": "boolean",
@@ -36023,7 +36277,7 @@
                 },
                 "allowSsdp": {
                     "type": "boolean",
-                    "description": "only applicable when `limit_bcast`==`tru`e, which allows SSDP\n"
+                    "description": "only applicable when `limit_bcast`==`true`, which allows SSDP\n"
                 },
                 "apIds": {
                     "type": "array",
@@ -36092,7 +36346,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of radios that the wlan should apply to\n"
+                    "description": "list of radios that the wlan should apply to. enum: `24`, `5`, `6`\n"
                 },
                 "blockBlacklistClients": {
                     "type": "boolean",
@@ -36486,7 +36740,7 @@
                 },
                 "allowSsdp": {
                     "type": "boolean",
-                    "description": "only applicable when `limit_bcast`==`tru`e, which allows SSDP\n"
+                    "description": "only applicable when `limit_bcast`==`true`, which allows SSDP\n"
                 },
                 "apIds": {
                     "type": "array",
@@ -36555,7 +36809,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "list of radios that the wlan should apply to\n"
+                    "description": "list of radios that the wlan should apply to. enum: `24`, `5`, `6`\n"
                 },
                 "blockBlacklistClients": {
                     "type": "boolean",
@@ -36860,7 +37114,7 @@
                     },
                     "allowSsdp": {
                         "type": "boolean",
-                        "description": "only applicable when `limit_bcast`==`tru`e, which allows SSDP\n"
+                        "description": "only applicable when `limit_bcast`==`true`, which allows SSDP\n"
                     },
                     "apIds": {
                         "type": "array",
@@ -36929,7 +37183,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "list of radios that the wlan should apply to\n"
+                        "description": "list of radios that the wlan should apply to. enum: `24`, `5`, `6`\n"
                     },
                     "blockBlacklistClients": {
                         "type": "boolean",
@@ -37231,45 +37485,52 @@
             "properties": {
                 "file": {
                     "type": "string",
-                    "description": "binary file\n"
+                    "description": "path to the background image file. File must be a `jpeg`, `jpg` or `png` image`\n"
                 },
                 "siteId": {
                     "type": "string"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site WLAN ID\n"
                 }
             },
             "required": [
-                "file"
+                "file",
+                "siteId",
+                "wlanId"
             ],
             "inputProperties": {
                 "file": {
                     "type": "string",
-                    "description": "binary file\n"
+                    "description": "path to the background image file. File must be a `jpeg`, `jpg` or `png` image`\n"
                 },
                 "siteId": {
                     "type": "string"
                 },
                 "wlanId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site WLAN ID\n"
                 }
             },
             "requiredInputs": [
-                "file"
+                "file",
+                "siteId",
+                "wlanId"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering WlanPortalImage resources.\n",
                 "properties": {
                     "file": {
                         "type": "string",
-                        "description": "binary file\n"
+                        "description": "path to the background image file. File must be a `jpeg`, `jpg` or `png` image`\n"
                     },
                     "siteId": {
                         "type": "string"
                     },
                     "wlanId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Site WLAN ID\n"
                     }
                 },
                 "type": "object"
