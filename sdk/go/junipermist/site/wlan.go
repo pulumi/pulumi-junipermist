@@ -35,6 +35,7 @@ import (
 //					pulumi.String("5"),
 //					pulumi.String("6"),
 //				},
+//				VlanEnabled:     pulumi.Bool(true),
 //				VlanId:          pulumi.String("143"),
 //				WlanLimitUp:     pulumi.Int(10000),
 //				WlanLimitDown:   pulumi.Int(20000),
@@ -81,7 +82,7 @@ type Wlan struct {
 	AllowIpv6Ndp pulumi.BoolOutput `pulumi:"allowIpv6Ndp"`
 	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolOutput `pulumi:"allowMdns"`
-	// only applicable when `limitBcast`==`tru`e, which allows SSDP
+	// only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolOutput `pulumi:"allowSsdp"`
 	// list of device ids
 	ApIds pulumi.StringArrayOutput `pulumi:"apIds"`
@@ -116,7 +117,7 @@ type Wlan struct {
 	BandSteer pulumi.BoolOutput `pulumi:"bandSteer"`
 	// force dualBand capable client to connect to 5G
 	BandSteerForceBand5 pulumi.BoolOutput `pulumi:"bandSteerForceBand5"`
-	// list of radios that the wlan should apply to
+	// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 	Bands pulumi.StringArrayOutput `pulumi:"bands"`
 	// whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolOutput `pulumi:"blockBlacklistClients"`
@@ -310,7 +311,7 @@ type wlanState struct {
 	AllowIpv6Ndp *bool `pulumi:"allowIpv6Ndp"`
 	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns *bool `pulumi:"allowMdns"`
-	// only applicable when `limitBcast`==`tru`e, which allows SSDP
+	// only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp *bool `pulumi:"allowSsdp"`
 	// list of device ids
 	ApIds []string `pulumi:"apIds"`
@@ -345,7 +346,7 @@ type wlanState struct {
 	BandSteer *bool `pulumi:"bandSteer"`
 	// force dualBand capable client to connect to 5G
 	BandSteerForceBand5 *bool `pulumi:"bandSteerForceBand5"`
-	// list of radios that the wlan should apply to
+	// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 	Bands []string `pulumi:"bands"`
 	// whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients *bool `pulumi:"blockBlacklistClients"`
@@ -504,7 +505,7 @@ type WlanState struct {
 	AllowIpv6Ndp pulumi.BoolPtrInput
 	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolPtrInput
-	// only applicable when `limitBcast`==`tru`e, which allows SSDP
+	// only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolPtrInput
 	// list of device ids
 	ApIds pulumi.StringArrayInput
@@ -539,7 +540,7 @@ type WlanState struct {
 	BandSteer pulumi.BoolPtrInput
 	// force dualBand capable client to connect to 5G
 	BandSteerForceBand5 pulumi.BoolPtrInput
-	// list of radios that the wlan should apply to
+	// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 	Bands pulumi.StringArrayInput
 	// whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolPtrInput
@@ -702,7 +703,7 @@ type wlanArgs struct {
 	AllowIpv6Ndp *bool `pulumi:"allowIpv6Ndp"`
 	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns *bool `pulumi:"allowMdns"`
-	// only applicable when `limitBcast`==`tru`e, which allows SSDP
+	// only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp *bool `pulumi:"allowSsdp"`
 	// list of device ids
 	ApIds []string `pulumi:"apIds"`
@@ -737,7 +738,7 @@ type wlanArgs struct {
 	BandSteer *bool `pulumi:"bandSteer"`
 	// force dualBand capable client to connect to 5G
 	BandSteerForceBand5 *bool `pulumi:"bandSteerForceBand5"`
-	// list of radios that the wlan should apply to
+	// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 	Bands []string `pulumi:"bands"`
 	// whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients *bool `pulumi:"blockBlacklistClients"`
@@ -885,7 +886,7 @@ type WlanArgs struct {
 	AllowIpv6Ndp pulumi.BoolPtrInput
 	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
 	AllowMdns pulumi.BoolPtrInput
-	// only applicable when `limitBcast`==`tru`e, which allows SSDP
+	// only applicable when `limitBcast`==`true`, which allows SSDP
 	AllowSsdp pulumi.BoolPtrInput
 	// list of device ids
 	ApIds pulumi.StringArrayInput
@@ -920,7 +921,7 @@ type WlanArgs struct {
 	BandSteer pulumi.BoolPtrInput
 	// force dualBand capable client to connect to 5G
 	BandSteerForceBand5 pulumi.BoolPtrInput
-	// list of radios that the wlan should apply to
+	// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 	Bands pulumi.StringArrayInput
 	// whether to block the clients in the blacklist (up to first 256 macs)
 	BlockBlacklistClients pulumi.BoolPtrInput
@@ -1171,7 +1172,7 @@ func (o WlanOutput) AllowMdns() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.AllowMdns }).(pulumi.BoolOutput)
 }
 
-// only applicable when `limitBcast`==`tru`e, which allows SSDP
+// only applicable when `limitBcast`==`true`, which allows SSDP
 func (o WlanOutput) AllowSsdp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.AllowSsdp }).(pulumi.BoolOutput)
 }
@@ -1251,7 +1252,7 @@ func (o WlanOutput) BandSteerForceBand5() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.BoolOutput { return v.BandSteerForceBand5 }).(pulumi.BoolOutput)
 }
 
-// list of radios that the wlan should apply to
+// list of radios that the wlan should apply to. enum: `24`, `5`, `6`
 func (o WlanOutput) Bands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.StringArrayOutput { return v.Bands }).(pulumi.StringArrayOutput)
 }

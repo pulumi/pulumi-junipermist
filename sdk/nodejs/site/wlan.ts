@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         "5",
  *         "6",
  *     ],
+ *     vlanEnabled: true,
  *     vlanId: "143",
  *     wlanLimitUp: 10000,
  *     wlanLimitDown: 20000,
@@ -100,7 +101,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly allowMdns!: pulumi.Output<boolean>;
     /**
-     * only applicable when `limitBcast`==`tru`e, which allows SSDP
+     * only applicable when `limitBcast`==`true`, which allows SSDP
      */
     public readonly allowSsdp!: pulumi.Output<boolean>;
     /**
@@ -165,7 +166,7 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly bandSteerForceBand5!: pulumi.Output<boolean>;
     /**
-     * list of radios that the wlan should apply to
+     * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      */
     public readonly bands!: pulumi.Output<string[] | undefined>;
     /**
@@ -669,7 +670,7 @@ export interface WlanState {
      */
     allowMdns?: pulumi.Input<boolean>;
     /**
-     * only applicable when `limitBcast`==`tru`e, which allows SSDP
+     * only applicable when `limitBcast`==`true`, which allows SSDP
      */
     allowSsdp?: pulumi.Input<boolean>;
     /**
@@ -734,7 +735,7 @@ export interface WlanState {
      */
     bandSteerForceBand5?: pulumi.Input<boolean>;
     /**
-     * list of radios that the wlan should apply to
+     * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      */
     bands?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1030,7 +1031,7 @@ export interface WlanArgs {
      */
     allowMdns?: pulumi.Input<boolean>;
     /**
-     * only applicable when `limitBcast`==`tru`e, which allows SSDP
+     * only applicable when `limitBcast`==`true`, which allows SSDP
      */
     allowSsdp?: pulumi.Input<boolean>;
     /**
@@ -1095,7 +1096,7 @@ export interface WlanArgs {
      */
     bandSteerForceBand5?: pulumi.Input<boolean>;
     /**
-     * list of radios that the wlan should apply to
+     * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      */
     bands?: pulumi.Input<pulumi.Input<string>[]>;
     /**

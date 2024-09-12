@@ -5009,6 +5009,7 @@ func (o GatewayClusterNodeArrayOutput) Index(i pulumi.IntInput) GatewayClusterNo
 }
 
 type GatewayDhcpdConfig struct {
+	// Property key is the network name
 	Config map[string]GatewayDhcpdConfigConfig `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled *bool `pulumi:"enabled"`
@@ -5026,6 +5027,7 @@ type GatewayDhcpdConfigInput interface {
 }
 
 type GatewayDhcpdConfigArgs struct {
+	// Property key is the network name
 	Config GatewayDhcpdConfigConfigMapInput `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -5108,6 +5110,7 @@ func (o GatewayDhcpdConfigOutput) ToGatewayDhcpdConfigPtrOutputWithContext(ctx c
 	}).(GatewayDhcpdConfigPtrOutput)
 }
 
+// Property key is the network name
 func (o GatewayDhcpdConfigOutput) Config() GatewayDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfig) map[string]GatewayDhcpdConfigConfig { return v.Config }).(GatewayDhcpdConfigConfigMapOutput)
 }
@@ -5141,6 +5144,7 @@ func (o GatewayDhcpdConfigPtrOutput) Elem() GatewayDhcpdConfigOutput {
 	}).(GatewayDhcpdConfigOutput)
 }
 
+// Property key is the network name
 func (o GatewayDhcpdConfigPtrOutput) Config() GatewayDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v *GatewayDhcpdConfig) map[string]GatewayDhcpdConfigConfig {
 		if v == nil {
@@ -7873,7 +7877,7 @@ type GatewayOobIpConfig struct {
 	Type *string `pulumi:"type"`
 	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut *bool   `pulumi:"useMgmtVrfForHostOut"`
 	VlanId               *string `pulumi:"vlanId"`
 }
@@ -7902,7 +7906,7 @@ type GatewayOobIpConfigArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut pulumi.BoolPtrInput   `pulumi:"useMgmtVrfForHostOut"`
 	VlanId               pulumi.StringPtrInput `pulumi:"vlanId"`
 }
@@ -8014,7 +8018,7 @@ func (o GatewayOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o GatewayOobIpConfigOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayOobIpConfig) *bool { return v.UseMgmtVrfForHostOut }).(pulumi.BoolPtrOutput)
 }
@@ -8107,7 +8111,7 @@ func (o GatewayOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o GatewayOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayOobIpConfig) *bool {
 		if v == nil {
@@ -8490,7 +8494,7 @@ type GatewayPathPreferencesPath struct {
 	TargetIps []string `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
 	Type *string `pulumi:"type"`
-	// required when`type`==`tunnel`
+	// optional if `type`==`vpn`
 	WanName *string `pulumi:"wanName"`
 }
 
@@ -8523,7 +8527,7 @@ type GatewayPathPreferencesPathArgs struct {
 	TargetIps pulumi.StringArrayInput `pulumi:"targetIps"`
 	// enum: `local`, `tunnel`, `vpn`, `wan`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// required when`type`==`tunnel`
+	// optional if `type`==`vpn`
 	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
 
@@ -8619,7 +8623,7 @@ func (o GatewayPathPreferencesPathOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPathPreferencesPath) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// required when`type`==`tunnel`
+// optional if `type`==`vpn`
 func (o GatewayPathPreferencesPathOutput) WanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPathPreferencesPath) *string { return v.WanName }).(pulumi.StringPtrOutput)
 }
@@ -8645,6 +8649,17 @@ func (o GatewayPathPreferencesPathArrayOutput) Index(i pulumi.IntInput) GatewayP
 }
 
 type GatewayPortConfig struct {
+	// if `aggregated`==`true`. To disable LCP support for the AE interface
+	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
+	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+	AeIdx *string `pulumi:"aeIdx"`
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
+	Aggregated    *bool `pulumi:"aggregated"`
+	// if want to generate port up/down alarm, set it to true
+	Critical       *bool   `pulumi:"critical"`
 	Description    *string `pulumi:"description"`
 	DisableAutoneg *bool   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
@@ -8723,6 +8738,17 @@ type GatewayPortConfigInput interface {
 }
 
 type GatewayPortConfigArgs struct {
+	// if `aggregated`==`true`. To disable LCP support for the AE interface
+	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
+	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+	AeIdx pulumi.StringPtrInput `pulumi:"aeIdx"`
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
+	Aggregated    pulumi.BoolPtrInput `pulumi:"aggregated"`
+	// if want to generate port up/down alarm, set it to true
+	Critical       pulumi.BoolPtrInput   `pulumi:"critical"`
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	DisableAutoneg pulumi.BoolPtrInput   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
@@ -8838,6 +8864,32 @@ func (o GatewayPortConfigOutput) ToGatewayPortConfigOutput() GatewayPortConfigOu
 
 func (o GatewayPortConfigOutput) ToGatewayPortConfigOutputWithContext(ctx context.Context) GatewayPortConfigOutput {
 	return o
+}
+
+// if `aggregated`==`true`. To disable LCP support for the AE interface
+func (o GatewayPortConfigOutput) AeDisableLacp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.AeDisableLacp }).(pulumi.BoolPtrOutput)
+}
+
+// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+func (o GatewayPortConfigOutput) AeIdx() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *string { return v.AeIdx }).(pulumi.StringPtrOutput)
+}
+
+// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+func (o GatewayPortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewayPortConfigOutput) Aggregated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.Aggregated }).(pulumi.BoolPtrOutput)
+}
+
+// if want to generate port up/down alarm, set it to true
+func (o GatewayPortConfigOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
 }
 
 func (o GatewayPortConfigOutput) Description() pulumi.StringPtrOutput {
@@ -11955,8 +12007,10 @@ type GatewayTunnelConfigs struct {
 	//   * `provider`== `custom-ipsec`
 	LocalId *string `pulumi:"localId"`
 	// enum: `active-active`, `active-standby`
-	Mode    *string                      `pulumi:"mode"`
-	Primary *GatewayTunnelConfigsPrimary `pulumi:"primary"`
+	Mode *string `pulumi:"mode"`
+	// networks reachable via this tunnel
+	Networks []string                     `pulumi:"networks"`
+	Primary  *GatewayTunnelConfigsPrimary `pulumi:"primary"`
 	// Only if `provider`== `custom-ipsec`
 	Probe *GatewayTunnelConfigsProbe `pulumi:"probe"`
 	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
@@ -12002,8 +12056,10 @@ type GatewayTunnelConfigsArgs struct {
 	//   * `provider`== `custom-ipsec`
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
 	// enum: `active-active`, `active-standby`
-	Mode    pulumi.StringPtrInput               `pulumi:"mode"`
-	Primary GatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// networks reachable via this tunnel
+	Networks pulumi.StringArrayInput             `pulumi:"networks"`
+	Primary  GatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
 	// Only if `provider`== `custom-ipsec`
 	Probe GatewayTunnelConfigsProbePtrInput `pulumi:"probe"`
 	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
@@ -12111,6 +12167,11 @@ func (o GatewayTunnelConfigsOutput) LocalId() pulumi.StringPtrOutput {
 // enum: `active-active`, `active-standby`
 func (o GatewayTunnelConfigsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// networks reachable via this tunnel
+func (o GatewayTunnelConfigsOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigs) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
 func (o GatewayTunnelConfigsOutput) Primary() GatewayTunnelConfigsPrimaryPtrOutput {
@@ -14855,7 +14916,7 @@ func (o SwitchAclPolicyArrayOutput) Index(i pulumi.IntInput) SwitchAclPolicyOutp
 type SwitchAclPolicyAction struct {
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
-	DstTag *string `pulumi:"dstTag"`
+	DstTag string  `pulumi:"dstTag"`
 }
 
 // SwitchAclPolicyActionInput is an input type that accepts SwitchAclPolicyActionArgs and SwitchAclPolicyActionOutput values.
@@ -14872,7 +14933,7 @@ type SwitchAclPolicyActionInput interface {
 type SwitchAclPolicyActionArgs struct {
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput `pulumi:"action"`
-	DstTag pulumi.StringPtrInput `pulumi:"dstTag"`
+	DstTag pulumi.StringInput    `pulumi:"dstTag"`
 }
 
 func (SwitchAclPolicyActionArgs) ElementType() reflect.Type {
@@ -14931,8 +14992,8 @@ func (o SwitchAclPolicyActionOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclPolicyAction) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-func (o SwitchAclPolicyActionOutput) DstTag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwitchAclPolicyAction) *string { return v.DstTag }).(pulumi.StringPtrOutput)
+func (o SwitchAclPolicyActionOutput) DstTag() pulumi.StringOutput {
+	return o.ApplyT(func(v SwitchAclPolicyAction) string { return v.DstTag }).(pulumi.StringOutput)
 }
 
 type SwitchAclPolicyActionArrayOutput struct{ *pulumi.OutputState }
@@ -15466,6 +15527,7 @@ func (o SwitchDhcpSnoopingPtrOutput) Networks() pulumi.StringArrayOutput {
 }
 
 type SwitchDhcpdConfig struct {
+	// Property key is the network name
 	Config map[string]SwitchDhcpdConfigConfig `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled *bool `pulumi:"enabled"`
@@ -15483,6 +15545,7 @@ type SwitchDhcpdConfigInput interface {
 }
 
 type SwitchDhcpdConfigArgs struct {
+	// Property key is the network name
 	Config SwitchDhcpdConfigConfigMapInput `pulumi:"config"`
 	// if set to `true`, enable the DHCP server
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -15565,6 +15628,7 @@ func (o SwitchDhcpdConfigOutput) ToSwitchDhcpdConfigPtrOutputWithContext(ctx con
 	}).(SwitchDhcpdConfigPtrOutput)
 }
 
+// Property key is the network name
 func (o SwitchDhcpdConfigOutput) Config() SwitchDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfig) map[string]SwitchDhcpdConfigConfig { return v.Config }).(SwitchDhcpdConfigConfigMapOutput)
 }
@@ -15598,6 +15662,7 @@ func (o SwitchDhcpdConfigPtrOutput) Elem() SwitchDhcpdConfigOutput {
 	}).(SwitchDhcpdConfigOutput)
 }
 
+// Property key is the network name
 func (o SwitchDhcpdConfigPtrOutput) Config() SwitchDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v *SwitchDhcpdConfig) map[string]SwitchDhcpdConfigConfig {
 		if v == nil {
@@ -17295,7 +17360,7 @@ type SwitchOobIpConfig struct {
 	Type *string `pulumi:"type"`
 	// f supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut *bool `pulumi:"useMgmtVrfForHostOut"`
 }
 
@@ -17321,7 +17386,7 @@ type SwitchOobIpConfigArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// f supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
-	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut pulumi.BoolPtrInput `pulumi:"useMgmtVrfForHostOut"`
 }
 
@@ -17430,7 +17495,7 @@ func (o SwitchOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o SwitchOobIpConfigOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchOobIpConfig) *bool { return v.UseMgmtVrfForHostOut }).(pulumi.BoolPtrOutput)
 }
@@ -17517,7 +17582,7 @@ func (o SwitchOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 func (o SwitchOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SwitchOobIpConfig) *bool {
 		if v == nil {

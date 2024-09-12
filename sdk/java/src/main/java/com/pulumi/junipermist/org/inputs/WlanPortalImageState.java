@@ -16,14 +16,14 @@ public final class WlanPortalImageState extends com.pulumi.resources.ResourceArg
     public static final WlanPortalImageState Empty = new WlanPortalImageState();
 
     /**
-     * binary file
+     * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      * 
      */
     @Import(name="file")
     private @Nullable Output<String> file;
 
     /**
-     * @return binary file
+     * @return path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      * 
      */
     public Optional<Output<String>> file() {
@@ -37,9 +37,17 @@ public final class WlanPortalImageState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.orgId);
     }
 
+    /**
+     * Org WLAN ID
+     * 
+     */
     @Import(name="wlanId")
     private @Nullable Output<String> wlanId;
 
+    /**
+     * @return Org WLAN ID
+     * 
+     */
     public Optional<Output<String>> wlanId() {
         return Optional.ofNullable(this.wlanId);
     }
@@ -71,7 +79,7 @@ public final class WlanPortalImageState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param file binary file
+         * @param file path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
          * 
          * @return builder
          * 
@@ -82,7 +90,7 @@ public final class WlanPortalImageState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param file binary file
+         * @param file path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
          * 
          * @return builder
          * 
@@ -100,11 +108,23 @@ public final class WlanPortalImageState extends com.pulumi.resources.ResourceArg
             return orgId(Output.of(orgId));
         }
 
+        /**
+         * @param wlanId Org WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(@Nullable Output<String> wlanId) {
             $.wlanId = wlanId;
             return this;
         }
 
+        /**
+         * @param wlanId Org WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(String wlanId) {
             return wlanId(Output.of(wlanId));
         }

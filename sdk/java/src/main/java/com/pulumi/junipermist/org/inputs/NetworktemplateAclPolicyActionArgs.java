@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,11 +31,11 @@ public final class NetworktemplateAclPolicyActionArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.action);
     }
 
-    @Import(name="dstTag")
-    private @Nullable Output<String> dstTag;
+    @Import(name="dstTag", required=true)
+    private Output<String> dstTag;
 
-    public Optional<Output<String>> dstTag() {
-        return Optional.ofNullable(this.dstTag);
+    public Output<String> dstTag() {
+        return this.dstTag;
     }
 
     private NetworktemplateAclPolicyActionArgs() {}
@@ -83,7 +84,7 @@ public final class NetworktemplateAclPolicyActionArgs extends com.pulumi.resourc
             return action(Output.of(action));
         }
 
-        public Builder dstTag(@Nullable Output<String> dstTag) {
+        public Builder dstTag(Output<String> dstTag) {
             $.dstTag = dstTag;
             return this;
         }
@@ -93,6 +94,9 @@ public final class NetworktemplateAclPolicyActionArgs extends com.pulumi.resourc
         }
 
         public NetworktemplateAclPolicyActionArgs build() {
+            if ($.dstTag == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateAclPolicyActionArgs", "dstTag");
+            }
             return $;
         }
     }

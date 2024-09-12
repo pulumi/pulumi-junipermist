@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.WlanPortalTemplatePortalTemplate> PortalTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Site WLAN ID
+        /// Org WLAN ID
         /// </summary>
         [Output("wlanId")]
         public Output<string> WlanId { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanPortalTemplatePortalTemplateArgs> PortalTemplate { get; set; } = null!;
 
         /// <summary>
-        /// Site WLAN ID
+        /// Org WLAN ID
         /// </summary>
         [Input("wlanId", required: true)]
         public Input<string> WlanId { get; set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanPortalTemplatePortalTemplateGetArgs>? PortalTemplate { get; set; }
 
         /// <summary>
-        /// Site WLAN ID
+        /// Org WLAN ID
         /// </summary>
         [Input("wlanId")]
         public Input<string>? WlanId { get; set; }

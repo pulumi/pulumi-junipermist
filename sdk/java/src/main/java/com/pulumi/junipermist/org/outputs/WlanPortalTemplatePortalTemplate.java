@@ -226,6 +226,11 @@ public final class WlanPortalTemplatePortalTemplate {
      * 
      */
     private @Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales;
+    /**
+     * @return path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+     * 
+     */
+    private @Nullable String logo;
     private @Nullable String message;
     private @Nullable Boolean multiAuth;
     /**
@@ -788,6 +793,13 @@ public final class WlanPortalTemplatePortalTemplate {
     public Map<String,WlanPortalTemplatePortalTemplateLocales> locales() {
         return this.locales == null ? Map.of() : this.locales;
     }
+    /**
+     * @return path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+     * 
+     */
+    public Optional<String> logo() {
+        return Optional.ofNullable(this.logo);
+    }
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -1236,6 +1248,7 @@ public final class WlanPortalTemplatePortalTemplate {
         private @Nullable String field4label;
         private @Nullable Boolean field4required;
         private @Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales;
+        private @Nullable String logo;
         private @Nullable String message;
         private @Nullable Boolean multiAuth;
         private @Nullable Boolean name;
@@ -1360,6 +1373,7 @@ public final class WlanPortalTemplatePortalTemplate {
     	      this.field4label = defaults.field4label;
     	      this.field4required = defaults.field4required;
     	      this.locales = defaults.locales;
+    	      this.logo = defaults.logo;
     	      this.message = defaults.message;
     	      this.multiAuth = defaults.multiAuth;
     	      this.name = defaults.name;
@@ -1736,6 +1750,12 @@ public final class WlanPortalTemplatePortalTemplate {
         public Builder locales(@Nullable Map<String,WlanPortalTemplatePortalTemplateLocales> locales) {
 
             this.locales = locales;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logo(@Nullable String logo) {
+
+            this.logo = logo;
             return this;
         }
         @CustomType.Setter
@@ -2211,6 +2231,7 @@ public final class WlanPortalTemplatePortalTemplate {
             _resultValue.field4label = field4label;
             _resultValue.field4required = field4required;
             _resultValue.locales = locales;
+            _resultValue.logo = logo;
             _resultValue.message = message;
             _resultValue.multiAuth = multiAuth;
             _resultValue.name = name;

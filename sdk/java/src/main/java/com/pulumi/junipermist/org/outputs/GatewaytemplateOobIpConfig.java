@@ -44,7 +44,7 @@ public final class GatewaytemplateOobIpConfig {
      */
     private @Nullable Boolean useMgmtVrf;
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
@@ -94,7 +94,7 @@ public final class GatewaytemplateOobIpConfig {
         return Optional.ofNullable(this.useMgmtVrf);
     }
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired,
+     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Boolean> useMgmtVrfForHostOut() {

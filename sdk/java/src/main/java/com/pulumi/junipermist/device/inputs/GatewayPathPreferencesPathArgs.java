@@ -135,14 +135,14 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * required when`type`==`tunnel`
+     * optional if `type`==`vpn`
      * 
      */
     @Import(name="wanName")
     private @Nullable Output<String> wanName;
 
     /**
-     * @return required when`type`==`tunnel`
+     * @return optional if `type`==`vpn`
      * 
      */
     public Optional<Output<String>> wanName() {
@@ -362,7 +362,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param wanName required when`type`==`tunnel`
+         * @param wanName optional if `type`==`vpn`
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param wanName required when`type`==`tunnel`
+         * @param wanName optional if `type`==`vpn`
          * 
          * @return builder
          * 

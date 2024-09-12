@@ -13,6 +13,25 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayPortConfig
     {
+        /// <summary>
+        /// if `aggregated`==`true`. To disable LCP support for the AE interface
+        /// </summary>
+        public readonly bool? AeDisableLacp;
+        /// <summary>
+        /// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        /// </summary>
+        public readonly string? AeIdx;
+        /// <summary>
+        /// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
+        /// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
+        /// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// </summary>
+        public readonly bool? AeLacpForceUp;
+        public readonly bool? Aggregated;
+        /// <summary>
+        /// if want to generate port up/down alarm, set it to true
+        /// </summary>
+        public readonly bool? Critical;
         public readonly string? Description;
         public readonly bool? DisableAutoneg;
         /// <summary>
@@ -134,6 +153,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private GatewayPortConfig(
+            bool? aeDisableLacp,
+
+            string? aeIdx,
+
+            bool? aeLacpForceUp,
+
+            bool? aggregated,
+
+            bool? critical,
+
             string? description,
 
             bool? disableAutoneg,
@@ -204,6 +233,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string? wanType)
         {
+            AeDisableLacp = aeDisableLacp;
+            AeIdx = aeIdx;
+            AeLacpForceUp = aeLacpForceUp;
+            Aggregated = aggregated;
+            Critical = critical;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;

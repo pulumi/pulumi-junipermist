@@ -72,7 +72,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// required when`type`==`tunnel`
+        /// optional if `type`==`vpn`
         /// </summary>
         [Input("wanName")]
         public Input<string>? WanName { get; set; }

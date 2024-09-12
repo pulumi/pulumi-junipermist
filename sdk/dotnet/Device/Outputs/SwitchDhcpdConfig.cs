@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchDhcpdConfig
     {
+        /// <summary>
+        /// Property key is the network name
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.SwitchDhcpdConfigConfig>? Config;
         /// <summary>
         /// if set to `true`, enable the DHCP server

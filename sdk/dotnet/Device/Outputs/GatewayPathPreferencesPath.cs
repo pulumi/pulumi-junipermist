@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// required when`type`==`tunnel`
+        /// optional if `type`==`vpn`
         /// </summary>
         public readonly string? WanName;
 

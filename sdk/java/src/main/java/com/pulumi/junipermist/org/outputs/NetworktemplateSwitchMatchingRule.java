@@ -4,6 +4,8 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRuleIpConfig;
+import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRuleOobIpConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRulePortConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRulePortMirroring;
 import java.lang.String;
@@ -23,6 +25,11 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable List<String> additionalConfigCmds;
     /**
+     * @return In-Band Management interface configuration
+     * 
+     */
+    private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
+    /**
      * @return role to match
      * 
      */
@@ -34,6 +41,11 @@ public final class NetworktemplateSwitchMatchingRule {
     private @Nullable String matchType;
     private @Nullable String matchValue;
     private @Nullable String name;
+    /**
+     * @return Out-of-Band Management interface configuration
+     * 
+     */
+    private @Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig;
     /**
      * @return Propery key is the interface name or interface range
      * 
@@ -57,6 +69,13 @@ public final class NetworktemplateSwitchMatchingRule {
         return this.additionalConfigCmds == null ? List.of() : this.additionalConfigCmds;
     }
     /**
+     * @return In-Band Management interface configuration
+     * 
+     */
+    public Optional<NetworktemplateSwitchMatchingRuleIpConfig> ipConfig() {
+        return Optional.ofNullable(this.ipConfig);
+    }
+    /**
      * @return role to match
      * 
      */
@@ -75,6 +94,13 @@ public final class NetworktemplateSwitchMatchingRule {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Out-of-Band Management interface configuration
+     * 
+     */
+    public Optional<NetworktemplateSwitchMatchingRuleOobIpConfig> oobIpConfig() {
+        return Optional.ofNullable(this.oobIpConfig);
     }
     /**
      * @return Propery key is the interface name or interface range
@@ -102,20 +128,24 @@ public final class NetworktemplateSwitchMatchingRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> additionalConfigCmds;
+        private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
         private @Nullable String matchRole;
         private @Nullable String matchType;
         private @Nullable String matchValue;
         private @Nullable String name;
+        private @Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig;
         private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
         private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
         public Builder() {}
         public Builder(NetworktemplateSwitchMatchingRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalConfigCmds = defaults.additionalConfigCmds;
+    	      this.ipConfig = defaults.ipConfig;
     	      this.matchRole = defaults.matchRole;
     	      this.matchType = defaults.matchType;
     	      this.matchValue = defaults.matchValue;
     	      this.name = defaults.name;
+    	      this.oobIpConfig = defaults.oobIpConfig;
     	      this.portConfig = defaults.portConfig;
     	      this.portMirroring = defaults.portMirroring;
         }
@@ -128,6 +158,12 @@ public final class NetworktemplateSwitchMatchingRule {
         }
         public Builder additionalConfigCmds(String... additionalConfigCmds) {
             return additionalConfigCmds(List.of(additionalConfigCmds));
+        }
+        @CustomType.Setter
+        public Builder ipConfig(@Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig) {
+
+            this.ipConfig = ipConfig;
+            return this;
         }
         @CustomType.Setter
         public Builder matchRole(@Nullable String matchRole) {
@@ -154,6 +190,12 @@ public final class NetworktemplateSwitchMatchingRule {
             return this;
         }
         @CustomType.Setter
+        public Builder oobIpConfig(@Nullable NetworktemplateSwitchMatchingRuleOobIpConfig oobIpConfig) {
+
+            this.oobIpConfig = oobIpConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder portConfig(@Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig) {
 
             this.portConfig = portConfig;
@@ -168,10 +210,12 @@ public final class NetworktemplateSwitchMatchingRule {
         public NetworktemplateSwitchMatchingRule build() {
             final var _resultValue = new NetworktemplateSwitchMatchingRule();
             _resultValue.additionalConfigCmds = additionalConfigCmds;
+            _resultValue.ipConfig = ipConfig;
             _resultValue.matchRole = matchRole;
             _resultValue.matchType = matchType;
             _resultValue.matchValue = matchValue;
             _resultValue.name = name;
+            _resultValue.oobIpConfig = oobIpConfig;
             _resultValue.portConfig = portConfig;
             _resultValue.portMirroring = portMirroring;
             return _resultValue;

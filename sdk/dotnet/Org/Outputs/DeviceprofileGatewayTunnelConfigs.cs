@@ -45,6 +45,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// enum: `active-active`, `active-standby`
         /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// networks reachable via this tunnel
+        /// </summary>
+        public readonly ImmutableArray<string> Networks;
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsPrimary? Primary;
         /// <summary>
         /// Only if `provider`== `custom-ipsec`
@@ -89,6 +93,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? mode,
 
+            ImmutableArray<string> networks,
+
             Outputs.DeviceprofileGatewayTunnelConfigsPrimary? primary,
 
             Outputs.DeviceprofileGatewayTunnelConfigsProbe? probe,
@@ -111,6 +117,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             IpsecProposals = ipsecProposals;
             LocalId = localId;
             Mode = mode;
+            Networks = networks;
             Primary = primary;
             Probe = probe;
             Protocol = protocol;

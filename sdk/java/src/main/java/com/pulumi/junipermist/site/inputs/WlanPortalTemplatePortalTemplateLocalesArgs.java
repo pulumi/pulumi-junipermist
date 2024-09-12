@@ -1161,21 +1161,6 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         return Optional.ofNullable(this.tosText);
     }
 
-    /**
-     * label for Amazon auth button
-     * 
-     */
-    @Import(name="uthButtonAmazon")
-    private @Nullable Output<String> uthButtonAmazon;
-
-    /**
-     * @return label for Amazon auth button
-     * 
-     */
-    public Optional<Output<String>> uthButtonAmazon() {
-        return Optional.ofNullable(this.uthButtonAmazon);
-    }
-
     private WlanPortalTemplatePortalTemplateLocalesArgs() {}
 
     private WlanPortalTemplatePortalTemplateLocalesArgs(WlanPortalTemplatePortalTemplateLocalesArgs $) {
@@ -1273,7 +1258,6 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
         this.tosError = $.tosError;
         this.tosLink = $.tosLink;
         this.tosText = $.tosText;
-        this.uthButtonAmazon = $.uthButtonAmazon;
     }
 
     public static Builder builder() {
@@ -2870,27 +2854,6 @@ public final class WlanPortalTemplatePortalTemplateLocalesArgs extends com.pulum
          */
         public Builder tosText(String tosText) {
             return tosText(Output.of(tosText));
-        }
-
-        /**
-         * @param uthButtonAmazon label for Amazon auth button
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uthButtonAmazon(@Nullable Output<String> uthButtonAmazon) {
-            $.uthButtonAmazon = uthButtonAmazon;
-            return this;
-        }
-
-        /**
-         * @param uthButtonAmazon label for Amazon auth button
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uthButtonAmazon(String uthButtonAmazon) {
-            return uthButtonAmazon(Output.of(uthButtonAmazon));
         }
 
         public WlanPortalTemplatePortalTemplateLocalesArgs build() {

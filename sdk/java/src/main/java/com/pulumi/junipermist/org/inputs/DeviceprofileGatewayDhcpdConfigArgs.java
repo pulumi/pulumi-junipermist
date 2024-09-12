@@ -18,9 +18,17 @@ public final class DeviceprofileGatewayDhcpdConfigArgs extends com.pulumi.resour
 
     public static final DeviceprofileGatewayDhcpdConfigArgs Empty = new DeviceprofileGatewayDhcpdConfigArgs();
 
+    /**
+     * Property key is the network name
+     * 
+     */
     @Import(name="config")
     private @Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigArgs>> config;
 
+    /**
+     * @return Property key is the network name
+     * 
+     */
     public Optional<Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigArgs>>> config() {
         return Optional.ofNullable(this.config);
     }
@@ -65,11 +73,23 @@ public final class DeviceprofileGatewayDhcpdConfigArgs extends com.pulumi.resour
             $ = new DeviceprofileGatewayDhcpdConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param config Property key is the network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(@Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigArgs>> config) {
             $.config = config;
             return this;
         }
 
+        /**
+         * @param config Property key is the network name
+         * 
+         * @return builder
+         * 
+         */
         public Builder config(Map<String,DeviceprofileGatewayDhcpdConfigConfigArgs> config) {
             return config(Output.of(config));
         }

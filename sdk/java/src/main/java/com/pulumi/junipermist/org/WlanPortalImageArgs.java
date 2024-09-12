@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,32 +15,40 @@ public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs
     public static final WlanPortalImageArgs Empty = new WlanPortalImageArgs();
 
     /**
-     * binary file
+     * path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      * 
      */
     @Import(name="file", required=true)
     private Output<String> file;
 
     /**
-     * @return binary file
+     * @return path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
      * 
      */
     public Output<String> file() {
         return this.file;
     }
 
-    @Import(name="orgId")
-    private @Nullable Output<String> orgId;
+    @Import(name="orgId", required=true)
+    private Output<String> orgId;
 
-    public Optional<Output<String>> orgId() {
-        return Optional.ofNullable(this.orgId);
+    public Output<String> orgId() {
+        return this.orgId;
     }
 
-    @Import(name="wlanId")
-    private @Nullable Output<String> wlanId;
+    /**
+     * Org WLAN ID
+     * 
+     */
+    @Import(name="wlanId", required=true)
+    private Output<String> wlanId;
 
-    public Optional<Output<String>> wlanId() {
-        return Optional.ofNullable(this.wlanId);
+    /**
+     * @return Org WLAN ID
+     * 
+     */
+    public Output<String> wlanId() {
+        return this.wlanId;
     }
 
     private WlanPortalImageArgs() {}
@@ -72,7 +78,7 @@ public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param file binary file
+         * @param file path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
          * 
          * @return builder
          * 
@@ -83,7 +89,7 @@ public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param file binary file
+         * @param file path to the background image file. File must be a `jpeg`, `jpg` or `png` image`
          * 
          * @return builder
          * 
@@ -92,7 +98,7 @@ public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs
             return file(Output.of(file));
         }
 
-        public Builder orgId(@Nullable Output<String> orgId) {
+        public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
         }
@@ -101,11 +107,23 @@ public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs
             return orgId(Output.of(orgId));
         }
 
-        public Builder wlanId(@Nullable Output<String> wlanId) {
+        /**
+         * @param wlanId Org WLAN ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wlanId(Output<String> wlanId) {
             $.wlanId = wlanId;
             return this;
         }
 
+        /**
+         * @param wlanId Org WLAN ID
+         * 
+         * @return builder
+         * 
+         */
         public Builder wlanId(String wlanId) {
             return wlanId(Output.of(wlanId));
         }
@@ -113,6 +131,12 @@ public final class WlanPortalImageArgs extends com.pulumi.resources.ResourceArgs
         public WlanPortalImageArgs build() {
             if ($.file == null) {
                 throw new MissingRequiredPropertyException("WlanPortalImageArgs", "file");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("WlanPortalImageArgs", "orgId");
+            }
+            if ($.wlanId == null) {
+                throw new MissingRequiredPropertyException("WlanPortalImageArgs", "wlanId");
             }
             return $;
         }

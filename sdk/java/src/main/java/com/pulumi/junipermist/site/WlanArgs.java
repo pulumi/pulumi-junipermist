@@ -133,14 +133,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * only applicable when `limit_bcast`==`tru`e, which allows SSDP
+     * only applicable when `limit_bcast`==`true`, which allows SSDP
      * 
      */
     @Import(name="allowSsdp")
     private @Nullable Output<Boolean> allowSsdp;
 
     /**
-     * @return only applicable when `limit_bcast`==`tru`e, which allows SSDP
+     * @return only applicable when `limit_bcast`==`true`, which allows SSDP
      * 
      */
     public Optional<Output<Boolean>> allowSsdp() {
@@ -368,14 +368,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of radios that the wlan should apply to
+     * list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      * 
      */
     @Import(name="bands")
     private @Nullable Output<List<String>> bands;
 
     /**
-     * @return list of radios that the wlan should apply to
+     * @return list of radios that the wlan should apply to. enum: `24`, `5`, `6`
      * 
      */
     public Optional<Output<List<String>>> bands() {
@@ -1532,7 +1532,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSsdp only applicable when `limit_bcast`==`tru`e, which allows SSDP
+         * @param allowSsdp only applicable when `limit_bcast`==`true`, which allows SSDP
          * 
          * @return builder
          * 
@@ -1543,7 +1543,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSsdp only applicable when `limit_bcast`==`tru`e, which allows SSDP
+         * @param allowSsdp only applicable when `limit_bcast`==`true`, which allows SSDP
          * 
          * @return builder
          * 
@@ -1878,7 +1878,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bands list of radios that the wlan should apply to
+         * @param bands list of radios that the wlan should apply to. enum: `24`, `5`, `6`
          * 
          * @return builder
          * 
@@ -1889,7 +1889,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bands list of radios that the wlan should apply to
+         * @param bands list of radios that the wlan should apply to. enum: `24`, `5`, `6`
          * 
          * @return builder
          * 
@@ -1899,7 +1899,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bands list of radios that the wlan should apply to
+         * @param bands list of radios that the wlan should apply to. enum: `24`, `5`, `6`
          * 
          * @return builder
          * 

@@ -5,6 +5,8 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRuleIpConfigArgs;
+import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRuleOobIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRulePortConfigArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateSwitchMatchingRulePortMirroringArgs;
 import java.lang.String;
@@ -36,6 +38,21 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
         return Optional.ofNullable(this.additionalConfigCmds);
+    }
+
+    /**
+     * In-Band Management interface configuration
+     * 
+     */
+    @Import(name="ipConfig")
+    private @Nullable Output<NetworktemplateSwitchMatchingRuleIpConfigArgs> ipConfig;
+
+    /**
+     * @return In-Band Management interface configuration
+     * 
+     */
+    public Optional<Output<NetworktemplateSwitchMatchingRuleIpConfigArgs>> ipConfig() {
+        return Optional.ofNullable(this.ipConfig);
     }
 
     /**
@@ -83,6 +100,21 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
+     * Out-of-Band Management interface configuration
+     * 
+     */
+    @Import(name="oobIpConfig")
+    private @Nullable Output<NetworktemplateSwitchMatchingRuleOobIpConfigArgs> oobIpConfig;
+
+    /**
+     * @return Out-of-Band Management interface configuration
+     * 
+     */
+    public Optional<Output<NetworktemplateSwitchMatchingRuleOobIpConfigArgs>> oobIpConfig() {
+        return Optional.ofNullable(this.oobIpConfig);
+    }
+
+    /**
      * Propery key is the interface name or interface range
      * 
      */
@@ -118,10 +150,12 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
 
     private NetworktemplateSwitchMatchingRuleArgs(NetworktemplateSwitchMatchingRuleArgs $) {
         this.additionalConfigCmds = $.additionalConfigCmds;
+        this.ipConfig = $.ipConfig;
         this.matchRole = $.matchRole;
         this.matchType = $.matchType;
         this.matchValue = $.matchValue;
         this.name = $.name;
+        this.oobIpConfig = $.oobIpConfig;
         this.portConfig = $.portConfig;
         this.portMirroring = $.portMirroring;
     }
@@ -182,6 +216,27 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
+         * @param ipConfig In-Band Management interface configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipConfig(@Nullable Output<NetworktemplateSwitchMatchingRuleIpConfigArgs> ipConfig) {
+            $.ipConfig = ipConfig;
+            return this;
+        }
+
+        /**
+         * @param ipConfig In-Band Management interface configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipConfig(NetworktemplateSwitchMatchingRuleIpConfigArgs ipConfig) {
+            return ipConfig(Output.of(ipConfig));
+        }
+
+        /**
          * @param matchRole role to match
          * 
          * @return builder
@@ -239,6 +294,27 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param oobIpConfig Out-of-Band Management interface configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oobIpConfig(@Nullable Output<NetworktemplateSwitchMatchingRuleOobIpConfigArgs> oobIpConfig) {
+            $.oobIpConfig = oobIpConfig;
+            return this;
+        }
+
+        /**
+         * @param oobIpConfig Out-of-Band Management interface configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oobIpConfig(NetworktemplateSwitchMatchingRuleOobIpConfigArgs oobIpConfig) {
+            return oobIpConfig(Output.of(oobIpConfig));
         }
 
         /**

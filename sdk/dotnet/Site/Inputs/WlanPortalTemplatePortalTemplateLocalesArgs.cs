@@ -477,12 +477,6 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("tosText")]
         public Input<string>? TosText { get; set; }
 
-        /// <summary>
-        /// label for Amazon auth button
-        /// </summary>
-        [Input("uthButtonAmazon")]
-        public Input<string>? UthButtonAmazon { get; set; }
-
         public WlanPortalTemplatePortalTemplateLocalesArgs()
         {
         }

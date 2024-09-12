@@ -185,6 +185,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   `zh-Hans`, `zh-Hant`
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.WlanPortalTemplatePortalTemplateLocales>? Locales;
+        /// <summary>
+        /// path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
+        /// </summary>
+        public readonly string? Logo;
         public readonly string? Message;
         public readonly bool? MultiAuth;
         /// <summary>
@@ -495,6 +499,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableDictionary<string, Outputs.WlanPortalTemplatePortalTemplateLocales>? locales,
 
+            string? logo,
+
             string? message,
 
             bool? multiAuth,
@@ -686,6 +692,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Field4label = field4label;
             Field4required = field4required;
             Locales = locales;
+            Logo = logo;
             Message = message;
             MultiAuth = multiAuth;
             Name = name;
