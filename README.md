@@ -7,7 +7,7 @@ The Juniper Mist Resource Provider lets you manage Juniper Mist resources.
 This package is available for several languages/platforms:
 
 - JavaScript/TypeScript: [`@pulumi/juniper-mist`](https://www.npmjs.com/package/@pulumi/juniper-mist)
-- Python: [`pulumi-juniper-mist`](https://pypi.org/project/pulumi-junipermist/)
+- Python: [`pulumi-juniper-mist`](https://pypi.org/project/pulumi-juniper-mist/)
 - Go: [`github.com/pulumi/pulumi-juniper-mist/sdk/go/junipermist`](https://pkg.go.dev/github.com/pulumi/pulumi-junipermist/sdk/go/junipermist)
 - .NET: [`Pulumi.JuniperMist`](https://www.nuget.org/packages/Pulumi.JuniperMist)
 
