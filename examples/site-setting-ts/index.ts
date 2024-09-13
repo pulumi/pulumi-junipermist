@@ -17,8 +17,8 @@ new junipermist.site.Setting("site-setting", {
       customApps: [
         {
           hostnames: ["example.com"],
+          name: "customTestApp",
           protocol: "http",
-          url: "example.com",
         },
       ],
     },
