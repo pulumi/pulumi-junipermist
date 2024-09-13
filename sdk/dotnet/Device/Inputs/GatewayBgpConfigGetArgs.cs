@@ -114,13 +114,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? NoReadvertiseToOverlay { get; set; }
 
         /// <summary>
+        /// if `type`==`tunnel`
+        /// </summary>
+        [Input("tunnelName")]
+        public Input<string>? TunnelName { get; set; }
+
+        /// <summary>
         /// enum: `external`, `internal`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// network name. enum: `lan`, `vpn`, `wan`
+        /// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
         /// </summary>
         [Input("via")]
         public Input<string>? Via { get; set; }

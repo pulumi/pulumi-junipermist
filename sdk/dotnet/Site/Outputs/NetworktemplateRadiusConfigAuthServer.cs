@@ -29,6 +29,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// whether to require Message-Authenticator in requests
+        /// </summary>
+        public readonly bool? RequireMessageAuthenticator;
+        /// <summary>
         /// secret of RADIUS server
         /// </summary>
         public readonly string Secret;
@@ -47,6 +51,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             int? port,
 
+            bool? requireMessageAuthenticator,
+
             string secret)
         {
             Host = host;
@@ -55,6 +61,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             KeywrapKek = keywrapKek;
             KeywrapMack = keywrapMack;
             Port = port;
+            RequireMessageAuthenticator = requireMessageAuthenticator;
             Secret = secret;
         }
     }

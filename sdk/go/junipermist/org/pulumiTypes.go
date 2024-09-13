@@ -3984,9 +3984,11 @@ type DeviceprofileGatewayBgpConfig struct {
 	Networks []string `pulumi:"networks"`
 	// by default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
+	// if `type`==`tunnel`
+	TunnelName *string `pulumi:"tunnelName"`
 	// enum: `external`, `internal`
 	Type *string `pulumi:"type"`
-	// network name. enum: `lan`, `vpn`, `wan`
+	// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
 	Via     *string `pulumi:"via"`
 	VpnName *string `pulumi:"vpnName"`
 	// if `via`==`wan`
@@ -4035,9 +4037,11 @@ type DeviceprofileGatewayBgpConfigArgs struct {
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// by default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
+	// if `type`==`tunnel`
+	TunnelName pulumi.StringPtrInput `pulumi:"tunnelName"`
 	// enum: `external`, `internal`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// network name. enum: `lan`, `vpn`, `wan`
+	// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
 	Via     pulumi.StringPtrInput `pulumi:"via"`
 	VpnName pulumi.StringPtrInput `pulumi:"vpnName"`
 	// if `via`==`wan`
@@ -4178,12 +4182,17 @@ func (o DeviceprofileGatewayBgpConfigOutput) NoReadvertiseToOverlay() pulumi.Boo
 	return o.ApplyT(func(v DeviceprofileGatewayBgpConfig) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
 }
 
+// if `type`==`tunnel`
+func (o DeviceprofileGatewayBgpConfigOutput) TunnelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayBgpConfig) *string { return v.TunnelName }).(pulumi.StringPtrOutput)
+}
+
 // enum: `external`, `internal`
 func (o DeviceprofileGatewayBgpConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayBgpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// network name. enum: `lan`, `vpn`, `wan`
+// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
 func (o DeviceprofileGatewayBgpConfigOutput) Via() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayBgpConfig) *string { return v.Via }).(pulumi.StringPtrOutput)
 }
@@ -11346,11 +11355,9 @@ func (o DeviceprofileGatewayTunnelConfigsMapOutput) MapIndex(k pulumi.StringInpu
 }
 
 type DeviceprofileGatewayTunnelConfigsAutoProvision struct {
-	Enable  *bool                                                  `pulumi:"enable"`
-	Latlng  *DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng  `pulumi:"latlng"`
-	Primary *DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary `pulumi:"primary"`
-	// enum: `APAC`, `Americas`, `EMEA`, `auto`
-	Region    *string                                                  `pulumi:"region"`
+	Enable    *bool                                                    `pulumi:"enable"`
+	Latlng    *DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng    `pulumi:"latlng"`
+	Primary   *DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary   `pulumi:"primary"`
 	Secondary *DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary `pulumi:"secondary"`
 }
 
@@ -11366,11 +11373,9 @@ type DeviceprofileGatewayTunnelConfigsAutoProvisionInput interface {
 }
 
 type DeviceprofileGatewayTunnelConfigsAutoProvisionArgs struct {
-	Enable  pulumi.BoolPtrInput                                           `pulumi:"enable"`
-	Latlng  DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngPtrInput  `pulumi:"latlng"`
-	Primary DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryPtrInput `pulumi:"primary"`
-	// enum: `APAC`, `Americas`, `EMEA`, `auto`
-	Region    pulumi.StringPtrInput                                           `pulumi:"region"`
+	Enable    pulumi.BoolPtrInput                                             `pulumi:"enable"`
+	Latlng    DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngPtrInput    `pulumi:"latlng"`
+	Primary   DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryPtrInput   `pulumi:"primary"`
 	Secondary DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryPtrInput `pulumi:"secondary"`
 }
 
@@ -11467,11 +11472,6 @@ func (o DeviceprofileGatewayTunnelConfigsAutoProvisionOutput) Primary() Devicepr
 	}).(DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryPtrOutput)
 }
 
-// enum: `APAC`, `Americas`, `EMEA`, `auto`
-func (o DeviceprofileGatewayTunnelConfigsAutoProvisionOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsAutoProvision) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
 func (o DeviceprofileGatewayTunnelConfigsAutoProvisionOutput) Secondary() DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayTunnelConfigsAutoProvision) *DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary {
 		return v.Secondary
@@ -11527,16 +11527,6 @@ func (o DeviceprofileGatewayTunnelConfigsAutoProvisionPtrOutput) Primary() Devic
 		}
 		return v.Primary
 	}).(DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryPtrOutput)
-}
-
-// enum: `APAC`, `Americas`, `EMEA`, `auto`
-func (o DeviceprofileGatewayTunnelConfigsAutoProvisionPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGatewayTunnelConfigsAutoProvision) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Region
-	}).(pulumi.StringPtrOutput)
 }
 
 func (o DeviceprofileGatewayTunnelConfigsAutoProvisionPtrOutput) Secondary() DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryPtrOutput {
@@ -13953,9 +13943,11 @@ type GatewaytemplateBgpConfig struct {
 	Networks []string `pulumi:"networks"`
 	// by default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
+	// if `type`==`tunnel`
+	TunnelName *string `pulumi:"tunnelName"`
 	// enum: `external`, `internal`
 	Type *string `pulumi:"type"`
-	// network name. enum: `lan`, `vpn`, `wan`
+	// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
 	Via     *string `pulumi:"via"`
 	VpnName *string `pulumi:"vpnName"`
 	// if `via`==`wan`
@@ -14004,9 +13996,11 @@ type GatewaytemplateBgpConfigArgs struct {
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// by default, we'll re-advertise all learned BGP routers toward overlay
 	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
+	// if `type`==`tunnel`
+	TunnelName pulumi.StringPtrInput `pulumi:"tunnelName"`
 	// enum: `external`, `internal`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// network name. enum: `lan`, `vpn`, `wan`
+	// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
 	Via     pulumi.StringPtrInput `pulumi:"via"`
 	VpnName pulumi.StringPtrInput `pulumi:"vpnName"`
 	// if `via`==`wan`
@@ -14145,12 +14139,17 @@ func (o GatewaytemplateBgpConfigOutput) NoReadvertiseToOverlay() pulumi.BoolPtrO
 	return o.ApplyT(func(v GatewaytemplateBgpConfig) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
 }
 
+// if `type`==`tunnel`
+func (o GatewaytemplateBgpConfigOutput) TunnelName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateBgpConfig) *string { return v.TunnelName }).(pulumi.StringPtrOutput)
+}
+
 // enum: `external`, `internal`
 func (o GatewaytemplateBgpConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateBgpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// network name. enum: `lan`, `vpn`, `wan`
+// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
 func (o GatewaytemplateBgpConfigOutput) Via() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateBgpConfig) *string { return v.Via }).(pulumi.StringPtrOutput)
 }
@@ -21289,11 +21288,9 @@ func (o GatewaytemplateTunnelConfigsMapOutput) MapIndex(k pulumi.StringInput) Ga
 }
 
 type GatewaytemplateTunnelConfigsAutoProvision struct {
-	Enable  *bool                                             `pulumi:"enable"`
-	Latlng  *GatewaytemplateTunnelConfigsAutoProvisionLatlng  `pulumi:"latlng"`
-	Primary *GatewaytemplateTunnelConfigsAutoProvisionPrimary `pulumi:"primary"`
-	// enum: `APAC`, `Americas`, `EMEA`, `auto`
-	Region    *string                                             `pulumi:"region"`
+	Enable    *bool                                               `pulumi:"enable"`
+	Latlng    *GatewaytemplateTunnelConfigsAutoProvisionLatlng    `pulumi:"latlng"`
+	Primary   *GatewaytemplateTunnelConfigsAutoProvisionPrimary   `pulumi:"primary"`
 	Secondary *GatewaytemplateTunnelConfigsAutoProvisionSecondary `pulumi:"secondary"`
 }
 
@@ -21309,11 +21306,9 @@ type GatewaytemplateTunnelConfigsAutoProvisionInput interface {
 }
 
 type GatewaytemplateTunnelConfigsAutoProvisionArgs struct {
-	Enable  pulumi.BoolPtrInput                                      `pulumi:"enable"`
-	Latlng  GatewaytemplateTunnelConfigsAutoProvisionLatlngPtrInput  `pulumi:"latlng"`
-	Primary GatewaytemplateTunnelConfigsAutoProvisionPrimaryPtrInput `pulumi:"primary"`
-	// enum: `APAC`, `Americas`, `EMEA`, `auto`
-	Region    pulumi.StringPtrInput                                      `pulumi:"region"`
+	Enable    pulumi.BoolPtrInput                                        `pulumi:"enable"`
+	Latlng    GatewaytemplateTunnelConfigsAutoProvisionLatlngPtrInput    `pulumi:"latlng"`
+	Primary   GatewaytemplateTunnelConfigsAutoProvisionPrimaryPtrInput   `pulumi:"primary"`
 	Secondary GatewaytemplateTunnelConfigsAutoProvisionSecondaryPtrInput `pulumi:"secondary"`
 }
 
@@ -21410,11 +21405,6 @@ func (o GatewaytemplateTunnelConfigsAutoProvisionOutput) Primary() Gatewaytempla
 	}).(GatewaytemplateTunnelConfigsAutoProvisionPrimaryPtrOutput)
 }
 
-// enum: `APAC`, `Americas`, `EMEA`, `auto`
-func (o GatewaytemplateTunnelConfigsAutoProvisionOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateTunnelConfigsAutoProvision) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
 func (o GatewaytemplateTunnelConfigsAutoProvisionOutput) Secondary() GatewaytemplateTunnelConfigsAutoProvisionSecondaryPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateTunnelConfigsAutoProvision) *GatewaytemplateTunnelConfigsAutoProvisionSecondary {
 		return v.Secondary
@@ -21470,16 +21460,6 @@ func (o GatewaytemplateTunnelConfigsAutoProvisionPtrOutput) Primary() Gatewaytem
 		}
 		return v.Primary
 	}).(GatewaytemplateTunnelConfigsAutoProvisionPrimaryPtrOutput)
-}
-
-// enum: `APAC`, `Americas`, `EMEA`, `auto`
-func (o GatewaytemplateTunnelConfigsAutoProvisionPtrOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewaytemplateTunnelConfigsAutoProvision) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Region
-	}).(pulumi.StringPtrOutput)
 }
 
 func (o GatewaytemplateTunnelConfigsAutoProvisionPtrOutput) Secondary() GatewaytemplateTunnelConfigsAutoProvisionSecondaryPtrOutput {
@@ -27609,6 +27589,8 @@ type NetworktemplatePortUsages struct {
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
+	// Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+	MacAuthPreferred *bool `pulumi:"macAuthPreferred"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 	MacAuthProtocol *string `pulumi:"macAuthProtocol"`
 	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
@@ -27629,12 +27611,14 @@ type NetworktemplatePortUsages struct {
 	PortNetwork *string `pulumi:"portNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
 	ReauthInterval *int `pulumi:"reauthInterval"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-	RejectedNetwork *string `pulumi:"rejectedNetwork"`
 	// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 	ResetDefaultWhen *string `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
 	Rules []NetworktemplatePortUsagesRule `pulumi:"rules"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
 	Speed *string `pulumi:"speed"`
 	// Switch storm control
@@ -27693,6 +27677,8 @@ type NetworktemplatePortUsagesArgs struct {
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
+	// Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+	MacAuthPreferred pulumi.BoolPtrInput `pulumi:"macAuthPreferred"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 	MacAuthProtocol pulumi.StringPtrInput `pulumi:"macAuthProtocol"`
 	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
@@ -27713,12 +27699,14 @@ type NetworktemplatePortUsagesArgs struct {
 	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
 	ReauthInterval pulumi.IntPtrInput `pulumi:"reauthInterval"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-	RejectedNetwork pulumi.StringPtrInput `pulumi:"rejectedNetwork"`
 	// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 	ResetDefaultWhen pulumi.StringPtrInput `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
 	Rules NetworktemplatePortUsagesRuleArrayInput `pulumi:"rules"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// Switch storm control
@@ -27861,6 +27849,11 @@ func (o NetworktemplatePortUsagesOutput) MacAuthOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.MacAuthOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+func (o NetworktemplatePortUsagesOutput) MacAuthPreferred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.MacAuthPreferred }).(pulumi.BoolPtrOutput)
+}
+
 // Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 func (o NetworktemplatePortUsagesOutput) MacAuthProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.MacAuthProtocol }).(pulumi.StringPtrOutput)
@@ -27911,11 +27904,6 @@ func (o NetworktemplatePortUsagesOutput) ReauthInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *int { return v.ReauthInterval }).(pulumi.IntPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-func (o NetworktemplatePortUsagesOutput) RejectedNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.RejectedNetwork }).(pulumi.StringPtrOutput)
-}
-
 // Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 func (o NetworktemplatePortUsagesOutput) ResetDefaultWhen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ResetDefaultWhen }).(pulumi.StringPtrOutput)
@@ -27924,6 +27912,16 @@ func (o NetworktemplatePortUsagesOutput) ResetDefaultWhen() pulumi.StringPtrOutp
 // Only if `mode`==`dynamic`
 func (o NetworktemplatePortUsagesOutput) Rules() NetworktemplatePortUsagesRuleArrayOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) []NetworktemplatePortUsagesRule { return v.Rules }).(NetworktemplatePortUsagesRuleArrayOutput)
+}
+
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+func (o NetworktemplatePortUsagesOutput) ServerFailNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ServerFailNetwork }).(pulumi.StringPtrOutput)
+}
+
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+func (o NetworktemplatePortUsagesOutput) ServerRejectNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ServerRejectNetwork }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
@@ -28753,6 +28751,8 @@ type NetworktemplateRadiusConfigAuthServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port *int `pulumi:"port"`
+	// whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -28778,6 +28778,8 @@ type NetworktemplateRadiusConfigAuthServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -28858,6 +28860,11 @@ func (o NetworktemplateRadiusConfigAuthServerOutput) KeywrapMack() pulumi.String
 // Auth port of RADIUS server
 func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// whether to require Message-Authenticator in requests
+func (o NetworktemplateRadiusConfigAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
 // secret of RADIUS server
@@ -33936,7 +33943,8 @@ type NetworktemplateSwitchMgmt struct {
 	// the rollback timer for commit confirmed
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
 	// Enable to provide the FQDN with DHCP option 81
-	DhcpOptionFqdn *bool `pulumi:"dhcpOptionFqdn"`
+	DhcpOptionFqdn      *bool `pulumi:"dhcpOptionFqdn"`
+	DisableOobDownAlarm *bool `pulumi:"disableOobDownAlarm"`
 	// Property key is the user name. For Local user authentication
 	LocalAccounts   map[string]NetworktemplateSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
 	MxedgeProxyHost *string                                           `pulumi:"mxedgeProxyHost"`
@@ -33972,7 +33980,8 @@ type NetworktemplateSwitchMgmtArgs struct {
 	// the rollback timer for commit confirmed
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
 	// Enable to provide the FQDN with DHCP option 81
-	DhcpOptionFqdn pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
+	DhcpOptionFqdn      pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
+	DisableOobDownAlarm pulumi.BoolPtrInput `pulumi:"disableOobDownAlarm"`
 	// Property key is the user name. For Local user authentication
 	LocalAccounts   NetworktemplateSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
 	MxedgeProxyHost pulumi.StringPtrInput                          `pulumi:"mxedgeProxyHost"`
@@ -34089,6 +34098,10 @@ func (o NetworktemplateSwitchMgmtOutput) DhcpOptionFqdn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.DhcpOptionFqdn }).(pulumi.BoolPtrOutput)
 }
 
+func (o NetworktemplateSwitchMgmtOutput) DisableOobDownAlarm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.DisableOobDownAlarm }).(pulumi.BoolPtrOutput)
+}
+
 // Property key is the user name. For Local user authentication
 func (o NetworktemplateSwitchMgmtOutput) LocalAccounts() NetworktemplateSwitchMgmtLocalAccountsMapOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) map[string]NetworktemplateSwitchMgmtLocalAccounts {
@@ -34195,6 +34208,15 @@ func (o NetworktemplateSwitchMgmtPtrOutput) DhcpOptionFqdn() pulumi.BoolPtrOutpu
 			return nil
 		}
 		return v.DhcpOptionFqdn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NetworktemplateSwitchMgmtPtrOutput) DisableOobDownAlarm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOobDownAlarm
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -40120,13 +40142,19 @@ type SettingMistNac struct {
 	Cacerts []string `pulumi:"cacerts"`
 	// use this IDP when no explicit realm present in the incoming username/CN OR when no IDP is explicitly mapped to the incoming realm.
 	DefaultIdpId *string `pulumi:"defaultIdpId"`
+	// to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+	DisableRsaeAlgorithms *bool `pulumi:"disableRsaeAlgorithms"`
 	// eap ssl security level
 	// see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
 	EapSslSecurityLevel *int `pulumi:"eapSslSecurityLevel"`
 	// By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
 	// For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
-	EuOnly *bool               `pulumi:"euOnly"`
-	Idps   []SettingMistNacIdp `pulumi:"idps"`
+	EuOnly *bool `pulumi:"euOnly"`
+	// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+	IdpMachineCertLookupField *string `pulumi:"idpMachineCertLookupField"`
+	// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+	IdpUserCertLookupField *string             `pulumi:"idpUserCertLookupField"`
+	Idps                   []SettingMistNacIdp `pulumi:"idps"`
 	// radius server cert to be presented in EAP TLS
 	ServerCert *SettingMistNacServerCert `pulumi:"serverCert"`
 	// by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
@@ -40153,13 +40181,19 @@ type SettingMistNacArgs struct {
 	Cacerts pulumi.StringArrayInput `pulumi:"cacerts"`
 	// use this IDP when no explicit realm present in the incoming username/CN OR when no IDP is explicitly mapped to the incoming realm.
 	DefaultIdpId pulumi.StringPtrInput `pulumi:"defaultIdpId"`
+	// to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+	DisableRsaeAlgorithms pulumi.BoolPtrInput `pulumi:"disableRsaeAlgorithms"`
 	// eap ssl security level
 	// see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
 	EapSslSecurityLevel pulumi.IntPtrInput `pulumi:"eapSslSecurityLevel"`
 	// By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
 	// For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
-	EuOnly pulumi.BoolPtrInput         `pulumi:"euOnly"`
-	Idps   SettingMistNacIdpArrayInput `pulumi:"idps"`
+	EuOnly pulumi.BoolPtrInput `pulumi:"euOnly"`
+	// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+	IdpMachineCertLookupField pulumi.StringPtrInput `pulumi:"idpMachineCertLookupField"`
+	// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+	IdpUserCertLookupField pulumi.StringPtrInput       `pulumi:"idpUserCertLookupField"`
+	Idps                   SettingMistNacIdpArrayInput `pulumi:"idps"`
 	// radius server cert to be presented in EAP TLS
 	ServerCert SettingMistNacServerCertPtrInput `pulumi:"serverCert"`
 	// by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
@@ -40257,6 +40291,11 @@ func (o SettingMistNacOutput) DefaultIdpId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *string { return v.DefaultIdpId }).(pulumi.StringPtrOutput)
 }
 
+// to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+func (o SettingMistNacOutput) DisableRsaeAlgorithms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingMistNac) *bool { return v.DisableRsaeAlgorithms }).(pulumi.BoolPtrOutput)
+}
+
 // eap ssl security level
 // see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
 func (o SettingMistNacOutput) EapSslSecurityLevel() pulumi.IntPtrOutput {
@@ -40267,6 +40306,16 @@ func (o SettingMistNacOutput) EapSslSecurityLevel() pulumi.IntPtrOutput {
 // For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
 func (o SettingMistNacOutput) EuOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingMistNac) *bool { return v.EuOnly }).(pulumi.BoolPtrOutput)
+}
+
+// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+func (o SettingMistNacOutput) IdpMachineCertLookupField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMistNac) *string { return v.IdpMachineCertLookupField }).(pulumi.StringPtrOutput)
+}
+
+// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+func (o SettingMistNacOutput) IdpUserCertLookupField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingMistNac) *string { return v.IdpUserCertLookupField }).(pulumi.StringPtrOutput)
 }
 
 func (o SettingMistNacOutput) Idps() SettingMistNacIdpArrayOutput {
@@ -40334,6 +40383,16 @@ func (o SettingMistNacPtrOutput) DefaultIdpId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+func (o SettingMistNacPtrOutput) DisableRsaeAlgorithms() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingMistNac) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRsaeAlgorithms
+	}).(pulumi.BoolPtrOutput)
+}
+
 // eap ssl security level
 // see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
 func (o SettingMistNacPtrOutput) EapSslSecurityLevel() pulumi.IntPtrOutput {
@@ -40354,6 +40413,26 @@ func (o SettingMistNacPtrOutput) EuOnly() pulumi.BoolPtrOutput {
 		}
 		return v.EuOnly
 	}).(pulumi.BoolPtrOutput)
+}
+
+// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+func (o SettingMistNacPtrOutput) IdpMachineCertLookupField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMistNac) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpMachineCertLookupField
+	}).(pulumi.StringPtrOutput)
+}
+
+// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+func (o SettingMistNacPtrOutput) IdpUserCertLookupField() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingMistNac) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpUserCertLookupField
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o SettingMistNacPtrOutput) Idps() SettingMistNacIdpArrayOutput {
@@ -40886,8 +40965,8 @@ func (o SettingMxedgeMgmtPtrOutput) RootPassword() pulumi.StringPtrOutput {
 type SettingPasswordPolicy struct {
 	// whether the policy is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// days, required if password policy is enabled
-	Freshness *int `pulumi:"freshness"`
+	// password expiry in days
+	ExpiryInDays *int `pulumi:"expiryInDays"`
 	// required password length
 	MinLength *int `pulumi:"minLength"`
 	// whether to require special character
@@ -40910,8 +40989,8 @@ type SettingPasswordPolicyInput interface {
 type SettingPasswordPolicyArgs struct {
 	// whether the policy is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// days, required if password policy is enabled
-	Freshness pulumi.IntPtrInput `pulumi:"freshness"`
+	// password expiry in days
+	ExpiryInDays pulumi.IntPtrInput `pulumi:"expiryInDays"`
 	// required password length
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
 	// whether to require special character
@@ -41002,9 +41081,9 @@ func (o SettingPasswordPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SettingPasswordPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// days, required if password policy is enabled
-func (o SettingPasswordPolicyOutput) Freshness() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SettingPasswordPolicy) *int { return v.Freshness }).(pulumi.IntPtrOutput)
+// password expiry in days
+func (o SettingPasswordPolicyOutput) ExpiryInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingPasswordPolicy) *int { return v.ExpiryInDays }).(pulumi.IntPtrOutput)
 }
 
 // required password length
@@ -41056,13 +41135,13 @@ func (o SettingPasswordPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// days, required if password policy is enabled
-func (o SettingPasswordPolicyPtrOutput) Freshness() pulumi.IntPtrOutput {
+// password expiry in days
+func (o SettingPasswordPolicyPtrOutput) ExpiryInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SettingPasswordPolicy) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Freshness
+		return v.ExpiryInDays
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -41246,6 +41325,158 @@ func (o SettingPcapPtrOutput) MaxPktLen() pulumi.IntPtrOutput {
 		}
 		return v.MaxPktLen
 	}).(pulumi.IntPtrOutput)
+}
+
+type SettingPortChannelization struct {
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+	Config  map[string]string `pulumi:"config"`
+	Enabled *bool             `pulumi:"enabled"`
+}
+
+// SettingPortChannelizationInput is an input type that accepts SettingPortChannelizationArgs and SettingPortChannelizationOutput values.
+// You can construct a concrete instance of `SettingPortChannelizationInput` via:
+//
+//	SettingPortChannelizationArgs{...}
+type SettingPortChannelizationInput interface {
+	pulumi.Input
+
+	ToSettingPortChannelizationOutput() SettingPortChannelizationOutput
+	ToSettingPortChannelizationOutputWithContext(context.Context) SettingPortChannelizationOutput
+}
+
+type SettingPortChannelizationArgs struct {
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+	Config  pulumi.StringMapInput `pulumi:"config"`
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+}
+
+func (SettingPortChannelizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingPortChannelization)(nil)).Elem()
+}
+
+func (i SettingPortChannelizationArgs) ToSettingPortChannelizationOutput() SettingPortChannelizationOutput {
+	return i.ToSettingPortChannelizationOutputWithContext(context.Background())
+}
+
+func (i SettingPortChannelizationArgs) ToSettingPortChannelizationOutputWithContext(ctx context.Context) SettingPortChannelizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingPortChannelizationOutput)
+}
+
+func (i SettingPortChannelizationArgs) ToSettingPortChannelizationPtrOutput() SettingPortChannelizationPtrOutput {
+	return i.ToSettingPortChannelizationPtrOutputWithContext(context.Background())
+}
+
+func (i SettingPortChannelizationArgs) ToSettingPortChannelizationPtrOutputWithContext(ctx context.Context) SettingPortChannelizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingPortChannelizationOutput).ToSettingPortChannelizationPtrOutputWithContext(ctx)
+}
+
+// SettingPortChannelizationPtrInput is an input type that accepts SettingPortChannelizationArgs, SettingPortChannelizationPtr and SettingPortChannelizationPtrOutput values.
+// You can construct a concrete instance of `SettingPortChannelizationPtrInput` via:
+//
+//	        SettingPortChannelizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingPortChannelizationPtrInput interface {
+	pulumi.Input
+
+	ToSettingPortChannelizationPtrOutput() SettingPortChannelizationPtrOutput
+	ToSettingPortChannelizationPtrOutputWithContext(context.Context) SettingPortChannelizationPtrOutput
+}
+
+type settingPortChannelizationPtrType SettingPortChannelizationArgs
+
+func SettingPortChannelizationPtr(v *SettingPortChannelizationArgs) SettingPortChannelizationPtrInput {
+	return (*settingPortChannelizationPtrType)(v)
+}
+
+func (*settingPortChannelizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingPortChannelization)(nil)).Elem()
+}
+
+func (i *settingPortChannelizationPtrType) ToSettingPortChannelizationPtrOutput() SettingPortChannelizationPtrOutput {
+	return i.ToSettingPortChannelizationPtrOutputWithContext(context.Background())
+}
+
+func (i *settingPortChannelizationPtrType) ToSettingPortChannelizationPtrOutputWithContext(ctx context.Context) SettingPortChannelizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingPortChannelizationPtrOutput)
+}
+
+type SettingPortChannelizationOutput struct{ *pulumi.OutputState }
+
+func (SettingPortChannelizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingPortChannelization)(nil)).Elem()
+}
+
+func (o SettingPortChannelizationOutput) ToSettingPortChannelizationOutput() SettingPortChannelizationOutput {
+	return o
+}
+
+func (o SettingPortChannelizationOutput) ToSettingPortChannelizationOutputWithContext(ctx context.Context) SettingPortChannelizationOutput {
+	return o
+}
+
+func (o SettingPortChannelizationOutput) ToSettingPortChannelizationPtrOutput() SettingPortChannelizationPtrOutput {
+	return o.ToSettingPortChannelizationPtrOutputWithContext(context.Background())
+}
+
+func (o SettingPortChannelizationOutput) ToSettingPortChannelizationPtrOutputWithContext(ctx context.Context) SettingPortChannelizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingPortChannelization) *SettingPortChannelization {
+		return &v
+	}).(SettingPortChannelizationPtrOutput)
+}
+
+// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+func (o SettingPortChannelizationOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SettingPortChannelization) map[string]string { return v.Config }).(pulumi.StringMapOutput)
+}
+
+func (o SettingPortChannelizationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingPortChannelization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SettingPortChannelizationPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingPortChannelizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingPortChannelization)(nil)).Elem()
+}
+
+func (o SettingPortChannelizationPtrOutput) ToSettingPortChannelizationPtrOutput() SettingPortChannelizationPtrOutput {
+	return o
+}
+
+func (o SettingPortChannelizationPtrOutput) ToSettingPortChannelizationPtrOutputWithContext(ctx context.Context) SettingPortChannelizationPtrOutput {
+	return o
+}
+
+func (o SettingPortChannelizationPtrOutput) Elem() SettingPortChannelizationOutput {
+	return o.ApplyT(func(v *SettingPortChannelization) SettingPortChannelization {
+		if v != nil {
+			return *v
+		}
+		var ret SettingPortChannelization
+		return ret
+	}).(SettingPortChannelizationOutput)
+}
+
+// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+func (o SettingPortChannelizationPtrOutput) Config() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SettingPortChannelization) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(pulumi.StringMapOutput)
+}
+
+func (o SettingPortChannelizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingPortChannelization) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SettingSecurity struct {
@@ -55229,6 +55460,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingPasswordPolicyPtrInput)(nil)).Elem(), SettingPasswordPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingPcapInput)(nil)).Elem(), SettingPcapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingPcapPtrInput)(nil)).Elem(), SettingPcapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingPortChannelizationInput)(nil)).Elem(), SettingPortChannelizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingPortChannelizationPtrInput)(nil)).Elem(), SettingPortChannelizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSecurityInput)(nil)).Elem(), SettingSecurityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSecurityPtrInput)(nil)).Elem(), SettingSecurityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSwitchMgmtInput)(nil)).Elem(), SettingSwitchMgmtArgs{})
@@ -55826,6 +56059,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingPasswordPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SettingPcapOutput{})
 	pulumi.RegisterOutputType(SettingPcapPtrOutput{})
+	pulumi.RegisterOutputType(SettingPortChannelizationOutput{})
+	pulumi.RegisterOutputType(SettingPortChannelizationPtrOutput{})
 	pulumi.RegisterOutputType(SettingSecurityOutput{})
 	pulumi.RegisterOutputType(SettingSecurityPtrOutput{})
 	pulumi.RegisterOutputType(SettingSwitchMgmtOutput{})

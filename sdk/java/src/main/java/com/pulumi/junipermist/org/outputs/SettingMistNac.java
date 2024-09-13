@@ -27,6 +27,11 @@ public final class SettingMistNac {
      */
     private @Nullable String defaultIdpId;
     /**
+     * @return to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+     * 
+     */
+    private @Nullable Boolean disableRsaeAlgorithms;
+    /**
      * @return eap ssl security level
      * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
      * 
@@ -38,6 +43,16 @@ public final class SettingMistNac {
      * 
      */
     private @Nullable Boolean euOnly;
+    /**
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * 
+     */
+    private @Nullable String idpMachineCertLookupField;
+    /**
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * 
+     */
+    private @Nullable String idpUserCertLookupField;
     private @Nullable List<SettingMistNacIdp> idps;
     /**
      * @return radius server cert to be presented in EAP TLS
@@ -73,6 +88,13 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.defaultIdpId);
     }
     /**
+     * @return to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+     * 
+     */
+    public Optional<Boolean> disableRsaeAlgorithms() {
+        return Optional.ofNullable(this.disableRsaeAlgorithms);
+    }
+    /**
      * @return eap ssl security level
      * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
      * 
@@ -87,6 +109,20 @@ public final class SettingMistNac {
      */
     public Optional<Boolean> euOnly() {
         return Optional.ofNullable(this.euOnly);
+    }
+    /**
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * 
+     */
+    public Optional<String> idpMachineCertLookupField() {
+        return Optional.ofNullable(this.idpMachineCertLookupField);
+    }
+    /**
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * 
+     */
+    public Optional<String> idpUserCertLookupField() {
+        return Optional.ofNullable(this.idpUserCertLookupField);
     }
     public List<SettingMistNacIdp> idps() {
         return this.idps == null ? List.of() : this.idps;
@@ -126,8 +162,11 @@ public final class SettingMistNac {
     public static final class Builder {
         private @Nullable List<String> cacerts;
         private @Nullable String defaultIdpId;
+        private @Nullable Boolean disableRsaeAlgorithms;
         private @Nullable Integer eapSslSecurityLevel;
         private @Nullable Boolean euOnly;
+        private @Nullable String idpMachineCertLookupField;
+        private @Nullable String idpUserCertLookupField;
         private @Nullable List<SettingMistNacIdp> idps;
         private @Nullable SettingMistNacServerCert serverCert;
         private @Nullable String useIpVersion;
@@ -137,8 +176,11 @@ public final class SettingMistNac {
     	      Objects.requireNonNull(defaults);
     	      this.cacerts = defaults.cacerts;
     	      this.defaultIdpId = defaults.defaultIdpId;
+    	      this.disableRsaeAlgorithms = defaults.disableRsaeAlgorithms;
     	      this.eapSslSecurityLevel = defaults.eapSslSecurityLevel;
     	      this.euOnly = defaults.euOnly;
+    	      this.idpMachineCertLookupField = defaults.idpMachineCertLookupField;
+    	      this.idpUserCertLookupField = defaults.idpUserCertLookupField;
     	      this.idps = defaults.idps;
     	      this.serverCert = defaults.serverCert;
     	      this.useIpVersion = defaults.useIpVersion;
@@ -161,6 +203,12 @@ public final class SettingMistNac {
             return this;
         }
         @CustomType.Setter
+        public Builder disableRsaeAlgorithms(@Nullable Boolean disableRsaeAlgorithms) {
+
+            this.disableRsaeAlgorithms = disableRsaeAlgorithms;
+            return this;
+        }
+        @CustomType.Setter
         public Builder eapSslSecurityLevel(@Nullable Integer eapSslSecurityLevel) {
 
             this.eapSslSecurityLevel = eapSslSecurityLevel;
@@ -170,6 +218,18 @@ public final class SettingMistNac {
         public Builder euOnly(@Nullable Boolean euOnly) {
 
             this.euOnly = euOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idpMachineCertLookupField(@Nullable String idpMachineCertLookupField) {
+
+            this.idpMachineCertLookupField = idpMachineCertLookupField;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder idpUserCertLookupField(@Nullable String idpUserCertLookupField) {
+
+            this.idpUserCertLookupField = idpUserCertLookupField;
             return this;
         }
         @CustomType.Setter
@@ -203,8 +263,11 @@ public final class SettingMistNac {
             final var _resultValue = new SettingMistNac();
             _resultValue.cacerts = cacerts;
             _resultValue.defaultIdpId = defaultIdpId;
+            _resultValue.disableRsaeAlgorithms = disableRsaeAlgorithms;
             _resultValue.eapSslSecurityLevel = eapSslSecurityLevel;
             _resultValue.euOnly = euOnly;
+            _resultValue.idpMachineCertLookupField = idpMachineCertLookupField;
+            _resultValue.idpUserCertLookupField = idpUserCertLookupField;
             _resultValue.idps = idps;
             _resultValue.serverCert = serverCert;
             _resultValue.useIpVersion = useIpVersion;

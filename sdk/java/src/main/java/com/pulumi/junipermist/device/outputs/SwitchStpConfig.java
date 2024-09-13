@@ -4,7 +4,7 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchStpConfig {
     /**
-     * @return enum: `rstp`, `vstp`
+     * @return ignored for switches participating in EVPN
      * 
      */
-    private @Nullable String type;
+    private @Nullable Boolean vstpEnabled;
 
     private SwitchStpConfig() {}
     /**
-     * @return enum: `rstp`, `vstp`
+     * @return ignored for switches participating in EVPN
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public Optional<Boolean> vstpEnabled() {
+        return Optional.ofNullable(this.vstpEnabled);
     }
 
     public static Builder builder() {
@@ -35,22 +35,22 @@ public final class SwitchStpConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String type;
+        private @Nullable Boolean vstpEnabled;
         public Builder() {}
         public Builder(SwitchStpConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.type = defaults.type;
+    	      this.vstpEnabled = defaults.vstpEnabled;
         }
 
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
+        public Builder vstpEnabled(@Nullable Boolean vstpEnabled) {
 
-            this.type = type;
+            this.vstpEnabled = vstpEnabled;
             return this;
         }
         public SwitchStpConfig build() {
             final var _resultValue = new SwitchStpConfig();
-            _resultValue.type = type;
+            _resultValue.vstpEnabled = vstpEnabled;
             return _resultValue;
         }
     }

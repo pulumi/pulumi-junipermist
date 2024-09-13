@@ -1644,6 +1644,8 @@ type NetworktemplatePortUsages struct {
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
+	// Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+	MacAuthPreferred *bool `pulumi:"macAuthPreferred"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 	MacAuthProtocol *string `pulumi:"macAuthProtocol"`
 	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
@@ -1664,12 +1666,14 @@ type NetworktemplatePortUsages struct {
 	PortNetwork *string `pulumi:"portNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
 	ReauthInterval *int `pulumi:"reauthInterval"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-	RejectedNetwork *string `pulumi:"rejectedNetwork"`
 	// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 	ResetDefaultWhen *string `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
 	Rules []NetworktemplatePortUsagesRule `pulumi:"rules"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
 	Speed *string `pulumi:"speed"`
 	// Switch storm control
@@ -1728,6 +1732,8 @@ type NetworktemplatePortUsagesArgs struct {
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
+	// Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+	MacAuthPreferred pulumi.BoolPtrInput `pulumi:"macAuthPreferred"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 	MacAuthProtocol pulumi.StringPtrInput `pulumi:"macAuthProtocol"`
 	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
@@ -1748,12 +1754,14 @@ type NetworktemplatePortUsagesArgs struct {
 	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`=`dot1x` reauthentication interval range
 	ReauthInterval pulumi.IntPtrInput `pulumi:"reauthInterval"`
-	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-	RejectedNetwork pulumi.StringPtrInput `pulumi:"rejectedNetwork"`
 	// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 	ResetDefaultWhen pulumi.StringPtrInput `pulumi:"resetDefaultWhen"`
 	// Only if `mode`==`dynamic`
 	Rules NetworktemplatePortUsagesRuleArrayInput `pulumi:"rules"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
+	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// Switch storm control
@@ -1896,6 +1904,11 @@ func (o NetworktemplatePortUsagesOutput) MacAuthOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.MacAuthOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+func (o NetworktemplatePortUsagesOutput) MacAuthPreferred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.MacAuthPreferred }).(pulumi.BoolPtrOutput)
+}
+
 // Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
 func (o NetworktemplatePortUsagesOutput) MacAuthProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.MacAuthProtocol }).(pulumi.StringPtrOutput)
@@ -1946,11 +1959,6 @@ func (o NetworktemplatePortUsagesOutput) ReauthInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *int { return v.ReauthInterval }).(pulumi.IntPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-func (o NetworktemplatePortUsagesOutput) RejectedNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.RejectedNetwork }).(pulumi.StringPtrOutput)
-}
-
 // Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
 func (o NetworktemplatePortUsagesOutput) ResetDefaultWhen() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ResetDefaultWhen }).(pulumi.StringPtrOutput)
@@ -1959,6 +1967,16 @@ func (o NetworktemplatePortUsagesOutput) ResetDefaultWhen() pulumi.StringPtrOutp
 // Only if `mode`==`dynamic`
 func (o NetworktemplatePortUsagesOutput) Rules() NetworktemplatePortUsagesRuleArrayOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) []NetworktemplatePortUsagesRule { return v.Rules }).(NetworktemplatePortUsagesRuleArrayOutput)
+}
+
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+func (o NetworktemplatePortUsagesOutput) ServerFailNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ServerFailNetwork }).(pulumi.StringPtrOutput)
+}
+
+// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+func (o NetworktemplatePortUsagesOutput) ServerRejectNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.ServerRejectNetwork }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
@@ -2788,6 +2806,8 @@ type NetworktemplateRadiusConfigAuthServer struct {
 	KeywrapMack   *string `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port *int `pulumi:"port"`
+	// whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator *bool `pulumi:"requireMessageAuthenticator"`
 	// secret of RADIUS server
 	Secret string `pulumi:"secret"`
 }
@@ -2813,6 +2833,8 @@ type NetworktemplateRadiusConfigAuthServerArgs struct {
 	KeywrapMack   pulumi.StringPtrInput `pulumi:"keywrapMack"`
 	// Auth port of RADIUS server
 	Port pulumi.IntPtrInput `pulumi:"port"`
+	// whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolPtrInput `pulumi:"requireMessageAuthenticator"`
 	// secret of RADIUS server
 	Secret pulumi.StringInput `pulumi:"secret"`
 }
@@ -2893,6 +2915,11 @@ func (o NetworktemplateRadiusConfigAuthServerOutput) KeywrapMack() pulumi.String
 // Auth port of RADIUS server
 func (o NetworktemplateRadiusConfigAuthServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// whether to require Message-Authenticator in requests
+func (o NetworktemplateRadiusConfigAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateRadiusConfigAuthServer) *bool { return v.RequireMessageAuthenticator }).(pulumi.BoolPtrOutput)
 }
 
 // secret of RADIUS server
@@ -7971,7 +7998,8 @@ type NetworktemplateSwitchMgmt struct {
 	// the rollback timer for commit confirmed
 	ConfigRevertTimer *int `pulumi:"configRevertTimer"`
 	// Enable to provide the FQDN with DHCP option 81
-	DhcpOptionFqdn *bool `pulumi:"dhcpOptionFqdn"`
+	DhcpOptionFqdn      *bool `pulumi:"dhcpOptionFqdn"`
+	DisableOobDownAlarm *bool `pulumi:"disableOobDownAlarm"`
 	// Property key is the user name. For Local user authentication
 	LocalAccounts   map[string]NetworktemplateSwitchMgmtLocalAccounts `pulumi:"localAccounts"`
 	MxedgeProxyHost *string                                           `pulumi:"mxedgeProxyHost"`
@@ -8007,7 +8035,8 @@ type NetworktemplateSwitchMgmtArgs struct {
 	// the rollback timer for commit confirmed
 	ConfigRevertTimer pulumi.IntPtrInput `pulumi:"configRevertTimer"`
 	// Enable to provide the FQDN with DHCP option 81
-	DhcpOptionFqdn pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
+	DhcpOptionFqdn      pulumi.BoolPtrInput `pulumi:"dhcpOptionFqdn"`
+	DisableOobDownAlarm pulumi.BoolPtrInput `pulumi:"disableOobDownAlarm"`
 	// Property key is the user name. For Local user authentication
 	LocalAccounts   NetworktemplateSwitchMgmtLocalAccountsMapInput `pulumi:"localAccounts"`
 	MxedgeProxyHost pulumi.StringPtrInput                          `pulumi:"mxedgeProxyHost"`
@@ -8124,6 +8153,10 @@ func (o NetworktemplateSwitchMgmtOutput) DhcpOptionFqdn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.DhcpOptionFqdn }).(pulumi.BoolPtrOutput)
 }
 
+func (o NetworktemplateSwitchMgmtOutput) DisableOobDownAlarm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateSwitchMgmt) *bool { return v.DisableOobDownAlarm }).(pulumi.BoolPtrOutput)
+}
+
 // Property key is the user name. For Local user authentication
 func (o NetworktemplateSwitchMgmtOutput) LocalAccounts() NetworktemplateSwitchMgmtLocalAccountsMapOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmt) map[string]NetworktemplateSwitchMgmtLocalAccounts {
@@ -8230,6 +8263,15 @@ func (o NetworktemplateSwitchMgmtPtrOutput) DhcpOptionFqdn() pulumi.BoolPtrOutpu
 			return nil
 		}
 		return v.DhcpOptionFqdn
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NetworktemplateSwitchMgmtPtrOutput) DisableOobDownAlarm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworktemplateSwitchMgmt) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableOobDownAlarm
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -10770,6 +10812,8 @@ func (o SettingConfigPushPolicyPtrOutput) PushWindow() SettingConfigPushPolicyPu
 type SettingConfigPushPolicyPushWindow struct {
 	Enabled *bool `pulumi:"enabled"`
 	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+	//
+	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 	Hours *SettingConfigPushPolicyPushWindowHours `pulumi:"hours"`
 }
 
@@ -10787,6 +10831,8 @@ type SettingConfigPushPolicyPushWindowInput interface {
 type SettingConfigPushPolicyPushWindowArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+	//
+	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 	Hours SettingConfigPushPolicyPushWindowHoursPtrInput `pulumi:"hours"`
 }
 
@@ -10872,6 +10918,8 @@ func (o SettingConfigPushPolicyPushWindowOutput) Enabled() pulumi.BoolPtrOutput 
 }
 
 // hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+//
+// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowOutput) Hours() SettingConfigPushPolicyPushWindowHoursPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindow) *SettingConfigPushPolicyPushWindowHours { return v.Hours }).(SettingConfigPushPolicyPushWindowHoursPtrOutput)
 }
@@ -10910,6 +10958,8 @@ func (o SettingConfigPushPolicyPushWindowPtrOutput) Enabled() pulumi.BoolPtrOutp
 }
 
 // hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+//
+// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowPtrOutput) Hours() SettingConfigPushPolicyPushWindowHoursPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindow) *SettingConfigPushPolicyPushWindowHours {
 		if v == nil {
@@ -11395,6 +11445,8 @@ type SettingEngagement struct {
 	// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
 	DwellTags *SettingEngagementDwellTags `pulumi:"dwellTags"`
 	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+	//
+	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 	Hours *SettingEngagementHours `pulumi:"hours"`
 	// max time, default is 43200(12h), max is 68400 (18h)
 	MaxDwell *int `pulumi:"maxDwell"`
@@ -11418,6 +11470,8 @@ type SettingEngagementArgs struct {
 	// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
 	DwellTags SettingEngagementDwellTagsPtrInput `pulumi:"dwellTags"`
 	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+	//
+	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 	Hours SettingEngagementHoursPtrInput `pulumi:"hours"`
 	// max time, default is 43200(12h), max is 68400 (18h)
 	MaxDwell pulumi.IntPtrInput `pulumi:"maxDwell"`
@@ -11512,6 +11566,8 @@ func (o SettingEngagementOutput) DwellTags() SettingEngagementDwellTagsPtrOutput
 }
 
 // hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+//
+// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 func (o SettingEngagementOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementHours { return v.Hours }).(SettingEngagementHoursPtrOutput)
 }
@@ -11570,6 +11626,8 @@ func (o SettingEngagementPtrOutput) DwellTags() SettingEngagementDwellTagsPtrOut
 }
 
 // hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+//
+// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
 func (o SettingEngagementPtrOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementHours {
 		if v == nil {
@@ -12653,18 +12711,19 @@ func (o SettingGatewayMgmtAppProbingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SettingGatewayMgmtAppProbingCustomApp struct {
-	// if `protocol`==`icmp`
 	Address *string `pulumi:"address"`
 	AppType *string `pulumi:"appType"`
-	// if `protocol`==`http`
+	// Only 1 entry is allowed:
+	//     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+	//     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
 	Hostnames []string `pulumi:"hostnames"`
-	Name      *string  `pulumi:"name"`
+	Key       *string  `pulumi:"key"`
+	Name      string   `pulumi:"name"`
 	Network   *string  `pulumi:"network"`
 	// enum: `http`, `icmp`
-	Protocol *string `pulumi:"protocol"`
-	// if `protocol`==`http`
-	Url *string `pulumi:"url"`
-	Vrf *string `pulumi:"vrf"`
+	Protocol string  `pulumi:"protocol"`
+	Url      *string `pulumi:"url"`
+	Vrf      *string `pulumi:"vrf"`
 }
 
 // SettingGatewayMgmtAppProbingCustomAppInput is an input type that accepts SettingGatewayMgmtAppProbingCustomAppArgs and SettingGatewayMgmtAppProbingCustomAppOutput values.
@@ -12679,18 +12738,19 @@ type SettingGatewayMgmtAppProbingCustomAppInput interface {
 }
 
 type SettingGatewayMgmtAppProbingCustomAppArgs struct {
-	// if `protocol`==`icmp`
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	AppType pulumi.StringPtrInput `pulumi:"appType"`
-	// if `protocol`==`http`
+	// Only 1 entry is allowed:
+	//     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+	//     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
 	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
-	Name      pulumi.StringPtrInput   `pulumi:"name"`
+	Key       pulumi.StringPtrInput   `pulumi:"key"`
+	Name      pulumi.StringInput      `pulumi:"name"`
 	Network   pulumi.StringPtrInput   `pulumi:"network"`
 	// enum: `http`, `icmp`
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// if `protocol`==`http`
-	Url pulumi.StringPtrInput `pulumi:"url"`
-	Vrf pulumi.StringPtrInput `pulumi:"vrf"`
+	Protocol pulumi.StringInput    `pulumi:"protocol"`
+	Url      pulumi.StringPtrInput `pulumi:"url"`
+	Vrf      pulumi.StringPtrInput `pulumi:"vrf"`
 }
 
 func (SettingGatewayMgmtAppProbingCustomAppArgs) ElementType() reflect.Type {
@@ -12744,7 +12804,6 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) ToSettingGatewayMgmtAppProb
 	return o
 }
 
-// if `protocol`==`icmp`
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -12753,13 +12812,19 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) AppType() pulumi.StringPtrO
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.AppType }).(pulumi.StringPtrOutput)
 }
 
-// if `protocol`==`http`
+// Only 1 entry is allowed:
+//   - if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+//   - if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Hostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
 }
 
-func (o SettingGatewayMgmtAppProbingCustomAppOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o SettingGatewayMgmtAppProbingCustomAppOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o SettingGatewayMgmtAppProbingCustomAppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Network() pulumi.StringPtrOutput {
@@ -12767,11 +12832,10 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Network() pulumi.StringPtrO
 }
 
 // enum: `http`, `icmp`
-func (o SettingGatewayMgmtAppProbingCustomAppOutput) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o SettingGatewayMgmtAppProbingCustomAppOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// if `protocol`==`http`
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Url }).(pulumi.StringPtrOutput)
 }

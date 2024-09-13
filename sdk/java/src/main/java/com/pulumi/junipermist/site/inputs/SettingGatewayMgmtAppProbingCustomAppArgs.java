@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,17 +17,9 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
 
     public static final SettingGatewayMgmtAppProbingCustomAppArgs Empty = new SettingGatewayMgmtAppProbingCustomAppArgs();
 
-    /**
-     * if `protocol`==`icmp`
-     * 
-     */
     @Import(name="address")
     private @Nullable Output<String> address;
 
-    /**
-     * @return if `protocol`==`icmp`
-     * 
-     */
     public Optional<Output<String>> address() {
         return Optional.ofNullable(this.address);
     }
@@ -39,25 +32,36 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
-     * if `protocol`==`http`
+     * Only 1 entry is allowed:
+     *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+     *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
      * 
      */
-    @Import(name="hostnames")
-    private @Nullable Output<List<String>> hostnames;
+    @Import(name="hostnames", required=true)
+    private Output<List<String>> hostnames;
 
     /**
-     * @return if `protocol`==`http`
+     * @return Only 1 entry is allowed:
+     *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+     *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
      * 
      */
-    public Optional<Output<List<String>>> hostnames() {
-        return Optional.ofNullable(this.hostnames);
+    public Output<List<String>> hostnames() {
+        return this.hostnames;
     }
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="key")
+    private @Nullable Output<String> key;
 
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
+    }
+
+    @Import(name="name", required=true)
+    private Output<String> name;
+
+    public Output<String> name() {
+        return this.name;
     }
 
     @Import(name="network")
@@ -71,28 +75,20 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
      * enum: `http`, `icmp`
      * 
      */
-    @Import(name="protocol")
-    private @Nullable Output<String> protocol;
+    @Import(name="protocol", required=true)
+    private Output<String> protocol;
 
     /**
      * @return enum: `http`, `icmp`
      * 
      */
-    public Optional<Output<String>> protocol() {
-        return Optional.ofNullable(this.protocol);
+    public Output<String> protocol() {
+        return this.protocol;
     }
 
-    /**
-     * if `protocol`==`http`
-     * 
-     */
     @Import(name="url")
     private @Nullable Output<String> url;
 
-    /**
-     * @return if `protocol`==`http`
-     * 
-     */
     public Optional<Output<String>> url() {
         return Optional.ofNullable(this.url);
     }
@@ -110,6 +106,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         this.address = $.address;
         this.appType = $.appType;
         this.hostnames = $.hostnames;
+        this.key = $.key;
         this.name = $.name;
         this.network = $.network;
         this.protocol = $.protocol;
@@ -135,23 +132,11 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
             $ = new SettingGatewayMgmtAppProbingCustomAppArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param address if `protocol`==`icmp`
-         * 
-         * @return builder
-         * 
-         */
         public Builder address(@Nullable Output<String> address) {
             $.address = address;
             return this;
         }
 
-        /**
-         * @param address if `protocol`==`icmp`
-         * 
-         * @return builder
-         * 
-         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
@@ -166,18 +151,22 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param hostnames if `protocol`==`http`
+         * @param hostnames Only 1 entry is allowed:
+         *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+         *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
          * 
          * @return builder
          * 
          */
-        public Builder hostnames(@Nullable Output<List<String>> hostnames) {
+        public Builder hostnames(Output<List<String>> hostnames) {
             $.hostnames = hostnames;
             return this;
         }
 
         /**
-         * @param hostnames if `protocol`==`http`
+         * @param hostnames Only 1 entry is allowed:
+         *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+         *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
          * 
          * @return builder
          * 
@@ -187,7 +176,9 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         /**
-         * @param hostnames if `protocol`==`http`
+         * @param hostnames Only 1 entry is allowed:
+         *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+         *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
          * 
          * @return builder
          * 
@@ -196,7 +187,16 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
             return hostnames(List.of(hostnames));
         }
 
-        public Builder name(@Nullable Output<String> name) {
+        public Builder key(@Nullable Output<String> key) {
+            $.key = key;
+            return this;
+        }
+
+        public Builder key(String key) {
+            return key(Output.of(key));
+        }
+
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -220,7 +220,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
          * @return builder
          * 
          */
-        public Builder protocol(@Nullable Output<String> protocol) {
+        public Builder protocol(Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
@@ -235,23 +235,11 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
             return protocol(Output.of(protocol));
         }
 
-        /**
-         * @param url if `protocol`==`http`
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(@Nullable Output<String> url) {
             $.url = url;
             return this;
         }
 
-        /**
-         * @param url if `protocol`==`http`
-         * 
-         * @return builder
-         * 
-         */
         public Builder url(String url) {
             return url(Output.of(url));
         }
@@ -266,6 +254,15 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         }
 
         public SettingGatewayMgmtAppProbingCustomAppArgs build() {
+            if ($.hostnames == null) {
+                throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomAppArgs", "hostnames");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomAppArgs", "name");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomAppArgs", "protocol");
+            }
             return $;
         }
     }

@@ -932,6 +932,8 @@ class NetworktemplatePortUsages(dict):
             suggest = "inter_switch_link"
         elif key == "macAuthOnly":
             suggest = "mac_auth_only"
+        elif key == "macAuthPreferred":
+            suggest = "mac_auth_preferred"
         elif key == "macAuthProtocol":
             suggest = "mac_auth_protocol"
         elif key == "macLimit":
@@ -946,10 +948,12 @@ class NetworktemplatePortUsages(dict):
             suggest = "port_network"
         elif key == "reauthInterval":
             suggest = "reauth_interval"
-        elif key == "rejectedNetwork":
-            suggest = "rejected_network"
         elif key == "resetDefaultWhen":
             suggest = "reset_default_when"
+        elif key == "serverFailNetwork":
+            suggest = "server_fail_network"
+        elif key == "serverRejectNetwork":
+            suggest = "server_reject_network"
         elif key == "stormControl":
             suggest = "storm_control"
         elif key == "stpEdge":
@@ -988,6 +992,7 @@ class NetworktemplatePortUsages(dict):
                  guest_network: Optional[str] = None,
                  inter_switch_link: Optional[bool] = None,
                  mac_auth_only: Optional[bool] = None,
+                 mac_auth_preferred: Optional[bool] = None,
                  mac_auth_protocol: Optional[str] = None,
                  mac_limit: Optional[int] = None,
                  mode: Optional[str] = None,
@@ -998,9 +1003,10 @@ class NetworktemplatePortUsages(dict):
                  port_auth: Optional[str] = None,
                  port_network: Optional[str] = None,
                  reauth_interval: Optional[int] = None,
-                 rejected_network: Optional[str] = None,
                  reset_default_when: Optional[str] = None,
                  rules: Optional[Sequence['outputs.NetworktemplatePortUsagesRule']] = None,
+                 server_fail_network: Optional[str] = None,
+                 server_reject_network: Optional[str] = None,
                  speed: Optional[str] = None,
                  storm_control: Optional['outputs.NetworktemplatePortUsagesStormControl'] = None,
                  stp_edge: Optional[bool] = None,
@@ -1026,6 +1032,7 @@ class NetworktemplatePortUsages(dict):
         :param bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
                NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         :param bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+        :param bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
         :param int mac_limit: Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
         :param str mode: `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
@@ -1036,9 +1043,10 @@ class NetworktemplatePortUsages(dict):
         :param str port_auth: Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
         :param str port_network: Only if `mode`!=`dynamic` native network/vlan for untagged traffic
         :param int reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
-        :param str rejected_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
         :param str reset_default_when: Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         :param Sequence['NetworktemplatePortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`
+        :param str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+        :param str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
         :param str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
         :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Switch storm control
                Only if `mode`!=`dynamic`
@@ -1075,6 +1083,8 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "inter_switch_link", inter_switch_link)
         if mac_auth_only is not None:
             pulumi.set(__self__, "mac_auth_only", mac_auth_only)
+        if mac_auth_preferred is not None:
+            pulumi.set(__self__, "mac_auth_preferred", mac_auth_preferred)
         if mac_auth_protocol is not None:
             pulumi.set(__self__, "mac_auth_protocol", mac_auth_protocol)
         if mac_limit is not None:
@@ -1095,12 +1105,14 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "port_network", port_network)
         if reauth_interval is not None:
             pulumi.set(__self__, "reauth_interval", reauth_interval)
-        if rejected_network is not None:
-            pulumi.set(__self__, "rejected_network", rejected_network)
         if reset_default_when is not None:
             pulumi.set(__self__, "reset_default_when", reset_default_when)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if server_fail_network is not None:
+            pulumi.set(__self__, "server_fail_network", server_fail_network)
+        if server_reject_network is not None:
+            pulumi.set(__self__, "server_reject_network", server_reject_network)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
         if storm_control is not None:
@@ -1238,6 +1250,14 @@ class NetworktemplatePortUsages(dict):
         return pulumi.get(self, "mac_auth_only")
 
     @property
+    @pulumi.getter(name="macAuthPreferred")
+    def mac_auth_preferred(self) -> Optional[bool]:
+        """
+        Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        """
+        return pulumi.get(self, "mac_auth_preferred")
+
+    @property
     @pulumi.getter(name="macAuthProtocol")
     def mac_auth_protocol(self) -> Optional[str]:
         """
@@ -1318,14 +1338,6 @@ class NetworktemplatePortUsages(dict):
         return pulumi.get(self, "reauth_interval")
 
     @property
-    @pulumi.getter(name="rejectedNetwork")
-    def rejected_network(self) -> Optional[str]:
-        """
-        Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        """
-        return pulumi.get(self, "rejected_network")
-
-    @property
     @pulumi.getter(name="resetDefaultWhen")
     def reset_default_when(self) -> Optional[str]:
         """
@@ -1340,6 +1352,22 @@ class NetworktemplatePortUsages(dict):
         Only if `mode`==`dynamic`
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="serverFailNetwork")
+    def server_fail_network(self) -> Optional[str]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+        """
+        return pulumi.get(self, "server_fail_network")
+
+    @property
+    @pulumi.getter(name="serverRejectNetwork")
+    def server_reject_network(self) -> Optional[str]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+        """
+        return pulumi.get(self, "server_reject_network")
 
     @property
     @pulumi.getter
@@ -1803,6 +1831,8 @@ class NetworktemplateRadiusConfigAuthServer(dict):
             suggest = "keywrap_kek"
         elif key == "keywrapMack":
             suggest = "keywrap_mack"
+        elif key == "requireMessageAuthenticator":
+            suggest = "require_message_authenticator"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworktemplateRadiusConfigAuthServer. Access the value via the '{suggest}' property getter instead.")
@@ -1822,12 +1852,14 @@ class NetworktemplateRadiusConfigAuthServer(dict):
                  keywrap_format: Optional[str] = None,
                  keywrap_kek: Optional[str] = None,
                  keywrap_mack: Optional[str] = None,
-                 port: Optional[int] = None):
+                 port: Optional[int] = None,
+                 require_message_authenticator: Optional[bool] = None):
         """
         :param str host: ip / hostname of RADIUS server
         :param str secret: secret of RADIUS server
         :param str keywrap_format: enum: `ascii`, `hex`
         :param int port: Auth port of RADIUS server
+        :param bool require_message_authenticator: whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -1841,6 +1873,8 @@ class NetworktemplateRadiusConfigAuthServer(dict):
             pulumi.set(__self__, "keywrap_mack", keywrap_mack)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if require_message_authenticator is not None:
+            pulumi.set(__self__, "require_message_authenticator", require_message_authenticator)
 
     @property
     @pulumi.getter
@@ -1888,6 +1922,14 @@ class NetworktemplateRadiusConfigAuthServer(dict):
         Auth port of RADIUS server
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="requireMessageAuthenticator")
+    def require_message_authenticator(self) -> Optional[bool]:
+        """
+        whether to require Message-Authenticator in requests
+        """
+        return pulumi.get(self, "require_message_authenticator")
 
 
 @pulumi.output_type
@@ -4122,6 +4164,8 @@ class NetworktemplateSwitchMgmt(dict):
             suggest = "config_revert_timer"
         elif key == "dhcpOptionFqdn":
             suggest = "dhcp_option_fqdn"
+        elif key == "disableOobDownAlarm":
+            suggest = "disable_oob_down_alarm"
         elif key == "localAccounts":
             suggest = "local_accounts"
         elif key == "mxedgeProxyHost":
@@ -4152,6 +4196,7 @@ class NetworktemplateSwitchMgmt(dict):
                  cli_idle_timeout: Optional[int] = None,
                  config_revert_timer: Optional[int] = None,
                  dhcp_option_fqdn: Optional[bool] = None,
+                 disable_oob_down_alarm: Optional[bool] = None,
                  local_accounts: Optional[Mapping[str, 'outputs.NetworktemplateSwitchMgmtLocalAccounts']] = None,
                  mxedge_proxy_host: Optional[str] = None,
                  mxedge_proxy_port: Optional[int] = None,
@@ -4181,6 +4226,8 @@ class NetworktemplateSwitchMgmt(dict):
             pulumi.set(__self__, "config_revert_timer", config_revert_timer)
         if dhcp_option_fqdn is not None:
             pulumi.set(__self__, "dhcp_option_fqdn", dhcp_option_fqdn)
+        if disable_oob_down_alarm is not None:
+            pulumi.set(__self__, "disable_oob_down_alarm", disable_oob_down_alarm)
         if local_accounts is not None:
             pulumi.set(__self__, "local_accounts", local_accounts)
         if mxedge_proxy_host is not None:
@@ -4235,6 +4282,11 @@ class NetworktemplateSwitchMgmt(dict):
         Enable to provide the FQDN with DHCP option 81
         """
         return pulumi.get(self, "dhcp_option_fqdn")
+
+    @property
+    @pulumi.getter(name="disableOobDownAlarm")
+    def disable_oob_down_alarm(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_oob_down_alarm")
 
     @property
     @pulumi.getter(name="localAccounts")
@@ -5268,7 +5320,9 @@ class SettingConfigPushPolicyPushWindow(dict):
                  enabled: Optional[bool] = None,
                  hours: Optional['outputs.SettingConfigPushPolicyPushWindowHours'] = None):
         """
-        :param 'SettingConfigPushPolicyPushWindowHoursArgs' hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+        :param 'SettingConfigPushPolicyPushWindowHoursArgs' hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
+               
+               **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -5284,7 +5338,9 @@ class SettingConfigPushPolicyPushWindow(dict):
     @pulumi.getter
     def hours(self) -> Optional['outputs.SettingConfigPushPolicyPushWindowHours']:
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
+
+        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
         """
         return pulumi.get(self, "hours")
 
@@ -5442,7 +5498,9 @@ class SettingEngagement(dict):
                  min_dwell: Optional[int] = None):
         """
         :param 'SettingEngagementDwellTagsArgs' dwell_tags: add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
-        :param 'SettingEngagementHoursArgs' hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+        :param 'SettingEngagementHoursArgs' hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
+               
+               **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
         :param int max_dwell: max time, default is 43200(12h), max is 68400 (18h)
         :param int min_dwell: min time
         """
@@ -5474,7 +5532,9 @@ class SettingEngagement(dict):
     @pulumi.getter
     def hours(self) -> Optional['outputs.SettingEngagementHours']:
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
+
+        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
         """
         return pulumi.get(self, "hours")
 
@@ -5858,32 +5918,32 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 hostnames: Sequence[str],
+                 name: str,
+                 protocol: str,
                  address: Optional[str] = None,
                  app_type: Optional[str] = None,
-                 hostnames: Optional[Sequence[str]] = None,
-                 name: Optional[str] = None,
+                 key: Optional[str] = None,
                  network: Optional[str] = None,
-                 protocol: Optional[str] = None,
                  url: Optional[str] = None,
                  vrf: Optional[str] = None):
         """
-        :param str address: if `protocol`==`icmp`
-        :param Sequence[str] hostnames: if `protocol`==`http`
+        :param Sequence[str] hostnames: Only 1 entry is allowed:
+                   * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+                   * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
         :param str protocol: enum: `http`, `icmp`
-        :param str url: if `protocol`==`http`
         """
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
         if address is not None:
             pulumi.set(__self__, "address", address)
         if app_type is not None:
             pulumi.set(__self__, "app_type", app_type)
-        if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
         if network is not None:
             pulumi.set(__self__, "network", network)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if vrf is not None:
@@ -5891,10 +5951,30 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
 
     @property
     @pulumi.getter
+    def hostnames(self) -> Sequence[str]:
+        """
+        Only 1 entry is allowed:
+            * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+            * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
+        """
+        return pulumi.get(self, "hostnames")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        enum: `http`, `icmp`
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter
     def address(self) -> Optional[str]:
-        """
-        if `protocol`==`icmp`
-        """
         return pulumi.get(self, "address")
 
     @property
@@ -5904,16 +5984,8 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
 
     @property
     @pulumi.getter
-    def hostnames(self) -> Optional[Sequence[str]]:
-        """
-        if `protocol`==`http`
-        """
-        return pulumi.get(self, "hostnames")
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
@@ -5922,18 +5994,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[str]:
-        """
-        enum: `http`, `icmp`
-        """
-        return pulumi.get(self, "protocol")
-
-    @property
-    @pulumi.getter
     def url(self) -> Optional[str]:
-        """
-        if `protocol`==`http`
-        """
         return pulumi.get(self, "url")
 
     @property

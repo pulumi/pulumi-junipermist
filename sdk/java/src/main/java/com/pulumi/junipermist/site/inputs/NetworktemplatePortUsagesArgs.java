@@ -252,6 +252,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * 
+     */
+    @Import(name="macAuthPreferred")
+    private @Nullable Output<Boolean> macAuthPreferred;
+
+    /**
+     * @return Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * 
+     */
+    public Optional<Output<Boolean>> macAuthPreferred() {
+        return Optional.ofNullable(this.macAuthPreferred);
+    }
+
+    /**
      * Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
@@ -402,21 +417,6 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-     * 
-     */
-    @Import(name="rejectedNetwork")
-    private @Nullable Output<String> rejectedNetwork;
-
-    /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-     * 
-     */
-    public Optional<Output<String>> rejectedNetwork() {
-        return Optional.ofNullable(this.rejectedNetwork);
-    }
-
-    /**
      * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
      * 
      */
@@ -444,6 +444,36 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<List<NetworktemplatePortUsagesRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * 
+     */
+    @Import(name="serverFailNetwork")
+    private @Nullable Output<String> serverFailNetwork;
+
+    /**
+     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * 
+     */
+    public Optional<Output<String>> serverFailNetwork() {
+        return Optional.ofNullable(this.serverFailNetwork);
+    }
+
+    /**
+     * Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * 
+     */
+    @Import(name="serverRejectNetwork")
+    private @Nullable Output<String> serverRejectNetwork;
+
+    /**
+     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * 
+     */
+    public Optional<Output<String>> serverRejectNetwork() {
+        return Optional.ofNullable(this.serverRejectNetwork);
     }
 
     /**
@@ -540,6 +570,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.guestNetwork = $.guestNetwork;
         this.interSwitchLink = $.interSwitchLink;
         this.macAuthOnly = $.macAuthOnly;
+        this.macAuthPreferred = $.macAuthPreferred;
         this.macAuthProtocol = $.macAuthProtocol;
         this.macLimit = $.macLimit;
         this.mode = $.mode;
@@ -550,9 +581,10 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.portAuth = $.portAuth;
         this.portNetwork = $.portNetwork;
         this.reauthInterval = $.reauthInterval;
-        this.rejectedNetwork = $.rejectedNetwork;
         this.resetDefaultWhen = $.resetDefaultWhen;
         this.rules = $.rules;
+        this.serverFailNetwork = $.serverFailNetwork;
+        this.serverRejectNetwork = $.serverRejectNetwork;
         this.speed = $.speed;
         this.stormControl = $.stormControl;
         this.stpEdge = $.stpEdge;
@@ -911,6 +943,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param macAuthPreferred Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAuthPreferred(@Nullable Output<Boolean> macAuthPreferred) {
+            $.macAuthPreferred = macAuthPreferred;
+            return this;
+        }
+
+        /**
+         * @param macAuthPreferred Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder macAuthPreferred(Boolean macAuthPreferred) {
+            return macAuthPreferred(Output.of(macAuthPreferred));
+        }
+
+        /**
          * @param macAuthProtocol Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          * 
          * @return builder
@@ -1131,27 +1184,6 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param rejectedNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rejectedNetwork(@Nullable Output<String> rejectedNetwork) {
-            $.rejectedNetwork = rejectedNetwork;
-            return this;
-        }
-
-        /**
-         * @param rejectedNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rejectedNetwork(String rejectedNetwork) {
-            return rejectedNetwork(Output.of(rejectedNetwork));
-        }
-
-        /**
          * @param resetDefaultWhen Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
          * 
          * @return builder
@@ -1201,6 +1233,48 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
          */
         public Builder rules(NetworktemplatePortUsagesRuleArgs... rules) {
             return rules(List.of(rules));
+        }
+
+        /**
+         * @param serverFailNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverFailNetwork(@Nullable Output<String> serverFailNetwork) {
+            $.serverFailNetwork = serverFailNetwork;
+            return this;
+        }
+
+        /**
+         * @param serverFailNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverFailNetwork(String serverFailNetwork) {
+            return serverFailNetwork(Output.of(serverFailNetwork));
+        }
+
+        /**
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverRejectNetwork(@Nullable Output<String> serverRejectNetwork) {
+            $.serverRejectNetwork = serverRejectNetwork;
+            return this;
+        }
+
+        /**
+         * @param serverRejectNetwork Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverRejectNetwork(String serverRejectNetwork) {
+            return serverRejectNetwork(Output.of(serverRejectNetwork));
         }
 
         /**

@@ -23,6 +23,7 @@ import com.pulumi.junipermist.org.outputs.SettingMistNac;
 import com.pulumi.junipermist.org.outputs.SettingMxedgeMgmt;
 import com.pulumi.junipermist.org.outputs.SettingPasswordPolicy;
 import com.pulumi.junipermist.org.outputs.SettingPcap;
+import com.pulumi.junipermist.org.outputs.SettingPortChannelization;
 import com.pulumi.junipermist.org.outputs.SettingSecurity;
 import com.pulumi.junipermist.org.outputs.SettingSwitchMgmt;
 import com.pulumi.junipermist.org.outputs.SettingSyntheticTest;
@@ -295,6 +296,12 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SettingPcap>> pcap() {
         return Codegen.optional(this.pcap);
+    }
+    @Export(name="portChannelization", refs={SettingPortChannelization.class}, tree="[0]")
+    private Output</* @Nullable */ SettingPortChannelization> portChannelization;
+
+    public Output<Optional<SettingPortChannelization>> portChannelization() {
+        return Codegen.optional(this.portChannelization);
     }
     @Export(name="security", refs={SettingSecurity.class}, tree="[0]")
     private Output</* @Nullable */ SettingSecurity> security;

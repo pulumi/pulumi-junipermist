@@ -21,12 +21,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("primary")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionPrimaryArgs>? Primary { get; set; }
 
-        /// <summary>
-        /// enum: `APAC`, `Americas`, `EMEA`, `auto`
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
-
         [Input("secondary")]
         public Input<Inputs.GatewayTunnelConfigsAutoProvisionSecondaryArgs>? Secondary { get; set; }
 

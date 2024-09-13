@@ -13,24 +13,21 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingGatewayMgmtAppProbingCustomApp
     {
-        /// <summary>
-        /// if `protocol`==`icmp`
-        /// </summary>
         public readonly string? Address;
         public readonly string? AppType;
         /// <summary>
-        /// if `protocol`==`http`
+        /// Only 1 entry is allowed:
+        ///     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+        ///     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
         /// </summary>
         public readonly ImmutableArray<string> Hostnames;
-        public readonly string? Name;
+        public readonly string? Key;
+        public readonly string Name;
         public readonly string? Network;
         /// <summary>
         /// enum: `http`, `icmp`
         /// </summary>
-        public readonly string? Protocol;
-        /// <summary>
-        /// if `protocol`==`http`
-        /// </summary>
+        public readonly string Protocol;
         public readonly string? Url;
         public readonly string? Vrf;
 
@@ -42,11 +39,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableArray<string> hostnames,
 
-            string? name,
+            string? key,
+
+            string name,
 
             string? network,
 
-            string? protocol,
+            string protocol,
 
             string? url,
 
@@ -55,6 +54,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Address = address;
             AppType = appType;
             Hostnames = hostnames;
+            Key = key;
             Name = name;
             Network = network;
             Protocol = protocol;

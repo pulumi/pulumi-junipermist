@@ -96,6 +96,13 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.dhcpOptionFqdn);
     }
 
+    @Import(name="disableOobDownAlarm")
+    private @Nullable Output<Boolean> disableOobDownAlarm;
+
+    public Optional<Output<Boolean>> disableOobDownAlarm() {
+        return Optional.ofNullable(this.disableOobDownAlarm);
+    }
+
     /**
      * Property key is the user name. For Local user authentication
      * 
@@ -181,6 +188,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         this.cliIdleTimeout = $.cliIdleTimeout;
         this.configRevertTimer = $.configRevertTimer;
         this.dhcpOptionFqdn = $.dhcpOptionFqdn;
+        this.disableOobDownAlarm = $.disableOobDownAlarm;
         this.localAccounts = $.localAccounts;
         this.mxedgeProxyHost = $.mxedgeProxyHost;
         this.mxedgeProxyPort = $.mxedgeProxyPort;
@@ -311,6 +319,15 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder dhcpOptionFqdn(Boolean dhcpOptionFqdn) {
             return dhcpOptionFqdn(Output.of(dhcpOptionFqdn));
+        }
+
+        public Builder disableOobDownAlarm(@Nullable Output<Boolean> disableOobDownAlarm) {
+            $.disableOobDownAlarm = disableOobDownAlarm;
+            return this;
+        }
+
+        public Builder disableOobDownAlarm(Boolean disableOobDownAlarm) {
+            return disableOobDownAlarm(Output.of(disableOobDownAlarm));
         }
 
         /**

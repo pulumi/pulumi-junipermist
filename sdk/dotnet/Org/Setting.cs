@@ -146,6 +146,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("pcap")]
         public Output<Outputs.SettingPcap?> Pcap { get; private set; } = null!;
 
+        [Output("portChannelization")]
+        public Output<Outputs.SettingPortChannelization?> PortChannelization { get; private set; } = null!;
+
         [Output("security")]
         public Output<Outputs.SettingSecurity?> Security { get; private set; } = null!;
 
@@ -315,6 +318,9 @@ namespace Pulumi.JuniperMist.Org
         [Input("pcap")]
         public Input<Inputs.SettingPcapArgs>? Pcap { get; set; }
 
+        [Input("portChannelization")]
+        public Input<Inputs.SettingPortChannelizationArgs>? PortChannelization { get; set; }
+
         [Input("security")]
         public Input<Inputs.SettingSecurityArgs>? Security { get; set; }
 
@@ -447,6 +453,9 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("pcap")]
         public Input<Inputs.SettingPcapGetArgs>? Pcap { get; set; }
+
+        [Input("portChannelization")]
+        public Input<Inputs.SettingPortChannelizationGetArgs>? PortChannelization { get; set; }
 
         [Input("security")]
         public Input<Inputs.SettingSecurityGetArgs>? Security { get; set; }

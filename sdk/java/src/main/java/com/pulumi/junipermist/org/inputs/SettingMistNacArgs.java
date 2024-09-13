@@ -51,6 +51,21 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+     * 
+     */
+    @Import(name="disableRsaeAlgorithms")
+    private @Nullable Output<Boolean> disableRsaeAlgorithms;
+
+    /**
+     * @return to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+     * 
+     */
+    public Optional<Output<Boolean>> disableRsaeAlgorithms() {
+        return Optional.ofNullable(this.disableRsaeAlgorithms);
+    }
+
+    /**
      * eap ssl security level
      * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
      * 
@@ -82,6 +97,36 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Boolean>> euOnly() {
         return Optional.ofNullable(this.euOnly);
+    }
+
+    /**
+     * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * 
+     */
+    @Import(name="idpMachineCertLookupField")
+    private @Nullable Output<String> idpMachineCertLookupField;
+
+    /**
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * 
+     */
+    public Optional<Output<String>> idpMachineCertLookupField() {
+        return Optional.ofNullable(this.idpMachineCertLookupField);
+    }
+
+    /**
+     * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * 
+     */
+    @Import(name="idpUserCertLookupField")
+    private @Nullable Output<String> idpUserCertLookupField;
+
+    /**
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * 
+     */
+    public Optional<Output<String>> idpUserCertLookupField() {
+        return Optional.ofNullable(this.idpUserCertLookupField);
     }
 
     @Import(name="idps")
@@ -145,8 +190,11 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     private SettingMistNacArgs(SettingMistNacArgs $) {
         this.cacerts = $.cacerts;
         this.defaultIdpId = $.defaultIdpId;
+        this.disableRsaeAlgorithms = $.disableRsaeAlgorithms;
         this.eapSslSecurityLevel = $.eapSslSecurityLevel;
         this.euOnly = $.euOnly;
+        this.idpMachineCertLookupField = $.idpMachineCertLookupField;
+        this.idpUserCertLookupField = $.idpUserCertLookupField;
         this.idps = $.idps;
         this.serverCert = $.serverCert;
         this.useIpVersion = $.useIpVersion;
@@ -224,6 +272,27 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param disableRsaeAlgorithms to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableRsaeAlgorithms(@Nullable Output<Boolean> disableRsaeAlgorithms) {
+            $.disableRsaeAlgorithms = disableRsaeAlgorithms;
+            return this;
+        }
+
+        /**
+         * @param disableRsaeAlgorithms to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableRsaeAlgorithms(Boolean disableRsaeAlgorithms) {
+            return disableRsaeAlgorithms(Output.of(disableRsaeAlgorithms));
+        }
+
+        /**
          * @param eapSslSecurityLevel eap ssl security level
          * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
          * 
@@ -267,6 +336,48 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder euOnly(Boolean euOnly) {
             return euOnly(Output.of(euOnly));
+        }
+
+        /**
+         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idpMachineCertLookupField(@Nullable Output<String> idpMachineCertLookupField) {
+            $.idpMachineCertLookupField = idpMachineCertLookupField;
+            return this;
+        }
+
+        /**
+         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idpMachineCertLookupField(String idpMachineCertLookupField) {
+            return idpMachineCertLookupField(Output.of(idpMachineCertLookupField));
+        }
+
+        /**
+         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idpUserCertLookupField(@Nullable Output<String> idpUserCertLookupField) {
+            $.idpUserCertLookupField = idpUserCertLookupField;
+            return this;
+        }
+
+        /**
+         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idpUserCertLookupField(String idpUserCertLookupField) {
+            return idpUserCertLookupField(Output.of(idpUserCertLookupField));
         }
 
         public Builder idps(@Nullable Output<List<SettingMistNacIdpArgs>> idps) {

@@ -16,10 +16,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? Enable;
         public readonly Outputs.GatewaytemplateTunnelConfigsAutoProvisionLatlng? Latlng;
         public readonly Outputs.GatewaytemplateTunnelConfigsAutoProvisionPrimary? Primary;
-        /// <summary>
-        /// enum: `APAC`, `Americas`, `EMEA`, `auto`
-        /// </summary>
-        public readonly string? Region;
         public readonly Outputs.GatewaytemplateTunnelConfigsAutoProvisionSecondary? Secondary;
 
         [OutputConstructor]
@@ -30,14 +26,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             Outputs.GatewaytemplateTunnelConfigsAutoProvisionPrimary? primary,
 
-            string? region,
-
             Outputs.GatewaytemplateTunnelConfigsAutoProvisionSecondary? secondary)
         {
             Enable = enable;
             Latlng = latlng;
             Primary = primary;
-            Region = region;
             Secondary = secondary;
         }
     }

@@ -9,7 +9,6 @@ import com.pulumi.junipermist.org.inputs.GatewaytemplateTunnelConfigsAutoProvisi
 import com.pulumi.junipermist.org.inputs.GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs;
 import java.lang.Boolean;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -40,21 +39,6 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         return Optional.ofNullable(this.primary);
     }
 
-    /**
-     * enum: `APAC`, `Americas`, `EMEA`, `auto`
-     * 
-     */
-    @Import(name="region")
-    private @Nullable Output<String> region;
-
-    /**
-     * @return enum: `APAC`, `Americas`, `EMEA`, `auto`
-     * 
-     */
-    public Optional<Output<String>> region() {
-        return Optional.ofNullable(this.region);
-    }
-
     @Import(name="secondary")
     private @Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs> secondary;
 
@@ -68,7 +52,6 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
         this.enable = $.enable;
         this.latlng = $.latlng;
         this.primary = $.primary;
-        this.region = $.region;
         this.secondary = $.secondary;
     }
 
@@ -115,27 +98,6 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionArgs extends com.pul
 
         public Builder primary(GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs primary) {
             return primary(Output.of(primary));
-        }
-
-        /**
-         * @param region enum: `APAC`, `Americas`, `EMEA`, `auto`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder region(@Nullable Output<String> region) {
-            $.region = region;
-            return this;
-        }
-
-        /**
-         * @param region enum: `APAC`, `Americas`, `EMEA`, `auto`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder region(String region) {
-            return region(Output.of(region));
         }
 
         public Builder secondary(@Nullable Output<GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs> secondary) {

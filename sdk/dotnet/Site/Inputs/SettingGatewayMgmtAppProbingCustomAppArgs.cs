@@ -12,20 +12,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingGatewayMgmtAppProbingCustomAppArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// if `protocol`==`icmp`
-        /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         [Input("appType")]
         public Input<string>? AppType { get; set; }
 
-        [Input("hostnames")]
+        [Input("hostnames", required: true)]
         private InputList<string>? _hostnames;
 
         /// <summary>
-        /// if `protocol`==`http`
+        /// Only 1 entry is allowed:
+        ///     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+        ///     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
         /// </summary>
         public InputList<string> Hostnames
         {
@@ -33,8 +32,11 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _hostnames = value;
         }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("key")]
+        public Input<string>? Key { get; set; }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -42,12 +44,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// <summary>
         /// enum: `http`, `icmp`
         /// </summary>
-        [Input("protocol")]
-        public Input<string>? Protocol { get; set; }
+        [Input("protocol", required: true)]
+        public Input<string> Protocol { get; set; } = null!;
 
-        /// <summary>
-        /// if `protocol`==`http`
-        /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
 

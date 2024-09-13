@@ -42,6 +42,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("dhcpOptionFqdn")]
         public Input<bool>? DhcpOptionFqdn { get; set; }
 
+        [Input("disableOobDownAlarm")]
+        public Input<bool>? DisableOobDownAlarm { get; set; }
+
         [Input("localAccounts")]
         private InputMap<Inputs.SwitchSwitchMgmtLocalAccountsGetArgs>? _localAccounts;
 

@@ -251,6 +251,7 @@ __all__ = [
     'SettingMxedgeMgmt',
     'SettingPasswordPolicy',
     'SettingPcap',
+    'SettingPortChannelization',
     'SettingSecurity',
     'SettingSwitchMgmt',
     'SettingSyntheticTest',
@@ -2168,6 +2169,8 @@ class DeviceprofileGatewayBgpConfig(dict):
             suggest = "neighbor_as"
         elif key == "noReadvertiseToOverlay":
             suggest = "no_readvertise_to_overlay"
+        elif key == "tunnelName":
+            suggest = "tunnel_name"
         elif key == "vpnName":
             suggest = "vpn_name"
         elif key == "wanName":
@@ -2202,6 +2205,7 @@ class DeviceprofileGatewayBgpConfig(dict):
                  neighbors: Optional[Mapping[str, 'outputs.DeviceprofileGatewayBgpConfigNeighbors']] = None,
                  networks: Optional[Sequence[str]] = None,
                  no_readvertise_to_overlay: Optional[bool] = None,
+                 tunnel_name: Optional[str] = None,
                  type: Optional[str] = None,
                  via: Optional[str] = None,
                  vpn_name: Optional[str] = None,
@@ -2220,8 +2224,9 @@ class DeviceprofileGatewayBgpConfig(dict):
         :param Mapping[str, 'DeviceprofileGatewayBgpConfigNeighborsArgs'] neighbors: if per-neighbor as is desired. Property key is the neighbor address
         :param Sequence[str] networks: if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         :param bool no_readvertise_to_overlay: by default, we'll re-advertise all learned BGP routers toward overlay
+        :param str tunnel_name: if `type`==`tunnel`
         :param str type: enum: `external`, `internal`
-        :param str via: network name. enum: `lan`, `vpn`, `wan`
+        :param str via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
         :param str wan_name: if `via`==`wan`
         """
         if auth_key is not None:
@@ -2258,6 +2263,8 @@ class DeviceprofileGatewayBgpConfig(dict):
             pulumi.set(__self__, "networks", networks)
         if no_readvertise_to_overlay is not None:
             pulumi.set(__self__, "no_readvertise_to_overlay", no_readvertise_to_overlay)
+        if tunnel_name is not None:
+            pulumi.set(__self__, "tunnel_name", tunnel_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if via is not None:
@@ -2386,6 +2393,14 @@ class DeviceprofileGatewayBgpConfig(dict):
         return pulumi.get(self, "no_readvertise_to_overlay")
 
     @property
+    @pulumi.getter(name="tunnelName")
+    def tunnel_name(self) -> Optional[str]:
+        """
+        if `type`==`tunnel`
+        """
+        return pulumi.get(self, "tunnel_name")
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
@@ -2397,7 +2412,7 @@ class DeviceprofileGatewayBgpConfig(dict):
     @pulumi.getter
     def via(self) -> Optional[str]:
         """
-        network name. enum: `lan`, `vpn`, `wan`
+        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
         """
         return pulumi.get(self, "via")
 
@@ -6046,19 +6061,13 @@ class DeviceprofileGatewayTunnelConfigsAutoProvision(dict):
                  enable: Optional[bool] = None,
                  latlng: Optional['outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng'] = None,
                  primary: Optional['outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary'] = None,
-                 region: Optional[str] = None,
                  secondary: Optional['outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary'] = None):
-        """
-        :param str region: enum: `APAC`, `Americas`, `EMEA`, `auto`
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if latlng is not None:
             pulumi.set(__self__, "latlng", latlng)
         if primary is not None:
             pulumi.set(__self__, "primary", primary)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if secondary is not None:
             pulumi.set(__self__, "secondary", secondary)
 
@@ -6076,14 +6085,6 @@ class DeviceprofileGatewayTunnelConfigsAutoProvision(dict):
     @pulumi.getter
     def primary(self) -> Optional['outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary']:
         return pulumi.get(self, "primary")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        """
-        enum: `APAC`, `Americas`, `EMEA`, `auto`
-        """
-        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
@@ -7017,6 +7018,8 @@ class GatewaytemplateBgpConfig(dict):
             suggest = "neighbor_as"
         elif key == "noReadvertiseToOverlay":
             suggest = "no_readvertise_to_overlay"
+        elif key == "tunnelName":
+            suggest = "tunnel_name"
         elif key == "vpnName":
             suggest = "vpn_name"
         elif key == "wanName":
@@ -7051,6 +7054,7 @@ class GatewaytemplateBgpConfig(dict):
                  neighbors: Optional[Mapping[str, 'outputs.GatewaytemplateBgpConfigNeighbors']] = None,
                  networks: Optional[Sequence[str]] = None,
                  no_readvertise_to_overlay: Optional[bool] = None,
+                 tunnel_name: Optional[str] = None,
                  type: Optional[str] = None,
                  via: Optional[str] = None,
                  vpn_name: Optional[str] = None,
@@ -7069,8 +7073,9 @@ class GatewaytemplateBgpConfig(dict):
         :param Mapping[str, 'GatewaytemplateBgpConfigNeighborsArgs'] neighbors: if per-neighbor as is desired. Property key is the neighbor address
         :param Sequence[str] networks: if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         :param bool no_readvertise_to_overlay: by default, we'll re-advertise all learned BGP routers toward overlay
+        :param str tunnel_name: if `type`==`tunnel`
         :param str type: enum: `external`, `internal`
-        :param str via: network name. enum: `lan`, `vpn`, `wan`
+        :param str via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
         :param str wan_name: if `via`==`wan`
         """
         if auth_key is not None:
@@ -7107,6 +7112,8 @@ class GatewaytemplateBgpConfig(dict):
             pulumi.set(__self__, "networks", networks)
         if no_readvertise_to_overlay is not None:
             pulumi.set(__self__, "no_readvertise_to_overlay", no_readvertise_to_overlay)
+        if tunnel_name is not None:
+            pulumi.set(__self__, "tunnel_name", tunnel_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if via is not None:
@@ -7235,6 +7242,14 @@ class GatewaytemplateBgpConfig(dict):
         return pulumi.get(self, "no_readvertise_to_overlay")
 
     @property
+    @pulumi.getter(name="tunnelName")
+    def tunnel_name(self) -> Optional[str]:
+        """
+        if `type`==`tunnel`
+        """
+        return pulumi.get(self, "tunnel_name")
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
@@ -7246,7 +7261,7 @@ class GatewaytemplateBgpConfig(dict):
     @pulumi.getter
     def via(self) -> Optional[str]:
         """
-        network name. enum: `lan`, `vpn`, `wan`
+        network name. enum: `lan`, `tunnel`, `vpn`, `wan`
         """
         return pulumi.get(self, "via")
 
@@ -10895,19 +10910,13 @@ class GatewaytemplateTunnelConfigsAutoProvision(dict):
                  enable: Optional[bool] = None,
                  latlng: Optional['outputs.GatewaytemplateTunnelConfigsAutoProvisionLatlng'] = None,
                  primary: Optional['outputs.GatewaytemplateTunnelConfigsAutoProvisionPrimary'] = None,
-                 region: Optional[str] = None,
                  secondary: Optional['outputs.GatewaytemplateTunnelConfigsAutoProvisionSecondary'] = None):
-        """
-        :param str region: enum: `APAC`, `Americas`, `EMEA`, `auto`
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if latlng is not None:
             pulumi.set(__self__, "latlng", latlng)
         if primary is not None:
             pulumi.set(__self__, "primary", primary)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if secondary is not None:
             pulumi.set(__self__, "secondary", secondary)
 
@@ -10925,14 +10934,6 @@ class GatewaytemplateTunnelConfigsAutoProvision(dict):
     @pulumi.getter
     def primary(self) -> Optional['outputs.GatewaytemplateTunnelConfigsAutoProvisionPrimary']:
         return pulumi.get(self, "primary")
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[str]:
-        """
-        enum: `APAC`, `Americas`, `EMEA`, `auto`
-        """
-        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
@@ -13596,6 +13597,8 @@ class NetworktemplatePortUsages(dict):
             suggest = "inter_switch_link"
         elif key == "macAuthOnly":
             suggest = "mac_auth_only"
+        elif key == "macAuthPreferred":
+            suggest = "mac_auth_preferred"
         elif key == "macAuthProtocol":
             suggest = "mac_auth_protocol"
         elif key == "macLimit":
@@ -13610,10 +13613,12 @@ class NetworktemplatePortUsages(dict):
             suggest = "port_network"
         elif key == "reauthInterval":
             suggest = "reauth_interval"
-        elif key == "rejectedNetwork":
-            suggest = "rejected_network"
         elif key == "resetDefaultWhen":
             suggest = "reset_default_when"
+        elif key == "serverFailNetwork":
+            suggest = "server_fail_network"
+        elif key == "serverRejectNetwork":
+            suggest = "server_reject_network"
         elif key == "stormControl":
             suggest = "storm_control"
         elif key == "stpEdge":
@@ -13652,6 +13657,7 @@ class NetworktemplatePortUsages(dict):
                  guest_network: Optional[str] = None,
                  inter_switch_link: Optional[bool] = None,
                  mac_auth_only: Optional[bool] = None,
+                 mac_auth_preferred: Optional[bool] = None,
                  mac_auth_protocol: Optional[str] = None,
                  mac_limit: Optional[int] = None,
                  mode: Optional[str] = None,
@@ -13662,9 +13668,10 @@ class NetworktemplatePortUsages(dict):
                  port_auth: Optional[str] = None,
                  port_network: Optional[str] = None,
                  reauth_interval: Optional[int] = None,
-                 rejected_network: Optional[str] = None,
                  reset_default_when: Optional[str] = None,
                  rules: Optional[Sequence['outputs.NetworktemplatePortUsagesRule']] = None,
+                 server_fail_network: Optional[str] = None,
+                 server_reject_network: Optional[str] = None,
                  speed: Optional[str] = None,
                  storm_control: Optional['outputs.NetworktemplatePortUsagesStormControl'] = None,
                  stp_edge: Optional[bool] = None,
@@ -13690,6 +13697,7 @@ class NetworktemplatePortUsages(dict):
         :param bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
                NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         :param bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
+        :param bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
         :param int mac_limit: Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
         :param str mode: `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
@@ -13700,9 +13708,10 @@ class NetworktemplatePortUsages(dict):
         :param str port_auth: Only if `mode`!=`dynamic` if dot1x is desired, set to dot1x. enum: `dot1x`
         :param str port_network: Only if `mode`!=`dynamic` native network/vlan for untagged traffic
         :param int reauth_interval: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` reauthentication interval range
-        :param str rejected_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
         :param str reset_default_when: Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         :param Sequence['NetworktemplatePortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`
+        :param str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+        :param str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
         :param str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
         :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Switch storm control
                Only if `mode`!=`dynamic`
@@ -13739,6 +13748,8 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "inter_switch_link", inter_switch_link)
         if mac_auth_only is not None:
             pulumi.set(__self__, "mac_auth_only", mac_auth_only)
+        if mac_auth_preferred is not None:
+            pulumi.set(__self__, "mac_auth_preferred", mac_auth_preferred)
         if mac_auth_protocol is not None:
             pulumi.set(__self__, "mac_auth_protocol", mac_auth_protocol)
         if mac_limit is not None:
@@ -13759,12 +13770,14 @@ class NetworktemplatePortUsages(dict):
             pulumi.set(__self__, "port_network", port_network)
         if reauth_interval is not None:
             pulumi.set(__self__, "reauth_interval", reauth_interval)
-        if rejected_network is not None:
-            pulumi.set(__self__, "rejected_network", rejected_network)
         if reset_default_when is not None:
             pulumi.set(__self__, "reset_default_when", reset_default_when)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if server_fail_network is not None:
+            pulumi.set(__self__, "server_fail_network", server_fail_network)
+        if server_reject_network is not None:
+            pulumi.set(__self__, "server_reject_network", server_reject_network)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
         if storm_control is not None:
@@ -13902,6 +13915,14 @@ class NetworktemplatePortUsages(dict):
         return pulumi.get(self, "mac_auth_only")
 
     @property
+    @pulumi.getter(name="macAuthPreferred")
+    def mac_auth_preferred(self) -> Optional[bool]:
+        """
+        Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        """
+        return pulumi.get(self, "mac_auth_preferred")
+
+    @property
     @pulumi.getter(name="macAuthProtocol")
     def mac_auth_protocol(self) -> Optional[str]:
         """
@@ -13982,14 +14003,6 @@ class NetworktemplatePortUsages(dict):
         return pulumi.get(self, "reauth_interval")
 
     @property
-    @pulumi.getter(name="rejectedNetwork")
-    def rejected_network(self) -> Optional[str]:
-        """
-        Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        """
-        return pulumi.get(self, "rejected_network")
-
-    @property
     @pulumi.getter(name="resetDefaultWhen")
     def reset_default_when(self) -> Optional[str]:
         """
@@ -14004,6 +14017,22 @@ class NetworktemplatePortUsages(dict):
         Only if `mode`==`dynamic`
         """
         return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="serverFailNetwork")
+    def server_fail_network(self) -> Optional[str]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+        """
+        return pulumi.get(self, "server_fail_network")
+
+    @property
+    @pulumi.getter(name="serverRejectNetwork")
+    def server_reject_network(self) -> Optional[str]:
+        """
+        Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+        """
+        return pulumi.get(self, "server_reject_network")
 
     @property
     @pulumi.getter
@@ -14467,6 +14496,8 @@ class NetworktemplateRadiusConfigAuthServer(dict):
             suggest = "keywrap_kek"
         elif key == "keywrapMack":
             suggest = "keywrap_mack"
+        elif key == "requireMessageAuthenticator":
+            suggest = "require_message_authenticator"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworktemplateRadiusConfigAuthServer. Access the value via the '{suggest}' property getter instead.")
@@ -14486,12 +14517,14 @@ class NetworktemplateRadiusConfigAuthServer(dict):
                  keywrap_format: Optional[str] = None,
                  keywrap_kek: Optional[str] = None,
                  keywrap_mack: Optional[str] = None,
-                 port: Optional[int] = None):
+                 port: Optional[int] = None,
+                 require_message_authenticator: Optional[bool] = None):
         """
         :param str host: ip / hostname of RADIUS server
         :param str secret: secret of RADIUS server
         :param str keywrap_format: enum: `ascii`, `hex`
         :param int port: Auth port of RADIUS server
+        :param bool require_message_authenticator: whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -14505,6 +14538,8 @@ class NetworktemplateRadiusConfigAuthServer(dict):
             pulumi.set(__self__, "keywrap_mack", keywrap_mack)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if require_message_authenticator is not None:
+            pulumi.set(__self__, "require_message_authenticator", require_message_authenticator)
 
     @property
     @pulumi.getter
@@ -14552,6 +14587,14 @@ class NetworktemplateRadiusConfigAuthServer(dict):
         Auth port of RADIUS server
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="requireMessageAuthenticator")
+    def require_message_authenticator(self) -> Optional[bool]:
+        """
+        whether to require Message-Authenticator in requests
+        """
+        return pulumi.get(self, "require_message_authenticator")
 
 
 @pulumi.output_type
@@ -16786,6 +16829,8 @@ class NetworktemplateSwitchMgmt(dict):
             suggest = "config_revert_timer"
         elif key == "dhcpOptionFqdn":
             suggest = "dhcp_option_fqdn"
+        elif key == "disableOobDownAlarm":
+            suggest = "disable_oob_down_alarm"
         elif key == "localAccounts":
             suggest = "local_accounts"
         elif key == "mxedgeProxyHost":
@@ -16816,6 +16861,7 @@ class NetworktemplateSwitchMgmt(dict):
                  cli_idle_timeout: Optional[int] = None,
                  config_revert_timer: Optional[int] = None,
                  dhcp_option_fqdn: Optional[bool] = None,
+                 disable_oob_down_alarm: Optional[bool] = None,
                  local_accounts: Optional[Mapping[str, 'outputs.NetworktemplateSwitchMgmtLocalAccounts']] = None,
                  mxedge_proxy_host: Optional[str] = None,
                  mxedge_proxy_port: Optional[int] = None,
@@ -16845,6 +16891,8 @@ class NetworktemplateSwitchMgmt(dict):
             pulumi.set(__self__, "config_revert_timer", config_revert_timer)
         if dhcp_option_fqdn is not None:
             pulumi.set(__self__, "dhcp_option_fqdn", dhcp_option_fqdn)
+        if disable_oob_down_alarm is not None:
+            pulumi.set(__self__, "disable_oob_down_alarm", disable_oob_down_alarm)
         if local_accounts is not None:
             pulumi.set(__self__, "local_accounts", local_accounts)
         if mxedge_proxy_host is not None:
@@ -16899,6 +16947,11 @@ class NetworktemplateSwitchMgmt(dict):
         Enable to provide the FQDN with DHCP option 81
         """
         return pulumi.get(self, "dhcp_option_fqdn")
+
+    @property
+    @pulumi.getter(name="disableOobDownAlarm")
+    def disable_oob_down_alarm(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_oob_down_alarm")
 
     @property
     @pulumi.getter(name="localAccounts")
@@ -19244,10 +19297,16 @@ class SettingMistNac(dict):
         suggest = None
         if key == "defaultIdpId":
             suggest = "default_idp_id"
+        elif key == "disableRsaeAlgorithms":
+            suggest = "disable_rsae_algorithms"
         elif key == "eapSslSecurityLevel":
             suggest = "eap_ssl_security_level"
         elif key == "euOnly":
             suggest = "eu_only"
+        elif key == "idpMachineCertLookupField":
+            suggest = "idp_machine_cert_lookup_field"
+        elif key == "idpUserCertLookupField":
+            suggest = "idp_user_cert_lookup_field"
         elif key == "serverCert":
             suggest = "server_cert"
         elif key == "useIpVersion":
@@ -19269,8 +19328,11 @@ class SettingMistNac(dict):
     def __init__(__self__, *,
                  cacerts: Optional[Sequence[str]] = None,
                  default_idp_id: Optional[str] = None,
+                 disable_rsae_algorithms: Optional[bool] = None,
                  eap_ssl_security_level: Optional[int] = None,
                  eu_only: Optional[bool] = None,
+                 idp_machine_cert_lookup_field: Optional[str] = None,
+                 idp_user_cert_lookup_field: Optional[str] = None,
                  idps: Optional[Sequence['outputs.SettingMistNacIdp']] = None,
                  server_cert: Optional['outputs.SettingMistNacServerCert'] = None,
                  use_ip_version: Optional[str] = None,
@@ -19278,10 +19340,13 @@ class SettingMistNac(dict):
         """
         :param Sequence[str] cacerts: list of PEM-encoded ca certs
         :param str default_idp_id: use this IDP when no explicit realm present in the incoming username/CN OR when no IDP is explicitly mapped to the incoming realm.
+        :param bool disable_rsae_algorithms: to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
         :param int eap_ssl_security_level: eap ssl security level
                see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
         :param bool eu_only: By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
                For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+        :param str idp_machine_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+        :param str idp_user_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
         :param 'SettingMistNacServerCertArgs' server_cert: radius server cert to be presented in EAP TLS
         :param str use_ip_version: by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
         :param bool use_ssl_port: By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac. 
@@ -19292,10 +19357,16 @@ class SettingMistNac(dict):
             pulumi.set(__self__, "cacerts", cacerts)
         if default_idp_id is not None:
             pulumi.set(__self__, "default_idp_id", default_idp_id)
+        if disable_rsae_algorithms is not None:
+            pulumi.set(__self__, "disable_rsae_algorithms", disable_rsae_algorithms)
         if eap_ssl_security_level is not None:
             pulumi.set(__self__, "eap_ssl_security_level", eap_ssl_security_level)
         if eu_only is not None:
             pulumi.set(__self__, "eu_only", eu_only)
+        if idp_machine_cert_lookup_field is not None:
+            pulumi.set(__self__, "idp_machine_cert_lookup_field", idp_machine_cert_lookup_field)
+        if idp_user_cert_lookup_field is not None:
+            pulumi.set(__self__, "idp_user_cert_lookup_field", idp_user_cert_lookup_field)
         if idps is not None:
             pulumi.set(__self__, "idps", idps)
         if server_cert is not None:
@@ -19322,6 +19393,14 @@ class SettingMistNac(dict):
         return pulumi.get(self, "default_idp_id")
 
     @property
+    @pulumi.getter(name="disableRsaeAlgorithms")
+    def disable_rsae_algorithms(self) -> Optional[bool]:
+        """
+        to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+        """
+        return pulumi.get(self, "disable_rsae_algorithms")
+
+    @property
     @pulumi.getter(name="eapSslSecurityLevel")
     def eap_ssl_security_level(self) -> Optional[int]:
         """
@@ -19338,6 +19417,22 @@ class SettingMistNac(dict):
         For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
         """
         return pulumi.get(self, "eu_only")
+
+    @property
+    @pulumi.getter(name="idpMachineCertLookupField")
+    def idp_machine_cert_lookup_field(self) -> Optional[str]:
+        """
+        allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+        """
+        return pulumi.get(self, "idp_machine_cert_lookup_field")
+
+    @property
+    @pulumi.getter(name="idpUserCertLookupField")
+    def idp_user_cert_lookup_field(self) -> Optional[str]:
+        """
+        allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+        """
+        return pulumi.get(self, "idp_user_cert_lookup_field")
 
     @property
     @pulumi.getter
@@ -19553,7 +19648,9 @@ class SettingPasswordPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "minLength":
+        if key == "expiryInDays":
+            suggest = "expiry_in_days"
+        elif key == "minLength":
             suggest = "min_length"
         elif key == "requiresSpecialChar":
             suggest = "requires_special_char"
@@ -19573,21 +19670,21 @@ class SettingPasswordPolicy(dict):
 
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 freshness: Optional[int] = None,
+                 expiry_in_days: Optional[int] = None,
                  min_length: Optional[int] = None,
                  requires_special_char: Optional[bool] = None,
                  requires_two_factor_auth: Optional[bool] = None):
         """
         :param bool enabled: whether the policy is enabled
-        :param int freshness: days, required if password policy is enabled
+        :param int expiry_in_days: password expiry in days
         :param int min_length: required password length
         :param bool requires_special_char: whether to require special character
         :param bool requires_two_factor_auth: whether to require two-factor auth
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if freshness is not None:
-            pulumi.set(__self__, "freshness", freshness)
+        if expiry_in_days is not None:
+            pulumi.set(__self__, "expiry_in_days", expiry_in_days)
         if min_length is not None:
             pulumi.set(__self__, "min_length", min_length)
         if requires_special_char is not None:
@@ -19604,12 +19701,12 @@ class SettingPasswordPolicy(dict):
         return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter
-    def freshness(self) -> Optional[int]:
+    @pulumi.getter(name="expiryInDays")
+    def expiry_in_days(self) -> Optional[int]:
         """
-        days, required if password policy is enabled
+        password expiry in days
         """
-        return pulumi.get(self, "freshness")
+        return pulumi.get(self, "expiry_in_days")
 
     @property
     @pulumi.getter(name="minLength")
@@ -19678,6 +19775,33 @@ class SettingPcap(dict):
         max_len of non-management packets to capture
         """
         return pulumi.get(self, "max_pkt_len")
+
+
+@pulumi.output_type
+class SettingPortChannelization(dict):
+    def __init__(__self__, *,
+                 config: Optional[Mapping[str, str]] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param Mapping[str, str] config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[Mapping[str, str]]:
+        """
+        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

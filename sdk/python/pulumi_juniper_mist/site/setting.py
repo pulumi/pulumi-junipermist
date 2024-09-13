@@ -56,15 +56,20 @@ class SettingArgs:
                  zone_occupancy_alert: Optional[pulumi.Input['SettingZoneOccupancyAlertArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+               `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+               is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -188,7 +193,8 @@ class SettingArgs:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
 
@@ -260,7 +266,8 @@ class SettingArgs:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -284,7 +291,10 @@ class SettingArgs:
     @pulumi.getter
     def engagement(self) -> Optional[pulumi.Input['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+        multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+        (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+        bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         """
         return pulumi.get(self, "engagement")
 
@@ -644,15 +654,20 @@ class _SettingState:
                  zone_occupancy_alert: Optional[pulumi.Input['SettingZoneOccupancyAlertArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+               `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+               is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -774,7 +789,8 @@ class _SettingState:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
 
@@ -855,7 +871,8 @@ class _SettingState:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -879,7 +896,10 @@ class _SettingState:
     @pulumi.getter
     def engagement(self) -> Optional[pulumi.Input['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+        multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+        (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+        bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         """
         return pulumi.get(self, "engagement")
 
@@ -1279,15 +1299,20 @@ class Setting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+               `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+               is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -1495,15 +1520,20 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+               `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
         :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
         :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+               is desired, use the following
         :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -1585,7 +1615,8 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
 
@@ -1638,7 +1669,8 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> pulumi.Output[int]:
         """
-        by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
 
@@ -1654,7 +1686,10 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def engagement(self) -> pulumi.Output[Optional['outputs.SettingEngagement']]:
         """
-        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+        multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+        (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+        bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         """
         return pulumi.get(self, "engagement")
 

@@ -49,7 +49,8 @@ export class Setting extends pulumi.CustomResource {
 
     public readonly analytic!: pulumi.Output<outputs.site.SettingAnalytic | undefined>;
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * `deviceUpdownThreshold` is ignored.
      */
     public readonly apUpdownThreshold!: pulumi.Output<number>;
     /**
@@ -74,7 +75,8 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly criticalUrlMonitoring!: pulumi.Output<outputs.site.SettingCriticalUrlMonitoring | undefined>;
     /**
-     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+     * by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * is desired, use the following
      */
     public readonly deviceUpdownThreshold!: pulumi.Output<number>;
     /**
@@ -82,7 +84,10 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly disabledSystemDefinedPortUsages!: pulumi.Output<string[] | undefined>;
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+     * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+     * = “Visitor”, engaged = “Associates”, stationed = “Assets”
      */
     public readonly engagement!: pulumi.Output<outputs.site.SettingEngagement | undefined>;
     /**
@@ -290,7 +295,8 @@ export class Setting extends pulumi.CustomResource {
 export interface SettingState {
     analytic?: pulumi.Input<inputs.site.SettingAnalytic>;
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -315,7 +321,8 @@ export interface SettingState {
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
     /**
-     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+     * by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -323,7 +330,10 @@ export interface SettingState {
      */
     disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+     * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+     * = “Visitor”, engaged = “Associates”, stationed = “Assets”
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement>;
     /**
@@ -426,7 +436,8 @@ export interface SettingState {
 export interface SettingArgs {
     analytic?: pulumi.Input<inputs.site.SettingAnalytic>;
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -450,7 +461,8 @@ export interface SettingArgs {
      */
     criticalUrlMonitoring?: pulumi.Input<inputs.site.SettingCriticalUrlMonitoring>;
     /**
-     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+     * by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
@@ -458,7 +470,10 @@ export interface SettingArgs {
      */
     disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+     * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+     * = “Visitor”, engaged = “Associates”, stationed = “Assets”
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement>;
     /**

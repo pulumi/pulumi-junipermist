@@ -33,6 +33,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Enable to provide the FQDN with DHCP option 81
         /// </summary>
         public readonly bool? DhcpOptionFqdn;
+        public readonly bool? DisableOobDownAlarm;
         /// <summary>
         /// Property key is the user name. For Local user authentication
         /// </summary>
@@ -64,6 +65,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? dhcpOptionFqdn,
 
+            bool? disableOobDownAlarm,
+
             ImmutableDictionary<string, Outputs.SwitchSwitchMgmtLocalAccounts>? localAccounts,
 
             string? mxedgeProxyHost,
@@ -83,6 +86,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             CliIdleTimeout = cliIdleTimeout;
             ConfigRevertTimer = configRevertTimer;
             DhcpOptionFqdn = dhcpOptionFqdn;
+            DisableOobDownAlarm = disableOobDownAlarm;
             LocalAccounts = localAccounts;
             MxedgeProxyHost = mxedgeProxyHost;
             MxedgeProxyPort = mxedgeProxyPort;

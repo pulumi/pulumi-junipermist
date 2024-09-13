@@ -5,7 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.String;
+import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,24 +16,24 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
     public static final SwitchStpConfigArgs Empty = new SwitchStpConfigArgs();
 
     /**
-     * enum: `rstp`, `vstp`
+     * ignored for switches participating in EVPN
      * 
      */
-    @Import(name="type")
-    private @Nullable Output<String> type;
+    @Import(name="vstpEnabled")
+    private @Nullable Output<Boolean> vstpEnabled;
 
     /**
-     * @return enum: `rstp`, `vstp`
+     * @return ignored for switches participating in EVPN
      * 
      */
-    public Optional<Output<String>> type() {
-        return Optional.ofNullable(this.type);
+    public Optional<Output<Boolean>> vstpEnabled() {
+        return Optional.ofNullable(this.vstpEnabled);
     }
 
     private SwitchStpConfigArgs() {}
 
     private SwitchStpConfigArgs(SwitchStpConfigArgs $) {
-        this.type = $.type;
+        this.vstpEnabled = $.vstpEnabled;
     }
 
     public static Builder builder() {
@@ -55,24 +55,24 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type enum: `rstp`, `vstp`
+         * @param vstpEnabled ignored for switches participating in EVPN
          * 
          * @return builder
          * 
          */
-        public Builder type(@Nullable Output<String> type) {
-            $.type = type;
+        public Builder vstpEnabled(@Nullable Output<Boolean> vstpEnabled) {
+            $.vstpEnabled = vstpEnabled;
             return this;
         }
 
         /**
-         * @param type enum: `rstp`, `vstp`
+         * @param vstpEnabled ignored for switches participating in EVPN
          * 
          * @return builder
          * 
          */
-        public Builder type(String type) {
-            return type(Output.of(type));
+        public Builder vstpEnabled(Boolean vstpEnabled) {
+            return vstpEnabled(Output.of(vstpEnabled));
         }
 
         public SwitchStpConfigArgs build() {

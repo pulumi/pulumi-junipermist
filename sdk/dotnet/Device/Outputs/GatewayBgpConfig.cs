@@ -64,11 +64,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
+        /// if `type`==`tunnel`
+        /// </summary>
+        public readonly string? TunnelName;
+        /// <summary>
         /// enum: `external`, `internal`
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// network name. enum: `lan`, `vpn`, `wan`
+        /// network name. enum: `lan`, `tunnel`, `vpn`, `wan`
         /// </summary>
         public readonly string? Via;
         public readonly string? VpnName;
@@ -113,6 +117,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? noReadvertiseToOverlay,
 
+            string? tunnelName,
+
             string? type,
 
             string? via,
@@ -138,6 +144,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Neighbors = neighbors;
             Networks = networks;
             NoReadvertiseToOverlay = noReadvertiseToOverlay;
+            TunnelName = tunnelName;
             Type = type;
             Via = via;
             VpnName = vpnName;

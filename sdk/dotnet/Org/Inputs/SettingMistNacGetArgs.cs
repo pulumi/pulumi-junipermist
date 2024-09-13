@@ -31,6 +31,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? DefaultIdpId { get; set; }
 
         /// <summary>
+        /// to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+        /// </summary>
+        [Input("disableRsaeAlgorithms")]
+        public Input<bool>? DisableRsaeAlgorithms { get; set; }
+
+        /// <summary>
         /// eap ssl security level
         /// see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
         /// </summary>
@@ -43,6 +49,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("euOnly")]
         public Input<bool>? EuOnly { get; set; }
+
+        /// <summary>
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+        /// </summary>
+        [Input("idpMachineCertLookupField")]
+        public Input<string>? IdpMachineCertLookupField { get; set; }
+
+        /// <summary>
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+        /// </summary>
+        [Input("idpUserCertLookupField")]
+        public Input<string>? IdpUserCertLookupField { get; set; }
 
         [Input("idps")]
         private InputList<Inputs.SettingMistNacIdpGetArgs>? _idps;
