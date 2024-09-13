@@ -29,7 +29,8 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingAnalytic?> Analytic { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
         public Output<int> ApUpdownThreshold { get; private set; } = null!;
@@ -68,7 +69,8 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingCriticalUrlMonitoring?> CriticalUrlMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        /// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        /// is desired, use the following
         /// </summary>
         [Output("deviceUpdownThreshold")]
         public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
@@ -80,7 +82,10 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
 
         /// <summary>
-        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+        /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+        /// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+        /// bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         /// </summary>
         [Output("engagement")]
         public Output<Outputs.SettingEngagement?> Engagement { get; private set; } = null!;
@@ -288,7 +293,8 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingAnalyticArgs>? Analytic { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
         public Input<int>? ApUpdownThreshold { get; set; }
@@ -324,7 +330,8 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        /// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        /// is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
@@ -342,7 +349,10 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+        /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+        /// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+        /// bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         /// </summary>
         [Input("engagement")]
         public Input<Inputs.SettingEngagementArgs>? Engagement { get; set; }
@@ -523,7 +533,8 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingAnalyticGetArgs>? Analytic { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
         public Input<int>? ApUpdownThreshold { get; set; }
@@ -562,7 +573,8 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingCriticalUrlMonitoringGetArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+        /// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        /// is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
@@ -580,7 +592,10 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+        /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+        /// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+        /// bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
         /// </summary>
         [Input("engagement")]
         public Input<Inputs.SettingEngagementGetArgs>? Engagement { get; set; }

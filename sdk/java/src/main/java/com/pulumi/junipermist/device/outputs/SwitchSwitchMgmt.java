@@ -42,6 +42,7 @@ public final class SwitchSwitchMgmt {
      * 
      */
     private @Nullable Boolean dhcpOptionFqdn;
+    private @Nullable Boolean disableOobDownAlarm;
     /**
      * @return Property key is the user name. For Local user authentication
      * 
@@ -100,6 +101,9 @@ public final class SwitchSwitchMgmt {
     public Optional<Boolean> dhcpOptionFqdn() {
         return Optional.ofNullable(this.dhcpOptionFqdn);
     }
+    public Optional<Boolean> disableOobDownAlarm() {
+        return Optional.ofNullable(this.disableOobDownAlarm);
+    }
     /**
      * @return Property key is the user name. For Local user authentication
      * 
@@ -150,6 +154,7 @@ public final class SwitchSwitchMgmt {
         private @Nullable Integer cliIdleTimeout;
         private @Nullable Integer configRevertTimer;
         private @Nullable Boolean dhcpOptionFqdn;
+        private @Nullable Boolean disableOobDownAlarm;
         private @Nullable Map<String,SwitchSwitchMgmtLocalAccounts> localAccounts;
         private @Nullable String mxedgeProxyHost;
         private @Nullable Integer mxedgeProxyPort;
@@ -165,6 +170,7 @@ public final class SwitchSwitchMgmt {
     	      this.cliIdleTimeout = defaults.cliIdleTimeout;
     	      this.configRevertTimer = defaults.configRevertTimer;
     	      this.dhcpOptionFqdn = defaults.dhcpOptionFqdn;
+    	      this.disableOobDownAlarm = defaults.disableOobDownAlarm;
     	      this.localAccounts = defaults.localAccounts;
     	      this.mxedgeProxyHost = defaults.mxedgeProxyHost;
     	      this.mxedgeProxyPort = defaults.mxedgeProxyPort;
@@ -202,6 +208,12 @@ public final class SwitchSwitchMgmt {
         public Builder dhcpOptionFqdn(@Nullable Boolean dhcpOptionFqdn) {
 
             this.dhcpOptionFqdn = dhcpOptionFqdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableOobDownAlarm(@Nullable Boolean disableOobDownAlarm) {
+
+            this.disableOobDownAlarm = disableOobDownAlarm;
             return this;
         }
         @CustomType.Setter
@@ -253,6 +265,7 @@ public final class SwitchSwitchMgmt {
             _resultValue.cliIdleTimeout = cliIdleTimeout;
             _resultValue.configRevertTimer = configRevertTimer;
             _resultValue.dhcpOptionFqdn = dhcpOptionFqdn;
+            _resultValue.disableOobDownAlarm = disableOobDownAlarm;
             _resultValue.localAccounts = localAccounts;
             _resultValue.mxedgeProxyHost = mxedgeProxyHost;
             _resultValue.mxedgeProxyPort = mxedgeProxyPort;

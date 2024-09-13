@@ -18,10 +18,10 @@ public final class SettingPasswordPolicy {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return days, required if password policy is enabled
+     * @return password expiry in days
      * 
      */
-    private @Nullable Integer freshness;
+    private @Nullable Integer expiryInDays;
     /**
      * @return required password length
      * 
@@ -47,11 +47,11 @@ public final class SettingPasswordPolicy {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return days, required if password policy is enabled
+     * @return password expiry in days
      * 
      */
-    public Optional<Integer> freshness() {
-        return Optional.ofNullable(this.freshness);
+    public Optional<Integer> expiryInDays() {
+        return Optional.ofNullable(this.expiryInDays);
     }
     /**
      * @return required password length
@@ -85,7 +85,7 @@ public final class SettingPasswordPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-        private @Nullable Integer freshness;
+        private @Nullable Integer expiryInDays;
         private @Nullable Integer minLength;
         private @Nullable Boolean requiresSpecialChar;
         private @Nullable Boolean requiresTwoFactorAuth;
@@ -93,7 +93,7 @@ public final class SettingPasswordPolicy {
         public Builder(SettingPasswordPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.freshness = defaults.freshness;
+    	      this.expiryInDays = defaults.expiryInDays;
     	      this.minLength = defaults.minLength;
     	      this.requiresSpecialChar = defaults.requiresSpecialChar;
     	      this.requiresTwoFactorAuth = defaults.requiresTwoFactorAuth;
@@ -106,9 +106,9 @@ public final class SettingPasswordPolicy {
             return this;
         }
         @CustomType.Setter
-        public Builder freshness(@Nullable Integer freshness) {
+        public Builder expiryInDays(@Nullable Integer expiryInDays) {
 
-            this.freshness = freshness;
+            this.expiryInDays = expiryInDays;
             return this;
         }
         @CustomType.Setter
@@ -132,7 +132,7 @@ public final class SettingPasswordPolicy {
         public SettingPasswordPolicy build() {
             final var _resultValue = new SettingPasswordPolicy();
             _resultValue.enabled = enabled;
-            _resultValue.freshness = freshness;
+            _resultValue.expiryInDays = expiryInDays;
             _resultValue.minLength = minLength;
             _resultValue.requiresSpecialChar = requiresSpecialChar;
             _resultValue.requiresTwoFactorAuth = requiresTwoFactorAuth;

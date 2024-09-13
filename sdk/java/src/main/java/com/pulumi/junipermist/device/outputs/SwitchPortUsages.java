@@ -95,6 +95,11 @@ public final class SwitchPortUsages {
      */
     private @Nullable Boolean macAuthOnly;
     /**
+     * @return Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * 
+     */
+    private @Nullable Boolean macAuthPreferred;
+    /**
      * @return Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
@@ -145,11 +150,6 @@ public final class SwitchPortUsages {
      */
     private @Nullable Integer reauthInterval;
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-     * 
-     */
-    private @Nullable String rejectedNetwork;
-    /**
      * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
      * 
      */
@@ -159,6 +159,16 @@ public final class SwitchPortUsages {
      * 
      */
     private @Nullable List<SwitchPortUsagesRule> rules;
+    /**
+     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * 
+     */
+    private @Nullable String serverFailNetwork;
+    /**
+     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * 
+     */
+    private @Nullable String serverRejectNetwork;
     /**
      * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
      * 
@@ -293,6 +303,13 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.macAuthOnly);
     }
     /**
+     * @return Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+     * 
+     */
+    public Optional<Boolean> macAuthPreferred() {
+        return Optional.ofNullable(this.macAuthPreferred);
+    }
+    /**
      * @return Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
      * 
      */
@@ -363,13 +380,6 @@ public final class SwitchPortUsages {
         return Optional.ofNullable(this.reauthInterval);
     }
     /**
-     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-     * 
-     */
-    public Optional<String> rejectedNetwork() {
-        return Optional.ofNullable(this.rejectedNetwork);
-    }
-    /**
      * @return Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
      * 
      */
@@ -382,6 +392,20 @@ public final class SwitchPortUsages {
      */
     public List<SwitchPortUsagesRule> rules() {
         return this.rules == null ? List.of() : this.rules;
+    }
+    /**
+     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+     * 
+     */
+    public Optional<String> serverFailNetwork() {
+        return Optional.ofNullable(this.serverFailNetwork);
+    }
+    /**
+     * @return Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+     * 
+     */
+    public Optional<String> serverRejectNetwork() {
+        return Optional.ofNullable(this.serverRejectNetwork);
     }
     /**
      * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
@@ -443,6 +467,7 @@ public final class SwitchPortUsages {
         private @Nullable String guestNetwork;
         private @Nullable Boolean interSwitchLink;
         private @Nullable Boolean macAuthOnly;
+        private @Nullable Boolean macAuthPreferred;
         private @Nullable String macAuthProtocol;
         private @Nullable Integer macLimit;
         private @Nullable String mode;
@@ -453,9 +478,10 @@ public final class SwitchPortUsages {
         private @Nullable String portAuth;
         private @Nullable String portNetwork;
         private @Nullable Integer reauthInterval;
-        private @Nullable String rejectedNetwork;
         private @Nullable String resetDefaultWhen;
         private @Nullable List<SwitchPortUsagesRule> rules;
+        private @Nullable String serverFailNetwork;
+        private @Nullable String serverRejectNetwork;
         private @Nullable String speed;
         private @Nullable SwitchPortUsagesStormControl stormControl;
         private @Nullable Boolean stpEdge;
@@ -480,6 +506,7 @@ public final class SwitchPortUsages {
     	      this.guestNetwork = defaults.guestNetwork;
     	      this.interSwitchLink = defaults.interSwitchLink;
     	      this.macAuthOnly = defaults.macAuthOnly;
+    	      this.macAuthPreferred = defaults.macAuthPreferred;
     	      this.macAuthProtocol = defaults.macAuthProtocol;
     	      this.macLimit = defaults.macLimit;
     	      this.mode = defaults.mode;
@@ -490,9 +517,10 @@ public final class SwitchPortUsages {
     	      this.portAuth = defaults.portAuth;
     	      this.portNetwork = defaults.portNetwork;
     	      this.reauthInterval = defaults.reauthInterval;
-    	      this.rejectedNetwork = defaults.rejectedNetwork;
     	      this.resetDefaultWhen = defaults.resetDefaultWhen;
     	      this.rules = defaults.rules;
+    	      this.serverFailNetwork = defaults.serverFailNetwork;
+    	      this.serverRejectNetwork = defaults.serverRejectNetwork;
     	      this.speed = defaults.speed;
     	      this.stormControl = defaults.stormControl;
     	      this.stpEdge = defaults.stpEdge;
@@ -595,6 +623,12 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder macAuthPreferred(@Nullable Boolean macAuthPreferred) {
+
+            this.macAuthPreferred = macAuthPreferred;
+            return this;
+        }
+        @CustomType.Setter
         public Builder macAuthProtocol(@Nullable String macAuthProtocol) {
 
             this.macAuthProtocol = macAuthProtocol;
@@ -658,12 +692,6 @@ public final class SwitchPortUsages {
             return this;
         }
         @CustomType.Setter
-        public Builder rejectedNetwork(@Nullable String rejectedNetwork) {
-
-            this.rejectedNetwork = rejectedNetwork;
-            return this;
-        }
-        @CustomType.Setter
         public Builder resetDefaultWhen(@Nullable String resetDefaultWhen) {
 
             this.resetDefaultWhen = resetDefaultWhen;
@@ -677,6 +705,18 @@ public final class SwitchPortUsages {
         }
         public Builder rules(SwitchPortUsagesRule... rules) {
             return rules(List.of(rules));
+        }
+        @CustomType.Setter
+        public Builder serverFailNetwork(@Nullable String serverFailNetwork) {
+
+            this.serverFailNetwork = serverFailNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverRejectNetwork(@Nullable String serverRejectNetwork) {
+
+            this.serverRejectNetwork = serverRejectNetwork;
+            return this;
         }
         @CustomType.Setter
         public Builder speed(@Nullable String speed) {
@@ -731,6 +771,7 @@ public final class SwitchPortUsages {
             _resultValue.guestNetwork = guestNetwork;
             _resultValue.interSwitchLink = interSwitchLink;
             _resultValue.macAuthOnly = macAuthOnly;
+            _resultValue.macAuthPreferred = macAuthPreferred;
             _resultValue.macAuthProtocol = macAuthProtocol;
             _resultValue.macLimit = macLimit;
             _resultValue.mode = mode;
@@ -741,9 +782,10 @@ public final class SwitchPortUsages {
             _resultValue.portAuth = portAuth;
             _resultValue.portNetwork = portNetwork;
             _resultValue.reauthInterval = reauthInterval;
-            _resultValue.rejectedNetwork = rejectedNetwork;
             _resultValue.resetDefaultWhen = resetDefaultWhen;
             _resultValue.rules = rules;
+            _resultValue.serverFailNetwork = serverFailNetwork;
+            _resultValue.serverRejectNetwork = serverRejectNetwork;
             _resultValue.speed = speed;
             _resultValue.stormControl = stormControl;
             _resultValue.stpEdge = stpEdge;

@@ -33,6 +33,11 @@ public final class NetworktemplateRadiusConfigAuthServer {
      */
     private @Nullable Integer port;
     /**
+     * @return whether to require Message-Authenticator in requests
+     * 
+     */
+    private @Nullable Boolean requireMessageAuthenticator;
+    /**
      * @return secret of RADIUS server
      * 
      */
@@ -70,6 +75,13 @@ public final class NetworktemplateRadiusConfigAuthServer {
         return Optional.ofNullable(this.port);
     }
     /**
+     * @return whether to require Message-Authenticator in requests
+     * 
+     */
+    public Optional<Boolean> requireMessageAuthenticator() {
+        return Optional.ofNullable(this.requireMessageAuthenticator);
+    }
+    /**
      * @return secret of RADIUS server
      * 
      */
@@ -92,6 +104,7 @@ public final class NetworktemplateRadiusConfigAuthServer {
         private @Nullable String keywrapKek;
         private @Nullable String keywrapMack;
         private @Nullable Integer port;
+        private @Nullable Boolean requireMessageAuthenticator;
         private String secret;
         public Builder() {}
         public Builder(NetworktemplateRadiusConfigAuthServer defaults) {
@@ -102,6 +115,7 @@ public final class NetworktemplateRadiusConfigAuthServer {
     	      this.keywrapKek = defaults.keywrapKek;
     	      this.keywrapMack = defaults.keywrapMack;
     	      this.port = defaults.port;
+    	      this.requireMessageAuthenticator = defaults.requireMessageAuthenticator;
     	      this.secret = defaults.secret;
         }
 
@@ -144,6 +158,12 @@ public final class NetworktemplateRadiusConfigAuthServer {
             return this;
         }
         @CustomType.Setter
+        public Builder requireMessageAuthenticator(@Nullable Boolean requireMessageAuthenticator) {
+
+            this.requireMessageAuthenticator = requireMessageAuthenticator;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secret(String secret) {
             if (secret == null) {
               throw new MissingRequiredPropertyException("NetworktemplateRadiusConfigAuthServer", "secret");
@@ -159,6 +179,7 @@ public final class NetworktemplateRadiusConfigAuthServer {
             _resultValue.keywrapKek = keywrapKek;
             _resultValue.keywrapMack = keywrapMack;
             _resultValue.port = port;
+            _resultValue.requireMessageAuthenticator = requireMessageAuthenticator;
             _resultValue.secret = secret;
             return _resultValue;
         }

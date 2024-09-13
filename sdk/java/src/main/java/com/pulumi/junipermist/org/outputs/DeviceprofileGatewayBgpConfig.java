@@ -78,12 +78,17 @@ public final class DeviceprofileGatewayBgpConfig {
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
+     * @return if `type`==`tunnel`
+     * 
+     */
+    private @Nullable String tunnelName;
+    /**
      * @return enum: `external`, `internal`
      * 
      */
     private @Nullable String type;
     /**
-     * @return network name. enum: `lan`, `vpn`, `wan`
+     * @return network name. enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
     private @Nullable String via;
@@ -190,6 +195,13 @@ public final class DeviceprofileGatewayBgpConfig {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
+     * @return if `type`==`tunnel`
+     * 
+     */
+    public Optional<String> tunnelName() {
+        return Optional.ofNullable(this.tunnelName);
+    }
+    /**
      * @return enum: `external`, `internal`
      * 
      */
@@ -197,7 +209,7 @@ public final class DeviceprofileGatewayBgpConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return network name. enum: `lan`, `vpn`, `wan`
+     * @return network name. enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
     public Optional<String> via() {
@@ -240,6 +252,7 @@ public final class DeviceprofileGatewayBgpConfig {
         private @Nullable Map<String,DeviceprofileGatewayBgpConfigNeighbors> neighbors;
         private @Nullable List<String> networks;
         private @Nullable Boolean noReadvertiseToOverlay;
+        private @Nullable String tunnelName;
         private @Nullable String type;
         private @Nullable String via;
         private @Nullable String vpnName;
@@ -264,6 +277,7 @@ public final class DeviceprofileGatewayBgpConfig {
     	      this.neighbors = defaults.neighbors;
     	      this.networks = defaults.networks;
     	      this.noReadvertiseToOverlay = defaults.noReadvertiseToOverlay;
+    	      this.tunnelName = defaults.tunnelName;
     	      this.type = defaults.type;
     	      this.via = defaults.via;
     	      this.vpnName = defaults.vpnName;
@@ -379,6 +393,12 @@ public final class DeviceprofileGatewayBgpConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder tunnelName(@Nullable String tunnelName) {
+
+            this.tunnelName = tunnelName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
 
             this.type = type;
@@ -421,6 +441,7 @@ public final class DeviceprofileGatewayBgpConfig {
             _resultValue.neighbors = neighbors;
             _resultValue.networks = networks;
             _resultValue.noReadvertiseToOverlay = noReadvertiseToOverlay;
+            _resultValue.tunnelName = tunnelName;
             _resultValue.type = type;
             _resultValue.via = via;
             _resultValue.vpnName = vpnName;

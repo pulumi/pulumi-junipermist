@@ -85,6 +85,21 @@ public final class NetworktemplateRadiusConfigAuthServerArgs extends com.pulumi.
     }
 
     /**
+     * whether to require Message-Authenticator in requests
+     * 
+     */
+    @Import(name="requireMessageAuthenticator")
+    private @Nullable Output<Boolean> requireMessageAuthenticator;
+
+    /**
+     * @return whether to require Message-Authenticator in requests
+     * 
+     */
+    public Optional<Output<Boolean>> requireMessageAuthenticator() {
+        return Optional.ofNullable(this.requireMessageAuthenticator);
+    }
+
+    /**
      * secret of RADIUS server
      * 
      */
@@ -108,6 +123,7 @@ public final class NetworktemplateRadiusConfigAuthServerArgs extends com.pulumi.
         this.keywrapKek = $.keywrapKek;
         this.keywrapMack = $.keywrapMack;
         this.port = $.port;
+        this.requireMessageAuthenticator = $.requireMessageAuthenticator;
         this.secret = $.secret;
     }
 
@@ -217,6 +233,27 @@ public final class NetworktemplateRadiusConfigAuthServerArgs extends com.pulumi.
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param requireMessageAuthenticator whether to require Message-Authenticator in requests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireMessageAuthenticator(@Nullable Output<Boolean> requireMessageAuthenticator) {
+            $.requireMessageAuthenticator = requireMessageAuthenticator;
+            return this;
+        }
+
+        /**
+         * @param requireMessageAuthenticator whether to require Message-Authenticator in requests
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requireMessageAuthenticator(Boolean requireMessageAuthenticator) {
+            return requireMessageAuthenticator(Output.of(requireMessageAuthenticator));
         }
 
         /**

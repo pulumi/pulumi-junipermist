@@ -8,7 +8,6 @@ import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsAutoProvisionLa
 import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsAutoProvisionPrimary;
 import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsAutoProvisionSecondary;
 import java.lang.Boolean;
-import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,11 +17,6 @@ public final class GatewayTunnelConfigsAutoProvision {
     private @Nullable Boolean enable;
     private @Nullable GatewayTunnelConfigsAutoProvisionLatlng latlng;
     private @Nullable GatewayTunnelConfigsAutoProvisionPrimary primary;
-    /**
-     * @return enum: `APAC`, `Americas`, `EMEA`, `auto`
-     * 
-     */
-    private @Nullable String region;
     private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
 
     private GatewayTunnelConfigsAutoProvision() {}
@@ -34,13 +28,6 @@ public final class GatewayTunnelConfigsAutoProvision {
     }
     public Optional<GatewayTunnelConfigsAutoProvisionPrimary> primary() {
         return Optional.ofNullable(this.primary);
-    }
-    /**
-     * @return enum: `APAC`, `Americas`, `EMEA`, `auto`
-     * 
-     */
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
     }
     public Optional<GatewayTunnelConfigsAutoProvisionSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
@@ -58,7 +45,6 @@ public final class GatewayTunnelConfigsAutoProvision {
         private @Nullable Boolean enable;
         private @Nullable GatewayTunnelConfigsAutoProvisionLatlng latlng;
         private @Nullable GatewayTunnelConfigsAutoProvisionPrimary primary;
-        private @Nullable String region;
         private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
         public Builder() {}
         public Builder(GatewayTunnelConfigsAutoProvision defaults) {
@@ -66,7 +52,6 @@ public final class GatewayTunnelConfigsAutoProvision {
     	      this.enable = defaults.enable;
     	      this.latlng = defaults.latlng;
     	      this.primary = defaults.primary;
-    	      this.region = defaults.region;
     	      this.secondary = defaults.secondary;
         }
 
@@ -89,12 +74,6 @@ public final class GatewayTunnelConfigsAutoProvision {
             return this;
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-
-            this.region = region;
-            return this;
-        }
-        @CustomType.Setter
         public Builder secondary(@Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary) {
 
             this.secondary = secondary;
@@ -105,7 +84,6 @@ public final class GatewayTunnelConfigsAutoProvision {
             _resultValue.enable = enable;
             _resultValue.latlng = latlng;
             _resultValue.primary = primary;
-            _resultValue.region = region;
             _resultValue.secondary = secondary;
             return _resultValue;
         }

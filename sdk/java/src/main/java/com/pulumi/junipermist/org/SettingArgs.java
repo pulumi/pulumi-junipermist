@@ -18,6 +18,7 @@ import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
 import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
 import com.pulumi.junipermist.org.inputs.SettingPcapArgs;
+import com.pulumi.junipermist.org.inputs.SettingPortChannelizationArgs;
 import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
 import com.pulumi.junipermist.org.inputs.SettingSwitchMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
@@ -255,6 +256,13 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.pcap);
     }
 
+    @Import(name="portChannelization")
+    private @Nullable Output<SettingPortChannelizationArgs> portChannelization;
+
+    public Optional<Output<SettingPortChannelizationArgs>> portChannelization() {
+        return Optional.ofNullable(this.portChannelization);
+    }
+
     @Import(name="security")
     private @Nullable Output<SettingSecurityArgs> security;
 
@@ -338,6 +346,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.orgId = $.orgId;
         this.passwordPolicy = $.passwordPolicy;
         this.pcap = $.pcap;
+        this.portChannelization = $.portChannelization;
         this.security = $.security;
         this.switchMgmt = $.switchMgmt;
         this.switchUpdownThreshold = $.switchUpdownThreshold;
@@ -668,6 +677,15 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder pcap(SettingPcapArgs pcap) {
             return pcap(Output.of(pcap));
+        }
+
+        public Builder portChannelization(@Nullable Output<SettingPortChannelizationArgs> portChannelization) {
+            $.portChannelization = portChannelization;
+            return this;
+        }
+
+        public Builder portChannelization(SettingPortChannelizationArgs portChannelization) {
+            return portChannelization(Output.of(portChannelization));
         }
 
         public Builder security(@Nullable Output<SettingSecurityArgs> security) {

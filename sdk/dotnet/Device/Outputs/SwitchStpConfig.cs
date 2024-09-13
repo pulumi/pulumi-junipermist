@@ -14,14 +14,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchStpConfig
     {
         /// <summary>
-        /// enum: `rstp`, `vstp`
+        /// ignored for switches participating in EVPN
         /// </summary>
-        public readonly string? Type;
+        public readonly bool? VstpEnabled;
 
         [OutputConstructor]
-        private SwitchStpConfig(string? type)
+        private SwitchStpConfig(bool? vstpEnabled)
         {
-            Type = type;
+            VstpEnabled = vstpEnabled;
         }
     }
 }

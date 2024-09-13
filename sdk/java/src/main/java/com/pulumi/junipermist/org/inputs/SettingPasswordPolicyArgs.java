@@ -32,18 +32,18 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * days, required if password policy is enabled
+     * password expiry in days
      * 
      */
-    @Import(name="freshness")
-    private @Nullable Output<Integer> freshness;
+    @Import(name="expiryInDays")
+    private @Nullable Output<Integer> expiryInDays;
 
     /**
-     * @return days, required if password policy is enabled
+     * @return password expiry in days
      * 
      */
-    public Optional<Output<Integer>> freshness() {
-        return Optional.ofNullable(this.freshness);
+    public Optional<Output<Integer>> expiryInDays() {
+        return Optional.ofNullable(this.expiryInDays);
     }
 
     /**
@@ -95,7 +95,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
 
     private SettingPasswordPolicyArgs(SettingPasswordPolicyArgs $) {
         this.enabled = $.enabled;
-        this.freshness = $.freshness;
+        this.expiryInDays = $.expiryInDays;
         this.minLength = $.minLength;
         this.requiresSpecialChar = $.requiresSpecialChar;
         this.requiresTwoFactorAuth = $.requiresTwoFactorAuth;
@@ -141,24 +141,24 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param freshness days, required if password policy is enabled
+         * @param expiryInDays password expiry in days
          * 
          * @return builder
          * 
          */
-        public Builder freshness(@Nullable Output<Integer> freshness) {
-            $.freshness = freshness;
+        public Builder expiryInDays(@Nullable Output<Integer> expiryInDays) {
+            $.expiryInDays = expiryInDays;
             return this;
         }
 
         /**
-         * @param freshness days, required if password policy is enabled
+         * @param expiryInDays password expiry in days
          * 
          * @return builder
          * 
          */
-        public Builder freshness(Integer freshness) {
-            return freshness(Output.of(freshness));
+        public Builder expiryInDays(Integer expiryInDays) {
+            return expiryInDays(Output.of(expiryInDays));
         }
 
         /**

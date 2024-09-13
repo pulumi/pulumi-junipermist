@@ -18,9 +18,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// days, required if password policy is enabled
+        /// password expiry in days
         /// </summary>
-        public readonly int? Freshness;
+        public readonly int? ExpiryInDays;
         /// <summary>
         /// required password length
         /// </summary>
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         private SettingPasswordPolicy(
             bool? enabled,
 
-            int? freshness,
+            int? expiryInDays,
 
             int? minLength,
 
@@ -47,7 +47,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             bool? requiresTwoFactorAuth)
         {
             Enabled = enabled;
-            Freshness = freshness;
+            ExpiryInDays = expiryInDays;
             MinLength = minLength;
             RequiresSpecialChar = requiresSpecialChar;
             RequiresTwoFactorAuth = requiresTwoFactorAuth;

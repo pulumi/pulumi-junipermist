@@ -77,6 +77,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly bool? MacAuthOnly;
         /// <summary>
+        /// Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        /// </summary>
+        public readonly bool? MacAuthPreferred;
+        /// <summary>
         /// Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
         /// </summary>
         public readonly string? MacAuthProtocol;
@@ -117,10 +121,6 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? ReauthInterval;
         /// <summary>
-        /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        /// </summary>
-        public readonly string? RejectedNetwork;
-        /// <summary>
         /// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         /// </summary>
         public readonly string? ResetDefaultWhen;
@@ -128,6 +128,14 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// Only if `mode`==`dynamic`
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplatePortUsagesRule> Rules;
+        /// <summary>
+        /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+        /// </summary>
+        public readonly string? ServerFailNetwork;
+        /// <summary>
+        /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+        /// </summary>
+        public readonly string? ServerRejectNetwork;
         /// <summary>
         /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
         /// </summary>
@@ -180,6 +188,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? macAuthOnly,
 
+            bool? macAuthPreferred,
+
             string? macAuthProtocol,
 
             int? macLimit,
@@ -200,11 +210,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             int? reauthInterval,
 
-            string? rejectedNetwork,
-
             string? resetDefaultWhen,
 
             ImmutableArray<Outputs.NetworktemplatePortUsagesRule> rules,
+
+            string? serverFailNetwork,
+
+            string? serverRejectNetwork,
 
             string? speed,
 
@@ -233,6 +245,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             GuestNetwork = guestNetwork;
             InterSwitchLink = interSwitchLink;
             MacAuthOnly = macAuthOnly;
+            MacAuthPreferred = macAuthPreferred;
             MacAuthProtocol = macAuthProtocol;
             MacLimit = macLimit;
             Mode = mode;
@@ -243,9 +256,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
             PortAuth = portAuth;
             PortNetwork = portNetwork;
             ReauthInterval = reauthInterval;
-            RejectedNetwork = rejectedNetwork;
             ResetDefaultWhen = resetDefaultWhen;
             Rules = rules;
+            ServerFailNetwork = serverFailNetwork;
+            ServerRejectNetwork = serverRejectNetwork;
             Speed = speed;
             StormControl = stormControl;
             StpEdge = stpEdge;

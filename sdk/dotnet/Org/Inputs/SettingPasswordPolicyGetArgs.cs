@@ -19,10 +19,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// days, required if password policy is enabled
+        /// password expiry in days
         /// </summary>
-        [Input("freshness")]
-        public Input<int>? Freshness { get; set; }
+        [Input("expiryInDays")]
+        public Input<int>? ExpiryInDays { get; set; }
 
         /// <summary>
         /// required password length

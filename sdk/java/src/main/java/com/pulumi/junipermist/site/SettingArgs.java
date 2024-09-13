@@ -53,14 +53,16 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * `device_updown_threshold` is ignored.
      * 
      */
     @Import(name="apUpdownThreshold")
     private @Nullable Output<Integer> apUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+     * @return enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * `device_updown_threshold` is ignored.
      * 
      */
     public Optional<Output<Integer>> apUpdownThreshold() {
@@ -143,14 +145,16 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+     * by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * is desired, use the following
      * 
      */
     @Import(name="deviceUpdownThreshold")
     private @Nullable Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+     * @return by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * is desired, use the following
      * 
      */
     public Optional<Output<Integer>> deviceUpdownThreshold() {
@@ -173,14 +177,20 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+     * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+     * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
      * 
      */
     @Import(name="engagement")
     private @Nullable Output<SettingEngagementArgs> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+     * @return **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+     * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+     * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
      * 
      */
     public Optional<Output<SettingEngagementArgs>> engagement() {
@@ -616,7 +626,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apUpdownThreshold enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+         * @param apUpdownThreshold enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+         * `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -627,7 +638,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apUpdownThreshold enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `device_updown_threshold` is ignored.
+         * @param apUpdownThreshold enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+         * `device_updown_threshold` is ignored.
          * 
          * @return builder
          * 
@@ -742,7 +754,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+         * @param deviceUpdownThreshold by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+         * is desired, use the following
          * 
          * @return builder
          * 
@@ -753,7 +766,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+         * @param deviceUpdownThreshold by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+         * is desired, use the following
          * 
          * @return builder
          * 
@@ -794,7 +808,10 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+         * @param engagement **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+         * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+         * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+         * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
          * 
          * @return builder
          * 
@@ -805,7 +822,10 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+         * @param engagement **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+         * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
+         * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
+         * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
          * 
          * @return builder
          * 

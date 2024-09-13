@@ -22,6 +22,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? DefaultIdpId;
         /// <summary>
+        /// to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+        /// </summary>
+        public readonly bool? DisableRsaeAlgorithms;
+        /// <summary>
         /// eap ssl security level
         /// see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
         /// </summary>
@@ -31,6 +35,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
         /// </summary>
         public readonly bool? EuOnly;
+        /// <summary>
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+        /// </summary>
+        public readonly string? IdpMachineCertLookupField;
+        /// <summary>
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+        /// </summary>
+        public readonly string? IdpUserCertLookupField;
         public readonly ImmutableArray<Outputs.SettingMistNacIdp> Idps;
         /// <summary>
         /// radius server cert to be presented in EAP TLS
@@ -53,9 +65,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? defaultIdpId,
 
+            bool? disableRsaeAlgorithms,
+
             int? eapSslSecurityLevel,
 
             bool? euOnly,
+
+            string? idpMachineCertLookupField,
+
+            string? idpUserCertLookupField,
 
             ImmutableArray<Outputs.SettingMistNacIdp> idps,
 
@@ -67,8 +85,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         {
             Cacerts = cacerts;
             DefaultIdpId = defaultIdpId;
+            DisableRsaeAlgorithms = disableRsaeAlgorithms;
             EapSslSecurityLevel = eapSslSecurityLevel;
             EuOnly = euOnly;
+            IdpMachineCertLookupField = idpMachineCertLookupField;
+            IdpUserCertLookupField = idpUserCertLookupField;
             Idps = idps;
             ServerCert = serverCert;
             UseIpVersion = useIpVersion;

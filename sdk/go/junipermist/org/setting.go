@@ -91,10 +91,11 @@ type Setting struct {
 	MxedgeMgmt        SettingMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
 	OrgId             pulumi.StringOutput        `pulumi:"orgId"`
 	// password policy
-	PasswordPolicy SettingPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
-	Pcap           SettingPcapPtrOutput           `pulumi:"pcap"`
-	Security       SettingSecurityPtrOutput       `pulumi:"security"`
-	SwitchMgmt     SettingSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
+	PasswordPolicy     SettingPasswordPolicyPtrOutput     `pulumi:"passwordPolicy"`
+	Pcap               SettingPcapPtrOutput               `pulumi:"pcap"`
+	PortChannelization SettingPortChannelizationPtrOutput `pulumi:"portChannelization"`
+	Security           SettingSecurityPtrOutput           `pulumi:"security"`
+	SwitchMgmt         SettingSwitchMgmtPtrOutput         `pulumi:"switchMgmt"`
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
@@ -169,10 +170,11 @@ type settingState struct {
 	MxedgeMgmt        *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	OrgId             *string            `pulumi:"orgId"`
 	// password policy
-	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
-	Pcap           *SettingPcap           `pulumi:"pcap"`
-	Security       *SettingSecurity       `pulumi:"security"`
-	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
+	PasswordPolicy     *SettingPasswordPolicy     `pulumi:"passwordPolicy"`
+	Pcap               *SettingPcap               `pulumi:"pcap"`
+	PortChannelization *SettingPortChannelization `pulumi:"portChannelization"`
+	Security           *SettingSecurity           `pulumi:"security"`
+	SwitchMgmt         *SettingSwitchMgmt         `pulumi:"switchMgmt"`
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
@@ -215,10 +217,11 @@ type SettingState struct {
 	MxedgeMgmt        SettingMxedgeMgmtPtrInput
 	OrgId             pulumi.StringPtrInput
 	// password policy
-	PasswordPolicy SettingPasswordPolicyPtrInput
-	Pcap           SettingPcapPtrInput
-	Security       SettingSecurityPtrInput
-	SwitchMgmt     SettingSwitchMgmtPtrInput
+	PasswordPolicy     SettingPasswordPolicyPtrInput
+	Pcap               SettingPcapPtrInput
+	PortChannelization SettingPortChannelizationPtrInput
+	Security           SettingSecurityPtrInput
+	SwitchMgmt         SettingSwitchMgmtPtrInput
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
@@ -264,10 +267,11 @@ type settingArgs struct {
 	MxedgeMgmt        *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
 	OrgId             string             `pulumi:"orgId"`
 	// password policy
-	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
-	Pcap           *SettingPcap           `pulumi:"pcap"`
-	Security       *SettingSecurity       `pulumi:"security"`
-	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
+	PasswordPolicy     *SettingPasswordPolicy     `pulumi:"passwordPolicy"`
+	Pcap               *SettingPcap               `pulumi:"pcap"`
+	PortChannelization *SettingPortChannelization `pulumi:"portChannelization"`
+	Security           *SettingSecurity           `pulumi:"security"`
+	SwitchMgmt         *SettingSwitchMgmt         `pulumi:"switchMgmt"`
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
@@ -310,10 +314,11 @@ type SettingArgs struct {
 	MxedgeMgmt        SettingMxedgeMgmtPtrInput
 	OrgId             pulumi.StringInput
 	// password policy
-	PasswordPolicy SettingPasswordPolicyPtrInput
-	Pcap           SettingPcapPtrInput
-	Security       SettingSecurityPtrInput
-	SwitchMgmt     SettingSwitchMgmtPtrInput
+	PasswordPolicy     SettingPasswordPolicyPtrInput
+	Pcap               SettingPcapPtrInput
+	PortChannelization SettingPortChannelizationPtrInput
+	Security           SettingSecurityPtrInput
+	SwitchMgmt         SettingSwitchMgmtPtrInput
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
@@ -505,6 +510,10 @@ func (o SettingOutput) PasswordPolicy() SettingPasswordPolicyPtrOutput {
 
 func (o SettingOutput) Pcap() SettingPcapPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingPcapPtrOutput { return v.Pcap }).(SettingPcapPtrOutput)
+}
+
+func (o SettingOutput) PortChannelization() SettingPortChannelizationPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingPortChannelizationPtrOutput { return v.PortChannelization }).(SettingPortChannelizationPtrOutput)
 }
 
 func (o SettingOutput) Security() SettingSecurityPtrOutput {

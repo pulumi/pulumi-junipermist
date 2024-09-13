@@ -13,10 +13,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchStpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `rstp`, `vstp`
+        /// ignored for switches participating in EVPN
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("vstpEnabled")]
+        public Input<bool>? VstpEnabled { get; set; }
 
         public SwitchStpConfigArgs()
         {

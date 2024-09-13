@@ -227,6 +227,21 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * if `type`==`tunnel`
+     * 
+     */
+    @Import(name="tunnelName")
+    private @Nullable Output<String> tunnelName;
+
+    /**
+     * @return if `type`==`tunnel`
+     * 
+     */
+    public Optional<Output<String>> tunnelName() {
+        return Optional.ofNullable(this.tunnelName);
+    }
+
+    /**
      * enum: `external`, `internal`
      * 
      */
@@ -242,14 +257,14 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * network name. enum: `lan`, `vpn`, `wan`
+     * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
     @Import(name="via")
     private @Nullable Output<String> via;
 
     /**
-     * @return network name. enum: `lan`, `vpn`, `wan`
+     * @return network name. enum: `lan`, `tunnel`, `vpn`, `wan`
      * 
      */
     public Optional<Output<String>> via() {
@@ -298,6 +313,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         this.neighbors = $.neighbors;
         this.networks = $.networks;
         this.noReadvertiseToOverlay = $.noReadvertiseToOverlay;
+        this.tunnelName = $.tunnelName;
         this.type = $.type;
         this.via = $.via;
         this.vpnName = $.vpnName;
@@ -616,6 +632,27 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param tunnelName if `type`==`tunnel`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelName(@Nullable Output<String> tunnelName) {
+            $.tunnelName = tunnelName;
+            return this;
+        }
+
+        /**
+         * @param tunnelName if `type`==`tunnel`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelName(String tunnelName) {
+            return tunnelName(Output.of(tunnelName));
+        }
+
+        /**
          * @param type enum: `external`, `internal`
          * 
          * @return builder
@@ -637,7 +674,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param via network name. enum: `lan`, `vpn`, `wan`
+         * @param via network name. enum: `lan`, `tunnel`, `vpn`, `wan`
          * 
          * @return builder
          * 
@@ -648,7 +685,7 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param via network name. enum: `lan`, `vpn`, `wan`
+         * @param via network name. enum: `lan`, `tunnel`, `vpn`, `wan`
          * 
          * @return builder
          * 

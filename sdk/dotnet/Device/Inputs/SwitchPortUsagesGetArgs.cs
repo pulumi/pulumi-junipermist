@@ -112,6 +112,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? MacAuthOnly { get; set; }
 
         /// <summary>
+        /// Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        /// </summary>
+        [Input("macAuthPreferred")]
+        public Input<bool>? MacAuthPreferred { get; set; }
+
+        /// <summary>
         /// Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
         /// </summary>
         [Input("macAuthProtocol")]
@@ -178,12 +184,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? ReauthInterval { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        /// </summary>
-        [Input("rejectedNetwork")]
-        public Input<string>? RejectedNetwork { get; set; }
-
-        /// <summary>
         /// Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `link_down`, `none` (let the DPC port keep at the current port usage)
         /// </summary>
         [Input("resetDefaultWhen")]
@@ -200,6 +200,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
             get => _rules ?? (_rules = new InputList<Inputs.SwitchPortUsagesRuleGetArgs>());
             set => _rules = value;
         }
+
+        /// <summary>
+        /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
+        /// </summary>
+        [Input("serverFailNetwork")]
+        public Input<string>? ServerFailNetwork { get; set; }
+
+        /// <summary>
+        /// Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
+        /// </summary>
+        [Input("serverRejectNetwork")]
+        public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
         /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed

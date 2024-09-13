@@ -36,6 +36,7 @@ class SettingArgs:
                  mxedge_mgmt: Optional[pulumi.Input['SettingMxedgeMgmtArgs']] = None,
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
                  pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
+                 port_channelization: Optional[pulumi.Input['SettingPortChannelizationArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['SettingSwitchMgmtArgs']] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -100,6 +101,8 @@ class SettingArgs:
             pulumi.set(__self__, "password_policy", password_policy)
         if pcap is not None:
             pulumi.set(__self__, "pcap", pcap)
+        if port_channelization is not None:
+            pulumi.set(__self__, "port_channelization", port_channelization)
         if security is not None:
             pulumi.set(__self__, "security", security)
         if switch_mgmt is not None:
@@ -325,6 +328,15 @@ class SettingArgs:
         pulumi.set(self, "pcap", value)
 
     @property
+    @pulumi.getter(name="portChannelization")
+    def port_channelization(self) -> Optional[pulumi.Input['SettingPortChannelizationArgs']]:
+        return pulumi.get(self, "port_channelization")
+
+    @port_channelization.setter
+    def port_channelization(self, value: Optional[pulumi.Input['SettingPortChannelizationArgs']]):
+        pulumi.set(self, "port_channelization", value)
+
+    @property
     @pulumi.getter
     def security(self) -> Optional[pulumi.Input['SettingSecurityArgs']]:
         return pulumi.get(self, "security")
@@ -410,6 +422,7 @@ class _SettingState:
                  org_id: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
                  pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
+                 port_channelization: Optional[pulumi.Input['SettingPortChannelizationArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['SettingSwitchMgmtArgs']] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -477,6 +490,8 @@ class _SettingState:
             pulumi.set(__self__, "password_policy", password_policy)
         if pcap is not None:
             pulumi.set(__self__, "pcap", pcap)
+        if port_channelization is not None:
+            pulumi.set(__self__, "port_channelization", port_channelization)
         if security is not None:
             pulumi.set(__self__, "security", security)
         if switch_mgmt is not None:
@@ -711,6 +726,15 @@ class _SettingState:
         pulumi.set(self, "pcap", value)
 
     @property
+    @pulumi.getter(name="portChannelization")
+    def port_channelization(self) -> Optional[pulumi.Input['SettingPortChannelizationArgs']]:
+        return pulumi.get(self, "port_channelization")
+
+    @port_channelization.setter
+    def port_channelization(self, value: Optional[pulumi.Input['SettingPortChannelizationArgs']]):
+        pulumi.set(self, "port_channelization", value)
+
+    @property
     @pulumi.getter
     def security(self) -> Optional[pulumi.Input['SettingSecurityArgs']]:
         return pulumi.get(self, "security")
@@ -797,6 +821,7 @@ class Setting(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
                  pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
+                 port_channelization: Optional[pulumi.Input[Union['SettingPortChannelizationArgs', 'SettingPortChannelizationArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -924,6 +949,7 @@ class Setting(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
                  pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
+                 port_channelization: Optional[pulumi.Input[Union['SettingPortChannelizationArgs', 'SettingPortChannelizationArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -961,6 +987,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["pcap"] = pcap
+            __props__.__dict__["port_channelization"] = port_channelization
             __props__.__dict__["security"] = security
             __props__.__dict__["switch_mgmt"] = switch_mgmt
             __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
@@ -999,6 +1026,7 @@ class Setting(pulumi.CustomResource):
             org_id: Optional[pulumi.Input[str]] = None,
             password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
             pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
+            port_channelization: Optional[pulumi.Input[Union['SettingPortChannelizationArgs', 'SettingPortChannelizationArgsDict']]] = None,
             security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
             switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
             switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -1054,6 +1082,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["password_policy"] = password_policy
         __props__.__dict__["pcap"] = pcap
+        __props__.__dict__["port_channelization"] = port_channelization
         __props__.__dict__["security"] = security
         __props__.__dict__["switch_mgmt"] = switch_mgmt
         __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
@@ -1197,6 +1226,11 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def pcap(self) -> pulumi.Output[Optional['outputs.SettingPcap']]:
         return pulumi.get(self, "pcap")
+
+    @property
+    @pulumi.getter(name="portChannelization")
+    def port_channelization(self) -> pulumi.Output[Optional['outputs.SettingPortChannelization']]:
+        return pulumi.get(self, "port_channelization")
 
     @property
     @pulumi.getter

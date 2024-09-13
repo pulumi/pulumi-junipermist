@@ -27,7 +27,8 @@ type Setting struct {
 	pulumi.CustomResourceState
 
 	Analytic SettingAnalyticPtrOutput `pulumi:"analytic"`
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntOutput `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
 	AutoUpgrade  SettingAutoUpgradePtrOutput `pulumi:"autoUpgrade"`
@@ -40,11 +41,15 @@ type Setting struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrOutput `pulumi:"configPushPolicy"`
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrOutput `pulumi:"criticalUrlMonitoring"`
-	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
 	Engagement SettingEngagementPtrOutput `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
@@ -136,7 +141,8 @@ func GetSetting(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Setting resources.
 type settingState struct {
 	Analytic *SettingAnalytic `pulumi:"analytic"`
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
 	AutoUpgrade  *SettingAutoUpgrade `pulumi:"autoUpgrade"`
@@ -149,11 +155,15 @@ type settingState struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
 	Engagement *SettingEngagement `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
@@ -213,7 +223,8 @@ type settingState struct {
 
 type SettingState struct {
 	Analytic SettingAnalyticPtrInput
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
 	AutoUpgrade  SettingAutoUpgradePtrInput
@@ -226,11 +237,15 @@ type SettingState struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
 	Engagement SettingEngagementPtrInput
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
@@ -294,7 +309,8 @@ func (SettingState) ElementType() reflect.Type {
 
 type settingArgs struct {
 	Analytic *SettingAnalytic `pulumi:"analytic"`
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold *int `pulumi:"apUpdownThreshold"`
 	// Auto Upgrade Settings
 	AutoUpgrade *SettingAutoUpgrade `pulumi:"autoUpgrade"`
@@ -306,11 +322,15 @@ type settingArgs struct {
 	ConfigPushPolicy *SettingConfigPushPolicy `pulumi:"configPushPolicy"`
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring *SettingCriticalUrlMonitoring `pulumi:"criticalUrlMonitoring"`
-	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
 	Engagement *SettingEngagement `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
@@ -369,7 +389,8 @@ type settingArgs struct {
 // The set of arguments for constructing a Setting resource.
 type SettingArgs struct {
 	Analytic SettingAnalyticPtrInput
-	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+	// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+	// `deviceUpdownThreshold` is ignored.
 	ApUpdownThreshold pulumi.IntPtrInput
 	// Auto Upgrade Settings
 	AutoUpgrade SettingAutoUpgradePtrInput
@@ -381,11 +402,15 @@ type SettingArgs struct {
 	ConfigPushPolicy SettingConfigPushPolicyPtrInput
 	// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
 	CriticalUrlMonitoring SettingCriticalUrlMonitoringPtrInput
-	// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
 	Engagement SettingEngagementPtrInput
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
@@ -532,7 +557,8 @@ func (o SettingOutput) Analytic() SettingAnalyticPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingAnalyticPtrOutput { return v.Analytic }).(SettingAnalyticPtrOutput)
 }
 
-// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and `deviceUpdownThreshold` is ignored.
+// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+// `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) ApUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.ApUpdownThreshold }).(pulumi.IntOutput)
 }
@@ -566,7 +592,8 @@ func (o SettingOutput) CriticalUrlMonitoring() SettingCriticalUrlMonitoringPtrOu
 	return o.ApplyT(func(v *Setting) SettingCriticalUrlMonitoringPtrOutput { return v.CriticalUrlMonitoring }).(SettingCriticalUrlMonitoringPtrOutput)
 }
 
-// by default, device*updown*thresold, if set, will apply to all devices types if different values for specific device type is desired, use the following
+// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+// is desired, use the following
 func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
 }
@@ -576,7 +603,10 @@ func (o SettingOutput) DisabledSystemDefinedPortUsages() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.DisabledSystemDefinedPortUsages }).(pulumi.StringArrayOutput)
 }
 
-// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow multiple ranges for the same day
+// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
+// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
+// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
+// = “Visitor”, engaged = “Associates”, stationed = “Assets”
 func (o SettingOutput) Engagement() SettingEngagementPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingEngagementPtrOutput { return v.Engagement }).(SettingEngagementPtrOutput)
 }

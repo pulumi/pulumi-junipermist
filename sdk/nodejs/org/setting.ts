@@ -117,6 +117,7 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly passwordPolicy!: pulumi.Output<outputs.org.SettingPasswordPolicy | undefined>;
     public readonly pcap!: pulumi.Output<outputs.org.SettingPcap | undefined>;
+    public readonly portChannelization!: pulumi.Output<outputs.org.SettingPortChannelization | undefined>;
     public readonly security!: pulumi.Output<outputs.org.SettingSecurity | undefined>;
     public readonly switchMgmt!: pulumi.Output<outputs.org.SettingSwitchMgmt | undefined>;
     /**
@@ -165,6 +166,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
             resourceInputs["pcap"] = state ? state.pcap : undefined;
+            resourceInputs["portChannelization"] = state ? state.portChannelization : undefined;
             resourceInputs["security"] = state ? state.security : undefined;
             resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
             resourceInputs["switchUpdownThreshold"] = state ? state.switchUpdownThreshold : undefined;
@@ -196,6 +198,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
             resourceInputs["pcap"] = args ? args.pcap : undefined;
+            resourceInputs["portChannelization"] = args ? args.portChannelization : undefined;
             resourceInputs["security"] = args ? args.security : undefined;
             resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
             resourceInputs["switchUpdownThreshold"] = args ? args.switchUpdownThreshold : undefined;
@@ -265,6 +268,7 @@ export interface SettingState {
      */
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
     pcap?: pulumi.Input<inputs.org.SettingPcap>;
+    portChannelization?: pulumi.Input<inputs.org.SettingPortChannelization>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
@@ -335,6 +339,7 @@ export interface SettingArgs {
      */
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
     pcap?: pulumi.Input<inputs.org.SettingPcap>;
+    portChannelization?: pulumi.Input<inputs.org.SettingPortChannelization>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**

@@ -43,12 +43,16 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     /**
      * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
      * 
+     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * 
      */
     @Import(name="hours")
     private @Nullable Output<SettingEngagementHoursArgs> hours;
 
     /**
      * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+     * 
+     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
      * 
      */
     public Optional<Output<SettingEngagementHoursArgs>> hours() {
@@ -146,6 +150,8 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param hours hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
          * 
+         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * 
          * @return builder
          * 
          */
@@ -156,6 +162,8 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param hours hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+         * 
+         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
          * 
          * @return builder
          * 

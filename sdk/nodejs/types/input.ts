@@ -571,11 +571,15 @@ export namespace device {
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
+         * if `type`==`tunnel`
+         */
+        tunnelName?: pulumi.Input<string>;
+        /**
          * enum: `external`, `internal`
          */
         type?: pulumi.Input<string>;
         /**
-         * network name. enum: `lan`, `vpn`, `wan`
+         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
          */
         via?: pulumi.Input<string>;
         vpnName?: pulumi.Input<string>;
@@ -1482,10 +1486,6 @@ export namespace device {
         enable?: pulumi.Input<boolean>;
         latlng?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionLatlng>;
         primary?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionPrimary>;
-        /**
-         * enum: `APAC`, `Americas`, `EMEA`, `auto`
-         */
-        region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionSecondary>;
     }
 
@@ -2210,6 +2210,10 @@ export namespace device {
          */
         macAuthOnly?: pulumi.Input<boolean>;
         /**
+         * Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+         */
+        macAuthPreferred?: pulumi.Input<boolean>;
+        /**
          * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
         macAuthProtocol?: pulumi.Input<string>;
@@ -2250,10 +2254,6 @@ export namespace device {
          */
         reauthInterval?: pulumi.Input<number>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-         */
-        rejectedNetwork?: pulumi.Input<string>;
-        /**
          * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          */
         resetDefaultWhen?: pulumi.Input<string>;
@@ -2261,6 +2261,14 @@ export namespace device {
          * Only if `mode`==`dynamic`
          */
         rules?: pulumi.Input<pulumi.Input<inputs.device.SwitchPortUsagesRule>[]>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         */
+        serverFailNetwork?: pulumi.Input<string>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         */
+        serverRejectNetwork?: pulumi.Input<string>;
         /**
          * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
          */
@@ -2393,6 +2401,10 @@ export namespace device {
          * Auth port of RADIUS server
          */
         port?: pulumi.Input<number>;
+        /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
         /**
          * secret of RADIUS server
          */
@@ -2735,9 +2747,9 @@ export namespace device {
 
     export interface SwitchStpConfig {
         /**
-         * enum: `rstp`, `vstp`
+         * ignored for switches participating in EVPN
          */
-        type?: pulumi.Input<string>;
+        vstpEnabled?: pulumi.Input<boolean>;
     }
 
     export interface SwitchSwitchMgmt {
@@ -2761,6 +2773,7 @@ export namespace device {
          * Enable to provide the FQDN with DHCP option 81
          */
         dhcpOptionFqdn?: pulumi.Input<boolean>;
+        disableOobDownAlarm?: pulumi.Input<boolean>;
         /**
          * Property key is the user name. For Local user authentication
          */
@@ -3443,11 +3456,15 @@ export namespace org {
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
+         * if `type`==`tunnel`
+         */
+        tunnelName?: pulumi.Input<string>;
+        /**
          * enum: `external`, `internal`
          */
         type?: pulumi.Input<string>;
         /**
-         * network name. enum: `lan`, `vpn`, `wan`
+         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
          */
         via?: pulumi.Input<string>;
         vpnName?: pulumi.Input<string>;
@@ -4328,10 +4345,6 @@ export namespace org {
         enable?: pulumi.Input<boolean>;
         latlng?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng>;
         primary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary>;
-        /**
-         * enum: `APAC`, `Americas`, `EMEA`, `auto`
-         */
-        region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary>;
     }
 
@@ -4604,11 +4617,15 @@ export namespace org {
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
+         * if `type`==`tunnel`
+         */
+        tunnelName?: pulumi.Input<string>;
+        /**
          * enum: `external`, `internal`
          */
         type?: pulumi.Input<string>;
         /**
-         * network name. enum: `lan`, `vpn`, `wan`
+         * network name. enum: `lan`, `tunnel`, `vpn`, `wan`
          */
         via?: pulumi.Input<string>;
         vpnName?: pulumi.Input<string>;
@@ -5489,10 +5506,6 @@ export namespace org {
         enable?: pulumi.Input<boolean>;
         latlng?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionLatlng>;
         primary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionPrimary>;
-        /**
-         * enum: `APAC`, `Americas`, `EMEA`, `auto`
-         */
-        region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionSecondary>;
     }
 
@@ -6175,6 +6188,10 @@ export namespace org {
          */
         macAuthOnly?: pulumi.Input<boolean>;
         /**
+         * Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+         */
+        macAuthPreferred?: pulumi.Input<boolean>;
+        /**
          * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
         macAuthProtocol?: pulumi.Input<string>;
@@ -6215,10 +6232,6 @@ export namespace org {
          */
         reauthInterval?: pulumi.Input<number>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-         */
-        rejectedNetwork?: pulumi.Input<string>;
-        /**
          * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          */
         resetDefaultWhen?: pulumi.Input<string>;
@@ -6226,6 +6239,14 @@ export namespace org {
          * Only if `mode`==`dynamic`
          */
         rules?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplatePortUsagesRule>[]>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         */
+        serverFailNetwork?: pulumi.Input<string>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         */
+        serverRejectNetwork?: pulumi.Input<string>;
         /**
          * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
          */
@@ -6358,6 +6379,10 @@ export namespace org {
          * Auth port of RADIUS server
          */
         port?: pulumi.Input<number>;
+        /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
         /**
          * secret of RADIUS server
          */
@@ -6862,6 +6887,7 @@ export namespace org {
          * Enable to provide the FQDN with DHCP option 81
          */
         dhcpOptionFqdn?: pulumi.Input<boolean>;
+        disableOobDownAlarm?: pulumi.Input<boolean>;
         /**
          * Property key is the user name. For Local user authentication
          */
@@ -7429,6 +7455,10 @@ export namespace org {
          */
         defaultIdpId?: pulumi.Input<string>;
         /**
+         * to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
+         */
+        disableRsaeAlgorithms?: pulumi.Input<boolean>;
+        /**
          * eap ssl security level
          * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
          */
@@ -7438,6 +7468,14 @@ export namespace org {
          * For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mistNac enabled
          */
         euOnly?: pulumi.Input<boolean>;
+        /**
+         * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+         */
+        idpMachineCertLookupField?: pulumi.Input<string>;
+        /**
+         * allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+         */
+        idpUserCertLookupField?: pulumi.Input<string>;
         idps?: pulumi.Input<pulumi.Input<inputs.org.SettingMistNacIdp>[]>;
         /**
          * radius server cert to be presented in EAP TLS
@@ -7498,9 +7536,9 @@ export namespace org {
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * days, required if password policy is enabled
+         * password expiry in days
          */
-        freshness?: pulumi.Input<number>;
+        expiryInDays?: pulumi.Input<number>;
         /**
          * required password length
          */
@@ -7521,6 +7559,14 @@ export namespace org {
          * max_len of non-management packets to capture
          */
         maxPktLen?: pulumi.Input<number>;
+    }
+
+    export interface SettingPortChannelization {
+        /**
+         * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
+         */
+        config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        enabled?: pulumi.Input<boolean>;
     }
 
     export interface SettingSecurity {
@@ -9208,6 +9254,10 @@ export namespace site {
          */
         macAuthOnly?: pulumi.Input<boolean>;
         /**
+         * Only if `mode`!=`dynamic` + `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+         */
+        macAuthPreferred?: pulumi.Input<boolean>;
+        /**
          * Only if `mode`!=`dynamic` and `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
          */
         macAuthProtocol?: pulumi.Input<string>;
@@ -9248,10 +9298,6 @@ export namespace site {
          */
         reauthInterval?: pulumi.Input<number>;
         /**
-         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
-         */
-        rejectedNetwork?: pulumi.Input<string>;
-        /**
          * Only if `mode`==`dynamic` Control when the DPC port should be changed to the default port usage. enum: `linkDown`, `none` (let the DPC port keep at the current port usage)
          */
         resetDefaultWhen?: pulumi.Input<string>;
@@ -9259,6 +9305,14 @@ export namespace site {
          * Only if `mode`==`dynamic`
          */
         rules?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplatePortUsagesRule>[]>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` sets server fail fallback vlan
+         */
+        serverFailNetwork?: pulumi.Input<string>;
+        /**
+         * Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
+         */
+        serverRejectNetwork?: pulumi.Input<string>;
         /**
          * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
          */
@@ -9391,6 +9445,10 @@ export namespace site {
          * Auth port of RADIUS server
          */
         port?: pulumi.Input<number>;
+        /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
         /**
          * secret of RADIUS server
          */
@@ -9895,6 +9953,7 @@ export namespace site {
          * Enable to provide the FQDN with DHCP option 81
          */
         dhcpOptionFqdn?: pulumi.Input<boolean>;
+        disableOobDownAlarm?: pulumi.Input<boolean>;
         /**
          * Property key is the user name. For Local user authentication
          */
@@ -10160,7 +10219,9 @@ export namespace site {
     export interface SettingConfigPushPolicyPushWindow {
         enabled?: pulumi.Input<boolean>;
         /**
-         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
+         *
+         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
          */
         hours?: pulumi.Input<inputs.site.SettingConfigPushPolicyPushWindowHours>;
     }
@@ -10192,7 +10253,9 @@ export namespace site {
          */
         dwellTags?: pulumi.Input<inputs.site.SettingEngagementDwellTags>;
         /**
-         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
+         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
+         *
+         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
          */
         hours?: pulumi.Input<inputs.site.SettingEngagementHours>;
         /**
@@ -10271,24 +10334,21 @@ export namespace site {
     }
 
     export interface SettingGatewayMgmtAppProbingCustomApp {
-        /**
-         * if `protocol`==`icmp`
-         */
         address?: pulumi.Input<string>;
         appType?: pulumi.Input<string>;
         /**
-         * if `protocol`==`http`
+         * Only 1 entry is allowed:
+         *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+         *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
          */
-        hostnames?: pulumi.Input<pulumi.Input<string>[]>;
-        name?: pulumi.Input<string>;
+        hostnames: pulumi.Input<pulumi.Input<string>[]>;
+        key?: pulumi.Input<string>;
+        name: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         /**
          * enum: `http`, `icmp`
          */
-        protocol?: pulumi.Input<string>;
-        /**
-         * if `protocol`==`http`
-         */
+        protocol: pulumi.Input<string>;
         url?: pulumi.Input<string>;
         vrf?: pulumi.Input<string>;
     }

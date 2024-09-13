@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,36 +13,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingGatewayMgmtAppProbingCustomApp {
-    /**
-     * @return if `protocol`==`icmp`
-     * 
-     */
     private @Nullable String address;
     private @Nullable String appType;
     /**
-     * @return if `protocol`==`http`
+     * @return Only 1 entry is allowed:
+     *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+     *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
      * 
      */
-    private @Nullable List<String> hostnames;
-    private @Nullable String name;
+    private List<String> hostnames;
+    private @Nullable String key;
+    private String name;
     private @Nullable String network;
     /**
      * @return enum: `http`, `icmp`
      * 
      */
-    private @Nullable String protocol;
-    /**
-     * @return if `protocol`==`http`
-     * 
-     */
+    private String protocol;
     private @Nullable String url;
     private @Nullable String vrf;
 
     private SettingGatewayMgmtAppProbingCustomApp() {}
-    /**
-     * @return if `protocol`==`icmp`
-     * 
-     */
     public Optional<String> address() {
         return Optional.ofNullable(this.address);
     }
@@ -49,14 +41,19 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
         return Optional.ofNullable(this.appType);
     }
     /**
-     * @return if `protocol`==`http`
+     * @return Only 1 entry is allowed:
+     *     * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
+     *     * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
      * 
      */
     public List<String> hostnames() {
-        return this.hostnames == null ? List.of() : this.hostnames;
+        return this.hostnames;
     }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<String> key() {
+        return Optional.ofNullable(this.key);
+    }
+    public String name() {
+        return this.name;
     }
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
@@ -65,13 +62,9 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
      * @return enum: `http`, `icmp`
      * 
      */
-    public Optional<String> protocol() {
-        return Optional.ofNullable(this.protocol);
+    public String protocol() {
+        return this.protocol;
     }
-    /**
-     * @return if `protocol`==`http`
-     * 
-     */
     public Optional<String> url() {
         return Optional.ofNullable(this.url);
     }
@@ -90,10 +83,11 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     public static final class Builder {
         private @Nullable String address;
         private @Nullable String appType;
-        private @Nullable List<String> hostnames;
-        private @Nullable String name;
+        private List<String> hostnames;
+        private @Nullable String key;
+        private String name;
         private @Nullable String network;
-        private @Nullable String protocol;
+        private String protocol;
         private @Nullable String url;
         private @Nullable String vrf;
         public Builder() {}
@@ -102,6 +96,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     	      this.address = defaults.address;
     	      this.appType = defaults.appType;
     	      this.hostnames = defaults.hostnames;
+    	      this.key = defaults.key;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.protocol = defaults.protocol;
@@ -122,8 +117,10 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
             return this;
         }
         @CustomType.Setter
-        public Builder hostnames(@Nullable List<String> hostnames) {
-
+        public Builder hostnames(List<String> hostnames) {
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomApp", "hostnames");
+            }
             this.hostnames = hostnames;
             return this;
         }
@@ -131,8 +128,16 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
             return hostnames(List.of(hostnames));
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
+        public Builder key(@Nullable String key) {
 
+            this.key = key;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomApp", "name");
+            }
             this.name = name;
             return this;
         }
@@ -143,8 +148,10 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
             return this;
         }
         @CustomType.Setter
-        public Builder protocol(@Nullable String protocol) {
-
+        public Builder protocol(String protocol) {
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomApp", "protocol");
+            }
             this.protocol = protocol;
             return this;
         }
@@ -165,6 +172,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
             _resultValue.address = address;
             _resultValue.appType = appType;
             _resultValue.hostnames = hostnames;
+            _resultValue.key = key;
             _resultValue.name = name;
             _resultValue.network = network;
             _resultValue.protocol = protocol;
