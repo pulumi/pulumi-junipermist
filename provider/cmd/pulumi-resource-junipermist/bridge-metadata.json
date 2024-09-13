@@ -2700,7 +2700,7 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
-                                                "hostname": {
+                                                "hostnames": {
                                                     "maxItemsOne": false
                                                 }
                                             }
