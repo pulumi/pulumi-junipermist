@@ -57,11 +57,10 @@ type Ap struct {
 	// Aeroscout AP settings
 	Aeroscout ApAeroscoutPtrOutput `pulumi:"aeroscout"`
 	// BLE AP settings
-	BleConfig       ApBleConfigPtrOutput    `pulumi:"bleConfig"`
-	Centrak         ApCentrakPtrOutput      `pulumi:"centrak"`
-	ClientBridge    ApClientBridgePtrOutput `pulumi:"clientBridge"`
-	DeviceId        pulumi.StringOutput     `pulumi:"deviceId"`
-	DeviceprofileId pulumi.StringOutput     `pulumi:"deviceprofileId"`
+	BleConfig    ApBleConfigPtrOutput    `pulumi:"bleConfig"`
+	Centrak      ApCentrakPtrOutput      `pulumi:"centrak"`
+	ClientBridge ApClientBridgePtrOutput `pulumi:"clientBridge"`
+	DeviceId     pulumi.StringOutput     `pulumi:"deviceId"`
 	// whether to disable eth1 port
 	DisableEth1 pulumi.BoolOutput `pulumi:"disableEth1"`
 	// whether to disable eth2 port
@@ -159,11 +158,10 @@ type apState struct {
 	// Aeroscout AP settings
 	Aeroscout *ApAeroscout `pulumi:"aeroscout"`
 	// BLE AP settings
-	BleConfig       *ApBleConfig    `pulumi:"bleConfig"`
-	Centrak         *ApCentrak      `pulumi:"centrak"`
-	ClientBridge    *ApClientBridge `pulumi:"clientBridge"`
-	DeviceId        *string         `pulumi:"deviceId"`
-	DeviceprofileId *string         `pulumi:"deviceprofileId"`
+	BleConfig    *ApBleConfig    `pulumi:"bleConfig"`
+	Centrak      *ApCentrak      `pulumi:"centrak"`
+	ClientBridge *ApClientBridge `pulumi:"clientBridge"`
+	DeviceId     *string         `pulumi:"deviceId"`
 	// whether to disable eth1 port
 	DisableEth1 *bool `pulumi:"disableEth1"`
 	// whether to disable eth2 port
@@ -226,11 +224,10 @@ type ApState struct {
 	// Aeroscout AP settings
 	Aeroscout ApAeroscoutPtrInput
 	// BLE AP settings
-	BleConfig       ApBleConfigPtrInput
-	Centrak         ApCentrakPtrInput
-	ClientBridge    ApClientBridgePtrInput
-	DeviceId        pulumi.StringPtrInput
-	DeviceprofileId pulumi.StringPtrInput
+	BleConfig    ApBleConfigPtrInput
+	Centrak      ApCentrakPtrInput
+	ClientBridge ApClientBridgePtrInput
+	DeviceId     pulumi.StringPtrInput
 	// whether to disable eth1 port
 	DisableEth1 pulumi.BoolPtrInput
 	// whether to disable eth2 port
@@ -509,10 +506,6 @@ func (o ApOutput) ClientBridge() ApClientBridgePtrOutput {
 
 func (o ApOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
-}
-
-func (o ApOutput) DeviceprofileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.DeviceprofileId }).(pulumi.StringOutput)
 }
 
 // whether to disable eth1 port

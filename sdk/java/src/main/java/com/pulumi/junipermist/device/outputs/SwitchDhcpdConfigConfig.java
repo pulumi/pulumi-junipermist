@@ -85,12 +85,12 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable List<String> servers6s;
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     private @Nullable String type;
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     private @Nullable String type6;
@@ -196,14 +196,14 @@ public final class SwitchDhcpdConfigConfig {
         return this.servers6s == null ? List.of() : this.servers6s;
     }
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     public Optional<String> type6() {

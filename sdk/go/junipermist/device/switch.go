@@ -32,7 +32,6 @@ type Switch struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
-	DeviceprofileId      pulumi.StringOutput         `pulumi:"deviceprofileId"`
 	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	DhcpdConfig          SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
 	// for a claimed switch, we control the configs by default. This option (disables the behavior)
@@ -71,8 +70,8 @@ type Switch struct {
 	//   set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
-	// Junos OSPF config
-	OspfConfig SwitchOspfConfigPtrOutput `pulumi:"ospfConfig"`
+	// Junos OSPF areas
+	OspfAreas SwitchOspfAreasMapOutput `pulumi:"ospfAreas"`
 	// Property key is the network name
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -155,7 +154,6 @@ type switchState struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds []string            `pulumi:"additionalConfigCmds"`
 	DeviceId             *string             `pulumi:"deviceId"`
-	DeviceprofileId      *string             `pulumi:"deviceprofileId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
 	// for a claimed switch, we control the configs by default. This option (disables the behavior)
@@ -194,8 +192,8 @@ type switchState struct {
 	//   set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string            `pulumi:"orgId"`
-	// Junos OSPF config
-	OspfConfig *SwitchOspfConfig `pulumi:"ospfConfig"`
+	// Junos OSPF areas
+	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the network name
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -243,7 +241,6 @@ type SwitchState struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	DeviceId             pulumi.StringPtrInput
-	DeviceprofileId      pulumi.StringPtrInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
 	// for a claimed switch, we control the configs by default. This option (disables the behavior)
@@ -282,8 +279,8 @@ type SwitchState struct {
 	//   set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
-	// Junos OSPF config
-	OspfConfig SwitchOspfConfigPtrInput
+	// Junos OSPF areas
+	OspfAreas SwitchOspfAreasMapInput
 	// Property key is the network name
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -365,8 +362,8 @@ type switchArgs struct {
 	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
 	//   set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
-	// Junos OSPF config
-	OspfConfig *SwitchOspfConfig `pulumi:"ospfConfig"`
+	// Junos OSPF areas
+	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
 	// Property key is the network name
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -441,8 +438,8 @@ type SwitchArgs struct {
 	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
 	//   set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
-	// Junos OSPF config
-	OspfConfig SwitchOspfConfigPtrInput
+	// Junos OSPF areas
+	OspfAreas SwitchOspfAreasMapInput
 	// Property key is the network name
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -584,10 +581,6 @@ func (o SwitchOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-func (o SwitchOutput) DeviceprofileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.DeviceprofileId }).(pulumi.StringOutput)
-}
-
 func (o SwitchOutput) DhcpSnooping() SwitchDhcpSnoopingPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchDhcpSnoopingPtrOutput { return v.DhcpSnooping }).(SwitchDhcpSnoopingPtrOutput)
 }
@@ -695,9 +688,9 @@ func (o SwitchOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Junos OSPF config
-func (o SwitchOutput) OspfConfig() SwitchOspfConfigPtrOutput {
-	return o.ApplyT(func(v *Switch) SwitchOspfConfigPtrOutput { return v.OspfConfig }).(SwitchOspfConfigPtrOutput)
+// Junos OSPF areas
+func (o SwitchOutput) OspfAreas() SwitchOspfAreasMapOutput {
+	return o.ApplyT(func(v *Switch) SwitchOspfAreasMapOutput { return v.OspfAreas }).(SwitchOspfAreasMapOutput)
 }
 
 // Property key is the network name

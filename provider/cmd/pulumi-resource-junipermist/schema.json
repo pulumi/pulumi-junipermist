@@ -2365,7 +2365,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "enum: `allow`, `deny`\n"
+                    "description": "Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`\n"
                 },
                 "appqoe": {
                     "$ref": "#/types/junipermist:device/GatewayServicePolicyAppqoe:GatewayServicePolicyAppqoe",
@@ -2385,7 +2385,8 @@
                     "description": "access within the same VRF\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)\n"
                 },
                 "pathPreference": {
                     "type": "string",
@@ -2399,21 +2400,21 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `servicepolicy_id` is not defined. List of Applications / Desctinations\n"
                 },
                 "tenants": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `servicepolicy_id` is not defined. List of Networks / Users\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "action",
-                        "localRouting",
                         "services",
                         "tenants"
                     ]
@@ -2980,15 +2981,7 @@
             "type": "object",
             "required": [
                 "dstTag"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "action",
-                        "dstTag"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:device/SwitchAclTags:SwitchAclTags": {
             "properties": {
@@ -3187,11 +3180,11 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)\n"
+                    "description": "enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)\n"
                 },
                 "type6": {
                     "type": "string",
-                    "description": "enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)\n"
+                    "description": "enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)\n"
                 },
                 "vendorEncapulated": {
                     "type": "object",
@@ -3209,7 +3202,8 @@
                         "dnsSuffixes",
                         "leaseTime",
                         "serverIdOverride",
-                        "type",
+                        "servers",
+                        "servers6s",
                         "type6"
                     ]
                 }
@@ -3373,7 +3367,8 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `type`==`static`\n"
                 },
                 "dnsSuffixes": {
                     "type": "array",
@@ -3492,41 +3487,96 @@
                 }
             }
         },
-        "junipermist:device/SwitchOspfConfig:SwitchOspfConfig": {
+        "junipermist:device/SwitchOspfAreas:SwitchOspfAreas": {
             "properties": {
-                "areas": {
+                "includeLoopback": {
+                    "type": "boolean"
+                },
+                "networks": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "#/types/junipermist:device/SwitchOspfConfigAreas:SwitchOspfConfigAreas"
-                    },
-                    "description": "OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area\n"
+                        "$ref": "#/types/junipermist:device/SwitchOspfAreasNetworks:SwitchOspfAreasNetworks"
+                    }
                 },
-                "enabled": {
-                    "type": "boolean",
-                    "description": "whether to rung OSPF on this device\n"
-                },
-                "referenceBandwidth": {
+                "type": {
                     "type": "string",
-                    "description": "Bandwidth for calculating metric defaults (9600..4000000000000)\n"
+                    "description": "OSPF type. enum: `default`, `nssa`, `stub`\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "networks"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "includeLoopback",
+                        "networks",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/SwitchOspfAreasNetworks:SwitchOspfAreasNetworks": {
+            "properties": {
+                "authKeys": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required if `auth_type`==`md5`. Property key is the key number\n"
+                },
+                "authPassword": {
+                    "type": "string",
+                    "description": "Required if `auth_type`==`password`, the password, max length is 8\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "auth type. enum: `md5`, `none`, `password`\n"
+                },
+                "bfdMinimumInterval": {
+                    "type": "integer"
+                },
+                "deadInterval": {
+                    "type": "integer"
+                },
+                "exportPolicy": {
+                    "type": "string"
+                },
+                "helloInterval": {
+                    "type": "integer"
+                },
+                "importPolicy": {
+                    "type": "string"
+                },
+                "interfaceType": {
+                    "type": "string",
+                    "description": "interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`\n"
+                },
+                "metric": {
+                    "type": "integer"
+                },
+                "noReadvertiseToOverlay": {
+                    "type": "boolean",
+                    "description": "by default, we'll re-advertise all learned OSPF routes toward overlay\n"
+                },
+                "passive": {
+                    "type": "boolean",
+                    "description": "whether to send OSPF-Hello\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "referenceBandwidth"
+                        "authKeys",
+                        "authType",
+                        "interfaceType",
+                        "noReadvertiseToOverlay",
+                        "passive"
                     ]
                 }
             }
-        },
-        "junipermist:device/SwitchOspfConfigAreas:SwitchOspfConfigAreas": {
-            "properties": {
-                "noSummary": {
-                    "type": "boolean",
-                    "description": "for a stub/nssa area, where to avoid forwarding type-3 LSA to this area\n"
-                }
-            },
-            "type": "object"
         },
         "junipermist:device/SwitchOtherIpConfigs:SwitchOtherIpConfigs": {
             "properties": {
@@ -12219,7 +12269,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "enum: `allow`, `deny`\n"
+                    "description": "Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`\n"
                 },
                 "appqoe": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayServicePolicyAppqoe:DeviceprofileGatewayServicePolicyAppqoe",
@@ -12239,7 +12289,8 @@
                     "description": "access within the same VRF\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)\n"
                 },
                 "pathPreference": {
                     "type": "string",
@@ -12253,21 +12304,21 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `servicepolicy_id` is not defined. List of Applications / Desctinations\n"
                 },
                 "tenants": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `servicepolicy_id` is not defined. List of Networks / Users\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "action",
-                        "localRouting",
                         "services",
                         "tenants"
                     ]
@@ -14210,7 +14261,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "enum: `allow`, `deny`\n"
+                    "description": "Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`\n"
                 },
                 "appqoe": {
                     "$ref": "#/types/junipermist:org/GatewaytemplateServicePolicyAppqoe:GatewaytemplateServicePolicyAppqoe",
@@ -14230,7 +14281,8 @@
                     "description": "access within the same VRF\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)\n"
                 },
                 "pathPreference": {
                     "type": "string",
@@ -14244,21 +14296,21 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `servicepolicy_id` is not defined. List of Applications / Desctinations\n"
                 },
                 "tenants": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "Required when `servicepolicy_id` is not defined. List of Networks / Users\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "action",
-                        "localRouting",
                         "services",
                         "tenants"
                     ]
@@ -15242,15 +15294,7 @@
             "type": "object",
             "required": [
                 "dstTag"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "action",
-                        "dstTag"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:org/NetworktemplateAclTags:NetworktemplateAclTags": {
             "properties": {
@@ -15491,6 +15535,97 @@
                     "requiredOutputs": [
                         "isolation",
                         "vlanId"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas": {
+            "properties": {
+                "includeLoopback": {
+                    "type": "boolean"
+                },
+                "networks": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/NetworktemplateOspfAreasNetworks:NetworktemplateOspfAreasNetworks"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "OSPF type. enum: `default`, `nssa`, `stub`\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "networks"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "includeLoopback",
+                        "networks",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/NetworktemplateOspfAreasNetworks:NetworktemplateOspfAreasNetworks": {
+            "properties": {
+                "authKeys": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required if `auth_type`==`md5`. Property key is the key number\n"
+                },
+                "authPassword": {
+                    "type": "string",
+                    "description": "Required if `auth_type`==`password`, the password, max length is 8\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "auth type. enum: `md5`, `none`, `password`\n"
+                },
+                "bfdMinimumInterval": {
+                    "type": "integer"
+                },
+                "deadInterval": {
+                    "type": "integer"
+                },
+                "exportPolicy": {
+                    "type": "string"
+                },
+                "helloInterval": {
+                    "type": "integer"
+                },
+                "importPolicy": {
+                    "type": "string"
+                },
+                "interfaceType": {
+                    "type": "string",
+                    "description": "interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`\n"
+                },
+                "metric": {
+                    "type": "integer"
+                },
+                "noReadvertiseToOverlay": {
+                    "type": "boolean",
+                    "description": "by default, we'll re-advertise all learned OSPF routes toward overlay\n"
+                },
+                "passive": {
+                    "type": "boolean",
+                    "description": "whether to send OSPF-Hello\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authKeys",
+                        "authType",
+                        "interfaceType",
+                        "noReadvertiseToOverlay",
+                        "passive"
                     ]
                 }
             }
@@ -21648,15 +21783,7 @@
             "type": "object",
             "required": [
                 "dstTag"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "action",
-                        "dstTag"
-                    ]
-                }
-            }
+            ]
         },
         "junipermist:site/NetworktemplateAclTags:NetworktemplateAclTags": {
             "properties": {
@@ -21897,6 +22024,97 @@
                     "requiredOutputs": [
                         "isolation",
                         "vlanId"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas": {
+            "properties": {
+                "includeLoopback": {
+                    "type": "boolean"
+                },
+                "ospfNetworks": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/NetworktemplateOspfAreasOspfNetworks:NetworktemplateOspfAreasOspfNetworks"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "OSPF type. enum: `default`, `nssa`, `stub`\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ospfNetworks"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "includeLoopback",
+                        "ospfNetworks",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/NetworktemplateOspfAreasOspfNetworks:NetworktemplateOspfAreasOspfNetworks": {
+            "properties": {
+                "authKeys": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Required if `auth_type`==`md5`. Property key is the key number\n"
+                },
+                "authPassword": {
+                    "type": "string",
+                    "description": "Required if `auth_type`==`password`, the password, max length is 8\n"
+                },
+                "authType": {
+                    "type": "string",
+                    "description": "auth type. enum: `md5`, `none`, `password`\n"
+                },
+                "bfdMinimumInterval": {
+                    "type": "integer"
+                },
+                "deadInterval": {
+                    "type": "integer"
+                },
+                "exportPolicy": {
+                    "type": "string"
+                },
+                "helloInterval": {
+                    "type": "integer"
+                },
+                "importPolicy": {
+                    "type": "string"
+                },
+                "interfaceType": {
+                    "type": "string",
+                    "description": "interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`\n"
+                },
+                "metric": {
+                    "type": "integer"
+                },
+                "noReadvertiseToOverlay": {
+                    "type": "boolean",
+                    "description": "by default, we'll re-advertise all learned OSPF routes toward overlay\n"
+                },
+                "passive": {
+                    "type": "boolean",
+                    "description": "whether to send OSPF-Hello\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "authKeys",
+                        "authType",
+                        "interfaceType",
+                        "noReadvertiseToOverlay",
+                        "passive"
                     ]
                 }
             }
@@ -27111,9 +27329,6 @@
                 "deviceId": {
                     "type": "string"
                 },
-                "deviceprofileId": {
-                    "type": "string"
-                },
                 "disableEth1": {
                     "type": "boolean",
                     "description": "whether to disable eth1 port\n"
@@ -27242,7 +27457,6 @@
             },
             "required": [
                 "deviceId",
-                "deviceprofileId",
                 "disableEth1",
                 "disableEth2",
                 "disableEth3",
@@ -27397,9 +27611,6 @@
                         "$ref": "#/types/junipermist:device/ApClientBridge:ApClientBridge"
                     },
                     "deviceId": {
-                        "type": "string"
-                    },
-                    "deviceprofileId": {
                         "type": "string"
                     },
                     "disableEth1": {
@@ -27753,9 +27964,6 @@
                 "deviceId": {
                     "type": "string"
                 },
-                "deviceprofileId": {
-                    "type": "string"
-                },
                 "dhcpdConfig": {
                     "$ref": "#/types/junipermist:device/GatewayDhcpdConfig:GatewayDhcpdConfig"
                 },
@@ -27936,7 +28144,6 @@
             },
             "required": [
                 "deviceId",
-                "deviceprofileId",
                 "image1Url",
                 "image2Url",
                 "image3Url",
@@ -28136,9 +28343,6 @@
                         }
                     },
                     "deviceId": {
-                        "type": "string"
-                    },
-                    "deviceprofileId": {
                         "type": "string"
                     },
                     "dhcpdConfig": {
@@ -28399,9 +28603,6 @@
                 "deviceId": {
                     "type": "string"
                 },
-                "deviceprofileId": {
-                    "type": "string"
-                },
                 "dhcpSnooping": {
                     "$ref": "#/types/junipermist:device/SwitchDhcpSnooping:SwitchDhcpSnooping"
                 },
@@ -28503,9 +28704,12 @@
                 "orgId": {
                     "type": "string"
                 },
-                "ospfConfig": {
-                    "$ref": "#/types/junipermist:device/SwitchOspfConfig:SwitchOspfConfig",
-                    "description": "Junos OSPF config\n"
+                "ospfAreas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchOspfAreas:SwitchOspfAreas"
+                    },
+                    "description": "Junos OSPF areas\n"
                 },
                 "otherIpConfigs": {
                     "type": "object",
@@ -28609,7 +28813,6 @@
             },
             "required": [
                 "deviceId",
-                "deviceprofileId",
                 "disableAutoConfig",
                 "image1Url",
                 "image2Url",
@@ -28729,9 +28932,12 @@
                     "$ref": "#/types/junipermist:device/SwitchOobIpConfig:SwitchOobIpConfig",
                     "description": "- If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be\nset separately (if desired): key parameter = `re1`\n"
                 },
-                "ospfConfig": {
-                    "$ref": "#/types/junipermist:device/SwitchOspfConfig:SwitchOspfConfig",
-                    "description": "Junos OSPF config\n"
+                "ospfAreas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchOspfAreas:SwitchOspfAreas"
+                    },
+                    "description": "Junos OSPF areas\n"
                 },
                 "otherIpConfigs": {
                     "type": "object",
@@ -28855,9 +29061,6 @@
                     "deviceId": {
                         "type": "string"
                     },
-                    "deviceprofileId": {
-                        "type": "string"
-                    },
                     "dhcpSnooping": {
                         "$ref": "#/types/junipermist:device/SwitchDhcpSnooping:SwitchDhcpSnooping"
                     },
@@ -28959,9 +29162,12 @@
                     "orgId": {
                         "type": "string"
                     },
-                    "ospfConfig": {
-                        "$ref": "#/types/junipermist:device/SwitchOspfConfig:SwitchOspfConfig",
-                        "description": "Junos OSPF config\n"
+                    "ospfAreas": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:device/SwitchOspfAreas:SwitchOspfAreas"
+                        },
+                        "description": "Junos OSPF areas\n"
                     },
                     "otherIpConfigs": {
                         "type": "object",
@@ -31135,6 +31341,13 @@
                 "orgId": {
                     "type": "string"
                 },
+                "ospfAreas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
+                    },
+                    "description": "Junos OSPF areas\n"
+                },
                 "portMirroring": {
                     "type": "object",
                     "additionalProperties": {
@@ -31261,6 +31474,13 @@
                 "orgId": {
                     "type": "string"
                 },
+                "ospfAreas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
+                    },
+                    "description": "Junos OSPF areas\n"
+                },
                 "portMirroring": {
                     "type": "object",
                     "additionalProperties": {
@@ -31386,6 +31606,13 @@
                     },
                     "orgId": {
                         "type": "string"
+                    },
+                    "ospfAreas": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:org/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
+                        },
+                        "description": "Junos OSPF areas\n"
                     },
                     "portMirroring": {
                         "type": "object",
@@ -35039,6 +35266,13 @@
                     },
                     "description": "list of NTP servers\n"
                 },
+                "ospfAreas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
+                    },
+                    "description": "Junos OSPF areas\n"
+                },
                 "portMirroring": {
                     "type": "object",
                     "additionalProperties": {
@@ -35163,6 +35397,13 @@
                         "type": "string"
                     },
                     "description": "list of NTP servers\n"
+                },
+                "ospfAreas": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
+                    },
+                    "description": "Junos OSPF areas\n"
                 },
                 "portMirroring": {
                     "type": "object",
@@ -35289,6 +35530,13 @@
                             "type": "string"
                         },
                         "description": "list of NTP servers\n"
+                    },
+                    "ospfAreas": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:site/NetworktemplateOspfAreas:NetworktemplateOspfAreas"
+                        },
+                        "description": "Junos OSPF areas\n"
                     },
                     "portMirroring": {
                         "type": "object",

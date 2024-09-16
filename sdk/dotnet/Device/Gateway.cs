@@ -74,9 +74,6 @@ namespace Pulumi.JuniperMist.Device
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
-        [Output("deviceprofileId")]
-        public Output<string> DeviceprofileId { get; private set; } = null!;
-
         [Output("dhcpdConfig")]
         public Output<Outputs.GatewayDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
@@ -576,9 +573,6 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
-
-        [Input("deviceprofileId")]
-        public Input<string>? DeviceprofileId { get; set; }
 
         [Input("dhcpdConfig")]
         public Input<Inputs.GatewayDhcpdConfigGetArgs>? DhcpdConfig { get; set; }

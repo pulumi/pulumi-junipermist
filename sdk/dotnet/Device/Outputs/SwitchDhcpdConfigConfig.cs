@@ -67,11 +67,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Servers6s;
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         /// </summary>
         public readonly string? Type6;
         /// <summary>

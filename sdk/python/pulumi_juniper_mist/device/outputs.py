@@ -110,8 +110,8 @@ __all__ = [
     'SwitchMistNac',
     'SwitchNetworks',
     'SwitchOobIpConfig',
-    'SwitchOspfConfig',
-    'SwitchOspfConfigAreas',
+    'SwitchOspfAreas',
+    'SwitchOspfAreasNetworks',
     'SwitchOtherIpConfigs',
     'SwitchPortConfig',
     'SwitchPortMirroring',
@@ -5807,12 +5807,15 @@ class GatewayServicePolicy(dict):
                  services: Optional[Sequence[str]] = None,
                  tenants: Optional[Sequence[str]] = None):
         """
-        :param str action: enum: `allow`, `deny`
+        :param str action: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         :param 'GatewayServicePolicyAppqoeArgs' appqoe: For SRX Only
         :param bool local_routing: access within the same VRF
+        :param str name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
         :param str path_preference: by default, we derive all paths available and use them
                optionally, you can customize by using `path_preference`
         :param str servicepolicy_id: used to link servicepolicy defined at org level and overwrite some attributes
+        :param Sequence[str] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        :param Sequence[str] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -5839,7 +5842,7 @@ class GatewayServicePolicy(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        enum: `allow`, `deny`
+        Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         """
         return pulumi.get(self, "action")
 
@@ -5872,6 +5875,9 @@ class GatewayServicePolicy(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -5894,11 +5900,17 @@ class GatewayServicePolicy(dict):
     @property
     @pulumi.getter
     def services(self) -> Optional[Sequence[str]]:
+        """
+        Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        """
         return pulumi.get(self, "services")
 
     @property
     @pulumi.getter
     def tenants(self) -> Optional[Sequence[str]]:
+        """
+        Required when `servicepolicy_id` is not defined. List of Networks / Users
+        """
         return pulumi.get(self, "tenants")
 
 
@@ -7675,8 +7687,8 @@ class SwitchDhcpdConfigConfig(dict):
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
         :param Sequence[str] servers: if `type`==`relay`
         :param Sequence[str] servers6s: if `type6`==`relay`
-        :param str type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
-        :param str type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        :param str type: enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
+        :param str type6: enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         :param Mapping[str, 'SwitchDhcpdConfigConfigVendorEncapulatedArgs'] vendor_encapulated: Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
                  * sub option code: 1-255, sub-option code'
@@ -7823,7 +7835,7 @@ class SwitchDhcpdConfigConfig(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         """
         return pulumi.get(self, "type")
 
@@ -7831,7 +7843,7 @@ class SwitchDhcpdConfigConfig(dict):
     @pulumi.getter
     def type6(self) -> Optional[str]:
         """
-        enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         """
         return pulumi.get(self, "type6")
 
@@ -8179,6 +8191,7 @@ class SwitchIpConfig(dict):
                  network: Optional[str] = None,
                  type: Optional[str] = None):
         """
+        :param Sequence[str] dns: Required when `type`==`static`
         :param str netmask: used only if `subnet` is not specified in `networks`
         :param str network: the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
         :param str type: enum: `dhcp`, `static`
@@ -8201,6 +8214,9 @@ class SwitchIpConfig(dict):
     @property
     @pulumi.getter
     def dns(self) -> Optional[Sequence[str]]:
+        """
+        Required when `type`==`static`
+        """
         return pulumi.get(self, "dns")
 
     @property
@@ -8434,99 +8450,216 @@ class SwitchOobIpConfig(dict):
 
 
 @pulumi.output_type
-class SwitchOspfConfig(dict):
+class SwitchOspfAreas(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "referenceBandwidth":
-            suggest = "reference_bandwidth"
+        if key == "includeLoopback":
+            suggest = "include_loopback"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SwitchOspfConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SwitchOspfAreas. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SwitchOspfConfig.__key_warning(key)
+        SwitchOspfAreas.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SwitchOspfConfig.__key_warning(key)
+        SwitchOspfAreas.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 areas: Optional[Mapping[str, 'outputs.SwitchOspfConfigAreas']] = None,
-                 enabled: Optional[bool] = None,
-                 reference_bandwidth: Optional[str] = None):
+                 networks: Mapping[str, 'outputs.SwitchOspfAreasNetworks'],
+                 include_loopback: Optional[bool] = None,
+                 type: Optional[str] = None):
         """
-        :param Mapping[str, 'SwitchOspfConfigAreasArgs'] areas: OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
-        :param bool enabled: whether to rung OSPF on this device
-        :param str reference_bandwidth: Bandwidth for calculating metric defaults (9600..4000000000000)
+        :param str type: OSPF type. enum: `default`, `nssa`, `stub`
         """
-        if areas is not None:
-            pulumi.set(__self__, "areas", areas)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if reference_bandwidth is not None:
-            pulumi.set(__self__, "reference_bandwidth", reference_bandwidth)
+        pulumi.set(__self__, "networks", networks)
+        if include_loopback is not None:
+            pulumi.set(__self__, "include_loopback", include_loopback)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def areas(self) -> Optional[Mapping[str, 'outputs.SwitchOspfConfigAreas']]:
-        """
-        OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
-        """
-        return pulumi.get(self, "areas")
+    def networks(self) -> Mapping[str, 'outputs.SwitchOspfAreasNetworks']:
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="includeLoopback")
+    def include_loopback(self) -> Optional[bool]:
+        return pulumi.get(self, "include_loopback")
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def type(self) -> Optional[str]:
         """
-        whether to rung OSPF on this device
+        OSPF type. enum: `default`, `nssa`, `stub`
         """
-        return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter(name="referenceBandwidth")
-    def reference_bandwidth(self) -> Optional[str]:
-        """
-        Bandwidth for calculating metric defaults (9600..4000000000000)
-        """
-        return pulumi.get(self, "reference_bandwidth")
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
-class SwitchOspfConfigAreas(dict):
+class SwitchOspfAreasNetworks(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "noSummary":
-            suggest = "no_summary"
+        if key == "authKeys":
+            suggest = "auth_keys"
+        elif key == "authPassword":
+            suggest = "auth_password"
+        elif key == "authType":
+            suggest = "auth_type"
+        elif key == "bfdMinimumInterval":
+            suggest = "bfd_minimum_interval"
+        elif key == "deadInterval":
+            suggest = "dead_interval"
+        elif key == "exportPolicy":
+            suggest = "export_policy"
+        elif key == "helloInterval":
+            suggest = "hello_interval"
+        elif key == "importPolicy":
+            suggest = "import_policy"
+        elif key == "interfaceType":
+            suggest = "interface_type"
+        elif key == "noReadvertiseToOverlay":
+            suggest = "no_readvertise_to_overlay"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SwitchOspfConfigAreas. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in SwitchOspfAreasNetworks. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        SwitchOspfConfigAreas.__key_warning(key)
+        SwitchOspfAreasNetworks.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        SwitchOspfConfigAreas.__key_warning(key)
+        SwitchOspfAreasNetworks.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 no_summary: Optional[bool] = None):
+                 auth_keys: Optional[Mapping[str, str]] = None,
+                 auth_password: Optional[str] = None,
+                 auth_type: Optional[str] = None,
+                 bfd_minimum_interval: Optional[int] = None,
+                 dead_interval: Optional[int] = None,
+                 export_policy: Optional[str] = None,
+                 hello_interval: Optional[int] = None,
+                 import_policy: Optional[str] = None,
+                 interface_type: Optional[str] = None,
+                 metric: Optional[int] = None,
+                 no_readvertise_to_overlay: Optional[bool] = None,
+                 passive: Optional[bool] = None):
         """
-        :param bool no_summary: for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
+        :param Mapping[str, str] auth_keys: Required if `auth_type`==`md5`. Property key is the key number
+        :param str auth_password: Required if `auth_type`==`password`, the password, max length is 8
+        :param str auth_type: auth type. enum: `md5`, `none`, `password`
+        :param str interface_type: interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        :param bool no_readvertise_to_overlay: by default, we'll re-advertise all learned OSPF routes toward overlay
+        :param bool passive: whether to send OSPF-Hello
         """
-        if no_summary is not None:
-            pulumi.set(__self__, "no_summary", no_summary)
+        if auth_keys is not None:
+            pulumi.set(__self__, "auth_keys", auth_keys)
+        if auth_password is not None:
+            pulumi.set(__self__, "auth_password", auth_password)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if bfd_minimum_interval is not None:
+            pulumi.set(__self__, "bfd_minimum_interval", bfd_minimum_interval)
+        if dead_interval is not None:
+            pulumi.set(__self__, "dead_interval", dead_interval)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+        if hello_interval is not None:
+            pulumi.set(__self__, "hello_interval", hello_interval)
+        if import_policy is not None:
+            pulumi.set(__self__, "import_policy", import_policy)
+        if interface_type is not None:
+            pulumi.set(__self__, "interface_type", interface_type)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if no_readvertise_to_overlay is not None:
+            pulumi.set(__self__, "no_readvertise_to_overlay", no_readvertise_to_overlay)
+        if passive is not None:
+            pulumi.set(__self__, "passive", passive)
 
     @property
-    @pulumi.getter(name="noSummary")
-    def no_summary(self) -> Optional[bool]:
+    @pulumi.getter(name="authKeys")
+    def auth_keys(self) -> Optional[Mapping[str, str]]:
         """
-        for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
+        Required if `auth_type`==`md5`. Property key is the key number
         """
-        return pulumi.get(self, "no_summary")
+        return pulumi.get(self, "auth_keys")
+
+    @property
+    @pulumi.getter(name="authPassword")
+    def auth_password(self) -> Optional[str]:
+        """
+        Required if `auth_type`==`password`, the password, max length is 8
+        """
+        return pulumi.get(self, "auth_password")
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[str]:
+        """
+        auth type. enum: `md5`, `none`, `password`
+        """
+        return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="bfdMinimumInterval")
+    def bfd_minimum_interval(self) -> Optional[int]:
+        return pulumi.get(self, "bfd_minimum_interval")
+
+    @property
+    @pulumi.getter(name="deadInterval")
+    def dead_interval(self) -> Optional[int]:
+        return pulumi.get(self, "dead_interval")
+
+    @property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[str]:
+        return pulumi.get(self, "export_policy")
+
+    @property
+    @pulumi.getter(name="helloInterval")
+    def hello_interval(self) -> Optional[int]:
+        return pulumi.get(self, "hello_interval")
+
+    @property
+    @pulumi.getter(name="importPolicy")
+    def import_policy(self) -> Optional[str]:
+        return pulumi.get(self, "import_policy")
+
+    @property
+    @pulumi.getter(name="interfaceType")
+    def interface_type(self) -> Optional[str]:
+        """
+        interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        """
+        return pulumi.get(self, "interface_type")
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[int]:
+        return pulumi.get(self, "metric")
+
+    @property
+    @pulumi.getter(name="noReadvertiseToOverlay")
+    def no_readvertise_to_overlay(self) -> Optional[bool]:
+        """
+        by default, we'll re-advertise all learned OSPF routes toward overlay
+        """
+        return pulumi.get(self, "no_readvertise_to_overlay")
+
+    @property
+    @pulumi.getter
+    def passive(self) -> Optional[bool]:
+        """
+        whether to send OSPF-Hello
+        """
+        return pulumi.get(self, "passive")
 
 
 @pulumi.output_type

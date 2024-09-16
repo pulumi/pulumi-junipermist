@@ -16,9 +16,17 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final SwitchIpConfigArgs Empty = new SwitchIpConfigArgs();
 
+    /**
+     * Required when `type`==`static`
+     * 
+     */
     @Import(name="dns")
     private @Nullable Output<List<String>> dns;
 
+    /**
+     * @return Required when `type`==`static`
+     * 
+     */
     public Optional<Output<List<String>>> dns() {
         return Optional.ofNullable(this.dns);
     }
@@ -119,15 +127,33 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
             $ = new SwitchIpConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dns Required when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(@Nullable Output<List<String>> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns Required when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(List<String> dns) {
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param dns Required when `type`==`static`
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(String... dns) {
             return dns(List.of(dns));
         }

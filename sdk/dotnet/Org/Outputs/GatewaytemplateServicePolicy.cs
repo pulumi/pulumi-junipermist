@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateServicePolicy
     {
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         /// </summary>
         public readonly string? Action;
         /// <summary>
@@ -27,6 +27,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// access within the same VRF
         /// </summary>
         public readonly bool? LocalRouting;
+        /// <summary>
+        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        /// </summary>
         public readonly string? Name;
         /// <summary>
         /// by default, we derive all paths available and use them
@@ -37,7 +40,13 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// used to link servicepolicy defined at org level and overwrite some attributes
         /// </summary>
         public readonly string? ServicepolicyId;
+        /// <summary>
+        /// Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        /// </summary>
         public readonly ImmutableArray<string> Services;
+        /// <summary>
+        /// Required when `servicepolicy_id` is not defined. List of Networks / Users
+        /// </summary>
         public readonly ImmutableArray<string> Tenants;
 
         [OutputConstructor]
