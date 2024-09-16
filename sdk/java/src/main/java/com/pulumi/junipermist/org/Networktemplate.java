@@ -17,6 +17,7 @@ import com.pulumi.junipermist.org.outputs.NetworktemplateExtraRoutes6;
 import com.pulumi.junipermist.org.outputs.NetworktemplateExtraRoutes;
 import com.pulumi.junipermist.org.outputs.NetworktemplateMistNac;
 import com.pulumi.junipermist.org.outputs.NetworktemplateNetworks;
+import com.pulumi.junipermist.org.outputs.NetworktemplateOspfAreas;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortMirroring;
 import com.pulumi.junipermist.org.outputs.NetworktemplatePortUsages;
 import com.pulumi.junipermist.org.outputs.NetworktemplateRadiusConfig;
@@ -262,6 +263,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
 
     public Output<String> orgId() {
         return this.orgId;
+    }
+    /**
+     * Junos OSPF areas
+     * 
+     */
+    @Export(name="ospfAreas", refs={Map.class,String.class,NetworktemplateOspfAreas.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,NetworktemplateOspfAreas>> ospfAreas;
+
+    /**
+     * @return Junos OSPF areas
+     * 
+     */
+    public Output<Optional<Map<String,NetworktemplateOspfAreas>>> ospfAreas() {
+        return Codegen.optional(this.ospfAreas);
     }
     /**
      * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes

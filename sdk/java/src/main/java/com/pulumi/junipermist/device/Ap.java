@@ -130,12 +130,6 @@ public class Ap extends com.pulumi.resources.CustomResource {
     public Output<String> deviceId() {
         return this.deviceId;
     }
-    @Export(name="deviceprofileId", refs={String.class}, tree="[0]")
-    private Output<String> deviceprofileId;
-
-    public Output<String> deviceprofileId() {
-        return this.deviceprofileId;
-    }
     /**
      * whether to disable eth1 port
      * 

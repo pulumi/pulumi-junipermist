@@ -17,7 +17,7 @@ import com.pulumi.junipermist.device.inputs.SwitchIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchMistNacArgs;
 import com.pulumi.junipermist.device.inputs.SwitchNetworksArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOobIpConfigArgs;
-import com.pulumi.junipermist.device.inputs.SwitchOspfConfigArgs;
+import com.pulumi.junipermist.device.inputs.SwitchOspfAreasArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOtherIpConfigsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortMirroringArgs;
@@ -307,18 +307,18 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Junos OSPF config
+     * Junos OSPF areas
      * 
      */
-    @Import(name="ospfConfig")
-    private @Nullable Output<SwitchOspfConfigArgs> ospfConfig;
+    @Import(name="ospfAreas")
+    private @Nullable Output<Map<String,SwitchOspfAreasArgs>> ospfAreas;
 
     /**
-     * @return Junos OSPF config
+     * @return Junos OSPF areas
      * 
      */
-    public Optional<Output<SwitchOspfConfigArgs>> ospfConfig() {
-        return Optional.ofNullable(this.ospfConfig);
+    public Optional<Output<Map<String,SwitchOspfAreasArgs>>> ospfAreas() {
+        return Optional.ofNullable(this.ospfAreas);
     }
 
     /**
@@ -591,7 +591,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         this.notes = $.notes;
         this.ntpServers = $.ntpServers;
         this.oobIpConfig = $.oobIpConfig;
-        this.ospfConfig = $.ospfConfig;
+        this.ospfAreas = $.ospfAreas;
         this.otherIpConfigs = $.otherIpConfigs;
         this.portConfig = $.portConfig;
         this.portMirroring = $.portMirroring;
@@ -1036,24 +1036,24 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ospfConfig Junos OSPF config
+         * @param ospfAreas Junos OSPF areas
          * 
          * @return builder
          * 
          */
-        public Builder ospfConfig(@Nullable Output<SwitchOspfConfigArgs> ospfConfig) {
-            $.ospfConfig = ospfConfig;
+        public Builder ospfAreas(@Nullable Output<Map<String,SwitchOspfAreasArgs>> ospfAreas) {
+            $.ospfAreas = ospfAreas;
             return this;
         }
 
         /**
-         * @param ospfConfig Junos OSPF config
+         * @param ospfAreas Junos OSPF areas
          * 
          * @return builder
          * 
          */
-        public Builder ospfConfig(SwitchOspfConfigArgs ospfConfig) {
-            return ospfConfig(Output.of(ospfConfig));
+        public Builder ospfAreas(Map<String,SwitchOspfAreasArgs> ospfAreas) {
+            return ospfAreas(Output.of(ospfAreas));
         }
 
         /**

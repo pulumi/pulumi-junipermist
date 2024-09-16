@@ -78,7 +78,6 @@ export class Gateway extends pulumi.CustomResource {
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly bgpConfig!: pulumi.Output<{[key: string]: outputs.device.GatewayBgpConfig} | undefined>;
     public readonly deviceId!: pulumi.Output<string>;
-    public /*out*/ readonly deviceprofileId!: pulumi.Output<string>;
     public readonly dhcpdConfig!: pulumi.Output<outputs.device.GatewayDhcpdConfig | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -196,7 +195,6 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
             resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
             resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["deviceprofileId"] = state ? state.deviceprofileId : undefined;
             resourceInputs["dhcpdConfig"] = state ? state.dhcpdConfig : undefined;
             resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
             resourceInputs["dnsSuffixes"] = state ? state.dnsSuffixes : undefined;
@@ -274,7 +272,6 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["vrfInstances"] = args ? args.vrfInstances : undefined;
             resourceInputs["x"] = args ? args.x : undefined;
             resourceInputs["y"] = args ? args.y : undefined;
-            resourceInputs["deviceprofileId"] = undefined /*out*/;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -299,7 +296,6 @@ export interface GatewayState {
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>}>;
     deviceId?: pulumi.Input<string>;
-    deviceprofileId?: pulumi.Input<string>;
     dhcpdConfig?: pulumi.Input<inputs.device.GatewayDhcpdConfig>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting

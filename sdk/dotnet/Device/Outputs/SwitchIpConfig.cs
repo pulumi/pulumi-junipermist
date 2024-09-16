@@ -13,6 +13,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class SwitchIpConfig
     {
+        /// <summary>
+        /// Required when `type`==`static`
+        /// </summary>
         public readonly ImmutableArray<string> Dns;
         public readonly ImmutableArray<string> DnsSuffixes;
         public readonly string? Gateway;

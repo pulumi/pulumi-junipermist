@@ -461,7 +461,6 @@ class _ApState:
                  centrak: Optional[pulumi.Input['ApCentrakArgs']] = None,
                  client_bridge: Optional[pulumi.Input['ApClientBridgeArgs']] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
-                 deviceprofile_id: Optional[pulumi.Input[str]] = None,
                  disable_eth1: Optional[pulumi.Input[bool]] = None,
                  disable_eth2: Optional[pulumi.Input[bool]] = None,
                  disable_eth3: Optional[pulumi.Input[bool]] = None,
@@ -533,8 +532,6 @@ class _ApState:
             pulumi.set(__self__, "client_bridge", client_bridge)
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
-        if deviceprofile_id is not None:
-            pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
         if disable_eth1 is not None:
             pulumi.set(__self__, "disable_eth1", disable_eth1)
         if disable_eth2 is not None:
@@ -650,15 +647,6 @@ class _ApState:
     @device_id.setter
     def device_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_id", value)
-
-    @property
-    @pulumi.getter(name="deviceprofileId")
-    def deviceprofile_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "deviceprofile_id")
-
-    @deviceprofile_id.setter
-    def deviceprofile_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "deviceprofile_id", value)
 
     @property
     @pulumi.getter(name="disableEth1")
@@ -1221,7 +1209,6 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["vars"] = vars
             __props__.__dict__["x"] = x
             __props__.__dict__["y"] = y
-            __props__.__dict__["deviceprofile_id"] = None
             __props__.__dict__["image1_url"] = None
             __props__.__dict__["image2_url"] = None
             __props__.__dict__["image3_url"] = None
@@ -1245,7 +1232,6 @@ class Ap(pulumi.CustomResource):
             centrak: Optional[pulumi.Input[Union['ApCentrakArgs', 'ApCentrakArgsDict']]] = None,
             client_bridge: Optional[pulumi.Input[Union['ApClientBridgeArgs', 'ApClientBridgeArgsDict']]] = None,
             device_id: Optional[pulumi.Input[str]] = None,
-            deviceprofile_id: Optional[pulumi.Input[str]] = None,
             disable_eth1: Optional[pulumi.Input[bool]] = None,
             disable_eth2: Optional[pulumi.Input[bool]] = None,
             disable_eth3: Optional[pulumi.Input[bool]] = None,
@@ -1321,7 +1307,6 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["centrak"] = centrak
         __props__.__dict__["client_bridge"] = client_bridge
         __props__.__dict__["device_id"] = device_id
-        __props__.__dict__["deviceprofile_id"] = deviceprofile_id
         __props__.__dict__["disable_eth1"] = disable_eth1
         __props__.__dict__["disable_eth2"] = disable_eth2
         __props__.__dict__["disable_eth3"] = disable_eth3
@@ -1386,11 +1371,6 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="deviceId")
     def device_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "device_id")
-
-    @property
-    @pulumi.getter(name="deviceprofileId")
-    def deviceprofile_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "deviceprofile_id")
 
     @property
     @pulumi.getter(name="disableEth1")

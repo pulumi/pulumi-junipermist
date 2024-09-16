@@ -1498,9 +1498,9 @@ export namespace device {
 
     export interface GatewayServicePolicy {
         /**
-         * enum: `allow`, `deny`
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          */
-        action: string;
+        action?: string;
         /**
          * For SRX Only
          */
@@ -1510,7 +1510,10 @@ export namespace device {
         /**
          * access within the same VRF
          */
-        localRouting: boolean;
+        localRouting?: boolean;
+        /**
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+         */
         name?: string;
         /**
          * by default, we derive all paths available and use them
@@ -1521,7 +1524,13 @@ export namespace device {
          * used to link servicepolicy defined at org level and overwrite some attributes
          */
         servicepolicyId?: string;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         */
         services: string[];
+        /**
+         * Required when `servicepolicyId` is not defined. List of Networks / Users
+         */
         tenants: string[];
     }
 
@@ -3365,7 +3374,7 @@ export namespace device {
         /**
          * enum: `allow`, `deny`
          */
-        action: string;
+        action?: string;
         dstTag: string;
     }
 
@@ -3504,17 +3513,17 @@ export namespace device {
         /**
          * if `type`==`relay`
          */
-        servers?: string[];
+        servers: string[];
         /**
          * if `type6`==`relay`
          */
-        servers6s?: string[];
+        servers6s: string[];
         /**
-         * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          */
-        type: string;
+        type?: string;
         /**
-         * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          */
         type6: string;
         /**
@@ -3595,6 +3604,9 @@ export namespace device {
     }
 
     export interface SwitchIpConfig {
+        /**
+         * Required when `type`==`static`
+         */
         dns: string[];
         dnsSuffixes: string[];
         gateway?: string;
@@ -3657,26 +3669,46 @@ export namespace device {
         useMgmtVrfForHostOut: boolean;
     }
 
-    export interface SwitchOspfConfig {
+    export interface SwitchOspfAreas {
+        includeLoopback: boolean;
+        networks: {[key: string]: outputs.device.SwitchOspfAreasNetworks};
         /**
-         * OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
+         * OSPF type. enum: `default`, `nssa`, `stub`
          */
-        areas?: {[key: string]: outputs.device.SwitchOspfConfigAreas};
-        /**
-         * whether to rung OSPF on this device
-         */
-        enabled?: boolean;
-        /**
-         * Bandwidth for calculating metric defaults (9600..4000000000000)
-         */
-        referenceBandwidth: string;
+        type: string;
     }
 
-    export interface SwitchOspfConfigAreas {
+    export interface SwitchOspfAreasNetworks {
         /**
-         * for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
+         * Required if `authType`==`md5`. Property key is the key number
          */
-        noSummary?: boolean;
+        authKeys: {[key: string]: string};
+        /**
+         * Required if `authType`==`password`, the password, max length is 8
+         */
+        authPassword?: string;
+        /**
+         * auth type. enum: `md5`, `none`, `password`
+         */
+        authType: string;
+        bfdMinimumInterval?: number;
+        deadInterval?: number;
+        exportPolicy?: string;
+        helloInterval?: number;
+        importPolicy?: string;
+        /**
+         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         */
+        interfaceType: string;
+        metric?: number;
+        /**
+         * by default, we'll re-advertise all learned OSPF routes toward overlay
+         */
+        noReadvertiseToOverlay: boolean;
+        /**
+         * whether to send OSPF-Hello
+         */
+        passive: boolean;
     }
 
     export interface SwitchOtherIpConfigs {
@@ -5865,9 +5897,9 @@ export namespace org {
 
     export interface DeviceprofileGatewayServicePolicy {
         /**
-         * enum: `allow`, `deny`
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          */
-        action: string;
+        action?: string;
         /**
          * For SRX Only
          */
@@ -5877,7 +5909,10 @@ export namespace org {
         /**
          * access within the same VRF
          */
-        localRouting: boolean;
+        localRouting?: boolean;
+        /**
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+         */
         name?: string;
         /**
          * by default, we derive all paths available and use them
@@ -5888,7 +5923,13 @@ export namespace org {
          * used to link servicepolicy defined at org level and overwrite some attributes
          */
         servicepolicyId?: string;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         */
         services: string[];
+        /**
+         * Required when `servicepolicyId` is not defined. List of Networks / Users
+         */
         tenants: string[];
     }
 
@@ -7026,9 +7067,9 @@ export namespace org {
 
     export interface GatewaytemplateServicePolicy {
         /**
-         * enum: `allow`, `deny`
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          */
-        action: string;
+        action?: string;
         /**
          * For SRX Only
          */
@@ -7038,7 +7079,10 @@ export namespace org {
         /**
          * access within the same VRF
          */
-        localRouting: boolean;
+        localRouting?: boolean;
+        /**
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+         */
         name?: string;
         /**
          * by default, we derive all paths available and use them
@@ -7049,7 +7093,13 @@ export namespace org {
          * used to link servicepolicy defined at org level and overwrite some attributes
          */
         servicepolicyId?: string;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         */
         services: string[];
+        /**
+         * Required when `servicepolicyId` is not defined. List of Networks / Users
+         */
         tenants: string[];
     }
 
@@ -8068,7 +8118,7 @@ export namespace org {
         /**
          * enum: `allow`, `deny`
          */
-        action: string;
+        action?: string;
         dstTag: string;
     }
 
@@ -8204,6 +8254,48 @@ export namespace org {
          */
         subnet?: string;
         vlanId: string;
+    }
+
+    export interface NetworktemplateOspfAreas {
+        includeLoopback: boolean;
+        networks: {[key: string]: outputs.org.NetworktemplateOspfAreasNetworks};
+        /**
+         * OSPF type. enum: `default`, `nssa`, `stub`
+         */
+        type: string;
+    }
+
+    export interface NetworktemplateOspfAreasNetworks {
+        /**
+         * Required if `authType`==`md5`. Property key is the key number
+         */
+        authKeys: {[key: string]: string};
+        /**
+         * Required if `authType`==`password`, the password, max length is 8
+         */
+        authPassword?: string;
+        /**
+         * auth type. enum: `md5`, `none`, `password`
+         */
+        authType: string;
+        bfdMinimumInterval?: number;
+        deadInterval?: number;
+        exportPolicy?: string;
+        helloInterval?: number;
+        importPolicy?: string;
+        /**
+         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         */
+        interfaceType: string;
+        metric?: number;
+        /**
+         * by default, we'll re-advertise all learned OSPF routes toward overlay
+         */
+        noReadvertiseToOverlay: boolean;
+        /**
+         * whether to send OSPF-Hello
+         */
+        passive: boolean;
     }
 
     export interface NetworktemplatePortMirroring {
@@ -11262,7 +11354,7 @@ export namespace site {
         /**
          * enum: `allow`, `deny`
          */
-        action: string;
+        action?: string;
         dstTag: string;
     }
 
@@ -11398,6 +11490,48 @@ export namespace site {
          */
         subnet?: string;
         vlanId: string;
+    }
+
+    export interface NetworktemplateOspfAreas {
+        includeLoopback: boolean;
+        ospfNetworks: {[key: string]: outputs.site.NetworktemplateOspfAreasOspfNetworks};
+        /**
+         * OSPF type. enum: `default`, `nssa`, `stub`
+         */
+        type: string;
+    }
+
+    export interface NetworktemplateOspfAreasOspfNetworks {
+        /**
+         * Required if `authType`==`md5`. Property key is the key number
+         */
+        authKeys: {[key: string]: string};
+        /**
+         * Required if `authType`==`password`, the password, max length is 8
+         */
+        authPassword?: string;
+        /**
+         * auth type. enum: `md5`, `none`, `password`
+         */
+        authType: string;
+        bfdMinimumInterval?: number;
+        deadInterval?: number;
+        exportPolicy?: string;
+        helloInterval?: number;
+        importPolicy?: string;
+        /**
+         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         */
+        interfaceType: string;
+        metric?: number;
+        /**
+         * by default, we'll re-advertise all learned OSPF routes toward overlay
+         */
+        noReadvertiseToOverlay: boolean;
+        /**
+         * whether to send OSPF-Hello
+         */
+        passive: boolean;
     }
 
     export interface NetworktemplatePortMirroring {

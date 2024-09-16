@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayServicePolicy {
     /**
-     * @return enum: `allow`, `deny`
+     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     private @Nullable String action;
@@ -33,6 +33,10 @@ public final class GatewayServicePolicy {
      * 
      */
     private @Nullable Boolean localRouting;
+    /**
+     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * 
+     */
     private @Nullable String name;
     /**
      * @return by default, we derive all paths available and use them
@@ -45,12 +49,20 @@ public final class GatewayServicePolicy {
      * 
      */
     private @Nullable String servicepolicyId;
+    /**
+     * @return Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * 
+     */
     private @Nullable List<String> services;
+    /**
+     * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * 
+     */
     private @Nullable List<String> tenants;
 
     private GatewayServicePolicy() {}
     /**
-     * @return enum: `allow`, `deny`
+     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     public Optional<String> action() {
@@ -76,6 +88,10 @@ public final class GatewayServicePolicy {
     public Optional<Boolean> localRouting() {
         return Optional.ofNullable(this.localRouting);
     }
+    /**
+     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -94,9 +110,17 @@ public final class GatewayServicePolicy {
     public Optional<String> servicepolicyId() {
         return Optional.ofNullable(this.servicepolicyId);
     }
+    /**
+     * @return Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * 
+     */
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }
+    /**
+     * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * 
+     */
     public List<String> tenants() {
         return this.tenants == null ? List.of() : this.tenants;
     }

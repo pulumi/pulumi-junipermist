@@ -57,7 +57,6 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly deviceId!: pulumi.Output<string>;
-    public /*out*/ readonly deviceprofileId!: pulumi.Output<string>;
     public readonly dhcpSnooping!: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
     public readonly dhcpdConfig!: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
     /**
@@ -125,9 +124,9 @@ export class Switch extends pulumi.CustomResource {
     public readonly oobIpConfig!: pulumi.Output<outputs.device.SwitchOobIpConfig | undefined>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
     /**
-     * Junos OSPF config
+     * Junos OSPF areas
      */
-    public readonly ospfConfig!: pulumi.Output<outputs.device.SwitchOspfConfig | undefined>;
+    public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.device.SwitchOspfAreas} | undefined>;
     /**
      * Property key is the network name
      */
@@ -214,7 +213,6 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["aclTags"] = state ? state.aclTags : undefined;
             resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
             resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["deviceprofileId"] = state ? state.deviceprofileId : undefined;
             resourceInputs["dhcpSnooping"] = state ? state.dhcpSnooping : undefined;
             resourceInputs["dhcpdConfig"] = state ? state.dhcpdConfig : undefined;
             resourceInputs["disableAutoConfig"] = state ? state.disableAutoConfig : undefined;
@@ -238,7 +236,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
             resourceInputs["oobIpConfig"] = state ? state.oobIpConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
-            resourceInputs["ospfConfig"] = state ? state.ospfConfig : undefined;
+            resourceInputs["ospfAreas"] = state ? state.ospfAreas : undefined;
             resourceInputs["otherIpConfigs"] = state ? state.otherIpConfigs : undefined;
             resourceInputs["portConfig"] = state ? state.portConfig : undefined;
             resourceInputs["portMirroring"] = state ? state.portMirroring : undefined;
@@ -290,7 +288,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["notes"] = args ? args.notes : undefined;
             resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
             resourceInputs["oobIpConfig"] = args ? args.oobIpConfig : undefined;
-            resourceInputs["ospfConfig"] = args ? args.ospfConfig : undefined;
+            resourceInputs["ospfAreas"] = args ? args.ospfAreas : undefined;
             resourceInputs["otherIpConfigs"] = args ? args.otherIpConfigs : undefined;
             resourceInputs["portConfig"] = args ? args.portConfig : undefined;
             resourceInputs["portMirroring"] = args ? args.portMirroring : undefined;
@@ -311,7 +309,6 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["vrrpConfig"] = args ? args.vrrpConfig : undefined;
             resourceInputs["x"] = args ? args.x : undefined;
             resourceInputs["y"] = args ? args.y : undefined;
-            resourceInputs["deviceprofileId"] = undefined /*out*/;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -340,7 +337,6 @@ export interface SwitchState {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     deviceId?: pulumi.Input<string>;
-    deviceprofileId?: pulumi.Input<string>;
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
@@ -408,9 +404,9 @@ export interface SwitchState {
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     orgId?: pulumi.Input<string>;
     /**
-     * Junos OSPF config
+     * Junos OSPF areas
      */
-    ospfConfig?: pulumi.Input<inputs.device.SwitchOspfConfig>;
+    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>}>;
     /**
      * Property key is the network name
      */
@@ -550,9 +546,9 @@ export interface SwitchArgs {
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     /**
-     * Junos OSPF config
+     * Junos OSPF areas
      */
-    ospfConfig?: pulumi.Input<inputs.device.SwitchOspfConfig>;
+    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>}>;
     /**
      * Property key is the network name
      */

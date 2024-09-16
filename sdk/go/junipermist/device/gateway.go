@@ -72,7 +72,6 @@ type Gateway struct {
 	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
 	BgpConfig            GatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
-	DeviceprofileId      pulumi.StringOutput         `pulumi:"deviceprofileId"`
 	DhcpdConfig          GatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
@@ -173,7 +172,6 @@ type gatewayState struct {
 	AdditionalConfigCmds []string                    `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
 	DeviceId             *string                     `pulumi:"deviceId"`
-	DeviceprofileId      *string                     `pulumi:"deviceprofileId"`
 	DhcpdConfig          *GatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -239,7 +237,6 @@ type GatewayState struct {
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            GatewayBgpConfigMapInput
 	DeviceId             pulumi.StringPtrInput
-	DeviceprofileId      pulumi.StringPtrInput
 	DhcpdConfig          GatewayDhcpdConfigPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -509,10 +506,6 @@ func (o GatewayOutput) BgpConfig() GatewayBgpConfigMapOutput {
 
 func (o GatewayOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
-}
-
-func (o GatewayOutput) DeviceprofileId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DeviceprofileId }).(pulumi.StringOutput)
 }
 
 func (o GatewayOutput) DhcpdConfig() GatewayDhcpdConfigPtrOutput {

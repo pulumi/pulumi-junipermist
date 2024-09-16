@@ -128,13 +128,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+        /// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         /// </summary>
         [Input("type6")]
         public Input<string>? Type6 { get; set; }

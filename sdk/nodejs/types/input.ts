@@ -1364,7 +1364,7 @@ export namespace device {
 
     export interface GatewayServicePolicy {
         /**
-         * enum: `allow`, `deny`
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          */
         action?: pulumi.Input<string>;
         /**
@@ -1377,6 +1377,9 @@ export namespace device {
          * access within the same VRF
          */
         localRouting?: pulumi.Input<boolean>;
+        /**
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+         */
         name?: pulumi.Input<string>;
         /**
          * by default, we derive all paths available and use them
@@ -1387,7 +1390,13 @@ export namespace device {
          * used to link servicepolicy defined at org level and overwrite some attributes
          */
         servicepolicyId?: pulumi.Input<string>;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         */
         services?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Networks / Users
+         */
         tenants?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -1869,11 +1878,11 @@ export namespace device {
          */
         servers6s?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          */
         type?: pulumi.Input<string>;
         /**
-         * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          */
         type6?: pulumi.Input<string>;
         /**
@@ -1954,6 +1963,9 @@ export namespace device {
     }
 
     export interface SwitchIpConfig {
+        /**
+         * Required when `type`==`static`
+         */
         dns?: pulumi.Input<pulumi.Input<string>[]>;
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         gateway?: pulumi.Input<string>;
@@ -2016,26 +2028,46 @@ export namespace device {
         useMgmtVrfForHostOut?: pulumi.Input<boolean>;
     }
 
-    export interface SwitchOspfConfig {
+    export interface SwitchOspfAreas {
+        includeLoopback?: pulumi.Input<boolean>;
+        networks: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreasNetworks>}>;
         /**
-         * OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
+         * OSPF type. enum: `default`, `nssa`, `stub`
          */
-        areas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfConfigAreas>}>;
-        /**
-         * whether to rung OSPF on this device
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Bandwidth for calculating metric defaults (9600..4000000000000)
-         */
-        referenceBandwidth?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
     }
 
-    export interface SwitchOspfConfigAreas {
+    export interface SwitchOspfAreasNetworks {
         /**
-         * for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
+         * Required if `authType`==`md5`. Property key is the key number
          */
-        noSummary?: pulumi.Input<boolean>;
+        authKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Required if `authType`==`password`, the password, max length is 8
+         */
+        authPassword?: pulumi.Input<string>;
+        /**
+         * auth type. enum: `md5`, `none`, `password`
+         */
+        authType?: pulumi.Input<string>;
+        bfdMinimumInterval?: pulumi.Input<number>;
+        deadInterval?: pulumi.Input<number>;
+        exportPolicy?: pulumi.Input<string>;
+        helloInterval?: pulumi.Input<number>;
+        importPolicy?: pulumi.Input<string>;
+        /**
+         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         */
+        interfaceType?: pulumi.Input<string>;
+        metric?: pulumi.Input<number>;
+        /**
+         * by default, we'll re-advertise all learned OSPF routes toward overlay
+         */
+        noReadvertiseToOverlay?: pulumi.Input<boolean>;
+        /**
+         * whether to send OSPF-Hello
+         */
+        passive?: pulumi.Input<boolean>;
     }
 
     export interface SwitchOtherIpConfigs {
@@ -4223,7 +4255,7 @@ export namespace org {
 
     export interface DeviceprofileGatewayServicePolicy {
         /**
-         * enum: `allow`, `deny`
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          */
         action?: pulumi.Input<string>;
         /**
@@ -4236,6 +4268,9 @@ export namespace org {
          * access within the same VRF
          */
         localRouting?: pulumi.Input<boolean>;
+        /**
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+         */
         name?: pulumi.Input<string>;
         /**
          * by default, we derive all paths available and use them
@@ -4246,7 +4281,13 @@ export namespace org {
          * used to link servicepolicy defined at org level and overwrite some attributes
          */
         servicepolicyId?: pulumi.Input<string>;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         */
         services?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Networks / Users
+         */
         tenants?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -5384,7 +5425,7 @@ export namespace org {
 
     export interface GatewaytemplateServicePolicy {
         /**
-         * enum: `allow`, `deny`
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          */
         action?: pulumi.Input<string>;
         /**
@@ -5397,6 +5438,9 @@ export namespace org {
          * access within the same VRF
          */
         localRouting?: pulumi.Input<boolean>;
+        /**
+         * Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+         */
         name?: pulumi.Input<string>;
         /**
          * by default, we derive all paths available and use them
@@ -5407,7 +5451,13 @@ export namespace org {
          * used to link servicepolicy defined at org level and overwrite some attributes
          */
         servicepolicyId?: pulumi.Input<string>;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+         */
         services?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Required when `servicepolicyId` is not defined. List of Networks / Users
+         */
         tenants?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -6098,6 +6148,48 @@ export namespace org {
          */
         subnet?: pulumi.Input<string>;
         vlanId: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateOspfAreas {
+        includeLoopback?: pulumi.Input<boolean>;
+        networks: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateOspfAreasNetworks>}>;
+        /**
+         * OSPF type. enum: `default`, `nssa`, `stub`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateOspfAreasNetworks {
+        /**
+         * Required if `authType`==`md5`. Property key is the key number
+         */
+        authKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Required if `authType`==`password`, the password, max length is 8
+         */
+        authPassword?: pulumi.Input<string>;
+        /**
+         * auth type. enum: `md5`, `none`, `password`
+         */
+        authType?: pulumi.Input<string>;
+        bfdMinimumInterval?: pulumi.Input<number>;
+        deadInterval?: pulumi.Input<number>;
+        exportPolicy?: pulumi.Input<string>;
+        helloInterval?: pulumi.Input<number>;
+        importPolicy?: pulumi.Input<string>;
+        /**
+         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         */
+        interfaceType?: pulumi.Input<string>;
+        metric?: pulumi.Input<number>;
+        /**
+         * by default, we'll re-advertise all learned OSPF routes toward overlay
+         */
+        noReadvertiseToOverlay?: pulumi.Input<boolean>;
+        /**
+         * whether to send OSPF-Hello
+         */
+        passive?: pulumi.Input<boolean>;
     }
 
     export interface NetworktemplatePortMirroring {
@@ -9164,6 +9256,48 @@ export namespace site {
          */
         subnet?: pulumi.Input<string>;
         vlanId: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateOspfAreas {
+        includeLoopback?: pulumi.Input<boolean>;
+        ospfNetworks: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreasOspfNetworks>}>;
+        /**
+         * OSPF type. enum: `default`, `nssa`, `stub`
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface NetworktemplateOspfAreasOspfNetworks {
+        /**
+         * Required if `authType`==`md5`. Property key is the key number
+         */
+        authKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Required if `authType`==`password`, the password, max length is 8
+         */
+        authPassword?: pulumi.Input<string>;
+        /**
+         * auth type. enum: `md5`, `none`, `password`
+         */
+        authType?: pulumi.Input<string>;
+        bfdMinimumInterval?: pulumi.Input<number>;
+        deadInterval?: pulumi.Input<number>;
+        exportPolicy?: pulumi.Input<string>;
+        helloInterval?: pulumi.Input<number>;
+        importPolicy?: pulumi.Input<string>;
+        /**
+         * interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+         */
+        interfaceType?: pulumi.Input<string>;
+        metric?: pulumi.Input<number>;
+        /**
+         * by default, we'll re-advertise all learned OSPF routes toward overlay
+         */
+        noReadvertiseToOverlay?: pulumi.Input<boolean>;
+        /**
+         * whether to send OSPF-Hello
+         */
+        passive?: pulumi.Input<boolean>;
     }
 
     export interface NetworktemplatePortMirroring {

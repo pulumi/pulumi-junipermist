@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class GatewaytemplateServicePolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enum: `allow`, `deny`
+        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -41,6 +41,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("localRouting")]
         public Input<bool>? LocalRouting { get; set; }
 
+        /// <summary>
+        /// Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -59,6 +62,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("services")]
         private InputList<string>? _services;
+
+        /// <summary>
+        /// Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());
@@ -67,6 +74,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("tenants")]
         private InputList<string>? _tenants;
+
+        /// <summary>
+        /// Required when `servicepolicy_id` is not defined. List of Networks / Users
+        /// </summary>
         public InputList<string> Tenants
         {
             get => _tenants ?? (_tenants = new InputList<string>());

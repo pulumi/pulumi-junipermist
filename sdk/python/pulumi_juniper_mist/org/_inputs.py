@@ -169,6 +169,8 @@ __all__ = [
     'NetworktemplateExtraRoutesNextQualifiedArgs',
     'NetworktemplateMistNacArgs',
     'NetworktemplateNetworksArgs',
+    'NetworktemplateOspfAreasArgs',
+    'NetworktemplateOspfAreasNetworksArgs',
     'NetworktemplatePortMirroringArgs',
     'NetworktemplatePortUsagesArgs',
     'NetworktemplatePortUsagesRuleArgs',
@@ -5971,12 +5973,15 @@ class DeviceprofileGatewayServicePolicyArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] action: enum: `allow`, `deny`
+        :param pulumi.Input[str] action: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         :param pulumi.Input['DeviceprofileGatewayServicePolicyAppqoeArgs'] appqoe: For SRX Only
         :param pulumi.Input[bool] local_routing: access within the same VRF
+        :param pulumi.Input[str] name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
         :param pulumi.Input[str] path_preference: by default, we derive all paths available and use them
                optionally, you can customize by using `path_preference`
         :param pulumi.Input[str] servicepolicy_id: used to link servicepolicy defined at org level and overwrite some attributes
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -6003,7 +6008,7 @@ class DeviceprofileGatewayServicePolicyArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `allow`, `deny`
+        Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         """
         return pulumi.get(self, "action")
 
@@ -6056,6 +6061,9 @@ class DeviceprofileGatewayServicePolicyArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -6090,6 +6098,9 @@ class DeviceprofileGatewayServicePolicyArgs:
     @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        """
         return pulumi.get(self, "services")
 
     @services.setter
@@ -6099,6 +6110,9 @@ class DeviceprofileGatewayServicePolicyArgs:
     @property
     @pulumi.getter
     def tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required when `servicepolicy_id` is not defined. List of Networks / Users
+        """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
@@ -11127,12 +11141,15 @@ class GatewaytemplateServicePolicyArgs:
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] action: enum: `allow`, `deny`
+        :param pulumi.Input[str] action: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         :param pulumi.Input['GatewaytemplateServicePolicyAppqoeArgs'] appqoe: For SRX Only
         :param pulumi.Input[bool] local_routing: access within the same VRF
+        :param pulumi.Input[str] name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
         :param pulumi.Input[str] path_preference: by default, we derive all paths available and use them
                optionally, you can customize by using `path_preference`
         :param pulumi.Input[str] servicepolicy_id: used to link servicepolicy defined at org level and overwrite some attributes
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -11159,7 +11176,7 @@ class GatewaytemplateServicePolicyArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `allow`, `deny`
+        Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         """
         return pulumi.get(self, "action")
 
@@ -11212,6 +11229,9 @@ class GatewaytemplateServicePolicyArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -11246,6 +11266,9 @@ class GatewaytemplateServicePolicyArgs:
     @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        """
         return pulumi.get(self, "services")
 
     @services.setter
@@ -11255,6 +11278,9 @@ class GatewaytemplateServicePolicyArgs:
     @property
     @pulumi.getter
     def tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required when `servicepolicy_id` is not defined. List of Networks / Users
+        """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
@@ -14274,6 +14300,227 @@ class NetworktemplateNetworksArgs:
     @subnet.setter
     def subnet(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnet", value)
+
+
+@pulumi.input_type
+class NetworktemplateOspfAreasArgs:
+    def __init__(__self__, *,
+                 networks: pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasNetworksArgs']]],
+                 include_loopback: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: OSPF type. enum: `default`, `nssa`, `stub`
+        """
+        pulumi.set(__self__, "networks", networks)
+        if include_loopback is not None:
+            pulumi.set(__self__, "include_loopback", include_loopback)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasNetworksArgs']]]:
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasNetworksArgs']]]):
+        pulumi.set(self, "networks", value)
+
+    @property
+    @pulumi.getter(name="includeLoopback")
+    def include_loopback(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "include_loopback")
+
+    @include_loopback.setter
+    def include_loopback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_loopback", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        OSPF type. enum: `default`, `nssa`, `stub`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class NetworktemplateOspfAreasNetworksArgs:
+    def __init__(__self__, *,
+                 auth_keys: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 auth_password: Optional[pulumi.Input[str]] = None,
+                 auth_type: Optional[pulumi.Input[str]] = None,
+                 bfd_minimum_interval: Optional[pulumi.Input[int]] = None,
+                 dead_interval: Optional[pulumi.Input[int]] = None,
+                 export_policy: Optional[pulumi.Input[str]] = None,
+                 hello_interval: Optional[pulumi.Input[int]] = None,
+                 import_policy: Optional[pulumi.Input[str]] = None,
+                 interface_type: Optional[pulumi.Input[str]] = None,
+                 metric: Optional[pulumi.Input[int]] = None,
+                 no_readvertise_to_overlay: Optional[pulumi.Input[bool]] = None,
+                 passive: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] auth_keys: Required if `auth_type`==`md5`. Property key is the key number
+        :param pulumi.Input[str] auth_password: Required if `auth_type`==`password`, the password, max length is 8
+        :param pulumi.Input[str] auth_type: auth type. enum: `md5`, `none`, `password`
+        :param pulumi.Input[str] interface_type: interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        :param pulumi.Input[bool] no_readvertise_to_overlay: by default, we'll re-advertise all learned OSPF routes toward overlay
+        :param pulumi.Input[bool] passive: whether to send OSPF-Hello
+        """
+        if auth_keys is not None:
+            pulumi.set(__self__, "auth_keys", auth_keys)
+        if auth_password is not None:
+            pulumi.set(__self__, "auth_password", auth_password)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if bfd_minimum_interval is not None:
+            pulumi.set(__self__, "bfd_minimum_interval", bfd_minimum_interval)
+        if dead_interval is not None:
+            pulumi.set(__self__, "dead_interval", dead_interval)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
+        if hello_interval is not None:
+            pulumi.set(__self__, "hello_interval", hello_interval)
+        if import_policy is not None:
+            pulumi.set(__self__, "import_policy", import_policy)
+        if interface_type is not None:
+            pulumi.set(__self__, "interface_type", interface_type)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if no_readvertise_to_overlay is not None:
+            pulumi.set(__self__, "no_readvertise_to_overlay", no_readvertise_to_overlay)
+        if passive is not None:
+            pulumi.set(__self__, "passive", passive)
+
+    @property
+    @pulumi.getter(name="authKeys")
+    def auth_keys(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Required if `auth_type`==`md5`. Property key is the key number
+        """
+        return pulumi.get(self, "auth_keys")
+
+    @auth_keys.setter
+    def auth_keys(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "auth_keys", value)
+
+    @property
+    @pulumi.getter(name="authPassword")
+    def auth_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `auth_type`==`password`, the password, max length is 8
+        """
+        return pulumi.get(self, "auth_password")
+
+    @auth_password.setter
+    def auth_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_password", value)
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        auth type. enum: `md5`, `none`, `password`
+        """
+        return pulumi.get(self, "auth_type")
+
+    @auth_type.setter
+    def auth_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_type", value)
+
+    @property
+    @pulumi.getter(name="bfdMinimumInterval")
+    def bfd_minimum_interval(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "bfd_minimum_interval")
+
+    @bfd_minimum_interval.setter
+    def bfd_minimum_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bfd_minimum_interval", value)
+
+    @property
+    @pulumi.getter(name="deadInterval")
+    def dead_interval(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "dead_interval")
+
+    @dead_interval.setter
+    def dead_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dead_interval", value)
+
+    @property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "export_policy")
+
+    @export_policy.setter
+    def export_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "export_policy", value)
+
+    @property
+    @pulumi.getter(name="helloInterval")
+    def hello_interval(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "hello_interval")
+
+    @hello_interval.setter
+    def hello_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hello_interval", value)
+
+    @property
+    @pulumi.getter(name="importPolicy")
+    def import_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "import_policy")
+
+    @import_policy.setter
+    def import_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_policy", value)
+
+    @property
+    @pulumi.getter(name="interfaceType")
+    def interface_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+        """
+        return pulumi.get(self, "interface_type")
+
+    @interface_type.setter
+    def interface_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface_type", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "metric", value)
+
+    @property
+    @pulumi.getter(name="noReadvertiseToOverlay")
+    def no_readvertise_to_overlay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        by default, we'll re-advertise all learned OSPF routes toward overlay
+        """
+        return pulumi.get(self, "no_readvertise_to_overlay")
+
+    @no_readvertise_to_overlay.setter
+    def no_readvertise_to_overlay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_readvertise_to_overlay", value)
+
+    @property
+    @pulumi.getter
+    def passive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        whether to send OSPF-Hello
+        """
+        return pulumi.get(self, "passive")
+
+    @passive.setter
+    def passive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "passive", value)
 
 
 @pulumi.input_type
