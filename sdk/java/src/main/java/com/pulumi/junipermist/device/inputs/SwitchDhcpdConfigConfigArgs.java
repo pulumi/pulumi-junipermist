@@ -220,14 +220,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     public Optional<Output<String>> type() {
@@ -235,14 +235,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     @Import(name="type6")
     private @Nullable Output<String> type6;
 
     /**
-     * @return enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+     * @return enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
      * 
      */
     public Optional<Output<String>> type6() {
@@ -623,7 +623,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type6 enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type6 enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type6 enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+         * @param type6 enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
          * 
          * @return builder
          * 

@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchIpConfig {
+    /**
+     * @return Required when `type`==`static`
+     * 
+     */
     private @Nullable List<String> dns;
     private @Nullable List<String> dnsSuffixes;
     private @Nullable String gateway;
@@ -33,6 +37,10 @@ public final class SwitchIpConfig {
     private @Nullable String type;
 
     private SwitchIpConfig() {}
+    /**
+     * @return Required when `type`==`static`
+     * 
+     */
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }

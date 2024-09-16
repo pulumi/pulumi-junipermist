@@ -21,7 +21,7 @@ import com.pulumi.junipermist.device.outputs.SwitchIpConfig;
 import com.pulumi.junipermist.device.outputs.SwitchMistNac;
 import com.pulumi.junipermist.device.outputs.SwitchNetworks;
 import com.pulumi.junipermist.device.outputs.SwitchOobIpConfig;
-import com.pulumi.junipermist.device.outputs.SwitchOspfConfig;
+import com.pulumi.junipermist.device.outputs.SwitchOspfAreas;
 import com.pulumi.junipermist.device.outputs.SwitchOtherIpConfigs;
 import com.pulumi.junipermist.device.outputs.SwitchPortConfig;
 import com.pulumi.junipermist.device.outputs.SwitchPortMirroring;
@@ -190,12 +190,6 @@ public class Switch extends com.pulumi.resources.CustomResource {
 
     public Output<String> deviceId() {
         return this.deviceId;
-    }
-    @Export(name="deviceprofileId", refs={String.class}, tree="[0]")
-    private Output<String> deviceprofileId;
-
-    public Output<String> deviceprofileId() {
-        return this.deviceprofileId;
     }
     @Export(name="dhcpSnooping", refs={SwitchDhcpSnooping.class}, tree="[0]")
     private Output</* @Nullable */ SwitchDhcpSnooping> dhcpSnooping;
@@ -450,18 +444,18 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * Junos OSPF config
+     * Junos OSPF areas
      * 
      */
-    @Export(name="ospfConfig", refs={SwitchOspfConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SwitchOspfConfig> ospfConfig;
+    @Export(name="ospfAreas", refs={Map.class,String.class,SwitchOspfAreas.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SwitchOspfAreas>> ospfAreas;
 
     /**
-     * @return Junos OSPF config
+     * @return Junos OSPF areas
      * 
      */
-    public Output<Optional<SwitchOspfConfig>> ospfConfig() {
-        return Codegen.optional(this.ospfConfig);
+    public Output<Optional<Map<String,SwitchOspfAreas>>> ospfAreas() {
+        return Codegen.optional(this.ospfAreas);
     }
     /**
      * Property key is the network name

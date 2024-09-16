@@ -83,6 +83,10 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     /**
+     * Junos OSPF areas
+     */
+    public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateOspfAreas} | undefined>;
+    /**
      * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
@@ -138,6 +142,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["mistNac"] = state ? state.mistNac : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["ntpServers"] = state ? state.ntpServers : undefined;
+            resourceInputs["ospfAreas"] = state ? state.ospfAreas : undefined;
             resourceInputs["portMirroring"] = state ? state.portMirroring : undefined;
             resourceInputs["portUsages"] = state ? state.portUsages : undefined;
             resourceInputs["radiusConfig"] = state ? state.radiusConfig : undefined;
@@ -166,6 +171,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["ntpServers"] = args ? args.ntpServers : undefined;
+            resourceInputs["ospfAreas"] = args ? args.ospfAreas : undefined;
             resourceInputs["portMirroring"] = args ? args.portMirroring : undefined;
             resourceInputs["portUsages"] = args ? args.portUsages : undefined;
             resourceInputs["radiusConfig"] = args ? args.radiusConfig : undefined;
@@ -223,6 +229,10 @@ export interface NetworktemplateState {
      * list of NTP servers
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Junos OSPF areas
+     */
+    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
      * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
@@ -295,6 +305,10 @@ export interface NetworktemplateArgs {
      * list of NTP servers
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Junos OSPF areas
+     */
+    ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
      * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.

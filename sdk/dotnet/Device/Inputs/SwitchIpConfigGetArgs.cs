@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         [Input("dns")]
         private InputList<string>? _dns;
+
+        /// <summary>
+        /// Required when `type`==`static`
+        /// </summary>
         public InputList<string> Dns
         {
             get => _dns ?? (_dns = new InputList<string>());

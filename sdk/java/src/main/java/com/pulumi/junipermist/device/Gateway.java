@@ -126,12 +126,6 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     public Output<String> deviceId() {
         return this.deviceId;
     }
-    @Export(name="deviceprofileId", refs={String.class}, tree="[0]")
-    private Output<String> deviceprofileId;
-
-    public Output<String> deviceprofileId() {
-        return this.deviceprofileId;
-    }
     @Export(name="dhcpdConfig", refs={GatewayDhcpdConfig.class}, tree="[0]")
     private Output</* @Nullable */ GatewayDhcpdConfig> dhcpdConfig;
 

@@ -83,6 +83,12 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
+        /// Junos OSPF areas
+        /// </summary>
+        [Output("ospfAreas")]
+        public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
+
+        /// <summary>
         /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         /// </summary>
@@ -293,6 +299,18 @@ namespace Pulumi.JuniperMist.Site
             set => _ntpServers = value;
         }
 
+        [Input("ospfAreas")]
+        private InputMap<Inputs.NetworktemplateOspfAreasArgs>? _ospfAreas;
+
+        /// <summary>
+        /// Junos OSPF areas
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateOspfAreasArgs> OspfAreas
+        {
+            get => _ospfAreas ?? (_ospfAreas = new InputMap<Inputs.NetworktemplateOspfAreasArgs>());
+            set => _ospfAreas = value;
+        }
+
         [Input("portMirroring")]
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
@@ -480,6 +498,18 @@ namespace Pulumi.JuniperMist.Site
         {
             get => _ntpServers ?? (_ntpServers = new InputList<string>());
             set => _ntpServers = value;
+        }
+
+        [Input("ospfAreas")]
+        private InputMap<Inputs.NetworktemplateOspfAreasGetArgs>? _ospfAreas;
+
+        /// <summary>
+        /// Junos OSPF areas
+        /// </summary>
+        public InputMap<Inputs.NetworktemplateOspfAreasGetArgs> OspfAreas
+        {
+            get => _ospfAreas ?? (_ospfAreas = new InputMap<Inputs.NetworktemplateOspfAreasGetArgs>());
+            set => _ospfAreas = value;
         }
 
         [Input("portMirroring")]

@@ -43,9 +43,6 @@ namespace Pulumi.JuniperMist.Device
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
-        [Output("deviceprofileId")]
-        public Output<string> DeviceprofileId { get; private set; } = null!;
-
         [Output("dhcpSnooping")]
         public Output<Outputs.SwitchDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
@@ -159,10 +156,10 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Junos OSPF config
+        /// Junos OSPF areas
         /// </summary>
-        [Output("ospfConfig")]
-        public Output<Outputs.SwitchOspfConfig?> OspfConfig { get; private set; } = null!;
+        [Output("ospfAreas")]
+        public Output<ImmutableDictionary<string, Outputs.SwitchOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
         /// Property key is the network name
@@ -481,11 +478,17 @@ namespace Pulumi.JuniperMist.Device
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigArgs>? OobIpConfig { get; set; }
 
+        [Input("ospfAreas")]
+        private InputMap<Inputs.SwitchOspfAreasArgs>? _ospfAreas;
+
         /// <summary>
-        /// Junos OSPF config
+        /// Junos OSPF areas
         /// </summary>
-        [Input("ospfConfig")]
-        public Input<Inputs.SwitchOspfConfigArgs>? OspfConfig { get; set; }
+        public InputMap<Inputs.SwitchOspfAreasArgs> OspfAreas
+        {
+            get => _ospfAreas ?? (_ospfAreas = new InputMap<Inputs.SwitchOspfAreasArgs>());
+            set => _ospfAreas = value;
+        }
 
         [Input("otherIpConfigs")]
         private InputMap<Inputs.SwitchOtherIpConfigsArgs>? _otherIpConfigs;
@@ -665,9 +668,6 @@ namespace Pulumi.JuniperMist.Device
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
 
-        [Input("deviceprofileId")]
-        public Input<string>? DeviceprofileId { get; set; }
-
         [Input("dhcpSnooping")]
         public Input<Inputs.SwitchDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }
 
@@ -815,11 +815,17 @@ namespace Pulumi.JuniperMist.Device
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
+        [Input("ospfAreas")]
+        private InputMap<Inputs.SwitchOspfAreasGetArgs>? _ospfAreas;
+
         /// <summary>
-        /// Junos OSPF config
+        /// Junos OSPF areas
         /// </summary>
-        [Input("ospfConfig")]
-        public Input<Inputs.SwitchOspfConfigGetArgs>? OspfConfig { get; set; }
+        public InputMap<Inputs.SwitchOspfAreasGetArgs> OspfAreas
+        {
+            get => _ospfAreas ?? (_ospfAreas = new InputMap<Inputs.SwitchOspfAreasGetArgs>());
+            set => _ospfAreas = value;
+        }
 
         [Input("otherIpConfigs")]
         private InputMap<Inputs.SwitchOtherIpConfigsGetArgs>? _otherIpConfigs;

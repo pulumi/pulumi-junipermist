@@ -10506,22 +10506,25 @@ func (o DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaPtrOutput) MaxL
 }
 
 type DeviceprofileGatewayServicePolicy struct {
-	// enum: `allow`, `deny`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX Only
 	Appqoe *DeviceprofileGatewayServicePolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []DeviceprofileGatewayServicePolicyEwf   `pulumi:"ewfs"`
 	Idp    *DeviceprofileGatewayServicePolicyIdp    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting *bool   `pulumi:"localRouting"`
-	Name         *string `pulumi:"name"`
+	LocalRouting *bool `pulumi:"localRouting"`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+	Name *string `pulumi:"name"`
 	// by default, we derive all paths available and use them
 	// optionally, you can customize by using `pathPreference`
 	PathPreference *string `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
-	ServicepolicyId *string  `pulumi:"servicepolicyId"`
-	Services        []string `pulumi:"services"`
-	Tenants         []string `pulumi:"tenants"`
+	ServicepolicyId *string `pulumi:"servicepolicyId"`
+	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	Services []string `pulumi:"services"`
+	// Required when `servicepolicyId` is not defined. List of Networks / Users
+	Tenants []string `pulumi:"tenants"`
 }
 
 // DeviceprofileGatewayServicePolicyInput is an input type that accepts DeviceprofileGatewayServicePolicyArgs and DeviceprofileGatewayServicePolicyOutput values.
@@ -10536,22 +10539,25 @@ type DeviceprofileGatewayServicePolicyInput interface {
 }
 
 type DeviceprofileGatewayServicePolicyArgs struct {
-	// enum: `allow`, `deny`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// For SRX Only
 	Appqoe DeviceprofileGatewayServicePolicyAppqoePtrInput `pulumi:"appqoe"`
 	Ewfs   DeviceprofileGatewayServicePolicyEwfArrayInput  `pulumi:"ewfs"`
 	Idp    DeviceprofileGatewayServicePolicyIdpPtrInput    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting pulumi.BoolPtrInput   `pulumi:"localRouting"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	LocalRouting pulumi.BoolPtrInput `pulumi:"localRouting"`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// by default, we derive all paths available and use them
 	// optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
-	ServicepolicyId pulumi.StringPtrInput   `pulumi:"servicepolicyId"`
-	Services        pulumi.StringArrayInput `pulumi:"services"`
-	Tenants         pulumi.StringArrayInput `pulumi:"tenants"`
+	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
+	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// Required when `servicepolicyId` is not defined. List of Networks / Users
+	Tenants pulumi.StringArrayInput `pulumi:"tenants"`
 }
 
 func (DeviceprofileGatewayServicePolicyArgs) ElementType() reflect.Type {
@@ -10605,7 +10611,7 @@ func (o DeviceprofileGatewayServicePolicyOutput) ToDeviceprofileGatewayServicePo
 	return o
 }
 
-// enum: `allow`, `deny`
+// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 func (o DeviceprofileGatewayServicePolicyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -10628,6 +10634,7 @@ func (o DeviceprofileGatewayServicePolicyOutput) LocalRouting() pulumi.BoolPtrOu
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *bool { return v.LocalRouting }).(pulumi.BoolPtrOutput)
 }
 
+// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
 func (o DeviceprofileGatewayServicePolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -10643,10 +10650,12 @@ func (o DeviceprofileGatewayServicePolicyOutput) ServicepolicyId() pulumi.String
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) *string { return v.ServicepolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
 func (o DeviceprofileGatewayServicePolicyOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// Required when `servicepolicyId` is not defined. List of Networks / Users
 func (o DeviceprofileGatewayServicePolicyOutput) Tenants() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeviceprofileGatewayServicePolicy) []string { return v.Tenants }).(pulumi.StringArrayOutput)
 }
@@ -20443,22 +20452,25 @@ func (o GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaPtrOutput) MaxLoss()
 }
 
 type GatewaytemplateServicePolicy struct {
-	// enum: `allow`, `deny`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX Only
 	Appqoe *GatewaytemplateServicePolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []GatewaytemplateServicePolicyEwf   `pulumi:"ewfs"`
 	Idp    *GatewaytemplateServicePolicyIdp    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting *bool   `pulumi:"localRouting"`
-	Name         *string `pulumi:"name"`
+	LocalRouting *bool `pulumi:"localRouting"`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+	Name *string `pulumi:"name"`
 	// by default, we derive all paths available and use them
 	// optionally, you can customize by using `pathPreference`
 	PathPreference *string `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
-	ServicepolicyId *string  `pulumi:"servicepolicyId"`
-	Services        []string `pulumi:"services"`
-	Tenants         []string `pulumi:"tenants"`
+	ServicepolicyId *string `pulumi:"servicepolicyId"`
+	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	Services []string `pulumi:"services"`
+	// Required when `servicepolicyId` is not defined. List of Networks / Users
+	Tenants []string `pulumi:"tenants"`
 }
 
 // GatewaytemplateServicePolicyInput is an input type that accepts GatewaytemplateServicePolicyArgs and GatewaytemplateServicePolicyOutput values.
@@ -20473,22 +20485,25 @@ type GatewaytemplateServicePolicyInput interface {
 }
 
 type GatewaytemplateServicePolicyArgs struct {
-	// enum: `allow`, `deny`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// For SRX Only
 	Appqoe GatewaytemplateServicePolicyAppqoePtrInput `pulumi:"appqoe"`
 	Ewfs   GatewaytemplateServicePolicyEwfArrayInput  `pulumi:"ewfs"`
 	Idp    GatewaytemplateServicePolicyIdpPtrInput    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting pulumi.BoolPtrInput   `pulumi:"localRouting"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	LocalRouting pulumi.BoolPtrInput `pulumi:"localRouting"`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// by default, we derive all paths available and use them
 	// optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
-	ServicepolicyId pulumi.StringPtrInput   `pulumi:"servicepolicyId"`
-	Services        pulumi.StringArrayInput `pulumi:"services"`
-	Tenants         pulumi.StringArrayInput `pulumi:"tenants"`
+	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
+	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// Required when `servicepolicyId` is not defined. List of Networks / Users
+	Tenants pulumi.StringArrayInput `pulumi:"tenants"`
 }
 
 func (GatewaytemplateServicePolicyArgs) ElementType() reflect.Type {
@@ -20542,7 +20557,7 @@ func (o GatewaytemplateServicePolicyOutput) ToGatewaytemplateServicePolicyOutput
 	return o
 }
 
-// enum: `allow`, `deny`
+// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 func (o GatewaytemplateServicePolicyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -20565,6 +20580,7 @@ func (o GatewaytemplateServicePolicyOutput) LocalRouting() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *bool { return v.LocalRouting }).(pulumi.BoolPtrOutput)
 }
 
+// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
 func (o GatewaytemplateServicePolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -20580,10 +20596,12 @@ func (o GatewaytemplateServicePolicyOutput) ServicepolicyId() pulumi.StringPtrOu
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) *string { return v.ServicepolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
 func (o GatewaytemplateServicePolicyOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// Required when `servicepolicyId` is not defined. List of Networks / Users
 func (o GatewaytemplateServicePolicyOutput) Tenants() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewaytemplateServicePolicy) []string { return v.Tenants }).(pulumi.StringArrayOutput)
 }
@@ -27420,6 +27438,293 @@ func (o NetworktemplateNetworksMapOutput) MapIndex(k pulumi.StringInput) Network
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateNetworks {
 		return vs[0].(map[string]NetworktemplateNetworks)[vs[1].(string)]
 	}).(NetworktemplateNetworksOutput)
+}
+
+type NetworktemplateOspfAreas struct {
+	IncludeLoopback *bool                                       `pulumi:"includeLoopback"`
+	Networks        map[string]NetworktemplateOspfAreasNetworks `pulumi:"networks"`
+	// OSPF type. enum: `default`, `nssa`, `stub`
+	Type *string `pulumi:"type"`
+}
+
+// NetworktemplateOspfAreasInput is an input type that accepts NetworktemplateOspfAreasArgs and NetworktemplateOspfAreasOutput values.
+// You can construct a concrete instance of `NetworktemplateOspfAreasInput` via:
+//
+//	NetworktemplateOspfAreasArgs{...}
+type NetworktemplateOspfAreasInput interface {
+	pulumi.Input
+
+	ToNetworktemplateOspfAreasOutput() NetworktemplateOspfAreasOutput
+	ToNetworktemplateOspfAreasOutputWithContext(context.Context) NetworktemplateOspfAreasOutput
+}
+
+type NetworktemplateOspfAreasArgs struct {
+	IncludeLoopback pulumi.BoolPtrInput                      `pulumi:"includeLoopback"`
+	Networks        NetworktemplateOspfAreasNetworksMapInput `pulumi:"networks"`
+	// OSPF type. enum: `default`, `nssa`, `stub`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (NetworktemplateOspfAreasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateOspfAreas)(nil)).Elem()
+}
+
+func (i NetworktemplateOspfAreasArgs) ToNetworktemplateOspfAreasOutput() NetworktemplateOspfAreasOutput {
+	return i.ToNetworktemplateOspfAreasOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateOspfAreasArgs) ToNetworktemplateOspfAreasOutputWithContext(ctx context.Context) NetworktemplateOspfAreasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateOspfAreasOutput)
+}
+
+// NetworktemplateOspfAreasMapInput is an input type that accepts NetworktemplateOspfAreasMap and NetworktemplateOspfAreasMapOutput values.
+// You can construct a concrete instance of `NetworktemplateOspfAreasMapInput` via:
+//
+//	NetworktemplateOspfAreasMap{ "key": NetworktemplateOspfAreasArgs{...} }
+type NetworktemplateOspfAreasMapInput interface {
+	pulumi.Input
+
+	ToNetworktemplateOspfAreasMapOutput() NetworktemplateOspfAreasMapOutput
+	ToNetworktemplateOspfAreasMapOutputWithContext(context.Context) NetworktemplateOspfAreasMapOutput
+}
+
+type NetworktemplateOspfAreasMap map[string]NetworktemplateOspfAreasInput
+
+func (NetworktemplateOspfAreasMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateOspfAreas)(nil)).Elem()
+}
+
+func (i NetworktemplateOspfAreasMap) ToNetworktemplateOspfAreasMapOutput() NetworktemplateOspfAreasMapOutput {
+	return i.ToNetworktemplateOspfAreasMapOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateOspfAreasMap) ToNetworktemplateOspfAreasMapOutputWithContext(ctx context.Context) NetworktemplateOspfAreasMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateOspfAreasMapOutput)
+}
+
+type NetworktemplateOspfAreasOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateOspfAreasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateOspfAreas)(nil)).Elem()
+}
+
+func (o NetworktemplateOspfAreasOutput) ToNetworktemplateOspfAreasOutput() NetworktemplateOspfAreasOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasOutput) ToNetworktemplateOspfAreasOutputWithContext(ctx context.Context) NetworktemplateOspfAreasOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasOutput) IncludeLoopback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreas) *bool { return v.IncludeLoopback }).(pulumi.BoolPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasOutput) Networks() NetworktemplateOspfAreasNetworksMapOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreas) map[string]NetworktemplateOspfAreasNetworks { return v.Networks }).(NetworktemplateOspfAreasNetworksMapOutput)
+}
+
+// OSPF type. enum: `default`, `nssa`, `stub`
+func (o NetworktemplateOspfAreasOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreas) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type NetworktemplateOspfAreasMapOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateOspfAreasMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateOspfAreas)(nil)).Elem()
+}
+
+func (o NetworktemplateOspfAreasMapOutput) ToNetworktemplateOspfAreasMapOutput() NetworktemplateOspfAreasMapOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasMapOutput) ToNetworktemplateOspfAreasMapOutputWithContext(ctx context.Context) NetworktemplateOspfAreasMapOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateOspfAreasOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateOspfAreas {
+		return vs[0].(map[string]NetworktemplateOspfAreas)[vs[1].(string)]
+	}).(NetworktemplateOspfAreasOutput)
+}
+
+type NetworktemplateOspfAreasNetworks struct {
+	// Required if `authType`==`md5`. Property key is the key number
+	AuthKeys map[string]string `pulumi:"authKeys"`
+	// Required if `authType`==`password`, the password, max length is 8
+	AuthPassword *string `pulumi:"authPassword"`
+	// auth type. enum: `md5`, `none`, `password`
+	AuthType           *string `pulumi:"authType"`
+	BfdMinimumInterval *int    `pulumi:"bfdMinimumInterval"`
+	DeadInterval       *int    `pulumi:"deadInterval"`
+	ExportPolicy       *string `pulumi:"exportPolicy"`
+	HelloInterval      *int    `pulumi:"helloInterval"`
+	ImportPolicy       *string `pulumi:"importPolicy"`
+	// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+	InterfaceType *string `pulumi:"interfaceType"`
+	Metric        *int    `pulumi:"metric"`
+	// by default, we'll re-advertise all learned OSPF routes toward overlay
+	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
+	// whether to send OSPF-Hello
+	Passive *bool `pulumi:"passive"`
+}
+
+// NetworktemplateOspfAreasNetworksInput is an input type that accepts NetworktemplateOspfAreasNetworksArgs and NetworktemplateOspfAreasNetworksOutput values.
+// You can construct a concrete instance of `NetworktemplateOspfAreasNetworksInput` via:
+//
+//	NetworktemplateOspfAreasNetworksArgs{...}
+type NetworktemplateOspfAreasNetworksInput interface {
+	pulumi.Input
+
+	ToNetworktemplateOspfAreasNetworksOutput() NetworktemplateOspfAreasNetworksOutput
+	ToNetworktemplateOspfAreasNetworksOutputWithContext(context.Context) NetworktemplateOspfAreasNetworksOutput
+}
+
+type NetworktemplateOspfAreasNetworksArgs struct {
+	// Required if `authType`==`md5`. Property key is the key number
+	AuthKeys pulumi.StringMapInput `pulumi:"authKeys"`
+	// Required if `authType`==`password`, the password, max length is 8
+	AuthPassword pulumi.StringPtrInput `pulumi:"authPassword"`
+	// auth type. enum: `md5`, `none`, `password`
+	AuthType           pulumi.StringPtrInput `pulumi:"authType"`
+	BfdMinimumInterval pulumi.IntPtrInput    `pulumi:"bfdMinimumInterval"`
+	DeadInterval       pulumi.IntPtrInput    `pulumi:"deadInterval"`
+	ExportPolicy       pulumi.StringPtrInput `pulumi:"exportPolicy"`
+	HelloInterval      pulumi.IntPtrInput    `pulumi:"helloInterval"`
+	ImportPolicy       pulumi.StringPtrInput `pulumi:"importPolicy"`
+	// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+	InterfaceType pulumi.StringPtrInput `pulumi:"interfaceType"`
+	Metric        pulumi.IntPtrInput    `pulumi:"metric"`
+	// by default, we'll re-advertise all learned OSPF routes toward overlay
+	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
+	// whether to send OSPF-Hello
+	Passive pulumi.BoolPtrInput `pulumi:"passive"`
+}
+
+func (NetworktemplateOspfAreasNetworksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateOspfAreasNetworks)(nil)).Elem()
+}
+
+func (i NetworktemplateOspfAreasNetworksArgs) ToNetworktemplateOspfAreasNetworksOutput() NetworktemplateOspfAreasNetworksOutput {
+	return i.ToNetworktemplateOspfAreasNetworksOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateOspfAreasNetworksArgs) ToNetworktemplateOspfAreasNetworksOutputWithContext(ctx context.Context) NetworktemplateOspfAreasNetworksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateOspfAreasNetworksOutput)
+}
+
+// NetworktemplateOspfAreasNetworksMapInput is an input type that accepts NetworktemplateOspfAreasNetworksMap and NetworktemplateOspfAreasNetworksMapOutput values.
+// You can construct a concrete instance of `NetworktemplateOspfAreasNetworksMapInput` via:
+//
+//	NetworktemplateOspfAreasNetworksMap{ "key": NetworktemplateOspfAreasNetworksArgs{...} }
+type NetworktemplateOspfAreasNetworksMapInput interface {
+	pulumi.Input
+
+	ToNetworktemplateOspfAreasNetworksMapOutput() NetworktemplateOspfAreasNetworksMapOutput
+	ToNetworktemplateOspfAreasNetworksMapOutputWithContext(context.Context) NetworktemplateOspfAreasNetworksMapOutput
+}
+
+type NetworktemplateOspfAreasNetworksMap map[string]NetworktemplateOspfAreasNetworksInput
+
+func (NetworktemplateOspfAreasNetworksMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateOspfAreasNetworks)(nil)).Elem()
+}
+
+func (i NetworktemplateOspfAreasNetworksMap) ToNetworktemplateOspfAreasNetworksMapOutput() NetworktemplateOspfAreasNetworksMapOutput {
+	return i.ToNetworktemplateOspfAreasNetworksMapOutputWithContext(context.Background())
+}
+
+func (i NetworktemplateOspfAreasNetworksMap) ToNetworktemplateOspfAreasNetworksMapOutputWithContext(ctx context.Context) NetworktemplateOspfAreasNetworksMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworktemplateOspfAreasNetworksMapOutput)
+}
+
+type NetworktemplateOspfAreasNetworksOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateOspfAreasNetworksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworktemplateOspfAreasNetworks)(nil)).Elem()
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) ToNetworktemplateOspfAreasNetworksOutput() NetworktemplateOspfAreasNetworksOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) ToNetworktemplateOspfAreasNetworksOutputWithContext(ctx context.Context) NetworktemplateOspfAreasNetworksOutput {
+	return o
+}
+
+// Required if `authType`==`md5`. Property key is the key number
+func (o NetworktemplateOspfAreasNetworksOutput) AuthKeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) map[string]string { return v.AuthKeys }).(pulumi.StringMapOutput)
+}
+
+// Required if `authType`==`password`, the password, max length is 8
+func (o NetworktemplateOspfAreasNetworksOutput) AuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *string { return v.AuthPassword }).(pulumi.StringPtrOutput)
+}
+
+// auth type. enum: `md5`, `none`, `password`
+func (o NetworktemplateOspfAreasNetworksOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) BfdMinimumInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *int { return v.BfdMinimumInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) DeadInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *int { return v.DeadInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) ImportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *string { return v.ImportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+func (o NetworktemplateOspfAreasNetworksOutput) InterfaceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *string { return v.InterfaceType }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworktemplateOspfAreasNetworksOutput) Metric() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *int { return v.Metric }).(pulumi.IntPtrOutput)
+}
+
+// by default, we'll re-advertise all learned OSPF routes toward overlay
+func (o NetworktemplateOspfAreasNetworksOutput) NoReadvertiseToOverlay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
+}
+
+// whether to send OSPF-Hello
+func (o NetworktemplateOspfAreasNetworksOutput) Passive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplateOspfAreasNetworks) *bool { return v.Passive }).(pulumi.BoolPtrOutput)
+}
+
+type NetworktemplateOspfAreasNetworksMapOutput struct{ *pulumi.OutputState }
+
+func (NetworktemplateOspfAreasNetworksMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworktemplateOspfAreasNetworks)(nil)).Elem()
+}
+
+func (o NetworktemplateOspfAreasNetworksMapOutput) ToNetworktemplateOspfAreasNetworksMapOutput() NetworktemplateOspfAreasNetworksMapOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasNetworksMapOutput) ToNetworktemplateOspfAreasNetworksMapOutputWithContext(ctx context.Context) NetworktemplateOspfAreasNetworksMapOutput {
+	return o
+}
+
+func (o NetworktemplateOspfAreasNetworksMapOutput) MapIndex(k pulumi.StringInput) NetworktemplateOspfAreasNetworksOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworktemplateOspfAreasNetworks {
+		return vs[0].(map[string]NetworktemplateOspfAreasNetworks)[vs[1].(string)]
+	}).(NetworktemplateOspfAreasNetworksOutput)
 }
 
 type NetworktemplatePortMirroring struct {
@@ -55298,6 +55603,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateMistNacPtrInput)(nil)).Elem(), NetworktemplateMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateNetworksInput)(nil)).Elem(), NetworktemplateNetworksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateNetworksMapInput)(nil)).Elem(), NetworktemplateNetworksMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasInput)(nil)).Elem(), NetworktemplateOspfAreasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasMapInput)(nil)).Elem(), NetworktemplateOspfAreasMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasNetworksInput)(nil)).Elem(), NetworktemplateOspfAreasNetworksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplateOspfAreasNetworksMapInput)(nil)).Elem(), NetworktemplateOspfAreasNetworksMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplatePortMirroringInput)(nil)).Elem(), NetworktemplatePortMirroringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplatePortMirroringMapInput)(nil)).Elem(), NetworktemplatePortMirroringMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworktemplatePortUsagesInput)(nil)).Elem(), NetworktemplatePortUsagesArgs{})
@@ -55897,6 +56206,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworktemplateMistNacPtrOutput{})
 	pulumi.RegisterOutputType(NetworktemplateNetworksOutput{})
 	pulumi.RegisterOutputType(NetworktemplateNetworksMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateOspfAreasOutput{})
+	pulumi.RegisterOutputType(NetworktemplateOspfAreasMapOutput{})
+	pulumi.RegisterOutputType(NetworktemplateOspfAreasNetworksOutput{})
+	pulumi.RegisterOutputType(NetworktemplateOspfAreasNetworksMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplatePortMirroringOutput{})
 	pulumi.RegisterOutputType(NetworktemplatePortMirroringMapOutput{})
 	pulumi.RegisterOutputType(NetworktemplatePortUsagesOutput{})

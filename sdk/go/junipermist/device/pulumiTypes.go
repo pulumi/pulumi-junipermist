@@ -11399,22 +11399,25 @@ func (o GatewayRoutingPoliciesTermMatchingVpnPathSlaPtrOutput) MaxLoss() pulumi.
 }
 
 type GatewayServicePolicy struct {
-	// enum: `allow`, `deny`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
 	// For SRX Only
 	Appqoe *GatewayServicePolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []GatewayServicePolicyEwf   `pulumi:"ewfs"`
 	Idp    *GatewayServicePolicyIdp    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting *bool   `pulumi:"localRouting"`
-	Name         *string `pulumi:"name"`
+	LocalRouting *bool `pulumi:"localRouting"`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+	Name *string `pulumi:"name"`
 	// by default, we derive all paths available and use them
 	// optionally, you can customize by using `pathPreference`
 	PathPreference *string `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
-	ServicepolicyId *string  `pulumi:"servicepolicyId"`
-	Services        []string `pulumi:"services"`
-	Tenants         []string `pulumi:"tenants"`
+	ServicepolicyId *string `pulumi:"servicepolicyId"`
+	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	Services []string `pulumi:"services"`
+	// Required when `servicepolicyId` is not defined. List of Networks / Users
+	Tenants []string `pulumi:"tenants"`
 }
 
 // GatewayServicePolicyInput is an input type that accepts GatewayServicePolicyArgs and GatewayServicePolicyOutput values.
@@ -11429,22 +11432,25 @@ type GatewayServicePolicyInput interface {
 }
 
 type GatewayServicePolicyArgs struct {
-	// enum: `allow`, `deny`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// For SRX Only
 	Appqoe GatewayServicePolicyAppqoePtrInput `pulumi:"appqoe"`
 	Ewfs   GatewayServicePolicyEwfArrayInput  `pulumi:"ewfs"`
 	Idp    GatewayServicePolicyIdpPtrInput    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting pulumi.BoolPtrInput   `pulumi:"localRouting"`
-	Name         pulumi.StringPtrInput `pulumi:"name"`
+	LocalRouting pulumi.BoolPtrInput `pulumi:"localRouting"`
+	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// by default, we derive all paths available and use them
 	// optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
-	ServicepolicyId pulumi.StringPtrInput   `pulumi:"servicepolicyId"`
-	Services        pulumi.StringArrayInput `pulumi:"services"`
-	Tenants         pulumi.StringArrayInput `pulumi:"tenants"`
+	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
+	// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// Required when `servicepolicyId` is not defined. List of Networks / Users
+	Tenants pulumi.StringArrayInput `pulumi:"tenants"`
 }
 
 func (GatewayServicePolicyArgs) ElementType() reflect.Type {
@@ -11498,7 +11504,7 @@ func (o GatewayServicePolicyOutput) ToGatewayServicePolicyOutputWithContext(ctx 
 	return o
 }
 
-// enum: `allow`, `deny`
+// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
 func (o GatewayServicePolicyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -11521,6 +11527,7 @@ func (o GatewayServicePolicyOutput) LocalRouting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *bool { return v.LocalRouting }).(pulumi.BoolPtrOutput)
 }
 
+// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
 func (o GatewayServicePolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -11536,10 +11543,12 @@ func (o GatewayServicePolicyOutput) ServicepolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *string { return v.ServicepolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Required when `servicepolicyId` is not defined. List of Applications / Desctinations
 func (o GatewayServicePolicyOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// Required when `servicepolicyId` is not defined. List of Networks / Users
 func (o GatewayServicePolicyOutput) Tenants() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) []string { return v.Tenants }).(pulumi.StringArrayOutput)
 }
@@ -15700,9 +15709,9 @@ type SwitchDhcpdConfigConfig struct {
 	Servers []string `pulumi:"servers"`
 	// if `type6`==`relay`
 	Servers6s []string `pulumi:"servers6s"`
-	// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+	// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 	Type *string `pulumi:"type"`
-	// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+	// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 	Type6 *string `pulumi:"type6"`
 	// Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -15749,9 +15758,9 @@ type SwitchDhcpdConfigConfigArgs struct {
 	Servers pulumi.StringArrayInput `pulumi:"servers"`
 	// if `type6`==`relay`
 	Servers6s pulumi.StringArrayInput `pulumi:"servers6s"`
-	// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+	// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+	// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 	Type6 pulumi.StringPtrInput `pulumi:"type6"`
 	// Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -15878,12 +15887,12 @@ func (o SwitchDhcpdConfigConfigOutput) Servers6s() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) []string { return v.Servers6s }).(pulumi.StringArrayOutput)
 }
 
-// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 func (o SwitchDhcpdConfigConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
+// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 func (o SwitchDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.Type6 }).(pulumi.StringPtrOutput)
 }
@@ -16836,6 +16845,7 @@ func (o SwitchExtraRoutesNextQualifiedMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 type SwitchIpConfig struct {
+	// Required when `type`==`static`
 	Dns         []string `pulumi:"dns"`
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
 	Gateway     *string  `pulumi:"gateway"`
@@ -16860,6 +16870,7 @@ type SwitchIpConfigInput interface {
 }
 
 type SwitchIpConfigArgs struct {
+	// Required when `type`==`static`
 	Dns         pulumi.StringArrayInput `pulumi:"dns"`
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
 	Gateway     pulumi.StringPtrInput   `pulumi:"gateway"`
@@ -16949,6 +16960,7 @@ func (o SwitchIpConfigOutput) ToSwitchIpConfigPtrOutputWithContext(ctx context.C
 	}).(SwitchIpConfigPtrOutput)
 }
 
+// Required when `type`==`static`
 func (o SwitchIpConfigOutput) Dns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchIpConfig) []string { return v.Dns }).(pulumi.StringArrayOutput)
 }
@@ -17004,6 +17016,7 @@ func (o SwitchIpConfigPtrOutput) Elem() SwitchIpConfigOutput {
 	}).(SwitchIpConfigOutput)
 }
 
+// Required when `type`==`static`
 func (o SwitchIpConfigPtrOutput) Dns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SwitchIpConfig) []string {
 		if v == nil {
@@ -17582,276 +17595,291 @@ func (o SwitchOobIpConfigPtrOutput) UseMgmtVrfForHostOut() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-type SwitchOspfConfig struct {
-	// OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
-	Areas map[string]SwitchOspfConfigAreas `pulumi:"areas"`
-	// whether to rung OSPF on this device
-	Enabled *bool `pulumi:"enabled"`
-	// Bandwidth for calculating metric defaults (9600..4000000000000)
-	ReferenceBandwidth *string `pulumi:"referenceBandwidth"`
+type SwitchOspfAreas struct {
+	IncludeLoopback *bool                              `pulumi:"includeLoopback"`
+	Networks        map[string]SwitchOspfAreasNetworks `pulumi:"networks"`
+	// OSPF type. enum: `default`, `nssa`, `stub`
+	Type *string `pulumi:"type"`
 }
 
-// SwitchOspfConfigInput is an input type that accepts SwitchOspfConfigArgs and SwitchOspfConfigOutput values.
-// You can construct a concrete instance of `SwitchOspfConfigInput` via:
+// SwitchOspfAreasInput is an input type that accepts SwitchOspfAreasArgs and SwitchOspfAreasOutput values.
+// You can construct a concrete instance of `SwitchOspfAreasInput` via:
 //
-//	SwitchOspfConfigArgs{...}
-type SwitchOspfConfigInput interface {
+//	SwitchOspfAreasArgs{...}
+type SwitchOspfAreasInput interface {
 	pulumi.Input
 
-	ToSwitchOspfConfigOutput() SwitchOspfConfigOutput
-	ToSwitchOspfConfigOutputWithContext(context.Context) SwitchOspfConfigOutput
+	ToSwitchOspfAreasOutput() SwitchOspfAreasOutput
+	ToSwitchOspfAreasOutputWithContext(context.Context) SwitchOspfAreasOutput
 }
 
-type SwitchOspfConfigArgs struct {
-	// OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
-	Areas SwitchOspfConfigAreasMapInput `pulumi:"areas"`
-	// whether to rung OSPF on this device
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Bandwidth for calculating metric defaults (9600..4000000000000)
-	ReferenceBandwidth pulumi.StringPtrInput `pulumi:"referenceBandwidth"`
+type SwitchOspfAreasArgs struct {
+	IncludeLoopback pulumi.BoolPtrInput             `pulumi:"includeLoopback"`
+	Networks        SwitchOspfAreasNetworksMapInput `pulumi:"networks"`
+	// OSPF type. enum: `default`, `nssa`, `stub`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
-func (SwitchOspfConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchOspfConfig)(nil)).Elem()
+func (SwitchOspfAreasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfAreas)(nil)).Elem()
 }
 
-func (i SwitchOspfConfigArgs) ToSwitchOspfConfigOutput() SwitchOspfConfigOutput {
-	return i.ToSwitchOspfConfigOutputWithContext(context.Background())
+func (i SwitchOspfAreasArgs) ToSwitchOspfAreasOutput() SwitchOspfAreasOutput {
+	return i.ToSwitchOspfAreasOutputWithContext(context.Background())
 }
 
-func (i SwitchOspfConfigArgs) ToSwitchOspfConfigOutputWithContext(ctx context.Context) SwitchOspfConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigOutput)
+func (i SwitchOspfAreasArgs) ToSwitchOspfAreasOutputWithContext(ctx context.Context) SwitchOspfAreasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfAreasOutput)
 }
 
-func (i SwitchOspfConfigArgs) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
-	return i.ToSwitchOspfConfigPtrOutputWithContext(context.Background())
-}
-
-func (i SwitchOspfConfigArgs) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigOutput).ToSwitchOspfConfigPtrOutputWithContext(ctx)
-}
-
-// SwitchOspfConfigPtrInput is an input type that accepts SwitchOspfConfigArgs, SwitchOspfConfigPtr and SwitchOspfConfigPtrOutput values.
-// You can construct a concrete instance of `SwitchOspfConfigPtrInput` via:
+// SwitchOspfAreasMapInput is an input type that accepts SwitchOspfAreasMap and SwitchOspfAreasMapOutput values.
+// You can construct a concrete instance of `SwitchOspfAreasMapInput` via:
 //
-//	        SwitchOspfConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type SwitchOspfConfigPtrInput interface {
+//	SwitchOspfAreasMap{ "key": SwitchOspfAreasArgs{...} }
+type SwitchOspfAreasMapInput interface {
 	pulumi.Input
 
-	ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput
-	ToSwitchOspfConfigPtrOutputWithContext(context.Context) SwitchOspfConfigPtrOutput
+	ToSwitchOspfAreasMapOutput() SwitchOspfAreasMapOutput
+	ToSwitchOspfAreasMapOutputWithContext(context.Context) SwitchOspfAreasMapOutput
 }
 
-type switchOspfConfigPtrType SwitchOspfConfigArgs
+type SwitchOspfAreasMap map[string]SwitchOspfAreasInput
 
-func SwitchOspfConfigPtr(v *SwitchOspfConfigArgs) SwitchOspfConfigPtrInput {
-	return (*switchOspfConfigPtrType)(v)
+func (SwitchOspfAreasMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchOspfAreas)(nil)).Elem()
 }
 
-func (*switchOspfConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SwitchOspfConfig)(nil)).Elem()
+func (i SwitchOspfAreasMap) ToSwitchOspfAreasMapOutput() SwitchOspfAreasMapOutput {
+	return i.ToSwitchOspfAreasMapOutputWithContext(context.Background())
 }
 
-func (i *switchOspfConfigPtrType) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
-	return i.ToSwitchOspfConfigPtrOutputWithContext(context.Background())
+func (i SwitchOspfAreasMap) ToSwitchOspfAreasMapOutputWithContext(ctx context.Context) SwitchOspfAreasMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfAreasMapOutput)
 }
 
-func (i *switchOspfConfigPtrType) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigPtrOutput)
+type SwitchOspfAreasOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfAreasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfAreas)(nil)).Elem()
 }
 
-type SwitchOspfConfigOutput struct{ *pulumi.OutputState }
-
-func (SwitchOspfConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchOspfConfig)(nil)).Elem()
-}
-
-func (o SwitchOspfConfigOutput) ToSwitchOspfConfigOutput() SwitchOspfConfigOutput {
+func (o SwitchOspfAreasOutput) ToSwitchOspfAreasOutput() SwitchOspfAreasOutput {
 	return o
 }
 
-func (o SwitchOspfConfigOutput) ToSwitchOspfConfigOutputWithContext(ctx context.Context) SwitchOspfConfigOutput {
+func (o SwitchOspfAreasOutput) ToSwitchOspfAreasOutputWithContext(ctx context.Context) SwitchOspfAreasOutput {
 	return o
 }
 
-func (o SwitchOspfConfigOutput) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
-	return o.ToSwitchOspfConfigPtrOutputWithContext(context.Background())
+func (o SwitchOspfAreasOutput) IncludeLoopback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreas) *bool { return v.IncludeLoopback }).(pulumi.BoolPtrOutput)
 }
 
-func (o SwitchOspfConfigOutput) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SwitchOspfConfig) *SwitchOspfConfig {
-		return &v
-	}).(SwitchOspfConfigPtrOutput)
+func (o SwitchOspfAreasOutput) Networks() SwitchOspfAreasNetworksMapOutput {
+	return o.ApplyT(func(v SwitchOspfAreas) map[string]SwitchOspfAreasNetworks { return v.Networks }).(SwitchOspfAreasNetworksMapOutput)
 }
 
-// OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
-func (o SwitchOspfConfigOutput) Areas() SwitchOspfConfigAreasMapOutput {
-	return o.ApplyT(func(v SwitchOspfConfig) map[string]SwitchOspfConfigAreas { return v.Areas }).(SwitchOspfConfigAreasMapOutput)
+// OSPF type. enum: `default`, `nssa`, `stub`
+func (o SwitchOspfAreasOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreas) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// whether to rung OSPF on this device
-func (o SwitchOspfConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchOspfConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+type SwitchOspfAreasMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfAreasMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchOspfAreas)(nil)).Elem()
 }
 
-// Bandwidth for calculating metric defaults (9600..4000000000000)
-func (o SwitchOspfConfigOutput) ReferenceBandwidth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwitchOspfConfig) *string { return v.ReferenceBandwidth }).(pulumi.StringPtrOutput)
-}
-
-type SwitchOspfConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (SwitchOspfConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SwitchOspfConfig)(nil)).Elem()
-}
-
-func (o SwitchOspfConfigPtrOutput) ToSwitchOspfConfigPtrOutput() SwitchOspfConfigPtrOutput {
+func (o SwitchOspfAreasMapOutput) ToSwitchOspfAreasMapOutput() SwitchOspfAreasMapOutput {
 	return o
 }
 
-func (o SwitchOspfConfigPtrOutput) ToSwitchOspfConfigPtrOutputWithContext(ctx context.Context) SwitchOspfConfigPtrOutput {
+func (o SwitchOspfAreasMapOutput) ToSwitchOspfAreasMapOutputWithContext(ctx context.Context) SwitchOspfAreasMapOutput {
 	return o
 }
 
-func (o SwitchOspfConfigPtrOutput) Elem() SwitchOspfConfigOutput {
-	return o.ApplyT(func(v *SwitchOspfConfig) SwitchOspfConfig {
-		if v != nil {
-			return *v
-		}
-		var ret SwitchOspfConfig
-		return ret
-	}).(SwitchOspfConfigOutput)
+func (o SwitchOspfAreasMapOutput) MapIndex(k pulumi.StringInput) SwitchOspfAreasOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchOspfAreas {
+		return vs[0].(map[string]SwitchOspfAreas)[vs[1].(string)]
+	}).(SwitchOspfAreasOutput)
 }
 
-// OSPF areas to run on this device and the corresponding per-area-specific configs. Property key is the area
-func (o SwitchOspfConfigPtrOutput) Areas() SwitchOspfConfigAreasMapOutput {
-	return o.ApplyT(func(v *SwitchOspfConfig) map[string]SwitchOspfConfigAreas {
-		if v == nil {
-			return nil
-		}
-		return v.Areas
-	}).(SwitchOspfConfigAreasMapOutput)
+type SwitchOspfAreasNetworks struct {
+	// Required if `authType`==`md5`. Property key is the key number
+	AuthKeys map[string]string `pulumi:"authKeys"`
+	// Required if `authType`==`password`, the password, max length is 8
+	AuthPassword *string `pulumi:"authPassword"`
+	// auth type. enum: `md5`, `none`, `password`
+	AuthType           *string `pulumi:"authType"`
+	BfdMinimumInterval *int    `pulumi:"bfdMinimumInterval"`
+	DeadInterval       *int    `pulumi:"deadInterval"`
+	ExportPolicy       *string `pulumi:"exportPolicy"`
+	HelloInterval      *int    `pulumi:"helloInterval"`
+	ImportPolicy       *string `pulumi:"importPolicy"`
+	// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+	InterfaceType *string `pulumi:"interfaceType"`
+	Metric        *int    `pulumi:"metric"`
+	// by default, we'll re-advertise all learned OSPF routes toward overlay
+	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
+	// whether to send OSPF-Hello
+	Passive *bool `pulumi:"passive"`
 }
 
-// whether to rung OSPF on this device
-func (o SwitchOspfConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SwitchOspfConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Bandwidth for calculating metric defaults (9600..4000000000000)
-func (o SwitchOspfConfigPtrOutput) ReferenceBandwidth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SwitchOspfConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReferenceBandwidth
-	}).(pulumi.StringPtrOutput)
-}
-
-type SwitchOspfConfigAreas struct {
-	// for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
-	NoSummary *bool `pulumi:"noSummary"`
-}
-
-// SwitchOspfConfigAreasInput is an input type that accepts SwitchOspfConfigAreasArgs and SwitchOspfConfigAreasOutput values.
-// You can construct a concrete instance of `SwitchOspfConfigAreasInput` via:
+// SwitchOspfAreasNetworksInput is an input type that accepts SwitchOspfAreasNetworksArgs and SwitchOspfAreasNetworksOutput values.
+// You can construct a concrete instance of `SwitchOspfAreasNetworksInput` via:
 //
-//	SwitchOspfConfigAreasArgs{...}
-type SwitchOspfConfigAreasInput interface {
+//	SwitchOspfAreasNetworksArgs{...}
+type SwitchOspfAreasNetworksInput interface {
 	pulumi.Input
 
-	ToSwitchOspfConfigAreasOutput() SwitchOspfConfigAreasOutput
-	ToSwitchOspfConfigAreasOutputWithContext(context.Context) SwitchOspfConfigAreasOutput
+	ToSwitchOspfAreasNetworksOutput() SwitchOspfAreasNetworksOutput
+	ToSwitchOspfAreasNetworksOutputWithContext(context.Context) SwitchOspfAreasNetworksOutput
 }
 
-type SwitchOspfConfigAreasArgs struct {
-	// for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
-	NoSummary pulumi.BoolPtrInput `pulumi:"noSummary"`
+type SwitchOspfAreasNetworksArgs struct {
+	// Required if `authType`==`md5`. Property key is the key number
+	AuthKeys pulumi.StringMapInput `pulumi:"authKeys"`
+	// Required if `authType`==`password`, the password, max length is 8
+	AuthPassword pulumi.StringPtrInput `pulumi:"authPassword"`
+	// auth type. enum: `md5`, `none`, `password`
+	AuthType           pulumi.StringPtrInput `pulumi:"authType"`
+	BfdMinimumInterval pulumi.IntPtrInput    `pulumi:"bfdMinimumInterval"`
+	DeadInterval       pulumi.IntPtrInput    `pulumi:"deadInterval"`
+	ExportPolicy       pulumi.StringPtrInput `pulumi:"exportPolicy"`
+	HelloInterval      pulumi.IntPtrInput    `pulumi:"helloInterval"`
+	ImportPolicy       pulumi.StringPtrInput `pulumi:"importPolicy"`
+	// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+	InterfaceType pulumi.StringPtrInput `pulumi:"interfaceType"`
+	Metric        pulumi.IntPtrInput    `pulumi:"metric"`
+	// by default, we'll re-advertise all learned OSPF routes toward overlay
+	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
+	// whether to send OSPF-Hello
+	Passive pulumi.BoolPtrInput `pulumi:"passive"`
 }
 
-func (SwitchOspfConfigAreasArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchOspfConfigAreas)(nil)).Elem()
+func (SwitchOspfAreasNetworksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfAreasNetworks)(nil)).Elem()
 }
 
-func (i SwitchOspfConfigAreasArgs) ToSwitchOspfConfigAreasOutput() SwitchOspfConfigAreasOutput {
-	return i.ToSwitchOspfConfigAreasOutputWithContext(context.Background())
+func (i SwitchOspfAreasNetworksArgs) ToSwitchOspfAreasNetworksOutput() SwitchOspfAreasNetworksOutput {
+	return i.ToSwitchOspfAreasNetworksOutputWithContext(context.Background())
 }
 
-func (i SwitchOspfConfigAreasArgs) ToSwitchOspfConfigAreasOutputWithContext(ctx context.Context) SwitchOspfConfigAreasOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigAreasOutput)
+func (i SwitchOspfAreasNetworksArgs) ToSwitchOspfAreasNetworksOutputWithContext(ctx context.Context) SwitchOspfAreasNetworksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfAreasNetworksOutput)
 }
 
-// SwitchOspfConfigAreasMapInput is an input type that accepts SwitchOspfConfigAreasMap and SwitchOspfConfigAreasMapOutput values.
-// You can construct a concrete instance of `SwitchOspfConfigAreasMapInput` via:
+// SwitchOspfAreasNetworksMapInput is an input type that accepts SwitchOspfAreasNetworksMap and SwitchOspfAreasNetworksMapOutput values.
+// You can construct a concrete instance of `SwitchOspfAreasNetworksMapInput` via:
 //
-//	SwitchOspfConfigAreasMap{ "key": SwitchOspfConfigAreasArgs{...} }
-type SwitchOspfConfigAreasMapInput interface {
+//	SwitchOspfAreasNetworksMap{ "key": SwitchOspfAreasNetworksArgs{...} }
+type SwitchOspfAreasNetworksMapInput interface {
 	pulumi.Input
 
-	ToSwitchOspfConfigAreasMapOutput() SwitchOspfConfigAreasMapOutput
-	ToSwitchOspfConfigAreasMapOutputWithContext(context.Context) SwitchOspfConfigAreasMapOutput
+	ToSwitchOspfAreasNetworksMapOutput() SwitchOspfAreasNetworksMapOutput
+	ToSwitchOspfAreasNetworksMapOutputWithContext(context.Context) SwitchOspfAreasNetworksMapOutput
 }
 
-type SwitchOspfConfigAreasMap map[string]SwitchOspfConfigAreasInput
+type SwitchOspfAreasNetworksMap map[string]SwitchOspfAreasNetworksInput
 
-func (SwitchOspfConfigAreasMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SwitchOspfConfigAreas)(nil)).Elem()
+func (SwitchOspfAreasNetworksMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchOspfAreasNetworks)(nil)).Elem()
 }
 
-func (i SwitchOspfConfigAreasMap) ToSwitchOspfConfigAreasMapOutput() SwitchOspfConfigAreasMapOutput {
-	return i.ToSwitchOspfConfigAreasMapOutputWithContext(context.Background())
+func (i SwitchOspfAreasNetworksMap) ToSwitchOspfAreasNetworksMapOutput() SwitchOspfAreasNetworksMapOutput {
+	return i.ToSwitchOspfAreasNetworksMapOutputWithContext(context.Background())
 }
 
-func (i SwitchOspfConfigAreasMap) ToSwitchOspfConfigAreasMapOutputWithContext(ctx context.Context) SwitchOspfConfigAreasMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfConfigAreasMapOutput)
+func (i SwitchOspfAreasNetworksMap) ToSwitchOspfAreasNetworksMapOutputWithContext(ctx context.Context) SwitchOspfAreasNetworksMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchOspfAreasNetworksMapOutput)
 }
 
-type SwitchOspfConfigAreasOutput struct{ *pulumi.OutputState }
+type SwitchOspfAreasNetworksOutput struct{ *pulumi.OutputState }
 
-func (SwitchOspfConfigAreasOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchOspfConfigAreas)(nil)).Elem()
+func (SwitchOspfAreasNetworksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchOspfAreasNetworks)(nil)).Elem()
 }
 
-func (o SwitchOspfConfigAreasOutput) ToSwitchOspfConfigAreasOutput() SwitchOspfConfigAreasOutput {
+func (o SwitchOspfAreasNetworksOutput) ToSwitchOspfAreasNetworksOutput() SwitchOspfAreasNetworksOutput {
 	return o
 }
 
-func (o SwitchOspfConfigAreasOutput) ToSwitchOspfConfigAreasOutputWithContext(ctx context.Context) SwitchOspfConfigAreasOutput {
+func (o SwitchOspfAreasNetworksOutput) ToSwitchOspfAreasNetworksOutputWithContext(ctx context.Context) SwitchOspfAreasNetworksOutput {
 	return o
 }
 
-// for a stub/nssa area, where to avoid forwarding type-3 LSA to this area
-func (o SwitchOspfConfigAreasOutput) NoSummary() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchOspfConfigAreas) *bool { return v.NoSummary }).(pulumi.BoolPtrOutput)
+// Required if `authType`==`md5`. Property key is the key number
+func (o SwitchOspfAreasNetworksOutput) AuthKeys() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) map[string]string { return v.AuthKeys }).(pulumi.StringMapOutput)
 }
 
-type SwitchOspfConfigAreasMapOutput struct{ *pulumi.OutputState }
-
-func (SwitchOspfConfigAreasMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SwitchOspfConfigAreas)(nil)).Elem()
+// Required if `authType`==`password`, the password, max length is 8
+func (o SwitchOspfAreasNetworksOutput) AuthPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *string { return v.AuthPassword }).(pulumi.StringPtrOutput)
 }
 
-func (o SwitchOspfConfigAreasMapOutput) ToSwitchOspfConfigAreasMapOutput() SwitchOspfConfigAreasMapOutput {
+// auth type. enum: `md5`, `none`, `password`
+func (o SwitchOspfAreasNetworksOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchOspfAreasNetworksOutput) BfdMinimumInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *int { return v.BfdMinimumInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o SwitchOspfAreasNetworksOutput) DeadInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *int { return v.DeadInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o SwitchOspfAreasNetworksOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchOspfAreasNetworksOutput) HelloInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *int { return v.HelloInterval }).(pulumi.IntPtrOutput)
+}
+
+func (o SwitchOspfAreasNetworksOutput) ImportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *string { return v.ImportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
+func (o SwitchOspfAreasNetworksOutput) InterfaceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *string { return v.InterfaceType }).(pulumi.StringPtrOutput)
+}
+
+func (o SwitchOspfAreasNetworksOutput) Metric() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *int { return v.Metric }).(pulumi.IntPtrOutput)
+}
+
+// by default, we'll re-advertise all learned OSPF routes toward overlay
+func (o SwitchOspfAreasNetworksOutput) NoReadvertiseToOverlay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
+}
+
+// whether to send OSPF-Hello
+func (o SwitchOspfAreasNetworksOutput) Passive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchOspfAreasNetworks) *bool { return v.Passive }).(pulumi.BoolPtrOutput)
+}
+
+type SwitchOspfAreasNetworksMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchOspfAreasNetworksMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchOspfAreasNetworks)(nil)).Elem()
+}
+
+func (o SwitchOspfAreasNetworksMapOutput) ToSwitchOspfAreasNetworksMapOutput() SwitchOspfAreasNetworksMapOutput {
 	return o
 }
 
-func (o SwitchOspfConfigAreasMapOutput) ToSwitchOspfConfigAreasMapOutputWithContext(ctx context.Context) SwitchOspfConfigAreasMapOutput {
+func (o SwitchOspfAreasNetworksMapOutput) ToSwitchOspfAreasNetworksMapOutputWithContext(ctx context.Context) SwitchOspfAreasNetworksMapOutput {
 	return o
 }
 
-func (o SwitchOspfConfigAreasMapOutput) MapIndex(k pulumi.StringInput) SwitchOspfConfigAreasOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchOspfConfigAreas {
-		return vs[0].(map[string]SwitchOspfConfigAreas)[vs[1].(string)]
-	}).(SwitchOspfConfigAreasOutput)
+func (o SwitchOspfAreasNetworksMapOutput) MapIndex(k pulumi.StringInput) SwitchOspfAreasNetworksOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchOspfAreasNetworks {
+		return vs[0].(map[string]SwitchOspfAreasNetworks)[vs[1].(string)]
+	}).(SwitchOspfAreasNetworksOutput)
 }
 
 type SwitchOtherIpConfigs struct {
@@ -37864,10 +37892,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksMapInput)(nil)).Elem(), SwitchNetworksMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOobIpConfigInput)(nil)).Elem(), SwitchOobIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOobIpConfigPtrInput)(nil)).Elem(), SwitchOobIpConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigInput)(nil)).Elem(), SwitchOspfConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigPtrInput)(nil)).Elem(), SwitchOspfConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigAreasInput)(nil)).Elem(), SwitchOspfConfigAreasArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfConfigAreasMapInput)(nil)).Elem(), SwitchOspfConfigAreasMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasInput)(nil)).Elem(), SwitchOspfAreasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasMapInput)(nil)).Elem(), SwitchOspfAreasMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasNetworksInput)(nil)).Elem(), SwitchOspfAreasNetworksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOspfAreasNetworksMapInput)(nil)).Elem(), SwitchOspfAreasNetworksMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOtherIpConfigsInput)(nil)).Elem(), SwitchOtherIpConfigsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchOtherIpConfigsMapInput)(nil)).Elem(), SwitchOtherIpConfigsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchPortConfigInput)(nil)).Elem(), SwitchPortConfigArgs{})
@@ -38323,10 +38351,10 @@ func init() {
 	pulumi.RegisterOutputType(SwitchNetworksMapOutput{})
 	pulumi.RegisterOutputType(SwitchOobIpConfigOutput{})
 	pulumi.RegisterOutputType(SwitchOobIpConfigPtrOutput{})
-	pulumi.RegisterOutputType(SwitchOspfConfigOutput{})
-	pulumi.RegisterOutputType(SwitchOspfConfigPtrOutput{})
-	pulumi.RegisterOutputType(SwitchOspfConfigAreasOutput{})
-	pulumi.RegisterOutputType(SwitchOspfConfigAreasMapOutput{})
+	pulumi.RegisterOutputType(SwitchOspfAreasOutput{})
+	pulumi.RegisterOutputType(SwitchOspfAreasMapOutput{})
+	pulumi.RegisterOutputType(SwitchOspfAreasNetworksOutput{})
+	pulumi.RegisterOutputType(SwitchOspfAreasNetworksMapOutput{})
 	pulumi.RegisterOutputType(SwitchOtherIpConfigsOutput{})
 	pulumi.RegisterOutputType(SwitchOtherIpConfigsMapOutput{})
 	pulumi.RegisterOutputType(SwitchPortConfigOutput{})

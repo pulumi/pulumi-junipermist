@@ -65,13 +65,6 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deviceId);
     }
 
-    @Import(name="deviceprofileId")
-    private @Nullable Output<String> deviceprofileId;
-
-    public Optional<Output<String>> deviceprofileId() {
-        return Optional.ofNullable(this.deviceprofileId);
-    }
-
     @Import(name="dhcpdConfig")
     private @Nullable Output<GatewayDhcpdConfigArgs> dhcpdConfig;
 
@@ -505,7 +498,6 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.bgpConfig = $.bgpConfig;
         this.deviceId = $.deviceId;
-        this.deviceprofileId = $.deviceprofileId;
         this.dhcpdConfig = $.dhcpdConfig;
         this.dnsServers = $.dnsServers;
         this.dnsSuffixes = $.dnsSuffixes;
@@ -610,15 +602,6 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder deviceId(String deviceId) {
             return deviceId(Output.of(deviceId));
-        }
-
-        public Builder deviceprofileId(@Nullable Output<String> deviceprofileId) {
-            $.deviceprofileId = deviceprofileId;
-            return this;
-        }
-
-        public Builder deviceprofileId(String deviceprofileId) {
-            return deviceprofileId(Output.of(deviceprofileId));
         }
 
         public Builder dhcpdConfig(@Nullable Output<GatewayDhcpdConfigArgs> dhcpdConfig) {

@@ -29,6 +29,7 @@ class NetworktemplateArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
@@ -49,6 +50,7 @@ class NetworktemplateArgs:
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: enable mist_nac to use radsec
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
@@ -82,6 +84,8 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "networks", networks)
         if ntp_servers is not None:
             pulumi.set(__self__, "ntp_servers", ntp_servers)
+        if ospf_areas is not None:
+            pulumi.set(__self__, "ospf_areas", ospf_areas)
         if port_mirroring is not None:
             pulumi.set(__self__, "port_mirroring", port_mirroring)
         if port_usages is not None:
@@ -245,6 +249,18 @@ class NetworktemplateArgs:
         pulumi.set(self, "ntp_servers", value)
 
     @property
+    @pulumi.getter(name="ospfAreas")
+    def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]]:
+        """
+        Junos OSPF areas
+        """
+        return pulumi.get(self, "ospf_areas")
+
+    @ospf_areas.setter
+    def ospf_areas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]]):
+        pulumi.set(self, "ospf_areas", value)
+
+    @property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]]]:
         """
@@ -370,6 +386,7 @@ class _NetworktemplateState:
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]] = None,
                  radius_config: Optional[pulumi.Input['NetworktemplateRadiusConfigArgs']] = None,
@@ -390,6 +407,7 @@ class _NetworktemplateState:
         :param pulumi.Input['NetworktemplateMistNacArgs'] mist_nac: enable mist_nac to use radsec
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateNetworksArgs']]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
@@ -424,6 +442,8 @@ class _NetworktemplateState:
             pulumi.set(__self__, "ntp_servers", ntp_servers)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if ospf_areas is not None:
+            pulumi.set(__self__, "ospf_areas", ospf_areas)
         if port_mirroring is not None:
             pulumi.set(__self__, "port_mirroring", port_mirroring)
         if port_usages is not None:
@@ -587,6 +607,18 @@ class _NetworktemplateState:
         pulumi.set(self, "org_id", value)
 
     @property
+    @pulumi.getter(name="ospfAreas")
+    def ospf_areas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]]:
+        """
+        Junos OSPF areas
+        """
+        return pulumi.get(self, "ospf_areas")
+
+    @ospf_areas.setter
+    def ospf_areas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateOspfAreasArgs']]]]):
+        pulumi.set(self, "ospf_areas", value)
+
+    @property
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]]]:
         """
@@ -714,6 +746,7 @@ class Networktemplate(pulumi.CustomResource):
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
@@ -748,6 +781,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: enable mist_nac to use radsec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
@@ -803,6 +837,7 @@ class Networktemplate(pulumi.CustomResource):
                  networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]]] = None,
                  port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]]] = None,
                  port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
                  radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
@@ -837,6 +872,7 @@ class Networktemplate(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["ospf_areas"] = ospf_areas
             __props__.__dict__["port_mirroring"] = port_mirroring
             __props__.__dict__["port_usages"] = port_usages
             __props__.__dict__["radius_config"] = radius_config
@@ -870,6 +906,7 @@ class Networktemplate(pulumi.CustomResource):
             networks: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]]] = None,
             ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
+            ospf_areas: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]]] = None,
             port_mirroring: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]]] = None,
             port_usages: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]]] = None,
             radius_config: Optional[pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']]] = None,
@@ -895,6 +932,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['NetworktemplateMistNacArgs', 'NetworktemplateMistNacArgsDict']] mist_nac: enable mist_nac to use radsec
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateNetworksArgs', 'NetworktemplateNetworksArgsDict']]]] networks: Property key is network name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: list of NTP servers specific to this device. By default, those in Site Settings will be used
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateOspfAreasArgs', 'NetworktemplateOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
@@ -920,6 +958,7 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["networks"] = networks
         __props__.__dict__["ntp_servers"] = ntp_servers
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["ospf_areas"] = ospf_areas
         __props__.__dict__["port_mirroring"] = port_mirroring
         __props__.__dict__["port_usages"] = port_usages
         __props__.__dict__["radius_config"] = radius_config
@@ -1020,6 +1059,14 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="ospfAreas")
+    def ospf_areas(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplateOspfAreas']]]:
+        """
+        Junos OSPF areas
+        """
+        return pulumi.get(self, "ospf_areas")
 
     @property
     @pulumi.getter(name="portMirroring")

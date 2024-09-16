@@ -481,7 +481,6 @@ class _GatewayState:
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayBgpConfigArgs']]]] = None,
                  device_id: Optional[pulumi.Input[str]] = None,
-                 deviceprofile_id: Optional[pulumi.Input[str]] = None,
                  dhcpd_config: Optional[pulumi.Input['GatewayDhcpdConfigArgs']] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -550,8 +549,6 @@ class _GatewayState:
             pulumi.set(__self__, "bgp_config", bgp_config)
         if device_id is not None:
             pulumi.set(__self__, "device_id", device_id)
-        if deviceprofile_id is not None:
-            pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
         if dhcpd_config is not None:
             pulumi.set(__self__, "dhcpd_config", dhcpd_config)
         if dns_servers is not None:
@@ -656,15 +653,6 @@ class _GatewayState:
     @device_id.setter
     def device_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "device_id", value)
-
-    @property
-    @pulumi.getter(name="deviceprofileId")
-    def deviceprofile_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "deviceprofile_id")
-
-    @deviceprofile_id.setter
-    def deviceprofile_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "deviceprofile_id", value)
 
     @property
     @pulumi.getter(name="dhcpdConfig")
@@ -1294,7 +1282,6 @@ class Gateway(pulumi.CustomResource):
             __props__.__dict__["vrf_instances"] = vrf_instances
             __props__.__dict__["x"] = x
             __props__.__dict__["y"] = y
-            __props__.__dict__["deviceprofile_id"] = None
             __props__.__dict__["image1_url"] = None
             __props__.__dict__["image2_url"] = None
             __props__.__dict__["image3_url"] = None
@@ -1316,7 +1303,6 @@ class Gateway(pulumi.CustomResource):
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayBgpConfigArgs', 'GatewayBgpConfigArgsDict']]]]] = None,
             device_id: Optional[pulumi.Input[str]] = None,
-            deviceprofile_id: Optional[pulumi.Input[str]] = None,
             dhcpd_config: Optional[pulumi.Input[Union['GatewayDhcpdConfigArgs', 'GatewayDhcpdConfigArgsDict']]] = None,
             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1391,7 +1377,6 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["additional_config_cmds"] = additional_config_cmds
         __props__.__dict__["bgp_config"] = bgp_config
         __props__.__dict__["device_id"] = device_id
-        __props__.__dict__["deviceprofile_id"] = deviceprofile_id
         __props__.__dict__["dhcpd_config"] = dhcpd_config
         __props__.__dict__["dns_servers"] = dns_servers
         __props__.__dict__["dns_suffixes"] = dns_suffixes
@@ -1448,11 +1433,6 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="deviceId")
     def device_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "device_id")
-
-    @property
-    @pulumi.getter(name="deviceprofileId")
-    def deviceprofile_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "deviceprofile_id")
 
     @property
     @pulumi.getter(name="dhcpdConfig")

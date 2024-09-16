@@ -21,14 +21,14 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
     public static final GatewayServicePolicyArgs Empty = new GatewayServicePolicyArgs();
 
     /**
-     * enum: `allow`, `deny`
+     * Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return enum: `allow`, `deny`
+     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
      * 
      */
     public Optional<Output<String>> action() {
@@ -79,9 +79,17 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.localRouting);
     }
 
+    /**
+     * Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -118,16 +126,32 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.servicepolicyId);
     }
 
+    /**
+     * Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * 
+     */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
+    /**
+     * @return Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+     * 
+     */
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
 
+    /**
+     * Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * 
+     */
     @Import(name="tenants")
     private @Nullable Output<List<String>> tenants;
 
+    /**
+     * @return Required when `servicepolicy_id` is not defined. List of Networks / Users
+     * 
+     */
     public Optional<Output<List<String>>> tenants() {
         return Optional.ofNullable(this.tenants);
     }
@@ -166,7 +190,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param action enum: `allow`, `deny`
+         * @param action Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          * 
          * @return builder
          * 
@@ -177,7 +201,7 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param action enum: `allow`, `deny`
+         * @param action Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
          * 
          * @return builder
          * 
@@ -250,11 +274,23 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
             return localRouting(Output.of(localRouting));
         }
 
+        /**
+         * @param name Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -303,28 +339,64 @@ public final class GatewayServicePolicyArgs extends com.pulumi.resources.Resourc
             return servicepolicyId(Output.of(servicepolicyId));
         }
 
+        /**
+         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
         }
 
+        /**
+         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
 
+        /**
+         * @param services Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(String... services) {
             return services(List.of(services));
         }
 
+        /**
+         * @param tenants Required when `servicepolicy_id` is not defined. List of Networks / Users
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(@Nullable Output<List<String>> tenants) {
             $.tenants = tenants;
             return this;
         }
 
+        /**
+         * @param tenants Required when `servicepolicy_id` is not defined. List of Networks / Users
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(List<String> tenants) {
             return tenants(Output.of(tenants));
         }
 
+        /**
+         * @param tenants Required when `servicepolicy_id` is not defined. List of Networks / Users
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(String... tenants) {
             return tenants(List.of(tenants));
         }

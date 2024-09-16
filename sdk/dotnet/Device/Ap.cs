@@ -66,9 +66,6 @@ namespace Pulumi.JuniperMist.Device
         [Output("deviceId")]
         public Output<string> DeviceId { get; private set; } = null!;
 
-        [Output("deviceprofileId")]
-        public Output<string> DeviceprofileId { get; private set; } = null!;
-
         /// <summary>
         /// whether to disable eth1 port
         /// </summary>
@@ -472,9 +469,6 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
-
-        [Input("deviceprofileId")]
-        public Input<string>? DeviceprofileId { get; set; }
 
         /// <summary>
         /// whether to disable eth1 port

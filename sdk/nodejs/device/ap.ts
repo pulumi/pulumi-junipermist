@@ -71,7 +71,6 @@ export class Ap extends pulumi.CustomResource {
     public readonly centrak!: pulumi.Output<outputs.device.ApCentrak | undefined>;
     public readonly clientBridge!: pulumi.Output<outputs.device.ApClientBridge | undefined>;
     public readonly deviceId!: pulumi.Output<string>;
-    public /*out*/ readonly deviceprofileId!: pulumi.Output<string>;
     /**
      * whether to disable eth1 port
      */
@@ -193,7 +192,6 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["centrak"] = state ? state.centrak : undefined;
             resourceInputs["clientBridge"] = state ? state.clientBridge : undefined;
             resourceInputs["deviceId"] = state ? state.deviceId : undefined;
-            resourceInputs["deviceprofileId"] = state ? state.deviceprofileId : undefined;
             resourceInputs["disableEth1"] = state ? state.disableEth1 : undefined;
             resourceInputs["disableEth2"] = state ? state.disableEth2 : undefined;
             resourceInputs["disableEth3"] = state ? state.disableEth3 : undefined;
@@ -263,7 +261,6 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["vars"] = args ? args.vars : undefined;
             resourceInputs["x"] = args ? args.x : undefined;
             resourceInputs["y"] = args ? args.y : undefined;
-            resourceInputs["deviceprofileId"] = undefined /*out*/;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -293,7 +290,6 @@ export interface ApState {
     centrak?: pulumi.Input<inputs.device.ApCentrak>;
     clientBridge?: pulumi.Input<inputs.device.ApClientBridge>;
     deviceId?: pulumi.Input<string>;
-    deviceprofileId?: pulumi.Input<string>;
     /**
      * whether to disable eth1 port
      */

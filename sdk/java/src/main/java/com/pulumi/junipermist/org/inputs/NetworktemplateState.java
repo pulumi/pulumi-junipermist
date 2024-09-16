@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.inputs.NetworktemplateExtraRoutes6Args;
 import com.pulumi.junipermist.org.inputs.NetworktemplateExtraRoutesArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateMistNacArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateNetworksArgs;
+import com.pulumi.junipermist.org.inputs.NetworktemplateOspfAreasArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplatePortMirroringArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplatePortUsagesArgs;
 import com.pulumi.junipermist.org.inputs.NetworktemplateRadiusConfigArgs;
@@ -190,6 +191,21 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Junos OSPF areas
+     * 
+     */
+    @Import(name="ospfAreas")
+    private @Nullable Output<Map<String,NetworktemplateOspfAreasArgs>> ospfAreas;
+
+    /**
+     * @return Junos OSPF areas
+     * 
+     */
+    public Optional<Output<Map<String,NetworktemplateOspfAreasArgs>>> ospfAreas() {
+        return Optional.ofNullable(this.ospfAreas);
+    }
+
+    /**
      * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
@@ -325,6 +341,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.networks = $.networks;
         this.ntpServers = $.ntpServers;
         this.orgId = $.orgId;
+        this.ospfAreas = $.ospfAreas;
         this.portMirroring = $.portMirroring;
         this.portUsages = $.portUsages;
         this.radiusConfig = $.radiusConfig;
@@ -610,6 +627,27 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        /**
+         * @param ospfAreas Junos OSPF areas
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ospfAreas(@Nullable Output<Map<String,NetworktemplateOspfAreasArgs>> ospfAreas) {
+            $.ospfAreas = ospfAreas;
+            return this;
+        }
+
+        /**
+         * @param ospfAreas Junos OSPF areas
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ospfAreas(Map<String,NetworktemplateOspfAreasArgs> ospfAreas) {
+            return ospfAreas(Output.of(ospfAreas));
         }
 
         /**

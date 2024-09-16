@@ -83,13 +83,6 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deviceId);
     }
 
-    @Import(name="deviceprofileId")
-    private @Nullable Output<String> deviceprofileId;
-
-    public Optional<Output<String>> deviceprofileId() {
-        return Optional.ofNullable(this.deviceprofileId);
-    }
-
     /**
      * whether to disable eth1 port
      * 
@@ -508,7 +501,6 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
         this.centrak = $.centrak;
         this.clientBridge = $.clientBridge;
         this.deviceId = $.deviceId;
-        this.deviceprofileId = $.deviceprofileId;
         this.disableEth1 = $.disableEth1;
         this.disableEth2 = $.disableEth2;
         this.disableEth3 = $.disableEth3;
@@ -628,15 +620,6 @@ public final class ApState extends com.pulumi.resources.ResourceArgs {
 
         public Builder deviceId(String deviceId) {
             return deviceId(Output.of(deviceId));
-        }
-
-        public Builder deviceprofileId(@Nullable Output<String> deviceprofileId) {
-            $.deviceprofileId = deviceprofileId;
-            return this;
-        }
-
-        public Builder deviceprofileId(String deviceprofileId) {
-            return deviceprofileId(Output.of(deviceprofileId));
         }
 
         /**

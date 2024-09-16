@@ -16,7 +16,7 @@ import com.pulumi.junipermist.device.inputs.SwitchIpConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchMistNacArgs;
 import com.pulumi.junipermist.device.inputs.SwitchNetworksArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOobIpConfigArgs;
-import com.pulumi.junipermist.device.inputs.SwitchOspfConfigArgs;
+import com.pulumi.junipermist.device.inputs.SwitchOspfAreasArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOtherIpConfigsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchPortMirroringArgs;
@@ -86,13 +86,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> deviceId() {
         return Optional.ofNullable(this.deviceId);
-    }
-
-    @Import(name="deviceprofileId")
-    private @Nullable Output<String> deviceprofileId;
-
-    public Optional<Output<String>> deviceprofileId() {
-        return Optional.ofNullable(this.deviceprofileId);
     }
 
     @Import(name="dhcpSnooping")
@@ -371,18 +364,18 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Junos OSPF config
+     * Junos OSPF areas
      * 
      */
-    @Import(name="ospfConfig")
-    private @Nullable Output<SwitchOspfConfigArgs> ospfConfig;
+    @Import(name="ospfAreas")
+    private @Nullable Output<Map<String,SwitchOspfAreasArgs>> ospfAreas;
 
     /**
-     * @return Junos OSPF config
+     * @return Junos OSPF areas
      * 
      */
-    public Optional<Output<SwitchOspfConfigArgs>> ospfConfig() {
-        return Optional.ofNullable(this.ospfConfig);
+    public Optional<Output<Map<String,SwitchOspfAreasArgs>>> ospfAreas() {
+        return Optional.ofNullable(this.ospfAreas);
     }
 
     /**
@@ -668,7 +661,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.deviceId = $.deviceId;
-        this.deviceprofileId = $.deviceprofileId;
         this.dhcpSnooping = $.dhcpSnooping;
         this.dhcpdConfig = $.dhcpdConfig;
         this.disableAutoConfig = $.disableAutoConfig;
@@ -692,7 +684,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.ntpServers = $.ntpServers;
         this.oobIpConfig = $.oobIpConfig;
         this.orgId = $.orgId;
-        this.ospfConfig = $.ospfConfig;
+        this.ospfAreas = $.ospfAreas;
         this.otherIpConfigs = $.otherIpConfigs;
         this.portConfig = $.portConfig;
         this.portMirroring = $.portMirroring;
@@ -807,15 +799,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
         public Builder deviceId(String deviceId) {
             return deviceId(Output.of(deviceId));
-        }
-
-        public Builder deviceprofileId(@Nullable Output<String> deviceprofileId) {
-            $.deviceprofileId = deviceprofileId;
-            return this;
-        }
-
-        public Builder deviceprofileId(String deviceprofileId) {
-            return deviceprofileId(Output.of(deviceprofileId));
         }
 
         public Builder dhcpSnooping(@Nullable Output<SwitchDhcpSnoopingArgs> dhcpSnooping) {
@@ -1226,24 +1209,24 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ospfConfig Junos OSPF config
+         * @param ospfAreas Junos OSPF areas
          * 
          * @return builder
          * 
          */
-        public Builder ospfConfig(@Nullable Output<SwitchOspfConfigArgs> ospfConfig) {
-            $.ospfConfig = ospfConfig;
+        public Builder ospfAreas(@Nullable Output<Map<String,SwitchOspfAreasArgs>> ospfAreas) {
+            $.ospfAreas = ospfAreas;
             return this;
         }
 
         /**
-         * @param ospfConfig Junos OSPF config
+         * @param ospfAreas Junos OSPF areas
          * 
          * @return builder
          * 
          */
-        public Builder ospfConfig(SwitchOspfConfigArgs ospfConfig) {
-            return ospfConfig(Output.of(ospfConfig));
+        public Builder ospfAreas(Map<String,SwitchOspfAreasArgs> ospfAreas) {
+            return ospfAreas(Output.of(ospfAreas));
         }
 
         /**
