@@ -13,18 +13,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchSwitchMgmtProtectReCustomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// matched dst port, "0" means any
+        /// matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
 
         /// <summary>
-        /// enum: `any`, `icmp`, `tcp`, `udp`
+        /// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
-        [Input("subnets")]
+        [Input("subnets", required: true)]
         private InputList<string>? _subnets;
         public InputList<string> Subnets
         {

@@ -8736,7 +8736,7 @@ func (o NetworktemplateSwitchMgmtLocalAccountsMapOutput) MapIndex(k pulumi.Strin
 }
 
 type NetworktemplateSwitchMgmtProtectRe struct {
-	// optionally, services we'll allow
+	// optionally, services we'll allow. enum: `icmp`, `ssh`
 	AllowedServices []string                                   `pulumi:"allowedServices"`
 	Customs         []NetworktemplateSwitchMgmtProtectReCustom `pulumi:"customs"`
 	// when enabled, all traffic that is not essential to our operation will be dropped
@@ -8759,7 +8759,7 @@ type NetworktemplateSwitchMgmtProtectReInput interface {
 }
 
 type NetworktemplateSwitchMgmtProtectReArgs struct {
-	// optionally, services we'll allow
+	// optionally, services we'll allow. enum: `icmp`, `ssh`
 	AllowedServices pulumi.StringArrayInput                            `pulumi:"allowedServices"`
 	Customs         NetworktemplateSwitchMgmtProtectReCustomArrayInput `pulumi:"customs"`
 	// when enabled, all traffic that is not essential to our operation will be dropped
@@ -8847,7 +8847,7 @@ func (o NetworktemplateSwitchMgmtProtectReOutput) ToNetworktemplateSwitchMgmtPro
 	}).(NetworktemplateSwitchMgmtProtectRePtrOutput)
 }
 
-// optionally, services we'll allow
+// optionally, services we'll allow. enum: `icmp`, `ssh`
 func (o NetworktemplateSwitchMgmtProtectReOutput) AllowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmtProtectRe) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
 }
@@ -8895,7 +8895,7 @@ func (o NetworktemplateSwitchMgmtProtectRePtrOutput) Elem() NetworktemplateSwitc
 	}).(NetworktemplateSwitchMgmtProtectReOutput)
 }
 
-// optionally, services we'll allow
+// optionally, services we'll allow. enum: `icmp`, `ssh`
 func (o NetworktemplateSwitchMgmtProtectRePtrOutput) AllowedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworktemplateSwitchMgmtProtectRe) []string {
 		if v == nil {
@@ -8938,9 +8938,9 @@ func (o NetworktemplateSwitchMgmtProtectRePtrOutput) TrustedHosts() pulumi.Strin
 }
 
 type NetworktemplateSwitchMgmtProtectReCustom struct {
-	// matched dst port, "0" means any
+	// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 	PortRange *string `pulumi:"portRange"`
-	// enum: `any`, `icmp`, `tcp`, `udp`
+	// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 	Protocol *string  `pulumi:"protocol"`
 	Subnets  []string `pulumi:"subnets"`
 }
@@ -8957,9 +8957,9 @@ type NetworktemplateSwitchMgmtProtectReCustomInput interface {
 }
 
 type NetworktemplateSwitchMgmtProtectReCustomArgs struct {
-	// matched dst port, "0" means any
+	// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
-	// enum: `any`, `icmp`, `tcp`, `udp`
+	// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 	Protocol pulumi.StringPtrInput   `pulumi:"protocol"`
 	Subnets  pulumi.StringArrayInput `pulumi:"subnets"`
 }
@@ -9015,12 +9015,12 @@ func (o NetworktemplateSwitchMgmtProtectReCustomOutput) ToNetworktemplateSwitchM
 	return o
 }
 
-// matched dst port, "0" means any
+// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 func (o NetworktemplateSwitchMgmtProtectReCustomOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmtProtectReCustom) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
-// enum: `any`, `icmp`, `tcp`, `udp`
+// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
 func (o NetworktemplateSwitchMgmtProtectReCustomOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMgmtProtectReCustom) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }

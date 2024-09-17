@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSwitchMgmtProtectRe
     {
         /// <summary>
-        /// optionally, services we'll allow
+        /// optionally, services we'll allow. enum: `icmp`, `ssh`
         /// </summary>
         public readonly ImmutableArray<string> AllowedServices;
         public readonly ImmutableArray<Outputs.SwitchSwitchMgmtProtectReCustom> Customs;

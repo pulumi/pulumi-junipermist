@@ -19,14 +19,14 @@ public final class NetworktemplateSwitchMgmtProtectReArgs extends com.pulumi.res
     public static final NetworktemplateSwitchMgmtProtectReArgs Empty = new NetworktemplateSwitchMgmtProtectReArgs();
 
     /**
-     * optionally, services we&#39;ll allow
+     * optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
      * 
      */
     @Import(name="allowedServices")
     private @Nullable Output<List<String>> allowedServices;
 
     /**
-     * @return optionally, services we&#39;ll allow
+     * @return optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
      * 
      */
     public Optional<Output<List<String>>> allowedServices() {
@@ -102,7 +102,7 @@ public final class NetworktemplateSwitchMgmtProtectReArgs extends com.pulumi.res
         }
 
         /**
-         * @param allowedServices optionally, services we&#39;ll allow
+         * @param allowedServices optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class NetworktemplateSwitchMgmtProtectReArgs extends com.pulumi.res
         }
 
         /**
-         * @param allowedServices optionally, services we&#39;ll allow
+         * @param allowedServices optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class NetworktemplateSwitchMgmtProtectReArgs extends com.pulumi.res
         }
 
         /**
-         * @param allowedServices optionally, services we&#39;ll allow
+         * @param allowedServices optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
          * 
          * @return builder
          * 

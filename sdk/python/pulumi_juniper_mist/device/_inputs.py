@@ -12769,7 +12769,7 @@ class SwitchSwitchMgmtProtectReArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  trusted_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_services: optionally, services we'll allow
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_services: optionally, services we'll allow. enum: `icmp`, `ssh`
         :param pulumi.Input[bool] enabled: when enabled, all traffic that is not essential to our operation will be dropped
                e.g. ntp / dns / traffic to mist will be allowed by default
                     if dhcpd is enabled, we'll make sure it works
@@ -12788,7 +12788,7 @@ class SwitchSwitchMgmtProtectReArgs:
     @pulumi.getter(name="allowedServices")
     def allowed_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optionally, services we'll allow
+        optionally, services we'll allow. enum: `icmp`, `ssh`
         """
         return pulumi.get(self, "allowed_services")
 
@@ -12835,25 +12835,33 @@ class SwitchSwitchMgmtProtectReArgs:
 @pulumi.input_type
 class SwitchSwitchMgmtProtectReCustomArgs:
     def __init__(__self__, *,
+                 subnets: pulumi.Input[Sequence[pulumi.Input[str]]],
                  port_range: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None,
-                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] port_range: matched dst port, "0" means any
-        :param pulumi.Input[str] protocol: enum: `any`, `icmp`, `tcp`, `udp`
+        :param pulumi.Input[str] port_range: matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+        :param pulumi.Input[str] protocol: enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         """
+        pulumi.set(__self__, "subnets", subnets)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
-        if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "subnets")
+
+    @subnets.setter
+    def subnets(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "subnets", value)
 
     @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        matched dst port, "0" means any
+        matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         """
         return pulumi.get(self, "port_range")
 
@@ -12865,22 +12873,13 @@ class SwitchSwitchMgmtProtectReCustomArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `any`, `icmp`, `tcp`, `udp`
+        enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
-
-    @property
-    @pulumi.getter
-    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        return pulumi.get(self, "subnets")
-
-    @subnets.setter
-    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "subnets", value)
 
 
 @pulumi.input_type

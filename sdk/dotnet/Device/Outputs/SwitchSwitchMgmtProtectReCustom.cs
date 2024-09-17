@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSwitchMgmtProtectReCustom
     {
         /// <summary>
-        /// matched dst port, "0" means any
+        /// matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         /// </summary>
         public readonly string? PortRange;
         /// <summary>
-        /// enum: `any`, `icmp`, `tcp`, `udp`
+        /// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
         /// </summary>
         public readonly string? Protocol;
         public readonly ImmutableArray<string> Subnets;

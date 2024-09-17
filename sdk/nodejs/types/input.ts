@@ -2836,7 +2836,7 @@ export namespace device {
 
     export interface SwitchSwitchMgmtProtectRe {
         /**
-         * optionally, services we'll allow
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
         customs?: pulumi.Input<pulumi.Input<inputs.device.SwitchSwitchMgmtProtectReCustom>[]>;
@@ -2854,14 +2854,14 @@ export namespace device {
 
     export interface SwitchSwitchMgmtProtectReCustom {
         /**
-         * matched dst port, "0" means any
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         portRange?: pulumi.Input<string>;
         /**
-         * enum: `any`, `icmp`, `tcp`, `udp`
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol?: pulumi.Input<string>;
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
+        subnets: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SwitchSwitchMgmtTacacs {
@@ -7010,7 +7010,7 @@ export namespace org {
 
     export interface NetworktemplateSwitchMgmtProtectRe {
         /**
-         * optionally, services we'll allow
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
         customs?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateSwitchMgmtProtectReCustom>[]>;
@@ -7028,14 +7028,14 @@ export namespace org {
 
     export interface NetworktemplateSwitchMgmtProtectReCustom {
         /**
-         * matched dst port, "0" means any
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         portRange?: pulumi.Input<string>;
         /**
-         * enum: `any`, `icmp`, `tcp`, `udp`
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol?: pulumi.Input<string>;
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
+        subnets: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NetworktemplateSwitchMgmtTacacs {
@@ -10118,7 +10118,7 @@ export namespace site {
 
     export interface NetworktemplateSwitchMgmtProtectRe {
         /**
-         * optionally, services we'll allow
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
         customs?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateSwitchMgmtProtectReCustom>[]>;
@@ -10136,14 +10136,14 @@ export namespace site {
 
     export interface NetworktemplateSwitchMgmtProtectReCustom {
         /**
-         * matched dst port, "0" means any
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         portRange?: pulumi.Input<string>;
         /**
-         * enum: `any`, `icmp`, `tcp`, `udp`
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol?: pulumi.Input<string>;
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
+        subnets: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NetworktemplateSwitchMgmtTacacs {

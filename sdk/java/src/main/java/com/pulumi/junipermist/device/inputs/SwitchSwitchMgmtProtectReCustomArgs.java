@@ -5,6 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +18,14 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
     public static final SwitchSwitchMgmtProtectReCustomArgs Empty = new SwitchSwitchMgmtProtectReCustomArgs();
 
     /**
-     * matched dst port, &#34;0&#34; means any
+     * matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return matched dst port, &#34;0&#34; means any
+     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -32,25 +33,25 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
     }
 
     /**
-     * enum: `any`, `icmp`, `tcp`, `udp`
+     * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`
+     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
 
-    @Import(name="subnets")
-    private @Nullable Output<List<String>> subnets;
+    @Import(name="subnets", required=true)
+    private Output<List<String>> subnets;
 
-    public Optional<Output<List<String>>> subnets() {
-        return Optional.ofNullable(this.subnets);
+    public Output<List<String>> subnets() {
+        return this.subnets;
     }
 
     private SwitchSwitchMgmtProtectReCustomArgs() {}
@@ -80,7 +81,7 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
         }
 
         /**
-         * @param portRange matched dst port, &#34;0&#34; means any
+         * @param portRange matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
          * 
          * @return builder
          * 
@@ -91,7 +92,7 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
         }
 
         /**
-         * @param portRange matched dst port, &#34;0&#34; means any
+         * @param portRange matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
          * 
          * @return builder
          * 
@@ -101,7 +102,7 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
         }
 
         /**
-         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`
+         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
          * 
          * @return builder
          * 
@@ -112,7 +113,7 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
         }
 
         /**
-         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`
+         * @param protocol enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
          * 
          * @return builder
          * 
@@ -121,7 +122,7 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
             return protocol(Output.of(protocol));
         }
 
-        public Builder subnets(@Nullable Output<List<String>> subnets) {
+        public Builder subnets(Output<List<String>> subnets) {
             $.subnets = subnets;
             return this;
         }
@@ -135,6 +136,9 @@ public final class SwitchSwitchMgmtProtectReCustomArgs extends com.pulumi.resour
         }
 
         public SwitchSwitchMgmtProtectReCustomArgs build() {
+            if ($.subnets == null) {
+                throw new MissingRequiredPropertyException("SwitchSwitchMgmtProtectReCustomArgs", "subnets");
+            }
             return $;
         }
     }
