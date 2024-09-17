@@ -3030,6 +3030,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "macs",
                         "subnets",
                         "type"
                     ]
@@ -4925,7 +4926,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "optionally, services we'll allow\n"
+                    "description": "optionally, services we'll allow. enum: `icmp`, `ssh`\n"
                 },
                 "customs": {
                     "type": "array",
@@ -4950,6 +4951,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "allowedServices",
+                        "customs",
                         "enabled",
                         "trustedHosts"
                     ]
@@ -4960,11 +4962,11 @@
             "properties": {
                 "portRange": {
                     "type": "string",
-                    "description": "matched dst port, \"0\" means any\n"
+                    "description": "matched dst port, \"0\" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "enum: `any`, `icmp`, `tcp`, `udp`\n"
+                    "description": "enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
                 },
                 "subnets": {
                     "type": "array",
@@ -4974,11 +4976,15 @@
                 }
             },
             "type": "object",
+            "required": [
+                "subnets"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
                         "portRange",
-                        "protocol"
+                        "protocol",
+                        "subnets"
                     ]
                 }
             }
@@ -15343,6 +15349,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "macs",
                         "subnets",
                         "type"
                     ]
@@ -17070,7 +17077,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "optionally, services we'll allow\n"
+                    "description": "optionally, services we'll allow. enum: `icmp`, `ssh`\n"
                 },
                 "customs": {
                     "type": "array",
@@ -17095,6 +17102,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "allowedServices",
+                        "customs",
                         "enabled",
                         "trustedHosts"
                     ]
@@ -17105,11 +17113,11 @@
             "properties": {
                 "portRange": {
                     "type": "string",
-                    "description": "matched dst port, \"0\" means any\n"
+                    "description": "matched dst port, \"0\" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "enum: `any`, `icmp`, `tcp`, `udp`\n"
+                    "description": "enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
                 },
                 "subnets": {
                     "type": "array",
@@ -17119,6 +17127,9 @@
                 }
             },
             "type": "object",
+            "required": [
+                "subnets"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -21832,6 +21843,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "macs",
                         "subnets",
                         "type"
                     ]
@@ -23559,7 +23571,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "optionally, services we'll allow\n"
+                    "description": "optionally, services we'll allow. enum: `icmp`, `ssh`\n"
                 },
                 "customs": {
                     "type": "array",
@@ -23584,6 +23596,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "allowedServices",
+                        "customs",
                         "enabled",
                         "trustedHosts"
                     ]
@@ -23594,11 +23607,11 @@
             "properties": {
                 "portRange": {
                     "type": "string",
-                    "description": "matched dst port, \"0\" means any\n"
+                    "description": "matched dst port, \"0\" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "enum: `any`, `icmp`, `tcp`, `udp`\n"
+                    "description": "enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
                 },
                 "subnets": {
                     "type": "array",
@@ -23608,6 +23621,9 @@
                 }
             },
             "type": "object",
+            "required": [
+                "subnets"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [

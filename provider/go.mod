@@ -192,7 +192,7 @@ require (
 	github.com/stretchr/testify v1.9.0 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
-	github.com/tmunzer/mistapi-go v0.3.22 // indirect
+	github.com/tmunzer/mistapi-go v0.3.23 // indirect
 	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect

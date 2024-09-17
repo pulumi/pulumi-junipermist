@@ -694,7 +694,7 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
-                                                "subnet": {
+                                                "subnets": {
                                                     "maxItemsOne": false
                                                 }
                                             }
@@ -1896,7 +1896,7 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
-                                                "subnet": {
+                                                "subnets": {
                                                     "maxItemsOne": false
                                                 }
                                             }
@@ -2629,7 +2629,7 @@
                                         "maxItemsOne": false,
                                         "elem": {
                                             "fields": {
-                                                "subnet": {
+                                                "subnets": {
                                                     "maxItemsOne": false
                                                 }
                                             }
