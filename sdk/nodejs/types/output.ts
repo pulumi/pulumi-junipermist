@@ -3390,7 +3390,7 @@ export namespace device {
          * - `type`==`mac`
          * - `type`==`staticGbp` if from matching mac
          */
-        macs?: string[];
+        macs: string[];
         /**
          * if:
          *   * `type`==`mac` (optional. default is `any`)
@@ -4477,10 +4477,10 @@ export namespace device {
 
     export interface SwitchSwitchMgmtProtectRe {
         /**
-         * optionally, services we'll allow
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices: string[];
-        customs?: outputs.device.SwitchSwitchMgmtProtectReCustom[];
+        customs: outputs.device.SwitchSwitchMgmtProtectReCustom[];
         /**
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default
@@ -4495,14 +4495,14 @@ export namespace device {
 
     export interface SwitchSwitchMgmtProtectReCustom {
         /**
-         * matched dst port, "0" means any
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         portRange: string;
         /**
-         * enum: `any`, `icmp`, `tcp`, `udp`
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol: string;
-        subnets?: string[];
+        subnets: string[];
     }
 
     export interface SwitchSwitchMgmtTacacs {
@@ -8134,7 +8134,7 @@ export namespace org {
          * - `type`==`mac`
          * - `type`==`staticGbp` if from matching mac
          */
-        macs?: string[];
+        macs: string[];
         /**
          * if:
          *   * `type`==`mac` (optional. default is `any`)
@@ -9116,10 +9116,10 @@ export namespace org {
 
     export interface NetworktemplateSwitchMgmtProtectRe {
         /**
-         * optionally, services we'll allow
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices: string[];
-        customs?: outputs.org.NetworktemplateSwitchMgmtProtectReCustom[];
+        customs: outputs.org.NetworktemplateSwitchMgmtProtectReCustom[];
         /**
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default
@@ -9134,11 +9134,11 @@ export namespace org {
 
     export interface NetworktemplateSwitchMgmtProtectReCustom {
         /**
-         * matched dst port, "0" means any
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         portRange: string;
         /**
-         * enum: `any`, `icmp`, `tcp`, `udp`
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol: string;
         subnets: string[];
@@ -11370,7 +11370,7 @@ export namespace site {
          * - `type`==`mac`
          * - `type`==`staticGbp` if from matching mac
          */
-        macs?: string[];
+        macs: string[];
         /**
          * if:
          *   * `type`==`mac` (optional. default is `any`)
@@ -12352,10 +12352,10 @@ export namespace site {
 
     export interface NetworktemplateSwitchMgmtProtectRe {
         /**
-         * optionally, services we'll allow
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
          */
         allowedServices: string[];
-        customs?: outputs.site.NetworktemplateSwitchMgmtProtectReCustom[];
+        customs: outputs.site.NetworktemplateSwitchMgmtProtectReCustom[];
         /**
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default
@@ -12370,11 +12370,11 @@ export namespace site {
 
     export interface NetworktemplateSwitchMgmtProtectReCustom {
         /**
-         * matched dst port, "0" means any
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         portRange: string;
         /**
-         * enum: `any`, `icmp`, `tcp`, `udp`
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
          */
         protocol: string;
         subnets: string[];

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMgmtProtectRe {
     /**
-     * @return optionally, services we&#39;ll allow
+     * @return optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
      * 
      */
     private @Nullable List<String> allowedServices;
@@ -35,7 +35,7 @@ public final class NetworktemplateSwitchMgmtProtectRe {
 
     private NetworktemplateSwitchMgmtProtectRe() {}
     /**
-     * @return optionally, services we&#39;ll allow
+     * @return optionally, services we&#39;ll allow. enum: `icmp`, `ssh`
      * 
      */
     public List<String> allowedServices() {

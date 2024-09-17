@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class NetworktemplateSwitchMgmtProtectRe
     {
         /// <summary>
-        /// optionally, services we'll allow
+        /// optionally, services we'll allow. enum: `icmp`, `ssh`
         /// </summary>
         public readonly ImmutableArray<string> AllowedServices;
         public readonly ImmutableArray<Outputs.NetworktemplateSwitchMgmtProtectReCustom> Customs;

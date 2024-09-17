@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,34 +14,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMgmtProtectReCustom {
     /**
-     * @return matched dst port, &#34;0&#34; means any
+     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     private @Nullable String portRange;
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`
+     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     private @Nullable String protocol;
-    private @Nullable List<String> subnets;
+    private List<String> subnets;
 
     private NetworktemplateSwitchMgmtProtectReCustom() {}
     /**
-     * @return matched dst port, &#34;0&#34; means any
+     * @return matched dst port, &#34;0&#34; means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     public Optional<String> portRange() {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return enum: `any`, `icmp`, `tcp`, `udp`
+     * @return enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     public List<String> subnets() {
-        return this.subnets == null ? List.of() : this.subnets;
+        return this.subnets;
     }
 
     public static Builder builder() {
@@ -54,7 +55,7 @@ public final class NetworktemplateSwitchMgmtProtectReCustom {
     public static final class Builder {
         private @Nullable String portRange;
         private @Nullable String protocol;
-        private @Nullable List<String> subnets;
+        private List<String> subnets;
         public Builder() {}
         public Builder(NetworktemplateSwitchMgmtProtectReCustom defaults) {
     	      Objects.requireNonNull(defaults);
@@ -76,8 +77,10 @@ public final class NetworktemplateSwitchMgmtProtectReCustom {
             return this;
         }
         @CustomType.Setter
-        public Builder subnets(@Nullable List<String> subnets) {
-
+        public Builder subnets(List<String> subnets) {
+            if (subnets == null) {
+              throw new MissingRequiredPropertyException("NetworktemplateSwitchMgmtProtectReCustom", "subnets");
+            }
             this.subnets = subnets;
             return this;
         }
