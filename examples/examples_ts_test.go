@@ -77,6 +77,7 @@ func TestSiteNetworkTemplateTs(t *testing.T) {
 	)
 	test.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
 	test.Up()
+	test.Preview(optpreview.ExpectNoChanges())
 }
 
 func TestSiteWlanPortalTemplateTs(t *testing.T) {

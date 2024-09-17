@@ -16,4 +16,9 @@ new junipermist.site.Networktemplate("site-network-template", {
       outputPortId: "ge-0/0/1",
     },
   },
+  switchMgmt: {
+    protectRe: {
+      enabled: true,
+    },
+  },
 });
