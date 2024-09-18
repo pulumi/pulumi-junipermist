@@ -17,8 +17,8 @@ func TestTsExamples(t *testing.T) {
 	tests := map[string]struct {
 		directoryName string
 	}{
-		"TestOrgWlanTs":                {directoryName: "org-wlan-ts"},
-		"TestOrgWlanIsolationTs":       {directoryName: "org-wlan-isolation-ts"},
+		"TestSiteWlanTs":               {directoryName: "site-wlan-ts"},
+		"TestSiteWlanIsolationTs":      {directoryName: "site-wlan-isolation-ts"},
 		"TestOrgRftemplateTs":          {directoryName: "org-rftemplate-ts"},
 		"TestSiteWxRuleTs":             {directoryName: "site-wxrule-ts"},
 		"TestSiteSettingTs":            {directoryName: "site-setting-ts"},

@@ -9,7 +9,7 @@ const sites = junipermist.getSitesOutput({
 });
 
 new junipermist.site.Wlan("org-wlan-one", {
-  ssid: "org_wlan_ts",
+  ssid: "site_wlan_ts",
   siteId: sites.sites[0].id,
   wlanLimitUpEnabled: false,
   wlanLimitDownEnabled: false,
