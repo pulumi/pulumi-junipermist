@@ -19,6 +19,8 @@ new junipermist.site.Networktemplate("site-network-template", {
   switchMgmt: {
     protectRe: {
       enabled: true,
+      allowedServices: ["icmp", "ssh"],
     },
+    rootPassword: "fake-password",
   },
 });
