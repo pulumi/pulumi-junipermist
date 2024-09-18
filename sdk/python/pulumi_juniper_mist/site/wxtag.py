@@ -182,7 +182,6 @@ class _WxtagState:
                  match: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  op: Optional[pulumi.Input[str]] = None,
-                 org_id: Optional[pulumi.Input[str]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['WxtagSpecArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -216,8 +215,6 @@ class _WxtagState:
             pulumi.set(__self__, "name", name)
         if op is not None:
             pulumi.set(__self__, "op", op)
-        if org_id is not None:
-            pulumi.set(__self__, "org_id", org_id)
         if site_id is not None:
             pulumi.set(__self__, "site_id", site_id)
         if specs is not None:
@@ -277,15 +274,6 @@ class _WxtagState:
     @op.setter
     def op(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "op", value)
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "org_id")
-
-    @org_id.setter
-    def org_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "org_id", value)
 
     @property
     @pulumi.getter(name="siteId")
@@ -494,7 +482,6 @@ class Wxtag(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["values"] = values
             __props__.__dict__["vlan_id"] = vlan_id
-            __props__.__dict__["org_id"] = None
         super(Wxtag, __self__).__init__(
             'junipermist:site/wxtag:Wxtag',
             resource_name,
@@ -509,7 +496,6 @@ class Wxtag(pulumi.CustomResource):
             match: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             op: Optional[pulumi.Input[str]] = None,
-            org_id: Optional[pulumi.Input[str]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
             specs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WxtagSpecArgs', 'WxtagSpecArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -548,7 +534,6 @@ class Wxtag(pulumi.CustomResource):
         __props__.__dict__["match"] = match
         __props__.__dict__["name"] = name
         __props__.__dict__["op"] = op
-        __props__.__dict__["org_id"] = org_id
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["specs"] = specs
         __props__.__dict__["type"] = type
@@ -588,11 +573,6 @@ class Wxtag(pulumi.CustomResource):
         required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`
         """
         return pulumi.get(self, "op")
-
-    @property
-    @pulumi.getter(name="orgId")
-    def org_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "org_id")
 
     @property
     @pulumi.getter(name="siteId")

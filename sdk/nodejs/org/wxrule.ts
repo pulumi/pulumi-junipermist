@@ -74,11 +74,11 @@ export class Wxrule extends pulumi.CustomResource {
     /**
      * tag list to indicate these tags are allowed access
      */
-    public readonly dstAllowWxtags!: pulumi.Output<string[] | undefined>;
+    public readonly dstAllowWxtags!: pulumi.Output<string[]>;
     /**
      * tag list to indicate these tags are blocked access
      */
-    public readonly dstDenyWxtags!: pulumi.Output<string[] | undefined>;
+    public readonly dstDenyWxtags!: pulumi.Output<string[]>;
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
@@ -88,7 +88,7 @@ export class Wxrule extends pulumi.CustomResource {
     /**
      * tag list to determine if this rule would match
      */
-    public readonly srcWxtags!: pulumi.Output<string[] | undefined>;
+    public readonly srcWxtags!: pulumi.Output<string[]>;
     /**
      * Only for Org Level WxRule
      */

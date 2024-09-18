@@ -73,10 +73,11 @@ type Wxrule struct {
 	Enabled       pulumi.BoolOutput        `pulumi:"enabled"`
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  pulumi.IntOutput    `pulumi:"order"`
-	OrgId  pulumi.StringOutput `pulumi:"orgId"`
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// tag list to determine if this rule would match
 	SrcWxtags pulumi.StringArrayOutput `pulumi:"srcWxtags"`
+	// Only for Org Level WxRule
+	TemplateId pulumi.StringPtrOutput `pulumi:"templateId"`
 }
 
 // NewWxrule registers a new resource with the given unique name, arguments, and options.
@@ -130,10 +131,11 @@ type wxruleState struct {
 	Enabled       *bool    `pulumi:"enabled"`
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  *int    `pulumi:"order"`
-	OrgId  *string `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
 	// tag list to determine if this rule would match
 	SrcWxtags []string `pulumi:"srcWxtags"`
+	// Only for Org Level WxRule
+	TemplateId *string `pulumi:"templateId"`
 }
 
 type WxruleState struct {
@@ -149,10 +151,11 @@ type WxruleState struct {
 	Enabled       pulumi.BoolPtrInput
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order  pulumi.IntPtrInput
-	OrgId  pulumi.StringPtrInput
 	SiteId pulumi.StringPtrInput
 	// tag list to determine if this rule would match
 	SrcWxtags pulumi.StringArrayInput
+	// Only for Org Level WxRule
+	TemplateId pulumi.StringPtrInput
 }
 
 func (WxruleState) ElementType() reflect.Type {
@@ -175,6 +178,8 @@ type wxruleArgs struct {
 	SiteId string `pulumi:"siteId"`
 	// tag list to determine if this rule would match
 	SrcWxtags []string `pulumi:"srcWxtags"`
+	// Only for Org Level WxRule
+	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a Wxrule resource.
@@ -194,6 +199,8 @@ type WxruleArgs struct {
 	SiteId pulumi.StringInput
 	// tag list to determine if this rule would match
 	SrcWxtags pulumi.StringArrayInput
+	// Only for Org Level WxRule
+	TemplateId pulumi.StringPtrInput
 }
 
 func (WxruleArgs) ElementType() reflect.Type {
@@ -316,10 +323,6 @@ func (o WxruleOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
 }
 
-func (o WxruleOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Wxrule) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
-}
-
 func (o WxruleOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }
@@ -327,6 +330,11 @@ func (o WxruleOutput) SiteId() pulumi.StringOutput {
 // tag list to determine if this rule would match
 func (o WxruleOutput) SrcWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.SrcWxtags }).(pulumi.StringArrayOutput)
+}
+
+// Only for Org Level WxRule
+func (o WxruleOutput) TemplateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Wxrule) pulumi.StringPtrOutput { return v.TemplateId }).(pulumi.StringPtrOutput)
 }
 
 type WxruleArrayOutput struct{ *pulumi.OutputState }

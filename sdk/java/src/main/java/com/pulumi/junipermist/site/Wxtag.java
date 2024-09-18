@@ -130,12 +130,6 @@ public class Wxtag extends com.pulumi.resources.CustomResource {
     public Output<String> op() {
         return this.op;
     }
-    @Export(name="orgId", refs={String.class}, tree="[0]")
-    private Output<String> orgId;
-
-    public Output<String> orgId() {
-        return this.orgId;
-    }
     @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 

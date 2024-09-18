@@ -76,9 +76,6 @@ namespace Pulumi.JuniperMist.Site
         [Output("op")]
         public Output<string> Op { get; private set; } = null!;
 
-        [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
-
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
@@ -261,9 +258,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("op")]
         public Input<string>? Op { get; set; }
-
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
 
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }

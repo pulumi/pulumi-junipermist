@@ -113,28 +113,28 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dstAllowWxtags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dstAllowWxtags;
+    private Output<List<String>> dstAllowWxtags;
 
     /**
      * @return tag list to indicate these tags are allowed access
      * 
      */
-    public Output<Optional<List<String>>> dstAllowWxtags() {
-        return Codegen.optional(this.dstAllowWxtags);
+    public Output<List<String>> dstAllowWxtags() {
+        return this.dstAllowWxtags;
     }
     /**
      * tag list to indicate these tags are blocked access
      * 
      */
     @Export(name="dstDenyWxtags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> dstDenyWxtags;
+    private Output<List<String>> dstDenyWxtags;
 
     /**
      * @return tag list to indicate these tags are blocked access
      * 
      */
-    public Output<Optional<List<String>>> dstDenyWxtags() {
-        return Codegen.optional(this.dstDenyWxtags);
+    public Output<List<String>> dstDenyWxtags() {
+        return this.dstDenyWxtags;
     }
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
@@ -167,14 +167,14 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="srcWxtags", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> srcWxtags;
+    private Output<List<String>> srcWxtags;
 
     /**
      * @return tag list to determine if this rule would match
      * 
      */
-    public Output<Optional<List<String>>> srcWxtags() {
-        return Codegen.optional(this.srcWxtags);
+    public Output<List<String>> srcWxtags() {
+        return this.srcWxtags;
     }
     /**
      * Only for Org Level WxRule
