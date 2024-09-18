@@ -34737,9 +34737,12 @@
             },
             "required": [
                 "action",
+                "dstAllowWxtags",
+                "dstDenyWxtags",
                 "enabled",
                 "order",
                 "orgId",
+                "srcWxtags",
                 "templateId"
             ],
             "inputProperties": {
@@ -37985,9 +37988,6 @@
                     "type": "integer",
                     "description": "the order how rules would be looked up, \u003e 0 and bigger order got matched first, -1 means LAST, uniqueness not checked\n"
                 },
-                "orgId": {
-                    "type": "string"
-                },
                 "siteId": {
                     "type": "string"
                 },
@@ -37997,14 +37997,20 @@
                         "type": "string"
                     },
                     "description": "tag list to determine if this rule would match\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "Only for Org Level WxRule\n"
                 }
             },
             "required": [
                 "action",
+                "dstAllowWxtags",
+                "dstDenyWxtags",
                 "enabled",
                 "order",
-                "orgId",
-                "siteId"
+                "siteId",
+                "srcWxtags"
             ],
             "inputProperties": {
                 "action": {
@@ -38054,6 +38060,10 @@
                         "type": "string"
                     },
                     "description": "tag list to determine if this rule would match\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "Only for Org Level WxRule\n"
                 }
             },
             "requiredInputs": [
@@ -38102,9 +38112,6 @@
                         "type": "integer",
                         "description": "the order how rules would be looked up, \u003e 0 and bigger order got matched first, -1 means LAST, uniqueness not checked\n"
                     },
-                    "orgId": {
-                        "type": "string"
-                    },
                     "siteId": {
                         "type": "string"
                     },
@@ -38114,6 +38121,10 @@
                             "type": "string"
                         },
                         "description": "tag list to determine if this rule would match\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "Only for Org Level WxRule\n"
                     }
                 },
                 "type": "object"
@@ -38137,9 +38148,6 @@
                 "op": {
                     "type": "string",
                     "description": "required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`\n"
-                },
-                "orgId": {
-                    "type": "string"
                 },
                 "siteId": {
                     "type": "string"
@@ -38169,7 +38177,6 @@
             "required": [
                 "name",
                 "op",
-                "orgId",
                 "siteId",
                 "type"
             ],
@@ -38237,9 +38244,6 @@
                     "op": {
                         "type": "string",
                         "description": "required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `not_in`\n"
-                    },
-                    "orgId": {
-                        "type": "string"
                     },
                     "siteId": {
                         "type": "string"
