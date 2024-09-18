@@ -79,13 +79,6 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.op);
     }
 
-    @Import(name="orgId")
-    private @Nullable Output<String> orgId;
-
-    public Optional<Output<String>> orgId() {
-        return Optional.ofNullable(this.orgId);
-    }
-
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
@@ -170,7 +163,6 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
         this.match = $.match;
         this.name = $.name;
         this.op = $.op;
-        this.orgId = $.orgId;
         this.siteId = $.siteId;
         this.specs = $.specs;
         this.type = $.type;
@@ -280,15 +272,6 @@ public final class WxtagState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder op(String op) {
             return op(Output.of(op));
-        }
-
-        public Builder orgId(@Nullable Output<String> orgId) {
-            $.orgId = orgId;
-            return this;
-        }
-
-        public Builder orgId(String orgId) {
-            return orgId(Output.of(orgId));
         }
 
         public Builder siteId(@Nullable Output<String> siteId) {

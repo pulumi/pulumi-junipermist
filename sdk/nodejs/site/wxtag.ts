@@ -80,7 +80,6 @@ export class Wxtag extends pulumi.CustomResource {
      * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
      */
     public readonly op!: pulumi.Output<string>;
-    public /*out*/ readonly orgId!: pulumi.Output<string>;
     public readonly siteId!: pulumi.Output<string>;
     /**
      * if `type`==`spec`
@@ -122,7 +121,6 @@ export class Wxtag extends pulumi.CustomResource {
             resourceInputs["match"] = state ? state.match : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["op"] = state ? state.op : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["specs"] = state ? state.specs : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -145,7 +143,6 @@ export class Wxtag extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["values"] = args ? args.values : undefined;
             resourceInputs["vlanId"] = args ? args.vlanId : undefined;
-            resourceInputs["orgId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Wxtag.__pulumiType, name, resourceInputs, opts);
@@ -173,7 +170,6 @@ export interface WxtagState {
      * required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
      */
     op?: pulumi.Input<string>;
-    orgId?: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
      * if `type`==`spec`

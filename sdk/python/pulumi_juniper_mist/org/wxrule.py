@@ -535,7 +535,7 @@ class Wxrule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dstAllowWxtags")
-    def dst_allow_wxtags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def dst_allow_wxtags(self) -> pulumi.Output[Sequence[str]]:
         """
         tag list to indicate these tags are allowed access
         """
@@ -543,7 +543,7 @@ class Wxrule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dstDenyWxtags")
-    def dst_deny_wxtags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def dst_deny_wxtags(self) -> pulumi.Output[Sequence[str]]:
         """
         tag list to indicate these tags are blocked access
         """
@@ -569,7 +569,7 @@ class Wxrule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="srcWxtags")
-    def src_wxtags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def src_wxtags(self) -> pulumi.Output[Sequence[str]]:
         """
         tag list to determine if this rule would match
         """

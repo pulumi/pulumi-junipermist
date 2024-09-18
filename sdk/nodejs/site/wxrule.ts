@@ -73,22 +73,25 @@ export class Wxrule extends pulumi.CustomResource {
     /**
      * tag list to indicate these tags are allowed access
      */
-    public readonly dstAllowWxtags!: pulumi.Output<string[] | undefined>;
+    public readonly dstAllowWxtags!: pulumi.Output<string[]>;
     /**
      * tag list to indicate these tags are blocked access
      */
-    public readonly dstDenyWxtags!: pulumi.Output<string[] | undefined>;
+    public readonly dstDenyWxtags!: pulumi.Output<string[]>;
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
     public readonly order!: pulumi.Output<number>;
-    public /*out*/ readonly orgId!: pulumi.Output<string>;
     public readonly siteId!: pulumi.Output<string>;
     /**
      * tag list to determine if this rule would match
      */
-    public readonly srcWxtags!: pulumi.Output<string[] | undefined>;
+    public readonly srcWxtags!: pulumi.Output<string[]>;
+    /**
+     * Only for Org Level WxRule
+     */
+    public readonly templateId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Wxrule resource with the given unique name, arguments, and options.
@@ -110,9 +113,9 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["dstDenyWxtags"] = state ? state.dstDenyWxtags : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["order"] = state ? state.order : undefined;
-            resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["srcWxtags"] = state ? state.srcWxtags : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
         } else {
             const args = argsOrState as WxruleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -133,7 +136,7 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["order"] = args ? args.order : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["srcWxtags"] = args ? args.srcWxtags : undefined;
-            resourceInputs["orgId"] = undefined /*out*/;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Wxrule.__pulumiType, name, resourceInputs, opts);
@@ -166,12 +169,15 @@ export interface WxruleState {
      * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
      */
     order?: pulumi.Input<number>;
-    orgId?: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
      * tag list to determine if this rule would match
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only for Org Level WxRule
+     */
+    templateId?: pulumi.Input<string>;
 }
 
 /**
@@ -205,4 +211,8 @@ export interface WxruleArgs {
      * tag list to determine if this rule would match
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only for Org Level WxRule
+     */
+    templateId?: pulumi.Input<string>;
 }

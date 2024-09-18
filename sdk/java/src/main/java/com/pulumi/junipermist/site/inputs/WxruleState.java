@@ -107,13 +107,6 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.order);
     }
 
-    @Import(name="orgId")
-    private @Nullable Output<String> orgId;
-
-    public Optional<Output<String>> orgId() {
-        return Optional.ofNullable(this.orgId);
-    }
-
     @Import(name="siteId")
     private @Nullable Output<String> siteId;
 
@@ -136,6 +129,21 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.srcWxtags);
     }
 
+    /**
+     * Only for Org Level WxRule
+     * 
+     */
+    @Import(name="templateId")
+    private @Nullable Output<String> templateId;
+
+    /**
+     * @return Only for Org Level WxRule
+     * 
+     */
+    public Optional<Output<String>> templateId() {
+        return Optional.ofNullable(this.templateId);
+    }
+
     private WxruleState() {}
 
     private WxruleState(WxruleState $) {
@@ -146,9 +154,9 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         this.dstDenyWxtags = $.dstDenyWxtags;
         this.enabled = $.enabled;
         this.order = $.order;
-        this.orgId = $.orgId;
         this.siteId = $.siteId;
         this.srcWxtags = $.srcWxtags;
+        this.templateId = $.templateId;
     }
 
     public static Builder builder() {
@@ -326,15 +334,6 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
             return order(Output.of(order));
         }
 
-        public Builder orgId(@Nullable Output<String> orgId) {
-            $.orgId = orgId;
-            return this;
-        }
-
-        public Builder orgId(String orgId) {
-            return orgId(Output.of(orgId));
-        }
-
         public Builder siteId(@Nullable Output<String> siteId) {
             $.siteId = siteId;
             return this;
@@ -373,6 +372,27 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder srcWxtags(String... srcWxtags) {
             return srcWxtags(List.of(srcWxtags));
+        }
+
+        /**
+         * @param templateId Only for Org Level WxRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(@Nullable Output<String> templateId) {
+            $.templateId = templateId;
+            return this;
+        }
+
+        /**
+         * @param templateId Only for Org Level WxRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(String templateId) {
+            return templateId(Output.of(templateId));
         }
 
         public WxruleState build() {

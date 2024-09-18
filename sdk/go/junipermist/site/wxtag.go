@@ -68,7 +68,6 @@ type Wxtag struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
 	Op     pulumi.StringOutput `pulumi:"op"`
-	OrgId  pulumi.StringOutput `pulumi:"orgId"`
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// if `type`==`spec`
 	Specs WxtagSpecArrayOutput `pulumi:"specs"`
@@ -133,7 +132,6 @@ type wxtagState struct {
 	Name *string `pulumi:"name"`
 	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
 	Op     *string `pulumi:"op"`
-	OrgId  *string `pulumi:"orgId"`
 	SiteId *string `pulumi:"siteId"`
 	// if `type`==`spec`
 	Specs []WxtagSpec `pulumi:"specs"`
@@ -163,7 +161,6 @@ type WxtagState struct {
 	Name pulumi.StringPtrInput
 	// required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
 	Op     pulumi.StringPtrInput
-	OrgId  pulumi.StringPtrInput
 	SiteId pulumi.StringPtrInput
 	// if `type`==`spec`
 	Specs WxtagSpecArrayInput
@@ -352,10 +349,6 @@ func (o WxtagOutput) Name() pulumi.StringOutput {
 // required if `type`==`match`, type of tag (inclusive/exclusive). enum: `in`, `notIn`
 func (o WxtagOutput) Op() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.Op }).(pulumi.StringOutput)
-}
-
-func (o WxtagOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Wxtag) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
 func (o WxtagOutput) SiteId() pulumi.StringOutput {

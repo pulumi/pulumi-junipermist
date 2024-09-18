@@ -90,9 +90,6 @@ namespace Pulumi.JuniperMist.Site
         [Output("order")]
         public Output<int> Order { get; private set; } = null!;
 
-        [Output("orgId")]
-        public Output<string> OrgId { get; private set; } = null!;
-
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
 
@@ -101,6 +98,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("srcWxtags")]
         public Output<ImmutableArray<string>> SrcWxtags { get; private set; } = null!;
+
+        /// <summary>
+        /// Only for Org Level WxRule
+        /// </summary>
+        [Output("templateId")]
+        public Output<string?> TemplateId { get; private set; } = null!;
 
 
         /// <summary>
@@ -223,6 +226,12 @@ namespace Pulumi.JuniperMist.Site
             set => _srcWxtags = value;
         }
 
+        /// <summary>
+        /// Only for Org Level WxRule
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
         public WxruleArgs()
         {
         }
@@ -290,9 +299,6 @@ namespace Pulumi.JuniperMist.Site
         [Input("order")]
         public Input<int>? Order { get; set; }
 
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
-
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
@@ -307,6 +313,12 @@ namespace Pulumi.JuniperMist.Site
             get => _srcWxtags ?? (_srcWxtags = new InputList<string>());
             set => _srcWxtags = value;
         }
+
+        /// <summary>
+        /// Only for Org Level WxRule
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
 
         public WxruleState()
         {
