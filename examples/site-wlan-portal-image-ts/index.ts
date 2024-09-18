@@ -8,8 +8,8 @@ const sites = junipermist.getSitesOutput({
   orgId: organizationId,
 });
 
-const wlan = new junipermist.site.Wlan("wlan_one", {
-  ssid: "wlan_portal_template",
+const wlan = new junipermist.site.Wlan("wlan-portal-image", {
+  ssid: "site_wlan_portal_image_ts",
   siteId: sites.sites[0].id,
   wlanLimitUpEnabled: false,
   wlanLimitDownEnabled: false,

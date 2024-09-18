@@ -9,9 +9,9 @@ const orgTemplate = new junipermist.org.Wlantemplate("org-template", {
   name: "wlan_org_template",
 });
 
-const wlan = new junipermist.org.Wlan("wlan_one", {
+const wlan = new junipermist.org.Wlan("wlan-org-one", {
   templateId: orgTemplate.id,
-  ssid: "wlan_one",
+  ssid: "wlan_org_one",
   orgId: organizationId,
   auth: {
     type: "psk",
