@@ -35,9 +35,9 @@ func TestTsExamples(t *testing.T) {
 				opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),
 				opttest.YarnLink("@pulumi/juniper-mist"),
 			)
-			p.SetConfig("organizationId", os.Getenv(EnvMistOrgID))
-			p.Up()
-			p.Preview(optpreview.ExpectNoChanges())
+			p.SetConfig(t, "organizationId", os.Getenv(EnvMistOrgID))
+			p.Up(t)
+			p.Preview(t, optpreview.ExpectNoChanges())
 		})
 	}
 }

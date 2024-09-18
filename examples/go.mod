@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-junipermist/examples
 go 1.21
 
 require (
-	github.com/pulumi/providertest v0.0.15
+	github.com/pulumi/providertest v0.1.2
 	github.com/pulumi/pulumi/pkg/v3 v3.130.0
 	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 
