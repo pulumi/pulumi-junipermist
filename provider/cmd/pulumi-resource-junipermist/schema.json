@@ -16812,7 +16812,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplateSwitchMatchingRulePortMirroring:NetworktemplateSwitchMatchingRulePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4)\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 }
             },
             "type": "object"
@@ -23306,7 +23306,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplateSwitchMatchingRulePortMirroring:NetworktemplateSwitchMatchingRulePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4)\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 }
             },
             "type": "object"
@@ -28746,7 +28746,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchPortMirroring:SwitchPortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -28974,7 +28974,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchPortMirroring:SwitchPortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -29204,7 +29204,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:device/SwitchPortMirroring:SwitchPortMirroring"
                         },
-                        "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                        "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                     },
                     "portUsages": {
                         "type": "object",
@@ -31369,7 +31369,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -31502,7 +31502,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -31635,7 +31635,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:org/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                         },
-                        "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                        "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                     },
                     "portUsages": {
                         "type": "object",
@@ -35297,7 +35297,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -35429,7 +35429,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -35562,7 +35562,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:site/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                         },
-                        "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                        "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
                     },
                     "portUsages": {
                         "type": "object",
