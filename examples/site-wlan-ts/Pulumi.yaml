@@ -1,4 +1,4 @@
-name: juniper-mist-org-wlan-ts
+name: juniper-mist-site-wlan-ts
 runtime:
   name: nodejs
   options:

@@ -1,5 +1,5 @@
 {
-  "name": "juniper-mist-org-wlan-isolation-ts",
+  "name": "juniper-mist-site-wlan-isolation-ts",
   "main": "index.ts",
   "devDependencies": {
     "@types/node": "^18",

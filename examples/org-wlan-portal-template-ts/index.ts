@@ -13,9 +13,9 @@ const orgTemplate = new junipermist.org.Wlantemplate("org-template", {
   name: "wlan_org_template",
 });
 
-const wlan = new junipermist.org.Wlan("wlan_one", {
+const wlan = new junipermist.org.Wlan("org-portal-wlan-one", {
   templateId: orgTemplate.id,
-  ssid: "wlan_one",
+  ssid: "wlan_portal_template_ts",
   orgId: organizationId,
   auth: {
     type: "psk",
@@ -24,7 +24,7 @@ const wlan = new junipermist.org.Wlan("wlan_one", {
   interface: "all",
 });
 
-new junipermist.org.WlanPortalTemplate("portal-template", {
+new junipermist.org.WlanPortalTemplate("wlan-portal-template", {
   orgId: wlan.orgId,
   wlanId: wlan.id,
   portalTemplate: {

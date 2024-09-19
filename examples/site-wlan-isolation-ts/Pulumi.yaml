@@ -1,4 +1,4 @@
-name: juniper-mist-org-wlan-isolation-ts
+name: juniper-mist-site-wlan-isolation-ts
 runtime:
   name: nodejs
   options:
