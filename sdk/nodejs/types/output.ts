@@ -8956,7 +8956,7 @@ export namespace org {
          */
         portConfig?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name
+         * Property key is the port mirroring instance name (Maximum: 4)
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortMirroring};
@@ -12192,7 +12192,7 @@ export namespace site {
          */
         portConfig?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name
+         * Property key is the port mirroring instance name (Maximum: 4)
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};

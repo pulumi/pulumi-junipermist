@@ -267,16 +267,16 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ospfAreas);
     }
     /**
-     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,NetworktemplatePortMirroring.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * @return Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {

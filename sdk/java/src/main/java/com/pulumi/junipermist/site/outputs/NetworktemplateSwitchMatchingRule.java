@@ -52,7 +52,7 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
     /**
-     * @return Property key is the port mirroring instance name
+     * @return Property key is the port mirroring instance name (Maximum: 4)
      * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
@@ -110,7 +110,7 @@ public final class NetworktemplateSwitchMatchingRule {
         return this.portConfig == null ? Map.of() : this.portConfig;
     }
     /**
-     * @return Property key is the port mirroring instance name
+     * @return Property key is the port mirroring instance name (Maximum: 4)
      * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */

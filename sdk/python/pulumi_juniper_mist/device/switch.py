@@ -78,8 +78,8 @@ class SwitchArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch settings
@@ -455,8 +455,8 @@ class SwitchArgs:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+        takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -714,8 +714,8 @@ class _SwitchState:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[str] serial: device Serial
@@ -1162,8 +1162,8 @@ class _SwitchState:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+        takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -1460,8 +1460,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch settings
@@ -1699,8 +1699,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-               interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[str] serial: device Serial
@@ -1982,8 +1982,8 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortMirroring']]]:
         """
-        Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-        interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+        takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         """
         return pulumi.get(self, "port_mirroring")
 

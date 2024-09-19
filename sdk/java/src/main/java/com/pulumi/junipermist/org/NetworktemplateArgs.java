@@ -207,16 +207,16 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,NetworktemplatePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * @return Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
     public Optional<Output<Map<String,NetworktemplatePortMirroringArgs>>> portMirroring() {
@@ -652,8 +652,8 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+         * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          * 
          * @return builder
          * 
@@ -664,8 +664,8 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+         * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          * 
          * @return builder
          * 

@@ -7433,7 +7433,7 @@ type NetworktemplateSwitchMatchingRule struct {
 	OobIpConfig *NetworktemplateSwitchMatchingRuleOobIpConfig `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig map[string]NetworktemplateSwitchMatchingRulePortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name
+	// Property key is the port mirroring instance name (Maximum: 4)
 	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring map[string]NetworktemplateSwitchMatchingRulePortMirroring `pulumi:"portMirroring"`
 }
@@ -7466,7 +7466,7 @@ type NetworktemplateSwitchMatchingRuleArgs struct {
 	OobIpConfig NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig NetworktemplateSwitchMatchingRulePortConfigMapInput `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name
+	// Property key is the port mirroring instance name (Maximum: 4)
 	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring NetworktemplateSwitchMatchingRulePortMirroringMapInput `pulumi:"portMirroring"`
 }
@@ -7568,7 +7568,7 @@ func (o NetworktemplateSwitchMatchingRuleOutput) PortConfig() NetworktemplateSwi
 	}).(NetworktemplateSwitchMatchingRulePortConfigMapOutput)
 }
 
-// Property key is the port mirroring instance name
+// Property key is the port mirroring instance name (Maximum: 4)
 // portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 func (o NetworktemplateSwitchMatchingRuleOutput) PortMirroring() NetworktemplateSwitchMatchingRulePortMirroringMapOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) map[string]NetworktemplateSwitchMatchingRulePortMirroring {

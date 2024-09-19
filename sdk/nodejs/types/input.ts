@@ -6850,7 +6850,7 @@ export namespace org {
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortConfig>}>;
         /**
-         * Property key is the port mirroring instance name
+         * Property key is the port mirroring instance name (Maximum: 4)
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortMirroring>}>;
@@ -9958,7 +9958,7 @@ export namespace site {
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortConfig>}>;
         /**
-         * Property key is the port mirroring instance name
+         * Property key is the port mirroring instance name (Maximum: 4)
          * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortMirroring>}>;
