@@ -136,8 +136,8 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.device.SwitchPortUsages} | undefined>;
@@ -416,8 +416,8 @@ export interface SwitchState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>}>;
@@ -558,8 +558,8 @@ export interface SwitchArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>}>;

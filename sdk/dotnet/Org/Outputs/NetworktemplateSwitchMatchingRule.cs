@@ -42,7 +42,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortConfig>? PortConfig;
         /// <summary>
-        /// Property key is the port mirroring instance name
+        /// Property key is the port mirroring instance name (Maximum: 4)
         /// port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.NetworktemplateSwitchMatchingRulePortMirroring>? PortMirroring;

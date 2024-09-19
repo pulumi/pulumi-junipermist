@@ -76,8 +76,8 @@ type Switch struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapOutput `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring SwitchPortMirroringMapOutput `pulumi:"portMirroring"`
 	PortUsages    SwitchPortUsagesMapOutput    `pulumi:"portUsages"`
 	// Junos Radius config
@@ -198,8 +198,8 @@ type switchState struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
 	PortUsages    map[string]SwitchPortUsages    `pulumi:"portUsages"`
 	// Junos Radius config
@@ -285,8 +285,8 @@ type SwitchState struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring SwitchPortMirroringMapInput
 	PortUsages    SwitchPortUsagesMapInput
 	// Junos Radius config
@@ -368,8 +368,8 @@ type switchArgs struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
 	PortUsages    map[string]SwitchPortUsages    `pulumi:"portUsages"`
 	// Junos Radius config
@@ -444,8 +444,8 @@ type SwitchArgs struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 	PortMirroring SwitchPortMirroringMapInput
 	PortUsages    SwitchPortUsagesMapInput
 	// Junos Radius config
@@ -703,8 +703,8 @@ func (o SwitchOutput) PortConfig() SwitchPortConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortConfigMapOutput { return v.PortConfig }).(SwitchPortConfigMapOutput)
 }
 
-// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
 func (o SwitchOutput) PortMirroring() SwitchPortMirroringMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortMirroringMapOutput { return v.PortMirroring }).(SwitchPortMirroringMapOutput)
 }

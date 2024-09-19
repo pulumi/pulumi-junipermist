@@ -130,7 +130,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * Property key is the port mirroring instance name
+     * Property key is the port mirroring instance name (Maximum: 4)
      * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
@@ -138,7 +138,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     private @Nullable Output<Map<String,NetworktemplateSwitchMatchingRulePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name
+     * @return Property key is the port mirroring instance name (Maximum: 4)
      * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      * 
      */
@@ -339,7 +339,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name
+         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4)
          * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          * 
          * @return builder
@@ -351,7 +351,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name
+         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4)
          * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
          * 
          * @return builder

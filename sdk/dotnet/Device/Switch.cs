@@ -174,8 +174,8 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -518,8 +518,8 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringArgs> PortMirroring
         {
@@ -855,8 +855,8 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
-        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
+        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringGetArgs> PortMirroring
         {

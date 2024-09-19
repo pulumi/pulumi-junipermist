@@ -3886,7 +3886,7 @@ class NetworktemplateSwitchMatchingRule(dict):
         :param str match_type: 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         :param 'NetworktemplateSwitchMatchingRuleOobIpConfigArgs' oob_ip_config: Out-of-Band Management interface configuration
         :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortConfigArgs'] port_config: Propery key is the interface name or interface range
-        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortMirroringArgs'] port_mirroring: Property key is the port mirroring instance name
+        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortMirroringArgs'] port_mirroring: Property key is the port mirroring instance name (Maximum: 4)
                port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         """
         if additional_config_cmds is not None:
@@ -3972,7 +3972,7 @@ class NetworktemplateSwitchMatchingRule(dict):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[Mapping[str, 'outputs.NetworktemplateSwitchMatchingRulePortMirroring']]:
         """
-        Property key is the port mirroring instance name
+        Property key is the port mirroring instance name (Maximum: 4)
         port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
         """
         return pulumi.get(self, "port_mirroring")

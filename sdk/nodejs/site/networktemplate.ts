@@ -87,8 +87,8 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateOspfAreas} | undefined>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortMirroring} | undefined>;
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortUsages} | undefined>;
@@ -234,8 +234,8 @@ export interface NetworktemplateState {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
@@ -310,8 +310,8 @@ export interface NetworktemplateArgs {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
-     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
+     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
