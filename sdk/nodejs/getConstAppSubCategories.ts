@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getConstAppSubCategories(opts?: pulumi.InvokeOptions): Promise<GetConstAppSubCategoriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetConstAppSubCategoriesResult {
  * ```
  */
 export function getConstAppSubCategoriesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstAppSubCategoriesResult> {
-    return pulumi.output(getConstAppSubCategories(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", {
+    }, opts);
 }

@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewaytemplates(args: GetGatewaytemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaytemplatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getGatewaytemplates:getGatewaytemplates", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetGatewaytemplatesResult {
  * ```
  */
 export function getGatewaytemplatesOutput(args: GetGatewaytemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaytemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getGatewaytemplates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getGatewaytemplates:getGatewaytemplates", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

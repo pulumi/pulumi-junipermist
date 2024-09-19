@@ -81,14 +81,20 @@ type GetGatewayStatsResult struct {
 
 func GetGatewayStatsOutput(ctx *pulumi.Context, args GetGatewayStatsOutputArgs, opts ...pulumi.InvokeOption) GetGatewayStatsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGatewayStatsResult, error) {
+		ApplyT(func(v interface{}) (GetGatewayStatsResultOutput, error) {
 			args := v.(GetGatewayStatsArgs)
-			r, err := GetGatewayStats(ctx, &args, opts...)
-			var s GetGatewayStatsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGatewayStatsResult
+			secret, err := ctx.InvokePackageRaw("junipermist:device/getGatewayStats:getGatewayStats", args, &rv, "", opts...)
+			if err != nil {
+				return GetGatewayStatsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGatewayStatsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGatewayStatsResultOutput), nil
+			}
+			return output, nil
 		}).(GetGatewayStatsResultOutput)
 }
 

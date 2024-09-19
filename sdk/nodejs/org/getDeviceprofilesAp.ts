@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDeviceprofilesAp(args: GetDeviceprofilesApArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceprofilesApResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetDeviceprofilesApResult {
  * ```
  */
 export function getDeviceprofilesApOutput(args: GetDeviceprofilesApOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceprofilesApResult> {
-    return pulumi.output(args).apply((a: any) => getDeviceprofilesAp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

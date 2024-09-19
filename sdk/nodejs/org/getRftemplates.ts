@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRftemplates(args: GetRftemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetRftemplatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getRftemplates:getRftemplates", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetRftemplatesResult {
  * ```
  */
 export function getRftemplatesOutput(args: GetRftemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRftemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getRftemplates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getRftemplates:getRftemplates", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

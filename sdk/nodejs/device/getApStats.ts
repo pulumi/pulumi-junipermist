@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getApStats(args: GetApStatsArgs, opts?: pulumi.InvokeOptions): Promise<GetApStatsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:device/getApStats:getApStats", {
         "duration": args.duration,
@@ -97,7 +96,16 @@ export interface GetApStatsResult {
  * ```
  */
 export function getApStatsOutput(args: GetApStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApStatsResult> {
-    return pulumi.output(args).apply((a: any) => getApStats(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:device/getApStats:getApStats", {
+        "duration": args.duration,
+        "end": args.end,
+        "mac": args.mac,
+        "orgId": args.orgId,
+        "siteId": args.siteId,
+        "start": args.start,
+        "status": args.status,
+    }, opts);
 }
 
 /**

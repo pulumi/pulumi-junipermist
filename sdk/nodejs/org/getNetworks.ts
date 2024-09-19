@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNetworks(args: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getNetworks:getNetworks", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetNetworksResult {
  * ```
  */
 export function getNetworksOutput(args: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
-    return pulumi.output(args).apply((a: any) => getNetworks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getNetworks:getNetworks", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

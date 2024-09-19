@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWlantemplates(args: GetWlantemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetWlantemplatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getWlantemplates:getWlantemplates", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetWlantemplatesResult {
  * ```
  */
 export function getWlantemplatesOutput(args: GetWlantemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWlantemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getWlantemplates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getWlantemplates:getWlantemplates", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

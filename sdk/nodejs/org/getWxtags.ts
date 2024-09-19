@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWxtags(args: GetWxtagsArgs, opts?: pulumi.InvokeOptions): Promise<GetWxtagsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getWxtags:getWxtags", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetWxtagsResult {
  * ```
  */
 export function getWxtagsOutput(args: GetWxtagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWxtagsResult> {
-    return pulumi.output(args).apply((a: any) => getWxtags(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getWxtags:getWxtags", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

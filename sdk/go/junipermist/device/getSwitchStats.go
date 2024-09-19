@@ -89,14 +89,20 @@ type GetSwitchStatsResult struct {
 
 func GetSwitchStatsOutput(ctx *pulumi.Context, args GetSwitchStatsOutputArgs, opts ...pulumi.InvokeOption) GetSwitchStatsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSwitchStatsResult, error) {
+		ApplyT(func(v interface{}) (GetSwitchStatsResultOutput, error) {
 			args := v.(GetSwitchStatsArgs)
-			r, err := GetSwitchStats(ctx, &args, opts...)
-			var s GetSwitchStatsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSwitchStatsResult
+			secret, err := ctx.InvokePackageRaw("junipermist:device/getSwitchStats:getSwitchStats", args, &rv, "", opts...)
+			if err != nil {
+				return GetSwitchStatsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSwitchStatsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSwitchStatsResultOutput), nil
+			}
+			return output, nil
 		}).(GetSwitchStatsResultOutput)
 }
 

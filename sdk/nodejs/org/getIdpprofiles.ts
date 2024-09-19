@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIdpprofiles(args: GetIdpprofilesArgs, opts?: pulumi.InvokeOptions): Promise<GetIdpprofilesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getIdpprofiles:getIdpprofiles", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetIdpprofilesResult {
  * ```
  */
 export function getIdpprofilesOutput(args: GetIdpprofilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdpprofilesResult> {
-    return pulumi.output(args).apply((a: any) => getIdpprofiles(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getIdpprofiles:getIdpprofiles", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

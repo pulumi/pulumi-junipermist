@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getSites(args: GetSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetSitesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:index/getSites:getSites", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetSitesResult {
  * ```
  */
 export function getSitesOutput(args: GetSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSitesResult> {
-    return pulumi.output(args).apply((a: any) => getSites(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:index/getSites:getSites", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

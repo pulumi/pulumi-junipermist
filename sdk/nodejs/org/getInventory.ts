@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInventory(args: GetInventoryArgs, opts?: pulumi.InvokeOptions): Promise<GetInventoryResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getInventory:getInventory", {
         "mac": args.mac,
@@ -124,7 +123,17 @@ export interface GetInventoryResult {
  * ```
  */
 export function getInventoryOutput(args: GetInventoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInventoryResult> {
-    return pulumi.output(args).apply((a: any) => getInventory(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getInventory:getInventory", {
+        "mac": args.mac,
+        "model": args.model,
+        "orgId": args.orgId,
+        "serial": args.serial,
+        "siteId": args.siteId,
+        "unassigned": args.unassigned,
+        "vc": args.vc,
+        "vcMac": args.vcMac,
+    }, opts);
 }
 
 /**

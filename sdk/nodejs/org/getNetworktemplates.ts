@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNetworktemplates(args: GetNetworktemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworktemplatesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getNetworktemplates:getNetworktemplates", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetNetworktemplatesResult {
  * ```
  */
 export function getNetworktemplatesOutput(args: GetNetworktemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworktemplatesResult> {
-    return pulumi.output(args).apply((a: any) => getNetworktemplates(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getNetworktemplates:getNetworktemplates", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

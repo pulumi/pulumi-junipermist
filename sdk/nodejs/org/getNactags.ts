@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNactags(args: GetNactagsArgs, opts?: pulumi.InvokeOptions): Promise<GetNactagsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getNactags:getNactags", {
         "limit": args.limit,
@@ -76,7 +75,15 @@ export interface GetNactagsResult {
  * ```
  */
 export function getNactagsOutput(args: GetNactagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNactagsResult> {
-    return pulumi.output(args).apply((a: any) => getNactags(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getNactags:getNactags", {
+        "limit": args.limit,
+        "match": args.match,
+        "name": args.name,
+        "orgId": args.orgId,
+        "page": args.page,
+        "type": args.type,
+    }, opts);
 }
 
 /**

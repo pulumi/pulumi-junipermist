@@ -54,13 +54,19 @@ type GetConstApplicationsResult struct {
 }
 
 func GetConstApplicationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstApplicationsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstApplicationsResult, error) {
-		r, err := GetConstApplications(ctx, opts...)
-		var s GetConstApplicationsResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstApplicationsResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetConstApplicationsResult
+		secret, err := ctx.InvokePackageRaw("junipermist:index/getConstApplications:getConstApplications", nil, &rv, "", opts...)
+		if err != nil {
+			return GetConstApplicationsResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetConstApplicationsResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetConstApplicationsResultOutput), nil
+		}
+		return output, nil
 	}).(GetConstApplicationsResultOutput)
 }
 

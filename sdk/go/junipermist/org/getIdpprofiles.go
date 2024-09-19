@@ -63,14 +63,20 @@ type GetIdpprofilesResult struct {
 
 func GetIdpprofilesOutput(ctx *pulumi.Context, args GetIdpprofilesOutputArgs, opts ...pulumi.InvokeOption) GetIdpprofilesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIdpprofilesResult, error) {
+		ApplyT(func(v interface{}) (GetIdpprofilesResultOutput, error) {
 			args := v.(GetIdpprofilesArgs)
-			r, err := GetIdpprofiles(ctx, &args, opts...)
-			var s GetIdpprofilesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetIdpprofilesResult
+			secret, err := ctx.InvokePackageRaw("junipermist:org/getIdpprofiles:getIdpprofiles", args, &rv, "", opts...)
+			if err != nil {
+				return GetIdpprofilesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetIdpprofilesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetIdpprofilesResultOutput), nil
+			}
+			return output, nil
 		}).(GetIdpprofilesResultOutput)
 }
 
