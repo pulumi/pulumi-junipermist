@@ -21,6 +21,7 @@ class WxruleArgs:
                  blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  src_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None):
@@ -31,6 +32,7 @@ class WxruleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
@@ -45,6 +47,8 @@ class WxruleArgs:
             pulumi.set(__self__, "dst_allow_wxtags", dst_allow_wxtags)
         if dst_deny_wxtags is not None:
             pulumi.set(__self__, "dst_deny_wxtags", dst_deny_wxtags)
+        if dst_wxtags is not None:
+            pulumi.set(__self__, "dst_wxtags", dst_wxtags)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if src_wxtags is not None:
@@ -131,6 +135,18 @@ class WxruleArgs:
         pulumi.set(self, "dst_deny_wxtags", value)
 
     @property
+    @pulumi.getter(name="dstWxtags")
+    def dst_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of WxTag UUID
+        """
+        return pulumi.get(self, "dst_wxtags")
+
+    @dst_wxtags.setter
+    def dst_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dst_wxtags", value)
+
+    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "enabled")
@@ -172,6 +188,7 @@ class _WxruleState:
                  blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -183,6 +200,7 @@ class _WxruleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
@@ -197,6 +215,8 @@ class _WxruleState:
             pulumi.set(__self__, "dst_allow_wxtags", dst_allow_wxtags)
         if dst_deny_wxtags is not None:
             pulumi.set(__self__, "dst_deny_wxtags", dst_deny_wxtags)
+        if dst_wxtags is not None:
+            pulumi.set(__self__, "dst_wxtags", dst_wxtags)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if order is not None:
@@ -266,6 +286,18 @@ class _WxruleState:
         pulumi.set(self, "dst_deny_wxtags", value)
 
     @property
+    @pulumi.getter(name="dstWxtags")
+    def dst_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of WxTag UUID
+        """
+        return pulumi.get(self, "dst_wxtags")
+
+    @dst_wxtags.setter
+    def dst_wxtags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dst_wxtags", value)
+
+    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "enabled")
@@ -330,6 +362,7 @@ class Wxrule(pulumi.CustomResource):
                  blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -370,6 +403,7 @@ class Wxrule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
@@ -428,6 +462,7 @@ class Wxrule(pulumi.CustomResource):
                  blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  order: Optional[pulumi.Input[int]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -449,6 +484,7 @@ class Wxrule(pulumi.CustomResource):
             __props__.__dict__["blocked_apps"] = blocked_apps
             __props__.__dict__["dst_allow_wxtags"] = dst_allow_wxtags
             __props__.__dict__["dst_deny_wxtags"] = dst_deny_wxtags
+            __props__.__dict__["dst_wxtags"] = dst_wxtags
             __props__.__dict__["enabled"] = enabled
             if order is None and not opts.urn:
                 raise TypeError("Missing required property 'order'")
@@ -473,6 +509,7 @@ class Wxrule(pulumi.CustomResource):
             blocked_apps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dst_allow_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dst_deny_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            dst_wxtags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             order: Optional[pulumi.Input[int]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
@@ -489,6 +526,7 @@ class Wxrule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
@@ -502,6 +540,7 @@ class Wxrule(pulumi.CustomResource):
         __props__.__dict__["blocked_apps"] = blocked_apps
         __props__.__dict__["dst_allow_wxtags"] = dst_allow_wxtags
         __props__.__dict__["dst_deny_wxtags"] = dst_deny_wxtags
+        __props__.__dict__["dst_wxtags"] = dst_wxtags
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["order"] = order
         __props__.__dict__["site_id"] = site_id
@@ -545,6 +584,14 @@ class Wxrule(pulumi.CustomResource):
         tag list to indicate these tags are blocked access
         """
         return pulumi.get(self, "dst_deny_wxtags")
+
+    @property
+    @pulumi.getter(name="dstWxtags")
+    def dst_wxtags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of WxTag UUID
+        """
+        return pulumi.get(self, "dst_wxtags")
 
     @property
     @pulumi.getter

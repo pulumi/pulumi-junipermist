@@ -25,6 +25,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string Name;
         public readonly string? Network;
         /// <summary>
+        /// if `protocol`==`icmp`
+        /// </summary>
+        public readonly int? PacketSize;
+        /// <summary>
         /// enum: `http`, `icmp`
         /// </summary>
         public readonly string Protocol;
@@ -45,6 +49,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? network,
 
+            int? packetSize,
+
             string protocol,
 
             string? url,
@@ -57,6 +63,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             Key = key;
             Name = name;
             Network = network;
+            PacketSize = packetSize;
             Protocol = protocol;
             Url = url;
             Vrf = vrf;

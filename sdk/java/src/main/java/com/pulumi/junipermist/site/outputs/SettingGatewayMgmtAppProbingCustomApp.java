@@ -5,6 +5,7 @@ package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +26,11 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     private @Nullable String key;
     private String name;
     private @Nullable String network;
+    /**
+     * @return if `protocol`==`icmp`
+     * 
+     */
+    private @Nullable Integer packetSize;
     /**
      * @return enum: `http`, `icmp`
      * 
@@ -59,6 +65,13 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
         return Optional.ofNullable(this.network);
     }
     /**
+     * @return if `protocol`==`icmp`
+     * 
+     */
+    public Optional<Integer> packetSize() {
+        return Optional.ofNullable(this.packetSize);
+    }
+    /**
      * @return enum: `http`, `icmp`
      * 
      */
@@ -87,6 +100,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
         private @Nullable String key;
         private String name;
         private @Nullable String network;
+        private @Nullable Integer packetSize;
         private String protocol;
         private @Nullable String url;
         private @Nullable String vrf;
@@ -99,6 +113,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
     	      this.key = defaults.key;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.packetSize = defaults.packetSize;
     	      this.protocol = defaults.protocol;
     	      this.url = defaults.url;
     	      this.vrf = defaults.vrf;
@@ -148,6 +163,12 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
             return this;
         }
         @CustomType.Setter
+        public Builder packetSize(@Nullable Integer packetSize) {
+
+            this.packetSize = packetSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder protocol(String protocol) {
             if (protocol == null) {
               throw new MissingRequiredPropertyException("SettingGatewayMgmtAppProbingCustomApp", "protocol");
@@ -175,6 +196,7 @@ public final class SettingGatewayMgmtAppProbingCustomApp {
             _resultValue.key = key;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.packetSize = packetSize;
             _resultValue.protocol = protocol;
             _resultValue.url = url;
             _resultValue.vrf = vrf;

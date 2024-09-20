@@ -78,6 +78,10 @@ export class Wxrule extends pulumi.CustomResource {
      * tag list to indicate these tags are blocked access
      */
     public readonly dstDenyWxtags!: pulumi.Output<string[]>;
+    /**
+     * List of WxTag UUID
+     */
+    public readonly dstWxtags!: pulumi.Output<string[]>;
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
@@ -111,6 +115,7 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["blockedApps"] = state ? state.blockedApps : undefined;
             resourceInputs["dstAllowWxtags"] = state ? state.dstAllowWxtags : undefined;
             resourceInputs["dstDenyWxtags"] = state ? state.dstDenyWxtags : undefined;
+            resourceInputs["dstWxtags"] = state ? state.dstWxtags : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["order"] = state ? state.order : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
@@ -132,6 +137,7 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["blockedApps"] = args ? args.blockedApps : undefined;
             resourceInputs["dstAllowWxtags"] = args ? args.dstAllowWxtags : undefined;
             resourceInputs["dstDenyWxtags"] = args ? args.dstDenyWxtags : undefined;
+            resourceInputs["dstWxtags"] = args ? args.dstWxtags : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["order"] = args ? args.order : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
@@ -164,6 +170,10 @@ export interface WxruleState {
      * tag list to indicate these tags are blocked access
      */
     dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of WxTag UUID
+     */
+    dstWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     enabled?: pulumi.Input<boolean>;
     /**
      * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
@@ -201,6 +211,10 @@ export interface WxruleArgs {
      * tag list to indicate these tags are blocked access
      */
     dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of WxTag UUID
+     */
+    dstWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     enabled?: pulumi.Input<boolean>;
     /**
      * the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
