@@ -37,14 +37,20 @@ type GetVpnsResult struct {
 
 func GetVpnsOutput(ctx *pulumi.Context, args GetVpnsOutputArgs, opts ...pulumi.InvokeOption) GetVpnsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetVpnsResult, error) {
+		ApplyT(func(v interface{}) (GetVpnsResultOutput, error) {
 			args := v.(GetVpnsArgs)
-			r, err := GetVpns(ctx, &args, opts...)
-			var s GetVpnsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetVpnsResult
+			secret, err := ctx.InvokePackageRaw("junipermist:org/getVpns:getVpns", args, &rv, "", opts...)
+			if err != nil {
+				return GetVpnsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetVpnsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetVpnsResultOutput), nil
+			}
+			return output, nil
 		}).(GetVpnsResultOutput)
 }
 

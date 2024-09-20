@@ -63,14 +63,20 @@ type GetDeviceprofilesApResult struct {
 
 func GetDeviceprofilesApOutput(ctx *pulumi.Context, args GetDeviceprofilesApOutputArgs, opts ...pulumi.InvokeOption) GetDeviceprofilesApResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDeviceprofilesApResult, error) {
+		ApplyT(func(v interface{}) (GetDeviceprofilesApResultOutput, error) {
 			args := v.(GetDeviceprofilesApArgs)
-			r, err := GetDeviceprofilesAp(ctx, &args, opts...)
-			var s GetDeviceprofilesApResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDeviceprofilesApResult
+			secret, err := ctx.InvokePackageRaw("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", args, &rv, "", opts...)
+			if err != nil {
+				return GetDeviceprofilesApResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDeviceprofilesApResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDeviceprofilesApResultOutput), nil
+			}
+			return output, nil
 		}).(GetDeviceprofilesApResultOutput)
 }
 

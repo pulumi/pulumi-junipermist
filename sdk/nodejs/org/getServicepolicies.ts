@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServicepolicies(args: GetServicepoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetServicepoliciesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getServicepolicies:getServicepolicies", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetServicepoliciesResult {
  * ```
  */
 export function getServicepoliciesOutput(args: GetServicepoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicepoliciesResult> {
-    return pulumi.output(args).apply((a: any) => getServicepolicies(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getServicepolicies:getServicepolicies", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

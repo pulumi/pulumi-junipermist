@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGatewayStats(args: GetGatewayStatsArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayStatsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:device/getGatewayStats:getGatewayStats", {
         "duration": args.duration,
@@ -97,7 +96,16 @@ export interface GetGatewayStatsResult {
  * ```
  */
 export function getGatewayStatsOutput(args: GetGatewayStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayStatsResult> {
-    return pulumi.output(args).apply((a: any) => getGatewayStats(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:device/getGatewayStats:getGatewayStats", {
+        "duration": args.duration,
+        "end": args.end,
+        "mac": args.mac,
+        "orgId": args.orgId,
+        "siteId": args.siteId,
+        "start": args.start,
+        "status": args.status,
+    }, opts);
 }
 
 /**

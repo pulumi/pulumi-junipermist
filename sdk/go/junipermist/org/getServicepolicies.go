@@ -63,14 +63,20 @@ type GetServicepoliciesResult struct {
 
 func GetServicepoliciesOutput(ctx *pulumi.Context, args GetServicepoliciesOutputArgs, opts ...pulumi.InvokeOption) GetServicepoliciesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetServicepoliciesResult, error) {
+		ApplyT(func(v interface{}) (GetServicepoliciesResultOutput, error) {
 			args := v.(GetServicepoliciesArgs)
-			r, err := GetServicepolicies(ctx, &args, opts...)
-			var s GetServicepoliciesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetServicepoliciesResult
+			secret, err := ctx.InvokePackageRaw("junipermist:org/getServicepolicies:getServicepolicies", args, &rv, "", opts...)
+			if err != nil {
+				return GetServicepoliciesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetServicepoliciesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetServicepoliciesResultOutput), nil
+			}
+			return output, nil
 		}).(GetServicepoliciesResultOutput)
 }
 

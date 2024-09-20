@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNacrules(args: GetNacrulesArgs, opts?: pulumi.InvokeOptions): Promise<GetNacrulesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getNacrules:getNacrules", {
         "orgId": args.orgId,
@@ -61,7 +60,10 @@ export interface GetNacrulesResult {
  * ```
  */
 export function getNacrulesOutput(args: GetNacrulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNacrulesResult> {
-    return pulumi.output(args).apply((a: any) => getNacrules(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getNacrules:getNacrules", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

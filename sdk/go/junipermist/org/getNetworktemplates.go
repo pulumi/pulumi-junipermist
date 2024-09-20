@@ -63,14 +63,20 @@ type GetNetworktemplatesResult struct {
 
 func GetNetworktemplatesOutput(ctx *pulumi.Context, args GetNetworktemplatesOutputArgs, opts ...pulumi.InvokeOption) GetNetworktemplatesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNetworktemplatesResult, error) {
+		ApplyT(func(v interface{}) (GetNetworktemplatesResultOutput, error) {
 			args := v.(GetNetworktemplatesArgs)
-			r, err := GetNetworktemplates(ctx, &args, opts...)
-			var s GetNetworktemplatesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNetworktemplatesResult
+			secret, err := ctx.InvokePackageRaw("junipermist:org/getNetworktemplates:getNetworktemplates", args, &rv, "", opts...)
+			if err != nil {
+				return GetNetworktemplatesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNetworktemplatesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNetworktemplatesResultOutput), nil
+			}
+			return output, nil
 		}).(GetNetworktemplatesResultOutput)
 }
 

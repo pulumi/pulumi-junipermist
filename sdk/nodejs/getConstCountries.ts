@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getConstCountries(opts?: pulumi.InvokeOptions): Promise<GetConstCountriesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:index/getConstCountries:getConstCountries", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetConstCountriesResult {
  * ```
  */
 export function getConstCountriesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstCountriesResult> {
-    return pulumi.output(getConstCountries(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:index/getConstCountries:getConstCountries", {
+    }, opts);
 }
