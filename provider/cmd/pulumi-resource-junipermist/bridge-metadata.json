@@ -2329,6 +2329,9 @@
                     "dst_deny_wxtags": {
                         "maxItemsOne": false
                     },
+                    "dst_wxtags": {
+                        "maxItemsOne": false
+                    },
                     "src_wxtags": {
                         "maxItemsOne": false
                     }
@@ -2710,6 +2713,26 @@
                             },
                             "probe_hosts": {
                                 "maxItemsOne": false
+                            },
+                            "protect_re": {
+                                "fields": {
+                                    "allowed_services": {
+                                        "maxItemsOne": false
+                                    },
+                                    "custom": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "subnets": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "trusted_hosts": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     },
@@ -2950,6 +2973,9 @@
                         "maxItemsOne": false
                     },
                     "dst_deny_wxtags": {
+                        "maxItemsOne": false
+                    },
+                    "dst_wxtags": {
                         "maxItemsOne": false
                     },
                     "src_wxtags": {

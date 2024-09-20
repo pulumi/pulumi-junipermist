@@ -24229,6 +24229,10 @@
                         "type": "string"
                     }
                 },
+                "protectRe": {
+                    "$ref": "#/types/junipermist:site/SettingGatewayMgmtProtectRe:SettingGatewayMgmtProtectRe",
+                    "description": "restrict inbound-traffic to host\nwhen enabled, all traffic that is not essential to our operation will be dropped \ne.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works\n"
+                },
                 "rootPassword": {
                     "type": "string",
                     "description": "for SRX only\n",
@@ -24299,6 +24303,10 @@
                 "network": {
                     "type": "string"
                 },
+                "packetSize": {
+                    "type": "integer",
+                    "description": "if `protocol`==`icmp`\n"
+                },
                 "protocol": {
                     "type": "string",
                     "description": "enum: `http`, `icmp`\n"
@@ -24348,6 +24356,76 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enable"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingGatewayMgmtProtectRe:SettingGatewayMgmtProtectRe": {
+            "properties": {
+                "allowedServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "optionally, services we'll allow. enum: `icmp`, `ssh`\n"
+                },
+                "customs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/junipermist:site/SettingGatewayMgmtProtectReCustom:SettingGatewayMgmtProtectReCustom"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "when enabled, all traffic that is not essential to our operation will be dropped\ne.g. ntp / dns / traffic to mist will be allowed by default\n     if dhcpd is enabled, we'll make sure it works\n"
+                },
+                "trustedHosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "host/subnets we'll allow traffic to/from\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowedServices",
+                        "customs",
+                        "enabled",
+                        "trustedHosts"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/SettingGatewayMgmtProtectReCustom:SettingGatewayMgmtProtectReCustom": {
+            "properties": {
+                "portRange": {
+                    "type": "string",
+                    "description": "matched dst port, \"0\" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead\n"
+                },
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnets"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "portRange",
+                        "protocol",
+                        "subnets"
                     ]
                 }
             }
@@ -34713,6 +34791,13 @@
                     },
                     "description": "tag list to indicate these tags are blocked access\n"
                 },
+                "dstWxtags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of WxTag UUID\n"
+                },
                 "enabled": {
                     "type": "boolean"
                 },
@@ -34739,6 +34824,7 @@
                 "action",
                 "dstAllowWxtags",
                 "dstDenyWxtags",
+                "dstWxtags",
                 "enabled",
                 "order",
                 "orgId",
@@ -34776,6 +34862,13 @@
                         "type": "string"
                     },
                     "description": "tag list to indicate these tags are blocked access\n"
+                },
+                "dstWxtags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of WxTag UUID\n"
                 },
                 "enabled": {
                     "type": "boolean"
@@ -34838,6 +34931,13 @@
                             "type": "string"
                         },
                         "description": "tag list to indicate these tags are blocked access\n"
+                    },
+                    "dstWxtags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of WxTag UUID\n"
                     },
                     "enabled": {
                         "type": "boolean"
@@ -37981,6 +38081,13 @@
                     },
                     "description": "tag list to indicate these tags are blocked access\n"
                 },
+                "dstWxtags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of WxTag UUID\n"
+                },
                 "enabled": {
                     "type": "boolean"
                 },
@@ -38007,6 +38114,7 @@
                 "action",
                 "dstAllowWxtags",
                 "dstDenyWxtags",
+                "dstWxtags",
                 "enabled",
                 "order",
                 "siteId",
@@ -38043,6 +38151,13 @@
                         "type": "string"
                     },
                     "description": "tag list to indicate these tags are blocked access\n"
+                },
+                "dstWxtags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of WxTag UUID\n"
                 },
                 "enabled": {
                     "type": "boolean"
@@ -38104,6 +38219,13 @@
                             "type": "string"
                         },
                         "description": "tag list to indicate these tags are blocked access\n"
+                    },
+                    "dstWxtags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of WxTag UUID\n"
                     },
                     "enabled": {
                         "type": "boolean"
