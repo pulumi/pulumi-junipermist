@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getWebhooks:getWebhooks", {
         "limit": args.limit,
@@ -67,7 +66,12 @@ export interface GetWebhooksResult {
  * ```
  */
 export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
-    return pulumi.output(args).apply((a: any) => getWebhooks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getWebhooks:getWebhooks", {
+        "limit": args.limit,
+        "orgId": args.orgId,
+        "page": args.page,
+    }, opts);
 }
 
 /**

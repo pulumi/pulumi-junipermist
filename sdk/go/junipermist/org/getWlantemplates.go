@@ -63,14 +63,20 @@ type GetWlantemplatesResult struct {
 
 func GetWlantemplatesOutput(ctx *pulumi.Context, args GetWlantemplatesOutputArgs, opts ...pulumi.InvokeOption) GetWlantemplatesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetWlantemplatesResult, error) {
+		ApplyT(func(v interface{}) (GetWlantemplatesResultOutput, error) {
 			args := v.(GetWlantemplatesArgs)
-			r, err := GetWlantemplates(ctx, &args, opts...)
-			var s GetWlantemplatesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetWlantemplatesResult
+			secret, err := ctx.InvokePackageRaw("junipermist:org/getWlantemplates:getWlantemplates", args, &rv, "", opts...)
+			if err != nil {
+				return GetWlantemplatesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetWlantemplatesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetWlantemplatesResultOutput), nil
+			}
+			return output, nil
 		}).(GetWlantemplatesResultOutput)
 }
 

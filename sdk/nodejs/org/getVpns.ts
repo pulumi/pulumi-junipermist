@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * This data source provide the list of the Org VPNs.
  */
 export function getVpns(args: GetVpnsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getVpns:getVpns", {
         "orgId": args.orgId,
@@ -39,7 +38,10 @@ export interface GetVpnsResult {
  * This data source provide the list of the Org VPNs.
  */
 export function getVpnsOutput(args: GetVpnsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnsResult> {
-    return pulumi.output(args).apply((a: any) => getVpns(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getVpns:getVpns", {
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

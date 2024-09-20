@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPsks(args: GetPsksArgs, opts?: pulumi.InvokeOptions): Promise<GetPsksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getPsks:getPsks", {
         "limit": args.limit,
@@ -78,7 +77,15 @@ export interface GetPsksResult {
  * ```
  */
 export function getPsksOutput(args: GetPsksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPsksResult> {
-    return pulumi.output(args).apply((a: any) => getPsks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:org/getPsks:getPsks", {
+        "limit": args.limit,
+        "name": args.name,
+        "orgId": args.orgId,
+        "page": args.page,
+        "role": args.role,
+        "ssid": args.ssid,
+    }, opts);
 }
 
 /**

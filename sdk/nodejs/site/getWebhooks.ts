@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * This data source provides the list of Site Webhooks.
  */
 export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:site/getWebhooks:getWebhooks", {
         "limit": args.limit,
@@ -45,7 +44,12 @@ export interface GetWebhooksResult {
  * This data source provides the list of Site Webhooks.
  */
 export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
-    return pulumi.output(args).apply((a: any) => getWebhooks(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:site/getWebhooks:getWebhooks", {
+        "limit": args.limit,
+        "page": args.page,
+        "siteId": args.siteId,
+    }, opts);
 }
 
 /**

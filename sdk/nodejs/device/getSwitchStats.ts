@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSwitchStats(args: GetSwitchStatsArgs, opts?: pulumi.InvokeOptions): Promise<GetSwitchStatsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:device/getSwitchStats:getSwitchStats", {
         "duration": args.duration,
@@ -115,7 +114,18 @@ export interface GetSwitchStatsResult {
  * ```
  */
 export function getSwitchStatsOutput(args: GetSwitchStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchStatsResult> {
-    return pulumi.output(args).apply((a: any) => getSwitchStats(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:device/getSwitchStats:getSwitchStats", {
+        "duration": args.duration,
+        "end": args.end,
+        "evpnUnused": args.evpnUnused,
+        "evpntopoId": args.evpntopoId,
+        "mac": args.mac,
+        "orgId": args.orgId,
+        "siteId": args.siteId,
+        "start": args.start,
+        "status": args.status,
+    }, opts);
 }
 
 /**

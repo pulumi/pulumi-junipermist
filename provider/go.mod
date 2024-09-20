@@ -8,9 +8,9 @@ replace github.com/Juniper/terraform-provider-mist => ../upstream
 
 require (
 	github.com/Juniper/terraform-provider-mist v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.43.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.90.0
-	github.com/pulumi/pulumi/sdk/v3 v3.130.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.0
+	github.com/pulumi/pulumi/sdk/v3 v3.133.0
 )
 
 require (
@@ -117,9 +117,9 @@ require (
 	github.com/hashicorp/hcl v1.0.1-vault-5 // indirect
 	github.com/hashicorp/hcl/v2 v2.20.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20231024160542-43d11d37940c // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.11.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.13.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.24.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
@@ -167,12 +167,12 @@ require (
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
-	github.com/pulumi/esc v0.9.1 // indirect
+	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.14.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
-	github.com/pulumi/pulumi-yaml v1.9.2 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.130.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.10.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.133.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
@@ -193,7 +193,6 @@ require (
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/tmunzer/mistapi-go v0.3.23 // indirect
-	github.com/tweekmonster/luser v0.0.0-20161003172636-3fa38070dbd7 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect

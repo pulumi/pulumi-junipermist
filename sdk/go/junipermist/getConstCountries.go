@@ -54,13 +54,19 @@ type GetConstCountriesResult struct {
 }
 
 func GetConstCountriesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstCountriesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstCountriesResult, error) {
-		r, err := GetConstCountries(ctx, opts...)
-		var s GetConstCountriesResult
-		if r != nil {
-			s = *r
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstCountriesResultOutput, error) {
+		opts = internal.PkgInvokeDefaultOpts(opts)
+		var rv GetConstCountriesResult
+		secret, err := ctx.InvokePackageRaw("junipermist:index/getConstCountries:getConstCountries", nil, &rv, "", opts...)
+		if err != nil {
+			return GetConstCountriesResultOutput{}, err
 		}
-		return s, err
+
+		output := pulumi.ToOutput(rv).(GetConstCountriesResultOutput)
+		if secret {
+			return pulumi.ToSecret(output).(GetConstCountriesResultOutput), nil
+		}
+		return output, nil
 	}).(GetConstCountriesResultOutput)
 }
 

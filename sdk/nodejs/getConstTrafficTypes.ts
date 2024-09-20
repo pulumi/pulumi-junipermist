@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getConstTrafficTypes(opts?: pulumi.InvokeOptions): Promise<GetConstTrafficTypesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", {
     }, opts);
@@ -48,5 +47,7 @@ export interface GetConstTrafficTypesResult {
  * ```
  */
 export function getConstTrafficTypesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstTrafficTypesResult> {
-    return pulumi.output(getConstTrafficTypes(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", {
+    }, opts);
 }
