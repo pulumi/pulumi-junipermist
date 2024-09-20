@@ -37,6 +37,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? DisableOob;
         public readonly ImmutableArray<string> ProbeHosts;
         /// <summary>
+        /// restrict inbound-traffic to host
+        /// when enabled, all traffic that is not essential to our operation will be dropped 
+        /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        /// </summary>
+        public readonly Outputs.SettingGatewayMgmtProtectRe? ProtectRe;
+        /// <summary>
         /// for SRX only
         /// </summary>
         public readonly string? RootPassword;
@@ -61,6 +67,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             ImmutableArray<string> probeHosts,
 
+            Outputs.SettingGatewayMgmtProtectRe? protectRe,
+
             string? rootPassword,
 
             string? securityLogSourceAddress,
@@ -75,6 +83,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
             DisableConsole = disableConsole;
             DisableOob = disableOob;
             ProbeHosts = probeHosts;
+            ProtectRe = protectRe;
             RootPassword = rootPassword;
             SecurityLogSourceAddress = securityLogSourceAddress;
             SecurityLogSourceInterface = securityLogSourceInterface;

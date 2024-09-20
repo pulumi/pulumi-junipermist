@@ -85,6 +85,21 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dstDenyWxtags);
     }
 
+    /**
+     * List of WxTag UUID
+     * 
+     */
+    @Import(name="dstWxtags")
+    private @Nullable Output<List<String>> dstWxtags;
+
+    /**
+     * @return List of WxTag UUID
+     * 
+     */
+    public Optional<Output<List<String>>> dstWxtags() {
+        return Optional.ofNullable(this.dstWxtags);
+    }
+
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
@@ -152,6 +167,7 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
         this.blockedApps = $.blockedApps;
         this.dstAllowWxtags = $.dstAllowWxtags;
         this.dstDenyWxtags = $.dstDenyWxtags;
+        this.dstWxtags = $.dstWxtags;
         this.enabled = $.enabled;
         this.order = $.order;
         this.siteId = $.siteId;
@@ -302,6 +318,37 @@ public final class WxruleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dstDenyWxtags(String... dstDenyWxtags) {
             return dstDenyWxtags(List.of(dstDenyWxtags));
+        }
+
+        /**
+         * @param dstWxtags List of WxTag UUID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dstWxtags(@Nullable Output<List<String>> dstWxtags) {
+            $.dstWxtags = dstWxtags;
+            return this;
+        }
+
+        /**
+         * @param dstWxtags List of WxTag UUID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dstWxtags(List<String> dstWxtags) {
+            return dstWxtags(Output.of(dstWxtags));
+        }
+
+        /**
+         * @param dstWxtags List of WxTag UUID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dstWxtags(String... dstWxtags) {
+            return dstWxtags(List.of(dstWxtags));
         }
 
         public Builder enabled(@Nullable Output<Boolean> enabled) {

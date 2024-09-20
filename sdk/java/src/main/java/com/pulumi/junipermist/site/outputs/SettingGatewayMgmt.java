@@ -6,6 +6,7 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.SettingGatewayMgmtAppProbing;
 import com.pulumi.junipermist.site.outputs.SettingGatewayMgmtAutoSignatureUpdate;
+import com.pulumi.junipermist.site.outputs.SettingGatewayMgmtProtectRe;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -44,6 +45,13 @@ public final class SettingGatewayMgmt {
      */
     private @Nullable Boolean disableOob;
     private @Nullable List<String> probeHosts;
+    /**
+     * @return restrict inbound-traffic to host
+     * when enabled, all traffic that is not essential to our operation will be dropped
+     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * 
+     */
+    private @Nullable SettingGatewayMgmtProtectRe protectRe;
     /**
      * @return for SRX only
      * 
@@ -98,6 +106,15 @@ public final class SettingGatewayMgmt {
         return this.probeHosts == null ? List.of() : this.probeHosts;
     }
     /**
+     * @return restrict inbound-traffic to host
+     * when enabled, all traffic that is not essential to our operation will be dropped
+     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * 
+     */
+    public Optional<SettingGatewayMgmtProtectRe> protectRe() {
+        return Optional.ofNullable(this.protectRe);
+    }
+    /**
      * @return for SRX only
      * 
      */
@@ -128,6 +145,7 @@ public final class SettingGatewayMgmt {
         private @Nullable Boolean disableConsole;
         private @Nullable Boolean disableOob;
         private @Nullable List<String> probeHosts;
+        private @Nullable SettingGatewayMgmtProtectRe protectRe;
         private @Nullable String rootPassword;
         private @Nullable String securityLogSourceAddress;
         private @Nullable String securityLogSourceInterface;
@@ -142,6 +160,7 @@ public final class SettingGatewayMgmt {
     	      this.disableConsole = defaults.disableConsole;
     	      this.disableOob = defaults.disableOob;
     	      this.probeHosts = defaults.probeHosts;
+    	      this.protectRe = defaults.protectRe;
     	      this.rootPassword = defaults.rootPassword;
     	      this.securityLogSourceAddress = defaults.securityLogSourceAddress;
     	      this.securityLogSourceInterface = defaults.securityLogSourceInterface;
@@ -202,6 +221,12 @@ public final class SettingGatewayMgmt {
             return probeHosts(List.of(probeHosts));
         }
         @CustomType.Setter
+        public Builder protectRe(@Nullable SettingGatewayMgmtProtectRe protectRe) {
+
+            this.protectRe = protectRe;
+            return this;
+        }
+        @CustomType.Setter
         public Builder rootPassword(@Nullable String rootPassword) {
 
             this.rootPassword = rootPassword;
@@ -229,6 +254,7 @@ public final class SettingGatewayMgmt {
             _resultValue.disableConsole = disableConsole;
             _resultValue.disableOob = disableOob;
             _resultValue.probeHosts = probeHosts;
+            _resultValue.protectRe = protectRe;
             _resultValue.rootPassword = rootPassword;
             _resultValue.securityLogSourceAddress = securityLogSourceAddress;
             _resultValue.securityLogSourceInterface = securityLogSourceInterface;

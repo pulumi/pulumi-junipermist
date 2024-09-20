@@ -136,6 +136,20 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
     public Output<List<String>> dstDenyWxtags() {
         return this.dstDenyWxtags;
     }
+    /**
+     * List of WxTag UUID
+     * 
+     */
+    @Export(name="dstWxtags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> dstWxtags;
+
+    /**
+     * @return List of WxTag UUID
+     * 
+     */
+    public Output<List<String>> dstWxtags() {
+        return this.dstWxtags;
+    }
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 

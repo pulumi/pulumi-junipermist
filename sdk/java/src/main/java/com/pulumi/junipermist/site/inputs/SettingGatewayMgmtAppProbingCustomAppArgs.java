@@ -6,6 +6,7 @@ package com.pulumi.junipermist.site.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,21 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
     }
 
     /**
+     * if `protocol`==`icmp`
+     * 
+     */
+    @Import(name="packetSize")
+    private @Nullable Output<Integer> packetSize;
+
+    /**
+     * @return if `protocol`==`icmp`
+     * 
+     */
+    public Optional<Output<Integer>> packetSize() {
+        return Optional.ofNullable(this.packetSize);
+    }
+
+    /**
      * enum: `http`, `icmp`
      * 
      */
@@ -109,6 +125,7 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
         this.key = $.key;
         this.name = $.name;
         this.network = $.network;
+        this.packetSize = $.packetSize;
         this.protocol = $.protocol;
         this.url = $.url;
         this.vrf = $.vrf;
@@ -212,6 +229,27 @@ public final class SettingGatewayMgmtAppProbingCustomAppArgs extends com.pulumi.
 
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param packetSize if `protocol`==`icmp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packetSize(@Nullable Output<Integer> packetSize) {
+            $.packetSize = packetSize;
+            return this;
+        }
+
+        /**
+         * @param packetSize if `protocol`==`icmp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder packetSize(Integer packetSize) {
+            return packetSize(Output.of(packetSize));
         }
 
         /**

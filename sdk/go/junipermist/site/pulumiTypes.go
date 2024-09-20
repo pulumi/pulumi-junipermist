@@ -12539,6 +12539,10 @@ type SettingGatewayMgmt struct {
 	// for both SSR and SRX disable management interface
 	DisableOob *bool    `pulumi:"disableOob"`
 	ProbeHosts []string `pulumi:"probeHosts"`
+	// restrict inbound-traffic to host
+	// when enabled, all traffic that is not essential to our operation will be dropped
+	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+	ProtectRe *SettingGatewayMgmtProtectRe `pulumi:"protectRe"`
 	// for SRX only
 	RootPassword               *string `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   *string `pulumi:"securityLogSourceAddress"`
@@ -12570,6 +12574,10 @@ type SettingGatewayMgmtArgs struct {
 	// for both SSR and SRX disable management interface
 	DisableOob pulumi.BoolPtrInput     `pulumi:"disableOob"`
 	ProbeHosts pulumi.StringArrayInput `pulumi:"probeHosts"`
+	// restrict inbound-traffic to host
+	// when enabled, all traffic that is not essential to our operation will be dropped
+	// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+	ProtectRe SettingGatewayMgmtProtectRePtrInput `pulumi:"protectRe"`
 	// for SRX only
 	RootPassword               pulumi.StringPtrInput `pulumi:"rootPassword"`
 	SecurityLogSourceAddress   pulumi.StringPtrInput `pulumi:"securityLogSourceAddress"`
@@ -12690,6 +12698,13 @@ func (o SettingGatewayMgmtOutput) ProbeHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) []string { return v.ProbeHosts }).(pulumi.StringArrayOutput)
 }
 
+// restrict inbound-traffic to host
+// when enabled, all traffic that is not essential to our operation will be dropped
+// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+func (o SettingGatewayMgmtOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmt) *SettingGatewayMgmtProtectRe { return v.ProtectRe }).(SettingGatewayMgmtProtectRePtrOutput)
+}
+
 // for SRX only
 func (o SettingGatewayMgmtOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmt) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
@@ -12802,6 +12817,18 @@ func (o SettingGatewayMgmtPtrOutput) ProbeHosts() pulumi.StringArrayOutput {
 		}
 		return v.ProbeHosts
 	}).(pulumi.StringArrayOutput)
+}
+
+// restrict inbound-traffic to host
+// when enabled, all traffic that is not essential to our operation will be dropped
+// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+func (o SettingGatewayMgmtPtrOutput) ProtectRe() SettingGatewayMgmtProtectRePtrOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmt) *SettingGatewayMgmtProtectRe {
+		if v == nil {
+			return nil
+		}
+		return v.ProtectRe
+	}).(SettingGatewayMgmtProtectRePtrOutput)
 }
 
 // for SRX only
@@ -13009,6 +13036,8 @@ type SettingGatewayMgmtAppProbingCustomApp struct {
 	Key       *string  `pulumi:"key"`
 	Name      string   `pulumi:"name"`
 	Network   *string  `pulumi:"network"`
+	// if `protocol`==`icmp`
+	PacketSize *int `pulumi:"packetSize"`
 	// enum: `http`, `icmp`
 	Protocol string  `pulumi:"protocol"`
 	Url      *string `pulumi:"url"`
@@ -13036,6 +13065,8 @@ type SettingGatewayMgmtAppProbingCustomAppArgs struct {
 	Key       pulumi.StringPtrInput   `pulumi:"key"`
 	Name      pulumi.StringInput      `pulumi:"name"`
 	Network   pulumi.StringPtrInput   `pulumi:"network"`
+	// if `protocol`==`icmp`
+	PacketSize pulumi.IntPtrInput `pulumi:"packetSize"`
 	// enum: `http`, `icmp`
 	Protocol pulumi.StringInput    `pulumi:"protocol"`
 	Url      pulumi.StringPtrInput `pulumi:"url"`
@@ -13118,6 +13149,11 @@ func (o SettingGatewayMgmtAppProbingCustomAppOutput) Name() pulumi.StringOutput 
 
 func (o SettingGatewayMgmtAppProbingCustomAppOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// if `protocol`==`icmp`
+func (o SettingGatewayMgmtAppProbingCustomAppOutput) PacketSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtAppProbingCustomApp) *int { return v.PacketSize }).(pulumi.IntPtrOutput)
 }
 
 // enum: `http`, `icmp`
@@ -13322,6 +13358,318 @@ func (o SettingGatewayMgmtAutoSignatureUpdatePtrOutput) TimeOfDay() pulumi.Strin
 		}
 		return v.TimeOfDay
 	}).(pulumi.StringPtrOutput)
+}
+
+type SettingGatewayMgmtProtectRe struct {
+	// optionally, services we'll allow. enum: `icmp`, `ssh`
+	AllowedServices []string                            `pulumi:"allowedServices"`
+	Customs         []SettingGatewayMgmtProtectReCustom `pulumi:"customs"`
+	// when enabled, all traffic that is not essential to our operation will be dropped
+	// e.g. ntp / dns / traffic to mist will be allowed by default
+	//      if dhcpd is enabled, we'll make sure it works
+	Enabled *bool `pulumi:"enabled"`
+	// host/subnets we'll allow traffic to/from
+	TrustedHosts []string `pulumi:"trustedHosts"`
+}
+
+// SettingGatewayMgmtProtectReInput is an input type that accepts SettingGatewayMgmtProtectReArgs and SettingGatewayMgmtProtectReOutput values.
+// You can construct a concrete instance of `SettingGatewayMgmtProtectReInput` via:
+//
+//	SettingGatewayMgmtProtectReArgs{...}
+type SettingGatewayMgmtProtectReInput interface {
+	pulumi.Input
+
+	ToSettingGatewayMgmtProtectReOutput() SettingGatewayMgmtProtectReOutput
+	ToSettingGatewayMgmtProtectReOutputWithContext(context.Context) SettingGatewayMgmtProtectReOutput
+}
+
+type SettingGatewayMgmtProtectReArgs struct {
+	// optionally, services we'll allow. enum: `icmp`, `ssh`
+	AllowedServices pulumi.StringArrayInput                     `pulumi:"allowedServices"`
+	Customs         SettingGatewayMgmtProtectReCustomArrayInput `pulumi:"customs"`
+	// when enabled, all traffic that is not essential to our operation will be dropped
+	// e.g. ntp / dns / traffic to mist will be allowed by default
+	//      if dhcpd is enabled, we'll make sure it works
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// host/subnets we'll allow traffic to/from
+	TrustedHosts pulumi.StringArrayInput `pulumi:"trustedHosts"`
+}
+
+func (SettingGatewayMgmtProtectReArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingGatewayMgmtProtectRe)(nil)).Elem()
+}
+
+func (i SettingGatewayMgmtProtectReArgs) ToSettingGatewayMgmtProtectReOutput() SettingGatewayMgmtProtectReOutput {
+	return i.ToSettingGatewayMgmtProtectReOutputWithContext(context.Background())
+}
+
+func (i SettingGatewayMgmtProtectReArgs) ToSettingGatewayMgmtProtectReOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectReOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingGatewayMgmtProtectReOutput)
+}
+
+func (i SettingGatewayMgmtProtectReArgs) ToSettingGatewayMgmtProtectRePtrOutput() SettingGatewayMgmtProtectRePtrOutput {
+	return i.ToSettingGatewayMgmtProtectRePtrOutputWithContext(context.Background())
+}
+
+func (i SettingGatewayMgmtProtectReArgs) ToSettingGatewayMgmtProtectRePtrOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectRePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingGatewayMgmtProtectReOutput).ToSettingGatewayMgmtProtectRePtrOutputWithContext(ctx)
+}
+
+// SettingGatewayMgmtProtectRePtrInput is an input type that accepts SettingGatewayMgmtProtectReArgs, SettingGatewayMgmtProtectRePtr and SettingGatewayMgmtProtectRePtrOutput values.
+// You can construct a concrete instance of `SettingGatewayMgmtProtectRePtrInput` via:
+//
+//	        SettingGatewayMgmtProtectReArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingGatewayMgmtProtectRePtrInput interface {
+	pulumi.Input
+
+	ToSettingGatewayMgmtProtectRePtrOutput() SettingGatewayMgmtProtectRePtrOutput
+	ToSettingGatewayMgmtProtectRePtrOutputWithContext(context.Context) SettingGatewayMgmtProtectRePtrOutput
+}
+
+type settingGatewayMgmtProtectRePtrType SettingGatewayMgmtProtectReArgs
+
+func SettingGatewayMgmtProtectRePtr(v *SettingGatewayMgmtProtectReArgs) SettingGatewayMgmtProtectRePtrInput {
+	return (*settingGatewayMgmtProtectRePtrType)(v)
+}
+
+func (*settingGatewayMgmtProtectRePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingGatewayMgmtProtectRe)(nil)).Elem()
+}
+
+func (i *settingGatewayMgmtProtectRePtrType) ToSettingGatewayMgmtProtectRePtrOutput() SettingGatewayMgmtProtectRePtrOutput {
+	return i.ToSettingGatewayMgmtProtectRePtrOutputWithContext(context.Background())
+}
+
+func (i *settingGatewayMgmtProtectRePtrType) ToSettingGatewayMgmtProtectRePtrOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectRePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingGatewayMgmtProtectRePtrOutput)
+}
+
+type SettingGatewayMgmtProtectReOutput struct{ *pulumi.OutputState }
+
+func (SettingGatewayMgmtProtectReOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingGatewayMgmtProtectRe)(nil)).Elem()
+}
+
+func (o SettingGatewayMgmtProtectReOutput) ToSettingGatewayMgmtProtectReOutput() SettingGatewayMgmtProtectReOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectReOutput) ToSettingGatewayMgmtProtectReOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectReOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectReOutput) ToSettingGatewayMgmtProtectRePtrOutput() SettingGatewayMgmtProtectRePtrOutput {
+	return o.ToSettingGatewayMgmtProtectRePtrOutputWithContext(context.Background())
+}
+
+func (o SettingGatewayMgmtProtectReOutput) ToSettingGatewayMgmtProtectRePtrOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectRePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingGatewayMgmtProtectRe) *SettingGatewayMgmtProtectRe {
+		return &v
+	}).(SettingGatewayMgmtProtectRePtrOutput)
+}
+
+// optionally, services we'll allow. enum: `icmp`, `ssh`
+func (o SettingGatewayMgmtProtectReOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []string { return v.AllowedServices }).(pulumi.StringArrayOutput)
+}
+
+func (o SettingGatewayMgmtProtectReOutput) Customs() SettingGatewayMgmtProtectReCustomArrayOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []SettingGatewayMgmtProtectReCustom { return v.Customs }).(SettingGatewayMgmtProtectReCustomArrayOutput)
+}
+
+// when enabled, all traffic that is not essential to our operation will be dropped
+// e.g. ntp / dns / traffic to mist will be allowed by default
+//
+//	if dhcpd is enabled, we'll make sure it works
+func (o SettingGatewayMgmtProtectReOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// host/subnets we'll allow traffic to/from
+func (o SettingGatewayMgmtProtectReOutput) TrustedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectRe) []string { return v.TrustedHosts }).(pulumi.StringArrayOutput)
+}
+
+type SettingGatewayMgmtProtectRePtrOutput struct{ *pulumi.OutputState }
+
+func (SettingGatewayMgmtProtectRePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingGatewayMgmtProtectRe)(nil)).Elem()
+}
+
+func (o SettingGatewayMgmtProtectRePtrOutput) ToSettingGatewayMgmtProtectRePtrOutput() SettingGatewayMgmtProtectRePtrOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectRePtrOutput) ToSettingGatewayMgmtProtectRePtrOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectRePtrOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectRePtrOutput) Elem() SettingGatewayMgmtProtectReOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) SettingGatewayMgmtProtectRe {
+		if v != nil {
+			return *v
+		}
+		var ret SettingGatewayMgmtProtectRe
+		return ret
+	}).(SettingGatewayMgmtProtectReOutput)
+}
+
+// optionally, services we'll allow. enum: `icmp`, `ssh`
+func (o SettingGatewayMgmtProtectRePtrOutput) AllowedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServices
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o SettingGatewayMgmtProtectRePtrOutput) Customs() SettingGatewayMgmtProtectReCustomArrayOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) []SettingGatewayMgmtProtectReCustom {
+		if v == nil {
+			return nil
+		}
+		return v.Customs
+	}).(SettingGatewayMgmtProtectReCustomArrayOutput)
+}
+
+// when enabled, all traffic that is not essential to our operation will be dropped
+// e.g. ntp / dns / traffic to mist will be allowed by default
+//
+//	if dhcpd is enabled, we'll make sure it works
+func (o SettingGatewayMgmtProtectRePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// host/subnets we'll allow traffic to/from
+func (o SettingGatewayMgmtProtectRePtrOutput) TrustedHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingGatewayMgmtProtectRe) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TrustedHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+type SettingGatewayMgmtProtectReCustom struct {
+	// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+	PortRange *string `pulumi:"portRange"`
+	// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+	Protocol *string  `pulumi:"protocol"`
+	Subnets  []string `pulumi:"subnets"`
+}
+
+// SettingGatewayMgmtProtectReCustomInput is an input type that accepts SettingGatewayMgmtProtectReCustomArgs and SettingGatewayMgmtProtectReCustomOutput values.
+// You can construct a concrete instance of `SettingGatewayMgmtProtectReCustomInput` via:
+//
+//	SettingGatewayMgmtProtectReCustomArgs{...}
+type SettingGatewayMgmtProtectReCustomInput interface {
+	pulumi.Input
+
+	ToSettingGatewayMgmtProtectReCustomOutput() SettingGatewayMgmtProtectReCustomOutput
+	ToSettingGatewayMgmtProtectReCustomOutputWithContext(context.Context) SettingGatewayMgmtProtectReCustomOutput
+}
+
+type SettingGatewayMgmtProtectReCustomArgs struct {
+	// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
+	// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+	Protocol pulumi.StringPtrInput   `pulumi:"protocol"`
+	Subnets  pulumi.StringArrayInput `pulumi:"subnets"`
+}
+
+func (SettingGatewayMgmtProtectReCustomArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingGatewayMgmtProtectReCustom)(nil)).Elem()
+}
+
+func (i SettingGatewayMgmtProtectReCustomArgs) ToSettingGatewayMgmtProtectReCustomOutput() SettingGatewayMgmtProtectReCustomOutput {
+	return i.ToSettingGatewayMgmtProtectReCustomOutputWithContext(context.Background())
+}
+
+func (i SettingGatewayMgmtProtectReCustomArgs) ToSettingGatewayMgmtProtectReCustomOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectReCustomOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingGatewayMgmtProtectReCustomOutput)
+}
+
+// SettingGatewayMgmtProtectReCustomArrayInput is an input type that accepts SettingGatewayMgmtProtectReCustomArray and SettingGatewayMgmtProtectReCustomArrayOutput values.
+// You can construct a concrete instance of `SettingGatewayMgmtProtectReCustomArrayInput` via:
+//
+//	SettingGatewayMgmtProtectReCustomArray{ SettingGatewayMgmtProtectReCustomArgs{...} }
+type SettingGatewayMgmtProtectReCustomArrayInput interface {
+	pulumi.Input
+
+	ToSettingGatewayMgmtProtectReCustomArrayOutput() SettingGatewayMgmtProtectReCustomArrayOutput
+	ToSettingGatewayMgmtProtectReCustomArrayOutputWithContext(context.Context) SettingGatewayMgmtProtectReCustomArrayOutput
+}
+
+type SettingGatewayMgmtProtectReCustomArray []SettingGatewayMgmtProtectReCustomInput
+
+func (SettingGatewayMgmtProtectReCustomArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingGatewayMgmtProtectReCustom)(nil)).Elem()
+}
+
+func (i SettingGatewayMgmtProtectReCustomArray) ToSettingGatewayMgmtProtectReCustomArrayOutput() SettingGatewayMgmtProtectReCustomArrayOutput {
+	return i.ToSettingGatewayMgmtProtectReCustomArrayOutputWithContext(context.Background())
+}
+
+func (i SettingGatewayMgmtProtectReCustomArray) ToSettingGatewayMgmtProtectReCustomArrayOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectReCustomArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingGatewayMgmtProtectReCustomArrayOutput)
+}
+
+type SettingGatewayMgmtProtectReCustomOutput struct{ *pulumi.OutputState }
+
+func (SettingGatewayMgmtProtectReCustomOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingGatewayMgmtProtectReCustom)(nil)).Elem()
+}
+
+func (o SettingGatewayMgmtProtectReCustomOutput) ToSettingGatewayMgmtProtectReCustomOutput() SettingGatewayMgmtProtectReCustomOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectReCustomOutput) ToSettingGatewayMgmtProtectReCustomOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectReCustomOutput {
+	return o
+}
+
+// matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+func (o SettingGatewayMgmtProtectReCustomOutput) PortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectReCustom) *string { return v.PortRange }).(pulumi.StringPtrOutput)
+}
+
+// enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+func (o SettingGatewayMgmtProtectReCustomOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectReCustom) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+func (o SettingGatewayMgmtProtectReCustomOutput) Subnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingGatewayMgmtProtectReCustom) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+}
+
+type SettingGatewayMgmtProtectReCustomArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingGatewayMgmtProtectReCustomArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingGatewayMgmtProtectReCustom)(nil)).Elem()
+}
+
+func (o SettingGatewayMgmtProtectReCustomArrayOutput) ToSettingGatewayMgmtProtectReCustomArrayOutput() SettingGatewayMgmtProtectReCustomArrayOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectReCustomArrayOutput) ToSettingGatewayMgmtProtectReCustomArrayOutputWithContext(ctx context.Context) SettingGatewayMgmtProtectReCustomArrayOutput {
+	return o
+}
+
+func (o SettingGatewayMgmtProtectReCustomArrayOutput) Index(i pulumi.IntInput) SettingGatewayMgmtProtectReCustomOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingGatewayMgmtProtectReCustom {
+		return vs[0].([]SettingGatewayMgmtProtectReCustom)[vs[1].(int)]
+	}).(SettingGatewayMgmtProtectReCustomOutput)
 }
 
 type SettingLed struct {
@@ -26959,6 +27307,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtAppProbingCustomAppArrayInput)(nil)).Elem(), SettingGatewayMgmtAppProbingCustomAppArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtAutoSignatureUpdateInput)(nil)).Elem(), SettingGatewayMgmtAutoSignatureUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtAutoSignatureUpdatePtrInput)(nil)).Elem(), SettingGatewayMgmtAutoSignatureUpdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReInput)(nil)).Elem(), SettingGatewayMgmtProtectReArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectRePtrInput)(nil)).Elem(), SettingGatewayMgmtProtectReArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReCustomInput)(nil)).Elem(), SettingGatewayMgmtProtectReCustomArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReCustomArrayInput)(nil)).Elem(), SettingGatewayMgmtProtectReCustomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingLedInput)(nil)).Elem(), SettingLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingLedPtrInput)(nil)).Elem(), SettingLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingOccupancyInput)(nil)).Elem(), SettingOccupancyArgs{})
@@ -27231,6 +27583,10 @@ func init() {
 	pulumi.RegisterOutputType(SettingGatewayMgmtAppProbingCustomAppArrayOutput{})
 	pulumi.RegisterOutputType(SettingGatewayMgmtAutoSignatureUpdateOutput{})
 	pulumi.RegisterOutputType(SettingGatewayMgmtAutoSignatureUpdatePtrOutput{})
+	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReOutput{})
+	pulumi.RegisterOutputType(SettingGatewayMgmtProtectRePtrOutput{})
+	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReCustomOutput{})
+	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReCustomArrayOutput{})
 	pulumi.RegisterOutputType(SettingLedOutput{})
 	pulumi.RegisterOutputType(SettingLedPtrOutput{})
 	pulumi.RegisterOutputType(SettingOccupancyOutput{})

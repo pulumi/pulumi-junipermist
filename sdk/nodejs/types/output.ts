@@ -12685,6 +12685,12 @@ export namespace site {
         disableOob: boolean;
         probeHosts: string[];
         /**
+         * restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped 
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         */
+        protectRe?: outputs.site.SettingGatewayMgmtProtectRe;
+        /**
          * for SRX only
          */
         rootPassword?: string;
@@ -12714,6 +12720,10 @@ export namespace site {
         name: string;
         network?: string;
         /**
+         * if `protocol`==`icmp`
+         */
+        packetSize?: number;
+        /**
          * enum: `http`, `icmp`
          */
         protocol: string;
@@ -12731,6 +12741,36 @@ export namespace site {
          * optional, Mist will decide the timing
          */
         timeOfDay?: string;
+    }
+
+    export interface SettingGatewayMgmtProtectRe {
+        /**
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
+         */
+        allowedServices: string[];
+        customs: outputs.site.SettingGatewayMgmtProtectReCustom[];
+        /**
+         * when enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default
+         *      if dhcpd is enabled, we'll make sure it works
+         */
+        enabled: boolean;
+        /**
+         * host/subnets we'll allow traffic to/from
+         */
+        trustedHosts: string[];
+    }
+
+    export interface SettingGatewayMgmtProtectReCustom {
+        /**
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+         */
+        portRange: string;
+        /**
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+         */
+        protocol: string;
+        subnets: string[];
     }
 
     export interface SettingLed {

@@ -93,6 +93,8 @@ __all__ = [
     'SettingGatewayMgmtAppProbing',
     'SettingGatewayMgmtAppProbingCustomApp',
     'SettingGatewayMgmtAutoSignatureUpdate',
+    'SettingGatewayMgmtProtectRe',
+    'SettingGatewayMgmtProtectReCustom',
     'SettingLed',
     'SettingOccupancy',
     'SettingProxy',
@@ -5927,6 +5929,8 @@ class SettingGatewayMgmt(dict):
             suggest = "disable_oob"
         elif key == "probeHosts":
             suggest = "probe_hosts"
+        elif key == "protectRe":
+            suggest = "protect_re"
         elif key == "rootPassword":
             suggest = "root_password"
         elif key == "securityLogSourceAddress":
@@ -5954,6 +5958,7 @@ class SettingGatewayMgmt(dict):
                  disable_console: Optional[bool] = None,
                  disable_oob: Optional[bool] = None,
                  probe_hosts: Optional[Sequence[str]] = None,
+                 protect_re: Optional['outputs.SettingGatewayMgmtProtectRe'] = None,
                  root_password: Optional[str] = None,
                  security_log_source_address: Optional[str] = None,
                  security_log_source_interface: Optional[str] = None):
@@ -5963,6 +5968,9 @@ class SettingGatewayMgmt(dict):
         :param int config_revert_timer: he rollback timer for commit confirmed
         :param bool disable_console: for both SSR and SRX disable console port
         :param bool disable_oob: for both SSR and SRX disable management interface
+        :param 'SettingGatewayMgmtProtectReArgs' protect_re: restrict inbound-traffic to host
+               when enabled, all traffic that is not essential to our operation will be dropped 
+               e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         :param str root_password: for SRX only
         """
         if admin_sshkeys is not None:
@@ -5981,6 +5989,8 @@ class SettingGatewayMgmt(dict):
             pulumi.set(__self__, "disable_oob", disable_oob)
         if probe_hosts is not None:
             pulumi.set(__self__, "probe_hosts", probe_hosts)
+        if protect_re is not None:
+            pulumi.set(__self__, "protect_re", protect_re)
         if root_password is not None:
             pulumi.set(__self__, "root_password", root_password)
         if security_log_source_address is not None:
@@ -6042,6 +6052,16 @@ class SettingGatewayMgmt(dict):
     @pulumi.getter(name="probeHosts")
     def probe_hosts(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "probe_hosts")
+
+    @property
+    @pulumi.getter(name="protectRe")
+    def protect_re(self) -> Optional['outputs.SettingGatewayMgmtProtectRe']:
+        """
+        restrict inbound-traffic to host
+        when enabled, all traffic that is not essential to our operation will be dropped 
+        e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        """
+        return pulumi.get(self, "protect_re")
 
     @property
     @pulumi.getter(name="rootPassword")
@@ -6121,6 +6141,8 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
         suggest = None
         if key == "appType":
             suggest = "app_type"
+        elif key == "packetSize":
+            suggest = "packet_size"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SettingGatewayMgmtAppProbingCustomApp. Access the value via the '{suggest}' property getter instead.")
@@ -6141,6 +6163,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
                  app_type: Optional[str] = None,
                  key: Optional[str] = None,
                  network: Optional[str] = None,
+                 packet_size: Optional[int] = None,
                  url: Optional[str] = None,
                  vrf: Optional[str] = None):
         """
@@ -6148,6 +6171,7 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
                    * if `protocol`==`http`: URL (e.g. `http://test.com` or `https://test.com`)
                    * if `protocol`==`icmp`: IP Address (e.g. `1.2.3.4`)
         :param str protocol: enum: `http`, `icmp`
+        :param int packet_size: if `protocol`==`icmp`
         """
         pulumi.set(__self__, "hostnames", hostnames)
         pulumi.set(__self__, "name", name)
@@ -6160,6 +6184,8 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
             pulumi.set(__self__, "key", key)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if packet_size is not None:
+            pulumi.set(__self__, "packet_size", packet_size)
         if url is not None:
             pulumi.set(__self__, "url", url)
         if vrf is not None:
@@ -6207,6 +6233,14 @@ class SettingGatewayMgmtAppProbingCustomApp(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="packetSize")
+    def packet_size(self) -> Optional[int]:
+        """
+        if `protocol`==`icmp`
+        """
+        return pulumi.get(self, "packet_size")
 
     @property
     @pulumi.getter
@@ -6275,6 +6309,135 @@ class SettingGatewayMgmtAutoSignatureUpdate(dict):
         optional, Mist will decide the timing
         """
         return pulumi.get(self, "time_of_day")
+
+
+@pulumi.output_type
+class SettingGatewayMgmtProtectRe(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "trustedHosts":
+            suggest = "trusted_hosts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SettingGatewayMgmtProtectRe. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SettingGatewayMgmtProtectRe.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SettingGatewayMgmtProtectRe.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_services: Optional[Sequence[str]] = None,
+                 customs: Optional[Sequence['outputs.SettingGatewayMgmtProtectReCustom']] = None,
+                 enabled: Optional[bool] = None,
+                 trusted_hosts: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] allowed_services: optionally, services we'll allow. enum: `icmp`, `ssh`
+        :param bool enabled: when enabled, all traffic that is not essential to our operation will be dropped
+               e.g. ntp / dns / traffic to mist will be allowed by default
+                    if dhcpd is enabled, we'll make sure it works
+        :param Sequence[str] trusted_hosts: host/subnets we'll allow traffic to/from
+        """
+        if allowed_services is not None:
+            pulumi.set(__self__, "allowed_services", allowed_services)
+        if customs is not None:
+            pulumi.set(__self__, "customs", customs)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if trusted_hosts is not None:
+            pulumi.set(__self__, "trusted_hosts", trusted_hosts)
+
+    @property
+    @pulumi.getter(name="allowedServices")
+    def allowed_services(self) -> Optional[Sequence[str]]:
+        """
+        optionally, services we'll allow. enum: `icmp`, `ssh`
+        """
+        return pulumi.get(self, "allowed_services")
+
+    @property
+    @pulumi.getter
+    def customs(self) -> Optional[Sequence['outputs.SettingGatewayMgmtProtectReCustom']]:
+        return pulumi.get(self, "customs")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        when enabled, all traffic that is not essential to our operation will be dropped
+        e.g. ntp / dns / traffic to mist will be allowed by default
+             if dhcpd is enabled, we'll make sure it works
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="trustedHosts")
+    def trusted_hosts(self) -> Optional[Sequence[str]]:
+        """
+        host/subnets we'll allow traffic to/from
+        """
+        return pulumi.get(self, "trusted_hosts")
+
+
+@pulumi.output_type
+class SettingGatewayMgmtProtectReCustom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portRange":
+            suggest = "port_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SettingGatewayMgmtProtectReCustom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SettingGatewayMgmtProtectReCustom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SettingGatewayMgmtProtectReCustom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnets: Sequence[str],
+                 port_range: Optional[str] = None,
+                 protocol: Optional[str] = None):
+        """
+        :param str port_range: matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+        :param str protocol: enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+        """
+        pulumi.set(__self__, "subnets", subnets)
+        if port_range is not None:
+            pulumi.set(__self__, "port_range", port_range)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter
+    def subnets(self) -> Sequence[str]:
+        return pulumi.get(self, "subnets")
+
+    @property
+    @pulumi.getter(name="portRange")
+    def port_range(self) -> Optional[str]:
+        """
+        matched dst port, "0" means any. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+        """
+        return pulumi.get(self, "port_range")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[str]:
+        """
+        enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `port_range`==`any`, configure `trusted_hosts` instead
+        """
+        return pulumi.get(self, "protocol")
 
 
 @pulumi.output_type

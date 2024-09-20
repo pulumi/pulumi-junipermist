@@ -10451,6 +10451,12 @@ export namespace site {
         disableOob?: pulumi.Input<boolean>;
         probeHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped 
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+         */
+        protectRe?: pulumi.Input<inputs.site.SettingGatewayMgmtProtectRe>;
+        /**
          * for SRX only
          */
         rootPassword?: pulumi.Input<string>;
@@ -10480,6 +10486,10 @@ export namespace site {
         name: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         /**
+         * if `protocol`==`icmp`
+         */
+        packetSize?: pulumi.Input<number>;
+        /**
          * enum: `http`, `icmp`
          */
         protocol: pulumi.Input<string>;
@@ -10497,6 +10507,36 @@ export namespace site {
          * optional, Mist will decide the timing
          */
         timeOfDay?: pulumi.Input<string>;
+    }
+
+    export interface SettingGatewayMgmtProtectRe {
+        /**
+         * optionally, services we'll allow. enum: `icmp`, `ssh`
+         */
+        allowedServices?: pulumi.Input<pulumi.Input<string>[]>;
+        customs?: pulumi.Input<pulumi.Input<inputs.site.SettingGatewayMgmtProtectReCustom>[]>;
+        /**
+         * when enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default
+         *      if dhcpd is enabled, we'll make sure it works
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * host/subnets we'll allow traffic to/from
+         */
+        trustedHosts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SettingGatewayMgmtProtectReCustom {
+        /**
+         * matched dst port, "0" means any. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+         */
+        portRange?: pulumi.Input<string>;
+        /**
+         * enum: `any`, `icmp`, `tcp`, `udp`. Note: For `protocol`==`any` and  `portRange`==`any`, configure `trustedHosts` instead
+         */
+        protocol?: pulumi.Input<string>;
+        subnets: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SettingLed {

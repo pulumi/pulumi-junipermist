@@ -62,6 +62,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
             set => _probeHosts = value;
         }
 
+        /// <summary>
+        /// restrict inbound-traffic to host
+        /// when enabled, all traffic that is not essential to our operation will be dropped 
+        /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
+        /// </summary>
+        [Input("protectRe")]
+        public Input<Inputs.SettingGatewayMgmtProtectReArgs>? ProtectRe { get; set; }
+
         [Input("rootPassword")]
         private Input<string>? _rootPassword;
 

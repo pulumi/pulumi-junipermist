@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.site.inputs.SettingGatewayMgmtAppProbingArgs;
 import com.pulumi.junipermist.site.inputs.SettingGatewayMgmtAutoSignatureUpdateArgs;
+import com.pulumi.junipermist.site.inputs.SettingGatewayMgmtProtectReArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -117,6 +118,25 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * restrict inbound-traffic to host
+     * when enabled, all traffic that is not essential to our operation will be dropped
+     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * 
+     */
+    @Import(name="protectRe")
+    private @Nullable Output<SettingGatewayMgmtProtectReArgs> protectRe;
+
+    /**
+     * @return restrict inbound-traffic to host
+     * when enabled, all traffic that is not essential to our operation will be dropped
+     * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+     * 
+     */
+    public Optional<Output<SettingGatewayMgmtProtectReArgs>> protectRe() {
+        return Optional.ofNullable(this.protectRe);
+    }
+
+    /**
      * for SRX only
      * 
      */
@@ -156,6 +176,7 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
         this.disableConsole = $.disableConsole;
         this.disableOob = $.disableOob;
         this.probeHosts = $.probeHosts;
+        this.protectRe = $.protectRe;
         this.rootPassword = $.rootPassword;
         this.securityLogSourceAddress = $.securityLogSourceAddress;
         this.securityLogSourceInterface = $.securityLogSourceInterface;
@@ -323,6 +344,31 @@ public final class SettingGatewayMgmtArgs extends com.pulumi.resources.ResourceA
 
         public Builder probeHosts(String... probeHosts) {
             return probeHosts(List.of(probeHosts));
+        }
+
+        /**
+         * @param protectRe restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectRe(@Nullable Output<SettingGatewayMgmtProtectReArgs> protectRe) {
+            $.protectRe = protectRe;
+            return this;
+        }
+
+        /**
+         * @param protectRe restrict inbound-traffic to host
+         * when enabled, all traffic that is not essential to our operation will be dropped
+         * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectRe(SettingGatewayMgmtProtectReArgs protectRe) {
+            return protectRe(Output.of(protectRe));
         }
 
         /**

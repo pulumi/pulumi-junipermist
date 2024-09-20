@@ -81,6 +81,12 @@ namespace Pulumi.JuniperMist.Site
         [Output("dstDenyWxtags")]
         public Output<ImmutableArray<string>> DstDenyWxtags { get; private set; } = null!;
 
+        /// <summary>
+        /// List of WxTag UUID
+        /// </summary>
+        [Output("dstWxtags")]
+        public Output<ImmutableArray<string>> DstWxtags { get; private set; } = null!;
+
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
@@ -202,6 +208,18 @@ namespace Pulumi.JuniperMist.Site
             set => _dstDenyWxtags = value;
         }
 
+        [Input("dstWxtags")]
+        private InputList<string>? _dstWxtags;
+
+        /// <summary>
+        /// List of WxTag UUID
+        /// </summary>
+        public InputList<string> DstWxtags
+        {
+            get => _dstWxtags ?? (_dstWxtags = new InputList<string>());
+            set => _dstWxtags = value;
+        }
+
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -288,6 +306,18 @@ namespace Pulumi.JuniperMist.Site
         {
             get => _dstDenyWxtags ?? (_dstDenyWxtags = new InputList<string>());
             set => _dstDenyWxtags = value;
+        }
+
+        [Input("dstWxtags")]
+        private InputList<string>? _dstWxtags;
+
+        /// <summary>
+        /// List of WxTag UUID
+        /// </summary>
+        public InputList<string> DstWxtags
+        {
+            get => _dstWxtags ?? (_dstWxtags = new InputList<string>());
+            set => _dstWxtags = value;
         }
 
         [Input("enabled")]

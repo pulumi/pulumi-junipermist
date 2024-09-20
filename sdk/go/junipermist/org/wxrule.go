@@ -71,7 +71,9 @@ type Wxrule struct {
 	DstAllowWxtags pulumi.StringArrayOutput `pulumi:"dstAllowWxtags"`
 	// tag list to indicate these tags are blocked access
 	DstDenyWxtags pulumi.StringArrayOutput `pulumi:"dstDenyWxtags"`
-	Enabled       pulumi.BoolOutput        `pulumi:"enabled"`
+	// List of WxTag UUID
+	DstWxtags pulumi.StringArrayOutput `pulumi:"dstWxtags"`
+	Enabled   pulumi.BoolOutput        `pulumi:"enabled"`
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order pulumi.IntOutput    `pulumi:"order"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
@@ -132,7 +134,9 @@ type wxruleState struct {
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
 	// tag list to indicate these tags are blocked access
 	DstDenyWxtags []string `pulumi:"dstDenyWxtags"`
-	Enabled       *bool    `pulumi:"enabled"`
+	// List of WxTag UUID
+	DstWxtags []string `pulumi:"dstWxtags"`
+	Enabled   *bool    `pulumi:"enabled"`
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order *int    `pulumi:"order"`
 	OrgId *string `pulumi:"orgId"`
@@ -152,7 +156,9 @@ type WxruleState struct {
 	DstAllowWxtags pulumi.StringArrayInput
 	// tag list to indicate these tags are blocked access
 	DstDenyWxtags pulumi.StringArrayInput
-	Enabled       pulumi.BoolPtrInput
+	// List of WxTag UUID
+	DstWxtags pulumi.StringArrayInput
+	Enabled   pulumi.BoolPtrInput
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order pulumi.IntPtrInput
 	OrgId pulumi.StringPtrInput
@@ -176,7 +182,9 @@ type wxruleArgs struct {
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
 	// tag list to indicate these tags are blocked access
 	DstDenyWxtags []string `pulumi:"dstDenyWxtags"`
-	Enabled       *bool    `pulumi:"enabled"`
+	// List of WxTag UUID
+	DstWxtags []string `pulumi:"dstWxtags"`
+	Enabled   *bool    `pulumi:"enabled"`
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order int    `pulumi:"order"`
 	OrgId string `pulumi:"orgId"`
@@ -197,7 +205,9 @@ type WxruleArgs struct {
 	DstAllowWxtags pulumi.StringArrayInput
 	// tag list to indicate these tags are blocked access
 	DstDenyWxtags pulumi.StringArrayInput
-	Enabled       pulumi.BoolPtrInput
+	// List of WxTag UUID
+	DstWxtags pulumi.StringArrayInput
+	Enabled   pulumi.BoolPtrInput
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order pulumi.IntInput
 	OrgId pulumi.StringInput
@@ -316,6 +326,11 @@ func (o WxruleOutput) DstAllowWxtags() pulumi.StringArrayOutput {
 // tag list to indicate these tags are blocked access
 func (o WxruleOutput) DstDenyWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstDenyWxtags }).(pulumi.StringArrayOutput)
+}
+
+// List of WxTag UUID
+func (o WxruleOutput) DstWxtags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstWxtags }).(pulumi.StringArrayOutput)
 }
 
 func (o WxruleOutput) Enabled() pulumi.BoolOutput {
