@@ -429,6 +429,9 @@
                     }
                 }
             },
+            "mist_device_image": {
+                "current": "junipermist:device/image:Image"
+            },
             "mist_device_switch": {
                 "current": "junipermist:device/switch:Switch",
                 "fields": {
@@ -739,6 +742,42 @@
                 "current": "junipermist:org/base:base",
                 "fields": {
                     "orggroup_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_org_alarmtemplate": {
+                "current": "junipermist:org/alarmtemplate:Alarmtemplate",
+                "fields": {
+                    "delivery": {
+                        "fields": {
+                            "additional_emails": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "rules": {
+                        "elem": {
+                            "fields": {
+                                "delivery": {
+                                    "fields": {
+                                        "additional_emails": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_org_apitoken": {
+                "current": "junipermist:org/apitoken:Apitoken",
+                "fields": {
+                    "privileges": {
+                        "maxItemsOne": false
+                    },
+                    "src_ips": {
                         "maxItemsOne": false
                     }
                 }
@@ -1545,6 +1584,17 @@
                     }
                 }
             },
+            "mist_org_nacidp": {
+                "current": "junipermist:org/nacidp:Nacidp",
+                "fields": {
+                    "ldap_cacerts": {
+                        "maxItemsOne": false
+                    },
+                    "ldap_server_hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_org_nacrule": {
                 "current": "junipermist:org/nacrule:Nacrule",
                 "fields": {
@@ -2113,6 +2163,17 @@
             },
             "mist_org_sitegroup": {
                 "current": "junipermist:org/sitegroup:Sitegroup"
+            },
+            "mist_org_sso": {
+                "current": "junipermist:org/sso:Sso"
+            },
+            "mist_org_sso_role": {
+                "current": "junipermist:org/ssoRole:SsoRole",
+                "fields": {
+                    "privileges": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "mist_org_vpn": {
                 "current": "junipermist:org/vpn:Vpn"
@@ -3003,6 +3064,14 @@
             }
         },
         "datasources": {
+            "mist_const_alarms": {
+                "current": "junipermist:index/getConstAlarms:getConstAlarms",
+                "fields": {
+                    "const_alarms": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_const_app_categories": {
                 "current": "junipermist:index/getConstAppCategories:getConstAppCategories",
                 "fields": {
@@ -3426,6 +3495,9 @@
                     }
                 }
             },
+            "mist_org_nacidp_metadata": {
+                "current": "junipermist:org/getNacidpMetadata:getNacidpMetadata"
+            },
             "mist_org_nacrules": {
                 "current": "junipermist:org/getNacrules:getNacrules",
                 "fields": {
@@ -3541,6 +3613,9 @@
                     }
                 }
             },
+            "mist_org_sso_metadata": {
+                "current": "junipermist:org/getSsoMetadata:getSsoMetadata"
+            },
             "mist_org_vpns": {
                 "current": "junipermist:org/getVpns:getVpns",
                 "fields": {
@@ -3641,6 +3716,9 @@
                 "device_id"
             ],
             "mist_device_gateway": [
+                "device_id"
+            ],
+            "mist_device_image": [
                 "device_id"
             ],
             "mist_device_switch": [
