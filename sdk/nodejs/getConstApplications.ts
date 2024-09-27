@@ -7,7 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+ * This data source provides the of ConstApplications.
+ * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
  *
  * ## Example Usage
  *
@@ -35,7 +36,8 @@ export interface GetConstApplicationsResult {
     readonly id: string;
 }
 /**
- * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+ * This data source provides the of ConstApplications.
+ * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
  *
  * ## Example Usage
  *

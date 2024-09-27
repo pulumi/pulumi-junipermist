@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Org Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+// This resource manages the Org Wlans.
+// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 //
 // ## Example Usage
 //

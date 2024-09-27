@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+    /// This resource manages WAN Assurance Service Policies (Application Policiess).
+    /// The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
     /// 
     /// ## Import
     /// 

@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the WAN Assurance Networks.The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+// This resource manages the WAN Assurance Networks.
+// The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
 //
 // ## Example Usage
 //

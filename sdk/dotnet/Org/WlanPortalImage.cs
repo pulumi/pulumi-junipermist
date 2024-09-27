@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+    /// This resource is used to upload a WLAN Captive Web Portal background image.
+    /// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
     /// </summary>
     [JuniperMistResourceType("junipermist:org/wlanPortalImage:WlanPortalImage")]
     public partial class WlanPortalImage : global::Pulumi.CustomResource

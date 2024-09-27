@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .get_const_alarms import *
 from .get_const_app_categories import *
 from .get_const_app_sub_categories import *
 from .get_const_applications import *
@@ -67,10 +68,34 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "device/image",
+  "fqn": "pulumi_juniper_mist.device",
+  "classes": {
+   "junipermist:device/image:Image": "Image"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "device/switch",
   "fqn": "pulumi_juniper_mist.device",
   "classes": {
    "junipermist:device/switch:Switch": "Switch"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/alarmtemplate",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/alarmtemplate:Alarmtemplate": "Alarmtemplate"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/apitoken",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/apitoken:Apitoken": "Apitoken"
   }
  },
  {
@@ -127,6 +152,14 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
    "junipermist:org/inventory:Inventory": "Inventory"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/nacidp",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/nacidp:Nacidp": "Nacidp"
   }
  },
  {
@@ -207,6 +240,22 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
    "junipermist:org/sitegroup:Sitegroup": "Sitegroup"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/sso",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/sso:Sso": "Sso"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "org/ssoRole",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/ssoRole:SsoRole": "SsoRole"
   }
  },
  {

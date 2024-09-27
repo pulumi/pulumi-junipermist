@@ -28,6 +28,9 @@ import com.pulumi.junipermist.org.outputs.SettingSecurity;
 import com.pulumi.junipermist.org.outputs.SettingSwitchMgmt;
 import com.pulumi.junipermist.org.outputs.SettingSyntheticTest;
 import com.pulumi.junipermist.org.outputs.SettingVpnOptions;
+import com.pulumi.junipermist.org.outputs.SettingWanPma;
+import com.pulumi.junipermist.org.outputs.SettingWiredPma;
+import com.pulumi.junipermist.org.outputs.SettingWirelessPma;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -36,7 +39,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
+ * This resource manages the Org Settings.
+ * The Org Settings can be used to customize the Org configuration
  * 
  * ## Example Usage
  * 
@@ -48,8 +52,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Vpn;
- * import com.pulumi.junipermist.org.VpnArgs;
+ * import com.pulumi.junipermist.org.Setting;
+ * import com.pulumi.junipermist.org.SettingArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingCradlepointArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
+ * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -63,13 +72,53 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpnOne = new Vpn("vpnOne", VpnArgs.builder()
- *             .orgId(terraformTest.id())
- *             .name("vpn_one")
- *             .paths(Map.ofEntries(
- *                 Map.entry("AWS_Hub_Profile1-WAN1", Map.of("bfdProfile", "broadband")),
- *                 Map.entry("AWS_Hub_Profile1-WAN2", )
- *             ))
+ *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
+ *             .orgId(terraformTestMistOrg.id())
+ *             .apUpdownThreshold(10)
+ *             .cradlepoint(SettingCradlepointArgs.builder()
+ *                 .cp_api_id("cp_api_id_test")
+ *                 .cp_api_key("secret")
+ *                 .ecm_api_id("ecm_api_id_test")
+ *                 .ecm_api_key("secret")
+ *                 .build())
+ *             .deviceUpdownThreshold(10)
+ *             .disablePcap(false)
+ *             .disableRemoteShell(true)
+ *             .gatewayUpdownThreshold(10)
+ *             .mxedgeMgmt(SettingMxedgeMgmtArgs.builder()
+ *                 .mist_password("mist_secret_passowrd")
+ *                 .root_password("root_secret_password")
+ *                 .oob_ip_type("dhcp")
+ *                 .oob_ip_type6("disabled")
+ *                 .build())
+ *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
+ *                 .enabled(true)
+ *                 .freshness(180)
+ *                 .min_length(12)
+ *                 .requires_special_char(true)
+ *                 .requires_two_factor_auth(false)
+ *                 .build())
+ *             .security(SettingSecurityArgs.builder()
+ *                 .disable_local_ssh(true)
+ *                 .build())
+ *             .switchUpdownThreshold(10)
+ *             .syntheticTest(SettingSyntheticTestArgs.builder()
+ *                 .disabled(false)
+ *                 .vlans(                
+ *                     SettingSyntheticTestVlanArgs.builder()
+ *                         .vlanIds(                        
+ *                             "10",
+ *                             "30")
+ *                         .customTestUrls(                        
+ *                             "http://www.abc.com/",
+ *                             "https://10.3.5.1:8080/about")
+ *                         .build(),
+ *                     SettingSyntheticTestVlanArgs.builder()
+ *                         .vlanIds("20")
+ *                         .disabled(true)
+ *                         .build())
+ *                 .build())
+ *             .uiIdleTimeout(120)
  *             .build());
  * 
  *     }
@@ -356,6 +405,24 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SettingVpnOptions>> vpnOptions() {
         return Codegen.optional(this.vpnOptions);
+    }
+    @Export(name="wanPma", refs={SettingWanPma.class}, tree="[0]")
+    private Output</* @Nullable */ SettingWanPma> wanPma;
+
+    public Output<Optional<SettingWanPma>> wanPma() {
+        return Codegen.optional(this.wanPma);
+    }
+    @Export(name="wiredPma", refs={SettingWiredPma.class}, tree="[0]")
+    private Output</* @Nullable */ SettingWiredPma> wiredPma;
+
+    public Output<Optional<SettingWiredPma>> wiredPma() {
+        return Codegen.optional(this.wiredPma);
+    }
+    @Export(name="wirelessPma", refs={SettingWirelessPma.class}, tree="[0]")
+    private Output</* @Nullable */ SettingWirelessPma> wirelessPma;
+
+    public Output<Optional<SettingWirelessPma>> wirelessPma() {
+        return Codegen.optional(this.wirelessPma);
     }
 
     /**

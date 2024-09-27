@@ -217,7 +217,8 @@ class Wlantemplate(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Org WLAN Templates.A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+        This resource manages the Org WLAN Templates.
+        A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 
         ## Import
 
@@ -243,7 +244,8 @@ class Wlantemplate(pulumi.CustomResource):
                  args: WlantemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Org WLAN Templates.A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+        This resource manages the Org WLAN Templates.
+        A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 
         ## Import
 

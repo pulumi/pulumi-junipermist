@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Site
 {
     /// <summary>
-    /// This resource manages the Site Settings.The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+    /// This resource manages the Site Settings.
+    /// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
     /// 
     /// ## Import
     /// 

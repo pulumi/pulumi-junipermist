@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+// This data source provides the list of WAN Assurance Services (Applications).
+// The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates
 //
 // ## Example Usage
 //

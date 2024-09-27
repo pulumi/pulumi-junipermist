@@ -7,7 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+ * This datasource provides the list of sites in a Mist Organization.
+ * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
  *
  * ## Example Usage
  *
@@ -46,7 +47,8 @@ export interface GetSitesResult {
     readonly sites: outputs.GetSitesSite[];
 }
 /**
- * This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+ * This datasource provides the list of sites in a Mist Organization.
+ * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
  *
  * ## Example Usage
  *

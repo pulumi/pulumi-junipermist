@@ -7,25 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/juniper-mist";
- *
- * const vpnOne = new junipermist.org.Vpn("vpn_one", {
- *     orgId: terraformTest.id,
- *     name: "vpn_one",
- *     paths: {
- *         "AWS_Hub_Profile1-WAN1": {
- *             bfdProfile: "broadband",
- *         },
- *         "AWS_Hub_Profile1-WAN2": {},
- *     },
- * });
- * ```
+ * This resource manages the Org Settings.
+ * The Org Settings can be used to customize the Org configuration
  *
  * ## Import
  *
@@ -131,6 +114,9 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly uiIdleTimeout!: pulumi.Output<number>;
     public readonly vpnOptions!: pulumi.Output<outputs.org.SettingVpnOptions | undefined>;
+    public readonly wanPma!: pulumi.Output<outputs.org.SettingWanPma | undefined>;
+    public readonly wiredPma!: pulumi.Output<outputs.org.SettingWiredPma | undefined>;
+    public readonly wirelessPma!: pulumi.Output<outputs.org.SettingWirelessPma | undefined>;
 
     /**
      * Create a Setting resource with the given unique name, arguments, and options.
@@ -173,6 +159,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["syntheticTest"] = state ? state.syntheticTest : undefined;
             resourceInputs["uiIdleTimeout"] = state ? state.uiIdleTimeout : undefined;
             resourceInputs["vpnOptions"] = state ? state.vpnOptions : undefined;
+            resourceInputs["wanPma"] = state ? state.wanPma : undefined;
+            resourceInputs["wiredPma"] = state ? state.wiredPma : undefined;
+            resourceInputs["wirelessPma"] = state ? state.wirelessPma : undefined;
         } else {
             const args = argsOrState as SettingArgs | undefined;
             if ((!args || args.orgId === undefined) && !opts.urn) {
@@ -205,6 +194,9 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["syntheticTest"] = args ? args.syntheticTest : undefined;
             resourceInputs["uiIdleTimeout"] = args ? args.uiIdleTimeout : undefined;
             resourceInputs["vpnOptions"] = args ? args.vpnOptions : undefined;
+            resourceInputs["wanPma"] = args ? args.wanPma : undefined;
+            resourceInputs["wiredPma"] = args ? args.wiredPma : undefined;
+            resourceInputs["wirelessPma"] = args ? args.wirelessPma : undefined;
             resourceInputs["juniper"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -282,6 +274,9 @@ export interface SettingState {
      */
     uiIdleTimeout?: pulumi.Input<number>;
     vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
+    wanPma?: pulumi.Input<inputs.org.SettingWanPma>;
+    wiredPma?: pulumi.Input<inputs.org.SettingWiredPma>;
+    wirelessPma?: pulumi.Input<inputs.org.SettingWirelessPma>;
 }
 
 /**
@@ -353,4 +348,7 @@ export interface SettingArgs {
      */
     uiIdleTimeout?: pulumi.Input<number>;
     vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
+    wanPma?: pulumi.Input<inputs.org.SettingWanPma>;
+    wiredPma?: pulumi.Input<inputs.org.SettingWiredPma>;
+    wirelessPma?: pulumi.Input<inputs.org.SettingWirelessPma>;
 }

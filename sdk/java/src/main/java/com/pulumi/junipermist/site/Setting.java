@@ -44,7 +44,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Site Settings.The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+ * This resource manages the Site Settings.
+ * The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
  * 
  * ## Example Usage
  * 

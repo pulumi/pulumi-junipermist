@@ -66,7 +66,8 @@ class AwaitableGetSitegroupsResult(GetSitegroupsResult):
 def get_sitegroups(org_id: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSitegroupsResult:
     """
-    This data source provides the list of Org Site Groups (sitegroups).A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+    This data source provides the list of Org Site Groups (sitegroups).
+    A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_sitegroups(org_id: Optional[str] = None,
 def get_sitegroups_output(org_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSitegroupsResult]:
     """
-    This data source provides the list of Org Site Groups (sitegroups).A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+    This data source provides the list of Org Site Groups (sitegroups).
+    A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
 
     ## Example Usage
 

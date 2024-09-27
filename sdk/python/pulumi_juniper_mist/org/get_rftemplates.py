@@ -66,7 +66,8 @@ class AwaitableGetRftemplatesResult(GetRftemplatesResult):
 def get_rftemplates(org_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRftemplatesResult:
     """
-    This resource provides the list of RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+    This resource provides the list of RF Templates.
+    The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_rftemplates(org_id: Optional[str] = None,
 def get_rftemplates_output(org_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRftemplatesResult]:
     """
-    This resource provides the list of RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+    This resource provides the list of RF Templates.
+    The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 
     ## Example Usage
 

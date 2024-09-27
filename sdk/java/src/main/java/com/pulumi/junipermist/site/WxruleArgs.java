@@ -57,14 +57,14 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * tag list to indicate these tags are allowed access
+     * List of WxTag UUID to indicate these tags are allowed access
      * 
      */
     @Import(name="dstAllowWxtags")
     private @Nullable Output<List<String>> dstAllowWxtags;
 
     /**
-     * @return tag list to indicate these tags are allowed access
+     * @return List of WxTag UUID to indicate these tags are allowed access
      * 
      */
     public Optional<Output<List<String>>> dstAllowWxtags() {
@@ -72,14 +72,14 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * tag list to indicate these tags are blocked access
+     * List of WxTag UUID to indicate these tags are blocked access
      * 
      */
     @Import(name="dstDenyWxtags")
     private @Nullable Output<List<String>> dstDenyWxtags;
 
     /**
-     * @return tag list to indicate these tags are blocked access
+     * @return List of WxTag UUID to indicate these tags are blocked access
      * 
      */
     public Optional<Output<List<String>>> dstDenyWxtags() {
@@ -131,33 +131,18 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * tag list to determine if this rule would match
+     * List of WxTag UUID to determine if this rule would match
      * 
      */
     @Import(name="srcWxtags")
     private @Nullable Output<List<String>> srcWxtags;
 
     /**
-     * @return tag list to determine if this rule would match
+     * @return List of WxTag UUID to determine if this rule would match
      * 
      */
     public Optional<Output<List<String>>> srcWxtags() {
         return Optional.ofNullable(this.srcWxtags);
-    }
-
-    /**
-     * Only for Org Level WxRule
-     * 
-     */
-    @Import(name="templateId")
-    private @Nullable Output<String> templateId;
-
-    /**
-     * @return Only for Org Level WxRule
-     * 
-     */
-    public Optional<Output<String>> templateId() {
-        return Optional.ofNullable(this.templateId);
     }
 
     private WxruleArgs() {}
@@ -173,7 +158,6 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         this.order = $.order;
         this.siteId = $.siteId;
         this.srcWxtags = $.srcWxtags;
-        this.templateId = $.templateId;
     }
 
     public static Builder builder() {
@@ -260,7 +244,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstAllowWxtags tag list to indicate these tags are allowed access
+         * @param dstAllowWxtags List of WxTag UUID to indicate these tags are allowed access
          * 
          * @return builder
          * 
@@ -271,7 +255,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstAllowWxtags tag list to indicate these tags are allowed access
+         * @param dstAllowWxtags List of WxTag UUID to indicate these tags are allowed access
          * 
          * @return builder
          * 
@@ -281,7 +265,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstAllowWxtags tag list to indicate these tags are allowed access
+         * @param dstAllowWxtags List of WxTag UUID to indicate these tags are allowed access
          * 
          * @return builder
          * 
@@ -291,7 +275,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstDenyWxtags tag list to indicate these tags are blocked access
+         * @param dstDenyWxtags List of WxTag UUID to indicate these tags are blocked access
          * 
          * @return builder
          * 
@@ -302,7 +286,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstDenyWxtags tag list to indicate these tags are blocked access
+         * @param dstDenyWxtags List of WxTag UUID to indicate these tags are blocked access
          * 
          * @return builder
          * 
@@ -312,7 +296,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dstDenyWxtags tag list to indicate these tags are blocked access
+         * @param dstDenyWxtags List of WxTag UUID to indicate these tags are blocked access
          * 
          * @return builder
          * 
@@ -392,7 +376,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcWxtags tag list to determine if this rule would match
+         * @param srcWxtags List of WxTag UUID to determine if this rule would match
          * 
          * @return builder
          * 
@@ -403,7 +387,7 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcWxtags tag list to determine if this rule would match
+         * @param srcWxtags List of WxTag UUID to determine if this rule would match
          * 
          * @return builder
          * 
@@ -413,34 +397,13 @@ public final class WxruleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param srcWxtags tag list to determine if this rule would match
+         * @param srcWxtags List of WxTag UUID to determine if this rule would match
          * 
          * @return builder
          * 
          */
         public Builder srcWxtags(String... srcWxtags) {
             return srcWxtags(List.of(srcWxtags));
-        }
-
-        /**
-         * @param templateId Only for Org Level WxRule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder templateId(@Nullable Output<String> templateId) {
-            $.templateId = templateId;
-            return this;
-        }
-
-        /**
-         * @param templateId Only for Org Level WxRule
-         * 
-         * @return builder
-         * 
-         */
-        public Builder templateId(String templateId) {
-            return templateId(Output.of(templateId));
         }
 
         public WxruleArgs build() {

@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages the Org WxRules (WxLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+    /// This resource manages the Org WxRules (WxLAN policies).
+    /// A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
     /// 
     /// ## Example Usage
     /// 
@@ -71,13 +72,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableArray<string>> BlockedApps { get; private set; } = null!;
 
         /// <summary>
-        /// tag list to indicate these tags are allowed access
+        /// List of WxTag UUID to indicate these tags are allowed access
         /// </summary>
         [Output("dstAllowWxtags")]
         public Output<ImmutableArray<string>> DstAllowWxtags { get; private set; } = null!;
 
         /// <summary>
-        /// tag list to indicate these tags are blocked access
+        /// List of WxTag UUID to indicate these tags are blocked access
         /// </summary>
         [Output("dstDenyWxtags")]
         public Output<ImmutableArray<string>> DstDenyWxtags { get; private set; } = null!;
@@ -101,7 +102,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// tag list to determine if this rule would match
+        /// List of WxTag UUID to determine if this rule would match
         /// </summary>
         [Output("srcWxtags")]
         public Output<ImmutableArray<string>> SrcWxtags { get; private set; } = null!;
@@ -189,7 +190,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstAllowWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are allowed access
+        /// List of WxTag UUID to indicate these tags are allowed access
         /// </summary>
         public InputList<string> DstAllowWxtags
         {
@@ -201,7 +202,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstDenyWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are blocked access
+        /// List of WxTag UUID to indicate these tags are blocked access
         /// </summary>
         public InputList<string> DstDenyWxtags
         {
@@ -237,7 +238,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcWxtags;
 
         /// <summary>
-        /// tag list to determine if this rule would match
+        /// List of WxTag UUID to determine if this rule would match
         /// </summary>
         public InputList<string> SrcWxtags
         {
@@ -289,7 +290,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstAllowWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are allowed access
+        /// List of WxTag UUID to indicate these tags are allowed access
         /// </summary>
         public InputList<string> DstAllowWxtags
         {
@@ -301,7 +302,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _dstDenyWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are blocked access
+        /// List of WxTag UUID to indicate these tags are blocked access
         /// </summary>
         public InputList<string> DstDenyWxtags
         {
@@ -337,7 +338,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _srcWxtags;
 
         /// <summary>
-        /// tag list to determine if this rule would match
+        /// List of WxTag UUID to determine if this rule would match
         /// </summary>
         public InputList<string> SrcWxtags
         {

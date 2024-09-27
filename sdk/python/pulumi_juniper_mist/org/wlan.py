@@ -2940,7 +2940,8 @@ class Wlan(pulumi.CustomResource):
                  wxtunnel_remote_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Org Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+        This resource manages the Org Wlans.
+        The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 
         ## Example Usage
 
@@ -3084,7 +3085,8 @@ class Wlan(pulumi.CustomResource):
                  args: WlanArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Org Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+        This resource manages the Org Wlans.
+        The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 
         ## Example Usage
 

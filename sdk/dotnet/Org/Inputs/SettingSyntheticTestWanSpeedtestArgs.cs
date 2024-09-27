@@ -18,8 +18,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// any / HH:MM (24-hour format)
         /// </summary>
-        [Input("timeOdFay")]
-        public Input<string>? TimeOdFay { get; set; }
+        [Input("timeOfDay")]
+        public Input<string>? TimeOfDay { get; set; }
 
         public SettingSyntheticTestWanSpeedtestArgs()
         {

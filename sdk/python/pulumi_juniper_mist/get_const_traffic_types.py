@@ -56,7 +56,8 @@ class AwaitableGetConstTrafficTypesResult(GetConstTrafficTypesResult):
 
 def get_const_traffic_types(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstTrafficTypesResult:
     """
-    This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`org.Rftemplate`)
+    This data source provides the of ConstTrafficTypes.
+    This information can be used to define the Country in the RF templates (`org.Rftemplate`)
 
     ## Example Usage
 
@@ -79,7 +80,8 @@ def get_const_traffic_types(opts: Optional[pulumi.InvokeOptions] = None) -> Awai
 @_utilities.lift_output_func(get_const_traffic_types)
 def get_const_traffic_types_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstTrafficTypesResult]:
     """
-    This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`org.Rftemplate`)
+    This data source provides the of ConstTrafficTypes.
+    This information can be used to define the Country in the RF templates (`org.Rftemplate`)
 
     ## Example Usage
 

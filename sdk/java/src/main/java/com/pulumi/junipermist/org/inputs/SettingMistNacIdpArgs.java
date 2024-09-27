@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,11 +32,19 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.excludeRealms);
     }
 
-    @Import(name="id")
-    private @Nullable Output<String> id;
+    /**
+     * ID of the `mist_nacidp`
+     * 
+     */
+    @Import(name="id", required=true)
+    private Output<String> id;
 
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
+    /**
+     * @return ID of the `mist_nacidp`
+     * 
+     */
+    public Output<String> id() {
+        return this.id;
     }
 
     /**
@@ -44,8 +53,8 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
      *   * Cert CN
      * 
      */
-    @Import(name="userRealms")
-    private @Nullable Output<List<String>> userRealms;
+    @Import(name="userRealms", required=true)
+    private Output<List<String>> userRealms;
 
     /**
      * @return which realm should trigger this IDP. User Realm is extracted from:
@@ -53,8 +62,8 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
      *   * Cert CN
      * 
      */
-    public Optional<Output<List<String>>> userRealms() {
-        return Optional.ofNullable(this.userRealms);
+    public Output<List<String>> userRealms() {
+        return this.userRealms;
     }
 
     private SettingMistNacIdpArgs() {}
@@ -114,11 +123,23 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
             return excludeRealms(List.of(excludeRealms));
         }
 
-        public Builder id(@Nullable Output<String> id) {
+        /**
+         * @param id ID of the `mist_nacidp`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id ID of the `mist_nacidp`
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
@@ -131,7 +152,7 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder userRealms(@Nullable Output<List<String>> userRealms) {
+        public Builder userRealms(Output<List<String>> userRealms) {
             $.userRealms = userRealms;
             return this;
         }
@@ -161,6 +182,12 @@ public final class SettingMistNacIdpArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SettingMistNacIdpArgs build() {
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("SettingMistNacIdpArgs", "id");
+            }
+            if ($.userRealms == null) {
+                throw new MissingRequiredPropertyException("SettingMistNacIdpArgs", "userRealms");
+            }
             return $;
         }
     }

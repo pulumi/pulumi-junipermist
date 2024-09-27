@@ -18,7 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Site WxRules (WLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+ * This resource manages the Site WxRules (WLAN policies).
+ * A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
  * 
  * ## Example Usage
  * 
@@ -108,28 +109,28 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.blockedApps);
     }
     /**
-     * tag list to indicate these tags are allowed access
+     * List of WxTag UUID to indicate these tags are allowed access
      * 
      */
     @Export(name="dstAllowWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dstAllowWxtags;
 
     /**
-     * @return tag list to indicate these tags are allowed access
+     * @return List of WxTag UUID to indicate these tags are allowed access
      * 
      */
     public Output<List<String>> dstAllowWxtags() {
         return this.dstAllowWxtags;
     }
     /**
-     * tag list to indicate these tags are blocked access
+     * List of WxTag UUID to indicate these tags are blocked access
      * 
      */
     @Export(name="dstDenyWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dstDenyWxtags;
 
     /**
-     * @return tag list to indicate these tags are blocked access
+     * @return List of WxTag UUID to indicate these tags are blocked access
      * 
      */
     public Output<List<String>> dstDenyWxtags() {
@@ -176,32 +177,18 @@ public class Wxrule extends com.pulumi.resources.CustomResource {
         return this.siteId;
     }
     /**
-     * tag list to determine if this rule would match
+     * List of WxTag UUID to determine if this rule would match
      * 
      */
     @Export(name="srcWxtags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> srcWxtags;
 
     /**
-     * @return tag list to determine if this rule would match
+     * @return List of WxTag UUID to determine if this rule would match
      * 
      */
     public Output<List<String>> srcWxtags() {
         return this.srcWxtags;
-    }
-    /**
-     * Only for Org Level WxRule
-     * 
-     */
-    @Export(name="templateId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> templateId;
-
-    /**
-     * @return Only for Org Level WxRule
-     * 
-     */
-    public Output<Optional<String>> templateId() {
-        return Codegen.optional(this.templateId);
     }
 
     /**

@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetNacrules
     {
         /// <summary>
-        /// This data source provides the list of NAC Rules (Auth Policies).A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+        /// This data source provides the list of NAC Rules (Auth Policies).
+        /// A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNacrulesResult>("junipermist:org/getNacrules:getNacrules", args ?? new GetNacrulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of NAC Rules (Auth Policies).A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+        /// This data source provides the list of NAC Rules (Auth Policies).
+        /// A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
         /// 
         /// 
         /// ## Example Usage

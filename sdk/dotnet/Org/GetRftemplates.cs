@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetRftemplates
     {
         /// <summary>
-        /// This resource provides the list of RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+        /// This resource provides the list of RF Templates.
+        /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRftemplatesResult>("junipermist:org/getRftemplates:getRftemplates", args ?? new GetRftemplatesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This resource provides the list of RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+        /// This resource provides the list of RF Templates.
+        /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
         /// 
         /// 
         /// ## Example Usage

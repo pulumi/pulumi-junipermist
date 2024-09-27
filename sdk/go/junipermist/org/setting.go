@@ -12,40 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := org.NewVpn(ctx, "vpn_one", &org.VpnArgs{
-//				OrgId: pulumi.Any(terraformTest.Id),
-//				Name:  pulumi.String("vpn_one"),
-//				Paths: org.VpnPathsMap{
-//					"AWS_Hub_Profile1-WAN1": &org.VpnPathsArgs{
-//						BfdProfile: pulumi.String("broadband"),
-//					},
-//					"AWS_Hub_Profile1-WAN2": nil,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// This resource manages the Org Settings.
+// The Org Settings can be used to customize the Org configuration
 //
 // ## Import
 //
@@ -101,8 +69,11 @@ type Setting struct {
 	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// automatically logout the user when UI session is inactive. `0` means disabled
-	UiIdleTimeout pulumi.IntOutput           `pulumi:"uiIdleTimeout"`
-	VpnOptions    SettingVpnOptionsPtrOutput `pulumi:"vpnOptions"`
+	UiIdleTimeout pulumi.IntOutput            `pulumi:"uiIdleTimeout"`
+	VpnOptions    SettingVpnOptionsPtrOutput  `pulumi:"vpnOptions"`
+	WanPma        SettingWanPmaPtrOutput      `pulumi:"wanPma"`
+	WiredPma      SettingWiredPmaPtrOutput    `pulumi:"wiredPma"`
+	WirelessPma   SettingWirelessPmaPtrOutput `pulumi:"wirelessPma"`
 }
 
 // NewSetting registers a new resource with the given unique name, arguments, and options.
@@ -180,8 +151,11 @@ type settingState struct {
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// automatically logout the user when UI session is inactive. `0` means disabled
-	UiIdleTimeout *int               `pulumi:"uiIdleTimeout"`
-	VpnOptions    *SettingVpnOptions `pulumi:"vpnOptions"`
+	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
+	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
+	WanPma        *SettingWanPma      `pulumi:"wanPma"`
+	WiredPma      *SettingWiredPma    `pulumi:"wiredPma"`
+	WirelessPma   *SettingWirelessPma `pulumi:"wirelessPma"`
 }
 
 type SettingState struct {
@@ -229,6 +203,9 @@ type SettingState struct {
 	// automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
 	VpnOptions    SettingVpnOptionsPtrInput
+	WanPma        SettingWanPmaPtrInput
+	WiredPma      SettingWiredPmaPtrInput
+	WirelessPma   SettingWirelessPmaPtrInput
 }
 
 func (SettingState) ElementType() reflect.Type {
@@ -277,8 +254,11 @@ type settingArgs struct {
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// automatically logout the user when UI session is inactive. `0` means disabled
-	UiIdleTimeout *int               `pulumi:"uiIdleTimeout"`
-	VpnOptions    *SettingVpnOptions `pulumi:"vpnOptions"`
+	UiIdleTimeout *int                `pulumi:"uiIdleTimeout"`
+	VpnOptions    *SettingVpnOptions  `pulumi:"vpnOptions"`
+	WanPma        *SettingWanPma      `pulumi:"wanPma"`
+	WiredPma      *SettingWiredPma    `pulumi:"wiredPma"`
+	WirelessPma   *SettingWirelessPma `pulumi:"wirelessPma"`
 }
 
 // The set of arguments for constructing a Setting resource.
@@ -326,6 +306,9 @@ type SettingArgs struct {
 	// automatically logout the user when UI session is inactive. `0` means disabled
 	UiIdleTimeout pulumi.IntPtrInput
 	VpnOptions    SettingVpnOptionsPtrInput
+	WanPma        SettingWanPmaPtrInput
+	WiredPma      SettingWiredPmaPtrInput
+	WirelessPma   SettingWirelessPmaPtrInput
 }
 
 func (SettingArgs) ElementType() reflect.Type {
@@ -541,6 +524,18 @@ func (o SettingOutput) UiIdleTimeout() pulumi.IntOutput {
 
 func (o SettingOutput) VpnOptions() SettingVpnOptionsPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingVpnOptionsPtrOutput { return v.VpnOptions }).(SettingVpnOptionsPtrOutput)
+}
+
+func (o SettingOutput) WanPma() SettingWanPmaPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingWanPmaPtrOutput { return v.WanPma }).(SettingWanPmaPtrOutput)
+}
+
+func (o SettingOutput) WiredPma() SettingWiredPmaPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingWiredPmaPtrOutput { return v.WiredPma }).(SettingWiredPmaPtrOutput)
+}
+
+func (o SettingOutput) WirelessPma() SettingWirelessPmaPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingWirelessPmaPtrOutput { return v.WirelessPma }).(SettingWirelessPmaPtrOutput)
 }
 
 type SettingArrayOutput struct{ *pulumi.OutputState }

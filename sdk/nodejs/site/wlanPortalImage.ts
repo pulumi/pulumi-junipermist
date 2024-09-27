@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+ * This resource is used to upload a WLAN Captive Web Portal background image.
+ * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
  *
  * ## Example Usage
  *

@@ -16,7 +16,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+ * This resource manages the Org inventory.
+ * It can be used to claim, unclaim, assign, unassign, reassign devices
  * 
  * ## Example Usage
  * 

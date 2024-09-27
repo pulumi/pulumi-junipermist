@@ -671,7 +671,10 @@ class DeviceprofileAp(pulumi.CustomResource):
                  vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        This resource manages the AP Device Profiles.AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+        This resource manages the AP Device Profiles.
+        AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+
+        The AP Devide Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
 
         ## Example Usage
 
@@ -725,7 +728,10 @@ class DeviceprofileAp(pulumi.CustomResource):
                  args: DeviceprofileApArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the AP Device Profiles.AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+        This resource manages the AP Device Profiles.
+        AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+
+        The AP Devide Profile can be assigned to a gateway with the `org.DeviceprofileAssign` resource.
 
         ## Example Usage
 

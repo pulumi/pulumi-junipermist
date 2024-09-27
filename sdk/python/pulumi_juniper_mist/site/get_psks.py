@@ -116,7 +116,8 @@ def get_psks(limit: Optional[int] = None,
              ssid: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPsksResult:
     """
-    This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of WAN Assurance Psks.
+    The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
 
     ## Example Usage
 
@@ -158,7 +159,8 @@ def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                     ssid: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPsksResult]:
     """
-    This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of WAN Assurance Psks.
+    The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
 
     ## Example Usage
 

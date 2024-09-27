@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages WAN Assurance Services (Applications).The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`orgServicepolicy` resource).
+ * This resource manages WAN Assurance Services (Applications).
+ * The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`orgServicepolicy` resource).
  *
  * ## Import
  *

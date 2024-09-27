@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+ * This resource manages the Org inventory.
+ * It can be used to claim, unclaim, assign, unassign, reassign devices
  *
  * ## Import
  *

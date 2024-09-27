@@ -18,7 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Mist Organization.An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+ * This resource manages the Mist Organization.
+ * An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
  * 
  * ## Example Usage
  * 
@@ -47,6 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var orgOne = new Base("orgOne", BaseArgs.builder()
  *             .name("Org One")
+ *             .alarmtemplateId(alarmtemplateOne.id())
  *             .build());
  * 
  *     }

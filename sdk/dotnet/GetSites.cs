@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist
     public static class GetSites
     {
         /// <summary>
-        /// This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+        /// This datasource provides the list of sites in a Mist Organization.
+        /// A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSitesResult>("junipermist:index/getSites:getSites", args ?? new GetSitesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+        /// This datasource provides the list of sites in a Mist Organization.
+        /// A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
         /// 
         /// 
         /// ## Example Usage

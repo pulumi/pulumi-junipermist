@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resources manages the Site basic information.This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
+// This resources manages the Site basic information.
+// This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
 //
 // ## Example Usage
 //
@@ -43,9 +44,10 @@ import (
 //					testGroup.Id,
 //					testGroup2.Id,
 //				},
-//				NetworktemplateId: pulumi.Any(switchTemplate.Id),
-//				RftemplateId:      pulumi.Any(testRf.Id),
-//				GatewaytemplateId: pulumi.Any(test_api.Id),
+//				NetworktemplateId: pulumi.Any(networktemplateOne.Id),
+//				RftemplateId:      pulumi.Any(rftemplateOne.Id),
+//				GatewaytemplateId: pulumi.Any(gatewaytemplateOne.Id),
+//				AlarmtemplateId:   pulumi.Any(alarmtemplateOne.Id),
 //			})
 //			if err != nil {
 //				return err

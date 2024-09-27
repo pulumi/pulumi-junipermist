@@ -66,7 +66,8 @@ class AwaitableGetNetworksResult(GetNetworksResult):
 def get_networks(org_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworksResult:
     """
-    This data source provides the list of WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of WAN Assurance Networks.
+    The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_networks(org_id: Optional[str] = None,
 def get_networks_output(org_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
     """
-    This data source provides the list of WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of WAN Assurance Networks.
+    The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
 
     ## Example Usage
 

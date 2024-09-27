@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Mist Organization.An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+// This resource manages the Mist Organization.
+// An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
 //
 // ## Example Usage
 //
@@ -28,7 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := org.Newbase(ctx, "org_one", &org.baseArgs{
-//				Name: pulumi.String("Org One"),
+//				Name:            pulumi.String("Org One"),
+//				AlarmtemplateId: pulumi.Any(alarmtemplateOne.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Org WxRules (WxLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+// This resource manages the Org WxRules (WxLAN policies).
+// A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
 //
 // ## Example Usage
 //
@@ -67,9 +68,9 @@ type Wxrule struct {
 	ApplyTags pulumi.StringArrayOutput `pulumi:"applyTags"`
 	// blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps pulumi.StringArrayOutput `pulumi:"blockedApps"`
-	// tag list to indicate these tags are allowed access
+	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags pulumi.StringArrayOutput `pulumi:"dstAllowWxtags"`
-	// tag list to indicate these tags are blocked access
+	// List of WxTag UUID to indicate these tags are blocked access
 	DstDenyWxtags pulumi.StringArrayOutput `pulumi:"dstDenyWxtags"`
 	// List of WxTag UUID
 	DstWxtags pulumi.StringArrayOutput `pulumi:"dstWxtags"`
@@ -77,7 +78,7 @@ type Wxrule struct {
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order pulumi.IntOutput    `pulumi:"order"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// tag list to determine if this rule would match
+	// List of WxTag UUID to determine if this rule would match
 	SrcWxtags pulumi.StringArrayOutput `pulumi:"srcWxtags"`
 	// Only for Org Level WxRule
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
@@ -130,9 +131,9 @@ type wxruleState struct {
 	ApplyTags []string `pulumi:"applyTags"`
 	// blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps []string `pulumi:"blockedApps"`
-	// tag list to indicate these tags are allowed access
+	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
-	// tag list to indicate these tags are blocked access
+	// List of WxTag UUID to indicate these tags are blocked access
 	DstDenyWxtags []string `pulumi:"dstDenyWxtags"`
 	// List of WxTag UUID
 	DstWxtags []string `pulumi:"dstWxtags"`
@@ -140,7 +141,7 @@ type wxruleState struct {
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order *int    `pulumi:"order"`
 	OrgId *string `pulumi:"orgId"`
-	// tag list to determine if this rule would match
+	// List of WxTag UUID to determine if this rule would match
 	SrcWxtags []string `pulumi:"srcWxtags"`
 	// Only for Org Level WxRule
 	TemplateId *string `pulumi:"templateId"`
@@ -152,9 +153,9 @@ type WxruleState struct {
 	ApplyTags pulumi.StringArrayInput
 	// blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps pulumi.StringArrayInput
-	// tag list to indicate these tags are allowed access
+	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags pulumi.StringArrayInput
-	// tag list to indicate these tags are blocked access
+	// List of WxTag UUID to indicate these tags are blocked access
 	DstDenyWxtags pulumi.StringArrayInput
 	// List of WxTag UUID
 	DstWxtags pulumi.StringArrayInput
@@ -162,7 +163,7 @@ type WxruleState struct {
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order pulumi.IntPtrInput
 	OrgId pulumi.StringPtrInput
-	// tag list to determine if this rule would match
+	// List of WxTag UUID to determine if this rule would match
 	SrcWxtags pulumi.StringArrayInput
 	// Only for Org Level WxRule
 	TemplateId pulumi.StringPtrInput
@@ -178,9 +179,9 @@ type wxruleArgs struct {
 	ApplyTags []string `pulumi:"applyTags"`
 	// blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps []string `pulumi:"blockedApps"`
-	// tag list to indicate these tags are allowed access
+	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags []string `pulumi:"dstAllowWxtags"`
-	// tag list to indicate these tags are blocked access
+	// List of WxTag UUID to indicate these tags are blocked access
 	DstDenyWxtags []string `pulumi:"dstDenyWxtags"`
 	// List of WxTag UUID
 	DstWxtags []string `pulumi:"dstWxtags"`
@@ -188,7 +189,7 @@ type wxruleArgs struct {
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order int    `pulumi:"order"`
 	OrgId string `pulumi:"orgId"`
-	// tag list to determine if this rule would match
+	// List of WxTag UUID to determine if this rule would match
 	SrcWxtags []string `pulumi:"srcWxtags"`
 	// Only for Org Level WxRule
 	TemplateId string `pulumi:"templateId"`
@@ -201,9 +202,9 @@ type WxruleArgs struct {
 	ApplyTags pulumi.StringArrayInput
 	// blocked apps (always blocking, ignoring action), the key of Get Application List
 	BlockedApps pulumi.StringArrayInput
-	// tag list to indicate these tags are allowed access
+	// List of WxTag UUID to indicate these tags are allowed access
 	DstAllowWxtags pulumi.StringArrayInput
-	// tag list to indicate these tags are blocked access
+	// List of WxTag UUID to indicate these tags are blocked access
 	DstDenyWxtags pulumi.StringArrayInput
 	// List of WxTag UUID
 	DstWxtags pulumi.StringArrayInput
@@ -211,7 +212,7 @@ type WxruleArgs struct {
 	// the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
 	Order pulumi.IntInput
 	OrgId pulumi.StringInput
-	// tag list to determine if this rule would match
+	// List of WxTag UUID to determine if this rule would match
 	SrcWxtags pulumi.StringArrayInput
 	// Only for Org Level WxRule
 	TemplateId pulumi.StringInput
@@ -318,12 +319,12 @@ func (o WxruleOutput) BlockedApps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.BlockedApps }).(pulumi.StringArrayOutput)
 }
 
-// tag list to indicate these tags are allowed access
+// List of WxTag UUID to indicate these tags are allowed access
 func (o WxruleOutput) DstAllowWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstAllowWxtags }).(pulumi.StringArrayOutput)
 }
 
-// tag list to indicate these tags are blocked access
+// List of WxTag UUID to indicate these tags are blocked access
 func (o WxruleOutput) DstDenyWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.DstDenyWxtags }).(pulumi.StringArrayOutput)
 }
@@ -346,7 +347,7 @@ func (o WxruleOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// tag list to determine if this rule would match
+// List of WxTag UUID to determine if this rule would match
 func (o WxruleOutput) SrcWxtags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Wxrule) pulumi.StringArrayOutput { return v.SrcWxtags }).(pulumi.StringArrayOutput)
 }

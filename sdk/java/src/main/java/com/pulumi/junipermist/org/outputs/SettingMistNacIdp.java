@@ -4,10 +4,10 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -17,14 +17,18 @@ public final class SettingMistNacIdp {
      * 
      */
     private @Nullable List<String> excludeRealms;
-    private @Nullable String id;
+    /**
+     * @return ID of the `mist_nacidp`
+     * 
+     */
+    private String id;
     /**
      * @return which realm should trigger this IDP. User Realm is extracted from:
      *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
      *   * Cert CN
      * 
      */
-    private @Nullable List<String> userRealms;
+    private List<String> userRealms;
 
     private SettingMistNacIdp() {}
     /**
@@ -34,8 +38,12 @@ public final class SettingMistNacIdp {
     public List<String> excludeRealms() {
         return this.excludeRealms == null ? List.of() : this.excludeRealms;
     }
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    /**
+     * @return ID of the `mist_nacidp`
+     * 
+     */
+    public String id() {
+        return this.id;
     }
     /**
      * @return which realm should trigger this IDP. User Realm is extracted from:
@@ -44,7 +52,7 @@ public final class SettingMistNacIdp {
      * 
      */
     public List<String> userRealms() {
-        return this.userRealms == null ? List.of() : this.userRealms;
+        return this.userRealms;
     }
 
     public static Builder builder() {
@@ -57,8 +65,8 @@ public final class SettingMistNacIdp {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludeRealms;
-        private @Nullable String id;
-        private @Nullable List<String> userRealms;
+        private String id;
+        private List<String> userRealms;
         public Builder() {}
         public Builder(SettingMistNacIdp defaults) {
     	      Objects.requireNonNull(defaults);
@@ -77,14 +85,18 @@ public final class SettingMistNacIdp {
             return excludeRealms(List.of(excludeRealms));
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("SettingMistNacIdp", "id");
+            }
             this.id = id;
             return this;
         }
         @CustomType.Setter
-        public Builder userRealms(@Nullable List<String> userRealms) {
-
+        public Builder userRealms(List<String> userRealms) {
+            if (userRealms == null) {
+              throw new MissingRequiredPropertyException("SettingMistNacIdp", "userRealms");
+            }
             this.userRealms = userRealms;
             return this;
         }

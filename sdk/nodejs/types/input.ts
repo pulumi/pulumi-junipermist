@@ -2951,6 +2951,71 @@ export namespace device {
 }
 
 export namespace org {
+    export interface AlarmtemplateDelivery {
+        /**
+         * List of additional email string to deliver the alarms via emails
+         */
+        additionalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether to enable the alarm delivery via emails or not
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Whether to deliver the alarms via emails to Org admins or not
+         */
+        toOrgAdmins?: pulumi.Input<boolean>;
+        /**
+         * Whether to deliver the alarms via emails to Site admins or not
+         */
+        toSiteAdmins?: pulumi.Input<boolean>;
+    }
+
+    export interface AlarmtemplateRules {
+        /**
+         * Delivery object to configure the alarm delivery
+         */
+        delivery?: pulumi.Input<inputs.org.AlarmtemplateRulesDelivery>;
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AlarmtemplateRulesDelivery {
+        /**
+         * List of additional email string to deliver the alarms via emails
+         */
+        additionalEmails?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether to enable the alarm delivery via emails or not
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Whether to deliver the alarms via emails to Org admins or not
+         */
+        toOrgAdmins?: pulumi.Input<boolean>;
+        /**
+         * Whether to deliver the alarms via emails to Site admins or not
+         */
+        toSiteAdmins?: pulumi.Input<boolean>;
+    }
+
+    export interface ApitokenPrivilege {
+        /**
+         * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         */
+        role: pulumi.Input<string>;
+        /**
+         * enum: `org`, `site`, `sitegroup`
+         */
+        scope: pulumi.Input<string>;
+        /**
+         * Required if `scope`==`site`
+         */
+        siteId?: pulumi.Input<string>;
+        /**
+         * Required if `scope`==`sitegroup`
+         */
+        sitegroupId?: pulumi.Input<string>;
+    }
+
     export interface DeviceprofileApAeroscout {
         /**
          * whether to enable aeroscout config
@@ -7590,13 +7655,16 @@ export namespace org {
          * when the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
          */
         excludeRealms?: pulumi.Input<pulumi.Input<string>[]>;
-        id?: pulumi.Input<string>;
+        /**
+         * ID of the `mistNacidp`
+         */
+        id: pulumi.Input<string>;
         /**
          * which realm should trigger this IDP. User Realm is extracted from:
          *   * Username-AVP (`mist.com` from john@mist.com)
          *   * Cert CN
          */
-        userRealms?: pulumi.Input<pulumi.Input<string>[]>;
+        userRealms: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SettingMistNacServerCert {
@@ -7703,7 +7771,7 @@ export namespace org {
         /**
          * any / HH:MM (24-hour format)
          */
-        timeOdFay?: pulumi.Input<string>;
+        timeOfDay?: pulumi.Input<string>;
     }
 
     export interface SettingVpnOptions {
@@ -7712,6 +7780,37 @@ export namespace org {
          * equiring /12 or bigger to support 16 private IPs for 65535 gateways
          */
         stSubnet?: pulumi.Input<string>;
+    }
+
+    export interface SettingWanPma {
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingWiredPma {
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingWirelessPma {
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SsoRolePrivilege {
+        /**
+         * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         */
+        role: pulumi.Input<string>;
+        /**
+         * enum: `org`, `site`, `sitegroup`
+         */
+        scope: pulumi.Input<string>;
+        /**
+         * Required if `scope`==`site`
+         */
+        siteId?: pulumi.Input<string>;
+        /**
+         * Required if `scope`==`sitegroup`
+         */
+        sitegroupId?: pulumi.Input<string>;
     }
 
     export interface VpnPaths {

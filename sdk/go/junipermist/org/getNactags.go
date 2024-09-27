@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+// This data source provides the list of NAC Tags (Auth Policy Labels).
+// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
 //
 // ## Example Usage
 //

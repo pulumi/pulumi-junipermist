@@ -42,7 +42,10 @@ class SettingArgs:
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
                  ui_idle_timeout: Optional[pulumi.Input[int]] = None,
-                 vpn_options: Optional[pulumi.Input['SettingVpnOptionsArgs']] = None):
+                 vpn_options: Optional[pulumi.Input['SettingVpnOptionsArgs']] = None,
+                 wan_pma: Optional[pulumi.Input['SettingWanPmaArgs']] = None,
+                 wired_pma: Optional[pulumi.Input['SettingWiredPmaArgs']] = None,
+                 wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
@@ -115,6 +118,12 @@ class SettingArgs:
             pulumi.set(__self__, "ui_idle_timeout", ui_idle_timeout)
         if vpn_options is not None:
             pulumi.set(__self__, "vpn_options", vpn_options)
+        if wan_pma is not None:
+            pulumi.set(__self__, "wan_pma", wan_pma)
+        if wired_pma is not None:
+            pulumi.set(__self__, "wired_pma", wired_pma)
+        if wireless_pma is not None:
+            pulumi.set(__self__, "wireless_pma", wireless_pma)
 
     @property
     @pulumi.getter(name="orgId")
@@ -397,6 +406,33 @@ class SettingArgs:
     def vpn_options(self, value: Optional[pulumi.Input['SettingVpnOptionsArgs']]):
         pulumi.set(self, "vpn_options", value)
 
+    @property
+    @pulumi.getter(name="wanPma")
+    def wan_pma(self) -> Optional[pulumi.Input['SettingWanPmaArgs']]:
+        return pulumi.get(self, "wan_pma")
+
+    @wan_pma.setter
+    def wan_pma(self, value: Optional[pulumi.Input['SettingWanPmaArgs']]):
+        pulumi.set(self, "wan_pma", value)
+
+    @property
+    @pulumi.getter(name="wiredPma")
+    def wired_pma(self) -> Optional[pulumi.Input['SettingWiredPmaArgs']]:
+        return pulumi.get(self, "wired_pma")
+
+    @wired_pma.setter
+    def wired_pma(self, value: Optional[pulumi.Input['SettingWiredPmaArgs']]):
+        pulumi.set(self, "wired_pma", value)
+
+    @property
+    @pulumi.getter(name="wirelessPma")
+    def wireless_pma(self) -> Optional[pulumi.Input['SettingWirelessPmaArgs']]:
+        return pulumi.get(self, "wireless_pma")
+
+    @wireless_pma.setter
+    def wireless_pma(self, value: Optional[pulumi.Input['SettingWirelessPmaArgs']]):
+        pulumi.set(self, "wireless_pma", value)
+
 
 @pulumi.input_type
 class _SettingState:
@@ -428,7 +464,10 @@ class _SettingState:
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
                  synthetic_test: Optional[pulumi.Input['SettingSyntheticTestArgs']] = None,
                  ui_idle_timeout: Optional[pulumi.Input[int]] = None,
-                 vpn_options: Optional[pulumi.Input['SettingVpnOptionsArgs']] = None):
+                 vpn_options: Optional[pulumi.Input['SettingVpnOptionsArgs']] = None,
+                 wan_pma: Optional[pulumi.Input['SettingWanPmaArgs']] = None,
+                 wired_pma: Optional[pulumi.Input['SettingWiredPmaArgs']] = None,
+                 wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
         :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
@@ -504,6 +543,12 @@ class _SettingState:
             pulumi.set(__self__, "ui_idle_timeout", ui_idle_timeout)
         if vpn_options is not None:
             pulumi.set(__self__, "vpn_options", vpn_options)
+        if wan_pma is not None:
+            pulumi.set(__self__, "wan_pma", wan_pma)
+        if wired_pma is not None:
+            pulumi.set(__self__, "wired_pma", wired_pma)
+        if wireless_pma is not None:
+            pulumi.set(__self__, "wireless_pma", wireless_pma)
 
     @property
     @pulumi.getter(name="apUpdownThreshold")
@@ -795,6 +840,33 @@ class _SettingState:
     def vpn_options(self, value: Optional[pulumi.Input['SettingVpnOptionsArgs']]):
         pulumi.set(self, "vpn_options", value)
 
+    @property
+    @pulumi.getter(name="wanPma")
+    def wan_pma(self) -> Optional[pulumi.Input['SettingWanPmaArgs']]:
+        return pulumi.get(self, "wan_pma")
+
+    @wan_pma.setter
+    def wan_pma(self, value: Optional[pulumi.Input['SettingWanPmaArgs']]):
+        pulumi.set(self, "wan_pma", value)
+
+    @property
+    @pulumi.getter(name="wiredPma")
+    def wired_pma(self) -> Optional[pulumi.Input['SettingWiredPmaArgs']]:
+        return pulumi.get(self, "wired_pma")
+
+    @wired_pma.setter
+    def wired_pma(self, value: Optional[pulumi.Input['SettingWiredPmaArgs']]):
+        pulumi.set(self, "wired_pma", value)
+
+    @property
+    @pulumi.getter(name="wirelessPma")
+    def wireless_pma(self) -> Optional[pulumi.Input['SettingWirelessPmaArgs']]:
+        return pulumi.get(self, "wireless_pma")
+
+    @wireless_pma.setter
+    def wireless_pma(self, value: Optional[pulumi.Input['SettingWirelessPmaArgs']]):
+        pulumi.set(self, "wireless_pma", value)
+
 
 class Setting(pulumi.CustomResource):
     @overload
@@ -828,26 +900,13 @@ class Setting(pulumi.CustomResource):
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  ui_idle_timeout: Optional[pulumi.Input[int]] = None,
                  vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
+                 wan_pma: Optional[pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']]] = None,
+                 wired_pma: Optional[pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']]] = None,
+                 wireless_pma: Optional[pulumi.Input[Union['SettingWirelessPmaArgs', 'SettingWirelessPmaArgsDict']]] = None,
                  __props__=None):
         """
-        This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_juniper_mist as junipermist
-
-        vpn_one = junipermist.org.Vpn("vpn_one",
-            org_id=terraform_test["id"],
-            name="vpn_one",
-            paths={
-                "AWS_Hub_Profile1-WAN1": {
-                    "bfd_profile": "broadband",
-                },
-                "AWS_Hub_Profile1-WAN2": {},
-            })
-        ```
+        This resource manages the Org Settings.
+        The Org Settings can be used to customize the Org configuration
 
         ## Import
 
@@ -885,24 +944,8 @@ class Setting(pulumi.CustomResource):
                  args: SettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_juniper_mist as junipermist
-
-        vpn_one = junipermist.org.Vpn("vpn_one",
-            org_id=terraform_test["id"],
-            name="vpn_one",
-            paths={
-                "AWS_Hub_Profile1-WAN1": {
-                    "bfd_profile": "broadband",
-                },
-                "AWS_Hub_Profile1-WAN2": {},
-            })
-        ```
+        This resource manages the Org Settings.
+        The Org Settings can be used to customize the Org configuration
 
         ## Import
 
@@ -956,6 +999,9 @@ class Setting(pulumi.CustomResource):
                  synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
                  ui_idle_timeout: Optional[pulumi.Input[int]] = None,
                  vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
+                 wan_pma: Optional[pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']]] = None,
+                 wired_pma: Optional[pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']]] = None,
+                 wireless_pma: Optional[pulumi.Input[Union['SettingWirelessPmaArgs', 'SettingWirelessPmaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -994,6 +1040,9 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["synthetic_test"] = synthetic_test
             __props__.__dict__["ui_idle_timeout"] = ui_idle_timeout
             __props__.__dict__["vpn_options"] = vpn_options
+            __props__.__dict__["wan_pma"] = wan_pma
+            __props__.__dict__["wired_pma"] = wired_pma
+            __props__.__dict__["wireless_pma"] = wireless_pma
             __props__.__dict__["juniper"] = None
         super(Setting, __self__).__init__(
             'junipermist:org/setting:Setting',
@@ -1032,7 +1081,10 @@ class Setting(pulumi.CustomResource):
             switch_updown_threshold: Optional[pulumi.Input[int]] = None,
             synthetic_test: Optional[pulumi.Input[Union['SettingSyntheticTestArgs', 'SettingSyntheticTestArgsDict']]] = None,
             ui_idle_timeout: Optional[pulumi.Input[int]] = None,
-            vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None) -> 'Setting':
+            vpn_options: Optional[pulumi.Input[Union['SettingVpnOptionsArgs', 'SettingVpnOptionsArgsDict']]] = None,
+            wan_pma: Optional[pulumi.Input[Union['SettingWanPmaArgs', 'SettingWanPmaArgsDict']]] = None,
+            wired_pma: Optional[pulumi.Input[Union['SettingWiredPmaArgs', 'SettingWiredPmaArgsDict']]] = None,
+            wireless_pma: Optional[pulumi.Input[Union['SettingWirelessPmaArgs', 'SettingWirelessPmaArgsDict']]] = None) -> 'Setting':
         """
         Get an existing Setting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1089,6 +1141,9 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["synthetic_test"] = synthetic_test
         __props__.__dict__["ui_idle_timeout"] = ui_idle_timeout
         __props__.__dict__["vpn_options"] = vpn_options
+        __props__.__dict__["wan_pma"] = wan_pma
+        __props__.__dict__["wired_pma"] = wired_pma
+        __props__.__dict__["wireless_pma"] = wireless_pma
         return Setting(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1268,4 +1323,19 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="vpnOptions")
     def vpn_options(self) -> pulumi.Output[Optional['outputs.SettingVpnOptions']]:
         return pulumi.get(self, "vpn_options")
+
+    @property
+    @pulumi.getter(name="wanPma")
+    def wan_pma(self) -> pulumi.Output[Optional['outputs.SettingWanPma']]:
+        return pulumi.get(self, "wan_pma")
+
+    @property
+    @pulumi.getter(name="wiredPma")
+    def wired_pma(self) -> pulumi.Output[Optional['outputs.SettingWiredPma']]:
+        return pulumi.get(self, "wired_pma")
+
+    @property
+    @pulumi.getter(name="wirelessPma")
+    def wireless_pma(self) -> pulumi.Output[Optional['outputs.SettingWirelessPma']]:
+        return pulumi.get(self, "wireless_pma")
 

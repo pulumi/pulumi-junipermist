@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Site WxRules (WLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+ * This resource manages the Site WxRules (WLAN policies).
+ * A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
  *
  * ## Example Usage
  *
@@ -71,11 +72,11 @@ export class Wxrule extends pulumi.CustomResource {
      */
     public readonly blockedApps!: pulumi.Output<string[] | undefined>;
     /**
-     * tag list to indicate these tags are allowed access
+     * List of WxTag UUID to indicate these tags are allowed access
      */
     public readonly dstAllowWxtags!: pulumi.Output<string[]>;
     /**
-     * tag list to indicate these tags are blocked access
+     * List of WxTag UUID to indicate these tags are blocked access
      */
     public readonly dstDenyWxtags!: pulumi.Output<string[]>;
     /**
@@ -89,13 +90,9 @@ export class Wxrule extends pulumi.CustomResource {
     public readonly order!: pulumi.Output<number>;
     public readonly siteId!: pulumi.Output<string>;
     /**
-     * tag list to determine if this rule would match
+     * List of WxTag UUID to determine if this rule would match
      */
     public readonly srcWxtags!: pulumi.Output<string[]>;
-    /**
-     * Only for Org Level WxRule
-     */
-    public readonly templateId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Wxrule resource with the given unique name, arguments, and options.
@@ -120,7 +117,6 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["order"] = state ? state.order : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["srcWxtags"] = state ? state.srcWxtags : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
         } else {
             const args = argsOrState as WxruleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -142,7 +138,6 @@ export class Wxrule extends pulumi.CustomResource {
             resourceInputs["order"] = args ? args.order : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
             resourceInputs["srcWxtags"] = args ? args.srcWxtags : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Wxrule.__pulumiType, name, resourceInputs, opts);
@@ -163,11 +158,11 @@ export interface WxruleState {
      */
     blockedApps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * tag list to indicate these tags are allowed access
+     * List of WxTag UUID to indicate these tags are allowed access
      */
     dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * tag list to indicate these tags are blocked access
+     * List of WxTag UUID to indicate these tags are blocked access
      */
     dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -181,13 +176,9 @@ export interface WxruleState {
     order?: pulumi.Input<number>;
     siteId?: pulumi.Input<string>;
     /**
-     * tag list to determine if this rule would match
+     * List of WxTag UUID to determine if this rule would match
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only for Org Level WxRule
-     */
-    templateId?: pulumi.Input<string>;
 }
 
 /**
@@ -204,11 +195,11 @@ export interface WxruleArgs {
      */
     blockedApps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * tag list to indicate these tags are allowed access
+     * List of WxTag UUID to indicate these tags are allowed access
      */
     dstAllowWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * tag list to indicate these tags are blocked access
+     * List of WxTag UUID to indicate these tags are blocked access
      */
     dstDenyWxtags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -222,11 +213,7 @@ export interface WxruleArgs {
     order: pulumi.Input<number>;
     siteId: pulumi.Input<string>;
     /**
-     * tag list to determine if this rule would match
+     * List of WxTag UUID to determine if this rule would match
      */
     srcWxtags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only for Org Level WxRule
-     */
-    templateId?: pulumi.Input<string>;
 }

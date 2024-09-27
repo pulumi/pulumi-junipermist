@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { GetConstAlarmsResult } from "./getConstAlarms";
+export const getConstAlarms: typeof import("./getConstAlarms").getConstAlarms = null as any;
+export const getConstAlarmsOutput: typeof import("./getConstAlarms").getConstAlarmsOutput = null as any;
+utilities.lazyLoad(exports, ["getConstAlarms","getConstAlarmsOutput"], () => require("./getConstAlarms"));
+
 export { GetConstAppCategoriesResult } from "./getConstAppCategories";
 export const getConstAppCategories: typeof import("./getConstAppCategories").getConstAppCategories = null as any;
 export const getConstAppCategoriesOutput: typeof import("./getConstAppCategories").getConstAppCategoriesOutput = null as any;

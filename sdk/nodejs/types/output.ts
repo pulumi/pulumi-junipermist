@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetConstAlarmsConstAlarm {
+    /**
+     * Description of the alarm type
+     */
+    display: string;
+    /**
+     * Group to which the alarm belongs
+     */
+    group: string;
+    /**
+     * Key name of the alarm type
+     */
+    key: string;
+    /**
+     * Severity of the alarm
+     */
+    severity: string;
+}
+
 export interface GetConstAppCategoriesConstAppCategory {
     /**
      * Description of the app category
@@ -4593,6 +4612,71 @@ export namespace device {
 }
 
 export namespace org {
+    export interface AlarmtemplateDelivery {
+        /**
+         * List of additional email string to deliver the alarms via emails
+         */
+        additionalEmails: string[];
+        /**
+         * Whether to enable the alarm delivery via emails or not
+         */
+        enabled: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Org admins or not
+         */
+        toOrgAdmins?: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Site admins or not
+         */
+        toSiteAdmins?: boolean;
+    }
+
+    export interface AlarmtemplateRules {
+        /**
+         * Delivery object to configure the alarm delivery
+         */
+        delivery?: outputs.org.AlarmtemplateRulesDelivery;
+        enabled?: boolean;
+    }
+
+    export interface AlarmtemplateRulesDelivery {
+        /**
+         * List of additional email string to deliver the alarms via emails
+         */
+        additionalEmails?: string[];
+        /**
+         * Whether to enable the alarm delivery via emails or not
+         */
+        enabled: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Org admins or not
+         */
+        toOrgAdmins?: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Site admins or not
+         */
+        toSiteAdmins?: boolean;
+    }
+
+    export interface ApitokenPrivilege {
+        /**
+         * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         */
+        role: string;
+        /**
+         * enum: `org`, `site`, `sitegroup`
+         */
+        scope: string;
+        /**
+         * Required if `scope`==`site`
+         */
+        siteId?: string;
+        /**
+         * Required if `scope`==`sitegroup`
+         */
+        sitegroupId?: string;
+    }
+
     export interface DeviceprofileApAeroscout {
         /**
          * whether to enable aeroscout config
@@ -9696,7 +9780,10 @@ export namespace org {
          * when the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
          */
         excludeRealms: string[];
-        id?: string;
+        /**
+         * ID of the `mistNacidp`
+         */
+        id: string;
         /**
          * which realm should trigger this IDP. User Realm is extracted from:
          *   * Username-AVP (`mist.com` from john@mist.com)
@@ -9809,7 +9896,7 @@ export namespace org {
         /**
          * any / HH:MM (24-hour format)
          */
-        timeOdFay: string;
+        timeOfDay: string;
     }
 
     export interface SettingVpnOptions {
@@ -9818,6 +9905,37 @@ export namespace org {
          * equiring /12 or bigger to support 16 private IPs for 65535 gateways
          */
         stSubnet: string;
+    }
+
+    export interface SettingWanPma {
+        enabled: boolean;
+    }
+
+    export interface SettingWiredPma {
+        enabled: boolean;
+    }
+
+    export interface SettingWirelessPma {
+        enabled: boolean;
+    }
+
+    export interface SsoRolePrivilege {
+        /**
+         * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         */
+        role: string;
+        /**
+         * enum: `org`, `site`, `sitegroup`
+         */
+        scope: string;
+        /**
+         * Required if `scope`==`site`
+         */
+        siteId?: string;
+        /**
+         * Required if `scope`==`sitegroup`
+         */
+        sitegroupId?: string;
     }
 
     export interface VpnPaths {

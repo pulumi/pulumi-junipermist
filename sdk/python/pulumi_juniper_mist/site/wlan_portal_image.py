@@ -122,7 +122,8 @@ class WlanPortalImage(pulumi.CustomResource):
                  wlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+        This resource is used to upload a WLAN Captive Web Portal background image.
+        The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 
         ## Example Usage
 
@@ -148,7 +149,8 @@ class WlanPortalImage(pulumi.CustomResource):
                  args: WlanPortalImageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+        This resource is used to upload a WLAN Captive Web Portal background image.
+        The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 
         ## Example Usage
 

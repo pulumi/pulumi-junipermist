@@ -15,7 +15,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resourceis used to assign/unassign a device profile to one or multiple devicesThe `junipermist.org.DeviceprofileGateway` resource can be assigned to GatewaysThe `junipermist.org.DeviceprofileAp` resource can be assigned the Wireless Access Points
+ * This resourceis used to assign/unassign a device profile to one or multiple devices
+ * The `junipermist.org.DeviceprofileGateway` resource can be assigned to GatewaysThe `junipermist.org.DeviceprofileAp` resource can be assigned the Wireless Access Points
  * 
  * ## Example Usage
  * 

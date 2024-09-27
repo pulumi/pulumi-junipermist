@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Site
 {
     /// <summary>
-    /// This resources manages the Site basic information.This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
+    /// This resources manages the Site basic information.
+    /// This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
     /// 
     /// ## Example Usage
     /// 
@@ -40,9 +41,10 @@ namespace Pulumi.JuniperMist.Site
     ///             testGroup.Id,
     ///             testGroup2.Id,
     ///         },
-    ///         NetworktemplateId = switchTemplate.Id,
-    ///         RftemplateId = testRf.Id,
-    ///         GatewaytemplateId = test_api.Id,
+    ///         NetworktemplateId = networktemplateOne.Id,
+    ///         RftemplateId = rftemplateOne.Id,
+    ///         GatewaytemplateId = gatewaytemplateOne.Id,
+    ///         AlarmtemplateId = alarmtemplateOne.Id,
     ///     });
     /// 
     /// });

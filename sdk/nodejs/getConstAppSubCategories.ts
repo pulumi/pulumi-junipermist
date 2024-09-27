@@ -7,7 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * This data source provides the of ConstAppSubCategories.This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
+ * This data source provides the of ConstAppSubCategories.
+ * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
  *
  * ## Example Usage
  *
@@ -35,7 +36,8 @@ export interface GetConstAppSubCategoriesResult {
     readonly id: string;
 }
 /**
- * This data source provides the of ConstAppSubCategories.This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
+ * This data source provides the of ConstAppSubCategories.
+ * This information can be used as `appSubcategories` in the `junipermist.org.Service` resource
  *
  * ## Example Usage
  *

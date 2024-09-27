@@ -1428,7 +1428,8 @@ class Switch(pulumi.CustomResource):
                  y: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-        This resource manages the Switch configuration.It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
+        This resource manages the Switch configuration.
+        It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
 
         ## Import
 
@@ -1480,7 +1481,8 @@ class Switch(pulumi.CustomResource):
                  args: SwitchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Switch configuration.It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
+        This resource manages the Switch configuration.
+        It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
 
         ## Import
 

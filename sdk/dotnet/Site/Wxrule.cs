@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Site
 {
     /// <summary>
-    /// This resource manages the Site WxRules (WLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+    /// This resource manages the Site WxRules (WLAN policies).
+    /// A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
     /// 
     /// ## Example Usage
     /// 
@@ -70,13 +71,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableArray<string>> BlockedApps { get; private set; } = null!;
 
         /// <summary>
-        /// tag list to indicate these tags are allowed access
+        /// List of WxTag UUID to indicate these tags are allowed access
         /// </summary>
         [Output("dstAllowWxtags")]
         public Output<ImmutableArray<string>> DstAllowWxtags { get; private set; } = null!;
 
         /// <summary>
-        /// tag list to indicate these tags are blocked access
+        /// List of WxTag UUID to indicate these tags are blocked access
         /// </summary>
         [Output("dstDenyWxtags")]
         public Output<ImmutableArray<string>> DstDenyWxtags { get; private set; } = null!;
@@ -100,16 +101,10 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> SiteId { get; private set; } = null!;
 
         /// <summary>
-        /// tag list to determine if this rule would match
+        /// List of WxTag UUID to determine if this rule would match
         /// </summary>
         [Output("srcWxtags")]
         public Output<ImmutableArray<string>> SrcWxtags { get; private set; } = null!;
-
-        /// <summary>
-        /// Only for Org Level WxRule
-        /// </summary>
-        [Output("templateId")]
-        public Output<string?> TemplateId { get; private set; } = null!;
 
 
         /// <summary>
@@ -188,7 +183,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dstAllowWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are allowed access
+        /// List of WxTag UUID to indicate these tags are allowed access
         /// </summary>
         public InputList<string> DstAllowWxtags
         {
@@ -200,7 +195,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dstDenyWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are blocked access
+        /// List of WxTag UUID to indicate these tags are blocked access
         /// </summary>
         public InputList<string> DstDenyWxtags
         {
@@ -236,19 +231,13 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _srcWxtags;
 
         /// <summary>
-        /// tag list to determine if this rule would match
+        /// List of WxTag UUID to determine if this rule would match
         /// </summary>
         public InputList<string> SrcWxtags
         {
             get => _srcWxtags ?? (_srcWxtags = new InputList<string>());
             set => _srcWxtags = value;
         }
-
-        /// <summary>
-        /// Only for Org Level WxRule
-        /// </summary>
-        [Input("templateId")]
-        public Input<string>? TemplateId { get; set; }
 
         public WxruleArgs()
         {
@@ -288,7 +277,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dstAllowWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are allowed access
+        /// List of WxTag UUID to indicate these tags are allowed access
         /// </summary>
         public InputList<string> DstAllowWxtags
         {
@@ -300,7 +289,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _dstDenyWxtags;
 
         /// <summary>
-        /// tag list to indicate these tags are blocked access
+        /// List of WxTag UUID to indicate these tags are blocked access
         /// </summary>
         public InputList<string> DstDenyWxtags
         {
@@ -336,19 +325,13 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _srcWxtags;
 
         /// <summary>
-        /// tag list to determine if this rule would match
+        /// List of WxTag UUID to determine if this rule would match
         /// </summary>
         public InputList<string> SrcWxtags
         {
             get => _srcWxtags ?? (_srcWxtags = new InputList<string>());
             set => _srcWxtags = value;
         }
-
-        /// <summary>
-        /// Only for Org Level WxRule
-        /// </summary>
-        [Input("templateId")]
-        public Input<string>? TemplateId { get; set; }
 
         public WxruleState()
         {

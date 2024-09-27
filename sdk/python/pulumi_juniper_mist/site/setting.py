@@ -1285,7 +1285,8 @@ class Setting(pulumi.CustomResource):
                  zone_occupancy_alert: Optional[pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']]] = None,
                  __props__=None):
         """
-        This resource manages the Site Settings.The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+        This resource manages the Site Settings.
+        The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
         ## Import
 
@@ -1345,7 +1346,8 @@ class Setting(pulumi.CustomResource):
                  args: SettingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Site Settings.The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+        This resource manages the Site Settings.
+        The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
         ## Import
 

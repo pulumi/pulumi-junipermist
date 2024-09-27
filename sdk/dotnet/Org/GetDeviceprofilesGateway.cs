@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetDeviceprofilesGateway
     {
         /// <summary>
-        /// This provides the list of Gateway Device Profiles (Hub Profile).A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+        /// This provides the list of Gateway Device Profiles (Hub Profile).
+        /// A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeviceprofilesGatewayResult>("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", args ?? new GetDeviceprofilesGatewayArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This provides the list of Gateway Device Profiles (Hub Profile).A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+        /// This provides the list of Gateway Device Profiles (Hub Profile).
+        /// A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
         /// 
         /// 
         /// ## Example Usage

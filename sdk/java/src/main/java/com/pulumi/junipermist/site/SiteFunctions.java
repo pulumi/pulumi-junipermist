@@ -18,7 +18,8 @@ import java.util.concurrent.CompletableFuture;
 
 public final class SiteFunctions {
     /**
-     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list of WAN Assurance Psks.
+     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
      * 
      * ## Example Usage
      * 
@@ -61,7 +62,8 @@ public final class SiteFunctions {
         return getPsks(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list of WAN Assurance Psks.
+     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
      * 
      * ## Example Usage
      * 
@@ -104,7 +106,8 @@ public final class SiteFunctions {
         return getPsksPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list of WAN Assurance Psks.
+     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
      * 
      * ## Example Usage
      * 
@@ -147,7 +150,8 @@ public final class SiteFunctions {
         return Deployment.getInstance().invoke("junipermist:site/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list of WAN Assurance Psks.
+     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
      * 
      * ## Example Usage
      * 

@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Mist Organization.An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+ * This resource manages the Mist Organization.
+ * An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
  *
  * ## Example Usage
  *
@@ -13,7 +14,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as junipermist from "@pulumi/juniper-mist";
  *
- * const orgOne = new junipermist.org.Base("org_one", {name: "Org One"});
+ * const orgOne = new junipermist.org.Base("org_one", {
+ *     name: "Org One",
+ *     alarmtemplateId: alarmtemplateOne.id,
+ * });
  * ```
  *
  * ## Import

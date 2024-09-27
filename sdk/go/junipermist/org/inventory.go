@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+// This resource manages the Org inventory.
+// It can be used to claim, unclaim, assign, unassign, reassign devices
 //
 // ## Import
 //

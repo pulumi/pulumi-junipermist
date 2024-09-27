@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Gateway configuration.It can be used to define specific configuration at the device level or to override Org Gateway template settings.
+// This resource manages the Gateway configuration.
+// It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 //
 // ## Example Usage
 //
