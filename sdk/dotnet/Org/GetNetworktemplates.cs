@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetNetworktemplates
     {
         /// <summary>
-        /// This data source provides the list of Org Network Templates (Switch templates).A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+        /// This data source provides the list of Org Network Templates (Switch templates).
+        /// A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworktemplatesResult>("junipermist:org/getNetworktemplates:getNetworktemplates", args ?? new GetNetworktemplatesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of Org Network Templates (Switch templates).A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+        /// This data source provides the list of Org Network Templates (Switch templates).
+        /// A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
         /// 
         /// 
         /// ## Example Usage

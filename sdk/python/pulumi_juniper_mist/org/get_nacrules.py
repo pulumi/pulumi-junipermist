@@ -66,7 +66,8 @@ class AwaitableGetNacrulesResult(GetNacrulesResult):
 def get_nacrules(org_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNacrulesResult:
     """
-    This data source provides the list of NAC Rules (Auth Policies).A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+    This data source provides the list of NAC Rules (Auth Policies).
+    A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_nacrules(org_id: Optional[str] = None,
 def get_nacrules_output(org_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNacrulesResult]:
     """
-    This data source provides the list of NAC Rules (Auth Policies).A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+    This data source provides the list of NAC Rules (Auth Policies).
+    A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
 
     ## Example Usage
 

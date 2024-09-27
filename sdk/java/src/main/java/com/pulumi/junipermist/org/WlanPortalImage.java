@@ -14,7 +14,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * This resource is used to upload a WLAN Captive Web Portal background image.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+ * This resource is used to upload a WLAN Captive Web Portal background image.
+ * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
  * 
  * ## Example Usage
  * 

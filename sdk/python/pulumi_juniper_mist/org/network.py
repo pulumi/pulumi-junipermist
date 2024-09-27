@@ -424,7 +424,8 @@ class Network(pulumi.CustomResource):
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource manages the WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        This resource manages the WAN Assurance Networks.
+        The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
 
         ## Example Usage
 
@@ -464,7 +465,8 @@ class Network(pulumi.CustomResource):
                  args: NetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        This resource manages the WAN Assurance Networks.
+        The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
 
         ## Example Usage
 

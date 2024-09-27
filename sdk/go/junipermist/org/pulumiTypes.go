@@ -13,6 +13,621 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlarmtemplateDelivery struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails []string `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled bool `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins *bool `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins *bool `pulumi:"toSiteAdmins"`
+}
+
+// AlarmtemplateDeliveryInput is an input type that accepts AlarmtemplateDeliveryArgs and AlarmtemplateDeliveryOutput values.
+// You can construct a concrete instance of `AlarmtemplateDeliveryInput` via:
+//
+//	AlarmtemplateDeliveryArgs{...}
+type AlarmtemplateDeliveryInput interface {
+	pulumi.Input
+
+	ToAlarmtemplateDeliveryOutput() AlarmtemplateDeliveryOutput
+	ToAlarmtemplateDeliveryOutputWithContext(context.Context) AlarmtemplateDeliveryOutput
+}
+
+type AlarmtemplateDeliveryArgs struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails pulumi.StringArrayInput `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins pulumi.BoolPtrInput `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins pulumi.BoolPtrInput `pulumi:"toSiteAdmins"`
+}
+
+func (AlarmtemplateDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmtemplateDelivery)(nil)).Elem()
+}
+
+func (i AlarmtemplateDeliveryArgs) ToAlarmtemplateDeliveryOutput() AlarmtemplateDeliveryOutput {
+	return i.ToAlarmtemplateDeliveryOutputWithContext(context.Background())
+}
+
+func (i AlarmtemplateDeliveryArgs) ToAlarmtemplateDeliveryOutputWithContext(ctx context.Context) AlarmtemplateDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateDeliveryOutput)
+}
+
+func (i AlarmtemplateDeliveryArgs) ToAlarmtemplateDeliveryPtrOutput() AlarmtemplateDeliveryPtrOutput {
+	return i.ToAlarmtemplateDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i AlarmtemplateDeliveryArgs) ToAlarmtemplateDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateDeliveryOutput).ToAlarmtemplateDeliveryPtrOutputWithContext(ctx)
+}
+
+// AlarmtemplateDeliveryPtrInput is an input type that accepts AlarmtemplateDeliveryArgs, AlarmtemplateDeliveryPtr and AlarmtemplateDeliveryPtrOutput values.
+// You can construct a concrete instance of `AlarmtemplateDeliveryPtrInput` via:
+//
+//	        AlarmtemplateDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlarmtemplateDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToAlarmtemplateDeliveryPtrOutput() AlarmtemplateDeliveryPtrOutput
+	ToAlarmtemplateDeliveryPtrOutputWithContext(context.Context) AlarmtemplateDeliveryPtrOutput
+}
+
+type alarmtemplateDeliveryPtrType AlarmtemplateDeliveryArgs
+
+func AlarmtemplateDeliveryPtr(v *AlarmtemplateDeliveryArgs) AlarmtemplateDeliveryPtrInput {
+	return (*alarmtemplateDeliveryPtrType)(v)
+}
+
+func (*alarmtemplateDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmtemplateDelivery)(nil)).Elem()
+}
+
+func (i *alarmtemplateDeliveryPtrType) ToAlarmtemplateDeliveryPtrOutput() AlarmtemplateDeliveryPtrOutput {
+	return i.ToAlarmtemplateDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmtemplateDeliveryPtrType) ToAlarmtemplateDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateDeliveryPtrOutput)
+}
+
+type AlarmtemplateDeliveryOutput struct{ *pulumi.OutputState }
+
+func (AlarmtemplateDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmtemplateDelivery)(nil)).Elem()
+}
+
+func (o AlarmtemplateDeliveryOutput) ToAlarmtemplateDeliveryOutput() AlarmtemplateDeliveryOutput {
+	return o
+}
+
+func (o AlarmtemplateDeliveryOutput) ToAlarmtemplateDeliveryOutputWithContext(ctx context.Context) AlarmtemplateDeliveryOutput {
+	return o
+}
+
+func (o AlarmtemplateDeliveryOutput) ToAlarmtemplateDeliveryPtrOutput() AlarmtemplateDeliveryPtrOutput {
+	return o.ToAlarmtemplateDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmtemplateDeliveryOutput) ToAlarmtemplateDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmtemplateDelivery) *AlarmtemplateDelivery {
+		return &v
+	}).(AlarmtemplateDeliveryPtrOutput)
+}
+
+// List of additional email string to deliver the alarms via emails
+func (o AlarmtemplateDeliveryOutput) AdditionalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlarmtemplateDelivery) []string { return v.AdditionalEmails }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the alarm delivery via emails or not
+func (o AlarmtemplateDeliveryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AlarmtemplateDelivery) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether to deliver the alarms via emails to Org admins or not
+func (o AlarmtemplateDeliveryOutput) ToOrgAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmtemplateDelivery) *bool { return v.ToOrgAdmins }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to deliver the alarms via emails to Site admins or not
+func (o AlarmtemplateDeliveryOutput) ToSiteAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmtemplateDelivery) *bool { return v.ToSiteAdmins }).(pulumi.BoolPtrOutput)
+}
+
+type AlarmtemplateDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (AlarmtemplateDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmtemplateDelivery)(nil)).Elem()
+}
+
+func (o AlarmtemplateDeliveryPtrOutput) ToAlarmtemplateDeliveryPtrOutput() AlarmtemplateDeliveryPtrOutput {
+	return o
+}
+
+func (o AlarmtemplateDeliveryPtrOutput) ToAlarmtemplateDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateDeliveryPtrOutput {
+	return o
+}
+
+func (o AlarmtemplateDeliveryPtrOutput) Elem() AlarmtemplateDeliveryOutput {
+	return o.ApplyT(func(v *AlarmtemplateDelivery) AlarmtemplateDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmtemplateDelivery
+		return ret
+	}).(AlarmtemplateDeliveryOutput)
+}
+
+// List of additional email string to deliver the alarms via emails
+func (o AlarmtemplateDeliveryPtrOutput) AdditionalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlarmtemplateDelivery) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalEmails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the alarm delivery via emails or not
+func (o AlarmtemplateDeliveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlarmtemplateDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to deliver the alarms via emails to Org admins or not
+func (o AlarmtemplateDeliveryPtrOutput) ToOrgAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlarmtemplateDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ToOrgAdmins
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to deliver the alarms via emails to Site admins or not
+func (o AlarmtemplateDeliveryPtrOutput) ToSiteAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlarmtemplateDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ToSiteAdmins
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AlarmtemplateRules struct {
+	// Delivery object to configure the alarm delivery
+	Delivery *AlarmtemplateRulesDelivery `pulumi:"delivery"`
+	Enabled  *bool                       `pulumi:"enabled"`
+}
+
+// AlarmtemplateRulesInput is an input type that accepts AlarmtemplateRulesArgs and AlarmtemplateRulesOutput values.
+// You can construct a concrete instance of `AlarmtemplateRulesInput` via:
+//
+//	AlarmtemplateRulesArgs{...}
+type AlarmtemplateRulesInput interface {
+	pulumi.Input
+
+	ToAlarmtemplateRulesOutput() AlarmtemplateRulesOutput
+	ToAlarmtemplateRulesOutputWithContext(context.Context) AlarmtemplateRulesOutput
+}
+
+type AlarmtemplateRulesArgs struct {
+	// Delivery object to configure the alarm delivery
+	Delivery AlarmtemplateRulesDeliveryPtrInput `pulumi:"delivery"`
+	Enabled  pulumi.BoolPtrInput                `pulumi:"enabled"`
+}
+
+func (AlarmtemplateRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmtemplateRules)(nil)).Elem()
+}
+
+func (i AlarmtemplateRulesArgs) ToAlarmtemplateRulesOutput() AlarmtemplateRulesOutput {
+	return i.ToAlarmtemplateRulesOutputWithContext(context.Background())
+}
+
+func (i AlarmtemplateRulesArgs) ToAlarmtemplateRulesOutputWithContext(ctx context.Context) AlarmtemplateRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateRulesOutput)
+}
+
+// AlarmtemplateRulesMapInput is an input type that accepts AlarmtemplateRulesMap and AlarmtemplateRulesMapOutput values.
+// You can construct a concrete instance of `AlarmtemplateRulesMapInput` via:
+//
+//	AlarmtemplateRulesMap{ "key": AlarmtemplateRulesArgs{...} }
+type AlarmtemplateRulesMapInput interface {
+	pulumi.Input
+
+	ToAlarmtemplateRulesMapOutput() AlarmtemplateRulesMapOutput
+	ToAlarmtemplateRulesMapOutputWithContext(context.Context) AlarmtemplateRulesMapOutput
+}
+
+type AlarmtemplateRulesMap map[string]AlarmtemplateRulesInput
+
+func (AlarmtemplateRulesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlarmtemplateRules)(nil)).Elem()
+}
+
+func (i AlarmtemplateRulesMap) ToAlarmtemplateRulesMapOutput() AlarmtemplateRulesMapOutput {
+	return i.ToAlarmtemplateRulesMapOutputWithContext(context.Background())
+}
+
+func (i AlarmtemplateRulesMap) ToAlarmtemplateRulesMapOutputWithContext(ctx context.Context) AlarmtemplateRulesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateRulesMapOutput)
+}
+
+type AlarmtemplateRulesOutput struct{ *pulumi.OutputState }
+
+func (AlarmtemplateRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmtemplateRules)(nil)).Elem()
+}
+
+func (o AlarmtemplateRulesOutput) ToAlarmtemplateRulesOutput() AlarmtemplateRulesOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesOutput) ToAlarmtemplateRulesOutputWithContext(ctx context.Context) AlarmtemplateRulesOutput {
+	return o
+}
+
+// Delivery object to configure the alarm delivery
+func (o AlarmtemplateRulesOutput) Delivery() AlarmtemplateRulesDeliveryPtrOutput {
+	return o.ApplyT(func(v AlarmtemplateRules) *AlarmtemplateRulesDelivery { return v.Delivery }).(AlarmtemplateRulesDeliveryPtrOutput)
+}
+
+func (o AlarmtemplateRulesOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmtemplateRules) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AlarmtemplateRulesMapOutput struct{ *pulumi.OutputState }
+
+func (AlarmtemplateRulesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlarmtemplateRules)(nil)).Elem()
+}
+
+func (o AlarmtemplateRulesMapOutput) ToAlarmtemplateRulesMapOutput() AlarmtemplateRulesMapOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesMapOutput) ToAlarmtemplateRulesMapOutputWithContext(ctx context.Context) AlarmtemplateRulesMapOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesMapOutput) MapIndex(k pulumi.StringInput) AlarmtemplateRulesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlarmtemplateRules {
+		return vs[0].(map[string]AlarmtemplateRules)[vs[1].(string)]
+	}).(AlarmtemplateRulesOutput)
+}
+
+type AlarmtemplateRulesDelivery struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails []string `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled bool `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins *bool `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins *bool `pulumi:"toSiteAdmins"`
+}
+
+// AlarmtemplateRulesDeliveryInput is an input type that accepts AlarmtemplateRulesDeliveryArgs and AlarmtemplateRulesDeliveryOutput values.
+// You can construct a concrete instance of `AlarmtemplateRulesDeliveryInput` via:
+//
+//	AlarmtemplateRulesDeliveryArgs{...}
+type AlarmtemplateRulesDeliveryInput interface {
+	pulumi.Input
+
+	ToAlarmtemplateRulesDeliveryOutput() AlarmtemplateRulesDeliveryOutput
+	ToAlarmtemplateRulesDeliveryOutputWithContext(context.Context) AlarmtemplateRulesDeliveryOutput
+}
+
+type AlarmtemplateRulesDeliveryArgs struct {
+	// List of additional email string to deliver the alarms via emails
+	AdditionalEmails pulumi.StringArrayInput `pulumi:"additionalEmails"`
+	// Whether to enable the alarm delivery via emails or not
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Whether to deliver the alarms via emails to Org admins or not
+	ToOrgAdmins pulumi.BoolPtrInput `pulumi:"toOrgAdmins"`
+	// Whether to deliver the alarms via emails to Site admins or not
+	ToSiteAdmins pulumi.BoolPtrInput `pulumi:"toSiteAdmins"`
+}
+
+func (AlarmtemplateRulesDeliveryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmtemplateRulesDelivery)(nil)).Elem()
+}
+
+func (i AlarmtemplateRulesDeliveryArgs) ToAlarmtemplateRulesDeliveryOutput() AlarmtemplateRulesDeliveryOutput {
+	return i.ToAlarmtemplateRulesDeliveryOutputWithContext(context.Background())
+}
+
+func (i AlarmtemplateRulesDeliveryArgs) ToAlarmtemplateRulesDeliveryOutputWithContext(ctx context.Context) AlarmtemplateRulesDeliveryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateRulesDeliveryOutput)
+}
+
+func (i AlarmtemplateRulesDeliveryArgs) ToAlarmtemplateRulesDeliveryPtrOutput() AlarmtemplateRulesDeliveryPtrOutput {
+	return i.ToAlarmtemplateRulesDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i AlarmtemplateRulesDeliveryArgs) ToAlarmtemplateRulesDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateRulesDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateRulesDeliveryOutput).ToAlarmtemplateRulesDeliveryPtrOutputWithContext(ctx)
+}
+
+// AlarmtemplateRulesDeliveryPtrInput is an input type that accepts AlarmtemplateRulesDeliveryArgs, AlarmtemplateRulesDeliveryPtr and AlarmtemplateRulesDeliveryPtrOutput values.
+// You can construct a concrete instance of `AlarmtemplateRulesDeliveryPtrInput` via:
+//
+//	        AlarmtemplateRulesDeliveryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlarmtemplateRulesDeliveryPtrInput interface {
+	pulumi.Input
+
+	ToAlarmtemplateRulesDeliveryPtrOutput() AlarmtemplateRulesDeliveryPtrOutput
+	ToAlarmtemplateRulesDeliveryPtrOutputWithContext(context.Context) AlarmtemplateRulesDeliveryPtrOutput
+}
+
+type alarmtemplateRulesDeliveryPtrType AlarmtemplateRulesDeliveryArgs
+
+func AlarmtemplateRulesDeliveryPtr(v *AlarmtemplateRulesDeliveryArgs) AlarmtemplateRulesDeliveryPtrInput {
+	return (*alarmtemplateRulesDeliveryPtrType)(v)
+}
+
+func (*alarmtemplateRulesDeliveryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmtemplateRulesDelivery)(nil)).Elem()
+}
+
+func (i *alarmtemplateRulesDeliveryPtrType) ToAlarmtemplateRulesDeliveryPtrOutput() AlarmtemplateRulesDeliveryPtrOutput {
+	return i.ToAlarmtemplateRulesDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (i *alarmtemplateRulesDeliveryPtrType) ToAlarmtemplateRulesDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateRulesDeliveryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlarmtemplateRulesDeliveryPtrOutput)
+}
+
+type AlarmtemplateRulesDeliveryOutput struct{ *pulumi.OutputState }
+
+func (AlarmtemplateRulesDeliveryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlarmtemplateRulesDelivery)(nil)).Elem()
+}
+
+func (o AlarmtemplateRulesDeliveryOutput) ToAlarmtemplateRulesDeliveryOutput() AlarmtemplateRulesDeliveryOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesDeliveryOutput) ToAlarmtemplateRulesDeliveryOutputWithContext(ctx context.Context) AlarmtemplateRulesDeliveryOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesDeliveryOutput) ToAlarmtemplateRulesDeliveryPtrOutput() AlarmtemplateRulesDeliveryPtrOutput {
+	return o.ToAlarmtemplateRulesDeliveryPtrOutputWithContext(context.Background())
+}
+
+func (o AlarmtemplateRulesDeliveryOutput) ToAlarmtemplateRulesDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateRulesDeliveryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlarmtemplateRulesDelivery) *AlarmtemplateRulesDelivery {
+		return &v
+	}).(AlarmtemplateRulesDeliveryPtrOutput)
+}
+
+// List of additional email string to deliver the alarms via emails
+func (o AlarmtemplateRulesDeliveryOutput) AdditionalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlarmtemplateRulesDelivery) []string { return v.AdditionalEmails }).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the alarm delivery via emails or not
+func (o AlarmtemplateRulesDeliveryOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v AlarmtemplateRulesDelivery) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether to deliver the alarms via emails to Org admins or not
+func (o AlarmtemplateRulesDeliveryOutput) ToOrgAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmtemplateRulesDelivery) *bool { return v.ToOrgAdmins }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to deliver the alarms via emails to Site admins or not
+func (o AlarmtemplateRulesDeliveryOutput) ToSiteAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlarmtemplateRulesDelivery) *bool { return v.ToSiteAdmins }).(pulumi.BoolPtrOutput)
+}
+
+type AlarmtemplateRulesDeliveryPtrOutput struct{ *pulumi.OutputState }
+
+func (AlarmtemplateRulesDeliveryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlarmtemplateRulesDelivery)(nil)).Elem()
+}
+
+func (o AlarmtemplateRulesDeliveryPtrOutput) ToAlarmtemplateRulesDeliveryPtrOutput() AlarmtemplateRulesDeliveryPtrOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesDeliveryPtrOutput) ToAlarmtemplateRulesDeliveryPtrOutputWithContext(ctx context.Context) AlarmtemplateRulesDeliveryPtrOutput {
+	return o
+}
+
+func (o AlarmtemplateRulesDeliveryPtrOutput) Elem() AlarmtemplateRulesDeliveryOutput {
+	return o.ApplyT(func(v *AlarmtemplateRulesDelivery) AlarmtemplateRulesDelivery {
+		if v != nil {
+			return *v
+		}
+		var ret AlarmtemplateRulesDelivery
+		return ret
+	}).(AlarmtemplateRulesDeliveryOutput)
+}
+
+// List of additional email string to deliver the alarms via emails
+func (o AlarmtemplateRulesDeliveryPtrOutput) AdditionalEmails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlarmtemplateRulesDelivery) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalEmails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to enable the alarm delivery via emails or not
+func (o AlarmtemplateRulesDeliveryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlarmtemplateRulesDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to deliver the alarms via emails to Org admins or not
+func (o AlarmtemplateRulesDeliveryPtrOutput) ToOrgAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlarmtemplateRulesDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ToOrgAdmins
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to deliver the alarms via emails to Site admins or not
+func (o AlarmtemplateRulesDeliveryPtrOutput) ToSiteAdmins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AlarmtemplateRulesDelivery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ToSiteAdmins
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ApitokenPrivilege struct {
+	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+	Role string `pulumi:"role"`
+	// enum: `org`, `site`, `sitegroup`
+	Scope string `pulumi:"scope"`
+	// Required if `scope`==`site`
+	SiteId *string `pulumi:"siteId"`
+	// Required if `scope`==`sitegroup`
+	SitegroupId *string `pulumi:"sitegroupId"`
+}
+
+// ApitokenPrivilegeInput is an input type that accepts ApitokenPrivilegeArgs and ApitokenPrivilegeOutput values.
+// You can construct a concrete instance of `ApitokenPrivilegeInput` via:
+//
+//	ApitokenPrivilegeArgs{...}
+type ApitokenPrivilegeInput interface {
+	pulumi.Input
+
+	ToApitokenPrivilegeOutput() ApitokenPrivilegeOutput
+	ToApitokenPrivilegeOutputWithContext(context.Context) ApitokenPrivilegeOutput
+}
+
+type ApitokenPrivilegeArgs struct {
+	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+	Role pulumi.StringInput `pulumi:"role"`
+	// enum: `org`, `site`, `sitegroup`
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Required if `scope`==`site`
+	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
+	// Required if `scope`==`sitegroup`
+	SitegroupId pulumi.StringPtrInput `pulumi:"sitegroupId"`
+}
+
+func (ApitokenPrivilegeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApitokenPrivilege)(nil)).Elem()
+}
+
+func (i ApitokenPrivilegeArgs) ToApitokenPrivilegeOutput() ApitokenPrivilegeOutput {
+	return i.ToApitokenPrivilegeOutputWithContext(context.Background())
+}
+
+func (i ApitokenPrivilegeArgs) ToApitokenPrivilegeOutputWithContext(ctx context.Context) ApitokenPrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApitokenPrivilegeOutput)
+}
+
+// ApitokenPrivilegeArrayInput is an input type that accepts ApitokenPrivilegeArray and ApitokenPrivilegeArrayOutput values.
+// You can construct a concrete instance of `ApitokenPrivilegeArrayInput` via:
+//
+//	ApitokenPrivilegeArray{ ApitokenPrivilegeArgs{...} }
+type ApitokenPrivilegeArrayInput interface {
+	pulumi.Input
+
+	ToApitokenPrivilegeArrayOutput() ApitokenPrivilegeArrayOutput
+	ToApitokenPrivilegeArrayOutputWithContext(context.Context) ApitokenPrivilegeArrayOutput
+}
+
+type ApitokenPrivilegeArray []ApitokenPrivilegeInput
+
+func (ApitokenPrivilegeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApitokenPrivilege)(nil)).Elem()
+}
+
+func (i ApitokenPrivilegeArray) ToApitokenPrivilegeArrayOutput() ApitokenPrivilegeArrayOutput {
+	return i.ToApitokenPrivilegeArrayOutputWithContext(context.Background())
+}
+
+func (i ApitokenPrivilegeArray) ToApitokenPrivilegeArrayOutputWithContext(ctx context.Context) ApitokenPrivilegeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApitokenPrivilegeArrayOutput)
+}
+
+type ApitokenPrivilegeOutput struct{ *pulumi.OutputState }
+
+func (ApitokenPrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApitokenPrivilege)(nil)).Elem()
+}
+
+func (o ApitokenPrivilegeOutput) ToApitokenPrivilegeOutput() ApitokenPrivilegeOutput {
+	return o
+}
+
+func (o ApitokenPrivilegeOutput) ToApitokenPrivilegeOutputWithContext(ctx context.Context) ApitokenPrivilegeOutput {
+	return o
+}
+
+// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+func (o ApitokenPrivilegeOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v ApitokenPrivilege) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// enum: `org`, `site`, `sitegroup`
+func (o ApitokenPrivilegeOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v ApitokenPrivilege) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Required if `scope`==`site`
+func (o ApitokenPrivilegeOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApitokenPrivilege) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+}
+
+// Required if `scope`==`sitegroup`
+func (o ApitokenPrivilegeOutput) SitegroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApitokenPrivilege) *string { return v.SitegroupId }).(pulumi.StringPtrOutput)
+}
+
+type ApitokenPrivilegeArrayOutput struct{ *pulumi.OutputState }
+
+func (ApitokenPrivilegeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApitokenPrivilege)(nil)).Elem()
+}
+
+func (o ApitokenPrivilegeArrayOutput) ToApitokenPrivilegeArrayOutput() ApitokenPrivilegeArrayOutput {
+	return o
+}
+
+func (o ApitokenPrivilegeArrayOutput) ToApitokenPrivilegeArrayOutputWithContext(ctx context.Context) ApitokenPrivilegeArrayOutput {
+	return o
+}
+
+func (o ApitokenPrivilegeArrayOutput) Index(i pulumi.IntInput) ApitokenPrivilegeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApitokenPrivilege {
+		return vs[0].([]ApitokenPrivilege)[vs[1].(int)]
+	}).(ApitokenPrivilegeOutput)
+}
+
 type DeviceprofileApAeroscout struct {
 	// whether to enable aeroscout config
 	Enabled *bool `pulumi:"enabled"`
@@ -40784,7 +41399,8 @@ func (o SettingMistNacPtrOutput) UseSslPort() pulumi.BoolPtrOutput {
 type SettingMistNacIdp struct {
 	// when the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
 	ExcludeRealms []string `pulumi:"excludeRealms"`
-	Id            *string  `pulumi:"id"`
+	// ID of the `mistNacidp`
+	Id string `pulumi:"id"`
 	// which realm should trigger this IDP. User Realm is extracted from:
 	//   * Username-AVP (`mist.com` from john@mist.com)
 	//   * Cert CN
@@ -40805,7 +41421,8 @@ type SettingMistNacIdpInput interface {
 type SettingMistNacIdpArgs struct {
 	// when the IDP of mxedgeProxy type, exclude the following realms from proxying in addition to other valid home realms in this org
 	ExcludeRealms pulumi.StringArrayInput `pulumi:"excludeRealms"`
-	Id            pulumi.StringPtrInput   `pulumi:"id"`
+	// ID of the `mistNacidp`
+	Id pulumi.StringInput `pulumi:"id"`
 	// which realm should trigger this IDP. User Realm is extracted from:
 	//   * Username-AVP (`mist.com` from john@mist.com)
 	//   * Cert CN
@@ -40868,8 +41485,9 @@ func (o SettingMistNacIdpOutput) ExcludeRealms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SettingMistNacIdp) []string { return v.ExcludeRealms }).(pulumi.StringArrayOutput)
 }
 
-func (o SettingMistNacIdpOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingMistNacIdp) *string { return v.Id }).(pulumi.StringPtrOutput)
+// ID of the `mistNacidp`
+func (o SettingMistNacIdpOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingMistNacIdp) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // which realm should trigger this IDP. User Realm is extracted from:
@@ -42371,7 +42989,7 @@ func (o SettingSyntheticTestVlanArrayOutput) Index(i pulumi.IntInput) SettingSyn
 type SettingSyntheticTestWanSpeedtest struct {
 	Enabled *bool `pulumi:"enabled"`
 	// any / HH:MM (24-hour format)
-	TimeOdFay *string `pulumi:"timeOdFay"`
+	TimeOfDay *string `pulumi:"timeOfDay"`
 }
 
 // SettingSyntheticTestWanSpeedtestInput is an input type that accepts SettingSyntheticTestWanSpeedtestArgs and SettingSyntheticTestWanSpeedtestOutput values.
@@ -42388,7 +43006,7 @@ type SettingSyntheticTestWanSpeedtestInput interface {
 type SettingSyntheticTestWanSpeedtestArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// any / HH:MM (24-hour format)
-	TimeOdFay pulumi.StringPtrInput `pulumi:"timeOdFay"`
+	TimeOfDay pulumi.StringPtrInput `pulumi:"timeOfDay"`
 }
 
 func (SettingSyntheticTestWanSpeedtestArgs) ElementType() reflect.Type {
@@ -42473,8 +43091,8 @@ func (o SettingSyntheticTestWanSpeedtestOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // any / HH:MM (24-hour format)
-func (o SettingSyntheticTestWanSpeedtestOutput) TimeOdFay() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SettingSyntheticTestWanSpeedtest) *string { return v.TimeOdFay }).(pulumi.StringPtrOutput)
+func (o SettingSyntheticTestWanSpeedtestOutput) TimeOfDay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingSyntheticTestWanSpeedtest) *string { return v.TimeOfDay }).(pulumi.StringPtrOutput)
 }
 
 type SettingSyntheticTestWanSpeedtestPtrOutput struct{ *pulumi.OutputState }
@@ -42511,12 +43129,12 @@ func (o SettingSyntheticTestWanSpeedtestPtrOutput) Enabled() pulumi.BoolPtrOutpu
 }
 
 // any / HH:MM (24-hour format)
-func (o SettingSyntheticTestWanSpeedtestPtrOutput) TimeOdFay() pulumi.StringPtrOutput {
+func (o SettingSyntheticTestWanSpeedtestPtrOutput) TimeOfDay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingSyntheticTestWanSpeedtest) *string {
 		if v == nil {
 			return nil
 		}
-		return v.TimeOdFay
+		return v.TimeOfDay
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -42670,6 +43288,529 @@ func (o SettingVpnOptionsPtrOutput) StSubnet() pulumi.StringPtrOutput {
 		}
 		return v.StSubnet
 	}).(pulumi.StringPtrOutput)
+}
+
+type SettingWanPma struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SettingWanPmaInput is an input type that accepts SettingWanPmaArgs and SettingWanPmaOutput values.
+// You can construct a concrete instance of `SettingWanPmaInput` via:
+//
+//	SettingWanPmaArgs{...}
+type SettingWanPmaInput interface {
+	pulumi.Input
+
+	ToSettingWanPmaOutput() SettingWanPmaOutput
+	ToSettingWanPmaOutputWithContext(context.Context) SettingWanPmaOutput
+}
+
+type SettingWanPmaArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SettingWanPmaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingWanPma)(nil)).Elem()
+}
+
+func (i SettingWanPmaArgs) ToSettingWanPmaOutput() SettingWanPmaOutput {
+	return i.ToSettingWanPmaOutputWithContext(context.Background())
+}
+
+func (i SettingWanPmaArgs) ToSettingWanPmaOutputWithContext(ctx context.Context) SettingWanPmaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWanPmaOutput)
+}
+
+func (i SettingWanPmaArgs) ToSettingWanPmaPtrOutput() SettingWanPmaPtrOutput {
+	return i.ToSettingWanPmaPtrOutputWithContext(context.Background())
+}
+
+func (i SettingWanPmaArgs) ToSettingWanPmaPtrOutputWithContext(ctx context.Context) SettingWanPmaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWanPmaOutput).ToSettingWanPmaPtrOutputWithContext(ctx)
+}
+
+// SettingWanPmaPtrInput is an input type that accepts SettingWanPmaArgs, SettingWanPmaPtr and SettingWanPmaPtrOutput values.
+// You can construct a concrete instance of `SettingWanPmaPtrInput` via:
+//
+//	        SettingWanPmaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingWanPmaPtrInput interface {
+	pulumi.Input
+
+	ToSettingWanPmaPtrOutput() SettingWanPmaPtrOutput
+	ToSettingWanPmaPtrOutputWithContext(context.Context) SettingWanPmaPtrOutput
+}
+
+type settingWanPmaPtrType SettingWanPmaArgs
+
+func SettingWanPmaPtr(v *SettingWanPmaArgs) SettingWanPmaPtrInput {
+	return (*settingWanPmaPtrType)(v)
+}
+
+func (*settingWanPmaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingWanPma)(nil)).Elem()
+}
+
+func (i *settingWanPmaPtrType) ToSettingWanPmaPtrOutput() SettingWanPmaPtrOutput {
+	return i.ToSettingWanPmaPtrOutputWithContext(context.Background())
+}
+
+func (i *settingWanPmaPtrType) ToSettingWanPmaPtrOutputWithContext(ctx context.Context) SettingWanPmaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWanPmaPtrOutput)
+}
+
+type SettingWanPmaOutput struct{ *pulumi.OutputState }
+
+func (SettingWanPmaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingWanPma)(nil)).Elem()
+}
+
+func (o SettingWanPmaOutput) ToSettingWanPmaOutput() SettingWanPmaOutput {
+	return o
+}
+
+func (o SettingWanPmaOutput) ToSettingWanPmaOutputWithContext(ctx context.Context) SettingWanPmaOutput {
+	return o
+}
+
+func (o SettingWanPmaOutput) ToSettingWanPmaPtrOutput() SettingWanPmaPtrOutput {
+	return o.ToSettingWanPmaPtrOutputWithContext(context.Background())
+}
+
+func (o SettingWanPmaOutput) ToSettingWanPmaPtrOutputWithContext(ctx context.Context) SettingWanPmaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingWanPma) *SettingWanPma {
+		return &v
+	}).(SettingWanPmaPtrOutput)
+}
+
+func (o SettingWanPmaOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingWanPma) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SettingWanPmaPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingWanPmaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingWanPma)(nil)).Elem()
+}
+
+func (o SettingWanPmaPtrOutput) ToSettingWanPmaPtrOutput() SettingWanPmaPtrOutput {
+	return o
+}
+
+func (o SettingWanPmaPtrOutput) ToSettingWanPmaPtrOutputWithContext(ctx context.Context) SettingWanPmaPtrOutput {
+	return o
+}
+
+func (o SettingWanPmaPtrOutput) Elem() SettingWanPmaOutput {
+	return o.ApplyT(func(v *SettingWanPma) SettingWanPma {
+		if v != nil {
+			return *v
+		}
+		var ret SettingWanPma
+		return ret
+	}).(SettingWanPmaOutput)
+}
+
+func (o SettingWanPmaPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingWanPma) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingWiredPma struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SettingWiredPmaInput is an input type that accepts SettingWiredPmaArgs and SettingWiredPmaOutput values.
+// You can construct a concrete instance of `SettingWiredPmaInput` via:
+//
+//	SettingWiredPmaArgs{...}
+type SettingWiredPmaInput interface {
+	pulumi.Input
+
+	ToSettingWiredPmaOutput() SettingWiredPmaOutput
+	ToSettingWiredPmaOutputWithContext(context.Context) SettingWiredPmaOutput
+}
+
+type SettingWiredPmaArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SettingWiredPmaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingWiredPma)(nil)).Elem()
+}
+
+func (i SettingWiredPmaArgs) ToSettingWiredPmaOutput() SettingWiredPmaOutput {
+	return i.ToSettingWiredPmaOutputWithContext(context.Background())
+}
+
+func (i SettingWiredPmaArgs) ToSettingWiredPmaOutputWithContext(ctx context.Context) SettingWiredPmaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWiredPmaOutput)
+}
+
+func (i SettingWiredPmaArgs) ToSettingWiredPmaPtrOutput() SettingWiredPmaPtrOutput {
+	return i.ToSettingWiredPmaPtrOutputWithContext(context.Background())
+}
+
+func (i SettingWiredPmaArgs) ToSettingWiredPmaPtrOutputWithContext(ctx context.Context) SettingWiredPmaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWiredPmaOutput).ToSettingWiredPmaPtrOutputWithContext(ctx)
+}
+
+// SettingWiredPmaPtrInput is an input type that accepts SettingWiredPmaArgs, SettingWiredPmaPtr and SettingWiredPmaPtrOutput values.
+// You can construct a concrete instance of `SettingWiredPmaPtrInput` via:
+//
+//	        SettingWiredPmaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingWiredPmaPtrInput interface {
+	pulumi.Input
+
+	ToSettingWiredPmaPtrOutput() SettingWiredPmaPtrOutput
+	ToSettingWiredPmaPtrOutputWithContext(context.Context) SettingWiredPmaPtrOutput
+}
+
+type settingWiredPmaPtrType SettingWiredPmaArgs
+
+func SettingWiredPmaPtr(v *SettingWiredPmaArgs) SettingWiredPmaPtrInput {
+	return (*settingWiredPmaPtrType)(v)
+}
+
+func (*settingWiredPmaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingWiredPma)(nil)).Elem()
+}
+
+func (i *settingWiredPmaPtrType) ToSettingWiredPmaPtrOutput() SettingWiredPmaPtrOutput {
+	return i.ToSettingWiredPmaPtrOutputWithContext(context.Background())
+}
+
+func (i *settingWiredPmaPtrType) ToSettingWiredPmaPtrOutputWithContext(ctx context.Context) SettingWiredPmaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWiredPmaPtrOutput)
+}
+
+type SettingWiredPmaOutput struct{ *pulumi.OutputState }
+
+func (SettingWiredPmaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingWiredPma)(nil)).Elem()
+}
+
+func (o SettingWiredPmaOutput) ToSettingWiredPmaOutput() SettingWiredPmaOutput {
+	return o
+}
+
+func (o SettingWiredPmaOutput) ToSettingWiredPmaOutputWithContext(ctx context.Context) SettingWiredPmaOutput {
+	return o
+}
+
+func (o SettingWiredPmaOutput) ToSettingWiredPmaPtrOutput() SettingWiredPmaPtrOutput {
+	return o.ToSettingWiredPmaPtrOutputWithContext(context.Background())
+}
+
+func (o SettingWiredPmaOutput) ToSettingWiredPmaPtrOutputWithContext(ctx context.Context) SettingWiredPmaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingWiredPma) *SettingWiredPma {
+		return &v
+	}).(SettingWiredPmaPtrOutput)
+}
+
+func (o SettingWiredPmaOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingWiredPma) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SettingWiredPmaPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingWiredPmaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingWiredPma)(nil)).Elem()
+}
+
+func (o SettingWiredPmaPtrOutput) ToSettingWiredPmaPtrOutput() SettingWiredPmaPtrOutput {
+	return o
+}
+
+func (o SettingWiredPmaPtrOutput) ToSettingWiredPmaPtrOutputWithContext(ctx context.Context) SettingWiredPmaPtrOutput {
+	return o
+}
+
+func (o SettingWiredPmaPtrOutput) Elem() SettingWiredPmaOutput {
+	return o.ApplyT(func(v *SettingWiredPma) SettingWiredPma {
+		if v != nil {
+			return *v
+		}
+		var ret SettingWiredPma
+		return ret
+	}).(SettingWiredPmaOutput)
+}
+
+func (o SettingWiredPmaPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingWiredPma) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingWirelessPma struct {
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SettingWirelessPmaInput is an input type that accepts SettingWirelessPmaArgs and SettingWirelessPmaOutput values.
+// You can construct a concrete instance of `SettingWirelessPmaInput` via:
+//
+//	SettingWirelessPmaArgs{...}
+type SettingWirelessPmaInput interface {
+	pulumi.Input
+
+	ToSettingWirelessPmaOutput() SettingWirelessPmaOutput
+	ToSettingWirelessPmaOutputWithContext(context.Context) SettingWirelessPmaOutput
+}
+
+type SettingWirelessPmaArgs struct {
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SettingWirelessPmaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingWirelessPma)(nil)).Elem()
+}
+
+func (i SettingWirelessPmaArgs) ToSettingWirelessPmaOutput() SettingWirelessPmaOutput {
+	return i.ToSettingWirelessPmaOutputWithContext(context.Background())
+}
+
+func (i SettingWirelessPmaArgs) ToSettingWirelessPmaOutputWithContext(ctx context.Context) SettingWirelessPmaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWirelessPmaOutput)
+}
+
+func (i SettingWirelessPmaArgs) ToSettingWirelessPmaPtrOutput() SettingWirelessPmaPtrOutput {
+	return i.ToSettingWirelessPmaPtrOutputWithContext(context.Background())
+}
+
+func (i SettingWirelessPmaArgs) ToSettingWirelessPmaPtrOutputWithContext(ctx context.Context) SettingWirelessPmaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWirelessPmaOutput).ToSettingWirelessPmaPtrOutputWithContext(ctx)
+}
+
+// SettingWirelessPmaPtrInput is an input type that accepts SettingWirelessPmaArgs, SettingWirelessPmaPtr and SettingWirelessPmaPtrOutput values.
+// You can construct a concrete instance of `SettingWirelessPmaPtrInput` via:
+//
+//	        SettingWirelessPmaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingWirelessPmaPtrInput interface {
+	pulumi.Input
+
+	ToSettingWirelessPmaPtrOutput() SettingWirelessPmaPtrOutput
+	ToSettingWirelessPmaPtrOutputWithContext(context.Context) SettingWirelessPmaPtrOutput
+}
+
+type settingWirelessPmaPtrType SettingWirelessPmaArgs
+
+func SettingWirelessPmaPtr(v *SettingWirelessPmaArgs) SettingWirelessPmaPtrInput {
+	return (*settingWirelessPmaPtrType)(v)
+}
+
+func (*settingWirelessPmaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingWirelessPma)(nil)).Elem()
+}
+
+func (i *settingWirelessPmaPtrType) ToSettingWirelessPmaPtrOutput() SettingWirelessPmaPtrOutput {
+	return i.ToSettingWirelessPmaPtrOutputWithContext(context.Background())
+}
+
+func (i *settingWirelessPmaPtrType) ToSettingWirelessPmaPtrOutputWithContext(ctx context.Context) SettingWirelessPmaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingWirelessPmaPtrOutput)
+}
+
+type SettingWirelessPmaOutput struct{ *pulumi.OutputState }
+
+func (SettingWirelessPmaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingWirelessPma)(nil)).Elem()
+}
+
+func (o SettingWirelessPmaOutput) ToSettingWirelessPmaOutput() SettingWirelessPmaOutput {
+	return o
+}
+
+func (o SettingWirelessPmaOutput) ToSettingWirelessPmaOutputWithContext(ctx context.Context) SettingWirelessPmaOutput {
+	return o
+}
+
+func (o SettingWirelessPmaOutput) ToSettingWirelessPmaPtrOutput() SettingWirelessPmaPtrOutput {
+	return o.ToSettingWirelessPmaPtrOutputWithContext(context.Background())
+}
+
+func (o SettingWirelessPmaOutput) ToSettingWirelessPmaPtrOutputWithContext(ctx context.Context) SettingWirelessPmaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingWirelessPma) *SettingWirelessPma {
+		return &v
+	}).(SettingWirelessPmaPtrOutput)
+}
+
+func (o SettingWirelessPmaOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingWirelessPma) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SettingWirelessPmaPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingWirelessPmaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingWirelessPma)(nil)).Elem()
+}
+
+func (o SettingWirelessPmaPtrOutput) ToSettingWirelessPmaPtrOutput() SettingWirelessPmaPtrOutput {
+	return o
+}
+
+func (o SettingWirelessPmaPtrOutput) ToSettingWirelessPmaPtrOutputWithContext(ctx context.Context) SettingWirelessPmaPtrOutput {
+	return o
+}
+
+func (o SettingWirelessPmaPtrOutput) Elem() SettingWirelessPmaOutput {
+	return o.ApplyT(func(v *SettingWirelessPma) SettingWirelessPma {
+		if v != nil {
+			return *v
+		}
+		var ret SettingWirelessPma
+		return ret
+	}).(SettingWirelessPmaOutput)
+}
+
+func (o SettingWirelessPmaPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingWirelessPma) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SsoRolePrivilege struct {
+	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+	Role string `pulumi:"role"`
+	// enum: `org`, `site`, `sitegroup`
+	Scope string `pulumi:"scope"`
+	// Required if `scope`==`site`
+	SiteId *string `pulumi:"siteId"`
+	// Required if `scope`==`sitegroup`
+	SitegroupId *string `pulumi:"sitegroupId"`
+}
+
+// SsoRolePrivilegeInput is an input type that accepts SsoRolePrivilegeArgs and SsoRolePrivilegeOutput values.
+// You can construct a concrete instance of `SsoRolePrivilegeInput` via:
+//
+//	SsoRolePrivilegeArgs{...}
+type SsoRolePrivilegeInput interface {
+	pulumi.Input
+
+	ToSsoRolePrivilegeOutput() SsoRolePrivilegeOutput
+	ToSsoRolePrivilegeOutputWithContext(context.Context) SsoRolePrivilegeOutput
+}
+
+type SsoRolePrivilegeArgs struct {
+	// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+	Role pulumi.StringInput `pulumi:"role"`
+	// enum: `org`, `site`, `sitegroup`
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Required if `scope`==`site`
+	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
+	// Required if `scope`==`sitegroup`
+	SitegroupId pulumi.StringPtrInput `pulumi:"sitegroupId"`
+}
+
+func (SsoRolePrivilegeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsoRolePrivilege)(nil)).Elem()
+}
+
+func (i SsoRolePrivilegeArgs) ToSsoRolePrivilegeOutput() SsoRolePrivilegeOutput {
+	return i.ToSsoRolePrivilegeOutputWithContext(context.Background())
+}
+
+func (i SsoRolePrivilegeArgs) ToSsoRolePrivilegeOutputWithContext(ctx context.Context) SsoRolePrivilegeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsoRolePrivilegeOutput)
+}
+
+// SsoRolePrivilegeArrayInput is an input type that accepts SsoRolePrivilegeArray and SsoRolePrivilegeArrayOutput values.
+// You can construct a concrete instance of `SsoRolePrivilegeArrayInput` via:
+//
+//	SsoRolePrivilegeArray{ SsoRolePrivilegeArgs{...} }
+type SsoRolePrivilegeArrayInput interface {
+	pulumi.Input
+
+	ToSsoRolePrivilegeArrayOutput() SsoRolePrivilegeArrayOutput
+	ToSsoRolePrivilegeArrayOutputWithContext(context.Context) SsoRolePrivilegeArrayOutput
+}
+
+type SsoRolePrivilegeArray []SsoRolePrivilegeInput
+
+func (SsoRolePrivilegeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsoRolePrivilege)(nil)).Elem()
+}
+
+func (i SsoRolePrivilegeArray) ToSsoRolePrivilegeArrayOutput() SsoRolePrivilegeArrayOutput {
+	return i.ToSsoRolePrivilegeArrayOutputWithContext(context.Background())
+}
+
+func (i SsoRolePrivilegeArray) ToSsoRolePrivilegeArrayOutputWithContext(ctx context.Context) SsoRolePrivilegeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsoRolePrivilegeArrayOutput)
+}
+
+type SsoRolePrivilegeOutput struct{ *pulumi.OutputState }
+
+func (SsoRolePrivilegeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsoRolePrivilege)(nil)).Elem()
+}
+
+func (o SsoRolePrivilegeOutput) ToSsoRolePrivilegeOutput() SsoRolePrivilegeOutput {
+	return o
+}
+
+func (o SsoRolePrivilegeOutput) ToSsoRolePrivilegeOutputWithContext(ctx context.Context) SsoRolePrivilegeOutput {
+	return o
+}
+
+// access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+func (o SsoRolePrivilegeOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v SsoRolePrivilege) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// enum: `org`, `site`, `sitegroup`
+func (o SsoRolePrivilegeOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v SsoRolePrivilege) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Required if `scope`==`site`
+func (o SsoRolePrivilegeOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsoRolePrivilege) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+}
+
+// Required if `scope`==`sitegroup`
+func (o SsoRolePrivilegeOutput) SitegroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsoRolePrivilege) *string { return v.SitegroupId }).(pulumi.StringPtrOutput)
+}
+
+type SsoRolePrivilegeArrayOutput struct{ *pulumi.OutputState }
+
+func (SsoRolePrivilegeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SsoRolePrivilege)(nil)).Elem()
+}
+
+func (o SsoRolePrivilegeArrayOutput) ToSsoRolePrivilegeArrayOutput() SsoRolePrivilegeArrayOutput {
+	return o
+}
+
+func (o SsoRolePrivilegeArrayOutput) ToSsoRolePrivilegeArrayOutputWithContext(ctx context.Context) SsoRolePrivilegeArrayOutput {
+	return o
+}
+
+func (o SsoRolePrivilegeArrayOutput) Index(i pulumi.IntInput) SsoRolePrivilegeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SsoRolePrivilege {
+		return vs[0].([]SsoRolePrivilege)[vs[1].(int)]
+	}).(SsoRolePrivilegeOutput)
 }
 
 type VpnPaths struct {
@@ -55285,6 +56426,14 @@ func (o GetWxtagsOrgWxtagArrayOutput) Index(i pulumi.IntInput) GetWxtagsOrgWxtag
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateDeliveryInput)(nil)).Elem(), AlarmtemplateDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateDeliveryPtrInput)(nil)).Elem(), AlarmtemplateDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateRulesInput)(nil)).Elem(), AlarmtemplateRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateRulesMapInput)(nil)).Elem(), AlarmtemplateRulesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateRulesDeliveryInput)(nil)).Elem(), AlarmtemplateRulesDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlarmtemplateRulesDeliveryPtrInput)(nil)).Elem(), AlarmtemplateRulesDeliveryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApitokenPrivilegeInput)(nil)).Elem(), ApitokenPrivilegeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApitokenPrivilegeArrayInput)(nil)).Elem(), ApitokenPrivilegeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApAeroscoutInput)(nil)).Elem(), DeviceprofileApAeroscoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApAeroscoutPtrInput)(nil)).Elem(), DeviceprofileApAeroscoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileApBleConfigInput)(nil)).Elem(), DeviceprofileApBleConfigArgs{})
@@ -55783,6 +56932,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingSyntheticTestWanSpeedtestPtrInput)(nil)).Elem(), SettingSyntheticTestWanSpeedtestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingVpnOptionsInput)(nil)).Elem(), SettingVpnOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingVpnOptionsPtrInput)(nil)).Elem(), SettingVpnOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingWanPmaInput)(nil)).Elem(), SettingWanPmaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingWanPmaPtrInput)(nil)).Elem(), SettingWanPmaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingWiredPmaInput)(nil)).Elem(), SettingWiredPmaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingWiredPmaPtrInput)(nil)).Elem(), SettingWiredPmaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingWirelessPmaInput)(nil)).Elem(), SettingWirelessPmaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingWirelessPmaPtrInput)(nil)).Elem(), SettingWirelessPmaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SsoRolePrivilegeInput)(nil)).Elem(), SsoRolePrivilegeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SsoRolePrivilegeArrayInput)(nil)).Elem(), SsoRolePrivilegeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnPathsInput)(nil)).Elem(), VpnPathsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnPathsMapInput)(nil)).Elem(), VpnPathsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanAcctServerInput)(nil)).Elem(), WlanAcctServerArgs{})
@@ -55888,6 +57045,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWlantemplatesOrgWlantemplateArrayInput)(nil)).Elem(), GetWlantemplatesOrgWlantemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagInput)(nil)).Elem(), GetWxtagsOrgWxtagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWxtagsOrgWxtagArrayInput)(nil)).Elem(), GetWxtagsOrgWxtagArray{})
+	pulumi.RegisterOutputType(AlarmtemplateDeliveryOutput{})
+	pulumi.RegisterOutputType(AlarmtemplateDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(AlarmtemplateRulesOutput{})
+	pulumi.RegisterOutputType(AlarmtemplateRulesMapOutput{})
+	pulumi.RegisterOutputType(AlarmtemplateRulesDeliveryOutput{})
+	pulumi.RegisterOutputType(AlarmtemplateRulesDeliveryPtrOutput{})
+	pulumi.RegisterOutputType(ApitokenPrivilegeOutput{})
+	pulumi.RegisterOutputType(ApitokenPrivilegeArrayOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApAeroscoutOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApAeroscoutPtrOutput{})
 	pulumi.RegisterOutputType(DeviceprofileApBleConfigOutput{})
@@ -56386,6 +57551,14 @@ func init() {
 	pulumi.RegisterOutputType(SettingSyntheticTestWanSpeedtestPtrOutput{})
 	pulumi.RegisterOutputType(SettingVpnOptionsOutput{})
 	pulumi.RegisterOutputType(SettingVpnOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SettingWanPmaOutput{})
+	pulumi.RegisterOutputType(SettingWanPmaPtrOutput{})
+	pulumi.RegisterOutputType(SettingWiredPmaOutput{})
+	pulumi.RegisterOutputType(SettingWiredPmaPtrOutput{})
+	pulumi.RegisterOutputType(SettingWirelessPmaOutput{})
+	pulumi.RegisterOutputType(SettingWirelessPmaPtrOutput{})
+	pulumi.RegisterOutputType(SsoRolePrivilegeOutput{})
+	pulumi.RegisterOutputType(SsoRolePrivilegeArrayOutput{})
 	pulumi.RegisterOutputType(VpnPathsOutput{})
 	pulumi.RegisterOutputType(VpnPathsMapOutput{})
 	pulumi.RegisterOutputType(WlanAcctServerOutput{})

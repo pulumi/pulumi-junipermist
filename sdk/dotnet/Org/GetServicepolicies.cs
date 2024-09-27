@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetServicepolicies
     {
         /// <summary>
-        /// This data source provides the list of WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+        /// This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+        /// The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicepoliciesResult>("junipermist:org/getServicepolicies:getServicepolicies", args ?? new GetServicepoliciesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+        /// This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+        /// The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
         /// 
         /// 
         /// ## Example Usage

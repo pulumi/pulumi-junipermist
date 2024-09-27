@@ -759,7 +759,8 @@ class Networktemplate(pulumi.CustomResource):
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateVrfInstancesArgs', 'NetworktemplateVrfInstancesArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource manages the Site Network configuration (Switch configuration).The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+        This resource manages the Site Network configuration (Switch configuration).
+        The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
 
         ## Import
 
@@ -797,7 +798,8 @@ class Networktemplate(pulumi.CustomResource):
                  args: NetworktemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Site Network configuration (Switch configuration).The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+        This resource manages the Site Network configuration (Switch configuration).
+        The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
 
         ## Import
 

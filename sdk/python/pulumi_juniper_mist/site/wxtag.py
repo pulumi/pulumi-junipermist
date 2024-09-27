@@ -355,7 +355,8 @@ class Wxtag(pulumi.CustomResource):
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Site Wxlan tags (labels).A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+        This resource manages the Site Wxlan tags (labels).
+        A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
 
         ## Example Usage
 
@@ -409,7 +410,8 @@ class Wxtag(pulumi.CustomResource):
                  args: WxtagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Site Wxlan tags (labels).A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+        This resource manages the Site Wxlan tags (labels).
+        A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
 
         ## Example Usage
 

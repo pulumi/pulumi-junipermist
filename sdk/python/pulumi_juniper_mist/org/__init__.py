@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .alarmtemplate import *
+from .apitoken import *
 from .base import *
 from .deviceprofile_ap import *
 from .deviceprofile_assign import *
@@ -15,6 +17,7 @@ from .get_deviceprofiles_gateway import *
 from .get_gatewaytemplates import *
 from .get_idpprofiles import *
 from .get_inventory import *
+from .get_nacidp_metadata import *
 from .get_nacrules import *
 from .get_nactags import *
 from .get_networks import *
@@ -24,12 +27,14 @@ from .get_rftemplates import *
 from .get_servicepolicies import *
 from .get_services import *
 from .get_sitegroups import *
+from .get_sso_metadata import *
 from .get_vpns import *
 from .get_webhooks import *
 from .get_wlantemplates import *
 from .get_wxtags import *
 from .idpprofile import *
 from .inventory import *
+from .nacidp import *
 from .nacrule import *
 from .nactag import *
 from .network import *
@@ -40,6 +45,8 @@ from .service import *
 from .servicepolicy import *
 from .setting import *
 from .sitegroup import *
+from .sso import *
+from .sso_role import *
 from .vpn import *
 from .webhook import *
 from .wlan import *

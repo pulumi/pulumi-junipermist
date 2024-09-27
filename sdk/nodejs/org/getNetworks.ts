@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the list of WAN Assurance Networks.The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This data source provides the list of WAN Assurance Networks.
+ * The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
  *
  * ## Example Usage
  *
@@ -46,7 +47,8 @@ export interface GetNetworksResult {
     readonly orgNetworks: outputs.org.GetNetworksOrgNetwork[];
 }
 /**
- * This data source provides the list of WAN Assurance Networks.The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This data source provides the list of WAN Assurance Networks.
+ * The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
  *
  * ## Example Usage
  *

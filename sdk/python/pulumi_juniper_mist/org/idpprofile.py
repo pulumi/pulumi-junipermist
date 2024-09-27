@@ -142,7 +142,8 @@ class Idpprofile(pulumi.CustomResource):
                  overwrites: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IdpprofileOverwriteArgs', 'IdpprofileOverwriteArgsDict']]]]] = None,
                  __props__=None):
         """
-        This resource manages WAN Assurance Idp Profiles.An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+        This resource manages WAN Assurance Idp Profiles.
+        An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 
         ## Import
 
@@ -165,7 +166,8 @@ class Idpprofile(pulumi.CustomResource):
                  args: IdpprofileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages WAN Assurance Idp Profiles.An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+        This resource manages WAN Assurance Idp Profiles.
+        An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 
         ## Import
 

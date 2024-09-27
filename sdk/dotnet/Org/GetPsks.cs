@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetPsks
     {
         /// <summary>
-        /// This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list of WAN Assurance Psks.
+        /// The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
         /// 
         /// ## Example Usage
@@ -38,7 +39,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPsksResult>("junipermist:org/getPsks:getPsks", args ?? new GetPsksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of WAN Assurance Psks.The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list of WAN Assurance Psks.
+        /// The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
         /// 
         /// ## Example Usage

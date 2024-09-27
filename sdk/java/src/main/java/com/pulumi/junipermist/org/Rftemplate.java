@@ -23,7 +23,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This manages the RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+ * This manages the RF Templates.
+ * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
  * 
  * ## Example Usage
  * 

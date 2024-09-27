@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the list of WAN Assurance Psks.The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This data source provides the list of WAN Assurance Psks.
+ * The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
  *
  * ## Example Usage
  *
@@ -62,7 +63,8 @@ export interface GetPsksResult {
     readonly ssid?: string;
 }
 /**
- * This data source provides the list of WAN Assurance Psks.The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This data source provides the list of WAN Assurance Psks.
+ * The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
  *
  * ## Example Usage
  *

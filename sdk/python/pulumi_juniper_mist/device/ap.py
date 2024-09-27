@@ -1043,7 +1043,8 @@ class Ap(pulumi.CustomResource):
                  y: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-        This resource manages the Wireless Access Point configuration.It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
+        This resource manages the Wireless Access Point configuration.
+        It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
 
         ## Example Usage
 
@@ -1099,7 +1100,8 @@ class Ap(pulumi.CustomResource):
                  args: ApArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Wireless Access Point configuration.It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
+        This resource manages the Wireless Access Point configuration.
+        It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
 
         ## Example Usage
 

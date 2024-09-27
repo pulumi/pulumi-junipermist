@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AlarmtemplateArgs, AlarmtemplateState } from "./alarmtemplate";
+export type Alarmtemplate = import("./alarmtemplate").Alarmtemplate;
+export const Alarmtemplate: typeof import("./alarmtemplate").Alarmtemplate = null as any;
+utilities.lazyLoad(exports, ["Alarmtemplate"], () => require("./alarmtemplate"));
+
+export { ApitokenArgs, ApitokenState } from "./apitoken";
+export type Apitoken = import("./apitoken").Apitoken;
+export const Apitoken: typeof import("./apitoken").Apitoken = null as any;
+utilities.lazyLoad(exports, ["Apitoken"], () => require("./apitoken"));
+
 export { BaseArgs, BaseState } from "./base";
 export type Base = import("./base").Base;
 export const Base: typeof import("./base").Base = null as any;
@@ -55,6 +65,11 @@ export const getInventory: typeof import("./getInventory").getInventory = null a
 export const getInventoryOutput: typeof import("./getInventory").getInventoryOutput = null as any;
 utilities.lazyLoad(exports, ["getInventory","getInventoryOutput"], () => require("./getInventory"));
 
+export { GetNacidpMetadataArgs, GetNacidpMetadataResult, GetNacidpMetadataOutputArgs } from "./getNacidpMetadata";
+export const getNacidpMetadata: typeof import("./getNacidpMetadata").getNacidpMetadata = null as any;
+export const getNacidpMetadataOutput: typeof import("./getNacidpMetadata").getNacidpMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getNacidpMetadata","getNacidpMetadataOutput"], () => require("./getNacidpMetadata"));
+
 export { GetNacrulesArgs, GetNacrulesResult, GetNacrulesOutputArgs } from "./getNacrules";
 export const getNacrules: typeof import("./getNacrules").getNacrules = null as any;
 export const getNacrulesOutput: typeof import("./getNacrules").getNacrulesOutput = null as any;
@@ -100,6 +115,11 @@ export const getSitegroups: typeof import("./getSitegroups").getSitegroups = nul
 export const getSitegroupsOutput: typeof import("./getSitegroups").getSitegroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getSitegroups","getSitegroupsOutput"], () => require("./getSitegroups"));
 
+export { GetSsoMetadataArgs, GetSsoMetadataResult, GetSsoMetadataOutputArgs } from "./getSsoMetadata";
+export const getSsoMetadata: typeof import("./getSsoMetadata").getSsoMetadata = null as any;
+export const getSsoMetadataOutput: typeof import("./getSsoMetadata").getSsoMetadataOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoMetadata","getSsoMetadataOutput"], () => require("./getSsoMetadata"));
+
 export { GetVpnsArgs, GetVpnsResult, GetVpnsOutputArgs } from "./getVpns";
 export const getVpns: typeof import("./getVpns").getVpns = null as any;
 export const getVpnsOutput: typeof import("./getVpns").getVpnsOutput = null as any;
@@ -129,6 +149,11 @@ export { InventoryArgs, InventoryState } from "./inventory";
 export type Inventory = import("./inventory").Inventory;
 export const Inventory: typeof import("./inventory").Inventory = null as any;
 utilities.lazyLoad(exports, ["Inventory"], () => require("./inventory"));
+
+export { NacidpArgs, NacidpState } from "./nacidp";
+export type Nacidp = import("./nacidp").Nacidp;
+export const Nacidp: typeof import("./nacidp").Nacidp = null as any;
+utilities.lazyLoad(exports, ["Nacidp"], () => require("./nacidp"));
 
 export { NacruleArgs, NacruleState } from "./nacrule";
 export type Nacrule = import("./nacrule").Nacrule;
@@ -180,6 +205,16 @@ export type Sitegroup = import("./sitegroup").Sitegroup;
 export const Sitegroup: typeof import("./sitegroup").Sitegroup = null as any;
 utilities.lazyLoad(exports, ["Sitegroup"], () => require("./sitegroup"));
 
+export { SsoArgs, SsoState } from "./sso";
+export type Sso = import("./sso").Sso;
+export const Sso: typeof import("./sso").Sso = null as any;
+utilities.lazyLoad(exports, ["Sso"], () => require("./sso"));
+
+export { SsoRoleArgs, SsoRoleState } from "./ssoRole";
+export type SsoRole = import("./ssoRole").SsoRole;
+export const SsoRole: typeof import("./ssoRole").SsoRole = null as any;
+utilities.lazyLoad(exports, ["SsoRole"], () => require("./ssoRole"));
+
 export { VpnArgs, VpnState } from "./vpn";
 export type Vpn = import("./vpn").Vpn;
 export const Vpn: typeof import("./vpn").Vpn = null as any;
@@ -225,6 +260,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "junipermist:org/alarmtemplate:Alarmtemplate":
+                return new Alarmtemplate(name, <any>undefined, { urn })
+            case "junipermist:org/apitoken:Apitoken":
+                return new Apitoken(name, <any>undefined, { urn })
             case "junipermist:org/base:base":
                 return new Base(name, <any>undefined, { urn })
             case "junipermist:org/deviceprofileAp:DeviceprofileAp":
@@ -239,6 +278,8 @@ const _module = {
                 return new Idpprofile(name, <any>undefined, { urn })
             case "junipermist:org/inventory:Inventory":
                 return new Inventory(name, <any>undefined, { urn })
+            case "junipermist:org/nacidp:Nacidp":
+                return new Nacidp(name, <any>undefined, { urn })
             case "junipermist:org/nacrule:Nacrule":
                 return new Nacrule(name, <any>undefined, { urn })
             case "junipermist:org/nactag:Nactag":
@@ -259,6 +300,10 @@ const _module = {
                 return new Setting(name, <any>undefined, { urn })
             case "junipermist:org/sitegroup:Sitegroup":
                 return new Sitegroup(name, <any>undefined, { urn })
+            case "junipermist:org/sso:Sso":
+                return new Sso(name, <any>undefined, { urn })
+            case "junipermist:org/ssoRole:SsoRole":
+                return new SsoRole(name, <any>undefined, { urn })
             case "junipermist:org/vpn:Vpn":
                 return new Vpn(name, <any>undefined, { urn })
             case "junipermist:org/webhook:Webhook":
@@ -280,6 +325,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("junipermist", "org/alarmtemplate", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/apitoken", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/base", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileAp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileAssign", _module)
@@ -287,6 +334,7 @@ pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileGateway",
 pulumi.runtime.registerResourceModule("junipermist", "org/gatewaytemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/idpprofile", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/inventory", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/nacidp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacrule", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nactag", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/network", _module)
@@ -297,6 +345,8 @@ pulumi.runtime.registerResourceModule("junipermist", "org/service", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/servicepolicy", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/setting", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/sitegroup", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/sso", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/ssoRole", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/vpn", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/webhook", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/wlan", _module)

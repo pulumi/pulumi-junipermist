@@ -40,6 +40,11 @@ export const getSwitchStats: typeof import("./getSwitchStats").getSwitchStats = 
 export const getSwitchStatsOutput: typeof import("./getSwitchStats").getSwitchStatsOutput = null as any;
 utilities.lazyLoad(exports, ["getSwitchStats","getSwitchStatsOutput"], () => require("./getSwitchStats"));
 
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+
 export { SwitchArgs, SwitchState } from "./switch";
 export type Switch = import("./switch").Switch;
 export const Switch: typeof import("./switch").Switch = null as any;
@@ -58,6 +63,8 @@ const _module = {
                 return new Gateway(name, <any>undefined, { urn })
             case "junipermist:device/gatewayCluster:GatewayCluster":
                 return new GatewayCluster(name, <any>undefined, { urn })
+            case "junipermist:device/image:Image":
+                return new Image(name, <any>undefined, { urn })
             case "junipermist:device/switch:Switch":
                 return new Switch(name, <any>undefined, { urn })
             default:
@@ -69,4 +76,5 @@ pulumi.runtime.registerResourceModule("junipermist", "device/ap", _module)
 pulumi.runtime.registerResourceModule("junipermist", "device/base", _module)
 pulumi.runtime.registerResourceModule("junipermist", "device/gateway", _module)
 pulumi.runtime.registerResourceModule("junipermist", "device/gatewayCluster", _module)
+pulumi.runtime.registerResourceModule("junipermist", "device/image", _module)
 pulumi.runtime.registerResourceModule("junipermist", "device/switch", _module)

@@ -85,7 +85,8 @@ class Inventory(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+        This resource manages the Org inventory.
+        It can be used to claim, unclaim, assign, unassign, reassign devices
 
         ## Import
 
@@ -107,7 +108,8 @@ class Inventory(pulumi.CustomResource):
                  args: InventoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+        This resource manages the Org inventory.
+        It can be used to claim, unclaim, assign, unassign, reassign devices
 
         ## Import
 

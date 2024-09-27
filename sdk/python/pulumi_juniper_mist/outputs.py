@@ -11,6 +11,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'GetConstAlarmsConstAlarmResult',
     'GetConstAppCategoriesConstAppCategoryResult',
     'GetConstAppCategoriesConstAppCategoryFiltersResult',
     'GetConstAppSubCategoriesConstAppSubCategoryResult',
@@ -20,6 +21,57 @@ __all__ = [
     'GetSitesSiteResult',
     'GetSitesSiteLatlngResult',
 ]
+
+@pulumi.output_type
+class GetConstAlarmsConstAlarmResult(dict):
+    def __init__(__self__, *,
+                 display: str,
+                 group: str,
+                 key: str,
+                 severity: str):
+        """
+        :param str display: Description of the alarm type
+        :param str group: Group to which the alarm belongs
+        :param str key: Key name of the alarm type
+        :param str severity: Severity of the alarm
+        """
+        pulumi.set(__self__, "display", display)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def display(self) -> str:
+        """
+        Description of the alarm type
+        """
+        return pulumi.get(self, "display")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        Group to which the alarm belongs
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key name of the alarm type
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> str:
+        """
+        Severity of the alarm
+        """
+        return pulumi.get(self, "severity")
+
 
 @pulumi.output_type
 class GetConstAppCategoriesConstAppCategoryResult(dict):

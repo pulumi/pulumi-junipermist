@@ -66,7 +66,8 @@ class AwaitableGetServicepoliciesResult(GetServicepoliciesResult):
 def get_servicepolicies(org_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicepoliciesResult:
     """
-    This data source provides the list of WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+    This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+    The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_servicepolicies(org_id: Optional[str] = None,
 def get_servicepolicies_output(org_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicepoliciesResult]:
     """
-    This data source provides the list of WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+    This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+    The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
 
     ## Example Usage
 

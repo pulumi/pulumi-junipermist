@@ -66,7 +66,8 @@ class AwaitableGetSitesResult(GetSitesResult):
 def get_sites(org_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSitesResult:
     """
-    This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+    This datasource provides the list of sites in a Mist Organization.
+    A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_sites(org_id: Optional[str] = None,
 def get_sites_output(org_id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSitesResult]:
     """
-    This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+    This datasource provides the list of sites in a Mist Organization.
+    A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
 
     ## Example Usage
 

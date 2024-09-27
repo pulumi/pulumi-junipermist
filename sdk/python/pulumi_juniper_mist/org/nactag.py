@@ -510,7 +510,8 @@ class Nactag(pulumi.CustomResource):
                  vlan: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        This resource manages NAC Tags (Auth Policy Labels).
+        The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
 
         ## Example Usage
 
@@ -566,7 +567,8 @@ class Nactag(pulumi.CustomResource):
                  args: NactagArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        This resource manages NAC Tags (Auth Policy Labels).
+        The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
 
         ## Example Usage
 

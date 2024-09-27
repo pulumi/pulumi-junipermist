@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * This resource manages NAC Tags (Auth Policy Labels).
+ * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
  *
  * ## Example Usage
  *

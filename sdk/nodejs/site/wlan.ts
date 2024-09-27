@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Site Wlans.The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+ * This resource manages the Site Wlans.
+ * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
  *
  * ## Example Usage
  *

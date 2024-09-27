@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This manages the RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+    /// This manages the RF Templates.
+    /// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
     /// 
     /// ## Import
     /// 

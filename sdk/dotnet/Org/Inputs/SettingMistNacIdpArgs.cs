@@ -24,10 +24,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _excludeRealms = value;
         }
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        /// <summary>
+        /// ID of the `mist_nacidp`
+        /// </summary>
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
-        [Input("userRealms")]
+        [Input("userRealms", required: true)]
         private InputList<string>? _userRealms;
 
         /// <summary>

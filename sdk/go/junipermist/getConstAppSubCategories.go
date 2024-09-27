@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the of ConstAppSubCategories.This information can be used as `appSubcategories` in the `org.Service` resource
+// This data source provides the of ConstAppSubCategories.
+// This information can be used as `appSubcategories` in the `org.Service` resource
 //
 // ## Example Usage
 //

@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the list of Gateway Templates.A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+ * This data source provides the list of Gateway Templates.
+ * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
  *
  * ## Example Usage
  *
@@ -46,7 +47,8 @@ export interface GetGatewaytemplatesResult {
     readonly orgId: string;
 }
 /**
- * This data source provides the list of Gateway Templates.A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+ * This data source provides the list of Gateway Templates.
+ * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
  *
  * ## Example Usage
  *

@@ -18,7 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resources manages the Site basic information.This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
+ * This resources manages the Site basic information.
+ * This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
  * 
  * ## Example Usage
  * 
@@ -60,9 +61,10 @@ import javax.annotation.Nullable;
  *             .sitegroupIds(            
  *                 testGroup.id(),
  *                 testGroup2.id())
- *             .networktemplateId(switchTemplate.id())
- *             .rftemplateId(testRf.id())
- *             .gatewaytemplateId(test_api.id())
+ *             .networktemplateId(networktemplateOne.id())
+ *             .rftemplateId(rftemplateOne.id())
+ *             .gatewaytemplateId(gatewaytemplateOne.id())
+ *             .alarmtemplateId(alarmtemplateOne.id())
  *             .build());
  * 
  *     }

@@ -505,7 +505,8 @@ class Base(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resources manages the Site basic information.This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
+        This resources manages the Site basic information.
+        This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
 
         ## Example Usage
 
@@ -528,9 +529,10 @@ class Base(pulumi.CustomResource):
                 test_group["id"],
                 test_group2["id"],
             ],
-            networktemplate_id=switch_template["id"],
-            rftemplate_id=test_rf["id"],
-            gatewaytemplate_id=test_api["id"])
+            networktemplate_id=networktemplate_one["id"],
+            rftemplate_id=rftemplate_one["id"],
+            gatewaytemplate_id=gatewaytemplate_one["id"],
+            alarmtemplate_id=alarmtemplate_one["id"])
         ```
 
         ## Import
@@ -565,7 +567,8 @@ class Base(pulumi.CustomResource):
                  args: BaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resources manages the Site basic information.This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
+        This resources manages the Site basic information.
+        This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
 
         ## Example Usage
 
@@ -588,9 +591,10 @@ class Base(pulumi.CustomResource):
                 test_group["id"],
                 test_group2["id"],
             ],
-            networktemplate_id=switch_template["id"],
-            rftemplate_id=test_rf["id"],
-            gatewaytemplate_id=test_api["id"])
+            networktemplate_id=networktemplate_one["id"],
+            rftemplate_id=rftemplate_one["id"],
+            gatewaytemplate_id=gatewaytemplate_one["id"],
+            alarmtemplate_id=alarmtemplate_one["id"])
         ```
 
         ## Import

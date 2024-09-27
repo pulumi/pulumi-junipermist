@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages the Org inventory.It can be used to claim, unclaim, assign, unassign, reassign devices
+    /// This resource manages the Org inventory.
+    /// It can be used to claim, unclaim, assign, unassign, reassign devices
     /// 
     /// ## Import
     /// 

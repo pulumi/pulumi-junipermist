@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist
     public static class GetConstAppCategories
     {
         /// <summary>
-        /// This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+        /// This data source provides the of ConstAppCategories.
+        /// This information can be used as `app_categories` in the `junipermist.org.Service` resource
         /// 
         /// 
         /// ## Example Usage
@@ -34,7 +35,8 @@ namespace Pulumi.JuniperMist
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConstAppCategoriesResult>("junipermist:index/getConstAppCategories:getConstAppCategories", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+        /// This data source provides the of ConstAppCategories.
+        /// This information can be used as `app_categories` in the `junipermist.org.Service` resource
         /// 
         /// 
         /// ## Example Usage

@@ -321,7 +321,8 @@ class Servicepolicy(pulumi.CustomResource):
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        This resource manages WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+        This resource manages WAN Assurance Service Policies (Application Policiess).
+        The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
 
         ## Import
 
@@ -348,7 +349,8 @@ class Servicepolicy(pulumi.CustomResource):
                  args: ServicepolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages WAN Assurance Service Policies (Application Policiess).The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+        This resource manages WAN Assurance Service Policies (Application Policiess).
+        The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
 
         ## Import
 

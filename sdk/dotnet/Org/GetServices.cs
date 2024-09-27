@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetServices
     {
         /// <summary>
-        /// This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list of WAN Assurance Services (Applications).
+        /// The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicesResult>("junipermist:org/getServices:getServices", args ?? new GetServicesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list of WAN Assurance Services (Applications).
+        /// The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
         /// 
         /// ## Example Usage

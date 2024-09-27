@@ -31,10 +31,10 @@ class WxruleArgs:
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "order", order)
@@ -125,7 +125,7 @@ class WxruleArgs:
     @pulumi.getter(name="dstAllowWxtags")
     def dst_allow_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        tag list to indicate these tags are allowed access
+        List of WxTag UUID to indicate these tags are allowed access
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
@@ -137,7 +137,7 @@ class WxruleArgs:
     @pulumi.getter(name="dstDenyWxtags")
     def dst_deny_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        tag list to indicate these tags are blocked access
+        List of WxTag UUID to indicate these tags are blocked access
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
@@ -170,7 +170,7 @@ class WxruleArgs:
     @pulumi.getter(name="srcWxtags")
     def src_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        tag list to determine if this rule would match
+        List of WxTag UUID to determine if this rule would match
         """
         return pulumi.get(self, "src_wxtags")
 
@@ -197,11 +197,11 @@ class _WxruleState:
         Input properties used for looking up and filtering Wxrule resources.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
         if action is not None:
@@ -264,7 +264,7 @@ class _WxruleState:
     @pulumi.getter(name="dstAllowWxtags")
     def dst_allow_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        tag list to indicate these tags are allowed access
+        List of WxTag UUID to indicate these tags are allowed access
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
@@ -276,7 +276,7 @@ class _WxruleState:
     @pulumi.getter(name="dstDenyWxtags")
     def dst_deny_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        tag list to indicate these tags are blocked access
+        List of WxTag UUID to indicate these tags are blocked access
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
@@ -330,7 +330,7 @@ class _WxruleState:
     @pulumi.getter(name="srcWxtags")
     def src_wxtags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        tag list to determine if this rule would match
+        List of WxTag UUID to determine if this rule would match
         """
         return pulumi.get(self, "src_wxtags")
 
@@ -369,7 +369,8 @@ class Wxrule(pulumi.CustomResource):
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Org WxRules (WxLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+        This resource manages the Org WxRules (WxLAN policies).
+        A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
 
         ## Example Usage
 
@@ -401,11 +402,11 @@ class Wxrule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
         ...
@@ -415,7 +416,8 @@ class Wxrule(pulumi.CustomResource):
                  args: WxruleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Org WxRules (WxLAN policies).A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+        This resource manages the Org WxRules (WxLAN policies).
+        A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
 
         ## Example Usage
 
@@ -527,11 +529,11 @@ class Wxrule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: type of action, allow / block. enum: `allow`, `block`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_apps: blocked apps (always blocking, ignoring action), the key of Get Application List
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: tag list to indicate these tags are allowed access
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: tag list to indicate these tags are blocked access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_allow_wxtags: List of WxTag UUID to indicate these tags are allowed access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_deny_wxtags: List of WxTag UUID to indicate these tags are blocked access
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dst_wxtags: List of WxTag UUID
         :param pulumi.Input[int] order: the order how rules would be looked up, > 0 and bigger order got matched first, -1 means LAST, uniqueness not checked
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: tag list to determine if this rule would match
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_wxtags: List of WxTag UUID to determine if this rule would match
         :param pulumi.Input[str] template_id: Only for Org Level WxRule
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -576,7 +578,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="dstAllowWxtags")
     def dst_allow_wxtags(self) -> pulumi.Output[Sequence[str]]:
         """
-        tag list to indicate these tags are allowed access
+        List of WxTag UUID to indicate these tags are allowed access
         """
         return pulumi.get(self, "dst_allow_wxtags")
 
@@ -584,7 +586,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="dstDenyWxtags")
     def dst_deny_wxtags(self) -> pulumi.Output[Sequence[str]]:
         """
-        tag list to indicate these tags are blocked access
+        List of WxTag UUID to indicate these tags are blocked access
         """
         return pulumi.get(self, "dst_deny_wxtags")
 
@@ -618,7 +620,7 @@ class Wxrule(pulumi.CustomResource):
     @pulumi.getter(name="srcWxtags")
     def src_wxtags(self) -> pulumi.Output[Sequence[str]]:
         """
-        tag list to determine if this rule would match
+        List of WxTag UUID to determine if this rule would match
         """
         return pulumi.get(self, "src_wxtags")
 

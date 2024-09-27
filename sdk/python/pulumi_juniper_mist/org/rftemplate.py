@@ -432,7 +432,8 @@ class Rftemplate(pulumi.CustomResource):
                  scanning_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        This manages the RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+        This manages the RF Templates.
+        The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 
         ## Import
 
@@ -463,7 +464,8 @@ class Rftemplate(pulumi.CustomResource):
                  args: RftemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This manages the RF Templates.The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+        This manages the RF Templates.
+        The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 
         ## Import
 

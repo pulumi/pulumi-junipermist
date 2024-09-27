@@ -44,7 +44,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Switch configuration.It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
+ * This resource manages the Switch configuration.
+ * It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
  * 
  * ## Example Usage
  * 

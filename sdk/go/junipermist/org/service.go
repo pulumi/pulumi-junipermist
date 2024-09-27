@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages WAN Assurance Services (Applications).The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`orgServicepolicy` resource).
+// This resource manages WAN Assurance Services (Applications).
+// The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`orgServicepolicy` resource).
 //
 // ## Import
 //

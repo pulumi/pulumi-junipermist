@@ -10,34 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages the Org Settings.The Org Settings can be used to customize the Org configuration
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using JuniperMist = Pulumi.JuniperMist;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var vpnOne = new JuniperMist.Org.Vpn("vpn_one", new()
-    ///     {
-    ///         OrgId = terraformTest.Id,
-    ///         Name = "vpn_one",
-    ///         Paths = 
-    ///         {
-    ///             { "AWS_Hub_Profile1-WAN1", new JuniperMist.Org.Inputs.VpnPathsArgs
-    ///             {
-    ///                 BfdProfile = "broadband",
-    ///             } },
-    ///             { "AWS_Hub_Profile1-WAN2", null },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// This resource manages the Org Settings.
+    /// The Org Settings can be used to customize the Org configuration
     /// 
     /// ## Import
     /// 
@@ -173,6 +147,15 @@ namespace Pulumi.JuniperMist.Org
 
         [Output("vpnOptions")]
         public Output<Outputs.SettingVpnOptions?> VpnOptions { get; private set; } = null!;
+
+        [Output("wanPma")]
+        public Output<Outputs.SettingWanPma?> WanPma { get; private set; } = null!;
+
+        [Output("wiredPma")]
+        public Output<Outputs.SettingWiredPma?> WiredPma { get; private set; } = null!;
+
+        [Output("wirelessPma")]
+        public Output<Outputs.SettingWirelessPma?> WirelessPma { get; private set; } = null!;
 
 
         /// <summary>
@@ -346,6 +329,15 @@ namespace Pulumi.JuniperMist.Org
         [Input("vpnOptions")]
         public Input<Inputs.SettingVpnOptionsArgs>? VpnOptions { get; set; }
 
+        [Input("wanPma")]
+        public Input<Inputs.SettingWanPmaArgs>? WanPma { get; set; }
+
+        [Input("wiredPma")]
+        public Input<Inputs.SettingWiredPmaArgs>? WiredPma { get; set; }
+
+        [Input("wirelessPma")]
+        public Input<Inputs.SettingWirelessPmaArgs>? WirelessPma { get; set; }
+
         public SettingArgs()
         {
         }
@@ -481,6 +473,15 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("vpnOptions")]
         public Input<Inputs.SettingVpnOptionsGetArgs>? VpnOptions { get; set; }
+
+        [Input("wanPma")]
+        public Input<Inputs.SettingWanPmaGetArgs>? WanPma { get; set; }
+
+        [Input("wiredPma")]
+        public Input<Inputs.SettingWiredPmaGetArgs>? WiredPma { get; set; }
+
+        [Input("wirelessPma")]
+        public Input<Inputs.SettingWirelessPmaGetArgs>? WirelessPma { get; set; }
 
         public SettingState()
         {

@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+// This datasource provides the list of sites in a Mist Organization.
+// A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
 //
 // ## Example Usage
 //

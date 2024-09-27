@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetNactags
     {
         /// <summary>
-        /// This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        /// This data source provides the list of NAC Tags (Auth Policy Labels).
+        /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNactagsResult>("junipermist:org/getNactags:getNactags", args ?? new GetNactagsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        /// This data source provides the list of NAC Tags (Auth Policy Labels).
+        /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
         /// 
         /// 
         /// ## Example Usage

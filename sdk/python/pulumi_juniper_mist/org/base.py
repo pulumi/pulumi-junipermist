@@ -224,7 +224,8 @@ class Base(pulumi.CustomResource):
                  session_expiry: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        This resource manages the Mist Organization.An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+        This resource manages the Mist Organization.
+        An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
 
         ## Example Usage
 
@@ -232,7 +233,9 @@ class Base(pulumi.CustomResource):
         import pulumi
         import pulumi_juniper_mist as junipermist
 
-        org_one = junipermist.org.Base("org_one", name="Org One")
+        org_one = junipermist.org.Base("org_one",
+            name="Org One",
+            alarmtemplate_id=alarmtemplate_one["id"])
         ```
 
         ## Import
@@ -257,7 +260,8 @@ class Base(pulumi.CustomResource):
                  args: Optional[BaseArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Mist Organization.An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+        This resource manages the Mist Organization.
+        An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
 
         ## Example Usage
 
@@ -265,7 +269,9 @@ class Base(pulumi.CustomResource):
         import pulumi
         import pulumi_juniper_mist as junipermist
 
-        org_one = junipermist.org.Base("org_one", name="Org One")
+        org_one = junipermist.org.Base("org_one",
+            name="Org One",
+            alarmtemplate_id=alarmtemplate_one["id"])
         ```
 
         ## Import

@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Site Settings.The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+// This resource manages the Site Settings.
+// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 //
 // ## Import
 //

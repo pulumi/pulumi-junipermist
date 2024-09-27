@@ -1090,7 +1090,8 @@ class Gateway(pulumi.CustomResource):
                  y: Optional[pulumi.Input[float]] = None,
                  __props__=None):
         """
-        This resource manages the Gateway configuration.It can be used to define specific configuration at the device level or to override Org Gateway template settings.
+        This resource manages the Gateway configuration.
+        It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 
         ## Example Usage
 
@@ -1154,7 +1155,8 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Gateway configuration.It can be used to define specific configuration at the device level or to override Org Gateway template settings.
+        This resource manages the Gateway configuration.
+        It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 
         ## Example Usage
 

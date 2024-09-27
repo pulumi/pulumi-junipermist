@@ -11,6 +11,10 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AlarmtemplateDelivery',
+    'AlarmtemplateRules',
+    'AlarmtemplateRulesDelivery',
+    'ApitokenPrivilege',
     'DeviceprofileApAeroscout',
     'DeviceprofileApBleConfig',
     'DeviceprofileApEslConfig',
@@ -260,6 +264,10 @@ __all__ = [
     'SettingSyntheticTestVlan',
     'SettingSyntheticTestWanSpeedtest',
     'SettingVpnOptions',
+    'SettingWanPma',
+    'SettingWiredPma',
+    'SettingWirelessPma',
+    'SsoRolePrivilege',
     'VpnPaths',
     'WlanAcctServer',
     'WlanAirwatch',
@@ -315,6 +323,255 @@ __all__ = [
     'GetWlantemplatesOrgWlantemplateResult',
     'GetWxtagsOrgWxtagResult',
 ]
+
+@pulumi.output_type
+class AlarmtemplateDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalEmails":
+            suggest = "additional_emails"
+        elif key == "toOrgAdmins":
+            suggest = "to_org_admins"
+        elif key == "toSiteAdmins":
+            suggest = "to_site_admins"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmtemplateDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmtemplateDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmtemplateDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 additional_emails: Optional[Sequence[str]] = None,
+                 to_org_admins: Optional[bool] = None,
+                 to_site_admins: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to enable the alarm delivery via emails or not
+        :param Sequence[str] additional_emails: List of additional email string to deliver the alarms via emails
+        :param bool to_org_admins: Whether to deliver the alarms via emails to Org admins or not
+        :param bool to_site_admins: Whether to deliver the alarms via emails to Site admins or not
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if additional_emails is not None:
+            pulumi.set(__self__, "additional_emails", additional_emails)
+        if to_org_admins is not None:
+            pulumi.set(__self__, "to_org_admins", to_org_admins)
+        if to_site_admins is not None:
+            pulumi.set(__self__, "to_site_admins", to_site_admins)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether to enable the alarm delivery via emails or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="additionalEmails")
+    def additional_emails(self) -> Optional[Sequence[str]]:
+        """
+        List of additional email string to deliver the alarms via emails
+        """
+        return pulumi.get(self, "additional_emails")
+
+    @property
+    @pulumi.getter(name="toOrgAdmins")
+    def to_org_admins(self) -> Optional[bool]:
+        """
+        Whether to deliver the alarms via emails to Org admins or not
+        """
+        return pulumi.get(self, "to_org_admins")
+
+    @property
+    @pulumi.getter(name="toSiteAdmins")
+    def to_site_admins(self) -> Optional[bool]:
+        """
+        Whether to deliver the alarms via emails to Site admins or not
+        """
+        return pulumi.get(self, "to_site_admins")
+
+
+@pulumi.output_type
+class AlarmtemplateRules(dict):
+    def __init__(__self__, *,
+                 delivery: Optional['outputs.AlarmtemplateRulesDelivery'] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param 'AlarmtemplateRulesDeliveryArgs' delivery: Delivery object to configure the alarm delivery
+        """
+        if delivery is not None:
+            pulumi.set(__self__, "delivery", delivery)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def delivery(self) -> Optional['outputs.AlarmtemplateRulesDelivery']:
+        """
+        Delivery object to configure the alarm delivery
+        """
+        return pulumi.get(self, "delivery")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class AlarmtemplateRulesDelivery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalEmails":
+            suggest = "additional_emails"
+        elif key == "toOrgAdmins":
+            suggest = "to_org_admins"
+        elif key == "toSiteAdmins":
+            suggest = "to_site_admins"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlarmtemplateRulesDelivery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlarmtemplateRulesDelivery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlarmtemplateRulesDelivery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 additional_emails: Optional[Sequence[str]] = None,
+                 to_org_admins: Optional[bool] = None,
+                 to_site_admins: Optional[bool] = None):
+        """
+        :param bool enabled: Whether to enable the alarm delivery via emails or not
+        :param Sequence[str] additional_emails: List of additional email string to deliver the alarms via emails
+        :param bool to_org_admins: Whether to deliver the alarms via emails to Org admins or not
+        :param bool to_site_admins: Whether to deliver the alarms via emails to Site admins or not
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if additional_emails is not None:
+            pulumi.set(__self__, "additional_emails", additional_emails)
+        if to_org_admins is not None:
+            pulumi.set(__self__, "to_org_admins", to_org_admins)
+        if to_site_admins is not None:
+            pulumi.set(__self__, "to_site_admins", to_site_admins)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether to enable the alarm delivery via emails or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="additionalEmails")
+    def additional_emails(self) -> Optional[Sequence[str]]:
+        """
+        List of additional email string to deliver the alarms via emails
+        """
+        return pulumi.get(self, "additional_emails")
+
+    @property
+    @pulumi.getter(name="toOrgAdmins")
+    def to_org_admins(self) -> Optional[bool]:
+        """
+        Whether to deliver the alarms via emails to Org admins or not
+        """
+        return pulumi.get(self, "to_org_admins")
+
+    @property
+    @pulumi.getter(name="toSiteAdmins")
+    def to_site_admins(self) -> Optional[bool]:
+        """
+        Whether to deliver the alarms via emails to Site admins or not
+        """
+        return pulumi.get(self, "to_site_admins")
+
+
+@pulumi.output_type
+class ApitokenPrivilege(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteId":
+            suggest = "site_id"
+        elif key == "sitegroupId":
+            suggest = "sitegroup_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApitokenPrivilege. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApitokenPrivilege.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApitokenPrivilege.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 role: str,
+                 scope: str,
+                 site_id: Optional[str] = None,
+                 sitegroup_id: Optional[str] = None):
+        """
+        :param str role: access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        :param str scope: enum: `org`, `site`, `sitegroup`
+        :param str site_id: Required if `scope`==`site`
+        :param str sitegroup_id: Required if `scope`==`sitegroup`
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "scope", scope)
+        if site_id is not None:
+            pulumi.set(__self__, "site_id", site_id)
+        if sitegroup_id is not None:
+            pulumi.set(__self__, "sitegroup_id", sitegroup_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        enum: `org`, `site`, `sitegroup`
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> Optional[str]:
+        """
+        Required if `scope`==`site`
+        """
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter(name="sitegroupId")
+    def sitegroup_id(self) -> Optional[str]:
+        """
+        Required if `scope`==`sitegroup`
+        """
+        return pulumi.get(self, "sitegroup_id")
+
 
 @pulumi.output_type
 class DeviceprofileApAeroscout(dict):
@@ -19709,10 +19966,10 @@ class SettingMistNacIdp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeRealms":
-            suggest = "exclude_realms"
-        elif key == "userRealms":
+        if key == "userRealms":
             suggest = "user_realms"
+        elif key == "excludeRealms":
+            suggest = "exclude_realms"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SettingMistNacIdp. Access the value via the '{suggest}' property getter instead.")
@@ -19726,21 +19983,38 @@ class SettingMistNacIdp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 exclude_realms: Optional[Sequence[str]] = None,
-                 id: Optional[str] = None,
-                 user_realms: Optional[Sequence[str]] = None):
+                 id: str,
+                 user_realms: Sequence[str],
+                 exclude_realms: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] exclude_realms: when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        :param str id: ID of the `mist_nacidp`
         :param Sequence[str] user_realms: which realm should trigger this IDP. User Realm is extracted from:
                  * Username-AVP (`mist.com` from john@mist.com)
                  * Cert CN
+        :param Sequence[str] exclude_realms: when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "user_realms", user_realms)
         if exclude_realms is not None:
             pulumi.set(__self__, "exclude_realms", exclude_realms)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if user_realms is not None:
-            pulumi.set(__self__, "user_realms", user_realms)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        ID of the `mist_nacidp`
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="userRealms")
+    def user_realms(self) -> Sequence[str]:
+        """
+        which realm should trigger this IDP. User Realm is extracted from:
+          * Username-AVP (`mist.com` from john@mist.com)
+          * Cert CN
+        """
+        return pulumi.get(self, "user_realms")
 
     @property
     @pulumi.getter(name="excludeRealms")
@@ -19749,21 +20023,6 @@ class SettingMistNacIdp(dict):
         when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         """
         return pulumi.get(self, "exclude_realms")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="userRealms")
-    def user_realms(self) -> Optional[Sequence[str]]:
-        """
-        which realm should trigger this IDP. User Realm is extracted from:
-          * Username-AVP (`mist.com` from john@mist.com)
-          * Cert CN
-        """
-        return pulumi.get(self, "user_realms")
 
 
 @pulumi.output_type
@@ -20247,8 +20506,8 @@ class SettingSyntheticTestWanSpeedtest(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "timeOdFay":
-            suggest = "time_od_fay"
+        if key == "timeOfDay":
+            suggest = "time_of_day"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SettingSyntheticTestWanSpeedtest. Access the value via the '{suggest}' property getter instead.")
@@ -20263,14 +20522,14 @@ class SettingSyntheticTestWanSpeedtest(dict):
 
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
-                 time_od_fay: Optional[str] = None):
+                 time_of_day: Optional[str] = None):
         """
-        :param str time_od_fay: any / HH:MM (24-hour format)
+        :param str time_of_day: any / HH:MM (24-hour format)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if time_od_fay is not None:
-            pulumi.set(__self__, "time_od_fay", time_od_fay)
+        if time_of_day is not None:
+            pulumi.set(__self__, "time_of_day", time_of_day)
 
     @property
     @pulumi.getter
@@ -20278,12 +20537,12 @@ class SettingSyntheticTestWanSpeedtest(dict):
         return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="timeOdFay")
-    def time_od_fay(self) -> Optional[str]:
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> Optional[str]:
         """
         any / HH:MM (24-hour format)
         """
-        return pulumi.get(self, "time_od_fay")
+        return pulumi.get(self, "time_of_day")
 
 
 @pulumi.output_type
@@ -20330,6 +20589,117 @@ class SettingVpnOptions(dict):
         equiring /12 or bigger to support 16 private IPs for 65535 gateways
         """
         return pulumi.get(self, "st_subnet")
+
+
+@pulumi.output_type
+class SettingWanPma(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class SettingWiredPma(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class SettingWirelessPma(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class SsoRolePrivilege(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteId":
+            suggest = "site_id"
+        elif key == "sitegroupId":
+            suggest = "sitegroup_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SsoRolePrivilege. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SsoRolePrivilege.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SsoRolePrivilege.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 role: str,
+                 scope: str,
+                 site_id: Optional[str] = None,
+                 sitegroup_id: Optional[str] = None):
+        """
+        :param str role: access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        :param str scope: enum: `org`, `site`, `sitegroup`
+        :param str site_id: Required if `scope`==`site`
+        :param str sitegroup_id: Required if `scope`==`sitegroup`
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "scope", scope)
+        if site_id is not None:
+            pulumi.set(__self__, "site_id", site_id)
+        if sitegroup_id is not None:
+            pulumi.set(__self__, "sitegroup_id", sitegroup_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        """
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        enum: `org`, `site`, `sitegroup`
+        """
+        return pulumi.get(self, "scope")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> Optional[str]:
+        """
+        Required if `scope`==`site`
+        """
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter(name="sitegroupId")
+    def sitegroup_id(self) -> Optional[str]:
+        """
+        Required if `scope`==`sitegroup`
+        """
+        return pulumi.get(self, "sitegroup_id")
 
 
 @pulumi.output_type

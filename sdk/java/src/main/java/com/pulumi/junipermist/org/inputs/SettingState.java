@@ -23,6 +23,9 @@ import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
 import com.pulumi.junipermist.org.inputs.SettingSwitchMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
 import com.pulumi.junipermist.org.inputs.SettingVpnOptionsArgs;
+import com.pulumi.junipermist.org.inputs.SettingWanPmaArgs;
+import com.pulumi.junipermist.org.inputs.SettingWiredPmaArgs;
+import com.pulumi.junipermist.org.inputs.SettingWirelessPmaArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -330,6 +333,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vpnOptions);
     }
 
+    @Import(name="wanPma")
+    private @Nullable Output<SettingWanPmaArgs> wanPma;
+
+    public Optional<Output<SettingWanPmaArgs>> wanPma() {
+        return Optional.ofNullable(this.wanPma);
+    }
+
+    @Import(name="wiredPma")
+    private @Nullable Output<SettingWiredPmaArgs> wiredPma;
+
+    public Optional<Output<SettingWiredPmaArgs>> wiredPma() {
+        return Optional.ofNullable(this.wiredPma);
+    }
+
+    @Import(name="wirelessPma")
+    private @Nullable Output<SettingWirelessPmaArgs> wirelessPma;
+
+    public Optional<Output<SettingWirelessPmaArgs>> wirelessPma() {
+        return Optional.ofNullable(this.wirelessPma);
+    }
+
     private SettingState() {}
 
     private SettingState(SettingState $) {
@@ -361,6 +385,9 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.syntheticTest = $.syntheticTest;
         this.uiIdleTimeout = $.uiIdleTimeout;
         this.vpnOptions = $.vpnOptions;
+        this.wanPma = $.wanPma;
+        this.wiredPma = $.wiredPma;
+        this.wirelessPma = $.wirelessPma;
     }
 
     public static Builder builder() {
@@ -783,6 +810,33 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
         public Builder vpnOptions(SettingVpnOptionsArgs vpnOptions) {
             return vpnOptions(Output.of(vpnOptions));
+        }
+
+        public Builder wanPma(@Nullable Output<SettingWanPmaArgs> wanPma) {
+            $.wanPma = wanPma;
+            return this;
+        }
+
+        public Builder wanPma(SettingWanPmaArgs wanPma) {
+            return wanPma(Output.of(wanPma));
+        }
+
+        public Builder wiredPma(@Nullable Output<SettingWiredPmaArgs> wiredPma) {
+            $.wiredPma = wiredPma;
+            return this;
+        }
+
+        public Builder wiredPma(SettingWiredPmaArgs wiredPma) {
+            return wiredPma(Output.of(wiredPma));
+        }
+
+        public Builder wirelessPma(@Nullable Output<SettingWirelessPmaArgs> wirelessPma) {
+            $.wirelessPma = wirelessPma;
+            return this;
+        }
+
+        public Builder wirelessPma(SettingWirelessPmaArgs wirelessPma) {
+            return wirelessPma(Output.of(wirelessPma));
         }
 
         public SettingState build() {

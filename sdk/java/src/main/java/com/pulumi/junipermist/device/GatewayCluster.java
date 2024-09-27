@@ -16,7 +16,8 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * This resource can be used to form or delete a Gateway Clusters. It can be used with two Gateways assigned to the same site.
+ * This resource can be used to form or delete a Gateway
+ *  Clusters. It can be used with two Gateways assigned to the same site.
  * Once the Cluster is formed, it can be create just like a Gateway with the `junipermist.device.Gateway` resource:
  * 1. Claim the gateways and assign them to a site with the `junipermist.org.Inventory` resource
  * 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)

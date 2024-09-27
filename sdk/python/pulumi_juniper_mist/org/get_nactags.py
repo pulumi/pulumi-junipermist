@@ -116,7 +116,8 @@ def get_nactags(limit: Optional[int] = None,
                 type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNactagsResult:
     """
-    This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+    This data source provides the list of NAC Tags (Auth Policy Labels).
+    The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
 
     ## Example Usage
 
@@ -157,7 +158,8 @@ def get_nactags_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNactagsResult]:
     """
-    This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+    This data source provides the list of NAC Tags (Auth Policy Labels).
+    The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
 
     ## Example Usage
 

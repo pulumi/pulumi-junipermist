@@ -12,7 +12,8 @@ namespace Pulumi.JuniperMist.Org
     public static class GetNetworks
     {
         /// <summary>
-        /// This data source provides the list of WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list of WAN Assurance Networks.
+        /// The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
         /// 
         /// ## Example Usage
@@ -37,7 +38,8 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("junipermist:org/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of WAN Assurance Networks.The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list of WAN Assurance Networks.
+        /// The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
         /// 
         /// 
         /// ## Example Usage

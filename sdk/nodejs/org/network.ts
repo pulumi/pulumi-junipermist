@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the WAN Assurance Networks.The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This resource manages the WAN Assurance Networks.
+ * The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
  *
  * ## Example Usage
  *

@@ -66,7 +66,8 @@ class AwaitableGetServicesResult(GetServicesResult):
 def get_services(org_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
-    This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of WAN Assurance Services (Applications).
+    The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
 
     ## Example Usage
 
@@ -92,7 +93,8 @@ def get_services(org_id: Optional[str] = None,
 def get_services_output(org_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
     """
-    This data source provides the list of WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of WAN Assurance Services (Applications).
+    The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
 
     ## Example Usage
 

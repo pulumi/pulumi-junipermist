@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "junipermist:org/alarmtemplate:Alarmtemplate":
+		r = &Alarmtemplate{}
+	case "junipermist:org/apitoken:Apitoken":
+		r = &Apitoken{}
 	case "junipermist:org/base:base":
 		r = &Base{}
 	case "junipermist:org/deviceprofileAp:DeviceprofileAp":
@@ -35,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Idpprofile{}
 	case "junipermist:org/inventory:Inventory":
 		r = &Inventory{}
+	case "junipermist:org/nacidp:Nacidp":
+		r = &Nacidp{}
 	case "junipermist:org/nacrule:Nacrule":
 		r = &Nacrule{}
 	case "junipermist:org/nactag:Nactag":
@@ -55,6 +61,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Setting{}
 	case "junipermist:org/sitegroup:Sitegroup":
 		r = &Sitegroup{}
+	case "junipermist:org/sso:Sso":
+		r = &Sso{}
+	case "junipermist:org/ssoRole:SsoRole":
+		r = &SsoRole{}
 	case "junipermist:org/vpn:Vpn":
 		r = &Vpn{}
 	case "junipermist:org/webhook:Webhook":
@@ -84,6 +94,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/alarmtemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/apitoken",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/base",
@@ -117,6 +137,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/inventory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/nacidp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -167,6 +192,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/sitegroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/sso",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/ssoRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

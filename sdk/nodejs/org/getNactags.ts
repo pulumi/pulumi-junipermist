@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * This data source provides the list of NAC Tags (Auth Policy Labels).
+ * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
  *
  * ## Example Usage
  *
@@ -61,7 +62,8 @@ export interface GetNactagsResult {
     readonly type?: string;
 }
 /**
- * This data source provides the list of NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * This data source provides the list of NAC Tags (Auth Policy Labels).
+ * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
  *
  * ## Example Usage
  *

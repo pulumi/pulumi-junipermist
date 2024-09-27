@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Switch configuration.It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
+ * This resource manages the Switch configuration.
+ * It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
  *
  * ## Import
  *

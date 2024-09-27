@@ -10,6 +10,7 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.inputs.GetSitesArgs;
 import com.pulumi.junipermist.inputs.GetSitesPlainArgs;
+import com.pulumi.junipermist.outputs.GetConstAlarmsResult;
 import com.pulumi.junipermist.outputs.GetConstAppCategoriesResult;
 import com.pulumi.junipermist.outputs.GetConstAppSubCategoriesResult;
 import com.pulumi.junipermist.outputs.GetConstApplicationsResult;
@@ -21,7 +22,248 @@ import java.util.concurrent.CompletableFuture;
 
 public final class JunipermistFunctions {
     /**
-     * This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This data source provides the list of  available Alarms.
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstAlarmsResult> getConstAlarms() {
+        return getConstAlarms(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of  available Alarms.
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstAlarmsResult> getConstAlarmsPlain() {
+        return getConstAlarmsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of  available Alarms.
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstAlarmsResult> getConstAlarms(InvokeArgs args) {
+        return getConstAlarms(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of  available Alarms.
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstAlarmsResult> getConstAlarmsPlain(InvokeArgs args) {
+        return getConstAlarmsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of  available Alarms.
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstAlarmsResult> getConstAlarms(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstAlarms:getConstAlarms", TypeShape.of(GetConstAlarmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of  available Alarms.
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstAlarmsResult> getConstAlarmsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:index/getConstAlarms:getConstAlarms", TypeShape.of(GetConstAlarmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of ConstAppCategories.
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -60,7 +302,8 @@ public final class JunipermistFunctions {
         return getConstAppCategories(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppCategories.
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -99,7 +342,8 @@ public final class JunipermistFunctions {
         return getConstAppCategoriesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppCategories.
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -138,7 +382,8 @@ public final class JunipermistFunctions {
         return getConstAppCategories(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppCategories.
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -177,7 +422,8 @@ public final class JunipermistFunctions {
         return getConstAppCategoriesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppCategories.
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -216,7 +462,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstAppCategories:getConstAppCategories", TypeShape.of(GetConstAppCategoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppCategories.
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -255,7 +502,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstAppCategories:getConstAppCategories", TypeShape.of(GetConstAppCategoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstAppSubCategories.This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppSubCategories.
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -294,7 +542,8 @@ public final class JunipermistFunctions {
         return getConstAppSubCategories(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppSubCategories.This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppSubCategories.
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -333,7 +582,8 @@ public final class JunipermistFunctions {
         return getConstAppSubCategoriesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppSubCategories.This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppSubCategories.
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -372,7 +622,8 @@ public final class JunipermistFunctions {
         return getConstAppSubCategories(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppSubCategories.This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppSubCategories.
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -411,7 +662,8 @@ public final class JunipermistFunctions {
         return getConstAppSubCategoriesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstAppSubCategories.This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppSubCategories.
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -450,7 +702,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", TypeShape.of(GetConstAppSubCategoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstAppSubCategories.This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * This data source provides the of ConstAppSubCategories.
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
      * 
@@ -489,7 +742,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", TypeShape.of(GetConstAppSubCategoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * This data source provides the of ConstApplications.
+     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -528,7 +782,8 @@ public final class JunipermistFunctions {
         return getConstApplications(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * This data source provides the of ConstApplications.
+     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -567,7 +822,8 @@ public final class JunipermistFunctions {
         return getConstApplicationsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * This data source provides the of ConstApplications.
+     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -606,7 +862,8 @@ public final class JunipermistFunctions {
         return getConstApplications(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * This data source provides the of ConstApplications.
+     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -645,7 +902,8 @@ public final class JunipermistFunctions {
         return getConstApplicationsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * This data source provides the of ConstApplications.
+     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -684,7 +942,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstApplications:getConstApplications", TypeShape.of(GetConstApplicationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstApplications.This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * This data source provides the of ConstApplications.
+     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -723,7 +982,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstApplications:getConstApplications", TypeShape.of(GetConstApplicationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstCountries.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -762,7 +1022,8 @@ public final class JunipermistFunctions {
         return getConstCountries(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstCountries.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -801,7 +1062,8 @@ public final class JunipermistFunctions {
         return getConstCountriesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstCountries.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -840,7 +1102,8 @@ public final class JunipermistFunctions {
         return getConstCountries(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstCountries.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -879,7 +1142,8 @@ public final class JunipermistFunctions {
         return getConstCountriesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstCountries.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -918,7 +1182,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstCountries:getConstCountries", TypeShape.of(GetConstCountriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstCountries.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -957,7 +1222,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstCountries:getConstCountries", TypeShape.of(GetConstCountriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstTrafficTypes.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -996,7 +1262,8 @@ public final class JunipermistFunctions {
         return getConstTrafficTypes(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstTrafficTypes.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -1035,7 +1302,8 @@ public final class JunipermistFunctions {
         return getConstTrafficTypesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstTrafficTypes.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -1074,7 +1342,8 @@ public final class JunipermistFunctions {
         return getConstTrafficTypes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstTrafficTypes.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -1113,7 +1382,8 @@ public final class JunipermistFunctions {
         return getConstTrafficTypesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstTrafficTypes.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -1152,7 +1422,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", TypeShape.of(GetConstTrafficTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the of ConstTrafficTypes.This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * This data source provides the of ConstTrafficTypes.
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
      * 
@@ -1191,7 +1462,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", TypeShape.of(GetConstTrafficTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+     * This datasource provides the list of sites in a Mist Organization.
+     * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
      * 
      * ## Example Usage
      * 
@@ -1233,7 +1505,8 @@ public final class JunipermistFunctions {
         return getSites(args, InvokeOptions.Empty);
     }
     /**
-     * This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+     * This datasource provides the list of sites in a Mist Organization.
+     * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
      * 
      * ## Example Usage
      * 
@@ -1275,7 +1548,8 @@ public final class JunipermistFunctions {
         return getSitesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+     * This datasource provides the list of sites in a Mist Organization.
+     * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
      * 
      * ## Example Usage
      * 
@@ -1317,7 +1591,8 @@ public final class JunipermistFunctions {
         return Deployment.getInstance().invoke("junipermist:index/getSites:getSites", TypeShape.of(GetSitesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This datasource provides the list of sites in a Mist Organization.A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+     * This datasource provides the list of sites in a Mist Organization.
+     * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
      * 
      * ## Example Usage
      * 

@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Gateway configuration.It can be used to define specific configuration at the device level or to override Org Gateway template settings.
+ * This resource manages the Gateway configuration.
+ * It can be used to define specific configuration at the device level or to override Org Gateway template settings.
  *
  * ## Example Usage
  *

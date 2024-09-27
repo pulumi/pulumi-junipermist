@@ -635,7 +635,8 @@ class Service(pulumi.CustomResource):
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        This resource manages WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`org_servicepolicy` resource).
+        This resource manages WAN Assurance Services (Applications).
+        The Services are used in the `service_policies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`org_servicepolicy` resource).
 
         ## Import
 
@@ -670,7 +671,8 @@ class Service(pulumi.CustomResource):
                  args: ServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages WAN Assurance Services (Applications).The Services are used in the `service_policies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`org_servicepolicy` resource).
+        This resource manages WAN Assurance Services (Applications).
+        The Services are used in the `service_policies` from the Gateway configuration and Gateway templates, or can be used in the Org Service Policies (`org_servicepolicy` resource).
 
         ## Import
 

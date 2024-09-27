@@ -56,7 +56,8 @@ class AwaitableGetConstAppCategoriesResult(GetConstAppCategoriesResult):
 
 def get_const_app_categories(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstAppCategoriesResult:
     """
-    This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `org.Service` resource
+    This data source provides the of ConstAppCategories.
+    This information can be used as `app_categories` in the `org.Service` resource
 
     ## Example Usage
 
@@ -79,7 +80,8 @@ def get_const_app_categories(opts: Optional[pulumi.InvokeOptions] = None) -> Awa
 @_utilities.lift_output_func(get_const_app_categories)
 def get_const_app_categories_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstAppCategoriesResult]:
     """
-    This data source provides the of ConstAppCategories.This information can be used as `app_categories` in the `org.Service` resource
+    This data source provides the of ConstAppCategories.
+    This information can be used as `app_categories` in the `org.Service` resource
 
     ## Example Usage
 

@@ -56,7 +56,8 @@ class AwaitableGetConstCountriesResult(GetConstCountriesResult):
 
 def get_const_countries(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstCountriesResult:
     """
-    This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`org.Rftemplate`)
+    This data source provides the of ConstCountries.
+    This information can be used to define the Country in the RF templates (`org.Rftemplate`)
 
     ## Example Usage
 
@@ -79,7 +80,8 @@ def get_const_countries(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
 @_utilities.lift_output_func(get_const_countries)
 def get_const_countries_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstCountriesResult]:
     """
-    This data source provides the of ConstCountries.This information can be used to define the Country in the RF templates (`org.Rftemplate`)
+    This data source provides the of ConstCountries.
+    This information can be used to define the Country in the RF templates (`org.Rftemplate`)
 
     ## Example Usage
 

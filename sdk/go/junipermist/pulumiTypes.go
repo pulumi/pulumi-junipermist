@@ -13,6 +13,130 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetConstAlarmsConstAlarm struct {
+	// Description of the alarm type
+	Display string `pulumi:"display"`
+	// Group to which the alarm belongs
+	Group string `pulumi:"group"`
+	// Key name of the alarm type
+	Key string `pulumi:"key"`
+	// Severity of the alarm
+	Severity string `pulumi:"severity"`
+}
+
+// GetConstAlarmsConstAlarmInput is an input type that accepts GetConstAlarmsConstAlarmArgs and GetConstAlarmsConstAlarmOutput values.
+// You can construct a concrete instance of `GetConstAlarmsConstAlarmInput` via:
+//
+//	GetConstAlarmsConstAlarmArgs{...}
+type GetConstAlarmsConstAlarmInput interface {
+	pulumi.Input
+
+	ToGetConstAlarmsConstAlarmOutput() GetConstAlarmsConstAlarmOutput
+	ToGetConstAlarmsConstAlarmOutputWithContext(context.Context) GetConstAlarmsConstAlarmOutput
+}
+
+type GetConstAlarmsConstAlarmArgs struct {
+	// Description of the alarm type
+	Display pulumi.StringInput `pulumi:"display"`
+	// Group to which the alarm belongs
+	Group pulumi.StringInput `pulumi:"group"`
+	// Key name of the alarm type
+	Key pulumi.StringInput `pulumi:"key"`
+	// Severity of the alarm
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (GetConstAlarmsConstAlarmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConstAlarmsConstAlarm)(nil)).Elem()
+}
+
+func (i GetConstAlarmsConstAlarmArgs) ToGetConstAlarmsConstAlarmOutput() GetConstAlarmsConstAlarmOutput {
+	return i.ToGetConstAlarmsConstAlarmOutputWithContext(context.Background())
+}
+
+func (i GetConstAlarmsConstAlarmArgs) ToGetConstAlarmsConstAlarmOutputWithContext(ctx context.Context) GetConstAlarmsConstAlarmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConstAlarmsConstAlarmOutput)
+}
+
+// GetConstAlarmsConstAlarmArrayInput is an input type that accepts GetConstAlarmsConstAlarmArray and GetConstAlarmsConstAlarmArrayOutput values.
+// You can construct a concrete instance of `GetConstAlarmsConstAlarmArrayInput` via:
+//
+//	GetConstAlarmsConstAlarmArray{ GetConstAlarmsConstAlarmArgs{...} }
+type GetConstAlarmsConstAlarmArrayInput interface {
+	pulumi.Input
+
+	ToGetConstAlarmsConstAlarmArrayOutput() GetConstAlarmsConstAlarmArrayOutput
+	ToGetConstAlarmsConstAlarmArrayOutputWithContext(context.Context) GetConstAlarmsConstAlarmArrayOutput
+}
+
+type GetConstAlarmsConstAlarmArray []GetConstAlarmsConstAlarmInput
+
+func (GetConstAlarmsConstAlarmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConstAlarmsConstAlarm)(nil)).Elem()
+}
+
+func (i GetConstAlarmsConstAlarmArray) ToGetConstAlarmsConstAlarmArrayOutput() GetConstAlarmsConstAlarmArrayOutput {
+	return i.ToGetConstAlarmsConstAlarmArrayOutputWithContext(context.Background())
+}
+
+func (i GetConstAlarmsConstAlarmArray) ToGetConstAlarmsConstAlarmArrayOutputWithContext(ctx context.Context) GetConstAlarmsConstAlarmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConstAlarmsConstAlarmArrayOutput)
+}
+
+type GetConstAlarmsConstAlarmOutput struct{ *pulumi.OutputState }
+
+func (GetConstAlarmsConstAlarmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConstAlarmsConstAlarm)(nil)).Elem()
+}
+
+func (o GetConstAlarmsConstAlarmOutput) ToGetConstAlarmsConstAlarmOutput() GetConstAlarmsConstAlarmOutput {
+	return o
+}
+
+func (o GetConstAlarmsConstAlarmOutput) ToGetConstAlarmsConstAlarmOutputWithContext(ctx context.Context) GetConstAlarmsConstAlarmOutput {
+	return o
+}
+
+// Description of the alarm type
+func (o GetConstAlarmsConstAlarmOutput) Display() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConstAlarmsConstAlarm) string { return v.Display }).(pulumi.StringOutput)
+}
+
+// Group to which the alarm belongs
+func (o GetConstAlarmsConstAlarmOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConstAlarmsConstAlarm) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// Key name of the alarm type
+func (o GetConstAlarmsConstAlarmOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConstAlarmsConstAlarm) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Severity of the alarm
+func (o GetConstAlarmsConstAlarmOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConstAlarmsConstAlarm) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type GetConstAlarmsConstAlarmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConstAlarmsConstAlarmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConstAlarmsConstAlarm)(nil)).Elem()
+}
+
+func (o GetConstAlarmsConstAlarmArrayOutput) ToGetConstAlarmsConstAlarmArrayOutput() GetConstAlarmsConstAlarmArrayOutput {
+	return o
+}
+
+func (o GetConstAlarmsConstAlarmArrayOutput) ToGetConstAlarmsConstAlarmArrayOutputWithContext(ctx context.Context) GetConstAlarmsConstAlarmArrayOutput {
+	return o
+}
+
+func (o GetConstAlarmsConstAlarmArrayOutput) Index(i pulumi.IntInput) GetConstAlarmsConstAlarmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConstAlarmsConstAlarm {
+		return vs[0].([]GetConstAlarmsConstAlarm)[vs[1].(int)]
+	}).(GetConstAlarmsConstAlarmOutput)
+}
+
 type GetConstAppCategoriesConstAppCategory struct {
 	// Description of the app category
 	Display string                                       `pulumi:"display"`
@@ -990,6 +1114,8 @@ func (o GetSitesSiteLatlngOutput) Lng() pulumi.Float64Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAlarmsConstAlarmInput)(nil)).Elem(), GetConstAlarmsConstAlarmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAlarmsConstAlarmArrayInput)(nil)).Elem(), GetConstAlarmsConstAlarmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAppCategoriesConstAppCategoryInput)(nil)).Elem(), GetConstAppCategoriesConstAppCategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAppCategoriesConstAppCategoryArrayInput)(nil)).Elem(), GetConstAppCategoriesConstAppCategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAppCategoriesConstAppCategoryFiltersInput)(nil)).Elem(), GetConstAppCategoriesConstAppCategoryFiltersArgs{})
@@ -1004,6 +1130,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteLatlngInput)(nil)).Elem(), GetSitesSiteLatlngArgs{})
+	pulumi.RegisterOutputType(GetConstAlarmsConstAlarmOutput{})
+	pulumi.RegisterOutputType(GetConstAlarmsConstAlarmArrayOutput{})
 	pulumi.RegisterOutputType(GetConstAppCategoriesConstAppCategoryOutput{})
 	pulumi.RegisterOutputType(GetConstAppCategoriesConstAppCategoryArrayOutput{})
 	pulumi.RegisterOutputType(GetConstAppCategoriesConstAppCategoryFiltersOutput{})

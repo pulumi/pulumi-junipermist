@@ -18,7 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages NAC Tags (Auth Policy Labels).The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+ * This resource manages NAC Tags (Auth Policy Labels).
+ * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
  * 
  * ## Example Usage
  * 

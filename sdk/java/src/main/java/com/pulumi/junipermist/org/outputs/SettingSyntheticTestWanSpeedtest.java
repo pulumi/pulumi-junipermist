@@ -17,7 +17,7 @@ public final class SettingSyntheticTestWanSpeedtest {
      * @return any / HH:MM (24-hour format)
      * 
      */
-    private @Nullable String timeOdFay;
+    private @Nullable String timeOfDay;
 
     private SettingSyntheticTestWanSpeedtest() {}
     public Optional<Boolean> enabled() {
@@ -27,8 +27,8 @@ public final class SettingSyntheticTestWanSpeedtest {
      * @return any / HH:MM (24-hour format)
      * 
      */
-    public Optional<String> timeOdFay() {
-        return Optional.ofNullable(this.timeOdFay);
+    public Optional<String> timeOfDay() {
+        return Optional.ofNullable(this.timeOfDay);
     }
 
     public static Builder builder() {
@@ -41,12 +41,12 @@ public final class SettingSyntheticTestWanSpeedtest {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
-        private @Nullable String timeOdFay;
+        private @Nullable String timeOfDay;
         public Builder() {}
         public Builder(SettingSyntheticTestWanSpeedtest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
-    	      this.timeOdFay = defaults.timeOdFay;
+    	      this.timeOfDay = defaults.timeOfDay;
         }
 
         @CustomType.Setter
@@ -56,15 +56,15 @@ public final class SettingSyntheticTestWanSpeedtest {
             return this;
         }
         @CustomType.Setter
-        public Builder timeOdFay(@Nullable String timeOdFay) {
+        public Builder timeOfDay(@Nullable String timeOfDay) {
 
-            this.timeOdFay = timeOdFay;
+            this.timeOfDay = timeOfDay;
             return this;
         }
         public SettingSyntheticTestWanSpeedtest build() {
             final var _resultValue = new SettingSyntheticTestWanSpeedtest();
             _resultValue.enabled = enabled;
-            _resultValue.timeOdFay = timeOdFay;
+            _resultValue.timeOfDay = timeOfDay;
             return _resultValue;
         }
     }

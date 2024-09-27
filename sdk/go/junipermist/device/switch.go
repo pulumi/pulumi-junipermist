@@ -12,7 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource manages the Switch configuration.It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
+// This resource manages the Switch configuration.
+// It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
 //
 // ## Import
 //

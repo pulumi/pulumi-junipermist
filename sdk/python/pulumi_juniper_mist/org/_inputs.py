@@ -10,6 +10,10 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AlarmtemplateDeliveryArgs',
+    'AlarmtemplateRulesArgs',
+    'AlarmtemplateRulesDeliveryArgs',
+    'ApitokenPrivilegeArgs',
     'DeviceprofileApAeroscoutArgs',
     'DeviceprofileApBleConfigArgs',
     'DeviceprofileApEslConfigArgs',
@@ -259,6 +263,10 @@ __all__ = [
     'SettingSyntheticTestVlanArgs',
     'SettingSyntheticTestWanSpeedtestArgs',
     'SettingVpnOptionsArgs',
+    'SettingWanPmaArgs',
+    'SettingWiredPmaArgs',
+    'SettingWirelessPmaArgs',
+    'SsoRolePrivilegeArgs',
     'VpnPathsArgs',
     'WlanAcctServerArgs',
     'WlanAirwatchArgs',
@@ -290,6 +298,250 @@ __all__ = [
     'WlantemplateExceptionsArgs',
     'WxtagSpecArgs',
 ]
+
+@pulumi.input_type
+class AlarmtemplateDeliveryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 additional_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 to_org_admins: Optional[pulumi.Input[bool]] = None,
+                 to_site_admins: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether to enable the alarm delivery via emails or not
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_emails: List of additional email string to deliver the alarms via emails
+        :param pulumi.Input[bool] to_org_admins: Whether to deliver the alarms via emails to Org admins or not
+        :param pulumi.Input[bool] to_site_admins: Whether to deliver the alarms via emails to Site admins or not
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if additional_emails is not None:
+            pulumi.set(__self__, "additional_emails", additional_emails)
+        if to_org_admins is not None:
+            pulumi.set(__self__, "to_org_admins", to_org_admins)
+        if to_site_admins is not None:
+            pulumi.set(__self__, "to_site_admins", to_site_admins)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether to enable the alarm delivery via emails or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="additionalEmails")
+    def additional_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of additional email string to deliver the alarms via emails
+        """
+        return pulumi.get(self, "additional_emails")
+
+    @additional_emails.setter
+    def additional_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_emails", value)
+
+    @property
+    @pulumi.getter(name="toOrgAdmins")
+    def to_org_admins(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to deliver the alarms via emails to Org admins or not
+        """
+        return pulumi.get(self, "to_org_admins")
+
+    @to_org_admins.setter
+    def to_org_admins(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "to_org_admins", value)
+
+    @property
+    @pulumi.getter(name="toSiteAdmins")
+    def to_site_admins(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to deliver the alarms via emails to Site admins or not
+        """
+        return pulumi.get(self, "to_site_admins")
+
+    @to_site_admins.setter
+    def to_site_admins(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "to_site_admins", value)
+
+
+@pulumi.input_type
+class AlarmtemplateRulesArgs:
+    def __init__(__self__, *,
+                 delivery: Optional[pulumi.Input['AlarmtemplateRulesDeliveryArgs']] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['AlarmtemplateRulesDeliveryArgs'] delivery: Delivery object to configure the alarm delivery
+        """
+        if delivery is not None:
+            pulumi.set(__self__, "delivery", delivery)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def delivery(self) -> Optional[pulumi.Input['AlarmtemplateRulesDeliveryArgs']]:
+        """
+        Delivery object to configure the alarm delivery
+        """
+        return pulumi.get(self, "delivery")
+
+    @delivery.setter
+    def delivery(self, value: Optional[pulumi.Input['AlarmtemplateRulesDeliveryArgs']]):
+        pulumi.set(self, "delivery", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class AlarmtemplateRulesDeliveryArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 additional_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 to_org_admins: Optional[pulumi.Input[bool]] = None,
+                 to_site_admins: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether to enable the alarm delivery via emails or not
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_emails: List of additional email string to deliver the alarms via emails
+        :param pulumi.Input[bool] to_org_admins: Whether to deliver the alarms via emails to Org admins or not
+        :param pulumi.Input[bool] to_site_admins: Whether to deliver the alarms via emails to Site admins or not
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if additional_emails is not None:
+            pulumi.set(__self__, "additional_emails", additional_emails)
+        if to_org_admins is not None:
+            pulumi.set(__self__, "to_org_admins", to_org_admins)
+        if to_site_admins is not None:
+            pulumi.set(__self__, "to_site_admins", to_site_admins)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether to enable the alarm delivery via emails or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="additionalEmails")
+    def additional_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of additional email string to deliver the alarms via emails
+        """
+        return pulumi.get(self, "additional_emails")
+
+    @additional_emails.setter
+    def additional_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "additional_emails", value)
+
+    @property
+    @pulumi.getter(name="toOrgAdmins")
+    def to_org_admins(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to deliver the alarms via emails to Org admins or not
+        """
+        return pulumi.get(self, "to_org_admins")
+
+    @to_org_admins.setter
+    def to_org_admins(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "to_org_admins", value)
+
+    @property
+    @pulumi.getter(name="toSiteAdmins")
+    def to_site_admins(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to deliver the alarms via emails to Site admins or not
+        """
+        return pulumi.get(self, "to_site_admins")
+
+    @to_site_admins.setter
+    def to_site_admins(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "to_site_admins", value)
+
+
+@pulumi.input_type
+class ApitokenPrivilegeArgs:
+    def __init__(__self__, *,
+                 role: pulumi.Input[str],
+                 scope: pulumi.Input[str],
+                 site_id: Optional[pulumi.Input[str]] = None,
+                 sitegroup_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] role: access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        :param pulumi.Input[str] scope: enum: `org`, `site`, `sitegroup`
+        :param pulumi.Input[str] site_id: Required if `scope`==`site`
+        :param pulumi.Input[str] sitegroup_id: Required if `scope`==`sitegroup`
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "scope", scope)
+        if site_id is not None:
+            pulumi.set(__self__, "site_id", site_id)
+        if sitegroup_id is not None:
+            pulumi.set(__self__, "sitegroup_id", sitegroup_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        enum: `org`, `site`, `sitegroup`
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `scope`==`site`
+        """
+        return pulumi.get(self, "site_id")
+
+    @site_id.setter
+    def site_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "site_id", value)
+
+    @property
+    @pulumi.getter(name="sitegroupId")
+    def sitegroup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `scope`==`sitegroup`
+        """
+        return pulumi.get(self, "sitegroup_id")
+
+    @sitegroup_id.setter
+    def sitegroup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sitegroup_id", value)
+
 
 @pulumi.input_type
 class DeviceprofileApAeroscoutArgs:
@@ -20854,21 +21106,46 @@ class SettingMistNacArgs:
 @pulumi.input_type
 class SettingMistNacIdpArgs:
     def __init__(__self__, *,
-                 exclude_realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 user_realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 id: pulumi.Input[str],
+                 user_realms: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 exclude_realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_realms: when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        :param pulumi.Input[str] id: ID of the `mist_nacidp`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_realms: which realm should trigger this IDP. User Realm is extracted from:
                  * Username-AVP (`mist.com` from john@mist.com)
                  * Cert CN
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_realms: when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "user_realms", user_realms)
         if exclude_realms is not None:
             pulumi.set(__self__, "exclude_realms", exclude_realms)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if user_realms is not None:
-            pulumi.set(__self__, "user_realms", user_realms)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        ID of the `mist_nacidp`
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="userRealms")
+    def user_realms(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        which realm should trigger this IDP. User Realm is extracted from:
+          * Username-AVP (`mist.com` from john@mist.com)
+          * Cert CN
+        """
+        return pulumi.get(self, "user_realms")
+
+    @user_realms.setter
+    def user_realms(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "user_realms", value)
 
     @property
     @pulumi.getter(name="excludeRealms")
@@ -20881,29 +21158,6 @@ class SettingMistNacIdpArgs:
     @exclude_realms.setter
     def exclude_realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclude_realms", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="userRealms")
-    def user_realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        which realm should trigger this IDP. User Realm is extracted from:
-          * Username-AVP (`mist.com` from john@mist.com)
-          * Cert CN
-        """
-        return pulumi.get(self, "user_realms")
-
-    @user_realms.setter
-    def user_realms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "user_realms", value)
 
 
 @pulumi.input_type
@@ -21355,14 +21609,14 @@ class SettingSyntheticTestVlanArgs:
 class SettingSyntheticTestWanSpeedtestArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 time_od_fay: Optional[pulumi.Input[str]] = None):
+                 time_of_day: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] time_od_fay: any / HH:MM (24-hour format)
+        :param pulumi.Input[str] time_of_day: any / HH:MM (24-hour format)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if time_od_fay is not None:
-            pulumi.set(__self__, "time_od_fay", time_od_fay)
+        if time_of_day is not None:
+            pulumi.set(__self__, "time_of_day", time_of_day)
 
     @property
     @pulumi.getter
@@ -21374,16 +21628,16 @@ class SettingSyntheticTestWanSpeedtestArgs:
         pulumi.set(self, "enabled", value)
 
     @property
-    @pulumi.getter(name="timeOdFay")
-    def time_od_fay(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> Optional[pulumi.Input[str]]:
         """
         any / HH:MM (24-hour format)
         """
-        return pulumi.get(self, "time_od_fay")
+        return pulumi.get(self, "time_of_day")
 
-    @time_od_fay.setter
-    def time_od_fay(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "time_od_fay", value)
+    @time_of_day.setter
+    def time_of_day(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_of_day", value)
 
 
 @pulumi.input_type
@@ -21419,6 +21673,126 @@ class SettingVpnOptionsArgs:
     @st_subnet.setter
     def st_subnet(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "st_subnet", value)
+
+
+@pulumi.input_type
+class SettingWanPmaArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class SettingWiredPmaArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class SettingWirelessPmaArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class SsoRolePrivilegeArgs:
+    def __init__(__self__, *,
+                 role: pulumi.Input[str],
+                 scope: pulumi.Input[str],
+                 site_id: Optional[pulumi.Input[str]] = None,
+                 sitegroup_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] role: access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        :param pulumi.Input[str] scope: enum: `org`, `site`, `sitegroup`
+        :param pulumi.Input[str] site_id: Required if `scope`==`site`
+        :param pulumi.Input[str] sitegroup_id: Required if `scope`==`sitegroup`
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "scope", scope)
+        if site_id is not None:
+            pulumi.set(__self__, "site_id", site_id)
+        if sitegroup_id is not None:
+            pulumi.set(__self__, "sitegroup_id", sitegroup_id)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> pulumi.Input[str]:
+        """
+        enum: `org`, `site`, `sitegroup`
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `scope`==`site`
+        """
+        return pulumi.get(self, "site_id")
+
+    @site_id.setter
+    def site_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "site_id", value)
+
+    @property
+    @pulumi.getter(name="sitegroupId")
+    def sitegroup_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required if `scope`==`sitegroup`
+        """
+        return pulumi.get(self, "sitegroup_id")
+
+    @sitegroup_id.setter
+    def sitegroup_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sitegroup_id", value)
 
 
 @pulumi.input_type

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Gateway{}
 	case "junipermist:device/gatewayCluster:GatewayCluster":
 		r = &GatewayCluster{}
+	case "junipermist:device/image:Image":
+		r = &Image{}
 	case "junipermist:device/switch:Switch":
 		r = &Switch{}
 	default:
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"device/gatewayCluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"device/image",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

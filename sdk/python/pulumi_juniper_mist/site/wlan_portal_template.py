@@ -124,7 +124,8 @@ class WlanPortalTemplate(pulumi.CustomResource):
                  wlan_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource is used customize the WLAN Guest Portal.The WLAN Portal Template can be used to define:
+        This resource is used customize the WLAN Guest Portal.
+        The WLAN Portal Template can be used to define:
         * Guest Authentication methods and parameters (access duration, ...)
         * Default values of the text fields and labels on the portal
         * Values of the text fields and labels based on the User Agent (`locales` property)
@@ -144,7 +145,8 @@ class WlanPortalTemplate(pulumi.CustomResource):
                  args: WlanPortalTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource is used customize the WLAN Guest Portal.The WLAN Portal Template can be used to define:
+        This resource is used customize the WLAN Guest Portal.
+        The WLAN Portal Template can be used to define:
         * Guest Authentication methods and parameters (access duration, ...)
         * Default values of the text fields and labels on the portal
         * Values of the text fields and labels based on the User Agent (`locales` property)
