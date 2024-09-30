@@ -27,6 +27,7 @@ func TestTsExamples(t *testing.T) {
 		"TestOrgWlanPortalTemplateTs":  {directoryName: "org-wlan-portal-template-ts"},
 		"TestSiteWlanPortalImageTs":    {directoryName: "site-wlan-portal-image-ts"},
 		"TestOrgWlanPortalImageTs":     {directoryName: "org-wlan-portal-image-ts"},
+		"TestAlarmtemplateTs":          {directoryName: "org-alarmtemplate-ts"},
 	}
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
