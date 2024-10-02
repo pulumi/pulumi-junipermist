@@ -18,6 +18,7 @@ func TestTsExamples(t *testing.T) {
 		directoryName    string
 		additionalConfig map[string]string
 	}{
+		"TestDeviceGatewayTs":          {directoryName: "device-gateway-ts"},
 		"TestSiteWlanTs":               {directoryName: "site-wlan-ts"},
 		"TestSiteWlanIsolationTs":      {directoryName: "site-wlan-isolation-ts"},
 		"TestOrgRftemplateTs":          {directoryName: "org-rftemplate-ts"},
