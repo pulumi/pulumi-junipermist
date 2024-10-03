@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -75,9 +80,6 @@ def get_const_app_sub_categories(opts: Optional[pulumi.InvokeOptions] = None) ->
     return AwaitableGetConstAppSubCategoriesResult(
         const_app_sub_categories=pulumi.get(__ret__, 'const_app_sub_categories'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_const_app_sub_categories)
 def get_const_app_sub_categories_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstAppSubCategoriesResult]:
     """
     This data source provides the of ConstAppSubCategories.
@@ -92,4 +94,9 @@ def get_const_app_sub_categories_output(opts: Optional[pulumi.InvokeOptions] = N
     list_of_app_sub_categories = junipermist.get_const_app_sub_categories()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstAppSubCategories:getConstAppSubCategories', __args__, opts=opts, typ=GetConstAppSubCategoriesResult)
+    return __ret__.apply(lambda __response__: GetConstAppSubCategoriesResult(
+        const_app_sub_categories=pulumi.get(__response__, 'const_app_sub_categories'),
+        id=pulumi.get(__response__, 'id')))
