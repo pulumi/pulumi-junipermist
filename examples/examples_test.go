@@ -11,6 +11,8 @@ const (
 	EnvMistAPIKey = "MIST_API_TOKEN"
 	EnvMistOrgID  = "MIST_ORG_ID"
 	EnvMistHost   = "MIST_HOST"
+	EnvClaimCode1 = "MIST_CLAIM_CODE_1"
+	EnvClaimCode2 = "MIST_CLAIM_CODE_2"
 )
 
 func checkEnvVars(t *testing.T, envVar string) {

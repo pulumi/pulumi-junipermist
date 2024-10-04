@@ -15,8 +15,10 @@ import (
 
 func TestTsExamples(t *testing.T) {
 	tests := map[string]struct {
-		directoryName string
+		directoryName    string
+		additionalConfig map[string]string
 	}{
+		"TestDeviceGatewayTs":          {directoryName: "device-gateway-ts"},
 		"TestSiteWlanTs":               {directoryName: "site-wlan-ts"},
 		"TestSiteWlanIsolationTs":      {directoryName: "site-wlan-isolation-ts"},
 		"TestOrgRftemplateTs":          {directoryName: "org-rftemplate-ts"},
@@ -27,6 +29,11 @@ func TestTsExamples(t *testing.T) {
 		"TestOrgWlanPortalTemplateTs":  {directoryName: "org-wlan-portal-template-ts"},
 		"TestSiteWlanPortalImageTs":    {directoryName: "site-wlan-portal-image-ts"},
 		"TestOrgWlanPortalImageTs":     {directoryName: "org-wlan-portal-image-ts"},
+		"TestAlarmtemplateTs":          {directoryName: "org-alarmtemplate-ts"},
+		"TestOrgInventoryTs": {
+			directoryName:    "org-inventory-ts",
+			additionalConfig: map[string]string{"claimCode1": os.Getenv(EnvClaimCode1), "claimCode2": os.Getenv(EnvClaimCode2)},
+		},
 	}
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
@@ -36,6 +43,11 @@ func TestTsExamples(t *testing.T) {
 				opttest.YarnLink("@pulumi/juniper-mist"),
 			)
 			p.SetConfig(t, "organizationId", os.Getenv(EnvMistOrgID))
+			if test.additionalConfig != nil {
+				for key, value := range test.additionalConfig {
+					p.SetConfig(t, key, value)
+				}
+			}
 			p.Up(t)
 			p.Preview(t, optpreview.ExpectNoChanges())
 		})
