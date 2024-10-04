@@ -10,10 +10,10 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   MIST_API_TOKEN: ${{ secrets.MIST_API_TOKEN}}
-  MIST_HOST: ${{ secrets.MIST_HOST}}
-  MIST_ORG_ID: ${{ secrets.MIST_ORG_ID}}
   MIST_CLAIM_CODE_1: ${{ secrets.MIST_CLAIM_CODE_1}}
   MIST_CLAIM_CODE_2: ${{ secrets.MIST_CLAIM_CODE_2}}
+  MIST_HOST: ${{ secrets.MIST_HOST}}
+  MIST_ORG_ID: ${{ secrets.MIST_ORG_ID}}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
@@ -70,7 +70,7 @@ jobs:
         with:
           allowed-changes: |
             sdk/**/pulumi-plugin.json
-            sdk/dotnet/Pulumi.*.csproj
+            sdk/dotnet/*.csproj
             sdk/go/**/pulumiUtilities.go
             sdk/nodejs/package.json
             sdk/python/pyproject.toml
