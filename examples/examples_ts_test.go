@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
+	"github.com/pulumi/pulumi/sdk/v3/go/auto/optrefresh"
 )
 
 func TestTsExamples(t *testing.T) {
@@ -50,6 +51,7 @@ func TestTsExamples(t *testing.T) {
 			}
 			p.Up(t)
 			p.Preview(t, optpreview.ExpectNoChanges())
+			p.Refresh(t, optrefresh.ExpectNoChanges())
 		})
 	}
 }
