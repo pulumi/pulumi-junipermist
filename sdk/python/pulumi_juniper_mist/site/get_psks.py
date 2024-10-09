@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -148,9 +153,6 @@ def get_psks(limit: Optional[int] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         site_psks=pulumi.get(__ret__, 'site_psks'),
         ssid=pulumi.get(__ret__, 'ssid'))
-
-
-@_utilities.lift_output_func(get_psks)
 def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     page: Optional[pulumi.Input[Optional[int]]] = None,
@@ -172,4 +174,21 @@ def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
         role="vip")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['limit'] = limit
+    __args__['name'] = name
+    __args__['page'] = page
+    __args__['role'] = role
+    __args__['siteId'] = site_id
+    __args__['ssid'] = ssid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:site/getPsks:getPsks', __args__, opts=opts, typ=GetPsksResult)
+    return __ret__.apply(lambda __response__: GetPsksResult(
+        id=pulumi.get(__response__, 'id'),
+        limit=pulumi.get(__response__, 'limit'),
+        name=pulumi.get(__response__, 'name'),
+        page=pulumi.get(__response__, 'page'),
+        role=pulumi.get(__response__, 'role'),
+        site_id=pulumi.get(__response__, 'site_id'),
+        site_psks=pulumi.get(__response__, 'site_psks'),
+        ssid=pulumi.get(__response__, 'ssid')))

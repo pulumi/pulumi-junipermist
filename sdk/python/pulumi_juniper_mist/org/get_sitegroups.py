@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -87,9 +92,6 @@ def get_sitegroups(org_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_sitegroups=pulumi.get(__ret__, 'org_sitegroups'))
-
-
-@_utilities.lift_output_func(get_sitegroups)
 def get_sitegroups_output(org_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSitegroupsResult]:
     """
@@ -105,4 +107,11 @@ def get_sitegroups_output(org_id: Optional[pulumi.Input[str]] = None,
     sitegroups = junipermist.org.get_sitegroups(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['orgId'] = org_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:org/getSitegroups:getSitegroups', __args__, opts=opts, typ=GetSitegroupsResult)
+    return __ret__.apply(lambda __response__: GetSitegroupsResult(
+        id=pulumi.get(__response__, 'id'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        org_sitegroups=pulumi.get(__response__, 'org_sitegroups')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -200,9 +205,6 @@ def get_inventory(mac: Optional[str] = None,
         unassigned=pulumi.get(__ret__, 'unassigned'),
         vc=pulumi.get(__ret__, 'vc'),
         vc_mac=pulumi.get(__ret__, 'vc_mac'))
-
-
-@_utilities.lift_output_func(get_inventory)
 def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
                          model: Optional[pulumi.Input[Optional[str]]] = None,
                          org_id: Optional[pulumi.Input[str]] = None,
@@ -233,4 +235,25 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool vc: To display Virtual Chassis members
     :param str vc_mac: Virtual Chassis MAC Address
     """
-    ...
+    __args__ = dict()
+    __args__['mac'] = mac
+    __args__['model'] = model
+    __args__['orgId'] = org_id
+    __args__['serial'] = serial
+    __args__['siteId'] = site_id
+    __args__['unassigned'] = unassigned
+    __args__['vc'] = vc
+    __args__['vcMac'] = vc_mac
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:org/getInventory:getInventory', __args__, opts=opts, typ=GetInventoryResult)
+    return __ret__.apply(lambda __response__: GetInventoryResult(
+        id=pulumi.get(__response__, 'id'),
+        mac=pulumi.get(__response__, 'mac'),
+        model=pulumi.get(__response__, 'model'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        org_inventories=pulumi.get(__response__, 'org_inventories'),
+        serial=pulumi.get(__response__, 'serial'),
+        site_id=pulumi.get(__response__, 'site_id'),
+        unassigned=pulumi.get(__response__, 'unassigned'),
+        vc=pulumi.get(__response__, 'vc'),
+        vc_mac=pulumi.get(__response__, 'vc_mac')))

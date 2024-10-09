@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -172,9 +177,6 @@ def get_ap_stats(duration: Optional[str] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         start=pulumi.get(__ret__, 'start'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_ap_stats)
 def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = None,
                         end: Optional[pulumi.Input[Optional[int]]] = None,
                         mac: Optional[pulumi.Input[Optional[str]]] = None,
@@ -200,4 +202,23 @@ def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = None,
     :param int end: end datetime, can be epoch or relative time like -1d, -2h; now if not specified
     :param int start: start datetime, can be epoch or relative time like -1d, -1w; -1d if not specified
     """
-    ...
+    __args__ = dict()
+    __args__['duration'] = duration
+    __args__['end'] = end
+    __args__['mac'] = mac
+    __args__['orgId'] = org_id
+    __args__['siteId'] = site_id
+    __args__['start'] = start
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:device/getApStats:getApStats', __args__, opts=opts, typ=GetApStatsResult)
+    return __ret__.apply(lambda __response__: GetApStatsResult(
+        device_ap_stats=pulumi.get(__response__, 'device_ap_stats'),
+        duration=pulumi.get(__response__, 'duration'),
+        end=pulumi.get(__response__, 'end'),
+        id=pulumi.get(__response__, 'id'),
+        mac=pulumi.get(__response__, 'mac'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        site_id=pulumi.get(__response__, 'site_id'),
+        start=pulumi.get(__response__, 'start'),
+        status=pulumi.get(__response__, 'status')))
