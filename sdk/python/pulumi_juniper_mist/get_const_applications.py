@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -75,9 +80,6 @@ def get_const_applications(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     return AwaitableGetConstApplicationsResult(
         const_applications=pulumi.get(__ret__, 'const_applications'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_const_applications)
 def get_const_applications_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstApplicationsResult]:
     """
     This data source provides the of ConstApplications.
@@ -92,4 +94,9 @@ def get_const_applications_output(opts: Optional[pulumi.InvokeOptions] = None) -
     list_of_applications = junipermist.get_const_applications()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstApplications:getConstApplications', __args__, opts=opts, typ=GetConstApplicationsResult)
+    return __ret__.apply(lambda __response__: GetConstApplicationsResult(
+        const_applications=pulumi.get(__response__, 'const_applications'),
+        id=pulumi.get(__response__, 'id')))

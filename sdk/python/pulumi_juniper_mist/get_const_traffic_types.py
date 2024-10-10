@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -75,9 +80,6 @@ def get_const_traffic_types(opts: Optional[pulumi.InvokeOptions] = None) -> Awai
     return AwaitableGetConstTrafficTypesResult(
         const_traffic_types=pulumi.get(__ret__, 'const_traffic_types'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_const_traffic_types)
 def get_const_traffic_types_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstTrafficTypesResult]:
     """
     This data source provides the of ConstTrafficTypes.
@@ -92,4 +94,9 @@ def get_const_traffic_types_output(opts: Optional[pulumi.InvokeOptions] = None) 
     list_of_traffic_types = junipermist.get_const_traffic_types()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstTrafficTypes:getConstTrafficTypes', __args__, opts=opts, typ=GetConstTrafficTypesResult)
+    return __ret__.apply(lambda __response__: GetConstTrafficTypesResult(
+        const_traffic_types=pulumi.get(__response__, 'const_traffic_types'),
+        id=pulumi.get(__response__, 'id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -87,9 +92,6 @@ def get_wlantemplates(org_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wlantemplates=pulumi.get(__ret__, 'org_wlantemplates'))
-
-
-@_utilities.lift_output_func(get_wlantemplates)
 def get_wlantemplates_output(org_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWlantemplatesResult]:
     """
@@ -105,4 +107,11 @@ def get_wlantemplates_output(org_id: Optional[pulumi.Input[str]] = None,
     templates = junipermist.org.get_wlantemplates(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['orgId'] = org_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWlantemplates:getWlantemplates', __args__, opts=opts, typ=GetWlantemplatesResult)
+    return __ret__.apply(lambda __response__: GetWlantemplatesResult(
+        id=pulumi.get(__response__, 'id'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        org_wlantemplates=pulumi.get(__response__, 'org_wlantemplates')))
