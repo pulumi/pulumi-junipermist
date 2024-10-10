@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -129,9 +134,6 @@ def get_nacidp_metadata(nacidp_id: Optional[str] = None,
         metadata=pulumi.get(__ret__, 'metadata'),
         nacidp_id=pulumi.get(__ret__, 'nacidp_id'),
         org_id=pulumi.get(__ret__, 'org_id'))
-
-
-@_utilities.lift_output_func(get_nacidp_metadata)
 def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[str]] = None,
                                org_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNacidpMetadataResult]:
@@ -149,4 +151,16 @@ def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[str]] = None,
         nacidp_id=saml_idp_one["id"])
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['nacidpId'] = nacidp_id
+    __args__['orgId'] = org_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNacidpMetadata:getNacidpMetadata', __args__, opts=opts, typ=GetNacidpMetadataResult)
+    return __ret__.apply(lambda __response__: GetNacidpMetadataResult(
+        acs_url=pulumi.get(__response__, 'acs_url'),
+        entity_id=pulumi.get(__response__, 'entity_id'),
+        id=pulumi.get(__response__, 'id'),
+        logout_url=pulumi.get(__response__, 'logout_url'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        nacidp_id=pulumi.get(__response__, 'nacidp_id'),
+        org_id=pulumi.get(__response__, 'org_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -101,9 +106,6 @@ def get_webhooks(limit: Optional[int] = None,
         page=pulumi.get(__ret__, 'page'),
         site_id=pulumi.get(__ret__, 'site_id'),
         site_webhooks=pulumi.get(__ret__, 'site_webhooks'))
-
-
-@_utilities.lift_output_func(get_webhooks)
 def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                         page: Optional[pulumi.Input[Optional[int]]] = None,
                         site_id: Optional[pulumi.Input[str]] = None,
@@ -111,4 +113,15 @@ def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     """
     This data source provides the list of Site Webhooks.
     """
-    ...
+    __args__ = dict()
+    __args__['limit'] = limit
+    __args__['page'] = page
+    __args__['siteId'] = site_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:site/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
+    return __ret__.apply(lambda __response__: GetWebhooksResult(
+        id=pulumi.get(__response__, 'id'),
+        limit=pulumi.get(__response__, 'limit'),
+        page=pulumi.get(__response__, 'page'),
+        site_id=pulumi.get(__response__, 'site_id'),
+        site_webhooks=pulumi.get(__response__, 'site_webhooks')))

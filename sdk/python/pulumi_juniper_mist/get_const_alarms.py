@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -75,9 +80,6 @@ def get_const_alarms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetConstAlarmsResult(
         const_alarms=pulumi.get(__ret__, 'const_alarms'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_const_alarms)
 def get_const_alarms_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstAlarmsResult]:
     """
     This data source provides the list of  available Alarms.
@@ -92,4 +94,9 @@ def get_const_alarms_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     list_of_alarms = junipermist.get_const_alarms()
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstAlarms:getConstAlarms', __args__, opts=opts, typ=GetConstAlarmsResult)
+    return __ret__.apply(lambda __response__: GetConstAlarmsResult(
+        const_alarms=pulumi.get(__response__, 'const_alarms'),
+        id=pulumi.get(__response__, 'id')))
