@@ -21,23 +21,15 @@ class BaseArgs:
     def __init__(__self__, *,
                  alarmtemplate_id: Optional[pulumi.Input[str]] = None,
                  allow_mist: Optional[pulumi.Input[bool]] = None,
-                 msp_logo_url: Optional[pulumi.Input[str]] = None,
-                 msp_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_expiry: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Base resource.
-        :param pulumi.Input[str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
-        :param pulumi.Input[str] msp_name: name of the msp the org belongs to
         """
         if alarmtemplate_id is not None:
             pulumi.set(__self__, "alarmtemplate_id", alarmtemplate_id)
         if allow_mist is not None:
             pulumi.set(__self__, "allow_mist", allow_mist)
-        if msp_logo_url is not None:
-            pulumi.set(__self__, "msp_logo_url", msp_logo_url)
-        if msp_name is not None:
-            pulumi.set(__self__, "msp_name", msp_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if session_expiry is not None:
@@ -60,30 +52,6 @@ class BaseArgs:
     @allow_mist.setter
     def allow_mist(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_mist", value)
-
-    @property
-    @pulumi.getter(name="mspLogoUrl")
-    def msp_logo_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        logo uploaded by the MSP with advanced tier, only present if provided
-        """
-        return pulumi.get(self, "msp_logo_url")
-
-    @msp_logo_url.setter
-    def msp_logo_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "msp_logo_url", value)
-
-    @property
-    @pulumi.getter(name="mspName")
-    def msp_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        name of the msp the org belongs to
-        """
-        return pulumi.get(self, "msp_name")
-
-    @msp_name.setter
-    def msp_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "msp_name", value)
 
     @property
     @pulumi.getter
@@ -223,8 +191,6 @@ class Base(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alarmtemplate_id: Optional[pulumi.Input[str]] = None,
                  allow_mist: Optional[pulumi.Input[bool]] = None,
-                 msp_logo_url: Optional[pulumi.Input[str]] = None,
-                 msp_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_expiry: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -255,8 +221,6 @@ class Base(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] msp_logo_url: logo uploaded by the MSP with advanced tier, only present if provided
-        :param pulumi.Input[str] msp_name: name of the msp the org belongs to
         """
         ...
     @overload
@@ -306,8 +270,6 @@ class Base(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alarmtemplate_id: Optional[pulumi.Input[str]] = None,
                  allow_mist: Optional[pulumi.Input[bool]] = None,
-                 msp_logo_url: Optional[pulumi.Input[str]] = None,
-                 msp_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_expiry: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -321,11 +283,11 @@ class Base(pulumi.CustomResource):
 
             __props__.__dict__["alarmtemplate_id"] = alarmtemplate_id
             __props__.__dict__["allow_mist"] = allow_mist
-            __props__.__dict__["msp_logo_url"] = msp_logo_url
-            __props__.__dict__["msp_name"] = msp_name
             __props__.__dict__["name"] = name
             __props__.__dict__["session_expiry"] = session_expiry
             __props__.__dict__["msp_id"] = None
+            __props__.__dict__["msp_logo_url"] = None
+            __props__.__dict__["msp_name"] = None
             __props__.__dict__["orggroup_ids"] = None
         super(Base, __self__).__init__(
             'junipermist:org/base:base',
@@ -386,7 +348,7 @@ class Base(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mspLogoUrl")
-    def msp_logo_url(self) -> pulumi.Output[Optional[str]]:
+    def msp_logo_url(self) -> pulumi.Output[str]:
         """
         logo uploaded by the MSP with advanced tier, only present if provided
         """
@@ -394,7 +356,7 @@ class Base(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mspName")
-    def msp_name(self) -> pulumi.Output[Optional[str]]:
+    def msp_name(self) -> pulumi.Output[str]:
         """
         name of the msp the org belongs to
         """

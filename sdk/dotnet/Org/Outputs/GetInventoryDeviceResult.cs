@@ -11,7 +11,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class GetInventoryOrgInventoryResult
+    public sealed class GetInventoryDeviceResult
     {
         /// <summary>
         /// only if `type`==`switch` or `type`==`gateway`
@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// inventory created time, in epoch
         /// </summary>
-        public readonly int CreatedTime;
+        public readonly double CreatedTime;
         /// <summary>
         /// deviceprofile id if assigned, null if not assigned
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// inventory last modified time, in epoch
         /// </summary>
-        public readonly int ModifiedTime;
+        public readonly double ModifiedTime;
         /// <summary>
         /// device name if configured
         /// </summary>
@@ -74,19 +74,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Sku;
         /// <summary>
-        /// only if `type`==`switch`, MAC Address of the Virtual Chassis
+        /// enum: `ap`, `gateway`, `switch`
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
+        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
         /// </summary>
         public readonly string VcMac;
 
         [OutputConstructor]
-        private GetInventoryOrgInventoryResult(
+        private GetInventoryDeviceResult(
             bool adopted,
 
             string claimCode,
 
             bool connected,
 
-            int createdTime,
+            double createdTime,
 
             string deviceprofileId,
 
@@ -102,7 +106,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string model,
 
-            int modifiedTime,
+            double modifiedTime,
 
             string name,
 
@@ -113,6 +117,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             string siteId,
 
             string sku,
+
+            string type,
 
             string vcMac)
         {
@@ -133,6 +139,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Serial = serial;
             SiteId = siteId;
             Sku = sku;
+            Type = type;
             VcMac = vcMac;
         }
     }

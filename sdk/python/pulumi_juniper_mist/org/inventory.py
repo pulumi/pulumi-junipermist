@@ -22,9 +22,13 @@ __all__ = ['InventoryArgs', 'Inventory']
 class InventoryArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None):
+                 devices: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]]] = None):
         """
         The set of arguments for constructing a Inventory resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]] devices: Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+               and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+               Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+               list will NOT release it unless `unclaim_when_destroyed` is set to `true`
         """
         pulumi.set(__self__, "org_id", org_id)
         if devices is not None:
@@ -41,21 +45,31 @@ class InventoryArgs:
 
     @property
     @pulumi.getter
-    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]:
+    def devices(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]]]:
+        """
+        Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+        and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+        Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+        list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+        """
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]):
+    def devices(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]]]):
         pulumi.set(self, "devices", value)
 
 
 @pulumi.input_type
 class _InventoryState:
     def __init__(__self__, *,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None,
+                 devices: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Inventory resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]] devices: Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+               and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+               Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+               list will NOT release it unless `unclaim_when_destroyed` is set to `true`
         """
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
@@ -64,11 +78,17 @@ class _InventoryState:
 
     @property
     @pulumi.getter
-    def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]:
+    def devices(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]]]:
+        """
+        Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+        and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+        Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+        list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+        """
         return pulumi.get(self, "devices")
 
     @devices.setter
-    def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]):
+    def devices(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryDevicesArgs']]]]):
         pulumi.set(self, "devices", value)
 
     @property
@@ -86,12 +106,36 @@ class Inventory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
+                 devices: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryDevicesArgs', 'InventoryDevicesArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource manages the Org inventory.
         It can be used to claim, unclaim, assign, unassign, reassign devices
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        inventory = junipermist.org.Inventory("inventory",
+            org_id=terraform_test["id"],
+            devices={
+                "CPKL2EXXXXXXXXX": {},
+                "G87JHBFXXXXXXXX": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000000": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000001": {
+                    "unclaim_when_destroyed": False,
+                },
+            })
+        ```
 
         ## Import
 
@@ -105,6 +149,10 @@ class Inventory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryDevicesArgs', 'InventoryDevicesArgsDict']]]] devices: Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+               and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+               Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+               list will NOT release it unless `unclaim_when_destroyed` is set to `true`
         """
         ...
     @overload
@@ -115,6 +163,30 @@ class Inventory(pulumi.CustomResource):
         """
         This resource manages the Org inventory.
         It can be used to claim, unclaim, assign, unassign, reassign devices
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_juniper_mist as junipermist
+
+        inventory = junipermist.org.Inventory("inventory",
+            org_id=terraform_test["id"],
+            devices={
+                "CPKL2EXXXXXXXXX": {},
+                "G87JHBFXXXXXXXX": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000000": {
+                    "site_id": terraform_site["id"],
+                    "unclaim_when_destroyed": True,
+                },
+                "2c2131000001": {
+                    "unclaim_when_destroyed": False,
+                },
+            })
+        ```
 
         ## Import
 
@@ -141,7 +213,7 @@ class Inventory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
+                 devices: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryDevicesArgs', 'InventoryDevicesArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -166,7 +238,7 @@ class Inventory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
+            devices: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryDevicesArgs', 'InventoryDevicesArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None) -> 'Inventory':
         """
         Get an existing Inventory resource's state with the given name, id, and optional extra
@@ -175,6 +247,10 @@ class Inventory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryDevicesArgs', 'InventoryDevicesArgsDict']]]] devices: Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+               and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+               Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+               list will NOT release it unless `unclaim_when_destroyed` is set to `true`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -186,7 +262,13 @@ class Inventory(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def devices(self) -> pulumi.Output[Sequence['outputs.InventoryDevice']]:
+    def devices(self) -> pulumi.Output[Mapping[str, 'outputs.InventoryDevices']]:
+        """
+        Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+        and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+        Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+        list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+        """
         return pulumi.get(self, "devices")
 
     @property

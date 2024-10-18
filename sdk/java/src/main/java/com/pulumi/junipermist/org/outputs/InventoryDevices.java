@@ -4,41 +4,47 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class InventoryDevice {
+public final class InventoryDevices {
     /**
-     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * @return device claim code
      * 
      */
     private @Nullable String claimCode;
     /**
-     * @return Device Hostname
+     * @return deviceprofile id if assigned, null if not assigned
+     * 
+     */
+    private @Nullable String deviceprofileId;
+    /**
+     * @return hostname reported by the device
      * 
      */
     private @Nullable String hostname;
     /**
-     * @return Mist Device ID
+     * @return device id
      * 
      */
     private @Nullable String id;
     /**
-     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * @return device MAC address
      * 
      */
     private @Nullable String mac;
     /**
-     * @return Device model
+     * @return device model
      * 
      */
     private @Nullable String model;
     private @Nullable String orgId;
     /**
-     * @return Device serial
+     * @return device serial
      * 
      */
     private @Nullable String serial;
@@ -47,44 +53,60 @@ public final class InventoryDevice {
      * 
      */
     private @Nullable String siteId;
+    /**
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
     private @Nullable String type;
     /**
-     * @return Virtual Chassis MAC Address
+     * @return Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+     * 
+     */
+    private @Nullable Boolean unclaimWhenDestroyed;
+    /**
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     private @Nullable String vcMac;
 
-    private InventoryDevice() {}
+    private InventoryDevices() {}
     /**
-     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * @return device claim code
      * 
      */
     public Optional<String> claimCode() {
         return Optional.ofNullable(this.claimCode);
     }
     /**
-     * @return Device Hostname
+     * @return deviceprofile id if assigned, null if not assigned
+     * 
+     */
+    public Optional<String> deviceprofileId() {
+        return Optional.ofNullable(this.deviceprofileId);
+    }
+    /**
+     * @return hostname reported by the device
      * 
      */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
     /**
-     * @return Mist Device ID
+     * @return device id
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * @return device MAC address
      * 
      */
     public Optional<String> mac() {
         return Optional.ofNullable(this.mac);
     }
     /**
-     * @return Device model
+     * @return device model
      * 
      */
     public Optional<String> model() {
@@ -94,7 +116,7 @@ public final class InventoryDevice {
         return Optional.ofNullable(this.orgId);
     }
     /**
-     * @return Device serial
+     * @return device serial
      * 
      */
     public Optional<String> serial() {
@@ -107,11 +129,22 @@ public final class InventoryDevice {
     public Optional<String> siteId() {
         return Optional.ofNullable(this.siteId);
     }
+    /**
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Virtual Chassis MAC Address
+     * @return Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+     * 
+     */
+    public Optional<Boolean> unclaimWhenDestroyed() {
+        return Optional.ofNullable(this.unclaimWhenDestroyed);
+    }
+    /**
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     public Optional<String> vcMac() {
@@ -122,12 +155,13 @@ public final class InventoryDevice {
         return new Builder();
     }
 
-    public static Builder builder(InventoryDevice defaults) {
+    public static Builder builder(InventoryDevices defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String claimCode;
+        private @Nullable String deviceprofileId;
         private @Nullable String hostname;
         private @Nullable String id;
         private @Nullable String mac;
@@ -136,11 +170,13 @@ public final class InventoryDevice {
         private @Nullable String serial;
         private @Nullable String siteId;
         private @Nullable String type;
+        private @Nullable Boolean unclaimWhenDestroyed;
         private @Nullable String vcMac;
         public Builder() {}
-        public Builder(InventoryDevice defaults) {
+        public Builder(InventoryDevices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.claimCode = defaults.claimCode;
+    	      this.deviceprofileId = defaults.deviceprofileId;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.mac = defaults.mac;
@@ -149,6 +185,7 @@ public final class InventoryDevice {
     	      this.serial = defaults.serial;
     	      this.siteId = defaults.siteId;
     	      this.type = defaults.type;
+    	      this.unclaimWhenDestroyed = defaults.unclaimWhenDestroyed;
     	      this.vcMac = defaults.vcMac;
         }
 
@@ -156,6 +193,12 @@ public final class InventoryDevice {
         public Builder claimCode(@Nullable String claimCode) {
 
             this.claimCode = claimCode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deviceprofileId(@Nullable String deviceprofileId) {
+
+            this.deviceprofileId = deviceprofileId;
             return this;
         }
         @CustomType.Setter
@@ -207,14 +250,21 @@ public final class InventoryDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder unclaimWhenDestroyed(@Nullable Boolean unclaimWhenDestroyed) {
+
+            this.unclaimWhenDestroyed = unclaimWhenDestroyed;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vcMac(@Nullable String vcMac) {
 
             this.vcMac = vcMac;
             return this;
         }
-        public InventoryDevice build() {
-            final var _resultValue = new InventoryDevice();
+        public InventoryDevices build() {
+            final var _resultValue = new InventoryDevices();
             _resultValue.claimCode = claimCode;
+            _resultValue.deviceprofileId = deviceprofileId;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.mac = mac;
@@ -223,6 +273,7 @@ public final class InventoryDevice {
             _resultValue.serial = serial;
             _resultValue.siteId = siteId;
             _resultValue.type = type;
+            _resultValue.unclaimWhenDestroyed = unclaimWhenDestroyed;
             _resultValue.vcMac = vcMac;
             return _resultValue;
         }

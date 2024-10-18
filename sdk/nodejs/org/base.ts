@@ -64,11 +64,11 @@ export class Base extends pulumi.CustomResource {
     /**
      * logo uploaded by the MSP with advanced tier, only present if provided
      */
-    public readonly mspLogoUrl!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly mspLogoUrl!: pulumi.Output<string>;
     /**
      * name of the msp the org belongs to
      */
-    public readonly mspName!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly mspName!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly orggroupIds!: pulumi.Output<string[]>;
     public readonly sessionExpiry!: pulumi.Output<number>;
@@ -98,11 +98,11 @@ export class Base extends pulumi.CustomResource {
             const args = argsOrState as BaseArgs | undefined;
             resourceInputs["alarmtemplateId"] = args ? args.alarmtemplateId : undefined;
             resourceInputs["allowMist"] = args ? args.allowMist : undefined;
-            resourceInputs["mspLogoUrl"] = args ? args.mspLogoUrl : undefined;
-            resourceInputs["mspName"] = args ? args.mspName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sessionExpiry"] = args ? args.sessionExpiry : undefined;
             resourceInputs["mspId"] = undefined /*out*/;
+            resourceInputs["mspLogoUrl"] = undefined /*out*/;
+            resourceInputs["mspName"] = undefined /*out*/;
             resourceInputs["orggroupIds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -136,14 +136,6 @@ export interface BaseState {
 export interface BaseArgs {
     alarmtemplateId?: pulumi.Input<string>;
     allowMist?: pulumi.Input<boolean>;
-    /**
-     * logo uploaded by the MSP with advanced tier, only present if provided
-     */
-    mspLogoUrl?: pulumi.Input<string>;
-    /**
-     * name of the msp the org belongs to
-     */
-    mspName?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     sessionExpiry?: pulumi.Input<number>;
 }

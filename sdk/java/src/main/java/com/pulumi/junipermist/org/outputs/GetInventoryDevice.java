@@ -6,12 +6,12 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetInventoryOrgInventory {
+public final class GetInventoryDevice {
     /**
      * @return only if `type`==`switch` or `type`==`gateway`
      * whether the switch/gateway is adopted
@@ -32,7 +32,7 @@ public final class GetInventoryOrgInventory {
      * @return inventory created time, in epoch
      * 
      */
-    private Integer createdTime;
+    private Double createdTime;
     /**
      * @return deviceprofile id if assigned, null if not assigned
      * 
@@ -68,7 +68,7 @@ public final class GetInventoryOrgInventory {
      * @return inventory last modified time, in epoch
      * 
      */
-    private Integer modifiedTime;
+    private Double modifiedTime;
     /**
      * @return device name if configured
      * 
@@ -87,12 +87,17 @@ public final class GetInventoryOrgInventory {
      */
     private String sku;
     /**
-     * @return only if `type`==`switch`, MAC Address of the Virtual Chassis
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    private String type;
+    /**
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     private String vcMac;
 
-    private GetInventoryOrgInventory() {}
+    private GetInventoryDevice() {}
     /**
      * @return only if `type`==`switch` or `type`==`gateway`
      * whether the switch/gateway is adopted
@@ -119,7 +124,7 @@ public final class GetInventoryOrgInventory {
      * @return inventory created time, in epoch
      * 
      */
-    public Integer createdTime() {
+    public Double createdTime() {
         return this.createdTime;
     }
     /**
@@ -171,7 +176,7 @@ public final class GetInventoryOrgInventory {
      * @return inventory last modified time, in epoch
      * 
      */
-    public Integer modifiedTime() {
+    public Double modifiedTime() {
         return this.modifiedTime;
     }
     /**
@@ -202,7 +207,14 @@ public final class GetInventoryOrgInventory {
         return this.sku;
     }
     /**
-     * @return only if `type`==`switch`, MAC Address of the Virtual Chassis
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     public String vcMac() {
@@ -213,7 +225,7 @@ public final class GetInventoryOrgInventory {
         return new Builder();
     }
 
-    public static Builder builder(GetInventoryOrgInventory defaults) {
+    public static Builder builder(GetInventoryDevice defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -221,7 +233,7 @@ public final class GetInventoryOrgInventory {
         private Boolean adopted;
         private String claimCode;
         private Boolean connected;
-        private Integer createdTime;
+        private Double createdTime;
         private String deviceprofileId;
         private String hostname;
         private String hwRev;
@@ -229,15 +241,16 @@ public final class GetInventoryOrgInventory {
         private Boolean jsi;
         private String mac;
         private String model;
-        private Integer modifiedTime;
+        private Double modifiedTime;
         private String name;
         private String orgId;
         private String serial;
         private String siteId;
         private String sku;
+        private String type;
         private String vcMac;
         public Builder() {}
-        public Builder(GetInventoryOrgInventory defaults) {
+        public Builder(GetInventoryDevice defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adopted = defaults.adopted;
     	      this.claimCode = defaults.claimCode;
@@ -256,13 +269,14 @@ public final class GetInventoryOrgInventory {
     	      this.serial = defaults.serial;
     	      this.siteId = defaults.siteId;
     	      this.sku = defaults.sku;
+    	      this.type = defaults.type;
     	      this.vcMac = defaults.vcMac;
         }
 
         @CustomType.Setter
         public Builder adopted(Boolean adopted) {
             if (adopted == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "adopted");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "adopted");
             }
             this.adopted = adopted;
             return this;
@@ -270,7 +284,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder claimCode(String claimCode) {
             if (claimCode == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "claimCode");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "claimCode");
             }
             this.claimCode = claimCode;
             return this;
@@ -278,15 +292,15 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder connected(Boolean connected) {
             if (connected == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "connected");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "connected");
             }
             this.connected = connected;
             return this;
         }
         @CustomType.Setter
-        public Builder createdTime(Integer createdTime) {
+        public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "createdTime");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "createdTime");
             }
             this.createdTime = createdTime;
             return this;
@@ -294,7 +308,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder deviceprofileId(String deviceprofileId) {
             if (deviceprofileId == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "deviceprofileId");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "deviceprofileId");
             }
             this.deviceprofileId = deviceprofileId;
             return this;
@@ -302,7 +316,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder hostname(String hostname) {
             if (hostname == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "hostname");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "hostname");
             }
             this.hostname = hostname;
             return this;
@@ -310,7 +324,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder hwRev(String hwRev) {
             if (hwRev == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "hwRev");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "hwRev");
             }
             this.hwRev = hwRev;
             return this;
@@ -318,7 +332,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "id");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "id");
             }
             this.id = id;
             return this;
@@ -326,7 +340,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder jsi(Boolean jsi) {
             if (jsi == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "jsi");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "jsi");
             }
             this.jsi = jsi;
             return this;
@@ -334,7 +348,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder mac(String mac) {
             if (mac == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "mac");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "mac");
             }
             this.mac = mac;
             return this;
@@ -342,15 +356,15 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder model(String model) {
             if (model == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "model");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "model");
             }
             this.model = model;
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedTime(Integer modifiedTime) {
+        public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "modifiedTime");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "modifiedTime");
             }
             this.modifiedTime = modifiedTime;
             return this;
@@ -358,7 +372,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "name");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "name");
             }
             this.name = name;
             return this;
@@ -366,7 +380,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder orgId(String orgId) {
             if (orgId == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "orgId");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "orgId");
             }
             this.orgId = orgId;
             return this;
@@ -374,7 +388,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder serial(String serial) {
             if (serial == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "serial");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "serial");
             }
             this.serial = serial;
             return this;
@@ -382,7 +396,7 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder siteId(String siteId) {
             if (siteId == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "siteId");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "siteId");
             }
             this.siteId = siteId;
             return this;
@@ -390,21 +404,29 @@ public final class GetInventoryOrgInventory {
         @CustomType.Setter
         public Builder sku(String sku) {
             if (sku == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "sku");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "sku");
             }
             this.sku = sku;
             return this;
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vcMac(String vcMac) {
             if (vcMac == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "vcMac");
+              throw new MissingRequiredPropertyException("GetInventoryDevice", "vcMac");
             }
             this.vcMac = vcMac;
             return this;
         }
-        public GetInventoryOrgInventory build() {
-            final var _resultValue = new GetInventoryOrgInventory();
+        public GetInventoryDevice build() {
+            final var _resultValue = new GetInventoryDevice();
             _resultValue.adopted = adopted;
             _resultValue.claimCode = claimCode;
             _resultValue.connected = connected;
@@ -422,6 +444,7 @@ public final class GetInventoryOrgInventory {
             _resultValue.serial = serial;
             _resultValue.siteId = siteId;
             _resultValue.sku = sku;
+            _resultValue.type = type;
             _resultValue.vcMac = vcMac;
             return _resultValue;
         }

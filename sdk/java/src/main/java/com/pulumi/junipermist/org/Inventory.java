@@ -10,9 +10,9 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.InventoryArgs;
 import com.pulumi.junipermist.org.inputs.InventoryState;
-import com.pulumi.junipermist.org.outputs.InventoryDevice;
+import com.pulumi.junipermist.org.outputs.InventoryDevices;
 import java.lang.String;
-import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
@@ -31,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.junipermist.org.Inventory;
  * import com.pulumi.junipermist.org.InventoryArgs;
- * import com.pulumi.junipermist.org.inputs.InventoryDeviceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -45,23 +44,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inventoryOne = new Inventory("inventoryOne", InventoryArgs.builder()
+ *         var inventory = new Inventory("inventory", InventoryArgs.builder()
  *             .orgId(terraformTest.id())
- *             .devices(            
- *                 InventoryDeviceArgs.builder()
- *                     .claim_code("<device_claim_code>")
- *                     .site_id(terraformSite.id())
- *                     .build(),
- *                 InventoryDeviceArgs.builder()
- *                     .claim_code("<device_claim_code>")
- *                     .build(),
- *                 InventoryDeviceArgs.builder()
- *                     .mac("<device_mac_address>")
- *                     .site_id(terraformSite.id())
- *                     .build(),
- *                 InventoryDeviceArgs.builder()
- *                     .mac("<device_mac_address>")
- *                     .build())
+ *             .devices(Map.ofEntries(
+ *                 Map.entry("CPKL2EXXXXXXXXX", ),
+ *                 Map.entry("G87JHBFXXXXXXXX", Map.ofEntries(
+ *                     Map.entry("siteId", terraformSite.id()),
+ *                     Map.entry("unclaimWhenDestroyed", true)
+ *                 )),
+ *                 Map.entry("2c2131000000", Map.ofEntries(
+ *                     Map.entry("siteId", terraformSite.id()),
+ *                     Map.entry("unclaimWhenDestroyed", true)
+ *                 )),
+ *                 Map.entry("2c2131000001", Map.of("unclaimWhenDestroyed", false))
+ *             ))
  *             .build());
  * 
  *     }
@@ -83,10 +79,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/inventory:Inventory")
 public class Inventory extends com.pulumi.resources.CustomResource {
-    @Export(name="devices", refs={List.class,InventoryDevice.class}, tree="[0,1]")
-    private Output<List<InventoryDevice>> devices;
+    /**
+     * Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+     * 
+     */
+    @Export(name="devices", refs={Map.class,String.class,InventoryDevices.class}, tree="[0,1,2]")
+    private Output<Map<String,InventoryDevices>> devices;
 
-    public Output<List<InventoryDevice>> devices() {
+    /**
+     * @return Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+     * 
+     */
+    public Output<Map<String,InventoryDevices>> devices() {
         return this.devices;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")

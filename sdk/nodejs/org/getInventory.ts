@@ -73,6 +73,7 @@ export interface GetInventoryArgs {
  * A collection of values returned by getInventory.
  */
 export interface GetInventoryResult {
+    readonly devices: outputs.org.GetInventoryDevice[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -86,7 +87,6 @@ export interface GetInventoryResult {
      */
     readonly model?: string;
     readonly orgId: string;
-    readonly orgInventories: outputs.org.GetInventoryOrgInventory[];
     /**
      * device serial
      */
