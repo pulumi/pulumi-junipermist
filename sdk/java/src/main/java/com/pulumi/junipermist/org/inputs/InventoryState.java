@@ -5,9 +5,9 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.InventoryDeviceArgs;
+import com.pulumi.junipermist.org.inputs.InventoryDevicesArgs;
 import java.lang.String;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,10 +17,24 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final InventoryState Empty = new InventoryState();
 
+    /**
+     * Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+     * 
+     */
     @Import(name="devices")
-    private @Nullable Output<List<InventoryDeviceArgs>> devices;
+    private @Nullable Output<Map<String,InventoryDevicesArgs>> devices;
 
-    public Optional<Output<List<InventoryDeviceArgs>>> devices() {
+    /**
+     * @return Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+     * 
+     */
+    public Optional<Output<Map<String,InventoryDevicesArgs>>> devices() {
         return Optional.ofNullable(this.devices);
     }
 
@@ -56,17 +70,31 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
             $ = new InventoryState(Objects.requireNonNull(defaults));
         }
 
-        public Builder devices(@Nullable Output<List<InventoryDeviceArgs>> devices) {
+        /**
+         * @param devices Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+         * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+         * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+         * list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devices(@Nullable Output<Map<String,InventoryDevicesArgs>> devices) {
             $.devices = devices;
             return this;
         }
 
-        public Builder devices(List<InventoryDeviceArgs> devices) {
+        /**
+         * @param devices Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+         * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+         * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+         * list will NOT release it unless `unclaim_when_destroyed` is set to `true`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder devices(Map<String,InventoryDevicesArgs> devices) {
             return devices(Output.of(devices));
-        }
-
-        public Builder devices(InventoryDeviceArgs... devices) {
-            return devices(List.of(devices));
         }
 
         public Builder orgId(@Nullable Output<String> orgId) {

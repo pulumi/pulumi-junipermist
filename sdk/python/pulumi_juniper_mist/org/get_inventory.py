@@ -27,7 +27,10 @@ class GetInventoryResult:
     """
     A collection of values returned by getInventory.
     """
-    def __init__(__self__, id=None, mac=None, model=None, org_id=None, org_inventories=None, serial=None, site_id=None, unassigned=None, vc=None, vc_mac=None):
+    def __init__(__self__, devices=None, id=None, mac=None, model=None, org_id=None, serial=None, site_id=None, unassigned=None, vc=None, vc_mac=None):
+        if devices and not isinstance(devices, list):
+            raise TypeError("Expected argument 'devices' to be a list")
+        pulumi.set(__self__, "devices", devices)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -40,9 +43,6 @@ class GetInventoryResult:
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
-        if org_inventories and not isinstance(org_inventories, list):
-            raise TypeError("Expected argument 'org_inventories' to be a list")
-        pulumi.set(__self__, "org_inventories", org_inventories)
         if serial and not isinstance(serial, str):
             raise TypeError("Expected argument 'serial' to be a str")
         pulumi.set(__self__, "serial", serial)
@@ -58,6 +58,11 @@ class GetInventoryResult:
         if vc_mac and not isinstance(vc_mac, str):
             raise TypeError("Expected argument 'vc_mac' to be a str")
         pulumi.set(__self__, "vc_mac", vc_mac)
+
+    @property
+    @pulumi.getter
+    def devices(self) -> Sequence['outputs.GetInventoryDeviceResult']:
+        return pulumi.get(self, "devices")
 
     @property
     @pulumi.getter
@@ -87,11 +92,6 @@ class GetInventoryResult:
     @pulumi.getter(name="orgId")
     def org_id(self) -> str:
         return pulumi.get(self, "org_id")
-
-    @property
-    @pulumi.getter(name="orgInventories")
-    def org_inventories(self) -> Sequence['outputs.GetInventoryOrgInventoryResult']:
-        return pulumi.get(self, "org_inventories")
 
     @property
     @pulumi.getter
@@ -140,11 +140,11 @@ class AwaitableGetInventoryResult(GetInventoryResult):
         if False:
             yield self
         return GetInventoryResult(
+            devices=self.devices,
             id=self.id,
             mac=self.mac,
             model=self.model,
             org_id=self.org_id,
-            org_inventories=self.org_inventories,
             serial=self.serial,
             site_id=self.site_id,
             unassigned=self.unassigned,
@@ -195,11 +195,11 @@ def get_inventory(mac: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('junipermist:org/getInventory:getInventory', __args__, opts=opts, typ=GetInventoryResult).value
 
     return AwaitableGetInventoryResult(
+        devices=pulumi.get(__ret__, 'devices'),
         id=pulumi.get(__ret__, 'id'),
         mac=pulumi.get(__ret__, 'mac'),
         model=pulumi.get(__ret__, 'model'),
         org_id=pulumi.get(__ret__, 'org_id'),
-        org_inventories=pulumi.get(__ret__, 'org_inventories'),
         serial=pulumi.get(__ret__, 'serial'),
         site_id=pulumi.get(__ret__, 'site_id'),
         unassigned=pulumi.get(__ret__, 'unassigned'),
@@ -247,11 +247,11 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getInventory:getInventory', __args__, opts=opts, typ=GetInventoryResult)
     return __ret__.apply(lambda __response__: GetInventoryResult(
+        devices=pulumi.get(__response__, 'devices'),
         id=pulumi.get(__response__, 'id'),
         mac=pulumi.get(__response__, 'mac'),
         model=pulumi.get(__response__, 'model'),
         org_id=pulumi.get(__response__, 'org_id'),
-        org_inventories=pulumi.get(__response__, 'org_inventories'),
         serial=pulumi.get(__response__, 'serial'),
         site_id=pulumi.get(__response__, 'site_id'),
         unassigned=pulumi.get(__response__, 'unassigned'),

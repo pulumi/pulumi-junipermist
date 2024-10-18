@@ -15,6 +15,46 @@ import (
 // This resource manages the Org inventory.
 // It can be used to claim, unclaim, assign, unassign, reassign devices
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := org.NewInventory(ctx, "inventory", &org.InventoryArgs{
+//				OrgId: pulumi.Any(terraformTest.Id),
+//				Devices: org.InventoryDevicesMap{
+//					"CPKL2EXXXXXXXXX": &org.InventoryDevicesArgs{},
+//					"G87JHBFXXXXXXXX": &org.InventoryDevicesArgs{
+//						SiteId:               pulumi.Any(terraformSite.Id),
+//						UnclaimWhenDestroyed: pulumi.Bool(true),
+//					},
+//					"2c2131000000": &org.InventoryDevicesArgs{
+//						SiteId:               pulumi.Any(terraformSite.Id),
+//						UnclaimWhenDestroyed: pulumi.Bool(true),
+//					},
+//					"2c2131000001": &org.InventoryDevicesArgs{
+//						UnclaimWhenDestroyed: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_org_inventory` with:
@@ -27,8 +67,12 @@ import (
 type Inventory struct {
 	pulumi.CustomResourceState
 
-	Devices InventoryDeviceArrayOutput `pulumi:"devices"`
-	OrgId   pulumi.StringOutput        `pulumi:"orgId"`
+	// Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+	// and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+	// Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+	// list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+	Devices InventoryDevicesMapOutput `pulumi:"devices"`
+	OrgId   pulumi.StringOutput       `pulumi:"orgId"`
 }
 
 // NewInventory registers a new resource with the given unique name, arguments, and options.
@@ -64,12 +108,20 @@ func GetInventory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Inventory resources.
 type inventoryState struct {
-	Devices []InventoryDevice `pulumi:"devices"`
-	OrgId   *string           `pulumi:"orgId"`
+	// Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+	// and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+	// Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+	// list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+	Devices map[string]InventoryDevices `pulumi:"devices"`
+	OrgId   *string                     `pulumi:"orgId"`
 }
 
 type InventoryState struct {
-	Devices InventoryDeviceArrayInput
+	// Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+	// and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+	// Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+	// list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+	Devices InventoryDevicesMapInput
 	OrgId   pulumi.StringPtrInput
 }
 
@@ -78,13 +130,21 @@ func (InventoryState) ElementType() reflect.Type {
 }
 
 type inventoryArgs struct {
-	Devices []InventoryDevice `pulumi:"devices"`
-	OrgId   string            `pulumi:"orgId"`
+	// Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+	// and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+	// Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+	// list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+	Devices map[string]InventoryDevices `pulumi:"devices"`
+	OrgId   string                      `pulumi:"orgId"`
 }
 
 // The set of arguments for constructing a Inventory resource.
 type InventoryArgs struct {
-	Devices InventoryDeviceArrayInput
+	// Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+	// and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+	// Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+	// list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+	Devices InventoryDevicesMapInput
 	OrgId   pulumi.StringInput
 }
 
@@ -175,8 +235,12 @@ func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) Inven
 	return o
 }
 
-func (o InventoryOutput) Devices() InventoryDeviceArrayOutput {
-	return o.ApplyT(func(v *Inventory) InventoryDeviceArrayOutput { return v.Devices }).(InventoryDeviceArrayOutput)
+// Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+// and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+// Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+// list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+func (o InventoryOutput) Devices() InventoryDevicesMapOutput {
+	return o.ApplyT(func(v *Inventory) InventoryDevicesMapOutput { return v.Devices }).(InventoryDevicesMapOutput)
 }
 
 func (o InventoryOutput) OrgId() pulumi.StringOutput {

@@ -10,6 +10,31 @@ import * as utilities from "../utilities";
  * This resource manages the Org inventory.
  * It can be used to claim, unclaim, assign, unassign, reassign devices
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as junipermist from "@pulumi/juniper-mist";
+ *
+ * const inventory = new junipermist.org.Inventory("inventory", {
+ *     orgId: terraformTest.id,
+ *     devices: {
+ *         CPKL2EXXXXXXXXX: {},
+ *         G87JHBFXXXXXXXX: {
+ *             siteId: terraformSite.id,
+ *             unclaimWhenDestroyed: true,
+ *         },
+ *         "2c2131000000": {
+ *             siteId: terraformSite.id,
+ *             unclaimWhenDestroyed: true,
+ *         },
+ *         "2c2131000001": {
+ *             unclaimWhenDestroyed: false,
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_org_inventory` with:
@@ -48,7 +73,13 @@ export class Inventory extends pulumi.CustomResource {
         return obj['__pulumiType'] === Inventory.__pulumiType;
     }
 
-    public readonly devices!: pulumi.Output<outputs.org.InventoryDevice[]>;
+    /**
+     * Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+     */
+    public readonly devices!: pulumi.Output<{[key: string]: outputs.org.InventoryDevices}>;
     public readonly orgId!: pulumi.Output<string>;
 
     /**
@@ -83,7 +114,13 @@ export class Inventory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Inventory resources.
  */
 export interface InventoryState {
-    devices?: pulumi.Input<pulumi.Input<inputs.org.InventoryDevice>[]>;
+    /**
+     * Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+     */
+    devices?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryDevices>}>;
     orgId?: pulumi.Input<string>;
 }
 
@@ -91,6 +128,12 @@ export interface InventoryState {
  * The set of arguments for constructing a Inventory resource.
  */
 export interface InventoryArgs {
-    devices?: pulumi.Input<pulumi.Input<inputs.org.InventoryDevice>[]>;
+    /**
+     * Can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist Organization
+     * and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device already in the
+     * Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) Removing a device from the
+     * list will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+     */
+    devices?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryDevices>}>;
     orgId: pulumi.Input<string>;
 }

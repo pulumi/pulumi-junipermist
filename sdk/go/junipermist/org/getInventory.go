@@ -69,14 +69,14 @@ type LookupInventoryArgs struct {
 
 // A collection of values returned by getInventory.
 type LookupInventoryResult struct {
+	Devices []GetInventoryDevice `pulumi:"devices"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// MAC address
 	Mac *string `pulumi:"mac"`
 	// device model
-	Model          *string                    `pulumi:"model"`
-	OrgId          string                     `pulumi:"orgId"`
-	OrgInventories []GetInventoryOrgInventory `pulumi:"orgInventories"`
+	Model *string `pulumi:"model"`
+	OrgId string  `pulumi:"orgId"`
 	// device serial
 	Serial *string `pulumi:"serial"`
 	// site id if assigned, null if not assigned
@@ -146,6 +146,10 @@ func (o LookupInventoryResultOutput) ToLookupInventoryResultOutputWithContext(ct
 	return o
 }
 
+func (o LookupInventoryResultOutput) Devices() GetInventoryDeviceArrayOutput {
+	return o.ApplyT(func(v LookupInventoryResult) []GetInventoryDevice { return v.Devices }).(GetInventoryDeviceArrayOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupInventoryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryResult) string { return v.Id }).(pulumi.StringOutput)
@@ -163,10 +167,6 @@ func (o LookupInventoryResultOutput) Model() pulumi.StringPtrOutput {
 
 func (o LookupInventoryResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryResult) string { return v.OrgId }).(pulumi.StringOutput)
-}
-
-func (o LookupInventoryResultOutput) OrgInventories() GetInventoryOrgInventoryArrayOutput {
-	return o.ApplyT(func(v LookupInventoryResult) []GetInventoryOrgInventory { return v.OrgInventories }).(GetInventoryOrgInventoryArrayOutput)
 }
 
 // device serial

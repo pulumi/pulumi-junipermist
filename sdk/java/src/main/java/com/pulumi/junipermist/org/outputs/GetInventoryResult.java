@@ -5,7 +5,7 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.junipermist.org.outputs.GetInventoryOrgInventory;
+import com.pulumi.junipermist.org.outputs.GetInventoryDevice;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInventoryResult {
+    private List<GetInventoryDevice> devices;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -31,7 +32,6 @@ public final class GetInventoryResult {
      */
     private @Nullable String model;
     private String orgId;
-    private List<GetInventoryOrgInventory> orgInventories;
     /**
      * @return device serial
      * 
@@ -59,6 +59,9 @@ public final class GetInventoryResult {
     private @Nullable String vcMac;
 
     private GetInventoryResult() {}
+    public List<GetInventoryDevice> devices() {
+        return this.devices;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -82,9 +85,6 @@ public final class GetInventoryResult {
     }
     public String orgId() {
         return this.orgId;
-    }
-    public List<GetInventoryOrgInventory> orgInventories() {
-        return this.orgInventories;
     }
     /**
      * @return device serial
@@ -131,11 +131,11 @@ public final class GetInventoryResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetInventoryDevice> devices;
         private String id;
         private @Nullable String mac;
         private @Nullable String model;
         private String orgId;
-        private List<GetInventoryOrgInventory> orgInventories;
         private @Nullable String serial;
         private @Nullable String siteId;
         private @Nullable Boolean unassigned;
@@ -144,11 +144,11 @@ public final class GetInventoryResult {
         public Builder() {}
         public Builder(GetInventoryResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.devices = defaults.devices;
     	      this.id = defaults.id;
     	      this.mac = defaults.mac;
     	      this.model = defaults.model;
     	      this.orgId = defaults.orgId;
-    	      this.orgInventories = defaults.orgInventories;
     	      this.serial = defaults.serial;
     	      this.siteId = defaults.siteId;
     	      this.unassigned = defaults.unassigned;
@@ -156,6 +156,17 @@ public final class GetInventoryResult {
     	      this.vcMac = defaults.vcMac;
         }
 
+        @CustomType.Setter
+        public Builder devices(List<GetInventoryDevice> devices) {
+            if (devices == null) {
+              throw new MissingRequiredPropertyException("GetInventoryResult", "devices");
+            }
+            this.devices = devices;
+            return this;
+        }
+        public Builder devices(GetInventoryDevice... devices) {
+            return devices(List.of(devices));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -183,17 +194,6 @@ public final class GetInventoryResult {
             }
             this.orgId = orgId;
             return this;
-        }
-        @CustomType.Setter
-        public Builder orgInventories(List<GetInventoryOrgInventory> orgInventories) {
-            if (orgInventories == null) {
-              throw new MissingRequiredPropertyException("GetInventoryResult", "orgInventories");
-            }
-            this.orgInventories = orgInventories;
-            return this;
-        }
-        public Builder orgInventories(GetInventoryOrgInventory... orgInventories) {
-            return orgInventories(List.of(orgInventories));
         }
         @CustomType.Setter
         public Builder serial(@Nullable String serial) {
@@ -227,11 +227,11 @@ public final class GetInventoryResult {
         }
         public GetInventoryResult build() {
             final var _resultValue = new GetInventoryResult();
+            _resultValue.devices = devices;
             _resultValue.id = id;
             _resultValue.mac = mac;
             _resultValue.model = model;
             _resultValue.orgId = orgId;
-            _resultValue.orgInventories = orgInventories;
             _resultValue.serial = serial;
             _resultValue.siteId = siteId;
             _resultValue.unassigned = unassigned;

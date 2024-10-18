@@ -93,28 +93,28 @@ public class Base extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="mspLogoUrl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mspLogoUrl;
+    private Output<String> mspLogoUrl;
 
     /**
      * @return logo uploaded by the MSP with advanced tier, only present if provided
      * 
      */
-    public Output<Optional<String>> mspLogoUrl() {
-        return Codegen.optional(this.mspLogoUrl);
+    public Output<String> mspLogoUrl() {
+        return this.mspLogoUrl;
     }
     /**
      * name of the msp the org belongs to
      * 
      */
     @Export(name="mspName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> mspName;
+    private Output<String> mspName;
 
     /**
      * @return name of the msp the org belongs to
      * 
      */
-    public Output<Optional<String>> mspName() {
-        return Codegen.optional(this.mspName);
+    public Output<String> mspName() {
+        return this.mspName;
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;

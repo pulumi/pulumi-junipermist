@@ -7557,7 +7557,7 @@ export namespace org {
         severities: string[];
     }
 
-    export interface GetInventoryOrgInventory {
+    export interface GetInventoryDevice {
         /**
          * only if `type`==`switch` or `type`==`gateway`
          * whether the switch/gateway is adopted
@@ -7619,7 +7619,11 @@ export namespace org {
          */
         sku: string;
         /**
-         * only if `type`==`switch`, MAC Address of the Virtual Chassis
+         * enum: `ap`, `gateway`, `switch`
+         */
+        type: string;
+        /**
+         * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
          */
         vcMac: string;
     }
@@ -7984,39 +7988,50 @@ export namespace org {
         severities?: string[];
     }
 
-    export interface InventoryDevice {
+    export interface InventoryDevices {
         /**
-         * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         * device claim code
          */
         claimCode: string;
         /**
-         * Device Hostname
+         * deviceprofile id if assigned, null if not assigned
+         */
+        deviceprofileId: string;
+        /**
+         * hostname reported by the device
          */
         hostname: string;
         /**
-         * Mist Device ID
+         * device id
          */
         id: string;
         /**
-         * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         * device MAC address
          */
         mac: string;
         /**
-         * Device model
+         * device model
          */
         model: string;
         orgId: string;
         /**
-         * Device serial
+         * device serial
          */
         serial: string;
         /**
          * Site ID. Used to assign device to a Site
          */
-        siteId?: string;
+        siteId: string;
+        /**
+         * enum: `ap`, `gateway`, `switch`
+         */
         type: string;
         /**
-         * Virtual Chassis MAC Address
+         * Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+         */
+        unclaimWhenDestroyed: boolean;
+        /**
+         * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
          */
         vcMac: string;
     }
