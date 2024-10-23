@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org
         /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
         /// </summary>
         [Output("inventory")]
-        public Output<ImmutableDictionary<string, Outputs.InventoryInventory>> InventoryField { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.InventoryInventory>> InventoryDetails { get; private set; } = null!;
 
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.JuniperMist.Org
         /// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
         /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
         /// </summary>
-        public InputMap<Inputs.InventoryInventoryArgs> InventoryField
+        public InputMap<Inputs.InventoryInventoryArgs> InventoryDetails
         {
             get => _inventory ?? (_inventory = new InputMap<Inputs.InventoryInventoryArgs>());
             set => _inventory = value;
@@ -155,7 +155,7 @@ namespace Pulumi.JuniperMist.Org
         /// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
         /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
         /// </summary>
-        public InputMap<Inputs.InventoryInventoryGetArgs> InventoryField
+        public InputMap<Inputs.InventoryInventoryGetArgs> InventoryDetails
         {
             get => _inventory ?? (_inventory = new InputMap<Inputs.InventoryInventoryGetArgs>());
             set => _inventory = value;
