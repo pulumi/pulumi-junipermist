@@ -3490,7 +3490,7 @@
             "mist_org_inventory": {
                 "current": "junipermist:org/getInventory:getInventory",
                 "fields": {
-                    "org_inventory": {
+                    "devices": {
                         "maxItemsOne": false
                     }
                 }
