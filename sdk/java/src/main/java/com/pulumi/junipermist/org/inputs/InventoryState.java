@@ -6,8 +6,10 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.InventoryDeviceArgs;
+import com.pulumi.junipermist.org.inputs.InventoryInventoryArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,11 +19,38 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final InventoryState Empty = new InventoryState();
 
+    /**
+     * **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+     * 
+     */
     @Import(name="devices")
     private @Nullable Output<List<InventoryDeviceArgs>> devices;
 
+    /**
+     * @return **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+     * 
+     */
     public Optional<Output<List<InventoryDeviceArgs>>> devices() {
         return Optional.ofNullable(this.devices);
+    }
+
+    /**
+     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * 
+     */
+    @Import(name="inventory")
+    private @Nullable Output<Map<String,InventoryInventoryArgs>> inventory;
+
+    /**
+     * @return Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * 
+     */
+    public Optional<Output<Map<String,InventoryInventoryArgs>>> inventory() {
+        return Optional.ofNullable(this.inventory);
     }
 
     @Import(name="orgId")
@@ -35,6 +64,7 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
 
     private InventoryState(InventoryState $) {
         this.devices = $.devices;
+        this.inventory = $.inventory;
         this.orgId = $.orgId;
     }
 
@@ -56,17 +86,60 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
             $ = new InventoryState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param devices **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+         * 
+         * @return builder
+         * 
+         */
         public Builder devices(@Nullable Output<List<InventoryDeviceArgs>> devices) {
             $.devices = devices;
             return this;
         }
 
+        /**
+         * @param devices **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+         * 
+         * @return builder
+         * 
+         */
         public Builder devices(List<InventoryDeviceArgs> devices) {
             return devices(Output.of(devices));
         }
 
+        /**
+         * @param devices **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+         * 
+         * @return builder
+         * 
+         */
         public Builder devices(InventoryDeviceArgs... devices) {
             return devices(List.of(devices));
+        }
+
+        /**
+         * @param inventory Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+         * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inventory(@Nullable Output<Map<String,InventoryInventoryArgs>> inventory) {
+            $.inventory = inventory;
+            return this;
+        }
+
+        /**
+         * @param inventory Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+         * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+         * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inventory(Map<String,InventoryInventoryArgs> inventory) {
+            return inventory(Output.of(inventory));
         }
 
         public Builder orgId(@Nullable Output<String> orgId) {

@@ -12,27 +12,6 @@ namespace Pulumi.JuniperMist.Device
     /// <summary>
     /// This resource is used to upload a Device picture.
     /// This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using JuniperMist = Pulumi.JuniperMist;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var deviceImageOne = new JuniperMist.Device.Image("device_image_one", new()
-    ///     {
-    ///         DeviceId = inventory.Devices[1].Id,
-    ///         SiteId = inventory.Devices[1].SiteId,
-    ///         File = "/Users/johndoe/Documents/image.jpg",
-    ///         ImageNumber = 1,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [JuniperMistResourceType("junipermist:device/image:Image")]
     public partial class Image : global::Pulumi.CustomResource

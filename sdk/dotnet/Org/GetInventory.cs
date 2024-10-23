@@ -173,6 +173,7 @@ namespace Pulumi.JuniperMist.Org
     [OutputType]
     public sealed class GetInventoryResult
     {
+        public readonly ImmutableArray<Outputs.GetInventoryDeviceResult> Devices;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -186,7 +187,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string? Model;
         public readonly string OrgId;
-        public readonly ImmutableArray<Outputs.GetInventoryOrgInventoryResult> OrgInventories;
         /// <summary>
         /// device serial
         /// </summary>
@@ -210,6 +210,8 @@ namespace Pulumi.JuniperMist.Org
 
         [OutputConstructor]
         private GetInventoryResult(
+            ImmutableArray<Outputs.GetInventoryDeviceResult> devices,
+
             string id,
 
             string? mac,
@@ -217,8 +219,6 @@ namespace Pulumi.JuniperMist.Org
             string? model,
 
             string orgId,
-
-            ImmutableArray<Outputs.GetInventoryOrgInventoryResult> orgInventories,
 
             string? serial,
 
@@ -230,11 +230,11 @@ namespace Pulumi.JuniperMist.Org
 
             string? vcMac)
         {
+            Devices = devices;
             Id = id;
             Mac = mac;
             Model = model;
             OrgId = orgId;
-            OrgInventories = orgInventories;
             Serial = serial;
             SiteId = siteId;
             Unassigned = unassigned;

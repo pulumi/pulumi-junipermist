@@ -11,64 +11,23 @@ import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.InventoryArgs;
 import com.pulumi.junipermist.org.inputs.InventoryState;
 import com.pulumi.junipermist.org.outputs.InventoryDevice;
+import com.pulumi.junipermist.org.outputs.InventoryInventory;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * This resource manages the Org inventory.
- * It can be used to claim, unclaim, assign, unassign, reassign devices
+ * This resource manages the Org Inventory.
+ * It can be used to claim, unclaim, assign, unassign, reassign devices.
  * 
- * ## Example Usage
+ * -&gt;Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
+ * &gt; **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate &#34;inconsistent result after apply&#34; errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
  * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Inventory;
- * import com.pulumi.junipermist.org.InventoryArgs;
- * import com.pulumi.junipermist.org.inputs.InventoryDeviceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var inventoryOne = new Inventory("inventoryOne", InventoryArgs.builder()
- *             .orgId(terraformTest.id())
- *             .devices(            
- *                 InventoryDeviceArgs.builder()
- *                     .claim_code("<device_claim_code>")
- *                     .site_id(terraformSite.id())
- *                     .build(),
- *                 InventoryDeviceArgs.builder()
- *                     .claim_code("<device_claim_code>")
- *                     .build(),
- *                 InventoryDeviceArgs.builder()
- *                     .mac("<device_mac_address>")
- *                     .site_id(terraformSite.id())
- *                     .build(),
- *                 InventoryDeviceArgs.builder()
- *                     .mac("<device_mac_address>")
- *                     .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * The `devices` attribute will generate inconsistent result after apply when
+ * * a device other than the last one is removed from the list
+ * * a device is added somewhere other than the end of the list
  * 
  * ## Import
  * 
@@ -83,11 +42,37 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="junipermist:org/inventory:Inventory")
 public class Inventory extends com.pulumi.resources.CustomResource {
+    /**
+     * **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+     * 
+     */
     @Export(name="devices", refs={List.class,InventoryDevice.class}, tree="[0,1]")
     private Output<List<InventoryDevice>> devices;
 
+    /**
+     * @return **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+     * 
+     */
     public Output<List<InventoryDevice>> devices() {
         return this.devices;
+    }
+    /**
+     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * 
+     */
+    @Export(name="inventory", refs={Map.class,String.class,InventoryInventory.class}, tree="[0,1,2]")
+    private Output<Map<String,InventoryInventory>> inventory;
+
+    /**
+     * @return Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+     * 
+     */
+    public Output<Map<String,InventoryInventory>> inventory() {
+        return this.inventory;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;

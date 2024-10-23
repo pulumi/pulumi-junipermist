@@ -35,43 +35,6 @@ import javax.annotation.Nullable;
  * This resource manages the Wireless Access Point configuration.
  * It can be used to define specific configuration at the device level or to override AP Device Profile (`junipermist.org.DeviceprofileAp`).
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.device.Ap;
- * import com.pulumi.junipermist.device.ApArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var apOne = new Ap("apOne", ApArgs.builder()
- *             .name("test_ap")
- *             .deviceId(inventory.devices()[0].id())
- *             .siteId(inventory.devices()[0].siteId())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_device_ap` with:

@@ -11,7 +11,7 @@ namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
     /// This resource manages the Mist Organization.
-    /// An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+    /// An organization usually represents a customer - which has inventories, licenses. An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
     /// 
     /// ## Example Usage
     /// 
@@ -58,13 +58,13 @@ namespace Pulumi.JuniperMist.Org
         /// logo uploaded by the MSP with advanced tier, only present if provided
         /// </summary>
         [Output("mspLogoUrl")]
-        public Output<string?> MspLogoUrl { get; private set; } = null!;
+        public Output<string> MspLogoUrl { get; private set; } = null!;
 
         /// <summary>
         /// name of the msp the org belongs to
         /// </summary>
         [Output("mspName")]
-        public Output<string?> MspName { get; private set; } = null!;
+        public Output<string> MspName { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -127,18 +127,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("allowMist")]
         public Input<bool>? AllowMist { get; set; }
-
-        /// <summary>
-        /// logo uploaded by the MSP with advanced tier, only present if provided
-        /// </summary>
-        [Input("mspLogoUrl")]
-        public Input<string>? MspLogoUrl { get; set; }
-
-        /// <summary>
-        /// name of the msp the org belongs to
-        /// </summary>
-        [Input("mspName")]
-        public Input<string>? MspName { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

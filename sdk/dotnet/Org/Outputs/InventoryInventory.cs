@@ -11,10 +11,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class InventoryDevice
+    public sealed class InventoryInventory
     {
         /// <summary>
-        /// used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+        /// device claim code
         /// </summary>
         public readonly string? ClaimCode;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+        /// device MAC address
         /// </summary>
         public readonly string? Mac;
         /// <summary>
@@ -60,7 +60,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? VcMac;
 
         [OutputConstructor]
-        private InventoryDevice(
+        private InventoryInventory(
             string? claimCode,
 
             string? deviceprofileId,

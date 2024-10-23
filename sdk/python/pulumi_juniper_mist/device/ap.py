@@ -1051,18 +1051,6 @@ class Ap(pulumi.CustomResource):
         This resource manages the Wireless Access Point configuration.
         It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_juniper_mist as junipermist
-
-        ap_one = junipermist.device.Ap("ap_one",
-            name="test_ap",
-            device_id=inventory["devices"][0]["id"],
-            site_id=inventory["devices"][0]["siteId"])
-        ```
-
         ## Import
 
         Using `pulumi import`, import `mist_device_ap` with:
@@ -1107,18 +1095,6 @@ class Ap(pulumi.CustomResource):
         """
         This resource manages the Wireless Access Point configuration.
         It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_juniper_mist as junipermist
-
-        ap_one = junipermist.device.Ap("ap_one",
-            name="test_ap",
-            device_id=inventory["devices"][0]["id"],
-            site_id=inventory["devices"][0]["siteId"])
-        ```
 
         ## Import
 

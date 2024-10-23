@@ -22,13 +22,20 @@ __all__ = ['InventoryArgs', 'Inventory']
 class InventoryArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
-                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None):
+                 devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None,
+                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None):
         """
         The set of arguments for constructing a Inventory resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]] devices: **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         pulumi.set(__self__, "org_id", org_id)
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
+        if inventory is not None:
+            pulumi.set(__self__, "inventory", inventory)
 
     @property
     @pulumi.getter(name="orgId")
@@ -42,34 +49,75 @@ class InventoryArgs:
     @property
     @pulumi.getter
     def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]:
+        """
+        **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        """
         return pulumi.get(self, "devices")
 
     @devices.setter
     def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]):
         pulumi.set(self, "devices", value)
+
+    @property
+    @pulumi.getter
+    def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
+        """
+        Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        """
+        return pulumi.get(self, "inventory")
+
+    @inventory.setter
+    def inventory(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]):
+        pulumi.set(self, "inventory", value)
 
 
 @pulumi.input_type
 class _InventoryState:
     def __init__(__self__, *,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]] = None,
+                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Inventory resources.
+        :param pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]] devices: **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        :param pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
+        if inventory is not None:
+            pulumi.set(__self__, "inventory", inventory)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
 
     @property
     @pulumi.getter
     def devices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]:
+        """
+        **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        """
         return pulumi.get(self, "devices")
 
     @devices.setter
     def devices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InventoryDeviceArgs']]]]):
         pulumi.set(self, "devices", value)
+
+    @property
+    @pulumi.getter
+    def inventory(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]:
+        """
+        Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        """
+        return pulumi.get(self, "inventory")
+
+    @inventory.setter
+    def inventory(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['InventoryInventoryArgs']]]]):
+        pulumi.set(self, "inventory", value)
 
     @property
     @pulumi.getter(name="orgId")
@@ -87,11 +135,20 @@ class Inventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
+                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource manages the Org inventory.
-        It can be used to claim, unclaim, assign, unassign, reassign devices
+        This resource manages the Org Inventory.
+        It can be used to claim, unclaim, assign, unassign, reassign devices.
+
+        ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
+
+        > **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
+
+        The `devices` attribute will generate inconsistent result after apply when
+        * a device other than the last one is removed from the list
+        * a device is added somewhere other than the end of the list
 
         ## Import
 
@@ -105,6 +162,10 @@ class Inventory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]] devices: **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         ...
     @overload
@@ -113,8 +174,16 @@ class Inventory(pulumi.CustomResource):
                  args: InventoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource manages the Org inventory.
-        It can be used to claim, unclaim, assign, unassign, reassign devices
+        This resource manages the Org Inventory.
+        It can be used to claim, unclaim, assign, unassign, reassign devices.
+
+        ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
+
+        > **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
+
+        The `devices` attribute will generate inconsistent result after apply when
+        * a device other than the last one is removed from the list
+        * a device is added somewhere other than the end of the list
 
         ## Import
 
@@ -142,6 +211,7 @@ class Inventory(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
+                 inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -153,6 +223,7 @@ class Inventory(pulumi.CustomResource):
             __props__ = InventoryArgs.__new__(InventoryArgs)
 
             __props__.__dict__["devices"] = devices
+            __props__.__dict__["inventory"] = inventory
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
@@ -167,6 +238,7 @@ class Inventory(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             devices: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]]] = None,
+            inventory: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None) -> 'Inventory':
         """
         Get an existing Inventory resource's state with the given name, id, and optional extra
@@ -175,19 +247,37 @@ class Inventory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InventoryDeviceArgs', 'InventoryDeviceArgsDict']]]] devices: **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['InventoryInventoryArgs', 'InventoryInventoryArgsDict']]]] inventory: Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+               Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+               already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _InventoryState.__new__(_InventoryState)
 
         __props__.__dict__["devices"] = devices
+        __props__.__dict__["inventory"] = inventory
         __props__.__dict__["org_id"] = org_id
         return Inventory(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def devices(self) -> pulumi.Output[Sequence['outputs.InventoryDevice']]:
+        """
+        **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        """
         return pulumi.get(self, "devices")
+
+    @property
+    @pulumi.getter
+    def inventory(self) -> pulumi.Output[Mapping[str, 'outputs.InventoryInventory']]:
+        """
+        Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+        Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+        """
+        return pulumi.get(self, "inventory")
 
     @property
     @pulumi.getter(name="orgId")

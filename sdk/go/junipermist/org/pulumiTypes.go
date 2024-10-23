@@ -24754,23 +24754,28 @@ func (o IdpprofileOverwriteMatchingPtrOutput) Severities() pulumi.StringArrayOut
 }
 
 type InventoryDevice struct {
-	// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	// used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	ClaimCode *string `pulumi:"claimCode"`
-	// Device Hostname
+	// deviceprofile id if assigned, null if not assigned
+	DeviceprofileId *string `pulumi:"deviceprofileId"`
+	// hostname reported by the device
 	Hostname *string `pulumi:"hostname"`
-	// Mist Device ID
+	// device id
 	Id *string `pulumi:"id"`
-	// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	// used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
 	Mac *string `pulumi:"mac"`
-	// Device model
+	// device model
 	Model *string `pulumi:"model"`
 	OrgId *string `pulumi:"orgId"`
-	// Device serial
+	// device serial
 	Serial *string `pulumi:"serial"`
 	// Site ID. Used to assign device to a Site
 	SiteId *string `pulumi:"siteId"`
-	Type   *string `pulumi:"type"`
-	// Virtual Chassis MAC Address
+	// enum: `ap`, `gateway`, `switch`
+	Type *string `pulumi:"type"`
+	// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+	UnclaimWhenDestroyed *bool `pulumi:"unclaimWhenDestroyed"`
+	// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
 	VcMac *string `pulumi:"vcMac"`
 }
 
@@ -24786,23 +24791,28 @@ type InventoryDeviceInput interface {
 }
 
 type InventoryDeviceArgs struct {
-	// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+	// used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 	ClaimCode pulumi.StringPtrInput `pulumi:"claimCode"`
-	// Device Hostname
+	// deviceprofile id if assigned, null if not assigned
+	DeviceprofileId pulumi.StringPtrInput `pulumi:"deviceprofileId"`
+	// hostname reported by the device
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// Mist Device ID
+	// device id
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+	// used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
 	Mac pulumi.StringPtrInput `pulumi:"mac"`
-	// Device model
+	// device model
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
-	// Device serial
+	// device serial
 	Serial pulumi.StringPtrInput `pulumi:"serial"`
 	// Site ID. Used to assign device to a Site
 	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
-	Type   pulumi.StringPtrInput `pulumi:"type"`
-	// Virtual Chassis MAC Address
+	// enum: `ap`, `gateway`, `switch`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+	UnclaimWhenDestroyed pulumi.BoolPtrInput `pulumi:"unclaimWhenDestroyed"`
+	// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
 	VcMac pulumi.StringPtrInput `pulumi:"vcMac"`
 }
 
@@ -24857,27 +24867,32 @@ func (o InventoryDeviceOutput) ToInventoryDeviceOutputWithContext(ctx context.Co
 	return o
 }
 
-// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+// used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
 func (o InventoryDeviceOutput) ClaimCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.ClaimCode }).(pulumi.StringPtrOutput)
 }
 
-// Device Hostname
+// deviceprofile id if assigned, null if not assigned
+func (o InventoryDeviceOutput) DeviceprofileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryDevice) *string { return v.DeviceprofileId }).(pulumi.StringPtrOutput)
+}
+
+// hostname reported by the device
 func (o InventoryDeviceOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// Mist Device ID
+// device id
 func (o InventoryDeviceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+// used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
 func (o InventoryDeviceOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// Device model
+// device model
 func (o InventoryDeviceOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
@@ -24886,7 +24901,7 @@ func (o InventoryDeviceOutput) OrgId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
-// Device serial
+// device serial
 func (o InventoryDeviceOutput) Serial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Serial }).(pulumi.StringPtrOutput)
 }
@@ -24896,11 +24911,17 @@ func (o InventoryDeviceOutput) SiteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.SiteId }).(pulumi.StringPtrOutput)
 }
 
+// enum: `ap`, `gateway`, `switch`
 func (o InventoryDeviceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Virtual Chassis MAC Address
+// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+func (o InventoryDeviceOutput) UnclaimWhenDestroyed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InventoryDevice) *bool { return v.UnclaimWhenDestroyed }).(pulumi.BoolPtrOutput)
+}
+
+// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
 func (o InventoryDeviceOutput) VcMac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InventoryDevice) *string { return v.VcMac }).(pulumi.StringPtrOutput)
 }
@@ -24923,6 +24944,199 @@ func (o InventoryDeviceArrayOutput) Index(i pulumi.IntInput) InventoryDeviceOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InventoryDevice {
 		return vs[0].([]InventoryDevice)[vs[1].(int)]
 	}).(InventoryDeviceOutput)
+}
+
+type InventoryInventory struct {
+	// device claim code
+	ClaimCode *string `pulumi:"claimCode"`
+	// deviceprofile id if assigned, null if not assigned
+	DeviceprofileId *string `pulumi:"deviceprofileId"`
+	// hostname reported by the device
+	Hostname *string `pulumi:"hostname"`
+	// device id
+	Id *string `pulumi:"id"`
+	// device MAC address
+	Mac *string `pulumi:"mac"`
+	// device model
+	Model *string `pulumi:"model"`
+	OrgId *string `pulumi:"orgId"`
+	// device serial
+	Serial *string `pulumi:"serial"`
+	// Site ID. Used to assign device to a Site
+	SiteId *string `pulumi:"siteId"`
+	// enum: `ap`, `gateway`, `switch`
+	Type *string `pulumi:"type"`
+	// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+	UnclaimWhenDestroyed *bool `pulumi:"unclaimWhenDestroyed"`
+	// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+	VcMac *string `pulumi:"vcMac"`
+}
+
+// InventoryInventoryInput is an input type that accepts InventoryInventoryArgs and InventoryInventoryOutput values.
+// You can construct a concrete instance of `InventoryInventoryInput` via:
+//
+//	InventoryInventoryArgs{...}
+type InventoryInventoryInput interface {
+	pulumi.Input
+
+	ToInventoryInventoryOutput() InventoryInventoryOutput
+	ToInventoryInventoryOutputWithContext(context.Context) InventoryInventoryOutput
+}
+
+type InventoryInventoryArgs struct {
+	// device claim code
+	ClaimCode pulumi.StringPtrInput `pulumi:"claimCode"`
+	// deviceprofile id if assigned, null if not assigned
+	DeviceprofileId pulumi.StringPtrInput `pulumi:"deviceprofileId"`
+	// hostname reported by the device
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// device id
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// device MAC address
+	Mac pulumi.StringPtrInput `pulumi:"mac"`
+	// device model
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	OrgId pulumi.StringPtrInput `pulumi:"orgId"`
+	// device serial
+	Serial pulumi.StringPtrInput `pulumi:"serial"`
+	// Site ID. Used to assign device to a Site
+	SiteId pulumi.StringPtrInput `pulumi:"siteId"`
+	// enum: `ap`, `gateway`, `switch`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+	UnclaimWhenDestroyed pulumi.BoolPtrInput `pulumi:"unclaimWhenDestroyed"`
+	// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+	VcMac pulumi.StringPtrInput `pulumi:"vcMac"`
+}
+
+func (InventoryInventoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InventoryInventory)(nil)).Elem()
+}
+
+func (i InventoryInventoryArgs) ToInventoryInventoryOutput() InventoryInventoryOutput {
+	return i.ToInventoryInventoryOutputWithContext(context.Background())
+}
+
+func (i InventoryInventoryArgs) ToInventoryInventoryOutputWithContext(ctx context.Context) InventoryInventoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryInventoryOutput)
+}
+
+// InventoryInventoryMapInput is an input type that accepts InventoryInventoryMap and InventoryInventoryMapOutput values.
+// You can construct a concrete instance of `InventoryInventoryMapInput` via:
+//
+//	InventoryInventoryMap{ "key": InventoryInventoryArgs{...} }
+type InventoryInventoryMapInput interface {
+	pulumi.Input
+
+	ToInventoryInventoryMapOutput() InventoryInventoryMapOutput
+	ToInventoryInventoryMapOutputWithContext(context.Context) InventoryInventoryMapOutput
+}
+
+type InventoryInventoryMap map[string]InventoryInventoryInput
+
+func (InventoryInventoryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InventoryInventory)(nil)).Elem()
+}
+
+func (i InventoryInventoryMap) ToInventoryInventoryMapOutput() InventoryInventoryMapOutput {
+	return i.ToInventoryInventoryMapOutputWithContext(context.Background())
+}
+
+func (i InventoryInventoryMap) ToInventoryInventoryMapOutputWithContext(ctx context.Context) InventoryInventoryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InventoryInventoryMapOutput)
+}
+
+type InventoryInventoryOutput struct{ *pulumi.OutputState }
+
+func (InventoryInventoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InventoryInventory)(nil)).Elem()
+}
+
+func (o InventoryInventoryOutput) ToInventoryInventoryOutput() InventoryInventoryOutput {
+	return o
+}
+
+func (o InventoryInventoryOutput) ToInventoryInventoryOutputWithContext(ctx context.Context) InventoryInventoryOutput {
+	return o
+}
+
+// device claim code
+func (o InventoryInventoryOutput) ClaimCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.ClaimCode }).(pulumi.StringPtrOutput)
+}
+
+// deviceprofile id if assigned, null if not assigned
+func (o InventoryInventoryOutput) DeviceprofileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.DeviceprofileId }).(pulumi.StringPtrOutput)
+}
+
+// hostname reported by the device
+func (o InventoryInventoryOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// device id
+func (o InventoryInventoryOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// device MAC address
+func (o InventoryInventoryOutput) Mac() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.Mac }).(pulumi.StringPtrOutput)
+}
+
+// device model
+func (o InventoryInventoryOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+func (o InventoryInventoryOutput) OrgId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.OrgId }).(pulumi.StringPtrOutput)
+}
+
+// device serial
+func (o InventoryInventoryOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.Serial }).(pulumi.StringPtrOutput)
+}
+
+// Site ID. Used to assign device to a Site
+func (o InventoryInventoryOutput) SiteId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.SiteId }).(pulumi.StringPtrOutput)
+}
+
+// enum: `ap`, `gateway`, `switch`
+func (o InventoryInventoryOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+func (o InventoryInventoryOutput) UnclaimWhenDestroyed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *bool { return v.UnclaimWhenDestroyed }).(pulumi.BoolPtrOutput)
+}
+
+// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+func (o InventoryInventoryOutput) VcMac() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InventoryInventory) *string { return v.VcMac }).(pulumi.StringPtrOutput)
+}
+
+type InventoryInventoryMapOutput struct{ *pulumi.OutputState }
+
+func (InventoryInventoryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InventoryInventory)(nil)).Elem()
+}
+
+func (o InventoryInventoryMapOutput) ToInventoryInventoryMapOutput() InventoryInventoryMapOutput {
+	return o
+}
+
+func (o InventoryInventoryMapOutput) ToInventoryInventoryMapOutputWithContext(ctx context.Context) InventoryInventoryMapOutput {
+	return o
+}
+
+func (o InventoryInventoryMapOutput) MapIndex(k pulumi.StringInput) InventoryInventoryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InventoryInventory {
+		return vs[0].(map[string]InventoryInventory)[vs[1].(string)]
+	}).(InventoryInventoryOutput)
 }
 
 type NacruleMatching struct {
@@ -53803,7 +54017,7 @@ func (o GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput) Severities() pulumi.
 	return o.ApplyT(func(v GetIdpprofilesOrgIdpprofileOverwriteMatching) []string { return v.Severities }).(pulumi.StringArrayOutput)
 }
 
-type GetInventoryOrgInventory struct {
+type GetInventoryDevice struct {
 	// only if `type`==`switch` or `type`==`gateway`
 	// whether the switch/gateway is adopted
 	Adopted bool `pulumi:"adopted"`
@@ -53812,7 +54026,7 @@ type GetInventoryOrgInventory struct {
 	// whether the device is connected
 	Connected bool `pulumi:"connected"`
 	// inventory created time, in epoch
-	CreatedTime int `pulumi:"createdTime"`
+	CreatedTime float64 `pulumi:"createdTime"`
 	// deviceprofile id if assigned, null if not assigned
 	DeviceprofileId string `pulumi:"deviceprofileId"`
 	// hostname reported by the device
@@ -53827,7 +54041,7 @@ type GetInventoryOrgInventory struct {
 	// device model
 	Model string `pulumi:"model"`
 	// inventory last modified time, in epoch
-	ModifiedTime int `pulumi:"modifiedTime"`
+	ModifiedTime float64 `pulumi:"modifiedTime"`
 	// device name if configured
 	Name  string `pulumi:"name"`
 	OrgId string `pulumi:"orgId"`
@@ -53836,22 +54050,24 @@ type GetInventoryOrgInventory struct {
 	SiteId string `pulumi:"siteId"`
 	// device stock keeping unit
 	Sku string `pulumi:"sku"`
-	// only if `type`==`switch`, MAC Address of the Virtual Chassis
+	// enum: `ap`, `gateway`, `switch`
+	Type string `pulumi:"type"`
+	// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
 	VcMac string `pulumi:"vcMac"`
 }
 
-// GetInventoryOrgInventoryInput is an input type that accepts GetInventoryOrgInventoryArgs and GetInventoryOrgInventoryOutput values.
-// You can construct a concrete instance of `GetInventoryOrgInventoryInput` via:
+// GetInventoryDeviceInput is an input type that accepts GetInventoryDeviceArgs and GetInventoryDeviceOutput values.
+// You can construct a concrete instance of `GetInventoryDeviceInput` via:
 //
-//	GetInventoryOrgInventoryArgs{...}
-type GetInventoryOrgInventoryInput interface {
+//	GetInventoryDeviceArgs{...}
+type GetInventoryDeviceInput interface {
 	pulumi.Input
 
-	ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput
-	ToGetInventoryOrgInventoryOutputWithContext(context.Context) GetInventoryOrgInventoryOutput
+	ToGetInventoryDeviceOutput() GetInventoryDeviceOutput
+	ToGetInventoryDeviceOutputWithContext(context.Context) GetInventoryDeviceOutput
 }
 
-type GetInventoryOrgInventoryArgs struct {
+type GetInventoryDeviceArgs struct {
 	// only if `type`==`switch` or `type`==`gateway`
 	// whether the switch/gateway is adopted
 	Adopted pulumi.BoolInput `pulumi:"adopted"`
@@ -53860,7 +54076,7 @@ type GetInventoryOrgInventoryArgs struct {
 	// whether the device is connected
 	Connected pulumi.BoolInput `pulumi:"connected"`
 	// inventory created time, in epoch
-	CreatedTime pulumi.IntInput `pulumi:"createdTime"`
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
 	// deviceprofile id if assigned, null if not assigned
 	DeviceprofileId pulumi.StringInput `pulumi:"deviceprofileId"`
 	// hostname reported by the device
@@ -53875,7 +54091,7 @@ type GetInventoryOrgInventoryArgs struct {
 	// device model
 	Model pulumi.StringInput `pulumi:"model"`
 	// inventory last modified time, in epoch
-	ModifiedTime pulumi.IntInput `pulumi:"modifiedTime"`
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
 	// device name if configured
 	Name  pulumi.StringInput `pulumi:"name"`
 	OrgId pulumi.StringInput `pulumi:"orgId"`
@@ -53884,167 +54100,174 @@ type GetInventoryOrgInventoryArgs struct {
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 	// device stock keeping unit
 	Sku pulumi.StringInput `pulumi:"sku"`
-	// only if `type`==`switch`, MAC Address of the Virtual Chassis
+	// enum: `ap`, `gateway`, `switch`
+	Type pulumi.StringInput `pulumi:"type"`
+	// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
 	VcMac pulumi.StringInput `pulumi:"vcMac"`
 }
 
-func (GetInventoryOrgInventoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInventoryOrgInventory)(nil)).Elem()
+func (GetInventoryDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInventoryDevice)(nil)).Elem()
 }
 
-func (i GetInventoryOrgInventoryArgs) ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput {
-	return i.ToGetInventoryOrgInventoryOutputWithContext(context.Background())
+func (i GetInventoryDeviceArgs) ToGetInventoryDeviceOutput() GetInventoryDeviceOutput {
+	return i.ToGetInventoryDeviceOutputWithContext(context.Background())
 }
 
-func (i GetInventoryOrgInventoryArgs) ToGetInventoryOrgInventoryOutputWithContext(ctx context.Context) GetInventoryOrgInventoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryOrgInventoryOutput)
+func (i GetInventoryDeviceArgs) ToGetInventoryDeviceOutputWithContext(ctx context.Context) GetInventoryDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryDeviceOutput)
 }
 
-// GetInventoryOrgInventoryArrayInput is an input type that accepts GetInventoryOrgInventoryArray and GetInventoryOrgInventoryArrayOutput values.
-// You can construct a concrete instance of `GetInventoryOrgInventoryArrayInput` via:
+// GetInventoryDeviceArrayInput is an input type that accepts GetInventoryDeviceArray and GetInventoryDeviceArrayOutput values.
+// You can construct a concrete instance of `GetInventoryDeviceArrayInput` via:
 //
-//	GetInventoryOrgInventoryArray{ GetInventoryOrgInventoryArgs{...} }
-type GetInventoryOrgInventoryArrayInput interface {
+//	GetInventoryDeviceArray{ GetInventoryDeviceArgs{...} }
+type GetInventoryDeviceArrayInput interface {
 	pulumi.Input
 
-	ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput
-	ToGetInventoryOrgInventoryArrayOutputWithContext(context.Context) GetInventoryOrgInventoryArrayOutput
+	ToGetInventoryDeviceArrayOutput() GetInventoryDeviceArrayOutput
+	ToGetInventoryDeviceArrayOutputWithContext(context.Context) GetInventoryDeviceArrayOutput
 }
 
-type GetInventoryOrgInventoryArray []GetInventoryOrgInventoryInput
+type GetInventoryDeviceArray []GetInventoryDeviceInput
 
-func (GetInventoryOrgInventoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInventoryOrgInventory)(nil)).Elem()
+func (GetInventoryDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInventoryDevice)(nil)).Elem()
 }
 
-func (i GetInventoryOrgInventoryArray) ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput {
-	return i.ToGetInventoryOrgInventoryArrayOutputWithContext(context.Background())
+func (i GetInventoryDeviceArray) ToGetInventoryDeviceArrayOutput() GetInventoryDeviceArrayOutput {
+	return i.ToGetInventoryDeviceArrayOutputWithContext(context.Background())
 }
 
-func (i GetInventoryOrgInventoryArray) ToGetInventoryOrgInventoryArrayOutputWithContext(ctx context.Context) GetInventoryOrgInventoryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryOrgInventoryArrayOutput)
+func (i GetInventoryDeviceArray) ToGetInventoryDeviceArrayOutputWithContext(ctx context.Context) GetInventoryDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInventoryDeviceArrayOutput)
 }
 
-type GetInventoryOrgInventoryOutput struct{ *pulumi.OutputState }
+type GetInventoryDeviceOutput struct{ *pulumi.OutputState }
 
-func (GetInventoryOrgInventoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInventoryOrgInventory)(nil)).Elem()
+func (GetInventoryDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInventoryDevice)(nil)).Elem()
 }
 
-func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutput() GetInventoryOrgInventoryOutput {
+func (o GetInventoryDeviceOutput) ToGetInventoryDeviceOutput() GetInventoryDeviceOutput {
 	return o
 }
 
-func (o GetInventoryOrgInventoryOutput) ToGetInventoryOrgInventoryOutputWithContext(ctx context.Context) GetInventoryOrgInventoryOutput {
+func (o GetInventoryDeviceOutput) ToGetInventoryDeviceOutputWithContext(ctx context.Context) GetInventoryDeviceOutput {
 	return o
 }
 
 // only if `type`==`switch` or `type`==`gateway`
 // whether the switch/gateway is adopted
-func (o GetInventoryOrgInventoryOutput) Adopted() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Adopted }).(pulumi.BoolOutput)
+func (o GetInventoryDeviceOutput) Adopted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInventoryDevice) bool { return v.Adopted }).(pulumi.BoolOutput)
 }
 
 // device claim code
-func (o GetInventoryOrgInventoryOutput) ClaimCode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.ClaimCode }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) ClaimCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.ClaimCode }).(pulumi.StringOutput)
 }
 
 // whether the device is connected
-func (o GetInventoryOrgInventoryOutput) Connected() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Connected }).(pulumi.BoolOutput)
+func (o GetInventoryDeviceOutput) Connected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInventoryDevice) bool { return v.Connected }).(pulumi.BoolOutput)
 }
 
 // inventory created time, in epoch
-func (o GetInventoryOrgInventoryOutput) CreatedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) int { return v.CreatedTime }).(pulumi.IntOutput)
+func (o GetInventoryDeviceOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInventoryDevice) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
 // deviceprofile id if assigned, null if not assigned
-func (o GetInventoryOrgInventoryOutput) DeviceprofileId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.DeviceprofileId }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) DeviceprofileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.DeviceprofileId }).(pulumi.StringOutput)
 }
 
 // hostname reported by the device
-func (o GetInventoryOrgInventoryOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Hostname }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // device hardware revision number
-func (o GetInventoryOrgInventoryOutput) HwRev() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.HwRev }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) HwRev() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.HwRev }).(pulumi.StringOutput)
 }
 
 // device id
-func (o GetInventoryOrgInventoryOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Id }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetInventoryOrgInventoryOutput) Jsi() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) bool { return v.Jsi }).(pulumi.BoolOutput)
+func (o GetInventoryDeviceOutput) Jsi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInventoryDevice) bool { return v.Jsi }).(pulumi.BoolOutput)
 }
 
 // device MAC address
-func (o GetInventoryOrgInventoryOutput) Mac() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Mac }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Mac }).(pulumi.StringOutput)
 }
 
 // device model
-func (o GetInventoryOrgInventoryOutput) Model() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Model }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Model }).(pulumi.StringOutput)
 }
 
 // inventory last modified time, in epoch
-func (o GetInventoryOrgInventoryOutput) ModifiedTime() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) int { return v.ModifiedTime }).(pulumi.IntOutput)
+func (o GetInventoryDeviceOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetInventoryDevice) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
 
 // device name if configured
-func (o GetInventoryOrgInventoryOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Name }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetInventoryOrgInventoryOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.OrgId }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
 // device serial
-func (o GetInventoryOrgInventoryOutput) Serial() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Serial }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Serial() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Serial }).(pulumi.StringOutput)
 }
 
-func (o GetInventoryOrgInventoryOutput) SiteId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.SiteId }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
 // device stock keeping unit
-func (o GetInventoryOrgInventoryOutput) Sku() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.Sku }).(pulumi.StringOutput)
+func (o GetInventoryDeviceOutput) Sku() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Sku }).(pulumi.StringOutput)
 }
 
-// only if `type`==`switch`, MAC Address of the Virtual Chassis
-func (o GetInventoryOrgInventoryOutput) VcMac() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInventoryOrgInventory) string { return v.VcMac }).(pulumi.StringOutput)
+// enum: `ap`, `gateway`, `switch`
+func (o GetInventoryDeviceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetInventoryOrgInventoryArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInventoryOrgInventoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInventoryOrgInventory)(nil)).Elem()
+// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+func (o GetInventoryDeviceOutput) VcMac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInventoryDevice) string { return v.VcMac }).(pulumi.StringOutput)
 }
 
-func (o GetInventoryOrgInventoryArrayOutput) ToGetInventoryOrgInventoryArrayOutput() GetInventoryOrgInventoryArrayOutput {
+type GetInventoryDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInventoryDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInventoryDevice)(nil)).Elem()
+}
+
+func (o GetInventoryDeviceArrayOutput) ToGetInventoryDeviceArrayOutput() GetInventoryDeviceArrayOutput {
 	return o
 }
 
-func (o GetInventoryOrgInventoryArrayOutput) ToGetInventoryOrgInventoryArrayOutputWithContext(ctx context.Context) GetInventoryOrgInventoryArrayOutput {
+func (o GetInventoryDeviceArrayOutput) ToGetInventoryDeviceArrayOutputWithContext(ctx context.Context) GetInventoryDeviceArrayOutput {
 	return o
 }
 
-func (o GetInventoryOrgInventoryArrayOutput) Index(i pulumi.IntInput) GetInventoryOrgInventoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInventoryOrgInventory {
-		return vs[0].([]GetInventoryOrgInventory)[vs[1].(int)]
-	}).(GetInventoryOrgInventoryOutput)
+func (o GetInventoryDeviceArrayOutput) Index(i pulumi.IntInput) GetInventoryDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInventoryDevice {
+		return vs[0].([]GetInventoryDevice)[vs[1].(int)]
+	}).(GetInventoryDeviceOutput)
 }
 
 type GetNacrulesOrgNacrule struct {
@@ -56708,6 +56931,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IdpprofileOverwriteMatchingPtrInput)(nil)).Elem(), IdpprofileOverwriteMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InventoryDeviceInput)(nil)).Elem(), InventoryDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InventoryDeviceArrayInput)(nil)).Elem(), InventoryDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InventoryInventoryInput)(nil)).Elem(), InventoryInventoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InventoryInventoryMapInput)(nil)).Elem(), InventoryInventoryMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleMatchingInput)(nil)).Elem(), NacruleMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleMatchingPtrInput)(nil)).Elem(), NacruleMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NacruleNotMatchingInput)(nil)).Elem(), NacruleNotMatchingArgs{})
@@ -57011,8 +57236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteArrayInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIdpprofilesOrgIdpprofileOverwriteMatchingInput)(nil)).Elem(), GetIdpprofilesOrgIdpprofileOverwriteMatchingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryOrgInventoryInput)(nil)).Elem(), GetInventoryOrgInventoryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryOrgInventoryArrayInput)(nil)).Elem(), GetInventoryOrgInventoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryDeviceInput)(nil)).Elem(), GetInventoryDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInventoryDeviceArrayInput)(nil)).Elem(), GetInventoryDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNacrulesOrgNacruleInput)(nil)).Elem(), GetNacrulesOrgNacruleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNacrulesOrgNacruleArrayInput)(nil)).Elem(), GetNacrulesOrgNacruleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNactagsOrgNactagInput)(nil)).Elem(), GetNactagsOrgNactagArgs{})
@@ -57327,6 +57552,8 @@ func init() {
 	pulumi.RegisterOutputType(IdpprofileOverwriteMatchingPtrOutput{})
 	pulumi.RegisterOutputType(InventoryDeviceOutput{})
 	pulumi.RegisterOutputType(InventoryDeviceArrayOutput{})
+	pulumi.RegisterOutputType(InventoryInventoryOutput{})
+	pulumi.RegisterOutputType(InventoryInventoryMapOutput{})
 	pulumi.RegisterOutputType(NacruleMatchingOutput{})
 	pulumi.RegisterOutputType(NacruleMatchingPtrOutput{})
 	pulumi.RegisterOutputType(NacruleNotMatchingOutput{})
@@ -57630,8 +57857,8 @@ func init() {
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteArrayOutput{})
 	pulumi.RegisterOutputType(GetIdpprofilesOrgIdpprofileOverwriteMatchingOutput{})
-	pulumi.RegisterOutputType(GetInventoryOrgInventoryOutput{})
-	pulumi.RegisterOutputType(GetInventoryOrgInventoryArrayOutput{})
+	pulumi.RegisterOutputType(GetInventoryDeviceOutput{})
+	pulumi.RegisterOutputType(GetInventoryDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetNacrulesOrgNacruleOutput{})
 	pulumi.RegisterOutputType(GetNacrulesOrgNacruleArrayOutput{})
 	pulumi.RegisterOutputType(GetNactagsOrgNactagOutput{})

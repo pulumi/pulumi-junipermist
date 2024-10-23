@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org.Inputs
 {
 
-    public sealed class InventoryDeviceArgs : global::Pulumi.ResourceArgs
+    public sealed class InventoryInventoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+        /// device claim code
         /// </summary>
         [Input("claimCode")]
         public Input<string>? ClaimCode { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+        /// device MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -81,9 +81,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("vcMac")]
         public Input<string>? VcMac { get; set; }
 
-        public InventoryDeviceArgs()
+        public InventoryInventoryArgs()
         {
         }
-        public static new InventoryDeviceArgs Empty => new InventoryDeviceArgs();
+        public static new InventoryInventoryArgs Empty => new InventoryInventoryArgs();
     }
 }

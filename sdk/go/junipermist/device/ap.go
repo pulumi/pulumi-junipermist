@@ -15,34 +15,6 @@ import (
 // This resource manages the Wireless Access Point configuration.
 // It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := device.NewAp(ctx, "ap_one", &device.ApArgs{
-//				Name:     pulumi.String("test_ap"),
-//				DeviceId: pulumi.Any(inventory.Devices[0].Id),
-//				SiteId:   pulumi.Any(inventory.Devices[0].SiteId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Using `pulumi import`, import `mist_device_ap` with:

@@ -157,6 +157,7 @@ __all__ = [
     'IdpprofileOverwrite',
     'IdpprofileOverwriteMatching',
     'InventoryDevice',
+    'InventoryInventory',
     'NacruleMatching',
     'NacruleNotMatching',
     'NetworkInternalAccess',
@@ -309,7 +310,7 @@ __all__ = [
     'GetIdpprofilesOrgIdpprofileResult',
     'GetIdpprofilesOrgIdpprofileOverwriteResult',
     'GetIdpprofilesOrgIdpprofileOverwriteMatchingResult',
-    'GetInventoryOrgInventoryResult',
+    'GetInventoryDeviceResult',
     'GetNacrulesOrgNacruleResult',
     'GetNactagsOrgNactagResult',
     'GetNetworksOrgNetworkResult',
@@ -12219,10 +12220,14 @@ class InventoryDevice(dict):
         suggest = None
         if key == "claimCode":
             suggest = "claim_code"
+        elif key == "deviceprofileId":
+            suggest = "deviceprofile_id"
         elif key == "orgId":
             suggest = "org_id"
         elif key == "siteId":
             suggest = "site_id"
+        elif key == "unclaimWhenDestroyed":
+            suggest = "unclaim_when_destroyed"
         elif key == "vcMac":
             suggest = "vc_mac"
 
@@ -12239,6 +12244,7 @@ class InventoryDevice(dict):
 
     def __init__(__self__, *,
                  claim_code: Optional[str] = None,
+                 deviceprofile_id: Optional[str] = None,
                  hostname: Optional[str] = None,
                  id: Optional[str] = None,
                  mac: Optional[str] = None,
@@ -12247,19 +12253,25 @@ class InventoryDevice(dict):
                  serial: Optional[str] = None,
                  site_id: Optional[str] = None,
                  type: Optional[str] = None,
+                 unclaim_when_destroyed: Optional[bool] = None,
                  vc_mac: Optional[str] = None):
         """
-        :param str claim_code: Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
-        :param str hostname: Device Hostname
-        :param str id: Mist Device ID
-        :param str mac: Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
-        :param str model: Device model
-        :param str serial: Device serial
+        :param str claim_code: used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+        :param str deviceprofile_id: deviceprofile id if assigned, null if not assigned
+        :param str hostname: hostname reported by the device
+        :param str id: device id
+        :param str mac: used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+        :param str model: device model
+        :param str serial: device serial
         :param str site_id: Site ID. Used to assign device to a Site
-        :param str vc_mac: Virtual Chassis MAC Address
+        :param str type: enum: `ap`, `gateway`, `switch`
+        :param bool unclaim_when_destroyed: Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        :param str vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
         """
         if claim_code is not None:
             pulumi.set(__self__, "claim_code", claim_code)
+        if deviceprofile_id is not None:
+            pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if id is not None:
@@ -12276,6 +12288,8 @@ class InventoryDevice(dict):
             pulumi.set(__self__, "site_id", site_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if unclaim_when_destroyed is not None:
+            pulumi.set(__self__, "unclaim_when_destroyed", unclaim_when_destroyed)
         if vc_mac is not None:
             pulumi.set(__self__, "vc_mac", vc_mac)
 
@@ -12283,15 +12297,23 @@ class InventoryDevice(dict):
     @pulumi.getter(name="claimCode")
     def claim_code(self) -> Optional[str]:
         """
-        Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+        used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
         """
         return pulumi.get(self, "claim_code")
+
+    @property
+    @pulumi.getter(name="deviceprofileId")
+    def deviceprofile_id(self) -> Optional[str]:
+        """
+        deviceprofile id if assigned, null if not assigned
+        """
+        return pulumi.get(self, "deviceprofile_id")
 
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
         """
-        Device Hostname
+        hostname reported by the device
         """
         return pulumi.get(self, "hostname")
 
@@ -12299,7 +12321,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Mist Device ID
+        device id
         """
         return pulumi.get(self, "id")
 
@@ -12307,7 +12329,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def mac(self) -> Optional[str]:
         """
-        Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+        used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
         """
         return pulumi.get(self, "mac")
 
@@ -12315,7 +12337,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def model(self) -> Optional[str]:
         """
-        Device model
+        device model
         """
         return pulumi.get(self, "model")
 
@@ -12328,7 +12350,7 @@ class InventoryDevice(dict):
     @pulumi.getter
     def serial(self) -> Optional[str]:
         """
-        Device serial
+        device serial
         """
         return pulumi.get(self, "serial")
 
@@ -12343,13 +12365,198 @@ class InventoryDevice(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        enum: `ap`, `gateway`, `switch`
+        """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="unclaimWhenDestroyed")
+    def unclaim_when_destroyed(self) -> Optional[bool]:
+        """
+        Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        """
+        return pulumi.get(self, "unclaim_when_destroyed")
 
     @property
     @pulumi.getter(name="vcMac")
     def vc_mac(self) -> Optional[str]:
         """
-        Virtual Chassis MAC Address
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        """
+        return pulumi.get(self, "vc_mac")
+
+
+@pulumi.output_type
+class InventoryInventory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "claimCode":
+            suggest = "claim_code"
+        elif key == "deviceprofileId":
+            suggest = "deviceprofile_id"
+        elif key == "orgId":
+            suggest = "org_id"
+        elif key == "siteId":
+            suggest = "site_id"
+        elif key == "unclaimWhenDestroyed":
+            suggest = "unclaim_when_destroyed"
+        elif key == "vcMac":
+            suggest = "vc_mac"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InventoryInventory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InventoryInventory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InventoryInventory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 claim_code: Optional[str] = None,
+                 deviceprofile_id: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 mac: Optional[str] = None,
+                 model: Optional[str] = None,
+                 org_id: Optional[str] = None,
+                 serial: Optional[str] = None,
+                 site_id: Optional[str] = None,
+                 type: Optional[str] = None,
+                 unclaim_when_destroyed: Optional[bool] = None,
+                 vc_mac: Optional[str] = None):
+        """
+        :param str claim_code: device claim code
+        :param str deviceprofile_id: deviceprofile id if assigned, null if not assigned
+        :param str hostname: hostname reported by the device
+        :param str id: device id
+        :param str mac: device MAC address
+        :param str model: device model
+        :param str serial: device serial
+        :param str site_id: Site ID. Used to assign device to a Site
+        :param str type: enum: `ap`, `gateway`, `switch`
+        :param bool unclaim_when_destroyed: Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        :param str vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        """
+        if claim_code is not None:
+            pulumi.set(__self__, "claim_code", claim_code)
+        if deviceprofile_id is not None:
+            pulumi.set(__self__, "deviceprofile_id", deviceprofile_id)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if mac is not None:
+            pulumi.set(__self__, "mac", mac)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if org_id is not None:
+            pulumi.set(__self__, "org_id", org_id)
+        if serial is not None:
+            pulumi.set(__self__, "serial", serial)
+        if site_id is not None:
+            pulumi.set(__self__, "site_id", site_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if unclaim_when_destroyed is not None:
+            pulumi.set(__self__, "unclaim_when_destroyed", unclaim_when_destroyed)
+        if vc_mac is not None:
+            pulumi.set(__self__, "vc_mac", vc_mac)
+
+    @property
+    @pulumi.getter(name="claimCode")
+    def claim_code(self) -> Optional[str]:
+        """
+        device claim code
+        """
+        return pulumi.get(self, "claim_code")
+
+    @property
+    @pulumi.getter(name="deviceprofileId")
+    def deviceprofile_id(self) -> Optional[str]:
+        """
+        deviceprofile id if assigned, null if not assigned
+        """
+        return pulumi.get(self, "deviceprofile_id")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        hostname reported by the device
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        device id
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def mac(self) -> Optional[str]:
+        """
+        device MAC address
+        """
+        return pulumi.get(self, "mac")
+
+    @property
+    @pulumi.getter
+    def model(self) -> Optional[str]:
+        """
+        device model
+        """
+        return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> Optional[str]:
+        return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def serial(self) -> Optional[str]:
+        """
+        device serial
+        """
+        return pulumi.get(self, "serial")
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> Optional[str]:
+        """
+        Site ID. Used to assign device to a Site
+        """
+        return pulumi.get(self, "site_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        enum: `ap`, `gateway`, `switch`
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="unclaimWhenDestroyed")
+    def unclaim_when_destroyed(self) -> Optional[bool]:
+        """
+        Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        """
+        return pulumi.get(self, "unclaim_when_destroyed")
+
+    @property
+    @pulumi.getter(name="vcMac")
+    def vc_mac(self) -> Optional[str]:
+        """
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
         """
         return pulumi.get(self, "vc_mac")
 
@@ -26559,12 +26766,12 @@ class GetIdpprofilesOrgIdpprofileOverwriteMatchingResult(dict):
 
 
 @pulumi.output_type
-class GetInventoryOrgInventoryResult(dict):
+class GetInventoryDeviceResult(dict):
     def __init__(__self__, *,
                  adopted: bool,
                  claim_code: str,
                  connected: bool,
-                 created_time: int,
+                 created_time: float,
                  deviceprofile_id: str,
                  hostname: str,
                  hw_rev: str,
@@ -26572,30 +26779,32 @@ class GetInventoryOrgInventoryResult(dict):
                  jsi: bool,
                  mac: str,
                  model: str,
-                 modified_time: int,
+                 modified_time: float,
                  name: str,
                  org_id: str,
                  serial: str,
                  site_id: str,
                  sku: str,
+                 type: str,
                  vc_mac: str):
         """
         :param bool adopted: only if `type`==`switch` or `type`==`gateway`
                whether the switch/gateway is adopted
         :param str claim_code: device claim code
         :param bool connected: whether the device is connected
-        :param int created_time: inventory created time, in epoch
+        :param float created_time: inventory created time, in epoch
         :param str deviceprofile_id: deviceprofile id if assigned, null if not assigned
         :param str hostname: hostname reported by the device
         :param str hw_rev: device hardware revision number
         :param str id: device id
         :param str mac: device MAC address
         :param str model: device model
-        :param int modified_time: inventory last modified time, in epoch
+        :param float modified_time: inventory last modified time, in epoch
         :param str name: device name if configured
         :param str serial: device serial
         :param str sku: device stock keeping unit
-        :param str vc_mac: only if `type`==`switch`, MAC Address of the Virtual Chassis
+        :param str type: enum: `ap`, `gateway`, `switch`
+        :param str vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
         """
         pulumi.set(__self__, "adopted", adopted)
         pulumi.set(__self__, "claim_code", claim_code)
@@ -26614,6 +26823,7 @@ class GetInventoryOrgInventoryResult(dict):
         pulumi.set(__self__, "serial", serial)
         pulumi.set(__self__, "site_id", site_id)
         pulumi.set(__self__, "sku", sku)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "vc_mac", vc_mac)
 
     @property
@@ -26643,7 +26853,7 @@ class GetInventoryOrgInventoryResult(dict):
 
     @property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> int:
+    def created_time(self) -> float:
         """
         inventory created time, in epoch
         """
@@ -26704,7 +26914,7 @@ class GetInventoryOrgInventoryResult(dict):
 
     @property
     @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> int:
+    def modified_time(self) -> float:
         """
         inventory last modified time, in epoch
         """
@@ -26745,10 +26955,18 @@ class GetInventoryOrgInventoryResult(dict):
         return pulumi.get(self, "sku")
 
     @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        enum: `ap`, `gateway`, `switch`
+        """
+        return pulumi.get(self, "type")
+
+    @property
     @pulumi.getter(name="vcMac")
     def vc_mac(self) -> str:
         """
-        only if `type`==`switch`, MAC Address of the Virtual Chassis
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
         """
         return pulumi.get(self, "vc_mac")
 
