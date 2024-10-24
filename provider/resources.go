@@ -71,7 +71,7 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 			"mist_org_inventory": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"inventory": {
-						CSharpName: "InventoryField",
+						CSharpName: "InventoryDetails",
 					},
 				},
 			},
