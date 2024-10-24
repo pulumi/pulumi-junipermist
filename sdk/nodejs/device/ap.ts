@@ -10,19 +10,6 @@ import * as utilities from "../utilities";
  * This resource manages the Wireless Access Point configuration.
  * It can be used to define specific configuration at the device level or to override AP Device Profile (`junipermist.org.DeviceprofileAp`).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/juniper-mist";
- *
- * const apOne = new junipermist.device.Ap("ap_one", {
- *     name: "test_ap",
- *     deviceId: inventory.devices[0].id,
- *     siteId: inventory.devices[0].siteId,
- * });
- * ```
- *
  * ## Import
  *
  * Using `pulumi import`, import `mist_device_ap` with:

@@ -7,20 +7,6 @@ import * as utilities from "../utilities";
 /**
  * This resource is used to upload a Device picture.
  * This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as junipermist from "@pulumi/juniper-mist";
- *
- * const deviceImageOne = new junipermist.device.Image("device_image_one", {
- *     deviceId: inventory.devices[1].id,
- *     siteId: inventory.devices[1].siteId,
- *     file: "/Users/johndoe/Documents/image.jpg",
- *     imageNumber: 1,
- * });
- * ```
  */
 export class Image extends pulumi.CustomResource {
     /**

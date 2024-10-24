@@ -68,6 +68,13 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"mist_site": {Tok: makeResource("site", "base")},
 			"mist_org":  {Tok: makeResource("org", "base")},
+			"mist_org_inventory": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"inventory": {
+						CSharpName: "InventoryDetails",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{

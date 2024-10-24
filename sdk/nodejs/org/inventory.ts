@@ -7,8 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource manages the Org inventory.
- * It can be used to claim, unclaim, assign, unassign, reassign devices
+ * This resource manages the Org Inventory.
+ * It can be used to claim, unclaim, assign, unassign, reassign devices.
+ *
+ * ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaimWhenDestroyed` is set to `true`
+ *
+ * > **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
+ *
+ * The `devices` attribute will generate inconsistent result after apply when
+ * * a device other than the last one is removed from the list
+ * * a device is added somewhere other than the end of the list
  *
  * ## Import
  *
@@ -48,7 +56,16 @@ export class Inventory extends pulumi.CustomResource {
         return obj['__pulumiType'] === Inventory.__pulumiType;
     }
 
+    /**
+     * **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+     */
     public readonly devices!: pulumi.Output<outputs.org.InventoryDevice[]>;
+    /**
+     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+     */
+    public readonly inventory!: pulumi.Output<{[key: string]: outputs.org.InventoryInventory}>;
     public readonly orgId!: pulumi.Output<string>;
 
     /**
@@ -65,6 +82,7 @@ export class Inventory extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InventoryState | undefined;
             resourceInputs["devices"] = state ? state.devices : undefined;
+            resourceInputs["inventory"] = state ? state.inventory : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as InventoryArgs | undefined;
@@ -72,6 +90,7 @@ export class Inventory extends pulumi.CustomResource {
                 throw new Error("Missing required property 'orgId'");
             }
             resourceInputs["devices"] = args ? args.devices : undefined;
+            resourceInputs["inventory"] = args ? args.inventory : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -83,7 +102,16 @@ export class Inventory extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Inventory resources.
  */
 export interface InventoryState {
+    /**
+     * **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+     */
     devices?: pulumi.Input<pulumi.Input<inputs.org.InventoryDevice>[]>;
+    /**
+     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+     */
+    inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>}>;
     orgId?: pulumi.Input<string>;
 }
 
@@ -91,6 +119,15 @@ export interface InventoryState {
  * The set of arguments for constructing a Inventory resource.
  */
 export interface InventoryArgs {
+    /**
+     * **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+     */
     devices?: pulumi.Input<pulumi.Input<inputs.org.InventoryDevice>[]>;
+    /**
+     * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) >
+     */
+    inventory?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.InventoryInventory>}>;
     orgId: pulumi.Input<string>;
 }

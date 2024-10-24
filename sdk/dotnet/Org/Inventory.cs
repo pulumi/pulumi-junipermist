@@ -10,8 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages the Org inventory.
-    /// It can be used to claim, unclaim, assign, unassign, reassign devices
+    /// This resource manages the Org Inventory.
+    /// It can be used to claim, unclaim, assign, unassign, reassign devices.
+    /// 
+    /// -&gt;Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
+    /// 
+    /// &gt; **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
+    /// 
+    /// The `devices` attribute will generate inconsistent result after apply when
+    /// * a device other than the last one is removed from the list
+    /// * a device is added somewhere other than the end of the list
     /// 
     /// ## Import
     /// 
@@ -26,8 +34,19 @@ namespace Pulumi.JuniperMist.Org
     [JuniperMistResourceType("junipermist:org/inventory:Inventory")]
     public partial class Inventory : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        /// </summary>
         [Output("devices")]
         public Output<ImmutableArray<Outputs.InventoryDevice>> Devices { get; private set; } = null!;
+
+        /// <summary>
+        /// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+        /// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+        /// </summary>
+        [Output("inventory")]
+        public Output<ImmutableDictionary<string, Outputs.InventoryInventory>> InventoryDetails { get; private set; } = null!;
 
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -81,10 +100,28 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("devices")]
         private InputList<Inputs.InventoryDeviceArgs>? _devices;
+
+        /// <summary>
+        /// **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        /// </summary>
         public InputList<Inputs.InventoryDeviceArgs> Devices
         {
             get => _devices ?? (_devices = new InputList<Inputs.InventoryDeviceArgs>());
             set => _devices = value;
+        }
+
+        [Input("inventory")]
+        private InputMap<Inputs.InventoryInventoryArgs>? _inventory;
+
+        /// <summary>
+        /// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+        /// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+        /// </summary>
+        public InputMap<Inputs.InventoryInventoryArgs> InventoryDetails
+        {
+            get => _inventory ?? (_inventory = new InputMap<Inputs.InventoryInventoryArgs>());
+            set => _inventory = value;
         }
 
         [Input("orgId", required: true)]
@@ -100,10 +137,28 @@ namespace Pulumi.JuniperMist.Org
     {
         [Input("devices")]
         private InputList<Inputs.InventoryDeviceGetArgs>? _devices;
+
+        /// <summary>
+        /// **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
+        /// </summary>
         public InputList<Inputs.InventoryDeviceGetArgs> Devices
         {
             get => _devices ?? (_devices = new InputList<Inputs.InventoryDeviceGetArgs>());
             set => _devices = value;
+        }
+
+        [Input("inventory")]
+        private InputMap<Inputs.InventoryInventoryGetArgs>? _inventory;
+
+        /// <summary>
+        /// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
+        /// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+        /// already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
+        /// </summary>
+        public InputMap<Inputs.InventoryInventoryGetArgs> InventoryDetails
+        {
+            get => _inventory ?? (_inventory = new InputMap<Inputs.InventoryInventoryGetArgs>());
+            set => _inventory = value;
         }
 
         [Input("orgId")]

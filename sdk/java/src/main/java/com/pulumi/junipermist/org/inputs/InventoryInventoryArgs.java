@@ -12,19 +12,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs {
+public final class InventoryInventoryArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final InventoryDeviceArgs Empty = new InventoryDeviceArgs();
+    public static final InventoryInventoryArgs Empty = new InventoryInventoryArgs();
 
     /**
-     * used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * device claim code
      * 
      */
     @Import(name="claimCode")
     private @Nullable Output<String> claimCode;
 
     /**
-     * @return used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * @return device claim code
      * 
      */
     public Optional<Output<String>> claimCode() {
@@ -77,14 +77,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * device MAC address
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * @return device MAC address
      * 
      */
     public Optional<Output<String>> mac() {
@@ -188,9 +188,9 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.vcMac);
     }
 
-    private InventoryDeviceArgs() {}
+    private InventoryInventoryArgs() {}
 
-    private InventoryDeviceArgs(InventoryDeviceArgs $) {
+    private InventoryInventoryArgs(InventoryInventoryArgs $) {
         this.claimCode = $.claimCode;
         this.deviceprofileId = $.deviceprofileId;
         this.hostname = $.hostname;
@@ -208,23 +208,23 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(InventoryDeviceArgs defaults) {
+    public static Builder builder(InventoryInventoryArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private InventoryDeviceArgs $;
+        private InventoryInventoryArgs $;
 
         public Builder() {
-            $ = new InventoryDeviceArgs();
+            $ = new InventoryInventoryArgs();
         }
 
-        public Builder(InventoryDeviceArgs defaults) {
-            $ = new InventoryDeviceArgs(Objects.requireNonNull(defaults));
+        public Builder(InventoryInventoryArgs defaults) {
+            $ = new InventoryInventoryArgs(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param claimCode used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         * @param claimCode device claim code
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param claimCode used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         * @param claimCode device claim code
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         * @param mac device MAC address
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         * @param mac device MAC address
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
             return vcMac(Output.of(vcMac));
         }
 
-        public InventoryDeviceArgs build() {
+        public InventoryInventoryArgs build() {
             return $;
         }
     }

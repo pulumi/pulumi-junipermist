@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class InventoryDevice {
+public final class InventoryInventory {
     /**
-     * @return used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * @return device claim code
      * 
      */
     private @Nullable String claimCode;
@@ -33,7 +33,7 @@ public final class InventoryDevice {
      */
     private @Nullable String id;
     /**
-     * @return used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * @return device MAC address
      * 
      */
     private @Nullable String mac;
@@ -69,9 +69,9 @@ public final class InventoryDevice {
      */
     private @Nullable String vcMac;
 
-    private InventoryDevice() {}
+    private InventoryInventory() {}
     /**
-     * @return used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * @return device claim code
      * 
      */
     public Optional<String> claimCode() {
@@ -99,7 +99,7 @@ public final class InventoryDevice {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * @return device MAC address
      * 
      */
     public Optional<String> mac() {
@@ -155,7 +155,7 @@ public final class InventoryDevice {
         return new Builder();
     }
 
-    public static Builder builder(InventoryDevice defaults) {
+    public static Builder builder(InventoryInventory defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -173,7 +173,7 @@ public final class InventoryDevice {
         private @Nullable Boolean unclaimWhenDestroyed;
         private @Nullable String vcMac;
         public Builder() {}
-        public Builder(InventoryDevice defaults) {
+        public Builder(InventoryInventory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.claimCode = defaults.claimCode;
     	      this.deviceprofileId = defaults.deviceprofileId;
@@ -261,8 +261,8 @@ public final class InventoryDevice {
             this.vcMac = vcMac;
             return this;
         }
-        public InventoryDevice build() {
-            final var _resultValue = new InventoryDevice();
+        public InventoryInventory build() {
+            final var _resultValue = new InventoryInventory();
             _resultValue.claimCode = claimCode;
             _resultValue.deviceprofileId = deviceprofileId;
             _resultValue.hostname = hostname;

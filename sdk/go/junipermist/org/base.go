@@ -12,7 +12,7 @@ import (
 )
 
 // This resource manages the Mist Organization.
-// An organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
+// An organization usually represents a customer - which has inventories, licenses. An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).
 //
 // ## Example Usage
 //
@@ -57,9 +57,9 @@ type Base struct {
 	AllowMist       pulumi.BoolOutput      `pulumi:"allowMist"`
 	MspId           pulumi.StringOutput    `pulumi:"mspId"`
 	// logo uploaded by the MSP with advanced tier, only present if provided
-	MspLogoUrl pulumi.StringPtrOutput `pulumi:"mspLogoUrl"`
+	MspLogoUrl pulumi.StringOutput `pulumi:"mspLogoUrl"`
 	// name of the msp the org belongs to
-	MspName       pulumi.StringPtrOutput   `pulumi:"mspName"`
+	MspName       pulumi.StringOutput      `pulumi:"mspName"`
 	Name          pulumi.StringOutput      `pulumi:"name"`
 	OrggroupIds   pulumi.StringArrayOutput `pulumi:"orggroupIds"`
 	SessionExpiry pulumi.IntOutput         `pulumi:"sessionExpiry"`
@@ -127,24 +127,16 @@ func (BaseState) ElementType() reflect.Type {
 type baseArgs struct {
 	AlarmtemplateId *string `pulumi:"alarmtemplateId"`
 	AllowMist       *bool   `pulumi:"allowMist"`
-	// logo uploaded by the MSP with advanced tier, only present if provided
-	MspLogoUrl *string `pulumi:"mspLogoUrl"`
-	// name of the msp the org belongs to
-	MspName       *string `pulumi:"mspName"`
-	Name          *string `pulumi:"name"`
-	SessionExpiry *int    `pulumi:"sessionExpiry"`
+	Name            *string `pulumi:"name"`
+	SessionExpiry   *int    `pulumi:"sessionExpiry"`
 }
 
 // The set of arguments for constructing a Base resource.
 type BaseArgs struct {
 	AlarmtemplateId pulumi.StringPtrInput
 	AllowMist       pulumi.BoolPtrInput
-	// logo uploaded by the MSP with advanced tier, only present if provided
-	MspLogoUrl pulumi.StringPtrInput
-	// name of the msp the org belongs to
-	MspName       pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	SessionExpiry pulumi.IntPtrInput
+	Name            pulumi.StringPtrInput
+	SessionExpiry   pulumi.IntPtrInput
 }
 
 func (BaseArgs) ElementType() reflect.Type {
@@ -247,13 +239,13 @@ func (o BaseOutput) MspId() pulumi.StringOutput {
 }
 
 // logo uploaded by the MSP with advanced tier, only present if provided
-func (o BaseOutput) MspLogoUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.MspLogoUrl }).(pulumi.StringPtrOutput)
+func (o BaseOutput) MspLogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.MspLogoUrl }).(pulumi.StringOutput)
 }
 
 // name of the msp the org belongs to
-func (o BaseOutput) MspName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.MspName }).(pulumi.StringPtrOutput)
+func (o BaseOutput) MspName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.MspName }).(pulumi.StringOutput)
 }
 
 func (o BaseOutput) Name() pulumi.StringOutput {

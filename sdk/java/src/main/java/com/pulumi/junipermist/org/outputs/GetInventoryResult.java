@@ -31,6 +31,10 @@ public final class GetInventoryResult {
      */
     private @Nullable String model;
     private String orgId;
+    /**
+     * @return List of devices
+     * 
+     */
     private List<GetInventoryOrgInventory> orgInventories;
     /**
      * @return device serial
@@ -83,6 +87,10 @@ public final class GetInventoryResult {
     public String orgId() {
         return this.orgId;
     }
+    /**
+     * @return List of devices
+     * 
+     */
     public List<GetInventoryOrgInventory> orgInventories() {
         return this.orgInventories;
     }

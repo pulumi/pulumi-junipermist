@@ -186,6 +186,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public readonly string? Model;
         public readonly string OrgId;
+        /// <summary>
+        /// List of devices
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInventoryOrgInventoryResult> OrgInventories;
         /// <summary>
         /// device serial

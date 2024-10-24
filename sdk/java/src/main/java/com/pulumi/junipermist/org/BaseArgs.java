@@ -31,36 +31,6 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.allowMist);
     }
 
-    /**
-     * logo uploaded by the MSP with advanced tier, only present if provided
-     * 
-     */
-    @Import(name="mspLogoUrl")
-    private @Nullable Output<String> mspLogoUrl;
-
-    /**
-     * @return logo uploaded by the MSP with advanced tier, only present if provided
-     * 
-     */
-    public Optional<Output<String>> mspLogoUrl() {
-        return Optional.ofNullable(this.mspLogoUrl);
-    }
-
-    /**
-     * name of the msp the org belongs to
-     * 
-     */
-    @Import(name="mspName")
-    private @Nullable Output<String> mspName;
-
-    /**
-     * @return name of the msp the org belongs to
-     * 
-     */
-    public Optional<Output<String>> mspName() {
-        return Optional.ofNullable(this.mspName);
-    }
-
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -80,8 +50,6 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
     private BaseArgs(BaseArgs $) {
         this.alarmtemplateId = $.alarmtemplateId;
         this.allowMist = $.allowMist;
-        this.mspLogoUrl = $.mspLogoUrl;
-        this.mspName = $.mspName;
         this.name = $.name;
         this.sessionExpiry = $.sessionExpiry;
     }
@@ -120,48 +88,6 @@ public final class BaseArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder allowMist(Boolean allowMist) {
             return allowMist(Output.of(allowMist));
-        }
-
-        /**
-         * @param mspLogoUrl logo uploaded by the MSP with advanced tier, only present if provided
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mspLogoUrl(@Nullable Output<String> mspLogoUrl) {
-            $.mspLogoUrl = mspLogoUrl;
-            return this;
-        }
-
-        /**
-         * @param mspLogoUrl logo uploaded by the MSP with advanced tier, only present if provided
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mspLogoUrl(String mspLogoUrl) {
-            return mspLogoUrl(Output.of(mspLogoUrl));
-        }
-
-        /**
-         * @param mspName name of the msp the org belongs to
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mspName(@Nullable Output<String> mspName) {
-            $.mspName = mspName;
-            return this;
-        }
-
-        /**
-         * @param mspName name of the msp the org belongs to
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mspName(String mspName) {
-            return mspName(Output.of(mspName));
         }
 
         public Builder name(@Nullable Output<String> name) {

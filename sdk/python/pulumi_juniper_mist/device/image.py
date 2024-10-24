@@ -146,19 +146,6 @@ class Image(pulumi.CustomResource):
         This resource is used to upload a Device picture.
         This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_juniper_mist as junipermist
-
-        device_image_one = junipermist.device.Image("device_image_one",
-            device_id=inventory["devices"][1]["id"],
-            site_id=inventory["devices"][1]["siteId"],
-            file="/Users/johndoe/Documents/image.jpg",
-            image_number=1)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] file: path to the device image file to upload. File must be a `jpeg`, `jpg` or `png` image`
@@ -172,19 +159,6 @@ class Image(pulumi.CustomResource):
         """
         This resource is used to upload a Device picture.
         This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_juniper_mist as junipermist
-
-        device_image_one = junipermist.device.Image("device_image_one",
-            device_id=inventory["devices"][1]["id"],
-            site_id=inventory["devices"][1]["siteId"],
-            file="/Users/johndoe/Documents/image.jpg",
-            image_number=1)
-        ```
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.

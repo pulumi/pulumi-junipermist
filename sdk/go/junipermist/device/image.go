@@ -14,35 +14,6 @@ import (
 
 // This resource is used to upload a Device picture.
 // This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := device.NewImage(ctx, "device_image_one", &device.ImageArgs{
-//				DeviceId:    pulumi.Any(inventory.Devices[1].Id),
-//				SiteId:      pulumi.Any(inventory.Devices[1].SiteId),
-//				File:        pulumi.String("/Users/johndoe/Documents/image.jpg"),
-//				ImageNumber: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Image struct {
 	pulumi.CustomResourceState
 

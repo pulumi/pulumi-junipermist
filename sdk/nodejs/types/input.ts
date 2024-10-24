@@ -5861,37 +5861,96 @@ export namespace org {
 
     export interface InventoryDevice {
         /**
-         * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         * used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
          */
         claimCode?: pulumi.Input<string>;
         /**
-         * Device Hostname
+         * deviceprofile id if assigned, null if not assigned
+         */
+        deviceprofileId?: pulumi.Input<string>;
+        /**
+         * hostname reported by the device
          */
         hostname?: pulumi.Input<string>;
         /**
-         * Mist Device ID
+         * device id
          */
         id?: pulumi.Input<string>;
         /**
-         * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claimCode` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         * used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
          */
         mac?: pulumi.Input<string>;
         /**
-         * Device model
+         * device model
          */
         model?: pulumi.Input<string>;
         orgId?: pulumi.Input<string>;
         /**
-         * Device serial
+         * device serial
          */
         serial?: pulumi.Input<string>;
         /**
          * Site ID. Used to assign device to a Site
          */
         siteId?: pulumi.Input<string>;
+        /**
+         * enum: `ap`, `gateway`, `switch`
+         */
         type?: pulumi.Input<string>;
         /**
-         * Virtual Chassis MAC Address
+         * Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+         */
+        unclaimWhenDestroyed?: pulumi.Input<boolean>;
+        /**
+         * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+         */
+        vcMac?: pulumi.Input<string>;
+    }
+
+    export interface InventoryInventory {
+        /**
+         * device claim code
+         */
+        claimCode?: pulumi.Input<string>;
+        /**
+         * deviceprofile id if assigned, null if not assigned
+         */
+        deviceprofileId?: pulumi.Input<string>;
+        /**
+         * hostname reported by the device
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * device id
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * device MAC address
+         */
+        mac?: pulumi.Input<string>;
+        /**
+         * device model
+         */
+        model?: pulumi.Input<string>;
+        orgId?: pulumi.Input<string>;
+        /**
+         * device serial
+         */
+        serial?: pulumi.Input<string>;
+        /**
+         * Site ID. Used to assign device to a Site
+         */
+        siteId?: pulumi.Input<string>;
+        /**
+         * enum: `ap`, `gateway`, `switch`
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+         */
+        unclaimWhenDestroyed?: pulumi.Input<boolean>;
+        /**
+         * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
          */
         vcMac?: pulumi.Input<string>;
     }

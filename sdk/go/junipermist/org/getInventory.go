@@ -74,8 +74,9 @@ type LookupInventoryResult struct {
 	// MAC address
 	Mac *string `pulumi:"mac"`
 	// device model
-	Model          *string                    `pulumi:"model"`
-	OrgId          string                     `pulumi:"orgId"`
+	Model *string `pulumi:"model"`
+	OrgId string  `pulumi:"orgId"`
+	// List of devices
 	OrgInventories []GetInventoryOrgInventory `pulumi:"orgInventories"`
 	// device serial
 	Serial *string `pulumi:"serial"`
@@ -165,6 +166,7 @@ func (o LookupInventoryResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInventoryResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
+// List of devices
 func (o LookupInventoryResultOutput) OrgInventories() GetInventoryOrgInventoryArrayOutput {
 	return o.ApplyT(func(v LookupInventoryResult) []GetInventoryOrgInventory { return v.OrgInventories }).(GetInventoryOrgInventoryArrayOutput)
 }
