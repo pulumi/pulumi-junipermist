@@ -86,6 +86,9 @@ export interface GetInventoryResult {
      */
     readonly model?: string;
     readonly orgId: string;
+    /**
+     * List of devices
+     */
     readonly orgInventories: outputs.org.GetInventoryOrgInventory[];
     /**
      * device serial

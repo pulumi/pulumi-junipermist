@@ -91,6 +91,9 @@ class GetInventoryResult:
     @property
     @pulumi.getter(name="orgInventories")
     def org_inventories(self) -> Sequence['outputs.GetInventoryOrgInventoryResult']:
+        """
+        List of devices
+        """
         return pulumi.get(self, "org_inventories")
 
     @property

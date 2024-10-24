@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +17,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     public static final InventoryDeviceArgs Empty = new InventoryDeviceArgs();
 
     /**
-     * Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      * 
      */
     @Import(name="claimCode")
     private @Nullable Output<String> claimCode;
 
     /**
-     * @return Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+     * @return used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
      * 
      */
     public Optional<Output<String>> claimCode() {
@@ -31,14 +32,29 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Device Hostname
+     * deviceprofile id if assigned, null if not assigned
+     * 
+     */
+    @Import(name="deviceprofileId")
+    private @Nullable Output<String> deviceprofileId;
+
+    /**
+     * @return deviceprofile id if assigned, null if not assigned
+     * 
+     */
+    public Optional<Output<String>> deviceprofileId() {
+        return Optional.ofNullable(this.deviceprofileId);
+    }
+
+    /**
+     * hostname reported by the device
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
     /**
-     * @return Device Hostname
+     * @return hostname reported by the device
      * 
      */
     public Optional<Output<String>> hostname() {
@@ -46,14 +62,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Mist Device ID
+     * device id
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Mist Device ID
+     * @return device id
      * 
      */
     public Optional<Output<String>> id() {
@@ -61,14 +77,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
      * 
      */
     @Import(name="mac")
     private @Nullable Output<String> mac;
 
     /**
-     * @return Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+     * @return used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
      * 
      */
     public Optional<Output<String>> mac() {
@@ -76,14 +92,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Device model
+     * device model
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return Device model
+     * @return device model
      * 
      */
     public Optional<Output<String>> model() {
@@ -98,14 +114,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Device serial
+     * device serial
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return Device serial
+     * @return device serial
      * 
      */
     public Optional<Output<String>> serial() {
@@ -127,22 +143,45 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.siteId);
     }
 
+    /**
+     * enum: `ap`, `gateway`, `switch`
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
     /**
-     * Virtual Chassis MAC Address
+     * Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+     * 
+     */
+    @Import(name="unclaimWhenDestroyed")
+    private @Nullable Output<Boolean> unclaimWhenDestroyed;
+
+    /**
+     * @return Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+     * 
+     */
+    public Optional<Output<Boolean>> unclaimWhenDestroyed() {
+        return Optional.ofNullable(this.unclaimWhenDestroyed);
+    }
+
+    /**
+     * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     @Import(name="vcMac")
     private @Nullable Output<String> vcMac;
 
     /**
-     * @return Virtual Chassis MAC Address
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     public Optional<Output<String>> vcMac() {
@@ -153,6 +192,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
 
     private InventoryDeviceArgs(InventoryDeviceArgs $) {
         this.claimCode = $.claimCode;
+        this.deviceprofileId = $.deviceprofileId;
         this.hostname = $.hostname;
         this.id = $.id;
         this.mac = $.mac;
@@ -161,6 +201,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         this.serial = $.serial;
         this.siteId = $.siteId;
         this.type = $.type;
+        this.unclaimWhenDestroyed = $.unclaimWhenDestroyed;
         this.vcMac = $.vcMac;
     }
 
@@ -183,7 +224,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         * @param claimCode used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
          * 
          * @return builder
          * 
@@ -194,7 +235,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param claimCode Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+         * @param claimCode used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
          * 
          * @return builder
          * 
@@ -204,7 +245,28 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostname Device Hostname
+         * @param deviceprofileId deviceprofile id if assigned, null if not assigned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deviceprofileId(@Nullable Output<String> deviceprofileId) {
+            $.deviceprofileId = deviceprofileId;
+            return this;
+        }
+
+        /**
+         * @param deviceprofileId deviceprofile id if assigned, null if not assigned
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deviceprofileId(String deviceprofileId) {
+            return deviceprofileId(Output.of(deviceprofileId));
+        }
+
+        /**
+         * @param hostname hostname reported by the device
          * 
          * @return builder
          * 
@@ -215,7 +277,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param hostname Device Hostname
+         * @param hostname hostname reported by the device
          * 
          * @return builder
          * 
@@ -225,7 +287,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id Mist Device ID
+         * @param id device id
          * 
          * @return builder
          * 
@@ -236,7 +298,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id Mist Device ID
+         * @param id device id
          * 
          * @return builder
          * 
@@ -246,7 +308,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         * @param mac used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
          * 
          * @return builder
          * 
@@ -257,7 +319,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mac Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+         * @param mac used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
          * 
          * @return builder
          * 
@@ -267,7 +329,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param model Device model
+         * @param model device model
          * 
          * @return builder
          * 
@@ -278,7 +340,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param model Device model
+         * @param model device model
          * 
          * @return builder
          * 
@@ -297,7 +359,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serial Device serial
+         * @param serial device serial
          * 
          * @return builder
          * 
@@ -308,7 +370,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serial Device serial
+         * @param serial device serial
          * 
          * @return builder
          * 
@@ -338,17 +400,50 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param type enum: `ap`, `gateway`, `switch`
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type enum: `ap`, `gateway`, `switch`
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
         /**
-         * @param vcMac Virtual Chassis MAC Address
+         * @param unclaimWhenDestroyed Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unclaimWhenDestroyed(@Nullable Output<Boolean> unclaimWhenDestroyed) {
+            $.unclaimWhenDestroyed = unclaimWhenDestroyed;
+            return this;
+        }
+
+        /**
+         * @param unclaimWhenDestroyed Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder unclaimWhenDestroyed(Boolean unclaimWhenDestroyed) {
+            return unclaimWhenDestroyed(Output.of(unclaimWhenDestroyed));
+        }
+
+        /**
+         * @param vcMac if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
          * 
          * @return builder
          * 
@@ -359,7 +454,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vcMac Virtual Chassis MAC Address
+         * @param vcMac if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
          * 
          * @return builder
          * 

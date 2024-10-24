@@ -13,26 +13,6 @@ namespace Pulumi.JuniperMist.Device
     /// This resource manages the Wireless Access Point configuration.
     /// It can be used to define specific configuration at the device level or to override AP Device Profile (`junipermist.org.DeviceprofileAp`).
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using JuniperMist = Pulumi.JuniperMist;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var apOne = new JuniperMist.Device.Ap("ap_one", new()
-    ///     {
-    ///         Name = "test_ap",
-    ///         DeviceId = inventory.Devices[0].Id,
-    ///         SiteId = inventory.Devices[0].SiteId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_device_ap` with:

@@ -13,31 +13,37 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class InventoryDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
+        /// used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)
         /// </summary>
         [Input("claimCode")]
         public Input<string>? ClaimCode { get; set; }
 
         /// <summary>
-        /// Device Hostname
+        /// deviceprofile id if assigned, null if not assigned
+        /// </summary>
+        [Input("deviceprofileId")]
+        public Input<string>? DeviceprofileId { get; set; }
+
+        /// <summary>
+        /// hostname reported by the device
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Mist Device ID
+        /// device id
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
+        /// used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// Device model
+        /// device model
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
@@ -46,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Device serial
+        /// device serial
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
@@ -57,11 +63,20 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }
 
+        /// <summary>
+        /// enum: `ap`, `gateway`, `switch`
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Virtual Chassis MAC Address
+        /// Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
+        /// </summary>
+        [Input("unclaimWhenDestroyed")]
+        public Input<bool>? UnclaimWhenDestroyed { get; set; }
+
+        /// <summary>
+        /// if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
         /// </summary>
         [Input("vcMac")]
         public Input<string>? VcMac { get; set; }

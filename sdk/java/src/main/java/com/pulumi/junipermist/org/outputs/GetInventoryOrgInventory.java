@@ -6,7 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
+import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
@@ -29,10 +29,10 @@ public final class GetInventoryOrgInventory {
      */
     private Boolean connected;
     /**
-     * @return inventory created time, in epoch
+     * @return when the object has been created, in epoch
      * 
      */
-    private Integer createdTime;
+    private Double createdTime;
     /**
      * @return deviceprofile id if assigned, null if not assigned
      * 
@@ -65,10 +65,10 @@ public final class GetInventoryOrgInventory {
      */
     private String model;
     /**
-     * @return inventory last modified time, in epoch
+     * @return when the object has been modified for the last time, in epoch
      * 
      */
-    private Integer modifiedTime;
+    private Double modifiedTime;
     /**
      * @return device name if configured
      * 
@@ -80,6 +80,10 @@ public final class GetInventoryOrgInventory {
      * 
      */
     private String serial;
+    /**
+     * @return Site ID where the device is assigned to
+     * 
+     */
     private String siteId;
     /**
      * @return device stock keeping unit
@@ -87,7 +91,12 @@ public final class GetInventoryOrgInventory {
      */
     private String sku;
     /**
-     * @return only if `type`==`switch`, MAC Address of the Virtual Chassis
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    private String type;
+    /**
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     private String vcMac;
@@ -116,10 +125,10 @@ public final class GetInventoryOrgInventory {
         return this.connected;
     }
     /**
-     * @return inventory created time, in epoch
+     * @return when the object has been created, in epoch
      * 
      */
-    public Integer createdTime() {
+    public Double createdTime() {
         return this.createdTime;
     }
     /**
@@ -168,10 +177,10 @@ public final class GetInventoryOrgInventory {
         return this.model;
     }
     /**
-     * @return inventory last modified time, in epoch
+     * @return when the object has been modified for the last time, in epoch
      * 
      */
-    public Integer modifiedTime() {
+    public Double modifiedTime() {
         return this.modifiedTime;
     }
     /**
@@ -191,6 +200,10 @@ public final class GetInventoryOrgInventory {
     public String serial() {
         return this.serial;
     }
+    /**
+     * @return Site ID where the device is assigned to
+     * 
+     */
     public String siteId() {
         return this.siteId;
     }
@@ -202,7 +215,14 @@ public final class GetInventoryOrgInventory {
         return this.sku;
     }
     /**
-     * @return only if `type`==`switch`, MAC Address of the Virtual Chassis
+     * @return enum: `ap`, `gateway`, `switch`
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
      * 
      */
     public String vcMac() {
@@ -221,7 +241,7 @@ public final class GetInventoryOrgInventory {
         private Boolean adopted;
         private String claimCode;
         private Boolean connected;
-        private Integer createdTime;
+        private Double createdTime;
         private String deviceprofileId;
         private String hostname;
         private String hwRev;
@@ -229,12 +249,13 @@ public final class GetInventoryOrgInventory {
         private Boolean jsi;
         private String mac;
         private String model;
-        private Integer modifiedTime;
+        private Double modifiedTime;
         private String name;
         private String orgId;
         private String serial;
         private String siteId;
         private String sku;
+        private String type;
         private String vcMac;
         public Builder() {}
         public Builder(GetInventoryOrgInventory defaults) {
@@ -256,6 +277,7 @@ public final class GetInventoryOrgInventory {
     	      this.serial = defaults.serial;
     	      this.siteId = defaults.siteId;
     	      this.sku = defaults.sku;
+    	      this.type = defaults.type;
     	      this.vcMac = defaults.vcMac;
         }
 
@@ -284,7 +306,7 @@ public final class GetInventoryOrgInventory {
             return this;
         }
         @CustomType.Setter
-        public Builder createdTime(Integer createdTime) {
+        public Builder createdTime(Double createdTime) {
             if (createdTime == null) {
               throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "createdTime");
             }
@@ -348,7 +370,7 @@ public final class GetInventoryOrgInventory {
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedTime(Integer modifiedTime) {
+        public Builder modifiedTime(Double modifiedTime) {
             if (modifiedTime == null) {
               throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "modifiedTime");
             }
@@ -396,6 +418,14 @@ public final class GetInventoryOrgInventory {
             return this;
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vcMac(String vcMac) {
             if (vcMac == null) {
               throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "vcMac");
@@ -422,6 +452,7 @@ public final class GetInventoryOrgInventory {
             _resultValue.serial = serial;
             _resultValue.siteId = siteId;
             _resultValue.sku = sku;
+            _resultValue.type = type;
             _resultValue.vcMac = vcMac;
             return _resultValue;
         }

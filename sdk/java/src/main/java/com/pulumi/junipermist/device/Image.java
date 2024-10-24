@@ -18,44 +18,6 @@ import javax.annotation.Nullable;
  * This resource is used to upload a Device picture.
  * This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.device.Image;
- * import com.pulumi.junipermist.device.ImageArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var deviceImageOne = new Image("deviceImageOne", ImageArgs.builder()
- *             .deviceId(inventory.devices()[1].id())
- *             .siteId(inventory.devices()[1].siteId())
- *             .file("/Users/johndoe/Documents/image.jpg")
- *             .imageNumber(1)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  */
 @ResourceType(type="junipermist:device/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {
