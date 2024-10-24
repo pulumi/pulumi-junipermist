@@ -15026,41 +15026,50 @@
             "properties": {
                 "claimCode": {
                     "type": "string",
-                    "description": "Device Claim Code. Required for claimed devices. Removing an adopted device from the list will release it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)\n"
+                    "description": "used to claim the device to the Mist Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`)\n"
+                },
+                "deviceprofileId": {
+                    "type": "string",
+                    "description": "deviceprofile id if assigned, null if not assigned\n"
                 },
                 "hostname": {
                     "type": "string",
-                    "description": "Device Hostname\n"
+                    "description": "hostname reported by the device\n"
                 },
                 "id": {
                     "type": "string",
-                    "description": "Mist Device ID\n"
+                    "description": "device id\n"
                 },
                 "mac": {
                     "type": "string",
-                    "description": "Device MAC address. Required to assign adopted devices to site. Removing an adopted device from the list will not release it, but will unassign it from the site. Cannot be specified when `claim_code` is used. Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)\n"
+                    "description": "used to managed a device already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`)\n"
                 },
                 "model": {
                     "type": "string",
-                    "description": "Device model\n"
+                    "description": "device model\n"
                 },
                 "orgId": {
                     "type": "string"
                 },
                 "serial": {
                     "type": "string",
-                    "description": "Device serial\n"
+                    "description": "device serial\n"
                 },
                 "siteId": {
                     "type": "string",
                     "description": "Site ID. Used to assign device to a Site\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "enum: `ap`, `gateway`, `switch`\n"
+                },
+                "unclaimWhenDestroyed": {
+                    "type": "boolean",
+                    "description": "Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`\n"
                 },
                 "vcMac": {
                     "type": "string",
-                    "description": "Virtual Chassis MAC Address\n"
+                    "description": "if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster\n"
                 }
             },
             "type": "object",
@@ -15068,13 +15077,86 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "claimCode",
+                        "deviceprofileId",
                         "hostname",
                         "id",
                         "mac",
                         "model",
                         "orgId",
                         "serial",
+                        "siteId",
                         "type",
+                        "unclaimWhenDestroyed",
+                        "vcMac"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/InventoryInventory:InventoryInventory": {
+            "properties": {
+                "claimCode": {
+                    "type": "string",
+                    "description": "device claim code\n"
+                },
+                "deviceprofileId": {
+                    "type": "string",
+                    "description": "deviceprofile id if assigned, null if not assigned\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "hostname reported by the device\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "device id\n"
+                },
+                "mac": {
+                    "type": "string",
+                    "description": "device MAC address\n"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "device model\n"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "serial": {
+                    "type": "string",
+                    "description": "device serial\n"
+                },
+                "siteId": {
+                    "type": "string",
+                    "description": "Site ID. Used to assign device to a Site\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "enum: `ap`, `gateway`, `switch`\n"
+                },
+                "unclaimWhenDestroyed": {
+                    "type": "boolean",
+                    "description": "Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`\n"
+                },
+                "vcMac": {
+                    "type": "string",
+                    "description": "if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "claimCode",
+                        "deviceprofileId",
+                        "hostname",
+                        "id",
+                        "mac",
+                        "model",
+                        "orgId",
+                        "serial",
+                        "siteId",
+                        "type",
+                        "unclaimWhenDestroyed",
                         "vcMac"
                     ]
                 }
@@ -21056,8 +21138,8 @@
                     "description": "whether the device is connected\n"
                 },
                 "createdTime": {
-                    "type": "integer",
-                    "description": "inventory created time, in epoch\n"
+                    "type": "number",
+                    "description": "when the object has been created, in epoch\n"
                 },
                 "deviceprofileId": {
                     "type": "string",
@@ -21087,8 +21169,8 @@
                     "description": "device model\n"
                 },
                 "modifiedTime": {
-                    "type": "integer",
-                    "description": "inventory last modified time, in epoch\n"
+                    "type": "number",
+                    "description": "when the object has been modified for the last time, in epoch\n"
                 },
                 "name": {
                     "type": "string",
@@ -21102,15 +21184,20 @@
                     "description": "device serial\n"
                 },
                 "siteId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Site ID where the device is assigned to\n"
                 },
                 "sku": {
                     "type": "string",
                     "description": "device stock keeping unit\n"
                 },
+                "type": {
+                    "type": "string",
+                    "description": "enum: `ap`, `gateway`, `switch`\n"
+                },
                 "vcMac": {
                     "type": "string",
-                    "description": "only if `type`==`switch`, MAC Address of the Virtual Chassis\n"
+                    "description": "if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster\n"
                 }
             },
             "type": "object",
@@ -21132,6 +21219,7 @@
                 "serial",
                 "siteId",
                 "sku",
+                "type",
                 "vcMac"
             ],
             "language": {
@@ -27605,7 +27693,7 @@
     },
     "resources": {
         "junipermist:device/ap:Ap": {
-            "description": "This resource manages the Wireless Access Point configuration.\nIt can be used to define specific configuration at the device level or to override AP Device Profile (`junipermist.org.DeviceprofileAp`).\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst apOne = new junipermist.device.Ap(\"ap_one\", {\n    name: \"test_ap\",\n    deviceId: inventory.devices[0].id,\n    siteId: inventory.devices[0].siteId,\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nap_one = junipermist.device.Ap(\"ap_one\",\n    name=\"test_ap\",\n    device_id=inventory[\"devices\"][0][\"id\"],\n    site_id=inventory[\"devices\"][0][\"siteId\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var apOne = new JuniperMist.Device.Ap(\"ap_one\", new()\n    {\n        Name = \"test_ap\",\n        DeviceId = inventory.Devices[0].Id,\n        SiteId = inventory.Devices[0].SiteId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := device.NewAp(ctx, \"ap_one\", \u0026device.ApArgs{\n\t\t\tName:     pulumi.String(\"test_ap\"),\n\t\t\tDeviceId: pulumi.Any(inventory.Devices[0].Id),\n\t\t\tSiteId:   pulumi.Any(inventory.Devices[0].SiteId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.device.Ap;\nimport com.pulumi.junipermist.device.ApArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var apOne = new Ap(\"apOne\", ApArgs.builder()\n            .name(\"test_ap\")\n            .deviceId(inventory.devices()[0].id())\n            .siteId(inventory.devices()[0].siteId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  apOne:\n    type: junipermist:device:Ap\n    name: ap_one\n    properties:\n      name: test_ap\n      deviceId: ${inventory.devices[0].id}\n      siteId: ${inventory.devices[0].siteId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_device_ap` with:\n\nAP Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/ap:Ap ap_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Wireless Access Point configuration.\nIt can be used to define specific configuration at the device level or to override AP Device Profile (`junipermist.org.DeviceprofileAp`).\n\n\n## Import\n\nUsing `pulumi import`, import `mist_device_ap` with:\n\nAP Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/ap:Ap ap_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "aeroscout": {
                     "$ref": "#/types/junipermist:device/ApAeroscout:ApAeroscout",
@@ -28873,7 +28961,7 @@
             }
         },
         "junipermist:device/image:Image": {
-            "description": "This resource is used to upload a Device picture.\nThis resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst deviceImageOne = new junipermist.device.Image(\"device_image_one\", {\n    deviceId: inventory.devices[1].id,\n    siteId: inventory.devices[1].siteId,\n    file: \"/Users/johndoe/Documents/image.jpg\",\n    imageNumber: 1,\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\ndevice_image_one = junipermist.device.Image(\"device_image_one\",\n    device_id=inventory[\"devices\"][1][\"id\"],\n    site_id=inventory[\"devices\"][1][\"siteId\"],\n    file=\"/Users/johndoe/Documents/image.jpg\",\n    image_number=1)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var deviceImageOne = new JuniperMist.Device.Image(\"device_image_one\", new()\n    {\n        DeviceId = inventory.Devices[1].Id,\n        SiteId = inventory.Devices[1].SiteId,\n        File = \"/Users/johndoe/Documents/image.jpg\",\n        ImageNumber = 1,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := device.NewImage(ctx, \"device_image_one\", \u0026device.ImageArgs{\n\t\t\tDeviceId:    pulumi.Any(inventory.Devices[1].Id),\n\t\t\tSiteId:      pulumi.Any(inventory.Devices[1].SiteId),\n\t\t\tFile:        pulumi.String(\"/Users/johndoe/Documents/image.jpg\"),\n\t\t\tImageNumber: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.device.Image;\nimport com.pulumi.junipermist.device.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var deviceImageOne = new Image(\"deviceImageOne\", ImageArgs.builder()\n            .deviceId(inventory.devices()[1].id())\n            .siteId(inventory.devices()[1].siteId())\n            .file(\"/Users/johndoe/Documents/image.jpg\")\n            .imageNumber(1)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  deviceImageOne:\n    type: junipermist:device:Image\n    name: device_image_one\n    properties:\n      deviceId: ${inventory.devices[1].id}\n      siteId: ${inventory.devices[1].siteId}\n      file: /Users/johndoe/Documents/image.jpg\n      imageNumber: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "This resource is used to upload a Device picture.\nThis resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.\n\n\n",
             "properties": {
                 "deviceId": {
                     "type": "string"
@@ -28937,7 +29025,7 @@
             }
         },
         "junipermist:device/switch:Switch": {
-            "description": "This resource manages the Switch configuration.\nIt can be used to define specific configuration at the device level or to override Org/Site Network template settings.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.device.Switch;\nimport com.pulumi.junipermist.device.SwitchArgs;\nimport com.pulumi.junipermist.device.inputs.SwitchIpConfigArgs;\nimport com.pulumi.junipermist.device.inputs.SwitchMistNacArgs;\nimport com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var switchOne = new Switch(\"switchOne\", SwitchArgs.builder()\n            .name(\"switch_one\")\n            .deviceId(inventory.devices()[1].id())\n            .siteId(inventory.devices()[1].siteId())\n            .managed(true)\n            .role(\"test\")\n            .networks(Map.of(\"prx\", Map.of(\"vlanId\", \"18\")))\n            .portUsages(Map.of(\"prx\", Map.ofEntries(\n                Map.entry(\"mode\", \"trunk\"),\n                Map.entry(\"disabled\", false),\n                Map.entry(\"portNetwork\", \"default\"),\n                Map.entry(\"stpEdge\", false),\n                Map.entry(\"allNetworks\", false),\n                Map.entry(\"networks\",                 \n                    \"default\",\n                    \"prx\"),\n                Map.entry(\"speed\", \"auto\"),\n                Map.entry(\"duplex\", \"auto\"),\n                Map.entry(\"macLimit\", 0),\n                Map.entry(\"persistMac\", false),\n                Map.entry(\"poeDisabled\", false),\n                Map.entry(\"enableQos\", false),\n                Map.entry(\"stormControl\", ),\n                Map.entry(\"description\", \"\")\n            )))\n            .ipConfig(SwitchIpConfigArgs.builder()\n                .type(\"static\")\n                .ip(\"10.3.18.99\")\n                .netmask(\"255.255.255.0\")\n                .network(\"prx\")\n                .gateway(\"10.3.18.11\")\n                .build())\n            .portConfig(Map.ofEntries(\n                Map.entry(\"ge-0/0/0\", Map.ofEntries(\n                    Map.entry(\"usage\", \"prx\"),\n                    Map.entry(\"critical\", false),\n                    Map.entry(\"noLocalOverwrite\", true)\n                )),\n                Map.entry(\"ge-0/0/11\", Map.ofEntries(\n                    Map.entry(\"usage\", \"default\"),\n                    Map.entry(\"portNetwork\", \"prx\"),\n                    Map.entry(\"critical\", false)\n                ))\n            ))\n            .portMirroring(Map.of(\"test\", Map.ofEntries(\n                Map.entry(\"outputPortId\", \"ge-0/0/10\"),\n                Map.entry(\"inputPortIdsIngress\", \"ge-0/0/2\"),\n                Map.entry(\"inputPortIdsEgress\", \"ge-0/0/2\"),\n                Map.entry(\"inputNetworksIngress\", \"default\")\n            )))\n            .mistNac(SwitchMistNacArgs.builder()\n                .enabled(true)\n                .build())\n            .dhcpdConfig(SwitchDhcpdConfigArgs.builder()\n                .enabled(true)\n%!v(PANIC=Format method: interface conversion: model.Expression is *model.TemplateExpression, not *model.LiteralValueExpression))\n                .build());\n\n        }\n}\n```\n```yaml\nresources:\n  switchOne:\n    type: junipermist:device:Switch\n    name: switch_one\n    properties:\n      name: switch_one\n      deviceId: ${inventory.devices[1].id}\n      siteId: ${inventory.devices[1].siteId}\n      managed: true\n      role: test\n      networks:\n        prx:\n          vlanId: '18'\n      portUsages:\n        prx:\n          mode: trunk\n          disabled: false\n          portNetwork: default\n          stpEdge: false\n          allNetworks: false\n          networks:\n            - default\n            - prx\n          speed: auto\n          duplex: auto\n          macLimit: 0\n          persistMac: false\n          poeDisabled: false\n          enableQos: false\n          stormControl: {}\n          description:\n      ipConfig:\n        type: static\n        ip: 10.3.18.99\n        netmask: 255.255.255.0\n        network: prx\n        gateway: 10.3.18.11\n      portConfig:\n        ge-0/0/0:\n          usage: prx\n          critical: false\n          noLocalOverwrite: true\n        ge-0/0/11:\n          usage: default\n          portNetwork: prx\n          critical: false\n      portMirroring:\n        test:\n          outputPortId: ge-0/0/10\n          inputPortIdsIngress:\n            - ge-0/0/2\n          inputPortIdsEgress:\n            - ge-0/0/2\n          inputNetworksIngress:\n            - default\n      mistNac:\n        enabled: true\n      dhcpdConfig:\n        enabled: true\n        prx:\n          type: relay\n          servers:\n            - 1.2.3.4\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_device_switch` with:\n\nSwitch Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Switch configuration.\nIt can be used to define specific configuration at the device level or to override Org/Site Network template settings.\n\n\n## Import\n\nUsing `pulumi import`, import `mist_device_switch` with:\n\nSwitch Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "aclPolicies": {
                     "type": "array",
@@ -29813,7 +29901,7 @@
             }
         },
         "junipermist:org/base:base": {
-            "description": "This resource manages the Mist Organization.\nAn organization usually represents a customer - which has inventories, licenses.An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst orgOne = new junipermist.org.Base(\"org_one\", {\n    name: \"Org One\",\n    alarmtemplateId: alarmtemplateOne.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\norg_one = junipermist.org.Base(\"org_one\",\n    name=\"Org One\",\n    alarmtemplate_id=alarmtemplate_one[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var orgOne = new JuniperMist.Org.Base(\"org_one\", new()\n    {\n        Name = \"Org One\",\n        AlarmtemplateId = alarmtemplateOne.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.Newbase(ctx, \"org_one\", \u0026org.baseArgs{\n\t\t\tName:            pulumi.String(\"Org One\"),\n\t\t\tAlarmtemplateId: pulumi.Any(alarmtemplateOne.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.base;\nimport com.pulumi.junipermist.org.BaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var orgOne = new Base(\"orgOne\", BaseArgs.builder()\n            .name(\"Org One\")\n            .alarmtemplateId(alarmtemplateOne.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  orgOne:\n    type: junipermist:org:base\n    name: org_one\n    properties:\n      name: Org One\n      alarmtemplateId: ${alarmtemplateOne.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org` with:\n\nOrganization can be imported by specifying the org_id\n\n```sh\n$ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
+            "description": "This resource manages the Mist Organization.\nAn organization usually represents a customer - which has inventories, licenses. An Organization can contain multiple sites. A site usually represents a deployment at the same location (a campus, an office).\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst orgOne = new junipermist.org.Base(\"org_one\", {\n    name: \"Org One\",\n    alarmtemplateId: alarmtemplateOne.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\norg_one = junipermist.org.Base(\"org_one\",\n    name=\"Org One\",\n    alarmtemplate_id=alarmtemplate_one[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var orgOne = new JuniperMist.Org.Base(\"org_one\", new()\n    {\n        Name = \"Org One\",\n        AlarmtemplateId = alarmtemplateOne.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/org\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := org.Newbase(ctx, \"org_one\", \u0026org.baseArgs{\n\t\t\tName:            pulumi.String(\"Org One\"),\n\t\t\tAlarmtemplateId: pulumi.Any(alarmtemplateOne.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.base;\nimport com.pulumi.junipermist.org.BaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var orgOne = new Base(\"orgOne\", BaseArgs.builder()\n            .name(\"Org One\")\n            .alarmtemplateId(alarmtemplateOne.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  orgOne:\n    type: junipermist:org:base\n    name: org_one\n    properties:\n      name: Org One\n      alarmtemplateId: ${alarmtemplateOne.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org` with:\n\nOrganization can be imported by specifying the org_id\n\n```sh\n$ pulumi import junipermist:org/base:base org_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
             "properties": {
                 "alarmtemplateId": {
                     "type": "string"
@@ -29848,6 +29936,8 @@
             "required": [
                 "allowMist",
                 "mspId",
+                "mspLogoUrl",
+                "mspName",
                 "name",
                 "orggroupIds",
                 "sessionExpiry"
@@ -29858,14 +29948,6 @@
                 },
                 "allowMist": {
                     "type": "boolean"
-                },
-                "mspLogoUrl": {
-                    "type": "string",
-                    "description": "logo uploaded by the MSP with advanced tier, only present if provided\n"
-                },
-                "mspName": {
-                    "type": "string",
-                    "description": "name of the msp the org belongs to\n"
                 },
                 "name": {
                     "type": "string"
@@ -31226,13 +31308,21 @@
             }
         },
         "junipermist:org/inventory:Inventory": {
-            "description": "This resource manages the Org inventory.\nIt can be used to claim, unclaim, assign, unassign, reassign devices\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Inventory;\nimport com.pulumi.junipermist.org.InventoryArgs;\nimport com.pulumi.junipermist.org.inputs.InventoryDeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inventoryOne = new Inventory(\"inventoryOne\", InventoryArgs.builder()\n            .orgId(terraformTest.id())\n            .devices(            \n                InventoryDeviceArgs.builder()\n                    .claim_code(\"\u003cdevice_claim_code\u003e\")\n                    .site_id(terraformSite.id())\n                    .build(),\n                InventoryDeviceArgs.builder()\n                    .claim_code(\"\u003cdevice_claim_code\u003e\")\n                    .build(),\n                InventoryDeviceArgs.builder()\n                    .mac(\"\u003cdevice_mac_address\u003e\")\n                    .site_id(terraformSite.id())\n                    .build(),\n                InventoryDeviceArgs.builder()\n                    .mac(\"\u003cdevice_mac_address\u003e\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inventoryOne:\n    type: junipermist:org:Inventory\n    name: inventory_one\n    properties:\n      orgId: ${terraformTest.id}\n      devices:\n        - claim_code: \u003cdevice_claim_code\u003e\n          site_id: ${terraformSite.id}\n        - claim_code: \u003cdevice_claim_code\u003e\n        - mac: \u003cdevice_mac_address\u003e\n          site_id: ${terraformSite.id}\n        - mac: \u003cdevice_mac_address\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_inventory` with:\n\nOrg Inventory can be imported by specifying the org_id\n\n```sh\n$ pulumi import junipermist:org/inventory:Inventory inventory_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
+            "description": "This resource manages the Org Inventory.\nIt can be used to claim, unclaim, assign, unassign, reassign devices.\n\n-\u003eRemoving a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`\n\n\u003e **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate \"inconsistent result after apply\" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.\n\nThe `devices` attribute will generate inconsistent result after apply when \n* a device other than the last one is removed from the list\n* a device is added somewhere other than the end of the list\n\n\n## Import\n\nUsing `pulumi import`, import `mist_org_inventory` with:\n\nOrg Inventory can be imported by specifying the org_id\n\n```sh\n$ pulumi import junipermist:org/inventory:Inventory inventory_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
             "properties": {
                 "devices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:org/InventoryDevice:InventoryDevice"
-                    }
+                    },
+                    "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n"
+                },
+                "inventory": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/InventoryInventory:InventoryInventory"
+                    },
+                    "description": "Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist\nOrganization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device\nalready in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) \u003e\n"
                 },
                 "orgId": {
                     "type": "string"
@@ -31240,6 +31330,7 @@
             },
             "required": [
                 "devices",
+                "inventory",
                 "orgId"
             ],
             "inputProperties": {
@@ -31247,7 +31338,15 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/junipermist:org/InventoryDevice:InventoryDevice"
-                    }
+                    },
+                    "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n"
+                },
+                "inventory": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/InventoryInventory:InventoryInventory"
+                    },
+                    "description": "Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist\nOrganization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device\nalready in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) \u003e\n"
                 },
                 "orgId": {
                     "type": "string"
@@ -31263,7 +31362,15 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/junipermist:org/InventoryDevice:InventoryDevice"
-                        }
+                        },
+                        "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n"
+                    },
+                    "inventory": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:org/InventoryInventory:InventoryInventory"
+                        },
+                        "description": "Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist\nOrganization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device\nalready in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) \u003e\n"
                     },
                     "orgId": {
                         "type": "string"
@@ -40101,6 +40208,7 @@
                         "type": "string"
                     },
                     "orgInventories": {
+                        "description": "List of devices\n",
                         "items": {
                             "$ref": "#/types/junipermist:org/getInventoryOrgInventory:getInventoryOrgInventory"
                         },
