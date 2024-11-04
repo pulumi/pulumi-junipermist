@@ -133,6 +133,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// if WAN interface is on a VLAN
         /// </summary>
         public readonly int? VlanId;
+        /// <summary>
+        /// Property key is the VPN name
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigVpnPaths>? VpnPaths;
         /// <summary>
         /// when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
@@ -142,6 +145,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// optional, if spoke should reach this port by a different IP
         /// </summary>
         public readonly string? WanExtIp;
+        /// <summary>
+        /// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? WanExtraRoutes;
+        /// <summary>
+        /// if `usage`==`wan`
+        /// </summary>
+        public readonly Outputs.DeviceprofileGatewayPortConfigWanProbeOverride? WanProbeOverride;
         /// <summary>
         /// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
         /// </summary>
@@ -229,6 +240,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? wanExtIp,
 
+            ImmutableDictionary<string, Outputs.DeviceprofileGatewayPortConfigWanExtraRoutes>? wanExtraRoutes,
+
+            Outputs.DeviceprofileGatewayPortConfigWanProbeOverride? wanProbeOverride,
+
             Outputs.DeviceprofileGatewayPortConfigWanSourceNat? wanSourceNat,
 
             string? wanType)
@@ -271,6 +286,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
             VpnPaths = vpnPaths;
             WanArpPolicer = wanArpPolicer;
             WanExtIp = wanExtIp;
+            WanExtraRoutes = wanExtraRoutes;
+            WanProbeOverride = wanProbeOverride;
             WanSourceNat = wanSourceNat;
             WanType = wanType;
         }

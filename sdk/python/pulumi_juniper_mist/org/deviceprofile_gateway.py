@@ -24,7 +24,6 @@ class DeviceprofileGatewayArgs:
                  org_id: pulumi.Input[str],
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]]] = None,
-                 created_time: Optional[pulumi.Input[float]] = None,
                  dhcpd_config: Optional[pulumi.Input['DeviceprofileGatewayDhcpdConfigArgs']] = None,
                  dns_override: Optional[pulumi.Input[bool]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -33,7 +32,6 @@ class DeviceprofileGatewayArgs:
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]]] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]]] = None,
-                 modified_time: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayNetworkArgs']]]] = None,
                  ntp_override: Optional[pulumi.Input[bool]] = None,
@@ -71,8 +69,6 @@ class DeviceprofileGatewayArgs:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if bgp_config is not None:
             pulumi.set(__self__, "bgp_config", bgp_config)
-        if created_time is not None:
-            pulumi.set(__self__, "created_time", created_time)
         if dhcpd_config is not None:
             pulumi.set(__self__, "dhcpd_config", dhcpd_config)
         if dns_override is not None:
@@ -89,8 +85,6 @@ class DeviceprofileGatewayArgs:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
-        if modified_time is not None:
-            pulumi.set(__self__, "modified_time", modified_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -149,15 +143,6 @@ class DeviceprofileGatewayArgs:
     @bgp_config.setter
     def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
-
-    @property
-    @pulumi.getter(name="createdTime")
-    def created_time(self) -> Optional[pulumi.Input[float]]:
-        return pulumi.get(self, "created_time")
-
-    @created_time.setter
-    def created_time(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "created_time", value)
 
     @property
     @pulumi.getter(name="dhcpdConfig")
@@ -248,15 +233,6 @@ class DeviceprofileGatewayArgs:
     @ip_configs.setter
     def ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]]]):
         pulumi.set(self, "ip_configs", value)
-
-    @property
-    @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> Optional[pulumi.Input[float]]:
-        return pulumi.get(self, "modified_time")
-
-    @modified_time.setter
-    def modified_time(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "modified_time", value)
 
     @property
     @pulumi.getter
@@ -414,7 +390,6 @@ class _DeviceprofileGatewayState:
     def __init__(__self__, *,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]]] = None,
-                 created_time: Optional[pulumi.Input[float]] = None,
                  dhcpd_config: Optional[pulumi.Input['DeviceprofileGatewayDhcpdConfigArgs']] = None,
                  dns_override: Optional[pulumi.Input[bool]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -423,7 +398,6 @@ class _DeviceprofileGatewayState:
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutes6Args']]]] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIdpProfilesArgs']]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]]] = None,
-                 modified_time: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayNetworkArgs']]]] = None,
                  ntp_override: Optional[pulumi.Input[bool]] = None,
@@ -463,8 +437,6 @@ class _DeviceprofileGatewayState:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if bgp_config is not None:
             pulumi.set(__self__, "bgp_config", bgp_config)
-        if created_time is not None:
-            pulumi.set(__self__, "created_time", created_time)
         if dhcpd_config is not None:
             pulumi.set(__self__, "dhcpd_config", dhcpd_config)
         if dns_override is not None:
@@ -481,8 +453,6 @@ class _DeviceprofileGatewayState:
             pulumi.set(__self__, "idp_profiles", idp_profiles)
         if ip_configs is not None:
             pulumi.set(__self__, "ip_configs", ip_configs)
-        if modified_time is not None:
-            pulumi.set(__self__, "modified_time", modified_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -536,15 +506,6 @@ class _DeviceprofileGatewayState:
     @bgp_config.setter
     def bgp_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigArgs']]]]):
         pulumi.set(self, "bgp_config", value)
-
-    @property
-    @pulumi.getter(name="createdTime")
-    def created_time(self) -> Optional[pulumi.Input[float]]:
-        return pulumi.get(self, "created_time")
-
-    @created_time.setter
-    def created_time(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "created_time", value)
 
     @property
     @pulumi.getter(name="dhcpdConfig")
@@ -635,15 +596,6 @@ class _DeviceprofileGatewayState:
     @ip_configs.setter
     def ip_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayIpConfigsArgs']]]]):
         pulumi.set(self, "ip_configs", value)
-
-    @property
-    @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> Optional[pulumi.Input[float]]:
-        return pulumi.get(self, "modified_time")
-
-    @modified_time.setter
-    def modified_time(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "modified_time", value)
 
     @property
     @pulumi.getter
@@ -824,7 +776,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]]] = None,
-                 created_time: Optional[pulumi.Input[float]] = None,
                  dhcpd_config: Optional[pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']]] = None,
                  dns_override: Optional[pulumi.Input[bool]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -833,7 +784,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]]] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]]] = None,
-                 modified_time: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]]] = None,
                  ntp_override: Optional[pulumi.Input[bool]] = None,
@@ -923,7 +873,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]]] = None,
-                 created_time: Optional[pulumi.Input[float]] = None,
                  dhcpd_config: Optional[pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']]] = None,
                  dns_override: Optional[pulumi.Input[bool]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -932,7 +881,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]]] = None,
                  idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]]] = None,
                  ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]]] = None,
-                 modified_time: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]]] = None,
                  ntp_override: Optional[pulumi.Input[bool]] = None,
@@ -959,7 +907,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
 
             __props__.__dict__["additional_config_cmds"] = additional_config_cmds
             __props__.__dict__["bgp_config"] = bgp_config
-            __props__.__dict__["created_time"] = created_time
             __props__.__dict__["dhcpd_config"] = dhcpd_config
             __props__.__dict__["dns_override"] = dns_override
             __props__.__dict__["dns_servers"] = dns_servers
@@ -968,7 +915,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
             __props__.__dict__["extra_routes6"] = extra_routes6
             __props__.__dict__["idp_profiles"] = idp_profiles
             __props__.__dict__["ip_configs"] = ip_configs
-            __props__.__dict__["modified_time"] = modified_time
             __props__.__dict__["name"] = name
             __props__.__dict__["networks"] = networks
             __props__.__dict__["ntp_override"] = ntp_override
@@ -999,7 +945,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             bgp_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayBgpConfigArgs', 'DeviceprofileGatewayBgpConfigArgsDict']]]]] = None,
-            created_time: Optional[pulumi.Input[float]] = None,
             dhcpd_config: Optional[pulumi.Input[Union['DeviceprofileGatewayDhcpdConfigArgs', 'DeviceprofileGatewayDhcpdConfigArgsDict']]] = None,
             dns_override: Optional[pulumi.Input[bool]] = None,
             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1008,7 +953,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
             extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutes6Args', 'DeviceprofileGatewayExtraRoutes6ArgsDict']]]]] = None,
             idp_profiles: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIdpProfilesArgs', 'DeviceprofileGatewayIdpProfilesArgsDict']]]]] = None,
             ip_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayIpConfigsArgs', 'DeviceprofileGatewayIpConfigsArgsDict']]]]] = None,
-            modified_time: Optional[pulumi.Input[float]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeviceprofileGatewayNetworkArgs', 'DeviceprofileGatewayNetworkArgsDict']]]]] = None,
             ntp_override: Optional[pulumi.Input[bool]] = None,
@@ -1055,7 +999,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
 
         __props__.__dict__["additional_config_cmds"] = additional_config_cmds
         __props__.__dict__["bgp_config"] = bgp_config
-        __props__.__dict__["created_time"] = created_time
         __props__.__dict__["dhcpd_config"] = dhcpd_config
         __props__.__dict__["dns_override"] = dns_override
         __props__.__dict__["dns_servers"] = dns_servers
@@ -1064,7 +1007,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
         __props__.__dict__["extra_routes6"] = extra_routes6
         __props__.__dict__["idp_profiles"] = idp_profiles
         __props__.__dict__["ip_configs"] = ip_configs
-        __props__.__dict__["modified_time"] = modified_time
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         __props__.__dict__["ntp_override"] = ntp_override
@@ -1095,11 +1037,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="bgpConfig")
     def bgp_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.DeviceprofileGatewayBgpConfig']]]:
         return pulumi.get(self, "bgp_config")
-
-    @property
-    @pulumi.getter(name="createdTime")
-    def created_time(self) -> pulumi.Output[Optional[float]]:
-        return pulumi.get(self, "created_time")
 
     @property
     @pulumi.getter(name="dhcpdConfig")
@@ -1158,11 +1095,6 @@ class DeviceprofileGateway(pulumi.CustomResource):
         Property key is the network name
         """
         return pulumi.get(self, "ip_configs")
-
-    @property
-    @pulumi.getter(name="modifiedTime")
-    def modified_time(self) -> pulumi.Output[Optional[float]]:
-        return pulumi.get(self, "modified_time")
 
     @property
     @pulumi.getter

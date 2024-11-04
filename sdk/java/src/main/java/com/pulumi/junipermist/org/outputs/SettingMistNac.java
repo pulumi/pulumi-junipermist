@@ -44,12 +44,13 @@ public final class SettingMistNac {
      */
     private @Nullable Boolean euOnly;
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
      * 
      */
     private @Nullable String idpMachineCertLookupField;
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field
+     * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
      * 
      */
     private @Nullable String idpUserCertLookupField;
@@ -111,14 +112,15 @@ public final class SettingMistNac {
         return Optional.ofNullable(this.euOnly);
     }
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
      * 
      */
     public Optional<String> idpMachineCertLookupField() {
         return Optional.ofNullable(this.idpMachineCertLookupField);
     }
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field
+     * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
      * 
      */
     public Optional<String> idpUserCertLookupField() {

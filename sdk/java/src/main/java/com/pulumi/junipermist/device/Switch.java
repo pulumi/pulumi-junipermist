@@ -18,6 +18,7 @@ import com.pulumi.junipermist.device.outputs.SwitchEvpnConfig;
 import com.pulumi.junipermist.device.outputs.SwitchExtraRoutes6;
 import com.pulumi.junipermist.device.outputs.SwitchExtraRoutes;
 import com.pulumi.junipermist.device.outputs.SwitchIpConfig;
+import com.pulumi.junipermist.device.outputs.SwitchLocalPortConfig;
 import com.pulumi.junipermist.device.outputs.SwitchMistNac;
 import com.pulumi.junipermist.device.outputs.SwitchNetworks;
 import com.pulumi.junipermist.device.outputs.SwitchOobIpConfig;
@@ -221,6 +222,22 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipConfig);
     }
     /**
+     * Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+     * &#34;ge-0/0/0-10&#34;)
+     * 
+     */
+    @Export(name="localPortConfig", refs={Map.class,String.class,SwitchLocalPortConfig.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SwitchLocalPortConfig>> localPortConfig;
+
+    /**
+     * @return Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+     * &#34;ge-0/0/0-10&#34;)
+     * 
+     */
+    public Output<Optional<Map<String,SwitchLocalPortConfig>>> localPortConfig() {
+        return Codegen.optional(this.localPortConfig);
+    }
+    /**
      * device MAC address
      * 
      */
@@ -395,16 +412,18 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      * 
      */
     @Export(name="portMirroring", refs={Map.class,String.class,SwitchPortMirroring.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      * 
      */
     public Output<Optional<Map<String,SwitchPortMirroring>>> portMirroring() {

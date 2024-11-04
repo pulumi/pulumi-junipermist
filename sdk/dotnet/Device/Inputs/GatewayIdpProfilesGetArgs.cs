@@ -18,14 +18,11 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("baseProfile")]
         public Input<string>? BaseProfile { get; set; }
 
-        [Input("createdTime")]
-        public Input<double>? CreatedTime { get; set; }
-
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organnization
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
-
-        [Input("modifiedTime")]
-        public Input<double>? ModifiedTime { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

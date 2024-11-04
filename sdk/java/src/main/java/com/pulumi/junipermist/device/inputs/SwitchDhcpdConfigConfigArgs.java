@@ -23,14 +23,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     public static final SwitchDhcpdConfigConfigArgs Empty = new SwitchDhcpdConfigConfigArgs();
 
     /**
-     * if `type`==`local` - optional, if not defined, system one will be used
+     * if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -38,14 +38,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `type`==`local` - optional, if not defined, system one will be used
+     * if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -53,14 +53,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -68,14 +68,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `type`==`local` - optional, `ip` will be used if not provided
+     * if `type`==`server`  - optional, `ip` will be used if not provided
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return if `type`==`local` - optional, `ip` will be used if not provided
+     * @return if `type`==`server`  - optional, `ip` will be used if not provided
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -83,14 +83,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `type`==`local`
+     * if `type`==`server`
      * 
      */
     @Import(name="ipEnd")
     private @Nullable Output<String> ipEnd;
 
     /**
-     * @return if `type`==`local`
+     * @return if `type`==`server`
      * 
      */
     public Optional<Output<String>> ipEnd() {
@@ -98,14 +98,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `type6`==`local`
+     * if `type6`==`server`
      * 
      */
     @Import(name="ipEnd6")
     private @Nullable Output<String> ipEnd6;
 
     /**
-     * @return if `type6`==`local`
+     * @return if `type6`==`server`
      * 
      */
     public Optional<Output<String>> ipEnd6() {
@@ -113,14 +113,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `type`==`local`
+     * if `type`==`server`
      * 
      */
     @Import(name="ipStart")
     private @Nullable Output<String> ipStart;
 
     /**
-     * @return if `type`==`local`
+     * @return if `type`==`server`
      * 
      */
     public Optional<Output<String>> ipStart() {
@@ -128,14 +128,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * if `type6`==`local`
+     * if `type6`==`server`
      * 
      */
     @Import(name="ipStart6")
     private @Nullable Output<String> ipStart6;
 
     /**
-     * @return if `type6`==`local`
+     * @return if `type6`==`server`
      * 
      */
     public Optional<Output<String>> ipStart6() {
@@ -158,14 +158,14 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Property key is the DHCP option number
+     * if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigOptionsArgs>> options;
 
     /**
-     * @return Property key is the DHCP option number
+     * @return if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
      * 
      */
     public Optional<Output<Map<String,SwitchDhcpdConfigConfigOptionsArgs>>> options() {
@@ -250,7 +250,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 
@@ -259,7 +259,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
     private @Nullable Output<Map<String,SwitchDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated;
 
     /**
-     * @return Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 
@@ -308,7 +308,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsServers if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsServers if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsServers if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dnsSuffixes if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fixedBindings Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param fixedBindings Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway if `type`==`local` - optional, `ip` will be used if not provided
+         * @param gateway if `type`==`server`  - optional, `ip` will be used if not provided
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gateway if `type`==`local` - optional, `ip` will be used if not provided
+         * @param gateway if `type`==`server`  - optional, `ip` will be used if not provided
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd if `type`==`local`
+         * @param ipEnd if `type`==`server`
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd if `type`==`local`
+         * @param ipEnd if `type`==`server`
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd6 if `type6`==`local`
+         * @param ipEnd6 if `type6`==`server`
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipEnd6 if `type6`==`local`
+         * @param ipEnd6 if `type6`==`server`
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart if `type`==`local`
+         * @param ipStart if `type`==`server`
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart if `type`==`local`
+         * @param ipStart if `type`==`server`
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart6 if `type6`==`local`
+         * @param ipStart6 if `type6`==`server`
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ipStart6 if `type6`==`local`
+         * @param ipStart6 if `type6`==`server`
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options Property key is the DHCP option number
+         * @param options if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param options Property key is the DHCP option number
+         * @param options if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vendorEncapulated Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapulated if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
@@ -678,7 +678,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vendorEncapulated Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapulated if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 

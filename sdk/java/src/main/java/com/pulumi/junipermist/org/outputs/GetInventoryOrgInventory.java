@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
 
@@ -28,11 +27,6 @@ public final class GetInventoryOrgInventory {
      * 
      */
     private Boolean connected;
-    /**
-     * @return when the object has been created, in epoch
-     * 
-     */
-    private Double createdTime;
     /**
      * @return deviceprofile id if assigned, null if not assigned
      * 
@@ -64,11 +58,6 @@ public final class GetInventoryOrgInventory {
      * 
      */
     private String model;
-    /**
-     * @return when the object has been modified for the last time, in epoch
-     * 
-     */
-    private Double modifiedTime;
     /**
      * @return device name if configured
      * 
@@ -125,13 +114,6 @@ public final class GetInventoryOrgInventory {
         return this.connected;
     }
     /**
-     * @return when the object has been created, in epoch
-     * 
-     */
-    public Double createdTime() {
-        return this.createdTime;
-    }
-    /**
      * @return deviceprofile id if assigned, null if not assigned
      * 
      */
@@ -175,13 +157,6 @@ public final class GetInventoryOrgInventory {
      */
     public String model() {
         return this.model;
-    }
-    /**
-     * @return when the object has been modified for the last time, in epoch
-     * 
-     */
-    public Double modifiedTime() {
-        return this.modifiedTime;
     }
     /**
      * @return device name if configured
@@ -241,7 +216,6 @@ public final class GetInventoryOrgInventory {
         private Boolean adopted;
         private String claimCode;
         private Boolean connected;
-        private Double createdTime;
         private String deviceprofileId;
         private String hostname;
         private String hwRev;
@@ -249,7 +223,6 @@ public final class GetInventoryOrgInventory {
         private Boolean jsi;
         private String mac;
         private String model;
-        private Double modifiedTime;
         private String name;
         private String orgId;
         private String serial;
@@ -263,7 +236,6 @@ public final class GetInventoryOrgInventory {
     	      this.adopted = defaults.adopted;
     	      this.claimCode = defaults.claimCode;
     	      this.connected = defaults.connected;
-    	      this.createdTime = defaults.createdTime;
     	      this.deviceprofileId = defaults.deviceprofileId;
     	      this.hostname = defaults.hostname;
     	      this.hwRev = defaults.hwRev;
@@ -271,7 +243,6 @@ public final class GetInventoryOrgInventory {
     	      this.jsi = defaults.jsi;
     	      this.mac = defaults.mac;
     	      this.model = defaults.model;
-    	      this.modifiedTime = defaults.modifiedTime;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.serial = defaults.serial;
@@ -303,14 +274,6 @@ public final class GetInventoryOrgInventory {
               throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "connected");
             }
             this.connected = connected;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder createdTime(Double createdTime) {
-            if (createdTime == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "createdTime");
-            }
-            this.createdTime = createdTime;
             return this;
         }
         @CustomType.Setter
@@ -367,14 +330,6 @@ public final class GetInventoryOrgInventory {
               throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "model");
             }
             this.model = model;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder modifiedTime(Double modifiedTime) {
-            if (modifiedTime == null) {
-              throw new MissingRequiredPropertyException("GetInventoryOrgInventory", "modifiedTime");
-            }
-            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
@@ -438,7 +393,6 @@ public final class GetInventoryOrgInventory {
             _resultValue.adopted = adopted;
             _resultValue.claimCode = claimCode;
             _resultValue.connected = connected;
-            _resultValue.createdTime = createdTime;
             _resultValue.deviceprofileId = deviceprofileId;
             _resultValue.hostname = hostname;
             _resultValue.hwRev = hwRev;
@@ -446,7 +400,6 @@ public final class GetInventoryOrgInventory {
             _resultValue.jsi = jsi;
             _resultValue.mac = mac;
             _resultValue.model = model;
-            _resultValue.modifiedTime = modifiedTime;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.serial = serial;

@@ -22,6 +22,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     /**
      * required if
      * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     * - `type`==`gbp_resource`
      * - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
@@ -31,6 +32,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     /**
      * @return required if
      * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     * - `type`==`gbp_resource`
      * - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
@@ -104,7 +106,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * if `type`==`resource`
+     * if `type`==`resource` or `type`==`gbp_resource`
      * empty means unrestricted, i.e. any
      * 
      */
@@ -112,7 +114,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<NetworktemplateAclTagsSpecArgs>> specs;
 
     /**
-     * @return if `type`==`resource`
+     * @return if `type`==`resource` or `type`==`gbp_resource`
      * empty means unrestricted, i.e. any
      * 
      */
@@ -142,14 +144,32 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+     * enum:
+     *   * `any`: matching anything not identified
+     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `mac`
+     *   * `network`
+     *   * `radius_group`
+     *   * `resource`: can only be used in `dst_tags`
+     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `subnet`&#39;
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+     * @return enum:
+     *   * `any`: matching anything not identified
+     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `mac`
+     *   * `network`
+     *   * `radius_group`
+     *   * `resource`: can only be used in `dst_tags`
+     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `subnet`&#39;
      * 
      */
     public Output<String> type() {
@@ -189,6 +209,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         /**
          * @param gbpTag required if
          * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbp_resource`
          * - `type`==`static_gbp` (applying gbp tag against matching conditions)
          * 
          * @return builder
@@ -202,6 +223,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         /**
          * @param gbpTag required if
          * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbp_resource`
          * - `type`==`static_gbp` (applying gbp tag against matching conditions)
          * 
          * @return builder
@@ -307,7 +329,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource`
+         * @param specs if `type`==`resource` or `type`==`gbp_resource`
          * empty means unrestricted, i.e. any
          * 
          * @return builder
@@ -319,7 +341,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource`
+         * @param specs if `type`==`resource` or `type`==`gbp_resource`
          * empty means unrestricted, i.e. any
          * 
          * @return builder
@@ -330,7 +352,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource`
+         * @param specs if `type`==`resource` or `type`==`gbp_resource`
          * empty means unrestricted, i.e. any
          * 
          * @return builder
@@ -381,7 +403,16 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+         * @param type enum:
+         *   * `any`: matching anything not identified
+         *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+         *   * `gbp_resource`: can only be used in `dst_tags`
+         *   * `mac`
+         *   * `network`
+         *   * `radius_group`
+         *   * `resource`: can only be used in `dst_tags`
+         *   * `static_gbp`: applying gbp tag against matching conditions
+         *   * `subnet`&#39;
          * 
          * @return builder
          * 
@@ -392,7 +423,16 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+         * @param type enum:
+         *   * `any`: matching anything not identified
+         *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+         *   * `gbp_resource`: can only be used in `dst_tags`
+         *   * `mac`
+         *   * `network`
+         *   * `radius_group`
+         *   * `resource`: can only be used in `dst_tags`
+         *   * `static_gbp`: applying gbp tag against matching conditions
+         *   * `subnet`&#39;
          * 
          * @return builder
          * 

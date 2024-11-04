@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.junipermist.device.outputs.GatewayBgpConfigCommunity;
 import com.pulumi.junipermist.device.outputs.GatewayBgpConfigNeighbors;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -30,7 +29,6 @@ public final class GatewayBgpConfig {
      * 
      */
     private @Nullable Integer bfdMultiplier;
-    private @Nullable List<GatewayBgpConfigCommunity> communities;
     /**
      * @return BFD provides faster path failure detection and is enabled by default
      * 
@@ -118,9 +116,6 @@ public final class GatewayBgpConfig {
      */
     public Optional<Integer> bfdMultiplier() {
         return Optional.ofNullable(this.bfdMultiplier);
-    }
-    public List<GatewayBgpConfigCommunity> communities() {
-        return this.communities == null ? List.of() : this.communities;
     }
     /**
      * @return BFD provides faster path failure detection and is enabled by default
@@ -238,7 +233,6 @@ public final class GatewayBgpConfig {
         private @Nullable String authKey;
         private @Nullable Integer bfdMinimumInterval;
         private @Nullable Integer bfdMultiplier;
-        private @Nullable List<GatewayBgpConfigCommunity> communities;
         private @Nullable Boolean disableBfd;
         private @Nullable String export;
         private @Nullable String exportPolicy;
@@ -263,7 +257,6 @@ public final class GatewayBgpConfig {
     	      this.authKey = defaults.authKey;
     	      this.bfdMinimumInterval = defaults.bfdMinimumInterval;
     	      this.bfdMultiplier = defaults.bfdMultiplier;
-    	      this.communities = defaults.communities;
     	      this.disableBfd = defaults.disableBfd;
     	      this.export = defaults.export;
     	      this.exportPolicy = defaults.exportPolicy;
@@ -301,15 +294,6 @@ public final class GatewayBgpConfig {
 
             this.bfdMultiplier = bfdMultiplier;
             return this;
-        }
-        @CustomType.Setter
-        public Builder communities(@Nullable List<GatewayBgpConfigCommunity> communities) {
-
-            this.communities = communities;
-            return this;
-        }
-        public Builder communities(GatewayBgpConfigCommunity... communities) {
-            return communities(List.of(communities));
         }
         @CustomType.Setter
         public Builder disableBfd(@Nullable Boolean disableBfd) {
@@ -427,7 +411,6 @@ public final class GatewayBgpConfig {
             _resultValue.authKey = authKey;
             _resultValue.bfdMinimumInterval = bfdMinimumInterval;
             _resultValue.bfdMultiplier = bfdMultiplier;
-            _resultValue.communities = communities;
             _resultValue.disableBfd = disableBfd;
             _resultValue.export = export;
             _resultValue.exportPolicy = exportPolicy;

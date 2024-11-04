@@ -5,7 +5,7 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,24 +16,24 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
     public static final SwitchStpConfigArgs Empty = new SwitchStpConfigArgs();
 
     /**
-     * ignored for switches participating in EVPN
+     * Switch STP priority: from `0k` to `15k`
      * 
      */
-    @Import(name="vstpEnabled")
-    private @Nullable Output<Boolean> vstpEnabled;
+    @Import(name="bridgePriority")
+    private @Nullable Output<String> bridgePriority;
 
     /**
-     * @return ignored for switches participating in EVPN
+     * @return Switch STP priority: from `0k` to `15k`
      * 
      */
-    public Optional<Output<Boolean>> vstpEnabled() {
-        return Optional.ofNullable(this.vstpEnabled);
+    public Optional<Output<String>> bridgePriority() {
+        return Optional.ofNullable(this.bridgePriority);
     }
 
     private SwitchStpConfigArgs() {}
 
     private SwitchStpConfigArgs(SwitchStpConfigArgs $) {
-        this.vstpEnabled = $.vstpEnabled;
+        this.bridgePriority = $.bridgePriority;
     }
 
     public static Builder builder() {
@@ -55,24 +55,24 @@ public final class SwitchStpConfigArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vstpEnabled ignored for switches participating in EVPN
+         * @param bridgePriority Switch STP priority: from `0k` to `15k`
          * 
          * @return builder
          * 
          */
-        public Builder vstpEnabled(@Nullable Output<Boolean> vstpEnabled) {
-            $.vstpEnabled = vstpEnabled;
+        public Builder bridgePriority(@Nullable Output<String> bridgePriority) {
+            $.bridgePriority = bridgePriority;
             return this;
         }
 
         /**
-         * @param vstpEnabled ignored for switches participating in EVPN
+         * @param bridgePriority Switch STP priority: from `0k` to `15k`
          * 
          * @return builder
          * 
          */
-        public Builder vstpEnabled(Boolean vstpEnabled) {
-            return vstpEnabled(Output.of(vstpEnabled));
+        public Builder bridgePriority(String bridgePriority) {
+            return bridgePriority(Output.of(bridgePriority));
         }
 
         public SwitchStpConfigArgs build() {

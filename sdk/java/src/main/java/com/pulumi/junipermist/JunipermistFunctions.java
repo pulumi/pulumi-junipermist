@@ -16,6 +16,7 @@ import com.pulumi.junipermist.outputs.GetConstAppSubCategoriesResult;
 import com.pulumi.junipermist.outputs.GetConstApplicationsResult;
 import com.pulumi.junipermist.outputs.GetConstCountriesResult;
 import com.pulumi.junipermist.outputs.GetConstTrafficTypesResult;
+import com.pulumi.junipermist.outputs.GetConstWebhooksResult;
 import com.pulumi.junipermist.outputs.GetSitesResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
@@ -1460,6 +1461,258 @@ public final class JunipermistFunctions {
      */
     public static CompletableFuture<GetConstTrafficTypesResult> getConstTrafficTypesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", TypeShape.of(GetConstTrafficTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstWebhooksResult> getConstWebhooks() {
+        return getConstWebhooks(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstWebhooksResult> getConstWebhooksPlain() {
+        return getConstWebhooksPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstWebhooksResult> getConstWebhooks(InvokeArgs args) {
+        return getConstWebhooks(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstWebhooksResult> getConstWebhooksPlain(InvokeArgs args) {
+        return getConstWebhooksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstWebhooksResult> getConstWebhooks(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstWebhooks:getConstWebhooks", TypeShape.of(GetConstWebhooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetConstWebhooksResult> getConstWebhooksPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:index/getConstWebhooks:getConstWebhooks", TypeShape.of(GetConstWebhooksResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This datasource provides the list of sites in a Mist Organization.

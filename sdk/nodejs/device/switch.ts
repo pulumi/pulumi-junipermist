@@ -89,6 +89,11 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly ipConfig!: pulumi.Output<outputs.device.SwitchIpConfig | undefined>;
     /**
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
+     * "ge-0/0/0-10")
+     */
+    public readonly localPortConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchLocalPortConfig} | undefined>;
+    /**
      * device MAC address
      */
     public /*out*/ readonly mac!: pulumi.Output<string>;
@@ -137,8 +142,9 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.device.SwitchPortUsages} | undefined>;
@@ -226,6 +232,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["image2Url"] = state ? state.image2Url : undefined;
             resourceInputs["image3Url"] = state ? state.image3Url : undefined;
             resourceInputs["ipConfig"] = state ? state.ipConfig : undefined;
+            resourceInputs["localPortConfig"] = state ? state.localPortConfig : undefined;
             resourceInputs["mac"] = state ? state.mac : undefined;
             resourceInputs["managed"] = state ? state.managed : undefined;
             resourceInputs["mapId"] = state ? state.mapId : undefined;
@@ -281,6 +288,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["extraRoutes"] = args ? args.extraRoutes : undefined;
             resourceInputs["extraRoutes6"] = args ? args.extraRoutes6 : undefined;
             resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
+            resourceInputs["localPortConfig"] = args ? args.localPortConfig : undefined;
             resourceInputs["managed"] = args ? args.managed : undefined;
             resourceInputs["mapId"] = args ? args.mapId : undefined;
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
@@ -369,6 +377,11 @@ export interface SwitchState {
      */
     ipConfig?: pulumi.Input<inputs.device.SwitchIpConfig>;
     /**
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
+     * "ge-0/0/0-10")
+     */
+    localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
+    /**
      * device MAC address
      */
     mac?: pulumi.Input<string>;
@@ -417,8 +430,9 @@ export interface SwitchState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>}>;
@@ -520,6 +534,11 @@ export interface SwitchArgs {
      */
     ipConfig?: pulumi.Input<inputs.device.SwitchIpConfig>;
     /**
+     * Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
+     * "ge-0/0/0-10")
+     */
+    localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
+    /**
      * for an adopted switch, we don’t overwrite their existing configs automatically
      */
     managed?: pulumi.Input<boolean>;
@@ -559,8 +578,9 @@ export interface SwitchArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>}>;

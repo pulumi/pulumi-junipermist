@@ -19,17 +19,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayDhcpdConfigConfig {
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     private @Nullable List<String> dnsServers;
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     private @Nullable Map<String,GatewayDhcpdConfigConfigFixedBindings> fixedBindings;
@@ -64,7 +64,7 @@ public final class GatewayDhcpdConfigConfig {
      */
     private @Nullable Integer leaseTime;
     /**
-     * @return Property key is the DHCP option number
+     * @return if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
      * 
      */
     private @Nullable Map<String,GatewayDhcpdConfigConfigOptions> options;
@@ -95,7 +95,7 @@ public final class GatewayDhcpdConfigConfig {
      */
     private @Nullable String type6;
     /**
-     * @return Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 
@@ -104,21 +104,21 @@ public final class GatewayDhcpdConfigConfig {
 
     private GatewayDhcpdConfigConfig() {}
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Map<String,GatewayDhcpdConfigConfigFixedBindings> fixedBindings() {
@@ -167,7 +167,7 @@ public final class GatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.leaseTime);
     }
     /**
-     * @return Property key is the DHCP option number
+     * @return if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
      * 
      */
     public Map<String,GatewayDhcpdConfigConfigOptions> options() {
@@ -210,7 +210,7 @@ public final class GatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 

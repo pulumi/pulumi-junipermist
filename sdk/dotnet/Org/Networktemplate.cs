@@ -96,8 +96,9 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        /// maximum 4 port mirrorings is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -322,8 +323,9 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        /// maximum 4 port mirrorings is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringArgs> PortMirroring
         {
@@ -523,8 +525,9 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        /// maximum 4 port mirrorings is allowed
         /// </summary>
         public InputMap<Inputs.NetworktemplatePortMirroringGetArgs> PortMirroring
         {

@@ -7,10 +7,10 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GatewayNetworkInternalAccess;
 import com.pulumi.junipermist.device.outputs.GatewayNetworkInternetAccess;
+import com.pulumi.junipermist.device.outputs.GatewayNetworkMulticast;
 import com.pulumi.junipermist.device.outputs.GatewayNetworkTenants;
 import com.pulumi.junipermist.device.outputs.GatewayNetworkVpnAccess;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewayNetwork {
-    private @Nullable Double createdTime;
     /**
      * @return whether to disallow Mist Devices in the network
      * 
@@ -28,7 +27,6 @@ public final class GatewayNetwork {
     private @Nullable Boolean disallowMistServices;
     private @Nullable String gateway;
     private @Nullable String gateway6;
-    private @Nullable String id;
     private @Nullable GatewayNetworkInternalAccess internalAccess;
     /**
      * @return whether this network has direct internet access
@@ -40,9 +38,12 @@ public final class GatewayNetwork {
      * 
      */
     private @Nullable Boolean isolation;
-    private @Nullable Double modifiedTime;
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    private @Nullable GatewayNetworkMulticast multicast;
     private String name;
-    private @Nullable String orgId;
     /**
      * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
      * 
@@ -59,9 +60,6 @@ public final class GatewayNetwork {
     private @Nullable Map<String,GatewayNetworkVpnAccess> vpnAccess;
 
     private GatewayNetwork() {}
-    public Optional<Double> createdTime() {
-        return Optional.ofNullable(this.createdTime);
-    }
     /**
      * @return whether to disallow Mist Devices in the network
      * 
@@ -74,9 +72,6 @@ public final class GatewayNetwork {
     }
     public Optional<String> gateway6() {
         return Optional.ofNullable(this.gateway6);
-    }
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
     }
     public Optional<GatewayNetworkInternalAccess> internalAccess() {
         return Optional.ofNullable(this.internalAccess);
@@ -95,14 +90,15 @@ public final class GatewayNetwork {
     public Optional<Boolean> isolation() {
         return Optional.ofNullable(this.isolation);
     }
-    public Optional<Double> modifiedTime() {
-        return Optional.ofNullable(this.modifiedTime);
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public Optional<GatewayNetworkMulticast> multicast() {
+        return Optional.ofNullable(this.multicast);
     }
     public String name() {
         return this.name;
-    }
-    public Optional<String> orgId() {
-        return Optional.ofNullable(this.orgId);
     }
     /**
      * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -140,17 +136,14 @@ public final class GatewayNetwork {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Double createdTime;
         private @Nullable Boolean disallowMistServices;
         private @Nullable String gateway;
         private @Nullable String gateway6;
-        private @Nullable String id;
         private @Nullable GatewayNetworkInternalAccess internalAccess;
         private @Nullable GatewayNetworkInternetAccess internetAccess;
         private @Nullable Boolean isolation;
-        private @Nullable Double modifiedTime;
+        private @Nullable GatewayNetworkMulticast multicast;
         private String name;
-        private @Nullable String orgId;
         private @Nullable List<String> routedForNetworks;
         private String subnet;
         private @Nullable String subnet6;
@@ -160,17 +153,14 @@ public final class GatewayNetwork {
         public Builder() {}
         public Builder(GatewayNetwork defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.createdTime = defaults.createdTime;
     	      this.disallowMistServices = defaults.disallowMistServices;
     	      this.gateway = defaults.gateway;
     	      this.gateway6 = defaults.gateway6;
-    	      this.id = defaults.id;
     	      this.internalAccess = defaults.internalAccess;
     	      this.internetAccess = defaults.internetAccess;
     	      this.isolation = defaults.isolation;
-    	      this.modifiedTime = defaults.modifiedTime;
+    	      this.multicast = defaults.multicast;
     	      this.name = defaults.name;
-    	      this.orgId = defaults.orgId;
     	      this.routedForNetworks = defaults.routedForNetworks;
     	      this.subnet = defaults.subnet;
     	      this.subnet6 = defaults.subnet6;
@@ -179,12 +169,6 @@ public final class GatewayNetwork {
     	      this.vpnAccess = defaults.vpnAccess;
         }
 
-        @CustomType.Setter
-        public Builder createdTime(@Nullable Double createdTime) {
-
-            this.createdTime = createdTime;
-            return this;
-        }
         @CustomType.Setter
         public Builder disallowMistServices(@Nullable Boolean disallowMistServices) {
 
@@ -201,12 +185,6 @@ public final class GatewayNetwork {
         public Builder gateway6(@Nullable String gateway6) {
 
             this.gateway6 = gateway6;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -228,9 +206,9 @@ public final class GatewayNetwork {
             return this;
         }
         @CustomType.Setter
-        public Builder modifiedTime(@Nullable Double modifiedTime) {
+        public Builder multicast(@Nullable GatewayNetworkMulticast multicast) {
 
-            this.modifiedTime = modifiedTime;
+            this.multicast = multicast;
             return this;
         }
         @CustomType.Setter
@@ -239,12 +217,6 @@ public final class GatewayNetwork {
               throw new MissingRequiredPropertyException("GatewayNetwork", "name");
             }
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder orgId(@Nullable String orgId) {
-
-            this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
@@ -290,17 +262,14 @@ public final class GatewayNetwork {
         }
         public GatewayNetwork build() {
             final var _resultValue = new GatewayNetwork();
-            _resultValue.createdTime = createdTime;
             _resultValue.disallowMistServices = disallowMistServices;
             _resultValue.gateway = gateway;
             _resultValue.gateway6 = gateway6;
-            _resultValue.id = id;
             _resultValue.internalAccess = internalAccess;
             _resultValue.internetAccess = internetAccess;
             _resultValue.isolation = isolation;
-            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.multicast = multicast;
             _resultValue.name = name;
-            _resultValue.orgId = orgId;
             _resultValue.routedForNetworks = routedForNetworks;
             _resultValue.subnet = subnet;
             _resultValue.subnet6 = subnet6;

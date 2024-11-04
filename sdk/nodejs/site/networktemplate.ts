@@ -88,8 +88,9 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateOspfAreas} | undefined>;
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortMirroring} | undefined>;
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortUsages} | undefined>;
@@ -102,6 +103,9 @@ export class Networktemplate extends pulumi.CustomResource {
      * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
      */
     public readonly removeExistingConfigs!: pulumi.Output<boolean>;
+    /**
+     * Unique ID of the object instance in the Mist Organnization
+     */
     public readonly siteId!: pulumi.Output<string>;
     public readonly snmpConfig!: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
@@ -235,8 +239,9 @@ export interface NetworktemplateState {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
@@ -249,6 +254,9 @@ export interface NetworktemplateState {
      * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
+    /**
+     * Unique ID of the object instance in the Mist Organnization
+     */
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
@@ -311,8 +319,9 @@ export interface NetworktemplateArgs {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
@@ -325,6 +334,9 @@ export interface NetworktemplateArgs {
      * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
+    /**
+     * Unique ID of the object instance in the Mist Organnization
+     */
     siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**

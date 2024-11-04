@@ -188,6 +188,11 @@ public final class NetworktemplatePortUsages {
     private @Nullable Boolean stpNoRootPort;
     private @Nullable Boolean stpP2p;
     /**
+     * @return if this is connected to a vstp network
+     * 
+     */
+    private @Nullable Boolean useVstp;
+    /**
      * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
@@ -436,6 +441,13 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.stpP2p);
     }
     /**
+     * @return if this is connected to a vstp network
+     * 
+     */
+    public Optional<Boolean> useVstp() {
+        return Optional.ofNullable(this.useVstp);
+    }
+    /**
      * @return Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
@@ -487,6 +499,7 @@ public final class NetworktemplatePortUsages {
         private @Nullable Boolean stpEdge;
         private @Nullable Boolean stpNoRootPort;
         private @Nullable Boolean stpP2p;
+        private @Nullable Boolean useVstp;
         private @Nullable String voipNetwork;
         public Builder() {}
         public Builder(NetworktemplatePortUsages defaults) {
@@ -526,6 +539,7 @@ public final class NetworktemplatePortUsages {
     	      this.stpEdge = defaults.stpEdge;
     	      this.stpNoRootPort = defaults.stpNoRootPort;
     	      this.stpP2p = defaults.stpP2p;
+    	      this.useVstp = defaults.useVstp;
     	      this.voipNetwork = defaults.voipNetwork;
         }
 
@@ -749,6 +763,12 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder useVstp(@Nullable Boolean useVstp) {
+
+            this.useVstp = useVstp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder voipNetwork(@Nullable String voipNetwork) {
 
             this.voipNetwork = voipNetwork;
@@ -791,6 +811,7 @@ public final class NetworktemplatePortUsages {
             _resultValue.stpEdge = stpEdge;
             _resultValue.stpNoRootPort = stpNoRootPort;
             _resultValue.stpP2p = stpP2p;
+            _resultValue.useVstp = useVstp;
             _resultValue.voipNetwork = voipNetwork;
             return _resultValue;
         }

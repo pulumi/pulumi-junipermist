@@ -17,13 +17,14 @@ import com.pulumi.junipermist.org.outputs.SettingCradlepoint;
 import com.pulumi.junipermist.org.outputs.SettingDeviceCert;
 import com.pulumi.junipermist.org.outputs.SettingInstaller;
 import com.pulumi.junipermist.org.outputs.SettingJcloud;
+import com.pulumi.junipermist.org.outputs.SettingJcloudRa;
 import com.pulumi.junipermist.org.outputs.SettingJuniper;
 import com.pulumi.junipermist.org.outputs.SettingMgmt;
 import com.pulumi.junipermist.org.outputs.SettingMistNac;
 import com.pulumi.junipermist.org.outputs.SettingMxedgeMgmt;
+import com.pulumi.junipermist.org.outputs.SettingOpticPortConfig;
 import com.pulumi.junipermist.org.outputs.SettingPasswordPolicy;
 import com.pulumi.junipermist.org.outputs.SettingPcap;
-import com.pulumi.junipermist.org.outputs.SettingPortChannelization;
 import com.pulumi.junipermist.org.outputs.SettingSecurity;
 import com.pulumi.junipermist.org.outputs.SettingSwitchMgmt;
 import com.pulumi.junipermist.org.outputs.SettingSyntheticTest;
@@ -35,6 +36,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -282,6 +284,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<SettingJcloud>> jcloud() {
         return Codegen.optional(this.jcloud);
     }
+    /**
+     * JCloud Routing Assurance connexion
+     * 
+     */
+    @Export(name="jcloudRa", refs={SettingJcloudRa.class}, tree="[0]")
+    private Output</* @Nullable */ SettingJcloudRa> jcloudRa;
+
+    /**
+     * @return JCloud Routing Assurance connexion
+     * 
+     */
+    public Output<Optional<SettingJcloudRa>> jcloudRa() {
+        return Codegen.optional(this.jcloudRa);
+    }
     @Export(name="juniper", refs={SettingJuniper.class}, tree="[0]")
     private Output<SettingJuniper> juniper;
 
@@ -320,6 +336,20 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Optional<SettingMxedgeMgmt>> mxedgeMgmt() {
         return Codegen.optional(this.mxedgeMgmt);
     }
+    /**
+     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * 
+     */
+    @Export(name="opticPortConfig", refs={Map.class,String.class,SettingOpticPortConfig.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,SettingOpticPortConfig>> opticPortConfig;
+
+    /**
+     * @return Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * 
+     */
+    public Output<Optional<Map<String,SettingOpticPortConfig>>> opticPortConfig() {
+        return Codegen.optional(this.opticPortConfig);
+    }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
@@ -345,12 +375,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<SettingPcap>> pcap() {
         return Codegen.optional(this.pcap);
-    }
-    @Export(name="portChannelization", refs={SettingPortChannelization.class}, tree="[0]")
-    private Output</* @Nullable */ SettingPortChannelization> portChannelization;
-
-    public Output<Optional<SettingPortChannelization>> portChannelization() {
-        return Codegen.optional(this.portChannelization);
     }
     @Export(name="security", refs={SettingSecurity.class}, tree="[0]")
     private Output</* @Nullable */ SettingSecurity> security;

@@ -410,12 +410,22 @@ if not MYPY:
     class NetworktemplateAclTagsArgsDict(TypedDict):
         type: pulumi.Input[str]
         """
-        enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+        enum: 
+          * `any`: matching anything not identified
+          * `dynamic_gbp`: from the gbp_tag received from RADIUS
+          * `gbp_resource`: can only be used in `dst_tags`
+          * `mac`
+          * `network`
+          * `radius_group`
+          * `resource`: can only be used in `dst_tags`
+          * `static_gbp`: applying gbp tag against matching conditions
+          * `subnet`'
         """
         gbp_tag: NotRequired[pulumi.Input[int]]
         """
         required if
         - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+        - `type`==`gbp_resource`
         - `type`==`static_gbp` (applying gbp tag against matching conditions)
         """
         macs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -442,7 +452,7 @@ if not MYPY:
         """
         specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgsDict']]]]
         """
-        if `type`==`resource`
+        if `type`==`resource` or `type`==`gbp_resource`
         empty means unrestricted, i.e. any
         """
         subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -466,9 +476,19 @@ class NetworktemplateAclTagsArgs:
                  specs: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]]] = None,
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] type: enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+        :param pulumi.Input[str] type: enum: 
+                 * `any`: matching anything not identified
+                 * `dynamic_gbp`: from the gbp_tag received from RADIUS
+                 * `gbp_resource`: can only be used in `dst_tags`
+                 * `mac`
+                 * `network`
+                 * `radius_group`
+                 * `resource`: can only be used in `dst_tags`
+                 * `static_gbp`: applying gbp tag against matching conditions
+                 * `subnet`'
         :param pulumi.Input[int] gbp_tag: required if
                - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+               - `type`==`gbp_resource`
                - `type`==`static_gbp` (applying gbp tag against matching conditions)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: required if 
                - `type`==`mac`
@@ -483,7 +503,7 @@ class NetworktemplateAclTagsArgs:
                  * `type`==`radius_group`
                  * `type`==`static_gbp`
                if from matching radius_group
-        :param pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]] specs: if `type`==`resource`
+        :param pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]] specs: if `type`==`resource` or `type`==`gbp_resource`
                empty means unrestricted, i.e. any
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: if 
                - `type`==`subnet` 
@@ -508,7 +528,16 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+        enum: 
+          * `any`: matching anything not identified
+          * `dynamic_gbp`: from the gbp_tag received from RADIUS
+          * `gbp_resource`: can only be used in `dst_tags`
+          * `mac`
+          * `network`
+          * `radius_group`
+          * `resource`: can only be used in `dst_tags`
+          * `static_gbp`: applying gbp tag against matching conditions
+          * `subnet`'
         """
         return pulumi.get(self, "type")
 
@@ -522,6 +551,7 @@ class NetworktemplateAclTagsArgs:
         """
         required if
         - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+        - `type`==`gbp_resource`
         - `type`==`static_gbp` (applying gbp tag against matching conditions)
         """
         return pulumi.get(self, "gbp_tag")
@@ -580,7 +610,7 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]]]:
         """
-        if `type`==`resource`
+        if `type`==`resource` or `type`==`gbp_resource`
         empty means unrestricted, i.e. any
         """
         return pulumi.get(self, "specs")
@@ -1668,6 +1698,10 @@ if not MYPY:
         """
         stp_no_root_port: NotRequired[pulumi.Input[bool]]
         stp_p2p: NotRequired[pulumi.Input[bool]]
+        use_vstp: NotRequired[pulumi.Input[bool]]
+        """
+        if this is connected to a vstp network
+        """
         voip_network: NotRequired[pulumi.Input[str]]
         """
         Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
@@ -1713,6 +1747,7 @@ class NetworktemplatePortUsagesArgs:
                  stp_edge: Optional[pulumi.Input[bool]] = None,
                  stp_no_root_port: Optional[pulumi.Input[bool]] = None,
                  stp_p2p: Optional[pulumi.Input[bool]] = None,
+                 use_vstp: Optional[pulumi.Input[bool]] = None,
                  voip_network: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
@@ -1752,6 +1787,7 @@ class NetworktemplatePortUsagesArgs:
         :param pulumi.Input['NetworktemplatePortUsagesStormControlArgs'] storm_control: Switch storm control
                Only if `mode`!=`dynamic`
         :param pulumi.Input[bool] stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
+        :param pulumi.Input[bool] use_vstp: if this is connected to a vstp network
         :param pulumi.Input[str] voip_network: Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         """
         if all_networks is not None:
@@ -1824,6 +1860,8 @@ class NetworktemplatePortUsagesArgs:
             pulumi.set(__self__, "stp_no_root_port", stp_no_root_port)
         if stp_p2p is not None:
             pulumi.set(__self__, "stp_p2p", stp_p2p)
+        if use_vstp is not None:
+            pulumi.set(__self__, "use_vstp", use_vstp)
         if voip_network is not None:
             pulumi.set(__self__, "voip_network", voip_network)
 
@@ -2246,6 +2284,18 @@ class NetworktemplatePortUsagesArgs:
         pulumi.set(self, "stp_p2p", value)
 
     @property
+    @pulumi.getter(name="useVstp")
+    def use_vstp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        if this is connected to a vstp network
+        """
+        return pulumi.get(self, "use_vstp")
+
+    @use_vstp.setter
+    def use_vstp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_vstp", value)
+
+    @property
     @pulumi.getter(name="voipNetwork")
     def voip_network(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2496,8 +2546,6 @@ if not MYPY:
         """
         radius auth session timeout
         """
-        coa_enabled: NotRequired[pulumi.Input[bool]]
-        coa_port: NotRequired[pulumi.Input[int]]
         network: NotRequired[pulumi.Input[str]]
         """
         use `network`or `source_ip`
@@ -2518,8 +2566,6 @@ class NetworktemplateRadiusConfigArgs:
                  auth_servers: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateRadiusConfigAuthServerArgs']]]] = None,
                  auth_servers_retries: Optional[pulumi.Input[int]] = None,
                  auth_servers_timeout: Optional[pulumi.Input[int]] = None,
-                 coa_enabled: Optional[pulumi.Input[bool]] = None,
-                 coa_port: Optional[pulumi.Input[int]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None):
         """
@@ -2540,10 +2586,6 @@ class NetworktemplateRadiusConfigArgs:
             pulumi.set(__self__, "auth_servers_retries", auth_servers_retries)
         if auth_servers_timeout is not None:
             pulumi.set(__self__, "auth_servers_timeout", auth_servers_timeout)
-        if coa_enabled is not None:
-            pulumi.set(__self__, "coa_enabled", coa_enabled)
-        if coa_port is not None:
-            pulumi.set(__self__, "coa_port", coa_port)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if source_ip is not None:
@@ -2602,24 +2644,6 @@ class NetworktemplateRadiusConfigArgs:
     @auth_servers_timeout.setter
     def auth_servers_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "auth_servers_timeout", value)
-
-    @property
-    @pulumi.getter(name="coaEnabled")
-    def coa_enabled(self) -> Optional[pulumi.Input[bool]]:
-        return pulumi.get(self, "coa_enabled")
-
-    @coa_enabled.setter
-    def coa_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "coa_enabled", value)
-
-    @property
-    @pulumi.getter(name="coaPort")
-    def coa_port(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "coa_port")
-
-    @coa_port.setter
-    def coa_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "coa_port", value)
 
     @property
     @pulumi.getter
@@ -5134,8 +5158,8 @@ if not MYPY:
         """
         port_mirroring: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgsDict']]]]
         """
-        Property key is the port mirroring instance name (Maximum: 4)
-        port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name
+        port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
         """
 elif False:
     NetworktemplateSwitchMatchingRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -5161,8 +5185,8 @@ class NetworktemplateSwitchMatchingRuleArgs:
         :param pulumi.Input[str] match_type: 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         :param pulumi.Input['NetworktemplateSwitchMatchingRuleOobIpConfigArgs'] oob_ip_config: Out-of-Band Management interface configuration
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]] port_config: Propery key is the interface name or interface range
-        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4)
-               port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name
+               port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -5279,8 +5303,8 @@ class NetworktemplateSwitchMatchingRuleArgs:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name (Maximum: 4)
-        port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name
+        port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
         """
         return pulumi.get(self, "port_mirroring")
 

@@ -5,7 +5,6 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayBgpConfigCommunityArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayBgpConfigNeighborsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -60,13 +59,6 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
      */
     public Optional<Output<Integer>> bfdMultiplier() {
         return Optional.ofNullable(this.bfdMultiplier);
-    }
-
-    @Import(name="communities")
-    private @Nullable Output<List<DeviceprofileGatewayBgpConfigCommunityArgs>> communities;
-
-    public Optional<Output<List<DeviceprofileGatewayBgpConfigCommunityArgs>>> communities() {
-        return Optional.ofNullable(this.communities);
     }
 
     /**
@@ -299,7 +291,6 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         this.authKey = $.authKey;
         this.bfdMinimumInterval = $.bfdMinimumInterval;
         this.bfdMultiplier = $.bfdMultiplier;
-        this.communities = $.communities;
         this.disableBfd = $.disableBfd;
         this.export = $.export;
         this.exportPolicy = $.exportPolicy;
@@ -391,19 +382,6 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
          */
         public Builder bfdMultiplier(Integer bfdMultiplier) {
             return bfdMultiplier(Output.of(bfdMultiplier));
-        }
-
-        public Builder communities(@Nullable Output<List<DeviceprofileGatewayBgpConfigCommunityArgs>> communities) {
-            $.communities = communities;
-            return this;
-        }
-
-        public Builder communities(List<DeviceprofileGatewayBgpConfigCommunityArgs> communities) {
-            return communities(Output.of(communities));
-        }
-
-        public Builder communities(DeviceprofileGatewayBgpConfigCommunityArgs... communities) {
-            return communities(List.of(communities));
         }
 
         /**

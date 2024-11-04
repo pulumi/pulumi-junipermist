@@ -22,7 +22,6 @@ import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelProviderOptio
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayVrfConfigArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayVrfInstancesArgs;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -55,13 +54,6 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
 
     public Optional<Output<Map<String,DeviceprofileGatewayBgpConfigArgs>>> bgpConfig() {
         return Optional.ofNullable(this.bgpConfig);
-    }
-
-    @Import(name="createdTime")
-    private @Nullable Output<Double> createdTime;
-
-    public Optional<Output<Double>> createdTime() {
-        return Optional.ofNullable(this.createdTime);
     }
 
     @Import(name="dhcpdConfig")
@@ -166,13 +158,6 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Map<String,DeviceprofileGatewayIpConfigsArgs>>> ipConfigs() {
         return Optional.ofNullable(this.ipConfigs);
-    }
-
-    @Import(name="modifiedTime")
-    private @Nullable Output<Double> modifiedTime;
-
-    public Optional<Output<Double>> modifiedTime() {
-        return Optional.ofNullable(this.modifiedTime);
     }
 
     @Import(name="name")
@@ -364,7 +349,6 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
     private DeviceprofileGatewayState(DeviceprofileGatewayState $) {
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.bgpConfig = $.bgpConfig;
-        this.createdTime = $.createdTime;
         this.dhcpdConfig = $.dhcpdConfig;
         this.dnsOverride = $.dnsOverride;
         this.dnsServers = $.dnsServers;
@@ -373,7 +357,6 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
         this.extraRoutes6 = $.extraRoutes6;
         this.idpProfiles = $.idpProfiles;
         this.ipConfigs = $.ipConfigs;
-        this.modifiedTime = $.modifiedTime;
         this.name = $.name;
         this.networks = $.networks;
         this.ntpOverride = $.ntpOverride;
@@ -448,15 +431,6 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
 
         public Builder bgpConfig(Map<String,DeviceprofileGatewayBgpConfigArgs> bgpConfig) {
             return bgpConfig(Output.of(bgpConfig));
-        }
-
-        public Builder createdTime(@Nullable Output<Double> createdTime) {
-            $.createdTime = createdTime;
-            return this;
-        }
-
-        public Builder createdTime(Double createdTime) {
-            return createdTime(Output.of(createdTime));
         }
 
         public Builder dhcpdConfig(@Nullable Output<DeviceprofileGatewayDhcpdConfigArgs> dhcpdConfig) {
@@ -621,15 +595,6 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
          */
         public Builder ipConfigs(Map<String,DeviceprofileGatewayIpConfigsArgs> ipConfigs) {
             return ipConfigs(Output.of(ipConfigs));
-        }
-
-        public Builder modifiedTime(@Nullable Output<Double> modifiedTime) {
-            $.modifiedTime = modifiedTime;
-            return this;
-        }
-
-        public Builder modifiedTime(Double modifiedTime) {
-            return modifiedTime(Output.of(modifiedTime));
         }
 
         public Builder name(@Nullable Output<String> name) {

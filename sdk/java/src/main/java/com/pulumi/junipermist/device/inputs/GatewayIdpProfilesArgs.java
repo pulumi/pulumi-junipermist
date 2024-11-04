@@ -6,7 +6,6 @@ package com.pulumi.junipermist.device.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.GatewayIdpProfilesOverwriteArgs;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,25 +32,19 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.baseProfile);
     }
 
-    @Import(name="createdTime")
-    private @Nullable Output<Double> createdTime;
-
-    public Optional<Output<Double>> createdTime() {
-        return Optional.ofNullable(this.createdTime);
-    }
-
+    /**
+     * Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
-    }
-
-    @Import(name="modifiedTime")
-    private @Nullable Output<Double> modifiedTime;
-
-    public Optional<Output<Double>> modifiedTime() {
-        return Optional.ofNullable(this.modifiedTime);
     }
 
     @Import(name="name")
@@ -79,9 +72,7 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
 
     private GatewayIdpProfilesArgs(GatewayIdpProfilesArgs $) {
         this.baseProfile = $.baseProfile;
-        this.createdTime = $.createdTime;
         this.id = $.id;
-        this.modifiedTime = $.modifiedTime;
         this.name = $.name;
         this.orgId = $.orgId;
         this.overwrites = $.overwrites;
@@ -126,31 +117,25 @@ public final class GatewayIdpProfilesArgs extends com.pulumi.resources.ResourceA
             return baseProfile(Output.of(baseProfile));
         }
 
-        public Builder createdTime(@Nullable Output<Double> createdTime) {
-            $.createdTime = createdTime;
-            return this;
-        }
-
-        public Builder createdTime(Double createdTime) {
-            return createdTime(Output.of(createdTime));
-        }
-
+        /**
+         * @param id Unique ID of the object instance in the Mist Organnization
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param id Unique ID of the object instance in the Mist Organnization
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             return id(Output.of(id));
-        }
-
-        public Builder modifiedTime(@Nullable Output<Double> modifiedTime) {
-            $.modifiedTime = modifiedTime;
-            return this;
-        }
-
-        public Builder modifiedTime(Double modifiedTime) {
-            return modifiedTime(Output.of(modifiedTime));
         }
 
         public Builder name(@Nullable Output<String> name) {

@@ -8,10 +8,10 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.inputs.GatewayNetworkInternalAccessArgs;
 import com.pulumi.junipermist.device.inputs.GatewayNetworkInternetAccessArgs;
+import com.pulumi.junipermist.device.inputs.GatewayNetworkMulticastArgs;
 import com.pulumi.junipermist.device.inputs.GatewayNetworkTenantsArgs;
 import com.pulumi.junipermist.device.inputs.GatewayNetworkVpnAccessArgs;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,13 +23,6 @@ import javax.annotation.Nullable;
 public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GatewayNetworkArgs Empty = new GatewayNetworkArgs();
-
-    @Import(name="createdTime")
-    private @Nullable Output<Double> createdTime;
-
-    public Optional<Output<Double>> createdTime() {
-        return Optional.ofNullable(this.createdTime);
-    }
 
     /**
      * whether to disallow Mist Devices in the network
@@ -58,13 +51,6 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
 
     public Optional<Output<String>> gateway6() {
         return Optional.ofNullable(this.gateway6);
-    }
-
-    @Import(name="id")
-    private @Nullable Output<String> id;
-
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
     }
 
     @Import(name="internalAccess")
@@ -104,11 +90,19 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.isolation);
     }
 
-    @Import(name="modifiedTime")
-    private @Nullable Output<Double> modifiedTime;
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    @Import(name="multicast")
+    private @Nullable Output<GatewayNetworkMulticastArgs> multicast;
 
-    public Optional<Output<Double>> modifiedTime() {
-        return Optional.ofNullable(this.modifiedTime);
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public Optional<Output<GatewayNetworkMulticastArgs>> multicast() {
+        return Optional.ofNullable(this.multicast);
     }
 
     @Import(name="name", required=true)
@@ -116,13 +110,6 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
 
     public Output<String> name() {
         return this.name;
-    }
-
-    @Import(name="orgId")
-    private @Nullable Output<String> orgId;
-
-    public Optional<Output<String>> orgId() {
-        return Optional.ofNullable(this.orgId);
     }
 
     /**
@@ -186,17 +173,14 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
     private GatewayNetworkArgs() {}
 
     private GatewayNetworkArgs(GatewayNetworkArgs $) {
-        this.createdTime = $.createdTime;
         this.disallowMistServices = $.disallowMistServices;
         this.gateway = $.gateway;
         this.gateway6 = $.gateway6;
-        this.id = $.id;
         this.internalAccess = $.internalAccess;
         this.internetAccess = $.internetAccess;
         this.isolation = $.isolation;
-        this.modifiedTime = $.modifiedTime;
+        this.multicast = $.multicast;
         this.name = $.name;
-        this.orgId = $.orgId;
         this.routedForNetworks = $.routedForNetworks;
         this.subnet = $.subnet;
         this.subnet6 = $.subnet6;
@@ -221,15 +205,6 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(GatewayNetworkArgs defaults) {
             $ = new GatewayNetworkArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder createdTime(@Nullable Output<Double> createdTime) {
-            $.createdTime = createdTime;
-            return this;
-        }
-
-        public Builder createdTime(Double createdTime) {
-            return createdTime(Output.of(createdTime));
         }
 
         /**
@@ -269,15 +244,6 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder gateway6(String gateway6) {
             return gateway6(Output.of(gateway6));
-        }
-
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        public Builder id(String id) {
-            return id(Output.of(id));
         }
 
         public Builder internalAccess(@Nullable Output<GatewayNetworkInternalAccessArgs> internalAccess) {
@@ -331,13 +297,25 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
             return isolation(Output.of(isolation));
         }
 
-        public Builder modifiedTime(@Nullable Output<Double> modifiedTime) {
-            $.modifiedTime = modifiedTime;
+        /**
+         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(@Nullable Output<GatewayNetworkMulticastArgs> multicast) {
+            $.multicast = multicast;
             return this;
         }
 
-        public Builder modifiedTime(Double modifiedTime) {
-            return modifiedTime(Output.of(modifiedTime));
+        /**
+         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(GatewayNetworkMulticastArgs multicast) {
+            return multicast(Output.of(multicast));
         }
 
         public Builder name(Output<String> name) {
@@ -347,15 +325,6 @@ public final class GatewayNetworkArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        public Builder orgId(@Nullable Output<String> orgId) {
-            $.orgId = orgId;
-            return this;
-        }
-
-        public Builder orgId(String orgId) {
-            return orgId(Output.of(orgId));
         }
 
         /**
