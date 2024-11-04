@@ -239,6 +239,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? StpP2p { get; set; }
 
         /// <summary>
+        /// if this is connected to a vstp network
+        /// </summary>
+        [Input("useVstp")]
+        public Input<bool>? UseVstp { get; set; }
+
+        /// <summary>
         /// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         /// </summary>
         [Input("voipNetwork")]

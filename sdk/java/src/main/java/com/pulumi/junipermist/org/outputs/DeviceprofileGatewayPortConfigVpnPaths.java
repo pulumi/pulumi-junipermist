@@ -15,22 +15,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayPortConfigVpnPaths {
     /**
-     * @return enum: `broadband`, `lte`
+     * @return Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
      * 
      */
     private @Nullable String bfdProfile;
     /**
-     * @return whether to use tunnel mode. SSR only
+     * @return Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
      * 
      */
     private @Nullable Boolean bfdUseTunnelMode;
     /**
-     * @return for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+     * @return Only if the VPN `type`==`mesh`
+     * 
+     */
+    private @Nullable String linkName;
+    /**
+     * @return Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
     private @Nullable Integer preference;
     /**
-     * @return enum: `hub`, `spoke`
+     * @return Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
      * 
      */
     private @Nullable String role;
@@ -38,28 +43,35 @@ public final class DeviceprofileGatewayPortConfigVpnPaths {
 
     private DeviceprofileGatewayPortConfigVpnPaths() {}
     /**
-     * @return enum: `broadband`, `lte`
+     * @return Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
      * 
      */
     public Optional<String> bfdProfile() {
         return Optional.ofNullable(this.bfdProfile);
     }
     /**
-     * @return whether to use tunnel mode. SSR only
+     * @return Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
      * 
      */
     public Optional<Boolean> bfdUseTunnelMode() {
         return Optional.ofNullable(this.bfdUseTunnelMode);
     }
     /**
-     * @return for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+     * @return Only if the VPN `type`==`mesh`
+     * 
+     */
+    public Optional<String> linkName() {
+        return Optional.ofNullable(this.linkName);
+    }
+    /**
+     * @return Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
      * 
      */
     public Optional<Integer> preference() {
         return Optional.ofNullable(this.preference);
     }
     /**
-     * @return enum: `hub`, `spoke`
+     * @return Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
      * 
      */
     public Optional<String> role() {
@@ -80,6 +92,7 @@ public final class DeviceprofileGatewayPortConfigVpnPaths {
     public static final class Builder {
         private @Nullable String bfdProfile;
         private @Nullable Boolean bfdUseTunnelMode;
+        private @Nullable String linkName;
         private @Nullable Integer preference;
         private @Nullable String role;
         private @Nullable DeviceprofileGatewayPortConfigVpnPathsTrafficShaping trafficShaping;
@@ -88,6 +101,7 @@ public final class DeviceprofileGatewayPortConfigVpnPaths {
     	      Objects.requireNonNull(defaults);
     	      this.bfdProfile = defaults.bfdProfile;
     	      this.bfdUseTunnelMode = defaults.bfdUseTunnelMode;
+    	      this.linkName = defaults.linkName;
     	      this.preference = defaults.preference;
     	      this.role = defaults.role;
     	      this.trafficShaping = defaults.trafficShaping;
@@ -103,6 +117,12 @@ public final class DeviceprofileGatewayPortConfigVpnPaths {
         public Builder bfdUseTunnelMode(@Nullable Boolean bfdUseTunnelMode) {
 
             this.bfdUseTunnelMode = bfdUseTunnelMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder linkName(@Nullable String linkName) {
+
+            this.linkName = linkName;
             return this;
         }
         @CustomType.Setter
@@ -127,6 +147,7 @@ public final class DeviceprofileGatewayPortConfigVpnPaths {
             final var _resultValue = new DeviceprofileGatewayPortConfigVpnPaths();
             _resultValue.bfdProfile = bfdProfile;
             _resultValue.bfdUseTunnelMode = bfdUseTunnelMode;
+            _resultValue.linkName = linkName;
             _resultValue.preference = preference;
             _resultValue.role = role;
             _resultValue.trafficShaping = trafficShaping;

@@ -13,10 +13,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchStpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ignored for switches participating in EVPN
+        /// Switch STP priority: from `0k` to `15k`
         /// </summary>
-        [Input("vstpEnabled")]
-        public Input<bool>? VstpEnabled { get; set; }
+        [Input("bridgePriority")]
+        public Input<string>? BridgePriority { get; set; }
 
         public SwitchStpConfigArgs()
         {

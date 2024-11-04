@@ -27,7 +27,6 @@ import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelProviderOpti
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayVrfConfig;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayVrfInstances;
 import java.lang.Boolean;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -178,12 +177,6 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,DeviceprofileGatewayBgpConfig>>> bgpConfig() {
         return Codegen.optional(this.bgpConfig);
     }
-    @Export(name="createdTime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> createdTime;
-
-    public Output<Optional<Double>> createdTime() {
-        return Codegen.optional(this.createdTime);
-    }
     @Export(name="dhcpdConfig", refs={DeviceprofileGatewayDhcpdConfig.class}, tree="[0]")
     private Output</* @Nullable */ DeviceprofileGatewayDhcpdConfig> dhcpdConfig;
 
@@ -279,12 +272,6 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,DeviceprofileGatewayIpConfigs>>> ipConfigs() {
         return Codegen.optional(this.ipConfigs);
-    }
-    @Export(name="modifiedTime", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> modifiedTime;
-
-    public Output<Optional<Double>> modifiedTime() {
-        return Codegen.optional(this.modifiedTime);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;

@@ -17,9 +17,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// enum: `critical`, `standard`, `strict`
         /// </summary>
         public readonly string? BaseProfile;
-        public readonly double? CreatedTime;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organnization
+        /// </summary>
         public readonly string? Id;
-        public readonly double? ModifiedTime;
         public readonly string? Name;
         public readonly string? OrgId;
         public readonly ImmutableArray<Outputs.GatewayIdpProfilesOverwrite> Overwrites;
@@ -28,11 +29,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         private GatewayIdpProfiles(
             string? baseProfile,
 
-            double? createdTime,
-
             string? id,
-
-            double? modifiedTime,
 
             string? name,
 
@@ -41,9 +38,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             ImmutableArray<Outputs.GatewayIdpProfilesOverwrite> overwrites)
         {
             BaseProfile = baseProfile;
-            CreatedTime = createdTime;
             Id = id;
-            ModifiedTime = modifiedTime;
             Name = name;
             OrgId = orgId;
             Overwrites = overwrites;

@@ -18,6 +18,7 @@ public final class SwitchAclTags {
     /**
      * @return required if
      * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     * - `type`==`gbp_resource`
      * - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
@@ -48,7 +49,7 @@ public final class SwitchAclTags {
      */
     private @Nullable String radiusGroup;
     /**
-     * @return if `type`==`resource`
+     * @return if `type`==`resource` or `type`==`gbp_resource`
      * empty means unrestricted, i.e. any
      * 
      */
@@ -62,7 +63,16 @@ public final class SwitchAclTags {
      */
     private @Nullable List<String> subnets;
     /**
-     * @return enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+     * @return enum:
+     *   * `any`: matching anything not identified
+     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `mac`
+     *   * `network`
+     *   * `radius_group`
+     *   * `resource`: can only be used in `dst_tags`
+     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `subnet`&#39;
      * 
      */
     private String type;
@@ -71,6 +81,7 @@ public final class SwitchAclTags {
     /**
      * @return required if
      * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     * - `type`==`gbp_resource`
      * - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
@@ -109,7 +120,7 @@ public final class SwitchAclTags {
         return Optional.ofNullable(this.radiusGroup);
     }
     /**
-     * @return if `type`==`resource`
+     * @return if `type`==`resource` or `type`==`gbp_resource`
      * empty means unrestricted, i.e. any
      * 
      */
@@ -127,7 +138,16 @@ public final class SwitchAclTags {
         return this.subnets == null ? List.of() : this.subnets;
     }
     /**
-     * @return enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+     * @return enum:
+     *   * `any`: matching anything not identified
+     *   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+     *   * `gbp_resource`: can only be used in `dst_tags`
+     *   * `mac`
+     *   * `network`
+     *   * `radius_group`
+     *   * `resource`: can only be used in `dst_tags`
+     *   * `static_gbp`: applying gbp tag against matching conditions
+     *   * `subnet`&#39;
      * 
      */
     public String type() {

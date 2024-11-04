@@ -86,6 +86,10 @@ export class Setting extends pulumi.CustomResource {
     public readonly gatewayUpdownThreshold!: pulumi.Output<number>;
     public readonly installer!: pulumi.Output<outputs.org.SettingInstaller | undefined>;
     public readonly jcloud!: pulumi.Output<outputs.org.SettingJcloud | undefined>;
+    /**
+     * JCloud Routing Assurance connexion
+     */
+    public readonly jcloudRa!: pulumi.Output<outputs.org.SettingJcloudRa | undefined>;
     public /*out*/ readonly juniper!: pulumi.Output<outputs.org.SettingJuniper>;
     /**
      * management-related properties
@@ -94,13 +98,16 @@ export class Setting extends pulumi.CustomResource {
     public readonly mistNac!: pulumi.Output<outputs.org.SettingMistNac | undefined>;
     public readonly mxedgeFipsEnabled!: pulumi.Output<boolean>;
     public readonly mxedgeMgmt!: pulumi.Output<outputs.org.SettingMxedgeMgmt | undefined>;
+    /**
+     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     */
+    public readonly opticPortConfig!: pulumi.Output<{[key: string]: outputs.org.SettingOpticPortConfig} | undefined>;
     public readonly orgId!: pulumi.Output<string>;
     /**
      * password policy
      */
     public readonly passwordPolicy!: pulumi.Output<outputs.org.SettingPasswordPolicy | undefined>;
     public readonly pcap!: pulumi.Output<outputs.org.SettingPcap | undefined>;
-    public readonly portChannelization!: pulumi.Output<outputs.org.SettingPortChannelization | undefined>;
     public readonly security!: pulumi.Output<outputs.org.SettingSecurity | undefined>;
     public readonly switchMgmt!: pulumi.Output<outputs.org.SettingSwitchMgmt | undefined>;
     /**
@@ -144,15 +151,16 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
             resourceInputs["installer"] = state ? state.installer : undefined;
             resourceInputs["jcloud"] = state ? state.jcloud : undefined;
+            resourceInputs["jcloudRa"] = state ? state.jcloudRa : undefined;
             resourceInputs["juniper"] = state ? state.juniper : undefined;
             resourceInputs["mgmt"] = state ? state.mgmt : undefined;
             resourceInputs["mistNac"] = state ? state.mistNac : undefined;
             resourceInputs["mxedgeFipsEnabled"] = state ? state.mxedgeFipsEnabled : undefined;
             resourceInputs["mxedgeMgmt"] = state ? state.mxedgeMgmt : undefined;
+            resourceInputs["opticPortConfig"] = state ? state.opticPortConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["passwordPolicy"] = state ? state.passwordPolicy : undefined;
             resourceInputs["pcap"] = state ? state.pcap : undefined;
-            resourceInputs["portChannelization"] = state ? state.portChannelization : undefined;
             resourceInputs["security"] = state ? state.security : undefined;
             resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
             resourceInputs["switchUpdownThreshold"] = state ? state.switchUpdownThreshold : undefined;
@@ -180,14 +188,15 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["gatewayUpdownThreshold"] = args ? args.gatewayUpdownThreshold : undefined;
             resourceInputs["installer"] = args ? args.installer : undefined;
             resourceInputs["jcloud"] = args ? args.jcloud : undefined;
+            resourceInputs["jcloudRa"] = args ? args.jcloudRa : undefined;
             resourceInputs["mgmt"] = args ? args.mgmt : undefined;
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
             resourceInputs["mxedgeFipsEnabled"] = args ? args.mxedgeFipsEnabled : undefined;
             resourceInputs["mxedgeMgmt"] = args ? args.mxedgeMgmt : undefined;
+            resourceInputs["opticPortConfig"] = args ? args.opticPortConfig : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["passwordPolicy"] = args ? args.passwordPolicy : undefined;
             resourceInputs["pcap"] = args ? args.pcap : undefined;
-            resourceInputs["portChannelization"] = args ? args.portChannelization : undefined;
             resourceInputs["security"] = args ? args.security : undefined;
             resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
             resourceInputs["switchUpdownThreshold"] = args ? args.switchUpdownThreshold : undefined;
@@ -246,6 +255,10 @@ export interface SettingState {
     gatewayUpdownThreshold?: pulumi.Input<number>;
     installer?: pulumi.Input<inputs.org.SettingInstaller>;
     jcloud?: pulumi.Input<inputs.org.SettingJcloud>;
+    /**
+     * JCloud Routing Assurance connexion
+     */
+    jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
     juniper?: pulumi.Input<inputs.org.SettingJuniper>;
     /**
      * management-related properties
@@ -254,13 +267,16 @@ export interface SettingState {
     mistNac?: pulumi.Input<inputs.org.SettingMistNac>;
     mxedgeFipsEnabled?: pulumi.Input<boolean>;
     mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt>;
+    /**
+     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     */
+    opticPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingOpticPortConfig>}>;
     orgId?: pulumi.Input<string>;
     /**
      * password policy
      */
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
     pcap?: pulumi.Input<inputs.org.SettingPcap>;
-    portChannelization?: pulumi.Input<inputs.org.SettingPortChannelization>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
@@ -322,19 +338,26 @@ export interface SettingArgs {
     installer?: pulumi.Input<inputs.org.SettingInstaller>;
     jcloud?: pulumi.Input<inputs.org.SettingJcloud>;
     /**
+     * JCloud Routing Assurance connexion
+     */
+    jcloudRa?: pulumi.Input<inputs.org.SettingJcloudRa>;
+    /**
      * management-related properties
      */
     mgmt?: pulumi.Input<inputs.org.SettingMgmt>;
     mistNac?: pulumi.Input<inputs.org.SettingMistNac>;
     mxedgeFipsEnabled?: pulumi.Input<boolean>;
     mxedgeMgmt?: pulumi.Input<inputs.org.SettingMxedgeMgmt>;
+    /**
+     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     */
+    opticPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.SettingOpticPortConfig>}>;
     orgId: pulumi.Input<string>;
     /**
      * password policy
      */
     passwordPolicy?: pulumi.Input<inputs.org.SettingPasswordPolicy>;
     pcap?: pulumi.Input<inputs.org.SettingPcap>;
-    portChannelization?: pulumi.Input<inputs.org.SettingPortChannelization>;
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**

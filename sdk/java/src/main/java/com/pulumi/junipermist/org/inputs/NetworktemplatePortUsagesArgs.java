@@ -538,6 +538,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * if this is connected to a vstp network
+     * 
+     */
+    @Import(name="useVstp")
+    private @Nullable Output<Boolean> useVstp;
+
+    /**
+     * @return if this is connected to a vstp network
+     * 
+     */
+    public Optional<Output<Boolean>> useVstp() {
+        return Optional.ofNullable(this.useVstp);
+    }
+
+    /**
      * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
@@ -590,6 +605,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.stpEdge = $.stpEdge;
         this.stpNoRootPort = $.stpNoRootPort;
         this.stpP2p = $.stpP2p;
+        this.useVstp = $.useVstp;
         this.voipNetwork = $.voipNetwork;
     }
 
@@ -1358,6 +1374,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
 
         public Builder stpP2p(Boolean stpP2p) {
             return stpP2p(Output.of(stpP2p));
+        }
+
+        /**
+         * @param useVstp if this is connected to a vstp network
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useVstp(@Nullable Output<Boolean> useVstp) {
+            $.useVstp = useVstp;
+            return this;
+        }
+
+        /**
+         * @param useVstp if this is connected to a vstp network
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useVstp(Boolean useVstp) {
+            return useVstp(Output.of(useVstp));
         }
 
         /**

@@ -4420,8 +4420,7 @@ type GatewayBgpConfig struct {
 	//   * 350 `type`==`internal`
 	BfdMinimumInterval *int `pulumi:"bfdMinimumInterval"`
 	// when bfdMinimumIntervalIsConfigured alone
-	BfdMultiplier *int                        `pulumi:"bfdMultiplier"`
-	Communities   []GatewayBgpConfigCommunity `pulumi:"communities"`
+	BfdMultiplier *int `pulumi:"bfdMultiplier"`
 	// BFD provides faster path failure detection and is enabled by default
 	DisableBfd *bool   `pulumi:"disableBfd"`
 	Export     *string `pulumi:"export"`
@@ -4473,8 +4472,7 @@ type GatewayBgpConfigArgs struct {
 	//   * 350 `type`==`internal`
 	BfdMinimumInterval pulumi.IntPtrInput `pulumi:"bfdMinimumInterval"`
 	// when bfdMinimumIntervalIsConfigured alone
-	BfdMultiplier pulumi.IntPtrInput                  `pulumi:"bfdMultiplier"`
-	Communities   GatewayBgpConfigCommunityArrayInput `pulumi:"communities"`
+	BfdMultiplier pulumi.IntPtrInput `pulumi:"bfdMultiplier"`
 	// BFD provides faster path failure detection and is enabled by default
 	DisableBfd pulumi.BoolPtrInput   `pulumi:"disableBfd"`
 	Export     pulumi.StringPtrInput `pulumi:"export"`
@@ -4573,10 +4571,6 @@ func (o GatewayBgpConfigOutput) BfdMinimumInterval() pulumi.IntPtrOutput {
 // when bfdMinimumIntervalIsConfigured alone
 func (o GatewayBgpConfigOutput) BfdMultiplier() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *int { return v.BfdMultiplier }).(pulumi.IntPtrOutput)
-}
-
-func (o GatewayBgpConfigOutput) Communities() GatewayBgpConfigCommunityArrayOutput {
-	return o.ApplyT(func(v GatewayBgpConfig) []GatewayBgpConfigCommunity { return v.Communities }).(GatewayBgpConfigCommunityArrayOutput)
 }
 
 // BFD provides faster path failure detection and is enabled by default
@@ -4682,112 +4676,6 @@ func (o GatewayBgpConfigMapOutput) MapIndex(k pulumi.StringInput) GatewayBgpConf
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayBgpConfig {
 		return vs[0].(map[string]GatewayBgpConfig)[vs[1].(string)]
 	}).(GatewayBgpConfigOutput)
-}
-
-type GatewayBgpConfigCommunity struct {
-	Id              *string `pulumi:"id"`
-	LocalPreference *int    `pulumi:"localPreference"`
-	VpnName         *string `pulumi:"vpnName"`
-}
-
-// GatewayBgpConfigCommunityInput is an input type that accepts GatewayBgpConfigCommunityArgs and GatewayBgpConfigCommunityOutput values.
-// You can construct a concrete instance of `GatewayBgpConfigCommunityInput` via:
-//
-//	GatewayBgpConfigCommunityArgs{...}
-type GatewayBgpConfigCommunityInput interface {
-	pulumi.Input
-
-	ToGatewayBgpConfigCommunityOutput() GatewayBgpConfigCommunityOutput
-	ToGatewayBgpConfigCommunityOutputWithContext(context.Context) GatewayBgpConfigCommunityOutput
-}
-
-type GatewayBgpConfigCommunityArgs struct {
-	Id              pulumi.StringPtrInput `pulumi:"id"`
-	LocalPreference pulumi.IntPtrInput    `pulumi:"localPreference"`
-	VpnName         pulumi.StringPtrInput `pulumi:"vpnName"`
-}
-
-func (GatewayBgpConfigCommunityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayBgpConfigCommunity)(nil)).Elem()
-}
-
-func (i GatewayBgpConfigCommunityArgs) ToGatewayBgpConfigCommunityOutput() GatewayBgpConfigCommunityOutput {
-	return i.ToGatewayBgpConfigCommunityOutputWithContext(context.Background())
-}
-
-func (i GatewayBgpConfigCommunityArgs) ToGatewayBgpConfigCommunityOutputWithContext(ctx context.Context) GatewayBgpConfigCommunityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayBgpConfigCommunityOutput)
-}
-
-// GatewayBgpConfigCommunityArrayInput is an input type that accepts GatewayBgpConfigCommunityArray and GatewayBgpConfigCommunityArrayOutput values.
-// You can construct a concrete instance of `GatewayBgpConfigCommunityArrayInput` via:
-//
-//	GatewayBgpConfigCommunityArray{ GatewayBgpConfigCommunityArgs{...} }
-type GatewayBgpConfigCommunityArrayInput interface {
-	pulumi.Input
-
-	ToGatewayBgpConfigCommunityArrayOutput() GatewayBgpConfigCommunityArrayOutput
-	ToGatewayBgpConfigCommunityArrayOutputWithContext(context.Context) GatewayBgpConfigCommunityArrayOutput
-}
-
-type GatewayBgpConfigCommunityArray []GatewayBgpConfigCommunityInput
-
-func (GatewayBgpConfigCommunityArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayBgpConfigCommunity)(nil)).Elem()
-}
-
-func (i GatewayBgpConfigCommunityArray) ToGatewayBgpConfigCommunityArrayOutput() GatewayBgpConfigCommunityArrayOutput {
-	return i.ToGatewayBgpConfigCommunityArrayOutputWithContext(context.Background())
-}
-
-func (i GatewayBgpConfigCommunityArray) ToGatewayBgpConfigCommunityArrayOutputWithContext(ctx context.Context) GatewayBgpConfigCommunityArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayBgpConfigCommunityArrayOutput)
-}
-
-type GatewayBgpConfigCommunityOutput struct{ *pulumi.OutputState }
-
-func (GatewayBgpConfigCommunityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayBgpConfigCommunity)(nil)).Elem()
-}
-
-func (o GatewayBgpConfigCommunityOutput) ToGatewayBgpConfigCommunityOutput() GatewayBgpConfigCommunityOutput {
-	return o
-}
-
-func (o GatewayBgpConfigCommunityOutput) ToGatewayBgpConfigCommunityOutputWithContext(ctx context.Context) GatewayBgpConfigCommunityOutput {
-	return o
-}
-
-func (o GatewayBgpConfigCommunityOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfigCommunity) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GatewayBgpConfigCommunityOutput) LocalPreference() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfigCommunity) *int { return v.LocalPreference }).(pulumi.IntPtrOutput)
-}
-
-func (o GatewayBgpConfigCommunityOutput) VpnName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayBgpConfigCommunity) *string { return v.VpnName }).(pulumi.StringPtrOutput)
-}
-
-type GatewayBgpConfigCommunityArrayOutput struct{ *pulumi.OutputState }
-
-func (GatewayBgpConfigCommunityArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GatewayBgpConfigCommunity)(nil)).Elem()
-}
-
-func (o GatewayBgpConfigCommunityArrayOutput) ToGatewayBgpConfigCommunityArrayOutput() GatewayBgpConfigCommunityArrayOutput {
-	return o
-}
-
-func (o GatewayBgpConfigCommunityArrayOutput) ToGatewayBgpConfigCommunityArrayOutputWithContext(ctx context.Context) GatewayBgpConfigCommunityArrayOutput {
-	return o
-}
-
-func (o GatewayBgpConfigCommunityArrayOutput) Index(i pulumi.IntInput) GatewayBgpConfigCommunityOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayBgpConfigCommunity {
-		return vs[0].([]GatewayBgpConfigCommunity)[vs[1].(int)]
-	}).(GatewayBgpConfigCommunityOutput)
 }
 
 type GatewayBgpConfigNeighbors struct {
@@ -5020,7 +4908,7 @@ func (o GatewayClusterNodeArrayOutput) Index(i pulumi.IntInput) GatewayClusterNo
 type GatewayDhcpdConfig struct {
 	// Property key is the network name
 	Config map[string]GatewayDhcpdConfigConfig `pulumi:"config"`
-	// if set to `true`, enable the DHCP server
+	// if set to `false`, disable the DHCP server
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -5038,7 +4926,7 @@ type GatewayDhcpdConfigInput interface {
 type GatewayDhcpdConfigArgs struct {
 	// Property key is the network name
 	Config GatewayDhcpdConfigConfigMapInput `pulumi:"config"`
-	// if set to `true`, enable the DHCP server
+	// if set to `false`, disable the DHCP server
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -5124,7 +5012,7 @@ func (o GatewayDhcpdConfigOutput) Config() GatewayDhcpdConfigConfigMapOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfig) map[string]GatewayDhcpdConfigConfig { return v.Config }).(GatewayDhcpdConfigConfigMapOutput)
 }
 
-// if set to `true`, enable the DHCP server
+// if set to `false`, disable the DHCP server
 func (o GatewayDhcpdConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -5163,7 +5051,7 @@ func (o GatewayDhcpdConfigPtrOutput) Config() GatewayDhcpdConfigConfigMapOutput 
 	}).(GatewayDhcpdConfigConfigMapOutput)
 }
 
-// if set to `true`, enable the DHCP server
+// if set to `false`, disable the DHCP server
 func (o GatewayDhcpdConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayDhcpdConfig) *bool {
 		if v == nil {
@@ -5174,11 +5062,11 @@ func (o GatewayDhcpdConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type GatewayDhcpdConfigConfig struct {
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsServers []string `pulumi:"dnsServers"`
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings map[string]GatewayDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
 	// if `type`==`local` - optional, `ip` will be used if not provided
 	Gateway *string `pulumi:"gateway"`
@@ -5192,7 +5080,7 @@ type GatewayDhcpdConfigConfig struct {
 	IpStart6 *string `pulumi:"ipStart6"`
 	// in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
 	LeaseTime *int `pulumi:"leaseTime"`
-	// Property key is the DHCP option number
+	// if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
 	Options map[string]GatewayDhcpdConfigConfigOptions `pulumi:"options"`
 	// `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
 	// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
@@ -5205,7 +5093,7 @@ type GatewayDhcpdConfigConfig struct {
 	Type *string `pulumi:"type"`
 	// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
 	Type6 *string `pulumi:"type6"`
-	// Property key is <enterprise number>:<sub option code>, with
+	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
 	VendorEncapulated map[string]GatewayDhcpdConfigConfigVendorEncapulated `pulumi:"vendorEncapulated"`
@@ -5223,11 +5111,11 @@ type GatewayDhcpdConfigConfigInput interface {
 }
 
 type GatewayDhcpdConfigConfigArgs struct {
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings GatewayDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
 	// if `type`==`local` - optional, `ip` will be used if not provided
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
@@ -5241,7 +5129,7 @@ type GatewayDhcpdConfigConfigArgs struct {
 	IpStart6 pulumi.StringPtrInput `pulumi:"ipStart6"`
 	// in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
 	LeaseTime pulumi.IntPtrInput `pulumi:"leaseTime"`
-	// Property key is the DHCP option number
+	// if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
 	Options GatewayDhcpdConfigConfigOptionsMapInput `pulumi:"options"`
 	// `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
 	// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
@@ -5254,7 +5142,7 @@ type GatewayDhcpdConfigConfigArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
 	Type6 pulumi.StringPtrInput `pulumi:"type6"`
-	// Property key is <enterprise number>:<sub option code>, with
+	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
 	VendorEncapulated GatewayDhcpdConfigConfigVendorEncapulatedMapInput `pulumi:"vendorEncapulated"`
@@ -5311,17 +5199,17 @@ func (o GatewayDhcpdConfigConfigOutput) ToGatewayDhcpdConfigConfigOutputWithCont
 	return o
 }
 
-// if `type`==`local` - optional, if not defined, system one will be used
+// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 func (o GatewayDhcpdConfigConfigOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// if `type`==`local` - optional, if not defined, system one will be used
+// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
 func (o GatewayDhcpdConfigConfigOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+// if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 func (o GatewayDhcpdConfigConfigOutput) FixedBindings() GatewayDhcpdConfigConfigFixedBindingsMapOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) map[string]GatewayDhcpdConfigConfigFixedBindings {
 		return v.FixedBindings
@@ -5358,7 +5246,7 @@ func (o GatewayDhcpdConfigConfigOutput) LeaseTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) *int { return v.LeaseTime }).(pulumi.IntPtrOutput)
 }
 
-// Property key is the DHCP option number
+// if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
 func (o GatewayDhcpdConfigConfigOutput) Options() GatewayDhcpdConfigConfigOptionsMapOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) map[string]GatewayDhcpdConfigConfigOptions { return v.Options }).(GatewayDhcpdConfigConfigOptionsMapOutput)
 }
@@ -5389,7 +5277,7 @@ func (o GatewayDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayDhcpdConfigConfig) *string { return v.Type6 }).(pulumi.StringPtrOutput)
 }
 
-// Property key is <enterprise number>:<sub option code>, with
+// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 //   - enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 //   - sub option code: 1-255, sub-option code'
 func (o GatewayDhcpdConfigConfigOutput) VendorEncapulated() GatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
@@ -5914,13 +5802,12 @@ func (o GatewayExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) GatewayExtra
 
 type GatewayIdpProfiles struct {
 	// enum: `critical`, `standard`, `strict`
-	BaseProfile  *string                       `pulumi:"baseProfile"`
-	CreatedTime  *float64                      `pulumi:"createdTime"`
-	Id           *string                       `pulumi:"id"`
-	ModifiedTime *float64                      `pulumi:"modifiedTime"`
-	Name         *string                       `pulumi:"name"`
-	OrgId        *string                       `pulumi:"orgId"`
-	Overwrites   []GatewayIdpProfilesOverwrite `pulumi:"overwrites"`
+	BaseProfile *string `pulumi:"baseProfile"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id         *string                       `pulumi:"id"`
+	Name       *string                       `pulumi:"name"`
+	OrgId      *string                       `pulumi:"orgId"`
+	Overwrites []GatewayIdpProfilesOverwrite `pulumi:"overwrites"`
 }
 
 // GatewayIdpProfilesInput is an input type that accepts GatewayIdpProfilesArgs and GatewayIdpProfilesOutput values.
@@ -5936,13 +5823,12 @@ type GatewayIdpProfilesInput interface {
 
 type GatewayIdpProfilesArgs struct {
 	// enum: `critical`, `standard`, `strict`
-	BaseProfile  pulumi.StringPtrInput                 `pulumi:"baseProfile"`
-	CreatedTime  pulumi.Float64PtrInput                `pulumi:"createdTime"`
-	Id           pulumi.StringPtrInput                 `pulumi:"id"`
-	ModifiedTime pulumi.Float64PtrInput                `pulumi:"modifiedTime"`
-	Name         pulumi.StringPtrInput                 `pulumi:"name"`
-	OrgId        pulumi.StringPtrInput                 `pulumi:"orgId"`
-	Overwrites   GatewayIdpProfilesOverwriteArrayInput `pulumi:"overwrites"`
+	BaseProfile pulumi.StringPtrInput `pulumi:"baseProfile"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id         pulumi.StringPtrInput                 `pulumi:"id"`
+	Name       pulumi.StringPtrInput                 `pulumi:"name"`
+	OrgId      pulumi.StringPtrInput                 `pulumi:"orgId"`
+	Overwrites GatewayIdpProfilesOverwriteArrayInput `pulumi:"overwrites"`
 }
 
 func (GatewayIdpProfilesArgs) ElementType() reflect.Type {
@@ -6001,16 +5887,9 @@ func (o GatewayIdpProfilesOutput) BaseProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIdpProfiles) *string { return v.BaseProfile }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayIdpProfilesOutput) CreatedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GatewayIdpProfiles) *float64 { return v.CreatedTime }).(pulumi.Float64PtrOutput)
-}
-
+// Unique ID of the object instance in the Mist Organnization
 func (o GatewayIdpProfilesOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayIdpProfiles) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o GatewayIdpProfilesOutput) ModifiedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GatewayIdpProfiles) *float64 { return v.ModifiedTime }).(pulumi.Float64PtrOutput)
 }
 
 func (o GatewayIdpProfilesOutput) Name() pulumi.StringPtrOutput {
@@ -6445,20 +6324,18 @@ func (o GatewayIpConfigsMapOutput) MapIndex(k pulumi.StringInput) GatewayIpConfi
 }
 
 type GatewayNetwork struct {
-	CreatedTime *float64 `pulumi:"createdTime"`
 	// whether to disallow Mist Devices in the network
 	DisallowMistServices *bool                         `pulumi:"disallowMistServices"`
 	Gateway              *string                       `pulumi:"gateway"`
 	Gateway6             *string                       `pulumi:"gateway6"`
-	Id                   *string                       `pulumi:"id"`
 	InternalAccess       *GatewayNetworkInternalAccess `pulumi:"internalAccess"`
 	// whether this network has direct internet access
 	InternetAccess *GatewayNetworkInternetAccess `pulumi:"internetAccess"`
 	// whether to allow clients in the network to talk to each other
-	Isolation    *bool    `pulumi:"isolation"`
-	ModifiedTime *float64 `pulumi:"modifiedTime"`
-	Name         string   `pulumi:"name"`
-	OrgId        *string  `pulumi:"orgId"`
+	Isolation *bool `pulumi:"isolation"`
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast *GatewayNetworkMulticast `pulumi:"multicast"`
+	Name      string                   `pulumi:"name"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks []string                         `pulumi:"routedForNetworks"`
 	Subnet            string                           `pulumi:"subnet"`
@@ -6481,20 +6358,18 @@ type GatewayNetworkInput interface {
 }
 
 type GatewayNetworkArgs struct {
-	CreatedTime pulumi.Float64PtrInput `pulumi:"createdTime"`
 	// whether to disallow Mist Devices in the network
 	DisallowMistServices pulumi.BoolPtrInput                  `pulumi:"disallowMistServices"`
 	Gateway              pulumi.StringPtrInput                `pulumi:"gateway"`
 	Gateway6             pulumi.StringPtrInput                `pulumi:"gateway6"`
-	Id                   pulumi.StringPtrInput                `pulumi:"id"`
 	InternalAccess       GatewayNetworkInternalAccessPtrInput `pulumi:"internalAccess"`
 	// whether this network has direct internet access
 	InternetAccess GatewayNetworkInternetAccessPtrInput `pulumi:"internetAccess"`
 	// whether to allow clients in the network to talk to each other
-	Isolation    pulumi.BoolPtrInput    `pulumi:"isolation"`
-	ModifiedTime pulumi.Float64PtrInput `pulumi:"modifiedTime"`
-	Name         pulumi.StringInput     `pulumi:"name"`
-	OrgId        pulumi.StringPtrInput  `pulumi:"orgId"`
+	Isolation pulumi.BoolPtrInput `pulumi:"isolation"`
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast GatewayNetworkMulticastPtrInput `pulumi:"multicast"`
+	Name      pulumi.StringInput              `pulumi:"name"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayInput       `pulumi:"routedForNetworks"`
 	Subnet            pulumi.StringInput            `pulumi:"subnet"`
@@ -6556,10 +6431,6 @@ func (o GatewayNetworkOutput) ToGatewayNetworkOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GatewayNetworkOutput) CreatedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GatewayNetwork) *float64 { return v.CreatedTime }).(pulumi.Float64PtrOutput)
-}
-
 // whether to disallow Mist Devices in the network
 func (o GatewayNetworkOutput) DisallowMistServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayNetwork) *bool { return v.DisallowMistServices }).(pulumi.BoolPtrOutput)
@@ -6571,10 +6442,6 @@ func (o GatewayNetworkOutput) Gateway() pulumi.StringPtrOutput {
 
 func (o GatewayNetworkOutput) Gateway6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetwork) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
-}
-
-func (o GatewayNetworkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 func (o GatewayNetworkOutput) InternalAccess() GatewayNetworkInternalAccessPtrOutput {
@@ -6591,16 +6458,13 @@ func (o GatewayNetworkOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayNetwork) *bool { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayNetworkOutput) ModifiedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GatewayNetwork) *float64 { return v.ModifiedTime }).(pulumi.Float64PtrOutput)
+// whether to enable multicast support (only PIM-sparse mode is supported)
+func (o GatewayNetworkOutput) Multicast() GatewayNetworkMulticastPtrOutput {
+	return o.ApplyT(func(v GatewayNetwork) *GatewayNetworkMulticast { return v.Multicast }).(GatewayNetworkMulticastPtrOutput)
 }
 
 func (o GatewayNetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayNetwork) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GatewayNetworkOutput) OrgId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetwork) *string { return v.OrgId }).(pulumi.StringPtrOutput)
 }
 
 // for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -7204,6 +7068,274 @@ func (o GatewayNetworkInternetAccessStaticNatMapOutput) MapIndex(k pulumi.String
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayNetworkInternetAccessStaticNat {
 		return vs[0].(map[string]GatewayNetworkInternetAccessStaticNat)[vs[1].(string)]
 	}).(GatewayNetworkInternetAccessStaticNatOutput)
+}
+
+type GatewayNetworkMulticast struct {
+	// if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+	DisableIgmp *bool `pulumi:"disableIgmp"`
+	Enabled     *bool `pulumi:"enabled"`
+	// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+	Groups map[string]GatewayNetworkMulticastGroups `pulumi:"groups"`
+}
+
+// GatewayNetworkMulticastInput is an input type that accepts GatewayNetworkMulticastArgs and GatewayNetworkMulticastOutput values.
+// You can construct a concrete instance of `GatewayNetworkMulticastInput` via:
+//
+//	GatewayNetworkMulticastArgs{...}
+type GatewayNetworkMulticastInput interface {
+	pulumi.Input
+
+	ToGatewayNetworkMulticastOutput() GatewayNetworkMulticastOutput
+	ToGatewayNetworkMulticastOutputWithContext(context.Context) GatewayNetworkMulticastOutput
+}
+
+type GatewayNetworkMulticastArgs struct {
+	// if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+	DisableIgmp pulumi.BoolPtrInput `pulumi:"disableIgmp"`
+	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+	Groups GatewayNetworkMulticastGroupsMapInput `pulumi:"groups"`
+}
+
+func (GatewayNetworkMulticastArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayNetworkMulticast)(nil)).Elem()
+}
+
+func (i GatewayNetworkMulticastArgs) ToGatewayNetworkMulticastOutput() GatewayNetworkMulticastOutput {
+	return i.ToGatewayNetworkMulticastOutputWithContext(context.Background())
+}
+
+func (i GatewayNetworkMulticastArgs) ToGatewayNetworkMulticastOutputWithContext(ctx context.Context) GatewayNetworkMulticastOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayNetworkMulticastOutput)
+}
+
+func (i GatewayNetworkMulticastArgs) ToGatewayNetworkMulticastPtrOutput() GatewayNetworkMulticastPtrOutput {
+	return i.ToGatewayNetworkMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayNetworkMulticastArgs) ToGatewayNetworkMulticastPtrOutputWithContext(ctx context.Context) GatewayNetworkMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayNetworkMulticastOutput).ToGatewayNetworkMulticastPtrOutputWithContext(ctx)
+}
+
+// GatewayNetworkMulticastPtrInput is an input type that accepts GatewayNetworkMulticastArgs, GatewayNetworkMulticastPtr and GatewayNetworkMulticastPtrOutput values.
+// You can construct a concrete instance of `GatewayNetworkMulticastPtrInput` via:
+//
+//	        GatewayNetworkMulticastArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayNetworkMulticastPtrInput interface {
+	pulumi.Input
+
+	ToGatewayNetworkMulticastPtrOutput() GatewayNetworkMulticastPtrOutput
+	ToGatewayNetworkMulticastPtrOutputWithContext(context.Context) GatewayNetworkMulticastPtrOutput
+}
+
+type gatewayNetworkMulticastPtrType GatewayNetworkMulticastArgs
+
+func GatewayNetworkMulticastPtr(v *GatewayNetworkMulticastArgs) GatewayNetworkMulticastPtrInput {
+	return (*gatewayNetworkMulticastPtrType)(v)
+}
+
+func (*gatewayNetworkMulticastPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayNetworkMulticast)(nil)).Elem()
+}
+
+func (i *gatewayNetworkMulticastPtrType) ToGatewayNetworkMulticastPtrOutput() GatewayNetworkMulticastPtrOutput {
+	return i.ToGatewayNetworkMulticastPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayNetworkMulticastPtrType) ToGatewayNetworkMulticastPtrOutputWithContext(ctx context.Context) GatewayNetworkMulticastPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayNetworkMulticastPtrOutput)
+}
+
+type GatewayNetworkMulticastOutput struct{ *pulumi.OutputState }
+
+func (GatewayNetworkMulticastOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayNetworkMulticast)(nil)).Elem()
+}
+
+func (o GatewayNetworkMulticastOutput) ToGatewayNetworkMulticastOutput() GatewayNetworkMulticastOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastOutput) ToGatewayNetworkMulticastOutputWithContext(ctx context.Context) GatewayNetworkMulticastOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastOutput) ToGatewayNetworkMulticastPtrOutput() GatewayNetworkMulticastPtrOutput {
+	return o.ToGatewayNetworkMulticastPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayNetworkMulticastOutput) ToGatewayNetworkMulticastPtrOutputWithContext(ctx context.Context) GatewayNetworkMulticastPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayNetworkMulticast) *GatewayNetworkMulticast {
+		return &v
+	}).(GatewayNetworkMulticastPtrOutput)
+}
+
+// if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+func (o GatewayNetworkMulticastOutput) DisableIgmp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayNetworkMulticast) *bool { return v.DisableIgmp }).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewayNetworkMulticastOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayNetworkMulticast) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+func (o GatewayNetworkMulticastOutput) Groups() GatewayNetworkMulticastGroupsMapOutput {
+	return o.ApplyT(func(v GatewayNetworkMulticast) map[string]GatewayNetworkMulticastGroups { return v.Groups }).(GatewayNetworkMulticastGroupsMapOutput)
+}
+
+type GatewayNetworkMulticastPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayNetworkMulticastPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayNetworkMulticast)(nil)).Elem()
+}
+
+func (o GatewayNetworkMulticastPtrOutput) ToGatewayNetworkMulticastPtrOutput() GatewayNetworkMulticastPtrOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastPtrOutput) ToGatewayNetworkMulticastPtrOutputWithContext(ctx context.Context) GatewayNetworkMulticastPtrOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastPtrOutput) Elem() GatewayNetworkMulticastOutput {
+	return o.ApplyT(func(v *GatewayNetworkMulticast) GatewayNetworkMulticast {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayNetworkMulticast
+		return ret
+	}).(GatewayNetworkMulticastOutput)
+}
+
+// if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+func (o GatewayNetworkMulticastPtrOutput) DisableIgmp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayNetworkMulticast) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableIgmp
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o GatewayNetworkMulticastPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayNetworkMulticast) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+func (o GatewayNetworkMulticastPtrOutput) Groups() GatewayNetworkMulticastGroupsMapOutput {
+	return o.ApplyT(func(v *GatewayNetworkMulticast) map[string]GatewayNetworkMulticastGroups {
+		if v == nil {
+			return nil
+		}
+		return v.Groups
+	}).(GatewayNetworkMulticastGroupsMapOutput)
+}
+
+type GatewayNetworkMulticastGroups struct {
+	// RP (rendezvous point) IP Address
+	RpIp *string `pulumi:"rpIp"`
+}
+
+// GatewayNetworkMulticastGroupsInput is an input type that accepts GatewayNetworkMulticastGroupsArgs and GatewayNetworkMulticastGroupsOutput values.
+// You can construct a concrete instance of `GatewayNetworkMulticastGroupsInput` via:
+//
+//	GatewayNetworkMulticastGroupsArgs{...}
+type GatewayNetworkMulticastGroupsInput interface {
+	pulumi.Input
+
+	ToGatewayNetworkMulticastGroupsOutput() GatewayNetworkMulticastGroupsOutput
+	ToGatewayNetworkMulticastGroupsOutputWithContext(context.Context) GatewayNetworkMulticastGroupsOutput
+}
+
+type GatewayNetworkMulticastGroupsArgs struct {
+	// RP (rendezvous point) IP Address
+	RpIp pulumi.StringPtrInput `pulumi:"rpIp"`
+}
+
+func (GatewayNetworkMulticastGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (i GatewayNetworkMulticastGroupsArgs) ToGatewayNetworkMulticastGroupsOutput() GatewayNetworkMulticastGroupsOutput {
+	return i.ToGatewayNetworkMulticastGroupsOutputWithContext(context.Background())
+}
+
+func (i GatewayNetworkMulticastGroupsArgs) ToGatewayNetworkMulticastGroupsOutputWithContext(ctx context.Context) GatewayNetworkMulticastGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayNetworkMulticastGroupsOutput)
+}
+
+// GatewayNetworkMulticastGroupsMapInput is an input type that accepts GatewayNetworkMulticastGroupsMap and GatewayNetworkMulticastGroupsMapOutput values.
+// You can construct a concrete instance of `GatewayNetworkMulticastGroupsMapInput` via:
+//
+//	GatewayNetworkMulticastGroupsMap{ "key": GatewayNetworkMulticastGroupsArgs{...} }
+type GatewayNetworkMulticastGroupsMapInput interface {
+	pulumi.Input
+
+	ToGatewayNetworkMulticastGroupsMapOutput() GatewayNetworkMulticastGroupsMapOutput
+	ToGatewayNetworkMulticastGroupsMapOutputWithContext(context.Context) GatewayNetworkMulticastGroupsMapOutput
+}
+
+type GatewayNetworkMulticastGroupsMap map[string]GatewayNetworkMulticastGroupsInput
+
+func (GatewayNetworkMulticastGroupsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (i GatewayNetworkMulticastGroupsMap) ToGatewayNetworkMulticastGroupsMapOutput() GatewayNetworkMulticastGroupsMapOutput {
+	return i.ToGatewayNetworkMulticastGroupsMapOutputWithContext(context.Background())
+}
+
+func (i GatewayNetworkMulticastGroupsMap) ToGatewayNetworkMulticastGroupsMapOutputWithContext(ctx context.Context) GatewayNetworkMulticastGroupsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayNetworkMulticastGroupsMapOutput)
+}
+
+type GatewayNetworkMulticastGroupsOutput struct{ *pulumi.OutputState }
+
+func (GatewayNetworkMulticastGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (o GatewayNetworkMulticastGroupsOutput) ToGatewayNetworkMulticastGroupsOutput() GatewayNetworkMulticastGroupsOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastGroupsOutput) ToGatewayNetworkMulticastGroupsOutputWithContext(ctx context.Context) GatewayNetworkMulticastGroupsOutput {
+	return o
+}
+
+// RP (rendezvous point) IP Address
+func (o GatewayNetworkMulticastGroupsOutput) RpIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayNetworkMulticastGroups) *string { return v.RpIp }).(pulumi.StringPtrOutput)
+}
+
+type GatewayNetworkMulticastGroupsMapOutput struct{ *pulumi.OutputState }
+
+func (GatewayNetworkMulticastGroupsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayNetworkMulticastGroups)(nil)).Elem()
+}
+
+func (o GatewayNetworkMulticastGroupsMapOutput) ToGatewayNetworkMulticastGroupsMapOutput() GatewayNetworkMulticastGroupsMapOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastGroupsMapOutput) ToGatewayNetworkMulticastGroupsMapOutputWithContext(ctx context.Context) GatewayNetworkMulticastGroupsMapOutput {
+	return o
+}
+
+func (o GatewayNetworkMulticastGroupsMapOutput) MapIndex(k pulumi.StringInput) GatewayNetworkMulticastGroupsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayNetworkMulticastGroups {
+		return vs[0].(map[string]GatewayNetworkMulticastGroups)[vs[1].(string)]
+	}).(GatewayNetworkMulticastGroupsOutput)
 }
 
 type GatewayNetworkTenants struct {
@@ -8723,12 +8855,17 @@ type GatewayPortConfig struct {
 	// port usage name. enum: `haControl`, `haData`, `lan`, `wan`
 	Usage string `pulumi:"usage"`
 	// if WAN interface is on a VLAN
-	VlanId   *int                                 `pulumi:"vlanId"`
+	VlanId *int `pulumi:"vlanId"`
+	// Property key is the VPN name
 	VpnPaths map[string]GatewayPortConfigVpnPaths `pulumi:"vpnPaths"`
 	// when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
 	// optional, if spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
+	// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+	WanExtraRoutes map[string]GatewayPortConfigWanExtraRoutes `pulumi:"wanExtraRoutes"`
+	// if `usage`==`wan`
+	WanProbeOverride *GatewayPortConfigWanProbeOverride `pulumi:"wanProbeOverride"`
 	// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat *GatewayPortConfigWanSourceNat `pulumi:"wanSourceNat"`
 	// if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
@@ -8812,12 +8949,17 @@ type GatewayPortConfigArgs struct {
 	// port usage name. enum: `haControl`, `haData`, `lan`, `wan`
 	Usage pulumi.StringInput `pulumi:"usage"`
 	// if WAN interface is on a VLAN
-	VlanId   pulumi.IntPtrInput                `pulumi:"vlanId"`
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+	// Property key is the VPN name
 	VpnPaths GatewayPortConfigVpnPathsMapInput `pulumi:"vpnPaths"`
 	// when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
 	// optional, if spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
+	// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+	WanExtraRoutes GatewayPortConfigWanExtraRoutesMapInput `pulumi:"wanExtraRoutes"`
+	// if `usage`==`wan`
+	WanProbeOverride GatewayPortConfigWanProbeOverridePtrInput `pulumi:"wanProbeOverride"`
 	// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat GatewayPortConfigWanSourceNatPtrInput `pulumi:"wanSourceNat"`
 	// if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
@@ -9046,6 +9188,7 @@ func (o GatewayPortConfigOutput) VlanId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
 }
 
+// Property key is the VPN name
 func (o GatewayPortConfigOutput) VpnPaths() GatewayPortConfigVpnPathsMapOutput {
 	return o.ApplyT(func(v GatewayPortConfig) map[string]GatewayPortConfigVpnPaths { return v.VpnPaths }).(GatewayPortConfigVpnPathsMapOutput)
 }
@@ -9058,6 +9201,16 @@ func (o GatewayPortConfigOutput) WanArpPolicer() pulumi.StringPtrOutput {
 // optional, if spoke should reach this port by a different IP
 func (o GatewayPortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
+}
+
+// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+func (o GatewayPortConfigOutput) WanExtraRoutes() GatewayPortConfigWanExtraRoutesMapOutput {
+	return o.ApplyT(func(v GatewayPortConfig) map[string]GatewayPortConfigWanExtraRoutes { return v.WanExtraRoutes }).(GatewayPortConfigWanExtraRoutesMapOutput)
+}
+
+// if `usage`==`wan`
+func (o GatewayPortConfigOutput) WanProbeOverride() GatewayPortConfigWanProbeOverridePtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *GatewayPortConfigWanProbeOverride { return v.WanProbeOverride }).(GatewayPortConfigWanProbeOverridePtrOutput)
 }
 
 // optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
@@ -9551,13 +9704,15 @@ func (o GatewayPortConfigTrafficShapingPtrOutput) Enabled() pulumi.BoolPtrOutput
 }
 
 type GatewayPortConfigVpnPaths struct {
-	// enum: `broadband`, `lte`
+	// Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
 	BfdProfile *string `pulumi:"bfdProfile"`
-	// whether to use tunnel mode. SSR only
+	// Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
 	BfdUseTunnelMode *bool `pulumi:"bfdUseTunnelMode"`
-	// for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+	// Only if the VPN `type`==`mesh`
+	LinkName *string `pulumi:"linkName"`
+	// Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
 	Preference *int `pulumi:"preference"`
-	// enum: `hub`, `spoke`
+	// Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
 	Role           *string                                  `pulumi:"role"`
 	TrafficShaping *GatewayPortConfigVpnPathsTrafficShaping `pulumi:"trafficShaping"`
 }
@@ -9574,13 +9729,15 @@ type GatewayPortConfigVpnPathsInput interface {
 }
 
 type GatewayPortConfigVpnPathsArgs struct {
-	// enum: `broadband`, `lte`
+	// Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
 	BfdProfile pulumi.StringPtrInput `pulumi:"bfdProfile"`
-	// whether to use tunnel mode. SSR only
+	// Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
 	BfdUseTunnelMode pulumi.BoolPtrInput `pulumi:"bfdUseTunnelMode"`
-	// for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+	// Only if the VPN `type`==`mesh`
+	LinkName pulumi.StringPtrInput `pulumi:"linkName"`
+	// Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
 	Preference pulumi.IntPtrInput `pulumi:"preference"`
-	// enum: `hub`, `spoke`
+	// Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
 	Role           pulumi.StringPtrInput                           `pulumi:"role"`
 	TrafficShaping GatewayPortConfigVpnPathsTrafficShapingPtrInput `pulumi:"trafficShaping"`
 }
@@ -9636,22 +9793,27 @@ func (o GatewayPortConfigVpnPathsOutput) ToGatewayPortConfigVpnPathsOutputWithCo
 	return o
 }
 
-// enum: `broadband`, `lte`
+// Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
 func (o GatewayPortConfigVpnPathsOutput) BfdProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *string { return v.BfdProfile }).(pulumi.StringPtrOutput)
 }
 
-// whether to use tunnel mode. SSR only
+// Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
 func (o GatewayPortConfigVpnPathsOutput) BfdUseTunnelMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *bool { return v.BfdUseTunnelMode }).(pulumi.BoolPtrOutput)
 }
 
-// for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+// Only if the VPN `type`==`mesh`
+func (o GatewayPortConfigVpnPathsOutput) LinkName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *string { return v.LinkName }).(pulumi.StringPtrOutput)
+}
+
+// Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
 func (o GatewayPortConfigVpnPathsOutput) Preference() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *int { return v.Preference }).(pulumi.IntPtrOutput)
 }
 
-// enum: `hub`, `spoke`
+// Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
 func (o GatewayPortConfigVpnPathsOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPaths) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -9834,6 +9996,252 @@ func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) Enabled() pulumi.BoolP
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type GatewayPortConfigWanExtraRoutes struct {
+	Via *string `pulumi:"via"`
+}
+
+// GatewayPortConfigWanExtraRoutesInput is an input type that accepts GatewayPortConfigWanExtraRoutesArgs and GatewayPortConfigWanExtraRoutesOutput values.
+// You can construct a concrete instance of `GatewayPortConfigWanExtraRoutesInput` via:
+//
+//	GatewayPortConfigWanExtraRoutesArgs{...}
+type GatewayPortConfigWanExtraRoutesInput interface {
+	pulumi.Input
+
+	ToGatewayPortConfigWanExtraRoutesOutput() GatewayPortConfigWanExtraRoutesOutput
+	ToGatewayPortConfigWanExtraRoutesOutputWithContext(context.Context) GatewayPortConfigWanExtraRoutesOutput
+}
+
+type GatewayPortConfigWanExtraRoutesArgs struct {
+	Via pulumi.StringPtrInput `pulumi:"via"`
+}
+
+func (GatewayPortConfigWanExtraRoutesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayPortConfigWanExtraRoutes)(nil)).Elem()
+}
+
+func (i GatewayPortConfigWanExtraRoutesArgs) ToGatewayPortConfigWanExtraRoutesOutput() GatewayPortConfigWanExtraRoutesOutput {
+	return i.ToGatewayPortConfigWanExtraRoutesOutputWithContext(context.Background())
+}
+
+func (i GatewayPortConfigWanExtraRoutesArgs) ToGatewayPortConfigWanExtraRoutesOutputWithContext(ctx context.Context) GatewayPortConfigWanExtraRoutesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanExtraRoutesOutput)
+}
+
+// GatewayPortConfigWanExtraRoutesMapInput is an input type that accepts GatewayPortConfigWanExtraRoutesMap and GatewayPortConfigWanExtraRoutesMapOutput values.
+// You can construct a concrete instance of `GatewayPortConfigWanExtraRoutesMapInput` via:
+//
+//	GatewayPortConfigWanExtraRoutesMap{ "key": GatewayPortConfigWanExtraRoutesArgs{...} }
+type GatewayPortConfigWanExtraRoutesMapInput interface {
+	pulumi.Input
+
+	ToGatewayPortConfigWanExtraRoutesMapOutput() GatewayPortConfigWanExtraRoutesMapOutput
+	ToGatewayPortConfigWanExtraRoutesMapOutputWithContext(context.Context) GatewayPortConfigWanExtraRoutesMapOutput
+}
+
+type GatewayPortConfigWanExtraRoutesMap map[string]GatewayPortConfigWanExtraRoutesInput
+
+func (GatewayPortConfigWanExtraRoutesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayPortConfigWanExtraRoutes)(nil)).Elem()
+}
+
+func (i GatewayPortConfigWanExtraRoutesMap) ToGatewayPortConfigWanExtraRoutesMapOutput() GatewayPortConfigWanExtraRoutesMapOutput {
+	return i.ToGatewayPortConfigWanExtraRoutesMapOutputWithContext(context.Background())
+}
+
+func (i GatewayPortConfigWanExtraRoutesMap) ToGatewayPortConfigWanExtraRoutesMapOutputWithContext(ctx context.Context) GatewayPortConfigWanExtraRoutesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanExtraRoutesMapOutput)
+}
+
+type GatewayPortConfigWanExtraRoutesOutput struct{ *pulumi.OutputState }
+
+func (GatewayPortConfigWanExtraRoutesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayPortConfigWanExtraRoutes)(nil)).Elem()
+}
+
+func (o GatewayPortConfigWanExtraRoutesOutput) ToGatewayPortConfigWanExtraRoutesOutput() GatewayPortConfigWanExtraRoutesOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanExtraRoutesOutput) ToGatewayPortConfigWanExtraRoutesOutputWithContext(ctx context.Context) GatewayPortConfigWanExtraRoutesOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanExtraRoutesOutput) Via() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanExtraRoutes) *string { return v.Via }).(pulumi.StringPtrOutput)
+}
+
+type GatewayPortConfigWanExtraRoutesMapOutput struct{ *pulumi.OutputState }
+
+func (GatewayPortConfigWanExtraRoutesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayPortConfigWanExtraRoutes)(nil)).Elem()
+}
+
+func (o GatewayPortConfigWanExtraRoutesMapOutput) ToGatewayPortConfigWanExtraRoutesMapOutput() GatewayPortConfigWanExtraRoutesMapOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanExtraRoutesMapOutput) ToGatewayPortConfigWanExtraRoutesMapOutputWithContext(ctx context.Context) GatewayPortConfigWanExtraRoutesMapOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanExtraRoutesMapOutput) MapIndex(k pulumi.StringInput) GatewayPortConfigWanExtraRoutesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayPortConfigWanExtraRoutes {
+		return vs[0].(map[string]GatewayPortConfigWanExtraRoutes)[vs[1].(string)]
+	}).(GatewayPortConfigWanExtraRoutesOutput)
+}
+
+type GatewayPortConfigWanProbeOverride struct {
+	Ips []string `pulumi:"ips"`
+	// enum: `broadband`, `lte`
+	ProbeProfile *string `pulumi:"probeProfile"`
+}
+
+// GatewayPortConfigWanProbeOverrideInput is an input type that accepts GatewayPortConfigWanProbeOverrideArgs and GatewayPortConfigWanProbeOverrideOutput values.
+// You can construct a concrete instance of `GatewayPortConfigWanProbeOverrideInput` via:
+//
+//	GatewayPortConfigWanProbeOverrideArgs{...}
+type GatewayPortConfigWanProbeOverrideInput interface {
+	pulumi.Input
+
+	ToGatewayPortConfigWanProbeOverrideOutput() GatewayPortConfigWanProbeOverrideOutput
+	ToGatewayPortConfigWanProbeOverrideOutputWithContext(context.Context) GatewayPortConfigWanProbeOverrideOutput
+}
+
+type GatewayPortConfigWanProbeOverrideArgs struct {
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// enum: `broadband`, `lte`
+	ProbeProfile pulumi.StringPtrInput `pulumi:"probeProfile"`
+}
+
+func (GatewayPortConfigWanProbeOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayPortConfigWanProbeOverride)(nil)).Elem()
+}
+
+func (i GatewayPortConfigWanProbeOverrideArgs) ToGatewayPortConfigWanProbeOverrideOutput() GatewayPortConfigWanProbeOverrideOutput {
+	return i.ToGatewayPortConfigWanProbeOverrideOutputWithContext(context.Background())
+}
+
+func (i GatewayPortConfigWanProbeOverrideArgs) ToGatewayPortConfigWanProbeOverrideOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanProbeOverrideOutput)
+}
+
+func (i GatewayPortConfigWanProbeOverrideArgs) ToGatewayPortConfigWanProbeOverridePtrOutput() GatewayPortConfigWanProbeOverridePtrOutput {
+	return i.ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(context.Background())
+}
+
+func (i GatewayPortConfigWanProbeOverrideArgs) ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanProbeOverrideOutput).ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(ctx)
+}
+
+// GatewayPortConfigWanProbeOverridePtrInput is an input type that accepts GatewayPortConfigWanProbeOverrideArgs, GatewayPortConfigWanProbeOverridePtr and GatewayPortConfigWanProbeOverridePtrOutput values.
+// You can construct a concrete instance of `GatewayPortConfigWanProbeOverridePtrInput` via:
+//
+//	        GatewayPortConfigWanProbeOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayPortConfigWanProbeOverridePtrInput interface {
+	pulumi.Input
+
+	ToGatewayPortConfigWanProbeOverridePtrOutput() GatewayPortConfigWanProbeOverridePtrOutput
+	ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(context.Context) GatewayPortConfigWanProbeOverridePtrOutput
+}
+
+type gatewayPortConfigWanProbeOverridePtrType GatewayPortConfigWanProbeOverrideArgs
+
+func GatewayPortConfigWanProbeOverridePtr(v *GatewayPortConfigWanProbeOverrideArgs) GatewayPortConfigWanProbeOverridePtrInput {
+	return (*gatewayPortConfigWanProbeOverridePtrType)(v)
+}
+
+func (*gatewayPortConfigWanProbeOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayPortConfigWanProbeOverride)(nil)).Elem()
+}
+
+func (i *gatewayPortConfigWanProbeOverridePtrType) ToGatewayPortConfigWanProbeOverridePtrOutput() GatewayPortConfigWanProbeOverridePtrOutput {
+	return i.ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayPortConfigWanProbeOverridePtrType) ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayPortConfigWanProbeOverridePtrOutput)
+}
+
+type GatewayPortConfigWanProbeOverrideOutput struct{ *pulumi.OutputState }
+
+func (GatewayPortConfigWanProbeOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayPortConfigWanProbeOverride)(nil)).Elem()
+}
+
+func (o GatewayPortConfigWanProbeOverrideOutput) ToGatewayPortConfigWanProbeOverrideOutput() GatewayPortConfigWanProbeOverrideOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverrideOutput) ToGatewayPortConfigWanProbeOverrideOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverrideOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverrideOutput) ToGatewayPortConfigWanProbeOverridePtrOutput() GatewayPortConfigWanProbeOverridePtrOutput {
+	return o.ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(context.Background())
+}
+
+func (o GatewayPortConfigWanProbeOverrideOutput) ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayPortConfigWanProbeOverride) *GatewayPortConfigWanProbeOverride {
+		return &v
+	}).(GatewayPortConfigWanProbeOverridePtrOutput)
+}
+
+func (o GatewayPortConfigWanProbeOverrideOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanProbeOverride) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// enum: `broadband`, `lte`
+func (o GatewayPortConfigWanProbeOverrideOutput) ProbeProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigWanProbeOverride) *string { return v.ProbeProfile }).(pulumi.StringPtrOutput)
+}
+
+type GatewayPortConfigWanProbeOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayPortConfigWanProbeOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayPortConfigWanProbeOverride)(nil)).Elem()
+}
+
+func (o GatewayPortConfigWanProbeOverridePtrOutput) ToGatewayPortConfigWanProbeOverridePtrOutput() GatewayPortConfigWanProbeOverridePtrOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverridePtrOutput) ToGatewayPortConfigWanProbeOverridePtrOutputWithContext(ctx context.Context) GatewayPortConfigWanProbeOverridePtrOutput {
+	return o
+}
+
+func (o GatewayPortConfigWanProbeOverridePtrOutput) Elem() GatewayPortConfigWanProbeOverrideOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverride) GatewayPortConfigWanProbeOverride {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayPortConfigWanProbeOverride
+		return ret
+	}).(GatewayPortConfigWanProbeOverrideOutput)
+}
+
+func (o GatewayPortConfigWanProbeOverridePtrOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverride) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ips
+	}).(pulumi.StringArrayOutput)
+}
+
+// enum: `broadband`, `lte`
+func (o GatewayPortConfigWanProbeOverridePtrOutput) ProbeProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayPortConfigWanProbeOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProbeProfile
+	}).(pulumi.StringPtrOutput)
 }
 
 type GatewayPortConfigWanSourceNat struct {
@@ -15018,6 +15426,7 @@ func (o SwitchAclPolicyActionArrayOutput) Index(i pulumi.IntInput) SwitchAclPoli
 type SwitchAclTags struct {
 	// required if
 	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	// - `type`==`gbpResource`
 	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag *int `pulumi:"gbpTag"`
 	// required if
@@ -15036,7 +15445,7 @@ type SwitchAclTags struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	// if `type`==`resource`
+	// if `type`==`resource` or `type`==`gbpResource`
 	// empty means unrestricted, i.e. any
 	Specs []SwitchAclTagsSpec `pulumi:"specs"`
 	// if
@@ -15044,7 +15453,16 @@ type SwitchAclTags struct {
 	// - `type`==`resource` (optional. default is `any`)
 	// - `type`==`staticGbp` if from matching subnet
 	Subnets []string `pulumi:"subnets"`
-	// enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+	// enum:
+	//   * `any`: matching anything not identified
+	//   * `dynamicGbp`: from the gbpTag received from RADIUS
+	//   * `gbpResource`: can only be used in `dstTags`
+	//   * `mac`
+	//   * `network`
+	//   * `radiusGroup`
+	//   * `resource`: can only be used in `dstTags`
+	//   * `staticGbp`: applying gbp tag against matching conditions
+	//   * `subnet`'
 	Type string `pulumi:"type"`
 }
 
@@ -15062,6 +15480,7 @@ type SwitchAclTagsInput interface {
 type SwitchAclTagsArgs struct {
 	// required if
 	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	// - `type`==`gbpResource`
 	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag pulumi.IntPtrInput `pulumi:"gbpTag"`
 	// required if
@@ -15080,7 +15499,7 @@ type SwitchAclTagsArgs struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
-	// if `type`==`resource`
+	// if `type`==`resource` or `type`==`gbpResource`
 	// empty means unrestricted, i.e. any
 	Specs SwitchAclTagsSpecArrayInput `pulumi:"specs"`
 	// if
@@ -15088,7 +15507,16 @@ type SwitchAclTagsArgs struct {
 	// - `type`==`resource` (optional. default is `any`)
 	// - `type`==`staticGbp` if from matching subnet
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
-	// enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+	// enum:
+	//   * `any`: matching anything not identified
+	//   * `dynamicGbp`: from the gbpTag received from RADIUS
+	//   * `gbpResource`: can only be used in `dstTags`
+	//   * `mac`
+	//   * `network`
+	//   * `radiusGroup`
+	//   * `resource`: can only be used in `dstTags`
+	//   * `staticGbp`: applying gbp tag against matching conditions
+	//   * `subnet`'
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -15145,6 +15573,7 @@ func (o SwitchAclTagsOutput) ToSwitchAclTagsOutputWithContext(ctx context.Contex
 
 // required if
 // - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+// - `type`==`gbpResource`
 // - `type`==`staticGbp` (applying gbp tag against matching conditions)
 func (o SwitchAclTagsOutput) GbpTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchAclTags) *int { return v.GbpTag }).(pulumi.IntPtrOutput)
@@ -15175,7 +15604,7 @@ func (o SwitchAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclTags) *string { return v.RadiusGroup }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`resource`
+// if `type`==`resource` or `type`==`gbpResource`
 // empty means unrestricted, i.e. any
 func (o SwitchAclTagsOutput) Specs() SwitchAclTagsSpecArrayOutput {
 	return o.ApplyT(func(v SwitchAclTags) []SwitchAclTagsSpec { return v.Specs }).(SwitchAclTagsSpecArrayOutput)
@@ -15189,7 +15618,16 @@ func (o SwitchAclTagsOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchAclTags) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
-// enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+// enum:
+//   - `any`: matching anything not identified
+//   - `dynamicGbp`: from the gbpTag received from RADIUS
+//   - `gbpResource`: can only be used in `dstTags`
+//   - `mac`
+//   - `network`
+//   - `radiusGroup`
+//   - `resource`: can only be used in `dstTags`
+//   - `staticGbp`: applying gbp tag against matching conditions
+//   - `subnet`'
 func (o SwitchAclTagsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SwitchAclTags) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15682,25 +16120,25 @@ func (o SwitchDhcpdConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type SwitchDhcpdConfigConfig struct {
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 	DnsServers []string `pulumi:"dnsServers"`
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings map[string]SwitchDhcpdConfigConfigFixedBindings `pulumi:"fixedBindings"`
-	// if `type`==`local` - optional, `ip` will be used if not provided
+	// if `type`==`server`  - optional, `ip` will be used if not provided
 	Gateway *string `pulumi:"gateway"`
-	// if `type`==`local`
+	// if `type`==`server`
 	IpEnd *string `pulumi:"ipEnd"`
-	// if `type6`==`local`
+	// if `type6`==`server`
 	IpEnd6 *string `pulumi:"ipEnd6"`
-	// if `type`==`local`
+	// if `type`==`server`
 	IpStart *string `pulumi:"ipStart"`
-	// if `type6`==`local`
+	// if `type6`==`server`
 	IpStart6 *string `pulumi:"ipStart6"`
 	// in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
 	LeaseTime *int `pulumi:"leaseTime"`
-	// Property key is the DHCP option number
+	// if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
 	Options map[string]SwitchDhcpdConfigConfigOptions `pulumi:"options"`
 	// `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
 	// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
@@ -15713,7 +16151,7 @@ type SwitchDhcpdConfigConfig struct {
 	Type *string `pulumi:"type"`
 	// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 	Type6 *string `pulumi:"type6"`
-	// Property key is <enterprise number>:<sub option code>, with
+	// if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
 	VendorEncapulated map[string]SwitchDhcpdConfigConfigVendorEncapulated `pulumi:"vendorEncapulated"`
@@ -15731,25 +16169,25 @@ type SwitchDhcpdConfigConfigInput interface {
 }
 
 type SwitchDhcpdConfigConfigArgs struct {
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
-	// if `type`==`local` - optional, if not defined, system one will be used
+	// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+	// if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 	FixedBindings SwitchDhcpdConfigConfigFixedBindingsMapInput `pulumi:"fixedBindings"`
-	// if `type`==`local` - optional, `ip` will be used if not provided
+	// if `type`==`server`  - optional, `ip` will be used if not provided
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
-	// if `type`==`local`
+	// if `type`==`server`
 	IpEnd pulumi.StringPtrInput `pulumi:"ipEnd"`
-	// if `type6`==`local`
+	// if `type6`==`server`
 	IpEnd6 pulumi.StringPtrInput `pulumi:"ipEnd6"`
-	// if `type`==`local`
+	// if `type`==`server`
 	IpStart pulumi.StringPtrInput `pulumi:"ipStart"`
-	// if `type6`==`local`
+	// if `type6`==`server`
 	IpStart6 pulumi.StringPtrInput `pulumi:"ipStart6"`
 	// in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
 	LeaseTime pulumi.IntPtrInput `pulumi:"leaseTime"`
-	// Property key is the DHCP option number
+	// if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
 	Options SwitchDhcpdConfigConfigOptionsMapInput `pulumi:"options"`
 	// `serverIdOverride`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients,
 	// should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
@@ -15762,7 +16200,7 @@ type SwitchDhcpdConfigConfigArgs struct {
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
 	Type6 pulumi.StringPtrInput `pulumi:"type6"`
-	// Property key is <enterprise number>:<sub option code>, with
+	// if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
 	VendorEncapulated SwitchDhcpdConfigConfigVendorEncapulatedMapInput `pulumi:"vendorEncapulated"`
@@ -15819,44 +16257,44 @@ func (o SwitchDhcpdConfigConfigOutput) ToSwitchDhcpdConfigConfigOutputWithContex
 	return o
 }
 
-// if `type`==`local` - optional, if not defined, system one will be used
+// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 func (o SwitchDhcpdConfigConfigOutput) DnsServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
 }
 
-// if `type`==`local` - optional, if not defined, system one will be used
+// if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
 func (o SwitchDhcpdConfigConfigOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+// if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
 func (o SwitchDhcpdConfigConfigOutput) FixedBindings() SwitchDhcpdConfigConfigFixedBindingsMapOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) map[string]SwitchDhcpdConfigConfigFixedBindings {
 		return v.FixedBindings
 	}).(SwitchDhcpdConfigConfigFixedBindingsMapOutput)
 }
 
-// if `type`==`local` - optional, `ip` will be used if not provided
+// if `type`==`server`  - optional, `ip` will be used if not provided
 func (o SwitchDhcpdConfigConfigOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`local`
+// if `type`==`server`
 func (o SwitchDhcpdConfigConfigOutput) IpEnd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.IpEnd }).(pulumi.StringPtrOutput)
 }
 
-// if `type6`==`local`
+// if `type6`==`server`
 func (o SwitchDhcpdConfigConfigOutput) IpEnd6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.IpEnd6 }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`local`
+// if `type`==`server`
 func (o SwitchDhcpdConfigConfigOutput) IpStart() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.IpStart }).(pulumi.StringPtrOutput)
 }
 
-// if `type6`==`local`
+// if `type6`==`server`
 func (o SwitchDhcpdConfigConfigOutput) IpStart6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.IpStart6 }).(pulumi.StringPtrOutput)
 }
@@ -15866,7 +16304,7 @@ func (o SwitchDhcpdConfigConfigOutput) LeaseTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *int { return v.LeaseTime }).(pulumi.IntPtrOutput)
 }
 
-// Property key is the DHCP option number
+// if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
 func (o SwitchDhcpdConfigConfigOutput) Options() SwitchDhcpdConfigConfigOptionsMapOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) map[string]SwitchDhcpdConfigConfigOptions { return v.Options }).(SwitchDhcpdConfigConfigOptionsMapOutput)
 }
@@ -15897,7 +16335,7 @@ func (o SwitchDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchDhcpdConfigConfig) *string { return v.Type6 }).(pulumi.StringPtrOutput)
 }
 
-// Property key is <enterprise number>:<sub option code>, with
+// if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
 //   - enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 //   - sub option code: 1-255, sub-option code'
 func (o SwitchDhcpdConfigConfigOutput) VendorEncapulated() SwitchDhcpdConfigConfigVendorEncapulatedMapOutput {
@@ -17081,6 +17519,166 @@ func (o SwitchIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type SwitchLocalPortConfig struct {
+	// if want to generate port up/down alarm
+	Critical    *bool   `pulumi:"critical"`
+	Description *string `pulumi:"description"`
+	// if `speed` and `duplex` are specified, whether to disable autonegotiation
+	DisableAutoneg *bool `pulumi:"disableAutoneg"`
+	// enum: `auto`, `full`, `half`
+	Duplex *string `pulumi:"duplex"`
+	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+	Mtu         *int  `pulumi:"mtu"`
+	PoeDisabled *bool `pulumi:"poeDisabled"`
+	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+	Speed *string `pulumi:"speed"`
+	// port usage name.
+	//
+	// If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	Usage string `pulumi:"usage"`
+}
+
+// SwitchLocalPortConfigInput is an input type that accepts SwitchLocalPortConfigArgs and SwitchLocalPortConfigOutput values.
+// You can construct a concrete instance of `SwitchLocalPortConfigInput` via:
+//
+//	SwitchLocalPortConfigArgs{...}
+type SwitchLocalPortConfigInput interface {
+	pulumi.Input
+
+	ToSwitchLocalPortConfigOutput() SwitchLocalPortConfigOutput
+	ToSwitchLocalPortConfigOutputWithContext(context.Context) SwitchLocalPortConfigOutput
+}
+
+type SwitchLocalPortConfigArgs struct {
+	// if want to generate port up/down alarm
+	Critical    pulumi.BoolPtrInput   `pulumi:"critical"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// if `speed` and `duplex` are specified, whether to disable autonegotiation
+	DisableAutoneg pulumi.BoolPtrInput `pulumi:"disableAutoneg"`
+	// enum: `auto`, `full`, `half`
+	Duplex pulumi.StringPtrInput `pulumi:"duplex"`
+	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+	Mtu         pulumi.IntPtrInput  `pulumi:"mtu"`
+	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
+	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+	Speed pulumi.StringPtrInput `pulumi:"speed"`
+	// port usage name.
+	//
+	// If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (SwitchLocalPortConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchLocalPortConfig)(nil)).Elem()
+}
+
+func (i SwitchLocalPortConfigArgs) ToSwitchLocalPortConfigOutput() SwitchLocalPortConfigOutput {
+	return i.ToSwitchLocalPortConfigOutputWithContext(context.Background())
+}
+
+func (i SwitchLocalPortConfigArgs) ToSwitchLocalPortConfigOutputWithContext(ctx context.Context) SwitchLocalPortConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchLocalPortConfigOutput)
+}
+
+// SwitchLocalPortConfigMapInput is an input type that accepts SwitchLocalPortConfigMap and SwitchLocalPortConfigMapOutput values.
+// You can construct a concrete instance of `SwitchLocalPortConfigMapInput` via:
+//
+//	SwitchLocalPortConfigMap{ "key": SwitchLocalPortConfigArgs{...} }
+type SwitchLocalPortConfigMapInput interface {
+	pulumi.Input
+
+	ToSwitchLocalPortConfigMapOutput() SwitchLocalPortConfigMapOutput
+	ToSwitchLocalPortConfigMapOutputWithContext(context.Context) SwitchLocalPortConfigMapOutput
+}
+
+type SwitchLocalPortConfigMap map[string]SwitchLocalPortConfigInput
+
+func (SwitchLocalPortConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchLocalPortConfig)(nil)).Elem()
+}
+
+func (i SwitchLocalPortConfigMap) ToSwitchLocalPortConfigMapOutput() SwitchLocalPortConfigMapOutput {
+	return i.ToSwitchLocalPortConfigMapOutputWithContext(context.Background())
+}
+
+func (i SwitchLocalPortConfigMap) ToSwitchLocalPortConfigMapOutputWithContext(ctx context.Context) SwitchLocalPortConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchLocalPortConfigMapOutput)
+}
+
+type SwitchLocalPortConfigOutput struct{ *pulumi.OutputState }
+
+func (SwitchLocalPortConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchLocalPortConfig)(nil)).Elem()
+}
+
+func (o SwitchLocalPortConfigOutput) ToSwitchLocalPortConfigOutput() SwitchLocalPortConfigOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigOutput) ToSwitchLocalPortConfigOutputWithContext(ctx context.Context) SwitchLocalPortConfigOutput {
+	return o
+}
+
+// if want to generate port up/down alarm
+func (o SwitchLocalPortConfigOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchLocalPortConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// if `speed` and `duplex` are specified, whether to disable autonegotiation
+func (o SwitchLocalPortConfigOutput) DisableAutoneg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.DisableAutoneg }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `auto`, `full`, `half`
+func (o SwitchLocalPortConfigOutput) Duplex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Duplex }).(pulumi.StringPtrOutput)
+}
+
+// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+func (o SwitchLocalPortConfigOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+func (o SwitchLocalPortConfigOutput) PoeDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
+}
+
+// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+func (o SwitchLocalPortConfigOutput) Speed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Speed }).(pulumi.StringPtrOutput)
+}
+
+// port usage name.
+//
+// If EVPN is used, use `evpnUplink`or `evpnDownlink`
+func (o SwitchLocalPortConfigOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type SwitchLocalPortConfigMapOutput struct{ *pulumi.OutputState }
+
+func (SwitchLocalPortConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchLocalPortConfig)(nil)).Elem()
+}
+
+func (o SwitchLocalPortConfigMapOutput) ToSwitchLocalPortConfigMapOutput() SwitchLocalPortConfigMapOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigMapOutput) ToSwitchLocalPortConfigMapOutputWithContext(ctx context.Context) SwitchLocalPortConfigMapOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigMapOutput) MapIndex(k pulumi.StringInput) SwitchLocalPortConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchLocalPortConfig {
+		return vs[0].(map[string]SwitchLocalPortConfig)[vs[1].(string)]
+	}).(SwitchLocalPortConfigOutput)
 }
 
 type SwitchMistNac struct {
@@ -18456,6 +19054,8 @@ type SwitchPortUsages struct {
 	StpEdge       *bool `pulumi:"stpEdge"`
 	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
 	StpP2p        *bool `pulumi:"stpP2p"`
+	// if this is connected to a vstp network
+	UseVstp *bool `pulumi:"useVstp"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork *string `pulumi:"voipNetwork"`
 }
@@ -18544,6 +19144,8 @@ type SwitchPortUsagesArgs struct {
 	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
 	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
 	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
+	// if this is connected to a vstp network
+	UseVstp pulumi.BoolPtrInput `pulumi:"useVstp"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
 }
@@ -18774,6 +19376,11 @@ func (o SwitchPortUsagesOutput) StpNoRootPort() pulumi.BoolPtrOutput {
 
 func (o SwitchPortUsagesOutput) StpP2p() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
+}
+
+// if this is connected to a vstp network
+func (o SwitchPortUsagesOutput) UseVstp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.UseVstp }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
@@ -19158,9 +19765,7 @@ type SwitchRadiusConfig struct {
 	// radius auth session retries
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// radius auth session timeout
-	AuthServersTimeout *int  `pulumi:"authServersTimeout"`
-	CoaEnabled         *bool `pulumi:"coaEnabled"`
-	CoaPort            *int  `pulumi:"coaPort"`
+	AuthServersTimeout *int `pulumi:"authServersTimeout"`
 	// use `network`or `sourceIp`
 	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network *string `pulumi:"network"`
@@ -19187,9 +19792,7 @@ type SwitchRadiusConfigArgs struct {
 	// radius auth session retries
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
 	// radius auth session timeout
-	AuthServersTimeout pulumi.IntPtrInput  `pulumi:"authServersTimeout"`
-	CoaEnabled         pulumi.BoolPtrInput `pulumi:"coaEnabled"`
-	CoaPort            pulumi.IntPtrInput  `pulumi:"coaPort"`
+	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
 	// use `network`or `sourceIp`
 	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -19297,14 +19900,6 @@ func (o SwitchRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
 
-func (o SwitchRadiusConfigOutput) CoaEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchRadiusConfig) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o SwitchRadiusConfigOutput) CoaPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SwitchRadiusConfig) *int { return v.CoaPort }).(pulumi.IntPtrOutput)
-}
-
 // use `network`or `sourceIp`
 // which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o SwitchRadiusConfigOutput) Network() pulumi.StringPtrOutput {
@@ -19385,24 +19980,6 @@ func (o SwitchRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.AuthServersTimeout
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o SwitchRadiusConfigPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SwitchRadiusConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CoaEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o SwitchRadiusConfigPtrOutput) CoaPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SwitchRadiusConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CoaPort
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -23739,8 +24316,8 @@ func (o SwitchSnmpConfigViewArrayOutput) Index(i pulumi.IntInput) SwitchSnmpConf
 }
 
 type SwitchStpConfig struct {
-	// ignored for switches participating in EVPN
-	VstpEnabled *bool `pulumi:"vstpEnabled"`
+	// Switch STP priority: from `0k` to `15k`
+	BridgePriority *string `pulumi:"bridgePriority"`
 }
 
 // SwitchStpConfigInput is an input type that accepts SwitchStpConfigArgs and SwitchStpConfigOutput values.
@@ -23755,8 +24332,8 @@ type SwitchStpConfigInput interface {
 }
 
 type SwitchStpConfigArgs struct {
-	// ignored for switches participating in EVPN
-	VstpEnabled pulumi.BoolPtrInput `pulumi:"vstpEnabled"`
+	// Switch STP priority: from `0k` to `15k`
+	BridgePriority pulumi.StringPtrInput `pulumi:"bridgePriority"`
 }
 
 func (SwitchStpConfigArgs) ElementType() reflect.Type {
@@ -23836,9 +24413,9 @@ func (o SwitchStpConfigOutput) ToSwitchStpConfigPtrOutputWithContext(ctx context
 	}).(SwitchStpConfigPtrOutput)
 }
 
-// ignored for switches participating in EVPN
-func (o SwitchStpConfigOutput) VstpEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchStpConfig) *bool { return v.VstpEnabled }).(pulumi.BoolPtrOutput)
+// Switch STP priority: from `0k` to `15k`
+func (o SwitchStpConfigOutput) BridgePriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchStpConfig) *string { return v.BridgePriority }).(pulumi.StringPtrOutput)
 }
 
 type SwitchStpConfigPtrOutput struct{ *pulumi.OutputState }
@@ -23865,14 +24442,14 @@ func (o SwitchStpConfigPtrOutput) Elem() SwitchStpConfigOutput {
 	}).(SwitchStpConfigOutput)
 }
 
-// ignored for switches participating in EVPN
-func (o SwitchStpConfigPtrOutput) VstpEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SwitchStpConfig) *bool {
+// Switch STP priority: from `0k` to `15k`
+func (o SwitchStpConfigPtrOutput) BridgePriority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SwitchStpConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.VstpEnabled
-	}).(pulumi.BoolPtrOutput)
+		return v.BridgePriority
+	}).(pulumi.StringPtrOutput)
 }
 
 type SwitchSwitchMgmt struct {
@@ -37730,8 +38307,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApUsbConfigPtrInput)(nil)).Elem(), ApUsbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigInput)(nil)).Elem(), GatewayBgpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigMapInput)(nil)).Elem(), GatewayBgpConfigMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigCommunityInput)(nil)).Elem(), GatewayBgpConfigCommunityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigCommunityArrayInput)(nil)).Elem(), GatewayBgpConfigCommunityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigNeighborsInput)(nil)).Elem(), GatewayBgpConfigNeighborsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayBgpConfigNeighborsMapInput)(nil)).Elem(), GatewayBgpConfigNeighborsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayClusterNodeInput)(nil)).Elem(), GatewayClusterNodeArgs{})
@@ -37768,6 +38343,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkInternetAccessDestinationNatMapInput)(nil)).Elem(), GatewayNetworkInternetAccessDestinationNatMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkInternetAccessStaticNatInput)(nil)).Elem(), GatewayNetworkInternetAccessStaticNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkInternetAccessStaticNatMapInput)(nil)).Elem(), GatewayNetworkInternetAccessStaticNatMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkMulticastInput)(nil)).Elem(), GatewayNetworkMulticastArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkMulticastPtrInput)(nil)).Elem(), GatewayNetworkMulticastArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkMulticastGroupsInput)(nil)).Elem(), GatewayNetworkMulticastGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkMulticastGroupsMapInput)(nil)).Elem(), GatewayNetworkMulticastGroupsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkTenantsInput)(nil)).Elem(), GatewayNetworkTenantsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkTenantsMapInput)(nil)).Elem(), GatewayNetworkTenantsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayNetworkVpnAccessInput)(nil)).Elem(), GatewayNetworkVpnAccessArgs{})
@@ -37796,6 +38375,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigVpnPathsMapInput)(nil)).Elem(), GatewayPortConfigVpnPathsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigVpnPathsTrafficShapingInput)(nil)).Elem(), GatewayPortConfigVpnPathsTrafficShapingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigVpnPathsTrafficShapingPtrInput)(nil)).Elem(), GatewayPortConfigVpnPathsTrafficShapingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanExtraRoutesInput)(nil)).Elem(), GatewayPortConfigWanExtraRoutesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanExtraRoutesMapInput)(nil)).Elem(), GatewayPortConfigWanExtraRoutesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanProbeOverrideInput)(nil)).Elem(), GatewayPortConfigWanProbeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanProbeOverridePtrInput)(nil)).Elem(), GatewayPortConfigWanProbeOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanSourceNatInput)(nil)).Elem(), GatewayPortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortConfigWanSourceNatPtrInput)(nil)).Elem(), GatewayPortConfigWanSourceNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayPortMirroringInput)(nil)).Elem(), GatewayPortMirroringArgs{})
@@ -37886,6 +38469,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchExtraRoutesNextQualifiedMapInput)(nil)).Elem(), SwitchExtraRoutesNextQualifiedMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchIpConfigInput)(nil)).Elem(), SwitchIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchIpConfigPtrInput)(nil)).Elem(), SwitchIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchLocalPortConfigInput)(nil)).Elem(), SwitchLocalPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchLocalPortConfigMapInput)(nil)).Elem(), SwitchLocalPortConfigMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchMistNacInput)(nil)).Elem(), SwitchMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchMistNacPtrInput)(nil)).Elem(), SwitchMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksInput)(nil)).Elem(), SwitchNetworksArgs{})
@@ -38189,8 +38774,6 @@ func init() {
 	pulumi.RegisterOutputType(ApUsbConfigPtrOutput{})
 	pulumi.RegisterOutputType(GatewayBgpConfigOutput{})
 	pulumi.RegisterOutputType(GatewayBgpConfigMapOutput{})
-	pulumi.RegisterOutputType(GatewayBgpConfigCommunityOutput{})
-	pulumi.RegisterOutputType(GatewayBgpConfigCommunityArrayOutput{})
 	pulumi.RegisterOutputType(GatewayBgpConfigNeighborsOutput{})
 	pulumi.RegisterOutputType(GatewayBgpConfigNeighborsMapOutput{})
 	pulumi.RegisterOutputType(GatewayClusterNodeOutput{})
@@ -38227,6 +38810,10 @@ func init() {
 	pulumi.RegisterOutputType(GatewayNetworkInternetAccessDestinationNatMapOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkInternetAccessStaticNatOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkInternetAccessStaticNatMapOutput{})
+	pulumi.RegisterOutputType(GatewayNetworkMulticastOutput{})
+	pulumi.RegisterOutputType(GatewayNetworkMulticastPtrOutput{})
+	pulumi.RegisterOutputType(GatewayNetworkMulticastGroupsOutput{})
+	pulumi.RegisterOutputType(GatewayNetworkMulticastGroupsMapOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkTenantsOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkTenantsMapOutput{})
 	pulumi.RegisterOutputType(GatewayNetworkVpnAccessOutput{})
@@ -38255,6 +38842,10 @@ func init() {
 	pulumi.RegisterOutputType(GatewayPortConfigVpnPathsMapOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigVpnPathsTrafficShapingOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigVpnPathsTrafficShapingPtrOutput{})
+	pulumi.RegisterOutputType(GatewayPortConfigWanExtraRoutesOutput{})
+	pulumi.RegisterOutputType(GatewayPortConfigWanExtraRoutesMapOutput{})
+	pulumi.RegisterOutputType(GatewayPortConfigWanProbeOverrideOutput{})
+	pulumi.RegisterOutputType(GatewayPortConfigWanProbeOverridePtrOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigWanSourceNatOutput{})
 	pulumi.RegisterOutputType(GatewayPortConfigWanSourceNatPtrOutput{})
 	pulumi.RegisterOutputType(GatewayPortMirroringOutput{})
@@ -38345,6 +38936,8 @@ func init() {
 	pulumi.RegisterOutputType(SwitchExtraRoutesNextQualifiedMapOutput{})
 	pulumi.RegisterOutputType(SwitchIpConfigOutput{})
 	pulumi.RegisterOutputType(SwitchIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(SwitchLocalPortConfigOutput{})
+	pulumi.RegisterOutputType(SwitchLocalPortConfigMapOutput{})
 	pulumi.RegisterOutputType(SwitchMistNacOutput{})
 	pulumi.RegisterOutputType(SwitchMistNacPtrOutput{})
 	pulumi.RegisterOutputType(SwitchNetworksOutput{})

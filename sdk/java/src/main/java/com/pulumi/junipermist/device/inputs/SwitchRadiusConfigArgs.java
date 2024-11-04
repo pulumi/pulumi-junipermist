@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.SwitchRadiusConfigAcctServerArgs;
 import com.pulumi.junipermist.device.inputs.SwitchRadiusConfigAuthServerArgs;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -79,20 +78,6 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.authServersTimeout);
     }
 
-    @Import(name="coaEnabled")
-    private @Nullable Output<Boolean> coaEnabled;
-
-    public Optional<Output<Boolean>> coaEnabled() {
-        return Optional.ofNullable(this.coaEnabled);
-    }
-
-    @Import(name="coaPort")
-    private @Nullable Output<Integer> coaPort;
-
-    public Optional<Output<Integer>> coaPort() {
-        return Optional.ofNullable(this.coaPort);
-    }
-
     /**
      * use `network`or `source_ip`
      * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
@@ -133,8 +118,6 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         this.authServers = $.authServers;
         this.authServersRetries = $.authServersRetries;
         this.authServersTimeout = $.authServersTimeout;
-        this.coaEnabled = $.coaEnabled;
-        this.coaPort = $.coaPort;
         this.network = $.network;
         this.sourceIp = $.sourceIp;
     }
@@ -244,24 +227,6 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder authServersTimeout(Integer authServersTimeout) {
             return authServersTimeout(Output.of(authServersTimeout));
-        }
-
-        public Builder coaEnabled(@Nullable Output<Boolean> coaEnabled) {
-            $.coaEnabled = coaEnabled;
-            return this;
-        }
-
-        public Builder coaEnabled(Boolean coaEnabled) {
-            return coaEnabled(Output.of(coaEnabled));
-        }
-
-        public Builder coaPort(@Nullable Output<Integer> coaPort) {
-            $.coaPort = coaPort;
-            return this;
-        }
-
-        public Builder coaPort(Integer coaPort) {
-            return coaPort(Output.of(coaPort));
         }
 
         /**

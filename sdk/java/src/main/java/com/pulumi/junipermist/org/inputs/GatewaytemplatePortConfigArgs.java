@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigIpConfigArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigTrafficShapingArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigVpnPathsArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanExtraRoutesArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanProbeOverrideArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplatePortConfigWanSourceNatArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -493,9 +495,17 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.vlanId);
     }
 
+    /**
+     * Property key is the VPN name
+     * 
+     */
     @Import(name="vpnPaths")
     private @Nullable Output<Map<String,GatewaytemplatePortConfigVpnPathsArgs>> vpnPaths;
 
+    /**
+     * @return Property key is the VPN name
+     * 
+     */
     public Optional<Output<Map<String,GatewaytemplatePortConfigVpnPathsArgs>>> vpnPaths() {
         return Optional.ofNullable(this.vpnPaths);
     }
@@ -528,6 +538,36 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> wanExtIp() {
         return Optional.ofNullable(this.wanExtIp);
+    }
+
+    /**
+     * Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * 
+     */
+    @Import(name="wanExtraRoutes")
+    private @Nullable Output<Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs>> wanExtraRoutes;
+
+    /**
+     * @return Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs>>> wanExtraRoutes() {
+        return Optional.ofNullable(this.wanExtraRoutes);
+    }
+
+    /**
+     * if `usage`==`wan`
+     * 
+     */
+    @Import(name="wanProbeOverride")
+    private @Nullable Output<GatewaytemplatePortConfigWanProbeOverrideArgs> wanProbeOverride;
+
+    /**
+     * @return if `usage`==`wan`
+     * 
+     */
+    public Optional<Output<GatewaytemplatePortConfigWanProbeOverrideArgs>> wanProbeOverride() {
+        return Optional.ofNullable(this.wanProbeOverride);
     }
 
     /**
@@ -601,6 +641,8 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
         this.vpnPaths = $.vpnPaths;
         this.wanArpPolicer = $.wanArpPolicer;
         this.wanExtIp = $.wanExtIp;
+        this.wanExtraRoutes = $.wanExtraRoutes;
+        this.wanProbeOverride = $.wanProbeOverride;
         this.wanSourceNat = $.wanSourceNat;
         this.wanType = $.wanType;
     }
@@ -1290,11 +1332,23 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
             return vlanId(Output.of(vlanId));
         }
 
+        /**
+         * @param vpnPaths Property key is the VPN name
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnPaths(@Nullable Output<Map<String,GatewaytemplatePortConfigVpnPathsArgs>> vpnPaths) {
             $.vpnPaths = vpnPaths;
             return this;
         }
 
+        /**
+         * @param vpnPaths Property key is the VPN name
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpnPaths(Map<String,GatewaytemplatePortConfigVpnPathsArgs> vpnPaths) {
             return vpnPaths(Output.of(vpnPaths));
         }
@@ -1339,6 +1393,48 @@ public final class GatewaytemplatePortConfigArgs extends com.pulumi.resources.Re
          */
         public Builder wanExtIp(String wanExtIp) {
             return wanExtIp(Output.of(wanExtIp));
+        }
+
+        /**
+         * @param wanExtraRoutes Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtraRoutes(@Nullable Output<Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs>> wanExtraRoutes) {
+            $.wanExtraRoutes = wanExtraRoutes;
+            return this;
+        }
+
+        /**
+         * @param wanExtraRoutes Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanExtraRoutes(Map<String,GatewaytemplatePortConfigWanExtraRoutesArgs> wanExtraRoutes) {
+            return wanExtraRoutes(Output.of(wanExtraRoutes));
+        }
+
+        /**
+         * @param wanProbeOverride if `usage`==`wan`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanProbeOverride(@Nullable Output<GatewaytemplatePortConfigWanProbeOverrideArgs> wanProbeOverride) {
+            $.wanProbeOverride = wanProbeOverride;
+            return this;
+        }
+
+        /**
+         * @param wanProbeOverride if `usage`==`wan`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanProbeOverride(GatewaytemplatePortConfigWanProbeOverrideArgs wanProbeOverride) {
+            return wanProbeOverride(Output.of(wanProbeOverride));
         }
 
         /**

@@ -96,6 +96,25 @@ export interface GetConstTrafficTypesConstTrafficType {
     trafficClass: string;
 }
 
+export interface GetConstWebhooksConstWebhook {
+    /**
+     * can be used in org webhooks, optional
+     */
+    forOrg: boolean;
+    /**
+     * supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+     */
+    hasDeliveryResults: boolean;
+    /**
+     * internal topic (not selectable in site/org webhooks)
+     */
+    internal: boolean;
+    /**
+     * webhook topic name
+     */
+    key: string;
+}
+
 export interface GetSitesSite {
     /**
      * full address of the site
@@ -684,7 +703,6 @@ export namespace device {
          * when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier: number;
-        communities?: outputs.device.GatewayBgpConfigCommunity[];
         /**
          * BFD provides faster path failure detection and is enabled by default
          */
@@ -742,12 +760,6 @@ export namespace device {
         wanName?: string;
     }
 
-    export interface GatewayBgpConfigCommunity {
-        id?: string;
-        localPreference?: number;
-        vpnName?: string;
-    }
-
     export interface GatewayBgpConfigNeighbors {
         /**
          * If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -776,22 +788,22 @@ export namespace device {
          */
         config?: {[key: string]: outputs.device.GatewayDhcpdConfigConfig};
         /**
-         * if set to `true`, enable the DHCP server
+         * if set to `false`, disable the DHCP server
          */
         enabled: boolean;
     }
 
     export interface GatewayDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsServers: string[];
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsSuffixes: string[];
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.device.GatewayDhcpdConfigConfigFixedBindings};
         /**
@@ -819,7 +831,7 @@ export namespace device {
          */
         leaseTime: number;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
         options?: {[key: string]: outputs.device.GatewayDhcpdConfigConfigOptions};
         /**
@@ -844,7 +856,7 @@ export namespace device {
          */
         type6: string;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -885,9 +897,10 @@ export namespace device {
          * enum: `critical`, `standard`, `strict`
          */
         baseProfile?: string;
-        createdTime?: number;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id?: string;
-        modifiedTime?: number;
         name?: string;
         orgId?: string;
         overwrites?: outputs.device.GatewayIdpProfilesOverwrite[];
@@ -925,14 +938,12 @@ export namespace device {
     }
 
     export interface GatewayNetwork {
-        createdTime?: number;
         /**
          * whether to disallow Mist Devices in the network
          */
         disallowMistServices: boolean;
         gateway?: string;
         gateway6?: string;
-        id?: string;
         internalAccess?: outputs.device.GatewayNetworkInternalAccess;
         /**
          * whether this network has direct internet access
@@ -942,9 +953,11 @@ export namespace device {
          * whether to allow clients in the network to talk to each other
          */
         isolation?: boolean;
-        modifiedTime?: number;
+        /**
+         * whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast?: outputs.device.GatewayNetworkMulticast;
         name: string;
-        orgId?: string;
         /**
          * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
          */
@@ -993,6 +1006,25 @@ export namespace device {
          * If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: string;
+    }
+
+    export interface GatewayNetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp: boolean;
+        enabled: boolean;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: {[key: string]: outputs.device.GatewayNetworkMulticastGroups};
+    }
+
+    export interface GatewayNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: string;
     }
 
     export interface GatewayNetworkTenants {
@@ -1304,6 +1336,9 @@ export namespace device {
          * if WAN interface is on a VLAN
          */
         vlanId?: number;
+        /**
+         * Property key is the VPN name
+         */
         vpnPaths?: {[key: string]: outputs.device.GatewayPortConfigVpnPaths};
         /**
          * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
@@ -1313,6 +1348,14 @@ export namespace device {
          * optional, if spoke should reach this port by a different IP
          */
         wanExtIp?: string;
+        /**
+         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         */
+        wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
+        /**
+         * if `usage`==`wan`
+         */
+        wanProbeOverride?: outputs.device.GatewayPortConfigWanProbeOverride;
         /**
          * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
          */
@@ -1374,19 +1417,23 @@ export namespace device {
 
     export interface GatewayPortConfigVpnPaths {
         /**
-         * enum: `broadband`, `lte`
+         * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
         bfdProfile: string;
         /**
-         * whether to use tunnel mode. SSR only
+         * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
         bfdUseTunnelMode: boolean;
         /**
-         * for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * Only if the VPN `type`==`mesh`
+         */
+        linkName?: string;
+        /**
+         * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: number;
         /**
-         * enum: `hub`, `spoke`
+         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
          */
         role: string;
         trafficShaping?: outputs.device.GatewayPortConfigVpnPathsTrafficShaping;
@@ -1399,6 +1446,18 @@ export namespace device {
          */
         classPercentages?: number[];
         enabled: boolean;
+    }
+
+    export interface GatewayPortConfigWanExtraRoutes {
+        via?: string;
+    }
+
+    export interface GatewayPortConfigWanProbeOverride {
+        ips?: string[];
+        /**
+         * enum: `broadband`, `lte`
+         */
+        probeProfile: string;
     }
 
     export interface GatewayPortConfigWanSourceNat {
@@ -3401,6 +3460,7 @@ export namespace device {
         /**
          * required if
          * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbpResource`
          * - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: number;
@@ -3427,7 +3487,7 @@ export namespace device {
          */
         radiusGroup?: string;
         /**
-         * if `type`==`resource`
+         * if `type`==`resource` or `type`==`gbpResource`
          * empty means unrestricted, i.e. any
          */
         specs?: outputs.device.SwitchAclTagsSpec[];
@@ -3439,7 +3499,16 @@ export namespace device {
          */
         subnets: string[];
         /**
-         * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+         * enum: 
+         *   * `any`: matching anything not identified
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
+         *   * `mac`
+         *   * `network`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
+         *   * `subnet`'
          */
         type: string;
     }
@@ -3485,35 +3554,35 @@ export namespace device {
 
     export interface SwitchDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          */
         dnsServers: string[];
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          */
         dnsSuffixes: string[];
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.device.SwitchDhcpdConfigConfigFixedBindings};
         /**
-         * if `type`==`local` - optional, `ip` will be used if not provided
+         * if `type`==`server`  - optional, `ip` will be used if not provided
          */
         gateway?: string;
         /**
-         * if `type`==`local`
+         * if `type`==`server`
          */
         ipEnd?: string;
         /**
-         * if `type6`==`local`
+         * if `type6`==`server`
          */
         ipEnd6?: string;
         /**
-         * if `type`==`local`
+         * if `type`==`server`
          */
         ipStart?: string;
         /**
-         * if `type6`==`local`
+         * if `type6`==`server`
          */
         ipStart6?: string;
         /**
@@ -3521,7 +3590,7 @@ export namespace device {
          */
         leaseTime: number;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
          */
         options?: {[key: string]: outputs.device.SwitchDhcpdConfigConfigOptions};
         /**
@@ -3546,7 +3615,7 @@ export namespace device {
          */
         type6: string;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -3642,6 +3711,37 @@ export namespace device {
          * enum: `dhcp`, `static`
          */
         type: string;
+    }
+
+    export interface SwitchLocalPortConfig {
+        /**
+         * if want to generate port up/down alarm
+         */
+        critical?: boolean;
+        description?: string;
+        /**
+         * if `speed` and `duplex` are specified, whether to disable autonegotiation
+         */
+        disableAutoneg: boolean;
+        /**
+         * enum: `auto`, `full`, `half`
+         */
+        duplex: string;
+        /**
+         * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+         */
+        mtu: number;
+        poeDisabled: boolean;
+        /**
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         */
+        speed: string;
+        /**
+         * port usage name. 
+         *
+         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         */
+        usage: string;
     }
 
     export interface SwitchMistNac {
@@ -3977,6 +4077,10 @@ export namespace device {
         stpNoRootPort: boolean;
         stpP2p: boolean;
         /**
+         * if this is connected to a vstp network
+         */
+        useVstp: boolean;
+        /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: string;
@@ -4042,8 +4146,6 @@ export namespace device {
          * radius auth session timeout
          */
         authServersTimeout: number;
-        coaEnabled: boolean;
-        coaPort: number;
         /**
          * use `network`or `sourceIp`
          * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -4439,9 +4541,9 @@ export namespace device {
 
     export interface SwitchStpConfig {
         /**
-         * ignored for switches participating in EVPN
+         * Switch STP priority: from `0k` to `15k`
          */
-        vstpEnabled: boolean;
+        bridgePriority: string;
     }
 
     export interface SwitchSwitchMgmt {
@@ -5174,7 +5276,6 @@ export namespace org {
          * when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier: number;
-        communities?: outputs.org.DeviceprofileGatewayBgpConfigCommunity[];
         /**
          * BFD provides faster path failure detection and is enabled by default
          */
@@ -5232,12 +5333,6 @@ export namespace org {
         wanName?: string;
     }
 
-    export interface DeviceprofileGatewayBgpConfigCommunity {
-        id?: string;
-        localPreference?: number;
-        vpnName?: string;
-    }
-
     export interface DeviceprofileGatewayBgpConfigNeighbors {
         /**
          * If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -5259,22 +5354,22 @@ export namespace org {
          */
         config?: {[key: string]: outputs.org.DeviceprofileGatewayDhcpdConfigConfig};
         /**
-         * if set to `true`, enable the DHCP server
+         * if set to `false`, disable the DHCP server
          */
         enabled: boolean;
     }
 
     export interface DeviceprofileGatewayDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsServers: string[];
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsSuffixes: string[];
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.org.DeviceprofileGatewayDhcpdConfigConfigFixedBindings};
         /**
@@ -5302,7 +5397,7 @@ export namespace org {
          */
         leaseTime: number;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
         options?: {[key: string]: outputs.org.DeviceprofileGatewayDhcpdConfigConfigOptions};
         /**
@@ -5327,7 +5422,7 @@ export namespace org {
          */
         type6: string;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -5420,6 +5515,10 @@ export namespace org {
          * whether to allow clients in the network to talk to each other
          */
         isolation?: boolean;
+        /**
+         * whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast?: outputs.org.DeviceprofileGatewayNetworkMulticast;
         name: string;
         /**
          * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -5469,6 +5568,25 @@ export namespace org {
          * If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: string;
+    }
+
+    export interface DeviceprofileGatewayNetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp: boolean;
+        enabled: boolean;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: {[key: string]: outputs.org.DeviceprofileGatewayNetworkMulticastGroups};
+    }
+
+    export interface DeviceprofileGatewayNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: string;
     }
 
     export interface DeviceprofileGatewayNetworkTenants {
@@ -5780,6 +5898,9 @@ export namespace org {
          * if WAN interface is on a VLAN
          */
         vlanId?: number;
+        /**
+         * Property key is the VPN name
+         */
         vpnPaths?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigVpnPaths};
         /**
          * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
@@ -5789,6 +5910,14 @@ export namespace org {
          * optional, if spoke should reach this port by a different IP
          */
         wanExtIp?: string;
+        /**
+         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         */
+        wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
+        /**
+         * if `usage`==`wan`
+         */
+        wanProbeOverride?: outputs.org.DeviceprofileGatewayPortConfigWanProbeOverride;
         /**
          * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
          */
@@ -5850,19 +5979,23 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigVpnPaths {
         /**
-         * enum: `broadband`, `lte`
+         * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
         bfdProfile: string;
         /**
-         * whether to use tunnel mode. SSR only
+         * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
         bfdUseTunnelMode: boolean;
         /**
-         * for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * Only if the VPN `type`==`mesh`
+         */
+        linkName?: string;
+        /**
+         * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: number;
         /**
-         * enum: `hub`, `spoke`
+         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
          */
         role: string;
         trafficShaping?: outputs.org.DeviceprofileGatewayPortConfigVpnPathsTrafficShaping;
@@ -5875,6 +6008,18 @@ export namespace org {
          */
         classPercentages?: number[];
         enabled: boolean;
+    }
+
+    export interface DeviceprofileGatewayPortConfigWanExtraRoutes {
+        via?: string;
+    }
+
+    export interface DeviceprofileGatewayPortConfigWanProbeOverride {
+        ips?: string[];
+        /**
+         * enum: `broadband`, `lte`
+         */
+        probeProfile: string;
     }
 
     export interface DeviceprofileGatewayPortConfigWanSourceNat {
@@ -6344,7 +6489,6 @@ export namespace org {
          * when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier: number;
-        communities?: outputs.org.GatewaytemplateBgpConfigCommunity[];
         /**
          * BFD provides faster path failure detection and is enabled by default
          */
@@ -6402,12 +6546,6 @@ export namespace org {
         wanName?: string;
     }
 
-    export interface GatewaytemplateBgpConfigCommunity {
-        id?: string;
-        localPreference?: number;
-        vpnName?: string;
-    }
-
     export interface GatewaytemplateBgpConfigNeighbors {
         /**
          * If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -6429,22 +6567,22 @@ export namespace org {
          */
         config?: {[key: string]: outputs.org.GatewaytemplateDhcpdConfigConfig};
         /**
-         * if set to `true`, enable the DHCP server
+         * if set to `false`, disable the DHCP server
          */
         enabled: boolean;
     }
 
     export interface GatewaytemplateDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsServers: string[];
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsSuffixes: string[];
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: {[key: string]: outputs.org.GatewaytemplateDhcpdConfigConfigFixedBindings};
         /**
@@ -6472,7 +6610,7 @@ export namespace org {
          */
         leaseTime: number;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
         options?: {[key: string]: outputs.org.GatewaytemplateDhcpdConfigConfigOptions};
         /**
@@ -6497,7 +6635,7 @@ export namespace org {
          */
         type6: string;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -6590,6 +6728,10 @@ export namespace org {
          * whether to allow clients in the network to talk to each other
          */
         isolation?: boolean;
+        /**
+         * whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast?: outputs.org.GatewaytemplateNetworkMulticast;
         name: string;
         /**
          * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -6639,6 +6781,25 @@ export namespace org {
          * If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: string;
+    }
+
+    export interface GatewaytemplateNetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp: boolean;
+        enabled: boolean;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: {[key: string]: outputs.org.GatewaytemplateNetworkMulticastGroups};
+    }
+
+    export interface GatewaytemplateNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: string;
     }
 
     export interface GatewaytemplateNetworkTenants {
@@ -6950,6 +7111,9 @@ export namespace org {
          * if WAN interface is on a VLAN
          */
         vlanId?: number;
+        /**
+         * Property key is the VPN name
+         */
         vpnPaths?: {[key: string]: outputs.org.GatewaytemplatePortConfigVpnPaths};
         /**
          * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
@@ -6959,6 +7123,14 @@ export namespace org {
          * optional, if spoke should reach this port by a different IP
          */
         wanExtIp?: string;
+        /**
+         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         */
+        wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
+        /**
+         * if `usage`==`wan`
+         */
+        wanProbeOverride?: outputs.org.GatewaytemplatePortConfigWanProbeOverride;
         /**
          * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
          */
@@ -7020,19 +7192,23 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigVpnPaths {
         /**
-         * enum: `broadband`, `lte`
+         * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
         bfdProfile: string;
         /**
-         * whether to use tunnel mode. SSR only
+         * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
         bfdUseTunnelMode: boolean;
         /**
-         * for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * Only if the VPN `type`==`mesh`
+         */
+        linkName?: string;
+        /**
+         * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: number;
         /**
-         * enum: `hub`, `spoke`
+         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
          */
         role: string;
         trafficShaping?: outputs.org.GatewaytemplatePortConfigVpnPathsTrafficShaping;
@@ -7045,6 +7221,18 @@ export namespace org {
          */
         classPercentages?: number[];
         enabled: boolean;
+    }
+
+    export interface GatewaytemplatePortConfigWanExtraRoutes {
+        via?: string;
+    }
+
+    export interface GatewaytemplatePortConfigWanProbeOverride {
+        ips?: string[];
+        /**
+         * enum: `broadband`, `lte`
+         */
+        probeProfile: string;
     }
 
     export interface GatewaytemplatePortConfigWanSourceNat {
@@ -7572,10 +7760,6 @@ export namespace org {
          */
         connected: boolean;
         /**
-         * when the object has been created, in epoch
-         */
-        createdTime: number;
-        /**
          * deviceprofile id if assigned, null if not assigned
          */
         deviceprofileId: string;
@@ -7600,10 +7784,6 @@ export namespace org {
          * device model
          */
         model: string;
-        /**
-         * when the object has been modified for the last time, in epoch
-         */
-        modifiedTime: number;
         /**
          * device name if configured
          */
@@ -8276,6 +8456,7 @@ export namespace org {
         /**
          * required if
          * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbpResource`
          * - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: number;
@@ -8302,7 +8483,7 @@ export namespace org {
          */
         radiusGroup?: string;
         /**
-         * if `type`==`resource`
+         * if `type`==`resource` or `type`==`gbpResource`
          * empty means unrestricted, i.e. any
          */
         specs?: outputs.org.NetworktemplateAclTagsSpec[];
@@ -8314,7 +8495,16 @@ export namespace org {
          */
         subnets: string[];
         /**
-         * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+         * enum: 
+         *   * `any`: matching anything not identified
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
+         *   * `mac`
+         *   * `network`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
+         *   * `subnet`'
          */
         type: string;
     }
@@ -8611,6 +8801,10 @@ export namespace org {
         stpNoRootPort: boolean;
         stpP2p: boolean;
         /**
+         * if this is connected to a vstp network
+         */
+        useVstp: boolean;
+        /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: string;
@@ -8676,8 +8870,6 @@ export namespace org {
          * radius auth session timeout
          */
         authServersTimeout: number;
-        coaEnabled: boolean;
-        coaPort: number;
         /**
          * use `network`or `sourceIp`
          * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -9106,8 +9298,8 @@ export namespace org {
          */
         portConfig?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name (Maximum: 4)
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * Property key is the port mirroring instance name
+         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortMirroring};
     }
@@ -9769,6 +9961,21 @@ export namespace org {
         orgId: string;
     }
 
+    export interface SettingJcloudRa {
+        /**
+         * JCloud Routing Assurance Org Token
+         */
+        orgApitoken?: string;
+        /**
+         * JCloud Routing Assurance Org Token Name
+         */
+        orgApitokenName?: string;
+        /**
+         * JCloud Routing Assurance Org ID
+         */
+        orgId?: string;
+    }
+
     export interface SettingJuniper {
         accounts: outputs.org.SettingJuniperAccount[];
     }
@@ -9817,11 +10024,12 @@ export namespace org {
          */
         euOnly: boolean;
         /**
-         * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+         * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          */
         idpMachineCertLookupField: string;
         /**
-         * allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+         * allow customer to choose the EAP-TLS client certificate's field
+         * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          */
         idpUserCertLookupField: string;
         idps: outputs.org.SettingMistNacIdp[];
@@ -9881,6 +10089,17 @@ export namespace org {
         rootPassword?: string;
     }
 
+    export interface SettingOpticPortConfig {
+        /**
+         * enable channelization
+         */
+        channelized: boolean;
+        /**
+         * interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+         */
+        speed?: string;
+    }
+
     export interface SettingPasswordPolicy {
         /**
          * whether the policy is enabled
@@ -9910,14 +10129,6 @@ export namespace org {
          * max_len of non-management packets to capture
          */
         maxPktLen: number;
-    }
-
-    export interface SettingPortChannelization {
-        /**
-         * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
-         */
-        config?: {[key: string]: string};
-        enabled: boolean;
     }
 
     export interface SettingSecurity {
@@ -11546,6 +11757,7 @@ export namespace site {
         /**
          * required if
          * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbpResource`
          * - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: number;
@@ -11572,7 +11784,7 @@ export namespace site {
          */
         radiusGroup?: string;
         /**
-         * if `type`==`resource`
+         * if `type`==`resource` or `type`==`gbpResource`
          * empty means unrestricted, i.e. any
          */
         specs?: outputs.site.NetworktemplateAclTagsSpec[];
@@ -11584,7 +11796,16 @@ export namespace site {
          */
         subnets: string[];
         /**
-         * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+         * enum: 
+         *   * `any`: matching anything not identified
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
+         *   * `mac`
+         *   * `network`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
+         *   * `subnet`'
          */
         type: string;
     }
@@ -11881,6 +12102,10 @@ export namespace site {
         stpNoRootPort: boolean;
         stpP2p: boolean;
         /**
+         * if this is connected to a vstp network
+         */
+        useVstp: boolean;
+        /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: string;
@@ -11946,8 +12171,6 @@ export namespace site {
          * radius auth session timeout
          */
         authServersTimeout: number;
-        coaEnabled: boolean;
-        coaPort: number;
         /**
          * use `network`or `sourceIp`
          * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -12376,8 +12599,8 @@ export namespace site {
          */
         portConfig?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name (Maximum: 4)
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * Property key is the port mirroring instance name
+         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};
     }

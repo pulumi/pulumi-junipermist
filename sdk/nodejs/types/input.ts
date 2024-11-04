@@ -531,7 +531,6 @@ export namespace device {
          * when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier?: pulumi.Input<number>;
-        communities?: pulumi.Input<pulumi.Input<inputs.device.GatewayBgpConfigCommunity>[]>;
         /**
          * BFD provides faster path failure detection and is enabled by default
          */
@@ -589,12 +588,6 @@ export namespace device {
         wanName?: pulumi.Input<string>;
     }
 
-    export interface GatewayBgpConfigCommunity {
-        id?: pulumi.Input<string>;
-        localPreference?: pulumi.Input<number>;
-        vpnName?: pulumi.Input<string>;
-    }
-
     export interface GatewayBgpConfigNeighbors {
         /**
          * If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -623,22 +616,22 @@ export namespace device {
          */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfig>}>;
         /**
-         * if set to `true`, enable the DHCP server
+         * if set to `false`, disable the DHCP server
          */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface GatewayDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfigFixedBindings>}>;
         /**
@@ -666,7 +659,7 @@ export namespace device {
          */
         leaseTime?: pulumi.Input<number>;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfigOptions>}>;
         /**
@@ -691,7 +684,7 @@ export namespace device {
          */
         type6?: pulumi.Input<string>;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -732,9 +725,10 @@ export namespace device {
          * enum: `critical`, `standard`, `strict`
          */
         baseProfile?: pulumi.Input<string>;
-        createdTime?: pulumi.Input<number>;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id?: pulumi.Input<string>;
-        modifiedTime?: pulumi.Input<number>;
         name?: pulumi.Input<string>;
         orgId?: pulumi.Input<string>;
         overwrites?: pulumi.Input<pulumi.Input<inputs.device.GatewayIdpProfilesOverwrite>[]>;
@@ -772,14 +766,12 @@ export namespace device {
     }
 
     export interface GatewayNetwork {
-        createdTime?: pulumi.Input<number>;
         /**
          * whether to disallow Mist Devices in the network
          */
         disallowMistServices?: pulumi.Input<boolean>;
         gateway?: pulumi.Input<string>;
         gateway6?: pulumi.Input<string>;
-        id?: pulumi.Input<string>;
         internalAccess?: pulumi.Input<inputs.device.GatewayNetworkInternalAccess>;
         /**
          * whether this network has direct internet access
@@ -789,9 +781,11 @@ export namespace device {
          * whether to allow clients in the network to talk to each other
          */
         isolation?: pulumi.Input<boolean>;
-        modifiedTime?: pulumi.Input<number>;
+        /**
+         * whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast?: pulumi.Input<inputs.device.GatewayNetworkMulticast>;
         name: pulumi.Input<string>;
-        orgId?: pulumi.Input<string>;
         /**
          * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
          */
@@ -840,6 +834,25 @@ export namespace device {
          * If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: pulumi.Input<string>;
+    }
+
+    export interface GatewayNetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayNetworkMulticastGroups>}>;
+    }
+
+    export interface GatewayNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: pulumi.Input<string>;
     }
 
     export interface GatewayNetworkTenants {
@@ -1151,6 +1164,9 @@ export namespace device {
          * if WAN interface is on a VLAN
          */
         vlanId?: pulumi.Input<number>;
+        /**
+         * Property key is the VPN name
+         */
         vpnPaths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigVpnPaths>}>;
         /**
          * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
@@ -1160,6 +1176,14 @@ export namespace device {
          * optional, if spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
+        /**
+         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         */
+        wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigWanExtraRoutes>}>;
+        /**
+         * if `usage`==`wan`
+         */
+        wanProbeOverride?: pulumi.Input<inputs.device.GatewayPortConfigWanProbeOverride>;
         /**
          * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
          */
@@ -1221,19 +1245,23 @@ export namespace device {
 
     export interface GatewayPortConfigVpnPaths {
         /**
-         * enum: `broadband`, `lte`
+         * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
         bfdProfile?: pulumi.Input<string>;
         /**
-         * whether to use tunnel mode. SSR only
+         * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
         bfdUseTunnelMode?: pulumi.Input<boolean>;
         /**
-         * for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * Only if the VPN `type`==`mesh`
+         */
+        linkName?: pulumi.Input<string>;
+        /**
+         * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: pulumi.Input<number>;
         /**
-         * enum: `hub`, `spoke`
+         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
          */
         role?: pulumi.Input<string>;
         trafficShaping?: pulumi.Input<inputs.device.GatewayPortConfigVpnPathsTrafficShaping>;
@@ -1246,6 +1274,18 @@ export namespace device {
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GatewayPortConfigWanExtraRoutes {
+        via?: pulumi.Input<string>;
+    }
+
+    export interface GatewayPortConfigWanProbeOverride {
+        ips?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `broadband`, `lte`
+         */
+        probeProfile?: pulumi.Input<string>;
     }
 
     export interface GatewayPortConfigWanSourceNat {
@@ -1741,6 +1781,7 @@ export namespace device {
         /**
          * required if
          * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbpResource`
          * - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: pulumi.Input<number>;
@@ -1767,7 +1808,7 @@ export namespace device {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * if `type`==`resource`
+         * if `type`==`resource` or `type`==`gbpResource`
          * empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.device.SwitchAclTagsSpec>[]>;
@@ -1779,7 +1820,16 @@ export namespace device {
          */
         subnets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+         * enum: 
+         *   * `any`: matching anything not identified
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
+         *   * `mac`
+         *   * `network`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
+         *   * `subnet`'
          */
         type: pulumi.Input<string>;
     }
@@ -1825,35 +1875,35 @@ export namespace device {
 
     export interface SwitchDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          */
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigFixedBindings>}>;
         /**
-         * if `type`==`local` - optional, `ip` will be used if not provided
+         * if `type`==`server`  - optional, `ip` will be used if not provided
          */
         gateway?: pulumi.Input<string>;
         /**
-         * if `type`==`local`
+         * if `type`==`server`
          */
         ipEnd?: pulumi.Input<string>;
         /**
-         * if `type6`==`local`
+         * if `type6`==`server`
          */
         ipEnd6?: pulumi.Input<string>;
         /**
-         * if `type`==`local`
+         * if `type`==`server`
          */
         ipStart?: pulumi.Input<string>;
         /**
-         * if `type6`==`local`
+         * if `type6`==`server`
          */
         ipStart6?: pulumi.Input<string>;
         /**
@@ -1861,7 +1911,7 @@ export namespace device {
          */
         leaseTime?: pulumi.Input<number>;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigOptions>}>;
         /**
@@ -1886,7 +1936,7 @@ export namespace device {
          */
         type6?: pulumi.Input<string>;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -1982,6 +2032,37 @@ export namespace device {
          * enum: `dhcp`, `static`
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface SwitchLocalPortConfig {
+        /**
+         * if want to generate port up/down alarm
+         */
+        critical?: pulumi.Input<boolean>;
+        description?: pulumi.Input<string>;
+        /**
+         * if `speed` and `duplex` are specified, whether to disable autonegotiation
+         */
+        disableAutoneg?: pulumi.Input<boolean>;
+        /**
+         * enum: `auto`, `full`, `half`
+         */
+        duplex?: pulumi.Input<string>;
+        /**
+         * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+         */
+        mtu?: pulumi.Input<number>;
+        poeDisabled?: pulumi.Input<boolean>;
+        /**
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         */
+        speed?: pulumi.Input<string>;
+        /**
+         * port usage name. 
+         *
+         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         */
+        usage: pulumi.Input<string>;
     }
 
     export interface SwitchMistNac {
@@ -2317,6 +2398,10 @@ export namespace device {
         stpNoRootPort?: pulumi.Input<boolean>;
         stpP2p?: pulumi.Input<boolean>;
         /**
+         * if this is connected to a vstp network
+         */
+        useVstp?: pulumi.Input<boolean>;
+        /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: pulumi.Input<string>;
@@ -2382,8 +2467,6 @@ export namespace device {
          * radius auth session timeout
          */
         authServersTimeout?: pulumi.Input<number>;
-        coaEnabled?: pulumi.Input<boolean>;
-        coaPort?: pulumi.Input<number>;
         /**
          * use `network`or `sourceIp`
          * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -2779,9 +2862,9 @@ export namespace device {
 
     export interface SwitchStpConfig {
         /**
-         * ignored for switches participating in EVPN
+         * Switch STP priority: from `0k` to `15k`
          */
-        vstpEnabled?: pulumi.Input<boolean>;
+        bridgePriority?: pulumi.Input<string>;
     }
 
     export interface SwitchSwitchMgmt {
@@ -3513,7 +3596,6 @@ export namespace org {
          * when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier?: pulumi.Input<number>;
-        communities?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfigCommunity>[]>;
         /**
          * BFD provides faster path failure detection and is enabled by default
          */
@@ -3571,12 +3653,6 @@ export namespace org {
         wanName?: pulumi.Input<string>;
     }
 
-    export interface DeviceprofileGatewayBgpConfigCommunity {
-        id?: pulumi.Input<string>;
-        localPreference?: pulumi.Input<number>;
-        vpnName?: pulumi.Input<string>;
-    }
-
     export interface DeviceprofileGatewayBgpConfigNeighbors {
         /**
          * If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -3598,22 +3674,22 @@ export namespace org {
          */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfig>}>;
         /**
-         * if set to `true`, enable the DHCP server
+         * if set to `false`, disable the DHCP server
          */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface DeviceprofileGatewayDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfigFixedBindings>}>;
         /**
@@ -3641,7 +3717,7 @@ export namespace org {
          */
         leaseTime?: pulumi.Input<number>;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfigOptions>}>;
         /**
@@ -3666,7 +3742,7 @@ export namespace org {
          */
         type6?: pulumi.Input<string>;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -3759,6 +3835,10 @@ export namespace org {
          * whether to allow clients in the network to talk to each other
          */
         isolation?: pulumi.Input<boolean>;
+        /**
+         * whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast?: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkMulticast>;
         name: pulumi.Input<string>;
         /**
          * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -3808,6 +3888,25 @@ export namespace org {
          * If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayNetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkMulticastGroups>}>;
+    }
+
+    export interface DeviceprofileGatewayNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayNetworkTenants {
@@ -4119,6 +4218,9 @@ export namespace org {
          * if WAN interface is on a VLAN
          */
         vlanId?: pulumi.Input<number>;
+        /**
+         * Property key is the VPN name
+         */
         vpnPaths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigVpnPaths>}>;
         /**
          * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
@@ -4128,6 +4230,14 @@ export namespace org {
          * optional, if spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
+        /**
+         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         */
+        wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes>}>;
+        /**
+         * if `usage`==`wan`
+         */
+        wanProbeOverride?: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanProbeOverride>;
         /**
          * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
          */
@@ -4189,19 +4299,23 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigVpnPaths {
         /**
-         * enum: `broadband`, `lte`
+         * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
         bfdProfile?: pulumi.Input<string>;
         /**
-         * whether to use tunnel mode. SSR only
+         * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
         bfdUseTunnelMode?: pulumi.Input<boolean>;
         /**
-         * for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * Only if the VPN `type`==`mesh`
+         */
+        linkName?: pulumi.Input<string>;
+        /**
+         * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: pulumi.Input<number>;
         /**
-         * enum: `hub`, `spoke`
+         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
          */
         role?: pulumi.Input<string>;
         trafficShaping?: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigVpnPathsTrafficShaping>;
@@ -4214,6 +4328,18 @@ export namespace org {
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface DeviceprofileGatewayPortConfigWanExtraRoutes {
+        via?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayPortConfigWanProbeOverride {
+        ips?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `broadband`, `lte`
+         */
+        probeProfile?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayPortConfigWanSourceNat {
@@ -4683,7 +4809,6 @@ export namespace org {
          * when bfdMinimumIntervalIsConfigured alone
          */
         bfdMultiplier?: pulumi.Input<number>;
-        communities?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateBgpConfigCommunity>[]>;
         /**
          * BFD provides faster path failure detection and is enabled by default
          */
@@ -4741,12 +4866,6 @@ export namespace org {
         wanName?: pulumi.Input<string>;
     }
 
-    export interface GatewaytemplateBgpConfigCommunity {
-        id?: pulumi.Input<string>;
-        localPreference?: pulumi.Input<number>;
-        vpnName?: pulumi.Input<string>;
-    }
-
     export interface GatewaytemplateBgpConfigNeighbors {
         /**
          * If true, the BGP session to this neighbor will be administratively disabled/shutdown
@@ -4768,22 +4887,22 @@ export namespace org {
          */
         config?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfig>}>;
         /**
-         * if set to `true`, enable the DHCP server
+         * if set to `false`, disable the DHCP server
          */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface GatewaytemplateDhcpdConfigConfig {
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * if `type`==`local` - optional, if not defined, system one will be used
+         * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+         * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
          */
         fixedBindings?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfigFixedBindings>}>;
         /**
@@ -4811,7 +4930,7 @@ export namespace org {
          */
         leaseTime?: pulumi.Input<number>;
         /**
-         * Property key is the DHCP option number
+         * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          */
         options?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfigOptions>}>;
         /**
@@ -4836,7 +4955,7 @@ export namespace org {
          */
         type6?: pulumi.Input<string>;
         /**
-         * Property key is <enterprise number>:<sub option code>, with
+         * if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
@@ -4929,6 +5048,10 @@ export namespace org {
          * whether to allow clients in the network to talk to each other
          */
         isolation?: pulumi.Input<boolean>;
+        /**
+         * whether to enable multicast support (only PIM-sparse mode is supported)
+         */
+        multicast?: pulumi.Input<inputs.org.GatewaytemplateNetworkMulticast>;
         name: pulumi.Input<string>;
         /**
          * for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -4978,6 +5101,25 @@ export namespace org {
          * If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateNetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateNetworkMulticastGroups>}>;
+    }
+
+    export interface GatewaytemplateNetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateNetworkTenants {
@@ -5289,6 +5431,9 @@ export namespace org {
          * if WAN interface is on a VLAN
          */
         vlanId?: pulumi.Input<number>;
+        /**
+         * Property key is the VPN name
+         */
         vpnPaths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigVpnPaths>}>;
         /**
          * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
@@ -5298,6 +5443,14 @@ export namespace org {
          * optional, if spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
+        /**
+         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         */
+        wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanExtraRoutes>}>;
+        /**
+         * if `usage`==`wan`
+         */
+        wanProbeOverride?: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanProbeOverride>;
         /**
          * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
          */
@@ -5359,19 +5512,23 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigVpnPaths {
         /**
-         * enum: `broadband`, `lte`
+         * Only if the VPN `type`==`hubSpoke`. enum: `broadband`, `lte`
          */
         bfdProfile?: pulumi.Input<string>;
         /**
-         * whether to use tunnel mode. SSR only
+         * Only if the VPN `type`==`hubSpoke`. Whether to use tunnel mode. SSR only
          */
         bfdUseTunnelMode?: pulumi.Input<boolean>;
         /**
-         * for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+         * Only if the VPN `type`==`mesh`
+         */
+        linkName?: pulumi.Input<string>;
+        /**
+         * Only if the VPN `type`==`hubSpoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
          */
         preference?: pulumi.Input<number>;
         /**
-         * enum: `hub`, `spoke`
+         * Only if the VPN `type`==`hubSpoke`. enum: `hub`, `spoke`
          */
         role?: pulumi.Input<string>;
         trafficShaping?: pulumi.Input<inputs.org.GatewaytemplatePortConfigVpnPathsTrafficShaping>;
@@ -5384,6 +5541,18 @@ export namespace org {
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GatewaytemplatePortConfigWanExtraRoutes {
+        via?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplatePortConfigWanProbeOverride {
+        ips?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * enum: `broadband`, `lte`
+         */
+        probeProfile?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplatePortConfigWanSourceNat {
@@ -6144,6 +6313,7 @@ export namespace org {
         /**
          * required if
          * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbpResource`
          * - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: pulumi.Input<number>;
@@ -6170,7 +6340,7 @@ export namespace org {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * if `type`==`resource`
+         * if `type`==`resource` or `type`==`gbpResource`
          * empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateAclTagsSpec>[]>;
@@ -6182,7 +6352,16 @@ export namespace org {
          */
         subnets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+         * enum: 
+         *   * `any`: matching anything not identified
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
+         *   * `mac`
+         *   * `network`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
+         *   * `subnet`'
          */
         type: pulumi.Input<string>;
     }
@@ -6479,6 +6658,10 @@ export namespace org {
         stpNoRootPort?: pulumi.Input<boolean>;
         stpP2p?: pulumi.Input<boolean>;
         /**
+         * if this is connected to a vstp network
+         */
+        useVstp?: pulumi.Input<boolean>;
+        /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: pulumi.Input<string>;
@@ -6544,8 +6727,6 @@ export namespace org {
          * radius auth session timeout
          */
         authServersTimeout?: pulumi.Input<number>;
-        coaEnabled?: pulumi.Input<boolean>;
-        coaPort?: pulumi.Input<number>;
         /**
          * use `network`or `sourceIp`
          * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -6974,8 +7155,8 @@ export namespace org {
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortConfig>}>;
         /**
-         * Property key is the port mirroring instance name (Maximum: 4)
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * Property key is the port mirroring instance name
+         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortMirroring>}>;
     }
@@ -7637,6 +7818,21 @@ export namespace org {
         orgId: pulumi.Input<string>;
     }
 
+    export interface SettingJcloudRa {
+        /**
+         * JCloud Routing Assurance Org Token
+         */
+        orgApitoken?: pulumi.Input<string>;
+        /**
+         * JCloud Routing Assurance Org Token Name
+         */
+        orgApitokenName?: pulumi.Input<string>;
+        /**
+         * JCloud Routing Assurance Org ID
+         */
+        orgId?: pulumi.Input<string>;
+    }
+
     export interface SettingJuniper {
         accounts?: pulumi.Input<pulumi.Input<inputs.org.SettingJuniperAccount>[]>;
     }
@@ -7685,11 +7881,12 @@ export namespace org {
          */
         euOnly?: pulumi.Input<boolean>;
         /**
-         * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+         * allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          */
         idpMachineCertLookupField?: pulumi.Input<string>;
         /**
-         * allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+         * allow customer to choose the EAP-TLS client certificate's field
+         * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          */
         idpUserCertLookupField?: pulumi.Input<string>;
         idps?: pulumi.Input<pulumi.Input<inputs.org.SettingMistNacIdp>[]>;
@@ -7749,6 +7946,17 @@ export namespace org {
         rootPassword?: pulumi.Input<string>;
     }
 
+    export interface SettingOpticPortConfig {
+        /**
+         * enable channelization
+         */
+        channelized?: pulumi.Input<boolean>;
+        /**
+         * interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+         */
+        speed?: pulumi.Input<string>;
+    }
+
     export interface SettingPasswordPolicy {
         /**
          * whether the policy is enabled
@@ -7778,14 +7986,6 @@ export namespace org {
          * max_len of non-management packets to capture
          */
         maxPktLen?: pulumi.Input<number>;
-    }
-
-    export interface SettingPortChannelization {
-        /**
-         * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)
-         */
-        config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        enabled?: pulumi.Input<boolean>;
     }
 
     export interface SettingSecurity {
@@ -9286,6 +9486,7 @@ export namespace site {
         /**
          * required if
          * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         * - `type`==`gbpResource`
          * - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: pulumi.Input<number>;
@@ -9312,7 +9513,7 @@ export namespace site {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * if `type`==`resource`
+         * if `type`==`resource` or `type`==`gbpResource`
          * empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclTagsSpec>[]>;
@@ -9324,7 +9525,16 @@ export namespace site {
          */
         subnets?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+         * enum: 
+         *   * `any`: matching anything not identified
+         *   * `dynamicGbp`: from the gbpTag received from RADIUS
+         *   * `gbpResource`: can only be used in `dstTags`
+         *   * `mac`
+         *   * `network`
+         *   * `radiusGroup`
+         *   * `resource`: can only be used in `dstTags`
+         *   * `staticGbp`: applying gbp tag against matching conditions
+         *   * `subnet`'
          */
         type: pulumi.Input<string>;
     }
@@ -9621,6 +9831,10 @@ export namespace site {
         stpNoRootPort?: pulumi.Input<boolean>;
         stpP2p?: pulumi.Input<boolean>;
         /**
+         * if this is connected to a vstp network
+         */
+        useVstp?: pulumi.Input<boolean>;
+        /**
          * Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          */
         voipNetwork?: pulumi.Input<string>;
@@ -9686,8 +9900,6 @@ export namespace site {
          * radius auth session timeout
          */
         authServersTimeout?: pulumi.Input<number>;
-        coaEnabled?: pulumi.Input<boolean>;
-        coaPort?: pulumi.Input<number>;
         /**
          * use `network`or `sourceIp`
          * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -10116,8 +10328,8 @@ export namespace site {
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortConfig>}>;
         /**
-         * Property key is the port mirroring instance name (Maximum: 4)
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * Property key is the port mirroring instance name
+         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortMirroring>}>;
     }

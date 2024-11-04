@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayNetworkInternalAccess;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayNetworkInternetAccess;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayNetworkMulticast;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayNetworkTenants;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayNetworkVpnAccess;
 import java.lang.Boolean;
@@ -37,6 +38,11 @@ public final class DeviceprofileGatewayNetwork {
      * 
      */
     private @Nullable Boolean isolation;
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    private @Nullable DeviceprofileGatewayNetworkMulticast multicast;
     private String name;
     /**
      * @return for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -84,6 +90,13 @@ public final class DeviceprofileGatewayNetwork {
     public Optional<Boolean> isolation() {
         return Optional.ofNullable(this.isolation);
     }
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public Optional<DeviceprofileGatewayNetworkMulticast> multicast() {
+        return Optional.ofNullable(this.multicast);
+    }
     public String name() {
         return this.name;
     }
@@ -129,6 +142,7 @@ public final class DeviceprofileGatewayNetwork {
         private @Nullable DeviceprofileGatewayNetworkInternalAccess internalAccess;
         private @Nullable DeviceprofileGatewayNetworkInternetAccess internetAccess;
         private @Nullable Boolean isolation;
+        private @Nullable DeviceprofileGatewayNetworkMulticast multicast;
         private String name;
         private @Nullable List<String> routedForNetworks;
         private String subnet;
@@ -145,6 +159,7 @@ public final class DeviceprofileGatewayNetwork {
     	      this.internalAccess = defaults.internalAccess;
     	      this.internetAccess = defaults.internetAccess;
     	      this.isolation = defaults.isolation;
+    	      this.multicast = defaults.multicast;
     	      this.name = defaults.name;
     	      this.routedForNetworks = defaults.routedForNetworks;
     	      this.subnet = defaults.subnet;
@@ -188,6 +203,12 @@ public final class DeviceprofileGatewayNetwork {
         public Builder isolation(@Nullable Boolean isolation) {
 
             this.isolation = isolation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder multicast(@Nullable DeviceprofileGatewayNetworkMulticast multicast) {
+
+            this.multicast = multicast;
             return this;
         }
         @CustomType.Setter
@@ -247,6 +268,7 @@ public final class DeviceprofileGatewayNetwork {
             _resultValue.internalAccess = internalAccess;
             _resultValue.internetAccess = internetAccess;
             _resultValue.isolation = isolation;
+            _resultValue.multicast = multicast;
             _resultValue.name = name;
             _resultValue.routedForNetworks = routedForNetworks;
             _resultValue.subnet = subnet;

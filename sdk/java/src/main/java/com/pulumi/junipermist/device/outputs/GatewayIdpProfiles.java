@@ -5,7 +5,6 @@ package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.device.outputs.GatewayIdpProfilesOverwrite;
-import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,9 +18,11 @@ public final class GatewayIdpProfiles {
      * 
      */
     private @Nullable String baseProfile;
-    private @Nullable Double createdTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     private @Nullable String id;
-    private @Nullable Double modifiedTime;
     private @Nullable String name;
     private @Nullable String orgId;
     private @Nullable List<GatewayIdpProfilesOverwrite> overwrites;
@@ -34,14 +35,12 @@ public final class GatewayIdpProfiles {
     public Optional<String> baseProfile() {
         return Optional.ofNullable(this.baseProfile);
     }
-    public Optional<Double> createdTime() {
-        return Optional.ofNullable(this.createdTime);
-    }
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
-    }
-    public Optional<Double> modifiedTime() {
-        return Optional.ofNullable(this.modifiedTime);
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
@@ -63,9 +62,7 @@ public final class GatewayIdpProfiles {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String baseProfile;
-        private @Nullable Double createdTime;
         private @Nullable String id;
-        private @Nullable Double modifiedTime;
         private @Nullable String name;
         private @Nullable String orgId;
         private @Nullable List<GatewayIdpProfilesOverwrite> overwrites;
@@ -73,9 +70,7 @@ public final class GatewayIdpProfiles {
         public Builder(GatewayIdpProfiles defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.baseProfile = defaults.baseProfile;
-    	      this.createdTime = defaults.createdTime;
     	      this.id = defaults.id;
-    	      this.modifiedTime = defaults.modifiedTime;
     	      this.name = defaults.name;
     	      this.orgId = defaults.orgId;
     	      this.overwrites = defaults.overwrites;
@@ -88,21 +83,9 @@ public final class GatewayIdpProfiles {
             return this;
         }
         @CustomType.Setter
-        public Builder createdTime(@Nullable Double createdTime) {
-
-            this.createdTime = createdTime;
-            return this;
-        }
-        @CustomType.Setter
         public Builder id(@Nullable String id) {
 
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder modifiedTime(@Nullable Double modifiedTime) {
-
-            this.modifiedTime = modifiedTime;
             return this;
         }
         @CustomType.Setter
@@ -129,9 +112,7 @@ public final class GatewayIdpProfiles {
         public GatewayIdpProfiles build() {
             final var _resultValue = new GatewayIdpProfiles();
             _resultValue.baseProfile = baseProfile;
-            _resultValue.createdTime = createdTime;
             _resultValue.id = id;
-            _resultValue.modifiedTime = modifiedTime;
             _resultValue.name = name;
             _resultValue.orgId = orgId;
             _resultValue.overwrites = overwrites;

@@ -24,7 +24,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// when bfd_minimum_interval_is_configured alone
         /// </summary>
         public readonly int? BfdMultiplier;
-        public readonly ImmutableArray<Outputs.GatewaytemplateBgpConfigCommunity> Communities;
         /// <summary>
         /// BFD provides faster path failure detection and is enabled by default
         /// </summary>
@@ -89,8 +88,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             int? bfdMultiplier,
 
-            ImmutableArray<Outputs.GatewaytemplateBgpConfigCommunity> communities,
-
             bool? disableBfd,
 
             string? export,
@@ -130,7 +127,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
             AuthKey = authKey;
             BfdMinimumInterval = bfdMinimumInterval;
             BfdMultiplier = bfdMultiplier;
-            Communities = communities;
             DisableBfd = disableBfd;
             Export = export;
             ExportPolicy = exportPolicy;

@@ -27,10 +27,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool Connected;
         /// <summary>
-        /// when the object has been created, in epoch
-        /// </summary>
-        public readonly double CreatedTime;
-        /// <summary>
         /// deviceprofile id if assigned, null if not assigned
         /// </summary>
         public readonly string DeviceprofileId;
@@ -55,10 +51,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// device model
         /// </summary>
         public readonly string Model;
-        /// <summary>
-        /// when the object has been modified for the last time, in epoch
-        /// </summary>
-        public readonly double ModifiedTime;
         /// <summary>
         /// device name if configured
         /// </summary>
@@ -93,8 +85,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool connected,
 
-            double createdTime,
-
             string deviceprofileId,
 
             string hostname,
@@ -108,8 +98,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
             string mac,
 
             string model,
-
-            double modifiedTime,
 
             string name,
 
@@ -128,7 +116,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Adopted = adopted;
             ClaimCode = claimCode;
             Connected = connected;
-            CreatedTime = createdTime;
             DeviceprofileId = deviceprofileId;
             Hostname = hostname;
             HwRev = hwRev;
@@ -136,7 +123,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Jsi = jsi;
             Mac = mac;
             Model = model;
-            ModifiedTime = modifiedTime;
             Name = name;
             OrgId = orgId;
             Serial = serial;

@@ -4,7 +4,7 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchStpConfig {
     /**
-     * @return ignored for switches participating in EVPN
+     * @return Switch STP priority: from `0k` to `15k`
      * 
      */
-    private @Nullable Boolean vstpEnabled;
+    private @Nullable String bridgePriority;
 
     private SwitchStpConfig() {}
     /**
-     * @return ignored for switches participating in EVPN
+     * @return Switch STP priority: from `0k` to `15k`
      * 
      */
-    public Optional<Boolean> vstpEnabled() {
-        return Optional.ofNullable(this.vstpEnabled);
+    public Optional<String> bridgePriority() {
+        return Optional.ofNullable(this.bridgePriority);
     }
 
     public static Builder builder() {
@@ -35,22 +35,22 @@ public final class SwitchStpConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean vstpEnabled;
+        private @Nullable String bridgePriority;
         public Builder() {}
         public Builder(SwitchStpConfig defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.vstpEnabled = defaults.vstpEnabled;
+    	      this.bridgePriority = defaults.bridgePriority;
         }
 
         @CustomType.Setter
-        public Builder vstpEnabled(@Nullable Boolean vstpEnabled) {
+        public Builder bridgePriority(@Nullable String bridgePriority) {
 
-            this.vstpEnabled = vstpEnabled;
+            this.bridgePriority = bridgePriority;
             return this;
         }
         public SwitchStpConfig build() {
             final var _resultValue = new SwitchStpConfig();
-            _resultValue.vstpEnabled = vstpEnabled;
+            _resultValue.bridgePriority = bridgePriority;
             return _resultValue;
         }
     }

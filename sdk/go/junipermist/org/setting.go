@@ -51,19 +51,22 @@ type Setting struct {
 	GatewayUpdownThreshold pulumi.IntOutput          `pulumi:"gatewayUpdownThreshold"`
 	Installer              SettingInstallerPtrOutput `pulumi:"installer"`
 	Jcloud                 SettingJcloudPtrOutput    `pulumi:"jcloud"`
-	Juniper                SettingJuniperOutput      `pulumi:"juniper"`
+	// JCloud Routing Assurance connexion
+	JcloudRa SettingJcloudRaPtrOutput `pulumi:"jcloudRa"`
+	Juniper  SettingJuniperOutput     `pulumi:"juniper"`
 	// management-related properties
 	Mgmt              SettingMgmtPtrOutput       `pulumi:"mgmt"`
 	MistNac           SettingMistNacPtrOutput    `pulumi:"mistNac"`
 	MxedgeFipsEnabled pulumi.BoolOutput          `pulumi:"mxedgeFipsEnabled"`
 	MxedgeMgmt        SettingMxedgeMgmtPtrOutput `pulumi:"mxedgeMgmt"`
-	OrgId             pulumi.StringOutput        `pulumi:"orgId"`
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	OpticPortConfig SettingOpticPortConfigMapOutput `pulumi:"opticPortConfig"`
+	OrgId           pulumi.StringOutput             `pulumi:"orgId"`
 	// password policy
-	PasswordPolicy     SettingPasswordPolicyPtrOutput     `pulumi:"passwordPolicy"`
-	Pcap               SettingPcapPtrOutput               `pulumi:"pcap"`
-	PortChannelization SettingPortChannelizationPtrOutput `pulumi:"portChannelization"`
-	Security           SettingSecurityPtrOutput           `pulumi:"security"`
-	SwitchMgmt         SettingSwitchMgmtPtrOutput         `pulumi:"switchMgmt"`
+	PasswordPolicy SettingPasswordPolicyPtrOutput `pulumi:"passwordPolicy"`
+	Pcap           SettingPcapPtrOutput           `pulumi:"pcap"`
+	Security       SettingSecurityPtrOutput       `pulumi:"security"`
+	SwitchMgmt     SettingSwitchMgmtPtrOutput     `pulumi:"switchMgmt"`
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
@@ -133,19 +136,22 @@ type settingState struct {
 	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
 	Installer              *SettingInstaller `pulumi:"installer"`
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
-	Juniper                *SettingJuniper   `pulumi:"juniper"`
+	// JCloud Routing Assurance connexion
+	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
+	Juniper  *SettingJuniper  `pulumi:"juniper"`
 	// management-related properties
 	Mgmt              *SettingMgmt       `pulumi:"mgmt"`
 	MistNac           *SettingMistNac    `pulumi:"mistNac"`
 	MxedgeFipsEnabled *bool              `pulumi:"mxedgeFipsEnabled"`
 	MxedgeMgmt        *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	OrgId             *string            `pulumi:"orgId"`
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	OpticPortConfig map[string]SettingOpticPortConfig `pulumi:"opticPortConfig"`
+	OrgId           *string                           `pulumi:"orgId"`
 	// password policy
-	PasswordPolicy     *SettingPasswordPolicy     `pulumi:"passwordPolicy"`
-	Pcap               *SettingPcap               `pulumi:"pcap"`
-	PortChannelization *SettingPortChannelization `pulumi:"portChannelization"`
-	Security           *SettingSecurity           `pulumi:"security"`
-	SwitchMgmt         *SettingSwitchMgmt         `pulumi:"switchMgmt"`
+	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
+	Pcap           *SettingPcap           `pulumi:"pcap"`
+	Security       *SettingSecurity       `pulumi:"security"`
+	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
@@ -183,19 +189,22 @@ type SettingState struct {
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	Installer              SettingInstallerPtrInput
 	Jcloud                 SettingJcloudPtrInput
-	Juniper                SettingJuniperPtrInput
+	// JCloud Routing Assurance connexion
+	JcloudRa SettingJcloudRaPtrInput
+	Juniper  SettingJuniperPtrInput
 	// management-related properties
 	Mgmt              SettingMgmtPtrInput
 	MistNac           SettingMistNacPtrInput
 	MxedgeFipsEnabled pulumi.BoolPtrInput
 	MxedgeMgmt        SettingMxedgeMgmtPtrInput
-	OrgId             pulumi.StringPtrInput
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	OpticPortConfig SettingOpticPortConfigMapInput
+	OrgId           pulumi.StringPtrInput
 	// password policy
-	PasswordPolicy     SettingPasswordPolicyPtrInput
-	Pcap               SettingPcapPtrInput
-	PortChannelization SettingPortChannelizationPtrInput
-	Security           SettingSecurityPtrInput
-	SwitchMgmt         SettingSwitchMgmtPtrInput
+	PasswordPolicy SettingPasswordPolicyPtrInput
+	Pcap           SettingPcapPtrInput
+	Security       SettingSecurityPtrInput
+	SwitchMgmt     SettingSwitchMgmtPtrInput
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
@@ -237,18 +246,21 @@ type settingArgs struct {
 	GatewayUpdownThreshold *int              `pulumi:"gatewayUpdownThreshold"`
 	Installer              *SettingInstaller `pulumi:"installer"`
 	Jcloud                 *SettingJcloud    `pulumi:"jcloud"`
+	// JCloud Routing Assurance connexion
+	JcloudRa *SettingJcloudRa `pulumi:"jcloudRa"`
 	// management-related properties
 	Mgmt              *SettingMgmt       `pulumi:"mgmt"`
 	MistNac           *SettingMistNac    `pulumi:"mistNac"`
 	MxedgeFipsEnabled *bool              `pulumi:"mxedgeFipsEnabled"`
 	MxedgeMgmt        *SettingMxedgeMgmt `pulumi:"mxedgeMgmt"`
-	OrgId             string             `pulumi:"orgId"`
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	OpticPortConfig map[string]SettingOpticPortConfig `pulumi:"opticPortConfig"`
+	OrgId           string                            `pulumi:"orgId"`
 	// password policy
-	PasswordPolicy     *SettingPasswordPolicy     `pulumi:"passwordPolicy"`
-	Pcap               *SettingPcap               `pulumi:"pcap"`
-	PortChannelization *SettingPortChannelization `pulumi:"portChannelization"`
-	Security           *SettingSecurity           `pulumi:"security"`
-	SwitchMgmt         *SettingSwitchMgmt         `pulumi:"switchMgmt"`
+	PasswordPolicy *SettingPasswordPolicy `pulumi:"passwordPolicy"`
+	Pcap           *SettingPcap           `pulumi:"pcap"`
+	Security       *SettingSecurity       `pulumi:"security"`
+	SwitchMgmt     *SettingSwitchMgmt     `pulumi:"switchMgmt"`
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
@@ -287,18 +299,21 @@ type SettingArgs struct {
 	GatewayUpdownThreshold pulumi.IntPtrInput
 	Installer              SettingInstallerPtrInput
 	Jcloud                 SettingJcloudPtrInput
+	// JCloud Routing Assurance connexion
+	JcloudRa SettingJcloudRaPtrInput
 	// management-related properties
 	Mgmt              SettingMgmtPtrInput
 	MistNac           SettingMistNacPtrInput
 	MxedgeFipsEnabled pulumi.BoolPtrInput
 	MxedgeMgmt        SettingMxedgeMgmtPtrInput
-	OrgId             pulumi.StringInput
+	// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+	OpticPortConfig SettingOpticPortConfigMapInput
+	OrgId           pulumi.StringInput
 	// password policy
-	PasswordPolicy     SettingPasswordPolicyPtrInput
-	Pcap               SettingPcapPtrInput
-	PortChannelization SettingPortChannelizationPtrInput
-	Security           SettingSecurityPtrInput
-	SwitchMgmt         SettingSwitchMgmtPtrInput
+	PasswordPolicy SettingPasswordPolicyPtrInput
+	Pcap           SettingPcapPtrInput
+	Security       SettingSecurityPtrInput
+	SwitchMgmt     SettingSwitchMgmtPtrInput
 	// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
 	// `deviceUpdownThreshold` is ignored.
 	SwitchUpdownThreshold pulumi.IntPtrInput
@@ -461,6 +476,11 @@ func (o SettingOutput) Jcloud() SettingJcloudPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingJcloudPtrOutput { return v.Jcloud }).(SettingJcloudPtrOutput)
 }
 
+// JCloud Routing Assurance connexion
+func (o SettingOutput) JcloudRa() SettingJcloudRaPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingJcloudRaPtrOutput { return v.JcloudRa }).(SettingJcloudRaPtrOutput)
+}
+
 func (o SettingOutput) Juniper() SettingJuniperOutput {
 	return o.ApplyT(func(v *Setting) SettingJuniperOutput { return v.Juniper }).(SettingJuniperOutput)
 }
@@ -482,6 +502,11 @@ func (o SettingOutput) MxedgeMgmt() SettingMxedgeMgmtPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingMxedgeMgmtPtrOutput { return v.MxedgeMgmt }).(SettingMxedgeMgmtPtrOutput)
 }
 
+// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+func (o SettingOutput) OpticPortConfig() SettingOpticPortConfigMapOutput {
+	return o.ApplyT(func(v *Setting) SettingOpticPortConfigMapOutput { return v.OpticPortConfig }).(SettingOpticPortConfigMapOutput)
+}
+
 func (o SettingOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
@@ -493,10 +518,6 @@ func (o SettingOutput) PasswordPolicy() SettingPasswordPolicyPtrOutput {
 
 func (o SettingOutput) Pcap() SettingPcapPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingPcapPtrOutput { return v.Pcap }).(SettingPcapPtrOutput)
-}
-
-func (o SettingOutput) PortChannelization() SettingPortChannelizationPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingPortChannelizationPtrOutput { return v.PortChannelization }).(SettingPortChannelizationPtrOutput)
 }
 
 func (o SettingOutput) Security() SettingSecurityPtrOutput {

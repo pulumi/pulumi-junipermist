@@ -826,6 +826,130 @@ func (o GetConstTrafficTypesConstTrafficTypeArrayOutput) Index(i pulumi.IntInput
 	}).(GetConstTrafficTypesConstTrafficTypeOutput)
 }
 
+type GetConstWebhooksConstWebhook struct {
+	// can be used in org webhooks, optional
+	ForOrg bool `pulumi:"forOrg"`
+	// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+	HasDeliveryResults bool `pulumi:"hasDeliveryResults"`
+	// internal topic (not selectable in site/org webhooks)
+	Internal bool `pulumi:"internal"`
+	// webhook topic name
+	Key string `pulumi:"key"`
+}
+
+// GetConstWebhooksConstWebhookInput is an input type that accepts GetConstWebhooksConstWebhookArgs and GetConstWebhooksConstWebhookOutput values.
+// You can construct a concrete instance of `GetConstWebhooksConstWebhookInput` via:
+//
+//	GetConstWebhooksConstWebhookArgs{...}
+type GetConstWebhooksConstWebhookInput interface {
+	pulumi.Input
+
+	ToGetConstWebhooksConstWebhookOutput() GetConstWebhooksConstWebhookOutput
+	ToGetConstWebhooksConstWebhookOutputWithContext(context.Context) GetConstWebhooksConstWebhookOutput
+}
+
+type GetConstWebhooksConstWebhookArgs struct {
+	// can be used in org webhooks, optional
+	ForOrg pulumi.BoolInput `pulumi:"forOrg"`
+	// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+	HasDeliveryResults pulumi.BoolInput `pulumi:"hasDeliveryResults"`
+	// internal topic (not selectable in site/org webhooks)
+	Internal pulumi.BoolInput `pulumi:"internal"`
+	// webhook topic name
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetConstWebhooksConstWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConstWebhooksConstWebhook)(nil)).Elem()
+}
+
+func (i GetConstWebhooksConstWebhookArgs) ToGetConstWebhooksConstWebhookOutput() GetConstWebhooksConstWebhookOutput {
+	return i.ToGetConstWebhooksConstWebhookOutputWithContext(context.Background())
+}
+
+func (i GetConstWebhooksConstWebhookArgs) ToGetConstWebhooksConstWebhookOutputWithContext(ctx context.Context) GetConstWebhooksConstWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConstWebhooksConstWebhookOutput)
+}
+
+// GetConstWebhooksConstWebhookArrayInput is an input type that accepts GetConstWebhooksConstWebhookArray and GetConstWebhooksConstWebhookArrayOutput values.
+// You can construct a concrete instance of `GetConstWebhooksConstWebhookArrayInput` via:
+//
+//	GetConstWebhooksConstWebhookArray{ GetConstWebhooksConstWebhookArgs{...} }
+type GetConstWebhooksConstWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetConstWebhooksConstWebhookArrayOutput() GetConstWebhooksConstWebhookArrayOutput
+	ToGetConstWebhooksConstWebhookArrayOutputWithContext(context.Context) GetConstWebhooksConstWebhookArrayOutput
+}
+
+type GetConstWebhooksConstWebhookArray []GetConstWebhooksConstWebhookInput
+
+func (GetConstWebhooksConstWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConstWebhooksConstWebhook)(nil)).Elem()
+}
+
+func (i GetConstWebhooksConstWebhookArray) ToGetConstWebhooksConstWebhookArrayOutput() GetConstWebhooksConstWebhookArrayOutput {
+	return i.ToGetConstWebhooksConstWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetConstWebhooksConstWebhookArray) ToGetConstWebhooksConstWebhookArrayOutputWithContext(ctx context.Context) GetConstWebhooksConstWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetConstWebhooksConstWebhookArrayOutput)
+}
+
+type GetConstWebhooksConstWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetConstWebhooksConstWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetConstWebhooksConstWebhook)(nil)).Elem()
+}
+
+func (o GetConstWebhooksConstWebhookOutput) ToGetConstWebhooksConstWebhookOutput() GetConstWebhooksConstWebhookOutput {
+	return o
+}
+
+func (o GetConstWebhooksConstWebhookOutput) ToGetConstWebhooksConstWebhookOutputWithContext(ctx context.Context) GetConstWebhooksConstWebhookOutput {
+	return o
+}
+
+// can be used in org webhooks, optional
+func (o GetConstWebhooksConstWebhookOutput) ForOrg() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.ForOrg }).(pulumi.BoolOutput)
+}
+
+// supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+func (o GetConstWebhooksConstWebhookOutput) HasDeliveryResults() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.HasDeliveryResults }).(pulumi.BoolOutput)
+}
+
+// internal topic (not selectable in site/org webhooks)
+func (o GetConstWebhooksConstWebhookOutput) Internal() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetConstWebhooksConstWebhook) bool { return v.Internal }).(pulumi.BoolOutput)
+}
+
+// webhook topic name
+func (o GetConstWebhooksConstWebhookOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConstWebhooksConstWebhook) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetConstWebhooksConstWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetConstWebhooksConstWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetConstWebhooksConstWebhook)(nil)).Elem()
+}
+
+func (o GetConstWebhooksConstWebhookArrayOutput) ToGetConstWebhooksConstWebhookArrayOutput() GetConstWebhooksConstWebhookArrayOutput {
+	return o
+}
+
+func (o GetConstWebhooksConstWebhookArrayOutput) ToGetConstWebhooksConstWebhookArrayOutputWithContext(ctx context.Context) GetConstWebhooksConstWebhookArrayOutput {
+	return o
+}
+
+func (o GetConstWebhooksConstWebhookArrayOutput) Index(i pulumi.IntInput) GetConstWebhooksConstWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetConstWebhooksConstWebhook {
+		return vs[0].([]GetConstWebhooksConstWebhook)[vs[1].(int)]
+	}).(GetConstWebhooksConstWebhookOutput)
+}
+
 type GetSitesSite struct {
 	// full address of the site
 	Address string `pulumi:"address"`
@@ -1127,6 +1251,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstCountriesConstCountryArrayInput)(nil)).Elem(), GetConstCountriesConstCountryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstTrafficTypesConstTrafficTypeInput)(nil)).Elem(), GetConstTrafficTypesConstTrafficTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstTrafficTypesConstTrafficTypeArrayInput)(nil)).Elem(), GetConstTrafficTypesConstTrafficTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConstWebhooksConstWebhookInput)(nil)).Elem(), GetConstWebhooksConstWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetConstWebhooksConstWebhookArrayInput)(nil)).Elem(), GetConstWebhooksConstWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteLatlngInput)(nil)).Elem(), GetSitesSiteLatlngArgs{})
@@ -1143,6 +1269,8 @@ func init() {
 	pulumi.RegisterOutputType(GetConstCountriesConstCountryArrayOutput{})
 	pulumi.RegisterOutputType(GetConstTrafficTypesConstTrafficTypeOutput{})
 	pulumi.RegisterOutputType(GetConstTrafficTypesConstTrafficTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetConstWebhooksConstWebhookOutput{})
+	pulumi.RegisterOutputType(GetConstWebhooksConstWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteArrayOutput{})
 	pulumi.RegisterOutputType(GetSitesSiteLatlngOutput{})

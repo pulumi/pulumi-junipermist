@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if set to `true`, enable the DHCP server
+        /// if set to `false`, disable the DHCP server
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

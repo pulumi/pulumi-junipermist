@@ -237,6 +237,7 @@ func (o NetworktemplateAclPolicyActionArrayOutput) Index(i pulumi.IntInput) Netw
 type NetworktemplateAclTags struct {
 	// required if
 	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	// - `type`==`gbpResource`
 	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag *int `pulumi:"gbpTag"`
 	// required if
@@ -255,7 +256,7 @@ type NetworktemplateAclTags struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	// if `type`==`resource`
+	// if `type`==`resource` or `type`==`gbpResource`
 	// empty means unrestricted, i.e. any
 	Specs []NetworktemplateAclTagsSpec `pulumi:"specs"`
 	// if
@@ -263,7 +264,16 @@ type NetworktemplateAclTags struct {
 	// - `type`==`resource` (optional. default is `any`)
 	// - `type`==`staticGbp` if from matching subnet
 	Subnets []string `pulumi:"subnets"`
-	// enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+	// enum:
+	//   * `any`: matching anything not identified
+	//   * `dynamicGbp`: from the gbpTag received from RADIUS
+	//   * `gbpResource`: can only be used in `dstTags`
+	//   * `mac`
+	//   * `network`
+	//   * `radiusGroup`
+	//   * `resource`: can only be used in `dstTags`
+	//   * `staticGbp`: applying gbp tag against matching conditions
+	//   * `subnet`'
 	Type string `pulumi:"type"`
 }
 
@@ -281,6 +291,7 @@ type NetworktemplateAclTagsInput interface {
 type NetworktemplateAclTagsArgs struct {
 	// required if
 	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	// - `type`==`gbpResource`
 	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag pulumi.IntPtrInput `pulumi:"gbpTag"`
 	// required if
@@ -299,7 +310,7 @@ type NetworktemplateAclTagsArgs struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
-	// if `type`==`resource`
+	// if `type`==`resource` or `type`==`gbpResource`
 	// empty means unrestricted, i.e. any
 	Specs NetworktemplateAclTagsSpecArrayInput `pulumi:"specs"`
 	// if
@@ -307,7 +318,16 @@ type NetworktemplateAclTagsArgs struct {
 	// - `type`==`resource` (optional. default is `any`)
 	// - `type`==`staticGbp` if from matching subnet
 	Subnets pulumi.StringArrayInput `pulumi:"subnets"`
-	// enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+	// enum:
+	//   * `any`: matching anything not identified
+	//   * `dynamicGbp`: from the gbpTag received from RADIUS
+	//   * `gbpResource`: can only be used in `dstTags`
+	//   * `mac`
+	//   * `network`
+	//   * `radiusGroup`
+	//   * `resource`: can only be used in `dstTags`
+	//   * `staticGbp`: applying gbp tag against matching conditions
+	//   * `subnet`'
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -364,6 +384,7 @@ func (o NetworktemplateAclTagsOutput) ToNetworktemplateAclTagsOutputWithContext(
 
 // required if
 // - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+// - `type`==`gbpResource`
 // - `type`==`staticGbp` (applying gbp tag against matching conditions)
 func (o NetworktemplateAclTagsOutput) GbpTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *int { return v.GbpTag }).(pulumi.IntPtrOutput)
@@ -394,7 +415,7 @@ func (o NetworktemplateAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *string { return v.RadiusGroup }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`resource`
+// if `type`==`resource` or `type`==`gbpResource`
 // empty means unrestricted, i.e. any
 func (o NetworktemplateAclTagsOutput) Specs() NetworktemplateAclTagsSpecArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []NetworktemplateAclTagsSpec { return v.Specs }).(NetworktemplateAclTagsSpecArrayOutput)
@@ -408,7 +429,16 @@ func (o NetworktemplateAclTagsOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
-// enum: `any`, `dynamicGbp`, `mac`, `network`, `radiusGroup`, `resource`, `staticGbp`, `subnet`
+// enum:
+//   - `any`: matching anything not identified
+//   - `dynamicGbp`: from the gbpTag received from RADIUS
+//   - `gbpResource`: can only be used in `dstTags`
+//   - `mac`
+//   - `network`
+//   - `radiusGroup`
+//   - `resource`: can only be used in `dstTags`
+//   - `staticGbp`: applying gbp tag against matching conditions
+//   - `subnet`'
 func (o NetworktemplateAclTagsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1972,6 +2002,8 @@ type NetworktemplatePortUsages struct {
 	StpEdge       *bool `pulumi:"stpEdge"`
 	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
 	StpP2p        *bool `pulumi:"stpP2p"`
+	// if this is connected to a vstp network
+	UseVstp *bool `pulumi:"useVstp"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork *string `pulumi:"voipNetwork"`
 }
@@ -2060,6 +2092,8 @@ type NetworktemplatePortUsagesArgs struct {
 	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
 	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
 	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
+	// if this is connected to a vstp network
+	UseVstp pulumi.BoolPtrInput `pulumi:"useVstp"`
 	// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
 	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
 }
@@ -2290,6 +2324,11 @@ func (o NetworktemplatePortUsagesOutput) StpNoRootPort() pulumi.BoolPtrOutput {
 
 func (o NetworktemplatePortUsagesOutput) StpP2p() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
+}
+
+// if this is connected to a vstp network
+func (o NetworktemplatePortUsagesOutput) UseVstp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.UseVstp }).(pulumi.BoolPtrOutput)
 }
 
 // Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
@@ -2674,9 +2713,7 @@ type NetworktemplateRadiusConfig struct {
 	// radius auth session retries
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// radius auth session timeout
-	AuthServersTimeout *int  `pulumi:"authServersTimeout"`
-	CoaEnabled         *bool `pulumi:"coaEnabled"`
-	CoaPort            *int  `pulumi:"coaPort"`
+	AuthServersTimeout *int `pulumi:"authServersTimeout"`
 	// use `network`or `sourceIp`
 	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network *string `pulumi:"network"`
@@ -2703,9 +2740,7 @@ type NetworktemplateRadiusConfigArgs struct {
 	// radius auth session retries
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
 	// radius auth session timeout
-	AuthServersTimeout pulumi.IntPtrInput  `pulumi:"authServersTimeout"`
-	CoaEnabled         pulumi.BoolPtrInput `pulumi:"coaEnabled"`
-	CoaPort            pulumi.IntPtrInput  `pulumi:"coaPort"`
+	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
 	// use `network`or `sourceIp`
 	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -2813,14 +2848,6 @@ func (o NetworktemplateRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOut
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
 
-func (o NetworktemplateRadiusConfigOutput) CoaEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NetworktemplateRadiusConfig) *bool { return v.CoaEnabled }).(pulumi.BoolPtrOutput)
-}
-
-func (o NetworktemplateRadiusConfigOutput) CoaPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NetworktemplateRadiusConfig) *int { return v.CoaPort }).(pulumi.IntPtrOutput)
-}
-
 // use `network`or `sourceIp`
 // which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o NetworktemplateRadiusConfigOutput) Network() pulumi.StringPtrOutput {
@@ -2901,24 +2928,6 @@ func (o NetworktemplateRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtr
 			return nil
 		}
 		return v.AuthServersTimeout
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o NetworktemplateRadiusConfigPtrOutput) CoaEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.CoaEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o NetworktemplateRadiusConfigPtrOutput) CoaPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CoaPort
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -7433,8 +7442,8 @@ type NetworktemplateSwitchMatchingRule struct {
 	OobIpConfig *NetworktemplateSwitchMatchingRuleOobIpConfig `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig map[string]NetworktemplateSwitchMatchingRulePortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name (Maximum: 4)
-	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name
+	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplateSwitchMatchingRulePortMirroring `pulumi:"portMirroring"`
 }
 
@@ -7466,8 +7475,8 @@ type NetworktemplateSwitchMatchingRuleArgs struct {
 	OobIpConfig NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig NetworktemplateSwitchMatchingRulePortConfigMapInput `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name (Maximum: 4)
-	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name
+	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplateSwitchMatchingRulePortMirroringMapInput `pulumi:"portMirroring"`
 }
 
@@ -7568,8 +7577,8 @@ func (o NetworktemplateSwitchMatchingRuleOutput) PortConfig() NetworktemplateSwi
 	}).(NetworktemplateSwitchMatchingRulePortConfigMapOutput)
 }
 
-// Property key is the port mirroring instance name (Maximum: 4)
-// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+// Property key is the port mirroring instance name
+// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
 func (o NetworktemplateSwitchMatchingRuleOutput) PortMirroring() NetworktemplateSwitchMatchingRulePortMirroringMapOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) map[string]NetworktemplateSwitchMatchingRulePortMirroring {
 		return v.PortMirroring

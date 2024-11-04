@@ -46,12 +46,6 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
 
-        [Input("coaEnabled")]
-        public Input<bool>? CoaEnabled { get; set; }
-
-        [Input("coaPort")]
-        public Input<int>? CoaPort { get; set; }
-
         /// <summary>
         /// use `network`or `source_ip`
         /// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip

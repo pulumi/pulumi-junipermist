@@ -13,14 +13,12 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayNetwork
     {
-        public readonly double? CreatedTime;
         /// <summary>
         /// whether to disallow Mist Devices in the network
         /// </summary>
         public readonly bool? DisallowMistServices;
         public readonly string? Gateway;
         public readonly string? Gateway6;
-        public readonly string? Id;
         public readonly Outputs.GatewayNetworkInternalAccess? InternalAccess;
         /// <summary>
         /// whether this network has direct internet access
@@ -30,9 +28,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// whether to allow clients in the network to talk to each other
         /// </summary>
         public readonly bool? Isolation;
-        public readonly double? ModifiedTime;
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        public readonly Outputs.GatewayNetworkMulticast? Multicast;
         public readonly string Name;
-        public readonly string? OrgId;
         /// <summary>
         /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         /// </summary>
@@ -48,15 +48,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private GatewayNetwork(
-            double? createdTime,
-
             bool? disallowMistServices,
 
             string? gateway,
 
             string? gateway6,
-
-            string? id,
 
             Outputs.GatewayNetworkInternalAccess? internalAccess,
 
@@ -64,11 +60,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? isolation,
 
-            double? modifiedTime,
+            Outputs.GatewayNetworkMulticast? multicast,
 
             string name,
-
-            string? orgId,
 
             ImmutableArray<string> routedForNetworks,
 
@@ -82,17 +76,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableDictionary<string, Outputs.GatewayNetworkVpnAccess>? vpnAccess)
         {
-            CreatedTime = createdTime;
             DisallowMistServices = disallowMistServices;
             Gateway = gateway;
             Gateway6 = gateway6;
-            Id = id;
             InternalAccess = internalAccess;
             InternetAccess = internetAccess;
             Isolation = isolation;
-            ModifiedTime = modifiedTime;
+            Multicast = multicast;
             Name = name;
-            OrgId = orgId;
             RoutedForNetworks = routedForNetworks;
             Subnet = subnet;
             Subnet6 = subnet6;

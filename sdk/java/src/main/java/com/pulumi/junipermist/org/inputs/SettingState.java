@@ -12,13 +12,14 @@ import com.pulumi.junipermist.org.inputs.SettingCradlepointArgs;
 import com.pulumi.junipermist.org.inputs.SettingDeviceCertArgs;
 import com.pulumi.junipermist.org.inputs.SettingInstallerArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudArgs;
+import com.pulumi.junipermist.org.inputs.SettingJcloudRaArgs;
 import com.pulumi.junipermist.org.inputs.SettingJuniperArgs;
 import com.pulumi.junipermist.org.inputs.SettingMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingMistNacArgs;
 import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
+import com.pulumi.junipermist.org.inputs.SettingOpticPortConfigArgs;
 import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
 import com.pulumi.junipermist.org.inputs.SettingPcapArgs;
-import com.pulumi.junipermist.org.inputs.SettingPortChannelizationArgs;
 import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
 import com.pulumi.junipermist.org.inputs.SettingSwitchMgmtArgs;
 import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
@@ -30,6 +31,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -194,6 +196,21 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.jcloud);
     }
 
+    /**
+     * JCloud Routing Assurance connexion
+     * 
+     */
+    @Import(name="jcloudRa")
+    private @Nullable Output<SettingJcloudRaArgs> jcloudRa;
+
+    /**
+     * @return JCloud Routing Assurance connexion
+     * 
+     */
+    public Optional<Output<SettingJcloudRaArgs>> jcloudRa() {
+        return Optional.ofNullable(this.jcloudRa);
+    }
+
     @Import(name="juniper")
     private @Nullable Output<SettingJuniperArgs> juniper;
 
@@ -237,6 +254,21 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.mxedgeMgmt);
     }
 
+    /**
+     * Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * 
+     */
+    @Import(name="opticPortConfig")
+    private @Nullable Output<Map<String,SettingOpticPortConfigArgs>> opticPortConfig;
+
+    /**
+     * @return Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+     * 
+     */
+    public Optional<Output<Map<String,SettingOpticPortConfigArgs>>> opticPortConfig() {
+        return Optional.ofNullable(this.opticPortConfig);
+    }
+
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
@@ -264,13 +296,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<SettingPcapArgs>> pcap() {
         return Optional.ofNullable(this.pcap);
-    }
-
-    @Import(name="portChannelization")
-    private @Nullable Output<SettingPortChannelizationArgs> portChannelization;
-
-    public Optional<Output<SettingPortChannelizationArgs>> portChannelization() {
-        return Optional.ofNullable(this.portChannelization);
     }
 
     @Import(name="security")
@@ -370,15 +395,16 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
         this.installer = $.installer;
         this.jcloud = $.jcloud;
+        this.jcloudRa = $.jcloudRa;
         this.juniper = $.juniper;
         this.mgmt = $.mgmt;
         this.mistNac = $.mistNac;
         this.mxedgeFipsEnabled = $.mxedgeFipsEnabled;
         this.mxedgeMgmt = $.mxedgeMgmt;
+        this.opticPortConfig = $.opticPortConfig;
         this.orgId = $.orgId;
         this.passwordPolicy = $.passwordPolicy;
         this.pcap = $.pcap;
-        this.portChannelization = $.portChannelization;
         this.security = $.security;
         this.switchMgmt = $.switchMgmt;
         this.switchUpdownThreshold = $.switchUpdownThreshold;
@@ -627,6 +653,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return jcloud(Output.of(jcloud));
         }
 
+        /**
+         * @param jcloudRa JCloud Routing Assurance connexion
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jcloudRa(@Nullable Output<SettingJcloudRaArgs> jcloudRa) {
+            $.jcloudRa = jcloudRa;
+            return this;
+        }
+
+        /**
+         * @param jcloudRa JCloud Routing Assurance connexion
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jcloudRa(SettingJcloudRaArgs jcloudRa) {
+            return jcloudRa(Output.of(jcloudRa));
+        }
+
         public Builder juniper(@Nullable Output<SettingJuniperArgs> juniper) {
             $.juniper = juniper;
             return this;
@@ -684,6 +731,27 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
             return mxedgeMgmt(Output.of(mxedgeMgmt));
         }
 
+        /**
+         * @param opticPortConfig Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opticPortConfig(@Nullable Output<Map<String,SettingOpticPortConfigArgs>> opticPortConfig) {
+            $.opticPortConfig = opticPortConfig;
+            return this;
+        }
+
+        /**
+         * @param opticPortConfig Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opticPortConfig(Map<String,SettingOpticPortConfigArgs> opticPortConfig) {
+            return opticPortConfig(Output.of(opticPortConfig));
+        }
+
         public Builder orgId(@Nullable Output<String> orgId) {
             $.orgId = orgId;
             return this;
@@ -721,15 +789,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
 
         public Builder pcap(SettingPcapArgs pcap) {
             return pcap(Output.of(pcap));
-        }
-
-        public Builder portChannelization(@Nullable Output<SettingPortChannelizationArgs> portChannelization) {
-            $.portChannelization = portChannelization;
-            return this;
-        }
-
-        public Builder portChannelization(SettingPortChannelizationArgs portChannelization) {
-            return portChannelization(Output.of(portChannelization));
         }
 
         public Builder security(@Nullable Output<SettingSecurityArgs> security) {

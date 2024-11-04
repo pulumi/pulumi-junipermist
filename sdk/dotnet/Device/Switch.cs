@@ -99,6 +99,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchIpConfig?> IpConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+        /// "ge-0/0/0-10")
+        /// </summary>
+        [Output("localPortConfig")]
+        public Output<ImmutableDictionary<string, Outputs.SwitchLocalPortConfig>?> LocalPortConfig { get; private set; } = null!;
+
+        /// <summary>
         /// device MAC address
         /// </summary>
         [Output("mac")]
@@ -175,8 +182,9 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        /// maximum 4 port mirrorings is allowed
         /// </summary>
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortMirroring>?> PortMirroring { get; private set; } = null!;
@@ -424,6 +432,19 @@ namespace Pulumi.JuniperMist.Device
         [Input("ipConfig")]
         public Input<Inputs.SwitchIpConfigArgs>? IpConfig { get; set; }
 
+        [Input("localPortConfig")]
+        private InputMap<Inputs.SwitchLocalPortConfigArgs>? _localPortConfig;
+
+        /// <summary>
+        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+        /// "ge-0/0/0-10")
+        /// </summary>
+        public InputMap<Inputs.SwitchLocalPortConfigArgs> LocalPortConfig
+        {
+            get => _localPortConfig ?? (_localPortConfig = new InputMap<Inputs.SwitchLocalPortConfigArgs>());
+            set => _localPortConfig = value;
+        }
+
         /// <summary>
         /// for an adopted switch, we don’t overwrite their existing configs automatically
         /// </summary>
@@ -519,8 +540,9 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        /// maximum 4 port mirrorings is allowed
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringArgs> PortMirroring
         {
@@ -746,6 +768,19 @@ namespace Pulumi.JuniperMist.Device
         [Input("ipConfig")]
         public Input<Inputs.SwitchIpConfigGetArgs>? IpConfig { get; set; }
 
+        [Input("localPortConfig")]
+        private InputMap<Inputs.SwitchLocalPortConfigGetArgs>? _localPortConfig;
+
+        /// <summary>
+        /// Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+        /// "ge-0/0/0-10")
+        /// </summary>
+        public InputMap<Inputs.SwitchLocalPortConfigGetArgs> LocalPortConfig
+        {
+            get => _localPortConfig ?? (_localPortConfig = new InputMap<Inputs.SwitchLocalPortConfigGetArgs>());
+            set => _localPortConfig = value;
+        }
+
         /// <summary>
         /// device MAC address
         /// </summary>
@@ -856,8 +891,9 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        /// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        /// maximum 4 port mirrorings is allowed
         /// </summary>
         public InputMap<Inputs.SwitchPortMirroringGetArgs> PortMirroring
         {

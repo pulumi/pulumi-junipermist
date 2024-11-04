@@ -35,6 +35,7 @@ class SwitchArgs:
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutesArgs']]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]]] = None,
                  ip_config: Optional[pulumi.Input['SwitchIpConfigArgs']] = None,
+                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  map_id: Optional[pulumi.Input[str]] = None,
                  mist_nac: Optional[pulumi.Input['SwitchMistNacArgs']] = None,
@@ -73,6 +74,8 @@ class SwitchArgs:
         :param pulumi.Input['SwitchEvpnConfigArgs'] evpn_config: EVPN Junos settings
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+               "ge-0/0/0-10")
         :param pulumi.Input[bool] managed: for an adopted switch, we don’t overwrite their existing configs automatically
         :param pulumi.Input[str] map_id: map where the device belongs to
         :param pulumi.Input['SwitchMistNacArgs'] mist_nac: enable mist_nac to use radsec
@@ -83,8 +86,9 @@ class SwitchArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+               maximum 4 port mirrorings is allowed
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input['SwitchSwitchMgmtArgs'] switch_mgmt: Switch settings
@@ -122,6 +126,8 @@ class SwitchArgs:
             pulumi.set(__self__, "extra_routes6", extra_routes6)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
+        if local_port_config is not None:
+            pulumi.set(__self__, "local_port_config", local_port_config)
         if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if map_id is not None:
@@ -330,6 +336,19 @@ class SwitchArgs:
         pulumi.set(self, "ip_config", value)
 
     @property
+    @pulumi.getter(name="localPortConfig")
+    def local_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
+        """
+        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+        "ge-0/0/0-10")
+        """
+        return pulumi.get(self, "local_port_config")
+
+    @local_port_config.setter
+    def local_port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]):
+        pulumi.set(self, "local_port_config", value)
+
+    @property
     @pulumi.getter
     def managed(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -460,8 +479,9 @@ class SwitchArgs:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        maximum 4 port mirrorings is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -663,6 +683,7 @@ class _SwitchState:
                  image2_url: Optional[pulumi.Input[str]] = None,
                  image3_url: Optional[pulumi.Input[str]] = None,
                  ip_config: Optional[pulumi.Input['SwitchIpConfigArgs']] = None,
+                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]] = None,
                  mac: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  map_id: Optional[pulumi.Input[str]] = None,
@@ -707,6 +728,8 @@ class _SwitchState:
         :param pulumi.Input['SwitchEvpnConfigArgs'] evpn_config: EVPN Junos settings
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input['SwitchIpConfigArgs'] ip_config: Junos IP Config
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+               "ge-0/0/0-10")
         :param pulumi.Input[str] mac: device MAC address
         :param pulumi.Input[bool] managed: for an adopted switch, we don’t overwrite their existing configs automatically
         :param pulumi.Input[str] map_id: map where the device belongs to
@@ -719,8 +742,9 @@ class _SwitchState:
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOspfAreasArgs']]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchOtherIpConfigsArgs']]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+               maximum 4 port mirrorings is allowed
         :param pulumi.Input['SwitchRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[str] serial: device Serial
@@ -766,6 +790,8 @@ class _SwitchState:
             pulumi.set(__self__, "image3_url", image3_url)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
+        if local_port_config is not None:
+            pulumi.set(__self__, "local_port_config", local_port_config)
         if mac is not None:
             pulumi.set(__self__, "mac", mac)
         if managed is not None:
@@ -1004,6 +1030,19 @@ class _SwitchState:
         pulumi.set(self, "ip_config", value)
 
     @property
+    @pulumi.getter(name="localPortConfig")
+    def local_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]:
+        """
+        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+        "ge-0/0/0-10")
+        """
+        return pulumi.get(self, "local_port_config")
+
+    @local_port_config.setter
+    def local_port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchLocalPortConfigArgs']]]]):
+        pulumi.set(self, "local_port_config", value)
+
+    @property
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1167,8 +1206,9 @@ class _SwitchState:
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchPortMirroringArgs']]]]:
         """
-        Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        maximum 4 port mirrorings is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -1402,6 +1442,7 @@ class Switch(pulumi.CustomResource):
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
                  ip_config: Optional[pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
+                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  map_id: Optional[pulumi.Input[str]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
@@ -1456,6 +1497,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Union['SwitchEvpnConfigArgs', 'SwitchEvpnConfigArgsDict']] evpn_config: EVPN Junos settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+               "ge-0/0/0-10")
         :param pulumi.Input[bool] managed: for an adopted switch, we don’t overwrite their existing configs automatically
         :param pulumi.Input[str] map_id: map where the device belongs to
         :param pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']] mist_nac: enable mist_nac to use radsec
@@ -1466,8 +1509,9 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+               maximum 4 port mirrorings is allowed
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[Union['SwitchSwitchMgmtArgs', 'SwitchSwitchMgmtArgsDict']] switch_mgmt: Switch settings
@@ -1527,6 +1571,7 @@ class Switch(pulumi.CustomResource):
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutesArgs', 'SwitchExtraRoutesArgsDict']]]]] = None,
                  extra_routes6: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]]] = None,
                  ip_config: Optional[pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
+                 local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
                  managed: Optional[pulumi.Input[bool]] = None,
                  map_id: Optional[pulumi.Input[str]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SwitchMistNacArgs', 'SwitchMistNacArgsDict']]] = None,
@@ -1580,6 +1625,7 @@ class Switch(pulumi.CustomResource):
             __props__.__dict__["extra_routes"] = extra_routes
             __props__.__dict__["extra_routes6"] = extra_routes6
             __props__.__dict__["ip_config"] = ip_config
+            __props__.__dict__["local_port_config"] = local_port_config
             __props__.__dict__["managed"] = managed
             __props__.__dict__["map_id"] = map_id
             __props__.__dict__["mist_nac"] = mist_nac
@@ -1645,6 +1691,7 @@ class Switch(pulumi.CustomResource):
             image2_url: Optional[pulumi.Input[str]] = None,
             image3_url: Optional[pulumi.Input[str]] = None,
             ip_config: Optional[pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']]] = None,
+            local_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]]] = None,
             mac: Optional[pulumi.Input[str]] = None,
             managed: Optional[pulumi.Input[bool]] = None,
             map_id: Optional[pulumi.Input[str]] = None,
@@ -1694,6 +1741,8 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Union['SwitchEvpnConfigArgs', 'SwitchEvpnConfigArgsDict']] evpn_config: EVPN Junos settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchExtraRoutes6Args', 'SwitchExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Union['SwitchIpConfigArgs', 'SwitchIpConfigArgsDict']] ip_config: Junos IP Config
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchLocalPortConfigArgs', 'SwitchLocalPortConfigArgsDict']]]] local_port_config: Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+               "ge-0/0/0-10")
         :param pulumi.Input[str] mac: device MAC address
         :param pulumi.Input[bool] managed: for an adopted switch, we don’t overwrite their existing configs automatically
         :param pulumi.Input[str] map_id: map where the device belongs to
@@ -1706,8 +1755,9 @@ class Switch(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOspfAreasArgs', 'SwitchOspfAreasArgsDict']]]] ospf_areas: Junos OSPF areas
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchOtherIpConfigsArgs', 'SwitchOtherIpConfigsArgsDict']]]] other_ip_configs: Property key is the network name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortConfigArgs', 'SwitchPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-               takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SwitchPortMirroringArgs', 'SwitchPortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+               interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+               maximum 4 port mirrorings is allowed
         :param pulumi.Input[Union['SwitchRadiusConfigArgs', 'SwitchRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[str] router_id: used for OSPF / BGP / EVPN
         :param pulumi.Input[str] serial: device Serial
@@ -1741,6 +1791,7 @@ class Switch(pulumi.CustomResource):
         __props__.__dict__["image2_url"] = image2_url
         __props__.__dict__["image3_url"] = image3_url
         __props__.__dict__["ip_config"] = ip_config
+        __props__.__dict__["local_port_config"] = local_port_config
         __props__.__dict__["mac"] = mac
         __props__.__dict__["managed"] = managed
         __props__.__dict__["map_id"] = map_id
@@ -1882,6 +1933,15 @@ class Switch(pulumi.CustomResource):
         return pulumi.get(self, "ip_config")
 
     @property
+    @pulumi.getter(name="localPortConfig")
+    def local_port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchLocalPortConfig']]]:
+        """
+        Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+        "ge-0/0/0-10")
+        """
+        return pulumi.get(self, "local_port_config")
+
+    @property
     @pulumi.getter
     def mac(self) -> pulumi.Output[str]:
         """
@@ -1989,8 +2049,9 @@ class Switch(pulumi.CustomResource):
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SwitchPortMirroring']]]:
         """
-        Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-        takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+        Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+        maximum 4 port mirrorings is allowed
         """
         return pulumi.get(self, "port_mirroring")
 

@@ -194,16 +194,18 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,NetworktemplatePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      * 
      */
     public Optional<Output<Map<String,NetworktemplatePortMirroringArgs>>> portMirroring() {
@@ -254,9 +256,17 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.removeExistingConfigs);
     }
 
+    /**
+     * Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public Output<String> siteId() {
         return this.siteId;
     }
@@ -635,8 +645,9 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-         * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+         * maximum 4 port mirrorings is allowed
          * 
          * @return builder
          * 
@@ -647,8 +658,9 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-         * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+         * maximum 4 port mirrorings is allowed
          * 
          * @return builder
          * 
@@ -717,11 +729,23 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
             return removeExistingConfigs(Output.of(removeExistingConfigs));
         }
 
+        /**
+         * @param siteId Unique ID of the object instance in the Mist Organnization
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(Output<String> siteId) {
             $.siteId = siteId;
             return this;
         }
 
+        /**
+         * @param siteId Unique ID of the object instance in the Mist Organnization
+         * 
+         * @return builder
+         * 
+         */
         public Builder siteId(String siteId) {
             return siteId(Output.of(siteId));
         }
