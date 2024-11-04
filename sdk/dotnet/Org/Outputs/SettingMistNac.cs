@@ -36,11 +36,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? EuOnly;
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
         /// </summary>
         public readonly string? IdpMachineCertLookupField;
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+        /// allow customer to choose the EAP-TLS client certificate's field
+        /// to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
         /// </summary>
         public readonly string? IdpUserCertLookupField;
         public readonly ImmutableArray<Outputs.SettingMistNacIdp> Idps;

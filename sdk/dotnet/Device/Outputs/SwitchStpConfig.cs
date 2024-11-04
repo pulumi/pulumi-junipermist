@@ -14,14 +14,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchStpConfig
     {
         /// <summary>
-        /// ignored for switches participating in EVPN
+        /// Switch STP priority: from `0k` to `15k`
         /// </summary>
-        public readonly bool? VstpEnabled;
+        public readonly string? BridgePriority;
 
         [OutputConstructor]
-        private SwitchStpConfig(bool? vstpEnabled)
+        private SwitchStpConfig(string? bridgePriority)
         {
-            VstpEnabled = vstpEnabled;
+            BridgePriority = bridgePriority;
         }
     }
 }

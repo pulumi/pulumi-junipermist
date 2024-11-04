@@ -14,6 +14,7 @@ import com.pulumi.junipermist.device.inputs.SwitchEvpnConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchExtraRoutes6Args;
 import com.pulumi.junipermist.device.inputs.SwitchExtraRoutesArgs;
 import com.pulumi.junipermist.device.inputs.SwitchIpConfigArgs;
+import com.pulumi.junipermist.device.inputs.SwitchLocalPortConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchMistNacArgs;
 import com.pulumi.junipermist.device.inputs.SwitchNetworksArgs;
 import com.pulumi.junipermist.device.inputs.SwitchOobIpConfigArgs;
@@ -201,6 +202,23 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+     * &#34;ge-0/0/0-10&#34;)
+     * 
+     */
+    @Import(name="localPortConfig")
+    private @Nullable Output<Map<String,SwitchLocalPortConfigArgs>> localPortConfig;
+
+    /**
+     * @return Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+     * &#34;ge-0/0/0-10&#34;)
+     * 
+     */
+    public Optional<Output<Map<String,SwitchLocalPortConfigArgs>>> localPortConfig() {
+        return Optional.ofNullable(this.localPortConfig);
+    }
+
+    /**
      * for an adopted switch, we don’t overwrite their existing configs automatically
      * 
      */
@@ -352,16 +370,18 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      * 
      */
     @Import(name="portMirroring")
     private @Nullable Output<Map<String,SwitchPortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-     * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+     * maximum 4 port mirrorings is allowed
      * 
      */
     public Optional<Output<Map<String,SwitchPortMirroringArgs>>> portMirroring() {
@@ -583,6 +603,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
         this.ipConfig = $.ipConfig;
+        this.localPortConfig = $.localPortConfig;
         this.managed = $.managed;
         this.mapId = $.mapId;
         this.mistNac = $.mistNac;
@@ -880,6 +901,29 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+         * &#34;ge-0/0/0-10&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localPortConfig(@Nullable Output<Map<String,SwitchLocalPortConfigArgs>> localPortConfig) {
+            $.localPortConfig = localPortConfig;
+            return this;
+        }
+
+        /**
+         * @param localPortConfig Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.
+         * &#34;ge-0/0/0-10&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localPortConfig(Map<String,SwitchLocalPortConfigArgs> localPortConfig) {
+            return localPortConfig(Output.of(localPortConfig));
+        }
+
+        /**
          * @param managed for an adopted switch, we don’t overwrite their existing configs automatically
          * 
          * @return builder
@@ -1099,8 +1143,9 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-         * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+         * maximum 4 port mirrorings is allowed
          * 
          * @return builder
          * 
@@ -1111,8 +1156,9 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It
-         * takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+         * maximum 4 port mirrorings is allowed
          * 
          * @return builder
          * 

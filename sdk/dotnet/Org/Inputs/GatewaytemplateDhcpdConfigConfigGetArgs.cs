@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsServers;
 
         /// <summary>
-        /// if `type`==`local` - optional, if not defined, system one will be used
+        /// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsServers
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// if `type`==`local` - optional, if not defined, system one will be used
+        /// if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsGetArgs>? _fixedBindings;
 
         /// <summary>
-        /// Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        /// if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsGetArgs> FixedBindings
         {
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigOptionsGetArgs>? _options;
 
         /// <summary>
-        /// Property key is the DHCP option number
+        /// if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         /// </summary>
         public InputMap<Inputs.GatewaytemplateDhcpdConfigConfigOptionsGetArgs> Options
         {
@@ -143,7 +143,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateDhcpdConfigConfigVendorEncapulatedGetArgs>? _vendorEncapulated;
 
         /// <summary>
-        /// Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+        /// if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code'
         /// </summary>

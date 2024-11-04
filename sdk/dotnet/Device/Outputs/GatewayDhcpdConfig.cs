@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayDhcpdConfigConfig>? Config;
         /// <summary>
-        /// if set to `true`, enable the DHCP server
+        /// if set to `false`, disable the DHCP server
         /// </summary>
         public readonly bool? Enabled;
 

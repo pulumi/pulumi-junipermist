@@ -39,6 +39,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        [Input("multicast")]
+        public Input<Inputs.GatewaytemplateNetworkMulticastArgs>? Multicast { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

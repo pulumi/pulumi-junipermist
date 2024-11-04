@@ -29,14 +29,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("bfdMultiplier")]
         public Input<int>? BfdMultiplier { get; set; }
 
-        [Input("communities")]
-        private InputList<Inputs.GatewayBgpConfigCommunityArgs>? _communities;
-        public InputList<Inputs.GatewayBgpConfigCommunityArgs> Communities
-        {
-            get => _communities ?? (_communities = new InputList<Inputs.GatewayBgpConfigCommunityArgs>());
-            set => _communities = value;
-        }
-
         /// <summary>
         /// BFD provides faster path failure detection and is enabled by default
         /// </summary>

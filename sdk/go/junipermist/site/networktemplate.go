@@ -48,17 +48,19 @@ type Networktemplate struct {
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// Junos OSPF areas
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
 	PortUsages    NetworktemplatePortUsagesMapOutput    `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-	RemoveExistingConfigs pulumi.BoolOutput                  `pulumi:"removeExistingConfigs"`
-	SiteId                pulumi.StringOutput                `pulumi:"siteId"`
-	SnmpConfig            NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
+	RemoveExistingConfigs pulumi.BoolOutput `pulumi:"removeExistingConfigs"`
+	// Unique ID of the object instance in the Mist Organnization
+	SiteId     pulumi.StringOutput                `pulumi:"siteId"`
+	SnmpConfig NetworktemplateSnmpConfigPtrOutput `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrOutput `pulumi:"switchMatching"`
 	// Switch settings
@@ -123,17 +125,19 @@ type networktemplateState struct {
 	NtpServers []string `pulumi:"ntpServers"`
 	// Junos OSPF areas
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	PortUsages    map[string]NetworktemplatePortUsages    `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
-	SiteId                *string                    `pulumi:"siteId"`
-	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
+	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
+	// Unique ID of the object instance in the Mist Organnization
+	SiteId     *string                    `pulumi:"siteId"`
+	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
@@ -166,8 +170,9 @@ type NetworktemplateState struct {
 	NtpServers pulumi.StringArrayInput
 	// Junos OSPF areas
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	PortUsages    NetworktemplatePortUsagesMapInput
 	// Junos Radius config
@@ -175,8 +180,9 @@ type NetworktemplateState struct {
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	SiteId                pulumi.StringPtrInput
-	SnmpConfig            NetworktemplateSnmpConfigPtrInput
+	// Unique ID of the object instance in the Mist Organnization
+	SiteId     pulumi.StringPtrInput
+	SnmpConfig NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
@@ -213,17 +219,19 @@ type networktemplateArgs struct {
 	NtpServers []string `pulumi:"ntpServers"`
 	// Junos OSPF areas
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
 	PortUsages    map[string]NetworktemplatePortUsages    `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-	RemoveExistingConfigs *bool                      `pulumi:"removeExistingConfigs"`
-	SiteId                string                     `pulumi:"siteId"`
-	SnmpConfig            *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
+	RemoveExistingConfigs *bool `pulumi:"removeExistingConfigs"`
+	// Unique ID of the object instance in the Mist Organnization
+	SiteId     string                     `pulumi:"siteId"`
+	SnmpConfig *NetworktemplateSnmpConfig `pulumi:"snmpConfig"`
 	// Switch template
 	SwitchMatching *NetworktemplateSwitchMatching `pulumi:"switchMatching"`
 	// Switch settings
@@ -257,8 +265,9 @@ type NetworktemplateArgs struct {
 	NtpServers pulumi.StringArrayInput
 	// Junos OSPF areas
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-	// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
 	PortUsages    NetworktemplatePortUsagesMapInput
 	// Junos Radius config
@@ -266,8 +275,9 @@ type NetworktemplateArgs struct {
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
 	// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
 	RemoveExistingConfigs pulumi.BoolPtrInput
-	SiteId                pulumi.StringInput
-	SnmpConfig            NetworktemplateSnmpConfigPtrInput
+	// Unique ID of the object instance in the Mist Organnization
+	SiteId     pulumi.StringInput
+	SnmpConfig NetworktemplateSnmpConfigPtrInput
 	// Switch template
 	SwitchMatching NetworktemplateSwitchMatchingPtrInput
 	// Switch settings
@@ -422,8 +432,9 @@ func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateOspfAreasMapOutput { return v.OspfAreas }).(NetworktemplateOspfAreasMapOutput)
 }
 
-// Property key is the port mirroring instance name (Maximum: 4) portMirroring can be added under device/site settings. It
-// takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.
+// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
+// maximum 4 port mirrorings is allowed
 func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortMirroringMapOutput { return v.PortMirroring }).(NetworktemplatePortMirroringMapOutput)
 }
@@ -446,6 +457,7 @@ func (o NetworktemplateOutput) RemoveExistingConfigs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.BoolOutput { return v.RemoveExistingConfigs }).(pulumi.BoolOutput)
 }
 
+// Unique ID of the object instance in the Mist Organnization
 func (o NetworktemplateOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Networktemplate) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }

@@ -67,9 +67,6 @@
                     "bgp_config": {
                         "elem": {
                             "fields": {
-                                "communities": {
-                                    "maxItemsOne": false
-                                },
                                 "networks": {
                                     "maxItemsOne": false
                                 }
@@ -225,6 +222,13 @@
                                                     }
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "wan_probe_override": {
+                                    "fields": {
+                                        "ips": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -856,9 +860,6 @@
                     "bgp_config": {
                         "elem": {
                             "fields": {
-                                "communities": {
-                                    "maxItemsOne": false
-                                },
                                 "networks": {
                                     "maxItemsOne": false
                                 }
@@ -1014,6 +1015,13 @@
                                                     }
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "wan_probe_override": {
+                                    "fields": {
+                                        "ips": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -1208,9 +1216,6 @@
                     "bgp_config": {
                         "elem": {
                             "fields": {
-                                "communities": {
-                                    "maxItemsOne": false
-                                },
                                 "networks": {
                                     "maxItemsOne": false
                                 }
@@ -1366,6 +1371,13 @@
                                                     }
                                                 }
                                             }
+                                        }
+                                    }
+                                },
+                                "wan_probe_override": {
+                                    "fields": {
+                                        "ips": {
+                                            "maxItemsOne": false
                                         }
                                     }
                                 }
@@ -3125,6 +3137,14 @@
                 "current": "junipermist:index/getConstTrafficTypes:getConstTrafficTypes",
                 "fields": {
                     "const_traffic_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_const_webhooks": {
+                "current": "junipermist:index/getConstWebhooks:getConstWebhooks",
+                "fields": {
+                    "const_webhooks": {
                         "maxItemsOne": false
                     }
                 }

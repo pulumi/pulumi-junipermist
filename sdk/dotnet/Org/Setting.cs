@@ -90,6 +90,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("jcloud")]
         public Output<Outputs.SettingJcloud?> Jcloud { get; private set; } = null!;
 
+        /// <summary>
+        /// JCloud Routing Assurance connexion
+        /// </summary>
+        [Output("jcloudRa")]
+        public Output<Outputs.SettingJcloudRa?> JcloudRa { get; private set; } = null!;
+
         [Output("juniper")]
         public Output<Outputs.SettingJuniper> Juniper { get; private set; } = null!;
 
@@ -108,6 +114,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("mxedgeMgmt")]
         public Output<Outputs.SettingMxedgeMgmt?> MxedgeMgmt { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        /// </summary>
+        [Output("opticPortConfig")]
+        public Output<ImmutableDictionary<string, Outputs.SettingOpticPortConfig>?> OpticPortConfig { get; private set; } = null!;
+
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
@@ -119,9 +131,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Output("pcap")]
         public Output<Outputs.SettingPcap?> Pcap { get; private set; } = null!;
-
-        [Output("portChannelization")]
-        public Output<Outputs.SettingPortChannelization?> PortChannelization { get; private set; } = null!;
 
         [Output("security")]
         public Output<Outputs.SettingSecurity?> Security { get; private set; } = null!;
@@ -275,6 +284,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingJcloudArgs>? Jcloud { get; set; }
 
         /// <summary>
+        /// JCloud Routing Assurance connexion
+        /// </summary>
+        [Input("jcloudRa")]
+        public Input<Inputs.SettingJcloudRaArgs>? JcloudRa { get; set; }
+
+        /// <summary>
         /// management-related properties
         /// </summary>
         [Input("mgmt")]
@@ -289,6 +304,18 @@ namespace Pulumi.JuniperMist.Org
         [Input("mxedgeMgmt")]
         public Input<Inputs.SettingMxedgeMgmtArgs>? MxedgeMgmt { get; set; }
 
+        [Input("opticPortConfig")]
+        private InputMap<Inputs.SettingOpticPortConfigArgs>? _opticPortConfig;
+
+        /// <summary>
+        /// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        /// </summary>
+        public InputMap<Inputs.SettingOpticPortConfigArgs> OpticPortConfig
+        {
+            get => _opticPortConfig ?? (_opticPortConfig = new InputMap<Inputs.SettingOpticPortConfigArgs>());
+            set => _opticPortConfig = value;
+        }
+
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
@@ -300,9 +327,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("pcap")]
         public Input<Inputs.SettingPcapArgs>? Pcap { get; set; }
-
-        [Input("portChannelization")]
-        public Input<Inputs.SettingPortChannelizationArgs>? PortChannelization { get; set; }
 
         [Input("security")]
         public Input<Inputs.SettingSecurityArgs>? Security { get; set; }
@@ -416,6 +440,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("jcloud")]
         public Input<Inputs.SettingJcloudGetArgs>? Jcloud { get; set; }
 
+        /// <summary>
+        /// JCloud Routing Assurance connexion
+        /// </summary>
+        [Input("jcloudRa")]
+        public Input<Inputs.SettingJcloudRaGetArgs>? JcloudRa { get; set; }
+
         [Input("juniper")]
         public Input<Inputs.SettingJuniperGetArgs>? Juniper { get; set; }
 
@@ -434,6 +464,18 @@ namespace Pulumi.JuniperMist.Org
         [Input("mxedgeMgmt")]
         public Input<Inputs.SettingMxedgeMgmtGetArgs>? MxedgeMgmt { get; set; }
 
+        [Input("opticPortConfig")]
+        private InputMap<Inputs.SettingOpticPortConfigGetArgs>? _opticPortConfig;
+
+        /// <summary>
+        /// Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        /// </summary>
+        public InputMap<Inputs.SettingOpticPortConfigGetArgs> OpticPortConfig
+        {
+            get => _opticPortConfig ?? (_opticPortConfig = new InputMap<Inputs.SettingOpticPortConfigGetArgs>());
+            set => _opticPortConfig = value;
+        }
+
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
@@ -445,9 +487,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("pcap")]
         public Input<Inputs.SettingPcapGetArgs>? Pcap { get; set; }
-
-        [Input("portChannelization")]
-        public Input<Inputs.SettingPortChannelizationGetArgs>? PortChannelization { get; set; }
 
         [Input("security")]
         public Input<Inputs.SettingSecurityGetArgs>? Security { get; set; }

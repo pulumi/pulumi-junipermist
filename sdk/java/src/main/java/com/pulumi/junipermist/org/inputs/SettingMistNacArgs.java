@@ -100,14 +100,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
      * 
      */
     @Import(name="idpMachineCertLookupField")
     private @Nullable Output<String> idpMachineCertLookupField;
 
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
      * 
      */
     public Optional<Output<String>> idpMachineCertLookupField() {
@@ -115,14 +115,16 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * allow customer to choose the EAP-TLS client certificate&#39;s field
+     * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
      * 
      */
     @Import(name="idpUserCertLookupField")
     private @Nullable Output<String> idpUserCertLookupField;
 
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field
+     * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
      * 
      */
     public Optional<Output<String>> idpUserCertLookupField() {
@@ -339,7 +341,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          * 
          * @return builder
          * 
@@ -350,7 +352,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup
+         * @param idpMachineCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
          * 
          * @return builder
          * 
@@ -360,7 +362,8 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field
+         * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          * 
          * @return builder
          * 
@@ -371,7 +374,8 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field to use for IDP User Groups lookup
+         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field
+         * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          * 
          * @return builder
          * 

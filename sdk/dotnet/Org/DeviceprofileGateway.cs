@@ -37,9 +37,6 @@ namespace Pulumi.JuniperMist.Org
         [Output("bgpConfig")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayBgpConfig>?> BgpConfig { get; private set; } = null!;
 
-        [Output("createdTime")]
-        public Output<double?> CreatedTime { get; private set; } = null!;
-
         [Output("dhcpdConfig")]
         public Output<Outputs.DeviceprofileGatewayDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
@@ -81,9 +78,6 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("ipConfigs")]
         public Output<ImmutableDictionary<string, Outputs.DeviceprofileGatewayIpConfigs>?> IpConfigs { get; private set; } = null!;
-
-        [Output("modifiedTime")]
-        public Output<double?> ModifiedTime { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -227,9 +221,6 @@ namespace Pulumi.JuniperMist.Org
             set => _bgpConfig = value;
         }
 
-        [Input("createdTime")]
-        public Input<double>? CreatedTime { get; set; }
-
         [Input("dhcpdConfig")]
         public Input<Inputs.DeviceprofileGatewayDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
@@ -307,9 +298,6 @@ namespace Pulumi.JuniperMist.Org
             get => _ipConfigs ?? (_ipConfigs = new InputMap<Inputs.DeviceprofileGatewayIpConfigsArgs>());
             set => _ipConfigs = value;
         }
-
-        [Input("modifiedTime")]
-        public Input<double>? ModifiedTime { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -454,9 +442,6 @@ namespace Pulumi.JuniperMist.Org
             set => _bgpConfig = value;
         }
 
-        [Input("createdTime")]
-        public Input<double>? CreatedTime { get; set; }
-
         [Input("dhcpdConfig")]
         public Input<Inputs.DeviceprofileGatewayDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
@@ -534,9 +519,6 @@ namespace Pulumi.JuniperMist.Org
             get => _ipConfigs ?? (_ipConfigs = new InputMap<Inputs.DeviceprofileGatewayIpConfigsGetArgs>());
             set => _ipConfigs = value;
         }
-
-        [Input("modifiedTime")]
-        public Input<double>? ModifiedTime { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

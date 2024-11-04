@@ -35,13 +35,14 @@ class SettingArgs:
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
                  installer: Optional[pulumi.Input['SettingInstallerArgs']] = None,
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
+                 jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
                  mist_nac: Optional[pulumi.Input['SettingMistNacArgs']] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
                  mxedge_mgmt: Optional[pulumi.Input['SettingMxedgeMgmtArgs']] = None,
+                 optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]] = None,
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
                  pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
-                 port_channelization: Optional[pulumi.Input['SettingPortChannelizationArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['SettingSwitchMgmtArgs']] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -64,7 +65,9 @@ class SettingArgs:
         :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
@@ -97,6 +100,8 @@ class SettingArgs:
             pulumi.set(__self__, "installer", installer)
         if jcloud is not None:
             pulumi.set(__self__, "jcloud", jcloud)
+        if jcloud_ra is not None:
+            pulumi.set(__self__, "jcloud_ra", jcloud_ra)
         if mgmt is not None:
             pulumi.set(__self__, "mgmt", mgmt)
         if mist_nac is not None:
@@ -105,12 +110,12 @@ class SettingArgs:
             pulumi.set(__self__, "mxedge_fips_enabled", mxedge_fips_enabled)
         if mxedge_mgmt is not None:
             pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
+        if optic_port_config is not None:
+            pulumi.set(__self__, "optic_port_config", optic_port_config)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
         if pcap is not None:
             pulumi.set(__self__, "pcap", pcap)
-        if port_channelization is not None:
-            pulumi.set(__self__, "port_channelization", port_channelization)
         if security is not None:
             pulumi.set(__self__, "security", security)
         if switch_mgmt is not None:
@@ -282,6 +287,18 @@ class SettingArgs:
         pulumi.set(self, "jcloud", value)
 
     @property
+    @pulumi.getter(name="jcloudRa")
+    def jcloud_ra(self) -> Optional[pulumi.Input['SettingJcloudRaArgs']]:
+        """
+        JCloud Routing Assurance connexion
+        """
+        return pulumi.get(self, "jcloud_ra")
+
+    @jcloud_ra.setter
+    def jcloud_ra(self, value: Optional[pulumi.Input['SettingJcloudRaArgs']]):
+        pulumi.set(self, "jcloud_ra", value)
+
+    @property
     @pulumi.getter
     def mgmt(self) -> Optional[pulumi.Input['SettingMgmtArgs']]:
         """
@@ -321,6 +338,18 @@ class SettingArgs:
         pulumi.set(self, "mxedge_mgmt", value)
 
     @property
+    @pulumi.getter(name="opticPortConfig")
+    def optic_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]]:
+        """
+        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        """
+        return pulumi.get(self, "optic_port_config")
+
+    @optic_port_config.setter
+    def optic_port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]]):
+        pulumi.set(self, "optic_port_config", value)
+
+    @property
     @pulumi.getter(name="passwordPolicy")
     def password_policy(self) -> Optional[pulumi.Input['SettingPasswordPolicyArgs']]:
         """
@@ -340,15 +369,6 @@ class SettingArgs:
     @pcap.setter
     def pcap(self, value: Optional[pulumi.Input['SettingPcapArgs']]):
         pulumi.set(self, "pcap", value)
-
-    @property
-    @pulumi.getter(name="portChannelization")
-    def port_channelization(self) -> Optional[pulumi.Input['SettingPortChannelizationArgs']]:
-        return pulumi.get(self, "port_channelization")
-
-    @port_channelization.setter
-    def port_channelization(self, value: Optional[pulumi.Input['SettingPortChannelizationArgs']]):
-        pulumi.set(self, "port_channelization", value)
 
     @property
     @pulumi.getter
@@ -455,15 +475,16 @@ class _SettingState:
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
                  installer: Optional[pulumi.Input['SettingInstallerArgs']] = None,
                  jcloud: Optional[pulumi.Input['SettingJcloudArgs']] = None,
+                 jcloud_ra: Optional[pulumi.Input['SettingJcloudRaArgs']] = None,
                  juniper: Optional[pulumi.Input['SettingJuniperArgs']] = None,
                  mgmt: Optional[pulumi.Input['SettingMgmtArgs']] = None,
                  mist_nac: Optional[pulumi.Input['SettingMistNacArgs']] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
                  mxedge_mgmt: Optional[pulumi.Input['SettingMxedgeMgmtArgs']] = None,
+                 optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input['SettingPasswordPolicyArgs']] = None,
                  pcap: Optional[pulumi.Input['SettingPcapArgs']] = None,
-                 port_channelization: Optional[pulumi.Input['SettingPortChannelizationArgs']] = None,
                  security: Optional[pulumi.Input['SettingSecurityArgs']] = None,
                  switch_mgmt: Optional[pulumi.Input['SettingSwitchMgmtArgs']] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -486,7 +507,9 @@ class _SettingState:
         :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
+        :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
@@ -518,6 +541,8 @@ class _SettingState:
             pulumi.set(__self__, "installer", installer)
         if jcloud is not None:
             pulumi.set(__self__, "jcloud", jcloud)
+        if jcloud_ra is not None:
+            pulumi.set(__self__, "jcloud_ra", jcloud_ra)
         if juniper is not None:
             pulumi.set(__self__, "juniper", juniper)
         if mgmt is not None:
@@ -528,14 +553,14 @@ class _SettingState:
             pulumi.set(__self__, "mxedge_fips_enabled", mxedge_fips_enabled)
         if mxedge_mgmt is not None:
             pulumi.set(__self__, "mxedge_mgmt", mxedge_mgmt)
+        if optic_port_config is not None:
+            pulumi.set(__self__, "optic_port_config", optic_port_config)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
         if password_policy is not None:
             pulumi.set(__self__, "password_policy", password_policy)
         if pcap is not None:
             pulumi.set(__self__, "pcap", pcap)
-        if port_channelization is not None:
-            pulumi.set(__self__, "port_channelization", port_channelization)
         if security is not None:
             pulumi.set(__self__, "security", security)
         if switch_mgmt is not None:
@@ -698,6 +723,18 @@ class _SettingState:
         pulumi.set(self, "jcloud", value)
 
     @property
+    @pulumi.getter(name="jcloudRa")
+    def jcloud_ra(self) -> Optional[pulumi.Input['SettingJcloudRaArgs']]:
+        """
+        JCloud Routing Assurance connexion
+        """
+        return pulumi.get(self, "jcloud_ra")
+
+    @jcloud_ra.setter
+    def jcloud_ra(self, value: Optional[pulumi.Input['SettingJcloudRaArgs']]):
+        pulumi.set(self, "jcloud_ra", value)
+
+    @property
     @pulumi.getter
     def juniper(self) -> Optional[pulumi.Input['SettingJuniperArgs']]:
         return pulumi.get(self, "juniper")
@@ -746,6 +783,18 @@ class _SettingState:
         pulumi.set(self, "mxedge_mgmt", value)
 
     @property
+    @pulumi.getter(name="opticPortConfig")
+    def optic_port_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]]:
+        """
+        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        """
+        return pulumi.get(self, "optic_port_config")
+
+    @optic_port_config.setter
+    def optic_port_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]]]):
+        pulumi.set(self, "optic_port_config", value)
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "org_id")
@@ -774,15 +823,6 @@ class _SettingState:
     @pcap.setter
     def pcap(self, value: Optional[pulumi.Input['SettingPcapArgs']]):
         pulumi.set(self, "pcap", value)
-
-    @property
-    @pulumi.getter(name="portChannelization")
-    def port_channelization(self) -> Optional[pulumi.Input['SettingPortChannelizationArgs']]:
-        return pulumi.get(self, "port_channelization")
-
-    @port_channelization.setter
-    def port_channelization(self, value: Optional[pulumi.Input['SettingPortChannelizationArgs']]):
-        pulumi.set(self, "port_channelization", value)
 
     @property
     @pulumi.getter
@@ -891,14 +931,15 @@ class Setting(pulumi.CustomResource):
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
+                 jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
                  mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
+                 optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
                  pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
-                 port_channelization: Optional[pulumi.Input[Union['SettingPortChannelizationArgs', 'SettingPortChannelizationArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -936,7 +977,9 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
@@ -990,14 +1033,15 @@ class Setting(pulumi.CustomResource):
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
                  installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
                  jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
+                 jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
                  mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
                  mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
                  mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
                  mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
+                 optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
                  pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
-                 port_channelization: Optional[pulumi.Input[Union['SettingPortChannelizationArgs', 'SettingPortChannelizationArgsDict']]] = None,
                  security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
                  switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
                  switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -1029,16 +1073,17 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
             __props__.__dict__["installer"] = installer
             __props__.__dict__["jcloud"] = jcloud
+            __props__.__dict__["jcloud_ra"] = jcloud_ra
             __props__.__dict__["mgmt"] = mgmt
             __props__.__dict__["mist_nac"] = mist_nac
             __props__.__dict__["mxedge_fips_enabled"] = mxedge_fips_enabled
             __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
+            __props__.__dict__["optic_port_config"] = optic_port_config
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
             __props__.__dict__["password_policy"] = password_policy
             __props__.__dict__["pcap"] = pcap
-            __props__.__dict__["port_channelization"] = port_channelization
             __props__.__dict__["security"] = security
             __props__.__dict__["switch_mgmt"] = switch_mgmt
             __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
@@ -1072,15 +1117,16 @@ class Setting(pulumi.CustomResource):
             gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
             installer: Optional[pulumi.Input[Union['SettingInstallerArgs', 'SettingInstallerArgsDict']]] = None,
             jcloud: Optional[pulumi.Input[Union['SettingJcloudArgs', 'SettingJcloudArgsDict']]] = None,
+            jcloud_ra: Optional[pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']]] = None,
             juniper: Optional[pulumi.Input[Union['SettingJuniperArgs', 'SettingJuniperArgsDict']]] = None,
             mgmt: Optional[pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']]] = None,
             mist_nac: Optional[pulumi.Input[Union['SettingMistNacArgs', 'SettingMistNacArgsDict']]] = None,
             mxedge_fips_enabled: Optional[pulumi.Input[bool]] = None,
             mxedge_mgmt: Optional[pulumi.Input[Union['SettingMxedgeMgmtArgs', 'SettingMxedgeMgmtArgsDict']]] = None,
+            optic_port_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             password_policy: Optional[pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']]] = None,
             pcap: Optional[pulumi.Input[Union['SettingPcapArgs', 'SettingPcapArgsDict']]] = None,
-            port_channelization: Optional[pulumi.Input[Union['SettingPortChannelizationArgs', 'SettingPortChannelizationArgsDict']]] = None,
             security: Optional[pulumi.Input[Union['SettingSecurityArgs', 'SettingSecurityArgsDict']]] = None,
             switch_mgmt: Optional[pulumi.Input[Union['SettingSwitchMgmtArgs', 'SettingSwitchMgmtArgsDict']]] = None,
             switch_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -1108,7 +1154,9 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
+        :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
@@ -1131,15 +1179,16 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
         __props__.__dict__["installer"] = installer
         __props__.__dict__["jcloud"] = jcloud
+        __props__.__dict__["jcloud_ra"] = jcloud_ra
         __props__.__dict__["juniper"] = juniper
         __props__.__dict__["mgmt"] = mgmt
         __props__.__dict__["mist_nac"] = mist_nac
         __props__.__dict__["mxedge_fips_enabled"] = mxedge_fips_enabled
         __props__.__dict__["mxedge_mgmt"] = mxedge_mgmt
+        __props__.__dict__["optic_port_config"] = optic_port_config
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["password_policy"] = password_policy
         __props__.__dict__["pcap"] = pcap
-        __props__.__dict__["port_channelization"] = port_channelization
         __props__.__dict__["security"] = security
         __props__.__dict__["switch_mgmt"] = switch_mgmt
         __props__.__dict__["switch_updown_threshold"] = switch_updown_threshold
@@ -1242,6 +1291,14 @@ class Setting(pulumi.CustomResource):
         return pulumi.get(self, "jcloud")
 
     @property
+    @pulumi.getter(name="jcloudRa")
+    def jcloud_ra(self) -> pulumi.Output[Optional['outputs.SettingJcloudRa']]:
+        """
+        JCloud Routing Assurance connexion
+        """
+        return pulumi.get(self, "jcloud_ra")
+
+    @property
     @pulumi.getter
     def juniper(self) -> pulumi.Output['outputs.SettingJuniper']:
         return pulumi.get(self, "juniper")
@@ -1270,6 +1327,14 @@ class Setting(pulumi.CustomResource):
         return pulumi.get(self, "mxedge_mgmt")
 
     @property
+    @pulumi.getter(name="opticPortConfig")
+    def optic_port_config(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SettingOpticPortConfig']]]:
+        """
+        Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
+        """
+        return pulumi.get(self, "optic_port_config")
+
+    @property
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "org_id")
@@ -1286,11 +1351,6 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def pcap(self) -> pulumi.Output[Optional['outputs.SettingPcap']]:
         return pulumi.get(self, "pcap")
-
-    @property
-    @pulumi.getter(name="portChannelization")
-    def port_channelization(self) -> pulumi.Output[Optional['outputs.SettingPortChannelization']]:
-        return pulumi.get(self, "port_channelization")
 
     @property
     @pulumi.getter

@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GatewayPortConfigIpConfig;
 import com.pulumi.junipermist.device.outputs.GatewayPortConfigTrafficShaping;
 import com.pulumi.junipermist.device.outputs.GatewayPortConfigVpnPaths;
+import com.pulumi.junipermist.device.outputs.GatewayPortConfigWanExtraRoutes;
+import com.pulumi.junipermist.device.outputs.GatewayPortConfigWanProbeOverride;
 import com.pulumi.junipermist.device.outputs.GatewayPortConfigWanSourceNat;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -167,6 +169,10 @@ public final class GatewayPortConfig {
      * 
      */
     private @Nullable Integer vlanId;
+    /**
+     * @return Property key is the VPN name
+     * 
+     */
     private @Nullable Map<String,GatewayPortConfigVpnPaths> vpnPaths;
     /**
      * @return when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
@@ -178,6 +184,16 @@ public final class GatewayPortConfig {
      * 
      */
     private @Nullable String wanExtIp;
+    /**
+     * @return Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * 
+     */
+    private @Nullable Map<String,GatewayPortConfigWanExtraRoutes> wanExtraRoutes;
+    /**
+     * @return if `usage`==`wan`
+     * 
+     */
+    private @Nullable GatewayPortConfigWanProbeOverride wanProbeOverride;
     /**
      * @return optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
      * 
@@ -407,6 +423,10 @@ public final class GatewayPortConfig {
     public Optional<Integer> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
+    /**
+     * @return Property key is the VPN name
+     * 
+     */
     public Map<String,GatewayPortConfigVpnPaths> vpnPaths() {
         return this.vpnPaths == null ? Map.of() : this.vpnPaths;
     }
@@ -423,6 +443,20 @@ public final class GatewayPortConfig {
      */
     public Optional<String> wanExtIp() {
         return Optional.ofNullable(this.wanExtIp);
+    }
+    /**
+     * @return Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * 
+     */
+    public Map<String,GatewayPortConfigWanExtraRoutes> wanExtraRoutes() {
+        return this.wanExtraRoutes == null ? Map.of() : this.wanExtraRoutes;
+    }
+    /**
+     * @return if `usage`==`wan`
+     * 
+     */
+    public Optional<GatewayPortConfigWanProbeOverride> wanProbeOverride() {
+        return Optional.ofNullable(this.wanProbeOverride);
     }
     /**
      * @return optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
@@ -486,6 +520,8 @@ public final class GatewayPortConfig {
         private @Nullable Map<String,GatewayPortConfigVpnPaths> vpnPaths;
         private @Nullable String wanArpPolicer;
         private @Nullable String wanExtIp;
+        private @Nullable Map<String,GatewayPortConfigWanExtraRoutes> wanExtraRoutes;
+        private @Nullable GatewayPortConfigWanProbeOverride wanProbeOverride;
         private @Nullable GatewayPortConfigWanSourceNat wanSourceNat;
         private @Nullable String wanType;
         public Builder() {}
@@ -529,6 +565,8 @@ public final class GatewayPortConfig {
     	      this.vpnPaths = defaults.vpnPaths;
     	      this.wanArpPolicer = defaults.wanArpPolicer;
     	      this.wanExtIp = defaults.wanExtIp;
+    	      this.wanExtraRoutes = defaults.wanExtraRoutes;
+    	      this.wanProbeOverride = defaults.wanProbeOverride;
     	      this.wanSourceNat = defaults.wanSourceNat;
     	      this.wanType = defaults.wanType;
         }
@@ -770,6 +808,18 @@ public final class GatewayPortConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder wanExtraRoutes(@Nullable Map<String,GatewayPortConfigWanExtraRoutes> wanExtraRoutes) {
+
+            this.wanExtraRoutes = wanExtraRoutes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder wanProbeOverride(@Nullable GatewayPortConfigWanProbeOverride wanProbeOverride) {
+
+            this.wanProbeOverride = wanProbeOverride;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wanSourceNat(@Nullable GatewayPortConfigWanSourceNat wanSourceNat) {
 
             this.wanSourceNat = wanSourceNat;
@@ -821,6 +871,8 @@ public final class GatewayPortConfig {
             _resultValue.vpnPaths = vpnPaths;
             _resultValue.wanArpPolicer = wanArpPolicer;
             _resultValue.wanExtIp = wanExtIp;
+            _resultValue.wanExtraRoutes = wanExtraRoutes;
+            _resultValue.wanProbeOverride = wanProbeOverride;
             _resultValue.wanSourceNat = wanSourceNat;
             _resultValue.wanType = wanType;
             return _resultValue;

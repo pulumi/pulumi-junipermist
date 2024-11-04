@@ -29,14 +29,6 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("bfdMultiplier")]
         public Input<int>? BfdMultiplier { get; set; }
 
-        [Input("communities")]
-        private InputList<Inputs.GatewaytemplateBgpConfigCommunityArgs>? _communities;
-        public InputList<Inputs.GatewaytemplateBgpConfigCommunityArgs> Communities
-        {
-            get => _communities ?? (_communities = new InputList<Inputs.GatewaytemplateBgpConfigCommunityArgs>());
-            set => _communities = value;
-        }
-
         /// <summary>
         /// BFD provides faster path failure detection and is enabled by default
         /// </summary>

@@ -19,42 +19,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchDhcpdConfigConfig {
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     private @Nullable List<String> dnsServers;
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings;
     /**
-     * @return if `type`==`local` - optional, `ip` will be used if not provided
+     * @return if `type`==`server`  - optional, `ip` will be used if not provided
      * 
      */
     private @Nullable String gateway;
     /**
-     * @return if `type`==`local`
+     * @return if `type`==`server`
      * 
      */
     private @Nullable String ipEnd;
     /**
-     * @return if `type6`==`local`
+     * @return if `type6`==`server`
      * 
      */
     private @Nullable String ipEnd6;
     /**
-     * @return if `type`==`local`
+     * @return if `type`==`server`
      * 
      */
     private @Nullable String ipStart;
     /**
-     * @return if `type6`==`local`
+     * @return if `type6`==`server`
      * 
      */
     private @Nullable String ipStart6;
@@ -64,7 +64,7 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable Integer leaseTime;
     /**
-     * @return Property key is the DHCP option number
+     * @return if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
      * 
      */
     private @Nullable Map<String,SwitchDhcpdConfigConfigOptions> options;
@@ -95,7 +95,7 @@ public final class SwitchDhcpdConfigConfig {
      */
     private @Nullable String type6;
     /**
-     * @return Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 
@@ -104,56 +104,56 @@ public final class SwitchDhcpdConfigConfig {
 
     private SwitchDhcpdConfigConfig() {}
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Map<String,SwitchDhcpdConfigConfigFixedBindings> fixedBindings() {
         return this.fixedBindings == null ? Map.of() : this.fixedBindings;
     }
     /**
-     * @return if `type`==`local` - optional, `ip` will be used if not provided
+     * @return if `type`==`server`  - optional, `ip` will be used if not provided
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return if `type`==`local`
+     * @return if `type`==`server`
      * 
      */
     public Optional<String> ipEnd() {
         return Optional.ofNullable(this.ipEnd);
     }
     /**
-     * @return if `type6`==`local`
+     * @return if `type6`==`server`
      * 
      */
     public Optional<String> ipEnd6() {
         return Optional.ofNullable(this.ipEnd6);
     }
     /**
-     * @return if `type`==`local`
+     * @return if `type`==`server`
      * 
      */
     public Optional<String> ipStart() {
         return Optional.ofNullable(this.ipStart);
     }
     /**
-     * @return if `type6`==`local`
+     * @return if `type6`==`server`
      * 
      */
     public Optional<String> ipStart6() {
@@ -167,7 +167,7 @@ public final class SwitchDhcpdConfigConfig {
         return Optional.ofNullable(this.leaseTime);
     }
     /**
-     * @return Property key is the DHCP option number
+     * @return if `type`==`server` or `type6`==`server`. Property key is the DHCP option number
      * 
      */
     public Map<String,SwitchDhcpdConfigConfigOptions> options() {
@@ -210,7 +210,7 @@ public final class SwitchDhcpdConfigConfig {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 

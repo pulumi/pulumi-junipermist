@@ -897,12 +897,6 @@
                     "type": "integer",
                     "description": "when bfd_minimum_interval_is_configured alone\n"
                 },
-                "communities": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/junipermist:device/GatewayBgpConfigCommunity:GatewayBgpConfigCommunity"
-                    }
-                },
                 "disableBfd": {
                     "type": "boolean",
                     "description": "BFD provides faster path failure detection and is enabled by default\n"
@@ -992,20 +986,6 @@
                 }
             }
         },
-        "junipermist:device/GatewayBgpConfigCommunity:GatewayBgpConfigCommunity": {
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "localPreference": {
-                    "type": "integer"
-                },
-                "vpnName": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "junipermist:device/GatewayBgpConfigNeighbors:GatewayBgpConfigNeighbors": {
             "properties": {
                 "disabled": {
@@ -1062,7 +1042,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "if set to `true`, enable the DHCP server\n"
+                    "description": "if set to `false`, disable the DHCP server\n"
                 }
             },
             "type": "object",
@@ -1081,21 +1061,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
                 },
                 "dnsSuffixes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
                 },
                 "fixedBindings": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/GatewayDhcpdConfigConfigFixedBindings:GatewayDhcpdConfigConfigFixedBindings"
                     },
-                    "description": "Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
                 },
                 "gateway": {
                     "type": "string",
@@ -1126,7 +1106,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/GatewayDhcpdConfigConfigOptions:GatewayDhcpdConfigConfigOptions"
                     },
-                    "description": "Property key is the DHCP option number\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is the DHCP option number\n"
                 },
                 "serverIdOverride": {
                     "type": "boolean",
@@ -1159,7 +1139,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/GatewayDhcpdConfigConfigVendorEncapulated:GatewayDhcpdConfigConfigVendorEncapulated"
                     },
-                    "description": "Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
                 }
             },
             "type": "object",
@@ -1244,14 +1224,9 @@
                     "type": "string",
                     "description": "enum: `critical`, `standard`, `strict`\n"
                 },
-                "createdTime": {
-                    "type": "number"
-                },
                 "id": {
-                    "type": "string"
-                },
-                "modifiedTime": {
-                    "type": "number"
+                    "type": "string",
+                    "description": "Unique ID of the object instance in the Mist Organnization\n"
                 },
                 "name": {
                     "type": "string"
@@ -1351,9 +1326,6 @@
         },
         "junipermist:device/GatewayNetwork:GatewayNetwork": {
             "properties": {
-                "createdTime": {
-                    "type": "number"
-                },
                 "disallowMistServices": {
                     "type": "boolean",
                     "description": "whether to disallow Mist Devices in the network\n"
@@ -1362,9 +1334,6 @@
                     "type": "string"
                 },
                 "gateway6": {
-                    "type": "string"
-                },
-                "id": {
                     "type": "string"
                 },
                 "internalAccess": {
@@ -1378,13 +1347,11 @@
                     "type": "boolean",
                     "description": "whether to allow clients in the network to talk to each other\n"
                 },
-                "modifiedTime": {
-                    "type": "number"
+                "multicast": {
+                    "$ref": "#/types/junipermist:device/GatewayNetworkMulticast:GatewayNetworkMulticast",
+                    "description": "whether to enable multicast support (only PIM-sparse mode is supported)\n"
                 },
                 "name": {
-                    "type": "string"
-                },
-                "orgId": {
                     "type": "string"
                 },
                 "routedForNetworks": {
@@ -1502,6 +1469,42 @@
                 "wanName": {
                     "type": "string",
                     "description": "If not set, we configure the nat policies against all WAN ports for simplicity\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:device/GatewayNetworkMulticast:GatewayNetworkMulticast": {
+            "properties": {
+                "disableIgmp": {
+                    "type": "boolean",
+                    "description": "if the network will only be the soruce of the multicast traffic, IGMP can be disabled\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/GatewayNetworkMulticastGroups:GatewayNetworkMulticastGroups"
+                    },
+                    "description": "Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example \"225.1.0.3/32\")\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disableIgmp",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/GatewayNetworkMulticastGroups:GatewayNetworkMulticastGroups": {
+            "properties": {
+                "rpIp": {
+                    "type": "string",
+                    "description": "RP (rendezvous point) IP Address\n"
                 }
             },
             "type": "object"
@@ -1942,7 +1945,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/GatewayPortConfigVpnPaths:GatewayPortConfigVpnPaths"
-                    }
+                    },
+                    "description": "Property key is the VPN name\n"
                 },
                 "wanArpPolicer": {
                     "type": "string",
@@ -1951,6 +1955,17 @@
                 "wanExtIp": {
                     "type": "string",
                     "description": "optional, if spoke should reach this port by a different IP\n"
+                },
+                "wanExtraRoutes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/GatewayPortConfigWanExtraRoutes:GatewayPortConfigWanExtraRoutes"
+                    },
+                    "description": "Property Key is the destianation CIDR (e.g \"100.100.100.0/24\")\n"
+                },
+                "wanProbeOverride": {
+                    "$ref": "#/types/junipermist:device/GatewayPortConfigWanProbeOverride:GatewayPortConfigWanProbeOverride",
+                    "description": "if `usage`==`wan`\n"
                 },
                 "wanSourceNat": {
                     "$ref": "#/types/junipermist:device/GatewayPortConfigWanSourceNat:GatewayPortConfigWanSourceNat",
@@ -2078,19 +2093,23 @@
             "properties": {
                 "bfdProfile": {
                     "type": "string",
-                    "description": "enum: `broadband`, `lte`\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`\n"
                 },
                 "bfdUseTunnelMode": {
                     "type": "boolean",
-                    "description": "whether to use tunnel mode. SSR only\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only\n"
+                },
+                "linkName": {
+                    "type": "string",
+                    "description": "Only if the VPN `type`==`mesh`\n"
                 },
                 "preference": {
                     "type": "integer",
-                    "description": "for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "enum: `hub`, `spoke`\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`\n"
                 },
                 "trafficShaping": {
                     "$ref": "#/types/junipermist:device/GatewayPortConfigVpnPathsTrafficShaping:GatewayPortConfigVpnPathsTrafficShaping"
@@ -2125,6 +2144,36 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/GatewayPortConfigWanExtraRoutes:GatewayPortConfigWanExtraRoutes": {
+            "properties": {
+                "via": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:device/GatewayPortConfigWanProbeOverride:GatewayPortConfigWanProbeOverride": {
+            "properties": {
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "probeProfile": {
+                    "type": "string",
+                    "description": "enum: `broadband`, `lte`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "probeProfile"
                     ]
                 }
             }
@@ -2981,7 +3030,7 @@
             "properties": {
                 "gbpTag": {
                     "type": "integer",
-                    "description": "required if\n- `type`==`dynamic_gbp` (gbp_tag received from RADIUS)\n- `type`==`static_gbp` (applying gbp tag against matching conditions)\n"
+                    "description": "required if\n- `type`==`dynamic_gbp` (gbp_tag received from RADIUS)\n- `type`==`gbp_resource`\n- `type`==`static_gbp` (applying gbp tag against matching conditions)\n"
                 },
                 "macs": {
                     "type": "array",
@@ -3003,7 +3052,7 @@
                     "items": {
                         "$ref": "#/types/junipermist:device/SwitchAclTagsSpec:SwitchAclTagsSpec"
                     },
-                    "description": "if `type`==`resource`\nempty means unrestricted, i.e. any\n"
+                    "description": "if `type`==`resource` or `type`==`gbp_resource`\nempty means unrestricted, i.e. any\n"
                 },
                 "subnets": {
                     "type": "array",
@@ -3014,7 +3063,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`\n"
+                    "description": "enum: \n  * `any`: matching anything not identified\n  * `dynamic_gbp`: from the gbp_tag received from RADIUS\n  * `gbp_resource`: can only be used in `dst_tags`\n  * `mac`\n  * `network`\n  * `radius_group`\n  * `resource`: can only be used in `dst_tags`\n  * `static_gbp`: applying gbp tag against matching conditions\n  * `subnet`'\n"
                 }
             },
             "type": "object",
@@ -3108,41 +3157,41 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used\n"
                 },
                 "dnsSuffixes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used\n"
                 },
                 "fixedBindings": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchDhcpdConfigConfigFixedBindings:SwitchDhcpdConfigConfigFixedBindings"
                     },
-                    "description": "Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
+                    "description": "if `type`==`server` or `type6`==`server`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "if `type`==`local` - optional, `ip` will be used if not provided\n"
+                    "description": "if `type`==`server`  - optional, `ip` will be used if not provided\n"
                 },
                 "ipEnd": {
                     "type": "string",
-                    "description": "if `type`==`local`\n"
+                    "description": "if `type`==`server`\n"
                 },
                 "ipEnd6": {
                     "type": "string",
-                    "description": "if `type6`==`local`\n"
+                    "description": "if `type6`==`server`\n"
                 },
                 "ipStart": {
                     "type": "string",
-                    "description": "if `type`==`local`\n"
+                    "description": "if `type`==`server`\n"
                 },
                 "ipStart6": {
                     "type": "string",
-                    "description": "if `type6`==`local`\n"
+                    "description": "if `type6`==`server`\n"
                 },
                 "leaseTime": {
                     "type": "integer",
@@ -3153,7 +3202,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchDhcpdConfigConfigOptions:SwitchDhcpdConfigConfigOptions"
                     },
-                    "description": "Property key is the DHCP option number\n"
+                    "description": "if `type`==`server` or `type6`==`server`. Property key is the DHCP option number\n"
                 },
                 "serverIdOverride": {
                     "type": "boolean",
@@ -3186,7 +3235,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchDhcpdConfigConfigVendorEncapulated:SwitchDhcpdConfigConfigVendorEncapulated"
                     },
-                    "description": "Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
+                    "description": "if `type`==`server` or `type6`==`server`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
                 }
             },
             "type": "object",
@@ -3397,6 +3446,56 @@
                         "dns",
                         "dnsSuffixes",
                         "type"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/SwitchLocalPortConfig:SwitchLocalPortConfig": {
+            "properties": {
+                "critical": {
+                    "type": "boolean",
+                    "description": "if want to generate port up/down alarm\n"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "disableAutoneg": {
+                    "type": "boolean",
+                    "description": "if `speed` and `duplex` are specified, whether to disable autonegotiation\n"
+                },
+                "duplex": {
+                    "type": "string",
+                    "description": "enum: `auto`, `full`, `half`\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation\n"
+                },
+                "poeDisabled": {
+                    "type": "boolean"
+                },
+                "speed": {
+                    "type": "string",
+                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`\n"
+                },
+                "usage": {
+                    "type": "string",
+                    "description": "port usage name. \n\nIf EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "usage"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disableAutoneg",
+                        "duplex",
+                        "mtu",
+                        "poeDisabled",
+                        "speed",
+                        "usage"
                     ]
                 }
             }
@@ -3885,6 +3984,10 @@
                 "stpP2p": {
                     "type": "boolean"
                 },
+                "useVstp": {
+                    "type": "boolean",
+                    "description": "if this is connected to a vstp network\n"
+                },
                 "voipNetwork": {
                     "type": "string",
                     "description": "Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth\n"
@@ -3914,7 +4017,8 @@
                         "resetDefaultWhen",
                         "stpEdge",
                         "stpNoRootPort",
-                        "stpP2p"
+                        "stpP2p",
+                        "useVstp"
                     ]
                 }
             }
@@ -4011,12 +4115,6 @@
                     "type": "integer",
                     "description": "radius auth session timeout\n"
                 },
-                "coaEnabled": {
-                    "type": "boolean"
-                },
-                "coaPort": {
-                    "type": "integer"
-                },
                 "network": {
                     "type": "string",
                     "description": "use `network`or `source_ip`\nwhich network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip\n"
@@ -4032,9 +4130,7 @@
                     "requiredOutputs": [
                         "acctInterimInterval",
                         "authServersRetries",
-                        "authServersTimeout",
-                        "coaEnabled",
-                        "coaPort"
+                        "authServersTimeout"
                     ]
                 }
             }
@@ -4813,16 +4909,16 @@
         },
         "junipermist:device/SwitchStpConfig:SwitchStpConfig": {
             "properties": {
-                "vstpEnabled": {
-                    "type": "boolean",
-                    "description": "ignored for switches participating in EVPN\n"
+                "bridgePriority": {
+                    "type": "string",
+                    "description": "Switch STP priority: from `0k` to `15k`\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "vstpEnabled"
+                        "bridgePriority"
                     ]
                 }
             }
@@ -10032,6 +10128,38 @@
                 }
             }
         },
+        "junipermist:index/getConstWebhooksConstWebhook:getConstWebhooksConstWebhook": {
+            "properties": {
+                "forOrg": {
+                    "type": "boolean",
+                    "description": "can be used in org webhooks, optional\n"
+                },
+                "hasDeliveryResults": {
+                    "type": "boolean",
+                    "description": "supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search\n"
+                },
+                "internal": {
+                    "type": "boolean",
+                    "description": "internal topic (not selectable in site/org webhooks)\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "webhook topic name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "forOrg",
+                "hasDeliveryResults",
+                "internal",
+                "key"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "junipermist:index/getSitesSite:getSitesSite": {
             "properties": {
                 "address": {
@@ -11002,12 +11130,6 @@
                     "type": "integer",
                     "description": "when bfd_minimum_interval_is_configured alone\n"
                 },
-                "communities": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/junipermist:org/DeviceprofileGatewayBgpConfigCommunity:DeviceprofileGatewayBgpConfigCommunity"
-                    }
-                },
                 "disableBfd": {
                     "type": "boolean",
                     "description": "BFD provides faster path failure detection and is enabled by default\n"
@@ -11097,20 +11219,6 @@
                 }
             }
         },
-        "junipermist:org/DeviceprofileGatewayBgpConfigCommunity:DeviceprofileGatewayBgpConfigCommunity": {
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "localPreference": {
-                    "type": "integer"
-                },
-                "vpnName": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "junipermist:org/DeviceprofileGatewayBgpConfigNeighbors:DeviceprofileGatewayBgpConfigNeighbors": {
             "properties": {
                 "disabled": {
@@ -11155,7 +11263,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "if set to `true`, enable the DHCP server\n"
+                    "description": "if set to `false`, disable the DHCP server\n"
                 }
             },
             "type": "object",
@@ -11174,21 +11282,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
                 },
                 "dnsSuffixes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
                 },
                 "fixedBindings": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfigConfigFixedBindings:DeviceprofileGatewayDhcpdConfigConfigFixedBindings"
                     },
-                    "description": "Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
                 },
                 "gateway": {
                     "type": "string",
@@ -11219,7 +11327,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfigConfigOptions:DeviceprofileGatewayDhcpdConfigConfigOptions"
                     },
-                    "description": "Property key is the DHCP option number\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is the DHCP option number\n"
                 },
                 "serverIdOverride": {
                     "type": "boolean",
@@ -11252,7 +11360,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated:DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated"
                     },
-                    "description": "Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
                 }
             },
             "type": "object",
@@ -11456,6 +11564,10 @@
                     "type": "boolean",
                     "description": "whether to allow clients in the network to talk to each other\n"
                 },
+                "multicast": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileGatewayNetworkMulticast:DeviceprofileGatewayNetworkMulticast",
+                    "description": "whether to enable multicast support (only PIM-sparse mode is supported)\n"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -11574,6 +11686,42 @@
                 "wanName": {
                     "type": "string",
                     "description": "If not set, we configure the nat policies against all WAN ports for simplicity\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/DeviceprofileGatewayNetworkMulticast:DeviceprofileGatewayNetworkMulticast": {
+            "properties": {
+                "disableIgmp": {
+                    "type": "boolean",
+                    "description": "if the network will only be the soruce of the multicast traffic, IGMP can be disabled\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileGatewayNetworkMulticastGroups:DeviceprofileGatewayNetworkMulticastGroups"
+                    },
+                    "description": "Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example \"225.1.0.3/32\")\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disableIgmp",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileGatewayNetworkMulticastGroups:DeviceprofileGatewayNetworkMulticastGroups": {
+            "properties": {
+                "rpIp": {
+                    "type": "string",
+                    "description": "RP (rendezvous point) IP Address\n"
                 }
             },
             "type": "object"
@@ -12014,7 +12162,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigVpnPaths:DeviceprofileGatewayPortConfigVpnPaths"
-                    }
+                    },
+                    "description": "Property key is the VPN name\n"
                 },
                 "wanArpPolicer": {
                     "type": "string",
@@ -12023,6 +12172,17 @@
                 "wanExtIp": {
                     "type": "string",
                     "description": "optional, if spoke should reach this port by a different IP\n"
+                },
+                "wanExtraRoutes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigWanExtraRoutes:DeviceprofileGatewayPortConfigWanExtraRoutes"
+                    },
+                    "description": "Property Key is the destianation CIDR (e.g \"100.100.100.0/24\")\n"
+                },
+                "wanProbeOverride": {
+                    "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigWanProbeOverride:DeviceprofileGatewayPortConfigWanProbeOverride",
+                    "description": "if `usage`==`wan`\n"
                 },
                 "wanSourceNat": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigWanSourceNat:DeviceprofileGatewayPortConfigWanSourceNat",
@@ -12150,19 +12310,23 @@
             "properties": {
                 "bfdProfile": {
                     "type": "string",
-                    "description": "enum: `broadband`, `lte`\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`\n"
                 },
                 "bfdUseTunnelMode": {
                     "type": "boolean",
-                    "description": "whether to use tunnel mode. SSR only\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only\n"
+                },
+                "linkName": {
+                    "type": "string",
+                    "description": "Only if the VPN `type`==`mesh`\n"
                 },
                 "preference": {
                     "type": "integer",
-                    "description": "for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "enum: `hub`, `spoke`\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`\n"
                 },
                 "trafficShaping": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayPortConfigVpnPathsTrafficShaping:DeviceprofileGatewayPortConfigVpnPathsTrafficShaping"
@@ -12197,6 +12361,36 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/DeviceprofileGatewayPortConfigWanExtraRoutes:DeviceprofileGatewayPortConfigWanExtraRoutes": {
+            "properties": {
+                "via": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/DeviceprofileGatewayPortConfigWanProbeOverride:DeviceprofileGatewayPortConfigWanProbeOverride": {
+            "properties": {
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "probeProfile": {
+                    "type": "string",
+                    "description": "enum: `broadband`, `lte`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "probeProfile"
                     ]
                 }
             }
@@ -12994,12 +13188,6 @@
                     "type": "integer",
                     "description": "when bfd_minimum_interval_is_configured alone\n"
                 },
-                "communities": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/junipermist:org/GatewaytemplateBgpConfigCommunity:GatewaytemplateBgpConfigCommunity"
-                    }
-                },
                 "disableBfd": {
                     "type": "boolean",
                     "description": "BFD provides faster path failure detection and is enabled by default\n"
@@ -13089,20 +13277,6 @@
                 }
             }
         },
-        "junipermist:org/GatewaytemplateBgpConfigCommunity:GatewaytemplateBgpConfigCommunity": {
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "localPreference": {
-                    "type": "integer"
-                },
-                "vpnName": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "junipermist:org/GatewaytemplateBgpConfigNeighbors:GatewaytemplateBgpConfigNeighbors": {
             "properties": {
                 "disabled": {
@@ -13147,7 +13321,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "if set to `true`, enable the DHCP server\n"
+                    "description": "if set to `false`, disable the DHCP server\n"
                 }
             },
             "type": "object",
@@ -13166,21 +13340,21 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
                 },
                 "dnsSuffixes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "if `type`==`local` - optional, if not defined, system one will be used\n"
+                    "description": "if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used\n"
                 },
                 "fixedBindings": {
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/GatewaytemplateDhcpdConfigConfigFixedBindings:GatewaytemplateDhcpdConfigConfigFixedBindings"
                     },
-                    "description": "Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g \"5684dae9ac8b\")\n"
                 },
                 "gateway": {
                     "type": "string",
@@ -13211,7 +13385,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/GatewaytemplateDhcpdConfigConfigOptions:GatewaytemplateDhcpdConfigConfigOptions"
                     },
-                    "description": "Property key is the DHCP option number\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is the DHCP option number\n"
                 },
                 "serverIdOverride": {
                     "type": "boolean",
@@ -13244,7 +13418,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/GatewaytemplateDhcpdConfigConfigVendorEncapulated:GatewaytemplateDhcpdConfigConfigVendorEncapulated"
                     },
-                    "description": "Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
+                    "description": "if `type`==`local` or `type6`==`local`. Property key is \u003centerprise number\u003e:\u003csub option code\u003e, with\n  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)\n  * sub option code: 1-255, sub-option code'\n"
                 }
             },
             "type": "object",
@@ -13448,6 +13622,10 @@
                     "type": "boolean",
                     "description": "whether to allow clients in the network to talk to each other\n"
                 },
+                "multicast": {
+                    "$ref": "#/types/junipermist:org/GatewaytemplateNetworkMulticast:GatewaytemplateNetworkMulticast",
+                    "description": "whether to enable multicast support (only PIM-sparse mode is supported)\n"
+                },
                 "name": {
                     "type": "string"
                 },
@@ -13566,6 +13744,42 @@
                 "wanName": {
                     "type": "string",
                     "description": "If not set, we configure the nat policies against all WAN ports for simplicity\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/GatewaytemplateNetworkMulticast:GatewaytemplateNetworkMulticast": {
+            "properties": {
+                "disableIgmp": {
+                    "type": "boolean",
+                    "description": "if the network will only be the soruce of the multicast traffic, IGMP can be disabled\n"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/GatewaytemplateNetworkMulticastGroups:GatewaytemplateNetworkMulticastGroups"
+                    },
+                    "description": "Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example \"225.1.0.3/32\")\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disableIgmp",
+                        "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/GatewaytemplateNetworkMulticastGroups:GatewaytemplateNetworkMulticastGroups": {
+            "properties": {
+                "rpIp": {
+                    "type": "string",
+                    "description": "RP (rendezvous point) IP Address\n"
                 }
             },
             "type": "object"
@@ -14006,7 +14220,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigVpnPaths:GatewaytemplatePortConfigVpnPaths"
-                    }
+                    },
+                    "description": "Property key is the VPN name\n"
                 },
                 "wanArpPolicer": {
                     "type": "string",
@@ -14015,6 +14230,17 @@
                 "wanExtIp": {
                     "type": "string",
                     "description": "optional, if spoke should reach this port by a different IP\n"
+                },
+                "wanExtraRoutes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigWanExtraRoutes:GatewaytemplatePortConfigWanExtraRoutes"
+                    },
+                    "description": "Property Key is the destianation CIDR (e.g \"100.100.100.0/24\")\n"
+                },
+                "wanProbeOverride": {
+                    "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigWanProbeOverride:GatewaytemplatePortConfigWanProbeOverride",
+                    "description": "if `usage`==`wan`\n"
                 },
                 "wanSourceNat": {
                     "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigWanSourceNat:GatewaytemplatePortConfigWanSourceNat",
@@ -14142,19 +14368,23 @@
             "properties": {
                 "bfdProfile": {
                     "type": "string",
-                    "description": "enum: `broadband`, `lte`\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`\n"
                 },
                 "bfdUseTunnelMode": {
                     "type": "boolean",
-                    "description": "whether to use tunnel mode. SSR only\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only\n"
+                },
+                "linkName": {
+                    "type": "string",
+                    "description": "Only if the VPN `type`==`mesh`\n"
                 },
                 "preference": {
                     "type": "integer",
-                    "description": "for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)\n"
                 },
                 "role": {
                     "type": "string",
-                    "description": "enum: `hub`, `spoke`\n"
+                    "description": "Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`\n"
                 },
                 "trafficShaping": {
                     "$ref": "#/types/junipermist:org/GatewaytemplatePortConfigVpnPathsTrafficShaping:GatewaytemplatePortConfigVpnPathsTrafficShaping"
@@ -14189,6 +14419,36 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/GatewaytemplatePortConfigWanExtraRoutes:GatewaytemplatePortConfigWanExtraRoutes": {
+            "properties": {
+                "via": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/GatewaytemplatePortConfigWanProbeOverride:GatewaytemplatePortConfigWanProbeOverride": {
+            "properties": {
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "probeProfile": {
+                    "type": "string",
+                    "description": "enum: `broadband`, `lte`\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "probeProfile"
                     ]
                 }
             }
@@ -15513,7 +15773,7 @@
             "properties": {
                 "gbpTag": {
                     "type": "integer",
-                    "description": "required if\n- `type`==`dynamic_gbp` (gbp_tag received from RADIUS)\n- `type`==`static_gbp` (applying gbp tag against matching conditions)\n"
+                    "description": "required if\n- `type`==`dynamic_gbp` (gbp_tag received from RADIUS)\n- `type`==`gbp_resource`\n- `type`==`static_gbp` (applying gbp tag against matching conditions)\n"
                 },
                 "macs": {
                     "type": "array",
@@ -15535,7 +15795,7 @@
                     "items": {
                         "$ref": "#/types/junipermist:org/NetworktemplateAclTagsSpec:NetworktemplateAclTagsSpec"
                     },
-                    "description": "if `type`==`resource`\nempty means unrestricted, i.e. any\n"
+                    "description": "if `type`==`resource` or `type`==`gbp_resource`\nempty means unrestricted, i.e. any\n"
                 },
                 "subnets": {
                     "type": "array",
@@ -15546,7 +15806,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`\n"
+                    "description": "enum: \n  * `any`: matching anything not identified\n  * `dynamic_gbp`: from the gbp_tag received from RADIUS\n  * `gbp_resource`: can only be used in `dst_tags`\n  * `mac`\n  * `network`\n  * `radius_group`\n  * `resource`: can only be used in `dst_tags`\n  * `static_gbp`: applying gbp tag against matching conditions\n  * `subnet`'\n"
                 }
             },
             "type": "object",
@@ -16036,6 +16296,10 @@
                 "stpP2p": {
                     "type": "boolean"
                 },
+                "useVstp": {
+                    "type": "boolean",
+                    "description": "if this is connected to a vstp network\n"
+                },
                 "voipNetwork": {
                     "type": "string",
                     "description": "Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth\n"
@@ -16065,7 +16329,8 @@
                         "resetDefaultWhen",
                         "stpEdge",
                         "stpNoRootPort",
-                        "stpP2p"
+                        "stpP2p",
+                        "useVstp"
                     ]
                 }
             }
@@ -16162,12 +16427,6 @@
                     "type": "integer",
                     "description": "radius auth session timeout\n"
                 },
-                "coaEnabled": {
-                    "type": "boolean"
-                },
-                "coaPort": {
-                    "type": "integer"
-                },
                 "network": {
                     "type": "string",
                     "description": "use `network`or `source_ip`\nwhich network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip\n"
@@ -16183,9 +16442,7 @@
                     "requiredOutputs": [
                         "acctInterimInterval",
                         "authServersRetries",
-                        "authServersTimeout",
-                        "coaEnabled",
-                        "coaPort"
+                        "authServersTimeout"
                     ]
                 }
             }
@@ -17019,7 +17276,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplateSwitchMatchingRulePortMirroring:NetworktemplateSwitchMatchingRulePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4)\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed\n"
                 }
             },
             "type": "object"
@@ -18227,6 +18484,23 @@
                 "orgId"
             ]
         },
+        "junipermist:org/SettingJcloudRa:SettingJcloudRa": {
+            "properties": {
+                "orgApitoken": {
+                    "type": "string",
+                    "description": "JCloud Routing Assurance Org Token\n"
+                },
+                "orgApitokenName": {
+                    "type": "string",
+                    "description": "JCloud Routing Assurance Org Token Name\n"
+                },
+                "orgId": {
+                    "type": "string",
+                    "description": "JCloud Routing Assurance Org ID\n"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:org/SettingJuniper:SettingJuniper": {
             "properties": {
                 "accounts": {
@@ -18320,11 +18594,11 @@
                 },
                 "idpMachineCertLookupField": {
                     "type": "string",
-                    "description": "allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup\n"
+                    "description": "allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`\n"
                 },
                 "idpUserCertLookupField": {
                     "type": "string",
-                    "description": "allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup\n"
+                    "description": "allow customer to choose the EAP-TLS client certificate's field\nto use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`\n"
                 },
                 "idps": {
                     "type": "array",
@@ -18448,6 +18722,26 @@
                 }
             }
         },
+        "junipermist:org/SettingOpticPortConfig:SettingOpticPortConfig": {
+            "properties": {
+                "channelized": {
+                    "type": "boolean",
+                    "description": "enable channelization\n"
+                },
+                "speed": {
+                    "type": "string",
+                    "description": "interface speed (e.g. `25g`, `50g`), use the chassis speed by default\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "channelized"
+                    ]
+                }
+            }
+        },
         "junipermist:org/SettingPasswordPolicy:SettingPasswordPolicy": {
             "properties": {
                 "enabled": {
@@ -18498,28 +18792,6 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "maxPktLen"
-                    ]
-                }
-            }
-        },
-        "junipermist:org/SettingPortChannelization:SettingPortChannelization": {
-            "properties": {
-                "config": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`), Property value is the interface speed (e.g. `25g`, `50g`)\n"
-                },
-                "enabled": {
-                    "type": "boolean"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "enabled"
                     ]
                 }
             }
@@ -21137,10 +21409,6 @@
                     "type": "boolean",
                     "description": "whether the device is connected\n"
                 },
-                "createdTime": {
-                    "type": "number",
-                    "description": "when the object has been created, in epoch\n"
-                },
                 "deviceprofileId": {
                     "type": "string",
                     "description": "deviceprofile id if assigned, null if not assigned\n"
@@ -21167,10 +21435,6 @@
                 "model": {
                     "type": "string",
                     "description": "device model\n"
-                },
-                "modifiedTime": {
-                    "type": "number",
-                    "description": "when the object has been modified for the last time, in epoch\n"
                 },
                 "name": {
                     "type": "string",
@@ -21205,7 +21469,6 @@
                 "adopted",
                 "claimCode",
                 "connected",
-                "createdTime",
                 "deviceprofileId",
                 "hostname",
                 "hwRev",
@@ -21213,7 +21476,6 @@
                 "jsi",
                 "mac",
                 "model",
-                "modifiedTime",
                 "name",
                 "orgId",
                 "serial",
@@ -22089,7 +22351,7 @@
             "properties": {
                 "gbpTag": {
                     "type": "integer",
-                    "description": "required if\n- `type`==`dynamic_gbp` (gbp_tag received from RADIUS)\n- `type`==`static_gbp` (applying gbp tag against matching conditions)\n"
+                    "description": "required if\n- `type`==`dynamic_gbp` (gbp_tag received from RADIUS)\n- `type`==`gbp_resource`\n- `type`==`static_gbp` (applying gbp tag against matching conditions)\n"
                 },
                 "macs": {
                     "type": "array",
@@ -22111,7 +22373,7 @@
                     "items": {
                         "$ref": "#/types/junipermist:site/NetworktemplateAclTagsSpec:NetworktemplateAclTagsSpec"
                     },
-                    "description": "if `type`==`resource`\nempty means unrestricted, i.e. any\n"
+                    "description": "if `type`==`resource` or `type`==`gbp_resource`\nempty means unrestricted, i.e. any\n"
                 },
                 "subnets": {
                     "type": "array",
@@ -22122,7 +22384,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`\n"
+                    "description": "enum: \n  * `any`: matching anything not identified\n  * `dynamic_gbp`: from the gbp_tag received from RADIUS\n  * `gbp_resource`: can only be used in `dst_tags`\n  * `mac`\n  * `network`\n  * `radius_group`\n  * `resource`: can only be used in `dst_tags`\n  * `static_gbp`: applying gbp tag against matching conditions\n  * `subnet`'\n"
                 }
             },
             "type": "object",
@@ -22612,6 +22874,10 @@
                 "stpP2p": {
                     "type": "boolean"
                 },
+                "useVstp": {
+                    "type": "boolean",
+                    "description": "if this is connected to a vstp network\n"
+                },
                 "voipNetwork": {
                     "type": "string",
                     "description": "Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth\n"
@@ -22641,7 +22907,8 @@
                         "resetDefaultWhen",
                         "stpEdge",
                         "stpNoRootPort",
-                        "stpP2p"
+                        "stpP2p",
+                        "useVstp"
                     ]
                 }
             }
@@ -22738,12 +23005,6 @@
                     "type": "integer",
                     "description": "radius auth session timeout\n"
                 },
-                "coaEnabled": {
-                    "type": "boolean"
-                },
-                "coaPort": {
-                    "type": "integer"
-                },
                 "network": {
                     "type": "string",
                     "description": "use `network`or `source_ip`\nwhich network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip\n"
@@ -22759,9 +23020,7 @@
                     "requiredOutputs": [
                         "acctInterimInterval",
                         "authServersRetries",
-                        "authServersTimeout",
-                        "coaEnabled",
-                        "coaPort"
+                        "authServersTimeout"
                     ]
                 }
             }
@@ -23595,7 +23854,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplateSwitchMatchingRulePortMirroring:NetworktemplateSwitchMatchingRulePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4)\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed\n"
                 }
             },
             "type": "object"
@@ -29104,6 +29363,13 @@
                     "$ref": "#/types/junipermist:device/SwitchIpConfig:SwitchIpConfig",
                     "description": "Junos IP Config\n"
                 },
+                "localPortConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchLocalPortConfig:SwitchLocalPortConfig"
+                    },
+                    "description": "Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.\n\"ge-0/0/0-10\")\n"
+                },
                 "mac": {
                     "type": "string",
                     "description": "device MAC address\n"
@@ -29177,7 +29443,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchPortMirroring:SwitchPortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -29343,6 +29609,13 @@
                     "$ref": "#/types/junipermist:device/SwitchIpConfig:SwitchIpConfig",
                     "description": "Junos IP Config\n"
                 },
+                "localPortConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:device/SwitchLocalPortConfig:SwitchLocalPortConfig"
+                    },
+                    "description": "Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.\n\"ge-0/0/0-10\")\n"
+                },
                 "managed": {
                     "type": "boolean",
                     "description": "for an adopted switch, we don’t overwrite their existing configs automatically\n"
@@ -29405,7 +29678,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchPortMirroring:SwitchPortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -29562,6 +29835,13 @@
                         "$ref": "#/types/junipermist:device/SwitchIpConfig:SwitchIpConfig",
                         "description": "Junos IP Config\n"
                     },
+                    "localPortConfig": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:device/SwitchLocalPortConfig:SwitchLocalPortConfig"
+                        },
+                        "description": "Local port override, overriding the port configuration from `port_config`. Property key is the port name or range (e.g.\n\"ge-0/0/0-10\")\n"
+                    },
                     "mac": {
                         "type": "string",
                         "description": "device MAC address\n"
@@ -29635,7 +29915,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:device/SwitchPortMirroring:SwitchPortMirroring"
                         },
-                        "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                        "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                     },
                     "portUsages": {
                         "type": "object",
@@ -30341,9 +30621,6 @@
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayBgpConfig:DeviceprofileGatewayBgpConfig"
                     }
                 },
-                "createdTime": {
-                    "type": "number"
-                },
                 "dhcpdConfig": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfig:DeviceprofileGatewayDhcpdConfig"
                 },
@@ -30391,9 +30668,6 @@
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayIpConfigs:DeviceprofileGatewayIpConfigs"
                     },
                     "description": "Property key is the network name\n"
-                },
-                "modifiedTime": {
-                    "type": "number"
                 },
                 "name": {
                     "type": "string"
@@ -30498,9 +30772,6 @@
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayBgpConfig:DeviceprofileGatewayBgpConfig"
                     }
                 },
-                "createdTime": {
-                    "type": "number"
-                },
                 "dhcpdConfig": {
                     "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfig:DeviceprofileGatewayDhcpdConfig"
                 },
@@ -30548,9 +30819,6 @@
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayIpConfigs:DeviceprofileGatewayIpConfigs"
                     },
                     "description": "Property key is the network name\n"
-                },
-                "modifiedTime": {
-                    "type": "number"
                 },
                 "name": {
                     "type": "string"
@@ -30649,9 +30917,6 @@
                             "$ref": "#/types/junipermist:org/DeviceprofileGatewayBgpConfig:DeviceprofileGatewayBgpConfig"
                         }
                     },
-                    "createdTime": {
-                        "type": "number"
-                    },
                     "dhcpdConfig": {
                         "$ref": "#/types/junipermist:org/DeviceprofileGatewayDhcpdConfig:DeviceprofileGatewayDhcpdConfig"
                     },
@@ -30699,9 +30964,6 @@
                             "$ref": "#/types/junipermist:org/DeviceprofileGatewayIpConfigs:DeviceprofileGatewayIpConfigs"
                         },
                         "description": "Property key is the network name\n"
-                    },
-                    "modifiedTime": {
-                        "type": "number"
                     },
                     "name": {
                         "type": "string"
@@ -32342,7 +32604,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -32475,7 +32737,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -32608,7 +32870,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:org/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                         },
-                        "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                        "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                     },
                     "portUsages": {
                         "type": "object",
@@ -33574,6 +33836,10 @@
                 "jcloud": {
                     "$ref": "#/types/junipermist:org/SettingJcloud:SettingJcloud"
                 },
+                "jcloudRa": {
+                    "$ref": "#/types/junipermist:org/SettingJcloudRa:SettingJcloudRa",
+                    "description": "JCloud Routing Assurance connexion\n"
+                },
                 "juniper": {
                     "$ref": "#/types/junipermist:org/SettingJuniper:SettingJuniper"
                 },
@@ -33590,6 +33856,13 @@
                 "mxedgeMgmt": {
                     "$ref": "#/types/junipermist:org/SettingMxedgeMgmt:SettingMxedgeMgmt"
                 },
+                "opticPortConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/SettingOpticPortConfig:SettingOpticPortConfig"
+                    },
+                    "description": "Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)\n"
+                },
                 "orgId": {
                     "type": "string"
                 },
@@ -33599,9 +33872,6 @@
                 },
                 "pcap": {
                     "$ref": "#/types/junipermist:org/SettingPcap:SettingPcap"
-                },
-                "portChannelization": {
-                    "$ref": "#/types/junipermist:org/SettingPortChannelization:SettingPortChannelization"
                 },
                 "security": {
                     "$ref": "#/types/junipermist:org/SettingSecurity:SettingSecurity"
@@ -33696,6 +33966,10 @@
                 "jcloud": {
                     "$ref": "#/types/junipermist:org/SettingJcloud:SettingJcloud"
                 },
+                "jcloudRa": {
+                    "$ref": "#/types/junipermist:org/SettingJcloudRa:SettingJcloudRa",
+                    "description": "JCloud Routing Assurance connexion\n"
+                },
                 "mgmt": {
                     "$ref": "#/types/junipermist:org/SettingMgmt:SettingMgmt",
                     "description": "management-related properties\n"
@@ -33709,6 +33983,13 @@
                 "mxedgeMgmt": {
                     "$ref": "#/types/junipermist:org/SettingMxedgeMgmt:SettingMxedgeMgmt"
                 },
+                "opticPortConfig": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/SettingOpticPortConfig:SettingOpticPortConfig"
+                    },
+                    "description": "Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)\n"
+                },
                 "orgId": {
                     "type": "string"
                 },
@@ -33718,9 +33999,6 @@
                 },
                 "pcap": {
                     "$ref": "#/types/junipermist:org/SettingPcap:SettingPcap"
-                },
-                "portChannelization": {
-                    "$ref": "#/types/junipermist:org/SettingPortChannelization:SettingPortChannelization"
                 },
                 "security": {
                     "$ref": "#/types/junipermist:org/SettingSecurity:SettingSecurity"
@@ -33807,6 +34085,10 @@
                     "jcloud": {
                         "$ref": "#/types/junipermist:org/SettingJcloud:SettingJcloud"
                     },
+                    "jcloudRa": {
+                        "$ref": "#/types/junipermist:org/SettingJcloudRa:SettingJcloudRa",
+                        "description": "JCloud Routing Assurance connexion\n"
+                    },
                     "juniper": {
                         "$ref": "#/types/junipermist:org/SettingJuniper:SettingJuniper"
                     },
@@ -33823,6 +34105,13 @@
                     "mxedgeMgmt": {
                         "$ref": "#/types/junipermist:org/SettingMxedgeMgmt:SettingMxedgeMgmt"
                     },
+                    "opticPortConfig": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:org/SettingOpticPortConfig:SettingOpticPortConfig"
+                        },
+                        "description": "Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)\n"
+                    },
                     "orgId": {
                         "type": "string"
                     },
@@ -33832,9 +34121,6 @@
                     },
                     "pcap": {
                         "$ref": "#/types/junipermist:org/SettingPcap:SettingPcap"
-                    },
-                    "portChannelization": {
-                        "$ref": "#/types/junipermist:org/SettingPortChannelization:SettingPortChannelization"
                     },
                     "security": {
                         "$ref": "#/types/junipermist:org/SettingSecurity:SettingSecurity"
@@ -36582,7 +36868,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -36602,7 +36888,8 @@
                     "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                 },
                 "siteId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Unique ID of the object instance in the Mist Organnization\n"
                 },
                 "snmpConfig": {
                     "$ref": "#/types/junipermist:site/NetworktemplateSnmpConfig:NetworktemplateSnmpConfig"
@@ -36714,7 +37001,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                     },
-                    "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                    "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                 },
                 "portUsages": {
                     "type": "object",
@@ -36734,7 +37021,8 @@
                     "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                 },
                 "siteId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Unique ID of the object instance in the Mist Organnization\n"
                 },
                 "snmpConfig": {
                     "$ref": "#/types/junipermist:site/NetworktemplateSnmpConfig:NetworktemplateSnmpConfig"
@@ -36847,7 +37135,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:site/NetworktemplatePortMirroring:NetworktemplatePortMirroring"
                         },
-                        "description": "Property key is the port mirroring instance name (Maximum: 4) port_mirroring can be added under device/site settings. It\ntakes interface and ports as input for ingress, interface as input for egress and can take interface and port as output.\n"
+                        "description": "Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes\ninterface and ports as input for ingress, interface as input for egress and can take interface and port as output. A\nmaximum 4 port mirrorings is allowed\n"
                     },
                     "portUsages": {
                         "type": "object",
@@ -36867,7 +37155,8 @@
                         "description": "by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled\n"
                     },
                     "siteId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Unique ID of the object instance in the Mist Organnization\n"
                     },
                     "snmpConfig": {
                         "$ref": "#/types/junipermist:site/NetworktemplateSnmpConfig:NetworktemplateSnmpConfig"
@@ -39962,6 +40251,29 @@
                 },
                 "required": [
                     "constTrafficTypes",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "junipermist:index/getConstWebhooks:getConstWebhooks": {
+            "description": "This data source provides the list of Webhook Topics.\nThis information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.\n\n\u003e Only the Webhook topics with `for_org`==` true` are supported at the Org level.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/junipermist\";\n\nconst listOfWebhooks = junipermist.getConstWebhooks({});\n```\n```python\nimport pulumi\nimport pulumi_junipermist as junipermist\n\nlist_of_webhooks = junipermist.get_const_webhooks()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var listOfWebhooks = JuniperMist.GetConstWebhooks.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := junipermist.GetConstWebhooks(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.JunipermistFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();\n\n    }\n}\n```\n```yaml\nvariables:\n  listOfWebhooks:\n    fn::invoke:\n      Function: junipermist:getConstWebhooks\n      Arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getConstWebhooks.\n",
+                "properties": {
+                    "constWebhooks": {
+                        "items": {
+                            "$ref": "#/types/junipermist:index/getConstWebhooksConstWebhook:getConstWebhooksConstWebhook"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "constWebhooks",
                     "id"
                 ],
                 "type": "object"

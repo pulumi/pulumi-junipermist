@@ -16,6 +16,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// required if
         /// - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+        /// - `type`==`gbp_resource`
         /// - `type`==`static_gbp` (applying gbp tag against matching conditions)
         /// </summary>
         public readonly int? GbpTag;
@@ -42,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? RadiusGroup;
         /// <summary>
-        /// if `type`==`resource`
+        /// if `type`==`resource` or `type`==`gbp_resource`
         /// empty means unrestricted, i.e. any
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateAclTagsSpec> Specs;
@@ -54,7 +55,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Subnets;
         /// <summary>
-        /// enum: `any`, `dynamic_gbp`, `mac`, `network`, `radius_group`, `resource`, `static_gbp`, `subnet`
+        /// enum: 
+        ///   * `any`: matching anything not identified
+        ///   * `dynamic_gbp`: from the gbp_tag received from RADIUS
+        ///   * `gbp_resource`: can only be used in `dst_tags`
+        ///   * `mac`
+        ///   * `network`
+        ///   * `radius_group`
+        ///   * `resource`: can only be used in `dst_tags`
+        ///   * `static_gbp`: applying gbp tag against matching conditions
+        ///   * `subnet`'
         /// </summary>
         public readonly string Type;
 

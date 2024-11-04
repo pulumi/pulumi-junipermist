@@ -55,7 +55,6 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly bgpConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayBgpConfig} | undefined>;
-    public readonly createdTime!: pulumi.Output<number | undefined>;
     public readonly dhcpdConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayDhcpdConfig | undefined>;
     public readonly dnsOverride!: pulumi.Output<boolean>;
     /**
@@ -82,7 +81,6 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
      * Property key is the network name
      */
     public readonly ipConfigs!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayIpConfigs} | undefined>;
-    public readonly modifiedTime!: pulumi.Output<number | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly networks!: pulumi.Output<outputs.org.DeviceprofileGatewayNetwork[] | undefined>;
     public readonly ntpOverride!: pulumi.Output<boolean>;
@@ -142,7 +140,6 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             const state = argsOrState as DeviceprofileGatewayState | undefined;
             resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
             resourceInputs["bgpConfig"] = state ? state.bgpConfig : undefined;
-            resourceInputs["createdTime"] = state ? state.createdTime : undefined;
             resourceInputs["dhcpdConfig"] = state ? state.dhcpdConfig : undefined;
             resourceInputs["dnsOverride"] = state ? state.dnsOverride : undefined;
             resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
@@ -151,7 +148,6 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             resourceInputs["extraRoutes6"] = state ? state.extraRoutes6 : undefined;
             resourceInputs["idpProfiles"] = state ? state.idpProfiles : undefined;
             resourceInputs["ipConfigs"] = state ? state.ipConfigs : undefined;
-            resourceInputs["modifiedTime"] = state ? state.modifiedTime : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
             resourceInputs["ntpOverride"] = state ? state.ntpOverride : undefined;
@@ -175,7 +171,6 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             }
             resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
             resourceInputs["bgpConfig"] = args ? args.bgpConfig : undefined;
-            resourceInputs["createdTime"] = args ? args.createdTime : undefined;
             resourceInputs["dhcpdConfig"] = args ? args.dhcpdConfig : undefined;
             resourceInputs["dnsOverride"] = args ? args.dnsOverride : undefined;
             resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
@@ -184,7 +179,6 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
             resourceInputs["extraRoutes6"] = args ? args.extraRoutes6 : undefined;
             resourceInputs["idpProfiles"] = args ? args.idpProfiles : undefined;
             resourceInputs["ipConfigs"] = args ? args.ipConfigs : undefined;
-            resourceInputs["modifiedTime"] = args ? args.modifiedTime : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["ntpOverride"] = args ? args.ntpOverride : undefined;
@@ -216,7 +210,6 @@ export interface DeviceprofileGatewayState {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfig>}>;
-    createdTime?: pulumi.Input<number>;
     dhcpdConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfig>;
     dnsOverride?: pulumi.Input<boolean>;
     /**
@@ -243,7 +236,6 @@ export interface DeviceprofileGatewayState {
      * Property key is the network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIpConfigs>}>;
-    modifiedTime?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[]>;
     ntpOverride?: pulumi.Input<boolean>;
@@ -298,7 +290,6 @@ export interface DeviceprofileGatewayArgs {
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayBgpConfig>}>;
-    createdTime?: pulumi.Input<number>;
     dhcpdConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfig>;
     dnsOverride?: pulumi.Input<boolean>;
     /**
@@ -325,7 +316,6 @@ export interface DeviceprofileGatewayArgs {
      * Property key is the network name
      */
     ipConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayIpConfigs>}>;
-    modifiedTime?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[]>;
     ntpOverride?: pulumi.Input<boolean>;

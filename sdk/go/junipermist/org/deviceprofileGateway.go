@@ -32,7 +32,6 @@ type DeviceprofileGateway struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            DeviceprofileGatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
-	CreatedTime          pulumi.Float64PtrOutput                  `pulumi:"createdTime"`
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
 	DnsOverride          pulumi.BoolOutput                        `pulumi:"dnsOverride"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -46,11 +45,10 @@ type DeviceprofileGateway struct {
 	// Property key is the profile name
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapOutput `pulumi:"idpProfiles"`
 	// Property key is the network name
-	IpConfigs    DeviceprofileGatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
-	ModifiedTime pulumi.Float64PtrOutput                `pulumi:"modifiedTime"`
-	Name         pulumi.StringOutput                    `pulumi:"name"`
-	Networks     DeviceprofileGatewayNetworkArrayOutput `pulumi:"networks"`
-	NtpOverride  pulumi.BoolOutput                      `pulumi:"ntpOverride"`
+	IpConfigs   DeviceprofileGatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
+	Name        pulumi.StringOutput                    `pulumi:"name"`
+	Networks    DeviceprofileGatewayNetworkArrayOutput `pulumi:"networks"`
+	NtpOverride pulumi.BoolOutput                      `pulumi:"ntpOverride"`
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// out-of-band (vme/em0/fxp0) IP config
@@ -111,7 +109,6 @@ type deviceprofileGatewayState struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds []string                                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
-	CreatedTime          *float64                                 `pulumi:"createdTime"`
 	DhcpdConfig          *DeviceprofileGatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
 	DnsOverride          *bool                                    `pulumi:"dnsOverride"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -125,11 +122,10 @@ type deviceprofileGatewayState struct {
 	// Property key is the profile name
 	IdpProfiles map[string]DeviceprofileGatewayIdpProfiles `pulumi:"idpProfiles"`
 	// Property key is the network name
-	IpConfigs    map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
-	ModifiedTime *float64                                 `pulumi:"modifiedTime"`
-	Name         *string                                  `pulumi:"name"`
-	Networks     []DeviceprofileGatewayNetwork            `pulumi:"networks"`
-	NtpOverride  *bool                                    `pulumi:"ntpOverride"`
+	IpConfigs   map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
+	Name        *string                                  `pulumi:"name"`
+	Networks    []DeviceprofileGatewayNetwork            `pulumi:"networks"`
+	NtpOverride *bool                                    `pulumi:"ntpOverride"`
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	// out-of-band (vme/em0/fxp0) IP config
@@ -158,7 +154,6 @@ type DeviceprofileGatewayState struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            DeviceprofileGatewayBgpConfigMapInput
-	CreatedTime          pulumi.Float64PtrInput
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrInput
 	DnsOverride          pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -172,11 +167,10 @@ type DeviceprofileGatewayState struct {
 	// Property key is the profile name
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapInput
 	// Property key is the network name
-	IpConfigs    DeviceprofileGatewayIpConfigsMapInput
-	ModifiedTime pulumi.Float64PtrInput
-	Name         pulumi.StringPtrInput
-	Networks     DeviceprofileGatewayNetworkArrayInput
-	NtpOverride  pulumi.BoolPtrInput
+	IpConfigs   DeviceprofileGatewayIpConfigsMapInput
+	Name        pulumi.StringPtrInput
+	Networks    DeviceprofileGatewayNetworkArrayInput
+	NtpOverride pulumi.BoolPtrInput
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	// out-of-band (vme/em0/fxp0) IP config
@@ -209,7 +203,6 @@ type deviceprofileGatewayArgs struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds []string                                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
-	CreatedTime          *float64                                 `pulumi:"createdTime"`
 	DhcpdConfig          *DeviceprofileGatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
 	DnsOverride          *bool                                    `pulumi:"dnsOverride"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -223,11 +216,10 @@ type deviceprofileGatewayArgs struct {
 	// Property key is the profile name
 	IdpProfiles map[string]DeviceprofileGatewayIdpProfiles `pulumi:"idpProfiles"`
 	// Property key is the network name
-	IpConfigs    map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
-	ModifiedTime *float64                                 `pulumi:"modifiedTime"`
-	Name         *string                                  `pulumi:"name"`
-	Networks     []DeviceprofileGatewayNetwork            `pulumi:"networks"`
-	NtpOverride  *bool                                    `pulumi:"ntpOverride"`
+	IpConfigs   map[string]DeviceprofileGatewayIpConfigs `pulumi:"ipConfigs"`
+	Name        *string                                  `pulumi:"name"`
+	Networks    []DeviceprofileGatewayNetwork            `pulumi:"networks"`
+	NtpOverride *bool                                    `pulumi:"ntpOverride"`
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	// out-of-band (vme/em0/fxp0) IP config
@@ -255,7 +247,6 @@ type DeviceprofileGatewayArgs struct {
 	// additional CLI commands to append to the generated Junos config **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            DeviceprofileGatewayBgpConfigMapInput
-	CreatedTime          pulumi.Float64PtrInput
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrInput
 	DnsOverride          pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
@@ -269,11 +260,10 @@ type DeviceprofileGatewayArgs struct {
 	// Property key is the profile name
 	IdpProfiles DeviceprofileGatewayIdpProfilesMapInput
 	// Property key is the network name
-	IpConfigs    DeviceprofileGatewayIpConfigsMapInput
-	ModifiedTime pulumi.Float64PtrInput
-	Name         pulumi.StringPtrInput
-	Networks     DeviceprofileGatewayNetworkArrayInput
-	NtpOverride  pulumi.BoolPtrInput
+	IpConfigs   DeviceprofileGatewayIpConfigsMapInput
+	Name        pulumi.StringPtrInput
+	Networks    DeviceprofileGatewayNetworkArrayInput
+	NtpOverride pulumi.BoolPtrInput
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	// out-of-band (vme/em0/fxp0) IP config
@@ -392,10 +382,6 @@ func (o DeviceprofileGatewayOutput) BgpConfig() DeviceprofileGatewayBgpConfigMap
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayBgpConfigMapOutput { return v.BgpConfig }).(DeviceprofileGatewayBgpConfigMapOutput)
 }
 
-func (o DeviceprofileGatewayOutput) CreatedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.Float64PtrOutput { return v.CreatedTime }).(pulumi.Float64PtrOutput)
-}
-
 func (o DeviceprofileGatewayOutput) DhcpdConfig() DeviceprofileGatewayDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayDhcpdConfigPtrOutput { return v.DhcpdConfig }).(DeviceprofileGatewayDhcpdConfigPtrOutput)
 }
@@ -432,10 +418,6 @@ func (o DeviceprofileGatewayOutput) IdpProfiles() DeviceprofileGatewayIdpProfile
 // Property key is the network name
 func (o DeviceprofileGatewayOutput) IpConfigs() DeviceprofileGatewayIpConfigsMapOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayIpConfigsMapOutput { return v.IpConfigs }).(DeviceprofileGatewayIpConfigsMapOutput)
-}
-
-func (o DeviceprofileGatewayOutput) ModifiedTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.Float64PtrOutput { return v.ModifiedTime }).(pulumi.Float64PtrOutput)
 }
 
 func (o DeviceprofileGatewayOutput) Name() pulumi.StringOutput {

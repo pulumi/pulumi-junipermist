@@ -51,13 +51,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? EuOnly { get; set; }
 
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup
+        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
         /// </summary>
         [Input("idpMachineCertLookupField")]
         public Input<string>? IdpMachineCertLookupField { get; set; }
 
         /// <summary>
-        /// allow customer to choose the EAP-TLS client certificate's field to use for IDP User Groups lookup
+        /// allow customer to choose the EAP-TLS client certificate's field
+        /// to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
         /// </summary>
         [Input("idpUserCertLookupField")]
         public Input<string>? IdpUserCertLookupField { get; set; }

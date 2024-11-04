@@ -5,7 +5,6 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.device.inputs.GatewayBgpConfigCommunityArgs;
 import com.pulumi.junipermist.device.inputs.GatewayBgpConfigNeighborsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -60,13 +59,6 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Integer>> bfdMultiplier() {
         return Optional.ofNullable(this.bfdMultiplier);
-    }
-
-    @Import(name="communities")
-    private @Nullable Output<List<GatewayBgpConfigCommunityArgs>> communities;
-
-    public Optional<Output<List<GatewayBgpConfigCommunityArgs>>> communities() {
-        return Optional.ofNullable(this.communities);
     }
 
     /**
@@ -299,7 +291,6 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
         this.authKey = $.authKey;
         this.bfdMinimumInterval = $.bfdMinimumInterval;
         this.bfdMultiplier = $.bfdMultiplier;
-        this.communities = $.communities;
         this.disableBfd = $.disableBfd;
         this.export = $.export;
         this.exportPolicy = $.exportPolicy;
@@ -391,19 +382,6 @@ public final class GatewayBgpConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder bfdMultiplier(Integer bfdMultiplier) {
             return bfdMultiplier(Output.of(bfdMultiplier));
-        }
-
-        public Builder communities(@Nullable Output<List<GatewayBgpConfigCommunityArgs>> communities) {
-            $.communities = communities;
-            return this;
-        }
-
-        public Builder communities(List<GatewayBgpConfigCommunityArgs> communities) {
-            return communities(Output.of(communities));
-        }
-
-        public Builder communities(GatewayBgpConfigCommunityArgs... communities) {
-            return communities(List.of(communities));
         }
 
         /**

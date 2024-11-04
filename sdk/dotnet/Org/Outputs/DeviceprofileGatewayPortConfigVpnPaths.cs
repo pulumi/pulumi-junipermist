@@ -14,19 +14,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayPortConfigVpnPaths
     {
         /// <summary>
-        /// enum: `broadband`, `lte`
+        /// Only if the VPN `type`==`hub_spoke`. enum: `broadband`, `lte`
         /// </summary>
         public readonly string? BfdProfile;
         /// <summary>
-        /// whether to use tunnel mode. SSR only
+        /// Only if the VPN `type`==`hub_spoke`. Whether to use tunnel mode. SSR only
         /// </summary>
         public readonly bool? BfdUseTunnelMode;
         /// <summary>
-        /// for a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
+        /// Only if the VPN `type`==`mesh`
+        /// </summary>
+        public readonly string? LinkName;
+        /// <summary>
+        /// Only if the VPN `type`==`hub_spoke`. For a given VPN, when `path_selection.strategy`==`simple`, the preference for a path (lower is preferred)
         /// </summary>
         public readonly int? Preference;
         /// <summary>
-        /// enum: `hub`, `spoke`
+        /// Only if the VPN `type`==`hub_spoke`. enum: `hub`, `spoke`
         /// </summary>
         public readonly string? Role;
         public readonly Outputs.DeviceprofileGatewayPortConfigVpnPathsTrafficShaping? TrafficShaping;
@@ -37,6 +41,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? bfdUseTunnelMode,
 
+            string? linkName,
+
             int? preference,
 
             string? role,
@@ -45,6 +51,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         {
             BfdProfile = bfdProfile;
             BfdUseTunnelMode = bfdUseTunnelMode;
+            LinkName = linkName;
             Preference = preference;
             Role = role;
             TrafficShaping = trafficShaping;

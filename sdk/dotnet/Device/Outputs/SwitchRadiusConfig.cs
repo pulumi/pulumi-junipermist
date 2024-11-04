@@ -27,8 +27,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// radius auth session timeout
         /// </summary>
         public readonly int? AuthServersTimeout;
-        public readonly bool? CoaEnabled;
-        public readonly int? CoaPort;
         /// <summary>
         /// use `network`or `source_ip`
         /// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
@@ -51,10 +49,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             int? authServersTimeout,
 
-            bool? coaEnabled,
-
-            int? coaPort,
-
             string? network,
 
             string? sourceIp)
@@ -64,8 +58,6 @@ namespace Pulumi.JuniperMist.Device.Outputs
             AuthServers = authServers;
             AuthServersRetries = authServersRetries;
             AuthServersTimeout = authServersTimeout;
-            CoaEnabled = coaEnabled;
-            CoaPort = coaPort;
             Network = network;
             SourceIp = sourceIp;
         }

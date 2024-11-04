@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayNetworkInternalAccessArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayNetworkInternetAccessArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayNetworkMulticastArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayNetworkTenantsArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayNetworkVpnAccessArgs;
 import java.lang.Boolean;
@@ -89,6 +90,21 @@ public final class DeviceprofileGatewayNetworkArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.isolation);
     }
 
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    @Import(name="multicast")
+    private @Nullable Output<DeviceprofileGatewayNetworkMulticastArgs> multicast;
+
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public Optional<Output<DeviceprofileGatewayNetworkMulticastArgs>> multicast() {
+        return Optional.ofNullable(this.multicast);
+    }
+
     @Import(name="name", required=true)
     private Output<String> name;
 
@@ -163,6 +179,7 @@ public final class DeviceprofileGatewayNetworkArgs extends com.pulumi.resources.
         this.internalAccess = $.internalAccess;
         this.internetAccess = $.internetAccess;
         this.isolation = $.isolation;
+        this.multicast = $.multicast;
         this.name = $.name;
         this.routedForNetworks = $.routedForNetworks;
         this.subnet = $.subnet;
@@ -278,6 +295,27 @@ public final class DeviceprofileGatewayNetworkArgs extends com.pulumi.resources.
          */
         public Builder isolation(Boolean isolation) {
             return isolation(Output.of(isolation));
+        }
+
+        /**
+         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(@Nullable Output<DeviceprofileGatewayNetworkMulticastArgs> multicast) {
+            $.multicast = multicast;
+            return this;
+        }
+
+        /**
+         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(DeviceprofileGatewayNetworkMulticastArgs multicast) {
+            return multicast(Output.of(multicast));
         }
 
         public Builder name(Output<String> name) {

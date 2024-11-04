@@ -152,6 +152,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? StpNoRootPort;
         public readonly bool? StpP2p;
         /// <summary>
+        /// if this is connected to a vstp network
+        /// </summary>
+        public readonly bool? UseVstp;
+        /// <summary>
         /// Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         /// </summary>
         public readonly string? VoipNetwork;
@@ -228,6 +232,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? stpP2p,
 
+            bool? useVstp,
+
             string? voipNetwork)
         {
             AllNetworks = allNetworks;
@@ -265,6 +271,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             StpEdge = stpEdge;
             StpNoRootPort = stpNoRootPort;
             StpP2p = stpP2p;
+            UseVstp = useVstp;
             VoipNetwork = voipNetwork;
         }
     }

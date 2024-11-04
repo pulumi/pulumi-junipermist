@@ -28,6 +28,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// whether to allow clients in the network to talk to each other
         /// </summary>
         public readonly bool? Isolation;
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        public readonly Outputs.GatewaytemplateNetworkMulticast? Multicast;
         public readonly string Name;
         /// <summary>
         /// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
@@ -56,6 +60,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? isolation,
 
+            Outputs.GatewaytemplateNetworkMulticast? multicast,
+
             string name,
 
             ImmutableArray<string> routedForNetworks,
@@ -76,6 +82,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             InternalAccess = internalAccess;
             InternetAccess = internetAccess;
             Isolation = isolation;
+            Multicast = multicast;
             Name = name;
             RoutedForNetworks = routedForNetworks;
             Subnet = subnet;

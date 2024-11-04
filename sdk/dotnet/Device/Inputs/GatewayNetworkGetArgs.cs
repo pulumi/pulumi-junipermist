@@ -12,9 +12,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayNetworkGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("createdTime")]
-        public Input<double>? CreatedTime { get; set; }
-
         /// <summary>
         /// whether to disallow Mist Devices in the network
         /// </summary>
@@ -26,9 +23,6 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("gateway6")]
         public Input<string>? Gateway6 { get; set; }
-
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("internalAccess")]
         public Input<Inputs.GatewayNetworkInternalAccessGetArgs>? InternalAccess { get; set; }
@@ -45,14 +39,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
-        [Input("modifiedTime")]
-        public Input<double>? ModifiedTime { get; set; }
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        [Input("multicast")]
+        public Input<Inputs.GatewayNetworkMulticastGetArgs>? Multicast { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        [Input("orgId")]
-        public Input<string>? OrgId { get; set; }
 
         [Input("routedForNetworks")]
         private InputList<string>? _routedForNetworks;

@@ -5,7 +5,6 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.GatewaytemplateBgpConfigCommunityArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateBgpConfigNeighborsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -60,13 +59,6 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<Integer>> bfdMultiplier() {
         return Optional.ofNullable(this.bfdMultiplier);
-    }
-
-    @Import(name="communities")
-    private @Nullable Output<List<GatewaytemplateBgpConfigCommunityArgs>> communities;
-
-    public Optional<Output<List<GatewaytemplateBgpConfigCommunityArgs>>> communities() {
-        return Optional.ofNullable(this.communities);
     }
 
     /**
@@ -299,7 +291,6 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
         this.authKey = $.authKey;
         this.bfdMinimumInterval = $.bfdMinimumInterval;
         this.bfdMultiplier = $.bfdMultiplier;
-        this.communities = $.communities;
         this.disableBfd = $.disableBfd;
         this.export = $.export;
         this.exportPolicy = $.exportPolicy;
@@ -391,19 +382,6 @@ public final class GatewaytemplateBgpConfigArgs extends com.pulumi.resources.Res
          */
         public Builder bfdMultiplier(Integer bfdMultiplier) {
             return bfdMultiplier(Output.of(bfdMultiplier));
-        }
-
-        public Builder communities(@Nullable Output<List<GatewaytemplateBgpConfigCommunityArgs>> communities) {
-            $.communities = communities;
-            return this;
-        }
-
-        public Builder communities(List<GatewaytemplateBgpConfigCommunityArgs> communities) {
-            return communities(Output.of(communities));
-        }
-
-        public Builder communities(GatewaytemplateBgpConfigCommunityArgs... communities) {
-            return communities(List.of(communities));
         }
 
         /**

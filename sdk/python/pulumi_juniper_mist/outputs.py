@@ -23,6 +23,7 @@ __all__ = [
     'GetConstApplicationsConstApplicationResult',
     'GetConstCountriesConstCountryResult',
     'GetConstTrafficTypesConstTrafficTypeResult',
+    'GetConstWebhooksConstWebhookResult',
     'GetSitesSiteResult',
     'GetSitesSiteLatlngResult',
 ]
@@ -354,6 +355,57 @@ class GetConstTrafficTypesConstTrafficTypeResult(dict):
     @pulumi.getter(name="trafficClass")
     def traffic_class(self) -> str:
         return pulumi.get(self, "traffic_class")
+
+
+@pulumi.output_type
+class GetConstWebhooksConstWebhookResult(dict):
+    def __init__(__self__, *,
+                 for_org: bool,
+                 has_delivery_results: bool,
+                 internal: bool,
+                 key: str):
+        """
+        :param bool for_org: can be used in org webhooks, optional
+        :param bool has_delivery_results: supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+        :param bool internal: internal topic (not selectable in site/org webhooks)
+        :param str key: webhook topic name
+        """
+        pulumi.set(__self__, "for_org", for_org)
+        pulumi.set(__self__, "has_delivery_results", has_delivery_results)
+        pulumi.set(__self__, "internal", internal)
+        pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter(name="forOrg")
+    def for_org(self) -> bool:
+        """
+        can be used in org webhooks, optional
+        """
+        return pulumi.get(self, "for_org")
+
+    @property
+    @pulumi.getter(name="hasDeliveryResults")
+    def has_delivery_results(self) -> bool:
+        """
+        supports webhook delivery results /api/v1/:scope/:scope*id/webhooks/:webhook*id/events/search
+        """
+        return pulumi.get(self, "has_delivery_results")
+
+    @property
+    @pulumi.getter
+    def internal(self) -> bool:
+        """
+        internal topic (not selectable in site/org webhooks)
+        """
+        return pulumi.get(self, "internal")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        webhook topic name
+        """
+        return pulumi.get(self, "key")
 
 
 @pulumi.output_type

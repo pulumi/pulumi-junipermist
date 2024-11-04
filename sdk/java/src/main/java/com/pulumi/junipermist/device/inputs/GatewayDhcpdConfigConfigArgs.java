@@ -23,14 +23,14 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     public static final GatewayDhcpdConfigConfigArgs Empty = new GatewayDhcpdConfigConfigArgs();
 
     /**
-     * if `type`==`local` - optional, if not defined, system one will be used
+     * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     @Import(name="dnsServers")
     private @Nullable Output<List<String>> dnsServers;
 
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     public Optional<Output<List<String>>> dnsServers() {
@@ -38,14 +38,14 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * if `type`==`local` - optional, if not defined, system one will be used
+     * if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return if `type`==`local` - optional, if not defined, system one will be used
+     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -53,14 +53,14 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     @Import(name="fixedBindings")
     private @Nullable Output<Map<String,GatewayDhcpdConfigConfigFixedBindingsArgs>> fixedBindings;
 
     /**
-     * @return Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewayDhcpdConfigConfigFixedBindingsArgs>>> fixedBindings() {
@@ -158,14 +158,14 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Property key is the DHCP option number
+     * if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
      * 
      */
     @Import(name="options")
     private @Nullable Output<Map<String,GatewayDhcpdConfigConfigOptionsArgs>> options;
 
     /**
-     * @return Property key is the DHCP option number
+     * @return if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
      * 
      */
     public Optional<Output<Map<String,GatewayDhcpdConfigConfigOptionsArgs>>> options() {
@@ -250,7 +250,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 
@@ -259,7 +259,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<Map<String,GatewayDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated;
 
     /**
-     * @return Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
      *   * sub option code: 1-255, sub-option code&#39;
      * 
@@ -308,7 +308,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dnsServers if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dnsServers if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dnsServers if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsServers if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dnsSuffixes if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dnsSuffixes if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dnsSuffixes if `type`==`local` - optional, if not defined, system one will be used
+         * @param dnsSuffixes if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param fixedBindings Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param fixedBindings Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+         * @param fixedBindings if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param options Property key is the DHCP option number
+         * @param options if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param options Property key is the DHCP option number
+         * @param options if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
          * 
          * @return builder
          * 
@@ -665,7 +665,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vendorEncapulated Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
@@ -678,7 +678,7 @@ public final class GatewayDhcpdConfigConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vendorEncapulated Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 

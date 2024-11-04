@@ -35,6 +35,11 @@ export const getConstTrafficTypes: typeof import("./getConstTrafficTypes").getCo
 export const getConstTrafficTypesOutput: typeof import("./getConstTrafficTypes").getConstTrafficTypesOutput = null as any;
 utilities.lazyLoad(exports, ["getConstTrafficTypes","getConstTrafficTypesOutput"], () => require("./getConstTrafficTypes"));
 
+export { GetConstWebhooksResult } from "./getConstWebhooks";
+export const getConstWebhooks: typeof import("./getConstWebhooks").getConstWebhooks = null as any;
+export const getConstWebhooksOutput: typeof import("./getConstWebhooks").getConstWebhooksOutput = null as any;
+utilities.lazyLoad(exports, ["getConstWebhooks","getConstWebhooksOutput"], () => require("./getConstWebhooks"));
+
 export { GetSitesArgs, GetSitesResult, GetSitesOutputArgs } from "./getSites";
 export const getSites: typeof import("./getSites").getSites = null as any;
 export const getSitesOutput: typeof import("./getSites").getSitesOutput = null as any;

@@ -226,6 +226,10 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
         [Input("vpnPaths")]
         private InputMap<Inputs.GatewayPortConfigVpnPathsGetArgs>? _vpnPaths;
+
+        /// <summary>
+        /// Property key is the VPN name
+        /// </summary>
         public InputMap<Inputs.GatewayPortConfigVpnPathsGetArgs> VpnPaths
         {
             get => _vpnPaths ?? (_vpnPaths = new InputMap<Inputs.GatewayPortConfigVpnPathsGetArgs>());
@@ -243,6 +247,24 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// </summary>
         [Input("wanExtIp")]
         public Input<string>? WanExtIp { get; set; }
+
+        [Input("wanExtraRoutes")]
+        private InputMap<Inputs.GatewayPortConfigWanExtraRoutesGetArgs>? _wanExtraRoutes;
+
+        /// <summary>
+        /// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        /// </summary>
+        public InputMap<Inputs.GatewayPortConfigWanExtraRoutesGetArgs> WanExtraRoutes
+        {
+            get => _wanExtraRoutes ?? (_wanExtraRoutes = new InputMap<Inputs.GatewayPortConfigWanExtraRoutesGetArgs>());
+            set => _wanExtraRoutes = value;
+        }
+
+        /// <summary>
+        /// if `usage`==`wan`
+        /// </summary>
+        [Input("wanProbeOverride")]
+        public Input<Inputs.GatewayPortConfigWanProbeOverrideGetArgs>? WanProbeOverride { get; set; }
 
         /// <summary>
         /// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip

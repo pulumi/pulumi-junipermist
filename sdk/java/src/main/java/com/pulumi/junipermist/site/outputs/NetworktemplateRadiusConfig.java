@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.site.outputs.NetworktemplateRadiusConfigAcctServer;
 import com.pulumi.junipermist.site.outputs.NetworktemplateRadiusConfigAuthServer;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -33,8 +32,6 @@ public final class NetworktemplateRadiusConfig {
      * 
      */
     private @Nullable Integer authServersTimeout;
-    private @Nullable Boolean coaEnabled;
-    private @Nullable Integer coaPort;
     /**
      * @return use `network`or `source_ip`
      * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
@@ -75,12 +72,6 @@ public final class NetworktemplateRadiusConfig {
     public Optional<Integer> authServersTimeout() {
         return Optional.ofNullable(this.authServersTimeout);
     }
-    public Optional<Boolean> coaEnabled() {
-        return Optional.ofNullable(this.coaEnabled);
-    }
-    public Optional<Integer> coaPort() {
-        return Optional.ofNullable(this.coaPort);
-    }
     /**
      * @return use `network`or `source_ip`
      * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
@@ -111,8 +102,6 @@ public final class NetworktemplateRadiusConfig {
         private @Nullable List<NetworktemplateRadiusConfigAuthServer> authServers;
         private @Nullable Integer authServersRetries;
         private @Nullable Integer authServersTimeout;
-        private @Nullable Boolean coaEnabled;
-        private @Nullable Integer coaPort;
         private @Nullable String network;
         private @Nullable String sourceIp;
         public Builder() {}
@@ -123,8 +112,6 @@ public final class NetworktemplateRadiusConfig {
     	      this.authServers = defaults.authServers;
     	      this.authServersRetries = defaults.authServersRetries;
     	      this.authServersTimeout = defaults.authServersTimeout;
-    	      this.coaEnabled = defaults.coaEnabled;
-    	      this.coaPort = defaults.coaPort;
     	      this.network = defaults.network;
     	      this.sourceIp = defaults.sourceIp;
         }
@@ -166,18 +153,6 @@ public final class NetworktemplateRadiusConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder coaEnabled(@Nullable Boolean coaEnabled) {
-
-            this.coaEnabled = coaEnabled;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder coaPort(@Nullable Integer coaPort) {
-
-            this.coaPort = coaPort;
-            return this;
-        }
-        @CustomType.Setter
         public Builder network(@Nullable String network) {
 
             this.network = network;
@@ -196,8 +171,6 @@ public final class NetworktemplateRadiusConfig {
             _resultValue.authServers = authServers;
             _resultValue.authServersRetries = authServersRetries;
             _resultValue.authServersTimeout = authServersTimeout;
-            _resultValue.coaEnabled = coaEnabled;
-            _resultValue.coaPort = coaPort;
             _resultValue.network = network;
             _resultValue.sourceIp = sourceIp;
             return _resultValue;
