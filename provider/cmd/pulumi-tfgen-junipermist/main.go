@@ -17,7 +17,7 @@ package main
 import (
 	"context"
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	junipermist "github.com/pulumi/pulumi-junipermist/provider"
 )
