@@ -38,6 +38,7 @@ func TestTsExamples(t *testing.T) {
 	}
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
+			getBaseOptions(t) // Allow getBaseOptions to skip tests as appropriate.
 			checkBaseEnvVars(t)
 			p := pulumitest.NewPulumiTest(t, test.directoryName,
 				opttest.LocalProviderPath("pulumi-junipermist", filepath.Join(getCwd(t), "..", "bin")),

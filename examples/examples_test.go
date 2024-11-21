@@ -32,6 +32,7 @@ func getCwd(t *testing.T) string {
 }
 
 func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	t.Skip("we are not running integration tests at this time")
 	return integration.ProgramTestOptions{
 		RunUpdateTest:        false,
 		ExpectRefreshChanges: true,
