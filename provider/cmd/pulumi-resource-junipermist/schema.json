@@ -1677,9 +1677,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "node1",
                         "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "useMgmtVrf"
                     ]
                 }
             }
@@ -1717,9 +1717,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "type"
                     ]
                 }
             }
@@ -1997,6 +1995,7 @@
                         "networks",
                         "poeDisabled",
                         "preserveDscp",
+                        "redundant",
                         "rethNodes",
                         "speed",
                         "ssrNoVirtualMac",
@@ -2519,13 +2518,14 @@
                 },
                 "profile": {
                     "type": "string",
-                    "description": "`strict` (default) / `standard` / or keys from from idp_profiles\n"
+                    "description": "enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "alertOnly",
                         "enabled",
                         "profile"
                     ]
@@ -3298,10 +3298,18 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "enum: `access`, `core`, `distribution`\n"
+                    "description": "enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "role"
+                    ]
+                }
+            }
         },
         "junipermist:device/SwitchExtraRoutes6:SwitchExtraRoutes6": {
             "properties": {
@@ -3452,35 +3460,150 @@
         },
         "junipermist:device/SwitchLocalPortConfig:SwitchLocalPortConfig": {
             "properties": {
-                "critical": {
+                "allNetworks": {
                     "type": "boolean",
-                    "description": "if want to generate port up/down alarm\n"
+                    "description": "Only if `mode`==`trunk` whether to trunk all network/vlans\n"
+                },
+                "allowDhcpd": {
+                    "type": "boolean",
+                    "description": "If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.\nAll the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\nWhen it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.\n"
+                },
+                "allowMultipleSupplicants": {
+                    "type": "boolean"
+                },
+                "bypassAuthWhenServerDown": {
+                    "type": "boolean",
+                    "description": "Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down\n"
+                },
+                "bypassAuthWhenServerDownForUnkonwnClient": {
+                    "type": "boolean",
+                    "description": "Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down\n"
                 },
                 "description": {
                     "type": "string"
                 },
                 "disableAutoneg": {
                     "type": "boolean",
-                    "description": "if `speed` and `duplex` are specified, whether to disable autonegotiation\n"
+                    "description": "Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation\n"
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "whether the port is disabled\n"
                 },
                 "duplex": {
                     "type": "string",
-                    "description": "enum: `auto`, `full`, `half`\n"
+                    "description": "link connection mode. enum: `auto`, `full`, `half`\n"
+                },
+                "dynamicVlanNetworks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only if `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return\n"
+                },
+                "enableMacAuth": {
+                    "type": "boolean",
+                    "description": "Only if `port_auth`==`dot1x` whether to enable MAC Auth\n"
+                },
+                "enableQos": {
+                    "type": "boolean"
+                },
+                "guestNetwork": {
+                    "type": "string",
+                    "description": "Only if `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)\n"
+                },
+                "interSwitchLink": {
+                    "type": "boolean",
+                    "description": "inter_switch_link is used together with \"isolation\" under networks\nNOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together\n"
+                },
+                "macAuthOnly": {
+                    "type": "boolean",
+                    "description": "Only if `enable_mac_auth`==`true`\n"
+                },
+                "macAuthPreferred": {
+                    "type": "boolean",
+                    "description": "Only if `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.\n"
+                },
+                "macAuthProtocol": {
+                    "type": "string",
+                    "description": "Only if `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`\n"
+                },
+                "macLimit": {
+                    "type": "integer",
+                    "description": "max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "enum: `access`, `inet`, `trunk`\n"
                 },
                 "mtu": {
                     "type": "integer",
-                    "description": "media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation\n"
+                    "description": "media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only if `mode`==`trunk`, the list of network/vlans\n"
+                },
+                "persistMac": {
+                    "type": "boolean",
+                    "description": "Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses\n"
                 },
                 "poeDisabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "whether PoE capabilities are disabled for a port\n"
+                },
+                "portAuth": {
+                    "type": "string",
+                    "description": "if dot1x is desired, set to dot1x. enum: `dot1x`\n"
+                },
+                "portNetwork": {
+                    "type": "string",
+                    "description": "native network/vlan for untagged traffic\n"
+                },
+                "reauthInterval": {
+                    "type": "integer",
+                    "description": "Only if `port_auth`=`dot1x` reauthentication interval range\n"
+                },
+                "serverFailNetwork": {
+                    "type": "string",
+                    "description": "Only if `port_auth`==`dot1x` sets server fail fallback vlan\n"
+                },
+                "serverRejectNetwork": {
+                    "type": "string",
+                    "description": "Only if `port_auth`==`dot1x` when radius server reject / fails\n"
                 },
                 "speed": {
                     "type": "string",
-                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`\n"
+                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
+                },
+                "stormControl": {
+                    "$ref": "#/types/junipermist:device/SwitchLocalPortConfigStormControl:SwitchLocalPortConfigStormControl",
+                    "description": "Switch storm control\n"
+                },
+                "stpEdge": {
+                    "type": "boolean",
+                    "description": "when enabled, the port is not expected to receive BPDU frames\n"
+                },
+                "stpNoRootPort": {
+                    "type": "boolean"
+                },
+                "stpP2p": {
+                    "type": "boolean"
                 },
                 "usage": {
                     "type": "string",
-                    "description": "port usage name. \n\nIf EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
+                    "description": "port usage name.\n"
+                },
+                "useVstp": {
+                    "type": "boolean",
+                    "description": "if this is connected to a vstp network\n"
+                },
+                "voipNetwork": {
+                    "type": "string",
+                    "description": "network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth\n"
                 }
             },
             "type": "object",
@@ -3490,12 +3613,63 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allNetworks",
+                        "allowMultipleSupplicants",
+                        "bypassAuthWhenServerDown",
+                        "bypassAuthWhenServerDownForUnkonwnClient",
                         "disableAutoneg",
+                        "disabled",
                         "duplex",
-                        "mtu",
+                        "enableMacAuth",
+                        "enableQos",
+                        "interSwitchLink",
+                        "macAuthProtocol",
+                        "macLimit",
+                        "persistMac",
                         "poeDisabled",
+                        "reauthInterval",
                         "speed",
-                        "usage"
+                        "stpEdge",
+                        "stpNoRootPort",
+                        "stpP2p",
+                        "usage",
+                        "useVstp"
+                    ]
+                }
+            }
+        },
+        "junipermist:device/SwitchLocalPortConfigStormControl:SwitchLocalPortConfigStormControl": {
+            "properties": {
+                "noBroadcast": {
+                    "type": "boolean",
+                    "description": "whether to disable storm control on broadcast traffic\n"
+                },
+                "noMulticast": {
+                    "type": "boolean",
+                    "description": "whether to disable storm control on multicast traffic\n"
+                },
+                "noRegisteredMulticast": {
+                    "type": "boolean",
+                    "description": "whether to disable storm control on registered multicast traffic\n"
+                },
+                "noUnknownUnicast": {
+                    "type": "boolean",
+                    "description": "whether to disable storm control on unknown unicast traffic\n"
+                },
+                "percentage": {
+                    "type": "integer",
+                    "description": "bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "noBroadcast",
+                        "noMulticast",
+                        "noRegisteredMulticast",
+                        "noUnknownUnicast",
+                        "percentage"
                     ]
                 }
             }
@@ -3513,6 +3687,14 @@
         },
         "junipermist:device/SwitchNetworks:SwitchNetworks": {
             "properties": {
+                "gateway": {
+                    "type": "string",
+                    "description": "only required for EVPN-VXLAN networks, IPv4 Virtual Gateway\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "only required for EVPN-VXLAN networks, IPv6 Virtual Gateway\n"
+                },
                 "isolation": {
                     "type": "boolean",
                     "description": "whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)\nNOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set\n"
@@ -3521,6 +3703,10 @@
                     "type": "string"
                 },
                 "subnet": {
+                    "type": "string",
+                    "description": "optional for pure switching, required when L3 / routing features are used\n"
+                },
+                "subnet6": {
                     "type": "string",
                     "description": "optional for pure switching, required when L3 / routing features are used\n"
                 },
@@ -3563,7 +3749,7 @@
                 },
                 "useMgmtVrf": {
                     "type": "boolean",
-                    "description": "f supported on the platform. If enabled, DNS will be using this routing-instance, too\n"
+                    "description": "if supported on the platform. If enabled, DNS will be using this routing-instance, too\n"
                 },
                 "useMgmtVrfForHostOut": {
                     "type": "boolean",
@@ -3575,8 +3761,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "useMgmtVrf"
                     ]
                 }
             }
@@ -3766,11 +3951,11 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`\n"
+                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "usage": {
                     "type": "string",
-                    "description": "port usage name. \n\nIf EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
+                    "description": "port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
                 }
             },
             "type": "object",
@@ -3780,7 +3965,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "aeLacpSlow",
                         "aggregated",
                         "disableAutoneg",
                         "duplex",
@@ -3843,7 +4027,7 @@
                 },
                 "allowDhcpd": {
                     "type": "boolean",
-                    "description": "Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\n\nWhen it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.\n"
+                    "description": "Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.\nAll the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\nWhen it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.\n"
                 },
                 "allowMultipleSupplicants": {
                     "type": "boolean",
@@ -3914,7 +4098,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "`mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`\n"
+                    "description": "`mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`\n"
                 },
                 "mtu": {
                     "type": "integer",
@@ -3968,7 +4152,7 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed\n"
+                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "stormControl": {
                     "$ref": "#/types/junipermist:device/SwitchPortUsagesStormControl:SwitchPortUsagesStormControl",
@@ -4015,6 +4199,7 @@
                         "poeDisabled",
                         "reauthInterval",
                         "resetDefaultWhen",
+                        "speed",
                         "stpEdge",
                         "stpNoRootPort",
                         "stpP2p",
@@ -11894,9 +12079,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "node1",
+                        "type"
                     ]
                 }
             }
@@ -11934,9 +12118,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "type"
                     ]
                 }
             }
@@ -12214,6 +12396,7 @@
                         "networks",
                         "poeDisabled",
                         "preserveDscp",
+                        "redundant",
                         "rethNodes",
                         "speed",
                         "ssrNoVirtualMac",
@@ -12705,13 +12888,14 @@
                 },
                 "profile": {
                     "type": "string",
-                    "description": "`strict` (default) / `standard` / or keys from from idp_profiles\n"
+                    "description": "enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "alertOnly",
                         "enabled",
                         "profile"
                     ]
@@ -13174,6 +13358,175 @@
                 }
             },
             "type": "object"
+        },
+        "junipermist:org/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions": {
+            "properties": {
+                "autoLoopbackSubnet": {
+                    "type": "string",
+                    "description": "optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides\n"
+                },
+                "autoLoopbackSubnet6": {
+                    "type": "string",
+                    "description": "optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides\n"
+                },
+                "autoRouterIdSubnet": {
+                    "type": "string",
+                    "description": "optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored\n"
+                },
+                "autoRouterIdSubnet6": {
+                    "type": "string",
+                    "description": "optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored\n"
+                },
+                "coreAsBorder": {
+                    "type": "boolean",
+                    "description": "optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway\nwhen `routed_at` != `core`, whether to do virtual-gateway at core as well\n"
+                },
+                "overlay": {
+                    "$ref": "#/types/junipermist:org/EvpnTopologyEvpnOptionsOverlay:EvpnTopologyEvpnOptionsOverlay"
+                },
+                "perVlanVgaV4Mac": {
+                    "type": "boolean",
+                    "description": "by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac\nif enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)\n"
+                },
+                "routedAt": {
+                    "type": "string",
+                    "description": "optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`\n"
+                },
+                "underlay": {
+                    "$ref": "#/types/junipermist:org/EvpnTopologyEvpnOptionsUnderlay:EvpnTopologyEvpnOptionsUnderlay"
+                },
+                "vsInstances": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/EvpnTopologyEvpnOptionsVsInstances:EvpnTopologyEvpnOptionsVsInstances"
+                    },
+                    "description": "optional, for EX9200 only to seggregate virtual-switches\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "autoLoopbackSubnet",
+                        "autoLoopbackSubnet6",
+                        "autoRouterIdSubnet",
+                        "coreAsBorder",
+                        "perVlanVgaV4Mac",
+                        "routedAt"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/EvpnTopologyEvpnOptionsOverlay:EvpnTopologyEvpnOptionsOverlay": {
+            "properties": {
+                "as": {
+                    "type": "integer",
+                    "description": "Overlay BGP Local AS Number\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "as"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/EvpnTopologyEvpnOptionsUnderlay:EvpnTopologyEvpnOptionsUnderlay": {
+            "properties": {
+                "asBase": {
+                    "type": "integer",
+                    "description": "Underlay BGP Base AS Number\n"
+                },
+                "routedIdPrefix": {
+                    "type": "string"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6\n"
+                },
+                "useIpv6": {
+                    "type": "boolean",
+                    "description": "if v6 is desired for underlay\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asBase",
+                        "useIpv6"
+                    ]
+                }
+            }
+        },
+        "junipermist:org/EvpnTopologyEvpnOptionsVsInstances:EvpnTopologyEvpnOptionsVsInstances": {
+            "properties": {
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/EvpnTopologySwitches:EvpnTopologySwitches": {
+            "properties": {
+                "deviceprofileId": {
+                    "type": "string"
+                },
+                "evpnId": {
+                    "type": "integer"
+                },
+                "mac": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "pod": {
+                    "type": "integer",
+                    "description": "optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. \n  * for CLOS, to group dist / access switches into pods\n  * for ERB/CRB, to group dist / esilag-access into pods\n"
+                },
+                "pods": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "by default, core switches are assumed to be connecting all pods. \nif you want to limit the pods, you can specify pods.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`\n"
+                },
+                "routerId": {
+                    "type": "string"
+                },
+                "siteId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deviceprofileId",
+                        "evpnId",
+                        "mac",
+                        "model",
+                        "pod",
+                        "pods",
+                        "role",
+                        "routerId",
+                        "siteId"
+                    ]
+                }
+            }
         },
         "junipermist:org/GatewaytemplateBgpConfig:GatewaytemplateBgpConfig": {
             "properties": {
@@ -13952,9 +14305,8 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "node1",
+                        "type"
                     ]
                 }
             }
@@ -13992,9 +14344,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "type",
-                        "useMgmtVrf",
-                        "useMgmtVrfForHostOut"
+                        "type"
                     ]
                 }
             }
@@ -14763,13 +15113,14 @@
                 },
                 "profile": {
                     "type": "string",
-                    "description": "`strict` (default) / `standard` / or keys from from idp_profiles\n"
+                    "description": "enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "alertOnly",
                         "enabled",
                         "profile"
                     ]
@@ -15147,19 +15498,7 @@
                     "description": "location uses proxy chaining to forward traffic\n"
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "aupAcceptanceRequired",
-                        "aupExpire",
-                        "aupSslProxy",
-                        "enableAup",
-                        "enableCaution",
-                        "enforceAuthentication"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "junipermist:org/GatewaytemplateTunnelProviderOptionsZscalerSubLocation:GatewaytemplateTunnelProviderOptionsZscalerSubLocation": {
             "properties": {
@@ -15344,7 +15683,6 @@
                         "model",
                         "orgId",
                         "serial",
-                        "siteId",
                         "type",
                         "unclaimWhenDestroyed",
                         "vcMac"
@@ -15414,7 +15752,6 @@
                         "model",
                         "orgId",
                         "serial",
-                        "siteId",
                         "type",
                         "unclaimWhenDestroyed",
                         "vcMac"
@@ -15985,6 +16322,14 @@
         },
         "junipermist:org/NetworktemplateNetworks:NetworktemplateNetworks": {
             "properties": {
+                "gateway": {
+                    "type": "string",
+                    "description": "only required for EVPN-VXLAN networks, IPv4 Virtual Gateway\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "only required for EVPN-VXLAN networks, IPv6 Virtual Gateway\n"
+                },
                 "isolation": {
                     "type": "boolean",
                     "description": "whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)\nNOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set\n"
@@ -15993,6 +16338,10 @@
                     "type": "string"
                 },
                 "subnet": {
+                    "type": "string",
+                    "description": "optional for pure switching, required when L3 / routing features are used\n"
+                },
+                "subnet6": {
                     "type": "string",
                     "description": "optional for pure switching, required when L3 / routing features are used\n"
                 },
@@ -16155,7 +16504,7 @@
                 },
                 "allowDhcpd": {
                     "type": "boolean",
-                    "description": "Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\n\nWhen it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.\n"
+                    "description": "Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.\nAll the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\nWhen it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.\n"
                 },
                 "allowMultipleSupplicants": {
                     "type": "boolean",
@@ -16226,7 +16575,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "`mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`\n"
+                    "description": "`mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`\n"
                 },
                 "mtu": {
                     "type": "integer",
@@ -16280,7 +16629,7 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed\n"
+                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "stormControl": {
                     "$ref": "#/types/junipermist:org/NetworktemplatePortUsagesStormControl:NetworktemplatePortUsagesStormControl",
@@ -16295,6 +16644,10 @@
                 },
                 "stpP2p": {
                     "type": "boolean"
+                },
+                "uiEvpntopoId": {
+                    "type": "string",
+                    "description": "optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches\n"
                 },
                 "useVstp": {
                     "type": "boolean",
@@ -16327,6 +16680,7 @@
                         "poeDisabled",
                         "reauthInterval",
                         "resetDefaultWhen",
+                        "speed",
                         "stpEdge",
                         "stpNoRootPort",
                         "stpP2p",
@@ -17279,7 +17633,14 @@
                     "description": "Property key is the port mirroring instance name\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalConfigCmds"
+                    ]
+                }
+            }
         },
         "junipermist:org/NetworktemplateSwitchMatchingRuleIpConfig:NetworktemplateSwitchMatchingRuleIpConfig": {
             "properties": {
@@ -17379,11 +17740,11 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`\n"
+                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "usage": {
                     "type": "string",
-                    "description": "port usage name. \n\nIf EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
+                    "description": "port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
                 }
             },
             "type": "object",
@@ -17393,7 +17754,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "aeLacpSlow",
                         "aggregated",
                         "disableAutoneg",
                         "duplex",
@@ -18409,15 +18769,23 @@
                 "ecmApiKey": {
                     "type": "string",
                     "secret": true
+                },
+                "enableLldp": {
+                    "type": "boolean"
                 }
             },
             "type": "object",
-            "required": [
-                "cpApiId",
-                "cpApiKey",
-                "ecmApiId",
-                "ecmApiKey"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cpApiId",
+                        "cpApiKey",
+                        "ecmApiId",
+                        "ecmApiKey",
+                        "enableLldp"
+                    ]
+                }
+            }
         },
         "junipermist:org/SettingDeviceCert:SettingDeviceCert": {
             "properties": {
@@ -19303,6 +19671,10 @@
                     "type": "integer",
                     "description": "Auth port of RADIUS server\n"
                 },
+                "requireMessageAuthenticator": {
+                    "type": "boolean",
+                    "description": "whether to require Message-Authenticator in requests\n"
+                },
                 "secret": {
                     "type": "string",
                     "description": "secret of RADIUS server\n",
@@ -19319,6 +19691,7 @@
                     "requiredOutputs": [
                         "host",
                         "port",
+                        "requireMessageAuthenticator",
                         "secret"
                     ]
                 }
@@ -19610,7 +19983,8 @@
         "junipermist:org/WlanInjectDhcpOption82:WlanInjectDhcpOption82": {
             "properties": {
                 "circuitId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):\n  * {{AP_MAC}}\n  * {{AP_MAC_DASHED}}\n  * {{AP_MODEL}}\n  * {{AP_NAME}}\n  * {{SITE_NAME}}\n  * {{SSID}}\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -19644,6 +20018,10 @@
         },
         "junipermist:org/WlanPortal:WlanPortal": {
             "properties": {
+                "allowWlanIdRoam": {
+                    "type": "boolean",
+                    "description": "whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)\n"
+                },
                 "amazonClientId": {
                     "type": "string",
                     "description": "amazon OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
@@ -19910,30 +20288,31 @@
                 },
                 "ssoDefaultRole": {
                     "type": "string",
-                    "description": "default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
+                    "description": "if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
                 },
                 "ssoForcedRole": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "if `wlan_portal_auth`==`sso`\n"
                 },
                 "ssoIdpCert": {
                     "type": "string",
-                    "description": "IDP Cert (used to verify the signed response)\n"
+                    "description": "if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)\n"
                 },
                 "ssoIdpSignAlgo": {
                     "type": "string",
-                    "description": "signing algorithm for SAML Assertion\n"
+                    "description": "if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
                 },
                 "ssoIdpSsoUrl": {
                     "type": "string",
-                    "description": "IDP Single-Sign-On URL\n"
+                    "description": "if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL\n"
                 },
                 "ssoIssuer": {
                     "type": "string",
-                    "description": "IDP issuer URL\n"
+                    "description": "if `wlan_portal_auth`==`sso`, IDP issuer URL\n"
                 },
                 "ssoNameidFormat": {
                     "type": "string",
-                    "description": "enum: `email`, `unspecified`\n"
+                    "description": "if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`\n"
                 },
                 "telstraClientId": {
                     "type": "string",
@@ -19960,6 +20339,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allowWlanIdRoam",
                         "amazonClientId",
                         "amazonClientSecret",
                         "amazonEmailDomains",
@@ -21046,6 +21426,75 @@
                 },
                 "port": {
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/WlanRateset:WlanRateset": {
+            "properties": {
+                "band24": {
+                    "$ref": "#/types/junipermist:org/WlanRatesetBand24:WlanRatesetBand24",
+                    "description": "data rates wlan settings\n"
+                },
+                "band5": {
+                    "$ref": "#/types/junipermist:org/WlanRatesetBand5:WlanRatesetBand5",
+                    "description": "data rates wlan settings\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/WlanRatesetBand24:WlanRatesetBand24": {
+            "properties": {
+                "ht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)\n"
+                },
+                "legacies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values\n"
+                },
+                "minRssi": {
+                    "type": "integer",
+                    "description": "Minimum RSSI for client to connect, 0 means not enforcing\n"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "Data Rates template to apply. enum: \n  * `no-legacy`: no 11b\n  * `compatible`: all, like before, default setting that Broadcom/Atheros used\n  * `legacy-only`: disable 802.11n and 802.11ac\n  * `high-density`: no 11b, no low rates\n  * `custom`: user defined\n"
+                },
+                "vht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:org/WlanRatesetBand5:WlanRatesetBand5": {
+            "properties": {
+                "ht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)\n"
+                },
+                "legacies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values\n"
+                },
+                "minRssi": {
+                    "type": "integer",
+                    "description": "Minimum RSSI for client to connect, 0 means not enforcing\n"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "Data Rates template to apply. enum: \n  * `no-legacy`: no 11b\n  * `compatible`: all, like before, default setting that Broadcom/Atheros used\n  * `legacy-only`: disable 802.11n and 802.11ac\n  * `high-density`: no 11b, no low rates\n  * `custom`: user defined\n"
+                },
+                "vht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.\n"
                 }
             },
             "type": "object"
@@ -22310,6 +22759,175 @@
                 }
             }
         },
+        "junipermist:site/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions": {
+            "properties": {
+                "autoLoopbackSubnet": {
+                    "type": "string",
+                    "description": "optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides\n"
+                },
+                "autoLoopbackSubnet6": {
+                    "type": "string",
+                    "description": "optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides\n"
+                },
+                "autoRouterIdSubnet": {
+                    "type": "string",
+                    "description": "optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored\n"
+                },
+                "autoRouterIdSubnet6": {
+                    "type": "string",
+                    "description": "optional, this generates router_id automatically, if specified, `router_id_prefix` is ignored\n"
+                },
+                "coreAsBorder": {
+                    "type": "boolean",
+                    "description": "optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway\nwhen `routed_at` != `core`, whether to do virtual-gateway at core as well\n"
+                },
+                "overlay": {
+                    "$ref": "#/types/junipermist:site/EvpnTopologyEvpnOptionsOverlay:EvpnTopologyEvpnOptionsOverlay"
+                },
+                "perVlanVgaV4Mac": {
+                    "type": "boolean",
+                    "description": "by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4_mac\nif enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)\n"
+                },
+                "routedAt": {
+                    "type": "string",
+                    "description": "optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`\n"
+                },
+                "underlay": {
+                    "$ref": "#/types/junipermist:site/EvpnTopologyEvpnOptionsUnderlay:EvpnTopologyEvpnOptionsUnderlay"
+                },
+                "vsInstances": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/EvpnTopologyEvpnOptionsVsInstances:EvpnTopologyEvpnOptionsVsInstances"
+                    },
+                    "description": "optional, for EX9200 only to seggregate virtual-switches\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "autoLoopbackSubnet",
+                        "autoLoopbackSubnet6",
+                        "autoRouterIdSubnet",
+                        "coreAsBorder",
+                        "perVlanVgaV4Mac",
+                        "routedAt"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/EvpnTopologyEvpnOptionsOverlay:EvpnTopologyEvpnOptionsOverlay": {
+            "properties": {
+                "as": {
+                    "type": "integer",
+                    "description": "Overlay BGP Local AS Number\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "as"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/EvpnTopologyEvpnOptionsUnderlay:EvpnTopologyEvpnOptionsUnderlay": {
+            "properties": {
+                "asBase": {
+                    "type": "integer",
+                    "description": "Underlay BGP Base AS Number\n"
+                },
+                "routedIdPrefix": {
+                    "type": "string"
+                },
+                "subnet": {
+                    "type": "string",
+                    "description": "underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6\n"
+                },
+                "useIpv6": {
+                    "type": "boolean",
+                    "description": "if v6 is desired for underlay\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "asBase",
+                        "useIpv6"
+                    ]
+                }
+            }
+        },
+        "junipermist:site/EvpnTopologyEvpnOptionsVsInstances:EvpnTopologyEvpnOptionsVsInstances": {
+            "properties": {
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/EvpnTopologySwitches:EvpnTopologySwitches": {
+            "properties": {
+                "deviceprofileId": {
+                    "type": "string"
+                },
+                "evpnId": {
+                    "type": "integer"
+                },
+                "mac": {
+                    "type": "string"
+                },
+                "model": {
+                    "type": "string"
+                },
+                "pod": {
+                    "type": "integer",
+                    "description": "optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. \n  * for CLOS, to group dist / access switches into pods\n  * for ERB/CRB, to group dist / esilag-access into pods\n"
+                },
+                "pods": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "by default, core switches are assumed to be connecting all pods. \nif you want to limit the pods, you can specify pods.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`\n"
+                },
+                "routerId": {
+                    "type": "string"
+                },
+                "siteId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deviceprofileId",
+                        "evpnId",
+                        "mac",
+                        "model",
+                        "pod",
+                        "pods",
+                        "role",
+                        "routerId",
+                        "siteId"
+                    ]
+                }
+            }
+        },
         "junipermist:site/NetworktemplateAclPolicy:NetworktemplateAclPolicy": {
             "properties": {
                 "actions": {
@@ -22563,6 +23181,14 @@
         },
         "junipermist:site/NetworktemplateNetworks:NetworktemplateNetworks": {
             "properties": {
+                "gateway": {
+                    "type": "string",
+                    "description": "only required for EVPN-VXLAN networks, IPv4 Virtual Gateway\n"
+                },
+                "gateway6": {
+                    "type": "string",
+                    "description": "only required for EVPN-VXLAN networks, IPv6 Virtual Gateway\n"
+                },
                 "isolation": {
                     "type": "boolean",
                     "description": "whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)\nNOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set\n"
@@ -22571,6 +23197,10 @@
                     "type": "string"
                 },
                 "subnet": {
+                    "type": "string",
+                    "description": "optional for pure switching, required when L3 / routing features are used\n"
+                },
+                "subnet6": {
                     "type": "string",
                     "description": "optional for pure switching, required when L3 / routing features are used\n"
                 },
@@ -22733,7 +23363,7 @@
                 },
                 "allowDhcpd": {
                     "type": "boolean",
-                    "description": "Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\n\nWhen it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.\n"
+                    "description": "Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.\nAll the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.\nWhen it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.\n"
                 },
                 "allowMultipleSupplicants": {
                     "type": "boolean",
@@ -22804,7 +23434,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "`mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`\n"
+                    "description": "`mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`\n"
                 },
                 "mtu": {
                     "type": "integer",
@@ -22858,7 +23488,7 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed\n"
+                    "description": "Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "stormControl": {
                     "$ref": "#/types/junipermist:site/NetworktemplatePortUsagesStormControl:NetworktemplatePortUsagesStormControl",
@@ -22873,6 +23503,10 @@
                 },
                 "stpP2p": {
                     "type": "boolean"
+                },
+                "uiEvpntopoId": {
+                    "type": "string",
+                    "description": "optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches\n"
                 },
                 "useVstp": {
                     "type": "boolean",
@@ -22905,6 +23539,7 @@
                         "poeDisabled",
                         "reauthInterval",
                         "resetDefaultWhen",
+                        "speed",
                         "stpEdge",
                         "stpNoRootPort",
                         "stpP2p",
@@ -23857,7 +24492,14 @@
                     "description": "Property key is the port mirroring instance name\nport_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalConfigCmds"
+                    ]
+                }
+            }
         },
         "junipermist:site/NetworktemplateSwitchMatchingRuleIpConfig:NetworktemplateSwitchMatchingRuleIpConfig": {
             "properties": {
@@ -23957,11 +24599,11 @@
                 },
                 "speed": {
                     "type": "string",
-                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`\n"
+                    "description": "enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`\n"
                 },
                 "usage": {
                     "type": "string",
-                    "description": "port usage name. \n\nIf EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
+                    "description": "port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`\n"
                 }
             },
             "type": "object",
@@ -23971,7 +24613,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "aeLacpSlow",
                         "aggregated",
                         "disableAutoneg",
                         "duplex",
@@ -24484,7 +25125,7 @@
                 },
                 "power": {
                     "type": "integer",
-                    "description": "required if `power_mode`==`custom`\n"
+                    "description": "required if `power_mode`==`custom`; else use `power_mode` as default\n"
                 },
                 "powerMode": {
                     "type": "string",
@@ -25311,7 +25952,7 @@
                 "enabled": {
                     "type": "boolean"
                 },
-                "timeOdFay": {
+                "timeOfDay": {
                     "type": "string",
                     "description": "any / HH:MM (24-hour format)\n"
                 }
@@ -25320,7 +25961,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "timeOdFay"
+                        "timeOfDay"
                     ]
                 }
             }
@@ -25815,6 +26456,10 @@
                     "type": "integer",
                     "description": "Auth port of RADIUS server\n"
                 },
+                "requireMessageAuthenticator": {
+                    "type": "boolean",
+                    "description": "whether to require Message-Authenticator in requests\n"
+                },
                 "secret": {
                     "type": "string",
                     "description": "secret of RADIUS server\n",
@@ -25831,6 +26476,7 @@
                     "requiredOutputs": [
                         "host",
                         "port",
+                        "requireMessageAuthenticator",
                         "secret"
                     ]
                 }
@@ -26122,7 +26768,8 @@
         "junipermist:site/WlanInjectDhcpOption82:WlanInjectDhcpOption82": {
             "properties": {
                 "circuitId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):\n  * {{AP_MAC}}\n  * {{AP_MAC_DASHED}}\n  * {{AP_MODEL}}\n  * {{AP_NAME}}\n  * {{SITE_NAME}}\n  * {{SSID}}\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -26156,6 +26803,10 @@
         },
         "junipermist:site/WlanPortal:WlanPortal": {
             "properties": {
+                "allowWlanIdRoam": {
+                    "type": "boolean",
+                    "description": "whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)\n"
+                },
                 "amazonClientId": {
                     "type": "string",
                     "description": "amazon OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
@@ -26422,30 +27073,31 @@
                 },
                 "ssoDefaultRole": {
                     "type": "string",
-                    "description": "default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
+                    "description": "if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
                 },
                 "ssoForcedRole": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "if `wlan_portal_auth`==`sso`\n"
                 },
                 "ssoIdpCert": {
                     "type": "string",
-                    "description": "IDP Cert (used to verify the signed response)\n"
+                    "description": "if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)\n"
                 },
                 "ssoIdpSignAlgo": {
                     "type": "string",
-                    "description": "signing algorithm for SAML Assertion\n"
+                    "description": "if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
                 },
                 "ssoIdpSsoUrl": {
                     "type": "string",
-                    "description": "IDP Single-Sign-On URL\n"
+                    "description": "if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL\n"
                 },
                 "ssoIssuer": {
                     "type": "string",
-                    "description": "IDP issuer URL\n"
+                    "description": "if `wlan_portal_auth`==`sso`, IDP issuer URL\n"
                 },
                 "ssoNameidFormat": {
                     "type": "string",
-                    "description": "enum: `email`, `unspecified`\n"
+                    "description": "if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`\n"
                 },
                 "telstraClientId": {
                     "type": "string",
@@ -26472,6 +27124,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "allowWlanIdRoam",
                         "amazonClientId",
                         "amazonClientSecret",
                         "amazonEmailDomains",
@@ -27562,6 +28215,75 @@
             },
             "type": "object"
         },
+        "junipermist:site/WlanRateset:WlanRateset": {
+            "properties": {
+                "band24": {
+                    "$ref": "#/types/junipermist:site/WlanRatesetBand24:WlanRatesetBand24",
+                    "description": "data rates wlan settings\n"
+                },
+                "band5": {
+                    "$ref": "#/types/junipermist:site/WlanRatesetBand5:WlanRatesetBand5",
+                    "description": "data rates wlan settings\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/WlanRatesetBand24:WlanRatesetBand24": {
+            "properties": {
+                "ht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)\n"
+                },
+                "legacies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values\n"
+                },
+                "minRssi": {
+                    "type": "integer",
+                    "description": "Minimum RSSI for client to connect, 0 means not enforcing\n"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "Data Rates template to apply. enum: \n  * `no-legacy`: no 11b\n  * `compatible`: all, like before, default setting that Broadcom/Atheros used\n  * `legacy-only`: disable 802.11n and 802.11ac\n  * `high-density`: no 11b, no low rates\n  * `custom`: user defined\n"
+                },
+                "vht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.\n"
+                }
+            },
+            "type": "object"
+        },
+        "junipermist:site/WlanRatesetBand5:WlanRatesetBand5": {
+            "properties": {
+                "ht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)\n"
+                },
+                "legacies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values\n"
+                },
+                "minRssi": {
+                    "type": "integer",
+                    "description": "Minimum RSSI for client to connect, 0 means not enforcing\n"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "Data Rates template to apply. enum: \n  * `no-legacy`: no 11b\n  * `compatible`: all, like before, default setting that Broadcom/Atheros used\n  * `legacy-only`: disable 802.11n and 802.11ac\n  * `high-density`: no 11b, no low rates\n  * `custom`: user defined\n"
+                },
+                "vht": {
+                    "type": "string",
+                    "description": "if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.\n"
+                }
+            },
+            "type": "object"
+        },
         "junipermist:site/WlanSchedule:WlanSchedule": {
             "properties": {
                 "enabled": {
@@ -28588,7 +29310,7 @@
             "deprecationMessage": "junipermist.device/base.base has been deprecated in favor of junipermist.site/base.base"
         },
         "junipermist:device/gateway:Gateway": {
-            "description": "This resource manages the Gateway configuration.\nIt can be used to define specific configuration at the device level or to override Org Gateway template settings.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst gatewayOne = new junipermist.device.Gateway(\"gateway_one\", {\n    name: \"gateway_one\",\n    deviceId: clusterOne.deviceId,\n    siteId: clusterOne.siteId,\n    oobIpConfig: {\n        type: \"dhcp\",\n    },\n    dnsServers: [\"8.8.8.8\"],\n    additionalConfigCmds: [\n        \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n        \"delete apply-groups custom-main\",\n        \"delete groups custom-main\",\n        \"set groups custom-main\",\n        \"set groups custom-main system services ssh root-login allow\",\n        \"set apply-groups custom-main\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\ngateway_one = junipermist.device.Gateway(\"gateway_one\",\n    name=\"gateway_one\",\n    device_id=cluster_one[\"deviceId\"],\n    site_id=cluster_one[\"siteId\"],\n    oob_ip_config={\n        \"type\": \"dhcp\",\n    },\n    dns_servers=[\"8.8.8.8\"],\n    additional_config_cmds=[\n        \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n        \"delete apply-groups custom-main\",\n        \"delete groups custom-main\",\n        \"set groups custom-main\",\n        \"set groups custom-main system services ssh root-login allow\",\n        \"set apply-groups custom-main\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gatewayOne = new JuniperMist.Device.Gateway(\"gateway_one\", new()\n    {\n        Name = \"gateway_one\",\n        DeviceId = clusterOne.DeviceId,\n        SiteId = clusterOne.SiteId,\n        OobIpConfig = new JuniperMist.Device.Inputs.GatewayOobIpConfigArgs\n        {\n            Type = \"dhcp\",\n        },\n        DnsServers = new[]\n        {\n            \"8.8.8.8\",\n        },\n        AdditionalConfigCmds = new[]\n        {\n            \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n            \"delete apply-groups custom-main\",\n            \"delete groups custom-main\",\n            \"set groups custom-main\",\n            \"set groups custom-main system services ssh root-login allow\",\n            \"set apply-groups custom-main\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := device.NewGateway(ctx, \"gateway_one\", \u0026device.GatewayArgs{\n\t\t\tName:     pulumi.String(\"gateway_one\"),\n\t\t\tDeviceId: pulumi.Any(clusterOne.DeviceId),\n\t\t\tSiteId:   pulumi.Any(clusterOne.SiteId),\n\t\t\tOobIpConfig: \u0026device.GatewayOobIpConfigArgs{\n\t\t\t\tType: pulumi.String(\"dhcp\"),\n\t\t\t},\n\t\t\tDnsServers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"8.8.8.8\"),\n\t\t\t},\n\t\t\tAdditionalConfigCmds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"annotate system \\\" -- custom-main -- Template level --\\\"\"),\n\t\t\t\tpulumi.String(\"delete apply-groups custom-main\"),\n\t\t\t\tpulumi.String(\"delete groups custom-main\"),\n\t\t\t\tpulumi.String(\"set groups custom-main\"),\n\t\t\t\tpulumi.String(\"set groups custom-main system services ssh root-login allow\"),\n\t\t\t\tpulumi.String(\"set apply-groups custom-main\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.device.Gateway;\nimport com.pulumi.junipermist.device.GatewayArgs;\nimport com.pulumi.junipermist.device.inputs.GatewayOobIpConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gatewayOne = new Gateway(\"gatewayOne\", GatewayArgs.builder()\n            .name(\"gateway_one\")\n            .deviceId(clusterOne.deviceId())\n            .siteId(clusterOne.siteId())\n            .oobIpConfig(GatewayOobIpConfigArgs.builder()\n                .type(\"dhcp\")\n                .build())\n            .dnsServers(\"8.8.8.8\")\n            .additionalConfigCmds(            \n                \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n                \"delete apply-groups custom-main\",\n                \"delete groups custom-main\",\n                \"set groups custom-main\",\n                \"set groups custom-main system services ssh root-login allow\",\n                \"set apply-groups custom-main\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gatewayOne:\n    type: junipermist:device:Gateway\n    name: gateway_one\n    properties:\n      name: gateway_one\n      deviceId: ${clusterOne.deviceId}\n      siteId: ${clusterOne.siteId}\n      oobIpConfig:\n        type: dhcp\n      dnsServers:\n        - 8.8.8.8\n      additionalConfigCmds:\n        - annotate system \" -- custom-main -- Template level --\"\n        - delete apply-groups custom-main\n        - delete groups custom-main\n        - set groups custom-main\n        - set groups custom-main system services ssh root-login allow\n        - set apply-groups custom-main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_device_gateway` with:\n\nGateway Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/gateway:Gateway gateway_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Gateway configuration.\nIt can be used to define specific configuration at the device level or to override Org Gateway template settings.\n\n\u003e **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst gatewayOne = new junipermist.device.Gateway(\"gateway_one\", {\n    name: \"gateway_one\",\n    deviceId: clusterOne.deviceId,\n    siteId: clusterOne.siteId,\n    oobIpConfig: {\n        type: \"dhcp\",\n    },\n    dnsServers: [\"8.8.8.8\"],\n    additionalConfigCmds: [\n        \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n        \"delete apply-groups custom-main\",\n        \"delete groups custom-main\",\n        \"set groups custom-main\",\n        \"set groups custom-main system services ssh root-login allow\",\n        \"set apply-groups custom-main\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\ngateway_one = junipermist.device.Gateway(\"gateway_one\",\n    name=\"gateway_one\",\n    device_id=cluster_one[\"deviceId\"],\n    site_id=cluster_one[\"siteId\"],\n    oob_ip_config={\n        \"type\": \"dhcp\",\n    },\n    dns_servers=[\"8.8.8.8\"],\n    additional_config_cmds=[\n        \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n        \"delete apply-groups custom-main\",\n        \"delete groups custom-main\",\n        \"set groups custom-main\",\n        \"set groups custom-main system services ssh root-login allow\",\n        \"set apply-groups custom-main\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gatewayOne = new JuniperMist.Device.Gateway(\"gateway_one\", new()\n    {\n        Name = \"gateway_one\",\n        DeviceId = clusterOne.DeviceId,\n        SiteId = clusterOne.SiteId,\n        OobIpConfig = new JuniperMist.Device.Inputs.GatewayOobIpConfigArgs\n        {\n            Type = \"dhcp\",\n        },\n        DnsServers = new[]\n        {\n            \"8.8.8.8\",\n        },\n        AdditionalConfigCmds = new[]\n        {\n            \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n            \"delete apply-groups custom-main\",\n            \"delete groups custom-main\",\n            \"set groups custom-main\",\n            \"set groups custom-main system services ssh root-login allow\",\n            \"set apply-groups custom-main\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := device.NewGateway(ctx, \"gateway_one\", \u0026device.GatewayArgs{\n\t\t\tName:     pulumi.String(\"gateway_one\"),\n\t\t\tDeviceId: pulumi.Any(clusterOne.DeviceId),\n\t\t\tSiteId:   pulumi.Any(clusterOne.SiteId),\n\t\t\tOobIpConfig: \u0026device.GatewayOobIpConfigArgs{\n\t\t\t\tType: pulumi.String(\"dhcp\"),\n\t\t\t},\n\t\t\tDnsServers: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"8.8.8.8\"),\n\t\t\t},\n\t\t\tAdditionalConfigCmds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"annotate system \\\" -- custom-main -- Template level --\\\"\"),\n\t\t\t\tpulumi.String(\"delete apply-groups custom-main\"),\n\t\t\t\tpulumi.String(\"delete groups custom-main\"),\n\t\t\t\tpulumi.String(\"set groups custom-main\"),\n\t\t\t\tpulumi.String(\"set groups custom-main system services ssh root-login allow\"),\n\t\t\t\tpulumi.String(\"set apply-groups custom-main\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.device.Gateway;\nimport com.pulumi.junipermist.device.GatewayArgs;\nimport com.pulumi.junipermist.device.inputs.GatewayOobIpConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gatewayOne = new Gateway(\"gatewayOne\", GatewayArgs.builder()\n            .name(\"gateway_one\")\n            .deviceId(clusterOne.deviceId())\n            .siteId(clusterOne.siteId())\n            .oobIpConfig(GatewayOobIpConfigArgs.builder()\n                .type(\"dhcp\")\n                .build())\n            .dnsServers(\"8.8.8.8\")\n            .additionalConfigCmds(            \n                \"annotate system \\\" -- custom-main -- Template level --\\\"\",\n                \"delete apply-groups custom-main\",\n                \"delete groups custom-main\",\n                \"set groups custom-main\",\n                \"set groups custom-main system services ssh root-login allow\",\n                \"set apply-groups custom-main\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gatewayOne:\n    type: junipermist:device:Gateway\n    name: gateway_one\n    properties:\n      name: gateway_one\n      deviceId: ${clusterOne.deviceId}\n      siteId: ${clusterOne.siteId}\n      oobIpConfig:\n        type: dhcp\n      dnsServers:\n        - 8.8.8.8\n      additionalConfigCmds:\n        - annotate system \" -- custom-main -- Template level --\"\n        - delete apply-groups custom-main\n        - delete groups custom-main\n        - set groups custom-main\n        - set groups custom-main system services ssh root-login allow\n        - set apply-groups custom-main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_device_gateway` with:\n\nGateway Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/gateway:Gateway gateway_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "additionalConfigCmds": {
                     "type": "array",
@@ -28792,6 +29514,7 @@
                 "mac",
                 "model",
                 "name",
+                "oobIpConfig",
                 "orgId",
                 "serial",
                 "siteId",
@@ -29284,7 +30007,7 @@
             }
         },
         "junipermist:device/switch:Switch": {
-            "description": "This resource manages the Switch configuration.\nIt can be used to define specific configuration at the device level or to override Org/Site Network template settings.\n\n\n## Import\n\nUsing `pulumi import`, import `mist_device_switch` with:\n\nSwitch Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "description": "This resource manages the Switch configuration.\nIt can be used to define specific configuration at the device level or to override Org/Site Network template settings.\n\n\u003e **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch\n\n\n## Import\n\nUsing `pulumi import`, import `mist_device_switch` with:\n\nSwitch Configuration can be imported by specifying the site_id and the device_id\n\n```sh\n$ pulumi import junipermist:device/switch:Switch switch_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
                 "aclPolicies": {
                     "type": "array",
@@ -29429,7 +30152,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchOtherIpConfigs:SwitchOtherIpConfigs"
                     },
-                    "description": "Property key is the network name\n"
+                    "description": "Property key is the network name. Defines the additional IP Addresses configured on the device.\n"
                 },
                 "portConfig": {
                     "type": "object",
@@ -29449,7 +30172,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchPortUsages:SwitchPortUsages"
-                    }
+                    },
+                    "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                 },
                 "radiusConfig": {
                     "$ref": "#/types/junipermist:device/SwitchRadiusConfig:SwitchRadiusConfig",
@@ -29527,6 +30251,7 @@
             "required": [
                 "deviceId",
                 "disableAutoConfig",
+                "evpnConfig",
                 "image1Url",
                 "image2Url",
                 "image3Url",
@@ -29535,6 +30260,7 @@
                 "model",
                 "name",
                 "orgId",
+                "routerId",
                 "serial",
                 "siteId",
                 "type",
@@ -29587,10 +30313,6 @@
                         "type": "string"
                     },
                     "description": "Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting\n"
-                },
-                "evpnConfig": {
-                    "$ref": "#/types/junipermist:device/SwitchEvpnConfig:SwitchEvpnConfig",
-                    "description": "EVPN Junos settings\n"
                 },
                 "extraRoutes": {
                     "type": "object",
@@ -29664,7 +30386,7 @@
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchOtherIpConfigs:SwitchOtherIpConfigs"
                     },
-                    "description": "Property key is the network name\n"
+                    "description": "Property key is the network name. Defines the additional IP Addresses configured on the device.\n"
                 },
                 "portConfig": {
                     "type": "object",
@@ -29684,7 +30406,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:device/SwitchPortUsages:SwitchPortUsages"
-                    }
+                    },
+                    "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                 },
                 "radiusConfig": {
                     "$ref": "#/types/junipermist:device/SwitchRadiusConfig:SwitchRadiusConfig",
@@ -29901,7 +30624,7 @@
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:device/SwitchOtherIpConfigs:SwitchOtherIpConfigs"
                         },
-                        "description": "Property key is the network name\n"
+                        "description": "Property key is the network name. Defines the additional IP Addresses configured on the device.\n"
                     },
                     "portConfig": {
                         "type": "object",
@@ -29921,7 +30644,8 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:device/SwitchPortUsages:SwitchPortUsages"
-                        }
+                        },
+                        "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                     },
                     "radiusConfig": {
                         "$ref": "#/types/junipermist:device/SwitchRadiusConfig:SwitchRadiusConfig",
@@ -30755,6 +31479,7 @@
                 "dnsOverride",
                 "name",
                 "ntpOverride",
+                "oobIpConfig",
                 "orgId",
                 "type"
             ],
@@ -31050,6 +31775,101 @@
                 "type": "object"
             }
         },
+        "junipermist:org/evpnTopology:EvpnTopology": {
+            "description": "This resource manages the Org Evpn Topologys.\nEVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.\n\n\u003e To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mist from \"@pulumi/mist\";\n\nconst evpnOne = new mist.index.OrgSiteEvpnTopology(\"evpn_one\", {\n    orgId: terraformTest.id,\n    name: \"evpn_one\",\n    evpnOptions: {\n        routedAt: \"core\",\n        overlay: {\n            as: 65000,\n        },\n        coreAsBorder: true,\n        autoLoopbackSubnet: \"172.16.192.0/24\",\n        autoLoopbackSubnet6: \"fd33:ab00:2::/64\",\n        perVlanVgaV4Mac: false,\n        underlay: {\n            asBase: 65001,\n            useIpv6: false,\n            subnet: \"10.255.240.0/20\",\n        },\n        autoRouterIdSubnet: \"172.16.254.0/23\",\n    },\n    switches: [\n        {\n            mac: \"020004000001\",\n            role: \"core\",\n        },\n        {\n            mac: \"02000400002\",\n            role: \"core\",\n        },\n        {\n            mac: \"02000400003\",\n            role: \"distribution\",\n        },\n        {\n            mac: \"02000400004\",\n            role: \"distribution\",\n        },\n        {\n            mac: \"02000400005\",\n            role: \"access\",\n        },\n        {\n            mac: \"02000400006\",\n            role: \"access\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_mist as mist\n\nevpn_one = mist.index.OrgSiteEvpnTopology(\"evpn_one\",\n    org_id=terraform_test.id,\n    name=evpn_one,\n    evpn_options={\n        routedAt: core,\n        overlay: {\n            as: 65000,\n        },\n        coreAsBorder: True,\n        autoLoopbackSubnet: 172.16.192.0/24,\n        autoLoopbackSubnet6: fd33:ab00:2::/64,\n        perVlanVgaV4Mac: False,\n        underlay: {\n            asBase: 65001,\n            useIpv6: False,\n            subnet: 10.255.240.0/20,\n        },\n        autoRouterIdSubnet: 172.16.254.0/23,\n    },\n    switches=[\n        {\n            mac: 020004000001,\n            role: core,\n        },\n        {\n            mac: 02000400002,\n            role: core,\n        },\n        {\n            mac: 02000400003,\n            role: distribution,\n        },\n        {\n            mac: 02000400004,\n            role: distribution,\n        },\n        {\n            mac: 02000400005,\n            role: access,\n        },\n        {\n            mac: 02000400006,\n            role: access,\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mist = Pulumi.Mist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var evpnOne = new Mist.Index.OrgSiteEvpnTopology(\"evpn_one\", new()\n    {\n        OrgId = terraformTest.Id,\n        Name = \"evpn_one\",\n        EvpnOptions = \n        {\n            { \"routedAt\", \"core\" },\n            { \"overlay\", \n            {\n                { \"as\", 65000 },\n            } },\n            { \"coreAsBorder\", true },\n            { \"autoLoopbackSubnet\", \"172.16.192.0/24\" },\n            { \"autoLoopbackSubnet6\", \"fd33:ab00:2::/64\" },\n            { \"perVlanVgaV4Mac\", false },\n            { \"underlay\", \n            {\n                { \"asBase\", 65001 },\n                { \"useIpv6\", false },\n                { \"subnet\", \"10.255.240.0/20\" },\n            } },\n            { \"autoRouterIdSubnet\", \"172.16.254.0/23\" },\n        },\n        Switches = new[]\n        {\n            \n            {\n                { \"mac\", \"020004000001\" },\n                { \"role\", \"core\" },\n            },\n            \n            {\n                { \"mac\", \"02000400002\" },\n                { \"role\", \"core\" },\n            },\n            \n            {\n                { \"mac\", \"02000400003\" },\n                { \"role\", \"distribution\" },\n            },\n            \n            {\n                { \"mac\", \"02000400004\" },\n                { \"role\", \"distribution\" },\n            },\n            \n            {\n                { \"mac\", \"02000400005\" },\n                { \"role\", \"access\" },\n            },\n            \n            {\n                { \"mac\", \"02000400006\" },\n                { \"role\", \"access\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mist/sdk/go/mist\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mist.NewOrgSiteEvpnTopology(ctx, \"evpn_one\", \u0026mist.OrgSiteEvpnTopologyArgs{\n\t\t\tOrgId: terraformTest.Id,\n\t\t\tName:  \"evpn_one\",\n\t\t\tEvpnOptions: map[string]interface{}{\n\t\t\t\t\"routedAt\": \"core\",\n\t\t\t\t\"overlay\": map[string]interface{}{\n\t\t\t\t\t\"as\": 65000,\n\t\t\t\t},\n\t\t\t\t\"coreAsBorder\":        true,\n\t\t\t\t\"autoLoopbackSubnet\":  \"172.16.192.0/24\",\n\t\t\t\t\"autoLoopbackSubnet6\": \"fd33:ab00:2::/64\",\n\t\t\t\t\"perVlanVgaV4Mac\":     false,\n\t\t\t\t\"underlay\": map[string]interface{}{\n\t\t\t\t\t\"asBase\":  65001,\n\t\t\t\t\t\"useIpv6\": false,\n\t\t\t\t\t\"subnet\":  \"10.255.240.0/20\",\n\t\t\t\t},\n\t\t\t\t\"autoRouterIdSubnet\": \"172.16.254.0/23\",\n\t\t\t},\n\t\t\tSwitches: []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"020004000001\",\n\t\t\t\t\t\"role\": \"core\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400002\",\n\t\t\t\t\t\"role\": \"core\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400003\",\n\t\t\t\t\t\"role\": \"distribution\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400004\",\n\t\t\t\t\t\"role\": \"distribution\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400005\",\n\t\t\t\t\t\"role\": \"access\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400006\",\n\t\t\t\t\t\"role\": \"access\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mist.orgSiteEvpnTopology;\nimport com.pulumi.mist.OrgSiteEvpnTopologyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var evpnOne = new OrgSiteEvpnTopology(\"evpnOne\", OrgSiteEvpnTopologyArgs.builder()\n            .orgId(terraformTest.id())\n            .name(\"evpn_one\")\n            .evpnOptions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .switches(            \n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  evpnOne:\n    type: mist:orgSiteEvpnTopology\n    name: evpn_one\n    properties:\n      orgId: ${terraformTest.id}\n      name: evpn_one\n      evpnOptions:\n        routedAt: core\n        overlay:\n          as: 65000\n        coreAsBorder: true\n        autoLoopbackSubnet: 172.16.192.0/24\n        autoLoopbackSubnet6: fd33:ab00:2::/64\n        perVlanVgaV4Mac: false\n        underlay:\n          asBase: 65001\n          useIpv6: false\n          subnet: 10.255.240.0/20\n        autoRouterIdSubnet: 172.16.254.0/23\n      switches:\n        - mac: '020004000001'\n          role: core\n        - mac: '02000400002'\n          role: core\n        - mac: '02000400003'\n          role: distribution\n        - mac: '02000400004'\n          role: distribution\n        - mac: '02000400005'\n          role: access\n        - mac: '02000400006'\n          role: access\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_evpn_topology` with:\n\nEVPN Topology can be imported by specifying the org_id and the evpn_topology_id\n\n```sh\n$ pulumi import junipermist:org/evpnTopology:EvpnTopology evpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "properties": {
+                "evpnOptions": {
+                    "$ref": "#/types/junipermist:org/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions",
+                    "description": "EVPN Options\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "podNames": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Property key is the pod number\n"
+                },
+                "switches": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/EvpnTopologySwitches:EvpnTopologySwitches"
+                    },
+                    "description": "Property key can be the switch MAC Address\n"
+                }
+            },
+            "required": [
+                "name",
+                "orgId",
+                "podNames",
+                "switches"
+            ],
+            "inputProperties": {
+                "evpnOptions": {
+                    "$ref": "#/types/junipermist:org/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions",
+                    "description": "EVPN Options\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "podNames": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Property key is the pod number\n"
+                },
+                "switches": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:org/EvpnTopologySwitches:EvpnTopologySwitches"
+                    },
+                    "description": "Property key can be the switch MAC Address\n"
+                }
+            },
+            "requiredInputs": [
+                "orgId",
+                "switches"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EvpnTopology resources.\n",
+                "properties": {
+                    "evpnOptions": {
+                        "$ref": "#/types/junipermist:org/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions",
+                        "description": "EVPN Options\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "podNames": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Property key is the pod number\n"
+                    },
+                    "switches": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:org/EvpnTopologySwitches:EvpnTopologySwitches"
+                        },
+                        "description": "Property key can be the switch MAC Address\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "junipermist:org/gatewaytemplate:Gatewaytemplate": {
             "description": "This resource manages the Gateway Templates.\nA Gateway template is used to define the static ip address and subnet mask of the hub device, along with the gateway. It also allows for the selection of options such as enabling source nat and overriding the public ip for the hub if needed. the endpoint selected in the gateway template ties the hub and spoke devices together and creates the auto-vpn tunnel.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Gatewaytemplate;\nimport com.pulumi.junipermist.org.GatewaytemplateArgs;\nimport com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyArgs;\nimport com.pulumi.junipermist.org.inputs.GatewaytemplateServicePolicyIdpArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gatewaytemplateOne = new Gatewaytemplate(\"gatewaytemplateOne\", GatewaytemplateArgs.builder()\n            .type(\"spoke\")\n            .name(\"gatewaytemplate_one\")\n            .orgId(terraformTest.id())\n            .portConfig(Map.ofEntries(\n                Map.entry(\"ge-0/0/3\", Map.ofEntries(\n                    Map.entry(\"name\", \"FTTH\"),\n                    Map.entry(\"usage\", \"wan\"),\n                    Map.entry(\"aggregated\", false),\n                    Map.entry(\"redundant\", false),\n                    Map.entry(\"critical\", false),\n                    Map.entry(\"wanType\", \"broadband\"),\n                    Map.entry(\"ipConfig\", Map.ofEntries(\n                        Map.entry(\"type\", \"static\"),\n                        Map.entry(\"ip\", \"192.168.1.8\"),\n                        Map.entry(\"netmask\", \"/24\"),\n                        Map.entry(\"gateway\", \"192.168.1.1\")\n                    )),\n                    Map.entry(\"disableAutoneg\", false),\n                    Map.entry(\"speed\", \"auto\"),\n                    Map.entry(\"duplex\", \"auto\"),\n                    Map.entry(\"wanSourceNat\", Map.of(\"disabled\", false)),\n                    Map.entry(\"vpnPaths\", Map.of(\"SSR_HUB_DC-MPLS.OrgOverlay\", Map.ofEntries(\n                        Map.entry(\"key\", 0),\n                        Map.entry(\"role\", \"spoke\"),\n                        Map.entry(\"bfdProfile\", \"broadband\")\n                    )))\n                )),\n                Map.entry(\"ge-0/0/5\", Map.ofEntries(\n                    Map.entry(\"usage\", \"lan\"),\n                    Map.entry(\"critical\", false),\n                    Map.entry(\"aggregated\", true),\n                    Map.entry(\"aeDisableLacp\", false),\n                    Map.entry(\"aeLacpForceUp\", true),\n                    Map.entry(\"aeIdx\", 0),\n                    Map.entry(\"redundant\", false),\n                    Map.entry(\"networks\",                     \n                        \"PRD-Core\",\n                        \"PRD-Mgmt\",\n                        \"PRD-Lab\")\n                ))\n            ))\n            .ipConfigs(Map.ofEntries(\n                Map.entry(\"PRD-Core\", Map.ofEntries(\n                    Map.entry(\"type\", \"static\"),\n                    Map.entry(\"ip\", \"10.3.100.9\"),\n                    Map.entry(\"netmask\", \"/24\")\n                )),\n                Map.entry(\"PRD-Mgmt\", Map.ofEntries(\n                    Map.entry(\"type\", \"static\"),\n                    Map.entry(\"ip\", \"10.3.172.1\"),\n                    Map.entry(\"netmask\", \"/24\")\n                )),\n                Map.entry(\"PRD-Lab\", Map.ofEntries(\n                    Map.entry(\"type\", \"static\"),\n                    Map.entry(\"ip\", \"10.3.171.1\"),\n                    Map.entry(\"netmask\", \"/24\")\n                ))\n            ))\n            .servicePolicies(GatewaytemplateServicePolicyArgs.builder()\n                .name(\"Policy-14\")\n                .tenants(\"PRD-Core\")\n                .services(\"any\")\n                .action(\"allow\")\n                .path_preference(\"HUB\")\n                .idp(GatewaytemplateServicePolicyIdpArgs.builder()\n                    .enabled(true)\n                    .profile(\"critical\")\n                    .alertOnly(false)\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gatewaytemplateOne:\n    type: junipermist:org:Gatewaytemplate\n    name: gatewaytemplate_one\n    properties:\n      type: spoke\n      name: gatewaytemplate_one\n      orgId: ${terraformTest.id}\n      portConfig:\n        ge-0/0/3:\n          name: FTTH\n          usage: wan\n          aggregated: false\n          redundant: false\n          critical: false\n          wanType: broadband\n          ipConfig:\n            type: static\n            ip: 192.168.1.8\n            netmask: /24\n            gateway: 192.168.1.1\n          disableAutoneg: false\n          speed: auto\n          duplex: auto\n          wanSourceNat:\n            disabled: false\n          vpnPaths:\n            SSR_HUB_DC-MPLS.OrgOverlay:\n              key: 0\n              role: spoke\n              bfdProfile: broadband\n        ge-0/0/5:\n          usage: lan\n          critical: false\n          aggregated: true\n          aeDisableLacp: false\n          aeLacpForceUp: true\n          aeIdx: 0\n          redundant: false\n          networks:\n            - PRD-Core\n            - PRD-Mgmt\n            - PRD-Lab\n      ipConfigs:\n        PRD-Core:\n          type: static\n          ip: 10.3.100.9\n          netmask: /24\n        PRD-Mgmt:\n          type: static\n          ip: 10.3.172.1\n          netmask: /24\n        PRD-Lab:\n          type: static\n          ip: 10.3.171.1\n          netmask: /24\n      servicePolicies:\n        - name: Policy-14\n          tenants:\n            - PRD-Core\n          services:\n            - any\n          action: allow\n          path_preference: HUB\n          idp:\n            enabled: true\n            profile: critical\n            alertOnly: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_gatewaytemplate` with:\n\nGateway Template can be imported by specifying the org_id and the gatewaytemplate_id\n\n```sh\n$ pulumi import junipermist:org/gatewaytemplate:Gatewaytemplate gatewaytemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
             "properties": {
@@ -31200,6 +32020,7 @@
                 "dnsOverride",
                 "name",
                 "ntpOverride",
+                "oobIpConfig",
                 "orgId",
                 "type"
             ],
@@ -31577,7 +32398,8 @@
                     "items": {
                         "$ref": "#/types/junipermist:org/InventoryDevice:InventoryDevice"
                     },
-                    "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n"
+                    "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n",
+                    "deprecationMessage": "The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.\nPlease update your configurations to use the `inventory` attribute."
                 },
                 "inventory": {
                     "type": "object",
@@ -31606,7 +32428,8 @@
                     "items": {
                         "$ref": "#/types/junipermist:org/InventoryDevice:InventoryDevice"
                     },
-                    "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n"
+                    "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n",
+                    "deprecationMessage": "The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.\nPlease update your configurations to use the `inventory` attribute."
                 },
                 "inventory": {
                     "type": "object",
@@ -31635,7 +32458,8 @@
                         "items": {
                             "$ref": "#/types/junipermist:org/InventoryDevice:InventoryDevice"
                         },
-                        "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n"
+                        "description": "**DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set\n",
+                        "deprecationMessage": "The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.\nPlease update your configurations to use the `inventory` attribute."
                     },
                     "inventory": {
                         "type": "object",
@@ -32610,7 +33434,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplatePortUsages:NetworktemplatePortUsages"
-                    }
+                    },
+                    "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                 },
                 "radiusConfig": {
                     "$ref": "#/types/junipermist:org/NetworktemplateRadiusConfig:NetworktemplateRadiusConfig",
@@ -32743,7 +33568,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:org/NetworktemplatePortUsages:NetworktemplatePortUsages"
-                    }
+                    },
+                    "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                 },
                 "radiusConfig": {
                     "$ref": "#/types/junipermist:org/NetworktemplateRadiusConfig:NetworktemplateRadiusConfig",
@@ -32876,7 +33702,8 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:org/NetworktemplatePortUsages:NetworktemplatePortUsages"
-                        }
+                        },
+                        "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                     },
                     "radiusConfig": {
                         "$ref": "#/types/junipermist:org/NetworktemplateRadiusConfig:NetworktemplateRadiusConfig",
@@ -33785,7 +34612,7 @@
             }
         },
         "junipermist:org/setting:Setting": {
-            "description": "This resource manages the Org Settings.\nThe Org Settings can be used to customize the Org configuration\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.org.Setting;\nimport com.pulumi.junipermist.org.SettingArgs;\nimport com.pulumi.junipermist.org.inputs.SettingCradlepointArgs;\nimport com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;\nimport com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;\nimport com.pulumi.junipermist.org.inputs.SettingSecurityArgs;\nimport com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var terraformTest = new Setting(\"terraformTest\", SettingArgs.builder()\n            .orgId(terraformTestMistOrg.id())\n            .apUpdownThreshold(10)\n            .cradlepoint(SettingCradlepointArgs.builder()\n                .cp_api_id(\"cp_api_id_test\")\n                .cp_api_key(\"secret\")\n                .ecm_api_id(\"ecm_api_id_test\")\n                .ecm_api_key(\"secret\")\n                .build())\n            .deviceUpdownThreshold(10)\n            .disablePcap(false)\n            .disableRemoteShell(true)\n            .gatewayUpdownThreshold(10)\n            .mxedgeMgmt(SettingMxedgeMgmtArgs.builder()\n                .mist_password(\"mist_secret_passowrd\")\n                .root_password(\"root_secret_password\")\n                .oob_ip_type(\"dhcp\")\n                .oob_ip_type6(\"disabled\")\n                .build())\n            .passwordPolicy(SettingPasswordPolicyArgs.builder()\n                .enabled(true)\n                .freshness(180)\n                .min_length(12)\n                .requires_special_char(true)\n                .requires_two_factor_auth(false)\n                .build())\n            .security(SettingSecurityArgs.builder()\n                .disable_local_ssh(true)\n                .build())\n            .switchUpdownThreshold(10)\n            .syntheticTest(SettingSyntheticTestArgs.builder()\n                .disabled(false)\n                .vlans(                \n                    SettingSyntheticTestVlanArgs.builder()\n                        .vlanIds(                        \n                            \"10\",\n                            \"30\")\n                        .customTestUrls(                        \n                            \"http://www.abc.com/\",\n                            \"https://10.3.5.1:8080/about\")\n                        .build(),\n                    SettingSyntheticTestVlanArgs.builder()\n                        .vlanIds(\"20\")\n                        .disabled(true)\n                        .build())\n                .build())\n            .uiIdleTimeout(120)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformTest:\n    type: junipermist:org:Setting\n    name: terraform_test\n    properties:\n      orgId: ${terraformTestMistOrg.id}\n      apUpdownThreshold: 10\n      cradlepoint:\n        cp_api_id: cp_api_id_test\n        cp_api_key: secret\n        ecm_api_id: ecm_api_id_test\n        ecm_api_key: secret\n      deviceUpdownThreshold: 10\n      disablePcap: false\n      disableRemoteShell: true\n      gatewayUpdownThreshold: 10\n      mxedgeMgmt:\n        mist_password: mist_secret_passowrd\n        root_password: root_secret_password\n        oob_ip_type: dhcp\n        oob_ip_type6: disabled\n      passwordPolicy:\n        enabled: true\n        freshness: 180\n        min_length: 12\n        requires_special_char: true\n        requires_two_factor_auth: false\n      security:\n        disable_local_ssh: true\n      switchUpdownThreshold: 10\n      syntheticTest:\n        disabled: false\n        vlans:\n          - vlanIds:\n              - '10'\n              - '30'\n            customTestUrls:\n              - http://www.abc.com/\n              - https://10.3.5.1:8080/about\n          - vlanIds:\n              - '20'\n            disabled: true\n      uiIdleTimeout: 120\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_setting` with:\n\nOrg Setting can be imported by specifying the org_id\n\n```sh\n$ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
+            "description": "This resource manages the Org Settings.\nThe Org Settings can be used to customize the Org configuration\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  terraformTest:\n    type: junipermist:org:Setting\n    name: terraform_test\n    properties:\n      orgId: ${terraformTestMistOrg.id}\n      apUpdownThreshold: 10\n      cradlepoint:\n        cp_api_id: cp_api_id_test\n        cp_api_key: secret\n        ecm_api_id: ecm_api_id_test\n        ecm_api_key: secret\n      deviceUpdownThreshold: 10\n      disablePcap: false\n      disableRemoteShell: true\n      gatewayUpdownThreshold: 10\n      mxedgeMgmt:\n        mist_password: mist_secret_passowrd\n        root_password: root_secret_password\n        oob_ip_type: dhcp\n        oob_ip_type6: disabled\n      passwordPolicy:\n        enabled: true\n        freshness: 180\n        min_length: 12\n        requires_special_char: true\n        requires_two_factor_auth: false\n      security:\n        disable_local_ssh: true\n      switchUpdownThreshold: 10\n      syntheticTest:\n        disabled: false\n        vlans:\n          - vlanIds:\n              - '10'\n              - '30'\n            customTestUrls:\n              - http://www.abc.com/\n              - https://10.3.5.1:8080/about\n          - vlanIds:\n              - '20'\n            disabled: true\n      uiIdleTimeout: 120\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_org_setting` with:\n\nOrg Setting can be imported by specifying the org_id\n\n```sh\n$ pulumi import junipermist:org/setting:Setting setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
             "properties": {
                 "apUpdownThreshold": {
                     "type": "integer",
@@ -33906,6 +34733,7 @@
             "required": [
                 "apUpdownThreshold",
                 "cacerts",
+                "cradlepoint",
                 "deviceUpdownThreshold",
                 "disablePcap",
                 "disableRemoteShell",
@@ -33936,9 +34764,6 @@
                 },
                 "cloudshark": {
                     "$ref": "#/types/junipermist:org/SettingCloudshark:SettingCloudshark"
-                },
-                "cradlepoint": {
-                    "$ref": "#/types/junipermist:org/SettingCradlepoint:SettingCradlepoint"
                 },
                 "deviceCert": {
                     "$ref": "#/types/junipermist:org/SettingDeviceCert:SettingDeviceCert",
@@ -35018,6 +35843,10 @@
                     "type": "integer",
                     "description": "max idle time in seconds\n"
                 },
+                "maxNumClients": {
+                    "type": "integer",
+                    "description": "maximum number of client connected to the SSID. `0` means unlimited\n"
+                },
                 "mistNac": {
                     "$ref": "#/types/junipermist:org/WlanMistNac:WlanMistNac"
                 },
@@ -35095,6 +35924,9 @@
                 "radsec": {
                     "$ref": "#/types/junipermist:org/WlanRadsec:WlanRadsec",
                     "description": "Radsec settings\n"
+                },
+                "rateset": {
+                    "$ref": "#/types/junipermist:org/WlanRateset:WlanRateset"
                 },
                 "roamMode": {
                     "type": "string",
@@ -35213,6 +36045,7 @@
                 "limitBcast",
                 "limitProbeResponse",
                 "maxIdletime",
+                "maxNumClients",
                 "mspId",
                 "mxtunnelIds",
                 "mxtunnelNames",
@@ -35481,6 +36314,10 @@
                     "type": "integer",
                     "description": "max idle time in seconds\n"
                 },
+                "maxNumClients": {
+                    "type": "integer",
+                    "description": "maximum number of client connected to the SSID. `0` means unlimited\n"
+                },
                 "mistNac": {
                     "$ref": "#/types/junipermist:org/WlanMistNac:WlanMistNac"
                 },
@@ -35540,6 +36377,9 @@
                 "radsec": {
                     "$ref": "#/types/junipermist:org/WlanRadsec:WlanRadsec",
                     "description": "Radsec settings\n"
+                },
+                "rateset": {
+                    "$ref": "#/types/junipermist:org/WlanRateset:WlanRateset"
                 },
                 "roamMode": {
                     "type": "string",
@@ -35859,6 +36699,10 @@
                         "type": "integer",
                         "description": "max idle time in seconds\n"
                     },
+                    "maxNumClients": {
+                        "type": "integer",
+                        "description": "maximum number of client connected to the SSID. `0` means unlimited\n"
+                    },
                     "mistNac": {
                         "$ref": "#/types/junipermist:org/WlanMistNac:WlanMistNac"
                     },
@@ -35936,6 +36780,9 @@
                     "radsec": {
                         "$ref": "#/types/junipermist:org/WlanRadsec:WlanRadsec",
                         "description": "Radsec settings\n"
+                    },
+                    "rateset": {
+                        "$ref": "#/types/junipermist:org/WlanRateset:WlanRateset"
                     },
                     "roamMode": {
                         "type": "string",
@@ -36785,8 +37632,110 @@
                 }
             ]
         },
+        "junipermist:site/evpnTopology:EvpnTopology": {
+            "description": "This resource manages the Site Evpn Topologys.\nEVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.\n\n\u003e To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mist from \"@pulumi/mist\";\n\nconst evpnOne = new mist.index.SiteSiteEvpnTopology(\"evpn_one\", {\n    siteId: terraformTest.id,\n    name: \"evpn_one\",\n    evpnOptions: {\n        routedAt: \"core\",\n        overlay: {\n            as: 65000,\n        },\n        coreAsBorder: true,\n        autoLoopbackSubnet: \"172.16.192.0/24\",\n        autoLoopbackSubnet6: \"fd33:ab00:2::/64\",\n        perVlanVgaV4Mac: false,\n        underlay: {\n            asBase: 65001,\n            useIpv6: false,\n            subnet: \"10.255.240.0/20\",\n        },\n        autoRouterIdSubnet: \"172.16.254.0/23\",\n    },\n    switches: [\n        {\n            mac: \"020004000001\",\n            role: \"core\",\n        },\n        {\n            mac: \"02000400002\",\n            role: \"core\",\n        },\n        {\n            mac: \"02000400003\",\n            role: \"distribution\",\n        },\n        {\n            mac: \"02000400004\",\n            role: \"distribution\",\n        },\n        {\n            mac: \"02000400005\",\n            role: \"access\",\n        },\n        {\n            mac: \"02000400006\",\n            role: \"access\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_mist as mist\n\nevpn_one = mist.index.SiteSiteEvpnTopology(\"evpn_one\",\n    site_id=terraform_test.id,\n    name=evpn_one,\n    evpn_options={\n        routedAt: core,\n        overlay: {\n            as: 65000,\n        },\n        coreAsBorder: True,\n        autoLoopbackSubnet: 172.16.192.0/24,\n        autoLoopbackSubnet6: fd33:ab00:2::/64,\n        perVlanVgaV4Mac: False,\n        underlay: {\n            asBase: 65001,\n            useIpv6: False,\n            subnet: 10.255.240.0/20,\n        },\n        autoRouterIdSubnet: 172.16.254.0/23,\n    },\n    switches=[\n        {\n            mac: 020004000001,\n            role: core,\n        },\n        {\n            mac: 02000400002,\n            role: core,\n        },\n        {\n            mac: 02000400003,\n            role: distribution,\n        },\n        {\n            mac: 02000400004,\n            role: distribution,\n        },\n        {\n            mac: 02000400005,\n            role: access,\n        },\n        {\n            mac: 02000400006,\n            role: access,\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mist = Pulumi.Mist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var evpnOne = new Mist.Index.SiteSiteEvpnTopology(\"evpn_one\", new()\n    {\n        SiteId = terraformTest.Id,\n        Name = \"evpn_one\",\n        EvpnOptions = \n        {\n            { \"routedAt\", \"core\" },\n            { \"overlay\", \n            {\n                { \"as\", 65000 },\n            } },\n            { \"coreAsBorder\", true },\n            { \"autoLoopbackSubnet\", \"172.16.192.0/24\" },\n            { \"autoLoopbackSubnet6\", \"fd33:ab00:2::/64\" },\n            { \"perVlanVgaV4Mac\", false },\n            { \"underlay\", \n            {\n                { \"asBase\", 65001 },\n                { \"useIpv6\", false },\n                { \"subnet\", \"10.255.240.0/20\" },\n            } },\n            { \"autoRouterIdSubnet\", \"172.16.254.0/23\" },\n        },\n        Switches = new[]\n        {\n            \n            {\n                { \"mac\", \"020004000001\" },\n                { \"role\", \"core\" },\n            },\n            \n            {\n                { \"mac\", \"02000400002\" },\n                { \"role\", \"core\" },\n            },\n            \n            {\n                { \"mac\", \"02000400003\" },\n                { \"role\", \"distribution\" },\n            },\n            \n            {\n                { \"mac\", \"02000400004\" },\n                { \"role\", \"distribution\" },\n            },\n            \n            {\n                { \"mac\", \"02000400005\" },\n                { \"role\", \"access\" },\n            },\n            \n            {\n                { \"mac\", \"02000400006\" },\n                { \"role\", \"access\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mist/sdk/go/mist\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mist.NewSiteSiteEvpnTopology(ctx, \"evpn_one\", \u0026mist.SiteSiteEvpnTopologyArgs{\n\t\t\tSiteId: terraformTest.Id,\n\t\t\tName:   \"evpn_one\",\n\t\t\tEvpnOptions: map[string]interface{}{\n\t\t\t\t\"routedAt\": \"core\",\n\t\t\t\t\"overlay\": map[string]interface{}{\n\t\t\t\t\t\"as\": 65000,\n\t\t\t\t},\n\t\t\t\t\"coreAsBorder\":        true,\n\t\t\t\t\"autoLoopbackSubnet\":  \"172.16.192.0/24\",\n\t\t\t\t\"autoLoopbackSubnet6\": \"fd33:ab00:2::/64\",\n\t\t\t\t\"perVlanVgaV4Mac\":     false,\n\t\t\t\t\"underlay\": map[string]interface{}{\n\t\t\t\t\t\"asBase\":  65001,\n\t\t\t\t\t\"useIpv6\": false,\n\t\t\t\t\t\"subnet\":  \"10.255.240.0/20\",\n\t\t\t\t},\n\t\t\t\t\"autoRouterIdSubnet\": \"172.16.254.0/23\",\n\t\t\t},\n\t\t\tSwitches: []map[string]interface{}{\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"020004000001\",\n\t\t\t\t\t\"role\": \"core\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400002\",\n\t\t\t\t\t\"role\": \"core\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400003\",\n\t\t\t\t\t\"role\": \"distribution\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400004\",\n\t\t\t\t\t\"role\": \"distribution\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400005\",\n\t\t\t\t\t\"role\": \"access\",\n\t\t\t\t},\n\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\"mac\":  \"02000400006\",\n\t\t\t\t\t\"role\": \"access\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mist.siteSiteEvpnTopology;\nimport com.pulumi.mist.SiteSiteEvpnTopologyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var evpnOne = new SiteSiteEvpnTopology(\"evpnOne\", SiteSiteEvpnTopologyArgs.builder()\n            .siteId(terraformTest.id())\n            .name(\"evpn_one\")\n            .evpnOptions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .switches(            \n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),\n                %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  evpnOne:\n    type: mist:siteSiteEvpnTopology\n    name: evpn_one\n    properties:\n      siteId: ${terraformTest.id}\n      name: evpn_one\n      evpnOptions:\n        routedAt: core\n        overlay:\n          as: 65000\n        coreAsBorder: true\n        autoLoopbackSubnet: 172.16.192.0/24\n        autoLoopbackSubnet6: fd33:ab00:2::/64\n        perVlanVgaV4Mac: false\n        underlay:\n          asBase: 65001\n          useIpv6: false\n          subnet: 10.255.240.0/20\n        autoRouterIdSubnet: 172.16.254.0/23\n      switches:\n        - mac: '020004000001'\n          role: core\n        - mac: '02000400002'\n          role: core\n        - mac: '02000400003'\n          role: distribution\n        - mac: '02000400004'\n          role: distribution\n        - mac: '02000400005'\n          role: access\n        - mac: '02000400006'\n          role: access\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_evpn_topology` with:\n\nEVPN Topology can be imported by specifying the site_id and the evpn_topology_id\n\n```sh\n$ pulumi import junipermist:site/evpnTopology:EvpnTopology evpn_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a.d3c42998-9012-4859-9743-6b9bee475309\n```\n\n",
+            "properties": {
+                "evpnOptions": {
+                    "$ref": "#/types/junipermist:site/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions",
+                    "description": "EVPN Options\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "orgId": {
+                    "type": "string"
+                },
+                "podNames": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Property key is the pod number\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "switches": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/EvpnTopologySwitches:EvpnTopologySwitches"
+                    },
+                    "description": "Property key can be the switch MAC Address\n"
+                }
+            },
+            "required": [
+                "name",
+                "orgId",
+                "podNames",
+                "siteId",
+                "switches"
+            ],
+            "inputProperties": {
+                "evpnOptions": {
+                    "$ref": "#/types/junipermist:site/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions",
+                    "description": "EVPN Options\n"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "podNames": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Property key is the pod number\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "switches": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/junipermist:site/EvpnTopologySwitches:EvpnTopologySwitches"
+                    },
+                    "description": "Property key can be the switch MAC Address\n"
+                }
+            },
+            "requiredInputs": [
+                "siteId",
+                "switches"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EvpnTopology resources.\n",
+                "properties": {
+                    "evpnOptions": {
+                        "$ref": "#/types/junipermist:site/EvpnTopologyEvpnOptions:EvpnTopologyEvpnOptions",
+                        "description": "EVPN Options\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "podNames": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Property key is the pod number\n"
+                    },
+                    "siteId": {
+                        "type": "string"
+                    },
+                    "switches": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/junipermist:site/EvpnTopologySwitches:EvpnTopologySwitches"
+                        },
+                        "description": "Property key can be the switch MAC Address\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "junipermist:site/networktemplate:Networktemplate": {
-            "description": "This resource manages the Site Network configuration (Switch configuration).\nThe Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Networktemplate;\nimport com.pulumi.junipermist.site.NetworktemplateArgs;\nimport com.pulumi.junipermist.site.inputs.NetworktemplateRadiusConfigArgs;\nimport com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMatchingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var networktemplateOne = new Networktemplate(\"networktemplateOne\", NetworktemplateArgs.builder()\n            .siteId(terraformTest.id())\n            .dnsServers(            \n                \"8.8.8.8\",\n                \"1.1.1.1\")\n            .dnsSuffixes(\"mycorp.com\")\n            .ntpServers(\"pool.ntp.org\")\n            .additionalConfigCmds(            \n                \"set system hostnam test\",\n                \"set system services ssh root-login allow\")\n            .networks(Map.ofEntries(\n                Map.entry(\"network_one\", Map.of(\"vlanId\", 10)),\n                Map.entry(\"network_two\", Map.of(\"vlanId\", 11))\n            ))\n            .portUsages(Map.of(\"trunk\", Map.ofEntries(\n                Map.entry(\"allNetworks\", true),\n                Map.entry(\"enableQos\", true),\n                Map.entry(\"mode\", \"port_usage_one\"),\n                Map.entry(\"portNetwork\", \"network_one\")\n            )))\n            .radiusConfig(NetworktemplateRadiusConfigArgs.builder()\n                .acct_interim_interval(60)\n                .coa_enabled(true)\n                .network(\"network_one\")\n                .acct_servers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .auth_servers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .switchMatching(NetworktemplateSwitchMatchingArgs.builder()\n                .enable(true)\n                .rules(NetworktemplateSwitchMatchingRuleArgs.builder()\n                    .name(\"switch_rule_one\")\n                    .matchType(\"match_name[0:3]\")\n                    .matchValue(\"abc\")\n                    .portConfig(Map.of(\"ge-0/0/0-10\", Map.of(\"usage\", \"port_usage_one\")))\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  networktemplateOne:\n    type: junipermist:site:Networktemplate\n    name: networktemplate_one\n    properties:\n      siteId: ${terraformTest.id}\n      dnsServers:\n        - 8.8.8.8\n        - 1.1.1.1\n      dnsSuffixes:\n        - mycorp.com\n      ntpServers:\n        - pool.ntp.org\n      additionalConfigCmds:\n        - set system hostnam test\n        - set system services ssh root-login allow\n      networks:\n        network_one:\n          vlanId: 10\n        network_two:\n          vlanId: 11\n      portUsages:\n        trunk:\n          allNetworks: true\n          enableQos: true\n          mode: port_usage_one\n          portNetwork: network_one\n      radiusConfig:\n        acct_interim_interval: 60\n        coa_enabled: true\n        network: network_one\n        acct_servers:\n          - host: 1.2.3.4\n            secret: secret\n        auth_servers:\n          - host: 1.2.3.4\n            secret: secret\n      switchMatching:\n        enable: true\n        rules:\n          - name: switch_rule_one\n            matchType: match_name[0:3]\n            matchValue: abc\n            portConfig:\n              ge-0/0/0-10:\n                usage: port_usage_one\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_networktemplate` with:\n\nSite Network Template can be imported by specifying the site_id\n\n```sh\n$ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
+            "description": "This resource manages the Site Network configuration (Switch configuration).\nThe Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.\n\n\u003e When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.\n\n!\u003e Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Networktemplate;\nimport com.pulumi.junipermist.site.NetworktemplateArgs;\nimport com.pulumi.junipermist.site.inputs.NetworktemplateRadiusConfigArgs;\nimport com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMatchingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var networktemplateOne = new Networktemplate(\"networktemplateOne\", NetworktemplateArgs.builder()\n            .siteId(terraformTest.id())\n            .dnsServers(            \n                \"8.8.8.8\",\n                \"1.1.1.1\")\n            .dnsSuffixes(\"mycorp.com\")\n            .ntpServers(\"pool.ntp.org\")\n            .additionalConfigCmds(            \n                \"set system hostnam test\",\n                \"set system services ssh root-login allow\")\n            .networks(Map.ofEntries(\n                Map.entry(\"network_one\", Map.of(\"vlanId\", 10)),\n                Map.entry(\"network_two\", Map.of(\"vlanId\", 11))\n            ))\n            .portUsages(Map.of(\"trunk\", Map.ofEntries(\n                Map.entry(\"allNetworks\", true),\n                Map.entry(\"enableQos\", true),\n                Map.entry(\"mode\", \"port_usage_one\"),\n                Map.entry(\"portNetwork\", \"network_one\")\n            )))\n            .radiusConfig(NetworktemplateRadiusConfigArgs.builder()\n                .acct_interim_interval(60)\n                .coa_enabled(true)\n                .network(\"network_one\")\n                .acct_servers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .auth_servers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                .build())\n            .switchMatching(NetworktemplateSwitchMatchingArgs.builder()\n                .enable(true)\n                .rules(NetworktemplateSwitchMatchingRuleArgs.builder()\n                    .name(\"switch_rule_one\")\n                    .matchType(\"match_name[0:3]\")\n                    .matchValue(\"abc\")\n                    .portConfig(Map.of(\"ge-0/0/0-10\", Map.of(\"usage\", \"port_usage_one\")))\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  networktemplateOne:\n    type: junipermist:site:Networktemplate\n    name: networktemplate_one\n    properties:\n      siteId: ${terraformTest.id}\n      dnsServers:\n        - 8.8.8.8\n        - 1.1.1.1\n      dnsSuffixes:\n        - mycorp.com\n      ntpServers:\n        - pool.ntp.org\n      additionalConfigCmds:\n        - set system hostnam test\n        - set system services ssh root-login allow\n      networks:\n        network_one:\n          vlanId: 10\n        network_two:\n          vlanId: 11\n      portUsages:\n        trunk:\n          allNetworks: true\n          enableQos: true\n          mode: port_usage_one\n          portNetwork: network_one\n      radiusConfig:\n        acct_interim_interval: 60\n        coa_enabled: true\n        network: network_one\n        acct_servers:\n          - host: 1.2.3.4\n            secret: secret\n        auth_servers:\n          - host: 1.2.3.4\n            secret: secret\n      switchMatching:\n        enable: true\n        rules:\n          - name: switch_rule_one\n            matchType: match_name[0:3]\n            matchValue: abc\n            portConfig:\n              ge-0/0/0-10:\n                usage: port_usage_one\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_networktemplate` with:\n\nSite Network Template can be imported by specifying the site_id\n\n```sh\n$ pulumi import junipermist:site/networktemplate:Networktemplate networktemplate_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
             "properties": {
                 "aclPolicies": {
                     "type": "array",
@@ -36810,6 +37759,13 @@
                 },
                 "dhcpSnooping": {
                     "$ref": "#/types/junipermist:site/NetworktemplateDhcpSnooping:NetworktemplateDhcpSnooping"
+                },
+                "disabledSystemDefinedPortUsages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n"
                 },
                 "dnsServers": {
                     "type": "array",
@@ -36874,7 +37830,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplatePortUsages:NetworktemplatePortUsages"
-                    }
+                    },
+                    "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                 },
                 "radiusConfig": {
                     "$ref": "#/types/junipermist:site/NetworktemplateRadiusConfig:NetworktemplateRadiusConfig",
@@ -36944,6 +37901,13 @@
                 "dhcpSnooping": {
                     "$ref": "#/types/junipermist:site/NetworktemplateDhcpSnooping:NetworktemplateDhcpSnooping"
                 },
+                "disabledSystemDefinedPortUsages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n"
+                },
                 "dnsServers": {
                     "type": "array",
                     "items": {
@@ -37007,7 +37971,8 @@
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "#/types/junipermist:site/NetworktemplatePortUsages:NetworktemplatePortUsages"
-                    }
+                    },
+                    "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                 },
                 "radiusConfig": {
                     "$ref": "#/types/junipermist:site/NetworktemplateRadiusConfig:NetworktemplateRadiusConfig",
@@ -37078,6 +38043,13 @@
                     "dhcpSnooping": {
                         "$ref": "#/types/junipermist:site/NetworktemplateDhcpSnooping:NetworktemplateDhcpSnooping"
                     },
+                    "disabledSystemDefinedPortUsages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n"
+                    },
                     "dnsServers": {
                         "type": "array",
                         "items": {
@@ -37141,7 +38113,8 @@
                         "type": "object",
                         "additionalProperties": {
                             "$ref": "#/types/junipermist:site/NetworktemplatePortUsages:NetworktemplatePortUsages"
-                        }
+                        },
+                        "description": "Property key is the port usage name. Defines the profiles of port configuration configured on the switch\n"
                     },
                     "radiusConfig": {
                         "$ref": "#/types/junipermist:site/NetworktemplateRadiusConfig:NetworktemplateRadiusConfig",
@@ -37392,7 +38365,7 @@
             }
         },
         "junipermist:site/setting:Setting": {
-            "description": "This resource manages the Site Settings.\nThe Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Setting;\nimport com.pulumi.junipermist.site.SettingArgs;\nimport com.pulumi.junipermist.site.inputs.SettingAutoUpgradeArgs;\nimport com.pulumi.junipermist.site.inputs.SettingProxyArgs;\nimport com.pulumi.junipermist.site.inputs.SettingRogueArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var siteOne = new Setting(\"siteOne\", SettingArgs.builder()\n            .siteId(terraformSite.id())\n            .apUpdownThreshold(5)\n            .deviceUpdownThreshold(5)\n            .autoUpgrade(SettingAutoUpgradeArgs.builder()\n                .enabled(true)\n                .day_of_week(\"tue\")\n                .time_of_day(\"02:00\")\n                .version(\"beta\")\n                .build())\n            .configAutoRevert(true)\n            .persistConfigOnDevice(true)\n            .proxy(SettingProxyArgs.builder()\n                .url(\"http://myproxy:3128\")\n                .build())\n            .rogue(SettingRogueArgs.builder()\n                .enabled(true)\n                .honeypot_enabled(true)\n                .min_duration(5)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  siteOne:\n    type: junipermist:site:Setting\n    name: site_one\n    properties:\n      siteId: ${terraformSite.id}\n      apUpdownThreshold: 5\n      deviceUpdownThreshold: 5\n      autoUpgrade:\n        enabled: true\n        day_of_week: tue\n        time_of_day: 02:00\n        version: beta\n      configAutoRevert: true\n      persistConfigOnDevice: true\n      proxy:\n        url: http://myproxy:3128\n      rogue:\n        enabled: true\n        honeypot_enabled: true\n        min_duration: 5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_setting` with:\n\nSite Setting can be imported by specifying the site_id\n\n```sh\n$ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
+            "description": "This resource manages the Site Settings.\nThe Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)\n\n\u003e When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource\n\n!\u003e Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.site.Setting;\nimport com.pulumi.junipermist.site.SettingArgs;\nimport com.pulumi.junipermist.site.inputs.SettingAutoUpgradeArgs;\nimport com.pulumi.junipermist.site.inputs.SettingProxyArgs;\nimport com.pulumi.junipermist.site.inputs.SettingRogueArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var siteOne = new Setting(\"siteOne\", SettingArgs.builder()\n            .siteId(terraformSite.id())\n            .apUpdownThreshold(5)\n            .deviceUpdownThreshold(5)\n            .autoUpgrade(SettingAutoUpgradeArgs.builder()\n                .enabled(true)\n                .day_of_week(\"tue\")\n                .time_of_day(\"02:00\")\n                .version(\"beta\")\n                .build())\n            .configAutoRevert(true)\n            .persistConfigOnDevice(true)\n            .proxy(SettingProxyArgs.builder()\n                .url(\"http://myproxy:3128\")\n                .build())\n            .rogue(SettingRogueArgs.builder()\n                .enabled(true)\n                .honeypot_enabled(true)\n                .min_duration(5)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  siteOne:\n    type: junipermist:site:Setting\n    name: site_one\n    properties:\n      siteId: ${terraformSite.id}\n      apUpdownThreshold: 5\n      deviceUpdownThreshold: 5\n      autoUpgrade:\n        enabled: true\n        day_of_week: tue\n        time_of_day: 02:00\n        version: beta\n      configAutoRevert: true\n      persistConfigOnDevice: true\n      proxy:\n        url: http://myproxy:3128\n      rogue:\n        enabled: true\n        honeypot_enabled: true\n        min_duration: 5\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nUsing `pulumi import`, import `mist_site_setting` with:\n\nSite Setting can be imported by specifying the site_id\n\n```sh\n$ pulumi import junipermist:site/setting:Setting site_setting_one 17b46405-3a6d-4715-8bb4-6bb6d06f316a\n```\n\n",
             "properties": {
                 "analytic": {
                     "$ref": "#/types/junipermist:site/SettingAnalytic:SettingAnalytic"
@@ -37433,7 +38406,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n"
+                    "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n",
+                    "deprecationMessage": "This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.\nPlease update your configurations to configure it in the `junipermist.site.Networktemplate` resource."
                 },
                 "engagement": {
                     "$ref": "#/types/junipermist:site/SettingEngagement:SettingEngagement",
@@ -37611,7 +38585,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n"
+                    "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n",
+                    "deprecationMessage": "This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.\nPlease update your configurations to configure it in the `junipermist.site.Networktemplate` resource."
                 },
                 "engagement": {
                     "$ref": "#/types/junipermist:site/SettingEngagement:SettingEngagement",
@@ -37775,7 +38750,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n"
+                        "description": "if some system-default port usages are not desired - namely, ap / iot / uplink\n",
+                        "deprecationMessage": "This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.\nPlease update your configurations to configure it in the `junipermist.site.Networktemplate` resource."
                     },
                     "engagement": {
                         "$ref": "#/types/junipermist:site/SettingEngagement:SettingEngagement",
@@ -38414,6 +39390,10 @@
                     "type": "integer",
                     "description": "max idle time in seconds\n"
                 },
+                "maxNumClients": {
+                    "type": "integer",
+                    "description": "maximum number of client connected to the SSID. `0` means unlimited\n"
+                },
                 "mistNac": {
                     "$ref": "#/types/junipermist:site/WlanMistNac:WlanMistNac"
                 },
@@ -38491,6 +39471,9 @@
                 "radsec": {
                     "$ref": "#/types/junipermist:site/WlanRadsec:WlanRadsec",
                     "description": "Radsec settings\n"
+                },
+                "rateset": {
+                    "$ref": "#/types/junipermist:site/WlanRateset:WlanRateset"
                 },
                 "roamMode": {
                     "type": "string",
@@ -38609,6 +39592,7 @@
                 "limitBcast",
                 "limitProbeResponse",
                 "maxIdletime",
+                "maxNumClients",
                 "mspId",
                 "mxtunnelIds",
                 "mxtunnelNames",
@@ -38877,6 +39861,10 @@
                     "type": "integer",
                     "description": "max idle time in seconds\n"
                 },
+                "maxNumClients": {
+                    "type": "integer",
+                    "description": "maximum number of client connected to the SSID. `0` means unlimited\n"
+                },
                 "mistNac": {
                     "$ref": "#/types/junipermist:site/WlanMistNac:WlanMistNac"
                 },
@@ -38933,6 +39921,9 @@
                 "radsec": {
                     "$ref": "#/types/junipermist:site/WlanRadsec:WlanRadsec",
                     "description": "Radsec settings\n"
+                },
+                "rateset": {
+                    "$ref": "#/types/junipermist:site/WlanRateset:WlanRateset"
                 },
                 "roamMode": {
                     "type": "string",
@@ -39251,6 +40242,10 @@
                         "type": "integer",
                         "description": "max idle time in seconds\n"
                     },
+                    "maxNumClients": {
+                        "type": "integer",
+                        "description": "maximum number of client connected to the SSID. `0` means unlimited\n"
+                    },
                     "mistNac": {
                         "$ref": "#/types/junipermist:site/WlanMistNac:WlanMistNac"
                     },
@@ -39328,6 +40323,9 @@
                     "radsec": {
                         "$ref": "#/types/junipermist:site/WlanRadsec:WlanRadsec",
                         "description": "Radsec settings\n"
+                    },
+                    "rateset": {
+                        "$ref": "#/types/junipermist:site/WlanRateset:WlanRateset"
                     },
                     "roamMode": {
                         "type": "string",
