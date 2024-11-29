@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingCloudshark?> Cloudshark { get; private set; } = null!;
 
         [Output("cradlepoint")]
-        public Output<Outputs.SettingCradlepoint?> Cradlepoint { get; private set; } = null!;
+        public Output<Outputs.SettingCradlepoint> Cradlepoint { get; private set; } = null!;
 
         /// <summary>
         /// common device cert, optional
@@ -240,9 +240,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("cloudshark")]
         public Input<Inputs.SettingCloudsharkArgs>? Cloudshark { get; set; }
-
-        [Input("cradlepoint")]
-        public Input<Inputs.SettingCradlepointArgs>? Cradlepoint { get; set; }
 
         /// <summary>
         /// common device cert, optional

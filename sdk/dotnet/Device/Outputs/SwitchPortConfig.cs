@@ -54,13 +54,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? NoLocalOverwrite;
         public readonly bool? PoeDisabled;
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         /// </summary>
         public readonly string? Speed;
         /// <summary>
-        /// port usage name. 
-        /// 
-        /// If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        /// port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         /// </summary>
         public readonly string Usage;
 

@@ -16,6 +16,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanPortal {
     /**
+     * @return whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * 
+     */
+    private @Nullable Boolean allowWlanIdRoam;
+    /**
      * @return amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
@@ -321,33 +326,37 @@ public final class WlanPortal {
      */
     private @Nullable Map<String,String> sponsors;
     /**
-     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     private @Nullable String ssoDefaultRole;
+    /**
+     * @return if `wlan_portal_auth`==`sso`
+     * 
+     */
     private @Nullable String ssoForcedRole;
     /**
-     * @return IDP Cert (used to verify the signed response)
+     * @return if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
      * 
      */
     private @Nullable String ssoIdpCert;
     /**
-     * @return signing algorithm for SAML Assertion
+     * @return if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     private @Nullable String ssoIdpSignAlgo;
     /**
-     * @return IDP Single-Sign-On URL
+     * @return if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     private @Nullable String ssoIdpSsoUrl;
     /**
-     * @return IDP issuer URL
+     * @return if `wlan_portal_auth`==`sso`, IDP issuer URL
      * 
      */
     private @Nullable String ssoIssuer;
     /**
-     * @return enum: `email`, `unspecified`
+     * @return if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     private @Nullable String ssoNameidFormat;
@@ -378,6 +387,13 @@ public final class WlanPortal {
     private @Nullable String twilioSid;
 
     private WlanPortal() {}
+    /**
+     * @return whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * 
+     */
+    public Optional<Boolean> allowWlanIdRoam() {
+        return Optional.ofNullable(this.allowWlanIdRoam);
+    }
     /**
      * @return amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
@@ -806,45 +822,49 @@ public final class WlanPortal {
         return this.sponsors == null ? Map.of() : this.sponsors;
     }
     /**
-     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Optional<String> ssoDefaultRole() {
         return Optional.ofNullable(this.ssoDefaultRole);
     }
+    /**
+     * @return if `wlan_portal_auth`==`sso`
+     * 
+     */
     public Optional<String> ssoForcedRole() {
         return Optional.ofNullable(this.ssoForcedRole);
     }
     /**
-     * @return IDP Cert (used to verify the signed response)
+     * @return if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
      * 
      */
     public Optional<String> ssoIdpCert() {
         return Optional.ofNullable(this.ssoIdpCert);
     }
     /**
-     * @return signing algorithm for SAML Assertion
+     * @return if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<String> ssoIdpSignAlgo() {
         return Optional.ofNullable(this.ssoIdpSignAlgo);
     }
     /**
-     * @return IDP Single-Sign-On URL
+     * @return if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     public Optional<String> ssoIdpSsoUrl() {
         return Optional.ofNullable(this.ssoIdpSsoUrl);
     }
     /**
-     * @return IDP issuer URL
+     * @return if `wlan_portal_auth`==`sso`, IDP issuer URL
      * 
      */
     public Optional<String> ssoIssuer() {
         return Optional.ofNullable(this.ssoIssuer);
     }
     /**
-     * @return enum: `email`, `unspecified`
+     * @return if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     public Optional<String> ssoNameidFormat() {
@@ -895,6 +915,7 @@ public final class WlanPortal {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowWlanIdRoam;
         private @Nullable String amazonClientId;
         private @Nullable String amazonClientSecret;
         private @Nullable List<String> amazonEmailDomains;
@@ -971,6 +992,7 @@ public final class WlanPortal {
         public Builder() {}
         public Builder(WlanPortal defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowWlanIdRoam = defaults.allowWlanIdRoam;
     	      this.amazonClientId = defaults.amazonClientId;
     	      this.amazonClientSecret = defaults.amazonClientSecret;
     	      this.amazonEmailDomains = defaults.amazonEmailDomains;
@@ -1046,6 +1068,12 @@ public final class WlanPortal {
     	      this.twilioSid = defaults.twilioSid;
         }
 
+        @CustomType.Setter
+        public Builder allowWlanIdRoam(@Nullable Boolean allowWlanIdRoam) {
+
+            this.allowWlanIdRoam = allowWlanIdRoam;
+            return this;
+        }
         @CustomType.Setter
         public Builder amazonClientId(@Nullable String amazonClientId) {
 
@@ -1501,6 +1529,7 @@ public final class WlanPortal {
         }
         public WlanPortal build() {
             final var _resultValue = new WlanPortal();
+            _resultValue.allowWlanIdRoam = allowWlanIdRoam;
             _resultValue.amazonClientId = amazonClientId;
             _resultValue.amazonClientSecret = amazonClientSecret;
             _resultValue.amazonEmailDomains = amazonEmailDomains;

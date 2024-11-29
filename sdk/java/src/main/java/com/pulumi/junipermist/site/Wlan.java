@@ -28,6 +28,7 @@ import com.pulumi.junipermist.site.outputs.WlanMistNac;
 import com.pulumi.junipermist.site.outputs.WlanPortal;
 import com.pulumi.junipermist.site.outputs.WlanQos;
 import com.pulumi.junipermist.site.outputs.WlanRadsec;
+import com.pulumi.junipermist.site.outputs.WlanRateset;
 import com.pulumi.junipermist.site.outputs.WlanSchedule;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -906,6 +907,20 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Integer> maxIdletime() {
         return this.maxIdletime;
     }
+    /**
+     * maximum number of client connected to the SSID. `0` means unlimited
+     * 
+     */
+    @Export(name="maxNumClients", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxNumClients;
+
+    /**
+     * @return maximum number of client connected to the SSID. `0` means unlimited
+     * 
+     */
+    public Output<Integer> maxNumClients() {
+        return this.maxNumClients;
+    }
     @Export(name="mistNac", refs={WlanMistNac.class}, tree="[0]")
     private Output</* @Nullable */ WlanMistNac> mistNac;
 
@@ -1105,6 +1120,12 @@ public class Wlan extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WlanRadsec>> radsec() {
         return Codegen.optional(this.radsec);
+    }
+    @Export(name="rateset", refs={WlanRateset.class}, tree="[0]")
+    private Output</* @Nullable */ WlanRateset> rateset;
+
+    public Output<Optional<WlanRateset>> rateset() {
+        return Codegen.optional(this.rateset);
     }
     /**
      * enum: `11r`, `OKC`, `NONE`

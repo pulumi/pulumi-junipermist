@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This resource manages the Switch configuration.
  * It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
  *
+ * > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_device_switch` with:
@@ -75,7 +77,7 @@ export class Switch extends pulumi.CustomResource {
     /**
      * EVPN Junos settings
      */
-    public readonly evpnConfig!: pulumi.Output<outputs.device.SwitchEvpnConfig | undefined>;
+    public /*out*/ readonly evpnConfig!: pulumi.Output<outputs.device.SwitchEvpnConfig>;
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -134,7 +136,7 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.device.SwitchOspfAreas} | undefined>;
     /**
-     * Property key is the network name
+     * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
     public readonly otherIpConfigs!: pulumi.Output<{[key: string]: outputs.device.SwitchOtherIpConfigs} | undefined>;
     /**
@@ -147,6 +149,9 @@ export class Switch extends pulumi.CustomResource {
      * maximum 4 port mirrorings is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.device.SwitchPortMirroring} | undefined>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.device.SwitchPortUsages} | undefined>;
     /**
      * Junos Radius config
@@ -157,7 +162,7 @@ export class Switch extends pulumi.CustomResource {
     /**
      * used for OSPF / BGP / EVPN
      */
-    public readonly routerId!: pulumi.Output<string | undefined>;
+    public readonly routerId!: pulumi.Output<string>;
     /**
      * device Serial
      */
@@ -284,7 +289,6 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["disableAutoConfig"] = args ? args.disableAutoConfig : undefined;
             resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
             resourceInputs["dnsSuffixes"] = args ? args.dnsSuffixes : undefined;
-            resourceInputs["evpnConfig"] = args ? args.evpnConfig : undefined;
             resourceInputs["extraRoutes"] = args ? args.extraRoutes : undefined;
             resourceInputs["extraRoutes6"] = args ? args.extraRoutes6 : undefined;
             resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
@@ -318,6 +322,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["vrrpConfig"] = args ? args.vrrpConfig : undefined;
             resourceInputs["x"] = args ? args.x : undefined;
             resourceInputs["y"] = args ? args.y : undefined;
+            resourceInputs["evpnConfig"] = undefined /*out*/;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -422,7 +427,7 @@ export interface SwitchState {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>}>;
     /**
-     * Property key is the network name
+     * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
     otherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOtherIpConfigs>}>;
     /**
@@ -435,6 +440,9 @@ export interface SwitchState {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>}>;
     /**
      * Junos Radius config
@@ -520,10 +528,6 @@ export interface SwitchArgs {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * EVPN Junos settings
-     */
-    evpnConfig?: pulumi.Input<inputs.device.SwitchEvpnConfig>;
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -570,7 +574,7 @@ export interface SwitchArgs {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOspfAreas>}>;
     /**
-     * Property key is the network name
+     * Property key is the network name. Defines the additional IP Addresses configured on the device.
      */
     otherIpConfigs?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchOtherIpConfigs>}>;
     /**
@@ -583,6 +587,9 @@ export interface SwitchArgs {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortUsages>}>;
     /**
      * Junos Radius config

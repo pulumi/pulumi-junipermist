@@ -64,14 +64,12 @@ public final class SwitchPortConfig {
     private @Nullable Boolean noLocalOverwrite;
     private @Nullable Boolean poeDisabled;
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     private @Nullable String speed;
     /**
-     * @return port usage name.
-     * 
-     * If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     private String usage;
@@ -153,16 +151,14 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     public Optional<String> speed() {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return port usage name.
-     * 
-     * If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     public String usage() {

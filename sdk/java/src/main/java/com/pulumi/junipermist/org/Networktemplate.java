@@ -297,9 +297,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Export(name="portUsages", refs={Map.class,String.class,NetworktemplatePortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortUsages>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplatePortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }

@@ -16,9 +16,29 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
 
     public static final WlanInjectDhcpOption82Args Empty = new WlanInjectDhcpOption82Args();
 
+    /**
+     * information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     *   * {{AP_MAC}}
+     *   * {{AP_MAC_DASHED}}
+     *   * {{AP_MODEL}}
+     *   * {{AP_NAME}}
+     *   * {{SITE_NAME}}
+     *   * {{SSID}}
+     * 
+     */
     @Import(name="circuitId")
     private @Nullable Output<String> circuitId;
 
+    /**
+     * @return information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     *   * {{AP_MAC}}
+     *   * {{AP_MAC_DASHED}}
+     *   * {{AP_MODEL}}
+     *   * {{AP_NAME}}
+     *   * {{SITE_NAME}}
+     *   * {{SSID}}
+     * 
+     */
     public Optional<Output<String>> circuitId() {
         return Optional.ofNullable(this.circuitId);
     }
@@ -63,11 +83,35 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
             $ = new WlanInjectDhcpOption82Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param circuitId information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         * 
+         * @return builder
+         * 
+         */
         public Builder circuitId(@Nullable Output<String> circuitId) {
             $.circuitId = circuitId;
             return this;
         }
 
+        /**
+         * @param circuitId information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         * 
+         * @return builder
+         * 
+         */
         public Builder circuitId(String circuitId) {
             return circuitId(Output.of(circuitId));
         }

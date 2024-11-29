@@ -59,6 +59,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
@@ -283,6 +284,9 @@ class NetworktemplateArgs:
     @property
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]]:
+        """
+        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        """
         return pulumi.get(self, "port_usages")
 
     @port_usages.setter
@@ -418,6 +422,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
@@ -643,6 +648,9 @@ class _NetworktemplateState:
     @property
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]]:
+        """
+        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        """
         return pulumi.get(self, "port_usages")
 
     @port_usages.setter
@@ -795,6 +803,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
@@ -948,6 +957,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[Union['NetworktemplateSwitchMatchingArgs', 'NetworktemplateSwitchMatchingArgsDict']] switch_matching: Switch template
@@ -1094,6 +1104,9 @@ class Networktemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplatePortUsages']]]:
+        """
+        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        """
         return pulumi.get(self, "port_usages")
 
     @property

@@ -170,14 +170,26 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     /**
      * if some system-default port usages are not desired - namely, ap / iot / uplink
      * 
+     * @deprecated
+     * This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+     * Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.
+     * 
      */
+    @Deprecated /* This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource. */
     @Import(name="disabledSystemDefinedPortUsages")
     private @Nullable Output<List<String>> disabledSystemDefinedPortUsages;
 
     /**
      * @return if some system-default port usages are not desired - namely, ap / iot / uplink
      * 
+     * @deprecated
+     * This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+     * Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.
+     * 
      */
+    @Deprecated /* This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource. */
     public Optional<Output<List<String>>> disabledSystemDefinedPortUsages() {
         return Optional.ofNullable(this.disabledSystemDefinedPortUsages);
     }
@@ -813,7 +825,13 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+         * Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.
+         * 
          */
+        @Deprecated /* This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource. */
         public Builder disabledSystemDefinedPortUsages(@Nullable Output<List<String>> disabledSystemDefinedPortUsages) {
             $.disabledSystemDefinedPortUsages = disabledSystemDefinedPortUsages;
             return this;
@@ -824,7 +842,13 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+         * Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.
+         * 
          */
+        @Deprecated /* This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource. */
         public Builder disabledSystemDefinedPortUsages(List<String> disabledSystemDefinedPortUsages) {
             return disabledSystemDefinedPortUsages(Output.of(disabledSystemDefinedPortUsages));
         }
@@ -834,7 +858,13 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+         * Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.
+         * 
          */
+        @Deprecated /* This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource. */
         public Builder disabledSystemDefinedPortUsages(String... disabledSystemDefinedPortUsages) {
             return disabledSystemDefinedPortUsages(List.of(disabledSystemDefinedPortUsages));
         }

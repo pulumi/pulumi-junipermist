@@ -24,14 +24,14 @@ public final class SwitchEvpnConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `access`, `core`, `distribution`
+     * enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return enum: `access`, `core`, `distribution`
+     * @return enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
      * 
      */
     public Optional<Output<String>> role() {
@@ -73,7 +73,7 @@ public final class SwitchEvpnConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param role enum: `access`, `core`, `distribution`
+         * @param role enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SwitchEvpnConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param role enum: `access`, `core`, `distribution`
+         * @param role enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
          * 
          * @return builder
          * 

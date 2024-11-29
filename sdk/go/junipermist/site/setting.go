@@ -15,6 +15,10 @@ import (
 // This resource manages the Site Settings.
 // The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 //
+// > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
+//
+// !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_site_setting` with:
@@ -46,6 +50,9 @@ type Setting struct {
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
+	//
+	// Deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+	// Please update your configurations to configure it in the `site.Networktemplate` resource.
 	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -160,6 +167,9 @@ type settingState struct {
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
+	//
+	// Deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+	// Please update your configurations to configure it in the `site.Networktemplate` resource.
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -242,6 +252,9 @@ type SettingState struct {
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
+	//
+	// Deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+	// Please update your configurations to configure it in the `site.Networktemplate` resource.
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -327,6 +340,9 @@ type settingArgs struct {
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
+	//
+	// Deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+	// Please update your configurations to configure it in the `site.Networktemplate` resource.
 	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -407,6 +423,9 @@ type SettingArgs struct {
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
 	// if some system-default port usages are not desired - namely, ap / iot / uplink
+	//
+	// Deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+	// Please update your configurations to configure it in the `site.Networktemplate` resource.
 	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -600,6 +619,9 @@ func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 }
 
 // if some system-default port usages are not desired - namely, ap / iot / uplink
+//
+// Deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+// Please update your configurations to configure it in the `site.Networktemplate` resource.
 func (o SettingOutput) DisabledSystemDefinedPortUsages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.DisabledSystemDefinedPortUsages }).(pulumi.StringArrayOutput)
 }

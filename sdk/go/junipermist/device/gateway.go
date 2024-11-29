@@ -15,6 +15,8 @@ import (
 // This resource manages the Gateway configuration.
 // It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 //
+// > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+//
 // ## Example Usage
 //
 // ```go
@@ -102,8 +104,8 @@ type Gateway struct {
 	Notes      pulumi.StringPtrOutput    `pulumi:"notes"`
 	NtpServers pulumi.StringArrayOutput  `pulumi:"ntpServers"`
 	// out-of-band (vme/em0/fxp0) IP config
-	OobIpConfig GatewayOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput         `pulumi:"orgId"`
+	OobIpConfig GatewayOobIpConfigOutput `pulumi:"oobIpConfig"`
+	OrgId       pulumi.StringOutput      `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences GatewayPathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
@@ -595,8 +597,8 @@ func (o GatewayOutput) NtpServers() pulumi.StringArrayOutput {
 }
 
 // out-of-band (vme/em0/fxp0) IP config
-func (o GatewayOutput) OobIpConfig() GatewayOobIpConfigPtrOutput {
-	return o.ApplyT(func(v *Gateway) GatewayOobIpConfigPtrOutput { return v.OobIpConfig }).(GatewayOobIpConfigPtrOutput)
+func (o GatewayOutput) OobIpConfig() GatewayOobIpConfigOutput {
+	return o.ApplyT(func(v *Gateway) GatewayOobIpConfigOutput { return v.OobIpConfig }).(GatewayOobIpConfigOutput)
 }
 
 func (o GatewayOutput) OrgId() pulumi.StringOutput {

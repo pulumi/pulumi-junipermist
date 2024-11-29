@@ -27,7 +27,6 @@ class SettingArgs:
                  cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  celona: Optional[pulumi.Input['SettingCelonaArgs']] = None,
                  cloudshark: Optional[pulumi.Input['SettingCloudsharkArgs']] = None,
-                 cradlepoint: Optional[pulumi.Input['SettingCradlepointArgs']] = None,
                  device_cert: Optional[pulumi.Input['SettingDeviceCertArgs']] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disable_pcap: Optional[pulumi.Input[bool]] = None,
@@ -84,8 +83,6 @@ class SettingArgs:
             pulumi.set(__self__, "celona", celona)
         if cloudshark is not None:
             pulumi.set(__self__, "cloudshark", cloudshark)
-        if cradlepoint is not None:
-            pulumi.set(__self__, "cradlepoint", cradlepoint)
         if device_cert is not None:
             pulumi.set(__self__, "device_cert", device_cert)
         if device_updown_threshold is not None:
@@ -195,15 +192,6 @@ class SettingArgs:
     @cloudshark.setter
     def cloudshark(self, value: Optional[pulumi.Input['SettingCloudsharkArgs']]):
         pulumi.set(self, "cloudshark", value)
-
-    @property
-    @pulumi.getter
-    def cradlepoint(self) -> Optional[pulumi.Input['SettingCradlepointArgs']]:
-        return pulumi.get(self, "cradlepoint")
-
-    @cradlepoint.setter
-    def cradlepoint(self, value: Optional[pulumi.Input['SettingCradlepointArgs']]):
-        pulumi.set(self, "cradlepoint", value)
 
     @property
     @pulumi.getter(name="deviceCert")
@@ -923,7 +911,6 @@ class Setting(pulumi.CustomResource):
                  cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  celona: Optional[pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
                  cloudshark: Optional[pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
-                 cradlepoint: Optional[pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']]] = None,
                  device_cert: Optional[pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disable_pcap: Optional[pulumi.Input[bool]] = None,
@@ -1025,7 +1012,6 @@ class Setting(pulumi.CustomResource):
                  cacerts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  celona: Optional[pulumi.Input[Union['SettingCelonaArgs', 'SettingCelonaArgsDict']]] = None,
                  cloudshark: Optional[pulumi.Input[Union['SettingCloudsharkArgs', 'SettingCloudsharkArgsDict']]] = None,
-                 cradlepoint: Optional[pulumi.Input[Union['SettingCradlepointArgs', 'SettingCradlepointArgsDict']]] = None,
                  device_cert: Optional[pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
                  disable_pcap: Optional[pulumi.Input[bool]] = None,
@@ -1065,7 +1051,6 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["cacerts"] = cacerts
             __props__.__dict__["celona"] = celona
             __props__.__dict__["cloudshark"] = cloudshark
-            __props__.__dict__["cradlepoint"] = cradlepoint
             __props__.__dict__["device_cert"] = device_cert
             __props__.__dict__["device_updown_threshold"] = device_updown_threshold
             __props__.__dict__["disable_pcap"] = disable_pcap
@@ -1093,6 +1078,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["wan_pma"] = wan_pma
             __props__.__dict__["wired_pma"] = wired_pma
             __props__.__dict__["wireless_pma"] = wireless_pma
+            __props__.__dict__["cradlepoint"] = None
             __props__.__dict__["juniper"] = None
         super(Setting, __self__).__init__(
             'junipermist:org/setting:Setting',
@@ -1234,7 +1220,7 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cradlepoint(self) -> pulumi.Output[Optional['outputs.SettingCradlepoint']]:
+    def cradlepoint(self) -> pulumi.Output['outputs.SettingCradlepoint']:
         return pulumi.get(self, "cradlepoint")
 
     @property

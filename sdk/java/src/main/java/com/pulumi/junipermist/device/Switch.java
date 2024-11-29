@@ -48,6 +48,8 @@ import javax.annotation.Nullable;
  * This resource manages the Switch configuration.
  * It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
  * 
+ * &gt; **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch
+ * 
  * ## Import
  * 
  * Using `pulumi import`, import `mist_device_switch` with:
@@ -160,14 +162,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="evpnConfig", refs={SwitchEvpnConfig.class}, tree="[0]")
-    private Output</* @Nullable */ SwitchEvpnConfig> evpnConfig;
+    private Output<SwitchEvpnConfig> evpnConfig;
 
     /**
      * @return EVPN Junos settings
      * 
      */
-    public Output<Optional<SwitchEvpnConfig>> evpnConfig() {
-        return Codegen.optional(this.evpnConfig);
+    public Output<SwitchEvpnConfig> evpnConfig() {
+        return this.evpnConfig;
     }
     @Export(name="extraRoutes", refs={Map.class,String.class,SwitchExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchExtraRoutes>> extraRoutes;
@@ -384,14 +386,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ospfAreas);
     }
     /**
-     * Property key is the network name
+     * Property key is the network name. Defines the additional IP Addresses configured on the device.
      * 
      */
     @Export(name="otherIpConfigs", refs={Map.class,String.class,SwitchOtherIpConfigs.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchOtherIpConfigs>> otherIpConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Property key is the network name. Defines the additional IP Addresses configured on the device.
      * 
      */
     public Output<Optional<Map<String,SwitchOtherIpConfigs>>> otherIpConfigs() {
@@ -429,9 +431,17 @@ public class Switch extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,SwitchPortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Export(name="portUsages", refs={Map.class,String.class,SwitchPortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchPortUsages>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Output<Optional<Map<String,SwitchPortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }
@@ -466,14 +476,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> routerId;
+    private Output<String> routerId;
 
     /**
      * @return used for OSPF / BGP / EVPN
      * 
      */
-    public Output<Optional<String>> routerId() {
-        return Codegen.optional(this.routerId);
+    public Output<String> routerId() {
+        return this.routerId;
     }
     /**
      * device Serial

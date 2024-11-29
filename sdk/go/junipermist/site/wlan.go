@@ -195,9 +195,11 @@ type Wlan struct {
 	// limit probe response base on some heuristic rules
 	LimitProbeResponse pulumi.BoolOutput `pulumi:"limitProbeResponse"`
 	// max idle time in seconds
-	MaxIdletime pulumi.IntOutput     `pulumi:"maxIdletime"`
-	MistNac     WlanMistNacPtrOutput `pulumi:"mistNac"`
-	MspId       pulumi.StringOutput  `pulumi:"mspId"`
+	MaxIdletime pulumi.IntOutput `pulumi:"maxIdletime"`
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients pulumi.IntOutput     `pulumi:"maxNumClients"`
+	MistNac       WlanMistNacPtrOutput `pulumi:"mistNac"`
+	MspId         pulumi.StringOutput  `pulumi:"mspId"`
 	// when `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayOutput `pulumi:"mxtunnelIds"`
 	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
@@ -225,7 +227,8 @@ type Wlan struct {
 	PortalTemplateUrl pulumi.StringOutput `pulumi:"portalTemplateUrl"`
 	Qos               WlanQosPtrOutput    `pulumi:"qos"`
 	// Radsec settings
-	Radsec WlanRadsecPtrOutput `pulumi:"radsec"`
+	Radsec  WlanRadsecPtrOutput  `pulumi:"radsec"`
+	Rateset WlanRatesetPtrOutput `pulumi:"rateset"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringOutput `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
@@ -424,9 +427,11 @@ type wlanState struct {
 	// limit probe response base on some heuristic rules
 	LimitProbeResponse *bool `pulumi:"limitProbeResponse"`
 	// max idle time in seconds
-	MaxIdletime *int         `pulumi:"maxIdletime"`
-	MistNac     *WlanMistNac `pulumi:"mistNac"`
-	MspId       *string      `pulumi:"mspId"`
+	MaxIdletime *int `pulumi:"maxIdletime"`
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients *int         `pulumi:"maxNumClients"`
+	MistNac       *WlanMistNac `pulumi:"mistNac"`
+	MspId         *string      `pulumi:"mspId"`
 	// when `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
 	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
@@ -454,7 +459,8 @@ type wlanState struct {
 	PortalTemplateUrl *string  `pulumi:"portalTemplateUrl"`
 	Qos               *WlanQos `pulumi:"qos"`
 	// Radsec settings
-	Radsec *WlanRadsec `pulumi:"radsec"`
+	Radsec  *WlanRadsec  `pulumi:"radsec"`
+	Rateset *WlanRateset `pulumi:"rateset"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode *string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
@@ -619,8 +625,10 @@ type WlanState struct {
 	LimitProbeResponse pulumi.BoolPtrInput
 	// max idle time in seconds
 	MaxIdletime pulumi.IntPtrInput
-	MistNac     WlanMistNacPtrInput
-	MspId       pulumi.StringPtrInput
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients pulumi.IntPtrInput
+	MistNac       WlanMistNacPtrInput
+	MspId         pulumi.StringPtrInput
 	// when `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayInput
 	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
@@ -648,7 +656,8 @@ type WlanState struct {
 	PortalTemplateUrl pulumi.StringPtrInput
 	Qos               WlanQosPtrInput
 	// Radsec settings
-	Radsec WlanRadsecPtrInput
+	Radsec  WlanRadsecPtrInput
+	Rateset WlanRatesetPtrInput
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringPtrInput
 	// WLAN operating schedule, default is disabled
@@ -816,8 +825,10 @@ type wlanArgs struct {
 	// limit probe response base on some heuristic rules
 	LimitProbeResponse *bool `pulumi:"limitProbeResponse"`
 	// max idle time in seconds
-	MaxIdletime *int         `pulumi:"maxIdletime"`
-	MistNac     *WlanMistNac `pulumi:"mistNac"`
+	MaxIdletime *int `pulumi:"maxIdletime"`
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients *int         `pulumi:"maxNumClients"`
+	MistNac       *WlanMistNac `pulumi:"mistNac"`
 	// when `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds []string `pulumi:"mxtunnelIds"`
 	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
@@ -836,7 +847,8 @@ type wlanArgs struct {
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
 	Qos                   *WlanQos `pulumi:"qos"`
 	// Radsec settings
-	Radsec *WlanRadsec `pulumi:"radsec"`
+	Radsec  *WlanRadsec  `pulumi:"radsec"`
+	Rateset *WlanRateset `pulumi:"rateset"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode *string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
@@ -1000,7 +1012,9 @@ type WlanArgs struct {
 	LimitProbeResponse pulumi.BoolPtrInput
 	// max idle time in seconds
 	MaxIdletime pulumi.IntPtrInput
-	MistNac     WlanMistNacPtrInput
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients pulumi.IntPtrInput
+	MistNac       WlanMistNacPtrInput
 	// when `interface`=`mxtunnel`, id of the Mist Tunnel
 	MxtunnelIds pulumi.StringArrayInput
 	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
@@ -1019,7 +1033,8 @@ type WlanArgs struct {
 	PortalDeniedHostnames pulumi.StringArrayInput
 	Qos                   WlanQosPtrInput
 	// Radsec settings
-	Radsec WlanRadsecPtrInput
+	Radsec  WlanRadsecPtrInput
+	Rateset WlanRatesetPtrInput
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringPtrInput
 	// WLAN operating schedule, default is disabled
@@ -1436,6 +1451,11 @@ func (o WlanOutput) MaxIdletime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.MaxIdletime }).(pulumi.IntOutput)
 }
 
+// maximum number of client connected to the SSID. `0` means unlimited
+func (o WlanOutput) MaxNumClients() pulumi.IntOutput {
+	return o.ApplyT(func(v *Wlan) pulumi.IntOutput { return v.MaxNumClients }).(pulumi.IntOutput)
+}
+
 func (o WlanOutput) MistNac() WlanMistNacPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanMistNacPtrOutput { return v.MistNac }).(WlanMistNacPtrOutput)
 }
@@ -1515,6 +1535,10 @@ func (o WlanOutput) Qos() WlanQosPtrOutput {
 // Radsec settings
 func (o WlanOutput) Radsec() WlanRadsecPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanRadsecPtrOutput { return v.Radsec }).(WlanRadsecPtrOutput)
+}
+
+func (o WlanOutput) Rateset() WlanRatesetPtrOutput {
+	return o.ApplyT(func(v *Wlan) WlanRatesetPtrOutput { return v.Rateset }).(WlanRatesetPtrOutput)
 }
 
 // enum: `11r`, `OKC`, `NONE`

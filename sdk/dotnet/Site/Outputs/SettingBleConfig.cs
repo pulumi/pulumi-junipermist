@@ -105,7 +105,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? IbeaconUuid;
         /// <summary>
-        /// required if `power_mode`==`custom`
+        /// required if `power_mode`==`custom`; else use `power_mode` as default
         /// </summary>
         public readonly int? Power;
         /// <summary>

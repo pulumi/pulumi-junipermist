@@ -225,9 +225,17 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.portMirroring);
     }
 
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Optional<Output<Map<String,NetworktemplatePortUsagesArgs>>> portUsages() {
         return Optional.ofNullable(this.portUsages);
     }
@@ -678,11 +686,23 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
             return portMirroring(Output.of(portMirroring));
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(@Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages) {
             $.portUsages = portUsages;
             return this;
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(Map<String,NetworktemplatePortUsagesArgs> portUsages) {
             return portUsages(Output.of(portUsages));
         }

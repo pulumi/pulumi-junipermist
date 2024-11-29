@@ -118,6 +118,11 @@ class SettingArgs:
         if device_updown_threshold is not None:
             pulumi.set(__self__, "device_updown_threshold", device_updown_threshold)
         if disabled_system_defined_port_usages is not None:
+            warnings.warn("""This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""", DeprecationWarning)
+            pulumi.log.warn("""disabled_system_defined_port_usages is deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""")
+        if disabled_system_defined_port_usages is not None:
             pulumi.set(__self__, "disabled_system_defined_port_usages", disabled_system_defined_port_usages)
         if engagement is not None:
             pulumi.set(__self__, "engagement", engagement)
@@ -282,6 +287,8 @@ class SettingArgs:
 
     @property
     @pulumi.getter(name="disabledSystemDefinedPortUsages")
+    @_utilities.deprecated("""This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""")
     def disabled_system_defined_port_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         if some system-default port usages are not desired - namely, ap / iot / uplink
@@ -717,6 +724,11 @@ class _SettingState:
         if device_updown_threshold is not None:
             pulumi.set(__self__, "device_updown_threshold", device_updown_threshold)
         if disabled_system_defined_port_usages is not None:
+            warnings.warn("""This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""", DeprecationWarning)
+            pulumi.log.warn("""disabled_system_defined_port_usages is deprecated: This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""")
+        if disabled_system_defined_port_usages is not None:
             pulumi.set(__self__, "disabled_system_defined_port_usages", disabled_system_defined_port_usages)
         if engagement is not None:
             pulumi.set(__self__, "engagement", engagement)
@@ -887,6 +899,8 @@ class _SettingState:
 
     @property
     @pulumi.getter(name="disabledSystemDefinedPortUsages")
+    @_utilities.deprecated("""This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""")
     def disabled_system_defined_port_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         if some system-default port usages are not desired - namely, ap / iot / uplink
@@ -1293,6 +1307,10 @@ class Setting(pulumi.CustomResource):
         This resource manages the Site Settings.
         The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
+        > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
+
+        !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+
         ## Import
 
         Using `pulumi import`, import `mist_site_setting` with:
@@ -1353,6 +1371,10 @@ class Setting(pulumi.CustomResource):
         """
         This resource manages the Site Settings.
         The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+
+        > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
+
+        !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
 
         ## Import
 
@@ -1683,6 +1705,8 @@ class Setting(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="disabledSystemDefinedPortUsages")
+    @_utilities.deprecated("""This attribute has been moved to the `site.Networktemplate` resource and has been deprecated in the `site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `site.Networktemplate` resource.""")
     def disabled_system_defined_port_usages(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         if some system-default port usages are not desired - namely, ap / iot / uplink

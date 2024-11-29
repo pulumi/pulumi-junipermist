@@ -95,6 +95,9 @@ export class Networktemplate extends pulumi.CustomResource {
      * maximum 4 port mirrorings is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortMirroring} | undefined>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortUsages} | undefined>;
     /**
      * Junos Radius config
@@ -243,6 +246,9 @@ export interface NetworktemplateState {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortUsages>}>;
     /**
      * Junos Radius config
@@ -320,6 +326,9 @@ export interface NetworktemplateArgs {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortUsages>}>;
     /**
      * Junos Radius config

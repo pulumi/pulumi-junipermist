@@ -91,7 +91,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
     /**
      * out-of-band (vme/em0/fxp0) IP config
      */
-    public readonly oobIpConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayOobIpConfig | undefined>;
+    public readonly oobIpConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayOobIpConfig>;
     public readonly orgId!: pulumi.Output<string>;
     /**
      * Property key is the path name

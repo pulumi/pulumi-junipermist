@@ -39,6 +39,10 @@ import javax.annotation.Nullable;
  * This resource manages the Site Network configuration (Switch configuration).
  * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
  * 
+ * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
+ * 
+ * !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -164,6 +168,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dhcpSnooping);
     }
     /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    @Export(name="disabledSystemDefinedPortUsages", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> disabledSystemDefinedPortUsages;
+
+    /**
+     * @return if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    public Output<Optional<List<String>>> disabledSystemDefinedPortUsages() {
+        return Codegen.optional(this.disabledSystemDefinedPortUsages);
+    }
+    /**
      * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
@@ -285,9 +303,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Export(name="portUsages", refs={Map.class,String.class,NetworktemplatePortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortUsages>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplatePortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }

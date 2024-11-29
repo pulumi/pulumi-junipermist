@@ -54,7 +54,8 @@ type Networktemplate struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
-	PortUsages    NetworktemplatePortUsagesMapOutput    `pulumi:"portUsages"`
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages NetworktemplatePortUsagesMapOutput `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog NetworktemplateRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
@@ -130,7 +131,8 @@ type networktemplateState struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
-	PortUsages    map[string]NetworktemplatePortUsages    `pulumi:"portUsages"`
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
@@ -174,7 +176,8 @@ type NetworktemplateState struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
-	PortUsages    NetworktemplatePortUsagesMapInput
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages NetworktemplatePortUsagesMapInput
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
@@ -222,7 +225,8 @@ type networktemplateArgs struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
-	PortUsages    map[string]NetworktemplatePortUsages    `pulumi:"portUsages"`
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages map[string]NetworktemplatePortUsages `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig *NetworktemplateRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *NetworktemplateRemoteSyslog `pulumi:"remoteSyslog"`
@@ -267,7 +271,8 @@ type NetworktemplateArgs struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
-	PortUsages    NetworktemplatePortUsagesMapInput
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages NetworktemplatePortUsagesMapInput
 	// Junos Radius config
 	RadiusConfig NetworktemplateRadiusConfigPtrInput
 	RemoteSyslog NetworktemplateRemoteSyslogPtrInput
@@ -442,6 +447,7 @@ func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOu
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortMirroringMapOutput { return v.PortMirroring }).(NetworktemplatePortMirroringMapOutput)
 }
 
+// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 func (o NetworktemplateOutput) PortUsages() NetworktemplatePortUsagesMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplatePortUsagesMapOutput { return v.PortUsages }).(NetworktemplatePortUsagesMapOutput)
 }

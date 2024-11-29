@@ -20,7 +20,7 @@ public final class GatewaytemplateServicePolicyIdp {
      */
     private @Nullable String idpprofileId;
     /**
-     * @return `strict` (default) / `standard` / or keys from from idp_profiles
+     * @return enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
      * 
      */
     private @Nullable String profile;
@@ -40,7 +40,7 @@ public final class GatewaytemplateServicePolicyIdp {
         return Optional.ofNullable(this.idpprofileId);
     }
     /**
-     * @return `strict` (default) / `standard` / or keys from from idp_profiles
+     * @return enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
      * 
      */
     public Optional<String> profile() {

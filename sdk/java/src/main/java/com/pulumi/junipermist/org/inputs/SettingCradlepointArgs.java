@@ -5,41 +5,50 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SettingCradlepointArgs Empty = new SettingCradlepointArgs();
 
-    @Import(name="cpApiId", required=true)
-    private Output<String> cpApiId;
+    @Import(name="cpApiId")
+    private @Nullable Output<String> cpApiId;
 
-    public Output<String> cpApiId() {
-        return this.cpApiId;
+    public Optional<Output<String>> cpApiId() {
+        return Optional.ofNullable(this.cpApiId);
     }
 
-    @Import(name="cpApiKey", required=true)
-    private Output<String> cpApiKey;
+    @Import(name="cpApiKey")
+    private @Nullable Output<String> cpApiKey;
 
-    public Output<String> cpApiKey() {
-        return this.cpApiKey;
+    public Optional<Output<String>> cpApiKey() {
+        return Optional.ofNullable(this.cpApiKey);
     }
 
-    @Import(name="ecmApiId", required=true)
-    private Output<String> ecmApiId;
+    @Import(name="ecmApiId")
+    private @Nullable Output<String> ecmApiId;
 
-    public Output<String> ecmApiId() {
-        return this.ecmApiId;
+    public Optional<Output<String>> ecmApiId() {
+        return Optional.ofNullable(this.ecmApiId);
     }
 
-    @Import(name="ecmApiKey", required=true)
-    private Output<String> ecmApiKey;
+    @Import(name="ecmApiKey")
+    private @Nullable Output<String> ecmApiKey;
 
-    public Output<String> ecmApiKey() {
-        return this.ecmApiKey;
+    public Optional<Output<String>> ecmApiKey() {
+        return Optional.ofNullable(this.ecmApiKey);
+    }
+
+    @Import(name="enableLldp")
+    private @Nullable Output<Boolean> enableLldp;
+
+    public Optional<Output<Boolean>> enableLldp() {
+        return Optional.ofNullable(this.enableLldp);
     }
 
     private SettingCradlepointArgs() {}
@@ -49,6 +58,7 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
         this.cpApiKey = $.cpApiKey;
         this.ecmApiId = $.ecmApiId;
         this.ecmApiKey = $.ecmApiKey;
+        this.enableLldp = $.enableLldp;
     }
 
     public static Builder builder() {
@@ -69,7 +79,7 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
             $ = new SettingCradlepointArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder cpApiId(Output<String> cpApiId) {
+        public Builder cpApiId(@Nullable Output<String> cpApiId) {
             $.cpApiId = cpApiId;
             return this;
         }
@@ -78,7 +88,7 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
             return cpApiId(Output.of(cpApiId));
         }
 
-        public Builder cpApiKey(Output<String> cpApiKey) {
+        public Builder cpApiKey(@Nullable Output<String> cpApiKey) {
             $.cpApiKey = cpApiKey;
             return this;
         }
@@ -87,7 +97,7 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
             return cpApiKey(Output.of(cpApiKey));
         }
 
-        public Builder ecmApiId(Output<String> ecmApiId) {
+        public Builder ecmApiId(@Nullable Output<String> ecmApiId) {
             $.ecmApiId = ecmApiId;
             return this;
         }
@@ -96,7 +106,7 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
             return ecmApiId(Output.of(ecmApiId));
         }
 
-        public Builder ecmApiKey(Output<String> ecmApiKey) {
+        public Builder ecmApiKey(@Nullable Output<String> ecmApiKey) {
             $.ecmApiKey = ecmApiKey;
             return this;
         }
@@ -105,19 +115,16 @@ public final class SettingCradlepointArgs extends com.pulumi.resources.ResourceA
             return ecmApiKey(Output.of(ecmApiKey));
         }
 
+        public Builder enableLldp(@Nullable Output<Boolean> enableLldp) {
+            $.enableLldp = enableLldp;
+            return this;
+        }
+
+        public Builder enableLldp(Boolean enableLldp) {
+            return enableLldp(Output.of(enableLldp));
+        }
+
         public SettingCradlepointArgs build() {
-            if ($.cpApiId == null) {
-                throw new MissingRequiredPropertyException("SettingCradlepointArgs", "cpApiId");
-            }
-            if ($.cpApiKey == null) {
-                throw new MissingRequiredPropertyException("SettingCradlepointArgs", "cpApiKey");
-            }
-            if ($.ecmApiId == null) {
-                throw new MissingRequiredPropertyException("SettingCradlepointArgs", "ecmApiId");
-            }
-            if ($.ecmApiKey == null) {
-                throw new MissingRequiredPropertyException("SettingCradlepointArgs", "ecmApiKey");
-            }
             return $;
         }
     }

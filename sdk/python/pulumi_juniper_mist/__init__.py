@@ -133,6 +133,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/evpnTopology",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/evpnTopology:EvpnTopology": "EvpnTopology"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/gatewaytemplate",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {
@@ -329,6 +337,14 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.site",
   "classes": {
    "junipermist:site/base:base": "Base"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "site/evpnTopology",
+  "fqn": "pulumi_juniper_mist.site",
+  "classes": {
+   "junipermist:site/evpnTopology:EvpnTopology": "EvpnTopology"
   }
  },
  {

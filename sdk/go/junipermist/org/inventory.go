@@ -36,6 +36,9 @@ type Inventory struct {
 	pulumi.CustomResourceState
 
 	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	//
+	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+	// Please update your configurations to use the `inventory` attribute.
 	Devices InventoryDeviceArrayOutput `pulumi:"devices"`
 	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
 	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
@@ -78,6 +81,9 @@ func GetInventory(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Inventory resources.
 type inventoryState struct {
 	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	//
+	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+	// Please update your configurations to use the `inventory` attribute.
 	Devices []InventoryDevice `pulumi:"devices"`
 	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
 	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
@@ -88,6 +94,9 @@ type inventoryState struct {
 
 type InventoryState struct {
 	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	//
+	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+	// Please update your configurations to use the `inventory` attribute.
 	Devices InventoryDeviceArrayInput
 	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
 	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
@@ -102,6 +111,9 @@ func (InventoryState) ElementType() reflect.Type {
 
 type inventoryArgs struct {
 	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	//
+	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+	// Please update your configurations to use the `inventory` attribute.
 	Devices []InventoryDevice `pulumi:"devices"`
 	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
 	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
@@ -113,6 +125,9 @@ type inventoryArgs struct {
 // The set of arguments for constructing a Inventory resource.
 type InventoryArgs struct {
 	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	//
+	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+	// Please update your configurations to use the `inventory` attribute.
 	Devices InventoryDeviceArrayInput
 	// Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
 	// Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
@@ -209,6 +224,9 @@ func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) Inven
 }
 
 // **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+//
+// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+// Please update your configurations to use the `inventory` attribute.
 func (o InventoryOutput) Devices() InventoryDeviceArrayOutput {
 	return o.ApplyT(func(v *Inventory) InventoryDeviceArrayOutput { return v.Devices }).(InventoryDeviceArrayOutput)
 }

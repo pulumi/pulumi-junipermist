@@ -410,6 +410,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("maxIdletime")]
         public Output<int> MaxIdletime { get; private set; } = null!;
 
+        /// <summary>
+        /// maximum number of client connected to the SSID. `0` means unlimited
+        /// </summary>
+        [Output("maxNumClients")]
+        public Output<int> MaxNumClients { get; private set; } = null!;
+
         [Output("mistNac")]
         public Output<Outputs.WlanMistNac?> MistNac { get; private set; } = null!;
 
@@ -497,6 +503,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Output("radsec")]
         public Output<Outputs.WlanRadsec?> Radsec { get; private set; } = null!;
+
+        [Output("rateset")]
+        public Output<Outputs.WlanRateset?> Rateset { get; private set; } = null!;
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
@@ -1024,6 +1033,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("maxIdletime")]
         public Input<int>? MaxIdletime { get; set; }
 
+        /// <summary>
+        /// maximum number of client connected to the SSID. `0` means unlimited
+        /// </summary>
+        [Input("maxNumClients")]
+        public Input<int>? MaxNumClients { get; set; }
+
         [Input("mistNac")]
         public Input<Inputs.WlanMistNacArgs>? MistNac { get; set; }
 
@@ -1116,6 +1131,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.WlanRadsecArgs>? Radsec { get; set; }
+
+        [Input("rateset")]
+        public Input<Inputs.WlanRatesetArgs>? Rateset { get; set; }
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
@@ -1610,6 +1628,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("maxIdletime")]
         public Input<int>? MaxIdletime { get; set; }
 
+        /// <summary>
+        /// maximum number of client connected to the SSID. `0` means unlimited
+        /// </summary>
+        [Input("maxNumClients")]
+        public Input<int>? MaxNumClients { get; set; }
+
         [Input("mistNac")]
         public Input<Inputs.WlanMistNacGetArgs>? MistNac { get; set; }
 
@@ -1727,6 +1751,9 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("radsec")]
         public Input<Inputs.WlanRadsecGetArgs>? Radsec { get; set; }
+
+        [Input("rateset")]
+        public Input<Inputs.WlanRatesetGetArgs>? Rateset { get; set; }
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`

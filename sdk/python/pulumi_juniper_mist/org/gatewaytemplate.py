@@ -1136,7 +1136,7 @@ class Gatewaytemplate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> pulumi.Output[Optional['outputs.GatewaytemplateOobIpConfig']]:
+    def oob_ip_config(self) -> pulumi.Output['outputs.GatewaytemplateOobIpConfig']:
         """
         out-of-band (vme/em0/fxp0) IP config
         """

@@ -82,6 +82,21 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    @Import(name="disabledSystemDefinedPortUsages")
+    private @Nullable Output<List<String>> disabledSystemDefinedPortUsages;
+
+    /**
+     * @return if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    public Optional<Output<List<String>>> disabledSystemDefinedPortUsages() {
+        return Optional.ofNullable(this.disabledSystemDefinedPortUsages);
+    }
+
+    /**
      * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
      * 
      */
@@ -212,9 +227,17 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.portMirroring);
     }
 
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Optional<Output<Map<String,NetworktemplatePortUsagesArgs>>> portUsages() {
         return Optional.ofNullable(this.portUsages);
     }
@@ -344,6 +367,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.dhcpSnooping = $.dhcpSnooping;
+        this.disabledSystemDefinedPortUsages = $.disabledSystemDefinedPortUsages;
         this.dnsServers = $.dnsServers;
         this.dnsSuffixes = $.dnsSuffixes;
         this.extraRoutes = $.extraRoutes;
@@ -456,6 +480,37 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder dhcpSnooping(NetworktemplateDhcpSnoopingArgs dhcpSnooping) {
             return dhcpSnooping(Output.of(dhcpSnooping));
+        }
+
+        /**
+         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledSystemDefinedPortUsages(@Nullable Output<List<String>> disabledSystemDefinedPortUsages) {
+            $.disabledSystemDefinedPortUsages = disabledSystemDefinedPortUsages;
+            return this;
+        }
+
+        /**
+         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledSystemDefinedPortUsages(List<String> disabledSystemDefinedPortUsages) {
+            return disabledSystemDefinedPortUsages(Output.of(disabledSystemDefinedPortUsages));
+        }
+
+        /**
+         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledSystemDefinedPortUsages(String... disabledSystemDefinedPortUsages) {
+            return disabledSystemDefinedPortUsages(List.of(disabledSystemDefinedPortUsages));
         }
 
         /**
@@ -669,11 +724,23 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
             return portMirroring(Output.of(portMirroring));
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(@Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages) {
             $.portUsages = portUsages;
             return this;
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(Map<String,NetworktemplatePortUsagesArgs> portUsages) {
             return portUsages(Output.of(portUsages));
         }

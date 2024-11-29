@@ -13,6 +13,10 @@ namespace Pulumi.JuniperMist.Site
     /// This resource manages the Site Settings.
     /// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
     /// 
+    /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
+    /// 
+    /// !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_site_setting` with:
@@ -343,6 +347,8 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// if some system-default port usages are not desired - namely, ap / iot / uplink
         /// </summary>
+        [Obsolete(@"This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.")]
         public InputList<string> DisabledSystemDefinedPortUsages
         {
             get => _disabledSystemDefinedPortUsages ?? (_disabledSystemDefinedPortUsages = new InputList<string>());
@@ -586,6 +592,8 @@ namespace Pulumi.JuniperMist.Site
         /// <summary>
         /// if some system-default port usages are not desired - namely, ap / iot / uplink
         /// </summary>
+        [Obsolete(@"This attribute has been moved to the `junipermist.site.Networktemplate` resource and has been deprecated in the `junipermist.site.Setting` resource in version v0.2.7 of the Juniper-Mist Provider. It may be removed in future versions.
+Please update your configurations to configure it in the `junipermist.site.Networktemplate` resource.")]
         public InputList<string> DisabledSystemDefinedPortUsages
         {
             get => _disabledSystemDefinedPortUsages ?? (_disabledSystemDefinedPortUsages = new InputList<string>());

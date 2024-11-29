@@ -103,6 +103,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         [Output("portUsages")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortUsages>?> PortUsages { get; private set; } = null!;
 
@@ -335,6 +338,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("portUsages")]
         private InputMap<Inputs.NetworktemplatePortUsagesArgs>? _portUsages;
+
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesArgs> PortUsages
         {
             get => _portUsages ?? (_portUsages = new InputMap<Inputs.NetworktemplatePortUsagesArgs>());
@@ -537,6 +544,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("portUsages")]
         private InputMap<Inputs.NetworktemplatePortUsagesGetArgs>? _portUsages;
+
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesGetArgs> PortUsages
         {
             get => _portUsages ?? (_portUsages = new InputMap<Inputs.NetworktemplatePortUsagesGetArgs>());

@@ -50,8 +50,8 @@ type Gatewaytemplate struct {
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// out-of-band (vme/em0/fxp0) IP config
-	OobIpConfig GatewaytemplateOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput                 `pulumi:"orgId"`
+	OobIpConfig GatewaytemplateOobIpConfigOutput `pulumi:"oobIpConfig"`
+	OrgId       pulumi.StringOutput              `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
@@ -440,8 +440,8 @@ func (o GatewaytemplateOutput) NtpServers() pulumi.StringArrayOutput {
 }
 
 // out-of-band (vme/em0/fxp0) IP config
-func (o GatewaytemplateOutput) OobIpConfig() GatewaytemplateOobIpConfigPtrOutput {
-	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateOobIpConfigPtrOutput { return v.OobIpConfig }).(GatewaytemplateOobIpConfigPtrOutput)
+func (o GatewaytemplateOutput) OobIpConfig() GatewaytemplateOobIpConfigOutput {
+	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateOobIpConfigOutput { return v.OobIpConfig }).(GatewaytemplateOobIpConfigOutput)
 }
 
 func (o GatewaytemplateOutput) OrgId() pulumi.StringOutput {

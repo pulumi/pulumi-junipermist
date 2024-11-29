@@ -1462,7 +1462,7 @@ export namespace device {
          */
         idpprofileId?: pulumi.Input<string>;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
          */
         profile?: pulumi.Input<string>;
     }
@@ -1967,7 +1967,7 @@ export namespace device {
     export interface SwitchEvpnConfig {
         enabled?: pulumi.Input<boolean>;
         /**
-         * enum: `access`, `core`, `distribution`
+         * enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
          */
         role?: pulumi.Input<string>;
     }
@@ -2036,33 +2036,160 @@ export namespace device {
 
     export interface SwitchLocalPortConfig {
         /**
-         * if want to generate port up/down alarm
+         * Only if `mode`==`trunk` whether to trunk all network/vlans
          */
-        critical?: pulumi.Input<boolean>;
+        allNetworks?: pulumi.Input<boolean>;
+        /**
+         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         */
+        allowDhcpd?: pulumi.Input<boolean>;
+        allowMultipleSupplicants?: pulumi.Input<boolean>;
+        /**
+         * Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDown?: pulumi.Input<boolean>;
+        /**
+         * Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForUnkonwnClient?: pulumi.Input<boolean>;
         description?: pulumi.Input<string>;
         /**
-         * if `speed` and `duplex` are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg?: pulumi.Input<boolean>;
         /**
-         * enum: `auto`, `full`, `half`
+         * whether the port is disabled
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * link connection mode. enum: `auto`, `full`, `half`
          */
         duplex?: pulumi.Input<string>;
         /**
-         * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+         * Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+         */
+        dynamicVlanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `portAuth`==`dot1x` whether to enable MAC Auth
+         */
+        enableMacAuth?: pulumi.Input<boolean>;
+        enableQos?: pulumi.Input<boolean>;
+        /**
+         * Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         */
+        guestNetwork?: pulumi.Input<string>;
+        /**
+         * inter_switch_link is used together with "isolation" under networks
+         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         */
+        interSwitchLink?: pulumi.Input<boolean>;
+        /**
+         * Only if `enableMacAuth`==`true`
+         */
+        macAuthOnly?: pulumi.Input<boolean>;
+        /**
+         * Only if `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+         */
+        macAuthPreferred?: pulumi.Input<boolean>;
+        /**
+         * Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         */
+        macAuthProtocol?: pulumi.Input<string>;
+        /**
+         * max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         */
+        macLimit?: pulumi.Input<number>;
+        /**
+         * enum: `access`, `inet`, `trunk`
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
          */
         mtu?: pulumi.Input<number>;
+        /**
+         * Only if `mode`==`trunk`, the list of network/vlans
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         */
+        persistMac?: pulumi.Input<boolean>;
+        /**
+         * whether PoE capabilities are disabled for a port
+         */
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * if dot1x is desired, set to dot1x. enum: `dot1x`
+         */
+        portAuth?: pulumi.Input<string>;
+        /**
+         * native network/vlan for untagged traffic
+         */
+        portNetwork?: pulumi.Input<string>;
+        /**
+         * Only if `portAuth`=`dot1x` reauthentication interval range
+         */
+        reauthInterval?: pulumi.Input<number>;
+        /**
+         * Only if `portAuth`==`dot1x` sets server fail fallback vlan
+         */
+        serverFailNetwork?: pulumi.Input<string>;
+        /**
+         * Only if `portAuth`==`dot1x` when radius server reject / fails
+         */
+        serverRejectNetwork?: pulumi.Input<string>;
+        /**
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Switch storm control
+         */
+        stormControl?: pulumi.Input<inputs.device.SwitchLocalPortConfigStormControl>;
+        /**
+         * when enabled, the port is not expected to receive BPDU frames
+         */
+        stpEdge?: pulumi.Input<boolean>;
+        stpNoRootPort?: pulumi.Input<boolean>;
+        stpP2p?: pulumi.Input<boolean>;
+        /**
+         * port usage name.
          */
         usage: pulumi.Input<string>;
+        /**
+         * if this is connected to a vstp network
+         */
+        useVstp?: pulumi.Input<boolean>;
+        /**
+         * network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         */
+        voipNetwork?: pulumi.Input<string>;
+    }
+
+    export interface SwitchLocalPortConfigStormControl {
+        /**
+         * whether to disable storm control on broadcast traffic
+         */
+        noBroadcast?: pulumi.Input<boolean>;
+        /**
+         * whether to disable storm control on multicast traffic
+         */
+        noMulticast?: pulumi.Input<boolean>;
+        /**
+         * whether to disable storm control on registered multicast traffic
+         */
+        noRegisteredMulticast?: pulumi.Input<boolean>;
+        /**
+         * whether to disable storm control on unknown unicast traffic
+         */
+        noUnknownUnicast?: pulumi.Input<boolean>;
+        /**
+         * bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+         */
+        percentage?: pulumi.Input<number>;
     }
 
     export interface SwitchMistNac {
@@ -2071,6 +2198,14 @@ export namespace device {
     }
 
     export interface SwitchNetworks {
+        /**
+         * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         */
+        gateway?: pulumi.Input<string>;
+        /**
+         * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         */
+        gateway6?: pulumi.Input<string>;
         /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
          * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
@@ -2081,6 +2216,10 @@ export namespace device {
          * optional for pure switching, required when L3 / routing features are used
          */
         subnet?: pulumi.Input<string>;
+        /**
+         * optional for pure switching, required when L3 / routing features are used
+         */
+        subnet6?: pulumi.Input<string>;
         vlanId: pulumi.Input<string>;
     }
 
@@ -2100,7 +2239,7 @@ export namespace device {
          */
         type?: pulumi.Input<string>;
         /**
-         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
         useMgmtVrf?: pulumi.Input<boolean>;
         /**
@@ -2224,13 +2363,11 @@ export namespace device {
         noLocalOverwrite?: pulumi.Input<boolean>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: pulumi.Input<string>;
     }
@@ -2264,9 +2401,9 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         *
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -2335,7 +2472,7 @@ export namespace device {
          */
         macLimit?: pulumi.Input<number>;
         /**
-         * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: pulumi.Input<string>;
         /**
@@ -2383,7 +2520,7 @@ export namespace device {
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
@@ -4504,7 +4641,7 @@ export namespace org {
          */
         idpprofileId?: pulumi.Input<string>;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
          */
         profile?: pulumi.Input<string>;
     }
@@ -4795,6 +4932,96 @@ export namespace org {
 
     export interface DeviceprofileGatewayVrfInstances {
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EvpnTopologyEvpnOptions {
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet?: pulumi.Input<string>;
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet6?: pulumi.Input<string>;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet?: pulumi.Input<string>;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet6?: pulumi.Input<string>;
+        /**
+         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
+         * when `routedAt` != `core`, whether to do virtual-gateway at core as well
+         */
+        coreAsBorder?: pulumi.Input<boolean>;
+        overlay?: pulumi.Input<inputs.org.EvpnTopologyEvpnOptionsOverlay>;
+        /**
+         * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4Mac
+         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV4Mac?: pulumi.Input<boolean>;
+        /**
+         * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         */
+        routedAt?: pulumi.Input<string>;
+        underlay?: pulumi.Input<inputs.org.EvpnTopologyEvpnOptionsUnderlay>;
+        /**
+         * optional, for EX9200 only to seggregate virtual-switches
+         */
+        vsInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.EvpnTopologyEvpnOptionsVsInstances>}>;
+    }
+
+    export interface EvpnTopologyEvpnOptionsOverlay {
+        /**
+         * Overlay BGP Local AS Number
+         */
+        as?: pulumi.Input<number>;
+    }
+
+    export interface EvpnTopologyEvpnOptionsUnderlay {
+        /**
+         * Underlay BGP Base AS Number
+         */
+        asBase?: pulumi.Input<number>;
+        routedIdPrefix?: pulumi.Input<string>;
+        /**
+         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         */
+        subnet?: pulumi.Input<string>;
+        /**
+         * if v6 is desired for underlay
+         */
+        useIpv6?: pulumi.Input<boolean>;
+    }
+
+    export interface EvpnTopologyEvpnOptionsVsInstances {
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EvpnTopologySwitches {
+        deviceprofileId?: pulumi.Input<string>;
+        evpnId?: pulumi.Input<number>;
+        mac?: pulumi.Input<string>;
+        model?: pulumi.Input<string>;
+        /**
+         * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         *   * for CLOS, to group dist / access switches into pods
+         *   * for ERB/CRB, to group dist / esilag-access into pods
+         */
+        pod?: pulumi.Input<number>;
+        /**
+         * by default, core switches are assumed to be connecting all pods. 
+         * if you want to limit the pods, you can specify pods.
+         */
+        pods?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+         */
+        role: pulumi.Input<string>;
+        routerId?: pulumi.Input<string>;
+        siteId?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateBgpConfig {
@@ -5717,7 +5944,7 @@ export namespace org {
          */
         idpprofileId?: pulumi.Input<string>;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
          */
         profile?: pulumi.Input<string>;
     }
@@ -6441,6 +6668,14 @@ export namespace org {
 
     export interface NetworktemplateNetworks {
         /**
+         * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         */
+        gateway?: pulumi.Input<string>;
+        /**
+         * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         */
+        gateway6?: pulumi.Input<string>;
+        /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
          * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
@@ -6450,6 +6685,10 @@ export namespace org {
          * optional for pure switching, required when L3 / routing features are used
          */
         subnet?: pulumi.Input<string>;
+        /**
+         * optional for pure switching, required when L3 / routing features are used
+         */
+        subnet6?: pulumi.Input<string>;
         vlanId: pulumi.Input<string>;
     }
 
@@ -6524,9 +6763,9 @@ export namespace org {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         *
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -6595,7 +6834,7 @@ export namespace org {
          */
         macLimit?: pulumi.Input<number>;
         /**
-         * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: pulumi.Input<string>;
         /**
@@ -6643,7 +6882,7 @@ export namespace org {
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
@@ -6657,6 +6896,10 @@ export namespace org {
         stpEdge?: pulumi.Input<boolean>;
         stpNoRootPort?: pulumi.Input<boolean>;
         stpP2p?: pulumi.Input<boolean>;
+        /**
+         * optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         */
+        uiEvpntopoId?: pulumi.Input<string>;
         /**
          * if this is connected to a vstp network
          */
@@ -7229,13 +7472,11 @@ export namespace org {
         noLocalOverwrite?: pulumi.Input<boolean>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: pulumi.Input<string>;
     }
@@ -7785,10 +8026,11 @@ export namespace org {
     }
 
     export interface SettingCradlepoint {
-        cpApiId: pulumi.Input<string>;
-        cpApiKey: pulumi.Input<string>;
-        ecmApiId: pulumi.Input<string>;
-        ecmApiKey: pulumi.Input<string>;
+        cpApiId?: pulumi.Input<string>;
+        cpApiKey?: pulumi.Input<string>;
+        ecmApiId?: pulumi.Input<string>;
+        ecmApiKey?: pulumi.Input<string>;
+        enableLldp?: pulumi.Input<boolean>;
     }
 
     export interface SettingDeviceCert {
@@ -8234,6 +8476,10 @@ export namespace org {
          */
         port?: pulumi.Input<number>;
         /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
+        /**
          * secret of RADIUS server
          */
         secret: pulumi.Input<string>;
@@ -8369,6 +8615,15 @@ export namespace org {
     }
 
     export interface WlanInjectDhcpOption82 {
+        /**
+         * information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         */
         circuitId?: pulumi.Input<string>;
         /**
          * whether to inject option 82 when forwarding DHCP packets
@@ -8390,6 +8645,10 @@ export namespace org {
     }
 
     export interface WlanPortal {
+        /**
+         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        allowWlanIdRoam?: pulumi.Input<boolean>;
         /**
          * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
@@ -8637,28 +8896,31 @@ export namespace org {
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole?: pulumi.Input<string>;
+        /**
+         * if `wlanPortalAuth`==`sso`
+         */
         ssoForcedRole?: pulumi.Input<string>;
         /**
-         * IDP Cert (used to verify the signed response)
+         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
          */
         ssoIdpCert?: pulumi.Input<string>;
         /**
-         * signing algorithm for SAML Assertion
+         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo?: pulumi.Input<string>;
         /**
-         * IDP Single-Sign-On URL
+         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl?: pulumi.Input<string>;
         /**
-         * IDP issuer URL
+         * if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer?: pulumi.Input<string>;
         /**
-         * enum: `email`, `unspecified`
+         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat?: pulumi.Input<string>;
         /**
@@ -9395,6 +9657,73 @@ export namespace org {
         port?: pulumi.Input<number>;
     }
 
+    export interface WlanRateset {
+        /**
+         * data rates wlan settings
+         */
+        band24?: pulumi.Input<inputs.org.WlanRatesetBand24>;
+        /**
+         * data rates wlan settings
+         */
+        band5?: pulumi.Input<inputs.org.WlanRatesetBand5>;
+    }
+
+    export interface WlanRatesetBand24 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: pulumi.Input<number>;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: pulumi.Input<string>;
+    }
+
+    export interface WlanRatesetBand5 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: pulumi.Input<number>;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: pulumi.Input<string>;
+    }
+
     export interface WlanSchedule {
         enabled?: pulumi.Input<boolean>;
         /**
@@ -9458,6 +9787,96 @@ export namespace site {
     export interface BaseLatlng {
         lat: pulumi.Input<number>;
         lng: pulumi.Input<number>;
+    }
+
+    export interface EvpnTopologyEvpnOptions {
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet?: pulumi.Input<string>;
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet6?: pulumi.Input<string>;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet?: pulumi.Input<string>;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet6?: pulumi.Input<string>;
+        /**
+         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
+         * when `routedAt` != `core`, whether to do virtual-gateway at core as well
+         */
+        coreAsBorder?: pulumi.Input<boolean>;
+        overlay?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptionsOverlay>;
+        /**
+         * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4Mac
+         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV4Mac?: pulumi.Input<boolean>;
+        /**
+         * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         */
+        routedAt?: pulumi.Input<string>;
+        underlay?: pulumi.Input<inputs.site.EvpnTopologyEvpnOptionsUnderlay>;
+        /**
+         * optional, for EX9200 only to seggregate virtual-switches
+         */
+        vsInstances?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.EvpnTopologyEvpnOptionsVsInstances>}>;
+    }
+
+    export interface EvpnTopologyEvpnOptionsOverlay {
+        /**
+         * Overlay BGP Local AS Number
+         */
+        as?: pulumi.Input<number>;
+    }
+
+    export interface EvpnTopologyEvpnOptionsUnderlay {
+        /**
+         * Underlay BGP Base AS Number
+         */
+        asBase?: pulumi.Input<number>;
+        routedIdPrefix?: pulumi.Input<string>;
+        /**
+         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         */
+        subnet?: pulumi.Input<string>;
+        /**
+         * if v6 is desired for underlay
+         */
+        useIpv6?: pulumi.Input<boolean>;
+    }
+
+    export interface EvpnTopologyEvpnOptionsVsInstances {
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface EvpnTopologySwitches {
+        deviceprofileId?: pulumi.Input<string>;
+        evpnId?: pulumi.Input<number>;
+        mac?: pulumi.Input<string>;
+        model?: pulumi.Input<string>;
+        /**
+         * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         *   * for CLOS, to group dist / access switches into pods
+         *   * for ERB/CRB, to group dist / esilag-access into pods
+         */
+        pod?: pulumi.Input<number>;
+        /**
+         * by default, core switches are assumed to be connecting all pods. 
+         * if you want to limit the pods, you can specify pods.
+         */
+        pods?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+         */
+        role: pulumi.Input<string>;
+        routerId?: pulumi.Input<string>;
+        siteId?: pulumi.Input<string>;
     }
 
     export interface NetworktemplateAclPolicy {
@@ -9614,6 +10033,14 @@ export namespace site {
 
     export interface NetworktemplateNetworks {
         /**
+         * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         */
+        gateway?: pulumi.Input<string>;
+        /**
+         * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         */
+        gateway6?: pulumi.Input<string>;
+        /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
          * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
@@ -9623,6 +10050,10 @@ export namespace site {
          * optional for pure switching, required when L3 / routing features are used
          */
         subnet?: pulumi.Input<string>;
+        /**
+         * optional for pure switching, required when L3 / routing features are used
+         */
+        subnet6?: pulumi.Input<string>;
         vlanId: pulumi.Input<string>;
     }
 
@@ -9697,9 +10128,9 @@ export namespace site {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         *
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -9768,7 +10199,7 @@ export namespace site {
          */
         macLimit?: pulumi.Input<number>;
         /**
-         * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: pulumi.Input<string>;
         /**
@@ -9816,7 +10247,7 @@ export namespace site {
          */
         serverRejectNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
@@ -9830,6 +10261,10 @@ export namespace site {
         stpEdge?: pulumi.Input<boolean>;
         stpNoRootPort?: pulumi.Input<boolean>;
         stpP2p?: pulumi.Input<boolean>;
+        /**
+         * optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         */
+        uiEvpntopoId?: pulumi.Input<string>;
         /**
          * if this is connected to a vstp network
          */
@@ -10402,13 +10837,11 @@ export namespace site {
         noLocalOverwrite?: pulumi.Input<boolean>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed?: pulumi.Input<string>;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: pulumi.Input<string>;
     }
@@ -10700,7 +11133,7 @@ export namespace site {
          */
         ibeaconUuid?: pulumi.Input<string>;
         /**
-         * required if `powerMode`==`custom`
+         * required if `powerMode`==`custom`; else use `powerMode` as default
          */
         power?: pulumi.Input<number>;
         /**
@@ -11049,7 +11482,7 @@ export namespace site {
         /**
          * any / HH:MM (24-hour format)
          */
-        timeOdFay?: pulumi.Input<string>;
+        timeOfDay?: pulumi.Input<string>;
     }
 
     export interface SettingUplinkPortConfig {
@@ -11312,6 +11745,10 @@ export namespace site {
          */
         port?: pulumi.Input<number>;
         /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator?: pulumi.Input<boolean>;
+        /**
          * secret of RADIUS server
          */
         secret: pulumi.Input<string>;
@@ -11447,6 +11884,15 @@ export namespace site {
     }
 
     export interface WlanInjectDhcpOption82 {
+        /**
+         * information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         */
         circuitId?: pulumi.Input<string>;
         /**
          * whether to inject option 82 when forwarding DHCP packets
@@ -11468,6 +11914,10 @@ export namespace site {
     }
 
     export interface WlanPortal {
+        /**
+         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        allowWlanIdRoam?: pulumi.Input<boolean>;
         /**
          * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
@@ -11715,28 +12165,31 @@ export namespace site {
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole?: pulumi.Input<string>;
+        /**
+         * if `wlanPortalAuth`==`sso`
+         */
         ssoForcedRole?: pulumi.Input<string>;
         /**
-         * IDP Cert (used to verify the signed response)
+         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
          */
         ssoIdpCert?: pulumi.Input<string>;
         /**
-         * signing algorithm for SAML Assertion
+         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo?: pulumi.Input<string>;
         /**
-         * IDP Single-Sign-On URL
+         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl?: pulumi.Input<string>;
         /**
-         * IDP issuer URL
+         * if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer?: pulumi.Input<string>;
         /**
-         * enum: `email`, `unspecified`
+         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat?: pulumi.Input<string>;
         /**
@@ -12471,6 +12924,73 @@ export namespace site {
     export interface WlanRadsecServer {
         host?: pulumi.Input<string>;
         port?: pulumi.Input<number>;
+    }
+
+    export interface WlanRateset {
+        /**
+         * data rates wlan settings
+         */
+        band24?: pulumi.Input<inputs.site.WlanRatesetBand24>;
+        /**
+         * data rates wlan settings
+         */
+        band5?: pulumi.Input<inputs.site.WlanRatesetBand5>;
+    }
+
+    export interface WlanRatesetBand24 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: pulumi.Input<number>;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: pulumi.Input<string>;
+    }
+
+    export interface WlanRatesetBand5 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: pulumi.Input<number>;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: pulumi.Input<string>;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: pulumi.Input<string>;
     }
 
     export interface WlanSchedule {

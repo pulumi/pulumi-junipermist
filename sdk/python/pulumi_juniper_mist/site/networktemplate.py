@@ -26,6 +26,7 @@ class NetworktemplateArgs:
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dhcp_snooping: Optional[pulumi.Input['NetworktemplateDhcpSnoopingArgs']] = None,
+                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]]] = None,
@@ -50,6 +51,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[str] site_id: Unique ID of the object instance in the Mist Organnization
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -60,6 +62,7 @@ class NetworktemplateArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input['NetworktemplateSwitchMatchingArgs'] switch_matching: Switch template
@@ -75,6 +78,8 @@ class NetworktemplateArgs:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if dhcp_snooping is not None:
             pulumi.set(__self__, "dhcp_snooping", dhcp_snooping)
+        if disabled_system_defined_port_usages is not None:
+            pulumi.set(__self__, "disabled_system_defined_port_usages", disabled_system_defined_port_usages)
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
         if dns_suffixes is not None:
@@ -167,6 +172,18 @@ class NetworktemplateArgs:
     @dhcp_snooping.setter
     def dhcp_snooping(self, value: Optional[pulumi.Input['NetworktemplateDhcpSnoopingArgs']]):
         pulumi.set(self, "dhcp_snooping", value)
+
+    @property
+    @pulumi.getter(name="disabledSystemDefinedPortUsages")
+    def disabled_system_defined_port_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        if some system-default port usages are not desired - namely, ap / iot / uplink
+        """
+        return pulumi.get(self, "disabled_system_defined_port_usages")
+
+    @disabled_system_defined_port_usages.setter
+    def disabled_system_defined_port_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disabled_system_defined_port_usages", value)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -278,6 +295,9 @@ class NetworktemplateArgs:
     @property
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]]:
+        """
+        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        """
         return pulumi.get(self, "port_usages")
 
     @port_usages.setter
@@ -388,6 +408,7 @@ class _NetworktemplateState:
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dhcp_snooping: Optional[pulumi.Input['NetworktemplateDhcpSnoopingArgs']] = None,
+                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesArgs']]]] = None,
@@ -412,6 +433,7 @@ class _NetworktemplateState:
         Input properties used for looking up and filtering Networktemplate resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateAclTagsArgs']]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -422,6 +444,7 @@ class _NetworktemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input['NetworktemplateRadiusConfigArgs'] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[str] site_id: Unique ID of the object instance in the Mist Organnization
@@ -437,6 +460,8 @@ class _NetworktemplateState:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
         if dhcp_snooping is not None:
             pulumi.set(__self__, "dhcp_snooping", dhcp_snooping)
+        if disabled_system_defined_port_usages is not None:
+            pulumi.set(__self__, "disabled_system_defined_port_usages", disabled_system_defined_port_usages)
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
         if dns_suffixes is not None:
@@ -519,6 +544,18 @@ class _NetworktemplateState:
     @dhcp_snooping.setter
     def dhcp_snooping(self, value: Optional[pulumi.Input['NetworktemplateDhcpSnoopingArgs']]):
         pulumi.set(self, "dhcp_snooping", value)
+
+    @property
+    @pulumi.getter(name="disabledSystemDefinedPortUsages")
+    def disabled_system_defined_port_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        if some system-default port usages are not desired - namely, ap / iot / uplink
+        """
+        return pulumi.get(self, "disabled_system_defined_port_usages")
+
+    @disabled_system_defined_port_usages.setter
+    def disabled_system_defined_port_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "disabled_system_defined_port_usages", value)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -630,6 +667,9 @@ class _NetworktemplateState:
     @property
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplatePortUsagesArgs']]]]:
+        """
+        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        """
         return pulumi.get(self, "port_usages")
 
     @port_usages.setter
@@ -754,6 +794,7 @@ class Networktemplate(pulumi.CustomResource):
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
+                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
@@ -779,6 +820,10 @@ class Networktemplate(pulumi.CustomResource):
         This resource manages the Site Network configuration (Switch configuration).
         The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
 
+        > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `site.Networktemplate` resource has been created to centralize all the site level switches related settings.
+
+        !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+
         ## Import
 
         Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -793,6 +838,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -803,6 +849,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[str] site_id: Unique ID of the object instance in the Mist Organnization
@@ -819,6 +866,10 @@ class Networktemplate(pulumi.CustomResource):
         """
         This resource manages the Site Network configuration (Switch configuration).
         The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+
+        > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `site.Networktemplate` resource has been created to centralize all the site level switches related settings.
+
+        !> Only ONE `site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
 
         ## Import
 
@@ -849,6 +900,7 @@ class Networktemplate(pulumi.CustomResource):
                  acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
                  additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
+                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
@@ -882,6 +934,7 @@ class Networktemplate(pulumi.CustomResource):
             __props__.__dict__["acl_tags"] = acl_tags
             __props__.__dict__["additional_config_cmds"] = additional_config_cmds
             __props__.__dict__["dhcp_snooping"] = dhcp_snooping
+            __props__.__dict__["disabled_system_defined_port_usages"] = disabled_system_defined_port_usages
             __props__.__dict__["dns_servers"] = dns_servers
             __props__.__dict__["dns_suffixes"] = dns_suffixes
             __props__.__dict__["extra_routes"] = extra_routes
@@ -918,6 +971,7 @@ class Networktemplate(pulumi.CustomResource):
             acl_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]]] = None,
             additional_config_cmds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dhcp_snooping: Optional[pulumi.Input[Union['NetworktemplateDhcpSnoopingArgs', 'NetworktemplateDhcpSnoopingArgsDict']]] = None,
+            disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             dns_suffixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             extra_routes: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutesArgs', 'NetworktemplateExtraRoutesArgsDict']]]]] = None,
@@ -947,6 +1001,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateAclTagsArgs', 'NetworktemplateAclTagsArgsDict']]]] acl_tags: ACL Tags to identify traffic source or destination. Key name is the tag name
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplateExtraRoutes6Args', 'NetworktemplateExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -957,6 +1012,7 @@ class Networktemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortMirroringArgs', 'NetworktemplatePortMirroringArgsDict']]]] port_mirroring: Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
                interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
                maximum 4 port mirrorings is allowed
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworktemplatePortUsagesArgs', 'NetworktemplatePortUsagesArgsDict']]]] port_usages: Property key is the port usage name. Defines the profiles of port configuration configured on the switch
         :param pulumi.Input[Union['NetworktemplateRadiusConfigArgs', 'NetworktemplateRadiusConfigArgsDict']] radius_config: Junos Radius config
         :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
         :param pulumi.Input[str] site_id: Unique ID of the object instance in the Mist Organnization
@@ -972,6 +1028,7 @@ class Networktemplate(pulumi.CustomResource):
         __props__.__dict__["acl_tags"] = acl_tags
         __props__.__dict__["additional_config_cmds"] = additional_config_cmds
         __props__.__dict__["dhcp_snooping"] = dhcp_snooping
+        __props__.__dict__["disabled_system_defined_port_usages"] = disabled_system_defined_port_usages
         __props__.__dict__["dns_servers"] = dns_servers
         __props__.__dict__["dns_suffixes"] = dns_suffixes
         __props__.__dict__["extra_routes"] = extra_routes
@@ -1019,6 +1076,14 @@ class Networktemplate(pulumi.CustomResource):
     @pulumi.getter(name="dhcpSnooping")
     def dhcp_snooping(self) -> pulumi.Output[Optional['outputs.NetworktemplateDhcpSnooping']]:
         return pulumi.get(self, "dhcp_snooping")
+
+    @property
+    @pulumi.getter(name="disabledSystemDefinedPortUsages")
+    def disabled_system_defined_port_usages(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        if some system-default port usages are not desired - namely, ap / iot / uplink
+        """
+        return pulumi.get(self, "disabled_system_defined_port_usages")
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -1094,6 +1159,9 @@ class Networktemplate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="portUsages")
     def port_usages(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworktemplatePortUsages']]]:
+        """
+        Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        """
         return pulumi.get(self, "port_usages")
 
     @property

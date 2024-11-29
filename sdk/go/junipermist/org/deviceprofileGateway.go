@@ -52,8 +52,8 @@ type DeviceprofileGateway struct {
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// out-of-band (vme/em0/fxp0) IP config
-	OobIpConfig DeviceprofileGatewayOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
-	OrgId       pulumi.StringOutput                      `pulumi:"orgId"`
+	OobIpConfig DeviceprofileGatewayOobIpConfigOutput `pulumi:"oobIpConfig"`
+	OrgId       pulumi.StringOutput                   `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences DeviceprofileGatewayPathPreferencesMapOutput `pulumi:"pathPreferences"`
 	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
@@ -438,8 +438,8 @@ func (o DeviceprofileGatewayOutput) NtpServers() pulumi.StringArrayOutput {
 }
 
 // out-of-band (vme/em0/fxp0) IP config
-func (o DeviceprofileGatewayOutput) OobIpConfig() DeviceprofileGatewayOobIpConfigPtrOutput {
-	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayOobIpConfigPtrOutput { return v.OobIpConfig }).(DeviceprofileGatewayOobIpConfigPtrOutput)
+func (o DeviceprofileGatewayOutput) OobIpConfig() DeviceprofileGatewayOobIpConfigOutput {
+	return o.ApplyT(func(v *DeviceprofileGateway) DeviceprofileGatewayOobIpConfigOutput { return v.OobIpConfig }).(DeviceprofileGatewayOobIpConfigOutput)
 }
 
 func (o DeviceprofileGatewayOutput) OrgId() pulumi.StringOutput {

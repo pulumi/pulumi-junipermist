@@ -32,10 +32,10 @@ type Setting struct {
 	ApUpdownThreshold pulumi.IntOutput          `pulumi:"apUpdownThreshold"`
 	ApiPolicy         SettingApiPolicyPtrOutput `pulumi:"apiPolicy"`
 	// list of PEM-encoded ca certs
-	Cacerts     pulumi.StringArrayOutput    `pulumi:"cacerts"`
-	Celona      SettingCelonaPtrOutput      `pulumi:"celona"`
-	Cloudshark  SettingCloudsharkPtrOutput  `pulumi:"cloudshark"`
-	Cradlepoint SettingCradlepointPtrOutput `pulumi:"cradlepoint"`
+	Cacerts     pulumi.StringArrayOutput   `pulumi:"cacerts"`
+	Celona      SettingCelonaPtrOutput     `pulumi:"celona"`
+	Cloudshark  SettingCloudsharkPtrOutput `pulumi:"cloudshark"`
+	Cradlepoint SettingCradlepointOutput   `pulumi:"cradlepoint"`
 	// common device cert, optional
 	DeviceCert SettingDeviceCertPtrOutput `pulumi:"deviceCert"`
 	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
@@ -227,10 +227,9 @@ type settingArgs struct {
 	ApUpdownThreshold *int              `pulumi:"apUpdownThreshold"`
 	ApiPolicy         *SettingApiPolicy `pulumi:"apiPolicy"`
 	// list of PEM-encoded ca certs
-	Cacerts     []string            `pulumi:"cacerts"`
-	Celona      *SettingCelona      `pulumi:"celona"`
-	Cloudshark  *SettingCloudshark  `pulumi:"cloudshark"`
-	Cradlepoint *SettingCradlepoint `pulumi:"cradlepoint"`
+	Cacerts    []string           `pulumi:"cacerts"`
+	Celona     *SettingCelona     `pulumi:"celona"`
+	Cloudshark *SettingCloudshark `pulumi:"cloudshark"`
 	// common device cert, optional
 	DeviceCert *SettingDeviceCert `pulumi:"deviceCert"`
 	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
@@ -280,10 +279,9 @@ type SettingArgs struct {
 	ApUpdownThreshold pulumi.IntPtrInput
 	ApiPolicy         SettingApiPolicyPtrInput
 	// list of PEM-encoded ca certs
-	Cacerts     pulumi.StringArrayInput
-	Celona      SettingCelonaPtrInput
-	Cloudshark  SettingCloudsharkPtrInput
-	Cradlepoint SettingCradlepointPtrInput
+	Cacerts    pulumi.StringArrayInput
+	Celona     SettingCelonaPtrInput
+	Cloudshark SettingCloudsharkPtrInput
 	// common device cert, optional
 	DeviceCert SettingDeviceCertPtrInput
 	// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
@@ -436,8 +434,8 @@ func (o SettingOutput) Cloudshark() SettingCloudsharkPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingCloudsharkPtrOutput { return v.Cloudshark }).(SettingCloudsharkPtrOutput)
 }
 
-func (o SettingOutput) Cradlepoint() SettingCradlepointPtrOutput {
-	return o.ApplyT(func(v *Setting) SettingCradlepointPtrOutput { return v.Cradlepoint }).(SettingCradlepointPtrOutput)
+func (o SettingOutput) Cradlepoint() SettingCradlepointOutput {
+	return o.ApplyT(func(v *Setting) SettingCradlepointOutput { return v.Cradlepoint }).(SettingCradlepointOutput)
 }
 
 // common device cert, optional

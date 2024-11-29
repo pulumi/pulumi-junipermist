@@ -10,6 +10,11 @@ export type Base = import("./base").Base;
 export const Base: typeof import("./base").Base = null as any;
 utilities.lazyLoad(exports, ["Base"], () => require("./base"));
 
+export { EvpnTopologyArgs, EvpnTopologyState } from "./evpnTopology";
+export type EvpnTopology = import("./evpnTopology").EvpnTopology;
+export const EvpnTopology: typeof import("./evpnTopology").EvpnTopology = null as any;
+utilities.lazyLoad(exports, ["EvpnTopology"], () => require("./evpnTopology"));
+
 export { GetPsksArgs, GetPsksResult, GetPsksOutputArgs } from "./getPsks";
 export const getPsks: typeof import("./getPsks").getPsks = null as any;
 export const getPsksOutput: typeof import("./getPsks").getPsksOutput = null as any;
@@ -72,6 +77,8 @@ const _module = {
         switch (type) {
             case "junipermist:site/base:base":
                 return new Base(name, <any>undefined, { urn })
+            case "junipermist:site/evpnTopology:EvpnTopology":
+                return new EvpnTopology(name, <any>undefined, { urn })
             case "junipermist:site/networktemplate:Networktemplate":
                 return new Networktemplate(name, <any>undefined, { urn })
             case "junipermist:site/psk:Psk":
@@ -96,6 +103,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("junipermist", "site/base", _module)
+pulumi.runtime.registerResourceModule("junipermist", "site/evpnTopology", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/networktemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/psk", _module)
 pulumi.runtime.registerResourceModule("junipermist", "site/setting", _module)
