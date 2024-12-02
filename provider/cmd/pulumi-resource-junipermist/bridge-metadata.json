@@ -515,6 +515,18 @@
                             }
                         }
                     },
+                    "local_port_config": {
+                        "elem": {
+                            "fields": {
+                                "dynamic_vlan_networks": {
+                                    "maxItemsOne": false
+                                },
+                                "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "ntp_servers": {
                         "maxItemsOne": false
                     },
@@ -1200,6 +1212,33 @@
                         "elem": {
                             "fields": {
                                 "networks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_org_evpn_topology": {
+                "current": "junipermist:org/evpnTopology:EvpnTopology",
+                "fields": {
+                    "evpn_options": {
+                        "fields": {
+                            "vs_instances": {
+                                "elem": {
+                                    "fields": {
+                                        "networks": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "switches": {
+                        "elem": {
+                            "fields": {
+                                "pods": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2345,6 +2384,24 @@
                             }
                         }
                     },
+                    "rateset": {
+                        "fields": {
+                            "band_24": {
+                                "fields": {
+                                    "legacy": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "band_5": {
+                                "fields": {
+                                    "legacy": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "vlan_ids": {
                         "maxItemsOne": false
                     },
@@ -2443,6 +2500,33 @@
                     }
                 }
             },
+            "mist_site_evpn_topology": {
+                "current": "junipermist:site/evpnTopology:EvpnTopology",
+                "fields": {
+                    "evpn_options": {
+                        "fields": {
+                            "vs_instances": {
+                                "elem": {
+                                    "fields": {
+                                        "networks": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "switches": {
+                        "elem": {
+                            "fields": {
+                                "pods": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "mist_site_networktemplate": {
                 "current": "junipermist:site/networktemplate:Networktemplate",
                 "fields": {
@@ -2483,6 +2567,9 @@
                                 "maxItemsOne": false
                             }
                         }
+                    },
+                    "disabled_system_defined_port_usages": {
+                        "maxItemsOne": false
                     },
                     "dns_servers": {
                         "maxItemsOne": false
@@ -2759,9 +2846,6 @@
                             }
                         }
                     },
-                    "disabled_system_defined_port_usages": {
-                        "maxItemsOne": false
-                    },
                     "gateway_mgmt": {
                         "fields": {
                             "admin_sshkeys": {
@@ -3016,6 +3100,24 @@
                             },
                             "servers": {
                                 "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "rateset": {
+                        "fields": {
+                            "band_24": {
+                                "fields": {
+                                    "legacy": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "band_5": {
+                                "fields": {
+                                    "legacy": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     },
