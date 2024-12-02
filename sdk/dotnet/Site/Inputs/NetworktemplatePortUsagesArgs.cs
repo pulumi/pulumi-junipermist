@@ -19,9 +19,9 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? AllNetworks { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        /// 
-        /// When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+        /// All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+        /// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         /// </summary>
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? MacLimit { get; set; }
 
         /// <summary>
-        /// `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+        /// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? ServerRejectNetwork { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+        /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
@@ -237,6 +237,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
         [Input("stpP2p")]
         public Input<bool>? StpP2p { get; set; }
+
+        /// <summary>
+        /// optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+        /// </summary>
+        [Input("uiEvpntopoId")]
+        public Input<string>? UiEvpntopoId { get; set; }
 
         /// <summary>
         /// if this is connected to a vstp network

@@ -13,6 +13,8 @@ namespace Pulumi.JuniperMist.Device
     /// This resource manages the Switch configuration.
     /// It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
     /// 
+    /// &gt; **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_device_switch` with:
@@ -72,7 +74,7 @@ namespace Pulumi.JuniperMist.Device
         /// EVPN Junos settings
         /// </summary>
         [Output("evpnConfig")]
-        public Output<Outputs.SwitchEvpnConfig?> EvpnConfig { get; private set; } = null!;
+        public Output<Outputs.SwitchEvpnConfig> EvpnConfig { get; private set; } = null!;
 
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.SwitchExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
@@ -170,7 +172,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the network name
+        /// Property key is the network name. Defines the additional IP Addresses configured on the device.
         /// </summary>
         [Output("otherIpConfigs")]
         public Output<ImmutableDictionary<string, Outputs.SwitchOtherIpConfigs>?> OtherIpConfigs { get; private set; } = null!;
@@ -189,6 +191,9 @@ namespace Pulumi.JuniperMist.Device
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortMirroring>?> PortMirroring { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         [Output("portUsages")]
         public Output<ImmutableDictionary<string, Outputs.SwitchPortUsages>?> PortUsages { get; private set; } = null!;
 
@@ -208,7 +213,7 @@ namespace Pulumi.JuniperMist.Device
         /// used for OSPF / BGP / EVPN
         /// </summary>
         [Output("routerId")]
-        public Output<string?> RouterId { get; private set; } = null!;
+        public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
         /// device Serial
@@ -400,12 +405,6 @@ namespace Pulumi.JuniperMist.Device
             set => _dnsSuffixes = value;
         }
 
-        /// <summary>
-        /// EVPN Junos settings
-        /// </summary>
-        [Input("evpnConfig")]
-        public Input<Inputs.SwitchEvpnConfigArgs>? EvpnConfig { get; set; }
-
         [Input("extraRoutes")]
         private InputMap<Inputs.SwitchExtraRoutesArgs>? _extraRoutes;
         public InputMap<Inputs.SwitchExtraRoutesArgs> ExtraRoutes
@@ -516,7 +515,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchOtherIpConfigsArgs>? _otherIpConfigs;
 
         /// <summary>
-        /// Property key is the network name
+        /// Property key is the network name. Defines the additional IP Addresses configured on the device.
         /// </summary>
         public InputMap<Inputs.SwitchOtherIpConfigsArgs> OtherIpConfigs
         {
@@ -552,6 +551,10 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("portUsages")]
         private InputMap<Inputs.SwitchPortUsagesArgs>? _portUsages;
+
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         public InputMap<Inputs.SwitchPortUsagesArgs> PortUsages
         {
             get => _portUsages ?? (_portUsages = new InputMap<Inputs.SwitchPortUsagesArgs>());
@@ -867,7 +870,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchOtherIpConfigsGetArgs>? _otherIpConfigs;
 
         /// <summary>
-        /// Property key is the network name
+        /// Property key is the network name. Defines the additional IP Addresses configured on the device.
         /// </summary>
         public InputMap<Inputs.SwitchOtherIpConfigsGetArgs> OtherIpConfigs
         {
@@ -903,6 +906,10 @@ namespace Pulumi.JuniperMist.Device
 
         [Input("portUsages")]
         private InputMap<Inputs.SwitchPortUsagesGetArgs>? _portUsages;
+
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         public InputMap<Inputs.SwitchPortUsagesGetArgs> PortUsages
         {
             get => _portUsages ?? (_portUsages = new InputMap<Inputs.SwitchPortUsagesGetArgs>());

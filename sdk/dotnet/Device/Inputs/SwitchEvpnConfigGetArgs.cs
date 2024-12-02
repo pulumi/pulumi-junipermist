@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// enum: `access`, `core`, `distribution`
+        /// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

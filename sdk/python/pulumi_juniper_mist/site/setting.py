@@ -30,7 +30,6 @@ class SettingArgs:
                  config_push_policy: Optional[pulumi.Input['SettingConfigPushPolicyArgs']] = None,
                  critical_url_monitoring: Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engagement: Optional[pulumi.Input['SettingEngagementArgs']] = None,
                  gateway_mgmt: Optional[pulumi.Input['SettingGatewayMgmtArgs']] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -70,7 +69,6 @@ class SettingArgs:
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
                multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
                (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
@@ -117,8 +115,6 @@ class SettingArgs:
             pulumi.set(__self__, "critical_url_monitoring", critical_url_monitoring)
         if device_updown_threshold is not None:
             pulumi.set(__self__, "device_updown_threshold", device_updown_threshold)
-        if disabled_system_defined_port_usages is not None:
-            pulumi.set(__self__, "disabled_system_defined_port_usages", disabled_system_defined_port_usages)
         if engagement is not None:
             pulumi.set(__self__, "engagement", engagement)
         if gateway_mgmt is not None:
@@ -279,18 +275,6 @@ class SettingArgs:
     @device_updown_threshold.setter
     def device_updown_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "device_updown_threshold", value)
-
-    @property
-    @pulumi.getter(name="disabledSystemDefinedPortUsages")
-    def disabled_system_defined_port_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        if some system-default port usages are not desired - namely, ap / iot / uplink
-        """
-        return pulumi.get(self, "disabled_system_defined_port_usages")
-
-    @disabled_system_defined_port_usages.setter
-    def disabled_system_defined_port_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "disabled_system_defined_port_usages", value)
 
     @property
     @pulumi.getter
@@ -625,7 +609,6 @@ class _SettingState:
                  config_push_policy: Optional[pulumi.Input['SettingConfigPushPolicyArgs']] = None,
                  critical_url_monitoring: Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engagement: Optional[pulumi.Input['SettingEngagementArgs']] = None,
                  gateway_mgmt: Optional[pulumi.Input['SettingGatewayMgmtArgs']] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -668,7 +651,6 @@ class _SettingState:
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
                multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
                (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
@@ -716,8 +698,6 @@ class _SettingState:
             pulumi.set(__self__, "critical_url_monitoring", critical_url_monitoring)
         if device_updown_threshold is not None:
             pulumi.set(__self__, "device_updown_threshold", device_updown_threshold)
-        if disabled_system_defined_port_usages is not None:
-            pulumi.set(__self__, "disabled_system_defined_port_usages", disabled_system_defined_port_usages)
         if engagement is not None:
             pulumi.set(__self__, "engagement", engagement)
         if gateway_mgmt is not None:
@@ -884,18 +864,6 @@ class _SettingState:
     @device_updown_threshold.setter
     def device_updown_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "device_updown_threshold", value)
-
-    @property
-    @pulumi.getter(name="disabledSystemDefinedPortUsages")
-    def disabled_system_defined_port_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        if some system-default port usages are not desired - namely, ap / iot / uplink
-        """
-        return pulumi.get(self, "disabled_system_defined_port_usages")
-
-    @disabled_system_defined_port_usages.setter
-    def disabled_system_defined_port_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "disabled_system_defined_port_usages", value)
 
     @property
     @pulumi.getter
@@ -1258,7 +1226,6 @@ class Setting(pulumi.CustomResource):
                  config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
                  critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
                  gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -1293,6 +1260,10 @@ class Setting(pulumi.CustomResource):
         This resource manages the Site Settings.
         The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
+        > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
+
+        !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+
         ## Import
 
         Using `pulumi import`, import `mist_site_setting` with:
@@ -1314,7 +1285,6 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
                multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
                (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
@@ -1354,6 +1324,10 @@ class Setting(pulumi.CustomResource):
         This resource manages the Site Settings.
         The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
+        > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
+
+        !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+
         ## Import
 
         Using `pulumi import`, import `mist_site_setting` with:
@@ -1387,7 +1361,6 @@ class Setting(pulumi.CustomResource):
                  config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
                  critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
                  device_updown_threshold: Optional[pulumi.Input[int]] = None,
-                 disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
                  gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -1434,7 +1407,6 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["config_push_policy"] = config_push_policy
             __props__.__dict__["critical_url_monitoring"] = critical_url_monitoring
             __props__.__dict__["device_updown_threshold"] = device_updown_threshold
-            __props__.__dict__["disabled_system_defined_port_usages"] = disabled_system_defined_port_usages
             __props__.__dict__["engagement"] = engagement
             __props__.__dict__["gateway_mgmt"] = gateway_mgmt
             __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
@@ -1488,7 +1460,6 @@ class Setting(pulumi.CustomResource):
             config_push_policy: Optional[pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']]] = None,
             critical_url_monitoring: Optional[pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']]] = None,
             device_updown_threshold: Optional[pulumi.Input[int]] = None,
-            disabled_system_defined_port_usages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
             gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
             gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
@@ -1536,7 +1507,6 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] disabled_system_defined_port_usages: if some system-default port usages are not desired - namely, ap / iot / uplink
         :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
                multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
                (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
@@ -1579,7 +1549,6 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["config_push_policy"] = config_push_policy
         __props__.__dict__["critical_url_monitoring"] = critical_url_monitoring
         __props__.__dict__["device_updown_threshold"] = device_updown_threshold
-        __props__.__dict__["disabled_system_defined_port_usages"] = disabled_system_defined_port_usages
         __props__.__dict__["engagement"] = engagement
         __props__.__dict__["gateway_mgmt"] = gateway_mgmt
         __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
@@ -1680,14 +1649,6 @@ class Setting(pulumi.CustomResource):
         is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
-
-    @property
-    @pulumi.getter(name="disabledSystemDefinedPortUsages")
-    def disabled_system_defined_port_usages(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        if some system-default port usages are not desired - namely, ap / iot / uplink
-        """
-        return pulumi.get(self, "disabled_system_defined_port_usages")
 
     @property
     @pulumi.getter

@@ -116,6 +116,7 @@ __all__ = [
     'SwitchExtraRoutesNextQualified',
     'SwitchIpConfig',
     'SwitchLocalPortConfig',
+    'SwitchLocalPortConfigStormControl',
     'SwitchMistNac',
     'SwitchNetworks',
     'SwitchOobIpConfig',
@@ -6123,7 +6124,7 @@ class GatewayServicePolicyIdp(dict):
                  profile: Optional[str] = None):
         """
         :param str idpprofile_id: org_level IDP Profile can be used, this takes precedence over `profile`
-        :param str profile: `strict` (default) / `standard` / or keys from from idp_profiles
+        :param str profile: enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
         """
         if alert_only is not None:
             pulumi.set(__self__, "alert_only", alert_only)
@@ -6156,7 +6157,7 @@ class GatewayServicePolicyIdp(dict):
     @pulumi.getter
     def profile(self) -> Optional[str]:
         """
-        `strict` (default) / `standard` / or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
         """
         return pulumi.get(self, "profile")
 
@@ -8064,7 +8065,7 @@ class SwitchEvpnConfig(dict):
                  enabled: Optional[bool] = None,
                  role: Optional[str] = None):
         """
-        :param str role: enum: `access`, `core`, `distribution`
+        :param str role: enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -8080,7 +8081,7 @@ class SwitchEvpnConfig(dict):
     @pulumi.getter
     def role(self) -> Optional[str]:
         """
-        enum: `access`, `core`, `distribution`
+        enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
         """
         return pulumi.get(self, "role")
 
@@ -8390,10 +8391,62 @@ class SwitchLocalPortConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "disableAutoneg":
+        if key == "allNetworks":
+            suggest = "all_networks"
+        elif key == "allowDhcpd":
+            suggest = "allow_dhcpd"
+        elif key == "allowMultipleSupplicants":
+            suggest = "allow_multiple_supplicants"
+        elif key == "bypassAuthWhenServerDown":
+            suggest = "bypass_auth_when_server_down"
+        elif key == "bypassAuthWhenServerDownForUnkonwnClient":
+            suggest = "bypass_auth_when_server_down_for_unkonwn_client"
+        elif key == "disableAutoneg":
             suggest = "disable_autoneg"
+        elif key == "dynamicVlanNetworks":
+            suggest = "dynamic_vlan_networks"
+        elif key == "enableMacAuth":
+            suggest = "enable_mac_auth"
+        elif key == "enableQos":
+            suggest = "enable_qos"
+        elif key == "guestNetwork":
+            suggest = "guest_network"
+        elif key == "interSwitchLink":
+            suggest = "inter_switch_link"
+        elif key == "macAuthOnly":
+            suggest = "mac_auth_only"
+        elif key == "macAuthPreferred":
+            suggest = "mac_auth_preferred"
+        elif key == "macAuthProtocol":
+            suggest = "mac_auth_protocol"
+        elif key == "macLimit":
+            suggest = "mac_limit"
+        elif key == "persistMac":
+            suggest = "persist_mac"
         elif key == "poeDisabled":
             suggest = "poe_disabled"
+        elif key == "portAuth":
+            suggest = "port_auth"
+        elif key == "portNetwork":
+            suggest = "port_network"
+        elif key == "reauthInterval":
+            suggest = "reauth_interval"
+        elif key == "serverFailNetwork":
+            suggest = "server_fail_network"
+        elif key == "serverRejectNetwork":
+            suggest = "server_reject_network"
+        elif key == "stormControl":
+            suggest = "storm_control"
+        elif key == "stpEdge":
+            suggest = "stp_edge"
+        elif key == "stpNoRootPort":
+            suggest = "stp_no_root_port"
+        elif key == "stpP2p":
+            suggest = "stp_p2p"
+        elif key == "useVstp":
+            suggest = "use_vstp"
+        elif key == "voipNetwork":
+            suggest = "voip_network"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SwitchLocalPortConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8408,56 +8461,195 @@ class SwitchLocalPortConfig(dict):
 
     def __init__(__self__, *,
                  usage: str,
-                 critical: Optional[bool] = None,
+                 all_networks: Optional[bool] = None,
+                 allow_dhcpd: Optional[bool] = None,
+                 allow_multiple_supplicants: Optional[bool] = None,
+                 bypass_auth_when_server_down: Optional[bool] = None,
+                 bypass_auth_when_server_down_for_unkonwn_client: Optional[bool] = None,
                  description: Optional[str] = None,
                  disable_autoneg: Optional[bool] = None,
+                 disabled: Optional[bool] = None,
                  duplex: Optional[str] = None,
+                 dynamic_vlan_networks: Optional[Sequence[str]] = None,
+                 enable_mac_auth: Optional[bool] = None,
+                 enable_qos: Optional[bool] = None,
+                 guest_network: Optional[str] = None,
+                 inter_switch_link: Optional[bool] = None,
+                 mac_auth_only: Optional[bool] = None,
+                 mac_auth_preferred: Optional[bool] = None,
+                 mac_auth_protocol: Optional[str] = None,
+                 mac_limit: Optional[int] = None,
+                 mode: Optional[str] = None,
                  mtu: Optional[int] = None,
+                 networks: Optional[Sequence[str]] = None,
+                 persist_mac: Optional[bool] = None,
                  poe_disabled: Optional[bool] = None,
-                 speed: Optional[str] = None):
+                 port_auth: Optional[str] = None,
+                 port_network: Optional[str] = None,
+                 reauth_interval: Optional[int] = None,
+                 server_fail_network: Optional[str] = None,
+                 server_reject_network: Optional[str] = None,
+                 speed: Optional[str] = None,
+                 storm_control: Optional['outputs.SwitchLocalPortConfigStormControl'] = None,
+                 stp_edge: Optional[bool] = None,
+                 stp_no_root_port: Optional[bool] = None,
+                 stp_p2p: Optional[bool] = None,
+                 use_vstp: Optional[bool] = None,
+                 voip_network: Optional[str] = None):
         """
-        :param str usage: port usage name. 
-               
-               If EVPN is used, use `evpn_uplink`or `evpn_downlink`
-        :param bool critical: if want to generate port up/down alarm
-        :param bool disable_autoneg: if `speed` and `duplex` are specified, whether to disable autonegotiation
-        :param str duplex: enum: `auto`, `full`, `half`
-        :param int mtu: media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
-        :param str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+        :param str usage: port usage name.
+        :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
+        :param bool allow_dhcpd: If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+               All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+               When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        :param bool bypass_auth_when_server_down: Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+        :param bool bypass_auth_when_server_down_for_unkonwn_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
+        :param bool disabled: whether the port is disabled
+        :param str duplex: link connection mode. enum: `auto`, `full`, `half`
+        :param Sequence[str] dynamic_vlan_networks: Only if `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        :param bool enable_mac_auth: Only if `port_auth`==`dot1x` whether to enable MAC Auth
+        :param str guest_network: Only if `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+        :param bool inter_switch_link: inter_switch_link is used together with "isolation" under networks
+               NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        :param bool mac_auth_only: Only if `enable_mac_auth`==`true`
+        :param bool mac_auth_preferred: Only if `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        :param str mac_auth_protocol: Only if `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+        :param int mac_limit: max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        :param str mode: enum: `access`, `inet`, `trunk`
+        :param int mtu: media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+        :param Sequence[str] networks: Only if `mode`==`trunk`, the list of network/vlans
+        :param bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+        :param bool poe_disabled: whether PoE capabilities are disabled for a port
+        :param str port_auth: if dot1x is desired, set to dot1x. enum: `dot1x`
+        :param str port_network: native network/vlan for untagged traffic
+        :param int reauth_interval: Only if `port_auth`=`dot1x` reauthentication interval range
+        :param str server_fail_network: Only if `port_auth`==`dot1x` sets server fail fallback vlan
+        :param str server_reject_network: Only if `port_auth`==`dot1x` when radius server reject / fails
+        :param str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
+        :param 'SwitchLocalPortConfigStormControlArgs' storm_control: Switch storm control
+        :param bool stp_edge: when enabled, the port is not expected to receive BPDU frames
+        :param bool use_vstp: if this is connected to a vstp network
+        :param str voip_network: network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         """
         pulumi.set(__self__, "usage", usage)
-        if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+        if all_networks is not None:
+            pulumi.set(__self__, "all_networks", all_networks)
+        if allow_dhcpd is not None:
+            pulumi.set(__self__, "allow_dhcpd", allow_dhcpd)
+        if allow_multiple_supplicants is not None:
+            pulumi.set(__self__, "allow_multiple_supplicants", allow_multiple_supplicants)
+        if bypass_auth_when_server_down is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
+        if bypass_auth_when_server_down_for_unkonwn_client is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down_for_unkonwn_client", bypass_auth_when_server_down_for_unkonwn_client)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_autoneg is not None:
             pulumi.set(__self__, "disable_autoneg", disable_autoneg)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if duplex is not None:
             pulumi.set(__self__, "duplex", duplex)
+        if dynamic_vlan_networks is not None:
+            pulumi.set(__self__, "dynamic_vlan_networks", dynamic_vlan_networks)
+        if enable_mac_auth is not None:
+            pulumi.set(__self__, "enable_mac_auth", enable_mac_auth)
+        if enable_qos is not None:
+            pulumi.set(__self__, "enable_qos", enable_qos)
+        if guest_network is not None:
+            pulumi.set(__self__, "guest_network", guest_network)
+        if inter_switch_link is not None:
+            pulumi.set(__self__, "inter_switch_link", inter_switch_link)
+        if mac_auth_only is not None:
+            pulumi.set(__self__, "mac_auth_only", mac_auth_only)
+        if mac_auth_preferred is not None:
+            pulumi.set(__self__, "mac_auth_preferred", mac_auth_preferred)
+        if mac_auth_protocol is not None:
+            pulumi.set(__self__, "mac_auth_protocol", mac_auth_protocol)
+        if mac_limit is not None:
+            pulumi.set(__self__, "mac_limit", mac_limit)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if persist_mac is not None:
+            pulumi.set(__self__, "persist_mac", persist_mac)
         if poe_disabled is not None:
             pulumi.set(__self__, "poe_disabled", poe_disabled)
+        if port_auth is not None:
+            pulumi.set(__self__, "port_auth", port_auth)
+        if port_network is not None:
+            pulumi.set(__self__, "port_network", port_network)
+        if reauth_interval is not None:
+            pulumi.set(__self__, "reauth_interval", reauth_interval)
+        if server_fail_network is not None:
+            pulumi.set(__self__, "server_fail_network", server_fail_network)
+        if server_reject_network is not None:
+            pulumi.set(__self__, "server_reject_network", server_reject_network)
         if speed is not None:
             pulumi.set(__self__, "speed", speed)
+        if storm_control is not None:
+            pulumi.set(__self__, "storm_control", storm_control)
+        if stp_edge is not None:
+            pulumi.set(__self__, "stp_edge", stp_edge)
+        if stp_no_root_port is not None:
+            pulumi.set(__self__, "stp_no_root_port", stp_no_root_port)
+        if stp_p2p is not None:
+            pulumi.set(__self__, "stp_p2p", stp_p2p)
+        if use_vstp is not None:
+            pulumi.set(__self__, "use_vstp", use_vstp)
+        if voip_network is not None:
+            pulumi.set(__self__, "voip_network", voip_network)
 
     @property
     @pulumi.getter
     def usage(self) -> str:
         """
-        port usage name. 
-
-        If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        port usage name.
         """
         return pulumi.get(self, "usage")
 
     @property
-    @pulumi.getter
-    def critical(self) -> Optional[bool]:
+    @pulumi.getter(name="allNetworks")
+    def all_networks(self) -> Optional[bool]:
         """
-        if want to generate port up/down alarm
+        Only if `mode`==`trunk` whether to trunk all network/vlans
         """
-        return pulumi.get(self, "critical")
+        return pulumi.get(self, "all_networks")
+
+    @property
+    @pulumi.getter(name="allowDhcpd")
+    def allow_dhcpd(self) -> Optional[bool]:
+        """
+        If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+        All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+        When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        """
+        return pulumi.get(self, "allow_dhcpd")
+
+    @property
+    @pulumi.getter(name="allowMultipleSupplicants")
+    def allow_multiple_supplicants(self) -> Optional[bool]:
+        return pulumi.get(self, "allow_multiple_supplicants")
+
+    @property
+    @pulumi.getter(name="bypassAuthWhenServerDown")
+    def bypass_auth_when_server_down(self) -> Optional[bool]:
+        """
+        Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+        """
+        return pulumi.get(self, "bypass_auth_when_server_down")
+
+    @property
+    @pulumi.getter(name="bypassAuthWhenServerDownForUnkonwnClient")
+    def bypass_auth_when_server_down_for_unkonwn_client(self) -> Optional[bool]:
+        """
+        Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        """
+        return pulumi.get(self, "bypass_auth_when_server_down_for_unkonwn_client")
 
     @property
     @pulumi.getter
@@ -8468,38 +8660,315 @@ class SwitchLocalPortConfig(dict):
     @pulumi.getter(name="disableAutoneg")
     def disable_autoneg(self) -> Optional[bool]:
         """
-        if `speed` and `duplex` are specified, whether to disable autonegotiation
+        Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         """
         return pulumi.get(self, "disable_autoneg")
 
     @property
     @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        whether the port is disabled
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter
     def duplex(self) -> Optional[str]:
         """
-        enum: `auto`, `full`, `half`
+        link connection mode. enum: `auto`, `full`, `half`
         """
         return pulumi.get(self, "duplex")
+
+    @property
+    @pulumi.getter(name="dynamicVlanNetworks")
+    def dynamic_vlan_networks(self) -> Optional[Sequence[str]]:
+        """
+        Only if `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+        """
+        return pulumi.get(self, "dynamic_vlan_networks")
+
+    @property
+    @pulumi.getter(name="enableMacAuth")
+    def enable_mac_auth(self) -> Optional[bool]:
+        """
+        Only if `port_auth`==`dot1x` whether to enable MAC Auth
+        """
+        return pulumi.get(self, "enable_mac_auth")
+
+    @property
+    @pulumi.getter(name="enableQos")
+    def enable_qos(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_qos")
+
+    @property
+    @pulumi.getter(name="guestNetwork")
+    def guest_network(self) -> Optional[str]:
+        """
+        Only if `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+        """
+        return pulumi.get(self, "guest_network")
+
+    @property
+    @pulumi.getter(name="interSwitchLink")
+    def inter_switch_link(self) -> Optional[bool]:
+        """
+        inter_switch_link is used together with "isolation" under networks
+        NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        """
+        return pulumi.get(self, "inter_switch_link")
+
+    @property
+    @pulumi.getter(name="macAuthOnly")
+    def mac_auth_only(self) -> Optional[bool]:
+        """
+        Only if `enable_mac_auth`==`true`
+        """
+        return pulumi.get(self, "mac_auth_only")
+
+    @property
+    @pulumi.getter(name="macAuthPreferred")
+    def mac_auth_preferred(self) -> Optional[bool]:
+        """
+        Only if `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
+        """
+        return pulumi.get(self, "mac_auth_preferred")
+
+    @property
+    @pulumi.getter(name="macAuthProtocol")
+    def mac_auth_protocol(self) -> Optional[str]:
+        """
+        Only if `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+        """
+        return pulumi.get(self, "mac_auth_protocol")
+
+    @property
+    @pulumi.getter(name="macLimit")
+    def mac_limit(self) -> Optional[int]:
+        """
+        max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        """
+        return pulumi.get(self, "mac_limit")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        enum: `access`, `inet`, `trunk`
+        """
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def mtu(self) -> Optional[int]:
         """
-        media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
         """
         return pulumi.get(self, "mtu")
 
     @property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence[str]]:
+        """
+        Only if `mode`==`trunk`, the list of network/vlans
+        """
+        return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="persistMac")
+    def persist_mac(self) -> Optional[bool]:
+        """
+        Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+        """
+        return pulumi.get(self, "persist_mac")
+
+    @property
     @pulumi.getter(name="poeDisabled")
     def poe_disabled(self) -> Optional[bool]:
+        """
+        whether PoE capabilities are disabled for a port
+        """
         return pulumi.get(self, "poe_disabled")
+
+    @property
+    @pulumi.getter(name="portAuth")
+    def port_auth(self) -> Optional[str]:
+        """
+        if dot1x is desired, set to dot1x. enum: `dot1x`
+        """
+        return pulumi.get(self, "port_auth")
+
+    @property
+    @pulumi.getter(name="portNetwork")
+    def port_network(self) -> Optional[str]:
+        """
+        native network/vlan for untagged traffic
+        """
+        return pulumi.get(self, "port_network")
+
+    @property
+    @pulumi.getter(name="reauthInterval")
+    def reauth_interval(self) -> Optional[int]:
+        """
+        Only if `port_auth`=`dot1x` reauthentication interval range
+        """
+        return pulumi.get(self, "reauth_interval")
+
+    @property
+    @pulumi.getter(name="serverFailNetwork")
+    def server_fail_network(self) -> Optional[str]:
+        """
+        Only if `port_auth`==`dot1x` sets server fail fallback vlan
+        """
+        return pulumi.get(self, "server_fail_network")
+
+    @property
+    @pulumi.getter(name="serverRejectNetwork")
+    def server_reject_network(self) -> Optional[str]:
+        """
+        Only if `port_auth`==`dot1x` when radius server reject / fails
+        """
+        return pulumi.get(self, "server_reject_network")
 
     @property
     @pulumi.getter
     def speed(self) -> Optional[str]:
         """
-        enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+        enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         return pulumi.get(self, "speed")
+
+    @property
+    @pulumi.getter(name="stormControl")
+    def storm_control(self) -> Optional['outputs.SwitchLocalPortConfigStormControl']:
+        """
+        Switch storm control
+        """
+        return pulumi.get(self, "storm_control")
+
+    @property
+    @pulumi.getter(name="stpEdge")
+    def stp_edge(self) -> Optional[bool]:
+        """
+        when enabled, the port is not expected to receive BPDU frames
+        """
+        return pulumi.get(self, "stp_edge")
+
+    @property
+    @pulumi.getter(name="stpNoRootPort")
+    def stp_no_root_port(self) -> Optional[bool]:
+        return pulumi.get(self, "stp_no_root_port")
+
+    @property
+    @pulumi.getter(name="stpP2p")
+    def stp_p2p(self) -> Optional[bool]:
+        return pulumi.get(self, "stp_p2p")
+
+    @property
+    @pulumi.getter(name="useVstp")
+    def use_vstp(self) -> Optional[bool]:
+        """
+        if this is connected to a vstp network
+        """
+        return pulumi.get(self, "use_vstp")
+
+    @property
+    @pulumi.getter(name="voipNetwork")
+    def voip_network(self) -> Optional[str]:
+        """
+        network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+        """
+        return pulumi.get(self, "voip_network")
+
+
+@pulumi.output_type
+class SwitchLocalPortConfigStormControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noBroadcast":
+            suggest = "no_broadcast"
+        elif key == "noMulticast":
+            suggest = "no_multicast"
+        elif key == "noRegisteredMulticast":
+            suggest = "no_registered_multicast"
+        elif key == "noUnknownUnicast":
+            suggest = "no_unknown_unicast"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SwitchLocalPortConfigStormControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SwitchLocalPortConfigStormControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SwitchLocalPortConfigStormControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 no_broadcast: Optional[bool] = None,
+                 no_multicast: Optional[bool] = None,
+                 no_registered_multicast: Optional[bool] = None,
+                 no_unknown_unicast: Optional[bool] = None,
+                 percentage: Optional[int] = None):
+        """
+        :param bool no_broadcast: whether to disable storm control on broadcast traffic
+        :param bool no_multicast: whether to disable storm control on multicast traffic
+        :param bool no_registered_multicast: whether to disable storm control on registered multicast traffic
+        :param bool no_unknown_unicast: whether to disable storm control on unknown unicast traffic
+        :param int percentage: bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        """
+        if no_broadcast is not None:
+            pulumi.set(__self__, "no_broadcast", no_broadcast)
+        if no_multicast is not None:
+            pulumi.set(__self__, "no_multicast", no_multicast)
+        if no_registered_multicast is not None:
+            pulumi.set(__self__, "no_registered_multicast", no_registered_multicast)
+        if no_unknown_unicast is not None:
+            pulumi.set(__self__, "no_unknown_unicast", no_unknown_unicast)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="noBroadcast")
+    def no_broadcast(self) -> Optional[bool]:
+        """
+        whether to disable storm control on broadcast traffic
+        """
+        return pulumi.get(self, "no_broadcast")
+
+    @property
+    @pulumi.getter(name="noMulticast")
+    def no_multicast(self) -> Optional[bool]:
+        """
+        whether to disable storm control on multicast traffic
+        """
+        return pulumi.get(self, "no_multicast")
+
+    @property
+    @pulumi.getter(name="noRegisteredMulticast")
+    def no_registered_multicast(self) -> Optional[bool]:
+        """
+        whether to disable storm control on registered multicast traffic
+        """
+        return pulumi.get(self, "no_registered_multicast")
+
+    @property
+    @pulumi.getter(name="noUnknownUnicast")
+    def no_unknown_unicast(self) -> Optional[bool]:
+        """
+        whether to disable storm control on unknown unicast traffic
+        """
+        return pulumi.get(self, "no_unknown_unicast")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        """
+        bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        """
+        return pulumi.get(self, "percentage")
 
 
 @pulumi.output_type
@@ -8546,26 +9015,54 @@ class SwitchNetworks(dict):
 
     def __init__(__self__, *,
                  vlan_id: str,
+                 gateway: Optional[str] = None,
+                 gateway6: Optional[str] = None,
                  isolation: Optional[bool] = None,
                  isolation_vlan_id: Optional[str] = None,
-                 subnet: Optional[str] = None):
+                 subnet: Optional[str] = None,
+                 subnet6: Optional[str] = None):
         """
+        :param str gateway: only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        :param str gateway6: only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         :param bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
                NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         :param str subnet: optional for pure switching, required when L3 / routing features are used
+        :param str subnet6: optional for pure switching, required when L3 / routing features are used
         """
         pulumi.set(__self__, "vlan_id", vlan_id)
+        if gateway is not None:
+            pulumi.set(__self__, "gateway", gateway)
+        if gateway6 is not None:
+            pulumi.set(__self__, "gateway6", gateway6)
         if isolation is not None:
             pulumi.set(__self__, "isolation", isolation)
         if isolation_vlan_id is not None:
             pulumi.set(__self__, "isolation_vlan_id", isolation_vlan_id)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
+        if subnet6 is not None:
+            pulumi.set(__self__, "subnet6", subnet6)
 
     @property
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> str:
         return pulumi.get(self, "vlan_id")
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> Optional[str]:
+        """
+        only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        """
+        return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter
+    def gateway6(self) -> Optional[str]:
+        """
+        only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        """
+        return pulumi.get(self, "gateway6")
 
     @property
     @pulumi.getter
@@ -8588,6 +9085,14 @@ class SwitchNetworks(dict):
         optional for pure switching, required when L3 / routing features are used
         """
         return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def subnet6(self) -> Optional[str]:
+        """
+        optional for pure switching, required when L3 / routing features are used
+        """
+        return pulumi.get(self, "subnet6")
 
 
 @pulumi.output_type
@@ -8623,7 +9128,7 @@ class SwitchOobIpConfig(dict):
         :param str netmask: used only if `subnet` is not specified in `networks`
         :param str network: optional, the network to be used for mgmt
         :param str type: enum: `dhcp`, `static`
-        :param bool use_mgmt_vrf: f supported on the platform. If enabled, DNS will be using this routing-instance, too
+        :param bool use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
         :param bool use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
@@ -8679,7 +9184,7 @@ class SwitchOobIpConfig(dict):
     @pulumi.getter(name="useMgmtVrf")
     def use_mgmt_vrf(self) -> Optional[bool]:
         """
-        f supported on the platform. If enabled, DNS will be using this routing-instance, too
+        if supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         return pulumi.get(self, "use_mgmt_vrf")
 
@@ -9061,9 +9566,7 @@ class SwitchPortConfig(dict):
                  poe_disabled: Optional[bool] = None,
                  speed: Optional[str] = None):
         """
-        :param str usage: port usage name. 
-               
-               If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        :param str usage: port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         :param bool ae_disable_lacp: To disable LACP support for the AE interface
         :param int ae_idx: Users could force to use the designated AE name
         :param bool ae_lacp_slow: to use fast timeout
@@ -9073,7 +9576,7 @@ class SwitchPortConfig(dict):
         :param str dynamic_usage: Enable dynamic usage for this port. Set to `dynamic` to enable.
         :param int mtu: media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         :param bool no_local_overwrite: prevent helpdesk to override the port config
-        :param str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+        :param str speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         pulumi.set(__self__, "usage", usage)
         if ae_disable_lacp is not None:
@@ -9109,9 +9612,7 @@ class SwitchPortConfig(dict):
     @pulumi.getter
     def usage(self) -> str:
         """
-        port usage name. 
-
-        If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         """
         return pulumi.get(self, "usage")
 
@@ -9211,7 +9712,7 @@ class SwitchPortConfig(dict):
     @pulumi.getter
     def speed(self) -> Optional[str]:
         """
-        enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+        enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         return pulumi.get(self, "speed")
 
@@ -9423,9 +9924,9 @@ class SwitchPortUsages(dict):
                  voip_network: Optional[str] = None):
         """
         :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param bool allow_dhcpd: Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-               
-               When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+        :param bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+               All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+               When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         :param bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param bool bypass_auth_when_server_down_for_unkonwn_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
@@ -9443,7 +9944,7 @@ class SwitchPortUsages(dict):
         :param bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
         :param int mac_limit: Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
-        :param str mode: `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+        :param str mode: `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
         :param int mtu: Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
         :param Sequence[str] networks: Only if `mode`==`trunk`, the list of network/vlans
         :param bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
@@ -9455,7 +9956,7 @@ class SwitchPortUsages(dict):
         :param Sequence['SwitchPortUsagesRuleArgs'] rules: Only if `mode`==`dynamic`
         :param str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
         :param str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
-        :param str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+        :param str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         :param 'SwitchPortUsagesStormControlArgs' storm_control: Switch storm control
                Only if `mode`!=`dynamic`
         :param bool stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
@@ -9549,9 +10050,9 @@ class SwitchPortUsages(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[bool]:
         """
-        Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-
-        When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+        All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+        When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -9688,7 +10189,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+        `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
         """
         return pulumi.get(self, "mode")
 
@@ -9784,7 +10285,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter
     def speed(self) -> Optional[str]:
         """
-        Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+        Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         return pulumi.get(self, "speed")
 

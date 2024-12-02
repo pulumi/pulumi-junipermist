@@ -160,7 +160,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? IbeaconUuid { get; set; }
 
         /// <summary>
-        /// required if `power_mode`==`custom`
+        /// required if `power_mode`==`custom`; else use `power_mode` as default
         /// </summary>
         [Input("power")]
         public Input<int>? Power { get; set; }

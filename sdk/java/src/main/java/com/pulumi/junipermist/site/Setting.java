@@ -47,6 +47,10 @@ import javax.annotation.Nullable;
  * This resource manages the Site Settings.
  * The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
  * 
+ * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
+ * 
+ * !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -229,20 +233,6 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> deviceUpdownThreshold() {
         return this.deviceUpdownThreshold;
-    }
-    /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
-     * 
-     */
-    @Export(name="disabledSystemDefinedPortUsages", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> disabledSystemDefinedPortUsages;
-
-    /**
-     * @return if some system-default port usages are not desired - namely, ap / iot / uplink
-     * 
-     */
-    public Output<Optional<List<String>>> disabledSystemDefinedPortUsages() {
-        return Codegen.optional(this.disabledSystemDefinedPortUsages);
     }
     /**
      * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow

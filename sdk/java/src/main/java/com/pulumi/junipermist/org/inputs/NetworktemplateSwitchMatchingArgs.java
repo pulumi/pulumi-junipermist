@@ -24,9 +24,17 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
         return Optional.ofNullable(this.enable);
     }
 
+    /**
+     * list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+     * 
+     */
     @Import(name="rules")
     private @Nullable Output<List<NetworktemplateSwitchMatchingRuleArgs>> rules;
 
+    /**
+     * @return list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+     * 
+     */
     public Optional<Output<List<NetworktemplateSwitchMatchingRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
     }
@@ -65,15 +73,33 @@ public final class NetworktemplateSwitchMatchingArgs extends com.pulumi.resource
             return enable(Output.of(enable));
         }
 
+        /**
+         * @param rules list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(@Nullable Output<List<NetworktemplateSwitchMatchingRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
 
+        /**
+         * @param rules list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(List<NetworktemplateSwitchMatchingRuleArgs> rules) {
             return rules(Output.of(rules));
         }
 
+        /**
+         * @param rules list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `match_model`, `match_name` or `match_role` must be defined
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(NetworktemplateSwitchMatchingRuleArgs... rules) {
             return rules(List.of(rules));
         }

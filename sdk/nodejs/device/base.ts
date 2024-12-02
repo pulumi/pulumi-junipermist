@@ -129,7 +129,7 @@ export class Base extends pulumi.CustomResource {
     /**
      * Timezone the site is at
      */
-    public readonly timezone!: pulumi.Output<string | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
 
     /**
      * Create a Base resource with the given unique name, arguments, and options.

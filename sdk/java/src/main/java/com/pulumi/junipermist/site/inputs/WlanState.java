@@ -23,6 +23,7 @@ import com.pulumi.junipermist.site.inputs.WlanMistNacArgs;
 import com.pulumi.junipermist.site.inputs.WlanPortalArgs;
 import com.pulumi.junipermist.site.inputs.WlanQosArgs;
 import com.pulumi.junipermist.site.inputs.WlanRadsecArgs;
+import com.pulumi.junipermist.site.inputs.WlanRatesetArgs;
 import com.pulumi.junipermist.site.inputs.WlanScheduleArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -895,6 +896,21 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.maxIdletime);
     }
 
+    /**
+     * maximum number of client connected to the SSID. `0` means unlimited
+     * 
+     */
+    @Import(name="maxNumClients")
+    private @Nullable Output<Integer> maxNumClients;
+
+    /**
+     * @return maximum number of client connected to the SSID. `0` means unlimited
+     * 
+     */
+    public Optional<Output<Integer>> maxNumClients() {
+        return Optional.ofNullable(this.maxNumClients);
+    }
+
     @Import(name="mistNac")
     private @Nullable Output<WlanMistNacArgs> mistNac;
 
@@ -1110,6 +1126,13 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<WlanRadsecArgs>> radsec() {
         return Optional.ofNullable(this.radsec);
+    }
+
+    @Import(name="rateset")
+    private @Nullable Output<WlanRatesetArgs> rateset;
+
+    public Optional<Output<WlanRatesetArgs>> rateset() {
+        return Optional.ofNullable(this.rateset);
     }
 
     /**
@@ -1425,6 +1448,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         this.limitBcast = $.limitBcast;
         this.limitProbeResponse = $.limitProbeResponse;
         this.maxIdletime = $.maxIdletime;
+        this.maxNumClients = $.maxNumClients;
         this.mistNac = $.mistNac;
         this.mspId = $.mspId;
         this.mxtunnelIds = $.mxtunnelIds;
@@ -1442,6 +1466,7 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         this.portalTemplateUrl = $.portalTemplateUrl;
         this.qos = $.qos;
         this.radsec = $.radsec;
+        this.rateset = $.rateset;
         this.roamMode = $.roamMode;
         this.schedule = $.schedule;
         this.siteId = $.siteId;
@@ -2717,6 +2742,27 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return maxIdletime(Output.of(maxIdletime));
         }
 
+        /**
+         * @param maxNumClients maximum number of client connected to the SSID. `0` means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxNumClients(@Nullable Output<Integer> maxNumClients) {
+            $.maxNumClients = maxNumClients;
+            return this;
+        }
+
+        /**
+         * @param maxNumClients maximum number of client connected to the SSID. `0` means unlimited
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxNumClients(Integer maxNumClients) {
+            return maxNumClients(Output.of(maxNumClients));
+        }
+
         public Builder mistNac(@Nullable Output<WlanMistNacArgs> mistNac) {
             $.mistNac = mistNac;
             return this;
@@ -3064,6 +3110,15 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder radsec(WlanRadsecArgs radsec) {
             return radsec(Output.of(radsec));
+        }
+
+        public Builder rateset(@Nullable Output<WlanRatesetArgs> rateset) {
+            $.rateset = rateset;
+            return this;
+        }
+
+        public Builder rateset(WlanRatesetArgs rateset) {
+            return rateset(Output.of(rateset));
         }
 
         /**

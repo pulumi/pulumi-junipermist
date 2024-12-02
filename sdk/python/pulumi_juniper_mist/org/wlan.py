@@ -80,6 +80,7 @@ class WlanArgs:
                  limit_bcast: Optional[pulumi.Input[bool]] = None,
                  limit_probe_response: Optional[pulumi.Input[bool]] = None,
                  max_idletime: Optional[pulumi.Input[int]] = None,
+                 max_num_clients: Optional[pulumi.Input[int]] = None,
                  mist_nac: Optional[pulumi.Input['WlanMistNacArgs']] = None,
                  mxtunnel_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mxtunnel_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -91,6 +92,7 @@ class WlanArgs:
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qos: Optional[pulumi.Input['WlanQosArgs']] = None,
                  radsec: Optional[pulumi.Input['WlanRadsecArgs']] = None,
+                 rateset: Optional[pulumi.Input['WlanRatesetArgs']] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['WlanScheduleArgs']] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -180,6 +182,7 @@ class WlanArgs:
         :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
         :param pulumi.Input[int] max_idletime: max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
@@ -319,6 +322,8 @@ class WlanArgs:
             pulumi.set(__self__, "limit_probe_response", limit_probe_response)
         if max_idletime is not None:
             pulumi.set(__self__, "max_idletime", max_idletime)
+        if max_num_clients is not None:
+            pulumi.set(__self__, "max_num_clients", max_num_clients)
         if mist_nac is not None:
             pulumi.set(__self__, "mist_nac", mist_nac)
         if mxtunnel_ids is not None:
@@ -341,6 +346,8 @@ class WlanArgs:
             pulumi.set(__self__, "qos", qos)
         if radsec is not None:
             pulumi.set(__self__, "radsec", radsec)
+        if rateset is not None:
+            pulumi.set(__self__, "rateset", rateset)
         if roam_mode is not None:
             pulumi.set(__self__, "roam_mode", roam_mode)
         if schedule is not None:
@@ -1086,6 +1093,18 @@ class WlanArgs:
         pulumi.set(self, "max_idletime", value)
 
     @property
+    @pulumi.getter(name="maxNumClients")
+    def max_num_clients(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximum number of client connected to the SSID. `0` means unlimited
+        """
+        return pulumi.get(self, "max_num_clients")
+
+    @max_num_clients.setter
+    def max_num_clients(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_num_clients", value)
+
+    @property
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> Optional[pulumi.Input['WlanMistNacArgs']]:
         return pulumi.get(self, "mist_nac")
@@ -1210,6 +1229,15 @@ class WlanArgs:
     @radsec.setter
     def radsec(self, value: Optional[pulumi.Input['WlanRadsecArgs']]):
         pulumi.set(self, "radsec", value)
+
+    @property
+    @pulumi.getter
+    def rateset(self) -> Optional[pulumi.Input['WlanRatesetArgs']]:
+        return pulumi.get(self, "rateset")
+
+    @rateset.setter
+    def rateset(self, value: Optional[pulumi.Input['WlanRatesetArgs']]):
+        pulumi.set(self, "rateset", value)
 
     @property
     @pulumi.getter(name="roamMode")
@@ -1448,6 +1476,7 @@ class _WlanState:
                  limit_bcast: Optional[pulumi.Input[bool]] = None,
                  limit_probe_response: Optional[pulumi.Input[bool]] = None,
                  max_idletime: Optional[pulumi.Input[int]] = None,
+                 max_num_clients: Optional[pulumi.Input[int]] = None,
                  mist_nac: Optional[pulumi.Input['WlanMistNacArgs']] = None,
                  msp_id: Optional[pulumi.Input[str]] = None,
                  mxtunnel_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1465,6 +1494,7 @@ class _WlanState:
                  portal_template_url: Optional[pulumi.Input[str]] = None,
                  qos: Optional[pulumi.Input['WlanQosArgs']] = None,
                  radsec: Optional[pulumi.Input['WlanRadsecArgs']] = None,
+                 rateset: Optional[pulumi.Input['WlanRatesetArgs']] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['WlanScheduleArgs']] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -1556,6 +1586,7 @@ class _WlanState:
         :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
         :param pulumi.Input[int] max_idletime: max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
@@ -1698,6 +1729,8 @@ class _WlanState:
             pulumi.set(__self__, "limit_probe_response", limit_probe_response)
         if max_idletime is not None:
             pulumi.set(__self__, "max_idletime", max_idletime)
+        if max_num_clients is not None:
+            pulumi.set(__self__, "max_num_clients", max_num_clients)
         if mist_nac is not None:
             pulumi.set(__self__, "mist_nac", mist_nac)
         if msp_id is not None:
@@ -1732,6 +1765,8 @@ class _WlanState:
             pulumi.set(__self__, "qos", qos)
         if radsec is not None:
             pulumi.set(__self__, "radsec", radsec)
+        if rateset is not None:
+            pulumi.set(__self__, "rateset", rateset)
         if roam_mode is not None:
             pulumi.set(__self__, "roam_mode", roam_mode)
         if schedule is not None:
@@ -2453,6 +2488,18 @@ class _WlanState:
         pulumi.set(self, "max_idletime", value)
 
     @property
+    @pulumi.getter(name="maxNumClients")
+    def max_num_clients(self) -> Optional[pulumi.Input[int]]:
+        """
+        maximum number of client connected to the SSID. `0` means unlimited
+        """
+        return pulumi.get(self, "max_num_clients")
+
+    @max_num_clients.setter
+    def max_num_clients(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_num_clients", value)
+
+    @property
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> Optional[pulumi.Input['WlanMistNacArgs']]:
         return pulumi.get(self, "mist_nac")
@@ -2641,6 +2688,15 @@ class _WlanState:
     @radsec.setter
     def radsec(self, value: Optional[pulumi.Input['WlanRadsecArgs']]):
         pulumi.set(self, "radsec", value)
+
+    @property
+    @pulumi.getter
+    def rateset(self) -> Optional[pulumi.Input['WlanRatesetArgs']]:
+        return pulumi.get(self, "rateset")
+
+    @rateset.setter
+    def rateset(self, value: Optional[pulumi.Input['WlanRatesetArgs']]):
+        pulumi.set(self, "rateset", value)
 
     @property
     @pulumi.getter(name="roamMode")
@@ -2914,6 +2970,7 @@ class Wlan(pulumi.CustomResource):
                  limit_bcast: Optional[pulumi.Input[bool]] = None,
                  limit_probe_response: Optional[pulumi.Input[bool]] = None,
                  max_idletime: Optional[pulumi.Input[int]] = None,
+                 max_num_clients: Optional[pulumi.Input[int]] = None,
                  mist_nac: Optional[pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']]] = None,
                  mxtunnel_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mxtunnel_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2926,6 +2983,7 @@ class Wlan(pulumi.CustomResource):
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
                  radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
+                 rateset: Optional[pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -3058,6 +3116,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
         :param pulumi.Input[int] max_idletime: max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
@@ -3201,6 +3260,7 @@ class Wlan(pulumi.CustomResource):
                  limit_bcast: Optional[pulumi.Input[bool]] = None,
                  limit_probe_response: Optional[pulumi.Input[bool]] = None,
                  max_idletime: Optional[pulumi.Input[int]] = None,
+                 max_num_clients: Optional[pulumi.Input[int]] = None,
                  mist_nac: Optional[pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']]] = None,
                  mxtunnel_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  mxtunnel_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3213,6 +3273,7 @@ class Wlan(pulumi.CustomResource):
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
                  radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
+                 rateset: Optional[pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -3295,6 +3356,7 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["limit_bcast"] = limit_bcast
             __props__.__dict__["limit_probe_response"] = limit_probe_response
             __props__.__dict__["max_idletime"] = max_idletime
+            __props__.__dict__["max_num_clients"] = max_num_clients
             __props__.__dict__["mist_nac"] = mist_nac
             __props__.__dict__["mxtunnel_ids"] = mxtunnel_ids
             __props__.__dict__["mxtunnel_names"] = mxtunnel_names
@@ -3309,6 +3371,7 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["portal_denied_hostnames"] = portal_denied_hostnames
             __props__.__dict__["qos"] = qos
             __props__.__dict__["radsec"] = radsec
+            __props__.__dict__["rateset"] = rateset
             __props__.__dict__["roam_mode"] = roam_mode
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["sle_excluded"] = sle_excluded
@@ -3402,6 +3465,7 @@ class Wlan(pulumi.CustomResource):
             limit_bcast: Optional[pulumi.Input[bool]] = None,
             limit_probe_response: Optional[pulumi.Input[bool]] = None,
             max_idletime: Optional[pulumi.Input[int]] = None,
+            max_num_clients: Optional[pulumi.Input[int]] = None,
             mist_nac: Optional[pulumi.Input[Union['WlanMistNacArgs', 'WlanMistNacArgsDict']]] = None,
             msp_id: Optional[pulumi.Input[str]] = None,
             mxtunnel_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3419,6 +3483,7 @@ class Wlan(pulumi.CustomResource):
             portal_template_url: Optional[pulumi.Input[str]] = None,
             qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
             radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
+            rateset: Optional[pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]] = None,
             roam_mode: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
             sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -3515,6 +3580,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[bool] limit_bcast: whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
         :param pulumi.Input[bool] limit_probe_response: limit probe response base on some heuristic rules
         :param pulumi.Input[int] max_idletime: max idle time in seconds
+        :param pulumi.Input[int] max_num_clients: maximum number of client connected to the SSID. `0` means unlimited
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: when `interface`=`mxtunnel`, id of the Mist Tunnel
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_names: when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
         :param pulumi.Input[bool] no_static_dns: whether to only allow client to use DNS that we’ve learned from DHCP response
@@ -3605,6 +3671,7 @@ class Wlan(pulumi.CustomResource):
         __props__.__dict__["limit_bcast"] = limit_bcast
         __props__.__dict__["limit_probe_response"] = limit_probe_response
         __props__.__dict__["max_idletime"] = max_idletime
+        __props__.__dict__["max_num_clients"] = max_num_clients
         __props__.__dict__["mist_nac"] = mist_nac
         __props__.__dict__["msp_id"] = msp_id
         __props__.__dict__["mxtunnel_ids"] = mxtunnel_ids
@@ -3622,6 +3689,7 @@ class Wlan(pulumi.CustomResource):
         __props__.__dict__["portal_template_url"] = portal_template_url
         __props__.__dict__["qos"] = qos
         __props__.__dict__["radsec"] = radsec
+        __props__.__dict__["rateset"] = rateset
         __props__.__dict__["roam_mode"] = roam_mode
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["sle_excluded"] = sle_excluded
@@ -4102,6 +4170,14 @@ class Wlan(pulumi.CustomResource):
         return pulumi.get(self, "max_idletime")
 
     @property
+    @pulumi.getter(name="maxNumClients")
+    def max_num_clients(self) -> pulumi.Output[int]:
+        """
+        maximum number of client connected to the SSID. `0` means unlimited
+        """
+        return pulumi.get(self, "max_num_clients")
+
+    @property
     @pulumi.getter(name="mistNac")
     def mist_nac(self) -> pulumi.Output[Optional['outputs.WlanMistNac']]:
         return pulumi.get(self, "mist_nac")
@@ -4222,6 +4298,11 @@ class Wlan(pulumi.CustomResource):
         Radsec settings
         """
         return pulumi.get(self, "radsec")
+
+    @property
+    @pulumi.getter
+    def rateset(self) -> pulumi.Output[Optional['outputs.WlanRateset']]:
+        return pulumi.get(self, "rateset")
 
     @property
     @pulumi.getter(name="roamMode")

@@ -22,14 +22,26 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
      * 
+     * @deprecated
+     * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+     * Please update your configurations to use the `inventory` attribute.
+     * 
      */
+    @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+Please update your configurations to use the `inventory` attribute. */
     @Import(name="devices")
     private @Nullable Output<List<InventoryDeviceArgs>> devices;
 
     /**
      * @return **DEPRECATED** List of devices to manage. Exactly one of `claim_code` or `mac` field must be set
      * 
+     * @deprecated
+     * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+     * Please update your configurations to use the `inventory` attribute.
+     * 
      */
+    @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+Please update your configurations to use the `inventory` attribute. */
     public Optional<Output<List<InventoryDeviceArgs>>> devices() {
         return Optional.ofNullable(this.devices);
     }
@@ -91,7 +103,13 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+         * Please update your configurations to use the `inventory` attribute.
+         * 
          */
+        @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+Please update your configurations to use the `inventory` attribute. */
         public Builder devices(@Nullable Output<List<InventoryDeviceArgs>> devices) {
             $.devices = devices;
             return this;
@@ -102,7 +120,13 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+         * Please update your configurations to use the `inventory` attribute.
+         * 
          */
+        @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+Please update your configurations to use the `inventory` attribute. */
         public Builder devices(List<InventoryDeviceArgs> devices) {
             return devices(Output.of(devices));
         }
@@ -112,7 +136,13 @@ public final class InventoryState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+         * Please update your configurations to use the `inventory` attribute.
+         * 
          */
+        @Deprecated /* The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
+Please update your configurations to use the `inventory` attribute. */
         public Builder devices(InventoryDeviceArgs... devices) {
             return devices(List.of(devices));
         }

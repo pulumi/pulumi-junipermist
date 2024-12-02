@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
  * This resource manages the Site Network configuration (Switch configuration).
  * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
  *
+ * > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
+ *
+ * !> Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -54,10 +58,14 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly aclTags!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateAclTags} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly dhcpSnooping!: pulumi.Output<outputs.site.NetworktemplateDhcpSnooping | undefined>;
+    /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     */
+    public readonly disabledSystemDefinedPortUsages!: pulumi.Output<string[] | undefined>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
@@ -93,6 +101,9 @@ export class Networktemplate extends pulumi.CustomResource {
      * maximum 4 port mirrorings is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortMirroring} | undefined>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.site.NetworktemplatePortUsages} | undefined>;
     /**
      * Junos Radius config
@@ -109,14 +120,13 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly siteId!: pulumi.Output<string>;
     public readonly snmpConfig!: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      */
     public readonly switchMatching!: pulumi.Output<outputs.site.NetworktemplateSwitchMatching | undefined>;
     /**
      * Switch settings
      */
     public readonly switchMgmt!: pulumi.Output<outputs.site.NetworktemplateSwitchMgmt | undefined>;
-    public readonly uplinkPortConfig!: pulumi.Output<outputs.site.NetworktemplateUplinkPortConfig | undefined>;
     public readonly vrfConfig!: pulumi.Output<outputs.site.NetworktemplateVrfConfig | undefined>;
     /**
      * Property key is the network name
@@ -140,6 +150,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["aclTags"] = state ? state.aclTags : undefined;
             resourceInputs["additionalConfigCmds"] = state ? state.additionalConfigCmds : undefined;
             resourceInputs["dhcpSnooping"] = state ? state.dhcpSnooping : undefined;
+            resourceInputs["disabledSystemDefinedPortUsages"] = state ? state.disabledSystemDefinedPortUsages : undefined;
             resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
             resourceInputs["dnsSuffixes"] = state ? state.dnsSuffixes : undefined;
             resourceInputs["extraRoutes"] = state ? state.extraRoutes : undefined;
@@ -157,7 +168,6 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["snmpConfig"] = state ? state.snmpConfig : undefined;
             resourceInputs["switchMatching"] = state ? state.switchMatching : undefined;
             resourceInputs["switchMgmt"] = state ? state.switchMgmt : undefined;
-            resourceInputs["uplinkPortConfig"] = state ? state.uplinkPortConfig : undefined;
             resourceInputs["vrfConfig"] = state ? state.vrfConfig : undefined;
             resourceInputs["vrfInstances"] = state ? state.vrfInstances : undefined;
         } else {
@@ -169,6 +179,7 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["aclTags"] = args ? args.aclTags : undefined;
             resourceInputs["additionalConfigCmds"] = args ? args.additionalConfigCmds : undefined;
             resourceInputs["dhcpSnooping"] = args ? args.dhcpSnooping : undefined;
+            resourceInputs["disabledSystemDefinedPortUsages"] = args ? args.disabledSystemDefinedPortUsages : undefined;
             resourceInputs["dnsServers"] = args ? args.dnsServers : undefined;
             resourceInputs["dnsSuffixes"] = args ? args.dnsSuffixes : undefined;
             resourceInputs["extraRoutes"] = args ? args.extraRoutes : undefined;
@@ -186,7 +197,6 @@ export class Networktemplate extends pulumi.CustomResource {
             resourceInputs["snmpConfig"] = args ? args.snmpConfig : undefined;
             resourceInputs["switchMatching"] = args ? args.switchMatching : undefined;
             resourceInputs["switchMgmt"] = args ? args.switchMgmt : undefined;
-            resourceInputs["uplinkPortConfig"] = args ? args.uplinkPortConfig : undefined;
             resourceInputs["vrfConfig"] = args ? args.vrfConfig : undefined;
             resourceInputs["vrfInstances"] = args ? args.vrfInstances : undefined;
         }
@@ -205,10 +215,14 @@ export interface NetworktemplateState {
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateAclTags>}>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
+    /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     */
+    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
@@ -244,6 +258,9 @@ export interface NetworktemplateState {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
     /**
      * Junos Radius config
@@ -260,14 +277,13 @@ export interface NetworktemplateState {
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
     /**
      * Switch settings
      */
     switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
-    uplinkPortConfig?: pulumi.Input<inputs.site.NetworktemplateUplinkPortConfig>;
     vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;
     /**
      * Property key is the network name
@@ -285,10 +301,14 @@ export interface NetworktemplateArgs {
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateAclTags>}>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
+    /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     */
+    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
@@ -324,6 +344,9 @@ export interface NetworktemplateArgs {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplatePortUsages>}>;
     /**
      * Junos Radius config
@@ -340,14 +363,13 @@ export interface NetworktemplateArgs {
     siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
     /**
      * Switch settings
      */
     switchMgmt?: pulumi.Input<inputs.site.NetworktemplateSwitchMgmt>;
-    uplinkPortConfig?: pulumi.Input<inputs.site.NetworktemplateUplinkPortConfig>;
     vrfConfig?: pulumi.Input<inputs.site.NetworktemplateVrfConfig>;
     /**
      * Property key is the network name

@@ -16,9 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config
-        /// 
-        /// **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -33,7 +31,25 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.NetworktemplateSwitchMatchingRuleIpConfigArgs>? IpConfig { get; set; }
 
         /// <summary>
-        /// role to match
+        /// string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+        /// </summary>
+        [Input("matchModel")]
+        public Input<string>? MatchModel { get; set; }
+
+        /// <summary>
+        /// string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+        /// </summary>
+        [Input("matchName")]
+        public Input<string>? MatchName { get; set; }
+
+        /// <summary>
+        /// first character of the switch name to compare to the `match_name` value
+        /// </summary>
+        [Input("matchNameOffset")]
+        public Input<int>? MatchNameOffset { get; set; }
+
+        /// <summary>
+        /// string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
         /// </summary>
         [Input("matchRole")]
         public Input<string>? MatchRole { get; set; }

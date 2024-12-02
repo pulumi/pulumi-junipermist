@@ -370,14 +370,14 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * required if `power_mode`==`custom`
+     * required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     @Import(name="power")
     private @Nullable Output<Integer> power;
 
     /**
-     * @return required if `power_mode`==`custom`
+     * @return required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     public Optional<Output<Integer>> power() {
@@ -949,7 +949,7 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param power required if `power_mode`==`custom`
+         * @param power required if `power_mode`==`custom`; else use `power_mode` as default
          * 
          * @return builder
          * 
@@ -960,7 +960,7 @@ public final class SettingBleConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param power required if `power_mode`==`custom`
+         * @param power required if `power_mode`==`custom`; else use `power_mode` as default
          * 
          * @return builder
          * 

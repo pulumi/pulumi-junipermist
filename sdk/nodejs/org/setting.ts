@@ -60,7 +60,7 @@ export class Setting extends pulumi.CustomResource {
     public readonly cacerts!: pulumi.Output<string[]>;
     public readonly celona!: pulumi.Output<outputs.org.SettingCelona | undefined>;
     public readonly cloudshark!: pulumi.Output<outputs.org.SettingCloudshark | undefined>;
-    public readonly cradlepoint!: pulumi.Output<outputs.org.SettingCradlepoint | undefined>;
+    public /*out*/ readonly cradlepoint!: pulumi.Output<outputs.org.SettingCradlepoint>;
     /**
      * common device cert, optional
      */
@@ -180,7 +180,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["cacerts"] = args ? args.cacerts : undefined;
             resourceInputs["celona"] = args ? args.celona : undefined;
             resourceInputs["cloudshark"] = args ? args.cloudshark : undefined;
-            resourceInputs["cradlepoint"] = args ? args.cradlepoint : undefined;
             resourceInputs["deviceCert"] = args ? args.deviceCert : undefined;
             resourceInputs["deviceUpdownThreshold"] = args ? args.deviceUpdownThreshold : undefined;
             resourceInputs["disablePcap"] = args ? args.disablePcap : undefined;
@@ -206,6 +205,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["wanPma"] = args ? args.wanPma : undefined;
             resourceInputs["wiredPma"] = args ? args.wiredPma : undefined;
             resourceInputs["wirelessPma"] = args ? args.wirelessPma : undefined;
+            resourceInputs["cradlepoint"] = undefined /*out*/;
             resourceInputs["juniper"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -311,7 +311,6 @@ export interface SettingArgs {
     cacerts?: pulumi.Input<pulumi.Input<string>[]>;
     celona?: pulumi.Input<inputs.org.SettingCelona>;
     cloudshark?: pulumi.Input<inputs.org.SettingCloudshark>;
-    cradlepoint?: pulumi.Input<inputs.org.SettingCradlepoint>;
     /**
      * common device cert, optional
      */

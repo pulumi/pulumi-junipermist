@@ -15,6 +15,10 @@ import (
 // This resource manages the Site Settings.
 // The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 //
+// > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
+//
+// !> Only ONE `site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_site_setting` with:
@@ -45,8 +49,6 @@ type Setting struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
-	// if some system-default port usages are not desired - namely, ap / iot / uplink
-	DisabledSystemDefinedPortUsages pulumi.StringArrayOutput `pulumi:"disabledSystemDefinedPortUsages"`
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
 	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
@@ -159,8 +161,6 @@ type settingState struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// if some system-default port usages are not desired - namely, ap / iot / uplink
-	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
 	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
@@ -241,8 +241,6 @@ type SettingState struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// if some system-default port usages are not desired - namely, ap / iot / uplink
-	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
 	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
@@ -326,8 +324,6 @@ type settingArgs struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// if some system-default port usages are not desired - namely, ap / iot / uplink
-	DisabledSystemDefinedPortUsages []string `pulumi:"disabledSystemDefinedPortUsages"`
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
 	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
@@ -406,8 +402,6 @@ type SettingArgs struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// if some system-default port usages are not desired - namely, ap / iot / uplink
-	DisabledSystemDefinedPortUsages pulumi.StringArrayInput
 	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
 	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
 	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
@@ -597,11 +591,6 @@ func (o SettingOutput) CriticalUrlMonitoring() SettingCriticalUrlMonitoringPtrOu
 // is desired, use the following
 func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
-}
-
-// if some system-default port usages are not desired - namely, ap / iot / uplink
-func (o SettingOutput) DisabledSystemDefinedPortUsages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Setting) pulumi.StringArrayOutput { return v.DisabledSystemDefinedPortUsages }).(pulumi.StringArrayOutput)
 }
 
 // **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow

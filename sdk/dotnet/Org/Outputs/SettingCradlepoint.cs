@@ -13,25 +13,29 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class SettingCradlepoint
     {
-        public readonly string CpApiId;
-        public readonly string CpApiKey;
-        public readonly string EcmApiId;
-        public readonly string EcmApiKey;
+        public readonly string? CpApiId;
+        public readonly string? CpApiKey;
+        public readonly string? EcmApiId;
+        public readonly string? EcmApiKey;
+        public readonly bool? EnableLldp;
 
         [OutputConstructor]
         private SettingCradlepoint(
-            string cpApiId,
+            string? cpApiId,
 
-            string cpApiKey,
+            string? cpApiKey,
 
-            string ecmApiId,
+            string? ecmApiId,
 
-            string ecmApiKey)
+            string? ecmApiKey,
+
+            bool? enableLldp)
         {
             CpApiId = cpApiId;
             CpApiKey = cpApiKey;
             EcmApiId = ecmApiId;
             EcmApiKey = ecmApiKey;
+            EnableLldp = enableLldp;
         }
     }
 }

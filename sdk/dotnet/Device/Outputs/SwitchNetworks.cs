@@ -14,6 +14,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchNetworks
     {
         /// <summary>
+        /// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        /// </summary>
+        public readonly string? Gateway;
+        /// <summary>
+        /// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        /// </summary>
+        public readonly string? Gateway6;
+        /// <summary>
         /// whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
         /// NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         /// </summary>
@@ -23,21 +31,34 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// optional for pure switching, required when L3 / routing features are used
         /// </summary>
         public readonly string? Subnet;
+        /// <summary>
+        /// optional for pure switching, required when L3 / routing features are used
+        /// </summary>
+        public readonly string? Subnet6;
         public readonly string VlanId;
 
         [OutputConstructor]
         private SwitchNetworks(
+            string? gateway,
+
+            string? gateway6,
+
             bool? isolation,
 
             string? isolationVlanId,
 
             string? subnet,
 
+            string? subnet6,
+
             string vlanId)
         {
+            Gateway = gateway;
+            Gateway6 = gateway6;
             Isolation = isolation;
             IsolationVlanId = isolationVlanId;
             Subnet = subnet;
+            Subnet6 = subnet6;
             VlanId = vlanId;
         }
     }

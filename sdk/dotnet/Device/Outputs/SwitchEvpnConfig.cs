@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     {
         public readonly bool? Enabled;
         /// <summary>
-        /// enum: `access`, `core`, `distribution`
+        /// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
         /// </summary>
         public readonly string? Role;
 

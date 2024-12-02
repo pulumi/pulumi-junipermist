@@ -54,7 +54,7 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly aclTags!: pulumi.Output<{[key: string]: outputs.org.NetworktemplateAclTags} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly dhcpSnooping!: pulumi.Output<outputs.org.NetworktemplateDhcpSnooping | undefined>;
@@ -95,6 +95,9 @@ export class Networktemplate extends pulumi.CustomResource {
      * maximum 4 port mirrorings is allowed
      */
     public readonly portMirroring!: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortMirroring} | undefined>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     public readonly portUsages!: pulumi.Output<{[key: string]: outputs.org.NetworktemplatePortUsages} | undefined>;
     /**
      * Junos Radius config
@@ -107,7 +110,7 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     public readonly snmpConfig!: pulumi.Output<outputs.org.NetworktemplateSnmpConfig | undefined>;
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      */
     public readonly switchMatching!: pulumi.Output<outputs.org.NetworktemplateSwitchMatching | undefined>;
     /**
@@ -202,7 +205,7 @@ export interface NetworktemplateState {
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateAclTags>}>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     dhcpSnooping?: pulumi.Input<inputs.org.NetworktemplateDhcpSnooping>;
@@ -243,6 +246,9 @@ export interface NetworktemplateState {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortUsages>}>;
     /**
      * Junos Radius config
@@ -255,7 +261,7 @@ export interface NetworktemplateState {
     removeExistingConfigs?: pulumi.Input<boolean>;
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig>;
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching>;
     /**
@@ -279,7 +285,7 @@ export interface NetworktemplateArgs {
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateAclTags>}>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     dhcpSnooping?: pulumi.Input<inputs.org.NetworktemplateDhcpSnooping>;
@@ -320,6 +326,9 @@ export interface NetworktemplateArgs {
      * maximum 4 port mirrorings is allowed
      */
     portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortMirroring>}>;
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     */
     portUsages?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplatePortUsages>}>;
     /**
      * Junos Radius config
@@ -332,7 +341,7 @@ export interface NetworktemplateArgs {
     removeExistingConfigs?: pulumi.Input<boolean>;
     snmpConfig?: pulumi.Input<inputs.org.NetworktemplateSnmpConfig>;
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      */
     switchMatching?: pulumi.Input<inputs.org.NetworktemplateSwitchMatching>;
     /**

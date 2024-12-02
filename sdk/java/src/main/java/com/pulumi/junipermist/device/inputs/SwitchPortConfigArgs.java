@@ -182,14 +182,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+     * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+     * @return enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     public Optional<Output<String>> speed() {
@@ -197,18 +197,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * port usage name.
-     * 
-     * If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return port usage name.
-     * 
-     * If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     public Output<String> usage() {
@@ -479,7 +475,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
          * 
@@ -490,7 +486,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * @param speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
          * 
@@ -500,9 +496,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usage port usage name.
-         * 
-         * If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+         * @param usage port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
          * 
          * @return builder
          * 
@@ -513,9 +507,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usage port usage name.
-         * 
-         * If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+         * @param usage port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
          * 
          * @return builder
          * 

@@ -20,7 +20,6 @@ import com.pulumi.junipermist.site.inputs.NetworktemplateRemoteSyslogArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSnmpConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMatchingArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateSwitchMgmtArgs;
-import com.pulumi.junipermist.site.inputs.NetworktemplateUplinkPortConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateVrfConfigArgs;
 import com.pulumi.junipermist.site.inputs.NetworktemplateVrfInstancesArgs;
 import java.lang.Boolean;
@@ -59,14 +58,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
@@ -78,6 +77,21 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<NetworktemplateDhcpSnoopingArgs>> dhcpSnooping() {
         return Optional.ofNullable(this.dhcpSnooping);
+    }
+
+    /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    @Import(name="disabledSystemDefinedPortUsages")
+    private @Nullable Output<List<String>> disabledSystemDefinedPortUsages;
+
+    /**
+     * @return if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    public Optional<Output<List<String>>> disabledSystemDefinedPortUsages() {
+        return Optional.ofNullable(this.disabledSystemDefinedPortUsages);
     }
 
     /**
@@ -211,9 +225,17 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.portMirroring);
     }
 
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Optional<Output<Map<String,NetworktemplatePortUsagesArgs>>> portUsages() {
         return Optional.ofNullable(this.portUsages);
     }
@@ -278,14 +300,14 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      * 
      */
     @Import(name="switchMatching")
     private @Nullable Output<NetworktemplateSwitchMatchingArgs> switchMatching;
 
     /**
-     * @return Switch template
+     * @return defines custom switch configuration based on different criterias
      * 
      */
     public Optional<Output<NetworktemplateSwitchMatchingArgs>> switchMatching() {
@@ -305,13 +327,6 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<NetworktemplateSwitchMgmtArgs>> switchMgmt() {
         return Optional.ofNullable(this.switchMgmt);
-    }
-
-    @Import(name="uplinkPortConfig")
-    private @Nullable Output<NetworktemplateUplinkPortConfigArgs> uplinkPortConfig;
-
-    public Optional<Output<NetworktemplateUplinkPortConfigArgs>> uplinkPortConfig() {
-        return Optional.ofNullable(this.uplinkPortConfig);
     }
 
     @Import(name="vrfConfig")
@@ -343,6 +358,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.aclTags = $.aclTags;
         this.additionalConfigCmds = $.additionalConfigCmds;
         this.dhcpSnooping = $.dhcpSnooping;
+        this.disabledSystemDefinedPortUsages = $.disabledSystemDefinedPortUsages;
         this.dnsServers = $.dnsServers;
         this.dnsSuffixes = $.dnsSuffixes;
         this.extraRoutes = $.extraRoutes;
@@ -360,7 +376,6 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         this.snmpConfig = $.snmpConfig;
         this.switchMatching = $.switchMatching;
         this.switchMgmt = $.switchMgmt;
-        this.uplinkPortConfig = $.uplinkPortConfig;
         this.vrfConfig = $.vrfConfig;
         this.vrfInstances = $.vrfInstances;
     }
@@ -418,7 +433,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -429,7 +444,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -439,7 +454,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -455,6 +470,37 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
 
         public Builder dhcpSnooping(NetworktemplateDhcpSnoopingArgs dhcpSnooping) {
             return dhcpSnooping(Output.of(dhcpSnooping));
+        }
+
+        /**
+         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledSystemDefinedPortUsages(@Nullable Output<List<String>> disabledSystemDefinedPortUsages) {
+            $.disabledSystemDefinedPortUsages = disabledSystemDefinedPortUsages;
+            return this;
+        }
+
+        /**
+         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledSystemDefinedPortUsages(List<String> disabledSystemDefinedPortUsages) {
+            return disabledSystemDefinedPortUsages(Output.of(disabledSystemDefinedPortUsages));
+        }
+
+        /**
+         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabledSystemDefinedPortUsages(String... disabledSystemDefinedPortUsages) {
+            return disabledSystemDefinedPortUsages(List.of(disabledSystemDefinedPortUsages));
         }
 
         /**
@@ -668,11 +714,23 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
             return portMirroring(Output.of(portMirroring));
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(@Nullable Output<Map<String,NetworktemplatePortUsagesArgs>> portUsages) {
             $.portUsages = portUsages;
             return this;
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(Map<String,NetworktemplatePortUsagesArgs> portUsages) {
             return portUsages(Output.of(portUsages));
         }
@@ -759,7 +817,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMatching Switch template
+         * @param switchMatching defines custom switch configuration based on different criterias
          * 
          * @return builder
          * 
@@ -770,7 +828,7 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param switchMatching Switch template
+         * @param switchMatching defines custom switch configuration based on different criterias
          * 
          * @return builder
          * 
@@ -798,15 +856,6 @@ public final class NetworktemplateState extends com.pulumi.resources.ResourceArg
          */
         public Builder switchMgmt(NetworktemplateSwitchMgmtArgs switchMgmt) {
             return switchMgmt(Output.of(switchMgmt));
-        }
-
-        public Builder uplinkPortConfig(@Nullable Output<NetworktemplateUplinkPortConfigArgs> uplinkPortConfig) {
-            $.uplinkPortConfig = uplinkPortConfig;
-            return this;
-        }
-
-        public Builder uplinkPortConfig(NetworktemplateUplinkPortConfigArgs uplinkPortConfig) {
-            return uplinkPortConfig(Output.of(uplinkPortConfig));
         }
 
         public Builder vrfConfig(@Nullable Output<NetworktemplateVrfConfigArgs> vrfConfig) {

@@ -17,16 +17,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// <summary>
         /// any / HH:MM (24-hour format)
         /// </summary>
-        public readonly string? TimeOdFay;
+        public readonly string? TimeOfDay;
 
         [OutputConstructor]
         private SettingSyntheticTestWanSpeedtest(
             bool? enabled,
 
-            string? timeOdFay)
+            string? timeOfDay)
         {
             Enabled = enabled;
-            TimeOdFay = timeOdFay;
+            TimeOfDay = timeOfDay;
         }
     }
 }

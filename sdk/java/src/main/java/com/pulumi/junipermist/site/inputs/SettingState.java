@@ -168,21 +168,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
-     * 
-     */
-    @Import(name="disabledSystemDefinedPortUsages")
-    private @Nullable Output<List<String>> disabledSystemDefinedPortUsages;
-
-    /**
-     * @return if some system-default port usages are not desired - namely, ap / iot / uplink
-     * 
-     */
-    public Optional<Output<List<String>>> disabledSystemDefinedPortUsages() {
-        return Optional.ofNullable(this.disabledSystemDefinedPortUsages);
-    }
-
-    /**
      * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
      * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
      * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
@@ -587,7 +572,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         this.configPushPolicy = $.configPushPolicy;
         this.criticalUrlMonitoring = $.criticalUrlMonitoring;
         this.deviceUpdownThreshold = $.deviceUpdownThreshold;
-        this.disabledSystemDefinedPortUsages = $.disabledSystemDefinedPortUsages;
         this.engagement = $.engagement;
         this.gatewayMgmt = $.gatewayMgmt;
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
@@ -806,37 +790,6 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deviceUpdownThreshold(Integer deviceUpdownThreshold) {
             return deviceUpdownThreshold(Output.of(deviceUpdownThreshold));
-        }
-
-        /**
-         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabledSystemDefinedPortUsages(@Nullable Output<List<String>> disabledSystemDefinedPortUsages) {
-            $.disabledSystemDefinedPortUsages = disabledSystemDefinedPortUsages;
-            return this;
-        }
-
-        /**
-         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabledSystemDefinedPortUsages(List<String> disabledSystemDefinedPortUsages) {
-            return disabledSystemDefinedPortUsages(Output.of(disabledSystemDefinedPortUsages));
-        }
-
-        /**
-         * @param disabledSystemDefinedPortUsages if some system-default port usages are not desired - namely, ap / iot / uplink
-         * 
-         * @return builder
-         * 
-         */
-        public Builder disabledSystemDefinedPortUsages(String... disabledSystemDefinedPortUsages) {
-            return disabledSystemDefinedPortUsages(List.of(disabledSystemDefinedPortUsages));
         }
 
         /**

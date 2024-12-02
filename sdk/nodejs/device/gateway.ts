@@ -10,6 +10,8 @@ import * as utilities from "../utilities";
  * This resource manages the Gateway configuration.
  * It can be used to define specific configuration at the device level or to override Org Gateway template settings.
  *
+ * > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -128,7 +130,7 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * out-of-band (vme/em0/fxp0) IP config
      */
-    public readonly oobIpConfig!: pulumi.Output<outputs.device.GatewayOobIpConfig | undefined>;
+    public readonly oobIpConfig!: pulumi.Output<outputs.device.GatewayOobIpConfig>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
     /**
      * Property key is the path name

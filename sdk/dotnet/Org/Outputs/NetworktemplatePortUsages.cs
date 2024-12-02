@@ -18,9 +18,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
-        /// Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        /// 
-        /// When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+        /// All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+        /// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         /// </summary>
         public readonly bool? AllowDhcpd;
         /// <summary>
@@ -89,7 +89,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? MacLimit;
         /// <summary>
-        /// `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+        /// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -137,7 +137,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? ServerRejectNetwork;
         /// <summary>
-        /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+        /// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         /// </summary>
         public readonly string? Speed;
         /// <summary>
@@ -151,6 +151,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? StpEdge;
         public readonly bool? StpNoRootPort;
         public readonly bool? StpP2p;
+        /// <summary>
+        /// optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+        /// </summary>
+        public readonly string? UiEvpntopoId;
         /// <summary>
         /// if this is connected to a vstp network
         /// </summary>
@@ -232,6 +236,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             bool? stpP2p,
 
+            string? uiEvpntopoId,
+
             bool? useVstp,
 
             string? voipNetwork)
@@ -271,6 +277,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             StpEdge = stpEdge;
             StpNoRootPort = stpNoRootPort;
             StpP2p = stpP2p;
+            UiEvpntopoId = uiEvpntopoId;
             UseVstp = useVstp;
             VoipNetwork = voipNetwork;
         }

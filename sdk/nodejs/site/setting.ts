@@ -10,6 +10,10 @@ import * as utilities from "../utilities";
  * This resource manages the Site Settings.
  * The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
  *
+ * > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
+ *
+ * !> Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+ *
  * ## Import
  *
  * Using `pulumi import`, import `mist_site_setting` with:
@@ -80,10 +84,6 @@ export class Setting extends pulumi.CustomResource {
      * is desired, use the following
      */
     public readonly deviceUpdownThreshold!: pulumi.Output<number>;
-    /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
-     */
-    public readonly disabledSystemDefinedPortUsages!: pulumi.Output<string[] | undefined>;
     /**
      * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
      * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -206,7 +206,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["configPushPolicy"] = state ? state.configPushPolicy : undefined;
             resourceInputs["criticalUrlMonitoring"] = state ? state.criticalUrlMonitoring : undefined;
             resourceInputs["deviceUpdownThreshold"] = state ? state.deviceUpdownThreshold : undefined;
-            resourceInputs["disabledSystemDefinedPortUsages"] = state ? state.disabledSystemDefinedPortUsages : undefined;
             resourceInputs["engagement"] = state ? state.engagement : undefined;
             resourceInputs["gatewayMgmt"] = state ? state.gatewayMgmt : undefined;
             resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
@@ -251,7 +250,6 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["configPushPolicy"] = args ? args.configPushPolicy : undefined;
             resourceInputs["criticalUrlMonitoring"] = args ? args.criticalUrlMonitoring : undefined;
             resourceInputs["deviceUpdownThreshold"] = args ? args.deviceUpdownThreshold : undefined;
-            resourceInputs["disabledSystemDefinedPortUsages"] = args ? args.disabledSystemDefinedPortUsages : undefined;
             resourceInputs["engagement"] = args ? args.engagement : undefined;
             resourceInputs["gatewayMgmt"] = args ? args.gatewayMgmt : undefined;
             resourceInputs["gatewayUpdownThreshold"] = args ? args.gatewayUpdownThreshold : undefined;
@@ -326,10 +324,6 @@ export interface SettingState {
      * is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
-    /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
-     */
-    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
      * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
@@ -466,10 +460,6 @@ export interface SettingArgs {
      * is desired, use the following
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
-    /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
-     */
-    disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
      * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged

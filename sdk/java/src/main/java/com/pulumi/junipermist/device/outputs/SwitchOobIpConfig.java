@@ -30,7 +30,7 @@ public final class SwitchOobIpConfig {
      */
     private @Nullable String type;
     /**
-     * @return f supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     private @Nullable Boolean useMgmtVrf;
@@ -69,7 +69,7 @@ public final class SwitchOobIpConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return f supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Boolean> useMgmtVrf() {

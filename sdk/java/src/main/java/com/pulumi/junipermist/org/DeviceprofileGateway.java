@@ -310,14 +310,14 @@ public class DeviceprofileGateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="oobIpConfig", refs={DeviceprofileGatewayOobIpConfig.class}, tree="[0]")
-    private Output</* @Nullable */ DeviceprofileGatewayOobIpConfig> oobIpConfig;
+    private Output<DeviceprofileGatewayOobIpConfig> oobIpConfig;
 
     /**
      * @return out-of-band (vme/em0/fxp0) IP config
      * 
      */
-    public Output<Optional<DeviceprofileGatewayOobIpConfig>> oobIpConfig() {
-        return Codegen.optional(this.oobIpConfig);
+    public Output<DeviceprofileGatewayOobIpConfig> oobIpConfig() {
+        return this.oobIpConfig;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;

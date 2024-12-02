@@ -12,10 +12,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class SettingCradlepointArgs : global::Pulumi.ResourceArgs
     {
-        [Input("cpApiId", required: true)]
-        public Input<string> CpApiId { get; set; } = null!;
+        [Input("cpApiId")]
+        public Input<string>? CpApiId { get; set; }
 
-        [Input("cpApiKey", required: true)]
+        [Input("cpApiKey")]
         private Input<string>? _cpApiKey;
         public Input<string>? CpApiKey
         {
@@ -27,10 +27,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
-        [Input("ecmApiId", required: true)]
-        public Input<string> EcmApiId { get; set; } = null!;
+        [Input("ecmApiId")]
+        public Input<string>? EcmApiId { get; set; }
 
-        [Input("ecmApiKey", required: true)]
+        [Input("ecmApiKey")]
         private Input<string>? _ecmApiKey;
         public Input<string>? EcmApiKey
         {
@@ -41,6 +41,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
                 _ecmApiKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("enableLldp")]
+        public Input<bool>? EnableLldp { get; set; }
 
         public SettingCradlepointArgs()
         {

@@ -11,6 +11,7 @@ from .base import *
 from .deviceprofile_ap import *
 from .deviceprofile_assign import *
 from .deviceprofile_gateway import *
+from .evpn_topology import *
 from .gatewaytemplate import *
 from .get_deviceprofiles_ap import *
 from .get_deviceprofiles_gateway import *
