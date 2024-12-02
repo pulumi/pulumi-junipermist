@@ -4,29 +4,35 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingCradlepoint {
-    private String cpApiId;
-    private String cpApiKey;
-    private String ecmApiId;
-    private String ecmApiKey;
+    private @Nullable String cpApiId;
+    private @Nullable String cpApiKey;
+    private @Nullable String ecmApiId;
+    private @Nullable String ecmApiKey;
+    private @Nullable Boolean enableLldp;
 
     private SettingCradlepoint() {}
-    public String cpApiId() {
-        return this.cpApiId;
+    public Optional<String> cpApiId() {
+        return Optional.ofNullable(this.cpApiId);
     }
-    public String cpApiKey() {
-        return this.cpApiKey;
+    public Optional<String> cpApiKey() {
+        return Optional.ofNullable(this.cpApiKey);
     }
-    public String ecmApiId() {
-        return this.ecmApiId;
+    public Optional<String> ecmApiId() {
+        return Optional.ofNullable(this.ecmApiId);
     }
-    public String ecmApiKey() {
-        return this.ecmApiKey;
+    public Optional<String> ecmApiKey() {
+        return Optional.ofNullable(this.ecmApiKey);
+    }
+    public Optional<Boolean> enableLldp() {
+        return Optional.ofNullable(this.enableLldp);
     }
 
     public static Builder builder() {
@@ -38,10 +44,11 @@ public final class SettingCradlepoint {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String cpApiId;
-        private String cpApiKey;
-        private String ecmApiId;
-        private String ecmApiKey;
+        private @Nullable String cpApiId;
+        private @Nullable String cpApiKey;
+        private @Nullable String ecmApiId;
+        private @Nullable String ecmApiKey;
+        private @Nullable Boolean enableLldp;
         public Builder() {}
         public Builder(SettingCradlepoint defaults) {
     	      Objects.requireNonNull(defaults);
@@ -49,38 +56,37 @@ public final class SettingCradlepoint {
     	      this.cpApiKey = defaults.cpApiKey;
     	      this.ecmApiId = defaults.ecmApiId;
     	      this.ecmApiKey = defaults.ecmApiKey;
+    	      this.enableLldp = defaults.enableLldp;
         }
 
         @CustomType.Setter
-        public Builder cpApiId(String cpApiId) {
-            if (cpApiId == null) {
-              throw new MissingRequiredPropertyException("SettingCradlepoint", "cpApiId");
-            }
+        public Builder cpApiId(@Nullable String cpApiId) {
+
             this.cpApiId = cpApiId;
             return this;
         }
         @CustomType.Setter
-        public Builder cpApiKey(String cpApiKey) {
-            if (cpApiKey == null) {
-              throw new MissingRequiredPropertyException("SettingCradlepoint", "cpApiKey");
-            }
+        public Builder cpApiKey(@Nullable String cpApiKey) {
+
             this.cpApiKey = cpApiKey;
             return this;
         }
         @CustomType.Setter
-        public Builder ecmApiId(String ecmApiId) {
-            if (ecmApiId == null) {
-              throw new MissingRequiredPropertyException("SettingCradlepoint", "ecmApiId");
-            }
+        public Builder ecmApiId(@Nullable String ecmApiId) {
+
             this.ecmApiId = ecmApiId;
             return this;
         }
         @CustomType.Setter
-        public Builder ecmApiKey(String ecmApiKey) {
-            if (ecmApiKey == null) {
-              throw new MissingRequiredPropertyException("SettingCradlepoint", "ecmApiKey");
-            }
+        public Builder ecmApiKey(@Nullable String ecmApiKey) {
+
             this.ecmApiKey = ecmApiKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableLldp(@Nullable Boolean enableLldp) {
+
+            this.enableLldp = enableLldp;
             return this;
         }
         public SettingCradlepoint build() {
@@ -89,6 +95,7 @@ public final class SettingCradlepoint {
             _resultValue.cpApiKey = cpApiKey;
             _resultValue.ecmApiId = ecmApiId;
             _resultValue.ecmApiKey = ecmApiKey;
+            _resultValue.enableLldp = enableLldp;
             return _resultValue;
         }
     }

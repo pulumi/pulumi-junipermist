@@ -36,18 +36,18 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * 
-     * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * 
-     * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -297,14 +297,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
      * 
      */
     public Optional<Output<String>> mode() {
@@ -477,14 +477,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+     * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     public Optional<Output<String>> speed() {
@@ -535,6 +535,21 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
 
     public Optional<Output<Boolean>> stpP2p() {
         return Optional.ofNullable(this.stpP2p);
+    }
+
+    /**
+     * optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * 
+     */
+    @Import(name="uiEvpntopoId")
+    private @Nullable Output<String> uiEvpntopoId;
+
+    /**
+     * @return optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * 
+     */
+    public Optional<Output<String>> uiEvpntopoId() {
+        return Optional.ofNullable(this.uiEvpntopoId);
     }
 
     /**
@@ -605,6 +620,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.stpEdge = $.stpEdge;
         this.stpNoRootPort = $.stpNoRootPort;
         this.stpP2p = $.stpP2p;
+        this.uiEvpntopoId = $.uiEvpntopoId;
         this.useVstp = $.useVstp;
         this.voipNetwork = $.voipNetwork;
     }
@@ -649,9 +665,9 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-         * 
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+         * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
          * 
          * @return builder
          * 
@@ -662,9 +678,9 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-         * 
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+         * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
          * 
          * @return builder
          * 
@@ -1022,7 +1038,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mode `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * @param mode `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          * 
          * @return builder
          * 
@@ -1033,7 +1049,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param mode `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * @param mode `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          * 
          * @return builder
          * 
@@ -1294,7 +1310,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * @param speed Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
          * 
@@ -1305,7 +1321,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param speed Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * @param speed Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          * 
          * @return builder
          * 
@@ -1374,6 +1390,27 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
 
         public Builder stpP2p(Boolean stpP2p) {
             return stpP2p(Output.of(stpP2p));
+        }
+
+        /**
+         * @param uiEvpntopoId optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiEvpntopoId(@Nullable Output<String> uiEvpntopoId) {
+            $.uiEvpntopoId = uiEvpntopoId;
+            return this;
+        }
+
+        /**
+         * @param uiEvpntopoId optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uiEvpntopoId(String uiEvpntopoId) {
+            return uiEvpntopoId(Output.of(uiEvpntopoId));
         }
 
         /**

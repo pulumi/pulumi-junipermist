@@ -397,14 +397,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the network name
+     * Property key is the network name. Defines the additional IP Addresses configured on the device.
      * 
      */
     @Import(name="otherIpConfigs")
     private @Nullable Output<Map<String,SwitchOtherIpConfigsArgs>> otherIpConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Property key is the network name. Defines the additional IP Addresses configured on the device.
      * 
      */
     public Optional<Output<Map<String,SwitchOtherIpConfigsArgs>>> otherIpConfigs() {
@@ -445,9 +445,17 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.portMirroring);
     }
 
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,SwitchPortUsagesArgs>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Optional<Output<Map<String,SwitchPortUsagesArgs>>> portUsages() {
         return Optional.ofNullable(this.portUsages);
     }
@@ -1274,7 +1282,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otherIpConfigs Property key is the network name
+         * @param otherIpConfigs Property key is the network name. Defines the additional IP Addresses configured on the device.
          * 
          * @return builder
          * 
@@ -1285,7 +1293,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otherIpConfigs Property key is the network name
+         * @param otherIpConfigs Property key is the network name. Defines the additional IP Addresses configured on the device.
          * 
          * @return builder
          * 
@@ -1340,11 +1348,23 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
             return portMirroring(Output.of(portMirroring));
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(@Nullable Output<Map<String,SwitchPortUsagesArgs>> portUsages) {
             $.portUsages = portUsages;
             return this;
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(Map<String,SwitchPortUsagesArgs> portUsages) {
             return portUsages(Output.of(portUsages));
         }

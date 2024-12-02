@@ -10,7 +10,6 @@ import com.pulumi.junipermist.device.inputs.SwitchAclPolicyArgs;
 import com.pulumi.junipermist.device.inputs.SwitchAclTagsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchDhcpSnoopingArgs;
 import com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigArgs;
-import com.pulumi.junipermist.device.inputs.SwitchEvpnConfigArgs;
 import com.pulumi.junipermist.device.inputs.SwitchExtraRoutes6Args;
 import com.pulumi.junipermist.device.inputs.SwitchExtraRoutesArgs;
 import com.pulumi.junipermist.device.inputs.SwitchIpConfigArgs;
@@ -147,21 +146,6 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
         return Optional.ofNullable(this.dnsSuffixes);
-    }
-
-    /**
-     * EVPN Junos settings
-     * 
-     */
-    @Import(name="evpnConfig")
-    private @Nullable Output<SwitchEvpnConfigArgs> evpnConfig;
-
-    /**
-     * @return EVPN Junos settings
-     * 
-     */
-    public Optional<Output<SwitchEvpnConfigArgs>> evpnConfig() {
-        return Optional.ofNullable(this.evpnConfig);
     }
 
     @Import(name="extraRoutes")
@@ -340,14 +324,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the network name
+     * Property key is the network name. Defines the additional IP Addresses configured on the device.
      * 
      */
     @Import(name="otherIpConfigs")
     private @Nullable Output<Map<String,SwitchOtherIpConfigsArgs>> otherIpConfigs;
 
     /**
-     * @return Property key is the network name
+     * @return Property key is the network name. Defines the additional IP Addresses configured on the device.
      * 
      */
     public Optional<Output<Map<String,SwitchOtherIpConfigsArgs>>> otherIpConfigs() {
@@ -388,9 +372,17 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.portMirroring);
     }
 
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Import(name="portUsages")
     private @Nullable Output<Map<String,SwitchPortUsagesArgs>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Optional<Output<Map<String,SwitchPortUsagesArgs>>> portUsages() {
         return Optional.ofNullable(this.portUsages);
     }
@@ -599,7 +591,6 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         this.disableAutoConfig = $.disableAutoConfig;
         this.dnsServers = $.dnsServers;
         this.dnsSuffixes = $.dnsSuffixes;
-        this.evpnConfig = $.evpnConfig;
         this.extraRoutes = $.extraRoutes;
         this.extraRoutes6 = $.extraRoutes6;
         this.ipConfig = $.ipConfig;
@@ -826,27 +817,6 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dnsSuffixes(String... dnsSuffixes) {
             return dnsSuffixes(List.of(dnsSuffixes));
-        }
-
-        /**
-         * @param evpnConfig EVPN Junos settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder evpnConfig(@Nullable Output<SwitchEvpnConfigArgs> evpnConfig) {
-            $.evpnConfig = evpnConfig;
-            return this;
-        }
-
-        /**
-         * @param evpnConfig EVPN Junos settings
-         * 
-         * @return builder
-         * 
-         */
-        public Builder evpnConfig(SwitchEvpnConfigArgs evpnConfig) {
-            return evpnConfig(Output.of(evpnConfig));
         }
 
         public Builder extraRoutes(@Nullable Output<Map<String,SwitchExtraRoutesArgs>> extraRoutes) {
@@ -1101,7 +1071,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otherIpConfigs Property key is the network name
+         * @param otherIpConfigs Property key is the network name. Defines the additional IP Addresses configured on the device.
          * 
          * @return builder
          * 
@@ -1112,7 +1082,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param otherIpConfigs Property key is the network name
+         * @param otherIpConfigs Property key is the network name. Defines the additional IP Addresses configured on the device.
          * 
          * @return builder
          * 
@@ -1167,11 +1137,23 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
             return portMirroring(Output.of(portMirroring));
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(@Nullable Output<Map<String,SwitchPortUsagesArgs>> portUsages) {
             $.portUsages = portUsages;
             return this;
         }
 
+        /**
+         * @param portUsages Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+         * 
+         * @return builder
+         * 
+         */
         public Builder portUsages(Map<String,SwitchPortUsagesArgs> portUsages) {
             return portUsages(Output.of(portUsages));
         }

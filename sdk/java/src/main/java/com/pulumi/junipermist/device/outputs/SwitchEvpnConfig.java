@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class SwitchEvpnConfig {
     private @Nullable Boolean enabled;
     /**
-     * @return enum: `access`, `core`, `distribution`
+     * @return enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
      * 
      */
     private @Nullable String role;
@@ -24,7 +24,7 @@ public final class SwitchEvpnConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return enum: `access`, `core`, `distribution`
+     * @return enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
      * 
      */
     public Optional<String> role() {

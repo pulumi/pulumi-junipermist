@@ -309,14 +309,14 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="oobIpConfig", refs={GatewaytemplateOobIpConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GatewaytemplateOobIpConfig> oobIpConfig;
+    private Output<GatewaytemplateOobIpConfig> oobIpConfig;
 
     /**
      * @return out-of-band (vme/em0/fxp0) IP config
      * 
      */
-    public Output<Optional<GatewaytemplateOobIpConfig>> oobIpConfig() {
-        return Codegen.optional(this.oobIpConfig);
+    public Output<GatewaytemplateOobIpConfig> oobIpConfig() {
+        return this.oobIpConfig;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;

@@ -13,6 +13,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WlanPortalGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+        /// </summary>
+        [Input("allowWlanIdRoam")]
+        public Input<bool>? AllowWlanIdRoam { get; set; }
+
+        /// <summary>
         /// amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         /// </summary>
         [Input("amazonClientId")]
@@ -457,40 +463,43 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        /// if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         [Input("ssoDefaultRole")]
         public Input<string>? SsoDefaultRole { get; set; }
 
+        /// <summary>
+        /// if `wlan_portal_auth`==`sso`
+        /// </summary>
         [Input("ssoForcedRole")]
         public Input<string>? SsoForcedRole { get; set; }
 
         /// <summary>
-        /// IDP Cert (used to verify the signed response)
+        /// if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
         /// </summary>
         [Input("ssoIdpCert")]
         public Input<string>? SsoIdpCert { get; set; }
 
         /// <summary>
-        /// signing algorithm for SAML Assertion
+        /// if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         /// </summary>
         [Input("ssoIdpSignAlgo")]
         public Input<string>? SsoIdpSignAlgo { get; set; }
 
         /// <summary>
-        /// IDP Single-Sign-On URL
+        /// if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
         /// </summary>
         [Input("ssoIdpSsoUrl")]
         public Input<string>? SsoIdpSsoUrl { get; set; }
 
         /// <summary>
-        /// IDP issuer URL
+        /// if `wlan_portal_auth`==`sso`, IDP issuer URL
         /// </summary>
         [Input("ssoIssuer")]
         public Input<string>? SsoIssuer { get; set; }
 
         /// <summary>
-        /// enum: `email`, `unspecified`
+        /// if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
         /// </summary>
         [Input("ssoNameidFormat")]
         public Input<string>? SsoNameidFormat { get; set; }

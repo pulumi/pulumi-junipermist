@@ -1098,6 +1098,8 @@ class Gateway(pulumi.CustomResource):
         This resource manages the Gateway configuration.
         It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 
+        > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+
         ## Example Usage
 
         ```python
@@ -1162,6 +1164,8 @@ class Gateway(pulumi.CustomResource):
         """
         This resource manages the Gateway configuration.
         It can be used to define specific configuration at the device level or to override Org Gateway template settings.
+
+        > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
 
         ## Example Usage
 
@@ -1565,7 +1569,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oobIpConfig")
-    def oob_ip_config(self) -> pulumi.Output[Optional['outputs.GatewayOobIpConfig']]:
+    def oob_ip_config(self) -> pulumi.Output['outputs.GatewayOobIpConfig']:
         """
         out-of-band (vme/em0/fxp0) IP config
         """

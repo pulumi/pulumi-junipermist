@@ -79,15 +79,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+        /// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// port usage name. 
-        /// 
-        /// If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        /// port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;

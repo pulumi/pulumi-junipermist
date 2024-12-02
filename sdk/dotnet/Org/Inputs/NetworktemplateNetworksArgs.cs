@@ -13,6 +13,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateNetworksArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        /// </summary>
+        [Input("gateway")]
+        public Input<string>? Gateway { get; set; }
+
+        /// <summary>
+        /// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        /// </summary>
+        [Input("gateway6")]
+        public Input<string>? Gateway6 { get; set; }
+
+        /// <summary>
         /// whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
         /// NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         /// </summary>
@@ -27,6 +39,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
+
+        /// <summary>
+        /// optional for pure switching, required when L3 / routing features are used
+        /// </summary>
+        [Input("subnet6")]
+        public Input<string>? Subnet6 { get; set; }
 
         [Input("vlanId", required: true)]
         public Input<string> VlanId { get; set; } = null!;

@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         public readonly bool? UseMgmtVrf;
         /// <summary>

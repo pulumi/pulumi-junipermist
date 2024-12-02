@@ -27,22 +27,22 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
      * any / HH:MM (24-hour format)
      * 
      */
-    @Import(name="timeOdFay")
-    private @Nullable Output<String> timeOdFay;
+    @Import(name="timeOfDay")
+    private @Nullable Output<String> timeOfDay;
 
     /**
      * @return any / HH:MM (24-hour format)
      * 
      */
-    public Optional<Output<String>> timeOdFay() {
-        return Optional.ofNullable(this.timeOdFay);
+    public Optional<Output<String>> timeOfDay() {
+        return Optional.ofNullable(this.timeOfDay);
     }
 
     private SettingSyntheticTestWanSpeedtestArgs() {}
 
     private SettingSyntheticTestWanSpeedtestArgs(SettingSyntheticTestWanSpeedtestArgs $) {
         this.enabled = $.enabled;
-        this.timeOdFay = $.timeOdFay;
+        this.timeOfDay = $.timeOfDay;
     }
 
     public static Builder builder() {
@@ -73,24 +73,24 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
         }
 
         /**
-         * @param timeOdFay any / HH:MM (24-hour format)
+         * @param timeOfDay any / HH:MM (24-hour format)
          * 
          * @return builder
          * 
          */
-        public Builder timeOdFay(@Nullable Output<String> timeOdFay) {
-            $.timeOdFay = timeOdFay;
+        public Builder timeOfDay(@Nullable Output<String> timeOfDay) {
+            $.timeOfDay = timeOfDay;
             return this;
         }
 
         /**
-         * @param timeOdFay any / HH:MM (24-hour format)
+         * @param timeOfDay any / HH:MM (24-hour format)
          * 
          * @return builder
          * 
          */
-        public Builder timeOdFay(String timeOdFay) {
-            return timeOdFay(Output.of(timeOdFay));
+        public Builder timeOfDay(String timeOfDay) {
+            return timeOfDay(Output.of(timeOfDay));
         }
 
         public SettingSyntheticTestWanSpeedtestArgs build() {

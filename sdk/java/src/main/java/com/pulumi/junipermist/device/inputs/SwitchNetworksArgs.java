@@ -18,6 +18,36 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     public static final SwitchNetworksArgs Empty = new SwitchNetworksArgs();
 
     /**
+     * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * 
+     */
+    @Import(name="gateway")
+    private @Nullable Output<String> gateway;
+
+    /**
+     * @return only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * 
+     */
+    public Optional<Output<String>> gateway() {
+        return Optional.ofNullable(this.gateway);
+    }
+
+    /**
+     * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * 
+     */
+    @Import(name="gateway6")
+    private @Nullable Output<String> gateway6;
+
+    /**
+     * @return only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * 
+     */
+    public Optional<Output<String>> gateway6() {
+        return Optional.ofNullable(this.gateway6);
+    }
+
+    /**
      * whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
      * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
      * 
@@ -56,6 +86,21 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.subnet);
     }
 
+    /**
+     * optional for pure switching, required when L3 / routing features are used
+     * 
+     */
+    @Import(name="subnet6")
+    private @Nullable Output<String> subnet6;
+
+    /**
+     * @return optional for pure switching, required when L3 / routing features are used
+     * 
+     */
+    public Optional<Output<String>> subnet6() {
+        return Optional.ofNullable(this.subnet6);
+    }
+
     @Import(name="vlanId", required=true)
     private Output<String> vlanId;
 
@@ -66,9 +111,12 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     private SwitchNetworksArgs() {}
 
     private SwitchNetworksArgs(SwitchNetworksArgs $) {
+        this.gateway = $.gateway;
+        this.gateway6 = $.gateway6;
         this.isolation = $.isolation;
         this.isolationVlanId = $.isolationVlanId;
         this.subnet = $.subnet;
+        this.subnet6 = $.subnet6;
         this.vlanId = $.vlanId;
     }
 
@@ -88,6 +136,48 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(SwitchNetworksArgs defaults) {
             $ = new SwitchNetworksArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gateway only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway(@Nullable Output<String> gateway) {
+            $.gateway = gateway;
+            return this;
+        }
+
+        /**
+         * @param gateway only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway(String gateway) {
+            return gateway(Output.of(gateway));
+        }
+
+        /**
+         * @param gateway6 only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway6(@Nullable Output<String> gateway6) {
+            $.gateway6 = gateway6;
+            return this;
+        }
+
+        /**
+         * @param gateway6 only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gateway6(String gateway6) {
+            return gateway6(Output.of(gateway6));
         }
 
         /**
@@ -141,6 +231,27 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder subnet(String subnet) {
             return subnet(Output.of(subnet));
+        }
+
+        /**
+         * @param subnet6 optional for pure switching, required when L3 / routing features are used
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnet6(@Nullable Output<String> subnet6) {
+            $.subnet6 = subnet6;
+            return this;
+        }
+
+        /**
+         * @param subnet6 optional for pure switching, required when L3 / routing features are used
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnet6(String subnet6) {
+            return subnet6(Output.of(subnet6));
         }
 
         public Builder vlanId(Output<String> vlanId) {

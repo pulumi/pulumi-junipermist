@@ -14,9 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class NetworktemplateSwitchMatchingRule
     {
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config
-        /// 
-        /// **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public readonly ImmutableArray<string> AdditionalConfigCmds;
         /// <summary>
@@ -24,7 +22,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly Outputs.NetworktemplateSwitchMatchingRuleIpConfig? IpConfig;
         /// <summary>
-        /// role to match
+        /// string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+        /// </summary>
+        public readonly string? MatchModel;
+        /// <summary>
+        /// string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+        /// </summary>
+        public readonly string? MatchName;
+        /// <summary>
+        /// first character of the switch name to compare to the `match_name` value
+        /// </summary>
+        public readonly int? MatchNameOffset;
+        /// <summary>
+        /// string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
         /// </summary>
         public readonly string? MatchRole;
         /// <summary>
@@ -53,6 +63,12 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             Outputs.NetworktemplateSwitchMatchingRuleIpConfig? ipConfig,
 
+            string? matchModel,
+
+            string? matchName,
+
+            int? matchNameOffset,
+
             string? matchRole,
 
             string? matchType,
@@ -69,6 +85,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
         {
             AdditionalConfigCmds = additionalConfigCmds;
             IpConfig = ipConfig;
+            MatchModel = matchModel;
+            MatchName = matchName;
+            MatchNameOffset = matchNameOffset;
             MatchRole = matchRole;
             MatchType = matchType;
             MatchValue = matchValue;

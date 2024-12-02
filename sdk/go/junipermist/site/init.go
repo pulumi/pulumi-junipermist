@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "junipermist:site/base:base":
 		r = &Base{}
+	case "junipermist:site/evpnTopology:EvpnTopology":
+		r = &EvpnTopology{}
 	case "junipermist:site/networktemplate:Networktemplate":
 		r = &Networktemplate{}
 	case "junipermist:site/psk:Psk":
@@ -57,6 +59,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"site/base",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"site/evpnTopology",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -14,6 +14,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateNetworks {
     /**
+     * @return only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * 
+     */
+    private @Nullable String gateway;
+    /**
+     * @return only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * 
+     */
+    private @Nullable String gateway6;
+    /**
      * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
      * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
      * 
@@ -25,9 +35,28 @@ public final class NetworktemplateNetworks {
      * 
      */
     private @Nullable String subnet;
+    /**
+     * @return optional for pure switching, required when L3 / routing features are used
+     * 
+     */
+    private @Nullable String subnet6;
     private String vlanId;
 
     private NetworktemplateNetworks() {}
+    /**
+     * @return only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * 
+     */
+    public Optional<String> gateway() {
+        return Optional.ofNullable(this.gateway);
+    }
+    /**
+     * @return only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * 
+     */
+    public Optional<String> gateway6() {
+        return Optional.ofNullable(this.gateway6);
+    }
     /**
      * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
      * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
@@ -46,6 +75,13 @@ public final class NetworktemplateNetworks {
     public Optional<String> subnet() {
         return Optional.ofNullable(this.subnet);
     }
+    /**
+     * @return optional for pure switching, required when L3 / routing features are used
+     * 
+     */
+    public Optional<String> subnet6() {
+        return Optional.ofNullable(this.subnet6);
+    }
     public String vlanId() {
         return this.vlanId;
     }
@@ -59,19 +95,37 @@ public final class NetworktemplateNetworks {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String gateway;
+        private @Nullable String gateway6;
         private @Nullable Boolean isolation;
         private @Nullable String isolationVlanId;
         private @Nullable String subnet;
+        private @Nullable String subnet6;
         private String vlanId;
         public Builder() {}
         public Builder(NetworktemplateNetworks defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.gateway = defaults.gateway;
+    	      this.gateway6 = defaults.gateway6;
     	      this.isolation = defaults.isolation;
     	      this.isolationVlanId = defaults.isolationVlanId;
     	      this.subnet = defaults.subnet;
+    	      this.subnet6 = defaults.subnet6;
     	      this.vlanId = defaults.vlanId;
         }
 
+        @CustomType.Setter
+        public Builder gateway(@Nullable String gateway) {
+
+            this.gateway = gateway;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gateway6(@Nullable String gateway6) {
+
+            this.gateway6 = gateway6;
+            return this;
+        }
         @CustomType.Setter
         public Builder isolation(@Nullable Boolean isolation) {
 
@@ -91,6 +145,12 @@ public final class NetworktemplateNetworks {
             return this;
         }
         @CustomType.Setter
+        public Builder subnet6(@Nullable String subnet6) {
+
+            this.subnet6 = subnet6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vlanId(String vlanId) {
             if (vlanId == null) {
               throw new MissingRequiredPropertyException("NetworktemplateNetworks", "vlanId");
@@ -100,9 +160,12 @@ public final class NetworktemplateNetworks {
         }
         public NetworktemplateNetworks build() {
             final var _resultValue = new NetworktemplateNetworks();
+            _resultValue.gateway = gateway;
+            _resultValue.gateway6 = gateway6;
             _resultValue.isolation = isolation;
             _resultValue.isolationVlanId = isolationVlanId;
             _resultValue.subnet = subnet;
+            _resultValue.subnet6 = subnet6;
             _resultValue.vlanId = vlanId;
             return _resultValue;
         }

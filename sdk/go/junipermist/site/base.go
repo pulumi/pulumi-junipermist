@@ -96,7 +96,7 @@ type Base struct {
 	// Site Template ID
 	SitetemplateId pulumi.StringPtrOutput `pulumi:"sitetemplateId"`
 	// Timezone the site is at
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Timezone pulumi.StringOutput `pulumi:"timezone"`
 }
 
 // NewBase registers a new resource with the given unique name, arguments, and options.
@@ -420,8 +420,8 @@ func (o BaseOutput) SitetemplateId() pulumi.StringPtrOutput {
 }
 
 // Timezone the site is at
-func (o BaseOutput) Timezone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Base) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
+func (o BaseOutput) Timezone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Base) pulumi.StringOutput { return v.Timezone }).(pulumi.StringOutput)
 }
 
 type BaseArrayOutput struct{ *pulumi.OutputState }

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? IdpprofileId { get; set; }
 
         /// <summary>
-        /// `strict` (default) / `standard` / or keys from from idp_profiles
+        /// enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
         /// </summary>
         [Input("profile")]
         public Input<string>? Profile { get; set; }

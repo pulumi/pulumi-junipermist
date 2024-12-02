@@ -263,14 +263,14 @@ public class Base extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="timezone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> timezone;
+    private Output<String> timezone;
 
     /**
      * @return Timezone the site is at
      * 
      */
-    public Output<Optional<String>> timezone() {
-        return Codegen.optional(this.timezone);
+    public Output<String> timezone() {
+        return this.timezone;
     }
 
     /**

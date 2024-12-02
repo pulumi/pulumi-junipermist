@@ -13,6 +13,8 @@ namespace Pulumi.JuniperMist.Device
     /// This resource manages the Gateway configuration.
     /// It can be used to define specific configuration at the device level or to override Org Gateway template settings.
     /// 
+    /// &gt; **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -163,7 +165,7 @@ namespace Pulumi.JuniperMist.Device
         /// out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Output("oobIpConfig")]
-        public Output<Outputs.GatewayOobIpConfig?> OobIpConfig { get; private set; } = null!;
+        public Output<Outputs.GatewayOobIpConfig> OobIpConfig { get; private set; } = null!;
 
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;

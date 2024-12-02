@@ -22,9 +22,9 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * 
-     * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -110,7 +110,7 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable Integer macLimit;
     /**
-     * @return `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
      * 
      */
     private @Nullable String mode;
@@ -170,7 +170,7 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable String serverRejectNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     private @Nullable String speed;
@@ -187,6 +187,11 @@ public final class NetworktemplatePortUsages {
     private @Nullable Boolean stpEdge;
     private @Nullable Boolean stpNoRootPort;
     private @Nullable Boolean stpP2p;
+    /**
+     * @return optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * 
+     */
+    private @Nullable String uiEvpntopoId;
     /**
      * @return if this is connected to a vstp network
      * 
@@ -207,9 +212,9 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * 
-     * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
+     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -329,7 +334,7 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.macLimit);
     }
     /**
-     * @return `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+     * @return `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
      * 
      */
     public Optional<String> mode() {
@@ -413,7 +418,7 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.serverRejectNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+     * @return Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
      * 
      */
     public Optional<String> speed() {
@@ -439,6 +444,13 @@ public final class NetworktemplatePortUsages {
     }
     public Optional<Boolean> stpP2p() {
         return Optional.ofNullable(this.stpP2p);
+    }
+    /**
+     * @return optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * 
+     */
+    public Optional<String> uiEvpntopoId() {
+        return Optional.ofNullable(this.uiEvpntopoId);
     }
     /**
      * @return if this is connected to a vstp network
@@ -499,6 +511,7 @@ public final class NetworktemplatePortUsages {
         private @Nullable Boolean stpEdge;
         private @Nullable Boolean stpNoRootPort;
         private @Nullable Boolean stpP2p;
+        private @Nullable String uiEvpntopoId;
         private @Nullable Boolean useVstp;
         private @Nullable String voipNetwork;
         public Builder() {}
@@ -539,6 +552,7 @@ public final class NetworktemplatePortUsages {
     	      this.stpEdge = defaults.stpEdge;
     	      this.stpNoRootPort = defaults.stpNoRootPort;
     	      this.stpP2p = defaults.stpP2p;
+    	      this.uiEvpntopoId = defaults.uiEvpntopoId;
     	      this.useVstp = defaults.useVstp;
     	      this.voipNetwork = defaults.voipNetwork;
         }
@@ -763,6 +777,12 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
+        public Builder uiEvpntopoId(@Nullable String uiEvpntopoId) {
+
+            this.uiEvpntopoId = uiEvpntopoId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useVstp(@Nullable Boolean useVstp) {
 
             this.useVstp = useVstp;
@@ -811,6 +831,7 @@ public final class NetworktemplatePortUsages {
             _resultValue.stpEdge = stpEdge;
             _resultValue.stpNoRootPort = stpNoRootPort;
             _resultValue.stpP2p = stpP2p;
+            _resultValue.uiEvpntopoId = uiEvpntopoId;
             _resultValue.useVstp = useVstp;
             _resultValue.voipNetwork = voipNetwork;
             return _resultValue;

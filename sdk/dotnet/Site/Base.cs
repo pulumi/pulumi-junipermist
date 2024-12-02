@@ -142,7 +142,7 @@ namespace Pulumi.JuniperMist.Site
         /// Timezone the site is at
         /// </summary>
         [Output("timezone")]
-        public Output<string?> Timezone { get; private set; } = null!;
+        public Output<string> Timezone { get; private set; } = null!;
 
 
         /// <summary>

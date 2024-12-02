@@ -47,86 +47,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.junipermist.org.Setting;
- * import com.pulumi.junipermist.org.SettingArgs;
- * import com.pulumi.junipermist.org.inputs.SettingCradlepointArgs;
- * import com.pulumi.junipermist.org.inputs.SettingMxedgeMgmtArgs;
- * import com.pulumi.junipermist.org.inputs.SettingPasswordPolicyArgs;
- * import com.pulumi.junipermist.org.inputs.SettingSecurityArgs;
- * import com.pulumi.junipermist.org.inputs.SettingSyntheticTestArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var terraformTest = new Setting("terraformTest", SettingArgs.builder()
- *             .orgId(terraformTestMistOrg.id())
- *             .apUpdownThreshold(10)
- *             .cradlepoint(SettingCradlepointArgs.builder()
- *                 .cp_api_id("cp_api_id_test")
- *                 .cp_api_key("secret")
- *                 .ecm_api_id("ecm_api_id_test")
- *                 .ecm_api_key("secret")
- *                 .build())
- *             .deviceUpdownThreshold(10)
- *             .disablePcap(false)
- *             .disableRemoteShell(true)
- *             .gatewayUpdownThreshold(10)
- *             .mxedgeMgmt(SettingMxedgeMgmtArgs.builder()
- *                 .mist_password("mist_secret_passowrd")
- *                 .root_password("root_secret_password")
- *                 .oob_ip_type("dhcp")
- *                 .oob_ip_type6("disabled")
- *                 .build())
- *             .passwordPolicy(SettingPasswordPolicyArgs.builder()
- *                 .enabled(true)
- *                 .freshness(180)
- *                 .min_length(12)
- *                 .requires_special_char(true)
- *                 .requires_two_factor_auth(false)
- *                 .build())
- *             .security(SettingSecurityArgs.builder()
- *                 .disable_local_ssh(true)
- *                 .build())
- *             .switchUpdownThreshold(10)
- *             .syntheticTest(SettingSyntheticTestArgs.builder()
- *                 .disabled(false)
- *                 .vlans(                
- *                     SettingSyntheticTestVlanArgs.builder()
- *                         .vlanIds(                        
- *                             "10",
- *                             "30")
- *                         .customTestUrls(                        
- *                             "http://www.abc.com/",
- *                             "https://10.3.5.1:8080/about")
- *                         .build(),
- *                     SettingSyntheticTestVlanArgs.builder()
- *                         .vlanIds("20")
- *                         .disabled(true)
- *                         .build())
- *                 .build())
- *             .uiIdleTimeout(120)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -191,10 +111,10 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudshark);
     }
     @Export(name="cradlepoint", refs={SettingCradlepoint.class}, tree="[0]")
-    private Output</* @Nullable */ SettingCradlepoint> cradlepoint;
+    private Output<SettingCradlepoint> cradlepoint;
 
-    public Output<Optional<SettingCradlepoint>> cradlepoint() {
-        return Codegen.optional(this.cradlepoint);
+    public Output<SettingCradlepoint> cradlepoint() {
+        return this.cradlepoint;
     }
     /**
      * common device cert, optional

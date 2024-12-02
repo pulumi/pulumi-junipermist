@@ -13,6 +13,10 @@ namespace Pulumi.JuniperMist.Site
     /// This resource manages the Site Settings.
     /// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
     /// 
+    /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
+    /// 
+    /// !&gt; Only ONE `junipermist.site.Setting` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_site_setting` with:
@@ -75,12 +79,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("deviceUpdownThreshold")]
         public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
-
-        /// <summary>
-        /// if some system-default port usages are not desired - namely, ap / iot / uplink
-        /// </summary>
-        [Output("disabledSystemDefinedPortUsages")]
-        public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
 
         /// <summary>
         /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
@@ -337,18 +335,6 @@ namespace Pulumi.JuniperMist.Site
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
-        [Input("disabledSystemDefinedPortUsages")]
-        private InputList<string>? _disabledSystemDefinedPortUsages;
-
-        /// <summary>
-        /// if some system-default port usages are not desired - namely, ap / iot / uplink
-        /// </summary>
-        public InputList<string> DisabledSystemDefinedPortUsages
-        {
-            get => _disabledSystemDefinedPortUsages ?? (_disabledSystemDefinedPortUsages = new InputList<string>());
-            set => _disabledSystemDefinedPortUsages = value;
-        }
-
         /// <summary>
         /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
         /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
@@ -579,18 +565,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
-
-        [Input("disabledSystemDefinedPortUsages")]
-        private InputList<string>? _disabledSystemDefinedPortUsages;
-
-        /// <summary>
-        /// if some system-default port usages are not desired - namely, ap / iot / uplink
-        /// </summary>
-        public InputList<string> DisabledSystemDefinedPortUsages
-        {
-            get => _disabledSystemDefinedPortUsages ?? (_disabledSystemDefinedPortUsages = new InputList<string>());
-            set => _disabledSystemDefinedPortUsages = value;
-        }
 
         /// <summary>
         /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow

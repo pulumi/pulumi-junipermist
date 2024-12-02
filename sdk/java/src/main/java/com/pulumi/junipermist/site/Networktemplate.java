@@ -25,7 +25,6 @@ import com.pulumi.junipermist.site.outputs.NetworktemplateRemoteSyslog;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSnmpConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMatching;
 import com.pulumi.junipermist.site.outputs.NetworktemplateSwitchMgmt;
-import com.pulumi.junipermist.site.outputs.NetworktemplateUplinkPortConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateVrfConfig;
 import com.pulumi.junipermist.site.outputs.NetworktemplateVrfInstances;
 import java.lang.Boolean;
@@ -38,6 +37,10 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Site Network configuration (Switch configuration).
  * The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
+ * 
+ * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
+ * 
+ * !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
  * 
  * ## Example Usage
  * 
@@ -97,8 +100,9 @@ import javax.annotation.Nullable;
  *                 .enable(true)
  *                 .rules(NetworktemplateSwitchMatchingRuleArgs.builder()
  *                     .name("switch_rule_one")
- *                     .matchType("match_name[0:3]")
- *                     .matchValue("abc")
+ *                     .matchName("corp")
+ *                     .matchNameOffset(3)
+ *                     .matchRole("core")
  *                     .portConfig(Map.of("ge-0/0/0-10", Map.of("usage", "port_usage_one")))
  *                     .build())
  *                 .build())
@@ -144,14 +148,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclTags);
     }
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
@@ -162,6 +166,20 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<NetworktemplateDhcpSnooping>> dhcpSnooping() {
         return Codegen.optional(this.dhcpSnooping);
+    }
+    /**
+     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    @Export(name="disabledSystemDefinedPortUsages", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> disabledSystemDefinedPortUsages;
+
+    /**
+     * @return if some system-default port usages are not desired - namely, ap / iot / uplink
+     * 
+     */
+    public Output<Optional<List<String>>> disabledSystemDefinedPortUsages() {
+        return Codegen.optional(this.disabledSystemDefinedPortUsages);
     }
     /**
      * Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -285,9 +303,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Export(name="portUsages", refs={Map.class,String.class,NetworktemplatePortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortUsages>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplatePortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }
@@ -346,14 +372,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return Switch template
+     * @return defines custom switch configuration based on different criterias
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {
@@ -372,12 +398,6 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<NetworktemplateSwitchMgmt>> switchMgmt() {
         return Codegen.optional(this.switchMgmt);
-    }
-    @Export(name="uplinkPortConfig", refs={NetworktemplateUplinkPortConfig.class}, tree="[0]")
-    private Output</* @Nullable */ NetworktemplateUplinkPortConfig> uplinkPortConfig;
-
-    public Output<Optional<NetworktemplateUplinkPortConfig>> uplinkPortConfig() {
-        return Codegen.optional(this.uplinkPortConfig);
     }
     @Export(name="vrfConfig", refs={NetworktemplateVrfConfig.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateVrfConfig> vrfConfig;

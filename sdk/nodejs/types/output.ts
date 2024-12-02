@@ -1128,7 +1128,7 @@ export namespace device {
         /**
          * for HA Cluster, node1 can have different IP Config
          */
-        node1?: outputs.device.GatewayOobIpConfigNode1;
+        node1: outputs.device.GatewayOobIpConfigNode1;
         /**
          * enum: `dhcp`, `static`
          */
@@ -1140,7 +1140,7 @@ export namespace device {
         /**
          * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
         vlanId?: string;
     }
 
@@ -1161,11 +1161,11 @@ export namespace device {
         /**
          * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
-        useMgmtVrf: boolean;
+        useMgmtVrf?: boolean;
         /**
          * whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
         vlanId?: string;
     }
 
@@ -1305,7 +1305,7 @@ export namespace device {
         /**
          * if HA mode
          */
-        redundant?: boolean;
+        redundant: boolean;
         /**
          * if HA mode
          */
@@ -1627,14 +1627,14 @@ export namespace device {
     }
 
     export interface GatewayServicePolicyIdp {
-        alertOnly?: boolean;
+        alertOnly: boolean;
         enabled: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
          */
         idpprofileId?: string;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
          */
         profile: string;
     }
@@ -3644,11 +3644,11 @@ export namespace device {
     }
 
     export interface SwitchEvpnConfig {
-        enabled?: boolean;
+        enabled: boolean;
         /**
-         * enum: `access`, `core`, `distribution`
+         * enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
          */
-        role?: string;
+        role: string;
     }
 
     export interface SwitchExtraRoutes {
@@ -3715,33 +3715,160 @@ export namespace device {
 
     export interface SwitchLocalPortConfig {
         /**
-         * if want to generate port up/down alarm
+         * Only if `mode`==`trunk` whether to trunk all network/vlans
          */
-        critical?: boolean;
+        allNetworks: boolean;
+        /**
+         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         */
+        allowDhcpd?: boolean;
+        allowMultipleSupplicants: boolean;
+        /**
+         * Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDown: boolean;
+        /**
+         * Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         */
+        bypassAuthWhenServerDownForUnkonwnClient: boolean;
         description?: string;
         /**
-         * if `speed` and `duplex` are specified, whether to disable autonegotiation
+         * Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
          */
         disableAutoneg: boolean;
         /**
-         * enum: `auto`, `full`, `half`
+         * whether the port is disabled
+         */
+        disabled: boolean;
+        /**
+         * link connection mode. enum: `auto`, `full`, `half`
          */
         duplex: string;
         /**
-         * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+         * Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
          */
-        mtu: number;
+        dynamicVlanNetworks?: string[];
+        /**
+         * Only if `portAuth`==`dot1x` whether to enable MAC Auth
+         */
+        enableMacAuth: boolean;
+        enableQos: boolean;
+        /**
+         * Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+         */
+        guestNetwork?: string;
+        /**
+         * inter_switch_link is used together with "isolation" under networks
+         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         */
+        interSwitchLink: boolean;
+        /**
+         * Only if `enableMacAuth`==`true`
+         */
+        macAuthOnly?: boolean;
+        /**
+         * Only if `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+         */
+        macAuthPreferred?: boolean;
+        /**
+         * Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+         */
+        macAuthProtocol: string;
+        /**
+         * max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         */
+        macLimit: number;
+        /**
+         * enum: `access`, `inet`, `trunk`
+         */
+        mode?: string;
+        /**
+         * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+         */
+        mtu?: number;
+        /**
+         * Only if `mode`==`trunk`, the list of network/vlans
+         */
+        networks?: string[];
+        /**
+         * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+         */
+        persistMac: boolean;
+        /**
+         * whether PoE capabilities are disabled for a port
+         */
         poeDisabled: boolean;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * if dot1x is desired, set to dot1x. enum: `dot1x`
+         */
+        portAuth?: string;
+        /**
+         * native network/vlan for untagged traffic
+         */
+        portNetwork?: string;
+        /**
+         * Only if `portAuth`=`dot1x` reauthentication interval range
+         */
+        reauthInterval: number;
+        /**
+         * Only if `portAuth`==`dot1x` sets server fail fallback vlan
+         */
+        serverFailNetwork?: string;
+        /**
+         * Only if `portAuth`==`dot1x` when radius server reject / fails
+         */
+        serverRejectNetwork?: string;
+        /**
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * Switch storm control
+         */
+        stormControl?: outputs.device.SwitchLocalPortConfigStormControl;
+        /**
+         * when enabled, the port is not expected to receive BPDU frames
+         */
+        stpEdge: boolean;
+        stpNoRootPort: boolean;
+        stpP2p: boolean;
+        /**
+         * port usage name.
          */
         usage: string;
+        /**
+         * if this is connected to a vstp network
+         */
+        useVstp: boolean;
+        /**
+         * network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         */
+        voipNetwork?: string;
+    }
+
+    export interface SwitchLocalPortConfigStormControl {
+        /**
+         * whether to disable storm control on broadcast traffic
+         */
+        noBroadcast: boolean;
+        /**
+         * whether to disable storm control on multicast traffic
+         */
+        noMulticast: boolean;
+        /**
+         * whether to disable storm control on registered multicast traffic
+         */
+        noRegisteredMulticast: boolean;
+        /**
+         * whether to disable storm control on unknown unicast traffic
+         */
+        noUnknownUnicast: boolean;
+        /**
+         * bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+         */
+        percentage: number;
     }
 
     export interface SwitchMistNac {
@@ -3750,6 +3877,14 @@ export namespace device {
     }
 
     export interface SwitchNetworks {
+        /**
+         * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         */
+        gateway?: string;
+        /**
+         * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         */
+        gateway6?: string;
         /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
          * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
@@ -3760,6 +3895,10 @@ export namespace device {
          * optional for pure switching, required when L3 / routing features are used
          */
         subnet?: string;
+        /**
+         * optional for pure switching, required when L3 / routing features are used
+         */
+        subnet6?: string;
         vlanId: string;
     }
 
@@ -3779,13 +3918,13 @@ export namespace device {
          */
         type: string;
         /**
-         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
         useMgmtVrf: boolean;
         /**
          * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
     }
 
     export interface SwitchOspfAreas {
@@ -3873,7 +4012,7 @@ export namespace device {
         /**
          * to use fast timeout
          */
-        aeLacpSlow: boolean;
+        aeLacpSlow?: boolean;
         aggregated: boolean;
         /**
          * if want to generate port up/down alarm
@@ -3903,13 +4042,11 @@ export namespace device {
         noLocalOverwrite?: boolean;
         poeDisabled: boolean;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: string;
     }
@@ -3943,9 +4080,9 @@ export namespace device {
          */
         allNetworks: boolean;
         /**
-         * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         *
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         /**
@@ -4014,7 +4151,7 @@ export namespace device {
          */
         macLimit: number;
         /**
-         * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: string;
         /**
@@ -4062,9 +4199,9 @@ export namespace device {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed?: string;
+        speed: string;
         /**
          * Switch storm control
          * Only if `mode`!=`dynamic`
@@ -5690,7 +5827,7 @@ export namespace org {
         /**
          * for HA Cluster, node1 can have different IP Config
          */
-        node1?: outputs.org.DeviceprofileGatewayOobIpConfigNode1;
+        node1: outputs.org.DeviceprofileGatewayOobIpConfigNode1;
         /**
          * enum: `dhcp`, `static`
          */
@@ -5698,11 +5835,11 @@ export namespace org {
         /**
          * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
-        useMgmtVrf: boolean;
+        useMgmtVrf?: boolean;
         /**
          * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
         vlanId?: string;
     }
 
@@ -5723,11 +5860,11 @@ export namespace org {
         /**
          * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
-        useMgmtVrf: boolean;
+        useMgmtVrf?: boolean;
         /**
          * whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
         vlanId?: string;
     }
 
@@ -5867,7 +6004,7 @@ export namespace org {
         /**
          * if HA mode
          */
-        redundant?: boolean;
+        redundant: boolean;
         /**
          * if HA mode
          */
@@ -6177,14 +6314,14 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayServicePolicyIdp {
-        alertOnly?: boolean;
+        alertOnly: boolean;
         enabled: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
          */
         idpprofileId?: string;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
          */
         profile: string;
     }
@@ -6475,6 +6612,96 @@ export namespace org {
 
     export interface DeviceprofileGatewayVrfInstances {
         networks?: string[];
+    }
+
+    export interface EvpnTopologyEvpnOptions {
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet: string;
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet6: string;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet: string;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet6?: string;
+        /**
+         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
+         * when `routedAt` != `core`, whether to do virtual-gateway at core as well
+         */
+        coreAsBorder: boolean;
+        overlay?: outputs.org.EvpnTopologyEvpnOptionsOverlay;
+        /**
+         * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4Mac
+         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV4Mac: boolean;
+        /**
+         * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         */
+        routedAt: string;
+        underlay?: outputs.org.EvpnTopologyEvpnOptionsUnderlay;
+        /**
+         * optional, for EX9200 only to seggregate virtual-switches
+         */
+        vsInstances?: {[key: string]: outputs.org.EvpnTopologyEvpnOptionsVsInstances};
+    }
+
+    export interface EvpnTopologyEvpnOptionsOverlay {
+        /**
+         * Overlay BGP Local AS Number
+         */
+        as: number;
+    }
+
+    export interface EvpnTopologyEvpnOptionsUnderlay {
+        /**
+         * Underlay BGP Base AS Number
+         */
+        asBase: number;
+        routedIdPrefix?: string;
+        /**
+         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         */
+        subnet?: string;
+        /**
+         * if v6 is desired for underlay
+         */
+        useIpv6: boolean;
+    }
+
+    export interface EvpnTopologyEvpnOptionsVsInstances {
+        networks?: string[];
+    }
+
+    export interface EvpnTopologySwitches {
+        deviceprofileId: string;
+        evpnId: number;
+        mac: string;
+        model: string;
+        /**
+         * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         *   * for CLOS, to group dist / access switches into pods
+         *   * for ERB/CRB, to group dist / esilag-access into pods
+         */
+        pod: number;
+        /**
+         * by default, core switches are assumed to be connecting all pods. 
+         * if you want to limit the pods, you can specify pods.
+         */
+        pods: number[];
+        /**
+         * use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+         */
+        role: string;
+        routerId: string;
+        siteId: string;
     }
 
     export interface GatewaytemplateBgpConfig {
@@ -6903,7 +7130,7 @@ export namespace org {
         /**
          * for HA Cluster, node1 can have different IP Config
          */
-        node1?: outputs.org.GatewaytemplateOobIpConfigNode1;
+        node1: outputs.org.GatewaytemplateOobIpConfigNode1;
         /**
          * enum: `dhcp`, `static`
          */
@@ -6911,11 +7138,11 @@ export namespace org {
         /**
          * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
-        useMgmtVrf: boolean;
+        useMgmtVrf?: boolean;
         /**
          * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
         vlanId?: string;
     }
 
@@ -6936,11 +7163,11 @@ export namespace org {
         /**
          * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
-        useMgmtVrf: boolean;
+        useMgmtVrf?: boolean;
         /**
          * whether to use `mgmtJunos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
-        useMgmtVrfForHostOut: boolean;
+        useMgmtVrfForHostOut?: boolean;
         vlanId?: string;
     }
 
@@ -7390,14 +7617,14 @@ export namespace org {
     }
 
     export interface GatewaytemplateServicePolicyIdp {
-        alertOnly?: boolean;
+        alertOnly: boolean;
         enabled: boolean;
         /**
          * org_level IDP Profile can be used, this takes precedence over `profile`
          */
         idpprofileId?: string;
         /**
-         * `strict` (default) / `standard` / or keys from from idp_profiles
+         * enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
          */
         profile: string;
     }
@@ -7612,15 +7839,15 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired: boolean;
+        aupAcceptanceRequired?: boolean;
         /**
          * days before AUP is requested again
          */
-        aupExpire: number;
+        aupExpire?: number;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy: boolean;
+        aupSslProxy?: boolean;
         /**
          * the download bandwidth cap of the link, in Mbps
          */
@@ -7628,12 +7855,12 @@ export namespace org {
         /**
          * if `useXff`==`true`, display Acceptable Use Policy (AUP)
          */
-        enableAup: boolean;
+        enableAup?: boolean;
         /**
          * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution: boolean;
-        enforceAuthentication: boolean;
+        enableCaution?: boolean;
+        enforceAuthentication?: boolean;
         name?: string;
         /**
          * if `useXff`==`true`
@@ -8204,7 +8431,7 @@ export namespace org {
         /**
          * Site ID. Used to assign device to a Site
          */
-        siteId: string;
+        siteId?: string;
         /**
          * enum: `ap`, `gateway`, `switch`
          */
@@ -8252,7 +8479,7 @@ export namespace org {
         /**
          * Site ID. Used to assign device to a Site
          */
-        siteId: string;
+        siteId?: string;
         /**
          * enum: `ap`, `gateway`, `switch`
          */
@@ -8584,6 +8811,14 @@ export namespace org {
 
     export interface NetworktemplateNetworks {
         /**
+         * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         */
+        gateway?: string;
+        /**
+         * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         */
+        gateway6?: string;
+        /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
          * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
@@ -8593,6 +8828,10 @@ export namespace org {
          * optional for pure switching, required when L3 / routing features are used
          */
         subnet?: string;
+        /**
+         * optional for pure switching, required when L3 / routing features are used
+         */
+        subnet6?: string;
         vlanId: string;
     }
 
@@ -8667,9 +8906,9 @@ export namespace org {
          */
         allNetworks: boolean;
         /**
-         * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         *
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         /**
@@ -8738,7 +8977,7 @@ export namespace org {
          */
         macLimit: number;
         /**
-         * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: string;
         /**
@@ -8786,9 +9025,9 @@ export namespace org {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed?: string;
+        speed: string;
         /**
          * Switch storm control
          * Only if `mode`!=`dynamic`
@@ -8800,6 +9039,10 @@ export namespace org {
         stpEdge: boolean;
         stpNoRootPort: boolean;
         stpP2p: boolean;
+        /**
+         * optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         */
+        uiEvpntopoId?: string;
         /**
          * if this is connected to a vstp network
          */
@@ -9265,29 +9508,49 @@ export namespace org {
 
     export interface NetworktemplateSwitchMatching {
         enable?: boolean;
+        /**
+         * list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
+         */
         rules?: outputs.org.NetworktemplateSwitchMatchingRule[];
     }
 
     export interface NetworktemplateSwitchMatchingRule {
         /**
-         * additional CLI commands to append to the generated Junos config
-         *
-         * **Note**: no check is done
+         * additional CLI commands to append to the generated Junos config. **Note**: no check is done
          */
-        additionalConfigCmds?: string[];
+        additionalConfigCmds: string[];
         /**
          * In-Band Management interface configuration
          */
         ipConfig?: outputs.org.NetworktemplateSwitchMatchingRuleIpConfig;
         /**
-         * role to match
+         * string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
+         */
+        matchModel: string;
+        /**
+         * string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
+         */
+        matchName: string;
+        /**
+         * first character of the switch name to compare to the `matchName` value
+         */
+        matchNameOffset: number;
+        /**
+         * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          */
         matchRole?: string;
         /**
          * 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
+         *
+         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+Please update your configurations.
          */
-        matchType?: string;
-        matchValue?: string;
+        matchType: string;
+        /**
+         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+Please update your configurations.
+         */
+        matchValue: string;
         name?: string;
         /**
          * Out-of-Band Management interface configuration
@@ -9321,7 +9584,7 @@ export namespace org {
          */
         type: string;
         /**
-         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
         useMgmtVrf: boolean;
         /**
@@ -9342,7 +9605,7 @@ export namespace org {
         /**
          * to use fast timeout
          */
-        aeLacpSlow: boolean;
+        aeLacpSlow?: boolean;
         aggregated: boolean;
         /**
          * if want to generate port up/down alarm
@@ -9372,13 +9635,11 @@ export namespace org {
         noLocalOverwrite?: boolean;
         poeDisabled: boolean;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: string;
     }
@@ -9932,6 +10193,7 @@ export namespace org {
         cpApiKey: string;
         ecmApiId: string;
         ecmApiKey: string;
+        enableLldp: boolean;
     }
 
     export interface SettingDeviceCert {
@@ -10377,6 +10639,10 @@ export namespace org {
          */
         port: number;
         /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
          * secret of RADIUS server
          */
         secret: string;
@@ -10512,6 +10778,15 @@ export namespace org {
     }
 
     export interface WlanInjectDhcpOption82 {
+        /**
+         * information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         */
         circuitId?: string;
         /**
          * whether to inject option 82 when forwarding DHCP packets
@@ -10533,6 +10808,10 @@ export namespace org {
     }
 
     export interface WlanPortal {
+        /**
+         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        allowWlanIdRoam: boolean;
         /**
          * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
@@ -10780,28 +11059,31 @@ export namespace org {
          */
         sponsors: {[key: string]: string};
         /**
-         * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
+        /**
+         * if `wlanPortalAuth`==`sso`
+         */
         ssoForcedRole: string;
         /**
-         * IDP Cert (used to verify the signed response)
+         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
          */
         ssoIdpCert: string;
         /**
-         * signing algorithm for SAML Assertion
+         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
-         * IDP Single-Sign-On URL
+         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl: string;
         /**
-         * IDP issuer URL
+         * if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer: string;
         /**
-         * enum: `email`, `unspecified`
+         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat: string;
         /**
@@ -11538,6 +11820,73 @@ export namespace org {
         port?: number;
     }
 
+    export interface WlanRateset {
+        /**
+         * data rates wlan settings
+         */
+        band24?: outputs.org.WlanRatesetBand24;
+        /**
+         * data rates wlan settings
+         */
+        band5?: outputs.org.WlanRatesetBand5;
+    }
+
+    export interface WlanRatesetBand24 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: string;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: string[];
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: number;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: string;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: string;
+    }
+
+    export interface WlanRatesetBand5 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: string;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: string[];
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: number;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: string;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: string;
+    }
+
     export interface WlanSchedule {
         enabled: boolean;
         /**
@@ -11602,6 +11951,96 @@ export namespace site {
     export interface BaseLatlng {
         lat: number;
         lng: number;
+    }
+
+    export interface EvpnTopologyEvpnOptions {
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet: string;
+        /**
+         * optional, for dhcp_relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server_id-overrides
+         */
+        autoLoopbackSubnet6: string;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet: string;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet6?: string;
+        /**
+         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway
+         * when `routedAt` != `core`, whether to do virtual-gateway at core as well
+         */
+        coreAsBorder: boolean;
+        overlay?: outputs.site.EvpnTopologyEvpnOptionsOverlay;
+        /**
+         * by default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4Mac
+         * if enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan_id/256, YY=vlan_id%256)
+         */
+        perVlanVgaV4Mac: boolean;
+        /**
+         * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         */
+        routedAt: string;
+        underlay?: outputs.site.EvpnTopologyEvpnOptionsUnderlay;
+        /**
+         * optional, for EX9200 only to seggregate virtual-switches
+         */
+        vsInstances?: {[key: string]: outputs.site.EvpnTopologyEvpnOptionsVsInstances};
+    }
+
+    export interface EvpnTopologyEvpnOptionsOverlay {
+        /**
+         * Overlay BGP Local AS Number
+         */
+        as: number;
+    }
+
+    export interface EvpnTopologyEvpnOptionsUnderlay {
+        /**
+         * Underlay BGP Base AS Number
+         */
+        asBase: number;
+        routedIdPrefix?: string;
+        /**
+         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         */
+        subnet?: string;
+        /**
+         * if v6 is desired for underlay
+         */
+        useIpv6: boolean;
+    }
+
+    export interface EvpnTopologyEvpnOptionsVsInstances {
+        networks?: string[];
+    }
+
+    export interface EvpnTopologySwitches {
+        deviceprofileId: string;
+        evpnId: number;
+        mac: string;
+        model: string;
+        /**
+         * optionally, for distribution / access / esilag-access, they can be placed into different pods. e.g. 
+         *   * for CLOS, to group dist / access switches into pods
+         *   * for ERB/CRB, to group dist / esilag-access into pods
+         */
+        pod: number;
+        /**
+         * by default, core switches are assumed to be connecting all pods. 
+         * if you want to limit the pods, you can specify pods.
+         */
+        pods: number[];
+        /**
+         * use `role`==`none` to remove a switch from the topology. enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+         */
+        role: string;
+        routerId: string;
+        siteId: string;
     }
 
     export interface GetPsksSitePsk {
@@ -11885,6 +12324,14 @@ export namespace site {
 
     export interface NetworktemplateNetworks {
         /**
+         * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         */
+        gateway?: string;
+        /**
+         * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         */
+        gateway6?: string;
+        /**
          * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
          * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
@@ -11894,6 +12341,10 @@ export namespace site {
          * optional for pure switching, required when L3 / routing features are used
          */
         subnet?: string;
+        /**
+         * optional for pure switching, required when L3 / routing features are used
+         */
+        subnet6?: string;
         vlanId: string;
     }
 
@@ -11968,9 +12419,9 @@ export namespace site {
          */
         allNetworks: boolean;
         /**
-         * Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         *
-         * When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         /**
@@ -12039,7 +12490,7 @@ export namespace site {
          */
         macLimit: number;
         /**
-         * `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+         * `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
          */
         mode?: string;
         /**
@@ -12087,9 +12538,9 @@ export namespace site {
          */
         serverRejectNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+         * Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
-        speed?: string;
+        speed: string;
         /**
          * Switch storm control
          * Only if `mode`!=`dynamic`
@@ -12101,6 +12552,10 @@ export namespace site {
         stpEdge: boolean;
         stpNoRootPort: boolean;
         stpP2p: boolean;
+        /**
+         * optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         */
+        uiEvpntopoId?: string;
         /**
          * if this is connected to a vstp network
          */
@@ -12566,29 +13021,49 @@ export namespace site {
 
     export interface NetworktemplateSwitchMatching {
         enable?: boolean;
+        /**
+         * list of rules to define custom switch configuration based on different criterias. Each list must have at least one of `matchModel`, `matchName` or `matchRole` must be defined
+         */
         rules?: outputs.site.NetworktemplateSwitchMatchingRule[];
     }
 
     export interface NetworktemplateSwitchMatchingRule {
         /**
-         * additional CLI commands to append to the generated Junos config
-         *
-         * **Note**: no check is done
+         * additional CLI commands to append to the generated Junos config. **Note**: no check is done
          */
-        additionalConfigCmds?: string[];
+        additionalConfigCmds: string[];
         /**
          * In-Band Management interface configuration
          */
         ipConfig?: outputs.site.NetworktemplateSwitchMatchingRuleIpConfig;
         /**
-         * role to match
+         * string the switch model must start with to use this rule. It is possible to combine with the `matchName` and `matchRole` attributes
+         */
+        matchModel: string;
+        /**
+         * string the switch name must start with to use this rule. Use the `matchNameOffset` to indicate the first character of the switch name to compare to. It is possible to combine with the `matchModel` and `matchRole` attributes
+         */
+        matchName: string;
+        /**
+         * first character of the switch name to compare to the `matchName` value
+         */
+        matchNameOffset: number;
+        /**
+         * string the switch role must start with to use this rule. It is possible to combine with the `matchName` and `matchModel` attributes
          */
         matchRole?: string;
         /**
          * 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `matchModel`,  `match_model[0-6]`
+         *
+         * @deprecated The `matchType` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+Please update your configurations.
          */
-        matchType?: string;
-        matchValue?: string;
+        matchType: string;
+        /**
+         * @deprecated The `matchValue` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `matchName`, `matchModel` and `matchRole`attribuites and may be removed in future versions.
+Please update your configurations.
+         */
+        matchValue: string;
         name?: string;
         /**
          * Out-of-Band Management interface configuration
@@ -12622,7 +13097,7 @@ export namespace site {
          */
         type: string;
         /**
-         * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
         useMgmtVrf: boolean;
         /**
@@ -12643,7 +13118,7 @@ export namespace site {
         /**
          * to use fast timeout
          */
-        aeLacpSlow: boolean;
+        aeLacpSlow?: boolean;
         aggregated: boolean;
         /**
          * if want to generate port up/down alarm
@@ -12673,13 +13148,11 @@ export namespace site {
         noLocalOverwrite?: boolean;
         poeDisabled: boolean;
         /**
-         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+         * enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
          */
         speed: string;
         /**
-         * port usage name. 
-         *
-         * If EVPN is used, use `evpnUplink`or `evpnDownlink`
+         * port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
          */
         usage: string;
     }
@@ -12813,17 +13286,6 @@ export namespace site {
         port?: string;
         secret?: string;
         timeout: number;
-    }
-
-    export interface NetworktemplateUplinkPortConfig {
-        /**
-         * Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
-         */
-        dot1x: boolean;
-        /**
-         * by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
-         */
-        keepWlansUpIfDown: boolean;
     }
 
     export interface NetworktemplateVrfConfig {
@@ -12971,7 +13433,7 @@ export namespace site {
          */
         ibeaconUuid: string;
         /**
-         * required if `powerMode`==`custom`
+         * required if `powerMode`==`custom`; else use `powerMode` as default
          */
         power: number;
         /**
@@ -13320,7 +13782,7 @@ export namespace site {
         /**
          * any / HH:MM (24-hour format)
          */
-        timeOdFay: string;
+        timeOfDay: string;
     }
 
     export interface SettingUplinkPortConfig {
@@ -13583,6 +14045,10 @@ export namespace site {
          */
         port: number;
         /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
          * secret of RADIUS server
          */
         secret: string;
@@ -13718,6 +14184,15 @@ export namespace site {
     }
 
     export interface WlanInjectDhcpOption82 {
+        /**
+         * information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         */
         circuitId?: string;
         /**
          * whether to inject option 82 when forwarding DHCP packets
@@ -13739,6 +14214,10 @@ export namespace site {
     }
 
     export interface WlanPortal {
+        /**
+         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        allowWlanIdRoam: boolean;
         /**
          * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
@@ -13986,28 +14465,31 @@ export namespace site {
          */
         sponsors: {[key: string]: string};
         /**
-         * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
+        /**
+         * if `wlanPortalAuth`==`sso`
+         */
         ssoForcedRole: string;
         /**
-         * IDP Cert (used to verify the signed response)
+         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
          */
         ssoIdpCert: string;
         /**
-         * signing algorithm for SAML Assertion
+         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
-         * IDP Single-Sign-On URL
+         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl: string;
         /**
-         * IDP issuer URL
+         * if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer: string;
         /**
-         * enum: `email`, `unspecified`
+         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat: string;
         /**
@@ -14742,6 +15224,73 @@ export namespace site {
     export interface WlanRadsecServer {
         host?: string;
         port?: number;
+    }
+
+    export interface WlanRateset {
+        /**
+         * data rates wlan settings
+         */
+        band24?: outputs.site.WlanRatesetBand24;
+        /**
+         * data rates wlan settings
+         */
+        band5?: outputs.site.WlanRatesetBand5;
+    }
+
+    export interface WlanRatesetBand24 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: string;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: string[];
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: number;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: string;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: string;
+    }
+
+    export interface WlanRatesetBand5 {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht?: string;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies?: string[];
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi?: number;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template?: string;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht?: string;
     }
 
     export interface WlanSchedule {

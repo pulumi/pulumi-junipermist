@@ -76,14 +76,14 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * f supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * if supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     @Import(name="useMgmtVrf")
     private @Nullable Output<Boolean> useMgmtVrf;
 
     /**
-     * @return f supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrf() {
@@ -217,7 +217,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useMgmtVrf f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useMgmtVrf f supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 

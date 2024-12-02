@@ -39,6 +39,12 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        /// <summary>
+        /// whether to require Message-Authenticator in requests
+        /// </summary>
+        [Input("requireMessageAuthenticator")]
+        public Input<bool>? RequireMessageAuthenticator { get; set; }
+
         [Input("secret", required: true)]
         private Input<string>? _secret;
 

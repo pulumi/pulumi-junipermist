@@ -8,6 +8,7 @@ import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRuleIpCon
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRuleOobIpConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRulePortConfig;
 import com.pulumi.junipermist.org.outputs.NetworktemplateSwitchMatchingRulePortMirroring;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -18,9 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSwitchMatchingRule {
     /**
-     * @return additional CLI commands to append to the generated Junos config
-     * 
-     * **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     private @Nullable List<String> additionalConfigCmds;
@@ -30,15 +29,44 @@ public final class NetworktemplateSwitchMatchingRule {
      */
     private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
     /**
-     * @return role to match
+     * @return string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+     * 
+     */
+    private @Nullable String matchModel;
+    /**
+     * @return string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+     * 
+     */
+    private @Nullable String matchName;
+    /**
+     * @return first character of the switch name to compare to the `match_name` value
+     * 
+     */
+    private @Nullable Integer matchNameOffset;
+    /**
+     * @return string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
      * 
      */
     private @Nullable String matchRole;
     /**
      * @return &#39;property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
      * 
+     * @deprecated
+     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * Please update your configurations.
+     * 
      */
+    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+Please update your configurations. */
     private @Nullable String matchType;
+    /**
+     * @deprecated
+     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * Please update your configurations.
+     * 
+     */
+    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+Please update your configurations. */
     private @Nullable String matchValue;
     private @Nullable String name;
     /**
@@ -60,9 +88,7 @@ public final class NetworktemplateSwitchMatchingRule {
 
     private NetworktemplateSwitchMatchingRule() {}
     /**
-     * @return additional CLI commands to append to the generated Junos config
-     * 
-     * **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public List<String> additionalConfigCmds() {
@@ -76,7 +102,28 @@ public final class NetworktemplateSwitchMatchingRule {
         return Optional.ofNullable(this.ipConfig);
     }
     /**
-     * @return role to match
+     * @return string the switch model must start with to use this rule. It is possible to combine with the `match_name` and `match_role` attributes
+     * 
+     */
+    public Optional<String> matchModel() {
+        return Optional.ofNullable(this.matchModel);
+    }
+    /**
+     * @return string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
+     * 
+     */
+    public Optional<String> matchName() {
+        return Optional.ofNullable(this.matchName);
+    }
+    /**
+     * @return first character of the switch name to compare to the `match_name` value
+     * 
+     */
+    public Optional<Integer> matchNameOffset() {
+        return Optional.ofNullable(this.matchNameOffset);
+    }
+    /**
+     * @return string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
      * 
      */
     public Optional<String> matchRole() {
@@ -85,10 +132,24 @@ public final class NetworktemplateSwitchMatchingRule {
     /**
      * @return &#39;property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
      * 
+     * @deprecated
+     * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * Please update your configurations.
+     * 
      */
+    @Deprecated /* The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+Please update your configurations. */
     public Optional<String> matchType() {
         return Optional.ofNullable(this.matchType);
     }
+    /**
+     * @deprecated
+     * The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+     * Please update your configurations.
+     * 
+     */
+    @Deprecated /* The `match_value` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
+Please update your configurations. */
     public Optional<String> matchValue() {
         return Optional.ofNullable(this.matchValue);
     }
@@ -129,6 +190,9 @@ public final class NetworktemplateSwitchMatchingRule {
     public static final class Builder {
         private @Nullable List<String> additionalConfigCmds;
         private @Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig;
+        private @Nullable String matchModel;
+        private @Nullable String matchName;
+        private @Nullable Integer matchNameOffset;
         private @Nullable String matchRole;
         private @Nullable String matchType;
         private @Nullable String matchValue;
@@ -141,6 +205,9 @@ public final class NetworktemplateSwitchMatchingRule {
     	      Objects.requireNonNull(defaults);
     	      this.additionalConfigCmds = defaults.additionalConfigCmds;
     	      this.ipConfig = defaults.ipConfig;
+    	      this.matchModel = defaults.matchModel;
+    	      this.matchName = defaults.matchName;
+    	      this.matchNameOffset = defaults.matchNameOffset;
     	      this.matchRole = defaults.matchRole;
     	      this.matchType = defaults.matchType;
     	      this.matchValue = defaults.matchValue;
@@ -163,6 +230,24 @@ public final class NetworktemplateSwitchMatchingRule {
         public Builder ipConfig(@Nullable NetworktemplateSwitchMatchingRuleIpConfig ipConfig) {
 
             this.ipConfig = ipConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder matchModel(@Nullable String matchModel) {
+
+            this.matchModel = matchModel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder matchName(@Nullable String matchName) {
+
+            this.matchName = matchName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder matchNameOffset(@Nullable Integer matchNameOffset) {
+
+            this.matchNameOffset = matchNameOffset;
             return this;
         }
         @CustomType.Setter
@@ -211,6 +296,9 @@ public final class NetworktemplateSwitchMatchingRule {
             final var _resultValue = new NetworktemplateSwitchMatchingRule();
             _resultValue.additionalConfigCmds = additionalConfigCmds;
             _resultValue.ipConfig = ipConfig;
+            _resultValue.matchModel = matchModel;
+            _resultValue.matchName = matchName;
+            _resultValue.matchNameOffset = matchNameOffset;
             _resultValue.matchRole = matchRole;
             _resultValue.matchType = matchType;
             _resultValue.matchValue = matchValue;

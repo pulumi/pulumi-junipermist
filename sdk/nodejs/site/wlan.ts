@@ -310,6 +310,10 @@ export class Wlan extends pulumi.CustomResource {
      * max idle time in seconds
      */
     public readonly maxIdletime!: pulumi.Output<number>;
+    /**
+     * maximum number of client connected to the SSID. `0` means unlimited
+     */
+    public readonly maxNumClients!: pulumi.Output<number>;
     public readonly mistNac!: pulumi.Output<outputs.site.WlanMistNac | undefined>;
     public /*out*/ readonly mspId!: pulumi.Output<string>;
     /**
@@ -364,6 +368,7 @@ export class Wlan extends pulumi.CustomResource {
      * Radsec settings
      */
     public readonly radsec!: pulumi.Output<outputs.site.WlanRadsec | undefined>;
+    public readonly rateset!: pulumi.Output<outputs.site.WlanRateset | undefined>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
@@ -500,6 +505,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["limitBcast"] = state ? state.limitBcast : undefined;
             resourceInputs["limitProbeResponse"] = state ? state.limitProbeResponse : undefined;
             resourceInputs["maxIdletime"] = state ? state.maxIdletime : undefined;
+            resourceInputs["maxNumClients"] = state ? state.maxNumClients : undefined;
             resourceInputs["mistNac"] = state ? state.mistNac : undefined;
             resourceInputs["mspId"] = state ? state.mspId : undefined;
             resourceInputs["mxtunnelIds"] = state ? state.mxtunnelIds : undefined;
@@ -517,6 +523,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["portalTemplateUrl"] = state ? state.portalTemplateUrl : undefined;
             resourceInputs["qos"] = state ? state.qos : undefined;
             resourceInputs["radsec"] = state ? state.radsec : undefined;
+            resourceInputs["rateset"] = state ? state.rateset : undefined;
             resourceInputs["roamMode"] = state ? state.roamMode : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
@@ -599,6 +606,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["limitBcast"] = args ? args.limitBcast : undefined;
             resourceInputs["limitProbeResponse"] = args ? args.limitProbeResponse : undefined;
             resourceInputs["maxIdletime"] = args ? args.maxIdletime : undefined;
+            resourceInputs["maxNumClients"] = args ? args.maxNumClients : undefined;
             resourceInputs["mistNac"] = args ? args.mistNac : undefined;
             resourceInputs["mxtunnelIds"] = args ? args.mxtunnelIds : undefined;
             resourceInputs["mxtunnelNames"] = args ? args.mxtunnelNames : undefined;
@@ -610,6 +618,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["portalDeniedHostnames"] = args ? args.portalDeniedHostnames : undefined;
             resourceInputs["qos"] = args ? args.qos : undefined;
             resourceInputs["radsec"] = args ? args.radsec : undefined;
+            resourceInputs["rateset"] = args ? args.rateset : undefined;
             resourceInputs["roamMode"] = args ? args.roamMode : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
@@ -879,6 +888,10 @@ export interface WlanState {
      * max idle time in seconds
      */
     maxIdletime?: pulumi.Input<number>;
+    /**
+     * maximum number of client connected to the SSID. `0` means unlimited
+     */
+    maxNumClients?: pulumi.Input<number>;
     mistNac?: pulumi.Input<inputs.site.WlanMistNac>;
     mspId?: pulumi.Input<string>;
     /**
@@ -933,6 +946,7 @@ export interface WlanState {
      * Radsec settings
      */
     radsec?: pulumi.Input<inputs.site.WlanRadsec>;
+    rateset?: pulumi.Input<inputs.site.WlanRateset>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
@@ -1240,6 +1254,10 @@ export interface WlanArgs {
      * max idle time in seconds
      */
     maxIdletime?: pulumi.Input<number>;
+    /**
+     * maximum number of client connected to the SSID. `0` means unlimited
+     */
+    maxNumClients?: pulumi.Input<number>;
     mistNac?: pulumi.Input<inputs.site.WlanMistNac>;
     /**
      * when `interface`=`mxtunnel`, id of the Mist Tunnel
@@ -1278,6 +1296,7 @@ export interface WlanArgs {
      * Radsec settings
      */
     radsec?: pulumi.Input<inputs.site.WlanRadsec>;
+    rateset?: pulumi.Input<inputs.site.WlanRateset>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */

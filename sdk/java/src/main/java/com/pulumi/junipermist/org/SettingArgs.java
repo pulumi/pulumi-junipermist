@@ -9,7 +9,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.SettingApiPolicyArgs;
 import com.pulumi.junipermist.org.inputs.SettingCelonaArgs;
 import com.pulumi.junipermist.org.inputs.SettingCloudsharkArgs;
-import com.pulumi.junipermist.org.inputs.SettingCradlepointArgs;
 import com.pulumi.junipermist.org.inputs.SettingDeviceCertArgs;
 import com.pulumi.junipermist.org.inputs.SettingInstallerArgs;
 import com.pulumi.junipermist.org.inputs.SettingJcloudArgs;
@@ -92,13 +91,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<SettingCloudsharkArgs>> cloudshark() {
         return Optional.ofNullable(this.cloudshark);
-    }
-
-    @Import(name="cradlepoint")
-    private @Nullable Output<SettingCradlepointArgs> cradlepoint;
-
-    public Optional<Output<SettingCradlepointArgs>> cradlepoint() {
-        return Optional.ofNullable(this.cradlepoint);
     }
 
     /**
@@ -380,7 +372,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.cacerts = $.cacerts;
         this.celona = $.celona;
         this.cloudshark = $.cloudshark;
-        this.cradlepoint = $.cradlepoint;
         this.deviceCert = $.deviceCert;
         this.deviceUpdownThreshold = $.deviceUpdownThreshold;
         this.disablePcap = $.disablePcap;
@@ -505,15 +496,6 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudshark(SettingCloudsharkArgs cloudshark) {
             return cloudshark(Output.of(cloudshark));
-        }
-
-        public Builder cradlepoint(@Nullable Output<SettingCradlepointArgs> cradlepoint) {
-            $.cradlepoint = cradlepoint;
-            return this;
-        }
-
-        public Builder cradlepoint(SettingCradlepointArgs cradlepoint) {
-            return cradlepoint(Output.of(cradlepoint));
         }
 
         /**

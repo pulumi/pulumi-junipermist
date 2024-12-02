@@ -97,8 +97,9 @@ import javax.annotation.Nullable;
  *                 .enable(true)
  *                 .rules(NetworktemplateSwitchMatchingRuleArgs.builder()
  *                     .name("switch_rule_one")
- *                     .matchType("match_name[0:3]")
- *                     .matchValue("abc")
+ *                     .matchName("corp")
+ *                     .matchNameOffset(3)
+ *                     .matchRole("core")
  *                     .portConfig(Map.of("ge-0/0/0-10", Map.of("usage", "port_usage_one")))
  *                     .build())
  *                 .build())
@@ -144,14 +145,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclTags);
     }
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
@@ -297,9 +298,17 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,NetworktemplatePortMirroring>>> portMirroring() {
         return Codegen.optional(this.portMirroring);
     }
+    /**
+     * Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     @Export(name="portUsages", refs={Map.class,String.class,NetworktemplatePortUsages.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworktemplatePortUsages>> portUsages;
 
+    /**
+     * @return Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+     * 
+     */
     public Output<Optional<Map<String,NetworktemplatePortUsages>>> portUsages() {
         return Codegen.optional(this.portUsages);
     }
@@ -344,14 +353,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * Switch template
+     * defines custom switch configuration based on different criterias
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return Switch template
+     * @return defines custom switch configuration based on different criterias
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {

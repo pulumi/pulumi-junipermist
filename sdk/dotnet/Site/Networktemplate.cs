@@ -13,6 +13,10 @@ namespace Pulumi.JuniperMist.Site
     /// This resource manages the Site Network configuration (Switch configuration).
     /// The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
     /// 
+    /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `junipermist.site.Networktemplate` resource has been created to centralize all the site level switches related settings.
+    /// 
+    /// !&gt; Only ONE `junipermist.site.Networktemplate` resource can be configured per site. If multiple ones are configured, only the last one defined we be succesfully deployed to Mist
+    /// 
     /// ## Import
     /// 
     /// Using `pulumi import`, import `mist_site_networktemplate` with:
@@ -36,13 +40,19 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateAclTags>?> AclTags { get; private set; } = null!;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
 
         [Output("dhcpSnooping")]
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
+
+        /// <summary>
+        /// if some system-default port usages are not desired - namely, ap / iot / uplink
+        /// </summary>
+        [Output("disabledSystemDefinedPortUsages")]
+        public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
 
         /// <summary>
         /// Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
@@ -97,6 +107,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("portMirroring")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortMirroring>?> PortMirroring { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         [Output("portUsages")]
         public Output<ImmutableDictionary<string, Outputs.NetworktemplatePortUsages>?> PortUsages { get; private set; } = null!;
 
@@ -125,7 +138,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Switch template
+        /// defines custom switch configuration based on different criterias
         /// </summary>
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
@@ -135,9 +148,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("switchMgmt")]
         public Output<Outputs.NetworktemplateSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
-
-        [Output("uplinkPortConfig")]
-        public Output<Outputs.NetworktemplateUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         [Output("vrfConfig")]
         public Output<Outputs.NetworktemplateVrfConfig?> VrfConfig { get; private set; } = null!;
@@ -219,7 +229,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -229,6 +239,18 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingArgs>? DhcpSnooping { get; set; }
+
+        [Input("disabledSystemDefinedPortUsages")]
+        private InputList<string>? _disabledSystemDefinedPortUsages;
+
+        /// <summary>
+        /// if some system-default port usages are not desired - namely, ap / iot / uplink
+        /// </summary>
+        public InputList<string> DisabledSystemDefinedPortUsages
+        {
+            get => _disabledSystemDefinedPortUsages ?? (_disabledSystemDefinedPortUsages = new InputList<string>());
+            set => _disabledSystemDefinedPortUsages = value;
+        }
 
         [Input("dnsServers")]
         private InputList<string>? _dnsServers;
@@ -332,6 +354,10 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("portUsages")]
         private InputMap<Inputs.NetworktemplatePortUsagesArgs>? _portUsages;
+
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesArgs> PortUsages
         {
             get => _portUsages ?? (_portUsages = new InputMap<Inputs.NetworktemplatePortUsagesArgs>());
@@ -363,7 +389,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Switch template
+        /// defines custom switch configuration based on different criterias
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
@@ -373,9 +399,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtArgs>? SwitchMgmt { get; set; }
-
-        [Input("uplinkPortConfig")]
-        public Input<Inputs.NetworktemplateUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigArgs>? VrfConfig { get; set; }
@@ -424,7 +447,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -434,6 +457,18 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("dhcpSnooping")]
         public Input<Inputs.NetworktemplateDhcpSnoopingGetArgs>? DhcpSnooping { get; set; }
+
+        [Input("disabledSystemDefinedPortUsages")]
+        private InputList<string>? _disabledSystemDefinedPortUsages;
+
+        /// <summary>
+        /// if some system-default port usages are not desired - namely, ap / iot / uplink
+        /// </summary>
+        public InputList<string> DisabledSystemDefinedPortUsages
+        {
+            get => _disabledSystemDefinedPortUsages ?? (_disabledSystemDefinedPortUsages = new InputList<string>());
+            set => _disabledSystemDefinedPortUsages = value;
+        }
 
         [Input("dnsServers")]
         private InputList<string>? _dnsServers;
@@ -537,6 +572,10 @@ namespace Pulumi.JuniperMist.Site
 
         [Input("portUsages")]
         private InputMap<Inputs.NetworktemplatePortUsagesGetArgs>? _portUsages;
+
+        /// <summary>
+        /// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+        /// </summary>
         public InputMap<Inputs.NetworktemplatePortUsagesGetArgs> PortUsages
         {
             get => _portUsages ?? (_portUsages = new InputMap<Inputs.NetworktemplatePortUsagesGetArgs>());
@@ -568,7 +607,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// Switch template
+        /// defines custom switch configuration based on different criterias
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }
@@ -578,9 +617,6 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("switchMgmt")]
         public Input<Inputs.NetworktemplateSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
-
-        [Input("uplinkPortConfig")]
-        public Input<Inputs.NetworktemplateUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 
         [Input("vrfConfig")]
         public Input<Inputs.NetworktemplateVrfConfigGetArgs>? VrfConfig { get; set; }

@@ -98,7 +98,7 @@ namespace Pulumi.JuniperMist.Org
         /// out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Output("oobIpConfig")]
-        public Output<Outputs.DeviceprofileGatewayOobIpConfig?> OobIpConfig { get; private set; } = null!;
+        public Output<Outputs.DeviceprofileGatewayOobIpConfig> OobIpConfig { get; private set; } = null!;
 
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;

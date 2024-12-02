@@ -20,6 +20,21 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanPortalArgs Empty = new WlanPortalArgs();
 
     /**
+     * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * 
+     */
+    @Import(name="allowWlanIdRoam")
+    private @Nullable Output<Boolean> allowWlanIdRoam;
+
+    /**
+     * @return whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * 
+     */
+    public Optional<Output<Boolean>> allowWlanIdRoam() {
+        return Optional.ofNullable(this.allowWlanIdRoam);
+    }
+
+    /**
      * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
@@ -935,36 +950,44 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     @Import(name="ssoDefaultRole")
     private @Nullable Output<String> ssoDefaultRole;
 
     /**
-     * @return default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Optional<Output<String>> ssoDefaultRole() {
         return Optional.ofNullable(this.ssoDefaultRole);
     }
 
+    /**
+     * if `wlan_portal_auth`==`sso`
+     * 
+     */
     @Import(name="ssoForcedRole")
     private @Nullable Output<String> ssoForcedRole;
 
+    /**
+     * @return if `wlan_portal_auth`==`sso`
+     * 
+     */
     public Optional<Output<String>> ssoForcedRole() {
         return Optional.ofNullable(this.ssoForcedRole);
     }
 
     /**
-     * IDP Cert (used to verify the signed response)
+     * if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
      * 
      */
     @Import(name="ssoIdpCert")
     private @Nullable Output<String> ssoIdpCert;
 
     /**
-     * @return IDP Cert (used to verify the signed response)
+     * @return if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
      * 
      */
     public Optional<Output<String>> ssoIdpCert() {
@@ -972,14 +995,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * signing algorithm for SAML Assertion
+     * if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     @Import(name="ssoIdpSignAlgo")
     private @Nullable Output<String> ssoIdpSignAlgo;
 
     /**
-     * @return signing algorithm for SAML Assertion
+     * @return if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<Output<String>> ssoIdpSignAlgo() {
@@ -987,14 +1010,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IDP Single-Sign-On URL
+     * if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     @Import(name="ssoIdpSsoUrl")
     private @Nullable Output<String> ssoIdpSsoUrl;
 
     /**
-     * @return IDP Single-Sign-On URL
+     * @return if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     public Optional<Output<String>> ssoIdpSsoUrl() {
@@ -1002,14 +1025,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IDP issuer URL
+     * if `wlan_portal_auth`==`sso`, IDP issuer URL
      * 
      */
     @Import(name="ssoIssuer")
     private @Nullable Output<String> ssoIssuer;
 
     /**
-     * @return IDP issuer URL
+     * @return if `wlan_portal_auth`==`sso`, IDP issuer URL
      * 
      */
     public Optional<Output<String>> ssoIssuer() {
@@ -1017,14 +1040,14 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enum: `email`, `unspecified`
+     * if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     @Import(name="ssoNameidFormat")
     private @Nullable Output<String> ssoNameidFormat;
 
     /**
-     * @return enum: `email`, `unspecified`
+     * @return if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     public Optional<Output<String>> ssoNameidFormat() {
@@ -1109,6 +1132,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
     private WlanPortalArgs() {}
 
     private WlanPortalArgs(WlanPortalArgs $) {
+        this.allowWlanIdRoam = $.allowWlanIdRoam;
         this.amazonClientId = $.amazonClientId;
         this.amazonClientSecret = $.amazonClientSecret;
         this.amazonEmailDomains = $.amazonEmailDomains;
@@ -1200,6 +1224,27 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WlanPortalArgs defaults) {
             $ = new WlanPortalArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowWlanIdRoam whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowWlanIdRoam(@Nullable Output<Boolean> allowWlanIdRoam) {
+            $.allowWlanIdRoam = allowWlanIdRoam;
+            return this;
+        }
+
+        /**
+         * @param allowWlanIdRoam whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowWlanIdRoam(Boolean allowWlanIdRoam) {
+            return allowWlanIdRoam(Output.of(allowWlanIdRoam));
         }
 
         /**
@@ -2526,7 +2571,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoDefaultRole default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * @param ssoDefaultRole if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          * 
          * @return builder
          * 
@@ -2537,7 +2582,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoDefaultRole default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * @param ssoDefaultRole if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          * 
          * @return builder
          * 
@@ -2546,17 +2591,29 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
             return ssoDefaultRole(Output.of(ssoDefaultRole));
         }
 
+        /**
+         * @param ssoForcedRole if `wlan_portal_auth`==`sso`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssoForcedRole(@Nullable Output<String> ssoForcedRole) {
             $.ssoForcedRole = ssoForcedRole;
             return this;
         }
 
+        /**
+         * @param ssoForcedRole if `wlan_portal_auth`==`sso`
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssoForcedRole(String ssoForcedRole) {
             return ssoForcedRole(Output.of(ssoForcedRole));
         }
 
         /**
-         * @param ssoIdpCert IDP Cert (used to verify the signed response)
+         * @param ssoIdpCert if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
          * 
          * @return builder
          * 
@@ -2567,7 +2624,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpCert IDP Cert (used to verify the signed response)
+         * @param ssoIdpCert if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
          * 
          * @return builder
          * 
@@ -2577,7 +2634,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo signing algorithm for SAML Assertion
+         * @param ssoIdpSignAlgo if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 
@@ -2588,7 +2645,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSignAlgo signing algorithm for SAML Assertion
+         * @param ssoIdpSignAlgo if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          * 
          * @return builder
          * 
@@ -2598,7 +2655,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSsoUrl IDP Single-Sign-On URL
+         * @param ssoIdpSsoUrl if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
          * 
          * @return builder
          * 
@@ -2609,7 +2666,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIdpSsoUrl IDP Single-Sign-On URL
+         * @param ssoIdpSsoUrl if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
          * 
          * @return builder
          * 
@@ -2619,7 +2676,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIssuer IDP issuer URL
+         * @param ssoIssuer if `wlan_portal_auth`==`sso`, IDP issuer URL
          * 
          * @return builder
          * 
@@ -2630,7 +2687,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoIssuer IDP issuer URL
+         * @param ssoIssuer if `wlan_portal_auth`==`sso`, IDP issuer URL
          * 
          * @return builder
          * 
@@ -2640,7 +2697,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoNameidFormat enum: `email`, `unspecified`
+         * @param ssoNameidFormat if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
          * 
          * @return builder
          * 
@@ -2651,7 +2708,7 @@ public final class WlanPortalArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ssoNameidFormat enum: `email`, `unspecified`
+         * @param ssoNameidFormat if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
          * 
          * @return builder
          * 

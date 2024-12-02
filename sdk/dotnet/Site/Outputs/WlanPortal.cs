@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanPortal
     {
         /// <summary>
+        /// whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+        /// </summary>
+        public readonly bool? AllowWlanIdRoam;
+        /// <summary>
         /// amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         /// </summary>
         public readonly string? AmazonClientId;
@@ -260,28 +264,31 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Sponsors;
         /// <summary>
-        /// default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        /// if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         /// </summary>
         public readonly string? SsoDefaultRole;
+        /// <summary>
+        /// if `wlan_portal_auth`==`sso`
+        /// </summary>
         public readonly string? SsoForcedRole;
         /// <summary>
-        /// IDP Cert (used to verify the signed response)
+        /// if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
         /// </summary>
         public readonly string? SsoIdpCert;
         /// <summary>
-        /// signing algorithm for SAML Assertion
+        /// if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         /// </summary>
         public readonly string? SsoIdpSignAlgo;
         /// <summary>
-        /// IDP Single-Sign-On URL
+        /// if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
         /// </summary>
         public readonly string? SsoIdpSsoUrl;
         /// <summary>
-        /// IDP issuer URL
+        /// if `wlan_portal_auth`==`sso`, IDP issuer URL
         /// </summary>
         public readonly string? SsoIssuer;
         /// <summary>
-        /// enum: `email`, `unspecified`
+        /// if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
         /// </summary>
         public readonly string? SsoNameidFormat;
         /// <summary>
@@ -307,6 +314,8 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
         [OutputConstructor]
         private WlanPortal(
+            bool? allowWlanIdRoam,
+
             string? amazonClientId,
 
             string? amazonClientSecret,
@@ -453,6 +462,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             string? twilioSid)
         {
+            AllowWlanIdRoam = allowWlanIdRoam;
             AmazonClientId = amazonClientId;
             AmazonClientSecret = amazonClientSecret;
             AmazonEmailDomains = amazonEmailDomains;

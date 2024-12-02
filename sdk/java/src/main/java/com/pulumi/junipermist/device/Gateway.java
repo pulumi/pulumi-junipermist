@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * This resource manages the Gateway configuration.
  * It can be used to define specific configuration at the device level or to override Org Gateway template settings.
  * 
+ * &gt; **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -318,14 +320,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="oobIpConfig", refs={GatewayOobIpConfig.class}, tree="[0]")
-    private Output</* @Nullable */ GatewayOobIpConfig> oobIpConfig;
+    private Output<GatewayOobIpConfig> oobIpConfig;
 
     /**
      * @return out-of-band (vme/em0/fxp0) IP config
      * 
      */
-    public Output<Optional<GatewayOobIpConfig>> oobIpConfig() {
-        return Codegen.optional(this.oobIpConfig);
+    public Output<GatewayOobIpConfig> oobIpConfig() {
+        return this.oobIpConfig;
     }
     @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;

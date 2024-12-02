@@ -15,6 +15,8 @@ import (
 // This resource manages the Switch configuration.
 // It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
 //
+// > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch
+//
 // ## Import
 //
 // Using `pulumi import`, import `mist_device_switch` with:
@@ -42,7 +44,7 @@ type Switch struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
 	// EVPN Junos settings
-	EvpnConfig  SwitchEvpnConfigPtrOutput  `pulumi:"evpnConfig"`
+	EvpnConfig  SwitchEvpnConfigOutput     `pulumi:"evpnConfig"`
 	ExtraRoutes SwitchExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
@@ -76,7 +78,7 @@ type Switch struct {
 	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
 	// Junos OSPF areas
 	OspfAreas SwitchOspfAreasMapOutput `pulumi:"ospfAreas"`
-	// Property key is the network name
+	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapOutput `pulumi:"portConfig"`
@@ -84,13 +86,14 @@ type Switch struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring SwitchPortMirroringMapOutput `pulumi:"portMirroring"`
-	PortUsages    SwitchPortUsagesMapOutput    `pulumi:"portUsages"`
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages SwitchPortUsagesMapOutput `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig SwitchRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog SwitchRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
 	Role         pulumi.StringPtrOutput      `pulumi:"role"`
 	// used for OSPF / BGP / EVPN
-	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
+	RouterId pulumi.StringOutput `pulumi:"routerId"`
 	// device Serial
 	Serial     pulumi.StringOutput       `pulumi:"serial"`
 	SiteId     pulumi.StringOutput       `pulumi:"siteId"`
@@ -202,7 +205,7 @@ type switchState struct {
 	OrgId       *string            `pulumi:"orgId"`
 	// Junos OSPF areas
 	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the network name
+	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
@@ -210,7 +213,8 @@ type switchState struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
-	PortUsages    map[string]SwitchPortUsages    `pulumi:"portUsages"`
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages map[string]SwitchPortUsages `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig *SwitchRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *SwitchRemoteSyslog `pulumi:"remoteSyslog"`
@@ -293,7 +297,7 @@ type SwitchState struct {
 	OrgId       pulumi.StringPtrInput
 	// Junos OSPF areas
 	OspfAreas SwitchOspfAreasMapInput
-	// Property key is the network name
+	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
@@ -301,7 +305,8 @@ type SwitchState struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring SwitchPortMirroringMapInput
-	PortUsages    SwitchPortUsagesMapInput
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages SwitchPortUsagesMapInput
 	// Junos Radius config
 	RadiusConfig SwitchRadiusConfigPtrInput
 	RemoteSyslog SwitchRemoteSyslogPtrInput
@@ -352,9 +357,7 @@ type switchArgs struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// EVPN Junos settings
-	EvpnConfig  *SwitchEvpnConfig            `pulumi:"evpnConfig"`
+	DnsSuffixes []string                     `pulumi:"dnsSuffixes"`
 	ExtraRoutes map[string]SwitchExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]SwitchExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -380,7 +383,7 @@ type switchArgs struct {
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	// Junos OSPF areas
 	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the network name
+	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
@@ -388,7 +391,8 @@ type switchArgs struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
-	PortUsages    map[string]SwitchPortUsages    `pulumi:"portUsages"`
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages map[string]SwitchPortUsages `pulumi:"portUsages"`
 	// Junos Radius config
 	RadiusConfig *SwitchRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *SwitchRemoteSyslog `pulumi:"remoteSyslog"`
@@ -433,8 +437,6 @@ type SwitchArgs struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
-	// EVPN Junos settings
-	EvpnConfig  SwitchEvpnConfigPtrInput
 	ExtraRoutes SwitchExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapInput
@@ -460,7 +462,7 @@ type SwitchArgs struct {
 	OobIpConfig SwitchOobIpConfigPtrInput
 	// Junos OSPF areas
 	OspfAreas SwitchOspfAreasMapInput
-	// Property key is the network name
+	// Property key is the network name. Defines the additional IP Addresses configured on the device.
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
@@ -468,7 +470,8 @@ type SwitchArgs struct {
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring SwitchPortMirroringMapInput
-	PortUsages    SwitchPortUsagesMapInput
+	// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
+	PortUsages SwitchPortUsagesMapInput
 	// Junos Radius config
 	RadiusConfig SwitchRadiusConfigPtrInput
 	RemoteSyslog SwitchRemoteSyslogPtrInput
@@ -626,8 +629,8 @@ func (o SwitchOutput) DnsSuffixes() pulumi.StringArrayOutput {
 }
 
 // EVPN Junos settings
-func (o SwitchOutput) EvpnConfig() SwitchEvpnConfigPtrOutput {
-	return o.ApplyT(func(v *Switch) SwitchEvpnConfigPtrOutput { return v.EvpnConfig }).(SwitchEvpnConfigPtrOutput)
+func (o SwitchOutput) EvpnConfig() SwitchEvpnConfigOutput {
+	return o.ApplyT(func(v *Switch) SwitchEvpnConfigOutput { return v.EvpnConfig }).(SwitchEvpnConfigOutput)
 }
 
 func (o SwitchOutput) ExtraRoutes() SwitchExtraRoutesMapOutput {
@@ -720,7 +723,7 @@ func (o SwitchOutput) OspfAreas() SwitchOspfAreasMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchOspfAreasMapOutput { return v.OspfAreas }).(SwitchOspfAreasMapOutput)
 }
 
-// Property key is the network name
+// Property key is the network name. Defines the additional IP Addresses configured on the device.
 func (o SwitchOutput) OtherIpConfigs() SwitchOtherIpConfigsMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchOtherIpConfigsMapOutput { return v.OtherIpConfigs }).(SwitchOtherIpConfigsMapOutput)
 }
@@ -737,6 +740,7 @@ func (o SwitchOutput) PortMirroring() SwitchPortMirroringMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortMirroringMapOutput { return v.PortMirroring }).(SwitchPortMirroringMapOutput)
 }
 
+// Property key is the port usage name. Defines the profiles of port configuration configured on the switch
 func (o SwitchOutput) PortUsages() SwitchPortUsagesMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortUsagesMapOutput { return v.PortUsages }).(SwitchPortUsagesMapOutput)
 }
@@ -755,8 +759,8 @@ func (o SwitchOutput) Role() pulumi.StringPtrOutput {
 }
 
 // used for OSPF / BGP / EVPN
-func (o SwitchOutput) RouterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
+func (o SwitchOutput) RouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
 // device Serial

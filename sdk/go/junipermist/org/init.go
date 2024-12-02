@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeviceprofileAssign{}
 	case "junipermist:org/deviceprofileGateway:DeviceprofileGateway":
 		r = &DeviceprofileGateway{}
+	case "junipermist:org/evpnTopology:EvpnTopology":
+		r = &EvpnTopology{}
 	case "junipermist:org/gatewaytemplate:Gatewaytemplate":
 		r = &Gatewaytemplate{}
 	case "junipermist:org/idpprofile:Idpprofile":
@@ -122,6 +124,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"junipermist",
 		"org/deviceprofileGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"junipermist",
+		"org/evpnTopology",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

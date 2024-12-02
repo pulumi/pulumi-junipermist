@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         [Input("useMgmtVrf")]
         public Input<bool>? UseMgmtVrf { get; set; }

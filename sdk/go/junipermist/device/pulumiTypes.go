@@ -12234,7 +12234,7 @@ type GatewayServicePolicyIdp struct {
 	Enabled   *bool `pulumi:"enabled"`
 	// org_level IDP Profile can be used, this takes precedence over `profile`
 	IdpprofileId *string `pulumi:"idpprofileId"`
-	// `strict` (default) / `standard` / or keys from from idp_profiles
+	// enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
 	Profile *string `pulumi:"profile"`
 }
 
@@ -12254,7 +12254,7 @@ type GatewayServicePolicyIdpArgs struct {
 	Enabled   pulumi.BoolPtrInput `pulumi:"enabled"`
 	// org_level IDP Profile can be used, this takes precedence over `profile`
 	IdpprofileId pulumi.StringPtrInput `pulumi:"idpprofileId"`
-	// `strict` (default) / `standard` / or keys from from idp_profiles
+	// enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 }
 
@@ -12348,7 +12348,7 @@ func (o GatewayServicePolicyIdpOutput) IdpprofileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicyIdp) *string { return v.IdpprofileId }).(pulumi.StringPtrOutput)
 }
 
-// `strict` (default) / `standard` / or keys from from idp_profiles
+// enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
 func (o GatewayServicePolicyIdpOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicyIdp) *string { return v.Profile }).(pulumi.StringPtrOutput)
 }
@@ -12405,7 +12405,7 @@ func (o GatewayServicePolicyIdpPtrOutput) IdpprofileId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// `strict` (default) / `standard` / or keys from from idp_profiles
+// enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
 func (o GatewayServicePolicyIdpPtrOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayServicePolicyIdp) *string {
 		if v == nil {
@@ -16672,7 +16672,7 @@ func (o SwitchDhcpdConfigConfigVendorEncapulatedMapOutput) MapIndex(k pulumi.Str
 
 type SwitchEvpnConfig struct {
 	Enabled *bool `pulumi:"enabled"`
-	// enum: `access`, `core`, `distribution`
+	// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
 	Role *string `pulumi:"role"`
 }
 
@@ -16689,7 +16689,7 @@ type SwitchEvpnConfigInput interface {
 
 type SwitchEvpnConfigArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// enum: `access`, `core`, `distribution`
+	// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
@@ -16774,7 +16774,7 @@ func (o SwitchEvpnConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchEvpnConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `access`, `core`, `distribution`
+// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
 func (o SwitchEvpnConfigOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchEvpnConfig) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
@@ -16812,7 +16812,7 @@ func (o SwitchEvpnConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// enum: `access`, `core`, `distribution`
+// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
 func (o SwitchEvpnConfigPtrOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwitchEvpnConfig) *string {
 		if v == nil {
@@ -17522,22 +17522,76 @@ func (o SwitchIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type SwitchLocalPortConfig struct {
-	// if want to generate port up/down alarm
-	Critical    *bool   `pulumi:"critical"`
-	Description *string `pulumi:"description"`
-	// if `speed` and `duplex` are specified, whether to disable autonegotiation
+	// Only if `mode`==`trunk` whether to trunk all network/vlans
+	AllNetworks *bool `pulumi:"allNetworks"`
+	// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	AllowDhcpd               *bool `pulumi:"allowDhcpd"`
+	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
+	// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+	BypassAuthWhenServerDown *bool `pulumi:"bypassAuthWhenServerDown"`
+	// Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+	BypassAuthWhenServerDownForUnkonwnClient *bool   `pulumi:"bypassAuthWhenServerDownForUnkonwnClient"`
+	Description                              *string `pulumi:"description"`
+	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
 	DisableAutoneg *bool `pulumi:"disableAutoneg"`
-	// enum: `auto`, `full`, `half`
+	// whether the port is disabled
+	Disabled *bool `pulumi:"disabled"`
+	// link connection mode. enum: `auto`, `full`, `half`
 	Duplex *string `pulumi:"duplex"`
-	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
-	Mtu         *int  `pulumi:"mtu"`
+	// Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+	DynamicVlanNetworks []string `pulumi:"dynamicVlanNetworks"`
+	// Only if `portAuth`==`dot1x` whether to enable MAC Auth
+	EnableMacAuth *bool `pulumi:"enableMacAuth"`
+	EnableQos     *bool `pulumi:"enableQos"`
+	// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+	GuestNetwork *string `pulumi:"guestNetwork"`
+	// inter_switch_link is used together with "isolation" under networks
+	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	InterSwitchLink *bool `pulumi:"interSwitchLink"`
+	// Only if `enableMacAuth`==`true`
+	MacAuthOnly *bool `pulumi:"macAuthOnly"`
+	// Only if `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+	MacAuthPreferred *bool `pulumi:"macAuthPreferred"`
+	// Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+	MacAuthProtocol *string `pulumi:"macAuthProtocol"`
+	// max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+	MacLimit *int `pulumi:"macLimit"`
+	// enum: `access`, `inet`, `trunk`
+	Mode *string `pulumi:"mode"`
+	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+	Mtu *int `pulumi:"mtu"`
+	// Only if `mode`==`trunk`, the list of network/vlans
+	Networks []string `pulumi:"networks"`
+	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+	PersistMac *bool `pulumi:"persistMac"`
+	// whether PoE capabilities are disabled for a port
 	PoeDisabled *bool `pulumi:"poeDisabled"`
-	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+	// if dot1x is desired, set to dot1x. enum: `dot1x`
+	PortAuth *string `pulumi:"portAuth"`
+	// native network/vlan for untagged traffic
+	PortNetwork *string `pulumi:"portNetwork"`
+	// Only if `portAuth`=`dot1x` reauthentication interval range
+	ReauthInterval *int `pulumi:"reauthInterval"`
+	// Only if `portAuth`==`dot1x` sets server fail fallback vlan
+	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
+	// Only if `portAuth`==`dot1x` when radius server reject / fails
+	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
+	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
+	// Switch storm control
+	StormControl *SwitchLocalPortConfigStormControl `pulumi:"stormControl"`
+	// when enabled, the port is not expected to receive BPDU frames
+	StpEdge       *bool `pulumi:"stpEdge"`
+	StpNoRootPort *bool `pulumi:"stpNoRootPort"`
+	StpP2p        *bool `pulumi:"stpP2p"`
 	// port usage name.
-	//
-	// If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage string `pulumi:"usage"`
+	// if this is connected to a vstp network
+	UseVstp *bool `pulumi:"useVstp"`
+	// network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+	VoipNetwork *string `pulumi:"voipNetwork"`
 }
 
 // SwitchLocalPortConfigInput is an input type that accepts SwitchLocalPortConfigArgs and SwitchLocalPortConfigOutput values.
@@ -17552,22 +17606,76 @@ type SwitchLocalPortConfigInput interface {
 }
 
 type SwitchLocalPortConfigArgs struct {
-	// if want to generate port up/down alarm
-	Critical    pulumi.BoolPtrInput   `pulumi:"critical"`
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// if `speed` and `duplex` are specified, whether to disable autonegotiation
+	// Only if `mode`==`trunk` whether to trunk all network/vlans
+	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
+	// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	AllowDhcpd               pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
+	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
+	// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+	BypassAuthWhenServerDown pulumi.BoolPtrInput `pulumi:"bypassAuthWhenServerDown"`
+	// Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+	BypassAuthWhenServerDownForUnkonwnClient pulumi.BoolPtrInput   `pulumi:"bypassAuthWhenServerDownForUnkonwnClient"`
+	Description                              pulumi.StringPtrInput `pulumi:"description"`
+	// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
 	DisableAutoneg pulumi.BoolPtrInput `pulumi:"disableAutoneg"`
-	// enum: `auto`, `full`, `half`
+	// whether the port is disabled
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// link connection mode. enum: `auto`, `full`, `half`
 	Duplex pulumi.StringPtrInput `pulumi:"duplex"`
-	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
-	Mtu         pulumi.IntPtrInput  `pulumi:"mtu"`
+	// Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+	DynamicVlanNetworks pulumi.StringArrayInput `pulumi:"dynamicVlanNetworks"`
+	// Only if `portAuth`==`dot1x` whether to enable MAC Auth
+	EnableMacAuth pulumi.BoolPtrInput `pulumi:"enableMacAuth"`
+	EnableQos     pulumi.BoolPtrInput `pulumi:"enableQos"`
+	// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
+	// inter_switch_link is used together with "isolation" under networks
+	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
+	// Only if `enableMacAuth`==`true`
+	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
+	// Only if `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+	MacAuthPreferred pulumi.BoolPtrInput `pulumi:"macAuthPreferred"`
+	// Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+	MacAuthProtocol pulumi.StringPtrInput `pulumi:"macAuthProtocol"`
+	// max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+	MacLimit pulumi.IntPtrInput `pulumi:"macLimit"`
+	// enum: `access`, `inet`, `trunk`
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// Only if `mode`==`trunk`, the list of network/vlans
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+	PersistMac pulumi.BoolPtrInput `pulumi:"persistMac"`
+	// whether PoE capabilities are disabled for a port
 	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
-	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+	// if dot1x is desired, set to dot1x. enum: `dot1x`
+	PortAuth pulumi.StringPtrInput `pulumi:"portAuth"`
+	// native network/vlan for untagged traffic
+	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
+	// Only if `portAuth`=`dot1x` reauthentication interval range
+	ReauthInterval pulumi.IntPtrInput `pulumi:"reauthInterval"`
+	// Only if `portAuth`==`dot1x` sets server fail fallback vlan
+	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
+	// Only if `portAuth`==`dot1x` when radius server reject / fails
+	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
+	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
+	// Switch storm control
+	StormControl SwitchLocalPortConfigStormControlPtrInput `pulumi:"stormControl"`
+	// when enabled, the port is not expected to receive BPDU frames
+	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
+	StpNoRootPort pulumi.BoolPtrInput `pulumi:"stpNoRootPort"`
+	StpP2p        pulumi.BoolPtrInput `pulumi:"stpP2p"`
 	// port usage name.
-	//
-	// If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage pulumi.StringInput `pulumi:"usage"`
+	// if this is connected to a vstp network
+	UseVstp pulumi.BoolPtrInput `pulumi:"useVstp"`
+	// network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+	VoipNetwork pulumi.StringPtrInput `pulumi:"voipNetwork"`
 }
 
 func (SwitchLocalPortConfigArgs) ElementType() reflect.Type {
@@ -17621,44 +17729,182 @@ func (o SwitchLocalPortConfigOutput) ToSwitchLocalPortConfigOutputWithContext(ct
 	return o
 }
 
-// if want to generate port up/down alarm
-func (o SwitchLocalPortConfigOutput) Critical() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+// Only if `mode`==`trunk` whether to trunk all network/vlans
+func (o SwitchLocalPortConfigOutput) AllNetworks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
+}
+
+// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+func (o SwitchLocalPortConfigOutput) AllowDhcpd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchLocalPortConfigOutput) AllowMultipleSupplicants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.AllowMultipleSupplicants }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
+func (o SwitchLocalPortConfigOutput) BypassAuthWhenServerDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.BypassAuthWhenServerDown }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `portAuth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+func (o SwitchLocalPortConfigOutput) BypassAuthWhenServerDownForUnkonwnClient() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.BypassAuthWhenServerDownForUnkonwnClient }).(pulumi.BoolPtrOutput)
 }
 
 func (o SwitchLocalPortConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// if `speed` and `duplex` are specified, whether to disable autonegotiation
+// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
 func (o SwitchLocalPortConfigOutput) DisableAutoneg() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.DisableAutoneg }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `auto`, `full`, `half`
+// whether the port is disabled
+func (o SwitchLocalPortConfigOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// link connection mode. enum: `auto`, `full`, `half`
 func (o SwitchLocalPortConfigOutput) Duplex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Duplex }).(pulumi.StringPtrOutput)
 }
 
-// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+// Only if `portAuth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
+func (o SwitchLocalPortConfigOutput) DynamicVlanNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) []string { return v.DynamicVlanNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Only if `portAuth`==`dot1x` whether to enable MAC Auth
+func (o SwitchLocalPortConfigOutput) EnableMacAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.EnableMacAuth }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchLocalPortConfigOutput) EnableQos() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.EnableQos }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
+func (o SwitchLocalPortConfigOutput) GuestNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
+}
+
+// inter_switch_link is used together with "isolation" under networks
+// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+func (o SwitchLocalPortConfigOutput) InterSwitchLink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `enableMacAuth`==`true`
+func (o SwitchLocalPortConfigOutput) MacAuthOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.MacAuthOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `enableMacAuth`==`true` + `macAuthOnly`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer macAuth over dot1x.
+func (o SwitchLocalPortConfigOutput) MacAuthPreferred() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.MacAuthPreferred }).(pulumi.BoolPtrOutput)
+}
+
+// Only if `enableMacAuth` ==`true`. This type is ignored if mistNac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
+func (o SwitchLocalPortConfigOutput) MacAuthProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.MacAuthProtocol }).(pulumi.StringPtrOutput)
+}
+
+// max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+func (o SwitchLocalPortConfigOutput) MacLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *int { return v.MacLimit }).(pulumi.IntPtrOutput)
+}
+
+// enum: `access`, `inet`, `trunk`
+func (o SwitchLocalPortConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
 func (o SwitchLocalPortConfigOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *int { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
+// Only if `mode`==`trunk`, the list of network/vlans
+func (o SwitchLocalPortConfigOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
+func (o SwitchLocalPortConfigOutput) PersistMac() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.PersistMac }).(pulumi.BoolPtrOutput)
+}
+
+// whether PoE capabilities are disabled for a port
 func (o SwitchLocalPortConfigOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+// if dot1x is desired, set to dot1x. enum: `dot1x`
+func (o SwitchLocalPortConfigOutput) PortAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.PortAuth }).(pulumi.StringPtrOutput)
+}
+
+// native network/vlan for untagged traffic
+func (o SwitchLocalPortConfigOutput) PortNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.PortNetwork }).(pulumi.StringPtrOutput)
+}
+
+// Only if `portAuth`=`dot1x` reauthentication interval range
+func (o SwitchLocalPortConfigOutput) ReauthInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *int { return v.ReauthInterval }).(pulumi.IntPtrOutput)
+}
+
+// Only if `portAuth`==`dot1x` sets server fail fallback vlan
+func (o SwitchLocalPortConfigOutput) ServerFailNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.ServerFailNetwork }).(pulumi.StringPtrOutput)
+}
+
+// Only if `portAuth`==`dot1x` when radius server reject / fails
+func (o SwitchLocalPortConfigOutput) ServerRejectNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.ServerRejectNetwork }).(pulumi.StringPtrOutput)
+}
+
+// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 func (o SwitchLocalPortConfigOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
 
+// Switch storm control
+func (o SwitchLocalPortConfigOutput) StormControl() SwitchLocalPortConfigStormControlPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *SwitchLocalPortConfigStormControl { return v.StormControl }).(SwitchLocalPortConfigStormControlPtrOutput)
+}
+
+// when enabled, the port is not expected to receive BPDU frames
+func (o SwitchLocalPortConfigOutput) StpEdge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.StpEdge }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchLocalPortConfigOutput) StpNoRootPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.StpNoRootPort }).(pulumi.BoolPtrOutput)
+}
+
+func (o SwitchLocalPortConfigOutput) StpP2p() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.StpP2p }).(pulumi.BoolPtrOutput)
+}
+
 // port usage name.
-//
-// If EVPN is used, use `evpnUplink`or `evpnDownlink`
 func (o SwitchLocalPortConfigOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+// if this is connected to a vstp network
+func (o SwitchLocalPortConfigOutput) UseVstp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.UseVstp }).(pulumi.BoolPtrOutput)
+}
+
+// network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+func (o SwitchLocalPortConfigOutput) VoipNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.VoipNetwork }).(pulumi.StringPtrOutput)
 }
 
 type SwitchLocalPortConfigMapOutput struct{ *pulumi.OutputState }
@@ -17679,6 +17925,219 @@ func (o SwitchLocalPortConfigMapOutput) MapIndex(k pulumi.StringInput) SwitchLoc
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchLocalPortConfig {
 		return vs[0].(map[string]SwitchLocalPortConfig)[vs[1].(string)]
 	}).(SwitchLocalPortConfigOutput)
+}
+
+type SwitchLocalPortConfigStormControl struct {
+	// whether to disable storm control on broadcast traffic
+	NoBroadcast *bool `pulumi:"noBroadcast"`
+	// whether to disable storm control on multicast traffic
+	NoMulticast *bool `pulumi:"noMulticast"`
+	// whether to disable storm control on registered multicast traffic
+	NoRegisteredMulticast *bool `pulumi:"noRegisteredMulticast"`
+	// whether to disable storm control on unknown unicast traffic
+	NoUnknownUnicast *bool `pulumi:"noUnknownUnicast"`
+	// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+	Percentage *int `pulumi:"percentage"`
+}
+
+// SwitchLocalPortConfigStormControlInput is an input type that accepts SwitchLocalPortConfigStormControlArgs and SwitchLocalPortConfigStormControlOutput values.
+// You can construct a concrete instance of `SwitchLocalPortConfigStormControlInput` via:
+//
+//	SwitchLocalPortConfigStormControlArgs{...}
+type SwitchLocalPortConfigStormControlInput interface {
+	pulumi.Input
+
+	ToSwitchLocalPortConfigStormControlOutput() SwitchLocalPortConfigStormControlOutput
+	ToSwitchLocalPortConfigStormControlOutputWithContext(context.Context) SwitchLocalPortConfigStormControlOutput
+}
+
+type SwitchLocalPortConfigStormControlArgs struct {
+	// whether to disable storm control on broadcast traffic
+	NoBroadcast pulumi.BoolPtrInput `pulumi:"noBroadcast"`
+	// whether to disable storm control on multicast traffic
+	NoMulticast pulumi.BoolPtrInput `pulumi:"noMulticast"`
+	// whether to disable storm control on registered multicast traffic
+	NoRegisteredMulticast pulumi.BoolPtrInput `pulumi:"noRegisteredMulticast"`
+	// whether to disable storm control on unknown unicast traffic
+	NoUnknownUnicast pulumi.BoolPtrInput `pulumi:"noUnknownUnicast"`
+	// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (SwitchLocalPortConfigStormControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchLocalPortConfigStormControl)(nil)).Elem()
+}
+
+func (i SwitchLocalPortConfigStormControlArgs) ToSwitchLocalPortConfigStormControlOutput() SwitchLocalPortConfigStormControlOutput {
+	return i.ToSwitchLocalPortConfigStormControlOutputWithContext(context.Background())
+}
+
+func (i SwitchLocalPortConfigStormControlArgs) ToSwitchLocalPortConfigStormControlOutputWithContext(ctx context.Context) SwitchLocalPortConfigStormControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchLocalPortConfigStormControlOutput)
+}
+
+func (i SwitchLocalPortConfigStormControlArgs) ToSwitchLocalPortConfigStormControlPtrOutput() SwitchLocalPortConfigStormControlPtrOutput {
+	return i.ToSwitchLocalPortConfigStormControlPtrOutputWithContext(context.Background())
+}
+
+func (i SwitchLocalPortConfigStormControlArgs) ToSwitchLocalPortConfigStormControlPtrOutputWithContext(ctx context.Context) SwitchLocalPortConfigStormControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchLocalPortConfigStormControlOutput).ToSwitchLocalPortConfigStormControlPtrOutputWithContext(ctx)
+}
+
+// SwitchLocalPortConfigStormControlPtrInput is an input type that accepts SwitchLocalPortConfigStormControlArgs, SwitchLocalPortConfigStormControlPtr and SwitchLocalPortConfigStormControlPtrOutput values.
+// You can construct a concrete instance of `SwitchLocalPortConfigStormControlPtrInput` via:
+//
+//	        SwitchLocalPortConfigStormControlArgs{...}
+//
+//	or:
+//
+//	        nil
+type SwitchLocalPortConfigStormControlPtrInput interface {
+	pulumi.Input
+
+	ToSwitchLocalPortConfigStormControlPtrOutput() SwitchLocalPortConfigStormControlPtrOutput
+	ToSwitchLocalPortConfigStormControlPtrOutputWithContext(context.Context) SwitchLocalPortConfigStormControlPtrOutput
+}
+
+type switchLocalPortConfigStormControlPtrType SwitchLocalPortConfigStormControlArgs
+
+func SwitchLocalPortConfigStormControlPtr(v *SwitchLocalPortConfigStormControlArgs) SwitchLocalPortConfigStormControlPtrInput {
+	return (*switchLocalPortConfigStormControlPtrType)(v)
+}
+
+func (*switchLocalPortConfigStormControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchLocalPortConfigStormControl)(nil)).Elem()
+}
+
+func (i *switchLocalPortConfigStormControlPtrType) ToSwitchLocalPortConfigStormControlPtrOutput() SwitchLocalPortConfigStormControlPtrOutput {
+	return i.ToSwitchLocalPortConfigStormControlPtrOutputWithContext(context.Background())
+}
+
+func (i *switchLocalPortConfigStormControlPtrType) ToSwitchLocalPortConfigStormControlPtrOutputWithContext(ctx context.Context) SwitchLocalPortConfigStormControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchLocalPortConfigStormControlPtrOutput)
+}
+
+type SwitchLocalPortConfigStormControlOutput struct{ *pulumi.OutputState }
+
+func (SwitchLocalPortConfigStormControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchLocalPortConfigStormControl)(nil)).Elem()
+}
+
+func (o SwitchLocalPortConfigStormControlOutput) ToSwitchLocalPortConfigStormControlOutput() SwitchLocalPortConfigStormControlOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigStormControlOutput) ToSwitchLocalPortConfigStormControlOutputWithContext(ctx context.Context) SwitchLocalPortConfigStormControlOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigStormControlOutput) ToSwitchLocalPortConfigStormControlPtrOutput() SwitchLocalPortConfigStormControlPtrOutput {
+	return o.ToSwitchLocalPortConfigStormControlPtrOutputWithContext(context.Background())
+}
+
+func (o SwitchLocalPortConfigStormControlOutput) ToSwitchLocalPortConfigStormControlPtrOutputWithContext(ctx context.Context) SwitchLocalPortConfigStormControlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SwitchLocalPortConfigStormControl) *SwitchLocalPortConfigStormControl {
+		return &v
+	}).(SwitchLocalPortConfigStormControlPtrOutput)
+}
+
+// whether to disable storm control on broadcast traffic
+func (o SwitchLocalPortConfigStormControlOutput) NoBroadcast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfigStormControl) *bool { return v.NoBroadcast }).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable storm control on multicast traffic
+func (o SwitchLocalPortConfigStormControlOutput) NoMulticast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfigStormControl) *bool { return v.NoMulticast }).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable storm control on registered multicast traffic
+func (o SwitchLocalPortConfigStormControlOutput) NoRegisteredMulticast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfigStormControl) *bool { return v.NoRegisteredMulticast }).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable storm control on unknown unicast traffic
+func (o SwitchLocalPortConfigStormControlOutput) NoUnknownUnicast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfigStormControl) *bool { return v.NoUnknownUnicast }).(pulumi.BoolPtrOutput)
+}
+
+// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+func (o SwitchLocalPortConfigStormControlOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfigStormControl) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type SwitchLocalPortConfigStormControlPtrOutput struct{ *pulumi.OutputState }
+
+func (SwitchLocalPortConfigStormControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SwitchLocalPortConfigStormControl)(nil)).Elem()
+}
+
+func (o SwitchLocalPortConfigStormControlPtrOutput) ToSwitchLocalPortConfigStormControlPtrOutput() SwitchLocalPortConfigStormControlPtrOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigStormControlPtrOutput) ToSwitchLocalPortConfigStormControlPtrOutputWithContext(ctx context.Context) SwitchLocalPortConfigStormControlPtrOutput {
+	return o
+}
+
+func (o SwitchLocalPortConfigStormControlPtrOutput) Elem() SwitchLocalPortConfigStormControlOutput {
+	return o.ApplyT(func(v *SwitchLocalPortConfigStormControl) SwitchLocalPortConfigStormControl {
+		if v != nil {
+			return *v
+		}
+		var ret SwitchLocalPortConfigStormControl
+		return ret
+	}).(SwitchLocalPortConfigStormControlOutput)
+}
+
+// whether to disable storm control on broadcast traffic
+func (o SwitchLocalPortConfigStormControlPtrOutput) NoBroadcast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchLocalPortConfigStormControl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoBroadcast
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable storm control on multicast traffic
+func (o SwitchLocalPortConfigStormControlPtrOutput) NoMulticast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchLocalPortConfigStormControl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoMulticast
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable storm control on registered multicast traffic
+func (o SwitchLocalPortConfigStormControlPtrOutput) NoRegisteredMulticast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchLocalPortConfigStormControl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoRegisteredMulticast
+	}).(pulumi.BoolPtrOutput)
+}
+
+// whether to disable storm control on unknown unicast traffic
+func (o SwitchLocalPortConfigStormControlPtrOutput) NoUnknownUnicast() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SwitchLocalPortConfigStormControl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoUnknownUnicast
+	}).(pulumi.BoolPtrOutput)
+}
+
+// bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+func (o SwitchLocalPortConfigStormControlPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SwitchLocalPortConfigStormControl) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
 }
 
 type SwitchMistNac struct {
@@ -17830,13 +18289,19 @@ func (o SwitchMistNacPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 type SwitchNetworks struct {
+	// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+	Gateway *string `pulumi:"gateway"`
+	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+	Gateway6 *string `pulumi:"gateway6"`
 	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
 	// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       *bool   `pulumi:"isolation"`
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
 	// optional for pure switching, required when L3 / routing features are used
 	Subnet *string `pulumi:"subnet"`
-	VlanId string  `pulumi:"vlanId"`
+	// optional for pure switching, required when L3 / routing features are used
+	Subnet6 *string `pulumi:"subnet6"`
+	VlanId  string  `pulumi:"vlanId"`
 }
 
 // SwitchNetworksInput is an input type that accepts SwitchNetworksArgs and SwitchNetworksOutput values.
@@ -17851,13 +18316,19 @@ type SwitchNetworksInput interface {
 }
 
 type SwitchNetworksArgs struct {
+	// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
 	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
 	// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       pulumi.BoolPtrInput   `pulumi:"isolation"`
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
 	// optional for pure switching, required when L3 / routing features are used
 	Subnet pulumi.StringPtrInput `pulumi:"subnet"`
-	VlanId pulumi.StringInput    `pulumi:"vlanId"`
+	// optional for pure switching, required when L3 / routing features are used
+	Subnet6 pulumi.StringPtrInput `pulumi:"subnet6"`
+	VlanId  pulumi.StringInput    `pulumi:"vlanId"`
 }
 
 func (SwitchNetworksArgs) ElementType() reflect.Type {
@@ -17911,6 +18382,16 @@ func (o SwitchNetworksOutput) ToSwitchNetworksOutputWithContext(ctx context.Cont
 	return o
 }
 
+// only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+func (o SwitchNetworksOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchNetworks) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+func (o SwitchNetworksOutput) Gateway6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchNetworks) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
+}
+
 // whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
 // NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 func (o SwitchNetworksOutput) Isolation() pulumi.BoolPtrOutput {
@@ -17924,6 +18405,11 @@ func (o SwitchNetworksOutput) IsolationVlanId() pulumi.StringPtrOutput {
 // optional for pure switching, required when L3 / routing features are used
 func (o SwitchNetworksOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *string { return v.Subnet }).(pulumi.StringPtrOutput)
+}
+
+// optional for pure switching, required when L3 / routing features are used
+func (o SwitchNetworksOutput) Subnet6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchNetworks) *string { return v.Subnet6 }).(pulumi.StringPtrOutput)
 }
 
 func (o SwitchNetworksOutput) VlanId() pulumi.StringOutput {
@@ -17959,7 +18445,7 @@ type SwitchOobIpConfig struct {
 	Network *string `pulumi:"network"`
 	// enum: `dhcp`, `static`
 	Type *string `pulumi:"type"`
-	// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf *bool `pulumi:"useMgmtVrf"`
 	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut *bool `pulumi:"useMgmtVrfForHostOut"`
@@ -17985,7 +18471,7 @@ type SwitchOobIpConfigArgs struct {
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// enum: `dhcp`, `static`
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+	// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 	UseMgmtVrf pulumi.BoolPtrInput `pulumi:"useMgmtVrf"`
 	// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
 	UseMgmtVrfForHostOut pulumi.BoolPtrInput `pulumi:"useMgmtVrfForHostOut"`
@@ -18091,7 +18577,7 @@ func (o SwitchOobIpConfigOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchOobIpConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 func (o SwitchOobIpConfigOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchOobIpConfig) *bool { return v.UseMgmtVrf }).(pulumi.BoolPtrOutput)
 }
@@ -18173,7 +18659,7 @@ func (o SwitchOobIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// f supported on the platform. If enabled, DNS will be using this routing-instance, too
+// if supported on the platform. If enabled, DNS will be using this routing-instance, too
 func (o SwitchOobIpConfigPtrOutput) UseMgmtVrf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SwitchOobIpConfig) *bool {
 		if v == nil {
@@ -18654,11 +19140,9 @@ type SwitchPortConfig struct {
 	// prevent helpdesk to override the port config
 	NoLocalOverwrite *bool `pulumi:"noLocalOverwrite"`
 	PoeDisabled      *bool `pulumi:"poeDisabled"`
-	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
-	// port usage name.
-	//
-	// If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	// port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage string `pulumi:"usage"`
 }
 
@@ -18696,11 +19180,9 @@ type SwitchPortConfigArgs struct {
 	// prevent helpdesk to override the port config
 	NoLocalOverwrite pulumi.BoolPtrInput `pulumi:"noLocalOverwrite"`
 	PoeDisabled      pulumi.BoolPtrInput `pulumi:"poeDisabled"`
-	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+	// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
-	// port usage name.
-	//
-	// If EVPN is used, use `evpnUplink`or `evpnDownlink`
+	// port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 	Usage pulumi.StringInput `pulumi:"usage"`
 }
 
@@ -18816,14 +19298,12 @@ func (o SwitchPortConfigOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortConfig) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `auto`
+// enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 func (o SwitchPortConfigOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortConfig) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
 
-// port usage name.
-//
-// If EVPN is used, use `evpnUplink`or `evpnDownlink`
+// port usage name. If EVPN is used, use `evpnUplink`or `evpnDownlink`
 func (o SwitchPortConfigOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v SwitchPortConfig) string { return v.Usage }).(pulumi.StringOutput)
 }
@@ -18984,9 +19464,9 @@ func (o SwitchPortMirroringMapOutput) MapIndex(k pulumi.StringInput) SwitchPortM
 type SwitchPortUsages struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	//
-	// When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
@@ -19021,7 +19501,7 @@ type SwitchPortUsages struct {
 	MacAuthProtocol *string `pulumi:"macAuthProtocol"`
 	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
 	MacLimit *int `pulumi:"macLimit"`
-	// `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+	// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
 	Mode *string `pulumi:"mode"`
 	// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
 	Mtu *int `pulumi:"mtu"`
@@ -19045,7 +19525,7 @@ type SwitchPortUsages struct {
 	ServerFailNetwork *string `pulumi:"serverFailNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
 	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
-	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
 	// Switch storm control
 	// Only if `mode`!=`dynamic`
@@ -19074,9 +19554,9 @@ type SwitchPortUsagesInput interface {
 type SwitchPortUsagesArgs struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	//
-	// When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
@@ -19111,7 +19591,7 @@ type SwitchPortUsagesArgs struct {
 	MacAuthProtocol pulumi.StringPtrInput `pulumi:"macAuthProtocol"`
 	// Only if `mode`!=`dynamic` max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
 	MacLimit pulumi.IntPtrInput `pulumi:"macLimit"`
-	// `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+	// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Only if `mode`!=`dynamic` media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
 	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
@@ -19135,7 +19615,7 @@ type SwitchPortUsagesArgs struct {
 	ServerFailNetwork pulumi.StringPtrInput `pulumi:"serverFailNetwork"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` when radius server reject / fails
 	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
-	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
 	// Switch storm control
 	// Only if `mode`!=`dynamic`
@@ -19206,9 +19686,9 @@ func (o SwitchPortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` if DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-//
-// When it is not defined, it means using the system’s default setting which depends on whether the port is a access or trunk port.
+// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
+// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
+// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 func (o SwitchPortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -19294,7 +19774,7 @@ func (o SwitchPortUsagesOutput) MacLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *int { return v.MacLimit }).(pulumi.IntPtrOutput)
 }
 
-// `mode`==`dynamic` must only be used with the port usage with the name `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
+// `mode`==`dynamic` must only be used if the port usage name is `dynamic`. enum: `access`, `dynamic`, `inet`, `trunk`
 func (o SwitchPortUsagesOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -19354,7 +19834,7 @@ func (o SwitchPortUsagesOutput) ServerRejectNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.ServerRejectNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed
+// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 func (o SwitchPortUsagesOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
@@ -38471,6 +38951,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchIpConfigPtrInput)(nil)).Elem(), SwitchIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchLocalPortConfigInput)(nil)).Elem(), SwitchLocalPortConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchLocalPortConfigMapInput)(nil)).Elem(), SwitchLocalPortConfigMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchLocalPortConfigStormControlInput)(nil)).Elem(), SwitchLocalPortConfigStormControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchLocalPortConfigStormControlPtrInput)(nil)).Elem(), SwitchLocalPortConfigStormControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchMistNacInput)(nil)).Elem(), SwitchMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchMistNacPtrInput)(nil)).Elem(), SwitchMistNacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchNetworksInput)(nil)).Elem(), SwitchNetworksArgs{})
@@ -38938,6 +39420,8 @@ func init() {
 	pulumi.RegisterOutputType(SwitchIpConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchLocalPortConfigOutput{})
 	pulumi.RegisterOutputType(SwitchLocalPortConfigMapOutput{})
+	pulumi.RegisterOutputType(SwitchLocalPortConfigStormControlOutput{})
+	pulumi.RegisterOutputType(SwitchLocalPortConfigStormControlPtrOutput{})
 	pulumi.RegisterOutputType(SwitchMistNacOutput{})
 	pulumi.RegisterOutputType(SwitchMistNacPtrOutput{})
 	pulumi.RegisterOutputType(SwitchNetworksOutput{})

@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? IdpprofileId;
         /// <summary>
-        /// `strict` (default) / `standard` / or keys from from idp_profiles
+        /// enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
         /// </summary>
         public readonly string? Profile;
 

@@ -128,7 +128,7 @@ public final class SettingBleConfig {
      */
     private @Nullable String ibeaconUuid;
     /**
-     * @return required if `power_mode`==`custom`
+     * @return required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     private @Nullable Integer power;
@@ -303,7 +303,7 @@ public final class SettingBleConfig {
         return Optional.ofNullable(this.ibeaconUuid);
     }
     /**
-     * @return required if `power_mode`==`custom`
+     * @return required if `power_mode`==`custom`; else use `power_mode` as default
      * 
      */
     public Optional<Integer> power() {
