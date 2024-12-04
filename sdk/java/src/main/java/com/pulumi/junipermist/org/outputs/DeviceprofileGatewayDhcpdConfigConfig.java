@@ -6,7 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayDhcpdConfigConfigFixedBindings;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayDhcpdConfigConfigOptions;
-import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated;
+import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,7 +100,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated> vendorEncapulated;
+    private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
 
     private DeviceprofileGatewayDhcpdConfigConfig() {}
     /**
@@ -215,8 +215,8 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    public Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated> vendorEncapulated() {
-        return this.vendorEncapulated == null ? Map.of() : this.vendorEncapulated;
+    public Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated() {
+        return this.vendorEncapsulated == null ? Map.of() : this.vendorEncapsulated;
     }
 
     public static Builder builder() {
@@ -243,7 +243,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         private @Nullable List<String> servers6s;
         private @Nullable String type;
         private @Nullable String type6;
-        private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated> vendorEncapulated;
+        private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
         public Builder() {}
         public Builder(DeviceprofileGatewayDhcpdConfigConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -262,7 +262,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
     	      this.servers6s = defaults.servers6s;
     	      this.type = defaults.type;
     	      this.type6 = defaults.type6;
-    	      this.vendorEncapulated = defaults.vendorEncapulated;
+    	      this.vendorEncapsulated = defaults.vendorEncapsulated;
         }
 
         @CustomType.Setter
@@ -368,9 +368,9 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder vendorEncapulated(@Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated> vendorEncapulated) {
+        public Builder vendorEncapsulated(@Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated) {
 
-            this.vendorEncapulated = vendorEncapulated;
+            this.vendorEncapsulated = vendorEncapsulated;
             return this;
         }
         public DeviceprofileGatewayDhcpdConfigConfig build() {
@@ -390,7 +390,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
             _resultValue.servers6s = servers6s;
             _resultValue.type = type;
             _resultValue.type6 = type6;
-            _resultValue.vendorEncapulated = vendorEncapulated;
+            _resultValue.vendorEncapsulated = vendorEncapsulated;
             return _resultValue;
         }
     }

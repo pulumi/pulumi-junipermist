@@ -29,6 +29,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -1128,10 +1129,18 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.radsec);
     }
 
+    /**
+     * Property key is the RF band. enum: `24`, `5`, `6`
+     * 
+     */
     @Import(name="rateset")
-    private @Nullable Output<WlanRatesetArgs> rateset;
+    private @Nullable Output<Map<String,WlanRatesetArgs>> rateset;
 
-    public Optional<Output<WlanRatesetArgs>> rateset() {
+    /**
+     * @return Property key is the RF band. enum: `24`, `5`, `6`
+     * 
+     */
+    public Optional<Output<Map<String,WlanRatesetArgs>>> rateset() {
         return Optional.ofNullable(this.rateset);
     }
 
@@ -3112,12 +3121,24 @@ public final class WlanState extends com.pulumi.resources.ResourceArgs {
             return radsec(Output.of(radsec));
         }
 
-        public Builder rateset(@Nullable Output<WlanRatesetArgs> rateset) {
+        /**
+         * @param rateset Property key is the RF band. enum: `24`, `5`, `6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateset(@Nullable Output<Map<String,WlanRatesetArgs>> rateset) {
             $.rateset = rateset;
             return this;
         }
 
-        public Builder rateset(WlanRatesetArgs rateset) {
+        /**
+         * @param rateset Property key is the RF band. enum: `24`, `5`, `6`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rateset(Map<String,WlanRatesetArgs> rateset) {
             return rateset(Output.of(rateset));
         }
 

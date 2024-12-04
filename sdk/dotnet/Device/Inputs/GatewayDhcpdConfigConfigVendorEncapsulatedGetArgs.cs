@@ -7,10 +7,10 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.JuniperMist.Org.Inputs
+namespace Pulumi.JuniperMist.Device.Inputs
 {
 
-    public sealed class GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs : global::Pulumi.ResourceArgs
+    public sealed class GatewayDhcpdConfigConfigVendorEncapsulatedGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -21,9 +21,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs()
+        public GatewayDhcpdConfigConfigVendorEncapsulatedGetArgs()
         {
         }
-        public static new GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs Empty => new GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs();
+        public static new GatewayDhcpdConfigConfigVendorEncapsulatedGetArgs Empty => new GatewayDhcpdConfigConfigVendorEncapsulatedGetArgs();
     }
 }

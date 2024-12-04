@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org.Inputs
 {
 
-    public sealed class DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -21,9 +21,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs()
+        public GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs()
         {
         }
-        public static new DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs Empty => new DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs();
+        public static new GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs Empty => new GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs();
     }
 }

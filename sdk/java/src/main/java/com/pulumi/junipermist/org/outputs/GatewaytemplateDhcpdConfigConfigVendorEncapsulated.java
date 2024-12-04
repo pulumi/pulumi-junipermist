@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GatewaytemplateDhcpdConfigConfigVendorEncapulated {
+public final class GatewaytemplateDhcpdConfigConfigVendorEncapsulated {
     /**
      * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
      * 
@@ -18,7 +18,7 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulated {
     private @Nullable String type;
     private @Nullable String value;
 
-    private GatewaytemplateDhcpdConfigConfigVendorEncapulated() {}
+    private GatewaytemplateDhcpdConfigConfigVendorEncapsulated() {}
     /**
      * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
      * 
@@ -34,7 +34,7 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulated {
         return new Builder();
     }
 
-    public static Builder builder(GatewaytemplateDhcpdConfigConfigVendorEncapulated defaults) {
+    public static Builder builder(GatewaytemplateDhcpdConfigConfigVendorEncapsulated defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -42,7 +42,7 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulated {
         private @Nullable String type;
         private @Nullable String value;
         public Builder() {}
-        public Builder(GatewaytemplateDhcpdConfigConfigVendorEncapulated defaults) {
+        public Builder(GatewaytemplateDhcpdConfigConfigVendorEncapsulated defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
     	      this.value = defaults.value;
@@ -60,8 +60,8 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulated {
             this.value = value;
             return this;
         }
-        public GatewaytemplateDhcpdConfigConfigVendorEncapulated build() {
-            final var _resultValue = new GatewaytemplateDhcpdConfigConfigVendorEncapulated();
+        public GatewaytemplateDhcpdConfigConfigVendorEncapsulated build() {
+            final var _resultValue = new GatewaytemplateDhcpdConfigConfigVendorEncapsulated();
             _resultValue.type = type;
             _resultValue.value = value;
             return _resultValue;

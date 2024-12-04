@@ -5158,7 +5158,7 @@ type DeviceprofileGatewayDhcpdConfigConfig struct {
 	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated `pulumi:"vendorEncapulated"`
+	VendorEncapsulated map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated `pulumi:"vendorEncapsulated"`
 }
 
 // DeviceprofileGatewayDhcpdConfigConfigInput is an input type that accepts DeviceprofileGatewayDhcpdConfigConfigArgs and DeviceprofileGatewayDhcpdConfigConfigOutput values.
@@ -5207,7 +5207,7 @@ type DeviceprofileGatewayDhcpdConfigConfigArgs struct {
 	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapInput `pulumi:"vendorEncapulated"`
+	VendorEncapsulated DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapInput `pulumi:"vendorEncapsulated"`
 }
 
 func (DeviceprofileGatewayDhcpdConfigConfigArgs) ElementType() reflect.Type {
@@ -5344,10 +5344,10 @@ func (o DeviceprofileGatewayDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOut
 // if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 //   - enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 //   - sub option code: 1-255, sub-option code'
-func (o DeviceprofileGatewayDhcpdConfigConfigOutput) VendorEncapulated() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfig) map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated {
-		return v.VendorEncapulated
-	}).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (o DeviceprofileGatewayDhcpdConfigConfigOutput) VendorEncapsulated() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfig) map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated {
+		return v.VendorEncapsulated
+	}).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
 type DeviceprofileGatewayDhcpdConfigConfigMapOutput struct{ *pulumi.OutputState }
@@ -5573,107 +5573,107 @@ func (o DeviceprofileGatewayDhcpdConfigConfigOptionsMapOutput) MapIndex(k pulumi
 	}).(DeviceprofileGatewayDhcpdConfigConfigOptionsOutput)
 }
 
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated struct {
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  *string `pulumi:"type"`
 	Value *string `pulumi:"value"`
 }
 
-// DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedInput is an input type that accepts DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs and DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput values.
-// You can construct a concrete instance of `DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedInput` via:
+// DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedInput is an input type that accepts DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs and DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedInput` via:
 //
-//	DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs{...}
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedInput interface {
+//	DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs{...}
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedInput interface {
 	pulumi.Input
 
-	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput
-	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput
+	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput
+	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput
 }
 
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs struct {
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  pulumi.StringPtrInput `pulumi:"type"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput {
-	return i.ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Background())
+func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput {
+	return i.ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Background())
 }
 
-func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput)
+func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
-// DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapInput is an input type that accepts DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap and DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput values.
-// You can construct a concrete instance of `DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapInput` via:
+// DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapInput is an input type that accepts DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap and DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput values.
+// You can construct a concrete instance of `DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapInput` via:
 //
-//	DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap{ "key": DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs{...} }
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapInput interface {
+//	DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap{ "key": DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs{...} }
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapInput interface {
 	pulumi.Input
 
-	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput
-	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput
+	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput
+	ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput
 }
 
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedInput
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedInput
 
-func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return i.ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Background())
+func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return i.ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Background())
 }
 
-func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (i DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput struct{ *pulumi.OutputState }
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput struct{ *pulumi.OutputState }
 
-func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput {
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput {
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
 // enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput struct{ *pulumi.OutputState }
+type DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput struct{ *pulumi.OutputState }
 
-func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput() DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) ToDeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput) MapIndex(k pulumi.StringInput) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated {
-		return vs[0].(map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated)[vs[1].(string)]
-	}).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput)
+func (o DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) MapIndex(k pulumi.StringInput) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated {
+		return vs[0].(map[string]DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated)[vs[1].(string)]
+	}).(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
 type DeviceprofileGatewayExtraRoutes6 struct {
@@ -16458,7 +16458,7 @@ type GatewaytemplateDhcpdConfigConfig struct {
 	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated map[string]GatewaytemplateDhcpdConfigConfigVendorEncapulated `pulumi:"vendorEncapulated"`
+	VendorEncapsulated map[string]GatewaytemplateDhcpdConfigConfigVendorEncapsulated `pulumi:"vendorEncapsulated"`
 }
 
 // GatewaytemplateDhcpdConfigConfigInput is an input type that accepts GatewaytemplateDhcpdConfigConfigArgs and GatewaytemplateDhcpdConfigConfigOutput values.
@@ -16507,7 +16507,7 @@ type GatewaytemplateDhcpdConfigConfigArgs struct {
 	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapInput `pulumi:"vendorEncapulated"`
+	VendorEncapsulated GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapInput `pulumi:"vendorEncapsulated"`
 }
 
 func (GatewaytemplateDhcpdConfigConfigArgs) ElementType() reflect.Type {
@@ -16644,10 +16644,10 @@ func (o GatewaytemplateDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOutput {
 // if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 //   - enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 //   - sub option code: 1-255, sub-option code'
-func (o GatewaytemplateDhcpdConfigConfigOutput) VendorEncapulated() GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfig) map[string]GatewaytemplateDhcpdConfigConfigVendorEncapulated {
-		return v.VendorEncapulated
-	}).(GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (o GatewaytemplateDhcpdConfigConfigOutput) VendorEncapsulated() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfig) map[string]GatewaytemplateDhcpdConfigConfigVendorEncapsulated {
+		return v.VendorEncapsulated
+	}).(GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
 type GatewaytemplateDhcpdConfigConfigMapOutput struct{ *pulumi.OutputState }
@@ -16873,107 +16873,107 @@ func (o GatewaytemplateDhcpdConfigConfigOptionsMapOutput) MapIndex(k pulumi.Stri
 	}).(GatewaytemplateDhcpdConfigConfigOptionsOutput)
 }
 
-type GatewaytemplateDhcpdConfigConfigVendorEncapulated struct {
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulated struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  *string `pulumi:"type"`
 	Value *string `pulumi:"value"`
 }
 
-// GatewaytemplateDhcpdConfigConfigVendorEncapulatedInput is an input type that accepts GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs and GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput values.
-// You can construct a concrete instance of `GatewaytemplateDhcpdConfigConfigVendorEncapulatedInput` via:
+// GatewaytemplateDhcpdConfigConfigVendorEncapsulatedInput is an input type that accepts GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs and GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput values.
+// You can construct a concrete instance of `GatewaytemplateDhcpdConfigConfigVendorEncapsulatedInput` via:
 //
-//	GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs{...}
-type GatewaytemplateDhcpdConfigConfigVendorEncapulatedInput interface {
+//	GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs{...}
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulatedInput interface {
 	pulumi.Input
 
-	ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput() GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput
-	ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput
+	ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput
+	ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput
 }
 
-type GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs struct {
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  pulumi.StringPtrInput `pulumi:"type"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput() GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput {
-	return i.ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Background())
+func (i GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput {
+	return i.ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Background())
 }
 
-func (i GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput)
+func (i GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
-// GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapInput is an input type that accepts GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap and GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput values.
-// You can construct a concrete instance of `GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapInput` via:
+// GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapInput is an input type that accepts GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap and GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput values.
+// You can construct a concrete instance of `GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapInput` via:
 //
-//	GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap{ "key": GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs{...} }
-type GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapInput interface {
+//	GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap{ "key": GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs{...} }
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapInput interface {
 	pulumi.Input
 
-	ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput() GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput
-	ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput
+	ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput
+	ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput
 }
 
-type GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap map[string]GatewaytemplateDhcpdConfigConfigVendorEncapulatedInput
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap map[string]GatewaytemplateDhcpdConfigConfigVendorEncapsulatedInput
 
-func (GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewaytemplateDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewaytemplateDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput() GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return i.ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Background())
+func (i GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return i.ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Background())
 }
 
-func (i GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (i GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
-type GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput struct{ *pulumi.OutputState }
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput struct{ *pulumi.OutputState }
 
-func (GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput() GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput {
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput {
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
 // enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfigVendorEncapulated) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfigVendorEncapsulated) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfigVendorEncapulated) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewaytemplateDhcpdConfigConfigVendorEncapsulated) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput struct{ *pulumi.OutputState }
+type GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput struct{ *pulumi.OutputState }
 
-func (GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewaytemplateDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewaytemplateDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput() GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput() GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput) ToGatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput) MapIndex(k pulumi.StringInput) GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewaytemplateDhcpdConfigConfigVendorEncapulated {
-		return vs[0].(map[string]GatewaytemplateDhcpdConfigConfigVendorEncapulated)[vs[1].(string)]
-	}).(GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput)
+func (o GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput) MapIndex(k pulumi.StringInput) GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewaytemplateDhcpdConfigConfigVendorEncapsulated {
+		return vs[0].(map[string]GatewaytemplateDhcpdConfigConfigVendorEncapsulated)[vs[1].(string)]
+	}).(GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
 type GatewaytemplateExtraRoutes6 struct {
@@ -54595,10 +54595,21 @@ func (o WlanRadsecServerArrayOutput) Index(i pulumi.IntInput) WlanRadsecServerOu
 }
 
 type WlanRateset struct {
-	// data rates wlan settings
-	Band24 *WlanRatesetBand24 `pulumi:"band24"`
-	// data rates wlan settings
-	Band5 *WlanRatesetBand5 `pulumi:"band5"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	Ht *string `pulumi:"ht"`
+	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+	Legacies []string `pulumi:"legacies"`
+	// Minimum RSSI for client to connect, 0 means not enforcing
+	MinRssi *int `pulumi:"minRssi"`
+	// Data Rates template to apply. enum:
+	//   * `no-legacy`: no 11b
+	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+	//   * `legacy-only`: disable 802.11n and 802.11ac
+	//   * `high-density`: no 11b, no low rates
+	//   * `custom`: user defined
+	Template *string `pulumi:"template"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	Vht *string `pulumi:"vht"`
 }
 
 // WlanRatesetInput is an input type that accepts WlanRatesetArgs and WlanRatesetOutput values.
@@ -54613,10 +54624,21 @@ type WlanRatesetInput interface {
 }
 
 type WlanRatesetArgs struct {
-	// data rates wlan settings
-	Band24 WlanRatesetBand24PtrInput `pulumi:"band24"`
-	// data rates wlan settings
-	Band5 WlanRatesetBand5PtrInput `pulumi:"band5"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	Ht pulumi.StringPtrInput `pulumi:"ht"`
+	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
+	// Minimum RSSI for client to connect, 0 means not enforcing
+	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
+	// Data Rates template to apply. enum:
+	//   * `no-legacy`: no 11b
+	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+	//   * `legacy-only`: disable 802.11n and 802.11ac
+	//   * `high-density`: no 11b, no low rates
+	//   * `custom`: user defined
+	Template pulumi.StringPtrInput `pulumi:"template"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	Vht pulumi.StringPtrInput `pulumi:"vht"`
 }
 
 func (WlanRatesetArgs) ElementType() reflect.Type {
@@ -54631,45 +54653,29 @@ func (i WlanRatesetArgs) ToWlanRatesetOutputWithContext(ctx context.Context) Wla
 	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetOutput)
 }
 
-func (i WlanRatesetArgs) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
-	return i.ToWlanRatesetPtrOutputWithContext(context.Background())
-}
-
-func (i WlanRatesetArgs) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetOutput).ToWlanRatesetPtrOutputWithContext(ctx)
-}
-
-// WlanRatesetPtrInput is an input type that accepts WlanRatesetArgs, WlanRatesetPtr and WlanRatesetPtrOutput values.
-// You can construct a concrete instance of `WlanRatesetPtrInput` via:
+// WlanRatesetMapInput is an input type that accepts WlanRatesetMap and WlanRatesetMapOutput values.
+// You can construct a concrete instance of `WlanRatesetMapInput` via:
 //
-//	        WlanRatesetArgs{...}
-//
-//	or:
-//
-//	        nil
-type WlanRatesetPtrInput interface {
+//	WlanRatesetMap{ "key": WlanRatesetArgs{...} }
+type WlanRatesetMapInput interface {
 	pulumi.Input
 
-	ToWlanRatesetPtrOutput() WlanRatesetPtrOutput
-	ToWlanRatesetPtrOutputWithContext(context.Context) WlanRatesetPtrOutput
+	ToWlanRatesetMapOutput() WlanRatesetMapOutput
+	ToWlanRatesetMapOutputWithContext(context.Context) WlanRatesetMapOutput
 }
 
-type wlanRatesetPtrType WlanRatesetArgs
+type WlanRatesetMap map[string]WlanRatesetInput
 
-func WlanRatesetPtr(v *WlanRatesetArgs) WlanRatesetPtrInput {
-	return (*wlanRatesetPtrType)(v)
+func (WlanRatesetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WlanRateset)(nil)).Elem()
 }
 
-func (*wlanRatesetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRateset)(nil)).Elem()
+func (i WlanRatesetMap) ToWlanRatesetMapOutput() WlanRatesetMapOutput {
+	return i.ToWlanRatesetMapOutputWithContext(context.Background())
 }
 
-func (i *wlanRatesetPtrType) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
-	return i.ToWlanRatesetPtrOutputWithContext(context.Background())
-}
-
-func (i *wlanRatesetPtrType) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetPtrOutput)
+func (i WlanRatesetMap) ToWlanRatesetMapOutputWithContext(ctx context.Context) WlanRatesetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetMapOutput)
 }
 
 type WlanRatesetOutput struct{ *pulumi.OutputState }
@@ -54686,534 +54692,54 @@ func (o WlanRatesetOutput) ToWlanRatesetOutputWithContext(ctx context.Context) W
 	return o
 }
 
-func (o WlanRatesetOutput) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
-	return o.ToWlanRatesetPtrOutputWithContext(context.Background())
+// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+func (o WlanRatesetOutput) Ht() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *string { return v.Ht }).(pulumi.StringPtrOutput)
 }
 
-func (o WlanRatesetOutput) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanRateset) *WlanRateset {
-		return &v
-	}).(WlanRatesetPtrOutput)
+// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+func (o WlanRatesetOutput) Legacies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlanRateset) []string { return v.Legacies }).(pulumi.StringArrayOutput)
 }
 
-// data rates wlan settings
-func (o WlanRatesetOutput) Band24() WlanRatesetBand24PtrOutput {
-	return o.ApplyT(func(v WlanRateset) *WlanRatesetBand24 { return v.Band24 }).(WlanRatesetBand24PtrOutput)
+// Minimum RSSI for client to connect, 0 means not enforcing
+func (o WlanRatesetOutput) MinRssi() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
 }
 
-// data rates wlan settings
-func (o WlanRatesetOutput) Band5() WlanRatesetBand5PtrOutput {
-	return o.ApplyT(func(v WlanRateset) *WlanRatesetBand5 { return v.Band5 }).(WlanRatesetBand5PtrOutput)
+// Data Rates template to apply. enum:
+//   - `no-legacy`: no 11b
+//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
+//   - `legacy-only`: disable 802.11n and 802.11ac
+//   - `high-density`: no 11b, no low rates
+//   - `custom`: user defined
+func (o WlanRatesetOutput) Template() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-type WlanRatesetPtrOutput struct{ *pulumi.OutputState }
-
-func (WlanRatesetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRateset)(nil)).Elem()
+// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+func (o WlanRatesetOutput) Vht() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *string { return v.Vht }).(pulumi.StringPtrOutput)
 }
 
-func (o WlanRatesetPtrOutput) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
+type WlanRatesetMapOutput struct{ *pulumi.OutputState }
+
+func (WlanRatesetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WlanRateset)(nil)).Elem()
+}
+
+func (o WlanRatesetMapOutput) ToWlanRatesetMapOutput() WlanRatesetMapOutput {
 	return o
 }
 
-func (o WlanRatesetPtrOutput) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
+func (o WlanRatesetMapOutput) ToWlanRatesetMapOutputWithContext(ctx context.Context) WlanRatesetMapOutput {
 	return o
 }
 
-func (o WlanRatesetPtrOutput) Elem() WlanRatesetOutput {
-	return o.ApplyT(func(v *WlanRateset) WlanRateset {
-		if v != nil {
-			return *v
-		}
-		var ret WlanRateset
-		return ret
+func (o WlanRatesetMapOutput) MapIndex(k pulumi.StringInput) WlanRatesetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WlanRateset {
+		return vs[0].(map[string]WlanRateset)[vs[1].(string)]
 	}).(WlanRatesetOutput)
-}
-
-// data rates wlan settings
-func (o WlanRatesetPtrOutput) Band24() WlanRatesetBand24PtrOutput {
-	return o.ApplyT(func(v *WlanRateset) *WlanRatesetBand24 {
-		if v == nil {
-			return nil
-		}
-		return v.Band24
-	}).(WlanRatesetBand24PtrOutput)
-}
-
-// data rates wlan settings
-func (o WlanRatesetPtrOutput) Band5() WlanRatesetBand5PtrOutput {
-	return o.ApplyT(func(v *WlanRateset) *WlanRatesetBand5 {
-		if v == nil {
-			return nil
-		}
-		return v.Band5
-	}).(WlanRatesetBand5PtrOutput)
-}
-
-type WlanRatesetBand24 struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht *string `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies []string `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi *int `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template *string `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht *string `pulumi:"vht"`
-}
-
-// WlanRatesetBand24Input is an input type that accepts WlanRatesetBand24Args and WlanRatesetBand24Output values.
-// You can construct a concrete instance of `WlanRatesetBand24Input` via:
-//
-//	WlanRatesetBand24Args{...}
-type WlanRatesetBand24Input interface {
-	pulumi.Input
-
-	ToWlanRatesetBand24Output() WlanRatesetBand24Output
-	ToWlanRatesetBand24OutputWithContext(context.Context) WlanRatesetBand24Output
-}
-
-type WlanRatesetBand24Args struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht pulumi.StringPtrInput `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template pulumi.StringPtrInput `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht pulumi.StringPtrInput `pulumi:"vht"`
-}
-
-func (WlanRatesetBand24Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand24)(nil)).Elem()
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24Output() WlanRatesetBand24Output {
-	return i.ToWlanRatesetBand24OutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24OutputWithContext(ctx context.Context) WlanRatesetBand24Output {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand24Output)
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return i.ToWlanRatesetBand24PtrOutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand24Output).ToWlanRatesetBand24PtrOutputWithContext(ctx)
-}
-
-// WlanRatesetBand24PtrInput is an input type that accepts WlanRatesetBand24Args, WlanRatesetBand24Ptr and WlanRatesetBand24PtrOutput values.
-// You can construct a concrete instance of `WlanRatesetBand24PtrInput` via:
-//
-//	        WlanRatesetBand24Args{...}
-//
-//	or:
-//
-//	        nil
-type WlanRatesetBand24PtrInput interface {
-	pulumi.Input
-
-	ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput
-	ToWlanRatesetBand24PtrOutputWithContext(context.Context) WlanRatesetBand24PtrOutput
-}
-
-type wlanRatesetBand24PtrType WlanRatesetBand24Args
-
-func WlanRatesetBand24Ptr(v *WlanRatesetBand24Args) WlanRatesetBand24PtrInput {
-	return (*wlanRatesetBand24PtrType)(v)
-}
-
-func (*wlanRatesetBand24PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand24)(nil)).Elem()
-}
-
-func (i *wlanRatesetBand24PtrType) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return i.ToWlanRatesetBand24PtrOutputWithContext(context.Background())
-}
-
-func (i *wlanRatesetBand24PtrType) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand24PtrOutput)
-}
-
-type WlanRatesetBand24Output struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand24Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand24)(nil)).Elem()
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24Output() WlanRatesetBand24Output {
-	return o
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24OutputWithContext(ctx context.Context) WlanRatesetBand24Output {
-	return o
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return o.ToWlanRatesetBand24PtrOutputWithContext(context.Background())
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanRatesetBand24) *WlanRatesetBand24 {
-		return &v
-	}).(WlanRatesetBand24PtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand24Output) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *string { return v.Ht }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand24Output) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) []string { return v.Legacies }).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand24Output) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand24Output) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *string { return v.Template }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand24Output) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *string { return v.Vht }).(pulumi.StringPtrOutput)
-}
-
-type WlanRatesetBand24PtrOutput struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand24PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand24)(nil)).Elem()
-}
-
-func (o WlanRatesetBand24PtrOutput) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand24PtrOutput) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand24PtrOutput) Elem() WlanRatesetBand24Output {
-	return o.ApplyT(func(v *WlanRatesetBand24) WlanRatesetBand24 {
-		if v != nil {
-			return *v
-		}
-		var ret WlanRatesetBand24
-		return ret
-	}).(WlanRatesetBand24Output)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand24PtrOutput) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ht
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand24PtrOutput) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Legacies
-	}).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand24PtrOutput) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinRssi
-	}).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand24PtrOutput) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Template
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand24PtrOutput) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Vht
-	}).(pulumi.StringPtrOutput)
-}
-
-type WlanRatesetBand5 struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht *string `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies []string `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi *int `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template *string `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht *string `pulumi:"vht"`
-}
-
-// WlanRatesetBand5Input is an input type that accepts WlanRatesetBand5Args and WlanRatesetBand5Output values.
-// You can construct a concrete instance of `WlanRatesetBand5Input` via:
-//
-//	WlanRatesetBand5Args{...}
-type WlanRatesetBand5Input interface {
-	pulumi.Input
-
-	ToWlanRatesetBand5Output() WlanRatesetBand5Output
-	ToWlanRatesetBand5OutputWithContext(context.Context) WlanRatesetBand5Output
-}
-
-type WlanRatesetBand5Args struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht pulumi.StringPtrInput `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template pulumi.StringPtrInput `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht pulumi.StringPtrInput `pulumi:"vht"`
-}
-
-func (WlanRatesetBand5Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand5)(nil)).Elem()
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5Output() WlanRatesetBand5Output {
-	return i.ToWlanRatesetBand5OutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5OutputWithContext(ctx context.Context) WlanRatesetBand5Output {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand5Output)
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return i.ToWlanRatesetBand5PtrOutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand5Output).ToWlanRatesetBand5PtrOutputWithContext(ctx)
-}
-
-// WlanRatesetBand5PtrInput is an input type that accepts WlanRatesetBand5Args, WlanRatesetBand5Ptr and WlanRatesetBand5PtrOutput values.
-// You can construct a concrete instance of `WlanRatesetBand5PtrInput` via:
-//
-//	        WlanRatesetBand5Args{...}
-//
-//	or:
-//
-//	        nil
-type WlanRatesetBand5PtrInput interface {
-	pulumi.Input
-
-	ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput
-	ToWlanRatesetBand5PtrOutputWithContext(context.Context) WlanRatesetBand5PtrOutput
-}
-
-type wlanRatesetBand5PtrType WlanRatesetBand5Args
-
-func WlanRatesetBand5Ptr(v *WlanRatesetBand5Args) WlanRatesetBand5PtrInput {
-	return (*wlanRatesetBand5PtrType)(v)
-}
-
-func (*wlanRatesetBand5PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand5)(nil)).Elem()
-}
-
-func (i *wlanRatesetBand5PtrType) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return i.ToWlanRatesetBand5PtrOutputWithContext(context.Background())
-}
-
-func (i *wlanRatesetBand5PtrType) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand5PtrOutput)
-}
-
-type WlanRatesetBand5Output struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand5Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand5)(nil)).Elem()
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5Output() WlanRatesetBand5Output {
-	return o
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5OutputWithContext(ctx context.Context) WlanRatesetBand5Output {
-	return o
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return o.ToWlanRatesetBand5PtrOutputWithContext(context.Background())
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanRatesetBand5) *WlanRatesetBand5 {
-		return &v
-	}).(WlanRatesetBand5PtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand5Output) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *string { return v.Ht }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand5Output) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) []string { return v.Legacies }).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand5Output) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand5Output) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *string { return v.Template }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand5Output) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *string { return v.Vht }).(pulumi.StringPtrOutput)
-}
-
-type WlanRatesetBand5PtrOutput struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand5PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand5)(nil)).Elem()
-}
-
-func (o WlanRatesetBand5PtrOutput) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand5PtrOutput) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand5PtrOutput) Elem() WlanRatesetBand5Output {
-	return o.ApplyT(func(v *WlanRatesetBand5) WlanRatesetBand5 {
-		if v != nil {
-			return *v
-		}
-		var ret WlanRatesetBand5
-		return ret
-	}).(WlanRatesetBand5Output)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand5PtrOutput) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ht
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand5PtrOutput) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Legacies
-	}).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand5PtrOutput) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinRssi
-	}).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand5PtrOutput) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Template
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand5PtrOutput) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Vht
-	}).(pulumi.StringPtrOutput)
 }
 
 type WlanSchedule struct {
@@ -59374,8 +58900,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigFixedBindingsMapInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigFixedBindingsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigOptionsInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigOptionsMapInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigOptionsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapInput)(nil)).Elem(), DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayExtraRoutes6Input)(nil)).Elem(), DeviceprofileGatewayExtraRoutes6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayExtraRoutes6MapInput)(nil)).Elem(), DeviceprofileGatewayExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceprofileGatewayExtraRoutesInput)(nil)).Elem(), DeviceprofileGatewayExtraRoutesArgs{})
@@ -59510,8 +59036,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigFixedBindingsMapInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigFixedBindingsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigOptionsInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigOptionsMapInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigOptionsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapulatedInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigVendorEncapulatedMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapsulatedInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapInput)(nil)).Elem(), GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateExtraRoutes6Input)(nil)).Elem(), GatewaytemplateExtraRoutes6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateExtraRoutes6MapInput)(nil)).Elem(), GatewaytemplateExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewaytemplateExtraRoutesInput)(nil)).Elem(), GatewaytemplateExtraRoutesArgs{})
@@ -59917,11 +59443,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRadsecServerInput)(nil)).Elem(), WlanRadsecServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRadsecServerArrayInput)(nil)).Elem(), WlanRadsecServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetInput)(nil)).Elem(), WlanRatesetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetPtrInput)(nil)).Elem(), WlanRatesetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand24Input)(nil)).Elem(), WlanRatesetBand24Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand24PtrInput)(nil)).Elem(), WlanRatesetBand24Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand5Input)(nil)).Elem(), WlanRatesetBand5Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand5PtrInput)(nil)).Elem(), WlanRatesetBand5Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetMapInput)(nil)).Elem(), WlanRatesetMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleInput)(nil)).Elem(), WlanScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanSchedulePtrInput)(nil)).Elem(), WlanScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleHoursInput)(nil)).Elem(), WlanScheduleHoursArgs{})
@@ -60025,8 +59547,8 @@ func init() {
 	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigFixedBindingsMapOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigOptionsOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigOptionsMapOutput{})
-	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedOutput{})
-	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedMapOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedOutput{})
+	pulumi.RegisterOutputType(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayExtraRoutes6Output{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(DeviceprofileGatewayExtraRoutesOutput{})
@@ -60161,8 +59683,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigFixedBindingsMapOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigOptionsOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigOptionsMapOutput{})
-	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigVendorEncapulatedOutput{})
-	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigVendorEncapulatedMapOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigVendorEncapsulatedOutput{})
+	pulumi.RegisterOutputType(GatewaytemplateDhcpdConfigConfigVendorEncapsulatedMapOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateExtraRoutes6Output{})
 	pulumi.RegisterOutputType(GatewaytemplateExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(GatewaytemplateExtraRoutesOutput{})
@@ -60568,11 +60090,7 @@ func init() {
 	pulumi.RegisterOutputType(WlanRadsecServerOutput{})
 	pulumi.RegisterOutputType(WlanRadsecServerArrayOutput{})
 	pulumi.RegisterOutputType(WlanRatesetOutput{})
-	pulumi.RegisterOutputType(WlanRatesetPtrOutput{})
-	pulumi.RegisterOutputType(WlanRatesetBand24Output{})
-	pulumi.RegisterOutputType(WlanRatesetBand24PtrOutput{})
-	pulumi.RegisterOutputType(WlanRatesetBand5Output{})
-	pulumi.RegisterOutputType(WlanRatesetBand5PtrOutput{})
+	pulumi.RegisterOutputType(WlanRatesetMapOutput{})
 	pulumi.RegisterOutputType(WlanScheduleOutput{})
 	pulumi.RegisterOutputType(WlanSchedulePtrOutput{})
 	pulumi.RegisterOutputType(WlanScheduleHoursOutput{})

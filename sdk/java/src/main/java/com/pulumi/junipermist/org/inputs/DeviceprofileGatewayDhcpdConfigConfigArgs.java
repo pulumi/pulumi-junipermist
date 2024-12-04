@@ -7,7 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayDhcpdConfigConfigOptionsArgs;
-import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs;
+import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -255,8 +255,8 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    @Import(name="vendorEncapulated")
-    private @Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated;
+    @Import(name="vendorEncapsulated")
+    private @Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated;
 
     /**
      * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
@@ -264,8 +264,8 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    public Optional<Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs>>> vendorEncapulated() {
-        return Optional.ofNullable(this.vendorEncapulated);
+    public Optional<Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs>>> vendorEncapsulated() {
+        return Optional.ofNullable(this.vendorEncapsulated);
     }
 
     private DeviceprofileGatewayDhcpdConfigConfigArgs() {}
@@ -286,7 +286,7 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         this.servers6s = $.servers6s;
         this.type = $.type;
         this.type6 = $.type6;
-        this.vendorEncapulated = $.vendorEncapulated;
+        this.vendorEncapsulated = $.vendorEncapsulated;
     }
 
     public static Builder builder() {
@@ -665,28 +665,28 @@ public final class DeviceprofileGatewayDhcpdConfigConfigArgs extends com.pulumi.
         }
 
         /**
-         * @param vendorEncapulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapsulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
          * @return builder
          * 
          */
-        public Builder vendorEncapulated(@Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated) {
-            $.vendorEncapulated = vendorEncapulated;
+        public Builder vendorEncapsulated(@Nullable Output<Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated) {
+            $.vendorEncapsulated = vendorEncapsulated;
             return this;
         }
 
         /**
-         * @param vendorEncapulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapsulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
          * @return builder
          * 
          */
-        public Builder vendorEncapulated(Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs> vendorEncapulated) {
-            return vendorEncapulated(Output.of(vendorEncapulated));
+        public Builder vendorEncapsulated(Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs> vendorEncapsulated) {
+            return vendorEncapsulated(Output.of(vendorEncapsulated));
         }
 
         public DeviceprofileGatewayDhcpdConfigConfigArgs build() {

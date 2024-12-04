@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SwitchDhcpdConfigConfigVendorEncapulatedArgs extends com.pulumi.resources.ResourceArgs {
+public final class GatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SwitchDhcpdConfigConfigVendorEncapulatedArgs Empty = new SwitchDhcpdConfigConfigVendorEncapulatedArgs();
+    public static final GatewayDhcpdConfigConfigVendorEncapsulatedArgs Empty = new GatewayDhcpdConfigConfigVendorEncapsulatedArgs();
 
     /**
      * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -37,9 +37,9 @@ public final class SwitchDhcpdConfigConfigVendorEncapulatedArgs extends com.pulu
         return Optional.ofNullable(this.value);
     }
 
-    private SwitchDhcpdConfigConfigVendorEncapulatedArgs() {}
+    private GatewayDhcpdConfigConfigVendorEncapsulatedArgs() {}
 
-    private SwitchDhcpdConfigConfigVendorEncapulatedArgs(SwitchDhcpdConfigConfigVendorEncapulatedArgs $) {
+    private GatewayDhcpdConfigConfigVendorEncapsulatedArgs(GatewayDhcpdConfigConfigVendorEncapsulatedArgs $) {
         this.type = $.type;
         this.value = $.value;
     }
@@ -47,19 +47,19 @@ public final class SwitchDhcpdConfigConfigVendorEncapulatedArgs extends com.pulu
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SwitchDhcpdConfigConfigVendorEncapulatedArgs defaults) {
+    public static Builder builder(GatewayDhcpdConfigConfigVendorEncapsulatedArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SwitchDhcpdConfigConfigVendorEncapulatedArgs $;
+        private GatewayDhcpdConfigConfigVendorEncapsulatedArgs $;
 
         public Builder() {
-            $ = new SwitchDhcpdConfigConfigVendorEncapulatedArgs();
+            $ = new GatewayDhcpdConfigConfigVendorEncapsulatedArgs();
         }
 
-        public Builder(SwitchDhcpdConfigConfigVendorEncapulatedArgs defaults) {
-            $ = new SwitchDhcpdConfigConfigVendorEncapulatedArgs(Objects.requireNonNull(defaults));
+        public Builder(GatewayDhcpdConfigConfigVendorEncapsulatedArgs defaults) {
+            $ = new GatewayDhcpdConfigConfigVendorEncapsulatedArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -92,7 +92,7 @@ public final class SwitchDhcpdConfigConfigVendorEncapulatedArgs extends com.pulu
             return value(Output.of(value));
         }
 
-        public SwitchDhcpdConfigConfigVendorEncapulatedArgs build() {
+        public GatewayDhcpdConfigConfigVendorEncapsulatedArgs build() {
             return $;
         }
     }

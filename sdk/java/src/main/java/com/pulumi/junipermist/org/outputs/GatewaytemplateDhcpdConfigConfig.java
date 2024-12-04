@@ -6,7 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateDhcpdConfigConfigFixedBindings;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateDhcpdConfigConfigOptions;
-import com.pulumi.junipermist.org.outputs.GatewaytemplateDhcpdConfigConfigVendorEncapulated;
+import com.pulumi.junipermist.org.outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -100,7 +100,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    private @Nullable Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulated> vendorEncapulated;
+    private @Nullable Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
 
     private GatewaytemplateDhcpdConfigConfig() {}
     /**
@@ -215,8 +215,8 @@ public final class GatewaytemplateDhcpdConfigConfig {
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    public Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulated> vendorEncapulated() {
-        return this.vendorEncapulated == null ? Map.of() : this.vendorEncapulated;
+    public Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated() {
+        return this.vendorEncapsulated == null ? Map.of() : this.vendorEncapsulated;
     }
 
     public static Builder builder() {
@@ -243,7 +243,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
         private @Nullable List<String> servers6s;
         private @Nullable String type;
         private @Nullable String type6;
-        private @Nullable Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulated> vendorEncapulated;
+        private @Nullable Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
         public Builder() {}
         public Builder(GatewaytemplateDhcpdConfigConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -262,7 +262,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
     	      this.servers6s = defaults.servers6s;
     	      this.type = defaults.type;
     	      this.type6 = defaults.type6;
-    	      this.vendorEncapulated = defaults.vendorEncapulated;
+    	      this.vendorEncapsulated = defaults.vendorEncapsulated;
         }
 
         @CustomType.Setter
@@ -368,9 +368,9 @@ public final class GatewaytemplateDhcpdConfigConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder vendorEncapulated(@Nullable Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulated> vendorEncapulated) {
+        public Builder vendorEncapsulated(@Nullable Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated) {
 
-            this.vendorEncapulated = vendorEncapulated;
+            this.vendorEncapsulated = vendorEncapsulated;
             return this;
         }
         public GatewaytemplateDhcpdConfigConfig build() {
@@ -390,7 +390,7 @@ public final class GatewaytemplateDhcpdConfigConfig {
             _resultValue.servers6s = servers6s;
             _resultValue.type = type;
             _resultValue.type6 = type6;
-            _resultValue.vendorEncapulated = vendorEncapulated;
+            _resultValue.vendorEncapsulated = vendorEncapsulated;
             return _resultValue;
         }
     }

@@ -4,8 +4,9 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.junipermist.org.outputs.WlanRatesetBand24;
-import com.pulumi.junipermist.org.outputs.WlanRatesetBand5;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,30 +14,76 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanRateset {
     /**
-     * @return data rates wlan settings
+     * @return if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
-    private @Nullable WlanRatesetBand24 band24;
+    private @Nullable String ht;
     /**
-     * @return data rates wlan settings
+     * @return if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
      * 
      */
-    private @Nullable WlanRatesetBand5 band5;
+    private @Nullable List<String> legacies;
+    /**
+     * @return Minimum RSSI for client to connect, 0 means not enforcing
+     * 
+     */
+    private @Nullable Integer minRssi;
+    /**
+     * @return Data Rates template to apply. enum:
+     *   * `no-legacy`: no 11b
+     *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+     *   * `legacy-only`: disable 802.11n and 802.11ac
+     *   * `high-density`: no 11b, no low rates
+     *   * `custom`: user defined
+     * 
+     */
+    private @Nullable String template;
+    /**
+     * @return if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+     * 
+     */
+    private @Nullable String vht;
 
     private WlanRateset() {}
     /**
-     * @return data rates wlan settings
+     * @return if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
-    public Optional<WlanRatesetBand24> band24() {
-        return Optional.ofNullable(this.band24);
+    public Optional<String> ht() {
+        return Optional.ofNullable(this.ht);
     }
     /**
-     * @return data rates wlan settings
+     * @return if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
      * 
      */
-    public Optional<WlanRatesetBand5> band5() {
-        return Optional.ofNullable(this.band5);
+    public List<String> legacies() {
+        return this.legacies == null ? List.of() : this.legacies;
+    }
+    /**
+     * @return Minimum RSSI for client to connect, 0 means not enforcing
+     * 
+     */
+    public Optional<Integer> minRssi() {
+        return Optional.ofNullable(this.minRssi);
+    }
+    /**
+     * @return Data Rates template to apply. enum:
+     *   * `no-legacy`: no 11b
+     *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+     *   * `legacy-only`: disable 802.11n and 802.11ac
+     *   * `high-density`: no 11b, no low rates
+     *   * `custom`: user defined
+     * 
+     */
+    public Optional<String> template() {
+        return Optional.ofNullable(this.template);
+    }
+    /**
+     * @return if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+     * 
+     */
+    public Optional<String> vht() {
+        return Optional.ofNullable(this.vht);
     }
 
     public static Builder builder() {
@@ -48,31 +95,61 @@ public final class WlanRateset {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable WlanRatesetBand24 band24;
-        private @Nullable WlanRatesetBand5 band5;
+        private @Nullable String ht;
+        private @Nullable List<String> legacies;
+        private @Nullable Integer minRssi;
+        private @Nullable String template;
+        private @Nullable String vht;
         public Builder() {}
         public Builder(WlanRateset defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.band24 = defaults.band24;
-    	      this.band5 = defaults.band5;
+    	      this.ht = defaults.ht;
+    	      this.legacies = defaults.legacies;
+    	      this.minRssi = defaults.minRssi;
+    	      this.template = defaults.template;
+    	      this.vht = defaults.vht;
         }
 
         @CustomType.Setter
-        public Builder band24(@Nullable WlanRatesetBand24 band24) {
+        public Builder ht(@Nullable String ht) {
 
-            this.band24 = band24;
+            this.ht = ht;
             return this;
         }
         @CustomType.Setter
-        public Builder band5(@Nullable WlanRatesetBand5 band5) {
+        public Builder legacies(@Nullable List<String> legacies) {
 
-            this.band5 = band5;
+            this.legacies = legacies;
+            return this;
+        }
+        public Builder legacies(String... legacies) {
+            return legacies(List.of(legacies));
+        }
+        @CustomType.Setter
+        public Builder minRssi(@Nullable Integer minRssi) {
+
+            this.minRssi = minRssi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder template(@Nullable String template) {
+
+            this.template = template;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder vht(@Nullable String vht) {
+
+            this.vht = vht;
             return this;
         }
         public WlanRateset build() {
             final var _resultValue = new WlanRateset();
-            _resultValue.band24 = band24;
-            _resultValue.band5 = band5;
+            _resultValue.ht = ht;
+            _resultValue.legacies = legacies;
+            _resultValue.minRssi = minRssi;
+            _resultValue.template = template;
+            _resultValue.vht = vht;
             return _resultValue;
         }
     }

@@ -5,8 +5,9 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.junipermist.org.inputs.WlanRatesetBand24Args;
-import com.pulumi.junipermist.org.inputs.WlanRatesetBand5Args;
+import java.lang.Integer;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,40 +18,98 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanRatesetArgs Empty = new WlanRatesetArgs();
 
     /**
-     * data rates wlan settings
+     * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
-    @Import(name="band24")
-    private @Nullable Output<WlanRatesetBand24Args> band24;
+    @Import(name="ht")
+    private @Nullable Output<String> ht;
 
     /**
-     * @return data rates wlan settings
+     * @return if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
      * 
      */
-    public Optional<Output<WlanRatesetBand24Args>> band24() {
-        return Optional.ofNullable(this.band24);
+    public Optional<Output<String>> ht() {
+        return Optional.ofNullable(this.ht);
     }
 
     /**
-     * data rates wlan settings
+     * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
      * 
      */
-    @Import(name="band5")
-    private @Nullable Output<WlanRatesetBand5Args> band5;
+    @Import(name="legacies")
+    private @Nullable Output<List<String>> legacies;
 
     /**
-     * @return data rates wlan settings
+     * @return if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
      * 
      */
-    public Optional<Output<WlanRatesetBand5Args>> band5() {
-        return Optional.ofNullable(this.band5);
+    public Optional<Output<List<String>>> legacies() {
+        return Optional.ofNullable(this.legacies);
+    }
+
+    /**
+     * Minimum RSSI for client to connect, 0 means not enforcing
+     * 
+     */
+    @Import(name="minRssi")
+    private @Nullable Output<Integer> minRssi;
+
+    /**
+     * @return Minimum RSSI for client to connect, 0 means not enforcing
+     * 
+     */
+    public Optional<Output<Integer>> minRssi() {
+        return Optional.ofNullable(this.minRssi);
+    }
+
+    /**
+     * Data Rates template to apply. enum:
+     *   * `no-legacy`: no 11b
+     *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+     *   * `legacy-only`: disable 802.11n and 802.11ac
+     *   * `high-density`: no 11b, no low rates
+     *   * `custom`: user defined
+     * 
+     */
+    @Import(name="template")
+    private @Nullable Output<String> template;
+
+    /**
+     * @return Data Rates template to apply. enum:
+     *   * `no-legacy`: no 11b
+     *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+     *   * `legacy-only`: disable 802.11n and 802.11ac
+     *   * `high-density`: no 11b, no low rates
+     *   * `custom`: user defined
+     * 
+     */
+    public Optional<Output<String>> template() {
+        return Optional.ofNullable(this.template);
+    }
+
+    /**
+     * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+     * 
+     */
+    @Import(name="vht")
+    private @Nullable Output<String> vht;
+
+    /**
+     * @return if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+     * 
+     */
+    public Optional<Output<String>> vht() {
+        return Optional.ofNullable(this.vht);
     }
 
     private WlanRatesetArgs() {}
 
     private WlanRatesetArgs(WlanRatesetArgs $) {
-        this.band24 = $.band24;
-        this.band5 = $.band5;
+        this.ht = $.ht;
+        this.legacies = $.legacies;
+        this.minRssi = $.minRssi;
+        this.template = $.template;
+        this.vht = $.vht;
     }
 
     public static Builder builder() {
@@ -72,45 +131,128 @@ public final class WlanRatesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param band24 data rates wlan settings
+         * @param ht if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          * 
          * @return builder
          * 
          */
-        public Builder band24(@Nullable Output<WlanRatesetBand24Args> band24) {
-            $.band24 = band24;
+        public Builder ht(@Nullable Output<String> ht) {
+            $.ht = ht;
             return this;
         }
 
         /**
-         * @param band24 data rates wlan settings
+         * @param ht if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          * 
          * @return builder
          * 
          */
-        public Builder band24(WlanRatesetBand24Args band24) {
-            return band24(Output.of(band24));
+        public Builder ht(String ht) {
+            return ht(Output.of(ht));
         }
 
         /**
-         * @param band5 data rates wlan settings
+         * @param legacies if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
          * 
          * @return builder
          * 
          */
-        public Builder band5(@Nullable Output<WlanRatesetBand5Args> band5) {
-            $.band5 = band5;
+        public Builder legacies(@Nullable Output<List<String>> legacies) {
+            $.legacies = legacies;
             return this;
         }
 
         /**
-         * @param band5 data rates wlan settings
+         * @param legacies if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
          * 
          * @return builder
          * 
          */
-        public Builder band5(WlanRatesetBand5Args band5) {
-            return band5(Output.of(band5));
+        public Builder legacies(List<String> legacies) {
+            return legacies(Output.of(legacies));
+        }
+
+        /**
+         * @param legacies if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder legacies(String... legacies) {
+            return legacies(List.of(legacies));
+        }
+
+        /**
+         * @param minRssi Minimum RSSI for client to connect, 0 means not enforcing
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minRssi(@Nullable Output<Integer> minRssi) {
+            $.minRssi = minRssi;
+            return this;
+        }
+
+        /**
+         * @param minRssi Minimum RSSI for client to connect, 0 means not enforcing
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minRssi(Integer minRssi) {
+            return minRssi(Output.of(minRssi));
+        }
+
+        /**
+         * @param template Data Rates template to apply. enum:
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder template(@Nullable Output<String> template) {
+            $.template = template;
+            return this;
+        }
+
+        /**
+         * @param template Data Rates template to apply. enum:
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder template(String template) {
+            return template(Output.of(template));
+        }
+
+        /**
+         * @param vht if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vht(@Nullable Output<String> vht) {
+            $.vht = vht;
+            return this;
+        }
+
+        /**
+         * @param vht if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vht(String vht) {
+            return vht(Output.of(vht));
         }
 
         public WlanRatesetArgs build() {

@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs extends com.pulumi.resources.ResourceArgs {
+public final class DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs Empty = new GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs();
+    public static final DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs Empty = new DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs();
 
     /**
      * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -37,9 +37,9 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs extends
         return Optional.ofNullable(this.value);
     }
 
-    private GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs() {}
+    private DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs() {}
 
-    private GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs(GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs $) {
+    private DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs $) {
         this.type = $.type;
         this.value = $.value;
     }
@@ -47,19 +47,19 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs extends
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs defaults) {
+    public static Builder builder(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs $;
+        private DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs $;
 
         public Builder() {
-            $ = new GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs();
+            $ = new DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs();
         }
 
-        public Builder(GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs defaults) {
-            $ = new GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs(Objects.requireNonNull(defaults));
+        public Builder(DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs defaults) {
+            $ = new DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -92,7 +92,7 @@ public final class GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs extends
             return value(Output.of(value));
         }
 
-        public GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs build() {
+        public DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs build() {
             return $;
         }
     }

@@ -688,7 +688,7 @@ export namespace device {
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
-        vendorEncapulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfigVendorEncapulated>}>;
+        vendorEncapsulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayDhcpdConfigConfigVendorEncapsulated>}>;
     }
 
     export interface GatewayDhcpdConfigConfigFixedBindings {
@@ -704,7 +704,7 @@ export namespace device {
         value?: pulumi.Input<string>;
     }
 
-    export interface GatewayDhcpdConfigConfigVendorEncapulated {
+    export interface GatewayDhcpdConfigConfigVendorEncapsulated {
         /**
          * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
          */
@@ -1940,7 +1940,7 @@ export namespace device {
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
-        vendorEncapulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigVendorEncapulated>}>;
+        vendorEncapsulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchDhcpdConfigConfigVendorEncapsulated>}>;
     }
 
     export interface SwitchDhcpdConfigConfigFixedBindings {
@@ -1956,7 +1956,7 @@ export namespace device {
         value?: pulumi.Input<string>;
     }
 
-    export interface SwitchDhcpdConfigConfigVendorEncapulated {
+    export interface SwitchDhcpdConfigConfigVendorEncapsulated {
         /**
          * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
          */
@@ -3883,7 +3883,7 @@ export namespace org {
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
-        vendorEncapulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated>}>;
+        vendorEncapsulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated>}>;
     }
 
     export interface DeviceprofileGatewayDhcpdConfigConfigFixedBindings {
@@ -3899,7 +3899,7 @@ export namespace org {
         value?: pulumi.Input<string>;
     }
 
-    export interface DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated {
+    export interface DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated {
         /**
          * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
          */
@@ -5186,7 +5186,7 @@ export namespace org {
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code'
          */
-        vendorEncapulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfigVendorEncapulated>}>;
+        vendorEncapsulated?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateDhcpdConfigConfigVendorEncapsulated>}>;
     }
 
     export interface GatewaytemplateDhcpdConfigConfigFixedBindings {
@@ -5202,7 +5202,7 @@ export namespace org {
         value?: pulumi.Input<string>;
     }
 
-    export interface GatewaytemplateDhcpdConfigConfigVendorEncapulated {
+    export interface GatewaytemplateDhcpdConfigConfigVendorEncapsulated {
         /**
          * enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
          */
@@ -9679,50 +9679,11 @@ Please update your configurations.
 
     export interface WlanRateset {
         /**
-         * data rates wlan settings
-         */
-        band24?: pulumi.Input<inputs.org.WlanRatesetBand24>;
-        /**
-         * data rates wlan settings
-         */
-        band5?: pulumi.Input<inputs.org.WlanRatesetBand5>;
-    }
-
-    export interface WlanRatesetBand24 {
-        /**
          * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          */
         ht?: pulumi.Input<string>;
         /**
-         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-         */
-        legacies?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Minimum RSSI for client to connect, 0 means not enforcing
-         */
-        minRssi?: pulumi.Input<number>;
-        /**
-         * Data Rates template to apply. enum: 
-         *   * `no-legacy`: no 11b
-         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-         *   * `legacy-only`: disable 802.11n and 802.11ac
-         *   * `high-density`: no 11b, no low rates
-         *   * `custom`: user defined
-         */
-        template?: pulumi.Input<string>;
-        /**
-         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-         */
-        vht?: pulumi.Input<string>;
-    }
-
-    export interface WlanRatesetBand5 {
-        /**
-         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-         */
-        ht?: pulumi.Input<string>;
-        /**
-         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
          */
         legacies?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -12957,50 +12918,11 @@ Please update your configurations.
 
     export interface WlanRateset {
         /**
-         * data rates wlan settings
-         */
-        band24?: pulumi.Input<inputs.site.WlanRatesetBand24>;
-        /**
-         * data rates wlan settings
-         */
-        band5?: pulumi.Input<inputs.site.WlanRatesetBand5>;
-    }
-
-    export interface WlanRatesetBand24 {
-        /**
          * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
          */
         ht?: pulumi.Input<string>;
         /**
-         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-         */
-        legacies?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Minimum RSSI for client to connect, 0 means not enforcing
-         */
-        minRssi?: pulumi.Input<number>;
-        /**
-         * Data Rates template to apply. enum: 
-         *   * `no-legacy`: no 11b
-         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-         *   * `legacy-only`: disable 802.11n and 802.11ac
-         *   * `high-density`: no 11b, no low rates
-         *   * `custom`: user defined
-         */
-        template?: pulumi.Input<string>;
-        /**
-         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-         */
-        vht?: pulumi.Input<string>;
-    }
-
-    export interface WlanRatesetBand5 {
-        /**
-         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-         */
-        ht?: pulumi.Input<string>;
-        /**
-         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
          */
         legacies?: pulumi.Input<pulumi.Input<string>[]>;
         /**

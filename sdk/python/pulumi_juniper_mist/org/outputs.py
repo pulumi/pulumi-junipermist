@@ -40,7 +40,7 @@ __all__ = [
     'DeviceprofileGatewayDhcpdConfigConfig',
     'DeviceprofileGatewayDhcpdConfigConfigFixedBindings',
     'DeviceprofileGatewayDhcpdConfigConfigOptions',
-    'DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated',
+    'DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated',
     'DeviceprofileGatewayExtraRoutes6',
     'DeviceprofileGatewayExtraRoutes',
     'DeviceprofileGatewayIdpProfiles',
@@ -108,7 +108,7 @@ __all__ = [
     'GatewaytemplateDhcpdConfigConfig',
     'GatewaytemplateDhcpdConfigConfigFixedBindings',
     'GatewaytemplateDhcpdConfigConfigOptions',
-    'GatewaytemplateDhcpdConfigConfigVendorEncapulated',
+    'GatewaytemplateDhcpdConfigConfigVendorEncapsulated',
     'GatewaytemplateExtraRoutes6',
     'GatewaytemplateExtraRoutes',
     'GatewaytemplateIdpProfiles',
@@ -312,8 +312,6 @@ __all__ = [
     'WlanRadsec',
     'WlanRadsecServer',
     'WlanRateset',
-    'WlanRatesetBand24',
-    'WlanRatesetBand5',
     'WlanSchedule',
     'WlanScheduleHours',
     'WlantemplateApplies',
@@ -2844,8 +2842,8 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
             suggest = "lease_time"
         elif key == "serverIdOverride":
             suggest = "server_id_override"
-        elif key == "vendorEncapulated":
-            suggest = "vendor_encapulated"
+        elif key == "vendorEncapsulated":
+            suggest = "vendor_encapsulated"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DeviceprofileGatewayDhcpdConfigConfig. Access the value via the '{suggest}' property getter instead.")
@@ -2874,7 +2872,7 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
                  servers6s: Optional[Sequence[str]] = None,
                  type: Optional[str] = None,
                  type6: Optional[str] = None,
-                 vendor_encapulated: Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated']] = None):
+                 vendor_encapsulated: Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated']] = None):
         """
         :param Sequence[str] dns_servers: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         :param Sequence[str] dns_suffixes: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
@@ -2892,7 +2890,7 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         :param Sequence[str] servers6s: if `type6`==`relay`
         :param str type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param str type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
-        :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedArgs'] vendor_encapulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        :param Mapping[str, 'DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs'] vendor_encapsulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
                  * sub option code: 1-255, sub-option code'
         """
@@ -2926,8 +2924,8 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
             pulumi.set(__self__, "type", type)
         if type6 is not None:
             pulumi.set(__self__, "type6", type6)
-        if vendor_encapulated is not None:
-            pulumi.set(__self__, "vendor_encapulated", vendor_encapulated)
+        if vendor_encapsulated is not None:
+            pulumi.set(__self__, "vendor_encapsulated", vendor_encapsulated)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -3051,14 +3049,14 @@ class DeviceprofileGatewayDhcpdConfigConfig(dict):
         return pulumi.get(self, "type6")
 
     @property
-    @pulumi.getter(name="vendorEncapulated")
-    def vendor_encapulated(self) -> Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated']]:
+    @pulumi.getter(name="vendorEncapsulated")
+    def vendor_encapsulated(self) -> Optional[Mapping[str, 'outputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated']]:
         """
         if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
           * sub option code: 1-255, sub-option code'
         """
-        return pulumi.get(self, "vendor_encapulated")
+        return pulumi.get(self, "vendor_encapsulated")
 
 
 @pulumi.output_type
@@ -3109,7 +3107,7 @@ class DeviceprofileGatewayDhcpdConfigConfigOptions(dict):
 
 
 @pulumi.output_type
-class DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated(dict):
+class DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated(dict):
     def __init__(__self__, *,
                  type: Optional[str] = None,
                  value: Optional[str] = None):
@@ -8250,8 +8248,8 @@ class GatewaytemplateDhcpdConfigConfig(dict):
             suggest = "lease_time"
         elif key == "serverIdOverride":
             suggest = "server_id_override"
-        elif key == "vendorEncapulated":
-            suggest = "vendor_encapulated"
+        elif key == "vendorEncapsulated":
+            suggest = "vendor_encapsulated"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewaytemplateDhcpdConfigConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8280,7 +8278,7 @@ class GatewaytemplateDhcpdConfigConfig(dict):
                  servers6s: Optional[Sequence[str]] = None,
                  type: Optional[str] = None,
                  type6: Optional[str] = None,
-                 vendor_encapulated: Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigVendorEncapulated']] = None):
+                 vendor_encapsulated: Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated']] = None):
         """
         :param Sequence[str] dns_servers: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         :param Sequence[str] dns_suffixes: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
@@ -8298,7 +8296,7 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         :param Sequence[str] servers6s: if `type6`==`relay`
         :param str type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param str type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
-        :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs'] vendor_encapulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        :param Mapping[str, 'GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs'] vendor_encapsulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
                  * sub option code: 1-255, sub-option code'
         """
@@ -8332,8 +8330,8 @@ class GatewaytemplateDhcpdConfigConfig(dict):
             pulumi.set(__self__, "type", type)
         if type6 is not None:
             pulumi.set(__self__, "type6", type6)
-        if vendor_encapulated is not None:
-            pulumi.set(__self__, "vendor_encapulated", vendor_encapulated)
+        if vendor_encapsulated is not None:
+            pulumi.set(__self__, "vendor_encapsulated", vendor_encapsulated)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -8457,14 +8455,14 @@ class GatewaytemplateDhcpdConfigConfig(dict):
         return pulumi.get(self, "type6")
 
     @property
-    @pulumi.getter(name="vendorEncapulated")
-    def vendor_encapulated(self) -> Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigVendorEncapulated']]:
+    @pulumi.getter(name="vendorEncapsulated")
+    def vendor_encapsulated(self) -> Optional[Mapping[str, 'outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated']]:
         """
         if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
           * sub option code: 1-255, sub-option code'
         """
-        return pulumi.get(self, "vendor_encapulated")
+        return pulumi.get(self, "vendor_encapsulated")
 
 
 @pulumi.output_type
@@ -8515,7 +8513,7 @@ class GatewaytemplateDhcpdConfigConfigOptions(dict):
 
 
 @pulumi.output_type
-class GatewaytemplateDhcpdConfigConfigVendorEncapulated(dict):
+class GatewaytemplateDhcpdConfigConfigVendorEncapsulated(dict):
     def __init__(__self__, *,
                  type: Optional[str] = None,
                  value: Optional[str] = None):
@@ -27213,37 +27211,6 @@ class WlanRadsecServer(dict):
 
 @pulumi.output_type
 class WlanRateset(dict):
-    def __init__(__self__, *,
-                 band24: Optional['outputs.WlanRatesetBand24'] = None,
-                 band5: Optional['outputs.WlanRatesetBand5'] = None):
-        """
-        :param 'WlanRatesetBand24Args' band24: data rates wlan settings
-        :param 'WlanRatesetBand5Args' band5: data rates wlan settings
-        """
-        if band24 is not None:
-            pulumi.set(__self__, "band24", band24)
-        if band5 is not None:
-            pulumi.set(__self__, "band5", band5)
-
-    @property
-    @pulumi.getter
-    def band24(self) -> Optional['outputs.WlanRatesetBand24']:
-        """
-        data rates wlan settings
-        """
-        return pulumi.get(self, "band24")
-
-    @property
-    @pulumi.getter
-    def band5(self) -> Optional['outputs.WlanRatesetBand5']:
-        """
-        data rates wlan settings
-        """
-        return pulumi.get(self, "band5")
-
-
-@pulumi.output_type
-class WlanRatesetBand24(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -27251,14 +27218,14 @@ class WlanRatesetBand24(dict):
             suggest = "min_rssi"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WlanRatesetBand24. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in WlanRateset. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        WlanRatesetBand24.__key_warning(key)
+        WlanRateset.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        WlanRatesetBand24.__key_warning(key)
+        WlanRateset.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -27269,7 +27236,7 @@ class WlanRatesetBand24(dict):
                  vht: Optional[str] = None):
         """
         :param str ht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        :param Sequence[str] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+        :param Sequence[str] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
         :param int min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
         :param str template: Data Rates template to apply. enum: 
                  * `no-legacy`: no 11b
@@ -27302,101 +27269,7 @@ class WlanRatesetBand24(dict):
     @pulumi.getter
     def legacies(self) -> Optional[Sequence[str]]:
         """
-        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-        """
-        return pulumi.get(self, "legacies")
-
-    @property
-    @pulumi.getter(name="minRssi")
-    def min_rssi(self) -> Optional[int]:
-        """
-        Minimum RSSI for client to connect, 0 means not enforcing
-        """
-        return pulumi.get(self, "min_rssi")
-
-    @property
-    @pulumi.getter
-    def template(self) -> Optional[str]:
-        """
-        Data Rates template to apply. enum: 
-          * `no-legacy`: no 11b
-          * `compatible`: all, like before, default setting that Broadcom/Atheros used
-          * `legacy-only`: disable 802.11n and 802.11ac
-          * `high-density`: no 11b, no low rates
-          * `custom`: user defined
-        """
-        return pulumi.get(self, "template")
-
-    @property
-    @pulumi.getter
-    def vht(self) -> Optional[str]:
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-        """
-        return pulumi.get(self, "vht")
-
-
-@pulumi.output_type
-class WlanRatesetBand5(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "minRssi":
-            suggest = "min_rssi"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in WlanRatesetBand5. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        WlanRatesetBand5.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        WlanRatesetBand5.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 ht: Optional[str] = None,
-                 legacies: Optional[Sequence[str]] = None,
-                 min_rssi: Optional[int] = None,
-                 template: Optional[str] = None,
-                 vht: Optional[str] = None):
-        """
-        :param str ht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        :param Sequence[str] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-        :param int min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
-        :param str template: Data Rates template to apply. enum: 
-                 * `no-legacy`: no 11b
-                 * `compatible`: all, like before, default setting that Broadcom/Atheros used
-                 * `legacy-only`: disable 802.11n and 802.11ac
-                 * `high-density`: no 11b, no low rates
-                 * `custom`: user defined
-        :param str vht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-        """
-        if ht is not None:
-            pulumi.set(__self__, "ht", ht)
-        if legacies is not None:
-            pulumi.set(__self__, "legacies", legacies)
-        if min_rssi is not None:
-            pulumi.set(__self__, "min_rssi", min_rssi)
-        if template is not None:
-            pulumi.set(__self__, "template", template)
-        if vht is not None:
-            pulumi.set(__self__, "vht", vht)
-
-    @property
-    @pulumi.getter
-    def ht(self) -> Optional[str]:
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        """
-        return pulumi.get(self, "ht")
-
-    @property
-    @pulumi.getter
-    def legacies(self) -> Optional[Sequence[str]]:
-        """
-        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
         """
         return pulumi.get(self, "legacies")
 

@@ -11,7 +11,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 {
 
     [OutputType]
-    public sealed class SwitchDhcpdConfigConfigVendorEncapulated
+    public sealed class SwitchDhcpdConfigConfigVendorEncapsulated
     {
         /// <summary>
         /// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string? Value;
 
         [OutputConstructor]
-        private SwitchDhcpdConfigConfigVendorEncapulated(
+        private SwitchDhcpdConfigConfigVendorEncapsulated(
             string? type,
 
             string? value)

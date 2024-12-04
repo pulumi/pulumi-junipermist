@@ -504,8 +504,11 @@ namespace Pulumi.JuniperMist.Org
         [Output("radsec")]
         public Output<Outputs.WlanRadsec?> Radsec { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key is the RF band. enum: `24`, `5`, `6`
+        /// </summary>
         [Output("rateset")]
-        public Output<Outputs.WlanRateset?> Rateset { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.WlanRateset>?> Rateset { get; private set; } = null!;
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
@@ -1133,7 +1136,16 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanRadsecArgs>? Radsec { get; set; }
 
         [Input("rateset")]
-        public Input<Inputs.WlanRatesetArgs>? Rateset { get; set; }
+        private InputMap<Inputs.WlanRatesetArgs>? _rateset;
+
+        /// <summary>
+        /// Property key is the RF band. enum: `24`, `5`, `6`
+        /// </summary>
+        public InputMap<Inputs.WlanRatesetArgs> Rateset
+        {
+            get => _rateset ?? (_rateset = new InputMap<Inputs.WlanRatesetArgs>());
+            set => _rateset = value;
+        }
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
@@ -1753,7 +1765,16 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.WlanRadsecGetArgs>? Radsec { get; set; }
 
         [Input("rateset")]
-        public Input<Inputs.WlanRatesetGetArgs>? Rateset { get; set; }
+        private InputMap<Inputs.WlanRatesetGetArgs>? _rateset;
+
+        /// <summary>
+        /// Property key is the RF band. enum: `24`, `5`, `6`
+        /// </summary>
+        public InputMap<Inputs.WlanRatesetGetArgs> Rateset
+        {
+            get => _rateset ?? (_rateset = new InputMap<Inputs.WlanRatesetGetArgs>());
+            set => _rateset = value;
+        }
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`

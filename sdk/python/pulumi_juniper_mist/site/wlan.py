@@ -91,7 +91,7 @@ class WlanArgs:
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qos: Optional[pulumi.Input['WlanQosArgs']] = None,
                  radsec: Optional[pulumi.Input['WlanRadsecArgs']] = None,
-                 rateset: Optional[pulumi.Input['WlanRatesetArgs']] = None,
+                 rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['WlanScheduleArgs']] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -191,6 +191,7 @@ class WlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
+        :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
@@ -1221,11 +1222,14 @@ class WlanArgs:
 
     @property
     @pulumi.getter
-    def rateset(self) -> Optional[pulumi.Input['WlanRatesetArgs']]:
+    def rateset(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]]:
+        """
+        Property key is the RF band. enum: `24`, `5`, `6`
+        """
         return pulumi.get(self, "rateset")
 
     @rateset.setter
-    def rateset(self, value: Optional[pulumi.Input['WlanRatesetArgs']]):
+    def rateset(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]]):
         pulumi.set(self, "rateset", value)
 
     @property
@@ -1483,7 +1487,7 @@ class _WlanState:
                  portal_template_url: Optional[pulumi.Input[str]] = None,
                  qos: Optional[pulumi.Input['WlanQosArgs']] = None,
                  radsec: Optional[pulumi.Input['WlanRadsecArgs']] = None,
-                 rateset: Optional[pulumi.Input['WlanRatesetArgs']] = None,
+                 rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['WlanScheduleArgs']] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -1589,6 +1593,7 @@ class _WlanState:
         :param pulumi.Input[str] portal_template_url: N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
                To update portal_template, use Wlan Portal Template.
         :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
+        :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
@@ -2680,11 +2685,14 @@ class _WlanState:
 
     @property
     @pulumi.getter
-    def rateset(self) -> Optional[pulumi.Input['WlanRatesetArgs']]:
+    def rateset(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]]:
+        """
+        Property key is the RF band. enum: `24`, `5`, `6`
+        """
         return pulumi.get(self, "rateset")
 
     @rateset.setter
-    def rateset(self, value: Optional[pulumi.Input['WlanRatesetArgs']]):
+    def rateset(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]]):
         pulumi.set(self, "rateset", value)
 
     @property
@@ -2971,7 +2979,7 @@ class Wlan(pulumi.CustomResource):
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
                  radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
-                 rateset: Optional[pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]] = None,
+                 rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -3113,6 +3121,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_allowed_subnets: list of CIDRs
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
@@ -3258,7 +3267,7 @@ class Wlan(pulumi.CustomResource):
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
                  radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
-                 rateset: Optional[pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]] = None,
+                 rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -3466,7 +3475,7 @@ class Wlan(pulumi.CustomResource):
             portal_template_url: Optional[pulumi.Input[str]] = None,
             qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
             radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
-            rateset: Optional[pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]] = None,
+            rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
             roam_mode: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
@@ -3577,6 +3586,7 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[str] portal_template_url: N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
                To update portal_template, use Wlan Portal Template.
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
@@ -4284,7 +4294,10 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rateset(self) -> pulumi.Output[Optional['outputs.WlanRateset']]:
+    def rateset(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.WlanRateset']]]:
+        """
+        Property key is the RF band. enum: `24`, `5`, `6`
+        """
         return pulumi.get(self, "rateset")
 
     @property

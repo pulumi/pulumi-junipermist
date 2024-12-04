@@ -289,10 +289,6 @@ __all__ = [
     'WlanRadsecServerArgsDict',
     'WlanRatesetArgs',
     'WlanRatesetArgsDict',
-    'WlanRatesetBand24Args',
-    'WlanRatesetBand24ArgsDict',
-    'WlanRatesetBand5Args',
-    'WlanRatesetBand5ArgsDict',
     'WlanScheduleArgs',
     'WlanScheduleArgsDict',
     'WlanScheduleHoursArgs',
@@ -18016,13 +18012,30 @@ class WlanRadsecServerArgs:
 
 if not MYPY:
     class WlanRatesetArgsDict(TypedDict):
-        band24: NotRequired[pulumi.Input['WlanRatesetBand24ArgsDict']]
+        ht: NotRequired[pulumi.Input[str]]
         """
-        data rates wlan settings
+        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         """
-        band5: NotRequired[pulumi.Input['WlanRatesetBand5ArgsDict']]
+        legacies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        data rates wlan settings
+        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+        """
+        min_rssi: NotRequired[pulumi.Input[int]]
+        """
+        Minimum RSSI for client to connect, 0 means not enforcing
+        """
+        template: NotRequired[pulumi.Input[str]]
+        """
+        Data Rates template to apply. enum: 
+          * `no-legacy`: no 11b
+          * `compatible`: all, like before, default setting that Broadcom/Atheros used
+          * `legacy-only`: disable 802.11n and 802.11ac
+          * `high-density`: no 11b, no low rates
+          * `custom`: user defined
+        """
+        vht: NotRequired[pulumi.Input[str]]
+        """
+        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
         """
 elif False:
     WlanRatesetArgsDict: TypeAlias = Mapping[str, Any]
@@ -18030,75 +18043,6 @@ elif False:
 @pulumi.input_type
 class WlanRatesetArgs:
     def __init__(__self__, *,
-                 band24: Optional[pulumi.Input['WlanRatesetBand24Args']] = None,
-                 band5: Optional[pulumi.Input['WlanRatesetBand5Args']] = None):
-        """
-        :param pulumi.Input['WlanRatesetBand24Args'] band24: data rates wlan settings
-        :param pulumi.Input['WlanRatesetBand5Args'] band5: data rates wlan settings
-        """
-        if band24 is not None:
-            pulumi.set(__self__, "band24", band24)
-        if band5 is not None:
-            pulumi.set(__self__, "band5", band5)
-
-    @property
-    @pulumi.getter
-    def band24(self) -> Optional[pulumi.Input['WlanRatesetBand24Args']]:
-        """
-        data rates wlan settings
-        """
-        return pulumi.get(self, "band24")
-
-    @band24.setter
-    def band24(self, value: Optional[pulumi.Input['WlanRatesetBand24Args']]):
-        pulumi.set(self, "band24", value)
-
-    @property
-    @pulumi.getter
-    def band5(self) -> Optional[pulumi.Input['WlanRatesetBand5Args']]:
-        """
-        data rates wlan settings
-        """
-        return pulumi.get(self, "band5")
-
-    @band5.setter
-    def band5(self, value: Optional[pulumi.Input['WlanRatesetBand5Args']]):
-        pulumi.set(self, "band5", value)
-
-
-if not MYPY:
-    class WlanRatesetBand24ArgsDict(TypedDict):
-        ht: NotRequired[pulumi.Input[str]]
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        """
-        legacies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-        """
-        min_rssi: NotRequired[pulumi.Input[int]]
-        """
-        Minimum RSSI for client to connect, 0 means not enforcing
-        """
-        template: NotRequired[pulumi.Input[str]]
-        """
-        Data Rates template to apply. enum: 
-          * `no-legacy`: no 11b
-          * `compatible`: all, like before, default setting that Broadcom/Atheros used
-          * `legacy-only`: disable 802.11n and 802.11ac
-          * `high-density`: no 11b, no low rates
-          * `custom`: user defined
-        """
-        vht: NotRequired[pulumi.Input[str]]
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-        """
-elif False:
-    WlanRatesetBand24ArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WlanRatesetBand24Args:
-    def __init__(__self__, *,
                  ht: Optional[pulumi.Input[str]] = None,
                  legacies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  min_rssi: Optional[pulumi.Input[int]] = None,
@@ -18106,7 +18050,7 @@ class WlanRatesetBand24Args:
                  vht: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
         :param pulumi.Input[int] min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
         :param pulumi.Input[str] template: Data Rates template to apply. enum: 
                  * `no-legacy`: no 11b
@@ -18143,134 +18087,7 @@ class WlanRatesetBand24Args:
     @pulumi.getter
     def legacies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-        """
-        return pulumi.get(self, "legacies")
-
-    @legacies.setter
-    def legacies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "legacies", value)
-
-    @property
-    @pulumi.getter(name="minRssi")
-    def min_rssi(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum RSSI for client to connect, 0 means not enforcing
-        """
-        return pulumi.get(self, "min_rssi")
-
-    @min_rssi.setter
-    def min_rssi(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "min_rssi", value)
-
-    @property
-    @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data Rates template to apply. enum: 
-          * `no-legacy`: no 11b
-          * `compatible`: all, like before, default setting that Broadcom/Atheros used
-          * `legacy-only`: disable 802.11n and 802.11ac
-          * `high-density`: no 11b, no low rates
-          * `custom`: user defined
-        """
-        return pulumi.get(self, "template")
-
-    @template.setter
-    def template(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "template", value)
-
-    @property
-    @pulumi.getter
-    def vht(self) -> Optional[pulumi.Input[str]]:
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-        """
-        return pulumi.get(self, "vht")
-
-    @vht.setter
-    def vht(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vht", value)
-
-
-if not MYPY:
-    class WlanRatesetBand5ArgsDict(TypedDict):
-        ht: NotRequired[pulumi.Input[str]]
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        """
-        legacies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-        """
-        min_rssi: NotRequired[pulumi.Input[int]]
-        """
-        Minimum RSSI for client to connect, 0 means not enforcing
-        """
-        template: NotRequired[pulumi.Input[str]]
-        """
-        Data Rates template to apply. enum: 
-          * `no-legacy`: no 11b
-          * `compatible`: all, like before, default setting that Broadcom/Atheros used
-          * `legacy-only`: disable 802.11n and 802.11ac
-          * `high-density`: no 11b, no low rates
-          * `custom`: user defined
-        """
-        vht: NotRequired[pulumi.Input[str]]
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-        """
-elif False:
-    WlanRatesetBand5ArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class WlanRatesetBand5Args:
-    def __init__(__self__, *,
-                 ht: Optional[pulumi.Input[str]] = None,
-                 legacies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 min_rssi: Optional[pulumi.Input[int]] = None,
-                 template: Optional[pulumi.Input[str]] = None,
-                 vht: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] ht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-        :param pulumi.Input[int] min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
-        :param pulumi.Input[str] template: Data Rates template to apply. enum: 
-                 * `no-legacy`: no 11b
-                 * `compatible`: all, like before, default setting that Broadcom/Atheros used
-                 * `legacy-only`: disable 802.11n and 802.11ac
-                 * `high-density`: no 11b, no low rates
-                 * `custom`: user defined
-        :param pulumi.Input[str] vht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-        """
-        if ht is not None:
-            pulumi.set(__self__, "ht", ht)
-        if legacies is not None:
-            pulumi.set(__self__, "legacies", legacies)
-        if min_rssi is not None:
-            pulumi.set(__self__, "min_rssi", min_rssi)
-        if template is not None:
-            pulumi.set(__self__, "template", template)
-        if vht is not None:
-            pulumi.set(__self__, "vht", vht)
-
-    @property
-    @pulumi.getter
-    def ht(self) -> Optional[pulumi.Input[str]]:
-        """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-        """
-        return pulumi.get(self, "ht")
-
-    @ht.setter
-    def ht(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ht", value)
-
-    @property
-    @pulumi.getter
-    def legacies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+        if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
         """
         return pulumi.get(self, "legacies")
 

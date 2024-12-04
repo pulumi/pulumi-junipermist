@@ -228,8 +228,9 @@ type Wlan struct {
 	PortalTemplateUrl pulumi.StringOutput `pulumi:"portalTemplateUrl"`
 	Qos               WlanQosPtrOutput    `pulumi:"qos"`
 	// Radsec settings
-	Radsec  WlanRadsecPtrOutput  `pulumi:"radsec"`
-	Rateset WlanRatesetPtrOutput `pulumi:"rateset"`
+	Radsec WlanRadsecPtrOutput `pulumi:"radsec"`
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset WlanRatesetMapOutput `pulumi:"rateset"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringOutput `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
@@ -463,8 +464,9 @@ type wlanState struct {
 	PortalTemplateUrl *string  `pulumi:"portalTemplateUrl"`
 	Qos               *WlanQos `pulumi:"qos"`
 	// Radsec settings
-	Radsec  *WlanRadsec  `pulumi:"radsec"`
-	Rateset *WlanRateset `pulumi:"rateset"`
+	Radsec *WlanRadsec `pulumi:"radsec"`
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset map[string]WlanRateset `pulumi:"rateset"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode *string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
@@ -660,8 +662,9 @@ type WlanState struct {
 	PortalTemplateUrl pulumi.StringPtrInput
 	Qos               WlanQosPtrInput
 	// Radsec settings
-	Radsec  WlanRadsecPtrInput
-	Rateset WlanRatesetPtrInput
+	Radsec WlanRadsecPtrInput
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset WlanRatesetMapInput
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringPtrInput
 	// WLAN operating schedule, default is disabled
@@ -852,8 +855,9 @@ type wlanArgs struct {
 	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
 	Qos                   *WlanQos `pulumi:"qos"`
 	// Radsec settings
-	Radsec  *WlanRadsec  `pulumi:"radsec"`
-	Rateset *WlanRateset `pulumi:"rateset"`
+	Radsec *WlanRadsec `pulumi:"radsec"`
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset map[string]WlanRateset `pulumi:"rateset"`
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode *string `pulumi:"roamMode"`
 	// WLAN operating schedule, default is disabled
@@ -1039,8 +1043,9 @@ type WlanArgs struct {
 	PortalDeniedHostnames pulumi.StringArrayInput
 	Qos                   WlanQosPtrInput
 	// Radsec settings
-	Radsec  WlanRadsecPtrInput
-	Rateset WlanRatesetPtrInput
+	Radsec WlanRadsecPtrInput
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset WlanRatesetMapInput
 	// enum: `11r`, `OKC`, `NONE`
 	RoamMode pulumi.StringPtrInput
 	// WLAN operating schedule, default is disabled
@@ -1543,8 +1548,9 @@ func (o WlanOutput) Radsec() WlanRadsecPtrOutput {
 	return o.ApplyT(func(v *Wlan) WlanRadsecPtrOutput { return v.Radsec }).(WlanRadsecPtrOutput)
 }
 
-func (o WlanOutput) Rateset() WlanRatesetPtrOutput {
-	return o.ApplyT(func(v *Wlan) WlanRatesetPtrOutput { return v.Rateset }).(WlanRatesetPtrOutput)
+// Property key is the RF band. enum: `24`, `5`, `6`
+func (o WlanOutput) Rateset() WlanRatesetMapOutput {
+	return o.ApplyT(func(v *Wlan) WlanRatesetMapOutput { return v.Rateset }).(WlanRatesetMapOutput)
 }
 
 // enum: `11r`, `OKC`, `NONE`

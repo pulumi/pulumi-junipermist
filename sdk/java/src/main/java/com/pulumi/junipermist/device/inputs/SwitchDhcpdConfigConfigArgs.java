@@ -7,7 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigConfigFixedBindingsArgs;
 import com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigConfigOptionsArgs;
-import com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigConfigVendorEncapulatedArgs;
+import com.pulumi.junipermist.device.inputs.SwitchDhcpdConfigConfigVendorEncapsulatedArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -255,8 +255,8 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    @Import(name="vendorEncapulated")
-    private @Nullable Output<Map<String,SwitchDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated;
+    @Import(name="vendorEncapsulated")
+    private @Nullable Output<Map<String,SwitchDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated;
 
     /**
      * @return if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
@@ -264,8 +264,8 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    public Optional<Output<Map<String,SwitchDhcpdConfigConfigVendorEncapulatedArgs>>> vendorEncapulated() {
-        return Optional.ofNullable(this.vendorEncapulated);
+    public Optional<Output<Map<String,SwitchDhcpdConfigConfigVendorEncapsulatedArgs>>> vendorEncapsulated() {
+        return Optional.ofNullable(this.vendorEncapsulated);
     }
 
     private SwitchDhcpdConfigConfigArgs() {}
@@ -286,7 +286,7 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         this.servers6s = $.servers6s;
         this.type = $.type;
         this.type6 = $.type6;
-        this.vendorEncapulated = $.vendorEncapulated;
+        this.vendorEncapsulated = $.vendorEncapsulated;
     }
 
     public static Builder builder() {
@@ -665,28 +665,28 @@ public final class SwitchDhcpdConfigConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vendorEncapulated if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapsulated if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
          * @return builder
          * 
          */
-        public Builder vendorEncapulated(@Nullable Output<Map<String,SwitchDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated) {
-            $.vendorEncapulated = vendorEncapulated;
+        public Builder vendorEncapsulated(@Nullable Output<Map<String,SwitchDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated) {
+            $.vendorEncapsulated = vendorEncapsulated;
             return this;
         }
 
         /**
-         * @param vendorEncapulated if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapsulated if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
          * @return builder
          * 
          */
-        public Builder vendorEncapulated(Map<String,SwitchDhcpdConfigConfigVendorEncapulatedArgs> vendorEncapulated) {
-            return vendorEncapulated(Output.of(vendorEncapulated));
+        public Builder vendorEncapsulated(Map<String,SwitchDhcpdConfigConfigVendorEncapsulatedArgs> vendorEncapsulated) {
+            return vendorEncapsulated(Output.of(vendorEncapsulated));
         }
 
         public SwitchDhcpdConfigConfigArgs build() {

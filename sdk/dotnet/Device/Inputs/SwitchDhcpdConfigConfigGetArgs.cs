@@ -139,18 +139,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
 
-        [Input("vendorEncapulated")]
-        private InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapulatedGetArgs>? _vendorEncapulated;
+        [Input("vendorEncapsulated")]
+        private InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs>? _vendorEncapsulated;
 
         /// <summary>
         /// if `type`==`server` or `type6`==`server`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code'
         /// </summary>
-        public InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapulatedGetArgs> VendorEncapulated
+        public InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs> VendorEncapsulated
         {
-            get => _vendorEncapulated ?? (_vendorEncapulated = new InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapulatedGetArgs>());
-            set => _vendorEncapulated = value;
+            get => _vendorEncapsulated ?? (_vendorEncapsulated = new InputMap<Inputs.SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs>());
+            set => _vendorEncapsulated = value;
         }
 
         public SwitchDhcpdConfigConfigGetArgs()
