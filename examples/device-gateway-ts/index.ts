@@ -119,7 +119,7 @@ const gateway = new junipermist.device.Gateway(`gateway-01`, {
   },
   servicePolicies: [
     {
-      name: myOrgPolicy.name,
+      // name: myOrgPolicy.name, // Cannot be set if servicepolicyId is set
       pathPreference: "TO-CORE",
       servicepolicyId: myOrgPolicy.id,
     },
