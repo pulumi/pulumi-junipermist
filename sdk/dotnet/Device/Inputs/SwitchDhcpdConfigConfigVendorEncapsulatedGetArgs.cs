@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Device.Inputs
 {
 
-    public sealed class SwitchDhcpdConfigConfigVendorEncapulatedArgs : global::Pulumi.ResourceArgs
+    public sealed class SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -21,9 +21,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public SwitchDhcpdConfigConfigVendorEncapulatedArgs()
+        public SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs()
         {
         }
-        public static new SwitchDhcpdConfigConfigVendorEncapulatedArgs Empty => new SwitchDhcpdConfigConfigVendorEncapulatedArgs();
+        public static new SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs Empty => new SwitchDhcpdConfigConfigVendorEncapsulatedGetArgs();
     }
 }

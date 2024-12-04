@@ -368,7 +368,10 @@ export class Wlan extends pulumi.CustomResource {
      * Radsec settings
      */
     public readonly radsec!: pulumi.Output<outputs.site.WlanRadsec | undefined>;
-    public readonly rateset!: pulumi.Output<outputs.site.WlanRateset | undefined>;
+    /**
+     * Property key is the RF band. enum: `24`, `5`, `6`
+     */
+    public readonly rateset!: pulumi.Output<{[key: string]: outputs.site.WlanRateset} | undefined>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
@@ -946,7 +949,10 @@ export interface WlanState {
      * Radsec settings
      */
     radsec?: pulumi.Input<inputs.site.WlanRadsec>;
-    rateset?: pulumi.Input<inputs.site.WlanRateset>;
+    /**
+     * Property key is the RF band. enum: `24`, `5`, `6`
+     */
+    rateset?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanRateset>}>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
@@ -1296,7 +1302,10 @@ export interface WlanArgs {
      * Radsec settings
      */
     radsec?: pulumi.Input<inputs.site.WlanRadsec>;
-    rateset?: pulumi.Input<inputs.site.WlanRateset>;
+    /**
+     * Property key is the RF band. enum: `24`, `5`, `6`
+     */
+    rateset?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanRateset>}>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */

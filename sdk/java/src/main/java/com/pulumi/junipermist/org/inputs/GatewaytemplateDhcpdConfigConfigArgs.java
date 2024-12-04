@@ -7,7 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateDhcpdConfigConfigFixedBindingsArgs;
 import com.pulumi.junipermist.org.inputs.GatewaytemplateDhcpdConfigConfigOptionsArgs;
-import com.pulumi.junipermist.org.inputs.GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs;
+import com.pulumi.junipermist.org.inputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -255,8 +255,8 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    @Import(name="vendorEncapulated")
-    private @Nullable Output<Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated;
+    @Import(name="vendorEncapsulated")
+    private @Nullable Output<Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated;
 
     /**
      * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
@@ -264,8 +264,8 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
      *   * sub option code: 1-255, sub-option code&#39;
      * 
      */
-    public Optional<Output<Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs>>> vendorEncapulated() {
-        return Optional.ofNullable(this.vendorEncapulated);
+    public Optional<Output<Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs>>> vendorEncapsulated() {
+        return Optional.ofNullable(this.vendorEncapsulated);
     }
 
     private GatewaytemplateDhcpdConfigConfigArgs() {}
@@ -286,7 +286,7 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
         this.servers6s = $.servers6s;
         this.type = $.type;
         this.type6 = $.type6;
-        this.vendorEncapulated = $.vendorEncapulated;
+        this.vendorEncapsulated = $.vendorEncapsulated;
     }
 
     public static Builder builder() {
@@ -665,28 +665,28 @@ public final class GatewaytemplateDhcpdConfigConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param vendorEncapulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapsulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
          * @return builder
          * 
          */
-        public Builder vendorEncapulated(@Nullable Output<Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs>> vendorEncapulated) {
-            $.vendorEncapulated = vendorEncapulated;
+        public Builder vendorEncapsulated(@Nullable Output<Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs>> vendorEncapsulated) {
+            $.vendorEncapsulated = vendorEncapsulated;
             return this;
         }
 
         /**
-         * @param vendorEncapulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+         * @param vendorEncapsulated if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
          *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
          *   * sub option code: 1-255, sub-option code&#39;
          * 
          * @return builder
          * 
          */
-        public Builder vendorEncapulated(Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapulatedArgs> vendorEncapulated) {
-            return vendorEncapulated(Output.of(vendorEncapulated));
+        public Builder vendorEncapsulated(Map<String,GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs> vendorEncapsulated) {
+            return vendorEncapsulated(Output.of(vendorEncapsulated));
         }
 
         public GatewaytemplateDhcpdConfigConfigArgs build() {

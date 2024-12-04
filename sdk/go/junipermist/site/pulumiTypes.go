@@ -26863,10 +26863,21 @@ func (o WlanRadsecServerArrayOutput) Index(i pulumi.IntInput) WlanRadsecServerOu
 }
 
 type WlanRateset struct {
-	// data rates wlan settings
-	Band24 *WlanRatesetBand24 `pulumi:"band24"`
-	// data rates wlan settings
-	Band5 *WlanRatesetBand5 `pulumi:"band5"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	Ht *string `pulumi:"ht"`
+	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+	Legacies []string `pulumi:"legacies"`
+	// Minimum RSSI for client to connect, 0 means not enforcing
+	MinRssi *int `pulumi:"minRssi"`
+	// Data Rates template to apply. enum:
+	//   * `no-legacy`: no 11b
+	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+	//   * `legacy-only`: disable 802.11n and 802.11ac
+	//   * `high-density`: no 11b, no low rates
+	//   * `custom`: user defined
+	Template *string `pulumi:"template"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	Vht *string `pulumi:"vht"`
 }
 
 // WlanRatesetInput is an input type that accepts WlanRatesetArgs and WlanRatesetOutput values.
@@ -26881,10 +26892,21 @@ type WlanRatesetInput interface {
 }
 
 type WlanRatesetArgs struct {
-	// data rates wlan settings
-	Band24 WlanRatesetBand24PtrInput `pulumi:"band24"`
-	// data rates wlan settings
-	Band5 WlanRatesetBand5PtrInput `pulumi:"band5"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	Ht pulumi.StringPtrInput `pulumi:"ht"`
+	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
+	// Minimum RSSI for client to connect, 0 means not enforcing
+	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
+	// Data Rates template to apply. enum:
+	//   * `no-legacy`: no 11b
+	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+	//   * `legacy-only`: disable 802.11n and 802.11ac
+	//   * `high-density`: no 11b, no low rates
+	//   * `custom`: user defined
+	Template pulumi.StringPtrInput `pulumi:"template"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	Vht pulumi.StringPtrInput `pulumi:"vht"`
 }
 
 func (WlanRatesetArgs) ElementType() reflect.Type {
@@ -26899,45 +26921,29 @@ func (i WlanRatesetArgs) ToWlanRatesetOutputWithContext(ctx context.Context) Wla
 	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetOutput)
 }
 
-func (i WlanRatesetArgs) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
-	return i.ToWlanRatesetPtrOutputWithContext(context.Background())
-}
-
-func (i WlanRatesetArgs) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetOutput).ToWlanRatesetPtrOutputWithContext(ctx)
-}
-
-// WlanRatesetPtrInput is an input type that accepts WlanRatesetArgs, WlanRatesetPtr and WlanRatesetPtrOutput values.
-// You can construct a concrete instance of `WlanRatesetPtrInput` via:
+// WlanRatesetMapInput is an input type that accepts WlanRatesetMap and WlanRatesetMapOutput values.
+// You can construct a concrete instance of `WlanRatesetMapInput` via:
 //
-//	        WlanRatesetArgs{...}
-//
-//	or:
-//
-//	        nil
-type WlanRatesetPtrInput interface {
+//	WlanRatesetMap{ "key": WlanRatesetArgs{...} }
+type WlanRatesetMapInput interface {
 	pulumi.Input
 
-	ToWlanRatesetPtrOutput() WlanRatesetPtrOutput
-	ToWlanRatesetPtrOutputWithContext(context.Context) WlanRatesetPtrOutput
+	ToWlanRatesetMapOutput() WlanRatesetMapOutput
+	ToWlanRatesetMapOutputWithContext(context.Context) WlanRatesetMapOutput
 }
 
-type wlanRatesetPtrType WlanRatesetArgs
+type WlanRatesetMap map[string]WlanRatesetInput
 
-func WlanRatesetPtr(v *WlanRatesetArgs) WlanRatesetPtrInput {
-	return (*wlanRatesetPtrType)(v)
+func (WlanRatesetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WlanRateset)(nil)).Elem()
 }
 
-func (*wlanRatesetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRateset)(nil)).Elem()
+func (i WlanRatesetMap) ToWlanRatesetMapOutput() WlanRatesetMapOutput {
+	return i.ToWlanRatesetMapOutputWithContext(context.Background())
 }
 
-func (i *wlanRatesetPtrType) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
-	return i.ToWlanRatesetPtrOutputWithContext(context.Background())
-}
-
-func (i *wlanRatesetPtrType) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetPtrOutput)
+func (i WlanRatesetMap) ToWlanRatesetMapOutputWithContext(ctx context.Context) WlanRatesetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetMapOutput)
 }
 
 type WlanRatesetOutput struct{ *pulumi.OutputState }
@@ -26954,534 +26960,54 @@ func (o WlanRatesetOutput) ToWlanRatesetOutputWithContext(ctx context.Context) W
 	return o
 }
 
-func (o WlanRatesetOutput) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
-	return o.ToWlanRatesetPtrOutputWithContext(context.Background())
+// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+func (o WlanRatesetOutput) Ht() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *string { return v.Ht }).(pulumi.StringPtrOutput)
 }
 
-func (o WlanRatesetOutput) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanRateset) *WlanRateset {
-		return &v
-	}).(WlanRatesetPtrOutput)
+// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
+func (o WlanRatesetOutput) Legacies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WlanRateset) []string { return v.Legacies }).(pulumi.StringArrayOutput)
 }
 
-// data rates wlan settings
-func (o WlanRatesetOutput) Band24() WlanRatesetBand24PtrOutput {
-	return o.ApplyT(func(v WlanRateset) *WlanRatesetBand24 { return v.Band24 }).(WlanRatesetBand24PtrOutput)
+// Minimum RSSI for client to connect, 0 means not enforcing
+func (o WlanRatesetOutput) MinRssi() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
 }
 
-// data rates wlan settings
-func (o WlanRatesetOutput) Band5() WlanRatesetBand5PtrOutput {
-	return o.ApplyT(func(v WlanRateset) *WlanRatesetBand5 { return v.Band5 }).(WlanRatesetBand5PtrOutput)
+// Data Rates template to apply. enum:
+//   - `no-legacy`: no 11b
+//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
+//   - `legacy-only`: disable 802.11n and 802.11ac
+//   - `high-density`: no 11b, no low rates
+//   - `custom`: user defined
+func (o WlanRatesetOutput) Template() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-type WlanRatesetPtrOutput struct{ *pulumi.OutputState }
-
-func (WlanRatesetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRateset)(nil)).Elem()
+// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+func (o WlanRatesetOutput) Vht() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanRateset) *string { return v.Vht }).(pulumi.StringPtrOutput)
 }
 
-func (o WlanRatesetPtrOutput) ToWlanRatesetPtrOutput() WlanRatesetPtrOutput {
+type WlanRatesetMapOutput struct{ *pulumi.OutputState }
+
+func (WlanRatesetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WlanRateset)(nil)).Elem()
+}
+
+func (o WlanRatesetMapOutput) ToWlanRatesetMapOutput() WlanRatesetMapOutput {
 	return o
 }
 
-func (o WlanRatesetPtrOutput) ToWlanRatesetPtrOutputWithContext(ctx context.Context) WlanRatesetPtrOutput {
+func (o WlanRatesetMapOutput) ToWlanRatesetMapOutputWithContext(ctx context.Context) WlanRatesetMapOutput {
 	return o
 }
 
-func (o WlanRatesetPtrOutput) Elem() WlanRatesetOutput {
-	return o.ApplyT(func(v *WlanRateset) WlanRateset {
-		if v != nil {
-			return *v
-		}
-		var ret WlanRateset
-		return ret
+func (o WlanRatesetMapOutput) MapIndex(k pulumi.StringInput) WlanRatesetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WlanRateset {
+		return vs[0].(map[string]WlanRateset)[vs[1].(string)]
 	}).(WlanRatesetOutput)
-}
-
-// data rates wlan settings
-func (o WlanRatesetPtrOutput) Band24() WlanRatesetBand24PtrOutput {
-	return o.ApplyT(func(v *WlanRateset) *WlanRatesetBand24 {
-		if v == nil {
-			return nil
-		}
-		return v.Band24
-	}).(WlanRatesetBand24PtrOutput)
-}
-
-// data rates wlan settings
-func (o WlanRatesetPtrOutput) Band5() WlanRatesetBand5PtrOutput {
-	return o.ApplyT(func(v *WlanRateset) *WlanRatesetBand5 {
-		if v == nil {
-			return nil
-		}
-		return v.Band5
-	}).(WlanRatesetBand5PtrOutput)
-}
-
-type WlanRatesetBand24 struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht *string `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies []string `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi *int `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template *string `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht *string `pulumi:"vht"`
-}
-
-// WlanRatesetBand24Input is an input type that accepts WlanRatesetBand24Args and WlanRatesetBand24Output values.
-// You can construct a concrete instance of `WlanRatesetBand24Input` via:
-//
-//	WlanRatesetBand24Args{...}
-type WlanRatesetBand24Input interface {
-	pulumi.Input
-
-	ToWlanRatesetBand24Output() WlanRatesetBand24Output
-	ToWlanRatesetBand24OutputWithContext(context.Context) WlanRatesetBand24Output
-}
-
-type WlanRatesetBand24Args struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht pulumi.StringPtrInput `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template pulumi.StringPtrInput `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht pulumi.StringPtrInput `pulumi:"vht"`
-}
-
-func (WlanRatesetBand24Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand24)(nil)).Elem()
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24Output() WlanRatesetBand24Output {
-	return i.ToWlanRatesetBand24OutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24OutputWithContext(ctx context.Context) WlanRatesetBand24Output {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand24Output)
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return i.ToWlanRatesetBand24PtrOutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand24Args) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand24Output).ToWlanRatesetBand24PtrOutputWithContext(ctx)
-}
-
-// WlanRatesetBand24PtrInput is an input type that accepts WlanRatesetBand24Args, WlanRatesetBand24Ptr and WlanRatesetBand24PtrOutput values.
-// You can construct a concrete instance of `WlanRatesetBand24PtrInput` via:
-//
-//	        WlanRatesetBand24Args{...}
-//
-//	or:
-//
-//	        nil
-type WlanRatesetBand24PtrInput interface {
-	pulumi.Input
-
-	ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput
-	ToWlanRatesetBand24PtrOutputWithContext(context.Context) WlanRatesetBand24PtrOutput
-}
-
-type wlanRatesetBand24PtrType WlanRatesetBand24Args
-
-func WlanRatesetBand24Ptr(v *WlanRatesetBand24Args) WlanRatesetBand24PtrInput {
-	return (*wlanRatesetBand24PtrType)(v)
-}
-
-func (*wlanRatesetBand24PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand24)(nil)).Elem()
-}
-
-func (i *wlanRatesetBand24PtrType) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return i.ToWlanRatesetBand24PtrOutputWithContext(context.Background())
-}
-
-func (i *wlanRatesetBand24PtrType) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand24PtrOutput)
-}
-
-type WlanRatesetBand24Output struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand24Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand24)(nil)).Elem()
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24Output() WlanRatesetBand24Output {
-	return o
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24OutputWithContext(ctx context.Context) WlanRatesetBand24Output {
-	return o
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return o.ToWlanRatesetBand24PtrOutputWithContext(context.Background())
-}
-
-func (o WlanRatesetBand24Output) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanRatesetBand24) *WlanRatesetBand24 {
-		return &v
-	}).(WlanRatesetBand24PtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand24Output) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *string { return v.Ht }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand24Output) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) []string { return v.Legacies }).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand24Output) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand24Output) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *string { return v.Template }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand24Output) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand24) *string { return v.Vht }).(pulumi.StringPtrOutput)
-}
-
-type WlanRatesetBand24PtrOutput struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand24PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand24)(nil)).Elem()
-}
-
-func (o WlanRatesetBand24PtrOutput) ToWlanRatesetBand24PtrOutput() WlanRatesetBand24PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand24PtrOutput) ToWlanRatesetBand24PtrOutputWithContext(ctx context.Context) WlanRatesetBand24PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand24PtrOutput) Elem() WlanRatesetBand24Output {
-	return o.ApplyT(func(v *WlanRatesetBand24) WlanRatesetBand24 {
-		if v != nil {
-			return *v
-		}
-		var ret WlanRatesetBand24
-		return ret
-	}).(WlanRatesetBand24Output)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand24PtrOutput) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ht
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand24PtrOutput) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Legacies
-	}).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand24PtrOutput) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinRssi
-	}).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand24PtrOutput) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Template
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand24PtrOutput) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand24) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Vht
-	}).(pulumi.StringPtrOutput)
-}
-
-type WlanRatesetBand5 struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht *string `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies []string `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi *int `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template *string `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht *string `pulumi:"vht"`
-}
-
-// WlanRatesetBand5Input is an input type that accepts WlanRatesetBand5Args and WlanRatesetBand5Output values.
-// You can construct a concrete instance of `WlanRatesetBand5Input` via:
-//
-//	WlanRatesetBand5Args{...}
-type WlanRatesetBand5Input interface {
-	pulumi.Input
-
-	ToWlanRatesetBand5Output() WlanRatesetBand5Output
-	ToWlanRatesetBand5OutputWithContext(context.Context) WlanRatesetBand5Output
-}
-
-type WlanRatesetBand5Args struct {
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-	Ht pulumi.StringPtrInput `pulumi:"ht"`
-	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
-	// Minimum RSSI for client to connect, 0 means not enforcing
-	MinRssi pulumi.IntPtrInput `pulumi:"minRssi"`
-	// Data Rates template to apply. enum:
-	//   * `no-legacy`: no 11b
-	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
-	//   * `legacy-only`: disable 802.11n and 802.11ac
-	//   * `high-density`: no 11b, no low rates
-	//   * `custom`: user defined
-	Template pulumi.StringPtrInput `pulumi:"template"`
-	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-	Vht pulumi.StringPtrInput `pulumi:"vht"`
-}
-
-func (WlanRatesetBand5Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand5)(nil)).Elem()
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5Output() WlanRatesetBand5Output {
-	return i.ToWlanRatesetBand5OutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5OutputWithContext(ctx context.Context) WlanRatesetBand5Output {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand5Output)
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return i.ToWlanRatesetBand5PtrOutputWithContext(context.Background())
-}
-
-func (i WlanRatesetBand5Args) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand5Output).ToWlanRatesetBand5PtrOutputWithContext(ctx)
-}
-
-// WlanRatesetBand5PtrInput is an input type that accepts WlanRatesetBand5Args, WlanRatesetBand5Ptr and WlanRatesetBand5PtrOutput values.
-// You can construct a concrete instance of `WlanRatesetBand5PtrInput` via:
-//
-//	        WlanRatesetBand5Args{...}
-//
-//	or:
-//
-//	        nil
-type WlanRatesetBand5PtrInput interface {
-	pulumi.Input
-
-	ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput
-	ToWlanRatesetBand5PtrOutputWithContext(context.Context) WlanRatesetBand5PtrOutput
-}
-
-type wlanRatesetBand5PtrType WlanRatesetBand5Args
-
-func WlanRatesetBand5Ptr(v *WlanRatesetBand5Args) WlanRatesetBand5PtrInput {
-	return (*wlanRatesetBand5PtrType)(v)
-}
-
-func (*wlanRatesetBand5PtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand5)(nil)).Elem()
-}
-
-func (i *wlanRatesetBand5PtrType) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return i.ToWlanRatesetBand5PtrOutputWithContext(context.Background())
-}
-
-func (i *wlanRatesetBand5PtrType) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WlanRatesetBand5PtrOutput)
-}
-
-type WlanRatesetBand5Output struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand5Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*WlanRatesetBand5)(nil)).Elem()
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5Output() WlanRatesetBand5Output {
-	return o
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5OutputWithContext(ctx context.Context) WlanRatesetBand5Output {
-	return o
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return o.ToWlanRatesetBand5PtrOutputWithContext(context.Background())
-}
-
-func (o WlanRatesetBand5Output) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WlanRatesetBand5) *WlanRatesetBand5 {
-		return &v
-	}).(WlanRatesetBand5PtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand5Output) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *string { return v.Ht }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand5Output) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) []string { return v.Legacies }).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand5Output) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *int { return v.MinRssi }).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand5Output) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *string { return v.Template }).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand5Output) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WlanRatesetBand5) *string { return v.Vht }).(pulumi.StringPtrOutput)
-}
-
-type WlanRatesetBand5PtrOutput struct{ *pulumi.OutputState }
-
-func (WlanRatesetBand5PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WlanRatesetBand5)(nil)).Elem()
-}
-
-func (o WlanRatesetBand5PtrOutput) ToWlanRatesetBand5PtrOutput() WlanRatesetBand5PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand5PtrOutput) ToWlanRatesetBand5PtrOutputWithContext(ctx context.Context) WlanRatesetBand5PtrOutput {
-	return o
-}
-
-func (o WlanRatesetBand5PtrOutput) Elem() WlanRatesetBand5Output {
-	return o.ApplyT(func(v *WlanRatesetBand5) WlanRatesetBand5 {
-		if v != nil {
-			return *v
-		}
-		var ret WlanRatesetBand5
-		return ret
-	}).(WlanRatesetBand5Output)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
-func (o WlanRatesetBand5PtrOutput) Ht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ht
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
-func (o WlanRatesetBand5PtrOutput) Legacies() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Legacies
-	}).(pulumi.StringArrayOutput)
-}
-
-// Minimum RSSI for client to connect, 0 means not enforcing
-func (o WlanRatesetBand5PtrOutput) MinRssi() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MinRssi
-	}).(pulumi.IntPtrOutput)
-}
-
-// Data Rates template to apply. enum:
-//   - `no-legacy`: no 11b
-//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
-//   - `legacy-only`: disable 802.11n and 802.11ac
-//   - `high-density`: no 11b, no low rates
-//   - `custom`: user defined
-func (o WlanRatesetBand5PtrOutput) Template() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Template
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
-func (o WlanRatesetBand5PtrOutput) Vht() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WlanRatesetBand5) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Vht
-	}).(pulumi.StringPtrOutput)
 }
 
 type WlanSchedule struct {
@@ -28910,11 +28436,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRadsecServerInput)(nil)).Elem(), WlanRadsecServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRadsecServerArrayInput)(nil)).Elem(), WlanRadsecServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetInput)(nil)).Elem(), WlanRatesetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetPtrInput)(nil)).Elem(), WlanRatesetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand24Input)(nil)).Elem(), WlanRatesetBand24Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand24PtrInput)(nil)).Elem(), WlanRatesetBand24Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand5Input)(nil)).Elem(), WlanRatesetBand5Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetBand5PtrInput)(nil)).Elem(), WlanRatesetBand5Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WlanRatesetMapInput)(nil)).Elem(), WlanRatesetMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleInput)(nil)).Elem(), WlanScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanSchedulePtrInput)(nil)).Elem(), WlanScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WlanScheduleHoursInput)(nil)).Elem(), WlanScheduleHoursArgs{})
@@ -29200,11 +28722,7 @@ func init() {
 	pulumi.RegisterOutputType(WlanRadsecServerOutput{})
 	pulumi.RegisterOutputType(WlanRadsecServerArrayOutput{})
 	pulumi.RegisterOutputType(WlanRatesetOutput{})
-	pulumi.RegisterOutputType(WlanRatesetPtrOutput{})
-	pulumi.RegisterOutputType(WlanRatesetBand24Output{})
-	pulumi.RegisterOutputType(WlanRatesetBand24PtrOutput{})
-	pulumi.RegisterOutputType(WlanRatesetBand5Output{})
-	pulumi.RegisterOutputType(WlanRatesetBand5PtrOutput{})
+	pulumi.RegisterOutputType(WlanRatesetMapOutput{})
 	pulumi.RegisterOutputType(WlanScheduleOutput{})
 	pulumi.RegisterOutputType(WlanSchedulePtrOutput{})
 	pulumi.RegisterOutputType(WlanScheduleHoursOutput{})

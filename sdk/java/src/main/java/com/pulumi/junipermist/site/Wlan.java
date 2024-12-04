@@ -34,6 +34,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -1121,10 +1122,18 @@ public class Wlan extends com.pulumi.resources.CustomResource {
     public Output<Optional<WlanRadsec>> radsec() {
         return Codegen.optional(this.radsec);
     }
-    @Export(name="rateset", refs={WlanRateset.class}, tree="[0]")
-    private Output</* @Nullable */ WlanRateset> rateset;
+    /**
+     * Property key is the RF band. enum: `24`, `5`, `6`
+     * 
+     */
+    @Export(name="rateset", refs={Map.class,String.class,WlanRateset.class}, tree="[0,1,2]")
+    private Output</* @Nullable */ Map<String,WlanRateset>> rateset;
 
-    public Output<Optional<WlanRateset>> rateset() {
+    /**
+     * @return Property key is the RF band. enum: `24`, `5`, `6`
+     * 
+     */
+    public Output<Optional<Map<String,WlanRateset>>> rateset() {
         return Codegen.optional(this.rateset);
     }
     /**

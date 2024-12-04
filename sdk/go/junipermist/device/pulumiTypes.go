@@ -5096,7 +5096,7 @@ type GatewayDhcpdConfigConfig struct {
 	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated map[string]GatewayDhcpdConfigConfigVendorEncapulated `pulumi:"vendorEncapulated"`
+	VendorEncapsulated map[string]GatewayDhcpdConfigConfigVendorEncapsulated `pulumi:"vendorEncapsulated"`
 }
 
 // GatewayDhcpdConfigConfigInput is an input type that accepts GatewayDhcpdConfigConfigArgs and GatewayDhcpdConfigConfigOutput values.
@@ -5145,7 +5145,7 @@ type GatewayDhcpdConfigConfigArgs struct {
 	// if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated GatewayDhcpdConfigConfigVendorEncapulatedMapInput `pulumi:"vendorEncapulated"`
+	VendorEncapsulated GatewayDhcpdConfigConfigVendorEncapsulatedMapInput `pulumi:"vendorEncapsulated"`
 }
 
 func (GatewayDhcpdConfigConfigArgs) ElementType() reflect.Type {
@@ -5280,10 +5280,10 @@ func (o GatewayDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOutput {
 // if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
 //   - enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 //   - sub option code: 1-255, sub-option code'
-func (o GatewayDhcpdConfigConfigOutput) VendorEncapulated() GatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return o.ApplyT(func(v GatewayDhcpdConfigConfig) map[string]GatewayDhcpdConfigConfigVendorEncapulated {
-		return v.VendorEncapulated
-	}).(GatewayDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (o GatewayDhcpdConfigConfigOutput) VendorEncapsulated() GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return o.ApplyT(func(v GatewayDhcpdConfigConfig) map[string]GatewayDhcpdConfigConfigVendorEncapsulated {
+		return v.VendorEncapsulated
+	}).(GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
 type GatewayDhcpdConfigConfigMapOutput struct{ *pulumi.OutputState }
@@ -5509,107 +5509,107 @@ func (o GatewayDhcpdConfigConfigOptionsMapOutput) MapIndex(k pulumi.StringInput)
 	}).(GatewayDhcpdConfigConfigOptionsOutput)
 }
 
-type GatewayDhcpdConfigConfigVendorEncapulated struct {
+type GatewayDhcpdConfigConfigVendorEncapsulated struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  *string `pulumi:"type"`
 	Value *string `pulumi:"value"`
 }
 
-// GatewayDhcpdConfigConfigVendorEncapulatedInput is an input type that accepts GatewayDhcpdConfigConfigVendorEncapulatedArgs and GatewayDhcpdConfigConfigVendorEncapulatedOutput values.
-// You can construct a concrete instance of `GatewayDhcpdConfigConfigVendorEncapulatedInput` via:
+// GatewayDhcpdConfigConfigVendorEncapsulatedInput is an input type that accepts GatewayDhcpdConfigConfigVendorEncapsulatedArgs and GatewayDhcpdConfigConfigVendorEncapsulatedOutput values.
+// You can construct a concrete instance of `GatewayDhcpdConfigConfigVendorEncapsulatedInput` via:
 //
-//	GatewayDhcpdConfigConfigVendorEncapulatedArgs{...}
-type GatewayDhcpdConfigConfigVendorEncapulatedInput interface {
+//	GatewayDhcpdConfigConfigVendorEncapsulatedArgs{...}
+type GatewayDhcpdConfigConfigVendorEncapsulatedInput interface {
 	pulumi.Input
 
-	ToGatewayDhcpdConfigConfigVendorEncapulatedOutput() GatewayDhcpdConfigConfigVendorEncapulatedOutput
-	ToGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Context) GatewayDhcpdConfigConfigVendorEncapulatedOutput
+	ToGatewayDhcpdConfigConfigVendorEncapsulatedOutput() GatewayDhcpdConfigConfigVendorEncapsulatedOutput
+	ToGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Context) GatewayDhcpdConfigConfigVendorEncapsulatedOutput
 }
 
-type GatewayDhcpdConfigConfigVendorEncapulatedArgs struct {
+type GatewayDhcpdConfigConfigVendorEncapsulatedArgs struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  pulumi.StringPtrInput `pulumi:"type"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (GatewayDhcpdConfigConfigVendorEncapulatedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewayDhcpdConfigConfigVendorEncapsulatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i GatewayDhcpdConfigConfigVendorEncapulatedArgs) ToGatewayDhcpdConfigConfigVendorEncapulatedOutput() GatewayDhcpdConfigConfigVendorEncapulatedOutput {
-	return i.ToGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Background())
+func (i GatewayDhcpdConfigConfigVendorEncapsulatedArgs) ToGatewayDhcpdConfigConfigVendorEncapsulatedOutput() GatewayDhcpdConfigConfigVendorEncapsulatedOutput {
+	return i.ToGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Background())
 }
 
-func (i GatewayDhcpdConfigConfigVendorEncapulatedArgs) ToGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayDhcpdConfigConfigVendorEncapulatedOutput)
+func (i GatewayDhcpdConfigConfigVendorEncapsulatedArgs) ToGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
-// GatewayDhcpdConfigConfigVendorEncapulatedMapInput is an input type that accepts GatewayDhcpdConfigConfigVendorEncapulatedMap and GatewayDhcpdConfigConfigVendorEncapulatedMapOutput values.
-// You can construct a concrete instance of `GatewayDhcpdConfigConfigVendorEncapulatedMapInput` via:
+// GatewayDhcpdConfigConfigVendorEncapsulatedMapInput is an input type that accepts GatewayDhcpdConfigConfigVendorEncapsulatedMap and GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput values.
+// You can construct a concrete instance of `GatewayDhcpdConfigConfigVendorEncapsulatedMapInput` via:
 //
-//	GatewayDhcpdConfigConfigVendorEncapulatedMap{ "key": GatewayDhcpdConfigConfigVendorEncapulatedArgs{...} }
-type GatewayDhcpdConfigConfigVendorEncapulatedMapInput interface {
+//	GatewayDhcpdConfigConfigVendorEncapsulatedMap{ "key": GatewayDhcpdConfigConfigVendorEncapsulatedArgs{...} }
+type GatewayDhcpdConfigConfigVendorEncapsulatedMapInput interface {
 	pulumi.Input
 
-	ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutput() GatewayDhcpdConfigConfigVendorEncapulatedMapOutput
-	ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Context) GatewayDhcpdConfigConfigVendorEncapulatedMapOutput
+	ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput() GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput
+	ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Context) GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput
 }
 
-type GatewayDhcpdConfigConfigVendorEncapulatedMap map[string]GatewayDhcpdConfigConfigVendorEncapulatedInput
+type GatewayDhcpdConfigConfigVendorEncapsulatedMap map[string]GatewayDhcpdConfigConfigVendorEncapsulatedInput
 
-func (GatewayDhcpdConfigConfigVendorEncapulatedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewayDhcpdConfigConfigVendorEncapsulatedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i GatewayDhcpdConfigConfigVendorEncapulatedMap) ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutput() GatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return i.ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Background())
+func (i GatewayDhcpdConfigConfigVendorEncapsulatedMap) ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput() GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return i.ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Background())
 }
 
-func (i GatewayDhcpdConfigConfigVendorEncapulatedMap) ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GatewayDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (i GatewayDhcpdConfigConfigVendorEncapsulatedMap) ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
-type GatewayDhcpdConfigConfigVendorEncapulatedOutput struct{ *pulumi.OutputState }
+type GatewayDhcpdConfigConfigVendorEncapsulatedOutput struct{ *pulumi.OutputState }
 
-func (GatewayDhcpdConfigConfigVendorEncapulatedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewayDhcpdConfigConfigVendorEncapsulatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o GatewayDhcpdConfigConfigVendorEncapulatedOutput) ToGatewayDhcpdConfigConfigVendorEncapulatedOutput() GatewayDhcpdConfigConfigVendorEncapulatedOutput {
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedOutput) ToGatewayDhcpdConfigConfigVendorEncapsulatedOutput() GatewayDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
-func (o GatewayDhcpdConfigConfigVendorEncapulatedOutput) ToGatewayDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapulatedOutput {
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedOutput) ToGatewayDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
 // enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
-func (o GatewayDhcpdConfigConfigVendorEncapulatedOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayDhcpdConfigConfigVendorEncapulated) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayDhcpdConfigConfigVendorEncapsulated) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayDhcpdConfigConfigVendorEncapulatedOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayDhcpdConfigConfigVendorEncapulated) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayDhcpdConfigConfigVendorEncapsulated) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type GatewayDhcpdConfigConfigVendorEncapulatedMapOutput struct{ *pulumi.OutputState }
+type GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput struct{ *pulumi.OutputState }
 
-func (GatewayDhcpdConfigConfigVendorEncapulatedMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]GatewayDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o GatewayDhcpdConfigConfigVendorEncapulatedMapOutput) ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutput() GatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutput() GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o GatewayDhcpdConfigConfigVendorEncapulatedMapOutput) ToGatewayDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) ToGatewayDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o GatewayDhcpdConfigConfigVendorEncapulatedMapOutput) MapIndex(k pulumi.StringInput) GatewayDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayDhcpdConfigConfigVendorEncapulated {
-		return vs[0].(map[string]GatewayDhcpdConfigConfigVendorEncapulated)[vs[1].(string)]
-	}).(GatewayDhcpdConfigConfigVendorEncapulatedOutput)
+func (o GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput) MapIndex(k pulumi.StringInput) GatewayDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayDhcpdConfigConfigVendorEncapsulated {
+		return vs[0].(map[string]GatewayDhcpdConfigConfigVendorEncapsulated)[vs[1].(string)]
+	}).(GatewayDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
 type GatewayExtraRoutes6 struct {
@@ -16154,7 +16154,7 @@ type SwitchDhcpdConfigConfig struct {
 	// if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated map[string]SwitchDhcpdConfigConfigVendorEncapulated `pulumi:"vendorEncapulated"`
+	VendorEncapsulated map[string]SwitchDhcpdConfigConfigVendorEncapsulated `pulumi:"vendorEncapsulated"`
 }
 
 // SwitchDhcpdConfigConfigInput is an input type that accepts SwitchDhcpdConfigConfigArgs and SwitchDhcpdConfigConfigOutput values.
@@ -16203,7 +16203,7 @@ type SwitchDhcpdConfigConfigArgs struct {
 	// if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
 	//   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 	//   * sub option code: 1-255, sub-option code'
-	VendorEncapulated SwitchDhcpdConfigConfigVendorEncapulatedMapInput `pulumi:"vendorEncapulated"`
+	VendorEncapsulated SwitchDhcpdConfigConfigVendorEncapsulatedMapInput `pulumi:"vendorEncapsulated"`
 }
 
 func (SwitchDhcpdConfigConfigArgs) ElementType() reflect.Type {
@@ -16338,10 +16338,10 @@ func (o SwitchDhcpdConfigConfigOutput) Type6() pulumi.StringPtrOutput {
 // if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
 //   - enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
 //   - sub option code: 1-255, sub-option code'
-func (o SwitchDhcpdConfigConfigOutput) VendorEncapulated() SwitchDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return o.ApplyT(func(v SwitchDhcpdConfigConfig) map[string]SwitchDhcpdConfigConfigVendorEncapulated {
-		return v.VendorEncapulated
-	}).(SwitchDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (o SwitchDhcpdConfigConfigOutput) VendorEncapsulated() SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return o.ApplyT(func(v SwitchDhcpdConfigConfig) map[string]SwitchDhcpdConfigConfigVendorEncapsulated {
+		return v.VendorEncapsulated
+	}).(SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
 type SwitchDhcpdConfigConfigMapOutput struct{ *pulumi.OutputState }
@@ -16567,107 +16567,107 @@ func (o SwitchDhcpdConfigConfigOptionsMapOutput) MapIndex(k pulumi.StringInput) 
 	}).(SwitchDhcpdConfigConfigOptionsOutput)
 }
 
-type SwitchDhcpdConfigConfigVendorEncapulated struct {
+type SwitchDhcpdConfigConfigVendorEncapsulated struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  *string `pulumi:"type"`
 	Value *string `pulumi:"value"`
 }
 
-// SwitchDhcpdConfigConfigVendorEncapulatedInput is an input type that accepts SwitchDhcpdConfigConfigVendorEncapulatedArgs and SwitchDhcpdConfigConfigVendorEncapulatedOutput values.
-// You can construct a concrete instance of `SwitchDhcpdConfigConfigVendorEncapulatedInput` via:
+// SwitchDhcpdConfigConfigVendorEncapsulatedInput is an input type that accepts SwitchDhcpdConfigConfigVendorEncapsulatedArgs and SwitchDhcpdConfigConfigVendorEncapsulatedOutput values.
+// You can construct a concrete instance of `SwitchDhcpdConfigConfigVendorEncapsulatedInput` via:
 //
-//	SwitchDhcpdConfigConfigVendorEncapulatedArgs{...}
-type SwitchDhcpdConfigConfigVendorEncapulatedInput interface {
+//	SwitchDhcpdConfigConfigVendorEncapsulatedArgs{...}
+type SwitchDhcpdConfigConfigVendorEncapsulatedInput interface {
 	pulumi.Input
 
-	ToSwitchDhcpdConfigConfigVendorEncapulatedOutput() SwitchDhcpdConfigConfigVendorEncapulatedOutput
-	ToSwitchDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Context) SwitchDhcpdConfigConfigVendorEncapulatedOutput
+	ToSwitchDhcpdConfigConfigVendorEncapsulatedOutput() SwitchDhcpdConfigConfigVendorEncapsulatedOutput
+	ToSwitchDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Context) SwitchDhcpdConfigConfigVendorEncapsulatedOutput
 }
 
-type SwitchDhcpdConfigConfigVendorEncapulatedArgs struct {
+type SwitchDhcpdConfigConfigVendorEncapsulatedArgs struct {
 	// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
 	Type  pulumi.StringPtrInput `pulumi:"type"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (SwitchDhcpdConfigConfigVendorEncapulatedArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (SwitchDhcpdConfigConfigVendorEncapsulatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i SwitchDhcpdConfigConfigVendorEncapulatedArgs) ToSwitchDhcpdConfigConfigVendorEncapulatedOutput() SwitchDhcpdConfigConfigVendorEncapulatedOutput {
-	return i.ToSwitchDhcpdConfigConfigVendorEncapulatedOutputWithContext(context.Background())
+func (i SwitchDhcpdConfigConfigVendorEncapsulatedArgs) ToSwitchDhcpdConfigConfigVendorEncapsulatedOutput() SwitchDhcpdConfigConfigVendorEncapsulatedOutput {
+	return i.ToSwitchDhcpdConfigConfigVendorEncapsulatedOutputWithContext(context.Background())
 }
 
-func (i SwitchDhcpdConfigConfigVendorEncapulatedArgs) ToSwitchDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchDhcpdConfigConfigVendorEncapulatedOutput)
+func (i SwitchDhcpdConfigConfigVendorEncapsulatedArgs) ToSwitchDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
-// SwitchDhcpdConfigConfigVendorEncapulatedMapInput is an input type that accepts SwitchDhcpdConfigConfigVendorEncapulatedMap and SwitchDhcpdConfigConfigVendorEncapulatedMapOutput values.
-// You can construct a concrete instance of `SwitchDhcpdConfigConfigVendorEncapulatedMapInput` via:
+// SwitchDhcpdConfigConfigVendorEncapsulatedMapInput is an input type that accepts SwitchDhcpdConfigConfigVendorEncapsulatedMap and SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput values.
+// You can construct a concrete instance of `SwitchDhcpdConfigConfigVendorEncapsulatedMapInput` via:
 //
-//	SwitchDhcpdConfigConfigVendorEncapulatedMap{ "key": SwitchDhcpdConfigConfigVendorEncapulatedArgs{...} }
-type SwitchDhcpdConfigConfigVendorEncapulatedMapInput interface {
+//	SwitchDhcpdConfigConfigVendorEncapsulatedMap{ "key": SwitchDhcpdConfigConfigVendorEncapsulatedArgs{...} }
+type SwitchDhcpdConfigConfigVendorEncapsulatedMapInput interface {
 	pulumi.Input
 
-	ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutput() SwitchDhcpdConfigConfigVendorEncapulatedMapOutput
-	ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Context) SwitchDhcpdConfigConfigVendorEncapulatedMapOutput
+	ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutput() SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput
+	ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Context) SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput
 }
 
-type SwitchDhcpdConfigConfigVendorEncapulatedMap map[string]SwitchDhcpdConfigConfigVendorEncapulatedInput
+type SwitchDhcpdConfigConfigVendorEncapsulatedMap map[string]SwitchDhcpdConfigConfigVendorEncapsulatedInput
 
-func (SwitchDhcpdConfigConfigVendorEncapulatedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SwitchDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (SwitchDhcpdConfigConfigVendorEncapsulatedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (i SwitchDhcpdConfigConfigVendorEncapulatedMap) ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutput() SwitchDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return i.ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(context.Background())
+func (i SwitchDhcpdConfigConfigVendorEncapsulatedMap) ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutput() SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return i.ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(context.Background())
 }
 
-func (i SwitchDhcpdConfigConfigVendorEncapulatedMap) ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapulatedMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchDhcpdConfigConfigVendorEncapulatedMapOutput)
+func (i SwitchDhcpdConfigConfigVendorEncapsulatedMap) ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput)
 }
 
-type SwitchDhcpdConfigConfigVendorEncapulatedOutput struct{ *pulumi.OutputState }
+type SwitchDhcpdConfigConfigVendorEncapsulatedOutput struct{ *pulumi.OutputState }
 
-func (SwitchDhcpdConfigConfigVendorEncapulatedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (SwitchDhcpdConfigConfigVendorEncapsulatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o SwitchDhcpdConfigConfigVendorEncapulatedOutput) ToSwitchDhcpdConfigConfigVendorEncapulatedOutput() SwitchDhcpdConfigConfigVendorEncapulatedOutput {
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedOutput) ToSwitchDhcpdConfigConfigVendorEncapsulatedOutput() SwitchDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
-func (o SwitchDhcpdConfigConfigVendorEncapulatedOutput) ToSwitchDhcpdConfigConfigVendorEncapulatedOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapulatedOutput {
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedOutput) ToSwitchDhcpdConfigConfigVendorEncapsulatedOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapsulatedOutput {
 	return o
 }
 
 // enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
-func (o SwitchDhcpdConfigConfigVendorEncapulatedOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwitchDhcpdConfigConfigVendorEncapulated) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchDhcpdConfigConfigVendorEncapsulated) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-func (o SwitchDhcpdConfigConfigVendorEncapulatedOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwitchDhcpdConfigConfigVendorEncapulated) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchDhcpdConfigConfigVendorEncapsulated) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type SwitchDhcpdConfigConfigVendorEncapulatedMapOutput struct{ *pulumi.OutputState }
+type SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput struct{ *pulumi.OutputState }
 
-func (SwitchDhcpdConfigConfigVendorEncapulatedMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SwitchDhcpdConfigConfigVendorEncapulated)(nil)).Elem()
+func (SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SwitchDhcpdConfigConfigVendorEncapsulated)(nil)).Elem()
 }
 
-func (o SwitchDhcpdConfigConfigVendorEncapulatedMapOutput) ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutput() SwitchDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput) ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutput() SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o SwitchDhcpdConfigConfigVendorEncapulatedMapOutput) ToSwitchDhcpdConfigConfigVendorEncapulatedMapOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapulatedMapOutput {
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput) ToSwitchDhcpdConfigConfigVendorEncapsulatedMapOutputWithContext(ctx context.Context) SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput {
 	return o
 }
 
-func (o SwitchDhcpdConfigConfigVendorEncapulatedMapOutput) MapIndex(k pulumi.StringInput) SwitchDhcpdConfigConfigVendorEncapulatedOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchDhcpdConfigConfigVendorEncapulated {
-		return vs[0].(map[string]SwitchDhcpdConfigConfigVendorEncapulated)[vs[1].(string)]
-	}).(SwitchDhcpdConfigConfigVendorEncapulatedOutput)
+func (o SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput) MapIndex(k pulumi.StringInput) SwitchDhcpdConfigConfigVendorEncapsulatedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SwitchDhcpdConfigConfigVendorEncapsulated {
+		return vs[0].(map[string]SwitchDhcpdConfigConfigVendorEncapsulated)[vs[1].(string)]
+	}).(SwitchDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
 type SwitchEvpnConfig struct {
@@ -38799,8 +38799,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigFixedBindingsMapInput)(nil)).Elem(), GatewayDhcpdConfigConfigFixedBindingsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigOptionsInput)(nil)).Elem(), GatewayDhcpdConfigConfigOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigOptionsMapInput)(nil)).Elem(), GatewayDhcpdConfigConfigOptionsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapulatedInput)(nil)).Elem(), GatewayDhcpdConfigConfigVendorEncapulatedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapulatedMapInput)(nil)).Elem(), GatewayDhcpdConfigConfigVendorEncapulatedMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapsulatedInput)(nil)).Elem(), GatewayDhcpdConfigConfigVendorEncapsulatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayDhcpdConfigConfigVendorEncapsulatedMapInput)(nil)).Elem(), GatewayDhcpdConfigConfigVendorEncapsulatedMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExtraRoutes6Input)(nil)).Elem(), GatewayExtraRoutes6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExtraRoutes6MapInput)(nil)).Elem(), GatewayExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayExtraRoutesInput)(nil)).Elem(), GatewayExtraRoutesArgs{})
@@ -38935,8 +38935,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigFixedBindingsMapInput)(nil)).Elem(), SwitchDhcpdConfigConfigFixedBindingsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigOptionsInput)(nil)).Elem(), SwitchDhcpdConfigConfigOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigOptionsMapInput)(nil)).Elem(), SwitchDhcpdConfigConfigOptionsMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapulatedInput)(nil)).Elem(), SwitchDhcpdConfigConfigVendorEncapulatedArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapulatedMapInput)(nil)).Elem(), SwitchDhcpdConfigConfigVendorEncapulatedMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapsulatedInput)(nil)).Elem(), SwitchDhcpdConfigConfigVendorEncapsulatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapsulatedMapInput)(nil)).Elem(), SwitchDhcpdConfigConfigVendorEncapsulatedMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchEvpnConfigInput)(nil)).Elem(), SwitchEvpnConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchEvpnConfigPtrInput)(nil)).Elem(), SwitchEvpnConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchExtraRoutes6Input)(nil)).Elem(), SwitchExtraRoutes6Args{})
@@ -39268,8 +39268,8 @@ func init() {
 	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigFixedBindingsMapOutput{})
 	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigOptionsOutput{})
 	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigOptionsMapOutput{})
-	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigVendorEncapulatedOutput{})
-	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigVendorEncapulatedMapOutput{})
+	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigVendorEncapsulatedOutput{})
+	pulumi.RegisterOutputType(GatewayDhcpdConfigConfigVendorEncapsulatedMapOutput{})
 	pulumi.RegisterOutputType(GatewayExtraRoutes6Output{})
 	pulumi.RegisterOutputType(GatewayExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(GatewayExtraRoutesOutput{})
@@ -39404,8 +39404,8 @@ func init() {
 	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigFixedBindingsMapOutput{})
 	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigOptionsOutput{})
 	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigOptionsMapOutput{})
-	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigVendorEncapulatedOutput{})
-	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigVendorEncapulatedMapOutput{})
+	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigVendorEncapsulatedOutput{})
+	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput{})
 	pulumi.RegisterOutputType(SwitchEvpnConfigOutput{})
 	pulumi.RegisterOutputType(SwitchEvpnConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchExtraRoutes6Output{})

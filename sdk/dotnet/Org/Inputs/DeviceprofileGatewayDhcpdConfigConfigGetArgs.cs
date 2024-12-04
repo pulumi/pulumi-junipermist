@@ -139,18 +139,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("type6")]
         public Input<string>? Type6 { get; set; }
 
-        [Input("vendorEncapulated")]
-        private InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs>? _vendorEncapulated;
+        [Input("vendorEncapsulated")]
+        private InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedGetArgs>? _vendorEncapsulated;
 
         /// <summary>
         /// if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code'
         /// </summary>
-        public InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs> VendorEncapulated
+        public InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedGetArgs> VendorEncapsulated
         {
-            get => _vendorEncapulated ?? (_vendorEncapulated = new InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapulatedGetArgs>());
-            set => _vendorEncapulated = value;
+            get => _vendorEncapsulated ?? (_vendorEncapsulated = new InputMap<Inputs.DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedGetArgs>());
+            set => _vendorEncapsulated = value;
         }
 
         public DeviceprofileGatewayDhcpdConfigConfigGetArgs()

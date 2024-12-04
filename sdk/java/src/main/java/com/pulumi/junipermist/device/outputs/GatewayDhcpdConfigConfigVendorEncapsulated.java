@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GatewayDhcpdConfigConfigVendorEncapulated {
+public final class GatewayDhcpdConfigConfigVendorEncapsulated {
     /**
      * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
      * 
@@ -18,7 +18,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapulated {
     private @Nullable String type;
     private @Nullable String value;
 
-    private GatewayDhcpdConfigConfigVendorEncapulated() {}
+    private GatewayDhcpdConfigConfigVendorEncapsulated() {}
     /**
      * @return enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
      * 
@@ -34,7 +34,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapulated {
         return new Builder();
     }
 
-    public static Builder builder(GatewayDhcpdConfigConfigVendorEncapulated defaults) {
+    public static Builder builder(GatewayDhcpdConfigConfigVendorEncapsulated defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -42,7 +42,7 @@ public final class GatewayDhcpdConfigConfigVendorEncapulated {
         private @Nullable String type;
         private @Nullable String value;
         public Builder() {}
-        public Builder(GatewayDhcpdConfigConfigVendorEncapulated defaults) {
+        public Builder(GatewayDhcpdConfigConfigVendorEncapsulated defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.type = defaults.type;
     	      this.value = defaults.value;
@@ -60,8 +60,8 @@ public final class GatewayDhcpdConfigConfigVendorEncapulated {
             this.value = value;
             return this;
         }
-        public GatewayDhcpdConfigConfigVendorEncapulated build() {
-            final var _resultValue = new GatewayDhcpdConfigConfigVendorEncapulated();
+        public GatewayDhcpdConfigConfigVendorEncapsulated build() {
+            final var _resultValue = new GatewayDhcpdConfigConfigVendorEncapsulated();
             _resultValue.type = type;
             _resultValue.value = value;
             return _resultValue;

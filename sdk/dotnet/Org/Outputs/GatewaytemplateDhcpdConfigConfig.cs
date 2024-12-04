@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
         ///   * sub option code: 1-255, sub-option code'
         /// </summary>
-        public readonly ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigVendorEncapulated>? VendorEncapulated;
+        public readonly ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated>? VendorEncapsulated;
 
         [OutputConstructor]
         private GatewaytemplateDhcpdConfigConfig(
@@ -113,7 +113,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? type6,
 
-            ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigVendorEncapulated>? vendorEncapulated)
+            ImmutableDictionary<string, Outputs.GatewaytemplateDhcpdConfigConfigVendorEncapsulated>? vendorEncapsulated)
         {
             DnsServers = dnsServers;
             DnsSuffixes = dnsSuffixes;
@@ -130,7 +130,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             Servers6s = servers6s;
             Type = type;
             Type6 = type6;
-            VendorEncapulated = vendorEncapulated;
+            VendorEncapsulated = vendorEncapsulated;
         }
     }
 }

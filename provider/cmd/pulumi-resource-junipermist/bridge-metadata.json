@@ -2385,19 +2385,10 @@
                         }
                     },
                     "rateset": {
-                        "fields": {
-                            "band_24": {
-                                "fields": {
-                                    "legacy": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
-                            "band_5": {
-                                "fields": {
-                                    "legacy": {
-                                        "maxItemsOne": false
-                                    }
+                        "elem": {
+                            "fields": {
+                                "legacy": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -3104,19 +3095,10 @@
                         }
                     },
                     "rateset": {
-                        "fields": {
-                            "band_24": {
-                                "fields": {
-                                    "legacy": {
-                                        "maxItemsOne": false
-                                    }
-                                }
-                            },
-                            "band_5": {
-                                "fields": {
-                                    "legacy": {
-                                        "maxItemsOne": false
-                                    }
+                        "elem": {
+                            "fields": {
+                                "legacy": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

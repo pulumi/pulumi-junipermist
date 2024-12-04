@@ -11,7 +11,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated
+    public sealed class GatewaytemplateDhcpdConfigConfigVendorEncapsulated
     {
         /// <summary>
         /// enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? Value;
 
         [OutputConstructor]
-        private DeviceprofileGatewayDhcpdConfigConfigVendorEncapulated(
+        private GatewaytemplateDhcpdConfigConfigVendorEncapsulated(
             string? type,
 
             string? value)

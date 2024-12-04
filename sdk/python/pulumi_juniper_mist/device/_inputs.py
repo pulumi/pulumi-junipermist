@@ -63,8 +63,8 @@ __all__ = [
     'GatewayDhcpdConfigConfigFixedBindingsArgsDict',
     'GatewayDhcpdConfigConfigOptionsArgs',
     'GatewayDhcpdConfigConfigOptionsArgsDict',
-    'GatewayDhcpdConfigConfigVendorEncapulatedArgs',
-    'GatewayDhcpdConfigConfigVendorEncapulatedArgsDict',
+    'GatewayDhcpdConfigConfigVendorEncapsulatedArgs',
+    'GatewayDhcpdConfigConfigVendorEncapsulatedArgsDict',
     'GatewayExtraRoutes6Args',
     'GatewayExtraRoutes6ArgsDict',
     'GatewayExtraRoutesArgs',
@@ -199,8 +199,8 @@ __all__ = [
     'SwitchDhcpdConfigConfigFixedBindingsArgsDict',
     'SwitchDhcpdConfigConfigOptionsArgs',
     'SwitchDhcpdConfigConfigOptionsArgsDict',
-    'SwitchDhcpdConfigConfigVendorEncapulatedArgs',
-    'SwitchDhcpdConfigConfigVendorEncapulatedArgsDict',
+    'SwitchDhcpdConfigConfigVendorEncapsulatedArgs',
+    'SwitchDhcpdConfigConfigVendorEncapsulatedArgsDict',
     'SwitchEvpnConfigArgs',
     'SwitchEvpnConfigArgsDict',
     'SwitchExtraRoutes6Args',
@@ -3636,7 +3636,7 @@ if not MYPY:
         """
         enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         """
-        vendor_encapulated: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapulatedArgsDict']]]]
+        vendor_encapsulated: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapsulatedArgsDict']]]]
         """
         if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -3663,7 +3663,7 @@ class GatewayDhcpdConfigConfigArgs:
                  servers6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  type6: Optional[pulumi.Input[str]] = None,
-                 vendor_encapulated: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapulatedArgs']]]] = None):
+                 vendor_encapsulated: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapsulatedArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
@@ -3681,7 +3681,7 @@ class GatewayDhcpdConfigConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers6s: if `type6`==`relay`
         :param pulumi.Input[str] type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param pulumi.Input[str] type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapulatedArgs']]] vendor_encapulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapsulatedArgs']]] vendor_encapsulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
                  * sub option code: 1-255, sub-option code'
         """
@@ -3715,8 +3715,8 @@ class GatewayDhcpdConfigConfigArgs:
             pulumi.set(__self__, "type", type)
         if type6 is not None:
             pulumi.set(__self__, "type6", type6)
-        if vendor_encapulated is not None:
-            pulumi.set(__self__, "vendor_encapulated", vendor_encapulated)
+        if vendor_encapsulated is not None:
+            pulumi.set(__self__, "vendor_encapsulated", vendor_encapsulated)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -3900,18 +3900,18 @@ class GatewayDhcpdConfigConfigArgs:
         pulumi.set(self, "type6", value)
 
     @property
-    @pulumi.getter(name="vendorEncapulated")
-    def vendor_encapulated(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapulatedArgs']]]]:
+    @pulumi.getter(name="vendorEncapsulated")
+    def vendor_encapsulated(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapsulatedArgs']]]]:
         """
         if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
           * sub option code: 1-255, sub-option code'
         """
-        return pulumi.get(self, "vendor_encapulated")
+        return pulumi.get(self, "vendor_encapsulated")
 
-    @vendor_encapulated.setter
-    def vendor_encapulated(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapulatedArgs']]]]):
-        pulumi.set(self, "vendor_encapulated", value)
+    @vendor_encapsulated.setter
+    def vendor_encapsulated(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewayDhcpdConfigConfigVendorEncapsulatedArgs']]]]):
+        pulumi.set(self, "vendor_encapsulated", value)
 
 
 if not MYPY:
@@ -3995,17 +3995,17 @@ class GatewayDhcpdConfigConfigOptionsArgs:
 
 
 if not MYPY:
-    class GatewayDhcpdConfigConfigVendorEncapulatedArgsDict(TypedDict):
+    class GatewayDhcpdConfigConfigVendorEncapsulatedArgsDict(TypedDict):
         type: NotRequired[pulumi.Input[str]]
         """
         enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
         """
         value: NotRequired[pulumi.Input[str]]
 elif False:
-    GatewayDhcpdConfigConfigVendorEncapulatedArgsDict: TypeAlias = Mapping[str, Any]
+    GatewayDhcpdConfigConfigVendorEncapsulatedArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GatewayDhcpdConfigConfigVendorEncapulatedArgs:
+class GatewayDhcpdConfigConfigVendorEncapsulatedArgs:
     def __init__(__self__, *,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -10400,7 +10400,7 @@ if not MYPY:
         """
         enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         """
-        vendor_encapulated: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapulatedArgsDict']]]]
+        vendor_encapsulated: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapsulatedArgsDict']]]]
         """
         if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
@@ -10427,7 +10427,7 @@ class SwitchDhcpdConfigConfigArgs:
                  servers6s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  type6: Optional[pulumi.Input[str]] = None,
-                 vendor_encapulated: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapulatedArgs']]]] = None):
+                 vendor_encapsulated: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapsulatedArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: if `type`==`server` or `type6`==`server` - optional, if not defined, system one will be used
@@ -10445,7 +10445,7 @@ class SwitchDhcpdConfigConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] servers6s: if `type6`==`relay`
         :param pulumi.Input[str] type: enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
         :param pulumi.Input[str] type6: enum: `none`, `relay` (DHCP Relay), `server` (DHCP Server)
-        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapulatedArgs']]] vendor_encapulated: if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
+        :param pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapsulatedArgs']]] vendor_encapsulated: if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
                  * sub option code: 1-255, sub-option code'
         """
@@ -10479,8 +10479,8 @@ class SwitchDhcpdConfigConfigArgs:
             pulumi.set(__self__, "type", type)
         if type6 is not None:
             pulumi.set(__self__, "type6", type6)
-        if vendor_encapulated is not None:
-            pulumi.set(__self__, "vendor_encapulated", vendor_encapulated)
+        if vendor_encapsulated is not None:
+            pulumi.set(__self__, "vendor_encapsulated", vendor_encapsulated)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -10664,18 +10664,18 @@ class SwitchDhcpdConfigConfigArgs:
         pulumi.set(self, "type6", value)
 
     @property
-    @pulumi.getter(name="vendorEncapulated")
-    def vendor_encapulated(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapulatedArgs']]]]:
+    @pulumi.getter(name="vendorEncapsulated")
+    def vendor_encapsulated(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapsulatedArgs']]]]:
         """
         if `type`==`server` or `type6`==`server`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
           * sub option code: 1-255, sub-option code'
         """
-        return pulumi.get(self, "vendor_encapulated")
+        return pulumi.get(self, "vendor_encapsulated")
 
-    @vendor_encapulated.setter
-    def vendor_encapulated(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapulatedArgs']]]]):
-        pulumi.set(self, "vendor_encapulated", value)
+    @vendor_encapsulated.setter
+    def vendor_encapsulated(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['SwitchDhcpdConfigConfigVendorEncapsulatedArgs']]]]):
+        pulumi.set(self, "vendor_encapsulated", value)
 
 
 if not MYPY:
@@ -10759,17 +10759,17 @@ class SwitchDhcpdConfigConfigOptionsArgs:
 
 
 if not MYPY:
-    class SwitchDhcpdConfigConfigVendorEncapulatedArgsDict(TypedDict):
+    class SwitchDhcpdConfigConfigVendorEncapsulatedArgsDict(TypedDict):
         type: NotRequired[pulumi.Input[str]]
         """
         enum: `boolean`, `hex`, `int16`, `int32`, `ip`, `string`, `uint16`, `uint32`
         """
         value: NotRequired[pulumi.Input[str]]
 elif False:
-    SwitchDhcpdConfigConfigVendorEncapulatedArgsDict: TypeAlias = Mapping[str, Any]
+    SwitchDhcpdConfigConfigVendorEncapsulatedArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class SwitchDhcpdConfigConfigVendorEncapulatedArgs:
+class SwitchDhcpdConfigConfigVendorEncapsulatedArgs:
     def __init__(__self__, *,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
