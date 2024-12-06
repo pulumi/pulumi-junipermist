@@ -136,7 +136,7 @@ def get_nacidp_metadata(nacidp_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[str]] = None,
                                org_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNacidpMetadataResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacidpMetadataResult]:
     """
     This data source provides the NAC IDP Metadata information.
     The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
@@ -154,7 +154,7 @@ def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['nacidpId'] = nacidp_id
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNacidpMetadata:getNacidpMetadata', __args__, opts=opts, typ=GetNacidpMetadataResult)
     return __ret__.apply(lambda __response__: GetNacidpMetadataResult(
         acs_url=pulumi.get(__response__, 'acs_url'),

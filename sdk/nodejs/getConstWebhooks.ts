@@ -52,7 +52,7 @@ export interface GetConstWebhooksResult {
  * const listOfWebhooks = junipermist.getConstWebhooks({});
  * ```
  */
-export function getConstWebhooksOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstWebhooksResult> {
+export function getConstWebhooksOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConstWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getConstWebhooks:getConstWebhooks", {
     }, opts);

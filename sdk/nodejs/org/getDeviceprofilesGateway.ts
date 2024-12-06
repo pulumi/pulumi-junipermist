@@ -61,7 +61,7 @@ export interface GetDeviceprofilesGatewayResult {
  * });
  * ```
  */
-export function getDeviceprofilesGatewayOutput(args: GetDeviceprofilesGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceprofilesGatewayResult> {
+export function getDeviceprofilesGatewayOutput(args: GetDeviceprofilesGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeviceprofilesGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", {
         "orgId": args.orgId,

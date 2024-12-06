@@ -93,7 +93,7 @@ def get_wlantemplates(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_wlantemplates=pulumi.get(__ret__, 'org_wlantemplates'))
 def get_wlantemplates_output(org_id: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWlantemplatesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWlantemplatesResult]:
     """
     This datasource provides the list of WLAN Templates in a Mist Organization.
     A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
@@ -109,7 +109,7 @@ def get_wlantemplates_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWlantemplates:getWlantemplates', __args__, opts=opts, typ=GetWlantemplatesResult)
     return __ret__.apply(lambda __response__: GetWlantemplatesResult(
         id=pulumi.get(__response__, 'id'),

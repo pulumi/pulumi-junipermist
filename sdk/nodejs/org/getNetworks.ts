@@ -61,7 +61,7 @@ export interface GetNetworksResult {
  * });
  * ```
  */
-export function getNetworksOutput(args: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
+export function getNetworksOutput(args: GetNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getNetworks:getNetworks", {
         "orgId": args.orgId,

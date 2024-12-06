@@ -65,7 +65,7 @@ export interface GetWebhooksResult {
  * });
  * ```
  */
-export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
+export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getWebhooks:getWebhooks", {
         "limit": args.limit,

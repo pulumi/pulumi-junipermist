@@ -37,7 +37,7 @@ export interface GetVpnsResult {
 /**
  * This data source provide the list of the Org VPNs.
  */
-export function getVpnsOutput(args: GetVpnsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpnsResult> {
+export function getVpnsOutput(args: GetVpnsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getVpns:getVpns", {
         "orgId": args.orgId,
