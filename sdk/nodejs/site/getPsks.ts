@@ -78,7 +78,7 @@ export interface GetPsksResult {
  * });
  * ```
  */
-export function getPsksOutput(args: GetPsksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPsksResult> {
+export function getPsksOutput(args: GetPsksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPsksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:site/getPsks:getPsks", {
         "limit": args.limit,

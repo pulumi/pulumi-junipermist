@@ -93,7 +93,7 @@ def get_deviceprofiles_ap(org_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_deviceprofiles_ap_output(org_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceprofilesApResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceprofilesApResult]:
     """
     This data source provides the list of AP Device Profiles.
     AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
@@ -109,7 +109,7 @@ def get_deviceprofiles_ap_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp', __args__, opts=opts, typ=GetDeviceprofilesApResult)
     return __ret__.apply(lambda __response__: GetDeviceprofilesApResult(
         deviceprofiles=pulumi.get(__response__, 'deviceprofiles'),

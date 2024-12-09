@@ -48,7 +48,7 @@ export interface GetConstTrafficTypesResult {
  * const listOfTrafficTypes = junipermist.getConstTrafficTypes({});
  * ```
  */
-export function getConstTrafficTypesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstTrafficTypesResult> {
+export function getConstTrafficTypesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConstTrafficTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", {
     }, opts);

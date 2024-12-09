@@ -93,7 +93,7 @@ def get_rftemplates(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_rftemplates=pulumi.get(__ret__, 'org_rftemplates'))
 def get_rftemplates_output(org_id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRftemplatesResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRftemplatesResult]:
     """
     This resource provides the list of RF Templates.
     The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
@@ -109,7 +109,7 @@ def get_rftemplates_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getRftemplates:getRftemplates', __args__, opts=opts, typ=GetRftemplatesResult)
     return __ret__.apply(lambda __response__: GetRftemplatesResult(
         id=pulumi.get(__response__, 'id'),

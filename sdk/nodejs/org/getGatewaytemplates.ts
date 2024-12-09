@@ -61,7 +61,7 @@ export interface GetGatewaytemplatesResult {
  * });
  * ```
  */
-export function getGatewaytemplatesOutput(args: GetGatewaytemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaytemplatesResult> {
+export function getGatewaytemplatesOutput(args: GetGatewaytemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaytemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getGatewaytemplates:getGatewaytemplates", {
         "orgId": args.orgId,

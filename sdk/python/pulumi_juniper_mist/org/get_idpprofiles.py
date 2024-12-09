@@ -93,7 +93,7 @@ def get_idpprofiles(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_idpprofiles=pulumi.get(__ret__, 'org_idpprofiles'))
 def get_idpprofiles_output(org_id: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdpprofilesResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdpprofilesResult]:
     """
     This data source provides the list of WAN Assurance IDP Profiles.
     An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
@@ -109,7 +109,7 @@ def get_idpprofiles_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getIdpprofiles:getIdpprofiles', __args__, opts=opts, typ=GetIdpprofilesResult)
     return __ret__.apply(lambda __response__: GetIdpprofilesResult(
         id=pulumi.get(__response__, 'id'),

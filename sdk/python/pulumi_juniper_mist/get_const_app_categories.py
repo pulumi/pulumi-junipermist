@@ -80,7 +80,7 @@ def get_const_app_categories(opts: Optional[pulumi.InvokeOptions] = None) -> Awa
     return AwaitableGetConstAppCategoriesResult(
         const_app_categories=pulumi.get(__ret__, 'const_app_categories'),
         id=pulumi.get(__ret__, 'id'))
-def get_const_app_categories_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstAppCategoriesResult]:
+def get_const_app_categories_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstAppCategoriesResult]:
     """
     This data source provides the of ConstAppCategories.
     This information can be used as `app_categories` in the `org.Service` resource
@@ -95,7 +95,7 @@ def get_const_app_categories_output(opts: Optional[pulumi.InvokeOptions] = None)
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstAppCategories:getConstAppCategories', __args__, opts=opts, typ=GetConstAppCategoriesResult)
     return __ret__.apply(lambda __response__: GetConstAppCategoriesResult(
         const_app_categories=pulumi.get(__response__, 'const_app_categories'),

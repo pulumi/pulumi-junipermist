@@ -61,7 +61,7 @@ export interface GetWlantemplatesResult {
  * });
  * ```
  */
-export function getWlantemplatesOutput(args: GetWlantemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWlantemplatesResult> {
+export function getWlantemplatesOutput(args: GetWlantemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWlantemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getWlantemplates:getWlantemplates", {
         "orgId": args.orgId,

@@ -83,13 +83,13 @@ def get_vpns(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_vpns=pulumi.get(__ret__, 'org_vpns'))
 def get_vpns_output(org_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpnsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnsResult]:
     """
     This data source provide the list of the Org VPNs.
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getVpns:getVpns', __args__, opts=opts, typ=GetVpnsResult)
     return __ret__.apply(lambda __response__: GetVpnsResult(
         id=pulumi.get(__response__, 'id'),

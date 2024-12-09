@@ -48,7 +48,7 @@ export interface GetConstAppCategoriesResult {
  * const listOfAppCategories = junipermist.getConstAppCategories({});
  * ```
  */
-export function getConstAppCategoriesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstAppCategoriesResult> {
+export function getConstAppCategoriesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConstAppCategoriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getConstAppCategories:getConstAppCategories", {
     }, opts);
