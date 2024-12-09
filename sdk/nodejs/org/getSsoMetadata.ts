@@ -67,7 +67,7 @@ export interface GetSsoMetadataResult {
  * });
  * ```
  */
-export function getSsoMetadataOutput(args: GetSsoMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSsoMetadataResult> {
+export function getSsoMetadataOutput(args: GetSsoMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSsoMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getSsoMetadata:getSsoMetadata", {
         "orgId": args.orgId,

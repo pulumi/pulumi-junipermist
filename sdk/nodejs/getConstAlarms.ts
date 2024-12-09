@@ -48,7 +48,7 @@ export interface GetConstAlarmsResult {
  * const listOfAlarms = junipermist.getConstAlarms({});
  * ```
  */
-export function getConstAlarmsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstAlarmsResult> {
+export function getConstAlarmsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConstAlarmsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getConstAlarms:getConstAlarms", {
     }, opts);

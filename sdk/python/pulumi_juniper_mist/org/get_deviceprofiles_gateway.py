@@ -93,7 +93,7 @@ def get_deviceprofiles_gateway(org_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_deviceprofiles_gateway_output(org_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceprofilesGatewayResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceprofilesGatewayResult]:
     """
     This provides the list of Gateway Device Profiles (Hub Profile).
     A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
@@ -109,7 +109,7 @@ def get_deviceprofiles_gateway_output(org_id: Optional[pulumi.Input[str]] = None
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway', __args__, opts=opts, typ=GetDeviceprofilesGatewayResult)
     return __ret__.apply(lambda __response__: GetDeviceprofilesGatewayResult(
         deviceprofiles=pulumi.get(__response__, 'deviceprofiles'),

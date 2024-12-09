@@ -61,7 +61,7 @@ export interface GetServicepoliciesResult {
  * });
  * ```
  */
-export function getServicepoliciesOutput(args: GetServicepoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicepoliciesResult> {
+export function getServicepoliciesOutput(args: GetServicepoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicepoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getServicepolicies:getServicepolicies", {
         "orgId": args.orgId,

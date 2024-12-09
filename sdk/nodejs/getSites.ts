@@ -61,7 +61,7 @@ export interface GetSitesResult {
  * });
  * ```
  */
-export function getSitesOutput(args: GetSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSitesResult> {
+export function getSitesOutput(args: GetSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSitesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getSites:getSites", {
         "orgId": args.orgId,

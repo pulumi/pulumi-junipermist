@@ -61,7 +61,7 @@ export interface GetRftemplatesResult {
  * });
  * ```
  */
-export function getRftemplatesOutput(args: GetRftemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRftemplatesResult> {
+export function getRftemplatesOutput(args: GetRftemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRftemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getRftemplates:getRftemplates", {
         "orgId": args.orgId,

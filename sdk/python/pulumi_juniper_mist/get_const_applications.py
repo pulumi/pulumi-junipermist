@@ -80,7 +80,7 @@ def get_const_applications(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     return AwaitableGetConstApplicationsResult(
         const_applications=pulumi.get(__ret__, 'const_applications'),
         id=pulumi.get(__ret__, 'id'))
-def get_const_applications_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstApplicationsResult]:
+def get_const_applications_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstApplicationsResult]:
     """
     This data source provides the of ConstApplications.
     This information can be used as `apps` in the `org.Service` resource, the `site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
@@ -95,7 +95,7 @@ def get_const_applications_output(opts: Optional[pulumi.InvokeOptions] = None) -
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstApplications:getConstApplications', __args__, opts=opts, typ=GetConstApplicationsResult)
     return __ret__.apply(lambda __response__: GetConstApplicationsResult(
         const_applications=pulumi.get(__response__, 'const_applications'),

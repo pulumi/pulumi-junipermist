@@ -61,7 +61,7 @@ export interface GetServicesResult {
  * });
  * ```
  */
-export function getServicesOutput(args: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
+export function getServicesOutput(args: GetServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getServices:getServices", {
         "orgId": args.orgId,

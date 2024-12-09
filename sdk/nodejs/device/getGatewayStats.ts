@@ -95,7 +95,7 @@ export interface GetGatewayStatsResult {
  * });
  * ```
  */
-export function getGatewayStatsOutput(args: GetGatewayStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayStatsResult> {
+export function getGatewayStatsOutput(args: GetGatewayStatsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayStatsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:device/getGatewayStats:getGatewayStats", {
         "duration": args.duration,

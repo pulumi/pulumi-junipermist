@@ -109,7 +109,7 @@ def get_webhooks(limit: Optional[int] = None,
 def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                         page: Optional[pulumi.Input[Optional[int]]] = None,
                         site_id: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhooksResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source provides the list of Site Webhooks.
     """
@@ -117,7 +117,7 @@ def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     __args__['limit'] = limit
     __args__['page'] = page
     __args__['siteId'] = site_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:site/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
         id=pulumi.get(__response__, 'id'),

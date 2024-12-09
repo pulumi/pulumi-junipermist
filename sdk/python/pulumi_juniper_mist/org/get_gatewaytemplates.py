@@ -93,7 +93,7 @@ def get_gatewaytemplates(org_id: Optional[str] = None,
         org_gatewaytemplates=pulumi.get(__ret__, 'org_gatewaytemplates'),
         org_id=pulumi.get(__ret__, 'org_id'))
 def get_gatewaytemplates_output(org_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaytemplatesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaytemplatesResult]:
     """
     This data source provides the list of Gateway Templates.
     A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
@@ -109,7 +109,7 @@ def get_gatewaytemplates_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getGatewaytemplates:getGatewaytemplates', __args__, opts=opts, typ=GetGatewaytemplatesResult)
     return __ret__.apply(lambda __response__: GetGatewaytemplatesResult(
         id=pulumi.get(__response__, 'id'),

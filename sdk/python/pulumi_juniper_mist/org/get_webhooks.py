@@ -118,7 +118,7 @@ def get_webhooks(limit: Optional[int] = None,
 def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                         org_id: Optional[pulumi.Input[str]] = None,
                         page: Optional[pulumi.Input[Optional[int]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebhooksResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source provides the list of Org Webhooks.
 
@@ -135,7 +135,7 @@ def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     __args__['limit'] = limit
     __args__['orgId'] = org_id
     __args__['page'] = page
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
         id=pulumi.get(__response__, 'id'),

@@ -93,7 +93,7 @@ def get_sites(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         sites=pulumi.get(__ret__, 'sites'))
 def get_sites_output(org_id: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSitesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSitesResult]:
     """
     This datasource provides the list of sites in a Mist Organization.
     A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
@@ -109,7 +109,7 @@ def get_sites_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getSites:getSites', __args__, opts=opts, typ=GetSitesResult)
     return __ret__.apply(lambda __response__: GetSitesResult(
         id=pulumi.get(__response__, 'id'),

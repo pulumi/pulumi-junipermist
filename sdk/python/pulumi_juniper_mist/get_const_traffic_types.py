@@ -80,7 +80,7 @@ def get_const_traffic_types(opts: Optional[pulumi.InvokeOptions] = None) -> Awai
     return AwaitableGetConstTrafficTypesResult(
         const_traffic_types=pulumi.get(__ret__, 'const_traffic_types'),
         id=pulumi.get(__ret__, 'id'))
-def get_const_traffic_types_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstTrafficTypesResult]:
+def get_const_traffic_types_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstTrafficTypesResult]:
     """
     This data source provides the of ConstTrafficTypes.
     This information can be used to define the Country in the RF templates (`org.Rftemplate`)
@@ -95,7 +95,7 @@ def get_const_traffic_types_output(opts: Optional[pulumi.InvokeOptions] = None) 
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstTrafficTypes:getConstTrafficTypes', __args__, opts=opts, typ=GetConstTrafficTypesResult)
     return __ret__.apply(lambda __response__: GetConstTrafficTypesResult(
         const_traffic_types=pulumi.get(__response__, 'const_traffic_types'),

@@ -184,7 +184,7 @@ def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = None,
                         site_id: Optional[pulumi.Input[Optional[str]]] = None,
                         start: Optional[pulumi.Input[Optional[int]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApStatsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApStatsResult]:
     """
     This data source provides the list of Wireless Access Points with their statistics.
 
@@ -210,7 +210,7 @@ def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['siteId'] = site_id
     __args__['start'] = start
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:device/getApStats:getApStats', __args__, opts=opts, typ=GetApStatsResult)
     return __ret__.apply(lambda __response__: GetApStatsResult(
         device_ap_stats=pulumi.get(__response__, 'device_ap_stats'),
