@@ -48,7 +48,7 @@ export interface GetConstCountriesResult {
  * const listOfCountries = junipermist.getConstCountries({});
  * ```
  */
-export function getConstCountriesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstCountriesResult> {
+export function getConstCountriesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConstCountriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getConstCountries:getConstCountries", {
     }, opts);

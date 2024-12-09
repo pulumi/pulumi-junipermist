@@ -43,7 +43,7 @@ export interface GetWebhooksResult {
 /**
  * This data source provides the list of Site Webhooks.
  */
-export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhooksResult> {
+export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:site/getWebhooks:getWebhooks", {
         "limit": args.limit,

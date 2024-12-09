@@ -93,7 +93,7 @@ def get_networktemplates(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_networktemplates=pulumi.get(__ret__, 'org_networktemplates'))
 def get_networktemplates_output(org_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworktemplatesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworktemplatesResult]:
     """
     This data source provides the list of Org Network Templates (Switch templates).
     A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
@@ -109,7 +109,7 @@ def get_networktemplates_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNetworktemplates:getNetworktemplates', __args__, opts=opts, typ=GetNetworktemplatesResult)
     return __ret__.apply(lambda __response__: GetNetworktemplatesResult(
         id=pulumi.get(__response__, 'id'),

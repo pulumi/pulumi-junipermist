@@ -80,7 +80,7 @@ def get_const_countries(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     return AwaitableGetConstCountriesResult(
         const_countries=pulumi.get(__ret__, 'const_countries'),
         id=pulumi.get(__ret__, 'id'))
-def get_const_countries_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstCountriesResult]:
+def get_const_countries_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstCountriesResult]:
     """
     This data source provides the of ConstCountries.
     This information can be used to define the Country in the RF templates (`org.Rftemplate`)
@@ -95,7 +95,7 @@ def get_const_countries_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstCountries:getConstCountries', __args__, opts=opts, typ=GetConstCountriesResult)
     return __ret__.apply(lambda __response__: GetConstCountriesResult(
         const_countries=pulumi.get(__response__, 'const_countries'),

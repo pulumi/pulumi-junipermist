@@ -80,7 +80,7 @@ def get_const_alarms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetConstAlarmsResult(
         const_alarms=pulumi.get(__ret__, 'const_alarms'),
         id=pulumi.get(__ret__, 'id'))
-def get_const_alarms_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstAlarmsResult]:
+def get_const_alarms_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstAlarmsResult]:
     """
     This data source provides the list of  available Alarms.
     The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
@@ -95,7 +95,7 @@ def get_const_alarms_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulu
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstAlarms:getConstAlarms', __args__, opts=opts, typ=GetConstAlarmsResult)
     return __ret__.apply(lambda __response__: GetConstAlarmsResult(
         const_alarms=pulumi.get(__response__, 'const_alarms'),

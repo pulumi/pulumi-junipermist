@@ -159,7 +159,7 @@ def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
                     role: Optional[pulumi.Input[Optional[str]]] = None,
                     site_id: Optional[pulumi.Input[str]] = None,
                     ssid: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPsksResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPsksResult]:
     """
     This data source provides the list of WAN Assurance Psks.
     The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
@@ -181,7 +181,7 @@ def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     __args__['role'] = role
     __args__['siteId'] = site_id
     __args__['ssid'] = ssid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:site/getPsks:getPsks', __args__, opts=opts, typ=GetPsksResult)
     return __ret__.apply(lambda __response__: GetPsksResult(
         id=pulumi.get(__response__, 'id'),

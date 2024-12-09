@@ -61,7 +61,7 @@ export interface GetNetworktemplatesResult {
  * });
  * ```
  */
-export function getNetworktemplatesOutput(args: GetNetworktemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworktemplatesResult> {
+export function getNetworktemplatesOutput(args: GetNetworktemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworktemplatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getNetworktemplates:getNetworktemplates", {
         "orgId": args.orgId,

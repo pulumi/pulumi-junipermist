@@ -93,7 +93,7 @@ def get_networks(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_networks=pulumi.get(__ret__, 'org_networks'))
 def get_networks_output(org_id: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworksResult]:
     """
     This data source provides the list of WAN Assurance Networks.
     The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
@@ -109,7 +109,7 @@ def get_networks_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNetworks:getNetworks', __args__, opts=opts, typ=GetNetworksResult)
     return __ret__.apply(lambda __response__: GetNetworksResult(
         id=pulumi.get(__response__, 'id'),

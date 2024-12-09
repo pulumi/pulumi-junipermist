@@ -93,7 +93,7 @@ def get_sitegroups(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_sitegroups=pulumi.get(__ret__, 'org_sitegroups'))
 def get_sitegroups_output(org_id: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSitegroupsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSitegroupsResult]:
     """
     This data source provides the list of Org Site Groups (sitegroups).
     A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
@@ -109,7 +109,7 @@ def get_sitegroups_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getSitegroups:getSitegroups', __args__, opts=opts, typ=GetSitegroupsResult)
     return __ret__.apply(lambda __response__: GetSitegroupsResult(
         id=pulumi.get(__response__, 'id'),

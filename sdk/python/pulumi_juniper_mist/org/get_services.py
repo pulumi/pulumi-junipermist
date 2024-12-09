@@ -93,7 +93,7 @@ def get_services(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_services=pulumi.get(__ret__, 'org_services'))
 def get_services_output(org_id: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicesResult]:
     """
     This data source provides the list of WAN Assurance Services (Applications).
     The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
@@ -109,7 +109,7 @@ def get_services_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getServices:getServices', __args__, opts=opts, typ=GetServicesResult)
     return __ret__.apply(lambda __response__: GetServicesResult(
         id=pulumi.get(__response__, 'id'),

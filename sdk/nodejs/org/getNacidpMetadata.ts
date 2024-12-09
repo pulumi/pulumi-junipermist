@@ -67,7 +67,7 @@ export interface GetNacidpMetadataResult {
  * });
  * ```
  */
-export function getNacidpMetadataOutput(args: GetNacidpMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNacidpMetadataResult> {
+export function getNacidpMetadataOutput(args: GetNacidpMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNacidpMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getNacidpMetadata:getNacidpMetadata", {
         "nacidpId": args.nacidpId,

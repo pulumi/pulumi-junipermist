@@ -184,7 +184,7 @@ def get_gateway_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = N
                              site_id: Optional[pulumi.Input[Optional[str]]] = None,
                              start: Optional[pulumi.Input[Optional[int]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayStatsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayStatsResult]:
     """
     This data source provides the list of Gateways with their statistics.
 
@@ -210,7 +210,7 @@ def get_gateway_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = N
     __args__['siteId'] = site_id
     __args__['start'] = start
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:device/getGatewayStats:getGatewayStats', __args__, opts=opts, typ=GetGatewayStatsResult)
     return __ret__.apply(lambda __response__: GetGatewayStatsResult(
         device_gateway_stats=pulumi.get(__response__, 'device_gateway_stats'),

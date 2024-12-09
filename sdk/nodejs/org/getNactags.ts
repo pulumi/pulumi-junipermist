@@ -76,7 +76,7 @@ export interface GetNactagsResult {
  * });
  * ```
  */
-export function getNactagsOutput(args: GetNactagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNactagsResult> {
+export function getNactagsOutput(args: GetNactagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNactagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getNactags:getNactags", {
         "limit": args.limit,

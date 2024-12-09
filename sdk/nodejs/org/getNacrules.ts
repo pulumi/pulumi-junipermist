@@ -61,7 +61,7 @@ export interface GetNacrulesResult {
  * });
  * ```
  */
-export function getNacrulesOutput(args: GetNacrulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNacrulesResult> {
+export function getNacrulesOutput(args: GetNacrulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNacrulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getNacrules:getNacrules", {
         "orgId": args.orgId,
