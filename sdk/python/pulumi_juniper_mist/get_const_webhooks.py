@@ -82,7 +82,7 @@ def get_const_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
     return AwaitableGetConstWebhooksResult(
         const_webhooks=pulumi.get(__ret__, 'const_webhooks'),
         id=pulumi.get(__ret__, 'id'))
-def get_const_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConstWebhooksResult]:
+def get_const_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstWebhooksResult]:
     """
     This data source provides the list of Webhook Topics.
     This information can be used to configure webhooks at the Org level or at the Site level with the `org.Webhook` resource or the `site.Webhook` resource.
@@ -99,7 +99,7 @@ def get_const_webhooks_output(opts: Optional[pulumi.InvokeOptions] = None) -> pu
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:index/getConstWebhooks:getConstWebhooks', __args__, opts=opts, typ=GetConstWebhooksResult)
     return __ret__.apply(lambda __response__: GetConstWebhooksResult(
         const_webhooks=pulumi.get(__response__, 'const_webhooks'),

@@ -216,7 +216,7 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
                          unassigned: Optional[pulumi.Input[Optional[bool]]] = None,
                          vc: Optional[pulumi.Input[Optional[bool]]] = None,
                          vc_mac: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInventoryResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInventoryResult]:
     """
     This data source provides the list of Devices in the Org inventory.
 
@@ -247,7 +247,7 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['unassigned'] = unassigned
     __args__['vc'] = vc
     __args__['vcMac'] = vc_mac
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getInventory:getInventory', __args__, opts=opts, typ=GetInventoryResult)
     return __ret__.apply(lambda __response__: GetInventoryResult(
         id=pulumi.get(__response__, 'id'),

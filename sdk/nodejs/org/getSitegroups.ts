@@ -61,7 +61,7 @@ export interface GetSitegroupsResult {
  * });
  * ```
  */
-export function getSitegroupsOutput(args: GetSitegroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSitegroupsResult> {
+export function getSitegroupsOutput(args: GetSitegroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSitegroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getSitegroups:getSitegroups", {
         "orgId": args.orgId,

@@ -113,7 +113,7 @@ export interface GetSwitchStatsResult {
  * });
  * ```
  */
-export function getSwitchStatsOutput(args: GetSwitchStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSwitchStatsResult> {
+export function getSwitchStatsOutput(args: GetSwitchStatsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSwitchStatsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:device/getSwitchStats:getSwitchStats", {
         "duration": args.duration,

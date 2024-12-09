@@ -136,7 +136,7 @@ def get_sso_metadata(org_id: Optional[str] = None,
         sso_id=pulumi.get(__ret__, 'sso_id'))
 def get_sso_metadata_output(org_id: Optional[pulumi.Input[str]] = None,
                             sso_id: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSsoMetadataResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSsoMetadataResult]:
     """
     This data source provides the SSO Metadata information.
     The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
@@ -154,7 +154,7 @@ def get_sso_metadata_output(org_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['orgId'] = org_id
     __args__['ssoId'] = sso_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getSsoMetadata:getSsoMetadata', __args__, opts=opts, typ=GetSsoMetadataResult)
     return __ret__.apply(lambda __response__: GetSsoMetadataResult(
         acs_url=pulumi.get(__response__, 'acs_url'),
