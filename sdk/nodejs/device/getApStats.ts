@@ -95,7 +95,7 @@ export interface GetApStatsResult {
  * });
  * ```
  */
-export function getApStatsOutput(args: GetApStatsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApStatsResult> {
+export function getApStatsOutput(args: GetApStatsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApStatsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:device/getApStats:getApStats", {
         "duration": args.duration,

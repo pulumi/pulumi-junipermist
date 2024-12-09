@@ -218,7 +218,7 @@ def get_switch_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = No
                             site_id: Optional[pulumi.Input[Optional[str]]] = None,
                             start: Optional[pulumi.Input[Optional[int]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSwitchStatsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSwitchStatsResult]:
     """
     This data source provides the list of Switches with their statistics.
 
@@ -248,7 +248,7 @@ def get_switch_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = No
     __args__['siteId'] = site_id
     __args__['start'] = start
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:device/getSwitchStats:getSwitchStats', __args__, opts=opts, typ=GetSwitchStatsResult)
     return __ret__.apply(lambda __response__: GetSwitchStatsResult(
         device_switch_stats=pulumi.get(__response__, 'device_switch_stats'),

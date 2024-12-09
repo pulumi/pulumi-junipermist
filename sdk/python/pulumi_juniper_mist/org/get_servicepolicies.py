@@ -93,7 +93,7 @@ def get_servicepolicies(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_servicepolicies=pulumi.get(__ret__, 'org_servicepolicies'))
 def get_servicepolicies_output(org_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicepoliciesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicepoliciesResult]:
     """
     This data source provides the list of WAN Assurance Service Policies (Application Policiess).
     The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
@@ -109,7 +109,7 @@ def get_servicepolicies_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getServicepolicies:getServicepolicies', __args__, opts=opts, typ=GetServicepoliciesResult)
     return __ret__.apply(lambda __response__: GetServicepoliciesResult(
         id=pulumi.get(__response__, 'id'),

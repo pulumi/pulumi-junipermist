@@ -61,7 +61,7 @@ export interface GetIdpprofilesResult {
  * });
  * ```
  */
-export function getIdpprofilesOutput(args: GetIdpprofilesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdpprofilesResult> {
+export function getIdpprofilesOutput(args: GetIdpprofilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdpprofilesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getIdpprofiles:getIdpprofiles", {
         "orgId": args.orgId,

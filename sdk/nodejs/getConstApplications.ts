@@ -48,7 +48,7 @@ export interface GetConstApplicationsResult {
  * const listOfApplications = junipermist.getConstApplications({});
  * ```
  */
-export function getConstApplicationsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetConstApplicationsResult> {
+export function getConstApplicationsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConstApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:index/getConstApplications:getConstApplications", {
     }, opts);

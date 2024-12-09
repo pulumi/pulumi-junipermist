@@ -61,7 +61,7 @@ export interface GetWxtagsResult {
  * });
  * ```
  */
-export function getWxtagsOutput(args: GetWxtagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWxtagsResult> {
+export function getWxtagsOutput(args: GetWxtagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWxtagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getWxtags:getWxtags", {
         "orgId": args.orgId,

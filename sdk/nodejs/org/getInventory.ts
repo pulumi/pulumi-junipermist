@@ -125,7 +125,7 @@ export interface GetInventoryResult {
  * });
  * ```
  */
-export function getInventoryOutput(args: GetInventoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInventoryResult> {
+export function getInventoryOutput(args: GetInventoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInventoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getInventory:getInventory", {
         "mac": args.mac,

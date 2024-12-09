@@ -93,7 +93,7 @@ def get_nacrules(org_id: Optional[str] = None,
         org_id=pulumi.get(__ret__, 'org_id'),
         org_nacrules=pulumi.get(__ret__, 'org_nacrules'))
 def get_nacrules_output(org_id: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNacrulesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacrulesResult]:
     """
     This data source provides the list of NAC Rules (Auth Policies).
     A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
@@ -109,7 +109,7 @@ def get_nacrules_output(org_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getNacrules:getNacrules', __args__, opts=opts, typ=GetNacrulesResult)
     return __ret__.apply(lambda __response__: GetNacrulesResult(
         id=pulumi.get(__response__, 'id'),
