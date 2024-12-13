@@ -64,6 +64,33 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetSsoMetadataResult> Invoke(GetSsoMetadataInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSsoMetadataResult>("junipermist:org/getSsoMetadata:getSsoMetadata", args ?? new GetSsoMetadataInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the SSO Metadata information.
+        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var ssoIdp = JuniperMist.Org.GetSsoMetadata.Invoke(new()
+        ///     {
+        ///         OrgId = terraformTest.Id,
+        ///         SsoId = ssoOne.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSsoMetadataResult> Invoke(GetSsoMetadataInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSsoMetadataResult>("junipermist:org/getSsoMetadata:getSsoMetadata", args ?? new GetSsoMetadataInvokeArgs(), options.WithDefaults());
     }
 
 

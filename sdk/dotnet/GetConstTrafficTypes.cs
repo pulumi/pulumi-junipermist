@@ -56,6 +56,29 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetConstTrafficTypesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConstTrafficTypesResult>("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the of ConstTrafficTypes.
+        /// This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var listOfTrafficTypes = JuniperMist.GetConstTrafficTypes.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConstTrafficTypesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConstTrafficTypesResult>("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetNetworktemplatesResult> Invoke(GetNetworktemplatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworktemplatesResult>("junipermist:org/getNetworktemplates:getNetworktemplates", args ?? new GetNetworktemplatesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of Org Network Templates (Switch templates).
+        /// A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var templates = JuniperMist.Org.GetNetworktemplates.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworktemplatesResult> Invoke(GetNetworktemplatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworktemplatesResult>("junipermist:org/getNetworktemplates:getNetworktemplates", args ?? new GetNetworktemplatesInvokeArgs(), options.WithDefaults());
     }
 
 

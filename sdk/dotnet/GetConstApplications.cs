@@ -56,6 +56,29 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetConstApplicationsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConstApplicationsResult>("junipermist:index/getConstApplications:getConstApplications", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the of ConstApplications.
+        /// This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var listOfApplications = JuniperMist.GetConstApplications.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConstApplicationsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConstApplicationsResult>("junipermist:index/getConstApplications:getConstApplications", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

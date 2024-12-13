@@ -56,6 +56,29 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetConstCountriesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConstCountriesResult>("junipermist:index/getConstCountries:getConstCountries", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the of ConstCountries.
+        /// This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var listOfCountries = JuniperMist.GetConstCountries.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConstCountriesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConstCountriesResult>("junipermist:index/getConstCountries:getConstCountries", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

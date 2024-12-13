@@ -64,6 +64,33 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetNacidpMetadataResult> Invoke(GetNacidpMetadataInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNacidpMetadataResult>("junipermist:org/getNacidpMetadata:getNacidpMetadata", args ?? new GetNacidpMetadataInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the NAC IDP Metadata information.
+        /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var samlIdp = JuniperMist.Org.GetNacidpMetadata.Invoke(new()
+        ///     {
+        ///         OrgId = terraformTest.Id,
+        ///         NacidpId = samlIdpOne.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNacidpMetadataResult> Invoke(GetNacidpMetadataInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNacidpMetadataResult>("junipermist:org/getNacidpMetadata:getNacidpMetadata", args ?? new GetNacidpMetadataInvokeArgs(), options.WithDefaults());
     }
 
 

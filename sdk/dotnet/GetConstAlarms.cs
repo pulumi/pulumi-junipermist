@@ -56,6 +56,29 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetConstAlarmsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConstAlarmsResult>("junipermist:index/getConstAlarms:getConstAlarms", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of  available Alarms.
+        /// The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var listOfAlarms = JuniperMist.GetConstAlarms.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConstAlarmsResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConstAlarmsResult>("junipermist:index/getConstAlarms:getConstAlarms", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

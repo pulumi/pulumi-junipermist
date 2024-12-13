@@ -63,21 +63,11 @@ type GetGatewaytemplatesResult struct {
 }
 
 func GetGatewaytemplatesOutput(ctx *pulumi.Context, args GetGatewaytemplatesOutputArgs, opts ...pulumi.InvokeOption) GetGatewaytemplatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGatewaytemplatesResultOutput, error) {
 			args := v.(GetGatewaytemplatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGatewaytemplatesResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getGatewaytemplates:getGatewaytemplates", args, &rv, "", opts...)
-			if err != nil {
-				return GetGatewaytemplatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGatewaytemplatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGatewaytemplatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getGatewaytemplates:getGatewaytemplates", args, GetGatewaytemplatesResultOutput{}, options).(GetGatewaytemplatesResultOutput), nil
 		}).(GetGatewaytemplatesResultOutput)
 }
 

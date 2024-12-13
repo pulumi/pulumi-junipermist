@@ -63,21 +63,11 @@ type GetRftemplatesResult struct {
 }
 
 func GetRftemplatesOutput(ctx *pulumi.Context, args GetRftemplatesOutputArgs, opts ...pulumi.InvokeOption) GetRftemplatesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRftemplatesResultOutput, error) {
 			args := v.(GetRftemplatesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRftemplatesResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getRftemplates:getRftemplates", args, &rv, "", opts...)
-			if err != nil {
-				return GetRftemplatesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRftemplatesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRftemplatesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getRftemplates:getRftemplates", args, GetRftemplatesResultOutput{}, options).(GetRftemplatesResultOutput), nil
 		}).(GetRftemplatesResultOutput)
 }
 

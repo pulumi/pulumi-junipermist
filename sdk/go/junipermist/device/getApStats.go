@@ -80,21 +80,11 @@ type GetApStatsResult struct {
 }
 
 func GetApStatsOutput(ctx *pulumi.Context, args GetApStatsOutputArgs, opts ...pulumi.InvokeOption) GetApStatsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetApStatsResultOutput, error) {
 			args := v.(GetApStatsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetApStatsResult
-			secret, err := ctx.InvokePackageRaw("junipermist:device/getApStats:getApStats", args, &rv, "", opts...)
-			if err != nil {
-				return GetApStatsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetApStatsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetApStatsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:device/getApStats:getApStats", args, GetApStatsResultOutput{}, options).(GetApStatsResultOutput), nil
 		}).(GetApStatsResultOutput)
 }
 

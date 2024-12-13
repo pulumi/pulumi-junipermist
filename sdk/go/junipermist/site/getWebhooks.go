@@ -40,21 +40,11 @@ type GetWebhooksResult struct {
 }
 
 func GetWebhooksOutput(ctx *pulumi.Context, args GetWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWebhooksResultOutput, error) {
 			args := v.(GetWebhooksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetWebhooksResult
-			secret, err := ctx.InvokePackageRaw("junipermist:site/getWebhooks:getWebhooks", args, &rv, "", opts...)
-			if err != nil {
-				return GetWebhooksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetWebhooksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetWebhooksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:site/getWebhooks:getWebhooks", args, GetWebhooksResultOutput{}, options).(GetWebhooksResultOutput), nil
 		}).(GetWebhooksResultOutput)
 }
 

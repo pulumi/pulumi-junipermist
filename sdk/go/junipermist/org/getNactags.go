@@ -73,21 +73,11 @@ type GetNactagsResult struct {
 }
 
 func GetNactagsOutput(ctx *pulumi.Context, args GetNactagsOutputArgs, opts ...pulumi.InvokeOption) GetNactagsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNactagsResultOutput, error) {
 			args := v.(GetNactagsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNactagsResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getNactags:getNactags", args, &rv, "", opts...)
-			if err != nil {
-				return GetNactagsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNactagsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNactagsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getNactags:getNactags", args, GetNactagsResultOutput{}, options).(GetNactagsResultOutput), nil
 		}).(GetNactagsResultOutput)
 }
 

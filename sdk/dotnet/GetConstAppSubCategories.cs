@@ -56,6 +56,29 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetConstAppSubCategoriesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConstAppSubCategoriesResult>("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the of ConstAppSubCategories.
+        /// This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var listOfAppSubCategories = JuniperMist.GetConstAppSubCategories.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConstAppSubCategoriesResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConstAppSubCategoriesResult>("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

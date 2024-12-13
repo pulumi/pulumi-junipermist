@@ -63,21 +63,11 @@ type GetNacrulesResult struct {
 }
 
 func GetNacrulesOutput(ctx *pulumi.Context, args GetNacrulesOutputArgs, opts ...pulumi.InvokeOption) GetNacrulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNacrulesResultOutput, error) {
 			args := v.(GetNacrulesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNacrulesResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getNacrules:getNacrules", args, &rv, "", opts...)
-			if err != nil {
-				return GetNacrulesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNacrulesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNacrulesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getNacrules:getNacrules", args, GetNacrulesResultOutput{}, options).(GetNacrulesResultOutput), nil
 		}).(GetNacrulesResultOutput)
 }
 
