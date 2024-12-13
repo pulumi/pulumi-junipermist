@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetNactagsResult> Invoke(GetNactagsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNactagsResult>("junipermist:org/getNactags:getNactags", args ?? new GetNactagsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of NAC Tags (Auth Policy Labels).
+        /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nactags = JuniperMist.Org.GetNactags.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNactagsResult> Invoke(GetNactagsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNactagsResult>("junipermist:org/getNactags:getNactags", args ?? new GetNactagsInvokeArgs(), options.WithDefaults());
     }
 
 

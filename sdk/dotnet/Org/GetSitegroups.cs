@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetSitegroupsResult> Invoke(GetSitegroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSitegroupsResult>("junipermist:org/getSitegroups:getSitegroups", args ?? new GetSitegroupsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of Org Site Groups (sitegroups).
+        /// A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sitegroups = JuniperMist.Org.GetSitegroups.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSitegroupsResult> Invoke(GetSitegroupsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSitegroupsResult>("junipermist:org/getSitegroups:getSitegroups", args ?? new GetSitegroupsInvokeArgs(), options.WithDefaults());
     }
 
 

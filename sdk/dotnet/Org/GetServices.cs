@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("junipermist:org/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of WAN Assurance Services (Applications).
+        /// The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var services = JuniperMist.Org.GetServices.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServicesResult> Invoke(GetServicesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServicesResult>("junipermist:org/getServices:getServices", args ?? new GetServicesInvokeArgs(), options.WithDefaults());
     }
 
 

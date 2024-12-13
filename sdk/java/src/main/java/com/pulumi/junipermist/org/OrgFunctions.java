@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApPlainArgs;
@@ -240,6 +241,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDeviceprofilesApResult> getDeviceprofilesAp(GetDeviceprofilesApArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", TypeShape.of(GetDeviceprofilesApResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of AP Device Profiles.
+     * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var deviceprofile = OrgFunctions.getDeviceprofilesAp(GetDeviceprofilesApArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDeviceprofilesApResult> getDeviceprofilesApPlain(GetDeviceprofilesApPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp", TypeShape.of(GetDeviceprofilesApResult.class), args, Utilities.withVersion(options));
     }
@@ -370,6 +414,49 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetDeviceprofilesGatewayResult> getDeviceprofilesGateway(GetDeviceprofilesGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", TypeShape.of(GetDeviceprofilesGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This provides the list of Gateway Device Profiles (Hub Profile).
+     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var deviceprofile = OrgFunctions.getDeviceprofilesGateway(GetDeviceprofilesGatewayArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDeviceprofilesGatewayResult> getDeviceprofilesGateway(GetDeviceprofilesGatewayArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", TypeShape.of(GetDeviceprofilesGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -584,6 +671,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGatewaytemplatesResult> getGatewaytemplates(GetGatewaytemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getGatewaytemplates:getGatewaytemplates", TypeShape.of(GetGatewaytemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Gateway Templates.
+     * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var templates = OrgFunctions.getGatewaytemplates(GetGatewaytemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGatewaytemplatesResult> getGatewaytemplatesPlain(GetGatewaytemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getGatewaytemplates:getGatewaytemplates", TypeShape.of(GetGatewaytemplatesResult.class), args, Utilities.withVersion(options));
     }
@@ -756,6 +886,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIdpprofilesResult> getIdpprofiles(GetIdpprofilesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getIdpprofiles:getIdpprofiles", TypeShape.of(GetIdpprofilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance IDP Profiles.
+     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var idpprofiles = OrgFunctions.getIdpprofiles(GetIdpprofilesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIdpprofilesResult> getIdpprofilesPlain(GetIdpprofilesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getIdpprofiles:getIdpprofiles", TypeShape.of(GetIdpprofilesResult.class), args, Utilities.withVersion(options));
     }
@@ -883,6 +1056,48 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetInventoryResult> getInventory(GetInventoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getInventory:getInventory", TypeShape.of(GetInventoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Devices in the Org inventory.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var inventory = OrgFunctions.getInventory(GetInventoryArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInventoryResult> getInventory(GetInventoryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getInventory:getInventory", TypeShape.of(GetInventoryResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1100,6 +1315,50 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNacidpMetadataResult> getNacidpMetadata(GetNacidpMetadataArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNacidpMetadata:getNacidpMetadata", TypeShape.of(GetNacidpMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the NAC IDP Metadata information.
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var samlIdp = OrgFunctions.getNacidpMetadata(GetNacidpMetadataArgs.builder()
+     *             .orgId(terraformTest.id())
+     *             .nacidpId(samlIdpOne.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNacidpMetadataResult> getNacidpMetadataPlain(GetNacidpMetadataPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getNacidpMetadata:getNacidpMetadata", TypeShape.of(GetNacidpMetadataResult.class), args, Utilities.withVersion(options));
     }
@@ -1230,6 +1489,49 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetNacrulesResult> getNacrules(GetNacrulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNacrules:getNacrules", TypeShape.of(GetNacrulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of NAC Rules (Auth Policies).
+     * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nacrules = OrgFunctions.getNacrules(GetNacrulesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNacrulesResult> getNacrules(GetNacrulesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getNacrules:getNacrules", TypeShape.of(GetNacrulesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1444,6 +1746,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNactagsResult> getNactags(GetNactagsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNactags:getNactags", TypeShape.of(GetNactagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of NAC Tags (Auth Policy Labels).
+     * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNactagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nactags = OrgFunctions.getNactags(GetNactagsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNactagsResult> getNactagsPlain(GetNactagsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getNactags:getNactags", TypeShape.of(GetNactagsResult.class), args, Utilities.withVersion(options));
     }
@@ -1616,6 +1961,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetNetworksResult> getNetworks(GetNetworksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Networks.
+     * The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OrgFunctions.getNetworks(GetNetworksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetNetworksResult> getNetworksPlain(GetNetworksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getNetworks:getNetworks", TypeShape.of(GetNetworksResult.class), args, Utilities.withVersion(options));
     }
@@ -1746,6 +2134,49 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetNetworktemplatesResult> getNetworktemplates(GetNetworktemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNetworktemplates:getNetworktemplates", TypeShape.of(GetNetworktemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Network Templates (Switch templates).
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNetworktemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var templates = OrgFunctions.getNetworktemplates(GetNetworktemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNetworktemplatesResult> getNetworktemplates(GetNetworktemplatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getNetworktemplates:getNetworktemplates", TypeShape.of(GetNetworktemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1964,6 +2395,50 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPsksResult> getPsks(GetPsksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Psks.
+     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetPsksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .role("vip")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPsksResult> getPsksPlain(GetPsksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
     }
@@ -2094,6 +2569,49 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetRftemplatesResult> getRftemplates(GetRftemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getRftemplates:getRftemplates", TypeShape.of(GetRftemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This resource provides the list of RF Templates.
+     * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetRftemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var templates = OrgFunctions.getRftemplates(GetRftemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRftemplatesResult> getRftemplates(GetRftemplatesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getRftemplates:getRftemplates", TypeShape.of(GetRftemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2308,6 +2826,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServicepoliciesResult> getServicepolicies(GetServicepoliciesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getServicepolicies:getServicepolicies", TypeShape.of(GetServicepoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
+     * The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetServicepoliciesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var servicepolicies = OrgFunctions.getServicepolicies(GetServicepoliciesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServicepoliciesResult> getServicepoliciesPlain(GetServicepoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getServicepolicies:getServicepolicies", TypeShape.of(GetServicepoliciesResult.class), args, Utilities.withVersion(options));
     }
@@ -2480,6 +3041,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServicesResult> getServices(GetServicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of WAN Assurance Services (Applications).
+     * The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetServicesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var services = OrgFunctions.getServices(GetServicesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServicesResult> getServicesPlain(GetServicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getServices:getServices", TypeShape.of(GetServicesResult.class), args, Utilities.withVersion(options));
     }
@@ -2610,6 +3214,49 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetSitegroupsResult> getSitegroups(GetSitegroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getSitegroups:getSitegroups", TypeShape.of(GetSitegroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Site Groups (sitegroups).
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sitegroups = OrgFunctions.getSitegroups(GetSitegroupsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSitegroupsResult> getSitegroups(GetSitegroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getSitegroups:getSitegroups", TypeShape.of(GetSitegroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2828,6 +3475,50 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSsoMetadataResult> getSsoMetadata(GetSsoMetadataArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getSsoMetadata:getSsoMetadata", TypeShape.of(GetSsoMetadataResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the SSO Metadata information.
+     * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ssoIdp = OrgFunctions.getSsoMetadata(GetSsoMetadataArgs.builder()
+     *             .orgId(terraformTest.id())
+     *             .ssoId(ssoOne.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSsoMetadataResult> getSsoMetadataPlain(GetSsoMetadataPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getSsoMetadata:getSsoMetadata", TypeShape.of(GetSsoMetadataResult.class), args, Utilities.withVersion(options));
     }
@@ -2850,6 +3541,13 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetVpnsResult> getVpns(GetVpnsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getVpns:getVpns", TypeShape.of(GetVpnsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provide the list of the Org VPNs.
+     * 
+     */
+    public static Output<GetVpnsResult> getVpns(GetVpnsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getVpns:getVpns", TypeShape.of(GetVpnsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2983,6 +3681,48 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetWebhooksResult> getWebhooks(GetWebhooksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getWebhooks:getWebhooks", TypeShape.of(GetWebhooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Webhooks.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var webhooks = OrgFunctions.getWebhooks(GetWebhooksArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebhooksResult> getWebhooks(GetWebhooksArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getWebhooks:getWebhooks", TypeShape.of(GetWebhooksResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3196,6 +3936,49 @@ public final class OrgFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetWlantemplatesResult> getWlantemplates(GetWlantemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getWlantemplates:getWlantemplates", TypeShape.of(GetWlantemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This datasource provides the list of WLAN Templates in a Mist Organization.
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var templates = OrgFunctions.getWlantemplates(GetWlantemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWlantemplatesResult> getWlantemplatesPlain(GetWlantemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:org/getWlantemplates:getWlantemplates", TypeShape.of(GetWlantemplatesResult.class), args, Utilities.withVersion(options));
     }
@@ -3326,6 +4109,49 @@ public final class OrgFunctions {
      * 
      */
     public static Output<GetWxtagsResult> getWxtags(GetWxtagsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getWxtags:getWxtags", TypeShape.of(GetWxtagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This resource provides the list of Org WxLan tags (labels).
+     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.device.DeviceFunctions;
+     * import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var switchStats = DeviceFunctions.getSwitchStats(GetSwitchStatsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWxtagsResult> getWxtags(GetWxtagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:org/getWxtags:getWxtags", TypeShape.of(GetWxtagsResult.class), args, Utilities.withVersion(options));
     }
     /**

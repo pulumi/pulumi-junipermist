@@ -60,6 +60,31 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("junipermist:org/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of Org Webhooks.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var webhooks = JuniperMist.Org.GetWebhooks.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("junipermist:org/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());
     }
 
 

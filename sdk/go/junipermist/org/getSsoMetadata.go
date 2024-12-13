@@ -69,21 +69,11 @@ type GetSsoMetadataResult struct {
 }
 
 func GetSsoMetadataOutput(ctx *pulumi.Context, args GetSsoMetadataOutputArgs, opts ...pulumi.InvokeOption) GetSsoMetadataResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSsoMetadataResultOutput, error) {
 			args := v.(GetSsoMetadataArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSsoMetadataResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getSsoMetadata:getSsoMetadata", args, &rv, "", opts...)
-			if err != nil {
-				return GetSsoMetadataResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSsoMetadataResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSsoMetadataResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getSsoMetadata:getSsoMetadata", args, GetSsoMetadataResultOutput{}, options).(GetSsoMetadataResultOutput), nil
 		}).(GetSsoMetadataResultOutput)
 }
 

@@ -22,6 +22,12 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("junipermist:site/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of Site Webhooks.
+        /// </summary>
+        public static Output<GetWebhooksResult> Invoke(GetWebhooksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebhooksResult>("junipermist:site/getWebhooks:getWebhooks", args ?? new GetWebhooksInvokeArgs(), options.WithDefaults());
     }
 
 

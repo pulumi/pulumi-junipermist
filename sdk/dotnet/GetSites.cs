@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetSitesResult> Invoke(GetSitesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSitesResult>("junipermist:index/getSites:getSites", args ?? new GetSitesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This datasource provides the list of sites in a Mist Organization.
+        /// A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sites = JuniperMist.GetSites.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSitesResult> Invoke(GetSitesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSitesResult>("junipermist:index/getSites:getSites", args ?? new GetSitesInvokeArgs(), options.WithDefaults());
     }
 
 

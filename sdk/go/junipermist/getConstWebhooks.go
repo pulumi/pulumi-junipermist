@@ -58,18 +58,8 @@ type GetConstWebhooksResult struct {
 
 func GetConstWebhooksOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstWebhooksResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstWebhooksResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetConstWebhooksResult
-		secret, err := ctx.InvokePackageRaw("junipermist:index/getConstWebhooks:getConstWebhooks", nil, &rv, "", opts...)
-		if err != nil {
-			return GetConstWebhooksResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetConstWebhooksResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetConstWebhooksResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("junipermist:index/getConstWebhooks:getConstWebhooks", nil, GetConstWebhooksResultOutput{}, options).(GetConstWebhooksResultOutput), nil
 	}).(GetConstWebhooksResultOutput)
 }
 

@@ -74,21 +74,11 @@ type GetPsksResult struct {
 }
 
 func GetPsksOutput(ctx *pulumi.Context, args GetPsksOutputArgs, opts ...pulumi.InvokeOption) GetPsksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPsksResultOutput, error) {
 			args := v.(GetPsksArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPsksResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getPsks:getPsks", args, &rv, "", opts...)
-			if err != nil {
-				return GetPsksResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPsksResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPsksResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getPsks:getPsks", args, GetPsksResultOutput{}, options).(GetPsksResultOutput), nil
 		}).(GetPsksResultOutput)
 }
 

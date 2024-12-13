@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetWlantemplatesResult> Invoke(GetWlantemplatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWlantemplatesResult>("junipermist:org/getWlantemplates:getWlantemplates", args ?? new GetWlantemplatesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This datasource provides the list of WLAN Templates in a Mist Organization.
+        /// A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var templates = JuniperMist.Org.GetWlantemplates.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWlantemplatesResult> Invoke(GetWlantemplatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWlantemplatesResult>("junipermist:org/getWlantemplates:getWlantemplates", args ?? new GetWlantemplatesInvokeArgs(), options.WithDefaults());
     }
 
 
