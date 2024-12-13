@@ -22,6 +22,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetVpnsResult> Invoke(GetVpnsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpnsResult>("junipermist:org/getVpns:getVpns", args ?? new GetVpnsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provide the list of the Org VPNs.
+        /// </summary>
+        public static Output<GetVpnsResult> Invoke(GetVpnsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVpnsResult>("junipermist:org/getVpns:getVpns", args ?? new GetVpnsInvokeArgs(), options.WithDefaults());
     }
 
 

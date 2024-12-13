@@ -60,6 +60,31 @@ namespace Pulumi.JuniperMist
         /// </summary>
         public static Output<GetConstWebhooksResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConstWebhooksResult>("junipermist:index/getConstWebhooks:getConstWebhooks", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of Webhook Topics.
+        /// This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+        /// 
+        /// &gt; Only the Webhook topics with `for_org`==` true` are supported at the Org level.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var listOfWebhooks = JuniperMist.GetConstWebhooks.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConstWebhooksResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConstWebhooksResult>("junipermist:index/getConstWebhooks:getConstWebhooks", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

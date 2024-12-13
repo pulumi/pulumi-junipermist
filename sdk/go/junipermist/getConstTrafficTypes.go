@@ -56,18 +56,8 @@ type GetConstTrafficTypesResult struct {
 
 func GetConstTrafficTypesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstTrafficTypesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstTrafficTypesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetConstTrafficTypesResult
-		secret, err := ctx.InvokePackageRaw("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", nil, &rv, "", opts...)
-		if err != nil {
-			return GetConstTrafficTypesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetConstTrafficTypesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetConstTrafficTypesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", nil, GetConstTrafficTypesResultOutput{}, options).(GetConstTrafficTypesResultOutput), nil
 	}).(GetConstTrafficTypesResultOutput)
 }
 

@@ -63,21 +63,11 @@ type GetWxtagsResult struct {
 }
 
 func GetWxtagsOutput(ctx *pulumi.Context, args GetWxtagsOutputArgs, opts ...pulumi.InvokeOption) GetWxtagsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWxtagsResultOutput, error) {
 			args := v.(GetWxtagsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetWxtagsResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getWxtags:getWxtags", args, &rv, "", opts...)
-			if err != nil {
-				return GetWxtagsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetWxtagsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetWxtagsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getWxtags:getWxtags", args, GetWxtagsResultOutput{}, options).(GetWxtagsResultOutput), nil
 		}).(GetWxtagsResultOutput)
 }
 

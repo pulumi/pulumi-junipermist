@@ -63,21 +63,11 @@ type GetSitegroupsResult struct {
 }
 
 func GetSitegroupsOutput(ctx *pulumi.Context, args GetSitegroupsOutputArgs, opts ...pulumi.InvokeOption) GetSitegroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSitegroupsResultOutput, error) {
 			args := v.(GetSitegroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSitegroupsResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getSitegroups:getSitegroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetSitegroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSitegroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSitegroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getSitegroups:getSitegroups", args, GetSitegroupsResultOutput{}, options).(GetSitegroupsResultOutput), nil
 		}).(GetSitegroupsResultOutput)
 }
 

@@ -69,21 +69,11 @@ type GetNacidpMetadataResult struct {
 }
 
 func GetNacidpMetadataOutput(ctx *pulumi.Context, args GetNacidpMetadataOutputArgs, opts ...pulumi.InvokeOption) GetNacidpMetadataResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNacidpMetadataResultOutput, error) {
 			args := v.(GetNacidpMetadataArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetNacidpMetadataResult
-			secret, err := ctx.InvokePackageRaw("junipermist:org/getNacidpMetadata:getNacidpMetadata", args, &rv, "", opts...)
-			if err != nil {
-				return GetNacidpMetadataResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetNacidpMetadataResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetNacidpMetadataResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("junipermist:org/getNacidpMetadata:getNacidpMetadata", args, GetNacidpMetadataResultOutput{}, options).(GetNacidpMetadataResultOutput), nil
 		}).(GetNacidpMetadataResultOutput)
 }
 

@@ -62,6 +62,32 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         public static Output<GetNacrulesResult> Invoke(GetNacrulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNacrulesResult>("junipermist:org/getNacrules:getNacrules", args ?? new GetNacrulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of NAC Rules (Auth Policies).
+        /// A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var nacrules = JuniperMist.Org.GetNacrules.Invoke(new()
+        ///     {
+        ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNacrulesResult> Invoke(GetNacrulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNacrulesResult>("junipermist:org/getNacrules:getNacrules", args ?? new GetNacrulesInvokeArgs(), options.WithDefaults());
     }
 
 

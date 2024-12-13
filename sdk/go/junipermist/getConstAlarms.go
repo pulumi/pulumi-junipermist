@@ -56,18 +56,8 @@ type GetConstAlarmsResult struct {
 
 func GetConstAlarmsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstAlarmsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstAlarmsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetConstAlarmsResult
-		secret, err := ctx.InvokePackageRaw("junipermist:index/getConstAlarms:getConstAlarms", nil, &rv, "", opts...)
-		if err != nil {
-			return GetConstAlarmsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetConstAlarmsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetConstAlarmsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("junipermist:index/getConstAlarms:getConstAlarms", nil, GetConstAlarmsResultOutput{}, options).(GetConstAlarmsResultOutput), nil
 	}).(GetConstAlarmsResultOutput)
 }
 

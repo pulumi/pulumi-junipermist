@@ -64,6 +64,33 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         public static Output<GetPsksResult> Invoke(GetPsksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPsksResult>("junipermist:site/getPsks:getPsks", args ?? new GetPsksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides the list of WAN Assurance Psks.
+        /// The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using JuniperMist = Pulumi.JuniperMist;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var psksVip = JuniperMist.Site.GetPsks.Invoke(new()
+        ///     {
+        ///         SiteId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Role = "vip",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPsksResult> Invoke(GetPsksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPsksResult>("junipermist:site/getPsks:getPsks", args ?? new GetPsksInvokeArgs(), options.WithDefaults());
     }
 
 

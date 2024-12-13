@@ -56,18 +56,8 @@ type GetConstAppSubCategoriesResult struct {
 
 func GetConstAppSubCategoriesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetConstAppSubCategoriesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetConstAppSubCategoriesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetConstAppSubCategoriesResult
-		secret, err := ctx.InvokePackageRaw("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", nil, &rv, "", opts...)
-		if err != nil {
-			return GetConstAppSubCategoriesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetConstAppSubCategoriesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetConstAppSubCategoriesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", nil, GetConstAppSubCategoriesResultOutput{}, options).(GetConstAppSubCategoriesResultOutput), nil
 	}).(GetConstAppSubCategoriesResultOutput)
 }
 
