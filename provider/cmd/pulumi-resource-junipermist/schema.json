@@ -10536,7 +10536,15 @@
             "type": "object",
             "required": [
                 "enabled"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "additionalEmails",
+                        "enabled"
+                    ]
+                }
+            }
         },
         "junipermist:org/ApitokenPrivilege:ApitokenPrivilege": {
             "properties": {
@@ -19479,12 +19487,6 @@
                 }
             },
             "type": "object",
-            "required": [
-                "apiKey",
-                "consoleUrl",
-                "password",
-                "username"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -19652,18 +19654,15 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "anticlogThreshold",
                         "eapReauth",
                         "enableMacAuth",
                         "keyIdx",
                         "keys",
                         "multiPskOnly",
-                        "owe",
                         "pairwises",
                         "privateWlan",
                         "psk",
-                        "type",
-                        "wepAsSecondaryAuth"
+                        "type"
                     ]
                 }
             }
@@ -19896,12 +19895,6 @@
                 "source": {
                     "type": "string",
                     "description": "enum: `cloud_psks`, `radius`\n"
-                },
-                "vlanIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 }
             },
             "type": "object",
@@ -19926,7 +19919,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "whether to enable dynamic vlan\n"
+                    "description": "Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan\n"
                 },
                 "localVlanIds": {
                     "type": "array",
@@ -20040,67 +20033,67 @@
             "properties": {
                 "allowWlanIdRoam": {
                     "type": "boolean",
-                    "description": "whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)\n"
                 },
                 "amazonClientId": {
                     "type": "string",
-                    "description": "amazon OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
                 },
                 "amazonClientSecret": {
                     "type": "string",
-                    "description": "amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "amazonEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "amazonEnabled": {
                     "type": "boolean",
                     "description": "whether amazon is enabled as a login method\n"
                 },
                 "amazonExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`\n"
                 },
                 "auth": {
                     "type": "string",
-                    "description": "authentication scheme. enum: `external`, `none`, `sso`\n"
+                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`\n"
                 },
                 "azureClientId": {
                     "type": "string",
-                    "description": "Required if `azure_enabled`==`true`.\nAzure active directory app client id\n"
+                    "description": "Required if `azure_enabled`==`true`. Azure active directory app client id\n"
                 },
                 "azureClientSecret": {
                     "type": "string",
-                    "description": "Required if `azure_enabled`==`true`.\nAzure active directory app client secret\n"
+                    "description": "Required if `azure_enabled`==`true`. Azure active directory app client secret\n"
                 },
                 "azureEnabled": {
                     "type": "boolean",
                     "description": "whether Azure Active Directory is enabled as a login method\n"
                 },
                 "azureExpire": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`\n"
                 },
                 "azureTenantId": {
                     "type": "string",
-                    "description": "Required if `azure_enabled`==`true`.\nAzure active directory tenant id.\n"
+                    "description": "Required if `azure_enabled`==`true`. Azure active directory tenant id.\n"
                 },
                 "broadnetPassword": {
                     "type": "string",
-                    "description": "when `sms_provider`==`broadnet`\n",
+                    "description": "Required if `sms_provider`==`broadnet`\n",
                     "secret": true
                 },
                 "broadnetSid": {
                     "type": "string",
-                    "description": "when `sms_provider`==`broadnet`\n"
+                    "description": "Required if `sms_provider`==`broadnet`\n"
                 },
                 "broadnetUserId": {
                     "type": "string",
-                    "description": "when `sms_provider`==`broadnet`\n"
+                    "description": "Required if `sms_provider`==`broadnet`\n"
                 },
                 "bypassWhenCloudDown": {
                     "type": "boolean",
@@ -20108,7 +20101,7 @@
                 },
                 "clickatellApiKey": {
                     "type": "string",
-                    "description": "when `sms_provider`==`clickatell`\n"
+                    "description": "Required if `sms_provider`==`clickatell`\n"
                 },
                 "crossSite": {
                     "type": "boolean",
@@ -20123,35 +20116,35 @@
                     "description": "whether guest portal is enabled\n"
                 },
                 "expire": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "how long to remain authorized, in minutes\n"
                 },
                 "externalPortalUrl": {
                     "type": "string",
-                    "description": "external portal URL (e.g. https://host/url) where we can append our query parameters to\n"
+                    "description": "Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to\n"
                 },
                 "facebookClientId": {
                     "type": "string",
-                    "description": "Required if `facebook_enabled`==`true`.\nFacebook OAuth2 app id. This is optional. If not provided, it will use a default one.\n"
+                    "description": "Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.\n"
                 },
                 "facebookClientSecret": {
                     "type": "string",
-                    "description": "Required if `facebook_enabled`==`true`.\nFacebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "facebookEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "facebookEnabled": {
                     "type": "boolean",
                     "description": "whether facebook is enabled as a login method\n"
                 },
                 "facebookExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`\n"
                 },
                 "forward": {
                     "type": "boolean",
@@ -20167,66 +20160,66 @@
                 },
                 "googleClientSecret": {
                     "type": "string",
-                    "description": "Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "googleEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "googleEnabled": {
                     "type": "boolean",
                     "description": "whether google is enabled as login method\n"
                 },
                 "googleExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`\n"
                 },
                 "gupshupPassword": {
                     "type": "string",
-                    "description": "when `sms_provider`==`gupshup`\n",
+                    "description": "Required if `sms_provider`==`gupshup`\n",
                     "secret": true
                 },
                 "gupshupUserid": {
                     "type": "string",
-                    "description": "when `sms_provider`==`gupshup`\n"
+                    "description": "Required if `sms_provider`==`gupshup`\n"
                 },
                 "microsoftClientId": {
                     "type": "string",
-                    "description": "microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
+                    "description": "Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
                 },
                 "microsoftClientSecret": {
                     "type": "string",
-                    "description": "microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "microsoftEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "microsoftEnabled": {
                     "type": "boolean",
                     "description": "whether microsoft 365 is enabled as a login method\n"
                 },
                 "microsoftExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`\n"
                 },
                 "passphraseEnabled": {
                     "type": "boolean",
-                    "description": "whether password is enabled\n"
+                    "description": "Whether password is enabled\n"
                 },
                 "passphraseExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "passphrase\n",
+                    "description": "Required if `passphrase_enabled`==`true`.\n",
                     "secret": true
                 },
                 "predefinedSponsorsEnabled": {
@@ -20242,35 +20235,36 @@
                 },
                 "puzzelPassword": {
                     "type": "string",
-                    "description": "when `sms_provider`==`puzzel`\n",
+                    "description": "Required if `sms_provider`==`puzzel`\n",
                     "secret": true
                 },
                 "puzzelServiceId": {
                     "type": "string",
-                    "description": "when `sms_provider`==`puzzel`\n"
+                    "description": "Required if `sms_provider`==`puzzel`\n"
                 },
                 "puzzelUsername": {
                     "type": "string",
-                    "description": "when `sms_provider`==`puzzel`\n"
+                    "description": "Required if `sms_provider`==`puzzel`\n"
                 },
                 "smsEnabled": {
                     "type": "boolean",
                     "description": "whether sms is enabled as a login method\n"
                 },
                 "smsExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`\n"
                 },
                 "smsMessageFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `sms_enabled`==`true`. SMS Message format\n"
                 },
                 "smsProvider": {
                     "type": "string",
-                    "description": "enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`\n"
+                    "description": "Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`\n"
                 },
                 "sponsorAutoApprove": {
                     "type": "boolean",
-                    "description": "whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled\n"
                 },
                 "sponsorEmailDomains": {
                     "type": "array",
@@ -20284,20 +20278,20 @@
                     "description": "whether sponsor is enabled\n"
                 },
                 "sponsorExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`\n"
                 },
                 "sponsorLinkValidityDuration": {
                     "type": "string",
-                    "description": "how long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
                 },
                 "sponsorNotifyAll": {
                     "type": "boolean",
-                    "description": "whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.\n"
                 },
                 "sponsorStatusNotify": {
                     "type": "boolean",
-                    "description": "if enabled, guest will get email about sponsor's action (approve/deny)\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)\n"
                 },
                 "sponsors": {
                     "type": "object",
@@ -20308,75 +20302,68 @@
                 },
                 "ssoDefaultRole": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
+                    "description": "Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
                 },
                 "ssoForcedRole": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`\n"
+                    "description": "Optionl if `wlan_portal_auth`==`sso`\n"
                 },
                 "ssoIdpCert": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)\n"
+                    "description": "Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)\n"
                 },
                 "ssoIdpSignAlgo": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
+                    "description": "Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
                 },
                 "ssoIdpSsoUrl": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL\n"
+                    "description": "Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL\n"
                 },
                 "ssoIssuer": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, IDP issuer URL\n"
+                    "description": "Required if `wlan_portal_auth`==`sso`, IDP issuer URL\n"
                 },
                 "ssoNameidFormat": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`\n"
+                    "description": "Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`\n"
                 },
                 "telstraClientId": {
                     "type": "string",
-                    "description": "when `sms_provider`==`telstra`, Client ID provided by Telstra\n"
+                    "description": "Required if `sms_provider`==`telstra`, Client ID provided by Telstra\n"
                 },
                 "telstraClientSecret": {
                     "type": "string",
-                    "description": "when `sms_provider`==`telstra`, Client secret provided by Telstra\n"
+                    "description": "Required if `sms_provider`==`telstra`, Client secret provided by Telstra\n"
                 },
                 "twilioAuthToken": {
                     "type": "string",
-                    "description": "when `sms_provider`==`twilio`, Auth token account with twilio account\n"
+                    "description": "Required if `sms_provider`==`twilio`, Auth token account with twilio account\n"
                 },
                 "twilioPhoneNumber": {
                     "type": "string",
-                    "description": "when `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.\n"
+                    "description": "Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.\n"
                 },
                 "twilioSid": {
                     "type": "string",
-                    "description": "when `sms_provider`==`twilio`, Account SID provided by Twilio\n"
+                    "description": "Required if `sms_provider`==`twilio`, Account SID provided by Twilio\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allowWlanIdRoam",
                         "amazonClientId",
                         "amazonClientSecret",
                         "amazonEmailDomains",
                         "amazonEnabled",
-                        "amazonExpire",
                         "auth",
                         "azureClientId",
                         "azureClientSecret",
                         "azureEnabled",
-                        "azureExpire",
                         "azureTenantId",
                         "broadnetPassword",
-                        "broadnetSid",
-                        "broadnetUserId",
                         "bypassWhenCloudDown",
-                        "clickatellApiKey",
-                        "crossSite",
                         "emailEnabled",
                         "enabled",
                         "expire",
@@ -20385,38 +20372,26 @@
                         "facebookClientSecret",
                         "facebookEmailDomains",
                         "facebookEnabled",
-                        "facebookExpire",
                         "forward",
                         "forwardUrl",
                         "googleClientId",
                         "googleClientSecret",
                         "googleEmailDomains",
                         "googleEnabled",
-                        "googleExpire",
-                        "gupshupPassword",
-                        "gupshupUserid",
                         "microsoftClientId",
                         "microsoftClientSecret",
                         "microsoftEmailDomains",
                         "microsoftEnabled",
-                        "microsoftExpire",
                         "passphraseEnabled",
-                        "passphraseExpire",
                         "password",
                         "predefinedSponsorsEnabled",
                         "predefinedSponsorsHideEmail",
                         "privacy",
-                        "puzzelPassword",
-                        "puzzelServiceId",
-                        "puzzelUsername",
                         "smsEnabled",
-                        "smsExpire",
                         "smsMessageFormat",
                         "smsProvider",
-                        "sponsorAutoApprove",
                         "sponsorEmailDomains",
                         "sponsorEnabled",
-                        "sponsorExpire",
                         "sponsorLinkValidityDuration",
                         "sponsorNotifyAll",
                         "sponsorStatusNotify",
@@ -20427,12 +20402,7 @@
                         "ssoIdpSignAlgo",
                         "ssoIdpSsoUrl",
                         "ssoIssuer",
-                        "ssoNameidFormat",
-                        "telstraClientId",
-                        "telstraClientSecret",
-                        "twilioAuthToken",
-                        "twilioPhoneNumber",
-                        "twilioSid"
+                        "ssoNameidFormat"
                     ]
                 }
             }
@@ -21480,7 +21450,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "legacies"
+                        "legacies",
+                        "minRssi",
+                        "template"
                     ]
                 }
             }
@@ -26229,12 +26201,6 @@
                 }
             },
             "type": "object",
-            "required": [
-                "apiKey",
-                "consoleUrl",
-                "password",
-                "username"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -26402,18 +26368,15 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "anticlogThreshold",
                         "eapReauth",
                         "enableMacAuth",
                         "keyIdx",
                         "keys",
                         "multiPskOnly",
-                        "owe",
                         "pairwises",
                         "privateWlan",
                         "psk",
-                        "type",
-                        "wepAsSecondaryAuth"
+                        "type"
                     ]
                 }
             }
@@ -26646,12 +26609,6 @@
                 "source": {
                     "type": "string",
                     "description": "enum: `cloud_psks`, `radius`\n"
-                },
-                "vlanIds": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 }
             },
             "type": "object",
@@ -26676,7 +26633,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "whether to enable dynamic vlan\n"
+                    "description": "Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan\n"
                 },
                 "localVlanIds": {
                     "type": "array",
@@ -26790,67 +26747,67 @@
             "properties": {
                 "allowWlanIdRoam": {
                     "type": "boolean",
-                    "description": "whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)\n"
                 },
                 "amazonClientId": {
                     "type": "string",
-                    "description": "amazon OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
                 },
                 "amazonClientSecret": {
                     "type": "string",
-                    "description": "amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "amazonEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "amazonEnabled": {
                     "type": "boolean",
                     "description": "whether amazon is enabled as a login method\n"
                 },
                 "amazonExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`\n"
                 },
                 "auth": {
                     "type": "string",
-                    "description": "authentication scheme. enum: `external`, `none`, `sso`\n"
+                    "description": "authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`\n"
                 },
                 "azureClientId": {
                     "type": "string",
-                    "description": "Required if `azure_enabled`==`true`.\nAzure active directory app client id\n"
+                    "description": "Required if `azure_enabled`==`true`. Azure active directory app client id\n"
                 },
                 "azureClientSecret": {
                     "type": "string",
-                    "description": "Required if `azure_enabled`==`true`.\nAzure active directory app client secret\n"
+                    "description": "Required if `azure_enabled`==`true`. Azure active directory app client secret\n"
                 },
                 "azureEnabled": {
                     "type": "boolean",
                     "description": "whether Azure Active Directory is enabled as a login method\n"
                 },
                 "azureExpire": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`\n"
                 },
                 "azureTenantId": {
                     "type": "string",
-                    "description": "Required if `azure_enabled`==`true`.\nAzure active directory tenant id.\n"
+                    "description": "Required if `azure_enabled`==`true`. Azure active directory tenant id.\n"
                 },
                 "broadnetPassword": {
                     "type": "string",
-                    "description": "when `sms_provider`==`broadnet`\n",
+                    "description": "Required if `sms_provider`==`broadnet`\n",
                     "secret": true
                 },
                 "broadnetSid": {
                     "type": "string",
-                    "description": "when `sms_provider`==`broadnet`\n"
+                    "description": "Required if `sms_provider`==`broadnet`\n"
                 },
                 "broadnetUserId": {
                     "type": "string",
-                    "description": "when `sms_provider`==`broadnet`\n"
+                    "description": "Required if `sms_provider`==`broadnet`\n"
                 },
                 "bypassWhenCloudDown": {
                     "type": "boolean",
@@ -26858,7 +26815,7 @@
                 },
                 "clickatellApiKey": {
                     "type": "string",
-                    "description": "when `sms_provider`==`clickatell`\n"
+                    "description": "Required if `sms_provider`==`clickatell`\n"
                 },
                 "crossSite": {
                     "type": "boolean",
@@ -26873,35 +26830,35 @@
                     "description": "whether guest portal is enabled\n"
                 },
                 "expire": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "how long to remain authorized, in minutes\n"
                 },
                 "externalPortalUrl": {
                     "type": "string",
-                    "description": "external portal URL (e.g. https://host/url) where we can append our query parameters to\n"
+                    "description": "Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to\n"
                 },
                 "facebookClientId": {
                     "type": "string",
-                    "description": "Required if `facebook_enabled`==`true`.\nFacebook OAuth2 app id. This is optional. If not provided, it will use a default one.\n"
+                    "description": "Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.\n"
                 },
                 "facebookClientSecret": {
                     "type": "string",
-                    "description": "Required if `facebook_enabled`==`true`.\nFacebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "facebookEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "facebookEnabled": {
                     "type": "boolean",
                     "description": "whether facebook is enabled as a login method\n"
                 },
                 "facebookExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`\n"
                 },
                 "forward": {
                     "type": "boolean",
@@ -26917,66 +26874,66 @@
                 },
                 "googleClientSecret": {
                     "type": "string",
-                    "description": "Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "googleEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "googleEnabled": {
                     "type": "boolean",
                     "description": "whether google is enabled as login method\n"
                 },
                 "googleExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`\n"
                 },
                 "gupshupPassword": {
                     "type": "string",
-                    "description": "when `sms_provider`==`gupshup`\n",
+                    "description": "Required if `sms_provider`==`gupshup`\n",
                     "secret": true
                 },
                 "gupshupUserid": {
                     "type": "string",
-                    "description": "when `sms_provider`==`gupshup`\n"
+                    "description": "Required if `sms_provider`==`gupshup`\n"
                 },
                 "microsoftClientId": {
                     "type": "string",
-                    "description": "microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
+                    "description": "Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.\n"
                 },
                 "microsoftClientSecret": {
                     "type": "string",
-                    "description": "microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.\n"
+                    "description": "Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.\n"
                 },
                 "microsoftEmailDomains": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
+                    "description": "Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.\n"
                 },
                 "microsoftEnabled": {
                     "type": "boolean",
                     "description": "whether microsoft 365 is enabled as a login method\n"
                 },
                 "microsoftExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`\n"
                 },
                 "passphraseEnabled": {
                     "type": "boolean",
-                    "description": "whether password is enabled\n"
+                    "description": "Whether password is enabled\n"
                 },
                 "passphraseExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "passphrase\n",
+                    "description": "Required if `passphrase_enabled`==`true`.\n",
                     "secret": true
                 },
                 "predefinedSponsorsEnabled": {
@@ -26992,35 +26949,36 @@
                 },
                 "puzzelPassword": {
                     "type": "string",
-                    "description": "when `sms_provider`==`puzzel`\n",
+                    "description": "Required if `sms_provider`==`puzzel`\n",
                     "secret": true
                 },
                 "puzzelServiceId": {
                     "type": "string",
-                    "description": "when `sms_provider`==`puzzel`\n"
+                    "description": "Required if `sms_provider`==`puzzel`\n"
                 },
                 "puzzelUsername": {
                     "type": "string",
-                    "description": "when `sms_provider`==`puzzel`\n"
+                    "description": "Required if `sms_provider`==`puzzel`\n"
                 },
                 "smsEnabled": {
                     "type": "boolean",
                     "description": "whether sms is enabled as a login method\n"
                 },
                 "smsExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`\n"
                 },
                 "smsMessageFormat": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Optional if `sms_enabled`==`true`. SMS Message format\n"
                 },
                 "smsProvider": {
                     "type": "string",
-                    "description": "enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`\n"
+                    "description": "Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`\n"
                 },
                 "sponsorAutoApprove": {
                     "type": "boolean",
-                    "description": "whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled\n"
                 },
                 "sponsorEmailDomains": {
                     "type": "array",
@@ -27034,20 +26992,20 @@
                     "description": "whether sponsor is enabled\n"
                 },
                 "sponsorExpire": {
-                    "type": "number",
-                    "description": "interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`\n"
+                    "type": "integer",
+                    "description": "Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`\n"
                 },
                 "sponsorLinkValidityDuration": {
                     "type": "string",
-                    "description": "how long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.\n"
                 },
                 "sponsorNotifyAll": {
                     "type": "boolean",
-                    "description": "whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.\n"
                 },
                 "sponsorStatusNotify": {
                     "type": "boolean",
-                    "description": "if enabled, guest will get email about sponsor's action (approve/deny)\n"
+                    "description": "Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)\n"
                 },
                 "sponsors": {
                     "type": "object",
@@ -27058,75 +27016,68 @@
                 },
                 "ssoDefaultRole": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
+                    "description": "Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched\n"
                 },
                 "ssoForcedRole": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`\n"
+                    "description": "Optionl if `wlan_portal_auth`==`sso`\n"
                 },
                 "ssoIdpCert": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)\n"
+                    "description": "Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)\n"
                 },
                 "ssoIdpSignAlgo": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
+                    "description": "Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`\n"
                 },
                 "ssoIdpSsoUrl": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL\n"
+                    "description": "Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL\n"
                 },
                 "ssoIssuer": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`, IDP issuer URL\n"
+                    "description": "Required if `wlan_portal_auth`==`sso`, IDP issuer URL\n"
                 },
                 "ssoNameidFormat": {
                     "type": "string",
-                    "description": "if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`\n"
+                    "description": "Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`\n"
                 },
                 "telstraClientId": {
                     "type": "string",
-                    "description": "when `sms_provider`==`telstra`, Client ID provided by Telstra\n"
+                    "description": "Required if `sms_provider`==`telstra`, Client ID provided by Telstra\n"
                 },
                 "telstraClientSecret": {
                     "type": "string",
-                    "description": "when `sms_provider`==`telstra`, Client secret provided by Telstra\n"
+                    "description": "Required if `sms_provider`==`telstra`, Client secret provided by Telstra\n"
                 },
                 "twilioAuthToken": {
                     "type": "string",
-                    "description": "when `sms_provider`==`twilio`, Auth token account with twilio account\n"
+                    "description": "Required if `sms_provider`==`twilio`, Auth token account with twilio account\n"
                 },
                 "twilioPhoneNumber": {
                     "type": "string",
-                    "description": "when `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.\n"
+                    "description": "Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.\n"
                 },
                 "twilioSid": {
                     "type": "string",
-                    "description": "when `sms_provider`==`twilio`, Account SID provided by Twilio\n"
+                    "description": "Required if `sms_provider`==`twilio`, Account SID provided by Twilio\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "allowWlanIdRoam",
                         "amazonClientId",
                         "amazonClientSecret",
                         "amazonEmailDomains",
                         "amazonEnabled",
-                        "amazonExpire",
                         "auth",
                         "azureClientId",
                         "azureClientSecret",
                         "azureEnabled",
-                        "azureExpire",
                         "azureTenantId",
                         "broadnetPassword",
-                        "broadnetSid",
-                        "broadnetUserId",
                         "bypassWhenCloudDown",
-                        "clickatellApiKey",
-                        "crossSite",
                         "emailEnabled",
                         "enabled",
                         "expire",
@@ -27135,38 +27086,26 @@
                         "facebookClientSecret",
                         "facebookEmailDomains",
                         "facebookEnabled",
-                        "facebookExpire",
                         "forward",
                         "forwardUrl",
                         "googleClientId",
                         "googleClientSecret",
                         "googleEmailDomains",
                         "googleEnabled",
-                        "googleExpire",
-                        "gupshupPassword",
-                        "gupshupUserid",
                         "microsoftClientId",
                         "microsoftClientSecret",
                         "microsoftEmailDomains",
                         "microsoftEnabled",
-                        "microsoftExpire",
                         "passphraseEnabled",
-                        "passphraseExpire",
                         "password",
                         "predefinedSponsorsEnabled",
                         "predefinedSponsorsHideEmail",
                         "privacy",
-                        "puzzelPassword",
-                        "puzzelServiceId",
-                        "puzzelUsername",
                         "smsEnabled",
-                        "smsExpire",
                         "smsMessageFormat",
                         "smsProvider",
-                        "sponsorAutoApprove",
                         "sponsorEmailDomains",
                         "sponsorEnabled",
-                        "sponsorExpire",
                         "sponsorLinkValidityDuration",
                         "sponsorNotifyAll",
                         "sponsorStatusNotify",
@@ -27177,12 +27116,7 @@
                         "ssoIdpSignAlgo",
                         "ssoIdpSsoUrl",
                         "ssoIssuer",
-                        "ssoNameidFormat",
-                        "telstraClientId",
-                        "telstraClientSecret",
-                        "twilioAuthToken",
-                        "twilioPhoneNumber",
-                        "twilioSid"
+                        "ssoNameidFormat"
                     ]
                 }
             }
@@ -28230,7 +28164,9 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "legacies"
+                        "legacies",
+                        "minRssi",
+                        "template"
                     ]
                 }
             }
@@ -35713,6 +35649,13 @@
                     "type": "boolean",
                     "description": "disable sending v2 roam notification messages\n"
                 },
+                "disableWhenGatewayUnreachable": {
+                    "type": "boolean",
+                    "description": "when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot\nreach default gateway\n"
+                },
+                "disableWhenMxtunnelDown": {
+                    "type": "boolean"
+                },
                 "disableWmm": {
                     "type": "boolean",
                     "description": "whether to disable WMM\n"
@@ -35866,10 +35809,6 @@
                 "portalSsoUrl": {
                     "type": "string"
                 },
-                "portalTemplateUrl": {
-                    "type": "string",
-                    "description": "N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.\nTo update portal_template, use Wlan Portal Template.\n"
-                },
                 "qos": {
                     "$ref": "#/types/junipermist:org/WlanQos:WlanQos"
                 },
@@ -35883,6 +35822,10 @@
                         "$ref": "#/types/junipermist:org/WlanRateset:WlanRateset"
                     },
                     "description": "Property key is the RF band. enum: `24`, `5`, `6`\n"
+                },
+                "reconnectClientsWhenRoamingMxcluster": {
+                    "type": "boolean",
+                    "description": "when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)\n"
                 },
                 "roamMode": {
                     "type": "string",
@@ -35903,10 +35846,6 @@
                 "templateId": {
                     "type": "string"
                 },
-                "thumbnail": {
-                    "type": "string",
-                    "description": "Url of portal background image thumbnail\n"
-                },
                 "useEapolV1": {
                     "type": "boolean",
                     "description": "if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices\n"
@@ -35923,11 +35862,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "vlan_ids to use when there’s no match from RA\n"
+                    "description": "if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool\n"
                 },
                 "vlanPooling": {
                     "type": "boolean",
-                    "description": "vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
+                    "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
                     "type": "integer",
@@ -35965,19 +35904,29 @@
                 "acctImmediateUpdate",
                 "acctInterimInterval",
                 "acctServers",
+                "airwatch",
                 "allowIpv6Ndp",
                 "allowMdns",
                 "allowSsdp",
                 "apIds",
+                "appLimit",
+                "appQos",
+                "applyTo",
                 "arpFilter",
                 "authServerSelection",
                 "authServers",
+                "authServersNasId",
+                "authServersNasIp",
                 "authServersRetries",
                 "authServersTimeout",
                 "bandSteer",
                 "bandSteerForceBand5",
                 "blockBlacklistClients",
+                "bonjour",
+                "ciscoCwa",
+                "clientLimitDown",
                 "clientLimitDownEnabled",
+                "clientLimitUp",
                 "clientLimitUpEnabled",
                 "coaServers",
                 "disable11ax",
@@ -35986,6 +35935,7 @@
                 "disableV1RoamNotify",
                 "disableV2RoamNotify",
                 "disableWmm",
+                "dnsServerRewrite",
                 "dtim",
                 "enableLocalKeycaching",
                 "enableWirelessBridging",
@@ -35994,6 +35944,7 @@
                 "fastDot1xTimers",
                 "hideSsid",
                 "hostnameIe",
+                "hotspot20",
                 "interface",
                 "isolation",
                 "l2Isolation",
@@ -36002,24 +35953,28 @@
                 "limitProbeResponse",
                 "maxIdletime",
                 "maxNumClients",
+                "mistNac",
                 "mspId",
                 "mxtunnelIds",
                 "mxtunnelNames",
                 "noStaticDns",
                 "noStaticIp",
                 "orgId",
+                "portal",
                 "portalAllowedHostnames",
                 "portalAllowedSubnets",
                 "portalApiSecret",
                 "portalDeniedHostnames",
                 "portalImage",
                 "portalSsoUrl",
-                "portalTemplateUrl",
+                "qos",
+                "radsec",
+                "rateset",
                 "roamMode",
+                "schedule",
                 "sleExcluded",
                 "ssid",
                 "templateId",
-                "thumbnail",
                 "useEapolV1",
                 "vlanEnabled",
                 "vlanIds",
@@ -36188,6 +36143,13 @@
                     "type": "boolean",
                     "description": "disable sending v2 roam notification messages\n"
                 },
+                "disableWhenGatewayUnreachable": {
+                    "type": "boolean",
+                    "description": "when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot\nreach default gateway\n"
+                },
+                "disableWhenMxtunnelDown": {
+                    "type": "boolean"
+                },
                 "disableWmm": {
                     "type": "boolean",
                     "description": "whether to disable WMM\n"
@@ -36341,6 +36303,10 @@
                     },
                     "description": "Property key is the RF band. enum: `24`, `5`, `6`\n"
                 },
+                "reconnectClientsWhenRoamingMxcluster": {
+                    "type": "boolean",
+                    "description": "when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)\n"
+                },
                 "roamMode": {
                     "type": "string",
                     "description": "enum: `11r`, `OKC`, `NONE`\n"
@@ -36376,11 +36342,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "vlan_ids to use when there’s no match from RA\n"
+                    "description": "if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool\n"
                 },
                 "vlanPooling": {
                     "type": "boolean",
-                    "description": "vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
+                    "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
                     "type": "integer",
@@ -36577,6 +36543,13 @@
                         "type": "boolean",
                         "description": "disable sending v2 roam notification messages\n"
                     },
+                    "disableWhenGatewayUnreachable": {
+                        "type": "boolean",
+                        "description": "when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot\nreach default gateway\n"
+                    },
+                    "disableWhenMxtunnelDown": {
+                        "type": "boolean"
+                    },
                     "disableWmm": {
                         "type": "boolean",
                         "description": "whether to disable WMM\n"
@@ -36730,10 +36703,6 @@
                     "portalSsoUrl": {
                         "type": "string"
                     },
-                    "portalTemplateUrl": {
-                        "type": "string",
-                        "description": "N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.\nTo update portal_template, use Wlan Portal Template.\n"
-                    },
                     "qos": {
                         "$ref": "#/types/junipermist:org/WlanQos:WlanQos"
                     },
@@ -36747,6 +36716,10 @@
                             "$ref": "#/types/junipermist:org/WlanRateset:WlanRateset"
                         },
                         "description": "Property key is the RF band. enum: `24`, `5`, `6`\n"
+                    },
+                    "reconnectClientsWhenRoamingMxcluster": {
+                        "type": "boolean",
+                        "description": "when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)\n"
                     },
                     "roamMode": {
                         "type": "string",
@@ -36767,10 +36740,6 @@
                     "templateId": {
                         "type": "string"
                     },
-                    "thumbnail": {
-                        "type": "string",
-                        "description": "Url of portal background image thumbnail\n"
-                    },
                     "useEapolV1": {
                         "type": "boolean",
                         "description": "if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices\n"
@@ -36787,11 +36756,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "vlan_ids to use when there’s no match from RA\n"
+                        "description": "if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool\n"
                     },
                     "vlanPooling": {
                         "type": "boolean",
-                        "description": "vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
+                        "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                     },
                     "wlanLimitDown": {
                         "type": "integer",
@@ -39240,6 +39209,13 @@
                     "type": "boolean",
                     "description": "disable sending v2 roam notification messages\n"
                 },
+                "disableWhenGatewayUnreachable": {
+                    "type": "boolean",
+                    "description": "when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot\nreach default gateway\n"
+                },
+                "disableWhenMxtunnelDown": {
+                    "type": "boolean"
+                },
                 "disableWmm": {
                     "type": "boolean",
                     "description": "whether to disable WMM\n"
@@ -39393,10 +39369,6 @@
                 "portalSsoUrl": {
                     "type": "string"
                 },
-                "portalTemplateUrl": {
-                    "type": "string",
-                    "description": "N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.\nTo update portal_template, use Wlan Portal Template.\n"
-                },
                 "qos": {
                     "$ref": "#/types/junipermist:site/WlanQos:WlanQos"
                 },
@@ -39410,6 +39382,10 @@
                         "$ref": "#/types/junipermist:site/WlanRateset:WlanRateset"
                     },
                     "description": "Property key is the RF band. enum: `24`, `5`, `6`\n"
+                },
+                "reconnectClientsWhenRoamingMxcluster": {
+                    "type": "boolean",
+                    "description": "when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)\n"
                 },
                 "roamMode": {
                     "type": "string",
@@ -39430,10 +39406,6 @@
                     "type": "string",
                     "description": "the name of the SSID\n"
                 },
-                "thumbnail": {
-                    "type": "string",
-                    "description": "Url of portal background image thumbnail\n"
-                },
                 "useEapolV1": {
                     "type": "boolean",
                     "description": "if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices\n"
@@ -39450,11 +39422,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "vlan_ids to use when there’s no match from RA\n"
+                    "description": "if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool\n"
                 },
                 "vlanPooling": {
                     "type": "boolean",
-                    "description": "vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
+                    "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
                     "type": "integer",
@@ -39492,19 +39464,29 @@
                 "acctImmediateUpdate",
                 "acctInterimInterval",
                 "acctServers",
+                "airwatch",
                 "allowIpv6Ndp",
                 "allowMdns",
                 "allowSsdp",
                 "apIds",
+                "appLimit",
+                "appQos",
+                "applyTo",
                 "arpFilter",
                 "authServerSelection",
                 "authServers",
+                "authServersNasId",
+                "authServersNasIp",
                 "authServersRetries",
                 "authServersTimeout",
                 "bandSteer",
                 "bandSteerForceBand5",
                 "blockBlacklistClients",
+                "bonjour",
+                "ciscoCwa",
+                "clientLimitDown",
                 "clientLimitDownEnabled",
+                "clientLimitUp",
                 "clientLimitUpEnabled",
                 "coaServers",
                 "disable11ax",
@@ -39513,6 +39495,7 @@
                 "disableV1RoamNotify",
                 "disableV2RoamNotify",
                 "disableWmm",
+                "dnsServerRewrite",
                 "dtim",
                 "enableLocalKeycaching",
                 "enableWirelessBridging",
@@ -39521,6 +39504,7 @@
                 "fastDot1xTimers",
                 "hideSsid",
                 "hostnameIe",
+                "hotspot20",
                 "interface",
                 "isolation",
                 "l2Isolation",
@@ -39529,24 +39513,28 @@
                 "limitProbeResponse",
                 "maxIdletime",
                 "maxNumClients",
+                "mistNac",
                 "mspId",
                 "mxtunnelIds",
                 "mxtunnelNames",
                 "noStaticDns",
                 "noStaticIp",
                 "orgId",
+                "portal",
                 "portalAllowedHostnames",
                 "portalAllowedSubnets",
                 "portalApiSecret",
                 "portalDeniedHostnames",
                 "portalImage",
                 "portalSsoUrl",
-                "portalTemplateUrl",
+                "qos",
+                "radsec",
+                "rateset",
                 "roamMode",
+                "schedule",
                 "siteId",
                 "sleExcluded",
                 "ssid",
-                "thumbnail",
                 "useEapolV1",
                 "vlanEnabled",
                 "vlanIds",
@@ -39715,6 +39703,13 @@
                     "type": "boolean",
                     "description": "disable sending v2 roam notification messages\n"
                 },
+                "disableWhenGatewayUnreachable": {
+                    "type": "boolean",
+                    "description": "when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot\nreach default gateway\n"
+                },
+                "disableWhenMxtunnelDown": {
+                    "type": "boolean"
+                },
                 "disableWmm": {
                     "type": "boolean",
                     "description": "whether to disable WMM\n"
@@ -39865,6 +39860,10 @@
                     },
                     "description": "Property key is the RF band. enum: `24`, `5`, `6`\n"
                 },
+                "reconnectClientsWhenRoamingMxcluster": {
+                    "type": "boolean",
+                    "description": "when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)\n"
+                },
                 "roamMode": {
                     "type": "string",
                     "description": "enum: `11r`, `OKC`, `NONE`\n"
@@ -39900,11 +39899,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "vlan_ids to use when there’s no match from RA\n"
+                    "description": "if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool\n"
                 },
                 "vlanPooling": {
                     "type": "boolean",
-                    "description": "vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
+                    "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                 },
                 "wlanLimitDown": {
                     "type": "integer",
@@ -40100,6 +40099,13 @@
                         "type": "boolean",
                         "description": "disable sending v2 roam notification messages\n"
                     },
+                    "disableWhenGatewayUnreachable": {
+                        "type": "boolean",
+                        "description": "when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot\nreach default gateway\n"
+                    },
+                    "disableWhenMxtunnelDown": {
+                        "type": "boolean"
+                    },
                     "disableWmm": {
                         "type": "boolean",
                         "description": "whether to disable WMM\n"
@@ -40253,10 +40259,6 @@
                     "portalSsoUrl": {
                         "type": "string"
                     },
-                    "portalTemplateUrl": {
-                        "type": "string",
-                        "description": "N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.\nTo update portal_template, use Wlan Portal Template.\n"
-                    },
                     "qos": {
                         "$ref": "#/types/junipermist:site/WlanQos:WlanQos"
                     },
@@ -40270,6 +40272,10 @@
                             "$ref": "#/types/junipermist:site/WlanRateset:WlanRateset"
                         },
                         "description": "Property key is the RF band. enum: `24`, `5`, `6`\n"
+                    },
+                    "reconnectClientsWhenRoamingMxcluster": {
+                        "type": "boolean",
+                        "description": "when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)\n"
                     },
                     "roamMode": {
                         "type": "string",
@@ -40290,10 +40296,6 @@
                         "type": "string",
                         "description": "the name of the SSID\n"
                     },
-                    "thumbnail": {
-                        "type": "string",
-                        "description": "Url of portal background image thumbnail\n"
-                    },
                     "useEapolV1": {
                         "type": "boolean",
                         "description": "if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices\n"
@@ -40310,11 +40312,11 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "vlan_ids to use when there’s no match from RA\n"
+                        "description": "if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool\n"
                     },
                     "vlanPooling": {
                         "type": "boolean",
-                        "description": "vlan pooling allows AP to place client on different VLAN using a deterministic algorithm\n"
+                        "description": "Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a\ndeterministic algorithm\n"
                     },
                     "wlanLimitDown": {
                         "type": "integer",
