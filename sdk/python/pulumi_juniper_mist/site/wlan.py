@@ -58,6 +58,8 @@ class WlanArgs:
                  disable_uapsd: Optional[pulumi.Input[bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[bool]] = None,
                  disable_v2_roam_notify: Optional[pulumi.Input[bool]] = None,
+                 disable_when_gateway_unreachable: Optional[pulumi.Input[bool]] = None,
+                 disable_when_mxtunnel_down: Optional[pulumi.Input[bool]] = None,
                  disable_wmm: Optional[pulumi.Input[bool]] = None,
                  dns_server_rewrite: Optional[pulumi.Input['WlanDnsServerRewriteArgs']] = None,
                  dtim: Optional[pulumi.Input[int]] = None,
@@ -92,6 +94,7 @@ class WlanArgs:
                  qos: Optional[pulumi.Input['WlanQosArgs']] = None,
                  radsec: Optional[pulumi.Input['WlanRadsecArgs']] = None,
                  rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]] = None,
+                 reconnect_clients_when_roaming_mxcluster: Optional[pulumi.Input[bool]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['WlanScheduleArgs']] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
@@ -153,6 +156,8 @@ class WlanArgs:
         :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
         :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
         :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+               reach default gateway
         :param pulumi.Input[bool] disable_wmm: whether to disable WMM
         :param pulumi.Input['WlanDnsServerRewriteArgs'] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         :param pulumi.Input['WlanDynamicPskArgs'] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
@@ -192,13 +197,15 @@ class WlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: vlan_ids to use when there’s no match from RA
-        :param pulumi.Input[bool] vlan_pooling: vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+               deterministic algorithm
         :param pulumi.Input[int] wlan_limit_down: kbps
         :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
         :param pulumi.Input[int] wlan_limit_up: kbps
@@ -279,6 +286,10 @@ class WlanArgs:
             pulumi.set(__self__, "disable_v1_roam_notify", disable_v1_roam_notify)
         if disable_v2_roam_notify is not None:
             pulumi.set(__self__, "disable_v2_roam_notify", disable_v2_roam_notify)
+        if disable_when_gateway_unreachable is not None:
+            pulumi.set(__self__, "disable_when_gateway_unreachable", disable_when_gateway_unreachable)
+        if disable_when_mxtunnel_down is not None:
+            pulumi.set(__self__, "disable_when_mxtunnel_down", disable_when_mxtunnel_down)
         if disable_wmm is not None:
             pulumi.set(__self__, "disable_wmm", disable_wmm)
         if dns_server_rewrite is not None:
@@ -347,6 +358,8 @@ class WlanArgs:
             pulumi.set(__self__, "radsec", radsec)
         if rateset is not None:
             pulumi.set(__self__, "rateset", rateset)
+        if reconnect_clients_when_roaming_mxcluster is not None:
+            pulumi.set(__self__, "reconnect_clients_when_roaming_mxcluster", reconnect_clients_when_roaming_mxcluster)
         if roam_mode is not None:
             pulumi.set(__self__, "roam_mode", roam_mode)
         if schedule is not None:
@@ -828,6 +841,28 @@ class WlanArgs:
         pulumi.set(self, "disable_v2_roam_notify", value)
 
     @property
+    @pulumi.getter(name="disableWhenGatewayUnreachable")
+    def disable_when_gateway_unreachable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        reach default gateway
+        """
+        return pulumi.get(self, "disable_when_gateway_unreachable")
+
+    @disable_when_gateway_unreachable.setter
+    def disable_when_gateway_unreachable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_when_gateway_unreachable", value)
+
+    @property
+    @pulumi.getter(name="disableWhenMxtunnelDown")
+    def disable_when_mxtunnel_down(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disable_when_mxtunnel_down")
+
+    @disable_when_mxtunnel_down.setter
+    def disable_when_mxtunnel_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_when_mxtunnel_down", value)
+
+    @property
     @pulumi.getter(name="disableWmm")
     def disable_wmm(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1233,6 +1268,18 @@ class WlanArgs:
         pulumi.set(self, "rateset", value)
 
     @property
+    @pulumi.getter(name="reconnectClientsWhenRoamingMxcluster")
+    def reconnect_clients_when_roaming_mxcluster(self) -> Optional[pulumi.Input[bool]]:
+        """
+        when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        """
+        return pulumi.get(self, "reconnect_clients_when_roaming_mxcluster")
+
+    @reconnect_clients_when_roaming_mxcluster.setter
+    def reconnect_clients_when_roaming_mxcluster(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reconnect_clients_when_roaming_mxcluster", value)
+
+    @property
     @pulumi.getter(name="roamMode")
     def roam_mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1305,7 +1352,7 @@ class WlanArgs:
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        vlan_ids to use when there’s no match from RA
+        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -1317,7 +1364,8 @@ class WlanArgs:
     @pulumi.getter(name="vlanPooling")
     def vlan_pooling(self) -> Optional[pulumi.Input[bool]]:
         """
-        vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+        deterministic algorithm
         """
         return pulumi.get(self, "vlan_pooling")
 
@@ -1448,6 +1496,8 @@ class _WlanState:
                  disable_uapsd: Optional[pulumi.Input[bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[bool]] = None,
                  disable_v2_roam_notify: Optional[pulumi.Input[bool]] = None,
+                 disable_when_gateway_unreachable: Optional[pulumi.Input[bool]] = None,
+                 disable_when_mxtunnel_down: Optional[pulumi.Input[bool]] = None,
                  disable_wmm: Optional[pulumi.Input[bool]] = None,
                  dns_server_rewrite: Optional[pulumi.Input['WlanDnsServerRewriteArgs']] = None,
                  dtim: Optional[pulumi.Input[int]] = None,
@@ -1484,16 +1534,15 @@ class _WlanState:
                  portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  portal_image: Optional[pulumi.Input[str]] = None,
                  portal_sso_url: Optional[pulumi.Input[str]] = None,
-                 portal_template_url: Optional[pulumi.Input[str]] = None,
                  qos: Optional[pulumi.Input['WlanQosArgs']] = None,
                  radsec: Optional[pulumi.Input['WlanRadsecArgs']] = None,
                  rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]] = None,
+                 reconnect_clients_when_roaming_mxcluster: Optional[pulumi.Input[bool]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['WlanScheduleArgs']] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
                  sle_excluded: Optional[pulumi.Input[bool]] = None,
                  ssid: Optional[pulumi.Input[str]] = None,
-                 thumbnail: Optional[pulumi.Input[str]] = None,
                  use_eapol_v1: Optional[pulumi.Input[bool]] = None,
                  vlan_enabled: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None,
@@ -1551,6 +1600,8 @@ class _WlanState:
         :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
         :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
         :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+               reach default gateway
         :param pulumi.Input[bool] disable_wmm: whether to disable WMM
         :param pulumi.Input['WlanDnsServerRewriteArgs'] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         :param pulumi.Input['WlanDynamicPskArgs'] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
@@ -1590,19 +1641,18 @@ class _WlanState:
         :param pulumi.Input[str] portal_api_secret: api secret (auto-generated) that can be used to sign guest authorization requests
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[str] portal_image: Url of portal background image
-        :param pulumi.Input[str] portal_template_url: N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-               To update portal_template, use Wlan Portal Template.
         :param pulumi.Input['WlanRadsecArgs'] radsec: Radsec settings
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input['WlanScheduleArgs'] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[str] ssid: the name of the SSID
-        :param pulumi.Input[str] thumbnail: Url of portal background image thumbnail
         :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: vlan_ids to use when there’s no match from RA
-        :param pulumi.Input[bool] vlan_pooling: vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+               deterministic algorithm
         :param pulumi.Input[int] wlan_limit_down: kbps
         :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
         :param pulumi.Input[int] wlan_limit_up: kbps
@@ -1681,6 +1731,10 @@ class _WlanState:
             pulumi.set(__self__, "disable_v1_roam_notify", disable_v1_roam_notify)
         if disable_v2_roam_notify is not None:
             pulumi.set(__self__, "disable_v2_roam_notify", disable_v2_roam_notify)
+        if disable_when_gateway_unreachable is not None:
+            pulumi.set(__self__, "disable_when_gateway_unreachable", disable_when_gateway_unreachable)
+        if disable_when_mxtunnel_down is not None:
+            pulumi.set(__self__, "disable_when_mxtunnel_down", disable_when_mxtunnel_down)
         if disable_wmm is not None:
             pulumi.set(__self__, "disable_wmm", disable_wmm)
         if dns_server_rewrite is not None:
@@ -1753,14 +1807,14 @@ class _WlanState:
             pulumi.set(__self__, "portal_image", portal_image)
         if portal_sso_url is not None:
             pulumi.set(__self__, "portal_sso_url", portal_sso_url)
-        if portal_template_url is not None:
-            pulumi.set(__self__, "portal_template_url", portal_template_url)
         if qos is not None:
             pulumi.set(__self__, "qos", qos)
         if radsec is not None:
             pulumi.set(__self__, "radsec", radsec)
         if rateset is not None:
             pulumi.set(__self__, "rateset", rateset)
+        if reconnect_clients_when_roaming_mxcluster is not None:
+            pulumi.set(__self__, "reconnect_clients_when_roaming_mxcluster", reconnect_clients_when_roaming_mxcluster)
         if roam_mode is not None:
             pulumi.set(__self__, "roam_mode", roam_mode)
         if schedule is not None:
@@ -1771,8 +1825,6 @@ class _WlanState:
             pulumi.set(__self__, "sle_excluded", sle_excluded)
         if ssid is not None:
             pulumi.set(__self__, "ssid", ssid)
-        if thumbnail is not None:
-            pulumi.set(__self__, "thumbnail", thumbnail)
         if use_eapol_v1 is not None:
             pulumi.set(__self__, "use_eapol_v1", use_eapol_v1)
         if vlan_enabled is not None:
@@ -2227,6 +2279,28 @@ class _WlanState:
         pulumi.set(self, "disable_v2_roam_notify", value)
 
     @property
+    @pulumi.getter(name="disableWhenGatewayUnreachable")
+    def disable_when_gateway_unreachable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        reach default gateway
+        """
+        return pulumi.get(self, "disable_when_gateway_unreachable")
+
+    @disable_when_gateway_unreachable.setter
+    def disable_when_gateway_unreachable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_when_gateway_unreachable", value)
+
+    @property
+    @pulumi.getter(name="disableWhenMxtunnelDown")
+    def disable_when_mxtunnel_down(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "disable_when_mxtunnel_down")
+
+    @disable_when_mxtunnel_down.setter
+    def disable_when_mxtunnel_down(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_when_mxtunnel_down", value)
+
+    @property
     @pulumi.getter(name="disableWmm")
     def disable_wmm(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2650,19 +2724,6 @@ class _WlanState:
         pulumi.set(self, "portal_sso_url", value)
 
     @property
-    @pulumi.getter(name="portalTemplateUrl")
-    def portal_template_url(self) -> Optional[pulumi.Input[str]]:
-        """
-        N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-        To update portal_template, use Wlan Portal Template.
-        """
-        return pulumi.get(self, "portal_template_url")
-
-    @portal_template_url.setter
-    def portal_template_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "portal_template_url", value)
-
-    @property
     @pulumi.getter
     def qos(self) -> Optional[pulumi.Input['WlanQosArgs']]:
         return pulumi.get(self, "qos")
@@ -2694,6 +2755,18 @@ class _WlanState:
     @rateset.setter
     def rateset(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['WlanRatesetArgs']]]]):
         pulumi.set(self, "rateset", value)
+
+    @property
+    @pulumi.getter(name="reconnectClientsWhenRoamingMxcluster")
+    def reconnect_clients_when_roaming_mxcluster(self) -> Optional[pulumi.Input[bool]]:
+        """
+        when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        """
+        return pulumi.get(self, "reconnect_clients_when_roaming_mxcluster")
+
+    @reconnect_clients_when_roaming_mxcluster.setter
+    def reconnect_clients_when_roaming_mxcluster(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reconnect_clients_when_roaming_mxcluster", value)
 
     @property
     @pulumi.getter(name="roamMode")
@@ -2753,18 +2826,6 @@ class _WlanState:
         pulumi.set(self, "ssid", value)
 
     @property
-    @pulumi.getter
-    def thumbnail(self) -> Optional[pulumi.Input[str]]:
-        """
-        Url of portal background image thumbnail
-        """
-        return pulumi.get(self, "thumbnail")
-
-    @thumbnail.setter
-    def thumbnail(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "thumbnail", value)
-
-    @property
     @pulumi.getter(name="useEapolV1")
     def use_eapol_v1(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2801,7 +2862,7 @@ class _WlanState:
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        vlan_ids to use when there’s no match from RA
+        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -2813,7 +2874,8 @@ class _WlanState:
     @pulumi.getter(name="vlanPooling")
     def vlan_pooling(self) -> Optional[pulumi.Input[bool]]:
         """
-        vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+        deterministic algorithm
         """
         return pulumi.get(self, "vlan_pooling")
 
@@ -2946,6 +3008,8 @@ class Wlan(pulumi.CustomResource):
                  disable_uapsd: Optional[pulumi.Input[bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[bool]] = None,
                  disable_v2_roam_notify: Optional[pulumi.Input[bool]] = None,
+                 disable_when_gateway_unreachable: Optional[pulumi.Input[bool]] = None,
+                 disable_when_mxtunnel_down: Optional[pulumi.Input[bool]] = None,
                  disable_wmm: Optional[pulumi.Input[bool]] = None,
                  dns_server_rewrite: Optional[pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']]] = None,
                  dtim: Optional[pulumi.Input[int]] = None,
@@ -2980,6 +3044,7 @@ class Wlan(pulumi.CustomResource):
                  qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
                  radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
                  rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
+                 reconnect_clients_when_roaming_mxcluster: Optional[pulumi.Input[bool]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -3083,6 +3148,8 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
         :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
         :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+               reach default gateway
         :param pulumi.Input[bool] disable_wmm: whether to disable WMM
         :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
@@ -3122,14 +3189,16 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[str] ssid: the name of the SSID
         :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: vlan_ids to use when there’s no match from RA
-        :param pulumi.Input[bool] vlan_pooling: vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+               deterministic algorithm
         :param pulumi.Input[int] wlan_limit_down: kbps
         :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
         :param pulumi.Input[int] wlan_limit_up: kbps
@@ -3234,6 +3303,8 @@ class Wlan(pulumi.CustomResource):
                  disable_uapsd: Optional[pulumi.Input[bool]] = None,
                  disable_v1_roam_notify: Optional[pulumi.Input[bool]] = None,
                  disable_v2_roam_notify: Optional[pulumi.Input[bool]] = None,
+                 disable_when_gateway_unreachable: Optional[pulumi.Input[bool]] = None,
+                 disable_when_mxtunnel_down: Optional[pulumi.Input[bool]] = None,
                  disable_wmm: Optional[pulumi.Input[bool]] = None,
                  dns_server_rewrite: Optional[pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']]] = None,
                  dtim: Optional[pulumi.Input[int]] = None,
@@ -3268,6 +3339,7 @@ class Wlan(pulumi.CustomResource):
                  qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
                  radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
                  rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
+                 reconnect_clients_when_roaming_mxcluster: Optional[pulumi.Input[bool]] = None,
                  roam_mode: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
                  site_id: Optional[pulumi.Input[str]] = None,
@@ -3329,6 +3401,8 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["disable_uapsd"] = disable_uapsd
             __props__.__dict__["disable_v1_roam_notify"] = disable_v1_roam_notify
             __props__.__dict__["disable_v2_roam_notify"] = disable_v2_roam_notify
+            __props__.__dict__["disable_when_gateway_unreachable"] = disable_when_gateway_unreachable
+            __props__.__dict__["disable_when_mxtunnel_down"] = disable_when_mxtunnel_down
             __props__.__dict__["disable_wmm"] = disable_wmm
             __props__.__dict__["dns_server_rewrite"] = dns_server_rewrite
             __props__.__dict__["dtim"] = dtim
@@ -3363,6 +3437,7 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["qos"] = qos
             __props__.__dict__["radsec"] = radsec
             __props__.__dict__["rateset"] = rateset
+            __props__.__dict__["reconnect_clients_when_roaming_mxcluster"] = reconnect_clients_when_roaming_mxcluster
             __props__.__dict__["roam_mode"] = roam_mode
             __props__.__dict__["schedule"] = schedule
             if site_id is None and not opts.urn:
@@ -3389,8 +3464,6 @@ class Wlan(pulumi.CustomResource):
             __props__.__dict__["portal_api_secret"] = None
             __props__.__dict__["portal_image"] = None
             __props__.__dict__["portal_sso_url"] = None
-            __props__.__dict__["portal_template_url"] = None
-            __props__.__dict__["thumbnail"] = None
         super(Wlan, __self__).__init__(
             'junipermist:site/wlan:Wlan',
             resource_name,
@@ -3436,6 +3509,8 @@ class Wlan(pulumi.CustomResource):
             disable_uapsd: Optional[pulumi.Input[bool]] = None,
             disable_v1_roam_notify: Optional[pulumi.Input[bool]] = None,
             disable_v2_roam_notify: Optional[pulumi.Input[bool]] = None,
+            disable_when_gateway_unreachable: Optional[pulumi.Input[bool]] = None,
+            disable_when_mxtunnel_down: Optional[pulumi.Input[bool]] = None,
             disable_wmm: Optional[pulumi.Input[bool]] = None,
             dns_server_rewrite: Optional[pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']]] = None,
             dtim: Optional[pulumi.Input[int]] = None,
@@ -3472,16 +3547,15 @@ class Wlan(pulumi.CustomResource):
             portal_denied_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             portal_image: Optional[pulumi.Input[str]] = None,
             portal_sso_url: Optional[pulumi.Input[str]] = None,
-            portal_template_url: Optional[pulumi.Input[str]] = None,
             qos: Optional[pulumi.Input[Union['WlanQosArgs', 'WlanQosArgsDict']]] = None,
             radsec: Optional[pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']]] = None,
             rateset: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]]] = None,
+            reconnect_clients_when_roaming_mxcluster: Optional[pulumi.Input[bool]] = None,
             roam_mode: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']]] = None,
             site_id: Optional[pulumi.Input[str]] = None,
             sle_excluded: Optional[pulumi.Input[bool]] = None,
             ssid: Optional[pulumi.Input[str]] = None,
-            thumbnail: Optional[pulumi.Input[str]] = None,
             use_eapol_v1: Optional[pulumi.Input[bool]] = None,
             vlan_enabled: Optional[pulumi.Input[bool]] = None,
             vlan_id: Optional[pulumi.Input[str]] = None,
@@ -3544,6 +3618,8 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[bool] disable_uapsd: whether to disable U-APSD
         :param pulumi.Input[bool] disable_v1_roam_notify: disable sending v2 roam notification messages
         :param pulumi.Input[bool] disable_v2_roam_notify: disable sending v2 roam notification messages
+        :param pulumi.Input[bool] disable_when_gateway_unreachable: when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+               reach default gateway
         :param pulumi.Input[bool] disable_wmm: whether to disable WMM
         :param pulumi.Input[Union['WlanDnsServerRewriteArgs', 'WlanDnsServerRewriteArgsDict']] dns_server_rewrite: for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         :param pulumi.Input[Union['WlanDynamicPskArgs', 'WlanDynamicPskArgsDict']] dynamic_psk: for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on
@@ -3583,19 +3659,18 @@ class Wlan(pulumi.CustomResource):
         :param pulumi.Input[str] portal_api_secret: api secret (auto-generated) that can be used to sign guest authorization requests
         :param pulumi.Input[Sequence[pulumi.Input[str]]] portal_denied_hostnames: list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
         :param pulumi.Input[str] portal_image: Url of portal background image
-        :param pulumi.Input[str] portal_template_url: N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-               To update portal_template, use Wlan Portal Template.
         :param pulumi.Input[Union['WlanRadsecArgs', 'WlanRadsecArgsDict']] radsec: Radsec settings
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['WlanRatesetArgs', 'WlanRatesetArgsDict']]]] rateset: Property key is the RF band. enum: `24`, `5`, `6`
+        :param pulumi.Input[bool] reconnect_clients_when_roaming_mxcluster: when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
         :param pulumi.Input[str] roam_mode: enum: `11r`, `OKC`, `NONE`
         :param pulumi.Input[Union['WlanScheduleArgs', 'WlanScheduleArgsDict']] schedule: WLAN operating schedule, default is disabled
         :param pulumi.Input[bool] sle_excluded: whether to exclude this WLAN from SLE metrics
         :param pulumi.Input[str] ssid: the name of the SSID
-        :param pulumi.Input[str] thumbnail: Url of portal background image thumbnail
         :param pulumi.Input[bool] use_eapol_v1: if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
         :param pulumi.Input[bool] vlan_enabled: if vlan tagging is enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: vlan_ids to use when there’s no match from RA
-        :param pulumi.Input[bool] vlan_pooling: vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vlan_ids: if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+        :param pulumi.Input[bool] vlan_pooling: Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+               deterministic algorithm
         :param pulumi.Input[int] wlan_limit_down: kbps
         :param pulumi.Input[bool] wlan_limit_down_enabled: if downlink limiting for whole wlan is enabled
         :param pulumi.Input[int] wlan_limit_up: kbps
@@ -3643,6 +3718,8 @@ class Wlan(pulumi.CustomResource):
         __props__.__dict__["disable_uapsd"] = disable_uapsd
         __props__.__dict__["disable_v1_roam_notify"] = disable_v1_roam_notify
         __props__.__dict__["disable_v2_roam_notify"] = disable_v2_roam_notify
+        __props__.__dict__["disable_when_gateway_unreachable"] = disable_when_gateway_unreachable
+        __props__.__dict__["disable_when_mxtunnel_down"] = disable_when_mxtunnel_down
         __props__.__dict__["disable_wmm"] = disable_wmm
         __props__.__dict__["dns_server_rewrite"] = dns_server_rewrite
         __props__.__dict__["dtim"] = dtim
@@ -3679,16 +3756,15 @@ class Wlan(pulumi.CustomResource):
         __props__.__dict__["portal_denied_hostnames"] = portal_denied_hostnames
         __props__.__dict__["portal_image"] = portal_image
         __props__.__dict__["portal_sso_url"] = portal_sso_url
-        __props__.__dict__["portal_template_url"] = portal_template_url
         __props__.__dict__["qos"] = qos
         __props__.__dict__["radsec"] = radsec
         __props__.__dict__["rateset"] = rateset
+        __props__.__dict__["reconnect_clients_when_roaming_mxcluster"] = reconnect_clients_when_roaming_mxcluster
         __props__.__dict__["roam_mode"] = roam_mode
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["site_id"] = site_id
         __props__.__dict__["sle_excluded"] = sle_excluded
         __props__.__dict__["ssid"] = ssid
-        __props__.__dict__["thumbnail"] = thumbnail
         __props__.__dict__["use_eapol_v1"] = use_eapol_v1
         __props__.__dict__["vlan_enabled"] = vlan_enabled
         __props__.__dict__["vlan_id"] = vlan_id
@@ -3731,7 +3807,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def airwatch(self) -> pulumi.Output[Optional['outputs.WlanAirwatch']]:
+    def airwatch(self) -> pulumi.Output['outputs.WlanAirwatch']:
         """
         airwatch wlan settings
         """
@@ -3771,7 +3847,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appLimit")
-    def app_limit(self) -> pulumi.Output[Optional['outputs.WlanAppLimit']]:
+    def app_limit(self) -> pulumi.Output['outputs.WlanAppLimit']:
         """
         bandwidth limiting for apps (applies to up/down)
         """
@@ -3779,7 +3855,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appQos")
-    def app_qos(self) -> pulumi.Output[Optional['outputs.WlanAppQos']]:
+    def app_qos(self) -> pulumi.Output['outputs.WlanAppQos']:
         """
         app qos wlan settings
         """
@@ -3787,7 +3863,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applyTo")
-    def apply_to(self) -> pulumi.Output[Optional[str]]:
+    def apply_to(self) -> pulumi.Output[str]:
         """
         enum: `aps`, `site`, `wxtags`
         """
@@ -3828,7 +3904,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authServersNasId")
-    def auth_servers_nas_id(self) -> pulumi.Output[Optional[str]]:
+    def auth_servers_nas_id(self) -> pulumi.Output[str]:
         """
         optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         """
@@ -3836,7 +3912,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authServersNasIp")
-    def auth_servers_nas_ip(self) -> pulumi.Output[Optional[str]]:
+    def auth_servers_nas_ip(self) -> pulumi.Output[str]:
         """
         optional, NAS-IP-ADDRESS to use
         """
@@ -3896,7 +3972,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bonjour(self) -> pulumi.Output[Optional['outputs.WlanBonjour']]:
+    def bonjour(self) -> pulumi.Output['outputs.WlanBonjour']:
         """
         bonjour gateway wlan settings
         """
@@ -3904,7 +3980,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ciscoCwa")
-    def cisco_cwa(self) -> pulumi.Output[Optional['outputs.WlanCiscoCwa']]:
+    def cisco_cwa(self) -> pulumi.Output['outputs.WlanCiscoCwa']:
         """
         Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
         https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
@@ -3913,7 +3989,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientLimitDown")
-    def client_limit_down(self) -> pulumi.Output[Optional[int]]:
+    def client_limit_down(self) -> pulumi.Output[int]:
         """
         kbps
         """
@@ -3929,7 +4005,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientLimitUp")
-    def client_limit_up(self) -> pulumi.Output[Optional[int]]:
+    def client_limit_up(self) -> pulumi.Output[int]:
         """
         kbps
         """
@@ -3992,6 +4068,20 @@ class Wlan(pulumi.CustomResource):
         return pulumi.get(self, "disable_v2_roam_notify")
 
     @property
+    @pulumi.getter(name="disableWhenGatewayUnreachable")
+    def disable_when_gateway_unreachable(self) -> pulumi.Output[Optional[bool]]:
+        """
+        when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        reach default gateway
+        """
+        return pulumi.get(self, "disable_when_gateway_unreachable")
+
+    @property
+    @pulumi.getter(name="disableWhenMxtunnelDown")
+    def disable_when_mxtunnel_down(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "disable_when_mxtunnel_down")
+
+    @property
     @pulumi.getter(name="disableWmm")
     def disable_wmm(self) -> pulumi.Output[bool]:
         """
@@ -4001,7 +4091,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnsServerRewrite")
-    def dns_server_rewrite(self) -> pulumi.Output[Optional['outputs.WlanDnsServerRewrite']]:
+    def dns_server_rewrite(self) -> pulumi.Output['outputs.WlanDnsServerRewrite']:
         """
         for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         """
@@ -4094,7 +4184,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hotspot20(self) -> pulumi.Output[Optional['outputs.WlanHotspot20']]:
+    def hotspot20(self) -> pulumi.Output['outputs.WlanHotspot20']:
         """
         hostspot 2.0 wlan settings
         """
@@ -4172,7 +4262,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mistNac")
-    def mist_nac(self) -> pulumi.Output[Optional['outputs.WlanMistNac']]:
+    def mist_nac(self) -> pulumi.Output['outputs.WlanMistNac']:
         return pulumi.get(self, "mist_nac")
 
     @property
@@ -4219,7 +4309,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def portal(self) -> pulumi.Output[Optional['outputs.WlanPortal']]:
+    def portal(self) -> pulumi.Output['outputs.WlanPortal']:
         """
         portal wlan settings
         """
@@ -4271,22 +4361,13 @@ class Wlan(pulumi.CustomResource):
         return pulumi.get(self, "portal_sso_url")
 
     @property
-    @pulumi.getter(name="portalTemplateUrl")
-    def portal_template_url(self) -> pulumi.Output[str]:
-        """
-        N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-        To update portal_template, use Wlan Portal Template.
-        """
-        return pulumi.get(self, "portal_template_url")
-
-    @property
     @pulumi.getter
-    def qos(self) -> pulumi.Output[Optional['outputs.WlanQos']]:
+    def qos(self) -> pulumi.Output['outputs.WlanQos']:
         return pulumi.get(self, "qos")
 
     @property
     @pulumi.getter
-    def radsec(self) -> pulumi.Output[Optional['outputs.WlanRadsec']]:
+    def radsec(self) -> pulumi.Output['outputs.WlanRadsec']:
         """
         Radsec settings
         """
@@ -4294,11 +4375,19 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rateset(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.WlanRateset']]]:
+    def rateset(self) -> pulumi.Output[Mapping[str, 'outputs.WlanRateset']]:
         """
         Property key is the RF band. enum: `24`, `5`, `6`
         """
         return pulumi.get(self, "rateset")
+
+    @property
+    @pulumi.getter(name="reconnectClientsWhenRoamingMxcluster")
+    def reconnect_clients_when_roaming_mxcluster(self) -> pulumi.Output[Optional[bool]]:
+        """
+        when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        """
+        return pulumi.get(self, "reconnect_clients_when_roaming_mxcluster")
 
     @property
     @pulumi.getter(name="roamMode")
@@ -4310,7 +4399,7 @@ class Wlan(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def schedule(self) -> pulumi.Output[Optional['outputs.WlanSchedule']]:
+    def schedule(self) -> pulumi.Output['outputs.WlanSchedule']:
         """
         WLAN operating schedule, default is disabled
         """
@@ -4338,14 +4427,6 @@ class Wlan(pulumi.CustomResource):
         return pulumi.get(self, "ssid")
 
     @property
-    @pulumi.getter
-    def thumbnail(self) -> pulumi.Output[str]:
-        """
-        Url of portal background image thumbnail
-        """
-        return pulumi.get(self, "thumbnail")
-
-    @property
     @pulumi.getter(name="useEapolV1")
     def use_eapol_v1(self) -> pulumi.Output[bool]:
         """
@@ -4370,7 +4451,7 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="vlanIds")
     def vlan_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        vlan_ids to use when there’s no match from RA
+        if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         """
         return pulumi.get(self, "vlan_ids")
 
@@ -4378,7 +4459,8 @@ class Wlan(pulumi.CustomResource):
     @pulumi.getter(name="vlanPooling")
     def vlan_pooling(self) -> pulumi.Output[bool]:
         """
-        vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+        deterministic algorithm
         """
         return pulumi.get(self, "vlan_pooling")
 

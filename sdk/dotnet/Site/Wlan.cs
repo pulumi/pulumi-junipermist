@@ -86,7 +86,7 @@ namespace Pulumi.JuniperMist.Site
         /// airwatch wlan settings
         /// </summary>
         [Output("airwatch")]
-        public Output<Outputs.WlanAirwatch?> Airwatch { get; private set; } = null!;
+        public Output<Outputs.WlanAirwatch> Airwatch { get; private set; } = null!;
 
         /// <summary>
         /// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
@@ -116,19 +116,19 @@ namespace Pulumi.JuniperMist.Site
         /// bandwidth limiting for apps (applies to up/down)
         /// </summary>
         [Output("appLimit")]
-        public Output<Outputs.WlanAppLimit?> AppLimit { get; private set; } = null!;
+        public Output<Outputs.WlanAppLimit> AppLimit { get; private set; } = null!;
 
         /// <summary>
         /// app qos wlan settings
         /// </summary>
         [Output("appQos")]
-        public Output<Outputs.WlanAppQos?> AppQos { get; private set; } = null!;
+        public Output<Outputs.WlanAppQos> AppQos { get; private set; } = null!;
 
         /// <summary>
         /// enum: `aps`, `site`, `wxtags`
         /// </summary>
         [Output("applyTo")]
-        public Output<string?> ApplyTo { get; private set; } = null!;
+        public Output<string> ApplyTo { get; private set; } = null!;
 
         /// <summary>
         /// whether to enable smart arp filter
@@ -159,13 +159,13 @@ namespace Pulumi.JuniperMist.Site
         /// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
         /// </summary>
         [Output("authServersNasId")]
-        public Output<string?> AuthServersNasId { get; private set; } = null!;
+        public Output<string> AuthServersNasId { get; private set; } = null!;
 
         /// <summary>
         /// optional, NAS-IP-ADDRESS to use
         /// </summary>
         [Output("authServersNasIp")]
-        public Output<string?> AuthServersNasIp { get; private set; } = null!;
+        public Output<string> AuthServersNasIp { get; private set; } = null!;
 
         /// <summary>
         /// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
@@ -211,20 +211,20 @@ namespace Pulumi.JuniperMist.Site
         /// bonjour gateway wlan settings
         /// </summary>
         [Output("bonjour")]
-        public Output<Outputs.WlanBonjour?> Bonjour { get; private set; } = null!;
+        public Output<Outputs.WlanBonjour> Bonjour { get; private set; } = null!;
 
         /// <summary>
         /// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
         /// https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
         /// </summary>
         [Output("ciscoCwa")]
-        public Output<Outputs.WlanCiscoCwa?> CiscoCwa { get; private set; } = null!;
+        public Output<Outputs.WlanCiscoCwa> CiscoCwa { get; private set; } = null!;
 
         /// <summary>
         /// kbps
         /// </summary>
         [Output("clientLimitDown")]
-        public Output<int?> ClientLimitDown { get; private set; } = null!;
+        public Output<int> ClientLimitDown { get; private set; } = null!;
 
         /// <summary>
         /// if downlink limiting per-client is enabled
@@ -236,7 +236,7 @@ namespace Pulumi.JuniperMist.Site
         /// kbps
         /// </summary>
         [Output("clientLimitUp")]
-        public Output<int?> ClientLimitUp { get; private set; } = null!;
+        public Output<int> ClientLimitUp { get; private set; } = null!;
 
         /// <summary>
         /// if uplink limiting per-client is enabled
@@ -281,6 +281,16 @@ namespace Pulumi.JuniperMist.Site
         public Output<bool> DisableV2RoamNotify { get; private set; } = null!;
 
         /// <summary>
+        /// when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        /// reach default gateway
+        /// </summary>
+        [Output("disableWhenGatewayUnreachable")]
+        public Output<bool?> DisableWhenGatewayUnreachable { get; private set; } = null!;
+
+        [Output("disableWhenMxtunnelDown")]
+        public Output<bool?> DisableWhenMxtunnelDown { get; private set; } = null!;
+
+        /// <summary>
         /// whether to disable WMM
         /// </summary>
         [Output("disableWmm")]
@@ -290,7 +300,7 @@ namespace Pulumi.JuniperMist.Site
         /// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
         /// </summary>
         [Output("dnsServerRewrite")]
-        public Output<Outputs.WlanDnsServerRewrite?> DnsServerRewrite { get; private set; } = null!;
+        public Output<Outputs.WlanDnsServerRewrite> DnsServerRewrite { get; private set; } = null!;
 
         [Output("dtim")]
         public Output<int> Dtim { get; private set; } = null!;
@@ -361,7 +371,7 @@ namespace Pulumi.JuniperMist.Site
         /// hostspot 2.0 wlan settings
         /// </summary>
         [Output("hotspot20")]
-        public Output<Outputs.WlanHotspot20?> Hotspot20 { get; private set; } = null!;
+        public Output<Outputs.WlanHotspot20> Hotspot20 { get; private set; } = null!;
 
         [Output("injectDhcpOption82")]
         public Output<Outputs.WlanInjectDhcpOption82?> InjectDhcpOption82 { get; private set; } = null!;
@@ -416,7 +426,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<int> MaxNumClients { get; private set; } = null!;
 
         [Output("mistNac")]
-        public Output<Outputs.WlanMistNac?> MistNac { get; private set; } = null!;
+        public Output<Outputs.WlanMistNac> MistNac { get; private set; } = null!;
 
         [Output("mspId")]
         public Output<string> MspId { get; private set; } = null!;
@@ -452,7 +462,7 @@ namespace Pulumi.JuniperMist.Site
         /// portal wlan settings
         /// </summary>
         [Output("portal")]
-        public Output<Outputs.WlanPortal?> Portal { get; private set; } = null!;
+        public Output<Outputs.WlanPortal> Portal { get; private set; } = null!;
 
         /// <summary>
         /// list of hostnames without http(s):// (matched by substring)
@@ -487,27 +497,26 @@ namespace Pulumi.JuniperMist.Site
         [Output("portalSsoUrl")]
         public Output<string> PortalSsoUrl { get; private set; } = null!;
 
-        /// <summary>
-        /// N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-        /// To update portal_template, use Wlan Portal Template.
-        /// </summary>
-        [Output("portalTemplateUrl")]
-        public Output<string> PortalTemplateUrl { get; private set; } = null!;
-
         [Output("qos")]
-        public Output<Outputs.WlanQos?> Qos { get; private set; } = null!;
+        public Output<Outputs.WlanQos> Qos { get; private set; } = null!;
 
         /// <summary>
         /// Radsec settings
         /// </summary>
         [Output("radsec")]
-        public Output<Outputs.WlanRadsec?> Radsec { get; private set; } = null!;
+        public Output<Outputs.WlanRadsec> Radsec { get; private set; } = null!;
 
         /// <summary>
         /// Property key is the RF band. enum: `24`, `5`, `6`
         /// </summary>
         [Output("rateset")]
-        public Output<ImmutableDictionary<string, Outputs.WlanRateset>?> Rateset { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.WlanRateset>> Rateset { get; private set; } = null!;
+
+        /// <summary>
+        /// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        /// </summary>
+        [Output("reconnectClientsWhenRoamingMxcluster")]
+        public Output<bool?> ReconnectClientsWhenRoamingMxcluster { get; private set; } = null!;
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
@@ -519,7 +528,7 @@ namespace Pulumi.JuniperMist.Site
         /// WLAN operating schedule, default is disabled
         /// </summary>
         [Output("schedule")]
-        public Output<Outputs.WlanSchedule?> Schedule { get; private set; } = null!;
+        public Output<Outputs.WlanSchedule> Schedule { get; private set; } = null!;
 
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
@@ -537,12 +546,6 @@ namespace Pulumi.JuniperMist.Site
         public Output<string> Ssid { get; private set; } = null!;
 
         /// <summary>
-        /// Url of portal background image thumbnail
-        /// </summary>
-        [Output("thumbnail")]
-        public Output<string> Thumbnail { get; private set; } = null!;
-
-        /// <summary>
         /// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
         /// </summary>
         [Output("useEapolV1")]
@@ -558,13 +561,14 @@ namespace Pulumi.JuniperMist.Site
         public Output<string?> VlanId { get; private set; } = null!;
 
         /// <summary>
-        /// vlan_ids to use when there’s no match from RA
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         /// </summary>
         [Output("vlanIds")]
         public Output<ImmutableArray<string>> VlanIds { get; private set; } = null!;
 
         /// <summary>
-        /// vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+        /// deterministic algorithm
         /// </summary>
         [Output("vlanPooling")]
         public Output<bool> VlanPooling { get; private set; } = null!;
@@ -907,6 +911,16 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? DisableV2RoamNotify { get; set; }
 
         /// <summary>
+        /// when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        /// reach default gateway
+        /// </summary>
+        [Input("disableWhenGatewayUnreachable")]
+        public Input<bool>? DisableWhenGatewayUnreachable { get; set; }
+
+        [Input("disableWhenMxtunnelDown")]
+        public Input<bool>? DisableWhenMxtunnelDown { get; set; }
+
+        /// <summary>
         /// whether to disable WMM
         /// </summary>
         [Input("disableWmm")]
@@ -1144,6 +1158,12 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
+        /// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        /// </summary>
+        [Input("reconnectClientsWhenRoamingMxcluster")]
+        public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
+
+        /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
         /// </summary>
         [Input("roamMode")]
@@ -1189,7 +1209,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// vlan_ids to use when there’s no match from RA
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -1198,7 +1218,8 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+        /// deterministic algorithm
         /// </summary>
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }
@@ -1508,6 +1529,16 @@ namespace Pulumi.JuniperMist.Site
         public Input<bool>? DisableV2RoamNotify { get; set; }
 
         /// <summary>
+        /// when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+        /// reach default gateway
+        /// </summary>
+        [Input("disableWhenGatewayUnreachable")]
+        public Input<bool>? DisableWhenGatewayUnreachable { get; set; }
+
+        [Input("disableWhenMxtunnelDown")]
+        public Input<bool>? DisableWhenMxtunnelDown { get; set; }
+
+        /// <summary>
         /// whether to disable WMM
         /// </summary>
         [Input("disableWmm")]
@@ -1744,13 +1775,6 @@ namespace Pulumi.JuniperMist.Site
         [Input("portalSsoUrl")]
         public Input<string>? PortalSsoUrl { get; set; }
 
-        /// <summary>
-        /// N.B portal_template will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-        /// To update portal_template, use Wlan Portal Template.
-        /// </summary>
-        [Input("portalTemplateUrl")]
-        public Input<string>? PortalTemplateUrl { get; set; }
-
         [Input("qos")]
         public Input<Inputs.WlanQosGetArgs>? Qos { get; set; }
 
@@ -1771,6 +1795,12 @@ namespace Pulumi.JuniperMist.Site
             get => _rateset ?? (_rateset = new InputMap<Inputs.WlanRatesetGetArgs>());
             set => _rateset = value;
         }
+
+        /// <summary>
+        /// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+        /// </summary>
+        [Input("reconnectClientsWhenRoamingMxcluster")]
+        public Input<bool>? ReconnectClientsWhenRoamingMxcluster { get; set; }
 
         /// <summary>
         /// enum: `11r`, `OKC`, `NONE`
@@ -1800,12 +1830,6 @@ namespace Pulumi.JuniperMist.Site
         public Input<string>? Ssid { get; set; }
 
         /// <summary>
-        /// Url of portal background image thumbnail
-        /// </summary>
-        [Input("thumbnail")]
-        public Input<string>? Thumbnail { get; set; }
-
-        /// <summary>
         /// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
         /// </summary>
         [Input("useEapolV1")]
@@ -1824,7 +1848,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _vlanIds;
 
         /// <summary>
-        /// vlan_ids to use when there’s no match from RA
+        /// if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
         /// </summary>
         public InputList<string> VlanIds
         {
@@ -1833,7 +1857,8 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+        /// deterministic algorithm
         /// </summary>
         [Input("vlanPooling")]
         public Input<bool>? VlanPooling { get; set; }

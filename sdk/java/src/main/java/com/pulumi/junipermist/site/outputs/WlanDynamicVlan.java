@@ -21,7 +21,7 @@ public final class WlanDynamicVlan {
      */
     private List<String> defaultVlanIds;
     /**
-     * @return whether to enable dynamic vlan
+     * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     private @Nullable Boolean enabled;
@@ -52,7 +52,7 @@ public final class WlanDynamicVlan {
         return this.defaultVlanIds;
     }
     /**
-     * @return whether to enable dynamic vlan
+     * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     public Optional<Boolean> enabled() {

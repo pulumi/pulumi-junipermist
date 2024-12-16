@@ -5,7 +5,7 @@ package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -16,22 +16,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanPortal {
     /**
-     * @return whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
      * 
      */
     private @Nullable Boolean allowWlanIdRoam;
     /**
-     * @return amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     private @Nullable String amazonClientId;
     /**
-     * @return amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     private @Nullable String amazonClientSecret;
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private @Nullable List<String> amazonEmailDomains;
@@ -41,24 +41,22 @@ public final class WlanPortal {
      */
     private @Nullable Boolean amazonEnabled;
     /**
-     * @return interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+     * @return Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double amazonExpire;
+    private @Nullable Integer amazonExpire;
     /**
-     * @return authentication scheme. enum: `external`, `none`, `sso`
+     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
      * 
      */
     private @Nullable String auth;
     /**
-     * @return Required if `azure_enabled`==`true`.
-     * Azure active directory app client id
+     * @return Required if `azure_enabled`==`true`. Azure active directory app client id
      * 
      */
     private @Nullable String azureClientId;
     /**
-     * @return Required if `azure_enabled`==`true`.
-     * Azure active directory app client secret
+     * @return Required if `azure_enabled`==`true`. Azure active directory app client secret
      * 
      */
     private @Nullable String azureClientSecret;
@@ -71,25 +69,24 @@ public final class WlanPortal {
      * @return interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double azureExpire;
+    private @Nullable Integer azureExpire;
     /**
-     * @return Required if `azure_enabled`==`true`.
-     * Azure active directory tenant id.
+     * @return Required if `azure_enabled`==`true`. Azure active directory tenant id.
      * 
      */
     private @Nullable String azureTenantId;
     /**
-     * @return when `sms_provider`==`broadnet`
+     * @return Required if `sms_provider`==`broadnet`
      * 
      */
     private @Nullable String broadnetPassword;
     /**
-     * @return when `sms_provider`==`broadnet`
+     * @return Required if `sms_provider`==`broadnet`
      * 
      */
     private @Nullable String broadnetSid;
     /**
-     * @return when `sms_provider`==`broadnet`
+     * @return Required if `sms_provider`==`broadnet`
      * 
      */
     private @Nullable String broadnetUserId;
@@ -99,7 +96,7 @@ public final class WlanPortal {
      */
     private @Nullable Boolean bypassWhenCloudDown;
     /**
-     * @return when `sms_provider`==`clickatell`
+     * @return Required if `sms_provider`==`clickatell`
      * 
      */
     private @Nullable String clickatellApiKey;
@@ -122,26 +119,24 @@ public final class WlanPortal {
      * @return how long to remain authorized, in minutes
      * 
      */
-    private @Nullable Double expire;
+    private @Nullable Integer expire;
     /**
-     * @return external portal URL (e.g. https://host/url) where we can append our query parameters to
+     * @return Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
      * 
      */
     private @Nullable String externalPortalUrl;
     /**
-     * @return Required if `facebook_enabled`==`true`.
-     * Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
      * 
      */
     private @Nullable String facebookClientId;
     /**
-     * @return Required if `facebook_enabled`==`true`.
-     * Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     private @Nullable String facebookClientSecret;
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private @Nullable List<String> facebookEmailDomains;
@@ -151,10 +146,10 @@ public final class WlanPortal {
      */
     private @Nullable Boolean facebookEnabled;
     /**
-     * @return interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+     * @return Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double facebookExpire;
+    private @Nullable Integer facebookExpire;
     /**
      * @return whether to forward the user to another URL after authorized
      * 
@@ -171,12 +166,12 @@ public final class WlanPortal {
      */
     private @Nullable String googleClientId;
     /**
-     * @return Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     private @Nullable String googleClientSecret;
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private @Nullable List<String> googleEmailDomains;
@@ -186,32 +181,32 @@ public final class WlanPortal {
      */
     private @Nullable Boolean googleEnabled;
     /**
-     * @return interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double googleExpire;
+    private @Nullable Integer googleExpire;
     /**
-     * @return when `sms_provider`==`gupshup`
+     * @return Required if `sms_provider`==`gupshup`
      * 
      */
     private @Nullable String gupshupPassword;
     /**
-     * @return when `sms_provider`==`gupshup`
+     * @return Required if `sms_provider`==`gupshup`
      * 
      */
     private @Nullable String gupshupUserid;
     /**
-     * @return microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     private @Nullable String microsoftClientId;
     /**
-     * @return microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     private @Nullable String microsoftClientSecret;
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     private @Nullable List<String> microsoftEmailDomains;
@@ -221,22 +216,22 @@ public final class WlanPortal {
      */
     private @Nullable Boolean microsoftEnabled;
     /**
-     * @return interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+     * @return Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double microsoftExpire;
+    private @Nullable Integer microsoftExpire;
     /**
-     * @return whether password is enabled
+     * @return Whether password is enabled
      * 
      */
     private @Nullable Boolean passphraseEnabled;
     /**
-     * @return interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+     * @return Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
      * 
      */
-    private @Nullable Double passphraseExpire;
+    private @Nullable Integer passphraseExpire;
     /**
-     * @return passphrase
+     * @return Required if `passphrase_enabled`==`true`.
      * 
      */
     private @Nullable String password;
@@ -252,17 +247,17 @@ public final class WlanPortal {
     private @Nullable Boolean predefinedSponsorsHideEmail;
     private @Nullable Boolean privacy;
     /**
-     * @return when `sms_provider`==`puzzel`
+     * @return Required if `sms_provider`==`puzzel`
      * 
      */
     private @Nullable String puzzelPassword;
     /**
-     * @return when `sms_provider`==`puzzel`
+     * @return Required if `sms_provider`==`puzzel`
      * 
      */
     private @Nullable String puzzelServiceId;
     /**
-     * @return when `sms_provider`==`puzzel`
+     * @return Required if `sms_provider`==`puzzel`
      * 
      */
     private @Nullable String puzzelUsername;
@@ -272,18 +267,22 @@ public final class WlanPortal {
      */
     private @Nullable Boolean smsEnabled;
     /**
-     * @return interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double smsExpire;
+    private @Nullable Integer smsExpire;
+    /**
+     * @return Optional if `sms_enabled`==`true`. SMS Message format
+     * 
+     */
     private @Nullable String smsMessageFormat;
     /**
-     * @return enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
      * 
      */
     private @Nullable String smsProvider;
     /**
-     * @return whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+     * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
      * 
      */
     private @Nullable Boolean sponsorAutoApprove;
@@ -298,22 +297,22 @@ public final class WlanPortal {
      */
     private @Nullable Boolean sponsorEnabled;
     /**
-     * @return interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
      * 
      */
-    private @Nullable Double sponsorExpire;
+    private @Nullable Integer sponsorExpire;
     /**
-     * @return how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
      * 
      */
     private @Nullable String sponsorLinkValidityDuration;
     /**
-     * @return whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+     * @return Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
      */
     private @Nullable Boolean sponsorNotifyAll;
     /**
-     * @return if enabled, guest will get email about sponsor&#39;s action (approve/deny)
+     * @return Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
      * 
      */
     private @Nullable Boolean sponsorStatusNotify;
@@ -326,90 +325,90 @@ public final class WlanPortal {
      */
     private @Nullable Map<String,String> sponsors;
     /**
-     * @return if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     private @Nullable String ssoDefaultRole;
     /**
-     * @return if `wlan_portal_auth`==`sso`
+     * @return Optionl if `wlan_portal_auth`==`sso`
      * 
      */
     private @Nullable String ssoForcedRole;
     /**
-     * @return if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
+     * @return Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
      * 
      */
     private @Nullable String ssoIdpCert;
     /**
-     * @return if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     private @Nullable String ssoIdpSignAlgo;
     /**
-     * @return if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+     * @return Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     private @Nullable String ssoIdpSsoUrl;
     /**
-     * @return if `wlan_portal_auth`==`sso`, IDP issuer URL
+     * @return Required if `wlan_portal_auth`==`sso`, IDP issuer URL
      * 
      */
     private @Nullable String ssoIssuer;
     /**
-     * @return if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     private @Nullable String ssoNameidFormat;
     /**
-     * @return when `sms_provider`==`telstra`, Client ID provided by Telstra
+     * @return Required if `sms_provider`==`telstra`, Client ID provided by Telstra
      * 
      */
     private @Nullable String telstraClientId;
     /**
-     * @return when `sms_provider`==`telstra`, Client secret provided by Telstra
+     * @return Required if `sms_provider`==`telstra`, Client secret provided by Telstra
      * 
      */
     private @Nullable String telstraClientSecret;
     /**
-     * @return when `sms_provider`==`twilio`, Auth token account with twilio account
+     * @return Required if `sms_provider`==`twilio`, Auth token account with twilio account
      * 
      */
     private @Nullable String twilioAuthToken;
     /**
-     * @return when `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+     * @return Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
      * 
      */
     private @Nullable String twilioPhoneNumber;
     /**
-     * @return when `sms_provider`==`twilio`, Account SID provided by Twilio
+     * @return Required if `sms_provider`==`twilio`, Account SID provided by Twilio
      * 
      */
     private @Nullable String twilioSid;
 
     private WlanPortal() {}
     /**
-     * @return whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+     * @return Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
      * 
      */
     public Optional<Boolean> allowWlanIdRoam() {
         return Optional.ofNullable(this.allowWlanIdRoam);
     }
     /**
-     * @return amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     public Optional<String> amazonClientId() {
         return Optional.ofNullable(this.amazonClientId);
     }
     /**
-     * @return amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     public Optional<String> amazonClientSecret() {
         return Optional.ofNullable(this.amazonClientSecret);
     }
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> amazonEmailDomains() {
@@ -423,30 +422,28 @@ public final class WlanPortal {
         return Optional.ofNullable(this.amazonEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+     * @return Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> amazonExpire() {
+    public Optional<Integer> amazonExpire() {
         return Optional.ofNullable(this.amazonExpire);
     }
     /**
-     * @return authentication scheme. enum: `external`, `none`, `sso`
+     * @return authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
      * 
      */
     public Optional<String> auth() {
         return Optional.ofNullable(this.auth);
     }
     /**
-     * @return Required if `azure_enabled`==`true`.
-     * Azure active directory app client id
+     * @return Required if `azure_enabled`==`true`. Azure active directory app client id
      * 
      */
     public Optional<String> azureClientId() {
         return Optional.ofNullable(this.azureClientId);
     }
     /**
-     * @return Required if `azure_enabled`==`true`.
-     * Azure active directory app client secret
+     * @return Required if `azure_enabled`==`true`. Azure active directory app client secret
      * 
      */
     public Optional<String> azureClientSecret() {
@@ -463,33 +460,32 @@ public final class WlanPortal {
      * @return interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> azureExpire() {
+    public Optional<Integer> azureExpire() {
         return Optional.ofNullable(this.azureExpire);
     }
     /**
-     * @return Required if `azure_enabled`==`true`.
-     * Azure active directory tenant id.
+     * @return Required if `azure_enabled`==`true`. Azure active directory tenant id.
      * 
      */
     public Optional<String> azureTenantId() {
         return Optional.ofNullable(this.azureTenantId);
     }
     /**
-     * @return when `sms_provider`==`broadnet`
+     * @return Required if `sms_provider`==`broadnet`
      * 
      */
     public Optional<String> broadnetPassword() {
         return Optional.ofNullable(this.broadnetPassword);
     }
     /**
-     * @return when `sms_provider`==`broadnet`
+     * @return Required if `sms_provider`==`broadnet`
      * 
      */
     public Optional<String> broadnetSid() {
         return Optional.ofNullable(this.broadnetSid);
     }
     /**
-     * @return when `sms_provider`==`broadnet`
+     * @return Required if `sms_provider`==`broadnet`
      * 
      */
     public Optional<String> broadnetUserId() {
@@ -503,7 +499,7 @@ public final class WlanPortal {
         return Optional.ofNullable(this.bypassWhenCloudDown);
     }
     /**
-     * @return when `sms_provider`==`clickatell`
+     * @return Required if `sms_provider`==`clickatell`
      * 
      */
     public Optional<String> clickatellApiKey() {
@@ -534,34 +530,32 @@ public final class WlanPortal {
      * @return how long to remain authorized, in minutes
      * 
      */
-    public Optional<Double> expire() {
+    public Optional<Integer> expire() {
         return Optional.ofNullable(this.expire);
     }
     /**
-     * @return external portal URL (e.g. https://host/url) where we can append our query parameters to
+     * @return Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
      * 
      */
     public Optional<String> externalPortalUrl() {
         return Optional.ofNullable(this.externalPortalUrl);
     }
     /**
-     * @return Required if `facebook_enabled`==`true`.
-     * Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
      * 
      */
     public Optional<String> facebookClientId() {
         return Optional.ofNullable(this.facebookClientId);
     }
     /**
-     * @return Required if `facebook_enabled`==`true`.
-     * Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     public Optional<String> facebookClientSecret() {
         return Optional.ofNullable(this.facebookClientSecret);
     }
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> facebookEmailDomains() {
@@ -575,10 +569,10 @@ public final class WlanPortal {
         return Optional.ofNullable(this.facebookEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+     * @return Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> facebookExpire() {
+    public Optional<Integer> facebookExpire() {
         return Optional.ofNullable(this.facebookExpire);
     }
     /**
@@ -603,14 +597,14 @@ public final class WlanPortal {
         return Optional.ofNullable(this.googleClientId);
     }
     /**
-     * @return Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     public Optional<String> googleClientSecret() {
         return Optional.ofNullable(this.googleClientSecret);
     }
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> googleEmailDomains() {
@@ -624,42 +618,42 @@ public final class WlanPortal {
         return Optional.ofNullable(this.googleEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+     * @return Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> googleExpire() {
+    public Optional<Integer> googleExpire() {
         return Optional.ofNullable(this.googleExpire);
     }
     /**
-     * @return when `sms_provider`==`gupshup`
+     * @return Required if `sms_provider`==`gupshup`
      * 
      */
     public Optional<String> gupshupPassword() {
         return Optional.ofNullable(this.gupshupPassword);
     }
     /**
-     * @return when `sms_provider`==`gupshup`
+     * @return Required if `sms_provider`==`gupshup`
      * 
      */
     public Optional<String> gupshupUserid() {
         return Optional.ofNullable(this.gupshupUserid);
     }
     /**
-     * @return microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
      * 
      */
     public Optional<String> microsoftClientId() {
         return Optional.ofNullable(this.microsoftClientId);
     }
     /**
-     * @return microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+     * @return Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
      * 
      */
     public Optional<String> microsoftClientSecret() {
         return Optional.ofNullable(this.microsoftClientSecret);
     }
     /**
-     * @return Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+     * @return Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
      * 
      */
     public List<String> microsoftEmailDomains() {
@@ -673,28 +667,28 @@ public final class WlanPortal {
         return Optional.ofNullable(this.microsoftEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+     * @return Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> microsoftExpire() {
+    public Optional<Integer> microsoftExpire() {
         return Optional.ofNullable(this.microsoftExpire);
     }
     /**
-     * @return whether password is enabled
+     * @return Whether password is enabled
      * 
      */
     public Optional<Boolean> passphraseEnabled() {
         return Optional.ofNullable(this.passphraseEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+     * @return Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
      * 
      */
-    public Optional<Double> passphraseExpire() {
+    public Optional<Integer> passphraseExpire() {
         return Optional.ofNullable(this.passphraseExpire);
     }
     /**
-     * @return passphrase
+     * @return Required if `passphrase_enabled`==`true`.
      * 
      */
     public Optional<String> password() {
@@ -718,21 +712,21 @@ public final class WlanPortal {
         return Optional.ofNullable(this.privacy);
     }
     /**
-     * @return when `sms_provider`==`puzzel`
+     * @return Required if `sms_provider`==`puzzel`
      * 
      */
     public Optional<String> puzzelPassword() {
         return Optional.ofNullable(this.puzzelPassword);
     }
     /**
-     * @return when `sms_provider`==`puzzel`
+     * @return Required if `sms_provider`==`puzzel`
      * 
      */
     public Optional<String> puzzelServiceId() {
         return Optional.ofNullable(this.puzzelServiceId);
     }
     /**
-     * @return when `sms_provider`==`puzzel`
+     * @return Required if `sms_provider`==`puzzel`
      * 
      */
     public Optional<String> puzzelUsername() {
@@ -746,24 +740,28 @@ public final class WlanPortal {
         return Optional.ofNullable(this.smsEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> smsExpire() {
+    public Optional<Integer> smsExpire() {
         return Optional.ofNullable(this.smsExpire);
     }
+    /**
+     * @return Optional if `sms_enabled`==`true`. SMS Message format
+     * 
+     */
     public Optional<String> smsMessageFormat() {
         return Optional.ofNullable(this.smsMessageFormat);
     }
     /**
-     * @return enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+     * @return Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
      * 
      */
     public Optional<String> smsProvider() {
         return Optional.ofNullable(this.smsProvider);
     }
     /**
-     * @return whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+     * @return Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
      * 
      */
     public Optional<Boolean> sponsorAutoApprove() {
@@ -784,28 +782,28 @@ public final class WlanPortal {
         return Optional.ofNullable(this.sponsorEnabled);
     }
     /**
-     * @return interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+     * @return Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
      * 
      */
-    public Optional<Double> sponsorExpire() {
+    public Optional<Integer> sponsorExpire() {
         return Optional.ofNullable(this.sponsorExpire);
     }
     /**
-     * @return how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+     * @return Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
      * 
      */
     public Optional<String> sponsorLinkValidityDuration() {
         return Optional.ofNullable(this.sponsorLinkValidityDuration);
     }
     /**
-     * @return whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+     * @return Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
      * 
      */
     public Optional<Boolean> sponsorNotifyAll() {
         return Optional.ofNullable(this.sponsorNotifyAll);
     }
     /**
-     * @return if enabled, guest will get email about sponsor&#39;s action (approve/deny)
+     * @return Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor&#39;s action (approve/deny)
      * 
      */
     public Optional<Boolean> sponsorStatusNotify() {
@@ -822,84 +820,84 @@ public final class WlanPortal {
         return this.sponsors == null ? Map.of() : this.sponsors;
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+     * @return Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
      * 
      */
     public Optional<String> ssoDefaultRole() {
         return Optional.ofNullable(this.ssoDefaultRole);
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`
+     * @return Optionl if `wlan_portal_auth`==`sso`
      * 
      */
     public Optional<String> ssoForcedRole() {
         return Optional.ofNullable(this.ssoForcedRole);
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
+     * @return Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
      * 
      */
     public Optional<String> ssoIdpCert() {
         return Optional.ofNullable(this.ssoIdpCert);
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+     * @return Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
      * 
      */
     public Optional<String> ssoIdpSignAlgo() {
         return Optional.ofNullable(this.ssoIdpSignAlgo);
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+     * @return Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
      * 
      */
     public Optional<String> ssoIdpSsoUrl() {
         return Optional.ofNullable(this.ssoIdpSsoUrl);
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`, IDP issuer URL
+     * @return Required if `wlan_portal_auth`==`sso`, IDP issuer URL
      * 
      */
     public Optional<String> ssoIssuer() {
         return Optional.ofNullable(this.ssoIssuer);
     }
     /**
-     * @return if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+     * @return Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
      * 
      */
     public Optional<String> ssoNameidFormat() {
         return Optional.ofNullable(this.ssoNameidFormat);
     }
     /**
-     * @return when `sms_provider`==`telstra`, Client ID provided by Telstra
+     * @return Required if `sms_provider`==`telstra`, Client ID provided by Telstra
      * 
      */
     public Optional<String> telstraClientId() {
         return Optional.ofNullable(this.telstraClientId);
     }
     /**
-     * @return when `sms_provider`==`telstra`, Client secret provided by Telstra
+     * @return Required if `sms_provider`==`telstra`, Client secret provided by Telstra
      * 
      */
     public Optional<String> telstraClientSecret() {
         return Optional.ofNullable(this.telstraClientSecret);
     }
     /**
-     * @return when `sms_provider`==`twilio`, Auth token account with twilio account
+     * @return Required if `sms_provider`==`twilio`, Auth token account with twilio account
      * 
      */
     public Optional<String> twilioAuthToken() {
         return Optional.ofNullable(this.twilioAuthToken);
     }
     /**
-     * @return when `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+     * @return Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
      * 
      */
     public Optional<String> twilioPhoneNumber() {
         return Optional.ofNullable(this.twilioPhoneNumber);
     }
     /**
-     * @return when `sms_provider`==`twilio`, Account SID provided by Twilio
+     * @return Required if `sms_provider`==`twilio`, Account SID provided by Twilio
      * 
      */
     public Optional<String> twilioSid() {
@@ -920,12 +918,12 @@ public final class WlanPortal {
         private @Nullable String amazonClientSecret;
         private @Nullable List<String> amazonEmailDomains;
         private @Nullable Boolean amazonEnabled;
-        private @Nullable Double amazonExpire;
+        private @Nullable Integer amazonExpire;
         private @Nullable String auth;
         private @Nullable String azureClientId;
         private @Nullable String azureClientSecret;
         private @Nullable Boolean azureEnabled;
-        private @Nullable Double azureExpire;
+        private @Nullable Integer azureExpire;
         private @Nullable String azureTenantId;
         private @Nullable String broadnetPassword;
         private @Nullable String broadnetSid;
@@ -935,29 +933,29 @@ public final class WlanPortal {
         private @Nullable Boolean crossSite;
         private @Nullable Boolean emailEnabled;
         private @Nullable Boolean enabled;
-        private @Nullable Double expire;
+        private @Nullable Integer expire;
         private @Nullable String externalPortalUrl;
         private @Nullable String facebookClientId;
         private @Nullable String facebookClientSecret;
         private @Nullable List<String> facebookEmailDomains;
         private @Nullable Boolean facebookEnabled;
-        private @Nullable Double facebookExpire;
+        private @Nullable Integer facebookExpire;
         private @Nullable Boolean forward;
         private @Nullable String forwardUrl;
         private @Nullable String googleClientId;
         private @Nullable String googleClientSecret;
         private @Nullable List<String> googleEmailDomains;
         private @Nullable Boolean googleEnabled;
-        private @Nullable Double googleExpire;
+        private @Nullable Integer googleExpire;
         private @Nullable String gupshupPassword;
         private @Nullable String gupshupUserid;
         private @Nullable String microsoftClientId;
         private @Nullable String microsoftClientSecret;
         private @Nullable List<String> microsoftEmailDomains;
         private @Nullable Boolean microsoftEnabled;
-        private @Nullable Double microsoftExpire;
+        private @Nullable Integer microsoftExpire;
         private @Nullable Boolean passphraseEnabled;
-        private @Nullable Double passphraseExpire;
+        private @Nullable Integer passphraseExpire;
         private @Nullable String password;
         private @Nullable Boolean predefinedSponsorsEnabled;
         private @Nullable Boolean predefinedSponsorsHideEmail;
@@ -966,13 +964,13 @@ public final class WlanPortal {
         private @Nullable String puzzelServiceId;
         private @Nullable String puzzelUsername;
         private @Nullable Boolean smsEnabled;
-        private @Nullable Double smsExpire;
+        private @Nullable Integer smsExpire;
         private @Nullable String smsMessageFormat;
         private @Nullable String smsProvider;
         private @Nullable Boolean sponsorAutoApprove;
         private @Nullable List<String> sponsorEmailDomains;
         private @Nullable Boolean sponsorEnabled;
-        private @Nullable Double sponsorExpire;
+        private @Nullable Integer sponsorExpire;
         private @Nullable String sponsorLinkValidityDuration;
         private @Nullable Boolean sponsorNotifyAll;
         private @Nullable Boolean sponsorStatusNotify;
@@ -1102,7 +1100,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder amazonExpire(@Nullable Double amazonExpire) {
+        public Builder amazonExpire(@Nullable Integer amazonExpire) {
 
             this.amazonExpire = amazonExpire;
             return this;
@@ -1132,7 +1130,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder azureExpire(@Nullable Double azureExpire) {
+        public Builder azureExpire(@Nullable Integer azureExpire) {
 
             this.azureExpire = azureExpire;
             return this;
@@ -1192,7 +1190,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder expire(@Nullable Double expire) {
+        public Builder expire(@Nullable Integer expire) {
 
             this.expire = expire;
             return this;
@@ -1231,7 +1229,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder facebookExpire(@Nullable Double facebookExpire) {
+        public Builder facebookExpire(@Nullable Integer facebookExpire) {
 
             this.facebookExpire = facebookExpire;
             return this;
@@ -1276,7 +1274,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder googleExpire(@Nullable Double googleExpire) {
+        public Builder googleExpire(@Nullable Integer googleExpire) {
 
             this.googleExpire = googleExpire;
             return this;
@@ -1321,7 +1319,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder microsoftExpire(@Nullable Double microsoftExpire) {
+        public Builder microsoftExpire(@Nullable Integer microsoftExpire) {
 
             this.microsoftExpire = microsoftExpire;
             return this;
@@ -1333,7 +1331,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder passphraseExpire(@Nullable Double passphraseExpire) {
+        public Builder passphraseExpire(@Nullable Integer passphraseExpire) {
 
             this.passphraseExpire = passphraseExpire;
             return this;
@@ -1387,7 +1385,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder smsExpire(@Nullable Double smsExpire) {
+        public Builder smsExpire(@Nullable Integer smsExpire) {
 
             this.smsExpire = smsExpire;
             return this;
@@ -1426,7 +1424,7 @@ public final class WlanPortal {
             return this;
         }
         @CustomType.Setter
-        public Builder sponsorExpire(@Nullable Double sponsorExpire) {
+        public Builder sponsorExpire(@Nullable Integer sponsorExpire) {
 
             this.sponsorExpire = sponsorExpire;
             return this;

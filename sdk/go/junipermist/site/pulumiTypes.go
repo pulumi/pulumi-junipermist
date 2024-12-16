@@ -18561,14 +18561,14 @@ func (o WlanAcctServerArrayOutput) Index(i pulumi.IntInput) WlanAcctServerOutput
 
 type WlanAirwatch struct {
 	// API Key
-	ApiKey string `pulumi:"apiKey"`
+	ApiKey *string `pulumi:"apiKey"`
 	// console URL
-	ConsoleUrl string `pulumi:"consoleUrl"`
-	Enabled    *bool  `pulumi:"enabled"`
+	ConsoleUrl *string `pulumi:"consoleUrl"`
+	Enabled    *bool   `pulumi:"enabled"`
 	// password
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// username
-	Username string `pulumi:"username"`
+	Username *string `pulumi:"username"`
 }
 
 // WlanAirwatchInput is an input type that accepts WlanAirwatchArgs and WlanAirwatchOutput values.
@@ -18584,14 +18584,14 @@ type WlanAirwatchInput interface {
 
 type WlanAirwatchArgs struct {
 	// API Key
-	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
 	// console URL
-	ConsoleUrl pulumi.StringInput  `pulumi:"consoleUrl"`
-	Enabled    pulumi.BoolPtrInput `pulumi:"enabled"`
+	ConsoleUrl pulumi.StringPtrInput `pulumi:"consoleUrl"`
+	Enabled    pulumi.BoolPtrInput   `pulumi:"enabled"`
 	// password
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// username
-	Username pulumi.StringInput `pulumi:"username"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (WlanAirwatchArgs) ElementType() reflect.Type {
@@ -18672,13 +18672,13 @@ func (o WlanAirwatchOutput) ToWlanAirwatchPtrOutputWithContext(ctx context.Conte
 }
 
 // API Key
-func (o WlanAirwatchOutput) ApiKey() pulumi.StringOutput {
-	return o.ApplyT(func(v WlanAirwatch) string { return v.ApiKey }).(pulumi.StringOutput)
+func (o WlanAirwatchOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAirwatch) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
 // console URL
-func (o WlanAirwatchOutput) ConsoleUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v WlanAirwatch) string { return v.ConsoleUrl }).(pulumi.StringOutput)
+func (o WlanAirwatchOutput) ConsoleUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAirwatch) *string { return v.ConsoleUrl }).(pulumi.StringPtrOutput)
 }
 
 func (o WlanAirwatchOutput) Enabled() pulumi.BoolPtrOutput {
@@ -18686,13 +18686,13 @@ func (o WlanAirwatchOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // password
-func (o WlanAirwatchOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v WlanAirwatch) string { return v.Password }).(pulumi.StringOutput)
+func (o WlanAirwatchOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAirwatch) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // username
-func (o WlanAirwatchOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v WlanAirwatch) string { return v.Username }).(pulumi.StringOutput)
+func (o WlanAirwatchOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WlanAirwatch) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type WlanAirwatchPtrOutput struct{ *pulumi.OutputState }
@@ -18725,7 +18725,7 @@ func (o WlanAirwatchPtrOutput) ApiKey() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ApiKey
+		return v.ApiKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18735,7 +18735,7 @@ func (o WlanAirwatchPtrOutput) ConsoleUrl() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.ConsoleUrl
+		return v.ConsoleUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18754,7 +18754,7 @@ func (o WlanAirwatchPtrOutput) Password() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18764,7 +18764,7 @@ func (o WlanAirwatchPtrOutput) Username() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Username
+		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20607,8 +20607,7 @@ type WlanDynamicPsk struct {
 	// `false` means auto
 	ForceLookup *bool `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
-	Source  *string  `pulumi:"source"`
-	VlanIds []string `pulumi:"vlanIds"`
+	Source *string `pulumi:"source"`
 }
 
 // WlanDynamicPskInput is an input type that accepts WlanDynamicPskArgs and WlanDynamicPskOutput values.
@@ -20631,8 +20630,7 @@ type WlanDynamicPskArgs struct {
 	// `false` means auto
 	ForceLookup pulumi.BoolPtrInput `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
-	Source  pulumi.StringPtrInput   `pulumi:"source"`
-	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (WlanDynamicPskArgs) ElementType() reflect.Type {
@@ -20736,10 +20734,6 @@ func (o WlanDynamicPskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-func (o WlanDynamicPskOutput) VlanIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WlanDynamicPsk) []string { return v.VlanIds }).(pulumi.StringArrayOutput)
-}
-
 type WlanDynamicPskPtrOutput struct{ *pulumi.OutputState }
 
 func (WlanDynamicPskPtrOutput) ElementType() reflect.Type {
@@ -20813,19 +20807,10 @@ func (o WlanDynamicPskPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o WlanDynamicPskPtrOutput) VlanIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WlanDynamicPsk) []string {
-		if v == nil {
-			return nil
-		}
-		return v.VlanIds
-	}).(pulumi.StringArrayOutput)
-}
-
 type WlanDynamicVlan struct {
 	// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
 	DefaultVlanIds []string `pulumi:"defaultVlanIds"`
-	// whether to enable dynamic vlan
+	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled *bool `pulumi:"enabled"`
 	// vlan_ids to be locally bridged
 	LocalVlanIds []string `pulumi:"localVlanIds"`
@@ -20851,7 +20836,7 @@ type WlanDynamicVlanInput interface {
 type WlanDynamicVlanArgs struct {
 	// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
 	DefaultVlanIds pulumi.StringArrayInput `pulumi:"defaultVlanIds"`
-	// whether to enable dynamic vlan
+	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// vlan_ids to be locally bridged
 	LocalVlanIds pulumi.StringArrayInput `pulumi:"localVlanIds"`
@@ -20945,7 +20930,7 @@ func (o WlanDynamicVlanOutput) DefaultVlanIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) []string { return v.DefaultVlanIds }).(pulumi.StringArrayOutput)
 }
 
-// whether to enable dynamic vlan
+// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 func (o WlanDynamicVlanOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicVlan) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -21001,7 +20986,7 @@ func (o WlanDynamicVlanPtrOutput) DefaultVlanIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// whether to enable dynamic vlan
+// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
 func (o WlanDynamicVlanPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicVlan) *bool {
 		if v == nil {
@@ -21605,42 +21590,39 @@ func (o WlanMistNacPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type WlanPortal struct {
-	// whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+	// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
 	AllowWlanIdRoam *bool `pulumi:"allowWlanIdRoam"`
-	// amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
 	AmazonClientId *string `pulumi:"amazonClientId"`
-	// amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
 	AmazonClientSecret *string `pulumi:"amazonClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	AmazonEmailDomains []string `pulumi:"amazonEmailDomains"`
 	// whether amazon is enabled as a login method
 	AmazonEnabled *bool `pulumi:"amazonEnabled"`
-	// interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-	AmazonExpire *float64 `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `external`, `none`, `sso`
+	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+	AmazonExpire *int `pulumi:"amazonExpire"`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
 	Auth *string `pulumi:"auth"`
-	// Required if `azureEnabled`==`true`.
-	// Azure active directory app client id
+	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId *string `pulumi:"azureClientId"`
-	// Required if `azureEnabled`==`true`.
-	// Azure active directory app client secret
+	// Required if `azureEnabled`==`true`. Azure active directory app client secret
 	AzureClientSecret *string `pulumi:"azureClientSecret"`
 	// whether Azure Active Directory is enabled as a login method
 	AzureEnabled *bool `pulumi:"azureEnabled"`
 	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
-	AzureExpire *float64 `pulumi:"azureExpire"`
-	// Required if `azureEnabled`==`true`.
-	// Azure active directory tenant id.
+	AzureExpire *int `pulumi:"azureExpire"`
+	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId *string `pulumi:"azureTenantId"`
-	// when `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`
 	BroadnetPassword *string `pulumi:"broadnetPassword"`
-	// when `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`
 	BroadnetSid *string `pulumi:"broadnetSid"`
-	// when `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`
 	BroadnetUserId *string `pulumi:"broadnetUserId"`
 	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown *bool `pulumi:"bypassWhenCloudDown"`
-	// when `smsProvider`==`clickatell`
+	// Required if `smsProvider`==`clickatell`
 	ClickatellApiKey *string `pulumi:"clickatellApiKey"`
 	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite *bool `pulumi:"crossSite"`
@@ -21649,115 +21631,114 @@ type WlanPortal struct {
 	// whether guest portal is enabled
 	Enabled *bool `pulumi:"enabled"`
 	// how long to remain authorized, in minutes
-	Expire *float64 `pulumi:"expire"`
-	// external portal URL (e.g. https://host/url) where we can append our query parameters to
+	Expire *int `pulumi:"expire"`
+	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 	ExternalPortalUrl *string `pulumi:"externalPortalUrl"`
-	// Required if `facebookEnabled`==`true`.
-	// Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
 	FacebookClientId *string `pulumi:"facebookClientId"`
-	// Required if `facebookEnabled`==`true`.
-	// Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
 	FacebookClientSecret *string `pulumi:"facebookClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	FacebookEmailDomains []string `pulumi:"facebookEmailDomains"`
 	// whether facebook is enabled as a login method
 	FacebookEnabled *bool `pulumi:"facebookEnabled"`
-	// interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
-	FacebookExpire *float64 `pulumi:"facebookExpire"`
+	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+	FacebookExpire *int `pulumi:"facebookExpire"`
 	// whether to forward the user to another URL after authorized
 	Forward *bool `pulumi:"forward"`
 	// the URL to forward the user to
 	ForwardUrl *string `pulumi:"forwardUrl"`
 	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
 	GoogleClientId *string `pulumi:"googleClientId"`
-	// Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+	// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
 	GoogleClientSecret *string `pulumi:"googleClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	GoogleEmailDomains []string `pulumi:"googleEmailDomains"`
 	// whether google is enabled as login method
 	GoogleEnabled *bool `pulumi:"googleEnabled"`
-	// interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
-	GoogleExpire *float64 `pulumi:"googleExpire"`
-	// when `smsProvider`==`gupshup`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	GoogleExpire *int `pulumi:"googleExpire"`
+	// Required if `smsProvider`==`gupshup`
 	GupshupPassword *string `pulumi:"gupshupPassword"`
-	// when `smsProvider`==`gupshup`
+	// Required if `smsProvider`==`gupshup`
 	GupshupUserid *string `pulumi:"gupshupUserid"`
-	// microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
 	MicrosoftClientId *string `pulumi:"microsoftClientId"`
-	// microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
 	MicrosoftClientSecret *string `pulumi:"microsoftClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	MicrosoftEmailDomains []string `pulumi:"microsoftEmailDomains"`
 	// whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled *bool `pulumi:"microsoftEnabled"`
-	// interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
-	MicrosoftExpire *float64 `pulumi:"microsoftExpire"`
-	// whether password is enabled
+	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+	MicrosoftExpire *int `pulumi:"microsoftExpire"`
+	// Whether password is enabled
 	PassphraseEnabled *bool `pulumi:"passphraseEnabled"`
-	// interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
-	PassphraseExpire *float64 `pulumi:"passphraseExpire"`
-	// passphrase
+	// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+	PassphraseExpire *int `pulumi:"passphraseExpire"`
+	// Required if `passphraseEnabled`==`true`.
 	Password *string `pulumi:"password"`
 	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled *bool `pulumi:"predefinedSponsorsEnabled"`
 	// whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail *bool `pulumi:"predefinedSponsorsHideEmail"`
 	Privacy                     *bool `pulumi:"privacy"`
-	// when `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`
 	PuzzelPassword *string `pulumi:"puzzelPassword"`
-	// when `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`
 	PuzzelServiceId *string `pulumi:"puzzelServiceId"`
-	// when `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`
 	PuzzelUsername *string `pulumi:"puzzelUsername"`
 	// whether sms is enabled as a login method
 	SmsEnabled *bool `pulumi:"smsEnabled"`
-	// interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
-	SmsExpire        *float64 `pulumi:"smsExpire"`
-	SmsMessageFormat *string  `pulumi:"smsMessageFormat"`
-	// enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+	SmsExpire *int `pulumi:"smsExpire"`
+	// Optional if `smsEnabled`==`true`. SMS Message format
+	SmsMessageFormat *string `pulumi:"smsMessageFormat"`
+	// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
 	SmsProvider *string `pulumi:"smsProvider"`
-	// whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove *bool `pulumi:"sponsorAutoApprove"`
 	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains []string `pulumi:"sponsorEmailDomains"`
 	// whether sponsor is enabled
 	SponsorEnabled *bool `pulumi:"sponsorEnabled"`
-	// interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-	SponsorExpire *float64 `pulumi:"sponsorExpire"`
-	// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+	SponsorExpire *int `pulumi:"sponsorExpire"`
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
 	SponsorLinkValidityDuration *string `pulumi:"sponsorLinkValidityDuration"`
-	// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll *bool `pulumi:"sponsorNotifyAll"`
-	// if enabled, guest will get email about sponsor's action (approve/deny)
+	// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
 	SponsorStatusNotify *bool `pulumi:"sponsorStatusNotify"`
 	// object of allowed sponsors email with name. Required if `sponsorEnabled`
 	//             is `true` and `sponsorEmailDomains` is empty.
 	//
 	//             Property key is the sponsor email, Property value is the sponsor name
 	Sponsors map[string]string `pulumi:"sponsors"`
-	// if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+	// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole *string `pulumi:"ssoDefaultRole"`
-	// if `wlanPortalAuth`==`sso`
+	// Optionl if `wlanPortalAuth`==`sso`
 	SsoForcedRole *string `pulumi:"ssoForcedRole"`
-	// if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 	SsoIdpCert *string `pulumi:"ssoIdpCert"`
-	// if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 	SsoIdpSignAlgo *string `pulumi:"ssoIdpSignAlgo"`
-	// if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 	SsoIdpSsoUrl *string `pulumi:"ssoIdpSsoUrl"`
-	// if `wlanPortalAuth`==`sso`, IDP issuer URL
+	// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
 	SsoIssuer *string `pulumi:"ssoIssuer"`
-	// if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+	// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
 	SsoNameidFormat *string `pulumi:"ssoNameidFormat"`
-	// when `smsProvider`==`telstra`, Client ID provided by Telstra
+	// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
 	TelstraClientId *string `pulumi:"telstraClientId"`
-	// when `smsProvider`==`telstra`, Client secret provided by Telstra
+	// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
 	TelstraClientSecret *string `pulumi:"telstraClientSecret"`
-	// when `smsProvider`==`twilio`, Auth token account with twilio account
+	// Required if `smsProvider`==`twilio`, Auth token account with twilio account
 	TwilioAuthToken *string `pulumi:"twilioAuthToken"`
-	// when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+	// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
 	TwilioPhoneNumber *string `pulumi:"twilioPhoneNumber"`
-	// when `smsProvider`==`twilio`, Account SID provided by Twilio
+	// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
 	TwilioSid *string `pulumi:"twilioSid"`
 }
 
@@ -21773,42 +21754,39 @@ type WlanPortalInput interface {
 }
 
 type WlanPortalArgs struct {
-	// whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+	// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
 	AllowWlanIdRoam pulumi.BoolPtrInput `pulumi:"allowWlanIdRoam"`
-	// amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
 	AmazonClientId pulumi.StringPtrInput `pulumi:"amazonClientId"`
-	// amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
 	AmazonClientSecret pulumi.StringPtrInput `pulumi:"amazonClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	AmazonEmailDomains pulumi.StringArrayInput `pulumi:"amazonEmailDomains"`
 	// whether amazon is enabled as a login method
 	AmazonEnabled pulumi.BoolPtrInput `pulumi:"amazonEnabled"`
-	// interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-	AmazonExpire pulumi.Float64PtrInput `pulumi:"amazonExpire"`
-	// authentication scheme. enum: `external`, `none`, `sso`
+	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+	AmazonExpire pulumi.IntPtrInput `pulumi:"amazonExpire"`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
 	Auth pulumi.StringPtrInput `pulumi:"auth"`
-	// Required if `azureEnabled`==`true`.
-	// Azure active directory app client id
+	// Required if `azureEnabled`==`true`. Azure active directory app client id
 	AzureClientId pulumi.StringPtrInput `pulumi:"azureClientId"`
-	// Required if `azureEnabled`==`true`.
-	// Azure active directory app client secret
+	// Required if `azureEnabled`==`true`. Azure active directory app client secret
 	AzureClientSecret pulumi.StringPtrInput `pulumi:"azureClientSecret"`
 	// whether Azure Active Directory is enabled as a login method
 	AzureEnabled pulumi.BoolPtrInput `pulumi:"azureEnabled"`
 	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
-	AzureExpire pulumi.Float64PtrInput `pulumi:"azureExpire"`
-	// Required if `azureEnabled`==`true`.
-	// Azure active directory tenant id.
+	AzureExpire pulumi.IntPtrInput `pulumi:"azureExpire"`
+	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 	AzureTenantId pulumi.StringPtrInput `pulumi:"azureTenantId"`
-	// when `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`
 	BroadnetPassword pulumi.StringPtrInput `pulumi:"broadnetPassword"`
-	// when `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`
 	BroadnetSid pulumi.StringPtrInput `pulumi:"broadnetSid"`
-	// when `smsProvider`==`broadnet`
+	// Required if `smsProvider`==`broadnet`
 	BroadnetUserId pulumi.StringPtrInput `pulumi:"broadnetUserId"`
 	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
 	BypassWhenCloudDown pulumi.BoolPtrInput `pulumi:"bypassWhenCloudDown"`
-	// when `smsProvider`==`clickatell`
+	// Required if `smsProvider`==`clickatell`
 	ClickatellApiKey pulumi.StringPtrInput `pulumi:"clickatellApiKey"`
 	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
 	CrossSite pulumi.BoolPtrInput `pulumi:"crossSite"`
@@ -21817,115 +21795,114 @@ type WlanPortalArgs struct {
 	// whether guest portal is enabled
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// how long to remain authorized, in minutes
-	Expire pulumi.Float64PtrInput `pulumi:"expire"`
-	// external portal URL (e.g. https://host/url) where we can append our query parameters to
+	Expire pulumi.IntPtrInput `pulumi:"expire"`
+	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 	ExternalPortalUrl pulumi.StringPtrInput `pulumi:"externalPortalUrl"`
-	// Required if `facebookEnabled`==`true`.
-	// Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
 	FacebookClientId pulumi.StringPtrInput `pulumi:"facebookClientId"`
-	// Required if `facebookEnabled`==`true`.
-	// Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
 	FacebookClientSecret pulumi.StringPtrInput `pulumi:"facebookClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	FacebookEmailDomains pulumi.StringArrayInput `pulumi:"facebookEmailDomains"`
 	// whether facebook is enabled as a login method
 	FacebookEnabled pulumi.BoolPtrInput `pulumi:"facebookEnabled"`
-	// interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
-	FacebookExpire pulumi.Float64PtrInput `pulumi:"facebookExpire"`
+	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+	FacebookExpire pulumi.IntPtrInput `pulumi:"facebookExpire"`
 	// whether to forward the user to another URL after authorized
 	Forward pulumi.BoolPtrInput `pulumi:"forward"`
 	// the URL to forward the user to
 	ForwardUrl pulumi.StringPtrInput `pulumi:"forwardUrl"`
 	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
 	GoogleClientId pulumi.StringPtrInput `pulumi:"googleClientId"`
-	// Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+	// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
 	GoogleClientSecret pulumi.StringPtrInput `pulumi:"googleClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	GoogleEmailDomains pulumi.StringArrayInput `pulumi:"googleEmailDomains"`
 	// whether google is enabled as login method
 	GoogleEnabled pulumi.BoolPtrInput `pulumi:"googleEnabled"`
-	// interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
-	GoogleExpire pulumi.Float64PtrInput `pulumi:"googleExpire"`
-	// when `smsProvider`==`gupshup`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	GoogleExpire pulumi.IntPtrInput `pulumi:"googleExpire"`
+	// Required if `smsProvider`==`gupshup`
 	GupshupPassword pulumi.StringPtrInput `pulumi:"gupshupPassword"`
-	// when `smsProvider`==`gupshup`
+	// Required if `smsProvider`==`gupshup`
 	GupshupUserid pulumi.StringPtrInput `pulumi:"gupshupUserid"`
-	// microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
 	MicrosoftClientId pulumi.StringPtrInput `pulumi:"microsoftClientId"`
-	// microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
 	MicrosoftClientSecret pulumi.StringPtrInput `pulumi:"microsoftClientSecret"`
-	// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 	MicrosoftEmailDomains pulumi.StringArrayInput `pulumi:"microsoftEmailDomains"`
 	// whether microsoft 365 is enabled as a login method
 	MicrosoftEnabled pulumi.BoolPtrInput `pulumi:"microsoftEnabled"`
-	// interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
-	MicrosoftExpire pulumi.Float64PtrInput `pulumi:"microsoftExpire"`
-	// whether password is enabled
+	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+	MicrosoftExpire pulumi.IntPtrInput `pulumi:"microsoftExpire"`
+	// Whether password is enabled
 	PassphraseEnabled pulumi.BoolPtrInput `pulumi:"passphraseEnabled"`
-	// interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
-	PassphraseExpire pulumi.Float64PtrInput `pulumi:"passphraseExpire"`
-	// passphrase
+	// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+	PassphraseExpire pulumi.IntPtrInput `pulumi:"passphraseExpire"`
+	// Required if `passphraseEnabled`==`true`.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
 	PredefinedSponsorsEnabled pulumi.BoolPtrInput `pulumi:"predefinedSponsorsEnabled"`
 	// whether to hide sponsor’s email from list of sponsors
 	PredefinedSponsorsHideEmail pulumi.BoolPtrInput `pulumi:"predefinedSponsorsHideEmail"`
 	Privacy                     pulumi.BoolPtrInput `pulumi:"privacy"`
-	// when `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`
 	PuzzelPassword pulumi.StringPtrInput `pulumi:"puzzelPassword"`
-	// when `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`
 	PuzzelServiceId pulumi.StringPtrInput `pulumi:"puzzelServiceId"`
-	// when `smsProvider`==`puzzel`
+	// Required if `smsProvider`==`puzzel`
 	PuzzelUsername pulumi.StringPtrInput `pulumi:"puzzelUsername"`
 	// whether sms is enabled as a login method
 	SmsEnabled pulumi.BoolPtrInput `pulumi:"smsEnabled"`
-	// interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
-	SmsExpire        pulumi.Float64PtrInput `pulumi:"smsExpire"`
-	SmsMessageFormat pulumi.StringPtrInput  `pulumi:"smsMessageFormat"`
-	// enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+	SmsExpire pulumi.IntPtrInput `pulumi:"smsExpire"`
+	// Optional if `smsEnabled`==`true`. SMS Message format
+	SmsMessageFormat pulumi.StringPtrInput `pulumi:"smsMessageFormat"`
+	// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
 	SmsProvider pulumi.StringPtrInput `pulumi:"smsProvider"`
-	// whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 	SponsorAutoApprove pulumi.BoolPtrInput `pulumi:"sponsorAutoApprove"`
 	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
 	SponsorEmailDomains pulumi.StringArrayInput `pulumi:"sponsorEmailDomains"`
 	// whether sponsor is enabled
 	SponsorEnabled pulumi.BoolPtrInput `pulumi:"sponsorEnabled"`
-	// interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-	SponsorExpire pulumi.Float64PtrInput `pulumi:"sponsorExpire"`
-	// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+	SponsorExpire pulumi.IntPtrInput `pulumi:"sponsorExpire"`
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
 	SponsorLinkValidityDuration pulumi.StringPtrInput `pulumi:"sponsorLinkValidityDuration"`
-	// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 	SponsorNotifyAll pulumi.BoolPtrInput `pulumi:"sponsorNotifyAll"`
-	// if enabled, guest will get email about sponsor's action (approve/deny)
+	// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
 	SponsorStatusNotify pulumi.BoolPtrInput `pulumi:"sponsorStatusNotify"`
 	// object of allowed sponsors email with name. Required if `sponsorEnabled`
 	//             is `true` and `sponsorEmailDomains` is empty.
 	//
 	//             Property key is the sponsor email, Property value is the sponsor name
 	Sponsors pulumi.StringMapInput `pulumi:"sponsors"`
-	// if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+	// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 	SsoDefaultRole pulumi.StringPtrInput `pulumi:"ssoDefaultRole"`
-	// if `wlanPortalAuth`==`sso`
+	// Optionl if `wlanPortalAuth`==`sso`
 	SsoForcedRole pulumi.StringPtrInput `pulumi:"ssoForcedRole"`
-	// if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 	SsoIdpCert pulumi.StringPtrInput `pulumi:"ssoIdpCert"`
-	// if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 	SsoIdpSignAlgo pulumi.StringPtrInput `pulumi:"ssoIdpSignAlgo"`
-	// if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 	SsoIdpSsoUrl pulumi.StringPtrInput `pulumi:"ssoIdpSsoUrl"`
-	// if `wlanPortalAuth`==`sso`, IDP issuer URL
+	// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
 	SsoIssuer pulumi.StringPtrInput `pulumi:"ssoIssuer"`
-	// if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+	// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
 	SsoNameidFormat pulumi.StringPtrInput `pulumi:"ssoNameidFormat"`
-	// when `smsProvider`==`telstra`, Client ID provided by Telstra
+	// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
 	TelstraClientId pulumi.StringPtrInput `pulumi:"telstraClientId"`
-	// when `smsProvider`==`telstra`, Client secret provided by Telstra
+	// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
 	TelstraClientSecret pulumi.StringPtrInput `pulumi:"telstraClientSecret"`
-	// when `smsProvider`==`twilio`, Auth token account with twilio account
+	// Required if `smsProvider`==`twilio`, Auth token account with twilio account
 	TwilioAuthToken pulumi.StringPtrInput `pulumi:"twilioAuthToken"`
-	// when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+	// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
 	TwilioPhoneNumber pulumi.StringPtrInput `pulumi:"twilioPhoneNumber"`
-	// when `smsProvider`==`twilio`, Account SID provided by Twilio
+	// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
 	TwilioSid pulumi.StringPtrInput `pulumi:"twilioSid"`
 }
 
@@ -22006,22 +21983,22 @@ func (o WlanPortalOutput) ToWlanPortalPtrOutputWithContext(ctx context.Context) 
 	}).(WlanPortalPtrOutput)
 }
 
-// whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
 func (o WlanPortalOutput) AllowWlanIdRoam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.AllowWlanIdRoam }).(pulumi.BoolPtrOutput)
 }
 
-// amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
 func (o WlanPortalOutput) AmazonClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AmazonClientId }).(pulumi.StringPtrOutput)
 }
 
-// amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalOutput) AmazonClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AmazonClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.AmazonEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -22031,24 +22008,22 @@ func (o WlanPortalOutput) AmazonEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.AmazonEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) AmazonExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.AmazonExpire }).(pulumi.Float64PtrOutput)
+// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+func (o WlanPortalOutput) AmazonExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.AmazonExpire }).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `external`, `none`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
 func (o WlanPortalOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Auth }).(pulumi.StringPtrOutput)
 }
 
-// Required if `azureEnabled`==`true`.
-// Azure active directory app client id
+// Required if `azureEnabled`==`true`. Azure active directory app client id
 func (o WlanPortalOutput) AzureClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AzureClientId }).(pulumi.StringPtrOutput)
 }
 
-// Required if `azureEnabled`==`true`.
-// Azure active directory app client secret
+// Required if `azureEnabled`==`true`. Azure active directory app client secret
 func (o WlanPortalOutput) AzureClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AzureClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -22059,27 +22034,26 @@ func (o WlanPortalOutput) AzureEnabled() pulumi.BoolPtrOutput {
 }
 
 // interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) AzureExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.AzureExpire }).(pulumi.Float64PtrOutput)
+func (o WlanPortalOutput) AzureExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.AzureExpire }).(pulumi.IntPtrOutput)
 }
 
-// Required if `azureEnabled`==`true`.
-// Azure active directory tenant id.
+// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 func (o WlanPortalOutput) AzureTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.AzureTenantId }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`
 func (o WlanPortalOutput) BroadnetPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetPassword }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`
 func (o WlanPortalOutput) BroadnetSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetSid }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`
 func (o WlanPortalOutput) BroadnetUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.BroadnetUserId }).(pulumi.StringPtrOutput)
 }
@@ -22089,7 +22063,7 @@ func (o WlanPortalOutput) BypassWhenCloudDown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.BypassWhenCloudDown }).(pulumi.BoolPtrOutput)
 }
 
-// when `smsProvider`==`clickatell`
+// Required if `smsProvider`==`clickatell`
 func (o WlanPortalOutput) ClickatellApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.ClickatellApiKey }).(pulumi.StringPtrOutput)
 }
@@ -22110,28 +22084,26 @@ func (o WlanPortalOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // how long to remain authorized, in minutes
-func (o WlanPortalOutput) Expire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.Expire }).(pulumi.Float64PtrOutput)
+func (o WlanPortalOutput) Expire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.Expire }).(pulumi.IntPtrOutput)
 }
 
-// external portal URL (e.g. https://host/url) where we can append our query parameters to
+// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 func (o WlanPortalOutput) ExternalPortalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.ExternalPortalUrl }).(pulumi.StringPtrOutput)
 }
 
-// Required if `facebookEnabled`==`true`.
-// Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
 func (o WlanPortalOutput) FacebookClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.FacebookClientId }).(pulumi.StringPtrOutput)
 }
 
-// Required if `facebookEnabled`==`true`.
-// Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalOutput) FacebookClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.FacebookClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.FacebookEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -22141,9 +22113,9 @@ func (o WlanPortalOutput) FacebookEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.FacebookEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) FacebookExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.FacebookExpire }).(pulumi.Float64PtrOutput)
+// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+func (o WlanPortalOutput) FacebookExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.FacebookExpire }).(pulumi.IntPtrOutput)
 }
 
 // whether to forward the user to another URL after authorized
@@ -22161,12 +22133,12 @@ func (o WlanPortalOutput) GoogleClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GoogleClientId }).(pulumi.StringPtrOutput)
 }
 
-// Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalOutput) GoogleClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GoogleClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.GoogleEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -22176,32 +22148,32 @@ func (o WlanPortalOutput) GoogleEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.GoogleEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) GoogleExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.GoogleExpire }).(pulumi.Float64PtrOutput)
+// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+func (o WlanPortalOutput) GoogleExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.GoogleExpire }).(pulumi.IntPtrOutput)
 }
 
-// when `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`
 func (o WlanPortalOutput) GupshupPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GupshupPassword }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`
 func (o WlanPortalOutput) GupshupUserid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.GupshupUserid }).(pulumi.StringPtrOutput)
 }
 
-// microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
 func (o WlanPortalOutput) MicrosoftClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.MicrosoftClientId }).(pulumi.StringPtrOutput)
 }
 
-// microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalOutput) MicrosoftClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.MicrosoftClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanPortal) []string { return v.MicrosoftEmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -22211,22 +22183,22 @@ func (o WlanPortalOutput) MicrosoftEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.MicrosoftEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) MicrosoftExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.MicrosoftExpire }).(pulumi.Float64PtrOutput)
+// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+func (o WlanPortalOutput) MicrosoftExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.MicrosoftExpire }).(pulumi.IntPtrOutput)
 }
 
-// whether password is enabled
+// Whether password is enabled
 func (o WlanPortalOutput) PassphraseEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.PassphraseEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
-func (o WlanPortalOutput) PassphraseExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.PassphraseExpire }).(pulumi.Float64PtrOutput)
+// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+func (o WlanPortalOutput) PassphraseExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.PassphraseExpire }).(pulumi.IntPtrOutput)
 }
 
-// passphrase
+// Required if `passphraseEnabled`==`true`.
 func (o WlanPortalOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -22245,17 +22217,17 @@ func (o WlanPortalOutput) Privacy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.Privacy }).(pulumi.BoolPtrOutput)
 }
 
-// when `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`
 func (o WlanPortalOutput) PuzzelPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelPassword }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`
 func (o WlanPortalOutput) PuzzelServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelServiceId }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`
 func (o WlanPortalOutput) PuzzelUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.PuzzelUsername }).(pulumi.StringPtrOutput)
 }
@@ -22265,21 +22237,22 @@ func (o WlanPortalOutput) SmsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SmsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) SmsExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.SmsExpire }).(pulumi.Float64PtrOutput)
+// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+func (o WlanPortalOutput) SmsExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.SmsExpire }).(pulumi.IntPtrOutput)
 }
 
+// Optional if `smsEnabled`==`true`. SMS Message format
 func (o WlanPortalOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SmsMessageFormat }).(pulumi.StringPtrOutput)
 }
 
-// enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
 func (o WlanPortalOutput) SmsProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SmsProvider }).(pulumi.StringPtrOutput)
 }
 
-// whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 func (o WlanPortalOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorAutoApprove }).(pulumi.BoolPtrOutput)
 }
@@ -22294,22 +22267,22 @@ func (o WlanPortalOutput) SponsorEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-func (o WlanPortalOutput) SponsorExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v WlanPortal) *float64 { return v.SponsorExpire }).(pulumi.Float64PtrOutput)
+// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+func (o WlanPortalOutput) SponsorExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WlanPortal) *int { return v.SponsorExpire }).(pulumi.IntPtrOutput)
 }
 
-// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
 func (o WlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SponsorLinkValidityDuration }).(pulumi.StringPtrOutput)
 }
 
-// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 func (o WlanPortalOutput) SponsorNotifyAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorNotifyAll }).(pulumi.BoolPtrOutput)
 }
 
-// if enabled, guest will get email about sponsor's action (approve/deny)
+// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
 func (o WlanPortalOutput) SponsorStatusNotify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *bool { return v.SponsorStatusNotify }).(pulumi.BoolPtrOutput)
 }
@@ -22323,62 +22296,62 @@ func (o WlanPortalOutput) Sponsors() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WlanPortal) map[string]string { return v.Sponsors }).(pulumi.StringMapOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 func (o WlanPortalOutput) SsoDefaultRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoDefaultRole }).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`
+// Optionl if `wlanPortalAuth`==`sso`
 func (o WlanPortalOutput) SsoForcedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoForcedRole }).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 func (o WlanPortalOutput) SsoIdpCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIdpCert }).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 func (o WlanPortalOutput) SsoIdpSignAlgo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIdpSignAlgo }).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 func (o WlanPortalOutput) SsoIdpSsoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIdpSsoUrl }).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, IDP issuer URL
+// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
 func (o WlanPortalOutput) SsoIssuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoIssuer }).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
 func (o WlanPortalOutput) SsoNameidFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.SsoNameidFormat }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`telstra`, Client ID provided by Telstra
+// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
 func (o WlanPortalOutput) TelstraClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.TelstraClientId }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`telstra`, Client secret provided by Telstra
+// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
 func (o WlanPortalOutput) TelstraClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.TelstraClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`twilio`, Auth token account with twilio account
+// Required if `smsProvider`==`twilio`, Auth token account with twilio account
 func (o WlanPortalOutput) TwilioAuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.TwilioAuthToken }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
 func (o WlanPortalOutput) TwilioPhoneNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.TwilioPhoneNumber }).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`twilio`, Account SID provided by Twilio
+// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
 func (o WlanPortalOutput) TwilioSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WlanPortal) *string { return v.TwilioSid }).(pulumi.StringPtrOutput)
 }
@@ -22407,7 +22380,7 @@ func (o WlanPortalPtrOutput) Elem() WlanPortalOutput {
 	}).(WlanPortalOutput)
 }
 
-// whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
 func (o WlanPortalPtrOutput) AllowWlanIdRoam() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22417,7 +22390,7 @@ func (o WlanPortalPtrOutput) AllowWlanIdRoam() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
 func (o WlanPortalPtrOutput) AmazonClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22427,7 +22400,7 @@ func (o WlanPortalPtrOutput) AmazonClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalPtrOutput) AmazonClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22437,7 +22410,7 @@ func (o WlanPortalPtrOutput) AmazonClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalPtrOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -22457,17 +22430,17 @@ func (o WlanPortalPtrOutput) AmazonEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) AmazonExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+func (o WlanPortalPtrOutput) AmazonExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.AmazonExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// authentication scheme. enum: `external`, `none`, `sso`
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
 func (o WlanPortalPtrOutput) Auth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22477,8 +22450,7 @@ func (o WlanPortalPtrOutput) Auth() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `azureEnabled`==`true`.
-// Azure active directory app client id
+// Required if `azureEnabled`==`true`. Azure active directory app client id
 func (o WlanPortalPtrOutput) AzureClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22488,8 +22460,7 @@ func (o WlanPortalPtrOutput) AzureClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `azureEnabled`==`true`.
-// Azure active directory app client secret
+// Required if `azureEnabled`==`true`. Azure active directory app client secret
 func (o WlanPortalPtrOutput) AzureClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22510,17 +22481,16 @@ func (o WlanPortalPtrOutput) AzureEnabled() pulumi.BoolPtrOutput {
 }
 
 // interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) AzureExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+func (o WlanPortalPtrOutput) AzureExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.AzureExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// Required if `azureEnabled`==`true`.
-// Azure active directory tenant id.
+// Required if `azureEnabled`==`true`. Azure active directory tenant id.
 func (o WlanPortalPtrOutput) AzureTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22530,7 +22500,7 @@ func (o WlanPortalPtrOutput) AzureTenantId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`
 func (o WlanPortalPtrOutput) BroadnetPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22540,7 +22510,7 @@ func (o WlanPortalPtrOutput) BroadnetPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`
 func (o WlanPortalPtrOutput) BroadnetSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22550,7 +22520,7 @@ func (o WlanPortalPtrOutput) BroadnetSid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`broadnet`
+// Required if `smsProvider`==`broadnet`
 func (o WlanPortalPtrOutput) BroadnetUserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22570,7 +22540,7 @@ func (o WlanPortalPtrOutput) BypassWhenCloudDown() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when `smsProvider`==`clickatell`
+// Required if `smsProvider`==`clickatell`
 func (o WlanPortalPtrOutput) ClickatellApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22611,16 +22581,16 @@ func (o WlanPortalPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // how long to remain authorized, in minutes
-func (o WlanPortalPtrOutput) Expire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+func (o WlanPortalPtrOutput) Expire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Expire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// external portal URL (e.g. https://host/url) where we can append our query parameters to
+// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
 func (o WlanPortalPtrOutput) ExternalPortalUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22630,8 +22600,7 @@ func (o WlanPortalPtrOutput) ExternalPortalUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `facebookEnabled`==`true`.
-// Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
 func (o WlanPortalPtrOutput) FacebookClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22641,8 +22610,7 @@ func (o WlanPortalPtrOutput) FacebookClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required if `facebookEnabled`==`true`.
-// Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalPtrOutput) FacebookClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22652,7 +22620,7 @@ func (o WlanPortalPtrOutput) FacebookClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalPtrOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -22672,14 +22640,14 @@ func (o WlanPortalPtrOutput) FacebookEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) FacebookExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+func (o WlanPortalPtrOutput) FacebookExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.FacebookExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
 // whether to forward the user to another URL after authorized
@@ -22712,7 +22680,7 @@ func (o WlanPortalPtrOutput) GoogleClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalPtrOutput) GoogleClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22722,7 +22690,7 @@ func (o WlanPortalPtrOutput) GoogleClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalPtrOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -22742,17 +22710,17 @@ func (o WlanPortalPtrOutput) GoogleEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) GoogleExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+func (o WlanPortalPtrOutput) GoogleExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.GoogleExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// when `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`
 func (o WlanPortalPtrOutput) GupshupPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22762,7 +22730,7 @@ func (o WlanPortalPtrOutput) GupshupPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`gupshup`
+// Required if `smsProvider`==`gupshup`
 func (o WlanPortalPtrOutput) GupshupUserid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22772,7 +22740,7 @@ func (o WlanPortalPtrOutput) GupshupUserid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
 func (o WlanPortalPtrOutput) MicrosoftClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22782,7 +22750,7 @@ func (o WlanPortalPtrOutput) MicrosoftClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
 func (o WlanPortalPtrOutput) MicrosoftClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22792,7 +22760,7 @@ func (o WlanPortalPtrOutput) MicrosoftClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
 func (o WlanPortalPtrOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanPortal) []string {
 		if v == nil {
@@ -22812,17 +22780,17 @@ func (o WlanPortalPtrOutput) MicrosoftEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) MicrosoftExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+func (o WlanPortalPtrOutput) MicrosoftExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.MicrosoftExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// whether password is enabled
+// Whether password is enabled
 func (o WlanPortalPtrOutput) PassphraseEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22832,17 +22800,17 @@ func (o WlanPortalPtrOutput) PassphraseEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
-func (o WlanPortalPtrOutput) PassphraseExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+func (o WlanPortalPtrOutput) PassphraseExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.PassphraseExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// passphrase
+// Required if `passphraseEnabled`==`true`.
 func (o WlanPortalPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22881,7 +22849,7 @@ func (o WlanPortalPtrOutput) Privacy() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`
 func (o WlanPortalPtrOutput) PuzzelPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22891,7 +22859,7 @@ func (o WlanPortalPtrOutput) PuzzelPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`
 func (o WlanPortalPtrOutput) PuzzelServiceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22901,7 +22869,7 @@ func (o WlanPortalPtrOutput) PuzzelServiceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`puzzel`
+// Required if `smsProvider`==`puzzel`
 func (o WlanPortalPtrOutput) PuzzelUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22921,16 +22889,17 @@ func (o WlanPortalPtrOutput) SmsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) SmsExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+func (o WlanPortalPtrOutput) SmsExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.SmsExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
+// Optional if `smsEnabled`==`true`. SMS Message format
 func (o WlanPortalPtrOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22940,7 +22909,7 @@ func (o WlanPortalPtrOutput) SmsMessageFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
 func (o WlanPortalPtrOutput) SmsProvider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -22950,7 +22919,7 @@ func (o WlanPortalPtrOutput) SmsProvider() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
 func (o WlanPortalPtrOutput) SponsorAutoApprove() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -22980,17 +22949,17 @@ func (o WlanPortalPtrOutput) SponsorEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-func (o WlanPortalPtrOutput) SponsorExpire() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *WlanPortal) *float64 {
+// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+func (o WlanPortalPtrOutput) SponsorExpire() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WlanPortal) *int {
 		if v == nil {
 			return nil
 		}
 		return v.SponsorExpire
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.IntPtrOutput)
 }
 
-// how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
 func (o WlanPortalPtrOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23000,7 +22969,7 @@ func (o WlanPortalPtrOutput) SponsorLinkValidityDuration() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
 func (o WlanPortalPtrOutput) SponsorNotifyAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23010,7 +22979,7 @@ func (o WlanPortalPtrOutput) SponsorNotifyAll() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// if enabled, guest will get email about sponsor's action (approve/deny)
+// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
 func (o WlanPortalPtrOutput) SponsorStatusNotify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *bool {
 		if v == nil {
@@ -23034,7 +23003,7 @@ func (o WlanPortalPtrOutput) Sponsors() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
 func (o WlanPortalPtrOutput) SsoDefaultRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23044,7 +23013,7 @@ func (o WlanPortalPtrOutput) SsoDefaultRole() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`
+// Optionl if `wlanPortalAuth`==`sso`
 func (o WlanPortalPtrOutput) SsoForcedRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23054,7 +23023,7 @@ func (o WlanPortalPtrOutput) SsoForcedRole() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
 func (o WlanPortalPtrOutput) SsoIdpCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23064,7 +23033,7 @@ func (o WlanPortalPtrOutput) SsoIdpCert() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
 func (o WlanPortalPtrOutput) SsoIdpSignAlgo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23074,7 +23043,7 @@ func (o WlanPortalPtrOutput) SsoIdpSignAlgo() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
 func (o WlanPortalPtrOutput) SsoIdpSsoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23084,7 +23053,7 @@ func (o WlanPortalPtrOutput) SsoIdpSsoUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`, IDP issuer URL
+// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
 func (o WlanPortalPtrOutput) SsoIssuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23094,7 +23063,7 @@ func (o WlanPortalPtrOutput) SsoIssuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
 func (o WlanPortalPtrOutput) SsoNameidFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23104,7 +23073,7 @@ func (o WlanPortalPtrOutput) SsoNameidFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`telstra`, Client ID provided by Telstra
+// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
 func (o WlanPortalPtrOutput) TelstraClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23114,7 +23083,7 @@ func (o WlanPortalPtrOutput) TelstraClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`telstra`, Client secret provided by Telstra
+// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
 func (o WlanPortalPtrOutput) TelstraClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23124,7 +23093,7 @@ func (o WlanPortalPtrOutput) TelstraClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`twilio`, Auth token account with twilio account
+// Required if `smsProvider`==`twilio`, Auth token account with twilio account
 func (o WlanPortalPtrOutput) TwilioAuthToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23134,7 +23103,7 @@ func (o WlanPortalPtrOutput) TwilioAuthToken() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
 func (o WlanPortalPtrOutput) TwilioPhoneNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {
@@ -23144,7 +23113,7 @@ func (o WlanPortalPtrOutput) TwilioPhoneNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// when `smsProvider`==`twilio`, Account SID provided by Twilio
+// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
 func (o WlanPortalPtrOutput) TwilioSid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WlanPortal) *string {
 		if v == nil {

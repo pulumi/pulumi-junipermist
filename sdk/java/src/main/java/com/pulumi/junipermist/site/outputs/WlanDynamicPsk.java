@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,7 +30,6 @@ public final class WlanDynamicPsk {
      * 
      */
     private @Nullable String source;
-    private @Nullable List<String> vlanIds;
 
     private WlanDynamicPsk() {}
     /**
@@ -62,9 +60,6 @@ public final class WlanDynamicPsk {
     public Optional<String> source() {
         return Optional.ofNullable(this.source);
     }
-    public List<String> vlanIds() {
-        return this.vlanIds == null ? List.of() : this.vlanIds;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -80,7 +75,6 @@ public final class WlanDynamicPsk {
         private @Nullable Boolean enabled;
         private @Nullable Boolean forceLookup;
         private @Nullable String source;
-        private @Nullable List<String> vlanIds;
         public Builder() {}
         public Builder(WlanDynamicPsk defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,7 +83,6 @@ public final class WlanDynamicPsk {
     	      this.enabled = defaults.enabled;
     	      this.forceLookup = defaults.forceLookup;
     	      this.source = defaults.source;
-    	      this.vlanIds = defaults.vlanIds;
         }
 
         @CustomType.Setter
@@ -122,15 +115,6 @@ public final class WlanDynamicPsk {
             this.source = source;
             return this;
         }
-        @CustomType.Setter
-        public Builder vlanIds(@Nullable List<String> vlanIds) {
-
-            this.vlanIds = vlanIds;
-            return this;
-        }
-        public Builder vlanIds(String... vlanIds) {
-            return vlanIds(List.of(vlanIds));
-        }
         public WlanDynamicPsk build() {
             final var _resultValue = new WlanDynamicPsk();
             _resultValue.defaultPsk = defaultPsk;
@@ -138,7 +122,6 @@ public final class WlanDynamicPsk {
             _resultValue.enabled = enabled;
             _resultValue.forceLookup = forceLookup;
             _resultValue.source = source;
-            _resultValue.vlanIds = vlanIds;
             return _resultValue;
         }
     }

@@ -5,7 +5,6 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -21,30 +20,30 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
      * API Key
      * 
      */
-    @Import(name="apiKey", required=true)
-    private Output<String> apiKey;
+    @Import(name="apiKey")
+    private @Nullable Output<String> apiKey;
 
     /**
      * @return API Key
      * 
      */
-    public Output<String> apiKey() {
-        return this.apiKey;
+    public Optional<Output<String>> apiKey() {
+        return Optional.ofNullable(this.apiKey);
     }
 
     /**
      * console URL
      * 
      */
-    @Import(name="consoleUrl", required=true)
-    private Output<String> consoleUrl;
+    @Import(name="consoleUrl")
+    private @Nullable Output<String> consoleUrl;
 
     /**
      * @return console URL
      * 
      */
-    public Output<String> consoleUrl() {
-        return this.consoleUrl;
+    public Optional<Output<String>> consoleUrl() {
+        return Optional.ofNullable(this.consoleUrl);
     }
 
     @Import(name="enabled")
@@ -58,30 +57,30 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
      * password
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return password
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
      * username
      * 
      */
-    @Import(name="username", required=true)
-    private Output<String> username;
+    @Import(name="username")
+    private @Nullable Output<String> username;
 
     /**
      * @return username
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private WlanAirwatchArgs() {}
@@ -118,7 +117,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder apiKey(Output<String> apiKey) {
+        public Builder apiKey(@Nullable Output<String> apiKey) {
             $.apiKey = apiKey;
             return this;
         }
@@ -139,7 +138,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder consoleUrl(Output<String> consoleUrl) {
+        public Builder consoleUrl(@Nullable Output<String> consoleUrl) {
             $.consoleUrl = consoleUrl;
             return this;
         }
@@ -169,7 +168,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -190,7 +189,7 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder username(Output<String> username) {
+        public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
@@ -206,18 +205,6 @@ public final class WlanAirwatchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WlanAirwatchArgs build() {
-            if ($.apiKey == null) {
-                throw new MissingRequiredPropertyException("WlanAirwatchArgs", "apiKey");
-            }
-            if ($.consoleUrl == null) {
-                throw new MissingRequiredPropertyException("WlanAirwatchArgs", "consoleUrl");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("WlanAirwatchArgs", "password");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("WlanAirwatchArgs", "username");
-            }
             return $;
         }
     }

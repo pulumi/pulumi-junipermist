@@ -92,7 +92,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * airwatch wlan settings
      */
-    public readonly airwatch!: pulumi.Output<outputs.site.WlanAirwatch | undefined>;
+    public readonly airwatch!: pulumi.Output<outputs.site.WlanAirwatch>;
     /**
      * only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
      */
@@ -112,15 +112,15 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * bandwidth limiting for apps (applies to up/down)
      */
-    public readonly appLimit!: pulumi.Output<outputs.site.WlanAppLimit | undefined>;
+    public readonly appLimit!: pulumi.Output<outputs.site.WlanAppLimit>;
     /**
      * app qos wlan settings
      */
-    public readonly appQos!: pulumi.Output<outputs.site.WlanAppQos | undefined>;
+    public readonly appQos!: pulumi.Output<outputs.site.WlanAppQos>;
     /**
      * enum: `aps`, `site`, `wxtags`
      */
-    public readonly applyTo!: pulumi.Output<string | undefined>;
+    public readonly applyTo!: pulumi.Output<string>;
     /**
      * whether to enable smart arp filter
      */
@@ -141,11 +141,11 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
      */
-    public readonly authServersNasId!: pulumi.Output<string | undefined>;
+    public readonly authServersNasId!: pulumi.Output<string>;
     /**
      * optional, NAS-IP-ADDRESS to use
      */
-    public readonly authServersNasIp!: pulumi.Output<string | undefined>;
+    public readonly authServersNasIp!: pulumi.Output<string>;
     /**
      * radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’ are
      * set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to
@@ -177,16 +177,16 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * bonjour gateway wlan settings
      */
-    public readonly bonjour!: pulumi.Output<outputs.site.WlanBonjour | undefined>;
+    public readonly bonjour!: pulumi.Output<outputs.site.WlanBonjour>;
     /**
      * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA:
      * https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
      */
-    public readonly ciscoCwa!: pulumi.Output<outputs.site.WlanCiscoCwa | undefined>;
+    public readonly ciscoCwa!: pulumi.Output<outputs.site.WlanCiscoCwa>;
     /**
      * kbps
      */
-    public readonly clientLimitDown!: pulumi.Output<number | undefined>;
+    public readonly clientLimitDown!: pulumi.Output<number>;
     /**
      * if downlink limiting per-client is enabled
      */
@@ -194,7 +194,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * kbps
      */
-    public readonly clientLimitUp!: pulumi.Output<number | undefined>;
+    public readonly clientLimitUp!: pulumi.Output<number>;
     /**
      * if uplink limiting per-client is enabled
      */
@@ -224,13 +224,19 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly disableV2RoamNotify!: pulumi.Output<boolean>;
     /**
+     * when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+     * reach default gateway
+     */
+    public readonly disableWhenGatewayUnreachable!: pulumi.Output<boolean | undefined>;
+    public readonly disableWhenMxtunnelDown!: pulumi.Output<boolean | undefined>;
+    /**
      * whether to disable WMM
      */
     public readonly disableWmm!: pulumi.Output<boolean>;
     /**
      * for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
      */
-    public readonly dnsServerRewrite!: pulumi.Output<outputs.site.WlanDnsServerRewrite | undefined>;
+    public readonly dnsServerRewrite!: pulumi.Output<outputs.site.WlanDnsServerRewrite>;
     public readonly dtim!: pulumi.Output<number>;
     /**
      * for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on
@@ -279,7 +285,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * hostspot 2.0 wlan settings
      */
-    public readonly hotspot20!: pulumi.Output<outputs.site.WlanHotspot20 | undefined>;
+    public readonly hotspot20!: pulumi.Output<outputs.site.WlanHotspot20>;
     public readonly injectDhcpOption82!: pulumi.Output<outputs.site.WlanInjectDhcpOption82 | undefined>;
     /**
      * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
@@ -314,7 +320,7 @@ export class Wlan extends pulumi.CustomResource {
      * maximum number of client connected to the SSID. `0` means unlimited
      */
     public readonly maxNumClients!: pulumi.Output<number>;
-    public readonly mistNac!: pulumi.Output<outputs.site.WlanMistNac | undefined>;
+    public readonly mistNac!: pulumi.Output<outputs.site.WlanMistNac>;
     public /*out*/ readonly mspId!: pulumi.Output<string>;
     /**
      * when `interface`=`mxtunnel`, id of the Mist Tunnel
@@ -336,7 +342,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * portal wlan settings
      */
-    public readonly portal!: pulumi.Output<outputs.site.WlanPortal | undefined>;
+    public readonly portal!: pulumi.Output<outputs.site.WlanPortal>;
     /**
      * list of hostnames without http(s):// (matched by substring)
      */
@@ -358,20 +364,19 @@ export class Wlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly portalImage!: pulumi.Output<string>;
     public /*out*/ readonly portalSsoUrl!: pulumi.Output<string>;
-    /**
-     * N.B portalTemplate will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-     * To update portal_template, use Wlan Portal Template.
-     */
-    public /*out*/ readonly portalTemplateUrl!: pulumi.Output<string>;
-    public readonly qos!: pulumi.Output<outputs.site.WlanQos | undefined>;
+    public readonly qos!: pulumi.Output<outputs.site.WlanQos>;
     /**
      * Radsec settings
      */
-    public readonly radsec!: pulumi.Output<outputs.site.WlanRadsec | undefined>;
+    public readonly radsec!: pulumi.Output<outputs.site.WlanRadsec>;
     /**
      * Property key is the RF band. enum: `24`, `5`, `6`
      */
-    public readonly rateset!: pulumi.Output<{[key: string]: outputs.site.WlanRateset} | undefined>;
+    public readonly rateset!: pulumi.Output<{[key: string]: outputs.site.WlanRateset}>;
+    /**
+     * when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+     */
+    public readonly reconnectClientsWhenRoamingMxcluster!: pulumi.Output<boolean | undefined>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
@@ -379,7 +384,7 @@ export class Wlan extends pulumi.CustomResource {
     /**
      * WLAN operating schedule, default is disabled
      */
-    public readonly schedule!: pulumi.Output<outputs.site.WlanSchedule | undefined>;
+    public readonly schedule!: pulumi.Output<outputs.site.WlanSchedule>;
     public readonly siteId!: pulumi.Output<string>;
     /**
      * whether to exclude this WLAN from SLE metrics
@@ -390,10 +395,6 @@ export class Wlan extends pulumi.CustomResource {
      */
     public readonly ssid!: pulumi.Output<string>;
     /**
-     * Url of portal background image thumbnail
-     */
-    public /*out*/ readonly thumbnail!: pulumi.Output<string>;
-    /**
      * if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
      */
     public readonly useEapolV1!: pulumi.Output<boolean>;
@@ -403,11 +404,12 @@ export class Wlan extends pulumi.CustomResource {
     public readonly vlanEnabled!: pulumi.Output<boolean>;
     public readonly vlanId!: pulumi.Output<string | undefined>;
     /**
-     * vlan_ids to use when there’s no match from RA
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
      */
     public readonly vlanIds!: pulumi.Output<string[]>;
     /**
-     * vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+     * deterministic algorithm
      */
     public readonly vlanPooling!: pulumi.Output<boolean>;
     /**
@@ -487,6 +489,8 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["disableUapsd"] = state ? state.disableUapsd : undefined;
             resourceInputs["disableV1RoamNotify"] = state ? state.disableV1RoamNotify : undefined;
             resourceInputs["disableV2RoamNotify"] = state ? state.disableV2RoamNotify : undefined;
+            resourceInputs["disableWhenGatewayUnreachable"] = state ? state.disableWhenGatewayUnreachable : undefined;
+            resourceInputs["disableWhenMxtunnelDown"] = state ? state.disableWhenMxtunnelDown : undefined;
             resourceInputs["disableWmm"] = state ? state.disableWmm : undefined;
             resourceInputs["dnsServerRewrite"] = state ? state.dnsServerRewrite : undefined;
             resourceInputs["dtim"] = state ? state.dtim : undefined;
@@ -523,16 +527,15 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["portalDeniedHostnames"] = state ? state.portalDeniedHostnames : undefined;
             resourceInputs["portalImage"] = state ? state.portalImage : undefined;
             resourceInputs["portalSsoUrl"] = state ? state.portalSsoUrl : undefined;
-            resourceInputs["portalTemplateUrl"] = state ? state.portalTemplateUrl : undefined;
             resourceInputs["qos"] = state ? state.qos : undefined;
             resourceInputs["radsec"] = state ? state.radsec : undefined;
             resourceInputs["rateset"] = state ? state.rateset : undefined;
+            resourceInputs["reconnectClientsWhenRoamingMxcluster"] = state ? state.reconnectClientsWhenRoamingMxcluster : undefined;
             resourceInputs["roamMode"] = state ? state.roamMode : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["siteId"] = state ? state.siteId : undefined;
             resourceInputs["sleExcluded"] = state ? state.sleExcluded : undefined;
             resourceInputs["ssid"] = state ? state.ssid : undefined;
-            resourceInputs["thumbnail"] = state ? state.thumbnail : undefined;
             resourceInputs["useEapolV1"] = state ? state.useEapolV1 : undefined;
             resourceInputs["vlanEnabled"] = state ? state.vlanEnabled : undefined;
             resourceInputs["vlanId"] = state ? state.vlanId : undefined;
@@ -588,6 +591,8 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["disableUapsd"] = args ? args.disableUapsd : undefined;
             resourceInputs["disableV1RoamNotify"] = args ? args.disableV1RoamNotify : undefined;
             resourceInputs["disableV2RoamNotify"] = args ? args.disableV2RoamNotify : undefined;
+            resourceInputs["disableWhenGatewayUnreachable"] = args ? args.disableWhenGatewayUnreachable : undefined;
+            resourceInputs["disableWhenMxtunnelDown"] = args ? args.disableWhenMxtunnelDown : undefined;
             resourceInputs["disableWmm"] = args ? args.disableWmm : undefined;
             resourceInputs["dnsServerRewrite"] = args ? args.dnsServerRewrite : undefined;
             resourceInputs["dtim"] = args ? args.dtim : undefined;
@@ -622,6 +627,7 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["qos"] = args ? args.qos : undefined;
             resourceInputs["radsec"] = args ? args.radsec : undefined;
             resourceInputs["rateset"] = args ? args.rateset : undefined;
+            resourceInputs["reconnectClientsWhenRoamingMxcluster"] = args ? args.reconnectClientsWhenRoamingMxcluster : undefined;
             resourceInputs["roamMode"] = args ? args.roamMode : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["siteId"] = args ? args.siteId : undefined;
@@ -644,8 +650,6 @@ export class Wlan extends pulumi.CustomResource {
             resourceInputs["portalApiSecret"] = undefined /*out*/;
             resourceInputs["portalImage"] = undefined /*out*/;
             resourceInputs["portalSsoUrl"] = undefined /*out*/;
-            resourceInputs["portalTemplateUrl"] = undefined /*out*/;
-            resourceInputs["thumbnail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Wlan.__pulumiType, name, resourceInputs, opts);
@@ -805,6 +809,12 @@ export interface WlanState {
      */
     disableV2RoamNotify?: pulumi.Input<boolean>;
     /**
+     * when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+     * reach default gateway
+     */
+    disableWhenGatewayUnreachable?: pulumi.Input<boolean>;
+    disableWhenMxtunnelDown?: pulumi.Input<boolean>;
+    /**
      * whether to disable WMM
      */
     disableWmm?: pulumi.Input<boolean>;
@@ -939,11 +949,6 @@ export interface WlanState {
      */
     portalImage?: pulumi.Input<string>;
     portalSsoUrl?: pulumi.Input<string>;
-    /**
-     * N.B portalTemplate will be forked out of wlan objects soon. To fetch portal_template, please query portal_template_url.
-     * To update portal_template, use Wlan Portal Template.
-     */
-    portalTemplateUrl?: pulumi.Input<string>;
     qos?: pulumi.Input<inputs.site.WlanQos>;
     /**
      * Radsec settings
@@ -953,6 +958,10 @@ export interface WlanState {
      * Property key is the RF band. enum: `24`, `5`, `6`
      */
     rateset?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanRateset>}>;
+    /**
+     * when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+     */
+    reconnectClientsWhenRoamingMxcluster?: pulumi.Input<boolean>;
     /**
      * enum: `11r`, `OKC`, `NONE`
      */
@@ -971,10 +980,6 @@ export interface WlanState {
      */
     ssid?: pulumi.Input<string>;
     /**
-     * Url of portal background image thumbnail
-     */
-    thumbnail?: pulumi.Input<string>;
-    /**
      * if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
      */
     useEapolV1?: pulumi.Input<boolean>;
@@ -984,11 +989,12 @@ export interface WlanState {
     vlanEnabled?: pulumi.Input<boolean>;
     vlanId?: pulumi.Input<string>;
     /**
-     * vlan_ids to use when there’s no match from RA
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+     * deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean>;
     /**
@@ -1174,6 +1180,12 @@ export interface WlanArgs {
      */
     disableV2RoamNotify?: pulumi.Input<boolean>;
     /**
+     * when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+     * reach default gateway
+     */
+    disableWhenGatewayUnreachable?: pulumi.Input<boolean>;
+    disableWhenMxtunnelDown?: pulumi.Input<boolean>;
+    /**
      * whether to disable WMM
      */
     disableWmm?: pulumi.Input<boolean>;
@@ -1307,6 +1319,10 @@ export interface WlanArgs {
      */
     rateset?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.WlanRateset>}>;
     /**
+     * when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+     */
+    reconnectClientsWhenRoamingMxcluster?: pulumi.Input<boolean>;
+    /**
      * enum: `11r`, `OKC`, `NONE`
      */
     roamMode?: pulumi.Input<string>;
@@ -1333,11 +1349,12 @@ export interface WlanArgs {
     vlanEnabled?: pulumi.Input<boolean>;
     vlanId?: pulumi.Input<string>;
     /**
-     * vlan_ids to use when there’s no match from RA
+     * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
      */
     vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+     * deterministic algorithm
      */
     vlanPooling?: pulumi.Input<boolean>;
     /**

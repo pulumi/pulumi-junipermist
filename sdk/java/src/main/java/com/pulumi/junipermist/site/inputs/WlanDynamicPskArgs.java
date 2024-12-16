@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -78,13 +77,6 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.source);
     }
 
-    @Import(name="vlanIds")
-    private @Nullable Output<List<String>> vlanIds;
-
-    public Optional<Output<List<String>>> vlanIds() {
-        return Optional.ofNullable(this.vlanIds);
-    }
-
     private WlanDynamicPskArgs() {}
 
     private WlanDynamicPskArgs(WlanDynamicPskArgs $) {
@@ -93,7 +85,6 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         this.enabled = $.enabled;
         this.forceLookup = $.forceLookup;
         this.source = $.source;
-        this.vlanIds = $.vlanIds;
     }
 
     public static Builder builder() {
@@ -195,19 +186,6 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder source(String source) {
             return source(Output.of(source));
-        }
-
-        public Builder vlanIds(@Nullable Output<List<String>> vlanIds) {
-            $.vlanIds = vlanIds;
-            return this;
-        }
-
-        public Builder vlanIds(List<String> vlanIds) {
-            return vlanIds(Output.of(vlanIds));
-        }
-
-        public Builder vlanIds(String... vlanIds) {
-            return vlanIds(List.of(vlanIds));
         }
 
         public WlanDynamicPskArgs build() {

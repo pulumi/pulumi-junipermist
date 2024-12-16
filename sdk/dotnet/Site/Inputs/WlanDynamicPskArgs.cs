@@ -47,14 +47,6 @@ namespace Pulumi.JuniperMist.Site.Inputs
         [Input("source")]
         public Input<string>? Source { get; set; }
 
-        [Input("vlanIds")]
-        private InputList<string>? _vlanIds;
-        public InputList<string> VlanIds
-        {
-            get => _vlanIds ?? (_vlanIds = new InputList<string>());
-            set => _vlanIds = value;
-        }
-
         public WlanDynamicPskArgs()
         {
         }

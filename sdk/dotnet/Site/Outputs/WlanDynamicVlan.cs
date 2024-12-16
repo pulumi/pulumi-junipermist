@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DefaultVlanIds;
         /// <summary>
-        /// whether to enable dynamic vlan
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

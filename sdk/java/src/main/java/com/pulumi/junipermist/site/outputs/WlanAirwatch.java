@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.site.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -17,38 +16,38 @@ public final class WlanAirwatch {
      * @return API Key
      * 
      */
-    private String apiKey;
+    private @Nullable String apiKey;
     /**
      * @return console URL
      * 
      */
-    private String consoleUrl;
+    private @Nullable String consoleUrl;
     private @Nullable Boolean enabled;
     /**
      * @return password
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return username
      * 
      */
-    private String username;
+    private @Nullable String username;
 
     private WlanAirwatch() {}
     /**
      * @return API Key
      * 
      */
-    public String apiKey() {
-        return this.apiKey;
+    public Optional<String> apiKey() {
+        return Optional.ofNullable(this.apiKey);
     }
     /**
      * @return console URL
      * 
      */
-    public String consoleUrl() {
-        return this.consoleUrl;
+    public Optional<String> consoleUrl() {
+        return Optional.ofNullable(this.consoleUrl);
     }
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
@@ -57,15 +56,15 @@ public final class WlanAirwatch {
      * @return password
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return username
      * 
      */
-    public String username() {
-        return this.username;
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     public static Builder builder() {
@@ -77,11 +76,11 @@ public final class WlanAirwatch {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String apiKey;
-        private String consoleUrl;
+        private @Nullable String apiKey;
+        private @Nullable String consoleUrl;
         private @Nullable Boolean enabled;
-        private String password;
-        private String username;
+        private @Nullable String password;
+        private @Nullable String username;
         public Builder() {}
         public Builder(WlanAirwatch defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,18 +92,14 @@ public final class WlanAirwatch {
         }
 
         @CustomType.Setter
-        public Builder apiKey(String apiKey) {
-            if (apiKey == null) {
-              throw new MissingRequiredPropertyException("WlanAirwatch", "apiKey");
-            }
+        public Builder apiKey(@Nullable String apiKey) {
+
             this.apiKey = apiKey;
             return this;
         }
         @CustomType.Setter
-        public Builder consoleUrl(String consoleUrl) {
-            if (consoleUrl == null) {
-              throw new MissingRequiredPropertyException("WlanAirwatch", "consoleUrl");
-            }
+        public Builder consoleUrl(@Nullable String consoleUrl) {
+
             this.consoleUrl = consoleUrl;
             return this;
         }
@@ -115,18 +110,14 @@ public final class WlanAirwatch {
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("WlanAirwatch", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
-        public Builder username(String username) {
-            if (username == null) {
-              throw new MissingRequiredPropertyException("WlanAirwatch", "username");
-            }
+        public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

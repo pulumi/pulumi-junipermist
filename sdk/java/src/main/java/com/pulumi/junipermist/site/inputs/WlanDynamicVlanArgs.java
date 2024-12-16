@@ -35,14 +35,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * whether to enable dynamic vlan
+     * Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to enable dynamic vlan
+     * @return Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -158,7 +158,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled whether to enable dynamic vlan
+         * @param enabled Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled whether to enable dynamic vlan
+         * @param enabled Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          * 
          * @return builder
          * 
