@@ -15,19 +15,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// <summary>
         /// API Key
         /// </summary>
-        [Input("apiKey", required: true)]
-        public Input<string> ApiKey { get; set; } = null!;
+        [Input("apiKey")]
+        public Input<string>? ApiKey { get; set; }
 
         /// <summary>
         /// console URL
         /// </summary>
-        [Input("consoleUrl", required: true)]
-        public Input<string> ConsoleUrl { get; set; } = null!;
+        [Input("consoleUrl")]
+        public Input<string>? ConsoleUrl { get; set; }
 
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// <summary>
         /// username
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public WlanAirwatchArgs()
         {

@@ -4882,7 +4882,7 @@ export namespace org {
         /**
          * List of additional email string to deliver the alarms via emails
          */
-        additionalEmails?: string[];
+        additionalEmails: string[];
         /**
          * Whether to enable the alarm delivery via emails or not
          */
@@ -10575,7 +10575,7 @@ Please update your configurations.
         /**
          * SAE anti-clogging token threshold
          */
-        anticlogThreshold: number;
+        anticlogThreshold?: number;
         /**
          * whether to trigger EAP reauth when the session ends
          */
@@ -10599,7 +10599,7 @@ Please update your configurations.
         /**
          * if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
          */
-        owe: string;
+        owe?: string;
         /**
          * when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          */
@@ -10619,7 +10619,7 @@ Please update your configurations.
         /**
          * enable WEP as secondary auth
          */
-        wepAsSecondaryAuth: boolean;
+        wepAsSecondaryAuth?: boolean;
     }
 
     export interface WlanAuthServer {
@@ -10731,7 +10731,6 @@ Please update your configurations.
          * enum: `cloudPsks`, `radius`
          */
         source: string;
-        vlanIds?: string[];
     }
 
     export interface WlanDynamicVlan {
@@ -10740,7 +10739,7 @@ Please update your configurations.
          */
         defaultVlanIds: string[];
         /**
-         * whether to enable dynamic vlan
+         * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
         enabled: boolean;
         /**
@@ -10809,19 +10808,19 @@ Please update your configurations.
 
     export interface WlanPortal {
         /**
-         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
          */
-        allowWlanIdRoam: boolean;
+        allowWlanIdRoam?: boolean;
         /**
-         * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         amazonClientId: string;
         /**
-         * amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
          */
         amazonClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         amazonEmailDomains: string[];
         /**
@@ -10829,21 +10828,19 @@ Please update your configurations.
          */
         amazonEnabled: boolean;
         /**
-         * interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
          */
-        amazonExpire: number;
+        amazonExpire?: number;
         /**
-         * authentication scheme. enum: `external`, `none`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
          */
         auth: string;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client id
+         * Required if `azureEnabled`==`true`. Azure active directory app client id
          */
         azureClientId: string;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client secret
+         * Required if `azureEnabled`==`true`. Azure active directory app client secret
          */
         azureClientSecret: string;
         /**
@@ -10853,36 +10850,35 @@ Please update your configurations.
         /**
          * interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
          */
-        azureExpire: number;
+        azureExpire?: number;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory tenant id.
+         * Required if `azureEnabled`==`true`. Azure active directory tenant id.
          */
         azureTenantId: string;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetPassword: string;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
-        broadnetSid: string;
+        broadnetSid?: string;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
-        broadnetUserId: string;
+        broadnetUserId?: string;
         /**
          * whether to bypass the guest portal when cloud not reachable (and apply the default policies)
          */
         bypassWhenCloudDown: boolean;
         /**
-         * when `smsProvider`==`clickatell`
+         * Required if `smsProvider`==`clickatell`
          */
-        clickatellApiKey: string;
+        clickatellApiKey?: string;
         /**
          * whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
          */
-        crossSite: boolean;
+        crossSite?: boolean;
         /**
          * whether email (access code verification) is enabled as a login method
          */
@@ -10896,21 +10892,19 @@ Please update your configurations.
          */
         expire: number;
         /**
-         * external portal URL (e.g. https://host/url) where we can append our query parameters to
+         * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
          */
         externalPortalUrl: string;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
          */
         facebookClientId: string;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
          */
         facebookClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         facebookEmailDomains: string[];
         /**
@@ -10918,9 +10912,9 @@ Please update your configurations.
          */
         facebookEnabled: boolean;
         /**
-         * interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
          */
-        facebookExpire: number;
+        facebookExpire?: number;
         /**
          * whether to forward the user to another URL after authorized
          */
@@ -10934,11 +10928,11 @@ Please update your configurations.
          */
         googleClientId: string;
         /**
-         * Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
          */
         googleClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         googleEmailDomains: string[];
         /**
@@ -10946,27 +10940,27 @@ Please update your configurations.
          */
         googleEnabled: boolean;
         /**
-         * interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+         * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
          */
-        googleExpire: number;
+        googleExpire?: number;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
-        gupshupPassword: string;
+        gupshupPassword?: string;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
-        gupshupUserid: string;
+        gupshupUserid?: string;
         /**
-         * microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         microsoftClientId: string;
         /**
-         * microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
          */
         microsoftClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         microsoftEmailDomains: string[];
         /**
@@ -10974,19 +10968,19 @@ Please update your configurations.
          */
         microsoftEnabled: boolean;
         /**
-         * interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
          */
-        microsoftExpire: number;
+        microsoftExpire?: number;
         /**
-         * whether password is enabled
+         * Whether password is enabled
          */
         passphraseEnabled: boolean;
         /**
-         * interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
          */
-        passphraseExpire: number;
+        passphraseExpire?: number;
         /**
-         * passphrase
+         * Required if `passphraseEnabled`==`true`.
          */
         password: string;
         /**
@@ -10999,34 +10993,37 @@ Please update your configurations.
         predefinedSponsorsHideEmail: boolean;
         privacy: boolean;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
-        puzzelPassword: string;
+        puzzelPassword?: string;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
-        puzzelServiceId: string;
+        puzzelServiceId?: string;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
-        puzzelUsername: string;
+        puzzelUsername?: string;
         /**
          * whether sms is enabled as a login method
          */
         smsEnabled: boolean;
         /**
-         * interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
          */
-        smsExpire: number;
+        smsExpire?: number;
+        /**
+         * Optional if `smsEnabled`==`true`. SMS Message format
+         */
         smsMessageFormat: string;
         /**
-         * enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
          */
         smsProvider: string;
         /**
-         * whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+         * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
-        sponsorAutoApprove: boolean;
+        sponsorAutoApprove?: boolean;
         /**
          * list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
          */
@@ -11036,19 +11033,19 @@ Please update your configurations.
          */
         sponsorEnabled: boolean;
         /**
-         * interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          */
-        sponsorExpire: number;
+        sponsorExpire?: number;
         /**
-         * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
         sponsorLinkValidityDuration: string;
         /**
-         * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
         sponsorNotifyAll: boolean;
         /**
-         * if enabled, guest will get email about sponsor's action (approve/deny)
+         * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
          */
         sponsorStatusNotify: boolean;
         /**
@@ -11059,53 +11056,53 @@ Please update your configurations.
          */
         sponsors: {[key: string]: string};
         /**
-         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
         /**
-         * if `wlanPortalAuth`==`sso`
+         * Optionl if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole: string;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+         * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
          */
         ssoIdpCert: string;
         /**
-         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+         * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl: string;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP issuer URL
+         * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer: string;
         /**
-         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+         * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat: string;
         /**
-         * when `smsProvider`==`telstra`, Client ID provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
          */
-        telstraClientId: string;
+        telstraClientId?: string;
         /**
-         * when `smsProvider`==`telstra`, Client secret provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
          */
-        telstraClientSecret: string;
+        telstraClientSecret?: string;
         /**
-         * when `smsProvider`==`twilio`, Auth token account with twilio account
+         * Required if `smsProvider`==`twilio`, Auth token account with twilio account
          */
-        twilioAuthToken: string;
+        twilioAuthToken?: string;
         /**
-         * when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
          */
-        twilioPhoneNumber: string;
+        twilioPhoneNumber?: string;
         /**
-         * when `smsProvider`==`twilio`, Account SID provided by Twilio
+         * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
          */
-        twilioSid: string;
+        twilioSid?: string;
     }
 
     export interface WlanPortalTemplatePortalTemplate {
@@ -11832,7 +11829,7 @@ Please update your configurations.
         /**
          * Minimum RSSI for client to connect, 0 means not enforcing
          */
-        minRssi?: number;
+        minRssi: number;
         /**
          * Data Rates template to apply. enum: 
          *   * `no-legacy`: no 11b
@@ -11841,7 +11838,7 @@ Please update your configurations.
          *   * `high-density`: no 11b, no low rates
          *   * `custom`: user defined
          */
-        template?: string;
+        template: string;
         /**
          * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
          */
@@ -13942,7 +13939,7 @@ Please update your configurations.
         /**
          * SAE anti-clogging token threshold
          */
-        anticlogThreshold: number;
+        anticlogThreshold?: number;
         /**
          * whether to trigger EAP reauth when the session ends
          */
@@ -13966,7 +13963,7 @@ Please update your configurations.
         /**
          * if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
          */
-        owe: string;
+        owe?: string;
         /**
          * when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          */
@@ -13986,7 +13983,7 @@ Please update your configurations.
         /**
          * enable WEP as secondary auth
          */
-        wepAsSecondaryAuth: boolean;
+        wepAsSecondaryAuth?: boolean;
     }
 
     export interface WlanAuthServer {
@@ -14098,7 +14095,6 @@ Please update your configurations.
          * enum: `cloudPsks`, `radius`
          */
         source: string;
-        vlanIds?: string[];
     }
 
     export interface WlanDynamicVlan {
@@ -14107,7 +14103,7 @@ Please update your configurations.
          */
         defaultVlanIds: string[];
         /**
-         * whether to enable dynamic vlan
+         * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
         enabled: boolean;
         /**
@@ -14176,19 +14172,19 @@ Please update your configurations.
 
     export interface WlanPortal {
         /**
-         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
          */
-        allowWlanIdRoam: boolean;
+        allowWlanIdRoam?: boolean;
         /**
-         * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         amazonClientId: string;
         /**
-         * amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
          */
         amazonClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         amazonEmailDomains: string[];
         /**
@@ -14196,21 +14192,19 @@ Please update your configurations.
          */
         amazonEnabled: boolean;
         /**
-         * interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
          */
-        amazonExpire: number;
+        amazonExpire?: number;
         /**
-         * authentication scheme. enum: `external`, `none`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
          */
         auth: string;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client id
+         * Required if `azureEnabled`==`true`. Azure active directory app client id
          */
         azureClientId: string;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client secret
+         * Required if `azureEnabled`==`true`. Azure active directory app client secret
          */
         azureClientSecret: string;
         /**
@@ -14220,36 +14214,35 @@ Please update your configurations.
         /**
          * interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
          */
-        azureExpire: number;
+        azureExpire?: number;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory tenant id.
+         * Required if `azureEnabled`==`true`. Azure active directory tenant id.
          */
         azureTenantId: string;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetPassword: string;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
-        broadnetSid: string;
+        broadnetSid?: string;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
-        broadnetUserId: string;
+        broadnetUserId?: string;
         /**
          * whether to bypass the guest portal when cloud not reachable (and apply the default policies)
          */
         bypassWhenCloudDown: boolean;
         /**
-         * when `smsProvider`==`clickatell`
+         * Required if `smsProvider`==`clickatell`
          */
-        clickatellApiKey: string;
+        clickatellApiKey?: string;
         /**
          * whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
          */
-        crossSite: boolean;
+        crossSite?: boolean;
         /**
          * whether email (access code verification) is enabled as a login method
          */
@@ -14263,21 +14256,19 @@ Please update your configurations.
          */
         expire: number;
         /**
-         * external portal URL (e.g. https://host/url) where we can append our query parameters to
+         * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
          */
         externalPortalUrl: string;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
          */
         facebookClientId: string;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
          */
         facebookClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         facebookEmailDomains: string[];
         /**
@@ -14285,9 +14276,9 @@ Please update your configurations.
          */
         facebookEnabled: boolean;
         /**
-         * interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
          */
-        facebookExpire: number;
+        facebookExpire?: number;
         /**
          * whether to forward the user to another URL after authorized
          */
@@ -14301,11 +14292,11 @@ Please update your configurations.
          */
         googleClientId: string;
         /**
-         * Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
          */
         googleClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         googleEmailDomains: string[];
         /**
@@ -14313,27 +14304,27 @@ Please update your configurations.
          */
         googleEnabled: boolean;
         /**
-         * interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+         * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
          */
-        googleExpire: number;
+        googleExpire?: number;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
-        gupshupPassword: string;
+        gupshupPassword?: string;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
-        gupshupUserid: string;
+        gupshupUserid?: string;
         /**
-         * microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         microsoftClientId: string;
         /**
-         * microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
          */
         microsoftClientSecret: string;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         microsoftEmailDomains: string[];
         /**
@@ -14341,19 +14332,19 @@ Please update your configurations.
          */
         microsoftEnabled: boolean;
         /**
-         * interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
          */
-        microsoftExpire: number;
+        microsoftExpire?: number;
         /**
-         * whether password is enabled
+         * Whether password is enabled
          */
         passphraseEnabled: boolean;
         /**
-         * interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
          */
-        passphraseExpire: number;
+        passphraseExpire?: number;
         /**
-         * passphrase
+         * Required if `passphraseEnabled`==`true`.
          */
         password: string;
         /**
@@ -14366,34 +14357,37 @@ Please update your configurations.
         predefinedSponsorsHideEmail: boolean;
         privacy: boolean;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
-        puzzelPassword: string;
+        puzzelPassword?: string;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
-        puzzelServiceId: string;
+        puzzelServiceId?: string;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
-        puzzelUsername: string;
+        puzzelUsername?: string;
         /**
          * whether sms is enabled as a login method
          */
         smsEnabled: boolean;
         /**
-         * interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
          */
-        smsExpire: number;
+        smsExpire?: number;
+        /**
+         * Optional if `smsEnabled`==`true`. SMS Message format
+         */
         smsMessageFormat: string;
         /**
-         * enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
          */
         smsProvider: string;
         /**
-         * whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+         * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
-        sponsorAutoApprove: boolean;
+        sponsorAutoApprove?: boolean;
         /**
          * list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
          */
@@ -14403,19 +14397,19 @@ Please update your configurations.
          */
         sponsorEnabled: boolean;
         /**
-         * interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          */
-        sponsorExpire: number;
+        sponsorExpire?: number;
         /**
-         * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
         sponsorLinkValidityDuration: string;
         /**
-         * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
         sponsorNotifyAll: boolean;
         /**
-         * if enabled, guest will get email about sponsor's action (approve/deny)
+         * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
          */
         sponsorStatusNotify: boolean;
         /**
@@ -14426,53 +14420,53 @@ Please update your configurations.
          */
         sponsors: {[key: string]: string};
         /**
-         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole: string;
         /**
-         * if `wlanPortalAuth`==`sso`
+         * Optionl if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole: string;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+         * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
          */
         ssoIdpCert: string;
         /**
-         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo: string;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+         * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl: string;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP issuer URL
+         * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer: string;
         /**
-         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+         * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat: string;
         /**
-         * when `smsProvider`==`telstra`, Client ID provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
          */
-        telstraClientId: string;
+        telstraClientId?: string;
         /**
-         * when `smsProvider`==`telstra`, Client secret provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
          */
-        telstraClientSecret: string;
+        telstraClientSecret?: string;
         /**
-         * when `smsProvider`==`twilio`, Auth token account with twilio account
+         * Required if `smsProvider`==`twilio`, Auth token account with twilio account
          */
-        twilioAuthToken: string;
+        twilioAuthToken?: string;
         /**
-         * when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
          */
-        twilioPhoneNumber: string;
+        twilioPhoneNumber?: string;
         /**
-         * when `smsProvider`==`twilio`, Account SID provided by Twilio
+         * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
          */
-        twilioSid: string;
+        twilioSid?: string;
     }
 
     export interface WlanPortalTemplatePortalTemplate {
@@ -15199,7 +15193,7 @@ Please update your configurations.
         /**
          * Minimum RSSI for client to connect, 0 means not enforcing
          */
-        minRssi?: number;
+        minRssi: number;
         /**
          * Data Rates template to apply. enum: 
          *   * `no-legacy`: no 11b
@@ -15208,7 +15202,7 @@ Please update your configurations.
          *   * `high-density`: no 11b, no low rates
          *   * `custom`: user defined
          */
-        template?: string;
+        template: string;
         /**
          * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
          */

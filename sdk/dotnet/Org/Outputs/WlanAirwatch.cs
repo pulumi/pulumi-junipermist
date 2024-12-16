@@ -16,32 +16,32 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// API Key
         /// </summary>
-        public readonly string ApiKey;
+        public readonly string? ApiKey;
         /// <summary>
         /// console URL
         /// </summary>
-        public readonly string ConsoleUrl;
+        public readonly string? ConsoleUrl;
         public readonly bool? Enabled;
         /// <summary>
         /// password
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// username
         /// </summary>
-        public readonly string Username;
+        public readonly string? Username;
 
         [OutputConstructor]
         private WlanAirwatch(
-            string apiKey,
+            string? apiKey,
 
-            string consoleUrl,
+            string? consoleUrl,
 
             bool? enabled,
 
-            string password,
+            string? password,
 
-            string username)
+            string? username)
         {
             ApiKey = apiKey;
             ConsoleUrl = consoleUrl;

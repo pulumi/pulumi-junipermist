@@ -28,7 +28,6 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// enum: `cloud_psks`, `radius`
         /// </summary>
         public readonly string? Source;
-        public readonly ImmutableArray<string> VlanIds;
 
         [OutputConstructor]
         private WlanDynamicPsk(
@@ -40,16 +39,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
 
             bool? forceLookup,
 
-            string? source,
-
-            ImmutableArray<string> vlanIds)
+            string? source)
         {
             DefaultPsk = defaultPsk;
             DefaultVlanId = defaultVlanId;
             Enabled = enabled;
             ForceLookup = forceLookup;
             Source = source;
-            VlanIds = vlanIds;
         }
     }
 }

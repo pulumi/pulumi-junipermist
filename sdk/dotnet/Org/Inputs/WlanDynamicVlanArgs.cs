@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether to enable dynamic vlan
+        /// Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

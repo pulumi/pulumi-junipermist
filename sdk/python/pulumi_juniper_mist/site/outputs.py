@@ -8212,27 +8212,31 @@ class WlanAirwatch(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 api_key: str,
-                 console_url: str,
-                 password: str,
-                 username: str,
-                 enabled: Optional[bool] = None):
+                 api_key: Optional[str] = None,
+                 console_url: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 password: Optional[str] = None,
+                 username: Optional[str] = None):
         """
         :param str api_key: API Key
         :param str console_url: console URL
         :param str password: password
         :param str username: username
         """
-        pulumi.set(__self__, "api_key", api_key)
-        pulumi.set(__self__, "console_url", console_url)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if console_url is not None:
+            pulumi.set(__self__, "console_url", console_url)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="apiKey")
-    def api_key(self) -> str:
+    def api_key(self) -> Optional[str]:
         """
         API Key
         """
@@ -8240,7 +8244,7 @@ class WlanAirwatch(dict):
 
     @property
     @pulumi.getter(name="consoleUrl")
-    def console_url(self) -> str:
+    def console_url(self) -> Optional[str]:
         """
         console URL
         """
@@ -8248,7 +8252,12 @@ class WlanAirwatch(dict):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
         """
         password
         """
@@ -8256,16 +8265,11 @@ class WlanAirwatch(dict):
 
     @property
     @pulumi.getter
-    def username(self) -> str:
+    def username(self) -> Optional[str]:
         """
         username
         """
         return pulumi.get(self, "username")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -9092,8 +9096,6 @@ class WlanDynamicPsk(dict):
             suggest = "default_vlan_id"
         elif key == "forceLookup":
             suggest = "force_lookup"
-        elif key == "vlanIds":
-            suggest = "vlan_ids"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WlanDynamicPsk. Access the value via the '{suggest}' property getter instead.")
@@ -9111,8 +9113,7 @@ class WlanDynamicPsk(dict):
                  default_vlan_id: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  force_lookup: Optional[bool] = None,
-                 source: Optional[str] = None,
-                 vlan_ids: Optional[Sequence[str]] = None):
+                 source: Optional[str] = None):
         """
         :param str default_psk: default PSK to use if cloud WLC is not available, 8-63 characters
         :param bool force_lookup: when 11r is enabled, we'll try to use the cached PMK, this can be disabled
@@ -9129,8 +9130,6 @@ class WlanDynamicPsk(dict):
             pulumi.set(__self__, "force_lookup", force_lookup)
         if source is not None:
             pulumi.set(__self__, "source", source)
-        if vlan_ids is not None:
-            pulumi.set(__self__, "vlan_ids", vlan_ids)
 
     @property
     @pulumi.getter(name="defaultPsk")
@@ -9167,11 +9166,6 @@ class WlanDynamicPsk(dict):
         """
         return pulumi.get(self, "source")
 
-    @property
-    @pulumi.getter(name="vlanIds")
-    def vlan_ids(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "vlan_ids")
-
 
 @pulumi.output_type
 class WlanDynamicVlan(dict):
@@ -9202,7 +9196,7 @@ class WlanDynamicVlan(dict):
                  vlans: Optional[Mapping[str, str]] = None):
         """
         :param Sequence[str] default_vlan_ids: Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
-        :param bool enabled: whether to enable dynamic vlan
+        :param bool enabled: Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
         :param Sequence[str] local_vlan_ids: vlan_ids to be locally bridged
         :param str type: standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
         :param Mapping[str, str] vlans: map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
@@ -9231,7 +9225,7 @@ class WlanDynamicVlan(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        whether to enable dynamic vlan
+        Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
         """
         return pulumi.get(self, "enabled")
 
@@ -9598,12 +9592,12 @@ class WlanPortal(dict):
                  amazon_client_secret: Optional[str] = None,
                  amazon_email_domains: Optional[Sequence[str]] = None,
                  amazon_enabled: Optional[bool] = None,
-                 amazon_expire: Optional[float] = None,
+                 amazon_expire: Optional[int] = None,
                  auth: Optional[str] = None,
                  azure_client_id: Optional[str] = None,
                  azure_client_secret: Optional[str] = None,
                  azure_enabled: Optional[bool] = None,
-                 azure_expire: Optional[float] = None,
+                 azure_expire: Optional[int] = None,
                  azure_tenant_id: Optional[str] = None,
                  broadnet_password: Optional[str] = None,
                  broadnet_sid: Optional[str] = None,
@@ -9613,29 +9607,29 @@ class WlanPortal(dict):
                  cross_site: Optional[bool] = None,
                  email_enabled: Optional[bool] = None,
                  enabled: Optional[bool] = None,
-                 expire: Optional[float] = None,
+                 expire: Optional[int] = None,
                  external_portal_url: Optional[str] = None,
                  facebook_client_id: Optional[str] = None,
                  facebook_client_secret: Optional[str] = None,
                  facebook_email_domains: Optional[Sequence[str]] = None,
                  facebook_enabled: Optional[bool] = None,
-                 facebook_expire: Optional[float] = None,
+                 facebook_expire: Optional[int] = None,
                  forward: Optional[bool] = None,
                  forward_url: Optional[str] = None,
                  google_client_id: Optional[str] = None,
                  google_client_secret: Optional[str] = None,
                  google_email_domains: Optional[Sequence[str]] = None,
                  google_enabled: Optional[bool] = None,
-                 google_expire: Optional[float] = None,
+                 google_expire: Optional[int] = None,
                  gupshup_password: Optional[str] = None,
                  gupshup_userid: Optional[str] = None,
                  microsoft_client_id: Optional[str] = None,
                  microsoft_client_secret: Optional[str] = None,
                  microsoft_email_domains: Optional[Sequence[str]] = None,
                  microsoft_enabled: Optional[bool] = None,
-                 microsoft_expire: Optional[float] = None,
+                 microsoft_expire: Optional[int] = None,
                  passphrase_enabled: Optional[bool] = None,
-                 passphrase_expire: Optional[float] = None,
+                 passphrase_expire: Optional[int] = None,
                  password: Optional[str] = None,
                  predefined_sponsors_enabled: Optional[bool] = None,
                  predefined_sponsors_hide_email: Optional[bool] = None,
@@ -9644,13 +9638,13 @@ class WlanPortal(dict):
                  puzzel_service_id: Optional[str] = None,
                  puzzel_username: Optional[str] = None,
                  sms_enabled: Optional[bool] = None,
-                 sms_expire: Optional[float] = None,
+                 sms_expire: Optional[int] = None,
                  sms_message_format: Optional[str] = None,
                  sms_provider: Optional[str] = None,
                  sponsor_auto_approve: Optional[bool] = None,
                  sponsor_email_domains: Optional[Sequence[str]] = None,
                  sponsor_enabled: Optional[bool] = None,
-                 sponsor_expire: Optional[float] = None,
+                 sponsor_expire: Optional[int] = None,
                  sponsor_link_validity_duration: Optional[str] = None,
                  sponsor_notify_all: Optional[bool] = None,
                  sponsor_status_notify: Optional[bool] = None,
@@ -9668,86 +9662,82 @@ class WlanPortal(dict):
                  twilio_phone_number: Optional[str] = None,
                  twilio_sid: Optional[str] = None):
         """
-        :param bool allow_wlan_id_roam: whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
-        :param str amazon_client_id: amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
-        :param str amazon_client_secret: amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
-        :param Sequence[str] amazon_email_domains: Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param bool allow_wlan_id_roam: Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+        :param str amazon_client_id: Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+        :param str amazon_client_secret: Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+        :param Sequence[str] amazon_email_domains: Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param bool amazon_enabled: whether amazon is enabled as a login method
-        :param float amazon_expire: interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
-        :param str auth: authentication scheme. enum: `external`, `none`, `sso`
-        :param str azure_client_id: Required if `azure_enabled`==`true`.
-               Azure active directory app client id
-        :param str azure_client_secret: Required if `azure_enabled`==`true`.
-               Azure active directory app client secret
+        :param int amazon_expire: Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+        :param str auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+        :param str azure_client_id: Required if `azure_enabled`==`true`. Azure active directory app client id
+        :param str azure_client_secret: Required if `azure_enabled`==`true`. Azure active directory app client secret
         :param bool azure_enabled: whether Azure Active Directory is enabled as a login method
-        :param float azure_expire: interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
-        :param str azure_tenant_id: Required if `azure_enabled`==`true`.
-               Azure active directory tenant id.
-        :param str broadnet_password: when `sms_provider`==`broadnet`
-        :param str broadnet_sid: when `sms_provider`==`broadnet`
-        :param str broadnet_user_id: when `sms_provider`==`broadnet`
+        :param int azure_expire: interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+        :param str azure_tenant_id: Required if `azure_enabled`==`true`. Azure active directory tenant id.
+        :param str broadnet_password: Required if `sms_provider`==`broadnet`
+        :param str broadnet_sid: Required if `sms_provider`==`broadnet`
+        :param str broadnet_user_id: Required if `sms_provider`==`broadnet`
         :param bool bypass_when_cloud_down: whether to bypass the guest portal when cloud not reachable (and apply the default policies)
-        :param str clickatell_api_key: when `sms_provider`==`clickatell`
+        :param str clickatell_api_key: Required if `sms_provider`==`clickatell`
         :param bool cross_site: whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
         :param bool email_enabled: whether email (access code verification) is enabled as a login method
         :param bool enabled: whether guest portal is enabled
-        :param float expire: how long to remain authorized, in minutes
-        :param str external_portal_url: external portal URL (e.g. https://host/url) where we can append our query parameters to
-        :param str facebook_client_id: Required if `facebook_enabled`==`true`.
-               Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
-        :param str facebook_client_secret: Required if `facebook_enabled`==`true`.
-               Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
-        :param Sequence[str] facebook_email_domains: Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param int expire: how long to remain authorized, in minutes
+        :param str external_portal_url: Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+        :param str facebook_client_id: Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+        :param str facebook_client_secret: Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+        :param Sequence[str] facebook_email_domains: Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param bool facebook_enabled: whether facebook is enabled as a login method
-        :param float facebook_expire: interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+        :param int facebook_expire: Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
         :param bool forward: whether to forward the user to another URL after authorized
         :param str forward_url: the URL to forward the user to
         :param str google_client_id: Google OAuth2 app id. This is optional. If not provided, it will use a default one.
-        :param str google_client_secret: Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
-        :param Sequence[str] google_email_domains: Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param str google_client_secret: Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+        :param Sequence[str] google_email_domains: Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param bool google_enabled: whether google is enabled as login method
-        :param float google_expire: interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
-        :param str gupshup_password: when `sms_provider`==`gupshup`
-        :param str gupshup_userid: when `sms_provider`==`gupshup`
-        :param str microsoft_client_id: microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
-        :param str microsoft_client_secret: microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
-        :param Sequence[str] microsoft_email_domains: Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        :param int google_expire: Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        :param str gupshup_password: Required if `sms_provider`==`gupshup`
+        :param str gupshup_userid: Required if `sms_provider`==`gupshup`
+        :param str microsoft_client_id: Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+        :param str microsoft_client_secret: Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+        :param Sequence[str] microsoft_email_domains: Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         :param bool microsoft_enabled: whether microsoft 365 is enabled as a login method
-        :param float microsoft_expire: interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
-        :param bool passphrase_enabled: whether password is enabled
-        :param float passphrase_expire: interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
-        :param str password: passphrase
+        :param int microsoft_expire: Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+        :param bool passphrase_enabled: Whether password is enabled
+        :param int passphrase_expire: Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+        :param str password: Required if `passphrase_enabled`==`true`.
         :param bool predefined_sponsors_enabled: whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
         :param bool predefined_sponsors_hide_email: whether to hide sponsor’s email from list of sponsors
-        :param str puzzel_password: when `sms_provider`==`puzzel`
-        :param str puzzel_service_id: when `sms_provider`==`puzzel`
-        :param str puzzel_username: when `sms_provider`==`puzzel`
+        :param str puzzel_password: Required if `sms_provider`==`puzzel`
+        :param str puzzel_service_id: Required if `sms_provider`==`puzzel`
+        :param str puzzel_username: Required if `sms_provider`==`puzzel`
         :param bool sms_enabled: whether sms is enabled as a login method
-        :param float sms_expire: interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
-        :param str sms_provider: enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
-        :param bool sponsor_auto_approve: whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+        :param int sms_expire: Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+        :param str sms_message_format: Optional if `sms_enabled`==`true`. SMS Message format
+        :param str sms_provider: Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        :param bool sponsor_auto_approve: Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
         :param Sequence[str] sponsor_email_domains: list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         :param bool sponsor_enabled: whether sponsor is enabled
-        :param float sponsor_expire: interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
-        :param str sponsor_link_validity_duration: how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
-        :param bool sponsor_notify_all: whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
-        :param bool sponsor_status_notify: if enabled, guest will get email about sponsor's action (approve/deny)
+        :param int sponsor_expire: Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+        :param str sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        :param bool sponsor_notify_all: Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+        :param bool sponsor_status_notify: Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
         :param Mapping[str, str] sponsors: object of allowed sponsors email with name. Required if `sponsor_enabled`
                            is `true` and `sponsor_email_domains` is empty.
                
                            Property key is the sponsor email, Property value is the sponsor name
-        :param str sso_default_role: if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
-        :param str sso_forced_role: if `wlan_portal_auth`==`sso`
-        :param str sso_idp_cert: if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
-        :param str sso_idp_sign_algo: if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
-        :param str sso_idp_sso_url: if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
-        :param str sso_issuer: if `wlan_portal_auth`==`sso`, IDP issuer URL
-        :param str sso_nameid_format: if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
-        :param str telstra_client_id: when `sms_provider`==`telstra`, Client ID provided by Telstra
-        :param str telstra_client_secret: when `sms_provider`==`telstra`, Client secret provided by Telstra
-        :param str twilio_auth_token: when `sms_provider`==`twilio`, Auth token account with twilio account
-        :param str twilio_phone_number: when `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
-        :param str twilio_sid: when `sms_provider`==`twilio`, Account SID provided by Twilio
+        :param str sso_default_role: Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        :param str sso_forced_role: Optionl if `wlan_portal_auth`==`sso`
+        :param str sso_idp_cert: Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
+        :param str sso_idp_sign_algo: Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        :param str sso_idp_sso_url: Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+        :param str sso_issuer: Required if `wlan_portal_auth`==`sso`, IDP issuer URL
+        :param str sso_nameid_format: Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+        :param str telstra_client_id: Required if `sms_provider`==`telstra`, Client ID provided by Telstra
+        :param str telstra_client_secret: Required if `sms_provider`==`telstra`, Client secret provided by Telstra
+        :param str twilio_auth_token: Required if `sms_provider`==`twilio`, Auth token account with twilio account
+        :param str twilio_phone_number: Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+        :param str twilio_sid: Required if `sms_provider`==`twilio`, Account SID provided by Twilio
         """
         if allow_wlan_id_roam is not None:
             pulumi.set(__self__, "allow_wlan_id_roam", allow_wlan_id_roam)
@@ -9902,7 +9892,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="allowWlanIdRoam")
     def allow_wlan_id_roam(self) -> Optional[bool]:
         """
-        whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
+        Optional if `amazon_enabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable random_mac for seamless roaming)
         """
         return pulumi.get(self, "allow_wlan_id_roam")
 
@@ -9910,7 +9900,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="amazonClientId")
     def amazon_client_id(self) -> Optional[str]:
         """
-        amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+        Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         """
         return pulumi.get(self, "amazon_client_id")
 
@@ -9918,7 +9908,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="amazonClientSecret")
     def amazon_client_secret(self) -> Optional[str]:
         """
-        amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
+        Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
         """
         return pulumi.get(self, "amazon_client_secret")
 
@@ -9926,7 +9916,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="amazonEmailDomains")
     def amazon_email_domains(self) -> Optional[Sequence[str]]:
         """
-        Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         """
         return pulumi.get(self, "amazon_email_domains")
 
@@ -9940,9 +9930,9 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="amazonExpire")
-    def amazon_expire(self) -> Optional[float]:
+    def amazon_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+        Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "amazon_expire")
 
@@ -9950,7 +9940,7 @@ class WlanPortal(dict):
     @pulumi.getter
     def auth(self) -> Optional[str]:
         """
-        authentication scheme. enum: `external`, `none`, `sso`
+        authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
         """
         return pulumi.get(self, "auth")
 
@@ -9958,8 +9948,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="azureClientId")
     def azure_client_id(self) -> Optional[str]:
         """
-        Required if `azure_enabled`==`true`.
-        Azure active directory app client id
+        Required if `azure_enabled`==`true`. Azure active directory app client id
         """
         return pulumi.get(self, "azure_client_id")
 
@@ -9967,8 +9956,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="azureClientSecret")
     def azure_client_secret(self) -> Optional[str]:
         """
-        Required if `azure_enabled`==`true`.
-        Azure active directory app client secret
+        Required if `azure_enabled`==`true`. Azure active directory app client secret
         """
         return pulumi.get(self, "azure_client_secret")
 
@@ -9982,7 +9970,7 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="azureExpire")
-    def azure_expire(self) -> Optional[float]:
+    def azure_expire(self) -> Optional[int]:
         """
         interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         """
@@ -9992,8 +9980,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="azureTenantId")
     def azure_tenant_id(self) -> Optional[str]:
         """
-        Required if `azure_enabled`==`true`.
-        Azure active directory tenant id.
+        Required if `azure_enabled`==`true`. Azure active directory tenant id.
         """
         return pulumi.get(self, "azure_tenant_id")
 
@@ -10001,7 +9988,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="broadnetPassword")
     def broadnet_password(self) -> Optional[str]:
         """
-        when `sms_provider`==`broadnet`
+        Required if `sms_provider`==`broadnet`
         """
         return pulumi.get(self, "broadnet_password")
 
@@ -10009,7 +9996,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="broadnetSid")
     def broadnet_sid(self) -> Optional[str]:
         """
-        when `sms_provider`==`broadnet`
+        Required if `sms_provider`==`broadnet`
         """
         return pulumi.get(self, "broadnet_sid")
 
@@ -10017,7 +10004,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="broadnetUserId")
     def broadnet_user_id(self) -> Optional[str]:
         """
-        when `sms_provider`==`broadnet`
+        Required if `sms_provider`==`broadnet`
         """
         return pulumi.get(self, "broadnet_user_id")
 
@@ -10033,7 +10020,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="clickatellApiKey")
     def clickatell_api_key(self) -> Optional[str]:
         """
-        when `sms_provider`==`clickatell`
+        Required if `sms_provider`==`clickatell`
         """
         return pulumi.get(self, "clickatell_api_key")
 
@@ -10063,7 +10050,7 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter
-    def expire(self) -> Optional[float]:
+    def expire(self) -> Optional[int]:
         """
         how long to remain authorized, in minutes
         """
@@ -10073,7 +10060,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="externalPortalUrl")
     def external_portal_url(self) -> Optional[str]:
         """
-        external portal URL (e.g. https://host/url) where we can append our query parameters to
+        Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
         """
         return pulumi.get(self, "external_portal_url")
 
@@ -10081,8 +10068,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="facebookClientId")
     def facebook_client_id(self) -> Optional[str]:
         """
-        Required if `facebook_enabled`==`true`.
-        Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+        Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
         """
         return pulumi.get(self, "facebook_client_id")
 
@@ -10090,8 +10076,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="facebookClientSecret")
     def facebook_client_secret(self) -> Optional[str]:
         """
-        Required if `facebook_enabled`==`true`.
-        Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
+        Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
         """
         return pulumi.get(self, "facebook_client_secret")
 
@@ -10099,7 +10084,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="facebookEmailDomains")
     def facebook_email_domains(self) -> Optional[Sequence[str]]:
         """
-        Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         """
         return pulumi.get(self, "facebook_email_domains")
 
@@ -10113,9 +10098,9 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="facebookExpire")
-    def facebook_expire(self) -> Optional[float]:
+    def facebook_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+        Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "facebook_expire")
 
@@ -10147,7 +10132,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="googleClientSecret")
     def google_client_secret(self) -> Optional[str]:
         """
-        Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
+        Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
         """
         return pulumi.get(self, "google_client_secret")
 
@@ -10155,7 +10140,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="googleEmailDomains")
     def google_email_domains(self) -> Optional[Sequence[str]]:
         """
-        Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         """
         return pulumi.get(self, "google_email_domains")
 
@@ -10169,9 +10154,9 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="googleExpire")
-    def google_expire(self) -> Optional[float]:
+    def google_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "google_expire")
 
@@ -10179,7 +10164,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="gupshupPassword")
     def gupshup_password(self) -> Optional[str]:
         """
-        when `sms_provider`==`gupshup`
+        Required if `sms_provider`==`gupshup`
         """
         return pulumi.get(self, "gupshup_password")
 
@@ -10187,7 +10172,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="gupshupUserid")
     def gupshup_userid(self) -> Optional[str]:
         """
-        when `sms_provider`==`gupshup`
+        Required if `sms_provider`==`gupshup`
         """
         return pulumi.get(self, "gupshup_userid")
 
@@ -10195,7 +10180,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="microsoftClientId")
     def microsoft_client_id(self) -> Optional[str]:
         """
-        microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+        Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
         """
         return pulumi.get(self, "microsoft_client_id")
 
@@ -10203,7 +10188,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="microsoftClientSecret")
     def microsoft_client_secret(self) -> Optional[str]:
         """
-        microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
+        Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
         """
         return pulumi.get(self, "microsoft_client_secret")
 
@@ -10211,7 +10196,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="microsoftEmailDomains")
     def microsoft_email_domains(self) -> Optional[Sequence[str]]:
         """
-        Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+        Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
         """
         return pulumi.get(self, "microsoft_email_domains")
 
@@ -10225,9 +10210,9 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="microsoftExpire")
-    def microsoft_expire(self) -> Optional[float]:
+    def microsoft_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+        Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "microsoft_expire")
 
@@ -10235,15 +10220,15 @@ class WlanPortal(dict):
     @pulumi.getter(name="passphraseEnabled")
     def passphrase_enabled(self) -> Optional[bool]:
         """
-        whether password is enabled
+        Whether password is enabled
         """
         return pulumi.get(self, "passphrase_enabled")
 
     @property
     @pulumi.getter(name="passphraseExpire")
-    def passphrase_expire(self) -> Optional[float]:
+    def passphrase_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+        Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
         """
         return pulumi.get(self, "passphrase_expire")
 
@@ -10251,7 +10236,7 @@ class WlanPortal(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        passphrase
+        Required if `passphrase_enabled`==`true`.
         """
         return pulumi.get(self, "password")
 
@@ -10280,7 +10265,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="puzzelPassword")
     def puzzel_password(self) -> Optional[str]:
         """
-        when `sms_provider`==`puzzel`
+        Required if `sms_provider`==`puzzel`
         """
         return pulumi.get(self, "puzzel_password")
 
@@ -10288,7 +10273,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="puzzelServiceId")
     def puzzel_service_id(self) -> Optional[str]:
         """
-        when `sms_provider`==`puzzel`
+        Required if `sms_provider`==`puzzel`
         """
         return pulumi.get(self, "puzzel_service_id")
 
@@ -10296,7 +10281,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="puzzelUsername")
     def puzzel_username(self) -> Optional[str]:
         """
-        when `sms_provider`==`puzzel`
+        Required if `sms_provider`==`puzzel`
         """
         return pulumi.get(self, "puzzel_username")
 
@@ -10310,22 +10295,25 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="smsExpire")
-    def sms_expire(self) -> Optional[float]:
+    def sms_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+        Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "sms_expire")
 
     @property
     @pulumi.getter(name="smsMessageFormat")
     def sms_message_format(self) -> Optional[str]:
+        """
+        Optional if `sms_enabled`==`true`. SMS Message format
+        """
         return pulumi.get(self, "sms_message_format")
 
     @property
     @pulumi.getter(name="smsProvider")
     def sms_provider(self) -> Optional[str]:
         """
-        enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+        Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
         """
         return pulumi.get(self, "sms_provider")
 
@@ -10333,7 +10321,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="sponsorAutoApprove")
     def sponsor_auto_approve(self) -> Optional[bool]:
         """
-        whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
+        Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
         """
         return pulumi.get(self, "sponsor_auto_approve")
 
@@ -10355,9 +10343,9 @@ class WlanPortal(dict):
 
     @property
     @pulumi.getter(name="sponsorExpire")
-    def sponsor_expire(self) -> Optional[float]:
+    def sponsor_expire(self) -> Optional[int]:
         """
-        interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+        Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "sponsor_expire")
 
@@ -10365,7 +10353,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="sponsorLinkValidityDuration")
     def sponsor_link_validity_duration(self) -> Optional[str]:
         """
-        how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+        Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         """
         return pulumi.get(self, "sponsor_link_validity_duration")
 
@@ -10373,7 +10361,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="sponsorNotifyAll")
     def sponsor_notify_all(self) -> Optional[bool]:
         """
-        whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+        Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
         """
         return pulumi.get(self, "sponsor_notify_all")
 
@@ -10381,7 +10369,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="sponsorStatusNotify")
     def sponsor_status_notify(self) -> Optional[bool]:
         """
-        if enabled, guest will get email about sponsor's action (approve/deny)
+        Optional if `sponsor_enabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
         """
         return pulumi.get(self, "sponsor_status_notify")
 
@@ -10400,7 +10388,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoDefaultRole")
     def sso_default_role(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+        Optionl if `wlan_portal_auth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
         """
         return pulumi.get(self, "sso_default_role")
 
@@ -10408,7 +10396,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoForcedRole")
     def sso_forced_role(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`
+        Optionl if `wlan_portal_auth`==`sso`
         """
         return pulumi.get(self, "sso_forced_role")
 
@@ -10416,7 +10404,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoIdpCert")
     def sso_idp_cert(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`, IDP Cert (used to verify the signed response)
+        Required if `wlan_portal_auth`==`sso`. IDP Cert (used to verify the signed response)
         """
         return pulumi.get(self, "sso_idp_cert")
 
@@ -10424,7 +10412,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoIdpSignAlgo")
     def sso_idp_sign_algo(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+        Optioanl if `wlan_portal_auth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
         """
         return pulumi.get(self, "sso_idp_sign_algo")
 
@@ -10432,7 +10420,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoIdpSsoUrl")
     def sso_idp_sso_url(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
+        Required if `wlan_portal_auth`==`sso`, IDP Single-Sign-On URL
         """
         return pulumi.get(self, "sso_idp_sso_url")
 
@@ -10440,7 +10428,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoIssuer")
     def sso_issuer(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`, IDP issuer URL
+        Required if `wlan_portal_auth`==`sso`, IDP issuer URL
         """
         return pulumi.get(self, "sso_issuer")
 
@@ -10448,7 +10436,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="ssoNameidFormat")
     def sso_nameid_format(self) -> Optional[str]:
         """
-        if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
+        Optional if `wlan_portal_auth`==`sso`. enum: `email`, `unspecified`
         """
         return pulumi.get(self, "sso_nameid_format")
 
@@ -10456,7 +10444,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="telstraClientId")
     def telstra_client_id(self) -> Optional[str]:
         """
-        when `sms_provider`==`telstra`, Client ID provided by Telstra
+        Required if `sms_provider`==`telstra`, Client ID provided by Telstra
         """
         return pulumi.get(self, "telstra_client_id")
 
@@ -10464,7 +10452,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="telstraClientSecret")
     def telstra_client_secret(self) -> Optional[str]:
         """
-        when `sms_provider`==`telstra`, Client secret provided by Telstra
+        Required if `sms_provider`==`telstra`, Client secret provided by Telstra
         """
         return pulumi.get(self, "telstra_client_secret")
 
@@ -10472,7 +10460,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="twilioAuthToken")
     def twilio_auth_token(self) -> Optional[str]:
         """
-        when `sms_provider`==`twilio`, Auth token account with twilio account
+        Required if `sms_provider`==`twilio`, Auth token account with twilio account
         """
         return pulumi.get(self, "twilio_auth_token")
 
@@ -10480,7 +10468,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="twilioPhoneNumber")
     def twilio_phone_number(self) -> Optional[str]:
         """
-        when `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+        Required if `sms_provider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
         """
         return pulumi.get(self, "twilio_phone_number")
 
@@ -10488,7 +10476,7 @@ class WlanPortal(dict):
     @pulumi.getter(name="twilioSid")
     def twilio_sid(self) -> Optional[str]:
         """
-        when `sms_provider`==`twilio`, Account SID provided by Twilio
+        Required if `sms_provider`==`twilio`, Account SID provided by Twilio
         """
         return pulumi.get(self, "twilio_sid")
 

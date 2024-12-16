@@ -8372,20 +8372,20 @@ Please update your configurations.
         /**
          * API Key
          */
-        apiKey: pulumi.Input<string>;
+        apiKey?: pulumi.Input<string>;
         /**
          * console URL
          */
-        consoleUrl: pulumi.Input<string>;
+        consoleUrl?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         /**
          * password
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * username
          */
-        username: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
     }
 
     export interface WlanAppLimit {
@@ -8588,7 +8588,6 @@ Please update your configurations.
          * enum: `cloudPsks`, `radius`
          */
         source?: pulumi.Input<string>;
-        vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface WlanDynamicVlan {
@@ -8597,7 +8596,7 @@ Please update your configurations.
          */
         defaultVlanIds: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * whether to enable dynamic vlan
+         * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
         enabled?: pulumi.Input<boolean>;
         /**
@@ -8666,19 +8665,19 @@ Please update your configurations.
 
     export interface WlanPortal {
         /**
-         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
          */
         allowWlanIdRoam?: pulumi.Input<boolean>;
         /**
-         * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         amazonClientId?: pulumi.Input<string>;
         /**
-         * amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
          */
         amazonClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         amazonEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -8686,21 +8685,19 @@ Please update your configurations.
          */
         amazonEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
          */
         amazonExpire?: pulumi.Input<number>;
         /**
-         * authentication scheme. enum: `external`, `none`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
          */
         auth?: pulumi.Input<string>;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client id
+         * Required if `azureEnabled`==`true`. Azure active directory app client id
          */
         azureClientId?: pulumi.Input<string>;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client secret
+         * Required if `azureEnabled`==`true`. Azure active directory app client secret
          */
         azureClientSecret?: pulumi.Input<string>;
         /**
@@ -8712,20 +8709,19 @@ Please update your configurations.
          */
         azureExpire?: pulumi.Input<number>;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory tenant id.
+         * Required if `azureEnabled`==`true`. Azure active directory tenant id.
          */
         azureTenantId?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetPassword?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetSid?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetUserId?: pulumi.Input<string>;
         /**
@@ -8733,7 +8729,7 @@ Please update your configurations.
          */
         bypassWhenCloudDown?: pulumi.Input<boolean>;
         /**
-         * when `smsProvider`==`clickatell`
+         * Required if `smsProvider`==`clickatell`
          */
         clickatellApiKey?: pulumi.Input<string>;
         /**
@@ -8753,21 +8749,19 @@ Please update your configurations.
          */
         expire?: pulumi.Input<number>;
         /**
-         * external portal URL (e.g. https://host/url) where we can append our query parameters to
+         * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
          */
         externalPortalUrl?: pulumi.Input<string>;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
          */
         facebookClientId?: pulumi.Input<string>;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
          */
         facebookClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         facebookEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -8775,7 +8769,7 @@ Please update your configurations.
          */
         facebookEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
          */
         facebookExpire?: pulumi.Input<number>;
         /**
@@ -8791,11 +8785,11 @@ Please update your configurations.
          */
         googleClientId?: pulumi.Input<string>;
         /**
-         * Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
          */
         googleClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         googleEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -8803,27 +8797,27 @@ Please update your configurations.
          */
         googleEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+         * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
          */
         googleExpire?: pulumi.Input<number>;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
         gupshupPassword?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
         gupshupUserid?: pulumi.Input<string>;
         /**
-         * microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         microsoftClientId?: pulumi.Input<string>;
         /**
-         * microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
          */
         microsoftClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         microsoftEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -8831,19 +8825,19 @@ Please update your configurations.
          */
         microsoftEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
          */
         microsoftExpire?: pulumi.Input<number>;
         /**
-         * whether password is enabled
+         * Whether password is enabled
          */
         passphraseEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
          */
         passphraseExpire?: pulumi.Input<number>;
         /**
-         * passphrase
+         * Required if `passphraseEnabled`==`true`.
          */
         password?: pulumi.Input<string>;
         /**
@@ -8856,15 +8850,15 @@ Please update your configurations.
         predefinedSponsorsHideEmail?: pulumi.Input<boolean>;
         privacy?: pulumi.Input<boolean>;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
         puzzelPassword?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
         puzzelServiceId?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
         puzzelUsername?: pulumi.Input<string>;
         /**
@@ -8872,16 +8866,19 @@ Please update your configurations.
          */
         smsEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
          */
         smsExpire?: pulumi.Input<number>;
+        /**
+         * Optional if `smsEnabled`==`true`. SMS Message format
+         */
         smsMessageFormat?: pulumi.Input<string>;
         /**
-         * enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
          */
         smsProvider?: pulumi.Input<string>;
         /**
-         * whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+         * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
         sponsorAutoApprove?: pulumi.Input<boolean>;
         /**
@@ -8893,19 +8890,19 @@ Please update your configurations.
          */
         sponsorEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          */
         sponsorExpire?: pulumi.Input<number>;
         /**
-         * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
         sponsorLinkValidityDuration?: pulumi.Input<string>;
         /**
-         * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
         sponsorNotifyAll?: pulumi.Input<boolean>;
         /**
-         * if enabled, guest will get email about sponsor's action (approve/deny)
+         * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
          */
         sponsorStatusNotify?: pulumi.Input<boolean>;
         /**
@@ -8916,51 +8913,51 @@ Please update your configurations.
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`
+         * Optionl if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+         * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
          */
         ssoIdpCert?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+         * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP issuer URL
+         * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+         * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`telstra`, Client ID provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
          */
         telstraClientId?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`telstra`, Client secret provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
          */
         telstraClientSecret?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`twilio`, Auth token account with twilio account
+         * Required if `smsProvider`==`twilio`, Auth token account with twilio account
          */
         twilioAuthToken?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
          */
         twilioPhoneNumber?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`twilio`, Account SID provided by Twilio
+         * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
          */
         twilioSid?: pulumi.Input<string>;
     }
@@ -11611,20 +11608,20 @@ Please update your configurations.
         /**
          * API Key
          */
-        apiKey: pulumi.Input<string>;
+        apiKey?: pulumi.Input<string>;
         /**
          * console URL
          */
-        consoleUrl: pulumi.Input<string>;
+        consoleUrl?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         /**
          * password
          */
-        password: pulumi.Input<string>;
+        password?: pulumi.Input<string>;
         /**
          * username
          */
-        username: pulumi.Input<string>;
+        username?: pulumi.Input<string>;
     }
 
     export interface WlanAppLimit {
@@ -11827,7 +11824,6 @@ Please update your configurations.
          * enum: `cloudPsks`, `radius`
          */
         source?: pulumi.Input<string>;
-        vlanIds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface WlanDynamicVlan {
@@ -11836,7 +11832,7 @@ Please update your configurations.
          */
         defaultVlanIds: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * whether to enable dynamic vlan
+         * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
          */
         enabled?: pulumi.Input<boolean>;
         /**
@@ -11905,19 +11901,19 @@ Please update your configurations.
 
     export interface WlanPortal {
         /**
-         * whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
          */
         allowWlanIdRoam?: pulumi.Input<boolean>;
         /**
-         * amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         amazonClientId?: pulumi.Input<string>;
         /**
-         * amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
          */
         amazonClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         amazonEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -11925,21 +11921,19 @@ Please update your configurations.
          */
         amazonEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
          */
         amazonExpire?: pulumi.Input<number>;
         /**
-         * authentication scheme. enum: `external`, `none`, `sso`
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
          */
         auth?: pulumi.Input<string>;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client id
+         * Required if `azureEnabled`==`true`. Azure active directory app client id
          */
         azureClientId?: pulumi.Input<string>;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory app client secret
+         * Required if `azureEnabled`==`true`. Azure active directory app client secret
          */
         azureClientSecret?: pulumi.Input<string>;
         /**
@@ -11951,20 +11945,19 @@ Please update your configurations.
          */
         azureExpire?: pulumi.Input<number>;
         /**
-         * Required if `azureEnabled`==`true`.
-         * Azure active directory tenant id.
+         * Required if `azureEnabled`==`true`. Azure active directory tenant id.
          */
         azureTenantId?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetPassword?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetSid?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`broadnet`
+         * Required if `smsProvider`==`broadnet`
          */
         broadnetUserId?: pulumi.Input<string>;
         /**
@@ -11972,7 +11965,7 @@ Please update your configurations.
          */
         bypassWhenCloudDown?: pulumi.Input<boolean>;
         /**
-         * when `smsProvider`==`clickatell`
+         * Required if `smsProvider`==`clickatell`
          */
         clickatellApiKey?: pulumi.Input<string>;
         /**
@@ -11992,21 +11985,19 @@ Please update your configurations.
          */
         expire?: pulumi.Input<number>;
         /**
-         * external portal URL (e.g. https://host/url) where we can append our query parameters to
+         * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
          */
         externalPortalUrl?: pulumi.Input<string>;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
          */
         facebookClientId?: pulumi.Input<string>;
         /**
-         * Required if `facebookEnabled`==`true`.
-         * Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
          */
         facebookClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         facebookEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -12014,7 +12005,7 @@ Please update your configurations.
          */
         facebookEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
          */
         facebookExpire?: pulumi.Input<number>;
         /**
@@ -12030,11 +12021,11 @@ Please update your configurations.
          */
         googleClientId?: pulumi.Input<string>;
         /**
-         * Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
          */
         googleClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         googleEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -12042,27 +12033,27 @@ Please update your configurations.
          */
         googleEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+         * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
          */
         googleExpire?: pulumi.Input<number>;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
         gupshupPassword?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`gupshup`
+         * Required if `smsProvider`==`gupshup`
          */
         gupshupUserid?: pulumi.Input<string>;
         /**
-         * microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
          */
         microsoftClientId?: pulumi.Input<string>;
         /**
-         * microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
          */
         microsoftClientSecret?: pulumi.Input<string>;
         /**
-         * Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
          */
         microsoftEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -12070,19 +12061,19 @@ Please update your configurations.
          */
         microsoftEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
          */
         microsoftExpire?: pulumi.Input<number>;
         /**
-         * whether password is enabled
+         * Whether password is enabled
          */
         passphraseEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
          */
         passphraseExpire?: pulumi.Input<number>;
         /**
-         * passphrase
+         * Required if `passphraseEnabled`==`true`.
          */
         password?: pulumi.Input<string>;
         /**
@@ -12095,15 +12086,15 @@ Please update your configurations.
         predefinedSponsorsHideEmail?: pulumi.Input<boolean>;
         privacy?: pulumi.Input<boolean>;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
         puzzelPassword?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
         puzzelServiceId?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`puzzel`
+         * Required if `smsProvider`==`puzzel`
          */
         puzzelUsername?: pulumi.Input<string>;
         /**
@@ -12111,16 +12102,19 @@ Please update your configurations.
          */
         smsEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
          */
         smsExpire?: pulumi.Input<number>;
+        /**
+         * Optional if `smsEnabled`==`true`. SMS Message format
+         */
         smsMessageFormat?: pulumi.Input<string>;
         /**
-         * enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
          */
         smsProvider?: pulumi.Input<string>;
         /**
-         * whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+         * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
          */
         sponsorAutoApprove?: pulumi.Input<boolean>;
         /**
@@ -12132,19 +12126,19 @@ Please update your configurations.
          */
         sponsorEnabled?: pulumi.Input<boolean>;
         /**
-         * interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
          */
         sponsorExpire?: pulumi.Input<number>;
         /**
-         * how long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
          */
         sponsorLinkValidityDuration?: pulumi.Input<string>;
         /**
-         * whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
          */
         sponsorNotifyAll?: pulumi.Input<boolean>;
         /**
-         * if enabled, guest will get email about sponsor's action (approve/deny)
+         * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
          */
         sponsorStatusNotify?: pulumi.Input<boolean>;
         /**
@@ -12155,51 +12149,51 @@ Please update your configurations.
          */
         sponsors?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
          */
         ssoDefaultRole?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`
+         * Optionl if `wlanPortalAuth`==`sso`
          */
         ssoForcedRole?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Cert (used to verify the signed response)
+         * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
          */
         ssoIdpCert?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
          */
         ssoIdpSignAlgo?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+         * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
          */
         ssoIdpSsoUrl?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`, IDP issuer URL
+         * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
          */
         ssoIssuer?: pulumi.Input<string>;
         /**
-         * if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+         * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
          */
         ssoNameidFormat?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`telstra`, Client ID provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
          */
         telstraClientId?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`telstra`, Client secret provided by Telstra
+         * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
          */
         telstraClientSecret?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`twilio`, Auth token account with twilio account
+         * Required if `smsProvider`==`twilio`, Auth token account with twilio account
          */
         twilioAuthToken?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
          */
         twilioPhoneNumber?: pulumi.Input<string>;
         /**
-         * when `smsProvider`==`twilio`, Account SID provided by Twilio
+         * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
          */
         twilioSid?: pulumi.Input<string>;
     }

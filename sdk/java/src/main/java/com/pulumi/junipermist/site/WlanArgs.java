@@ -582,6 +582,30 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+     * reach default gateway
+     * 
+     */
+    @Import(name="disableWhenGatewayUnreachable")
+    private @Nullable Output<Boolean> disableWhenGatewayUnreachable;
+
+    /**
+     * @return when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+     * reach default gateway
+     * 
+     */
+    public Optional<Output<Boolean>> disableWhenGatewayUnreachable() {
+        return Optional.ofNullable(this.disableWhenGatewayUnreachable);
+    }
+
+    @Import(name="disableWhenMxtunnelDown")
+    private @Nullable Output<Boolean> disableWhenMxtunnelDown;
+
+    public Optional<Output<Boolean>> disableWhenMxtunnelDown() {
+        return Optional.ofNullable(this.disableWhenMxtunnelDown);
+    }
+
+    /**
      * whether to disable WMM
      * 
      */
@@ -1078,6 +1102,21 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * when different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
+     * 
+     */
+    @Import(name="reconnectClientsWhenRoamingMxcluster")
+    private @Nullable Output<Boolean> reconnectClientsWhenRoamingMxcluster;
+
+    /**
+     * @return when different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
+     * 
+     */
+    public Optional<Output<Boolean>> reconnectClientsWhenRoamingMxcluster() {
+        return Optional.ofNullable(this.reconnectClientsWhenRoamingMxcluster);
+    }
+
+    /**
      * enum: `11r`, `OKC`, `NONE`
      * 
      */
@@ -1182,14 +1221,14 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * vlan_ids to use when there’s no match from RA
+     * if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<String>> vlanIds;
 
     /**
-     * @return vlan_ids to use when there’s no match from RA
+     * @return if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
      * 
      */
     public Optional<Output<List<String>>> vlanIds() {
@@ -1197,14 +1236,16 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+     * deterministic algorithm
      * 
      */
     @Import(name="vlanPooling")
     private @Nullable Output<Boolean> vlanPooling;
 
     /**
-     * @return vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+     * @return Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+     * deterministic algorithm
      * 
      */
     public Optional<Output<Boolean>> vlanPooling() {
@@ -1354,6 +1395,8 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         this.disableUapsd = $.disableUapsd;
         this.disableV1RoamNotify = $.disableV1RoamNotify;
         this.disableV2RoamNotify = $.disableV2RoamNotify;
+        this.disableWhenGatewayUnreachable = $.disableWhenGatewayUnreachable;
+        this.disableWhenMxtunnelDown = $.disableWhenMxtunnelDown;
         this.disableWmm = $.disableWmm;
         this.dnsServerRewrite = $.dnsServerRewrite;
         this.dtim = $.dtim;
@@ -1388,6 +1431,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         this.qos = $.qos;
         this.radsec = $.radsec;
         this.rateset = $.rateset;
+        this.reconnectClientsWhenRoamingMxcluster = $.reconnectClientsWhenRoamingMxcluster;
         this.roamMode = $.roamMode;
         this.schedule = $.schedule;
         this.siteId = $.siteId;
@@ -2228,6 +2272,38 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param disableWhenGatewayUnreachable when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+         * reach default gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableWhenGatewayUnreachable(@Nullable Output<Boolean> disableWhenGatewayUnreachable) {
+            $.disableWhenGatewayUnreachable = disableWhenGatewayUnreachable;
+            return this;
+        }
+
+        /**
+         * @param disableWhenGatewayUnreachable when any of the following is true, this WLAN will be disabled * cannot get IP * cannot obtain default gateway * cannot
+         * reach default gateway
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableWhenGatewayUnreachable(Boolean disableWhenGatewayUnreachable) {
+            return disableWhenGatewayUnreachable(Output.of(disableWhenGatewayUnreachable));
+        }
+
+        public Builder disableWhenMxtunnelDown(@Nullable Output<Boolean> disableWhenMxtunnelDown) {
+            $.disableWhenMxtunnelDown = disableWhenMxtunnelDown;
+            return this;
+        }
+
+        public Builder disableWhenMxtunnelDown(Boolean disableWhenMxtunnelDown) {
+            return disableWhenMxtunnelDown(Output.of(disableWhenMxtunnelDown));
+        }
+
+        /**
          * @param disableWmm whether to disable WMM
          * 
          * @return builder
@@ -2962,6 +3038,27 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param reconnectClientsWhenRoamingMxcluster when different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reconnectClientsWhenRoamingMxcluster(@Nullable Output<Boolean> reconnectClientsWhenRoamingMxcluster) {
+            $.reconnectClientsWhenRoamingMxcluster = reconnectClientsWhenRoamingMxcluster;
+            return this;
+        }
+
+        /**
+         * @param reconnectClientsWhenRoamingMxcluster when different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reconnectClientsWhenRoamingMxcluster(Boolean reconnectClientsWhenRoamingMxcluster) {
+            return reconnectClientsWhenRoamingMxcluster(Output.of(reconnectClientsWhenRoamingMxcluster));
+        }
+
+        /**
          * @param roamMode enum: `11r`, `OKC`, `NONE`
          * 
          * @return builder
@@ -3106,7 +3203,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds vlan_ids to use when there’s no match from RA
+         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3117,7 +3214,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds vlan_ids to use when there’s no match from RA
+         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3127,7 +3224,7 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanIds vlan_ids to use when there’s no match from RA
+         * @param vlanIds if `vlan_enabled`==`true` and `vlan_pooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
          * 
          * @return builder
          * 
@@ -3137,7 +3234,8 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanPooling vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+         * @param vlanPooling Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+         * deterministic algorithm
          * 
          * @return builder
          * 
@@ -3148,7 +3246,8 @@ public final class WlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlanPooling vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+         * @param vlanPooling Requires `vlan_enabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a
+         * deterministic algorithm
          * 
          * @return builder
          * 

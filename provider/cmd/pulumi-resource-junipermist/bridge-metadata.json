@@ -2304,13 +2304,6 @@
                     "coa_servers": {
                         "maxItemsOne": false
                     },
-                    "dynamic_psk": {
-                        "fields": {
-                            "vlan_ids": {
-                                "maxItemsOne": false
-                            }
-                        }
-                    },
                     "dynamic_vlan": {
                         "fields": {
                             "default_vlan_ids": {
@@ -3013,13 +3006,6 @@
                     },
                     "coa_servers": {
                         "maxItemsOne": false
-                    },
-                    "dynamic_psk": {
-                        "fields": {
-                            "vlan_ids": {
-                                "maxItemsOne": false
-                            }
-                        }
                     },
                     "dynamic_vlan": {
                         "fields": {
