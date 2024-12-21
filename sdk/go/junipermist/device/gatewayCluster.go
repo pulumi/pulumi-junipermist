@@ -17,11 +17,13 @@ import (
 //	Clusters. It can be used with two Gateways assigned to the same site.
 //
 // Once the Cluster is formed, it can be create just like a Gateway with the `device.Gateway` resource:
-// 1. Claim the gateways and assign them to a site with the `org.Inventory` resource
+// 1. Claim the gateways and assign them to the same site with the `org.Inventory` resource
 // 2. Form the Cluster with the `device.GatewayCluster` resource by providing the `siteId` and the two nodes MAC Addresses (the first in the list will be the node0)
 // 3. Configure the Cluster with the `device.Gateway` resource
 //
 // # Please check the Juniper Documentation first to validate the cabling between the Gateways
+//
+// > Both gateways must belong to the same site when creating the Gateway Cluster
 //
 // ## Example Usage
 //
