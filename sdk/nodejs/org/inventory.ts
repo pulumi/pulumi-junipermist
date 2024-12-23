@@ -57,7 +57,9 @@ export class Inventory extends pulumi.CustomResource {
     }
 
     /**
-     * **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+     * `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
      *
      * @deprecated The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 Please update your configurations to use the `inventory` attribute.
@@ -106,7 +108,9 @@ Please update your configurations to use the `inventory` attribute.
  */
 export interface InventoryState {
     /**
-     * **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+     * `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
      *
      * @deprecated The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 Please update your configurations to use the `inventory` attribute.
@@ -126,7 +130,9 @@ Please update your configurations to use the `inventory` attribute.
  */
 export interface InventoryArgs {
     /**
-     * **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+     * **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+     * replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+     * `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
      *
      * @deprecated The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 Please update your configurations to use the `inventory` attribute.

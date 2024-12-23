@@ -35,7 +35,9 @@ import (
 type Inventory struct {
 	pulumi.CustomResourceState
 
-	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+	// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+	// `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
 	//
 	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 	// Please update your configurations to use the `inventory` attribute.
@@ -80,7 +82,9 @@ func GetInventory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Inventory resources.
 type inventoryState struct {
-	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+	// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+	// `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
 	//
 	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 	// Please update your configurations to use the `inventory` attribute.
@@ -93,7 +97,9 @@ type inventoryState struct {
 }
 
 type InventoryState struct {
-	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+	// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+	// `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
 	//
 	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 	// Please update your configurations to use the `inventory` attribute.
@@ -110,7 +116,9 @@ func (InventoryState) ElementType() reflect.Type {
 }
 
 type inventoryArgs struct {
-	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+	// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+	// `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
 	//
 	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 	// Please update your configurations to use the `inventory` attribute.
@@ -124,7 +132,9 @@ type inventoryArgs struct {
 
 // The set of arguments for constructing a Inventory resource.
 type InventoryArgs struct {
-	// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+	// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+	// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+	// `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
 	//
 	// Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 	// Please update your configurations to use the `inventory` attribute.
@@ -223,7 +233,9 @@ func (o InventoryOutput) ToInventoryOutputWithContext(ctx context.Context) Inven
 	return o
 }
 
-// **DEPRECATED** List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
+// **DEPRECATED** The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been
+// replaced with the `inventory` map and may be removed in future versions. Please update your configurations to use the
+// `inventory` attribute. List of devices to manage. Exactly one of `claimCode` or `mac` field must be set
 //
 // Deprecated: The `devices` attribute has been deprecated in version v0.2.0 of the Juniper-Mist Provider. It has been replaced with the `inventory` map and may be removed in future versions.
 // Please update your configurations to use the `inventory` attribute.
