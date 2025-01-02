@@ -225,6 +225,9 @@
                                         }
                                     }
                                 },
+                                "wan_networks": {
+                                    "maxItemsOne": false
+                                },
                                 "wan_probe_override": {
                                     "fields": {
                                         "ips": {
@@ -259,6 +262,9 @@
                                                         "maxItemsOne": false
                                                     },
                                                     "add_target_vrfs": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "aggregate": {
                                                         "maxItemsOne": false
                                                     },
                                                     "community": {
@@ -332,6 +338,9 @@
                                     "fields": {
                                         "primary": {
                                             "fields": {
+                                                "probe_ips": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "wan_names": {
                                                     "maxItemsOne": false
                                                 }
@@ -339,6 +348,9 @@
                                         },
                                         "secondary": {
                                             "fields": {
+                                                "probe_ips": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "wan_names": {
                                                     "maxItemsOne": false
                                                 }
@@ -401,14 +413,7 @@
                             "zscaler": {
                                 "fields": {
                                     "sub_locations": {
-                                        "maxItemsOne": false,
-                                        "elem": {
-                                            "fields": {
-                                                "subnets": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
+                                        "maxItemsOne": false
                                     }
                                 }
                             }
@@ -1030,6 +1035,9 @@
                                         }
                                     }
                                 },
+                                "wan_networks": {
+                                    "maxItemsOne": false
+                                },
                                 "wan_probe_override": {
                                     "fields": {
                                         "ips": {
@@ -1053,6 +1061,9 @@
                                                         "maxItemsOne": false
                                                     },
                                                     "add_target_vrfs": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "aggregate": {
                                                         "maxItemsOne": false
                                                     },
                                                     "community": {
@@ -1126,6 +1137,9 @@
                                     "fields": {
                                         "primary": {
                                             "fields": {
+                                                "probe_ips": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "wan_names": {
                                                     "maxItemsOne": false
                                                 }
@@ -1133,6 +1147,9 @@
                                         },
                                         "secondary": {
                                             "fields": {
+                                                "probe_ips": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "wan_names": {
                                                     "maxItemsOne": false
                                                 }
@@ -1195,14 +1212,7 @@
                             "zscaler": {
                                 "fields": {
                                     "sub_locations": {
-                                        "maxItemsOne": false,
-                                        "elem": {
-                                            "fields": {
-                                                "subnets": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
+                                        "maxItemsOne": false
                                     }
                                 }
                             }
@@ -1413,6 +1423,9 @@
                                         }
                                     }
                                 },
+                                "wan_networks": {
+                                    "maxItemsOne": false
+                                },
                                 "wan_probe_override": {
                                     "fields": {
                                         "ips": {
@@ -1436,6 +1449,9 @@
                                                         "maxItemsOne": false
                                                     },
                                                     "add_target_vrfs": {
+                                                        "maxItemsOne": false
+                                                    },
+                                                    "aggregate": {
                                                         "maxItemsOne": false
                                                     },
                                                     "community": {
@@ -1509,6 +1525,9 @@
                                     "fields": {
                                         "primary": {
                                             "fields": {
+                                                "probe_ips": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "wan_names": {
                                                     "maxItemsOne": false
                                                 }
@@ -1516,6 +1535,9 @@
                                         },
                                         "secondary": {
                                             "fields": {
+                                                "probe_ips": {
+                                                    "maxItemsOne": false
+                                                },
                                                 "wan_names": {
                                                     "maxItemsOne": false
                                                 }
@@ -1578,14 +1600,7 @@
                             "zscaler": {
                                 "fields": {
                                     "sub_locations": {
-                                        "maxItemsOne": false,
-                                        "elem": {
-                                            "fields": {
-                                                "subnets": {
-                                                    "maxItemsOne": false
-                                                }
-                                            }
-                                        }
+                                        "maxItemsOne": false
                                     }
                                 }
                             }
