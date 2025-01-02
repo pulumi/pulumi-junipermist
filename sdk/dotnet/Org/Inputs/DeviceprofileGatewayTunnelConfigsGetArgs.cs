@@ -16,13 +16,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsAutoProvisionGetArgs>? AutoProvision { get; set; }
 
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`
+        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         [Input("ikeLifetime")]
         public Input<int>? IkeLifetime { get; set; }
 
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+        /// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
         /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.DeviceprofileGatewayTunnelConfigsIkeProposalGetArgs>? _ikeProposals;
 
         /// <summary>
-        /// if `provider`== `custom-ipsec`
+        /// if `provider`==`custom-ipsec`
         /// </summary>
         public InputList<Inputs.DeviceprofileGatewayTunnelConfigsIkeProposalGetArgs> IkeProposals
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if `provider`== `custom-ipsec`
+        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         [Input("ipsecLifetime")]
         public Input<int>? IpsecLifetime { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.DeviceprofileGatewayTunnelConfigsIpsecProposalGetArgs>? _ipsecProposals;
 
         /// <summary>
-        /// Only if  `provider`== `custom-ipsec`
+        /// Only if  `provider`==`custom-ipsec`
         /// </summary>
         public InputList<Inputs.DeviceprofileGatewayTunnelConfigsIpsecProposalGetArgs> IpsecProposals
         {
@@ -58,16 +58,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// Only if:
-        ///   * `provider`== `zscaler-ipsec`
-        ///   * `provider`==`jse-ipsec`
-        ///   * `provider`== `custom-ipsec`
+        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         /// </summary>
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
 
         /// <summary>
-        /// enum: `active-active`, `active-standby`
+        /// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -76,7 +73,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// networks reachable via this tunnel
+        /// if `provider`==`custom-ipsec`, networks reachable via this tunnel
         /// </summary>
         public InputList<string> Networks
         {
@@ -84,23 +81,26 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// </summary>
         [Input("primary")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsPrimaryGetArgs>? Primary { get; set; }
 
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`
+        /// Only if `provider`==`custom-ipsec`
         /// </summary>
         [Input("probe")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsProbeGetArgs>? Probe { get; set; }
 
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+        /// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
@@ -109,10 +109,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _psk;
 
         /// <summary>
-        /// Only if:
-        ///   * `provider`== `zscaler-ipsec`
-        ///   * `provider`==`jse-ipsec`
-        ///   * `provider`== `custom-ipsec`
+        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         /// </summary>
         public Input<string>? Psk
         {
@@ -124,11 +121,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
             }
         }
 
+        /// <summary>
+        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// </summary>
         [Input("secondary")]
         public Input<Inputs.DeviceprofileGatewayTunnelConfigsSecondaryGetArgs>? Secondary { get; set; }
 
         /// <summary>
-        /// Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+        /// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

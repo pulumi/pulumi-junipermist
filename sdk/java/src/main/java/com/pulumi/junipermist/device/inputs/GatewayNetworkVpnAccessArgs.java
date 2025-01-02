@@ -52,14 +52,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+     * Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
      * 
      */
     @Import(name="destinationNat")
     private @Nullable Output<Map<String,GatewayNetworkVpnAccessDestinationNatArgs>> destinationNat;
 
     /**
-     * @return Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
      * 
      */
     public Optional<Output<Map<String,GatewayNetworkVpnAccessDestinationNatArgs>>> destinationNat() {
@@ -112,16 +112,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     @Import(name="noReadvertiseToOverlay")
     private @Nullable Output<Boolean> noReadvertiseToOverlay;
 
     /**
-     * @return toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * @return toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     public Optional<Output<Boolean>> noReadvertiseToOverlay() {
@@ -129,16 +127,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * by default, the routes are only readvertised toward the same vrf on spoke
-     * to allow it to be leaked to other vrfs
+     * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     @Import(name="otherVrfs")
     private @Nullable Output<List<String>> otherVrfs;
 
     /**
-     * @return by default, the routes are only readvertised toward the same vrf on spoke
-     * to allow it to be leaked to other vrfs
+     * @return by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     public Optional<Output<List<String>>> otherVrfs() {
@@ -176,14 +172,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+     * Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="staticNat")
     private @Nullable Output<Map<String,GatewayNetworkVpnAccessStaticNatArgs>> staticNat;
 
     /**
-     * @return Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewayNetworkVpnAccessStaticNatArgs>>> staticNat() {
@@ -191,16 +187,14 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     @Import(name="summarizedSubnet")
     private @Nullable Output<String> summarizedSubnet;
 
     /**
-     * @return toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * @return toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     public Optional<Output<String>> summarizedSubnet() {
@@ -317,7 +311,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destinationNat Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+         * @param destinationNat Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
          * 
          * @return builder
          * 
@@ -328,7 +322,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destinationNat Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+         * @param destinationNat Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
          * 
          * @return builder
          * 
@@ -401,8 +395,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param noReadvertiseToOverlay toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * @param noReadvertiseToOverlay toward overlay, how HUB should deal with routes it received from Spokes
          * 
          * @return builder
          * 
@@ -413,8 +406,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param noReadvertiseToOverlay toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * @param noReadvertiseToOverlay toward overlay, how HUB should deal with routes it received from Spokes
          * 
          * @return builder
          * 
@@ -424,8 +416,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          * 
          * @return builder
          * 
@@ -436,8 +427,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          * 
          * @return builder
          * 
@@ -447,8 +437,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * @param otherVrfs by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          * 
          * @return builder
          * 
@@ -500,7 +489,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param staticNat Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+         * @param staticNat Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -511,7 +500,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param staticNat Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+         * @param staticNat Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -521,8 +510,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param summarizedSubnet toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * @param summarizedSubnet toward overlay, how HUB should deal with routes it received from Spokes
          * 
          * @return builder
          * 
@@ -533,8 +521,7 @@ public final class GatewayNetworkVpnAccessArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param summarizedSubnet toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * @param summarizedSubnet toward overlay, how HUB should deal with routes it received from Spokes
          * 
          * @return builder
          * 

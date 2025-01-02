@@ -22,9 +22,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -72,8 +70,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String guestNetwork;
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     private @Nullable Boolean interSwitchLink;
@@ -112,6 +109,11 @@ public final class SwitchLocalPortConfig {
      * 
      */
     private @Nullable List<String> networks;
+    /**
+     * @return Additional note for the port config override
+     * 
+     */
+    private @Nullable String note;
     /**
      * @return Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
      * 
@@ -189,9 +191,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -263,8 +263,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Boolean> interSwitchLink() {
@@ -318,6 +317,13 @@ public final class SwitchLocalPortConfig {
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
+    }
+    /**
+     * @return Additional note for the port config override
+     * 
+     */
+    public Optional<String> note() {
+        return Optional.ofNullable(this.note);
     }
     /**
      * @return Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
@@ -447,6 +453,7 @@ public final class SwitchLocalPortConfig {
         private @Nullable String mode;
         private @Nullable Integer mtu;
         private @Nullable List<String> networks;
+        private @Nullable String note;
         private @Nullable Boolean persistMac;
         private @Nullable Boolean poeDisabled;
         private @Nullable String portAuth;
@@ -486,6 +493,7 @@ public final class SwitchLocalPortConfig {
     	      this.mode = defaults.mode;
     	      this.mtu = defaults.mtu;
     	      this.networks = defaults.networks;
+    	      this.note = defaults.note;
     	      this.persistMac = defaults.persistMac;
     	      this.poeDisabled = defaults.poeDisabled;
     	      this.portAuth = defaults.portAuth;
@@ -636,6 +644,12 @@ public final class SwitchLocalPortConfig {
             return networks(List.of(networks));
         }
         @CustomType.Setter
+        public Builder note(@Nullable String note) {
+
+            this.note = note;
+            return this;
+        }
+        @CustomType.Setter
         public Builder persistMac(@Nullable Boolean persistMac) {
 
             this.persistMac = persistMac;
@@ -750,6 +764,7 @@ public final class SwitchLocalPortConfig {
             _resultValue.mode = mode;
             _resultValue.mtu = mtu;
             _resultValue.networks = networks;
+            _resultValue.note = note;
             _resultValue.persistMac = persistMac;
             _resultValue.poeDisabled = poeDisabled;
             _resultValue.portAuth = portAuth;

@@ -13,9 +13,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayNetworkVpnAccessDestinationNat
     {
+        /// <summary>
+        /// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public readonly string? InternalIp;
         public readonly string? Name;
-        public readonly int? Port;
+        public readonly string? Port;
 
         [OutputConstructor]
         private DeviceprofileGatewayNetworkVpnAccessDestinationNat(
@@ -23,7 +26,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? name,
 
-            int? port)
+            string? port)
         {
             InternalIp = internalIp;
             Name = name;

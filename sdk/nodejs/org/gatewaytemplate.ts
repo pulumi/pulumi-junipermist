@@ -49,7 +49,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly bgpConfig!: pulumi.Output<{[key: string]: outputs.org.GatewaytemplateBgpConfig} | undefined>;
@@ -96,7 +96,8 @@ export class Gatewaytemplate extends pulumi.CustomResource {
      */
     public readonly pathPreferences!: pulumi.Output<{[key: string]: outputs.org.GatewaytemplatePathPreferences} | undefined>;
     /**
-     * Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+     * Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+     * "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.org.GatewaytemplatePortConfig} | undefined>;
     /**
@@ -204,7 +205,7 @@ export class Gatewaytemplate extends pulumi.CustomResource {
  */
 export interface GatewaytemplateState {
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateBgpConfig>}>;
@@ -251,7 +252,8 @@ export interface GatewaytemplateState {
      */
     pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePathPreferences>}>;
     /**
-     * Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+     * Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+     * "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfig>}>;
     /**
@@ -284,7 +286,7 @@ export interface GatewaytemplateState {
  */
 export interface GatewaytemplateArgs {
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateBgpConfig>}>;
@@ -331,7 +333,8 @@ export interface GatewaytemplateArgs {
      */
     pathPreferences?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePathPreferences>}>;
     /**
-     * Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+     * Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+     * "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfig>}>;
     /**

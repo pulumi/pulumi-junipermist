@@ -11,6 +11,11 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Flag to enable debugging API calls. Default is false.
+func GetApiDebug(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "junipermist:apiDebug")
+}
+
 // Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
 // results in infinite timeout.
 func GetApiTimeout(ctx *pulumi.Context) float64 {

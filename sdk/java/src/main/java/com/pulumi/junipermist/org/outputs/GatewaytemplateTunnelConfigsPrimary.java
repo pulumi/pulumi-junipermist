@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -11,30 +12,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateTunnelConfigsPrimary {
-    private @Nullable List<String> hosts;
+    private List<String> hosts;
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-gre`
-     *   * `provider`== `custom-gre`
+     * @return Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
      * 
      */
     private @Nullable List<String> internalIps;
     private @Nullable List<String> probeIps;
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     private @Nullable List<String> remoteIds;
-    private @Nullable List<String> wanNames;
+    private List<String> wanNames;
 
     private GatewaytemplateTunnelConfigsPrimary() {}
     public List<String> hosts() {
-        return this.hosts == null ? List.of() : this.hosts;
+        return this.hosts;
     }
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-gre`
-     *   * `provider`== `custom-gre`
+     * @return Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
      * 
      */
     public List<String> internalIps() {
@@ -44,14 +41,14 @@ public final class GatewaytemplateTunnelConfigsPrimary {
         return this.probeIps == null ? List.of() : this.probeIps;
     }
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public List<String> remoteIds() {
         return this.remoteIds == null ? List.of() : this.remoteIds;
     }
     public List<String> wanNames() {
-        return this.wanNames == null ? List.of() : this.wanNames;
+        return this.wanNames;
     }
 
     public static Builder builder() {
@@ -63,11 +60,11 @@ public final class GatewaytemplateTunnelConfigsPrimary {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<String> hosts;
+        private List<String> hosts;
         private @Nullable List<String> internalIps;
         private @Nullable List<String> probeIps;
         private @Nullable List<String> remoteIds;
-        private @Nullable List<String> wanNames;
+        private List<String> wanNames;
         public Builder() {}
         public Builder(GatewaytemplateTunnelConfigsPrimary defaults) {
     	      Objects.requireNonNull(defaults);
@@ -79,8 +76,10 @@ public final class GatewaytemplateTunnelConfigsPrimary {
         }
 
         @CustomType.Setter
-        public Builder hosts(@Nullable List<String> hosts) {
-
+        public Builder hosts(List<String> hosts) {
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("GatewaytemplateTunnelConfigsPrimary", "hosts");
+            }
             this.hosts = hosts;
             return this;
         }
@@ -115,8 +114,10 @@ public final class GatewaytemplateTunnelConfigsPrimary {
             return remoteIds(List.of(remoteIds));
         }
         @CustomType.Setter
-        public Builder wanNames(@Nullable List<String> wanNames) {
-
+        public Builder wanNames(List<String> wanNames) {
+            if (wanNames == null) {
+              throw new MissingRequiredPropertyException("GatewaytemplateTunnelConfigsPrimary", "wanNames");
+            }
             this.wanNames = wanNames;
             return this;
         }

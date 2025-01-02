@@ -76,7 +76,7 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly bgpConfig!: pulumi.Output<{[key: string]: outputs.device.GatewayBgpConfig} | undefined>;
@@ -294,7 +294,7 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>}>;
@@ -406,7 +406,7 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     bgpConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayBgpConfig>}>;

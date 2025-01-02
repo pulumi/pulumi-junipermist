@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,23 +12,31 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateNetworkInternetAccessStaticNat {
-    private @Nullable String internalIp;
-    private @Nullable String name;
     /**
-     * @return If not set, we configure the nat policies against all WAN ports for simplicity
+     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    private String internalIp;
+    private String name;
+    /**
+     * @return SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String wanName;
 
     private GatewaytemplateNetworkInternetAccessStaticNat() {}
-    public Optional<String> internalIp() {
-        return Optional.ofNullable(this.internalIp);
+    /**
+     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
+    public String internalIp() {
+        return this.internalIp;
     }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return If not set, we configure the nat policies against all WAN ports for simplicity
+     * @return SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> wanName() {
@@ -43,8 +52,8 @@ public final class GatewaytemplateNetworkInternetAccessStaticNat {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String internalIp;
-        private @Nullable String name;
+        private String internalIp;
+        private String name;
         private @Nullable String wanName;
         public Builder() {}
         public Builder(GatewaytemplateNetworkInternetAccessStaticNat defaults) {
@@ -55,14 +64,18 @@ public final class GatewaytemplateNetworkInternetAccessStaticNat {
         }
 
         @CustomType.Setter
-        public Builder internalIp(@Nullable String internalIp) {
-
+        public Builder internalIp(String internalIp) {
+            if (internalIp == null) {
+              throw new MissingRequiredPropertyException("GatewaytemplateNetworkInternetAccessStaticNat", "internalIp");
+            }
             this.internalIp = internalIp;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GatewaytemplateNetworkInternetAccessStaticNat", "name");
+            }
             this.name = name;
             return this;
         }

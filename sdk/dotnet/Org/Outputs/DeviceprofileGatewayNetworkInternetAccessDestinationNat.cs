@@ -13,9 +13,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     [OutputType]
     public sealed class DeviceprofileGatewayNetworkInternetAccessDestinationNat
     {
+        /// <summary>
+        /// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public readonly string? InternalIp;
         public readonly string? Name;
-        public readonly int? Port;
+        /// <summary>
+        /// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        public readonly string? Port;
+        /// <summary>
+        /// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+        /// </summary>
+        public readonly string? WanName;
 
         [OutputConstructor]
         private DeviceprofileGatewayNetworkInternetAccessDestinationNat(
@@ -23,11 +33,14 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? name,
 
-            int? port)
+            string? port,
+
+            string? wanName)
         {
             InternalIp = internalIp;
             Name = name;
             Port = port;
+            WanName = wanName;
         }
     }
 }

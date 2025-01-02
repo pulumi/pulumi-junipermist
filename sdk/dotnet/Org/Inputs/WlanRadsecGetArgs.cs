@@ -25,8 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _mxclusterIds;
 
         /// <summary>
-        /// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-        /// Org mxedge(s) identified by mxcluster_ids
+        /// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
         /// </summary>
         public InputList<string> MxclusterIds
         {
@@ -38,8 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _proxyHosts;
 
         /// <summary>
-        /// default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-        /// when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+        /// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
         /// </summary>
         public InputList<string> ProxyHosts
         {

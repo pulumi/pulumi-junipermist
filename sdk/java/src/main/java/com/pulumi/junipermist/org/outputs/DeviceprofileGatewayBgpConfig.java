@@ -41,8 +41,7 @@ public final class DeviceprofileGatewayBgpConfig {
      */
     private @Nullable String exportPolicy;
     /**
-     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-     * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     private @Nullable Boolean extendedV4Nexthop;
@@ -135,8 +134,7 @@ public final class DeviceprofileGatewayBgpConfig {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-     * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     public Optional<Boolean> extendedV4Nexthop() {

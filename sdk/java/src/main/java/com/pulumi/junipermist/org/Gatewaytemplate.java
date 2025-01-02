@@ -157,14 +157,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/gatewaytemplate:Gatewaytemplate")
 public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
@@ -339,14 +339,16 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.pathPreferences);
     }
     /**
-     * Property key is the port(s) name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
+     * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
      * 
      */
     @Export(name="portConfig", refs={Map.class,String.class,GatewaytemplatePortConfig.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,GatewaytemplatePortConfig>> portConfig;
 
     /**
-     * @return Property key is the port(s) name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
+     * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
      * 
      */
     public Output<Optional<Map<String,GatewaytemplatePortConfig>>> portConfig() {

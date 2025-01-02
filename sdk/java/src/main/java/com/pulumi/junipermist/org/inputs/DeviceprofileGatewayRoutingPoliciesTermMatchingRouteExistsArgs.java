@@ -23,16 +23,14 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArg
     }
 
     /**
-     * name of the vrf instance
-     * it can also be the name of the VPN or wan if they
+     * name of the vrf instance, it can also be the name of the VPN or wan if they
      * 
      */
     @Import(name="vrfName")
     private @Nullable Output<String> vrfName;
 
     /**
-     * @return name of the vrf instance
-     * it can also be the name of the VPN or wan if they
+     * @return name of the vrf instance, it can also be the name of the VPN or wan if they
      * 
      */
     public Optional<Output<String>> vrfName() {
@@ -74,8 +72,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArg
         }
 
         /**
-         * @param vrfName name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * @param vrfName name of the vrf instance, it can also be the name of the VPN or wan if they
          * 
          * @return builder
          * 
@@ -86,8 +83,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArg
         }
 
         /**
-         * @param vrfName name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * @param vrfName name of the vrf instance, it can also be the name of the VPN or wan if they
          * 
          * @return builder
          * 

@@ -141,9 +141,17 @@ public final class DeviceprofileGatewayNetworkArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.subnet6);
     }
 
+    /**
+     * Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     @Import(name="tenants")
     private @Nullable Output<Map<String,DeviceprofileGatewayNetworkTenantsArgs>> tenants;
 
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<Output<Map<String,DeviceprofileGatewayNetworkTenantsArgs>>> tenants() {
         return Optional.ofNullable(this.tenants);
     }
@@ -376,11 +384,23 @@ public final class DeviceprofileGatewayNetworkArgs extends com.pulumi.resources.
             return subnet6(Output.of(subnet6));
         }
 
+        /**
+         * @param tenants Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(@Nullable Output<Map<String,DeviceprofileGatewayNetworkTenantsArgs>> tenants) {
             $.tenants = tenants;
             return this;
         }
 
+        /**
+         * @param tenants Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(Map<String,DeviceprofileGatewayNetworkTenantsArgs> tenants) {
             return tenants(Output.of(tenants));
         }

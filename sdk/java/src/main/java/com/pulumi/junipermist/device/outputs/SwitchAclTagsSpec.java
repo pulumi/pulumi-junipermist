@@ -17,7 +17,7 @@ public final class SwitchAclTagsSpec {
      */
     private @Nullable String portRange;
     /**
-     * @return `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocol_number` is between 1-254
+     * @return `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
      * 
      */
     private @Nullable String protocol;
@@ -31,7 +31,7 @@ public final class SwitchAclTagsSpec {
         return Optional.ofNullable(this.portRange);
     }
     /**
-     * @return `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocol_number` is between 1-254
+     * @return `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
      * 
      */
     public Optional<String> protocol() {

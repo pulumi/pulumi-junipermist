@@ -39,6 +39,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly ImmutableArray<string> RoutedForNetworks;
         public readonly string Subnet;
         public readonly string? Subnet6;
+        /// <summary>
+        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayNetworkTenants>? Tenants;
         public readonly string? VlanId;
         /// <summary>

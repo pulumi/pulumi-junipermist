@@ -18,16 +18,14 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
     public static final GatewaytemplatePortConfigTrafficShapingArgs Empty = new GatewaytemplatePortConfigTrafficShapingArgs();
 
     /**
-     * percentages for differet class of traffic: high / medium / low / best-effort
-     * sum must be equal to 100
+     * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     @Import(name="classPercentages")
     private @Nullable Output<List<Integer>> classPercentages;
 
     /**
-     * @return percentages for differet class of traffic: high / medium / low / best-effort
-     * sum must be equal to 100
+     * @return percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     public Optional<Output<List<Integer>>> classPercentages() {
@@ -41,11 +39,27 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Interface Transmit Cap in kbps
+     * 
+     */
+    @Import(name="maxTxKbps")
+    private @Nullable Output<Integer> maxTxKbps;
+
+    /**
+     * @return Interface Transmit Cap in kbps
+     * 
+     */
+    public Optional<Output<Integer>> maxTxKbps() {
+        return Optional.ofNullable(this.maxTxKbps);
+    }
+
     private GatewaytemplatePortConfigTrafficShapingArgs() {}
 
     private GatewaytemplatePortConfigTrafficShapingArgs(GatewaytemplatePortConfigTrafficShapingArgs $) {
         this.classPercentages = $.classPercentages;
         this.enabled = $.enabled;
+        this.maxTxKbps = $.maxTxKbps;
     }
 
     public static Builder builder() {
@@ -67,8 +81,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          * 
          * @return builder
          * 
@@ -79,8 +92,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          * 
          * @return builder
          * 
@@ -90,8 +102,7 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
         }
 
         /**
-         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * @param classPercentages percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          * 
          * @return builder
          * 
@@ -107,6 +118,27 @@ public final class GatewaytemplatePortConfigTrafficShapingArgs extends com.pulum
 
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param maxTxKbps Interface Transmit Cap in kbps
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTxKbps(@Nullable Output<Integer> maxTxKbps) {
+            $.maxTxKbps = maxTxKbps;
+            return this;
+        }
+
+        /**
+         * @param maxTxKbps Interface Transmit Cap in kbps
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxTxKbps(Integer maxTxKbps) {
+            return maxTxKbps(Output.of(maxTxKbps));
         }
 
         public GatewaytemplatePortConfigTrafficShapingArgs build() {

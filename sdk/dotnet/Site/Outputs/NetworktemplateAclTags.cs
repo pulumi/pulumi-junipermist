@@ -15,9 +15,9 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         /// <summary>
         /// required if
-        /// - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-        /// - `type`==`gbp_resource`
-        /// - `type`==`static_gbp` (applying gbp tag against matching conditions)
+        ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+        ///   - `type`==`gbp_resource`
+        ///   - `type`==`static_gbp` (applying gbp tag against matching conditions)
         /// </summary>
         public readonly int? GbpTag;
         /// <summary>
@@ -43,8 +43,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? RadiusGroup;
         /// <summary>
-        /// if `type`==`resource` or `type`==`gbp_resource`
-        /// empty means unrestricted, i.e. any
+        /// if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworktemplateAclTagsSpec> Specs;
         /// <summary>

@@ -12,17 +12,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayNetworkVpnAccessStaticNatGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("internalIp")]
-        public Input<string>? InternalIp { get; set; }
-
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         /// <summary>
-        /// If not set, we configure the nat policies against all WAN ports for simplicity
+        /// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
         /// </summary>
-        [Input("wanName")]
-        public Input<string>? WanName { get; set; }
+        [Input("internalIp", required: true)]
+        public Input<string> InternalIp { get; set; } = null!;
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GatewayNetworkVpnAccessStaticNatGetArgs()
         {

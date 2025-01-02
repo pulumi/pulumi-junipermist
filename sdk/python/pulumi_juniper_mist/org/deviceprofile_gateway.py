@@ -48,7 +48,7 @@ class DeviceprofileGatewayArgs:
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]]] = None):
         """
         The set of arguments for constructing a DeviceprofileGateway resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -127,7 +127,7 @@ class DeviceprofileGatewayArgs:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        additional CLI commands to append to the generated Junos config **Note**: no check is done
+        additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -416,7 +416,7 @@ class _DeviceprofileGatewayState:
                  vrf_instances: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayVrfInstancesArgs']]]] = None):
         """
         Input properties used for looking up and filtering DeviceprofileGateway resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayExtraRoutesArgs']]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -490,7 +490,7 @@ class _DeviceprofileGatewayState:
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        additional CLI commands to append to the generated Junos config **Note**: no check is done
+        additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 
@@ -818,7 +818,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -976,7 +976,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config **Note**: no check is done
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_config_cmds: additional CLI commands to append to the generated Junos config. **Note**: no check is done
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Global dns settings. To keep compatibility, dns settings in `ip_config` and `oob_ip_config` will overwrite this setting
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['DeviceprofileGatewayExtraRoutesArgs', 'DeviceprofileGatewayExtraRoutesArgsDict']]]] extra_routes: Property key is the destination CIDR (e.g. "10.0.0.0/8")
@@ -1029,7 +1029,7 @@ class DeviceprofileGateway(pulumi.CustomResource):
     @pulumi.getter(name="additionalConfigCmds")
     def additional_config_cmds(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        additional CLI commands to append to the generated Junos config **Note**: no check is done
+        additional CLI commands to append to the generated Junos config. **Note**: no check is done
         """
         return pulumi.get(self, "additional_config_cmds")
 

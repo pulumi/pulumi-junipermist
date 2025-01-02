@@ -21,6 +21,11 @@ public final class DeviceprofileGatewayRoutingPoliciesTermAction {
      */
     private @Nullable List<String> addTargetVrfs;
     /**
+     * @return route aggregation
+     * 
+     */
+    private @Nullable List<String> aggregates;
+    /**
      * @return when used as export policy, optional
      * 
      */
@@ -60,6 +65,13 @@ public final class DeviceprofileGatewayRoutingPoliciesTermAction {
      */
     public List<String> addTargetVrfs() {
         return this.addTargetVrfs == null ? List.of() : this.addTargetVrfs;
+    }
+    /**
+     * @return route aggregation
+     * 
+     */
+    public List<String> aggregates() {
+        return this.aggregates == null ? List.of() : this.aggregates;
     }
     /**
      * @return when used as export policy, optional
@@ -112,6 +124,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermAction {
         private @Nullable Boolean accept;
         private @Nullable List<String> addCommunities;
         private @Nullable List<String> addTargetVrfs;
+        private @Nullable List<String> aggregates;
         private @Nullable List<String> communities;
         private @Nullable List<String> excludeAsPaths;
         private @Nullable List<String> excludeCommunities;
@@ -124,6 +137,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermAction {
     	      this.accept = defaults.accept;
     	      this.addCommunities = defaults.addCommunities;
     	      this.addTargetVrfs = defaults.addTargetVrfs;
+    	      this.aggregates = defaults.aggregates;
     	      this.communities = defaults.communities;
     	      this.excludeAsPaths = defaults.excludeAsPaths;
     	      this.excludeCommunities = defaults.excludeCommunities;
@@ -155,6 +169,15 @@ public final class DeviceprofileGatewayRoutingPoliciesTermAction {
         }
         public Builder addTargetVrfs(String... addTargetVrfs) {
             return addTargetVrfs(List.of(addTargetVrfs));
+        }
+        @CustomType.Setter
+        public Builder aggregates(@Nullable List<String> aggregates) {
+
+            this.aggregates = aggregates;
+            return this;
+        }
+        public Builder aggregates(String... aggregates) {
+            return aggregates(List.of(aggregates));
         }
         @CustomType.Setter
         public Builder communities(@Nullable List<String> communities) {
@@ -212,6 +235,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTermAction {
             _resultValue.accept = accept;
             _resultValue.addCommunities = addCommunities;
             _resultValue.addTargetVrfs = addTargetVrfs;
+            _resultValue.aggregates = aggregates;
             _resultValue.communities = communities;
             _resultValue.excludeAsPaths = excludeAsPaths;
             _resultValue.excludeCommunities = excludeCommunities;

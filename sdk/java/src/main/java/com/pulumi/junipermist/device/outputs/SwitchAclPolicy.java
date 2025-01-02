@@ -14,23 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchAclPolicy {
     /**
-     * @return - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-     * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return ACL Policy Actions:
+     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
     private @Nullable List<SwitchAclPolicyAction> actions;
     private @Nullable String name;
     /**
-     * @return - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-     * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return ACL Policy Source Tags:
+     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
     private @Nullable List<String> srcTags;
 
     private SwitchAclPolicy() {}
     /**
-     * @return - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-     * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return ACL Policy Actions:
+     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
     public List<SwitchAclPolicyAction> actions() {
@@ -40,8 +43,9 @@ public final class SwitchAclPolicy {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-     * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+     * @return ACL Policy Source Tags:
+     *   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+     *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
      * 
      */
     public List<String> srcTags() {

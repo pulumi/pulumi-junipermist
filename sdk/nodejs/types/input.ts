@@ -541,8 +541,7 @@ export namespace device {
          */
         exportPolicy?: pulumi.Input<string>;
         /**
-         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: pulumi.Input<boolean>;
         /**
@@ -792,6 +791,9 @@ export namespace device {
         routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         subnet: pulumi.Input<string>;
         subnet6?: pulumi.Input<string>;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
         tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayNetworkTenants>}>;
         vlanId?: pulumi.Input<string>;
         /**
@@ -807,7 +809,7 @@ export namespace device {
     export interface GatewayNetworkInternetAccess {
         createSimpleServicePolicy?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayNetworkInternetAccessDestinationNat>}>;
         enabled?: pulumi.Input<boolean>;
@@ -816,22 +818,35 @@ export namespace device {
          */
         restricted?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayNetworkInternetAccessStaticNat>}>;
     }
 
     export interface GatewayNetworkInternetAccessDestinationNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
-    }
-
-    export interface GatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName?: pulumi.Input<string>;
+    }
+
+    export interface GatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
          */
         wanName?: pulumi.Input<string>;
     }
@@ -869,7 +884,7 @@ export namespace device {
          */
         allowPing?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayNetworkVpnAccessDestinationNat>}>;
         /**
@@ -885,13 +900,11 @@ export namespace device {
          */
         noReadvertiseToLanOspf?: pulumi.Input<boolean>;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -903,12 +916,11 @@ export namespace device {
          */
         sourceNat?: pulumi.Input<inputs.device.GatewayNetworkVpnAccessSourceNat>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayNetworkVpnAccessStaticNat>}>;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: pulumi.Input<string>;
         /**
@@ -922,9 +934,12 @@ export namespace device {
     }
 
     export interface GatewayNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
     }
 
     export interface GatewayNetworkVpnAccessSourceNat {
@@ -932,12 +947,11 @@ export namespace device {
     }
 
     export interface GatewayNetworkVpnAccessStaticNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: pulumi.Input<string>;
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
     }
 
     export interface GatewayOobIpConfig {
@@ -1053,9 +1067,7 @@ export namespace device {
          */
         aeIdx?: pulumi.Input<string>;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: pulumi.Input<boolean>;
         aggregated?: pulumi.Input<boolean>;
@@ -1063,6 +1075,9 @@ export namespace device {
          * if want to generate port up/down alarm, set it to true
          */
         critical?: pulumi.Input<boolean>;
+        /**
+         * Interface Description. Can be a variable (i.e. "{{myvar}}")
+         */
         description?: pulumi.Input<string>;
         disableAutoneg?: pulumi.Input<boolean>;
         /**
@@ -1074,13 +1089,11 @@ export namespace device {
          */
         dslType?: pulumi.Input<string>;
         /**
-         * if `wanType`==`dsl`
-         * 16 bit int
+         * if `wanType`==`dsl`, 16 bit int
          */
         dslVci?: pulumi.Input<number>;
         /**
-         * if `wanType`==`dsl`
-         * 8 bit int
+         * if `wanType`==`dsl`, 8 bit int
          */
         dslVpi?: pulumi.Input<number>;
         /**
@@ -1114,7 +1127,7 @@ export namespace device {
          */
         name?: pulumi.Input<string>;
         /**
-         * if `usage`==`lan`
+         * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1123,7 +1136,7 @@ export namespace device {
         outerVlanId?: pulumi.Input<number>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * if `usage`==`lan`
+         * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          */
         portNetwork?: pulumi.Input<string>;
         /**
@@ -1160,36 +1173,37 @@ export namespace device {
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          */
         usage: pulumi.Input<string>;
-        /**
-         * if WAN interface is on a VLAN
-         */
-        vlanId?: pulumi.Input<number>;
+        vlanId?: pulumi.Input<string>;
         /**
          * Property key is the VPN name
          */
         vpnPaths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigVpnPaths>}>;
         /**
-         * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
-         * optional, if spoke should reach this port by a different IP
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
         /**
-         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.GatewayPortConfigWanExtraRoutes>}>;
         /**
-         * if `usage`==`wan`
+         * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         */
+        wanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `usage`==`wan`
          */
         wanProbeOverride?: pulumi.Input<inputs.device.GatewayPortConfigWanProbeOverride>;
         /**
-         * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: pulumi.Input<inputs.device.GatewayPortConfigWanSourceNat>;
         /**
-         * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
         wanType?: pulumi.Input<string>;
     }
@@ -1204,12 +1218,15 @@ export namespace device {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * except for out-of_band interface (vme/em0/fxp0)
+         * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
          */
         gateway?: pulumi.Input<string>;
+        /**
+         * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+         */
         ip?: pulumi.Input<string>;
         /**
-         * used only if `subnet` is not specified in `networks`
+         * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: pulumi.Input<string>;
         /**
@@ -1236,11 +1253,14 @@ export namespace device {
 
     export interface GatewayPortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: pulumi.Input<number>;
     }
 
     export interface GatewayPortConfigVpnPaths {
@@ -1269,11 +1289,14 @@ export namespace device {
 
     export interface GatewayPortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: pulumi.Input<number>;
     }
 
     export interface GatewayPortConfigWanExtraRoutes {
@@ -1337,6 +1360,10 @@ export namespace device {
          */
         addTargetVrfs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * route aggregation
+         */
+        aggregates?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * when used as export policy, optional
          */
         communities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1381,8 +1408,7 @@ export namespace device {
         vpnNeighborMacs?: pulumi.Input<pulumi.Input<string>[]>;
         vpnPathSla?: pulumi.Input<inputs.device.GatewayRoutingPoliciesTermMatchingVpnPathSla>;
         /**
-         * overlay-facing criteria (used for bgpConfig where via=vpn)
-         * ordered-
+         * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          */
         vpnPaths?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -1390,8 +1416,7 @@ export namespace device {
     export interface GatewayRoutingPoliciesTermMatchingRouteExists {
         route?: pulumi.Input<string>;
         /**
-         * name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * name of the vrf instance, it can also be the name of the VPN or wan if they
          */
         vrfName?: pulumi.Input<string>;
     }
@@ -1422,8 +1447,7 @@ export namespace device {
          */
         name?: pulumi.Input<string>;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          */
         pathPreference?: pulumi.Input<string>;
         /**
@@ -1470,71 +1494,82 @@ export namespace device {
     export interface GatewayTunnelConfigs {
         autoProvision?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvision>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ikeLifetime?: pulumi.Input<number>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
         ikeMode?: pulumi.Input<string>;
         /**
-         * if `provider`== `custom-ipsec`
+         * if `provider`==`custom-ipsec`
          */
         ikeProposals?: pulumi.Input<pulumi.Input<inputs.device.GatewayTunnelConfigsIkeProposal>[]>;
         /**
-         * if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ipsecLifetime?: pulumi.Input<number>;
         /**
-         * Only if  `provider`== `custom-ipsec`
+         * Only if  `provider`==`custom-ipsec`
          */
         ipsecProposals?: pulumi.Input<pulumi.Input<inputs.device.GatewayTunnelConfigsIpsecProposal>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         localId?: pulumi.Input<string>;
         /**
-         * enum: `active-active`, `active-standby`
+         * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
         /**
-         * networks reachable via this tunnel
+         * if `provider`==`custom-ipsec`, networks reachable via this tunnel
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         primary?: pulumi.Input<inputs.device.GatewayTunnelConfigsPrimary>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         probe?: pulumi.Input<inputs.device.GatewayTunnelConfigsProbe>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          */
         protocol?: pulumi.Input<string>;
         /**
-         * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: pulumi.Input<string>;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         secondary?: pulumi.Input<inputs.device.GatewayTunnelConfigsSecondary>;
         /**
-         * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
         version?: pulumi.Input<string>;
     }
 
     export interface GatewayTunnelConfigsAutoProvision {
         enable?: pulumi.Input<boolean>;
+        /**
+         * API override for POP selection
+         */
         latlng?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionLatlng>;
         primary?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionPrimary>;
+        /**
+         * enum: `jse-ipsec`, `zscaler-ipsec`
+         */
+        provider: pulumi.Input<string>;
+        /**
+         * API override for POP selection
+         */
+        region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.device.GatewayTunnelConfigsAutoProvisionSecondary>;
     }
 
@@ -1544,7 +1579,7 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsAutoProvisionPrimary {
-        numHosts?: pulumi.Input<string>;
+        probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -1552,7 +1587,7 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsAutoProvisionSecondary {
-        numHosts?: pulumi.Input<string>;
+        probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -1590,7 +1625,7 @@ export namespace device {
          */
         authAlgo?: pulumi.Input<string>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum:
+         * Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -1610,19 +1645,17 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsPrimary {
-        hosts?: pulumi.Input<pulumi.Input<string>[]>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: pulumi.Input<pulumi.Input<string>[]>;
         probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[]>;
-        wanNames?: pulumi.Input<pulumi.Input<string>[]>;
+        wanNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewayTunnelConfigsProbe {
@@ -1645,19 +1678,17 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsSecondary {
-        hosts?: pulumi.Input<pulumi.Input<string>[]>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: pulumi.Input<pulumi.Input<string>[]>;
         probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[]>;
-        wanNames?: pulumi.Input<pulumi.Input<string>[]>;
+        wanNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewayTunnelProviderOptions {
@@ -1672,76 +1703,127 @@ export namespace device {
     }
 
     export interface GatewayTunnelProviderOptionsJse {
-        name?: pulumi.Input<string>;
         numUsers?: pulumi.Input<number>;
+        /**
+         * JSE Organization name
+         */
+        orgName?: pulumi.Input<string>;
     }
 
     export interface GatewayTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired?: pulumi.Input<boolean>;
+        aupBlockInternetUntilAccepted?: pulumi.Input<boolean>;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: pulumi.Input<number>;
+        aupEnabled?: pulumi.Input<boolean>;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: pulumi.Input<boolean>;
+        aupForceSslInspection?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: pulumi.Input<number>;
+        aupTimeoutInDays?: pulumi.Input<number>;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to enforce user authentication
          */
-        enableAup?: pulumi.Input<boolean>;
+        authRequired?: pulumi.Input<boolean>;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: pulumi.Input<boolean>;
-        enforceAuthentication?: pulumi.Input<boolean>;
-        name?: pulumi.Input<string>;
+        cautionEnabled?: pulumi.Input<boolean>;
         /**
-         * if `useXff`==`true`
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        dnBandwidth?: pulumi.Input<number>;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: pulumi.Input<boolean>;
+        /**
+         * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          */
         subLocations?: pulumi.Input<pulumi.Input<inputs.device.GatewayTunnelProviderOptionsZscalerSubLocation>[]>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
          */
-        uploadMbps?: pulumi.Input<number>;
+        surrogateIp?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: pulumi.Input<boolean>;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: pulumi.Input<number>;
         /**
          * location uses proxy chaining to forward traffic
          */
-        useXff?: pulumi.Input<boolean>;
+        xffForwardEnabled?: pulumi.Input<boolean>;
     }
 
     export interface GatewayTunnelProviderOptionsZscalerSubLocation {
-        aupAcceptanceRequired?: pulumi.Input<boolean>;
+        aupBlockInternetUntilAccepted?: pulumi.Input<boolean>;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: pulumi.Input<number>;
+        aupEnabled?: pulumi.Input<boolean>;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: pulumi.Input<boolean>;
+        aupForceSslInspection?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: pulumi.Input<number>;
+        aupTimeoutInDays?: pulumi.Input<number>;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to authenticate users
          */
-        enableAup?: pulumi.Input<boolean>;
+        authRequired?: pulumi.Input<boolean>;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: pulumi.Input<boolean>;
-        enforceAuthentication?: pulumi.Input<boolean>;
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
+        cautionEnabled?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
          */
-        uploadMbps?: pulumi.Input<number>;
+        dnBandwidth?: pulumi.Input<number>;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * Network name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+         */
+        surrogateIp?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: pulumi.Input<boolean>;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: pulumi.Input<number>;
     }
 
     export interface GatewayVrfConfig {
@@ -1757,14 +1839,16 @@ export namespace device {
 
     export interface SwitchAclPolicy {
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Actions:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         actions?: pulumi.Input<pulumi.Input<inputs.device.SwitchAclPolicyAction>[]>;
         name?: pulumi.Input<string>;
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Source Tags:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         srcTags?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -1780,9 +1864,9 @@ export namespace device {
     export interface SwitchAclTags {
         /**
          * required if
-         * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbpResource`
-         * - `type`==`staticGbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: pulumi.Input<number>;
         /**
@@ -1808,8 +1892,7 @@ export namespace device {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * if `type`==`resource` or `type`==`gbpResource`
-         * empty means unrestricted, i.e. any
+         * if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.device.SwitchAclTagsSpec>[]>;
         /**
@@ -1840,7 +1923,7 @@ export namespace device {
          */
         portRange?: pulumi.Input<string>;
         /**
-         * `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+         * `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
          */
         protocol?: pulumi.Input<string>;
     }
@@ -1964,14 +2047,6 @@ export namespace device {
         value?: pulumi.Input<string>;
     }
 
-    export interface SwitchEvpnConfig {
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-         */
-        role?: pulumi.Input<string>;
-    }
-
     export interface SwitchExtraRoutes {
         /**
          * this takes precedence
@@ -2040,9 +2115,7 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         allowMultipleSupplicants?: pulumi.Input<boolean>;
@@ -2081,8 +2154,7 @@ export namespace device {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * inter_switch_link is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -2113,6 +2185,10 @@ export namespace device {
          * Only if `mode`==`trunk`, the list of network/vlans
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Additional note for the port config override
+         */
+        note?: pulumi.Input<string>;
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          */
@@ -2207,8 +2283,7 @@ export namespace device {
          */
         gateway6?: pulumi.Input<string>;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
         isolation?: pulumi.Input<boolean>;
         isolationVlanId?: pulumi.Input<string>;
@@ -2401,9 +2476,7 @@ export namespace device {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -2451,8 +2524,7 @@ export namespace device {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -2524,8 +2596,7 @@ export namespace device {
          */
         speed?: pulumi.Input<string>;
         /**
-         * Switch storm control
-         * Only if `mode`!=`dynamic`
+         * Switch storm control. Only if `mode`!=`dynamic`
          */
         stormControl?: pulumi.Input<inputs.device.SwitchPortUsagesStormControl>;
         /**
@@ -2605,8 +2676,7 @@ export namespace device {
          */
         authServersTimeout?: pulumi.Input<number>;
         /**
-         * use `network`or `sourceIp`
-         * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         * use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: pulumi.Input<string>;
         /**
@@ -2911,8 +2981,7 @@ export namespace device {
 
     export interface SwitchSnmpConfigV3ConfigUsmUser {
         /**
-         * Not required if `authenticationType`==`authenticationNone`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          */
         authenticationPassword?: pulumi.Input<string>;
         /**
@@ -2920,8 +2989,7 @@ export namespace device {
          */
         authenticationType?: pulumi.Input<string>;
         /**
-         * Not required if `encryptionType`==`privacy-none`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters
+         * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          */
         encryptionPassword?: pulumi.Input<string>;
         /**
@@ -3743,8 +3811,7 @@ export namespace org {
          */
         exportPolicy?: pulumi.Input<string>;
         /**
-         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: pulumi.Input<boolean>;
         /**
@@ -3983,6 +4050,9 @@ export namespace org {
         routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         subnet: pulumi.Input<string>;
         subnet6?: pulumi.Input<string>;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
         tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkTenants>}>;
         vlanId?: pulumi.Input<string>;
         /**
@@ -3998,7 +4068,7 @@ export namespace org {
     export interface DeviceprofileGatewayNetworkInternetAccess {
         createSimpleServicePolicy?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkInternetAccessDestinationNat>}>;
         enabled?: pulumi.Input<boolean>;
@@ -4007,22 +4077,35 @@ export namespace org {
          */
         restricted?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkInternetAccessStaticNat>}>;
     }
 
     export interface DeviceprofileGatewayNetworkInternetAccessDestinationNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
-    }
-
-    export interface DeviceprofileGatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName?: pulumi.Input<string>;
+    }
+
+    export interface DeviceprofileGatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
          */
         wanName?: pulumi.Input<string>;
     }
@@ -4060,7 +4143,7 @@ export namespace org {
          */
         allowPing?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkVpnAccessDestinationNat>}>;
         /**
@@ -4076,13 +4159,11 @@ export namespace org {
          */
         noReadvertiseToLanOspf?: pulumi.Input<boolean>;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4094,12 +4175,11 @@ export namespace org {
          */
         sourceNat?: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkVpnAccessSourceNat>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayNetworkVpnAccessStaticNat>}>;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: pulumi.Input<string>;
         /**
@@ -4113,9 +4193,12 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayNetworkVpnAccessSourceNat {
@@ -4123,12 +4206,11 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayNetworkVpnAccessStaticNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: pulumi.Input<string>;
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayOobIpConfig {
@@ -4244,9 +4326,7 @@ export namespace org {
          */
         aeIdx?: pulumi.Input<string>;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: pulumi.Input<boolean>;
         aggregated?: pulumi.Input<boolean>;
@@ -4254,6 +4334,9 @@ export namespace org {
          * if want to generate port up/down alarm, set it to true
          */
         critical?: pulumi.Input<boolean>;
+        /**
+         * Interface Description. Can be a variable (i.e. "{{myvar}}")
+         */
         description?: pulumi.Input<string>;
         disableAutoneg?: pulumi.Input<boolean>;
         /**
@@ -4265,13 +4348,11 @@ export namespace org {
          */
         dslType?: pulumi.Input<string>;
         /**
-         * if `wanType`==`dsl`
-         * 16 bit int
+         * if `wanType`==`dsl`, 16 bit int
          */
         dslVci?: pulumi.Input<number>;
         /**
-         * if `wanType`==`dsl`
-         * 8 bit int
+         * if `wanType`==`dsl`, 8 bit int
          */
         dslVpi?: pulumi.Input<number>;
         /**
@@ -4305,7 +4386,7 @@ export namespace org {
          */
         name?: pulumi.Input<string>;
         /**
-         * if `usage`==`lan`
+         * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4314,7 +4395,7 @@ export namespace org {
         outerVlanId?: pulumi.Input<number>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * if `usage`==`lan`
+         * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          */
         portNetwork?: pulumi.Input<string>;
         /**
@@ -4351,36 +4432,37 @@ export namespace org {
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          */
         usage: pulumi.Input<string>;
-        /**
-         * if WAN interface is on a VLAN
-         */
-        vlanId?: pulumi.Input<number>;
+        vlanId?: pulumi.Input<string>;
         /**
          * Property key is the VPN name
          */
         vpnPaths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigVpnPaths>}>;
         /**
-         * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
-         * optional, if spoke should reach this port by a different IP
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
         /**
-         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes>}>;
         /**
-         * if `usage`==`wan`
+         * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         */
+        wanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `usage`==`wan`
          */
         wanProbeOverride?: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanProbeOverride>;
         /**
-         * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfigWanSourceNat>;
         /**
-         * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
         wanType?: pulumi.Input<string>;
     }
@@ -4395,12 +4477,15 @@ export namespace org {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * except for out-of_band interface (vme/em0/fxp0)
+         * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
          */
         gateway?: pulumi.Input<string>;
+        /**
+         * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+         */
         ip?: pulumi.Input<string>;
         /**
-         * used only if `subnet` is not specified in `networks`
+         * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: pulumi.Input<string>;
         /**
@@ -4427,11 +4512,14 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: pulumi.Input<number>;
     }
 
     export interface DeviceprofileGatewayPortConfigVpnPaths {
@@ -4460,11 +4548,14 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: pulumi.Input<number>;
     }
 
     export interface DeviceprofileGatewayPortConfigWanExtraRoutes {
@@ -4516,6 +4607,10 @@ export namespace org {
          */
         addTargetVrfs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * route aggregation
+         */
+        aggregates?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * when used as export policy, optional
          */
         communities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -4560,8 +4655,7 @@ export namespace org {
         vpnNeighborMacs?: pulumi.Input<pulumi.Input<string>[]>;
         vpnPathSla?: pulumi.Input<inputs.org.DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSla>;
         /**
-         * overlay-facing criteria (used for bgpConfig where via=vpn)
-         * ordered-
+         * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          */
         vpnPaths?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -4569,8 +4663,7 @@ export namespace org {
     export interface DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists {
         route?: pulumi.Input<string>;
         /**
-         * name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * name of the vrf instance, it can also be the name of the VPN or wan if they
          */
         vrfName?: pulumi.Input<string>;
     }
@@ -4601,8 +4694,7 @@ export namespace org {
          */
         name?: pulumi.Input<string>;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          */
         pathPreference?: pulumi.Input<string>;
         /**
@@ -4649,71 +4741,82 @@ export namespace org {
     export interface DeviceprofileGatewayTunnelConfigs {
         autoProvision?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvision>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ikeLifetime?: pulumi.Input<number>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
         ikeMode?: pulumi.Input<string>;
         /**
-         * if `provider`== `custom-ipsec`
+         * if `provider`==`custom-ipsec`
          */
         ikeProposals?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsIkeProposal>[]>;
         /**
-         * if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ipsecLifetime?: pulumi.Input<number>;
         /**
-         * Only if  `provider`== `custom-ipsec`
+         * Only if  `provider`==`custom-ipsec`
          */
         ipsecProposals?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsIpsecProposal>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         localId?: pulumi.Input<string>;
         /**
-         * enum: `active-active`, `active-standby`
+         * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
         /**
-         * networks reachable via this tunnel
+         * if `provider`==`custom-ipsec`, networks reachable via this tunnel
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         primary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsPrimary>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         probe?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsProbe>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          */
         protocol?: pulumi.Input<string>;
         /**
-         * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: pulumi.Input<string>;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         secondary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsSecondary>;
         /**
-         * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
         version?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvision {
         enable?: pulumi.Input<boolean>;
+        /**
+         * API override for POP selection
+         */
         latlng?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng>;
         primary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary>;
+        /**
+         * enum: `jse-ipsec`, `zscaler-ipsec`
+         */
+        provider: pulumi.Input<string>;
+        /**
+         * API override for POP selection
+         */
+        region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary>;
     }
 
@@ -4723,7 +4826,7 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary {
-        numHosts?: pulumi.Input<string>;
+        probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -4731,7 +4834,7 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary {
-        numHosts?: pulumi.Input<string>;
+        probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -4769,7 +4872,7 @@ export namespace org {
          */
         authAlgo?: pulumi.Input<string>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum:
+         * Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -4789,19 +4892,17 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsPrimary {
-        hosts?: pulumi.Input<pulumi.Input<string>[]>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: pulumi.Input<pulumi.Input<string>[]>;
         probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[]>;
-        wanNames?: pulumi.Input<pulumi.Input<string>[]>;
+        wanNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsProbe {
@@ -4824,19 +4925,17 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsSecondary {
-        hosts?: pulumi.Input<pulumi.Input<string>[]>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: pulumi.Input<pulumi.Input<string>[]>;
         probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[]>;
-        wanNames?: pulumi.Input<pulumi.Input<string>[]>;
+        wanNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptions {
@@ -4851,76 +4950,127 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsJse {
-        name?: pulumi.Input<string>;
         numUsers?: pulumi.Input<number>;
+        /**
+         * JSE Organization name
+         */
+        orgName?: pulumi.Input<string>;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired?: pulumi.Input<boolean>;
+        aupBlockInternetUntilAccepted?: pulumi.Input<boolean>;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: pulumi.Input<number>;
+        aupEnabled?: pulumi.Input<boolean>;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: pulumi.Input<boolean>;
+        aupForceSslInspection?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: pulumi.Input<number>;
+        aupTimeoutInDays?: pulumi.Input<number>;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to enforce user authentication
          */
-        enableAup?: pulumi.Input<boolean>;
+        authRequired?: pulumi.Input<boolean>;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: pulumi.Input<boolean>;
-        enforceAuthentication?: pulumi.Input<boolean>;
-        name?: pulumi.Input<string>;
+        cautionEnabled?: pulumi.Input<boolean>;
         /**
-         * if `useXff`==`true`
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        dnBandwidth?: pulumi.Input<number>;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: pulumi.Input<boolean>;
+        /**
+         * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          */
         subLocations?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation>[]>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
          */
-        uploadMbps?: pulumi.Input<number>;
+        surrogateIp?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: pulumi.Input<boolean>;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: pulumi.Input<number>;
         /**
          * location uses proxy chaining to forward traffic
          */
-        useXff?: pulumi.Input<boolean>;
+        xffForwardEnabled?: pulumi.Input<boolean>;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation {
-        aupAcceptanceRequired?: pulumi.Input<boolean>;
+        aupBlockInternetUntilAccepted?: pulumi.Input<boolean>;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: pulumi.Input<number>;
+        aupEnabled?: pulumi.Input<boolean>;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: pulumi.Input<boolean>;
+        aupForceSslInspection?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: pulumi.Input<number>;
+        aupTimeoutInDays?: pulumi.Input<number>;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to authenticate users
          */
-        enableAup?: pulumi.Input<boolean>;
+        authRequired?: pulumi.Input<boolean>;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: pulumi.Input<boolean>;
-        enforceAuthentication?: pulumi.Input<boolean>;
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
+        cautionEnabled?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
          */
-        uploadMbps?: pulumi.Input<number>;
+        dnBandwidth?: pulumi.Input<number>;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * Network name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+         */
+        surrogateIp?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: pulumi.Input<boolean>;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: pulumi.Input<number>;
     }
 
     export interface DeviceprofileGatewayVrfConfig {
@@ -5046,8 +5196,7 @@ export namespace org {
          */
         exportPolicy?: pulumi.Input<string>;
         /**
-         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: pulumi.Input<boolean>;
         /**
@@ -5286,6 +5435,9 @@ export namespace org {
         routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         subnet: pulumi.Input<string>;
         subnet6?: pulumi.Input<string>;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
         tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateNetworkTenants>}>;
         vlanId?: pulumi.Input<string>;
         /**
@@ -5301,7 +5453,7 @@ export namespace org {
     export interface GatewaytemplateNetworkInternetAccess {
         createSimpleServicePolicy?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateNetworkInternetAccessDestinationNat>}>;
         enabled?: pulumi.Input<boolean>;
@@ -5310,22 +5462,35 @@ export namespace org {
          */
         restricted?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateNetworkInternetAccessStaticNat>}>;
     }
 
     export interface GatewaytemplateNetworkInternetAccessDestinationNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
-    }
-
-    export interface GatewaytemplateNetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName?: pulumi.Input<string>;
+    }
+
+    export interface GatewaytemplateNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
          */
         wanName?: pulumi.Input<string>;
     }
@@ -5363,7 +5528,7 @@ export namespace org {
          */
         allowPing?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateNetworkVpnAccessDestinationNat>}>;
         /**
@@ -5379,13 +5544,11 @@ export namespace org {
          */
         noReadvertiseToLanOspf?: pulumi.Input<boolean>;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: pulumi.Input<boolean>;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -5397,12 +5560,11 @@ export namespace org {
          */
         sourceNat?: pulumi.Input<inputs.org.GatewaytemplateNetworkVpnAccessSourceNat>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplateNetworkVpnAccessStaticNat>}>;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: pulumi.Input<string>;
         /**
@@ -5416,9 +5578,12 @@ export namespace org {
     }
 
     export interface GatewaytemplateNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateNetworkVpnAccessSourceNat {
@@ -5426,12 +5591,11 @@ export namespace org {
     }
 
     export interface GatewaytemplateNetworkVpnAccessStaticNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: pulumi.Input<string>;
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateOobIpConfig {
@@ -5547,9 +5711,7 @@ export namespace org {
          */
         aeIdx?: pulumi.Input<string>;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp?: pulumi.Input<boolean>;
         aggregated?: pulumi.Input<boolean>;
@@ -5557,6 +5719,9 @@ export namespace org {
          * if want to generate port up/down alarm, set it to true
          */
         critical?: pulumi.Input<boolean>;
+        /**
+         * Interface Description. Can be a variable (i.e. "{{myvar}}")
+         */
         description?: pulumi.Input<string>;
         disableAutoneg?: pulumi.Input<boolean>;
         /**
@@ -5568,13 +5733,11 @@ export namespace org {
          */
         dslType?: pulumi.Input<string>;
         /**
-         * if `wanType`==`dsl`
-         * 16 bit int
+         * if `wanType`==`dsl`, 16 bit int
          */
         dslVci?: pulumi.Input<number>;
         /**
-         * if `wanType`==`dsl`
-         * 8 bit int
+         * if `wanType`==`dsl`, 8 bit int
          */
         dslVpi?: pulumi.Input<number>;
         /**
@@ -5608,7 +5771,7 @@ export namespace org {
          */
         name?: pulumi.Input<string>;
         /**
-         * if `usage`==`lan`
+         * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -5617,7 +5780,7 @@ export namespace org {
         outerVlanId?: pulumi.Input<number>;
         poeDisabled?: pulumi.Input<boolean>;
         /**
-         * if `usage`==`lan`
+         * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          */
         portNetwork?: pulumi.Input<string>;
         /**
@@ -5654,36 +5817,37 @@ export namespace org {
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          */
         usage: pulumi.Input<string>;
-        /**
-         * if WAN interface is on a VLAN
-         */
-        vlanId?: pulumi.Input<number>;
+        vlanId?: pulumi.Input<string>;
         /**
          * Property key is the VPN name
          */
         vpnPaths?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigVpnPaths>}>;
         /**
-         * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
         wanArpPolicer?: pulumi.Input<string>;
         /**
-         * optional, if spoke should reach this port by a different IP
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: pulumi.Input<string>;
         /**
-         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
          */
         wanExtraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanExtraRoutes>}>;
         /**
-         * if `usage`==`wan`
+         * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         */
+        wanNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `usage`==`wan`
          */
         wanProbeOverride?: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanProbeOverride>;
         /**
-         * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: pulumi.Input<inputs.org.GatewaytemplatePortConfigWanSourceNat>;
         /**
-         * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
         wanType?: pulumi.Input<string>;
     }
@@ -5698,12 +5862,15 @@ export namespace org {
          */
         dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * except for out-of_band interface (vme/em0/fxp0)
+         * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
          */
         gateway?: pulumi.Input<string>;
+        /**
+         * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+         */
         ip?: pulumi.Input<string>;
         /**
-         * used only if `subnet` is not specified in `networks`
+         * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: pulumi.Input<string>;
         /**
@@ -5730,11 +5897,14 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: pulumi.Input<number>;
     }
 
     export interface GatewaytemplatePortConfigVpnPaths {
@@ -5763,11 +5933,14 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: pulumi.Input<pulumi.Input<number>[]>;
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: pulumi.Input<number>;
     }
 
     export interface GatewaytemplatePortConfigWanExtraRoutes {
@@ -5819,6 +5992,10 @@ export namespace org {
          */
         addTargetVrfs?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * route aggregation
+         */
+        aggregates?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * when used as export policy, optional
          */
         communities?: pulumi.Input<pulumi.Input<string>[]>;
@@ -5863,8 +6040,7 @@ export namespace org {
         vpnNeighborMacs?: pulumi.Input<pulumi.Input<string>[]>;
         vpnPathSla?: pulumi.Input<inputs.org.GatewaytemplateRoutingPoliciesTermMatchingVpnPathSla>;
         /**
-         * overlay-facing criteria (used for bgpConfig where via=vpn)
-         * ordered-
+         * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          */
         vpnPaths?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -5872,8 +6048,7 @@ export namespace org {
     export interface GatewaytemplateRoutingPoliciesTermMatchingRouteExists {
         route?: pulumi.Input<string>;
         /**
-         * name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * name of the vrf instance, it can also be the name of the VPN or wan if they
          */
         vrfName?: pulumi.Input<string>;
     }
@@ -5904,8 +6079,7 @@ export namespace org {
          */
         name?: pulumi.Input<string>;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          */
         pathPreference?: pulumi.Input<string>;
         /**
@@ -5952,71 +6126,82 @@ export namespace org {
     export interface GatewaytemplateTunnelConfigs {
         autoProvision?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvision>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ikeLifetime?: pulumi.Input<number>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
         ikeMode?: pulumi.Input<string>;
         /**
-         * if `provider`== `custom-ipsec`
+         * if `provider`==`custom-ipsec`
          */
         ikeProposals?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsIkeProposal>[]>;
         /**
-         * if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ipsecLifetime?: pulumi.Input<number>;
         /**
-         * Only if  `provider`== `custom-ipsec`
+         * Only if  `provider`==`custom-ipsec`
          */
         ipsecProposals?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsIpsecProposal>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         localId?: pulumi.Input<string>;
         /**
-         * enum: `active-active`, `active-standby`
+         * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode?: pulumi.Input<string>;
         /**
-         * networks reachable via this tunnel
+         * if `provider`==`custom-ipsec`, networks reachable via this tunnel
          */
         networks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         primary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsPrimary>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         probe?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsProbe>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          */
         protocol?: pulumi.Input<string>;
         /**
-         * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: pulumi.Input<string>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: pulumi.Input<string>;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         secondary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsSecondary>;
         /**
-         * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
         version?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvision {
         enable?: pulumi.Input<boolean>;
+        /**
+         * API override for POP selection
+         */
         latlng?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionLatlng>;
         primary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionPrimary>;
+        /**
+         * enum: `jse-ipsec`, `zscaler-ipsec`
+         */
+        provider: pulumi.Input<string>;
+        /**
+         * API override for POP selection
+         */
+        region?: pulumi.Input<string>;
         secondary?: pulumi.Input<inputs.org.GatewaytemplateTunnelConfigsAutoProvisionSecondary>;
     }
 
@@ -6026,7 +6211,7 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvisionPrimary {
-        numHosts?: pulumi.Input<string>;
+        probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -6034,7 +6219,7 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvisionSecondary {
-        numHosts?: pulumi.Input<string>;
+        probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -6072,7 +6257,7 @@ export namespace org {
          */
         authAlgo?: pulumi.Input<string>;
         /**
-         * Only if `provider`== `custom-ipsec`. enum:
+         * Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -6092,19 +6277,17 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsPrimary {
-        hosts?: pulumi.Input<pulumi.Input<string>[]>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: pulumi.Input<pulumi.Input<string>[]>;
         probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[]>;
-        wanNames?: pulumi.Input<pulumi.Input<string>[]>;
+        wanNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewaytemplateTunnelConfigsProbe {
@@ -6127,19 +6310,17 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsSecondary {
-        hosts?: pulumi.Input<pulumi.Input<string>[]>;
+        hosts: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: pulumi.Input<pulumi.Input<string>[]>;
         probeIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: pulumi.Input<pulumi.Input<string>[]>;
-        wanNames?: pulumi.Input<pulumi.Input<string>[]>;
+        wanNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface GatewaytemplateTunnelProviderOptions {
@@ -6154,76 +6335,127 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelProviderOptionsJse {
-        name?: pulumi.Input<string>;
         numUsers?: pulumi.Input<number>;
+        /**
+         * JSE Organization name
+         */
+        orgName?: pulumi.Input<string>;
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired?: pulumi.Input<boolean>;
+        aupBlockInternetUntilAccepted?: pulumi.Input<boolean>;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: pulumi.Input<number>;
+        aupEnabled?: pulumi.Input<boolean>;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: pulumi.Input<boolean>;
+        aupForceSslInspection?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: pulumi.Input<number>;
+        aupTimeoutInDays?: pulumi.Input<number>;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to enforce user authentication
          */
-        enableAup?: pulumi.Input<boolean>;
+        authRequired?: pulumi.Input<boolean>;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: pulumi.Input<boolean>;
-        enforceAuthentication?: pulumi.Input<boolean>;
-        name?: pulumi.Input<string>;
+        cautionEnabled?: pulumi.Input<boolean>;
         /**
-         * if `useXff`==`true`
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        dnBandwidth?: pulumi.Input<number>;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: pulumi.Input<boolean>;
+        /**
+         * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          */
         subLocations?: pulumi.Input<pulumi.Input<inputs.org.GatewaytemplateTunnelProviderOptionsZscalerSubLocation>[]>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
          */
-        uploadMbps?: pulumi.Input<number>;
+        surrogateIp?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: pulumi.Input<boolean>;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: pulumi.Input<number>;
         /**
          * location uses proxy chaining to forward traffic
          */
-        useXff?: pulumi.Input<boolean>;
+        xffForwardEnabled?: pulumi.Input<boolean>;
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscalerSubLocation {
-        aupAcceptanceRequired?: pulumi.Input<boolean>;
+        aupBlockInternetUntilAccepted?: pulumi.Input<boolean>;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: pulumi.Input<number>;
+        aupEnabled?: pulumi.Input<boolean>;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: pulumi.Input<boolean>;
+        aupForceSslInspection?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: pulumi.Input<number>;
+        aupTimeoutInDays?: pulumi.Input<number>;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to authenticate users
          */
-        enableAup?: pulumi.Input<boolean>;
+        authRequired?: pulumi.Input<boolean>;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: pulumi.Input<boolean>;
-        enforceAuthentication?: pulumi.Input<boolean>;
-        subnets?: pulumi.Input<pulumi.Input<string>[]>;
+        cautionEnabled?: pulumi.Input<boolean>;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
          */
-        uploadMbps?: pulumi.Input<number>;
+        dnBandwidth?: pulumi.Input<number>;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * Network name
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+         */
+        surrogateIp?: pulumi.Input<boolean>;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: pulumi.Input<boolean>;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: pulumi.Input<number>;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: pulumi.Input<number>;
     }
 
     export interface GatewaytemplateVrfConfig {
@@ -6400,7 +6632,7 @@ export namespace org {
     export interface NetworkInternetAccess {
         createSimpleServicePolicy?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkInternetAccessDestinationNat>}>;
         enabled?: pulumi.Input<boolean>;
@@ -6409,24 +6641,56 @@ export namespace org {
          */
         restricted?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkInternetAccessStaticNat>}>;
     }
 
     export interface NetworkInternetAccessDestinationNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
-    }
-
-    export interface NetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: pulumi.Input<string>;
+    }
+
+    export interface NetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
+         */
+        wanName?: pulumi.Input<string>;
+    }
+
+    export interface NetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp?: pulumi.Input<boolean>;
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkMulticastGroups>}>;
+    }
+
+    export interface NetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: pulumi.Input<string>;
     }
 
     export interface NetworkTenants {
@@ -6443,7 +6707,7 @@ export namespace org {
          */
         allowPing?: pulumi.Input<boolean>;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccessDestinationNat>}>;
         /**
@@ -6477,7 +6741,7 @@ export namespace org {
          */
         sourceNat?: pulumi.Input<inputs.org.NetworkVpnAccessSourceNat>;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkVpnAccessStaticNat>}>;
         /**
@@ -6496,9 +6760,12 @@ export namespace org {
     }
 
     export interface NetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: pulumi.Input<string>;
         name?: pulumi.Input<string>;
-        port?: pulumi.Input<number>;
+        port?: pulumi.Input<string>;
     }
 
     export interface NetworkVpnAccessSourceNat {
@@ -6506,24 +6773,25 @@ export namespace org {
     }
 
     export interface NetworkVpnAccessStaticNat {
-        internalIp?: pulumi.Input<string>;
-        name?: pulumi.Input<string>;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: pulumi.Input<string>;
+        internalIp: pulumi.Input<string>;
+        name: pulumi.Input<string>;
     }
 
     export interface NetworktemplateAclPolicy {
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Actions:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         actions?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateAclPolicyAction>[]>;
         name?: pulumi.Input<string>;
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Source Tags:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         srcTags?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -6539,9 +6807,9 @@ export namespace org {
     export interface NetworktemplateAclTags {
         /**
          * required if
-         * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbpResource`
-         * - `type`==`staticGbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: pulumi.Input<number>;
         /**
@@ -6567,8 +6835,7 @@ export namespace org {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * if `type`==`resource` or `type`==`gbpResource`
-         * empty means unrestricted, i.e. any
+         * if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.org.NetworktemplateAclTagsSpec>[]>;
         /**
@@ -6599,7 +6866,7 @@ export namespace org {
          */
         portRange?: pulumi.Input<string>;
         /**
-         * `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+         * `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
          */
         protocol?: pulumi.Input<string>;
     }
@@ -6676,8 +6943,7 @@ export namespace org {
          */
         gateway6?: pulumi.Input<string>;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
         isolation?: pulumi.Input<boolean>;
         isolationVlanId?: pulumi.Input<string>;
@@ -6763,9 +7029,7 @@ export namespace org {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -6813,8 +7077,7 @@ export namespace org {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -6886,8 +7149,7 @@ export namespace org {
          */
         speed?: pulumi.Input<string>;
         /**
-         * Switch storm control
-         * Only if `mode`!=`dynamic`
+         * Switch storm control. Only if `mode`!=`dynamic`
          */
         stormControl?: pulumi.Input<inputs.org.NetworktemplatePortUsagesStormControl>;
         /**
@@ -6971,8 +7233,7 @@ export namespace org {
          */
         authServersTimeout?: pulumi.Input<number>;
         /**
-         * use `network`or `sourceIp`
-         * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         * use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: pulumi.Input<string>;
         /**
@@ -7277,8 +7538,7 @@ export namespace org {
 
     export interface NetworktemplateSnmpConfigV3ConfigUsmUser {
         /**
-         * Not required if `authenticationType`==`authenticationNone`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          */
         authenticationPassword?: pulumi.Input<string>;
         /**
@@ -7286,8 +7546,7 @@ export namespace org {
          */
         authenticationType?: pulumi.Input<string>;
         /**
-         * Not required if `encryptionType`==`privacy-none`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters
+         * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          */
         encryptionPassword?: pulumi.Input<string>;
         /**
@@ -7418,8 +7677,7 @@ Please update your configurations.
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortConfig>}>;
         /**
-         * Property key is the port mirroring instance name
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworktemplateSwitchMatchingRulePortMirroring>}>;
     }
@@ -8396,8 +8654,7 @@ Please update your configurations.
         apps?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
         enabled?: pulumi.Input<boolean>;
         /**
-         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-         * Property key is the wxtag id
+         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
          */
         wxtagIds?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     }
@@ -8566,8 +8823,7 @@ Please update your configurations.
     export interface WlanDnsServerRewrite {
         enabled?: pulumi.Input<boolean>;
         /**
-         * map between radiusGroup and the desired DNS server (IPv4 only)
-         * Property key is the RADIUS group, property value is the desired DNS Server
+         * map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
          */
         radiusGroups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -8580,8 +8836,7 @@ Please update your configurations.
         defaultVlanId?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         /**
-         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-         * `false` means auto
+         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
          */
         forceLookup?: pulumi.Input<boolean>;
         /**
@@ -9642,13 +9897,11 @@ Please update your configurations.
         enabled?: pulumi.Input<boolean>;
         idleTimeout?: pulumi.Input<number>;
         /**
-         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
         mxclusterIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
          */
         proxyHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -9859,14 +10112,16 @@ export namespace site {
 
     export interface NetworktemplateAclPolicy {
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Actions:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         actions?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclPolicyAction>[]>;
         name?: pulumi.Input<string>;
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Source Tags:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         srcTags?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -9882,9 +10137,9 @@ export namespace site {
     export interface NetworktemplateAclTags {
         /**
          * required if
-         * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbpResource`
-         * - `type`==`staticGbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: pulumi.Input<number>;
         /**
@@ -9910,8 +10165,7 @@ export namespace site {
          */
         radiusGroup?: pulumi.Input<string>;
         /**
-         * if `type`==`resource` or `type`==`gbpResource`
-         * empty means unrestricted, i.e. any
+         * if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: pulumi.Input<pulumi.Input<inputs.site.NetworktemplateAclTagsSpec>[]>;
         /**
@@ -9942,7 +10196,7 @@ export namespace site {
          */
         portRange?: pulumi.Input<string>;
         /**
-         * `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+         * `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
          */
         protocol?: pulumi.Input<string>;
     }
@@ -10019,8 +10273,7 @@ export namespace site {
          */
         gateway6?: pulumi.Input<string>;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
         isolation?: pulumi.Input<boolean>;
         isolationVlanId?: pulumi.Input<string>;
@@ -10106,9 +10359,7 @@ export namespace site {
          */
         allNetworks?: pulumi.Input<boolean>;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: pulumi.Input<boolean>;
         /**
@@ -10156,8 +10407,7 @@ export namespace site {
          */
         guestNetwork?: pulumi.Input<string>;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink?: pulumi.Input<boolean>;
         /**
@@ -10229,8 +10479,7 @@ export namespace site {
          */
         speed?: pulumi.Input<string>;
         /**
-         * Switch storm control
-         * Only if `mode`!=`dynamic`
+         * Switch storm control. Only if `mode`!=`dynamic`
          */
         stormControl?: pulumi.Input<inputs.site.NetworktemplatePortUsagesStormControl>;
         /**
@@ -10314,8 +10563,7 @@ export namespace site {
          */
         authServersTimeout?: pulumi.Input<number>;
         /**
-         * use `network`or `sourceIp`
-         * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         * use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: pulumi.Input<string>;
         /**
@@ -10620,8 +10868,7 @@ export namespace site {
 
     export interface NetworktemplateSnmpConfigV3ConfigUsmUser {
         /**
-         * Not required if `authenticationType`==`authenticationNone`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          */
         authenticationPassword?: pulumi.Input<string>;
         /**
@@ -10629,8 +10876,7 @@ export namespace site {
          */
         authenticationType?: pulumi.Input<string>;
         /**
-         * Not required if `encryptionType`==`privacy-none`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters
+         * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          */
         encryptionPassword?: pulumi.Input<string>;
         /**
@@ -10761,8 +11007,7 @@ Please update your configurations.
          */
         portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortConfig>}>;
         /**
-         * Property key is the port mirroring instance name
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateSwitchMatchingRulePortMirroring>}>;
     }
@@ -11632,8 +11877,7 @@ Please update your configurations.
         apps?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
         enabled?: pulumi.Input<boolean>;
         /**
-         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-         * Property key is the wxtag id
+         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
          */
         wxtagIds?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
     }
@@ -11802,8 +12046,7 @@ Please update your configurations.
     export interface WlanDnsServerRewrite {
         enabled?: pulumi.Input<boolean>;
         /**
-         * map between radiusGroup and the desired DNS server (IPv4 only)
-         * Property key is the RADIUS group, property value is the desired DNS Server
+         * map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
          */
         radiusGroups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -11816,8 +12059,7 @@ Please update your configurations.
         defaultVlanId?: pulumi.Input<string>;
         enabled?: pulumi.Input<boolean>;
         /**
-         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-         * `false` means auto
+         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
          */
         forceLookup?: pulumi.Input<boolean>;
         /**
@@ -12878,13 +13120,11 @@ Please update your configurations.
         enabled?: pulumi.Input<boolean>;
         idleTimeout?: pulumi.Input<number>;
         /**
-         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
         mxclusterIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
          */
         proxyHosts?: pulumi.Input<pulumi.Input<string>[]>;
         /**

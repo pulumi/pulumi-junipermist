@@ -60,6 +60,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Flag to enable debugging API calls. Default is false.
+	ApiDebug *bool `pulumi:"apiDebug"`
 	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
 	// results in infinite timeout.
 	ApiTimeout *float64 `pulumi:"apiTimeout"`
@@ -79,6 +81,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Flag to enable debugging API calls. Default is false.
+	ApiDebug pulumi.BoolPtrInput
 	// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
 	// results in infinite timeout.
 	ApiTimeout pulumi.Float64PtrInput

@@ -4,10 +4,12 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary;
 import com.pulumi.junipermist.org.outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,19 +17,51 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
     private @Nullable Boolean enable;
+    /**
+     * @return API override for POP selection
+     * 
+     */
     private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng latlng;
     private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary primary;
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    private String provider;
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    private @Nullable String region;
     private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary secondary;
 
     private DeviceprofileGatewayTunnelConfigsAutoProvision() {}
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
+    /**
+     * @return API override for POP selection
+     * 
+     */
     public Optional<DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng> latlng() {
         return Optional.ofNullable(this.latlng);
     }
     public Optional<DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary> primary() {
         return Optional.ofNullable(this.primary);
+    }
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    public String provider() {
+        return this.provider;
+    }
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     public Optional<DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
@@ -45,6 +79,8 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
         private @Nullable Boolean enable;
         private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng latlng;
         private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary primary;
+        private String provider;
+        private @Nullable String region;
         private @Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary secondary;
         public Builder() {}
         public Builder(DeviceprofileGatewayTunnelConfigsAutoProvision defaults) {
@@ -52,6 +88,8 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
     	      this.enable = defaults.enable;
     	      this.latlng = defaults.latlng;
     	      this.primary = defaults.primary;
+    	      this.provider = defaults.provider;
+    	      this.region = defaults.region;
     	      this.secondary = defaults.secondary;
         }
 
@@ -74,6 +112,20 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
             return this;
         }
         @CustomType.Setter
+        public Builder provider(String provider) {
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("DeviceprofileGatewayTunnelConfigsAutoProvision", "provider");
+            }
+            this.provider = provider;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secondary(@Nullable DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary secondary) {
 
             this.secondary = secondary;
@@ -84,6 +136,8 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvision {
             _resultValue.enable = enable;
             _resultValue.latlng = latlng;
             _resultValue.primary = primary;
+            _resultValue.provider = provider;
+            _resultValue.region = region;
             _resultValue.secondary = secondary;
             return _resultValue;
         }

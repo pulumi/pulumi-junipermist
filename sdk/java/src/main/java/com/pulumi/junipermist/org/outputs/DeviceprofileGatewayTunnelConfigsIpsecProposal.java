@@ -17,7 +17,7 @@ public final class DeviceprofileGatewayTunnelConfigsIpsecProposal {
      */
     private @Nullable String authAlgo;
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum:
+     * @return Only if `provider`==`custom-ipsec`. enum:
      *   * 1
      *   * 2 (1024-bit)
      *   * 5
@@ -46,7 +46,7 @@ public final class DeviceprofileGatewayTunnelConfigsIpsecProposal {
         return Optional.ofNullable(this.authAlgo);
     }
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum:
+     * @return Only if `provider`==`custom-ipsec`. enum:
      *   * 1
      *   * 2 (1024-bit)
      *   * 5

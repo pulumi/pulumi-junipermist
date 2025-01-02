@@ -21,75 +21,77 @@ import javax.annotation.Nullable;
 public final class GatewayTunnelConfigs {
     private @Nullable GatewayTunnelConfigsAutoProvision autoProvision;
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     private @Nullable Integer ikeLifetime;
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+     * @return Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
      * 
      */
     private @Nullable String ikeMode;
     /**
-     * @return if `provider`== `custom-ipsec`
+     * @return if `provider`==`custom-ipsec`
      * 
      */
     private @Nullable List<GatewayTunnelConfigsIkeProposal> ikeProposals;
     /**
-     * @return if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     private @Nullable Integer ipsecLifetime;
     /**
-     * @return Only if  `provider`== `custom-ipsec`
+     * @return Only if  `provider`==`custom-ipsec`
      * 
      */
     private @Nullable List<GatewayTunnelConfigsIpsecProposal> ipsecProposals;
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * @return Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     private @Nullable String localId;
     /**
-     * @return enum: `active-active`, `active-standby`
+     * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
     private @Nullable String mode;
     /**
-     * @return networks reachable via this tunnel
+     * @return if `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     private @Nullable List<String> networks;
+    /**
+     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     private @Nullable GatewayTunnelConfigsPrimary primary;
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`
      * 
      */
     private @Nullable GatewayTunnelConfigsProbe probe;
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+     * @return Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
      * 
      */
     private @Nullable String protocol;
     /**
-     * @return enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     private @Nullable String provider;
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * @return Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     private @Nullable String psk;
+    /**
+     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     private @Nullable GatewayTunnelConfigsSecondary secondary;
     /**
-     * @return Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
      * 
      */
     private @Nullable String version;
@@ -99,103 +101,105 @@ public final class GatewayTunnelConfigs {
         return Optional.ofNullable(this.autoProvision);
     }
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     public Optional<Integer> ikeLifetime() {
         return Optional.ofNullable(this.ikeLifetime);
     }
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+     * @return Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
      * 
      */
     public Optional<String> ikeMode() {
         return Optional.ofNullable(this.ikeMode);
     }
     /**
-     * @return if `provider`== `custom-ipsec`
+     * @return if `provider`==`custom-ipsec`
      * 
      */
     public List<GatewayTunnelConfigsIkeProposal> ikeProposals() {
         return this.ikeProposals == null ? List.of() : this.ikeProposals;
     }
     /**
-     * @return if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     public Optional<Integer> ipsecLifetime() {
         return Optional.ofNullable(this.ipsecLifetime);
     }
     /**
-     * @return Only if  `provider`== `custom-ipsec`
+     * @return Only if  `provider`==`custom-ipsec`
      * 
      */
     public List<GatewayTunnelConfigsIpsecProposal> ipsecProposals() {
         return this.ipsecProposals == null ? List.of() : this.ipsecProposals;
     }
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * @return Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public Optional<String> localId() {
         return Optional.ofNullable(this.localId);
     }
     /**
-     * @return enum: `active-active`, `active-standby`
+     * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return networks reachable via this tunnel
+     * @return if `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
+    /**
+     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     public Optional<GatewayTunnelConfigsPrimary> primary() {
         return Optional.ofNullable(this.primary);
     }
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`
      * 
      */
     public Optional<GatewayTunnelConfigsProbe> probe() {
         return Optional.ofNullable(this.probe);
     }
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+     * @return Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
      * 
      */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     public Optional<String> provider() {
         return Optional.ofNullable(this.provider);
     }
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * @return Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public Optional<String> psk() {
         return Optional.ofNullable(this.psk);
     }
+    /**
+     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     public Optional<GatewayTunnelConfigsSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
     }
     /**
-     * @return Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
      * 
      */
     public Optional<String> version() {

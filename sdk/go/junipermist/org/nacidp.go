@@ -134,6 +134,8 @@ type Nacidp struct {
 	OauthCcClientSecret pulumi.StringPtrOutput `pulumi:"oauthCcClientSecret"`
 	// if `idpType`==`oauth`
 	OauthDiscoveryUrl pulumi.StringPtrOutput `pulumi:"oauthDiscoveryUrl"`
+	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+	OauthPingIdentityRegion pulumi.StringOutput `pulumi:"oauthPingIdentityRegion"`
 	// if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrOutput `pulumi:"oauthRopcClientId"`
 	// if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -143,6 +145,10 @@ type Nacidp struct {
 	// if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
 	OauthType pulumi.StringOutput `pulumi:"oauthType"`
 	OrgId     pulumi.StringOutput `pulumi:"orgId"`
+	// if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+	ScimEnabled pulumi.BoolOutput `pulumi:"scimEnabled"`
+	// if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+	ScimSecretToken pulumi.StringOutput `pulumi:"scimSecretToken"`
 }
 
 // NewNacidp registers a new resource with the given unique name, arguments, and options.
@@ -219,6 +225,8 @@ type nacidpState struct {
 	OauthCcClientSecret *string `pulumi:"oauthCcClientSecret"`
 	// if `idpType`==`oauth`
 	OauthDiscoveryUrl *string `pulumi:"oauthDiscoveryUrl"`
+	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+	OauthPingIdentityRegion *string `pulumi:"oauthPingIdentityRegion"`
 	// if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId *string `pulumi:"oauthRopcClientId"`
 	// if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -228,6 +236,10 @@ type nacidpState struct {
 	// if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
 	OauthType *string `pulumi:"oauthType"`
 	OrgId     *string `pulumi:"orgId"`
+	// if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+	ScimEnabled *bool `pulumi:"scimEnabled"`
+	// if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+	ScimSecretToken *string `pulumi:"scimSecretToken"`
 }
 
 type NacidpState struct {
@@ -269,6 +281,8 @@ type NacidpState struct {
 	OauthCcClientSecret pulumi.StringPtrInput
 	// if `idpType`==`oauth`
 	OauthDiscoveryUrl pulumi.StringPtrInput
+	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+	OauthPingIdentityRegion pulumi.StringPtrInput
 	// if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrInput
 	// if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -278,6 +292,10 @@ type NacidpState struct {
 	// if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
 	OauthType pulumi.StringPtrInput
 	OrgId     pulumi.StringPtrInput
+	// if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+	ScimEnabled pulumi.BoolPtrInput
+	// if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+	ScimSecretToken pulumi.StringPtrInput
 }
 
 func (NacidpState) ElementType() reflect.Type {
@@ -323,6 +341,8 @@ type nacidpArgs struct {
 	OauthCcClientSecret *string `pulumi:"oauthCcClientSecret"`
 	// if `idpType`==`oauth`
 	OauthDiscoveryUrl *string `pulumi:"oauthDiscoveryUrl"`
+	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+	OauthPingIdentityRegion *string `pulumi:"oauthPingIdentityRegion"`
 	// if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId *string `pulumi:"oauthRopcClientId"`
 	// if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -332,6 +352,10 @@ type nacidpArgs struct {
 	// if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
 	OauthType *string `pulumi:"oauthType"`
 	OrgId     string  `pulumi:"orgId"`
+	// if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+	ScimEnabled *bool `pulumi:"scimEnabled"`
+	// if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+	ScimSecretToken *string `pulumi:"scimSecretToken"`
 }
 
 // The set of arguments for constructing a Nacidp resource.
@@ -374,6 +398,8 @@ type NacidpArgs struct {
 	OauthCcClientSecret pulumi.StringPtrInput
 	// if `idpType`==`oauth`
 	OauthDiscoveryUrl pulumi.StringPtrInput
+	// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+	OauthPingIdentityRegion pulumi.StringPtrInput
 	// if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 	OauthRopcClientId pulumi.StringPtrInput
 	// if `oauthType`==`azure` or `oauthType`==`azure-gov`. oauth*ropc*client_secret can be empty
@@ -383,6 +409,10 @@ type NacidpArgs struct {
 	// if `idpType`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `pingIdentity`
 	OauthType pulumi.StringPtrInput
 	OrgId     pulumi.StringInput
+	// if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+	ScimEnabled pulumi.BoolPtrInput
+	// if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+	ScimSecretToken pulumi.StringPtrInput
 }
 
 func (NacidpArgs) ElementType() reflect.Type {
@@ -567,6 +597,11 @@ func (o NacidpOutput) OauthDiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.OauthDiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
+// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+func (o NacidpOutput) OauthPingIdentityRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OauthPingIdentityRegion }).(pulumi.StringOutput)
+}
+
 // if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
 func (o NacidpOutput) OauthRopcClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringPtrOutput { return v.OauthRopcClientId }).(pulumi.StringPtrOutput)
@@ -589,6 +624,16 @@ func (o NacidpOutput) OauthType() pulumi.StringOutput {
 
 func (o NacidpOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+func (o NacidpOutput) ScimEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Nacidp) pulumi.BoolOutput { return v.ScimEnabled }).(pulumi.BoolOutput)
+}
+
+// if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+func (o NacidpOutput) ScimSecretToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nacidp) pulumi.StringOutput { return v.ScimSecretToken }).(pulumi.StringOutput)
 }
 
 type NacidpArrayOutput struct{ *pulumi.OutputState }

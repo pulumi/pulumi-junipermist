@@ -12,8 +12,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayTunnelConfigsAutoProvisionPrimaryArgs : global::Pulumi.ResourceArgs
     {
-        [Input("numHosts")]
-        public Input<string>? NumHosts { get; set; }
+        [Input("probeIps")]
+        private InputList<string>? _probeIps;
+        public InputList<string> ProbeIps
+        {
+            get => _probeIps ?? (_probeIps = new InputList<string>());
+            set => _probeIps = value;
+        }
 
         [Input("wanNames")]
         private InputList<string>? _wanNames;

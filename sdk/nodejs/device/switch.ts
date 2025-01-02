@@ -56,7 +56,7 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly aclTags!: pulumi.Output<{[key: string]: outputs.device.SwitchAclTags} | undefined>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly deviceId!: pulumi.Output<string>;
@@ -74,10 +74,6 @@ export class Switch extends pulumi.CustomResource {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     public readonly dnsSuffixes!: pulumi.Output<string[] | undefined>;
-    /**
-     * EVPN Junos settings
-     */
-    public /*out*/ readonly evpnConfig!: pulumi.Output<outputs.device.SwitchEvpnConfig>;
     public readonly extraRoutes!: pulumi.Output<{[key: string]: outputs.device.SwitchExtraRoutes} | undefined>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -126,8 +122,8 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     /**
-     * - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     * set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      */
     public readonly oobIpConfig!: pulumi.Output<outputs.device.SwitchOobIpConfig | undefined>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
@@ -144,7 +140,7 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchPortConfig} | undefined>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      */
@@ -230,7 +226,6 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["disableAutoConfig"] = state ? state.disableAutoConfig : undefined;
             resourceInputs["dnsServers"] = state ? state.dnsServers : undefined;
             resourceInputs["dnsSuffixes"] = state ? state.dnsSuffixes : undefined;
-            resourceInputs["evpnConfig"] = state ? state.evpnConfig : undefined;
             resourceInputs["extraRoutes"] = state ? state.extraRoutes : undefined;
             resourceInputs["extraRoutes6"] = state ? state.extraRoutes6 : undefined;
             resourceInputs["image1Url"] = state ? state.image1Url : undefined;
@@ -322,7 +317,6 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["vrrpConfig"] = args ? args.vrrpConfig : undefined;
             resourceInputs["x"] = args ? args.x : undefined;
             resourceInputs["y"] = args ? args.y : undefined;
-            resourceInputs["evpnConfig"] = undefined /*out*/;
             resourceInputs["image1Url"] = undefined /*out*/;
             resourceInputs["image2Url"] = undefined /*out*/;
             resourceInputs["image3Url"] = undefined /*out*/;
@@ -347,7 +341,7 @@ export interface SwitchState {
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchAclTags>}>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     deviceId?: pulumi.Input<string>;
@@ -365,10 +359,6 @@ export interface SwitchState {
      * Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
      */
     dnsSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * EVPN Junos settings
-     */
-    evpnConfig?: pulumi.Input<inputs.device.SwitchEvpnConfig>;
     extraRoutes?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchExtraRoutes>}>;
     /**
      * Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
@@ -417,8 +407,8 @@ export interface SwitchState {
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     * set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     orgId?: pulumi.Input<string>;
@@ -435,7 +425,7 @@ export interface SwitchState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      */
@@ -510,7 +500,7 @@ export interface SwitchArgs {
      */
     aclTags?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchAclTags>}>;
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      */
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     deviceId: pulumi.Input<string>;
@@ -565,8 +555,8 @@ export interface SwitchArgs {
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     * set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      */
     oobIpConfig?: pulumi.Input<inputs.device.SwitchOobIpConfig>;
     /**
@@ -582,7 +572,7 @@ export interface SwitchArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchPortConfig>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      */

@@ -80,8 +80,7 @@ Please update your configurations. */
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortConfig> portConfig;
     /**
-     * @return Property key is the port mirroring instance name
-     * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
      * 
      */
     private @Nullable Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring;
@@ -171,8 +170,7 @@ Please update your configurations. */
         return this.portConfig == null ? Map.of() : this.portConfig;
     }
     /**
-     * @return Property key is the port mirroring instance name
-     * port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
      * 
      */
     public Map<String,NetworktemplateSwitchMatchingRulePortMirroring> portMirroring() {

@@ -382,6 +382,20 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.oauthDiscoveryUrl);
     }
     /**
+     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * 
+     */
+    @Export(name="oauthPingIdentityRegion", refs={String.class}, tree="[0]")
+    private Output<String> oauthPingIdentityRegion;
+
+    /**
+     * @return enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * 
+     */
+    public Output<String> oauthPingIdentityRegion() {
+        return this.oauthPingIdentityRegion;
+    }
+    /**
      * if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
@@ -442,6 +456,34 @@ public class Nacidp extends com.pulumi.resources.CustomResource {
 
     public Output<String> orgId() {
         return this.orgId;
+    }
+    /**
+     * if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * 
+     */
+    @Export(name="scimEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> scimEnabled;
+
+    /**
+     * @return if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * 
+     */
+    public Output<Boolean> scimEnabled() {
+        return this.scimEnabled;
+    }
+    /**
+     * if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * 
+     */
+    @Export(name="scimSecretToken", refs={String.class}, tree="[0]")
+    private Output<String> scimSecretToken;
+
+    /**
+     * @return if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * 
+     */
+    public Output<String> scimSecretToken() {
+        return this.scimSecretToken;
     }
 
     /**

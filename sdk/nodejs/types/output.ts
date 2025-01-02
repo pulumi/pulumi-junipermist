@@ -713,8 +713,7 @@ export namespace device {
          */
         exportPolicy?: string;
         /**
-         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: boolean;
         /**
@@ -964,6 +963,9 @@ export namespace device {
         routedForNetworks?: string[];
         subnet: string;
         subnet6?: string;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
         tenants?: {[key: string]: outputs.device.GatewayNetworkTenants};
         vlanId?: string;
         /**
@@ -979,7 +981,7 @@ export namespace device {
     export interface GatewayNetworkInternetAccess {
         createSimpleServicePolicy: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: {[key: string]: outputs.device.GatewayNetworkInternetAccessDestinationNat};
         enabled?: boolean;
@@ -988,22 +990,35 @@ export namespace device {
          */
         restricted: boolean;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: {[key: string]: outputs.device.GatewayNetworkInternetAccessStaticNat};
     }
 
     export interface GatewayNetworkInternetAccessDestinationNat {
-        internalIp?: string;
-        name?: string;
-        port?: number;
-    }
-
-    export interface GatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName?: string;
+    }
+
+    export interface GatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
          */
         wanName?: string;
     }
@@ -1041,9 +1056,9 @@ export namespace device {
          */
         allowPing?: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
-        destinationNat: {[key: string]: outputs.device.GatewayNetworkVpnAccessDestinationNat};
+        destinationNat?: {[key: string]: outputs.device.GatewayNetworkVpnAccessDestinationNat};
         /**
          * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          */
@@ -1057,13 +1072,11 @@ export namespace device {
          */
         noReadvertiseToLanOspf: boolean;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: boolean;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs: string[];
         /**
@@ -1075,12 +1088,11 @@ export namespace device {
          */
         sourceNat: outputs.device.GatewayNetworkVpnAccessSourceNat;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat: {[key: string]: outputs.device.GatewayNetworkVpnAccessStaticNat};
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: string;
         /**
@@ -1094,9 +1106,12 @@ export namespace device {
     }
 
     export interface GatewayNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
-        port?: number;
+        port?: string;
     }
 
     export interface GatewayNetworkVpnAccessSourceNat {
@@ -1104,12 +1119,11 @@ export namespace device {
     }
 
     export interface GatewayNetworkVpnAccessStaticNat {
-        internalIp?: string;
-        name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: string;
+        internalIp: string;
+        name: string;
     }
 
     export interface GatewayOobIpConfig {
@@ -1136,7 +1150,7 @@ export namespace device {
         /**
          * if supported on the platform. If enabled, DNS will be using this routing-instance, too
          */
-        useMgmtVrf: boolean;
+        useMgmtVrf?: boolean;
         /**
          * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          */
@@ -1225,9 +1239,7 @@ export namespace device {
          */
         aeIdx?: string;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp: boolean;
         aggregated: boolean;
@@ -1235,6 +1247,9 @@ export namespace device {
          * if want to generate port up/down alarm, set it to true
          */
         critical: boolean;
+        /**
+         * Interface Description. Can be a variable (i.e. "{{myvar}}")
+         */
         description?: string;
         disableAutoneg: boolean;
         /**
@@ -1246,13 +1261,11 @@ export namespace device {
          */
         dslType: string;
         /**
-         * if `wanType`==`dsl`
-         * 16 bit int
+         * if `wanType`==`dsl`, 16 bit int
          */
         dslVci: number;
         /**
-         * if `wanType`==`dsl`
-         * 8 bit int
+         * if `wanType`==`dsl`, 8 bit int
          */
         dslVpi: number;
         /**
@@ -1286,7 +1299,7 @@ export namespace device {
          */
         name?: string;
         /**
-         * if `usage`==`lan`
+         * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
         networks: string[];
         /**
@@ -1295,7 +1308,7 @@ export namespace device {
         outerVlanId?: number;
         poeDisabled: boolean;
         /**
-         * if `usage`==`lan`
+         * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          */
         portNetwork?: string;
         /**
@@ -1332,36 +1345,37 @@ export namespace device {
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          */
         usage: string;
-        /**
-         * if WAN interface is on a VLAN
-         */
-        vlanId?: number;
+        vlanId?: string;
         /**
          * Property key is the VPN name
          */
         vpnPaths?: {[key: string]: outputs.device.GatewayPortConfigVpnPaths};
         /**
-         * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
         wanArpPolicer: string;
         /**
-         * optional, if spoke should reach this port by a different IP
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
         /**
-         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.device.GatewayPortConfigWanExtraRoutes};
         /**
-         * if `usage`==`wan`
+         * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         */
+        wanNetworks: string[];
+        /**
+         * Only if `usage`==`wan`
          */
         wanProbeOverride?: outputs.device.GatewayPortConfigWanProbeOverride;
         /**
-         * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: outputs.device.GatewayPortConfigWanSourceNat;
         /**
-         * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
         wanType: string;
     }
@@ -1376,12 +1390,15 @@ export namespace device {
          */
         dnsSuffixes?: string[];
         /**
-         * except for out-of_band interface (vme/em0/fxp0)
+         * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
          */
         gateway?: string;
+        /**
+         * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+         */
         ip?: string;
         /**
-         * used only if `subnet` is not specified in `networks`
+         * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: string;
         /**
@@ -1408,11 +1425,14 @@ export namespace device {
 
     export interface GatewayPortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: number;
     }
 
     export interface GatewayPortConfigVpnPaths {
@@ -1441,11 +1461,14 @@ export namespace device {
 
     export interface GatewayPortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: number;
     }
 
     export interface GatewayPortConfigWanExtraRoutes {
@@ -1509,6 +1532,10 @@ export namespace device {
          */
         addTargetVrfs?: string[];
         /**
+         * route aggregation
+         */
+        aggregates?: string[];
+        /**
          * when used as export policy, optional
          */
         communities?: string[];
@@ -1553,8 +1580,7 @@ export namespace device {
         vpnNeighborMacs?: string[];
         vpnPathSla?: outputs.device.GatewayRoutingPoliciesTermMatchingVpnPathSla;
         /**
-         * overlay-facing criteria (used for bgpConfig where via=vpn)
-         * ordered-
+         * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          */
         vpnPaths?: string[];
     }
@@ -1562,8 +1588,7 @@ export namespace device {
     export interface GatewayRoutingPoliciesTermMatchingRouteExists {
         route?: string;
         /**
-         * name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * name of the vrf instance, it can also be the name of the VPN or wan if they
          */
         vrfName: string;
     }
@@ -1594,8 +1619,7 @@ export namespace device {
          */
         name?: string;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          */
         pathPreference?: string;
         /**
@@ -1642,71 +1666,82 @@ export namespace device {
     export interface GatewayTunnelConfigs {
         autoProvision?: outputs.device.GatewayTunnelConfigsAutoProvision;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ikeLifetime?: number;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
         ikeMode: string;
         /**
-         * if `provider`== `custom-ipsec`
+         * if `provider`==`custom-ipsec`
          */
         ikeProposals?: outputs.device.GatewayTunnelConfigsIkeProposal[];
         /**
-         * if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ipsecLifetime?: number;
         /**
-         * Only if  `provider`== `custom-ipsec`
+         * Only if  `provider`==`custom-ipsec`
          */
         ipsecProposals?: outputs.device.GatewayTunnelConfigsIpsecProposal[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         localId?: string;
         /**
-         * enum: `active-active`, `active-standby`
+         * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode: string;
         /**
-         * networks reachable via this tunnel
+         * if `provider`==`custom-ipsec`, networks reachable via this tunnel
          */
         networks: string[];
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         primary?: outputs.device.GatewayTunnelConfigsPrimary;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         probe?: outputs.device.GatewayTunnelConfigsProbe;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          */
         protocol?: string;
         /**
-         * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: string;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         secondary?: outputs.device.GatewayTunnelConfigsSecondary;
         /**
-         * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
         version: string;
     }
 
     export interface GatewayTunnelConfigsAutoProvision {
         enable?: boolean;
+        /**
+         * API override for POP selection
+         */
         latlng?: outputs.device.GatewayTunnelConfigsAutoProvisionLatlng;
         primary?: outputs.device.GatewayTunnelConfigsAutoProvisionPrimary;
+        /**
+         * enum: `jse-ipsec`, `zscaler-ipsec`
+         */
+        provider: string;
+        /**
+         * API override for POP selection
+         */
+        region?: string;
         secondary?: outputs.device.GatewayTunnelConfigsAutoProvisionSecondary;
     }
 
@@ -1716,7 +1751,7 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsAutoProvisionPrimary {
-        numHosts?: string;
+        probeIps?: string[];
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -1724,7 +1759,7 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsAutoProvisionSecondary {
-        numHosts?: string;
+        probeIps?: string[];
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -1762,7 +1797,7 @@ export namespace device {
          */
         authAlgo?: string;
         /**
-         * Only if `provider`== `custom-ipsec`. enum:
+         * Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -1782,19 +1817,17 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsPrimary {
-        hosts?: string[];
+        hosts: string[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
-        wanNames?: string[];
+        wanNames: string[];
     }
 
     export interface GatewayTunnelConfigsProbe {
@@ -1817,19 +1850,17 @@ export namespace device {
     }
 
     export interface GatewayTunnelConfigsSecondary {
-        hosts?: string[];
+        hosts: string[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
-        wanNames?: string[];
+        wanNames: string[];
     }
 
     export interface GatewayTunnelProviderOptions {
@@ -1844,76 +1875,127 @@ export namespace device {
     }
 
     export interface GatewayTunnelProviderOptionsJse {
-        name?: string;
         numUsers?: number;
+        /**
+         * JSE Organization name
+         */
+        orgName?: string;
     }
 
     export interface GatewayTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired: boolean;
+        aupBlockInternetUntilAccepted?: boolean;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire: number;
+        aupEnabled?: boolean;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy: boolean;
+        aupForceSslInspection?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: number;
+        aupTimeoutInDays?: number;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to enforce user authentication
          */
-        enableAup: boolean;
+        authRequired?: boolean;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution: boolean;
-        enforceAuthentication: boolean;
-        name?: string;
+        cautionEnabled?: boolean;
         /**
-         * if `useXff`==`true`
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        dnBandwidth?: number;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: number;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: boolean;
+        /**
+         * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          */
         subLocations?: outputs.device.GatewayTunnelProviderOptionsZscalerSubLocation[];
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
          */
-        uploadMbps?: number;
+        surrogateIp?: boolean;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: boolean;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: number;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: number;
         /**
          * location uses proxy chaining to forward traffic
          */
-        useXff?: boolean;
+        xffForwardEnabled?: boolean;
     }
 
     export interface GatewayTunnelProviderOptionsZscalerSubLocation {
-        aupAcceptanceRequired: boolean;
+        aupBlockInternetUntilAccepted?: boolean;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire: number;
+        aupEnabled?: boolean;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy: boolean;
+        aupForceSslInspection?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: number;
+        aupTimeoutInDays?: number;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to authenticate users
          */
-        enableAup?: boolean;
+        authRequired?: boolean;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution: boolean;
-        enforceAuthentication: boolean;
-        subnets?: string[];
+        cautionEnabled?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
          */
-        uploadMbps?: number;
+        dnBandwidth?: number;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: number;
+        /**
+         * Network name
+         */
+        name?: string;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: boolean;
+        /**
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+         */
+        surrogateIp?: boolean;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: boolean;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: number;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: number;
     }
 
     export interface GatewayVrfConfig {
@@ -3436,14 +3518,16 @@ export namespace device {
 
     export interface SwitchAclPolicy {
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Actions:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         actions?: outputs.device.SwitchAclPolicyAction[];
         name?: string;
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Source Tags:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         srcTags?: string[];
     }
@@ -3459,9 +3543,9 @@ export namespace device {
     export interface SwitchAclTags {
         /**
          * required if
-         * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbpResource`
-         * - `type`==`staticGbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: number;
         /**
@@ -3487,8 +3571,7 @@ export namespace device {
          */
         radiusGroup?: string;
         /**
-         * if `type`==`resource` or `type`==`gbpResource`
-         * empty means unrestricted, i.e. any
+         * if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: outputs.device.SwitchAclTagsSpec[];
         /**
@@ -3519,7 +3602,7 @@ export namespace device {
          */
         portRange: string;
         /**
-         * `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+         * `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
          */
         protocol: string;
     }
@@ -3643,14 +3726,6 @@ export namespace device {
         value?: string;
     }
 
-    export interface SwitchEvpnConfig {
-        enabled: boolean;
-        /**
-         * enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-         */
-        role: string;
-    }
-
     export interface SwitchExtraRoutes {
         /**
          * this takes precedence
@@ -3719,9 +3794,7 @@ export namespace device {
          */
         allNetworks: boolean;
         /**
-         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         allowMultipleSupplicants: boolean;
@@ -3760,8 +3833,7 @@ export namespace device {
          */
         guestNetwork?: string;
         /**
-         * inter_switch_link is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink: boolean;
         /**
@@ -3792,6 +3864,10 @@ export namespace device {
          * Only if `mode`==`trunk`, the list of network/vlans
          */
         networks?: string[];
+        /**
+         * Additional note for the port config override
+         */
+        note?: string;
         /**
          * Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
          */
@@ -3886,8 +3962,7 @@ export namespace device {
          */
         gateway6?: string;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
         isolation: boolean;
         isolationVlanId?: string;
@@ -4080,9 +4155,7 @@ export namespace device {
          */
         allNetworks: boolean;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         /**
@@ -4130,8 +4203,7 @@ export namespace device {
          */
         guestNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink: boolean;
         /**
@@ -4203,8 +4275,7 @@ export namespace device {
          */
         speed: string;
         /**
-         * Switch storm control
-         * Only if `mode`!=`dynamic`
+         * Switch storm control. Only if `mode`!=`dynamic`
          */
         stormControl?: outputs.device.SwitchPortUsagesStormControl;
         /**
@@ -4284,8 +4355,7 @@ export namespace device {
          */
         authServersTimeout: number;
         /**
-         * use `network`or `sourceIp`
-         * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         * use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: string;
         /**
@@ -4590,8 +4660,7 @@ export namespace device {
 
     export interface SwitchSnmpConfigV3ConfigUsmUser {
         /**
-         * Not required if `authenticationType`==`authenticationNone`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          */
         authenticationPassword?: string;
         /**
@@ -4599,8 +4668,7 @@ export namespace device {
          */
         authenticationType?: string;
         /**
-         * Not required if `encryptionType`==`privacy-none`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters
+         * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          */
         encryptionPassword?: string;
         /**
@@ -5423,8 +5491,7 @@ export namespace org {
          */
         exportPolicy?: string;
         /**
-         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: boolean;
         /**
@@ -5663,6 +5730,9 @@ export namespace org {
         routedForNetworks?: string[];
         subnet: string;
         subnet6?: string;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
         tenants?: {[key: string]: outputs.org.DeviceprofileGatewayNetworkTenants};
         vlanId?: string;
         /**
@@ -5678,7 +5748,7 @@ export namespace org {
     export interface DeviceprofileGatewayNetworkInternetAccess {
         createSimpleServicePolicy: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: {[key: string]: outputs.org.DeviceprofileGatewayNetworkInternetAccessDestinationNat};
         enabled?: boolean;
@@ -5687,22 +5757,35 @@ export namespace org {
          */
         restricted: boolean;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: {[key: string]: outputs.org.DeviceprofileGatewayNetworkInternetAccessStaticNat};
     }
 
     export interface DeviceprofileGatewayNetworkInternetAccessDestinationNat {
-        internalIp?: string;
-        name?: string;
-        port?: number;
-    }
-
-    export interface DeviceprofileGatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName?: string;
+    }
+
+    export interface DeviceprofileGatewayNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
          */
         wanName?: string;
     }
@@ -5740,9 +5823,9 @@ export namespace org {
          */
         allowPing?: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
-        destinationNat: {[key: string]: outputs.org.DeviceprofileGatewayNetworkVpnAccessDestinationNat};
+        destinationNat?: {[key: string]: outputs.org.DeviceprofileGatewayNetworkVpnAccessDestinationNat};
         /**
          * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          */
@@ -5756,13 +5839,11 @@ export namespace org {
          */
         noReadvertiseToLanOspf: boolean;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: boolean;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs: string[];
         /**
@@ -5774,12 +5855,11 @@ export namespace org {
          */
         sourceNat: outputs.org.DeviceprofileGatewayNetworkVpnAccessSourceNat;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat: {[key: string]: outputs.org.DeviceprofileGatewayNetworkVpnAccessStaticNat};
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: string;
         /**
@@ -5793,9 +5873,12 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
-        port?: number;
+        port?: string;
     }
 
     export interface DeviceprofileGatewayNetworkVpnAccessSourceNat {
@@ -5803,12 +5886,11 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayNetworkVpnAccessStaticNat {
-        internalIp?: string;
-        name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: string;
+        internalIp: string;
+        name: string;
     }
 
     export interface DeviceprofileGatewayOobIpConfig {
@@ -5924,9 +6006,7 @@ export namespace org {
          */
         aeIdx?: string;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp: boolean;
         aggregated: boolean;
@@ -5934,6 +6014,9 @@ export namespace org {
          * if want to generate port up/down alarm, set it to true
          */
         critical: boolean;
+        /**
+         * Interface Description. Can be a variable (i.e. "{{myvar}}")
+         */
         description?: string;
         disableAutoneg: boolean;
         /**
@@ -5945,13 +6028,11 @@ export namespace org {
          */
         dslType: string;
         /**
-         * if `wanType`==`dsl`
-         * 16 bit int
+         * if `wanType`==`dsl`, 16 bit int
          */
         dslVci: number;
         /**
-         * if `wanType`==`dsl`
-         * 8 bit int
+         * if `wanType`==`dsl`, 8 bit int
          */
         dslVpi: number;
         /**
@@ -5985,7 +6066,7 @@ export namespace org {
          */
         name?: string;
         /**
-         * if `usage`==`lan`
+         * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
         networks: string[];
         /**
@@ -5994,7 +6075,7 @@ export namespace org {
         outerVlanId?: number;
         poeDisabled: boolean;
         /**
-         * if `usage`==`lan`
+         * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          */
         portNetwork?: string;
         /**
@@ -6031,36 +6112,37 @@ export namespace org {
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          */
         usage: string;
-        /**
-         * if WAN interface is on a VLAN
-         */
-        vlanId?: number;
+        vlanId?: string;
         /**
          * Property key is the VPN name
          */
         vpnPaths?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigVpnPaths};
         /**
-         * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
         wanArpPolicer: string;
         /**
-         * optional, if spoke should reach this port by a different IP
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
         /**
-         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.org.DeviceprofileGatewayPortConfigWanExtraRoutes};
         /**
-         * if `usage`==`wan`
+         * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         */
+        wanNetworks: string[];
+        /**
+         * Only if `usage`==`wan`
          */
         wanProbeOverride?: outputs.org.DeviceprofileGatewayPortConfigWanProbeOverride;
         /**
-         * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: outputs.org.DeviceprofileGatewayPortConfigWanSourceNat;
         /**
-         * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
         wanType: string;
     }
@@ -6075,12 +6157,15 @@ export namespace org {
          */
         dnsSuffixes?: string[];
         /**
-         * except for out-of_band interface (vme/em0/fxp0)
+         * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
          */
         gateway?: string;
+        /**
+         * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+         */
         ip?: string;
         /**
-         * used only if `subnet` is not specified in `networks`
+         * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: string;
         /**
@@ -6107,11 +6192,14 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: number;
     }
 
     export interface DeviceprofileGatewayPortConfigVpnPaths {
@@ -6140,11 +6228,14 @@ export namespace org {
 
     export interface DeviceprofileGatewayPortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: number;
     }
 
     export interface DeviceprofileGatewayPortConfigWanExtraRoutes {
@@ -6196,6 +6287,10 @@ export namespace org {
          */
         addTargetVrfs?: string[];
         /**
+         * route aggregation
+         */
+        aggregates?: string[];
+        /**
          * when used as export policy, optional
          */
         communities?: string[];
@@ -6240,8 +6335,7 @@ export namespace org {
         vpnNeighborMacs?: string[];
         vpnPathSla?: outputs.org.DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSla;
         /**
-         * overlay-facing criteria (used for bgpConfig where via=vpn)
-         * ordered-
+         * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          */
         vpnPaths?: string[];
     }
@@ -6249,8 +6343,7 @@ export namespace org {
     export interface DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExists {
         route?: string;
         /**
-         * name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * name of the vrf instance, it can also be the name of the VPN or wan if they
          */
         vrfName: string;
     }
@@ -6281,8 +6374,7 @@ export namespace org {
          */
         name?: string;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          */
         pathPreference?: string;
         /**
@@ -6329,71 +6421,82 @@ export namespace org {
     export interface DeviceprofileGatewayTunnelConfigs {
         autoProvision?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvision;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ikeLifetime?: number;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
         ikeMode: string;
         /**
-         * if `provider`== `custom-ipsec`
+         * if `provider`==`custom-ipsec`
          */
         ikeProposals?: outputs.org.DeviceprofileGatewayTunnelConfigsIkeProposal[];
         /**
-         * if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ipsecLifetime?: number;
         /**
-         * Only if  `provider`== `custom-ipsec`
+         * Only if  `provider`==`custom-ipsec`
          */
         ipsecProposals?: outputs.org.DeviceprofileGatewayTunnelConfigsIpsecProposal[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         localId?: string;
         /**
-         * enum: `active-active`, `active-standby`
+         * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode: string;
         /**
-         * networks reachable via this tunnel
+         * if `provider`==`custom-ipsec`, networks reachable via this tunnel
          */
         networks: string[];
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         primary?: outputs.org.DeviceprofileGatewayTunnelConfigsPrimary;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         probe?: outputs.org.DeviceprofileGatewayTunnelConfigsProbe;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          */
         protocol?: string;
         /**
-         * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: string;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         secondary?: outputs.org.DeviceprofileGatewayTunnelConfigsSecondary;
         /**
-         * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
         version: string;
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvision {
         enable?: boolean;
+        /**
+         * API override for POP selection
+         */
         latlng?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng;
         primary?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary;
+        /**
+         * enum: `jse-ipsec`, `zscaler-ipsec`
+         */
+        provider: string;
+        /**
+         * API override for POP selection
+         */
+        region?: string;
         secondary?: outputs.org.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary;
     }
 
@@ -6403,7 +6506,7 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary {
-        numHosts?: string;
+        probeIps?: string[];
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -6411,7 +6514,7 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary {
-        numHosts?: string;
+        probeIps?: string[];
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -6449,7 +6552,7 @@ export namespace org {
          */
         authAlgo?: string;
         /**
-         * Only if `provider`== `custom-ipsec`. enum:
+         * Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -6469,19 +6572,17 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsPrimary {
-        hosts?: string[];
+        hosts: string[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
-        wanNames?: string[];
+        wanNames: string[];
     }
 
     export interface DeviceprofileGatewayTunnelConfigsProbe {
@@ -6504,19 +6605,17 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelConfigsSecondary {
-        hosts?: string[];
+        hosts: string[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
-        wanNames?: string[];
+        wanNames: string[];
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptions {
@@ -6531,76 +6630,127 @@ export namespace org {
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsJse {
-        name?: string;
         numUsers?: number;
+        /**
+         * JSE Organization name
+         */
+        orgName?: string;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired: boolean;
+        aupBlockInternetUntilAccepted?: boolean;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire: number;
+        aupEnabled?: boolean;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy: boolean;
+        aupForceSslInspection?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: number;
+        aupTimeoutInDays?: number;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to enforce user authentication
          */
-        enableAup: boolean;
+        authRequired?: boolean;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution: boolean;
-        enforceAuthentication: boolean;
-        name?: string;
+        cautionEnabled?: boolean;
         /**
-         * if `useXff`==`true`
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        dnBandwidth?: number;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: number;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: boolean;
+        /**
+         * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          */
         subLocations?: outputs.org.DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation[];
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
          */
-        uploadMbps?: number;
+        surrogateIp?: boolean;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: boolean;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: number;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: number;
         /**
          * location uses proxy chaining to forward traffic
          */
-        useXff?: boolean;
+        xffForwardEnabled?: boolean;
     }
 
     export interface DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocation {
-        aupAcceptanceRequired: boolean;
+        aupBlockInternetUntilAccepted?: boolean;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire: number;
+        aupEnabled?: boolean;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy: boolean;
+        aupForceSslInspection?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: number;
+        aupTimeoutInDays?: number;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to authenticate users
          */
-        enableAup?: boolean;
+        authRequired?: boolean;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution: boolean;
-        enforceAuthentication: boolean;
-        subnets?: string[];
+        cautionEnabled?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
          */
-        uploadMbps?: number;
+        dnBandwidth?: number;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: number;
+        /**
+         * Network name
+         */
+        name?: string;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: boolean;
+        /**
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+         */
+        surrogateIp?: boolean;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: boolean;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: number;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: number;
     }
 
     export interface DeviceprofileGatewayVrfConfig {
@@ -6726,8 +6876,7 @@ export namespace org {
          */
         exportPolicy?: string;
         /**
-         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          */
         extendedV4Nexthop?: boolean;
         /**
@@ -6966,6 +7115,9 @@ export namespace org {
         routedForNetworks?: string[];
         subnet: string;
         subnet6?: string;
+        /**
+         * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+         */
         tenants?: {[key: string]: outputs.org.GatewaytemplateNetworkTenants};
         vlanId?: string;
         /**
@@ -6981,7 +7133,7 @@ export namespace org {
     export interface GatewaytemplateNetworkInternetAccess {
         createSimpleServicePolicy: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: {[key: string]: outputs.org.GatewaytemplateNetworkInternetAccessDestinationNat};
         enabled?: boolean;
@@ -6990,22 +7142,35 @@ export namespace org {
          */
         restricted: boolean;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: {[key: string]: outputs.org.GatewaytemplateNetworkInternetAccessStaticNat};
     }
 
     export interface GatewaytemplateNetworkInternetAccessDestinationNat {
-        internalIp?: string;
-        name?: string;
-        port?: number;
-    }
-
-    export interface GatewaytemplateNetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+         */
+        wanName?: string;
+    }
+
+    export interface GatewaytemplateNetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
          */
         wanName?: string;
     }
@@ -7043,9 +7208,9 @@ export namespace org {
          */
         allowPing?: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
-        destinationNat: {[key: string]: outputs.org.GatewaytemplateNetworkVpnAccessDestinationNat};
+        destinationNat?: {[key: string]: outputs.org.GatewaytemplateNetworkVpnAccessDestinationNat};
         /**
          * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          */
@@ -7059,13 +7224,11 @@ export namespace org {
          */
         noReadvertiseToLanOspf: boolean;
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         noReadvertiseToOverlay?: boolean;
         /**
-         * by default, the routes are only readvertised toward the same vrf on spoke
-         * to allow it to be leaked to other vrfs
+         * by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
          */
         otherVrfs: string[];
         /**
@@ -7077,12 +7240,11 @@ export namespace org {
          */
         sourceNat: outputs.org.GatewaytemplateNetworkVpnAccessSourceNat;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat: {[key: string]: outputs.org.GatewaytemplateNetworkVpnAccessStaticNat};
         /**
-         * toward overlay
-         * how HUB should deal with routes it received from Spokes
+         * toward overlay, how HUB should deal with routes it received from Spokes
          */
         summarizedSubnet?: string;
         /**
@@ -7096,9 +7258,12 @@ export namespace org {
     }
 
     export interface GatewaytemplateNetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
-        port?: number;
+        port?: string;
     }
 
     export interface GatewaytemplateNetworkVpnAccessSourceNat {
@@ -7106,12 +7271,11 @@ export namespace org {
     }
 
     export interface GatewaytemplateNetworkVpnAccessStaticNat {
-        internalIp?: string;
-        name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: string;
+        internalIp: string;
+        name: string;
     }
 
     export interface GatewaytemplateOobIpConfig {
@@ -7227,9 +7391,7 @@ export namespace org {
          */
         aeIdx?: string;
         /**
-         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          */
         aeLacpForceUp: boolean;
         aggregated: boolean;
@@ -7237,6 +7399,9 @@ export namespace org {
          * if want to generate port up/down alarm, set it to true
          */
         critical: boolean;
+        /**
+         * Interface Description. Can be a variable (i.e. "{{myvar}}")
+         */
         description?: string;
         disableAutoneg: boolean;
         /**
@@ -7248,13 +7413,11 @@ export namespace org {
          */
         dslType: string;
         /**
-         * if `wanType`==`dsl`
-         * 16 bit int
+         * if `wanType`==`dsl`, 16 bit int
          */
         dslVci: number;
         /**
-         * if `wanType`==`dsl`
-         * 8 bit int
+         * if `wanType`==`dsl`, 8 bit int
          */
         dslVpi: number;
         /**
@@ -7288,7 +7451,7 @@ export namespace org {
          */
         name?: string;
         /**
-         * if `usage`==`lan`
+         * if `usage`==`lan`, name of the `junipermist.org.Network` resource
          */
         networks: string[];
         /**
@@ -7297,7 +7460,7 @@ export namespace org {
         outerVlanId?: number;
         poeDisabled: boolean;
         /**
-         * if `usage`==`lan`
+         * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          */
         portNetwork?: string;
         /**
@@ -7307,7 +7470,7 @@ export namespace org {
         /**
          * if HA mode
          */
-        redundant?: boolean;
+        redundant: boolean;
         /**
          * if HA mode
          */
@@ -7334,36 +7497,37 @@ export namespace org {
          * port usage name. enum: `haControl`, `haData`, `lan`, `wan`
          */
         usage: string;
-        /**
-         * if WAN interface is on a VLAN
-         */
-        vlanId?: number;
+        vlanId?: string;
         /**
          * Property key is the VPN name
          */
         vpnPaths?: {[key: string]: outputs.org.GatewaytemplatePortConfigVpnPaths};
         /**
-         * when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+         * Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
          */
         wanArpPolicer: string;
         /**
-         * optional, if spoke should reach this port by a different IP
+         * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          */
         wanExtIp?: string;
         /**
-         * Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+         * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
          */
         wanExtraRoutes?: {[key: string]: outputs.org.GatewaytemplatePortConfigWanExtraRoutes};
         /**
-         * if `usage`==`wan`
+         * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         */
+        wanNetworks: string[];
+        /**
+         * Only if `usage`==`wan`
          */
         wanProbeOverride?: outputs.org.GatewaytemplatePortConfigWanProbeOverride;
         /**
-         * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          */
         wanSourceNat?: outputs.org.GatewaytemplatePortConfigWanSourceNat;
         /**
-         * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          */
         wanType: string;
     }
@@ -7378,12 +7542,15 @@ export namespace org {
          */
         dnsSuffixes?: string[];
         /**
-         * except for out-of_band interface (vme/em0/fxp0)
+         * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
          */
         gateway?: string;
+        /**
+         * Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+         */
         ip?: string;
         /**
-         * used only if `subnet` is not specified in `networks`
+         * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
          */
         netmask?: string;
         /**
@@ -7410,11 +7577,14 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: number;
     }
 
     export interface GatewaytemplatePortConfigVpnPaths {
@@ -7443,11 +7613,14 @@ export namespace org {
 
     export interface GatewaytemplatePortConfigVpnPathsTrafficShaping {
         /**
-         * percentages for differet class of traffic: high / medium / low / best-effort
-         * sum must be equal to 100
+         * percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
          */
         classPercentages?: number[];
         enabled: boolean;
+        /**
+         * Interface Transmit Cap in kbps
+         */
+        maxTxKbps?: number;
     }
 
     export interface GatewaytemplatePortConfigWanExtraRoutes {
@@ -7499,6 +7672,10 @@ export namespace org {
          */
         addTargetVrfs?: string[];
         /**
+         * route aggregation
+         */
+        aggregates?: string[];
+        /**
          * when used as export policy, optional
          */
         communities?: string[];
@@ -7543,8 +7720,7 @@ export namespace org {
         vpnNeighborMacs?: string[];
         vpnPathSla?: outputs.org.GatewaytemplateRoutingPoliciesTermMatchingVpnPathSla;
         /**
-         * overlay-facing criteria (used for bgpConfig where via=vpn)
-         * ordered-
+         * overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
          */
         vpnPaths?: string[];
     }
@@ -7552,8 +7728,7 @@ export namespace org {
     export interface GatewaytemplateRoutingPoliciesTermMatchingRouteExists {
         route?: string;
         /**
-         * name of the vrf instance
-         * it can also be the name of the VPN or wan if they
+         * name of the vrf instance, it can also be the name of the VPN or wan if they
          */
         vrfName: string;
     }
@@ -7584,8 +7759,7 @@ export namespace org {
          */
         name?: string;
         /**
-         * by default, we derive all paths available and use them
-         * optionally, you can customize by using `pathPreference`
+         * by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
          */
         pathPreference?: string;
         /**
@@ -7632,71 +7806,82 @@ export namespace org {
     export interface GatewaytemplateTunnelConfigs {
         autoProvision?: outputs.org.GatewaytemplateTunnelConfigsAutoProvision;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ikeLifetime?: number;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          */
         ikeMode: string;
         /**
-         * if `provider`== `custom-ipsec`
+         * if `provider`==`custom-ipsec`
          */
         ikeProposals?: outputs.org.GatewaytemplateTunnelConfigsIkeProposal[];
         /**
-         * if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          */
         ipsecLifetime?: number;
         /**
-         * Only if  `provider`== `custom-ipsec`
+         * Only if  `provider`==`custom-ipsec`
          */
         ipsecProposals?: outputs.org.GatewaytemplateTunnelConfigsIpsecProposal[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         localId?: string;
         /**
-         * enum: `active-active`, `active-standby`
+         * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          */
         mode: string;
         /**
-         * networks reachable via this tunnel
+         * if `provider`==`custom-ipsec`, networks reachable via this tunnel
          */
         networks: string[];
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         primary?: outputs.org.GatewaytemplateTunnelConfigsPrimary;
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if `provider`==`custom-ipsec`
          */
         probe?: outputs.org.GatewaytemplateTunnelConfigsProbe;
         /**
-         * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          */
         protocol?: string;
         /**
-         * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          */
         provider?: string;
         /**
-         * Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         psk?: string;
+        /**
+         * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         */
         secondary?: outputs.org.GatewaytemplateTunnelConfigsSecondary;
         /**
-         * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          */
         version: string;
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvision {
         enable?: boolean;
+        /**
+         * API override for POP selection
+         */
         latlng?: outputs.org.GatewaytemplateTunnelConfigsAutoProvisionLatlng;
         primary?: outputs.org.GatewaytemplateTunnelConfigsAutoProvisionPrimary;
+        /**
+         * enum: `jse-ipsec`, `zscaler-ipsec`
+         */
+        provider: string;
+        /**
+         * API override for POP selection
+         */
+        region?: string;
         secondary?: outputs.org.GatewaytemplateTunnelConfigsAutoProvisionSecondary;
     }
 
@@ -7706,7 +7891,7 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvisionPrimary {
-        numHosts?: string;
+        probeIps?: string[];
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -7714,7 +7899,7 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsAutoProvisionSecondary {
-        numHosts?: string;
+        probeIps?: string[];
         /**
          * optional, only needed if `varsOnly`==`false`
          */
@@ -7752,7 +7937,7 @@ export namespace org {
          */
         authAlgo?: string;
         /**
-         * Only if `provider`== `custom-ipsec`. enum:
+         * Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -7772,19 +7957,17 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsPrimary {
-        hosts?: string[];
+        hosts: string[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
-        wanNames?: string[];
+        wanNames: string[];
     }
 
     export interface GatewaytemplateTunnelConfigsProbe {
@@ -7807,19 +7990,17 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelConfigsSecondary {
-        hosts?: string[];
+        hosts: string[];
         /**
-         * Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          */
         internalIps?: string[];
         probeIps?: string[];
         /**
-         * Only if `provider`== `custom-ipsec`
+         * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          */
         remoteIds?: string[];
-        wanNames?: string[];
+        wanNames: string[];
     }
 
     export interface GatewaytemplateTunnelProviderOptions {
@@ -7834,76 +8015,127 @@ export namespace org {
     }
 
     export interface GatewaytemplateTunnelProviderOptionsJse {
-        name?: string;
         numUsers?: number;
+        /**
+         * JSE Organization name
+         */
+        orgName?: string;
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscaler {
-        aupAcceptanceRequired?: boolean;
+        aupBlockInternetUntilAccepted?: boolean;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire?: number;
+        aupEnabled?: boolean;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy?: boolean;
+        aupForceSslInspection?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: number;
+        aupTimeoutInDays?: number;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to enforce user authentication
          */
-        enableAup?: boolean;
+        authRequired?: boolean;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution?: boolean;
-        enforceAuthentication?: boolean;
-        name?: string;
+        cautionEnabled?: boolean;
         /**
-         * if `useXff`==`true`
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        dnBandwidth?: number;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: number;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: boolean;
+        /**
+         * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          */
         subLocations?: outputs.org.GatewaytemplateTunnelProviderOptionsZscalerSubLocation[];
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
          */
-        uploadMbps?: number;
+        surrogateIp?: boolean;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: boolean;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: number;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: number;
         /**
          * location uses proxy chaining to forward traffic
          */
-        useXff?: boolean;
+        xffForwardEnabled?: boolean;
     }
 
     export interface GatewaytemplateTunnelProviderOptionsZscalerSubLocation {
-        aupAcceptanceRequired: boolean;
+        aupBlockInternetUntilAccepted?: boolean;
         /**
-         * days before AUP is requested again
+         * Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
          */
-        aupExpire: number;
+        aupEnabled?: boolean;
         /**
          * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          */
-        aupSslProxy: boolean;
+        aupForceSslInspection?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * Required if `aupEnabled`==`true`. Days before AUP is requested again
          */
-        downloadMbps?: number;
+        aupTimeoutInDays?: number;
         /**
-         * if `useXff`==`true`, display Acceptable Use Policy (AUP)
+         * Enable this option to authenticate users
          */
-        enableAup?: boolean;
+        authRequired?: boolean;
         /**
-         * when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
+         * Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
          */
-        enableCaution: boolean;
-        enforceAuthentication: boolean;
-        subnets?: string[];
+        cautionEnabled?: boolean;
         /**
-         * the download bandwidth cap of the link, in Mbps
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
          */
-        uploadMbps?: number;
+        dnBandwidth?: number;
+        /**
+         * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         */
+        idleTimeInMinutes?: number;
+        /**
+         * Network name
+         */
+        name?: string;
+        /**
+         * if `true`, enable the firewall control option
+         */
+        ofwEnabled?: boolean;
+        /**
+         * Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+         */
+        surrogateIp?: boolean;
+        /**
+         * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+         */
+        surrogateIpEnforcedForKnownBrowsers?: boolean;
+        /**
+         * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+         */
+        surrogateRefreshTimeInMinutes?: number;
+        /**
+         * the download bandwidth cap of the link, in Mbps. Disabled if not set
+         */
+        upBandwidth?: number;
     }
 
     export interface GatewaytemplateVrfConfig {
@@ -8543,7 +8775,7 @@ export namespace org {
     export interface NetworkInternetAccess {
         createSimpleServicePolicy: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
         destinationNat?: {[key: string]: outputs.org.NetworkInternetAccessDestinationNat};
         enabled?: boolean;
@@ -8552,24 +8784,56 @@ export namespace org {
          */
         restricted: boolean;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat?: {[key: string]: outputs.org.NetworkInternetAccessStaticNat};
     }
 
     export interface NetworkInternetAccessDestinationNat {
-        internalIp?: string;
-        name?: string;
-        port?: number;
-    }
-
-    export interface NetworkInternetAccessStaticNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+         */
+        port?: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
          */
         wanName?: string;
+    }
+
+    export interface NetworkInternetAccessStaticNat {
+        /**
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+         */
+        internalIp: string;
+        name: string;
+        /**
+         * SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
+         */
+        wanName?: string;
+    }
+
+    export interface NetworkMulticast {
+        /**
+         * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         */
+        disableIgmp: boolean;
+        enabled: boolean;
+        /**
+         * Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
+         */
+        groups?: {[key: string]: outputs.org.NetworkMulticastGroups};
+    }
+
+    export interface NetworkMulticastGroups {
+        /**
+         * RP (rendezvous point) IP Address
+         */
+        rpIp?: string;
     }
 
     export interface NetworkTenants {
@@ -8586,9 +8850,9 @@ export namespace org {
          */
         allowPing?: boolean;
         /**
-         * Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+         * Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
          */
-        destinationNat: {[key: string]: outputs.org.NetworkVpnAccessDestinationNat};
+        destinationNat?: {[key: string]: outputs.org.NetworkVpnAccessDestinationNat};
         /**
          * if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
          */
@@ -8620,7 +8884,7 @@ export namespace org {
          */
         sourceNat: outputs.org.NetworkVpnAccessSourceNat;
         /**
-         * Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+         * Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
          */
         staticNat: {[key: string]: outputs.org.NetworkVpnAccessStaticNat};
         /**
@@ -8639,9 +8903,12 @@ export namespace org {
     }
 
     export interface NetworkVpnAccessDestinationNat {
+        /**
+         * The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+         */
         internalIp?: string;
         name?: string;
-        port?: number;
+        port?: string;
     }
 
     export interface NetworkVpnAccessSourceNat {
@@ -8649,24 +8916,25 @@ export namespace org {
     }
 
     export interface NetworkVpnAccessStaticNat {
-        internalIp?: string;
-        name?: string;
         /**
-         * If not set, we configure the nat policies against all WAN ports for simplicity
+         * The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
          */
-        wanName?: string;
+        internalIp: string;
+        name: string;
     }
 
     export interface NetworktemplateAclPolicy {
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Actions:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         actions?: outputs.org.NetworktemplateAclPolicyAction[];
         name?: string;
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Source Tags:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         srcTags?: string[];
     }
@@ -8682,9 +8950,9 @@ export namespace org {
     export interface NetworktemplateAclTags {
         /**
          * required if
-         * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbpResource`
-         * - `type`==`staticGbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: number;
         /**
@@ -8710,8 +8978,7 @@ export namespace org {
          */
         radiusGroup?: string;
         /**
-         * if `type`==`resource` or `type`==`gbpResource`
-         * empty means unrestricted, i.e. any
+         * if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: outputs.org.NetworktemplateAclTagsSpec[];
         /**
@@ -8742,7 +9009,7 @@ export namespace org {
          */
         portRange: string;
         /**
-         * `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+         * `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
          */
         protocol: string;
     }
@@ -8819,8 +9086,7 @@ export namespace org {
          */
         gateway6?: string;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
         isolation: boolean;
         isolationVlanId?: string;
@@ -8906,9 +9172,7 @@ export namespace org {
          */
         allNetworks: boolean;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         /**
@@ -8956,8 +9220,7 @@ export namespace org {
          */
         guestNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink: boolean;
         /**
@@ -9029,8 +9292,7 @@ export namespace org {
          */
         speed: string;
         /**
-         * Switch storm control
-         * Only if `mode`!=`dynamic`
+         * Switch storm control. Only if `mode`!=`dynamic`
          */
         stormControl?: outputs.org.NetworktemplatePortUsagesStormControl;
         /**
@@ -9114,8 +9376,7 @@ export namespace org {
          */
         authServersTimeout: number;
         /**
-         * use `network`or `sourceIp`
-         * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         * use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: string;
         /**
@@ -9420,8 +9681,7 @@ export namespace org {
 
     export interface NetworktemplateSnmpConfigV3ConfigUsmUser {
         /**
-         * Not required if `authenticationType`==`authenticationNone`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          */
         authenticationPassword?: string;
         /**
@@ -9429,8 +9689,7 @@ export namespace org {
          */
         authenticationType?: string;
         /**
-         * Not required if `encryptionType`==`privacy-none`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters
+         * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          */
         encryptionPassword?: string;
         /**
@@ -9561,8 +9820,7 @@ Please update your configurations.
          */
         portConfig?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: {[key: string]: outputs.org.NetworktemplateSwitchMatchingRulePortMirroring};
     }
@@ -10539,8 +10797,7 @@ Please update your configurations.
         apps?: {[key: string]: number};
         enabled: boolean;
         /**
-         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-         * Property key is the wxtag id
+         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
          */
         wxtagIds: {[key: string]: number};
     }
@@ -10709,8 +10966,7 @@ Please update your configurations.
     export interface WlanDnsServerRewrite {
         enabled: boolean;
         /**
-         * map between radiusGroup and the desired DNS server (IPv4 only)
-         * Property key is the RADIUS group, property value is the desired DNS Server
+         * map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
          */
         radiusGroups?: {[key: string]: string};
     }
@@ -10723,8 +10979,7 @@ Please update your configurations.
         defaultVlanId?: string;
         enabled: boolean;
         /**
-         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-         * `false` means auto
+         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
          */
         forceLookup: boolean;
         /**
@@ -11785,13 +12040,11 @@ Please update your configurations.
         enabled?: boolean;
         idleTimeout?: number;
         /**
-         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
         mxclusterIds: string[];
         /**
-         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
          */
         proxyHosts: string[];
         /**
@@ -12130,14 +12383,16 @@ export namespace site {
 
     export interface NetworktemplateAclPolicy {
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Actions:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         actions?: outputs.site.NetworktemplateAclPolicyAction[];
         name?: string;
         /**
-         * - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-         * - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+         * ACL Policy Source Tags:
+         *   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+         *   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
          */
         srcTags?: string[];
     }
@@ -12153,9 +12408,9 @@ export namespace site {
     export interface NetworktemplateAclTags {
         /**
          * required if
-         * - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbpResource`
-         * - `type`==`staticGbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbpResource`
+         *   - `type`==`staticGbp` (applying gbp tag against matching conditions)
          */
         gbpTag?: number;
         /**
@@ -12181,8 +12436,7 @@ export namespace site {
          */
         radiusGroup?: string;
         /**
-         * if `type`==`resource` or `type`==`gbpResource`
-         * empty means unrestricted, i.e. any
+         * if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
          */
         specs?: outputs.site.NetworktemplateAclTagsSpec[];
         /**
@@ -12213,7 +12467,7 @@ export namespace site {
          */
         portRange: string;
         /**
-         * `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+         * `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
          */
         protocol: string;
     }
@@ -12290,8 +12544,7 @@ export namespace site {
          */
         gateway6?: string;
         /**
-         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+         * whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
          */
         isolation: boolean;
         isolationVlanId?: string;
@@ -12377,9 +12630,7 @@ export namespace site {
          */
         allNetworks: boolean;
         /**
-         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-         * When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+         * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
          */
         allowDhcpd?: boolean;
         /**
@@ -12427,8 +12678,7 @@ export namespace site {
          */
         guestNetwork?: string;
         /**
-         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-         * NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+         * Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
          */
         interSwitchLink: boolean;
         /**
@@ -12500,8 +12750,7 @@ export namespace site {
          */
         speed: string;
         /**
-         * Switch storm control
-         * Only if `mode`!=`dynamic`
+         * Switch storm control. Only if `mode`!=`dynamic`
          */
         stormControl?: outputs.site.NetworktemplatePortUsagesStormControl;
         /**
@@ -12585,8 +12834,7 @@ export namespace site {
          */
         authServersTimeout: number;
         /**
-         * use `network`or `sourceIp`
-         * which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+         * use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
          */
         network?: string;
         /**
@@ -12891,8 +13139,7 @@ export namespace site {
 
     export interface NetworktemplateSnmpConfigV3ConfigUsmUser {
         /**
-         * Not required if `authenticationType`==`authenticationNone`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          */
         authenticationPassword?: string;
         /**
@@ -12900,8 +13147,7 @@ export namespace site {
          */
         authenticationType?: string;
         /**
-         * Not required if `encryptionType`==`privacy-none`
-         * include alphabetic, numeric, and special characters, but it cannot include control characters
+         * Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
          */
         encryptionPassword?: string;
         /**
@@ -13032,8 +13278,7 @@ Please update your configurations.
          */
         portConfig?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortConfig};
         /**
-         * Property key is the port mirroring instance name
-         * portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+         * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
          */
         portMirroring?: {[key: string]: outputs.site.NetworktemplateSwitchMatchingRulePortMirroring};
     }
@@ -13903,8 +14148,7 @@ Please update your configurations.
         apps?: {[key: string]: number};
         enabled: boolean;
         /**
-         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-         * Property key is the wxtag id
+         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
          */
         wxtagIds: {[key: string]: number};
     }
@@ -14073,8 +14317,7 @@ Please update your configurations.
     export interface WlanDnsServerRewrite {
         enabled: boolean;
         /**
-         * map between radiusGroup and the desired DNS server (IPv4 only)
-         * Property key is the RADIUS group, property value is the desired DNS Server
+         * map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
          */
         radiusGroups?: {[key: string]: string};
     }
@@ -14087,8 +14330,7 @@ Please update your configurations.
         defaultVlanId?: string;
         enabled: boolean;
         /**
-         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-         * `false` means auto
+         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
          */
         forceLookup: boolean;
         /**
@@ -15149,13 +15391,11 @@ Please update your configurations.
         enabled?: boolean;
         idleTimeout?: number;
         /**
-         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          */
         mxclusterIds: string[];
         /**
-         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
          */
         proxyHosts: string[];
         /**

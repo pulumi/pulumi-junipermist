@@ -21,6 +21,13 @@ __config__ = pulumi.Config('junipermist')
 
 class _ExportableConfig(types.ModuleType):
     @property
+    def api_debug(self) -> Optional[bool]:
+        """
+        Flag to enable debugging API calls. Default is false.
+        """
+        return __config__.get_bool('apiDebug')
+
+    @property
     def api_timeout(self) -> Optional[float]:
         """
         Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0

@@ -15,63 +15,63 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvision? AutoProvision;
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`
+        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         public readonly int? IkeLifetime;
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+        /// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// if `provider`== `custom-ipsec`
+        /// if `provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceprofileGatewayTunnelConfigsIkeProposal> IkeProposals;
         /// <summary>
-        /// if `provider`== `custom-ipsec`
+        /// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         /// </summary>
         public readonly int? IpsecLifetime;
         /// <summary>
-        /// Only if  `provider`== `custom-ipsec`
+        /// Only if  `provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<Outputs.DeviceprofileGatewayTunnelConfigsIpsecProposal> IpsecProposals;
         /// <summary>
-        /// Only if:
-        ///   * `provider`== `zscaler-ipsec`
-        ///   * `provider`==`jse-ipsec`
-        ///   * `provider`== `custom-ipsec`
+        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         /// </summary>
         public readonly string? LocalId;
         /// <summary>
-        /// enum: `active-active`, `active-standby`
+        /// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// networks reachable via this tunnel
+        /// if `provider`==`custom-ipsec`, networks reachable via this tunnel
         /// </summary>
         public readonly ImmutableArray<string> Networks;
+        /// <summary>
+        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsPrimary? Primary;
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`
+        /// Only if `provider`==`custom-ipsec`
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsProbe? Probe;
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+        /// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        /// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         /// </summary>
         public readonly string? Provider;
         /// <summary>
-        /// Only if:
-        ///   * `provider`== `zscaler-ipsec`
-        ///   * `provider`==`jse-ipsec`
-        ///   * `provider`== `custom-ipsec`
+        /// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         /// </summary>
         public readonly string? Psk;
+        /// <summary>
+        /// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsSecondary? Secondary;
         /// <summary>
-        /// Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+        /// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
         /// </summary>
         public readonly string? Version;
 

@@ -15,8 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly string? Route;
         /// <summary>
-        /// name of the vrf instance
-        /// it can also be the name of the VPN or wan if they
+        /// name of the vrf instance, it can also be the name of the VPN or wan if they
         /// </summary>
         public readonly string? VrfName;
 

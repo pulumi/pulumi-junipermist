@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigUsmUser {
     /**
-     * @return Not required if `authentication_type`==`authentication_none`
-     * include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * @return Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     private @Nullable String authenticationPassword;
@@ -23,8 +22,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUser {
      */
     private @Nullable String authenticationType;
     /**
-     * @return Not required if `encryption_type`==`privacy-none`
-     * include alphabetic, numeric, and special characters, but it cannot include control characters
+     * @return Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
      * 
      */
     private @Nullable String encryptionPassword;
@@ -37,8 +35,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUser {
 
     private NetworktemplateSnmpConfigV3ConfigUsmUser() {}
     /**
-     * @return Not required if `authentication_type`==`authentication_none`
-     * include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * @return Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     public Optional<String> authenticationPassword() {
@@ -52,8 +49,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUser {
         return Optional.ofNullable(this.authenticationType);
     }
     /**
-     * @return Not required if `encryption_type`==`privacy-none`
-     * include alphabetic, numeric, and special characters, but it cannot include control characters
+     * @return Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
      * 
      */
     public Optional<String> encryptionPassword() {

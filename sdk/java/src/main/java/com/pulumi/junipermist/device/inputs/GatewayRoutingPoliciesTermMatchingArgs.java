@@ -107,16 +107,14 @@ public final class GatewayRoutingPoliciesTermMatchingArgs extends com.pulumi.res
     }
 
     /**
-     * overlay-facing criteria (used for bgp_config where via=vpn)
-     * ordered-
+     * overlay-facing criteria (used for bgp_config where via=vpn). ordered-
      * 
      */
     @Import(name="vpnPaths")
     private @Nullable Output<List<String>> vpnPaths;
 
     /**
-     * @return overlay-facing criteria (used for bgp_config where via=vpn)
-     * ordered-
+     * @return overlay-facing criteria (used for bgp_config where via=vpn). ordered-
      * 
      */
     public Optional<Output<List<String>>> vpnPaths() {
@@ -324,8 +322,7 @@ public final class GatewayRoutingPoliciesTermMatchingArgs extends com.pulumi.res
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn)
-         * ordered-
+         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn). ordered-
          * 
          * @return builder
          * 
@@ -336,8 +333,7 @@ public final class GatewayRoutingPoliciesTermMatchingArgs extends com.pulumi.res
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn)
-         * ordered-
+         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn). ordered-
          * 
          * @return builder
          * 
@@ -347,8 +343,7 @@ public final class GatewayRoutingPoliciesTermMatchingArgs extends com.pulumi.res
         }
 
         /**
-         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn)
-         * ordered-
+         * @param vpnPaths overlay-facing criteria (used for bgp_config where via=vpn). ordered-
          * 
          * @return builder
          * 

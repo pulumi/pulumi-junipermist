@@ -16,11 +16,11 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
 
     public static final GatewayTunnelConfigsAutoProvisionPrimaryArgs Empty = new GatewayTunnelConfigsAutoProvisionPrimaryArgs();
 
-    @Import(name="numHosts")
-    private @Nullable Output<String> numHosts;
+    @Import(name="probeIps")
+    private @Nullable Output<List<String>> probeIps;
 
-    public Optional<Output<String>> numHosts() {
-        return Optional.ofNullable(this.numHosts);
+    public Optional<Output<List<String>>> probeIps() {
+        return Optional.ofNullable(this.probeIps);
     }
 
     /**
@@ -41,7 +41,7 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
     private GatewayTunnelConfigsAutoProvisionPrimaryArgs() {}
 
     private GatewayTunnelConfigsAutoProvisionPrimaryArgs(GatewayTunnelConfigsAutoProvisionPrimaryArgs $) {
-        this.numHosts = $.numHosts;
+        this.probeIps = $.probeIps;
         this.wanNames = $.wanNames;
     }
 
@@ -63,13 +63,17 @@ public final class GatewayTunnelConfigsAutoProvisionPrimaryArgs extends com.pulu
             $ = new GatewayTunnelConfigsAutoProvisionPrimaryArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder numHosts(@Nullable Output<String> numHosts) {
-            $.numHosts = numHosts;
+        public Builder probeIps(@Nullable Output<List<String>> probeIps) {
+            $.probeIps = probeIps;
             return this;
         }
 
-        public Builder numHosts(String numHosts) {
-            return numHosts(Output.of(numHosts));
+        public Builder probeIps(List<String> probeIps) {
+            return probeIps(Output.of(probeIps));
+        }
+
+        public Builder probeIps(String... probeIps) {
+            return probeIps(List.of(probeIps));
         }
 
         /**

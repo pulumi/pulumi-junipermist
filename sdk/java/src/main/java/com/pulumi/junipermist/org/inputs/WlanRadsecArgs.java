@@ -41,16 +41,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-     * Org mxedge(s) identified by mxcluster_ids
+     * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
      * 
      */
     @Import(name="mxclusterIds")
     private @Nullable Output<List<String>> mxclusterIds;
 
     /**
-     * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-     * Org mxedge(s) identified by mxcluster_ids
+     * @return To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
      * 
      */
     public Optional<Output<List<String>>> mxclusterIds() {
@@ -58,16 +56,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-     * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+     * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
      * 
      */
     @Import(name="proxyHosts")
     private @Nullable Output<List<String>> proxyHosts;
 
     /**
-     * @return default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-     * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+     * @return default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
      * 
      */
     public Optional<Output<List<String>>> proxyHosts() {
@@ -194,8 +190,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          * 
          * @return builder
          * 
@@ -206,8 +201,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          * 
          * @return builder
          * 
@@ -217,8 +211,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-         * Org mxedge(s) identified by mxcluster_ids
+         * @param mxclusterIds To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
          * 
          * @return builder
          * 
@@ -228,8 +221,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
          * 
          * @return builder
          * 
@@ -240,8 +232,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
          * 
          * @return builder
          * 
@@ -251,8 +242,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-         * when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
          * 
          * @return builder
          * 

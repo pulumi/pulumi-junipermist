@@ -208,6 +208,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> OauthDiscoveryUrl { get; private set; } = null!;
 
         /// <summary>
+        /// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        /// </summary>
+        [Output("oauthPingIdentityRegion")]
+        public Output<string> OauthPingIdentityRegion { get; private set; } = null!;
+
+        /// <summary>
         /// if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Output("oauthRopcClientId")]
@@ -233,6 +239,18 @@ namespace Pulumi.JuniperMist.Org
 
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
+
+        /// <summary>
+        /// if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        /// </summary>
+        [Output("scimEnabled")]
+        public Output<bool> ScimEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        /// </summary>
+        [Output("scimSecretToken")]
+        public Output<string> ScimSecretToken { get; private set; } = null!;
 
 
         /// <summary>
@@ -408,6 +426,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
+        /// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        /// </summary>
+        [Input("oauthPingIdentityRegion")]
+        public Input<string>? OauthPingIdentityRegion { get; set; }
+
+        /// <summary>
         /// if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Input("oauthRopcClientId")]
@@ -433,6 +457,18 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
+
+        /// <summary>
+        /// if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        /// </summary>
+        [Input("scimEnabled")]
+        public Input<bool>? ScimEnabled { get; set; }
+
+        /// <summary>
+        /// if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        /// </summary>
+        [Input("scimSecretToken")]
+        public Input<string>? ScimSecretToken { get; set; }
 
         public NacidpArgs()
         {
@@ -569,6 +605,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OauthDiscoveryUrl { get; set; }
 
         /// <summary>
+        /// enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        /// </summary>
+        [Input("oauthPingIdentityRegion")]
+        public Input<string>? OauthPingIdentityRegion { get; set; }
+
+        /// <summary>
         /// if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         /// </summary>
         [Input("oauthRopcClientId")]
@@ -594,6 +636,18 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        /// </summary>
+        [Input("scimEnabled")]
+        public Input<bool>? ScimEnabled { get; set; }
+
+        /// <summary>
+        /// if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        /// </summary>
+        [Input("scimSecretToken")]
+        public Input<string>? ScimSecretToken { get; set; }
 
         public NacidpState()
         {

@@ -45,8 +45,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-        /// for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        /// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         /// </summary>
         [Input("extendedV4Nexthop")]
         public Input<bool>? ExtendedV4Nexthop { get; set; }

@@ -12,6 +12,7 @@ import com.pulumi.junipermist.org.NetworkArgs;
 import com.pulumi.junipermist.org.inputs.NetworkState;
 import com.pulumi.junipermist.org.outputs.NetworkInternalAccess;
 import com.pulumi.junipermist.org.outputs.NetworkInternetAccess;
+import com.pulumi.junipermist.org.outputs.NetworkMulticast;
 import com.pulumi.junipermist.org.outputs.NetworkTenants;
 import com.pulumi.junipermist.org.outputs.NetworkVpnAccess;
 import java.lang.Boolean;
@@ -136,6 +137,20 @@ public class Network extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isolation() {
         return Codegen.optional(this.isolation);
     }
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    @Export(name="multicast", refs={NetworkMulticast.class}, tree="[0]")
+    private Output</* @Nullable */ NetworkMulticast> multicast;
+
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public Output<Optional<NetworkMulticast>> multicast() {
+        return Codegen.optional(this.multicast);
+    }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -174,9 +189,17 @@ public class Network extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> subnet6() {
         return Codegen.optional(this.subnet6);
     }
+    /**
+     * Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     @Export(name="tenants", refs={Map.class,String.class,NetworkTenants.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,NetworkTenants>> tenants;
 
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Output<Optional<Map<String,NetworkTenants>>> tenants() {
         return Codegen.optional(this.tenants);
     }

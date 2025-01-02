@@ -14,6 +14,11 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
+apiDebug: Optional[bool]
+"""
+Flag to enable debugging API calls. Default is false.
+"""
+
 apiTimeout: Optional[float]
 """
 Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0

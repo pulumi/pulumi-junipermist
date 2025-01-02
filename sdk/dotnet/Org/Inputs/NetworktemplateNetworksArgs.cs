@@ -25,8 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-        /// NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        /// whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         /// </summary>
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }

@@ -33,9 +33,7 @@ public final class DeviceprofileGatewayPortConfig {
      */
     private @Nullable String aeIdx;
     /**
-     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
      * 
      */
     private @Nullable Boolean aeLacpForceUp;
@@ -45,6 +43,10 @@ public final class DeviceprofileGatewayPortConfig {
      * 
      */
     private @Nullable Boolean critical;
+    /**
+     * @return Interface Description. Can be a variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     private @Nullable String description;
     private @Nullable Boolean disableAutoneg;
     /**
@@ -58,14 +60,12 @@ public final class DeviceprofileGatewayPortConfig {
      */
     private @Nullable String dslType;
     /**
-     * @return if `wan_type`==`dsl`
-     * 16 bit int
+     * @return if `wan_type`==`dsl`, 16 bit int
      * 
      */
     private @Nullable Integer dslVci;
     /**
-     * @return if `wan_type`==`dsl`
-     * 8 bit int
+     * @return if `wan_type`==`dsl`, 8 bit int
      * 
      */
     private @Nullable Integer dslVpi;
@@ -107,7 +107,7 @@ public final class DeviceprofileGatewayPortConfig {
      */
     private @Nullable String name;
     /**
-     * @return if `usage`==`lan`
+     * @return if `usage`==`lan`, name of the `junipermist.org.Network` resource
      * 
      */
     private @Nullable List<String> networks;
@@ -118,7 +118,7 @@ public final class DeviceprofileGatewayPortConfig {
     private @Nullable Integer outerVlanId;
     private @Nullable Boolean poeDisabled;
     /**
-     * @return if `usage`==`lan`
+     * @return Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
      * 
      */
     private @Nullable String portNetwork;
@@ -164,43 +164,44 @@ public final class DeviceprofileGatewayPortConfig {
      * 
      */
     private String usage;
-    /**
-     * @return if WAN interface is on a VLAN
-     * 
-     */
-    private @Nullable Integer vlanId;
+    private @Nullable String vlanId;
     /**
      * @return Property key is the VPN name
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayPortConfigVpnPaths> vpnPaths;
     /**
-     * @return when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     private @Nullable String wanArpPolicer;
     /**
-     * @return optional, if spoke should reach this port by a different IP
+     * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
     private @Nullable String wanExtIp;
     /**
-     * @return Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes;
     /**
-     * @return if `usage`==`wan`
+     * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * 
+     */
+    private @Nullable List<String> wanNetworks;
+    /**
+     * @return Only if `usage`==`wan`
      * 
      */
     private @Nullable DeviceprofileGatewayPortConfigWanProbeOverride wanProbeOverride;
     /**
-     * @return optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+     * @return Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
      * 
      */
     private @Nullable DeviceprofileGatewayPortConfigWanSourceNat wanSourceNat;
     /**
-     * @return if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
      * 
      */
     private @Nullable String wanType;
@@ -221,9 +222,7 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.aeIdx);
     }
     /**
-     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
      * 
      */
     public Optional<Boolean> aeLacpForceUp() {
@@ -239,6 +238,10 @@ public final class DeviceprofileGatewayPortConfig {
     public Optional<Boolean> critical() {
         return Optional.ofNullable(this.critical);
     }
+    /**
+     * @return Interface Description. Can be a variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -260,16 +263,14 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.dslType);
     }
     /**
-     * @return if `wan_type`==`dsl`
-     * 16 bit int
+     * @return if `wan_type`==`dsl`, 16 bit int
      * 
      */
     public Optional<Integer> dslVci() {
         return Optional.ofNullable(this.dslVci);
     }
     /**
-     * @return if `wan_type`==`dsl`
-     * 8 bit int
+     * @return if `wan_type`==`dsl`, 8 bit int
      * 
      */
     public Optional<Integer> dslVpi() {
@@ -331,7 +332,7 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return if `usage`==`lan`
+     * @return if `usage`==`lan`, name of the `junipermist.org.Network` resource
      * 
      */
     public List<String> networks() {
@@ -348,7 +349,7 @@ public final class DeviceprofileGatewayPortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
-     * @return if `usage`==`lan`
+     * @return Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
      * 
      */
     public Optional<String> portNetwork() {
@@ -416,11 +417,7 @@ public final class DeviceprofileGatewayPortConfig {
     public String usage() {
         return this.usage;
     }
-    /**
-     * @return if WAN interface is on a VLAN
-     * 
-     */
-    public Optional<Integer> vlanId() {
+    public Optional<String> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
     /**
@@ -431,42 +428,49 @@ public final class DeviceprofileGatewayPortConfig {
         return this.vpnPaths == null ? Map.of() : this.vpnPaths;
     }
     /**
-     * @return when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     public Optional<String> wanArpPolicer() {
         return Optional.ofNullable(this.wanArpPolicer);
     }
     /**
-     * @return optional, if spoke should reach this port by a different IP
+     * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
     public Optional<String> wanExtIp() {
         return Optional.ofNullable(this.wanExtIp);
     }
     /**
-     * @return Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
      * 
      */
     public Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes() {
         return this.wanExtraRoutes == null ? Map.of() : this.wanExtraRoutes;
     }
     /**
-     * @return if `usage`==`wan`
+     * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * 
+     */
+    public List<String> wanNetworks() {
+        return this.wanNetworks == null ? List.of() : this.wanNetworks;
+    }
+    /**
+     * @return Only if `usage`==`wan`
      * 
      */
     public Optional<DeviceprofileGatewayPortConfigWanProbeOverride> wanProbeOverride() {
         return Optional.ofNullable(this.wanProbeOverride);
     }
     /**
-     * @return optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+     * @return Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
      * 
      */
     public Optional<DeviceprofileGatewayPortConfigWanSourceNat> wanSourceNat() {
         return Optional.ofNullable(this.wanSourceNat);
     }
     /**
-     * @return if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
      * 
      */
     public Optional<String> wanType() {
@@ -516,11 +520,12 @@ public final class DeviceprofileGatewayPortConfig {
         private @Nullable String svrPortRange;
         private @Nullable DeviceprofileGatewayPortConfigTrafficShaping trafficShaping;
         private String usage;
-        private @Nullable Integer vlanId;
+        private @Nullable String vlanId;
         private @Nullable Map<String,DeviceprofileGatewayPortConfigVpnPaths> vpnPaths;
         private @Nullable String wanArpPolicer;
         private @Nullable String wanExtIp;
         private @Nullable Map<String,DeviceprofileGatewayPortConfigWanExtraRoutes> wanExtraRoutes;
+        private @Nullable List<String> wanNetworks;
         private @Nullable DeviceprofileGatewayPortConfigWanProbeOverride wanProbeOverride;
         private @Nullable DeviceprofileGatewayPortConfigWanSourceNat wanSourceNat;
         private @Nullable String wanType;
@@ -566,6 +571,7 @@ public final class DeviceprofileGatewayPortConfig {
     	      this.wanArpPolicer = defaults.wanArpPolicer;
     	      this.wanExtIp = defaults.wanExtIp;
     	      this.wanExtraRoutes = defaults.wanExtraRoutes;
+    	      this.wanNetworks = defaults.wanNetworks;
     	      this.wanProbeOverride = defaults.wanProbeOverride;
     	      this.wanSourceNat = defaults.wanSourceNat;
     	      this.wanType = defaults.wanType;
@@ -784,7 +790,7 @@ public final class DeviceprofileGatewayPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder vlanId(@Nullable Integer vlanId) {
+        public Builder vlanId(@Nullable String vlanId) {
 
             this.vlanId = vlanId;
             return this;
@@ -812,6 +818,15 @@ public final class DeviceprofileGatewayPortConfig {
 
             this.wanExtraRoutes = wanExtraRoutes;
             return this;
+        }
+        @CustomType.Setter
+        public Builder wanNetworks(@Nullable List<String> wanNetworks) {
+
+            this.wanNetworks = wanNetworks;
+            return this;
+        }
+        public Builder wanNetworks(String... wanNetworks) {
+            return wanNetworks(List.of(wanNetworks));
         }
         @CustomType.Setter
         public Builder wanProbeOverride(@Nullable DeviceprofileGatewayPortConfigWanProbeOverride wanProbeOverride) {
@@ -872,6 +887,7 @@ public final class DeviceprofileGatewayPortConfig {
             _resultValue.wanArpPolicer = wanArpPolicer;
             _resultValue.wanExtIp = wanExtIp;
             _resultValue.wanExtraRoutes = wanExtraRoutes;
+            _resultValue.wanNetworks = wanNetworks;
             _resultValue.wanProbeOverride = wanProbeOverride;
             _resultValue.wanSourceNat = wanSourceNat;
             _resultValue.wanType = wanType;

@@ -47,36 +47,44 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * except for out-of_band interface (vme/em0/fxp0)
+     * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> gateway() {
         return Optional.ofNullable(this.gateway);
     }
 
+    /**
+     * Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
 
     /**
-     * used only if `subnet` is not specified in `networks`
+     * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -254,7 +262,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param gateway except for out-of_band interface (vme/em0/fxp0)
+         * @param gateway except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -265,7 +273,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param gateway except for out-of_band interface (vme/em0/fxp0)
+         * @param gateway except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -274,17 +282,29 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
             return gateway(Output.of(gateway));
         }
 
+        /**
+         * @param ip Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -295,7 +315,7 @@ public final class GatewayPortConfigIpConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 

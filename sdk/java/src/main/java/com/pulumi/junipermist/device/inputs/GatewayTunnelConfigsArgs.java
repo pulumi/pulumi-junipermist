@@ -31,14 +31,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if `provider`== `custom-ipsec`
+     * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     @Import(name="ikeLifetime")
     private @Nullable Output<Integer> ikeLifetime;
 
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     public Optional<Output<Integer>> ikeLifetime() {
@@ -46,14 +46,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+     * Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
      * 
      */
     @Import(name="ikeMode")
     private @Nullable Output<String> ikeMode;
 
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+     * @return Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
      * 
      */
     public Optional<Output<String>> ikeMode() {
@@ -61,14 +61,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * if `provider`== `custom-ipsec`
+     * if `provider`==`custom-ipsec`
      * 
      */
     @Import(name="ikeProposals")
     private @Nullable Output<List<GatewayTunnelConfigsIkeProposalArgs>> ikeProposals;
 
     /**
-     * @return if `provider`== `custom-ipsec`
+     * @return if `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<List<GatewayTunnelConfigsIkeProposalArgs>>> ikeProposals() {
@@ -76,14 +76,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * if `provider`== `custom-ipsec`
+     * Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     @Import(name="ipsecLifetime")
     private @Nullable Output<Integer> ipsecLifetime;
 
     /**
-     * @return if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
      * 
      */
     public Optional<Output<Integer>> ipsecLifetime() {
@@ -91,14 +91,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if  `provider`== `custom-ipsec`
+     * Only if  `provider`==`custom-ipsec`
      * 
      */
     @Import(name="ipsecProposals")
     private @Nullable Output<List<GatewayTunnelConfigsIpsecProposalArgs>> ipsecProposals;
 
     /**
-     * @return Only if  `provider`== `custom-ipsec`
+     * @return Only if  `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<List<GatewayTunnelConfigsIpsecProposalArgs>>> ipsecProposals() {
@@ -106,20 +106,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     @Import(name="localId")
     private @Nullable Output<String> localId;
 
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * @return Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<String>> localId() {
@@ -127,14 +121,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * enum: `active-active`, `active-standby`
+     * Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return enum: `active-active`, `active-standby`
+     * @return Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
      * 
      */
     public Optional<Output<String>> mode() {
@@ -142,36 +136,44 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * networks reachable via this tunnel
+     * if `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return networks reachable via this tunnel
+     * @return if `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     @Import(name="primary")
     private @Nullable Output<GatewayTunnelConfigsPrimaryArgs> primary;
 
+    /**
+     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     public Optional<Output<GatewayTunnelConfigsPrimaryArgs>> primary() {
         return Optional.ofNullable(this.primary);
     }
 
     /**
-     * Only if `provider`== `custom-ipsec`
+     * Only if `provider`==`custom-ipsec`
      * 
      */
     @Import(name="probe")
     private @Nullable Output<GatewayTunnelConfigsProbeArgs> probe;
 
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<GatewayTunnelConfigsProbeArgs>> probe() {
@@ -179,14 +181,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+     * Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+     * @return Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -194,14 +196,14 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     @Import(name="provider")
     private @Nullable Output<String> provider;
 
     /**
-     * @return enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+     * @return Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
      * 
      */
     public Optional<Output<String>> provider() {
@@ -209,42 +211,44 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     @Import(name="psk")
     private @Nullable Output<String> psk;
 
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-ipsec`
-     *   * `provider`==`jse-ipsec`
-     *   * `provider`== `custom-ipsec`
+     * @return Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<String>> psk() {
         return Optional.ofNullable(this.psk);
     }
 
+    /**
+     * Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     @Import(name="secondary")
     private @Nullable Output<GatewayTunnelConfigsSecondaryArgs> secondary;
 
+    /**
+     * @return Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+     * 
+     */
     public Optional<Output<GatewayTunnelConfigsSecondaryArgs>> secondary() {
         return Optional.ofNullable(this.secondary);
     }
 
     /**
-     * Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+     * Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+     * @return Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
      * 
      */
     public Optional<Output<String>> version() {
@@ -300,7 +304,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeLifetime Only if `provider`== `custom-ipsec`
+         * @param ikeLifetime Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          * 
          * @return builder
          * 
@@ -311,7 +315,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeLifetime Only if `provider`== `custom-ipsec`
+         * @param ikeLifetime Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          * 
          * @return builder
          * 
@@ -321,7 +325,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeMode Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * @param ikeMode Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          * 
          * @return builder
          * 
@@ -332,7 +336,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeMode Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+         * @param ikeMode Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
          * 
          * @return builder
          * 
@@ -342,7 +346,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeProposals if `provider`== `custom-ipsec`
+         * @param ikeProposals if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -353,7 +357,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeProposals if `provider`== `custom-ipsec`
+         * @param ikeProposals if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -363,7 +367,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ikeProposals if `provider`== `custom-ipsec`
+         * @param ikeProposals if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -373,7 +377,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecLifetime if `provider`== `custom-ipsec`
+         * @param ipsecLifetime Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          * 
          * @return builder
          * 
@@ -384,7 +388,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecLifetime if `provider`== `custom-ipsec`
+         * @param ipsecLifetime Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
          * 
          * @return builder
          * 
@@ -394,7 +398,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecProposals Only if  `provider`== `custom-ipsec`
+         * @param ipsecProposals Only if  `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -405,7 +409,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecProposals Only if  `provider`== `custom-ipsec`
+         * @param ipsecProposals Only if  `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -415,7 +419,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipsecProposals Only if  `provider`== `custom-ipsec`
+         * @param ipsecProposals Only if  `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -425,10 +429,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localId Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * @param localId Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -439,10 +440,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localId Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * @param localId Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -452,7 +450,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mode enum: `active-active`, `active-standby`
+         * @param mode Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          * 
          * @return builder
          * 
@@ -463,7 +461,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mode enum: `active-active`, `active-standby`
+         * @param mode Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
          * 
          * @return builder
          * 
@@ -473,7 +471,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks networks reachable via this tunnel
+         * @param networks if `provider`==`custom-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -484,7 +482,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks networks reachable via this tunnel
+         * @param networks if `provider`==`custom-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -494,7 +492,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param networks networks reachable via this tunnel
+         * @param networks if `provider`==`custom-ipsec`, networks reachable via this tunnel
          * 
          * @return builder
          * 
@@ -503,17 +501,29 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
             return networks(List.of(networks));
         }
 
+        /**
+         * @param primary Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * 
+         * @return builder
+         * 
+         */
         public Builder primary(@Nullable Output<GatewayTunnelConfigsPrimaryArgs> primary) {
             $.primary = primary;
             return this;
         }
 
+        /**
+         * @param primary Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * 
+         * @return builder
+         * 
+         */
         public Builder primary(GatewayTunnelConfigsPrimaryArgs primary) {
             return primary(Output.of(primary));
         }
 
         /**
-         * @param probe Only if `provider`== `custom-ipsec`
+         * @param probe Only if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -524,7 +534,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param probe Only if `provider`== `custom-ipsec`
+         * @param probe Only if `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -534,7 +544,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param protocol Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * @param protocol Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          * 
          * @return builder
          * 
@@ -545,7 +555,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param protocol Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+         * @param protocol Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
          * 
          * @return builder
          * 
@@ -555,7 +565,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param provider enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          * 
          * @return builder
          * 
@@ -566,7 +576,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param provider enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+         * @param provider Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
          * 
          * @return builder
          * 
@@ -576,10 +586,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param psk Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * @param psk Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -590,10 +597,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param psk Only if:
-         *   * `provider`== `zscaler-ipsec`
-         *   * `provider`==`jse-ipsec`
-         *   * `provider`== `custom-ipsec`
+         * @param psk Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -602,17 +606,29 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
             return psk(Output.of(psk));
         }
 
+        /**
+         * @param secondary Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondary(@Nullable Output<GatewayTunnelConfigsSecondaryArgs> secondary) {
             $.secondary = secondary;
             return this;
         }
 
+        /**
+         * @param secondary Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondary(GatewayTunnelConfigsSecondaryArgs secondary) {
             return secondary(Output.of(secondary));
         }
 
         /**
-         * @param version Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * @param version Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          * 
          * @return builder
          * 
@@ -623,7 +639,7 @@ public final class GatewayTunnelConfigsArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param version Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+         * @param version Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
          * 
          * @return builder
          * 

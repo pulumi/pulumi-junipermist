@@ -8,6 +8,17 @@ declare var exports: any;
 const __config = new pulumi.Config("junipermist");
 
 /**
+ * Flag to enable debugging API calls. Default is false.
+ */
+export declare const apiDebug: boolean | undefined;
+Object.defineProperty(exports, "apiDebug", {
+    get() {
+        return __config.getObject<boolean>("apiDebug");
+    },
+    enumerable: true,
+});
+
+/**
  * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
  * results in infinite timeout.
  */

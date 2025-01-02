@@ -29,7 +29,7 @@ import (
 type DeviceprofileGateway struct {
 	pulumi.CustomResourceState
 
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            DeviceprofileGatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
@@ -106,7 +106,7 @@ func GetDeviceprofileGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DeviceprofileGateway resources.
 type deviceprofileGatewayState struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
 	DhcpdConfig          *DeviceprofileGatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
@@ -151,7 +151,7 @@ type deviceprofileGatewayState struct {
 }
 
 type DeviceprofileGatewayState struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            DeviceprofileGatewayBgpConfigMapInput
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrInput
@@ -200,7 +200,7 @@ func (DeviceprofileGatewayState) ElementType() reflect.Type {
 }
 
 type deviceprofileGatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                                 `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]DeviceprofileGatewayBgpConfig `pulumi:"bgpConfig"`
 	DhcpdConfig          *DeviceprofileGatewayDhcpdConfig         `pulumi:"dhcpdConfig"`
@@ -244,7 +244,7 @@ type deviceprofileGatewayArgs struct {
 
 // The set of arguments for constructing a DeviceprofileGateway resource.
 type DeviceprofileGatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            DeviceprofileGatewayBgpConfigMapInput
 	DhcpdConfig          DeviceprofileGatewayDhcpdConfigPtrInput
@@ -373,7 +373,7 @@ func (o DeviceprofileGatewayOutput) ToDeviceprofileGatewayOutputWithContext(ctx 
 	return o
 }
 
-// additional CLI commands to append to the generated Junos config **Note**: no check is done
+// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 func (o DeviceprofileGatewayOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeviceprofileGateway) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }

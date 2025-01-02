@@ -59,6 +59,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["apiDebug"] = pulumi.output(args ? args.apiDebug : undefined).apply(JSON.stringify);
             resourceInputs["apiTimeout"] = pulumi.output(args ? args.apiTimeout : undefined).apply(JSON.stringify);
             resourceInputs["apitoken"] = args?.apitoken ? pulumi.secret(args.apitoken) : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
@@ -77,6 +78,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Flag to enable debugging API calls. Default is false.
+     */
+    apiDebug?: pulumi.Input<boolean>;
     /**
      * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
      * results in infinite timeout.

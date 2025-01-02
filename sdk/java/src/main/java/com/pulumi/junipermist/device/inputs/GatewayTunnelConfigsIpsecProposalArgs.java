@@ -31,7 +31,7 @@ public final class GatewayTunnelConfigsIpsecProposalArgs extends com.pulumi.reso
     }
 
     /**
-     * Only if `provider`== `custom-ipsec`. enum:
+     * Only if `provider`==`custom-ipsec`. enum:
      *   * 1
      *   * 2 (1024-bit)
      *   * 5
@@ -48,7 +48,7 @@ public final class GatewayTunnelConfigsIpsecProposalArgs extends com.pulumi.reso
     private @Nullable Output<String> dhGroup;
 
     /**
-     * @return Only if `provider`== `custom-ipsec`. enum:
+     * @return Only if `provider`==`custom-ipsec`. enum:
      *   * 1
      *   * 2 (1024-bit)
      *   * 5
@@ -128,7 +128,7 @@ public final class GatewayTunnelConfigsIpsecProposalArgs extends com.pulumi.reso
         }
 
         /**
-         * @param dhGroup Only if `provider`== `custom-ipsec`. enum:
+         * @param dhGroup Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5
@@ -149,7 +149,7 @@ public final class GatewayTunnelConfigsIpsecProposalArgs extends com.pulumi.reso
         }
 
         /**
-         * @param dhGroup Only if `provider`== `custom-ipsec`. enum:
+         * @param dhGroup Only if `provider`==`custom-ipsec`. enum:
          *   * 1
          *   * 2 (1024-bit)
          *   * 5

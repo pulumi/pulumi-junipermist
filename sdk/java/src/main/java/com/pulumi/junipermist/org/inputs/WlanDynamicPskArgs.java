@@ -46,16 +46,14 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled
-     * `false` means auto
+     * when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     @Import(name="forceLookup")
     private @Nullable Output<Boolean> forceLookup;
 
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled
-     * `false` means auto
+     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     public Optional<Output<Boolean>> forceLookup() {
@@ -145,8 +143,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceLookup when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled
-         * `false` means auto
+         * @param forceLookup when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
          * 
          * @return builder
          * 
@@ -157,8 +154,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceLookup when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled
-         * `false` means auto
+         * @param forceLookup when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
          * 
          * @return builder
          * 

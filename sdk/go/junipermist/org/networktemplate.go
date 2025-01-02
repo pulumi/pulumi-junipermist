@@ -50,7 +50,7 @@ type Networktemplate struct {
 	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
 	// Junos OSPF areas
 	OspfAreas NetworktemplateOspfAreasMapOutput `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapOutput `pulumi:"portMirroring"`
@@ -127,7 +127,7 @@ type networktemplateState struct {
 	OrgId      *string  `pulumi:"orgId"`
 	// Junos OSPF areas
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
@@ -172,7 +172,7 @@ type NetworktemplateState struct {
 	OrgId      pulumi.StringPtrInput
 	// Junos OSPF areas
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
@@ -221,7 +221,7 @@ type networktemplateArgs struct {
 	OrgId      string   `pulumi:"orgId"`
 	// Junos OSPF areas
 	OspfAreas map[string]NetworktemplateOspfAreas `pulumi:"ospfAreas"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplatePortMirroring `pulumi:"portMirroring"`
@@ -267,7 +267,7 @@ type NetworktemplateArgs struct {
 	OrgId      pulumi.StringInput
 	// Junos OSPF areas
 	OspfAreas NetworktemplateOspfAreasMapInput
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplatePortMirroringMapInput
@@ -440,7 +440,7 @@ func (o NetworktemplateOutput) OspfAreas() NetworktemplateOspfAreasMapOutput {
 	return o.ApplyT(func(v *Networktemplate) NetworktemplateOspfAreasMapOutput { return v.OspfAreas }).(NetworktemplateOspfAreasMapOutput)
 }
 
-// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 // interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 // maximum 4 port mirrorings is allowed
 func (o NetworktemplateOutput) PortMirroring() NetworktemplatePortMirroringMapOutput {

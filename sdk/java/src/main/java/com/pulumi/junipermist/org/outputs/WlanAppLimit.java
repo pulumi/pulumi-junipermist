@@ -22,8 +22,7 @@ public final class WlanAppLimit {
     private @Nullable Map<String,Integer> apps;
     private @Nullable Boolean enabled;
     /**
-     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps
-     * Property key is the wxtag id
+     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
      * 
      */
     private @Nullable Map<String,Integer> wxtagIds;
@@ -41,8 +40,7 @@ public final class WlanAppLimit {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps
-     * Property key is the wxtag id
+     * @return Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
      * 
      */
     public Map<String,Integer> wxtagIds() {

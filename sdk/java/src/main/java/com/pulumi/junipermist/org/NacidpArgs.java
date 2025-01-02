@@ -304,6 +304,21 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * 
+     */
+    @Import(name="oauthPingIdentityRegion")
+    private @Nullable Output<String> oauthPingIdentityRegion;
+
+    /**
+     * @return enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     * 
+     */
+    public Optional<Output<String>> oauthPingIdentityRegion() {
+        return Optional.ofNullable(this.oauthPingIdentityRegion);
+    }
+
+    /**
      * if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
      * 
      */
@@ -370,6 +385,36 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         return this.orgId;
     }
 
+    /**
+     * if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * 
+     */
+    @Import(name="scimEnabled")
+    private @Nullable Output<Boolean> scimEnabled;
+
+    /**
+     * @return if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     * 
+     */
+    public Optional<Output<Boolean>> scimEnabled() {
+        return Optional.ofNullable(this.scimEnabled);
+    }
+
+    /**
+     * if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * 
+     */
+    @Import(name="scimSecretToken")
+    private @Nullable Output<String> scimSecretToken;
+
+    /**
+     * @return if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     * 
+     */
+    public Optional<Output<String>> scimSecretToken() {
+        return Optional.ofNullable(this.scimSecretToken);
+    }
+
     private NacidpArgs() {}
 
     private NacidpArgs(NacidpArgs $) {
@@ -392,11 +437,14 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         this.oauthCcClientId = $.oauthCcClientId;
         this.oauthCcClientSecret = $.oauthCcClientSecret;
         this.oauthDiscoveryUrl = $.oauthDiscoveryUrl;
+        this.oauthPingIdentityRegion = $.oauthPingIdentityRegion;
         this.oauthRopcClientId = $.oauthRopcClientId;
         this.oauthRopcClientSecret = $.oauthRopcClientSecret;
         this.oauthTenantId = $.oauthTenantId;
         this.oauthType = $.oauthType;
         this.orgId = $.orgId;
+        this.scimEnabled = $.scimEnabled;
+        this.scimSecretToken = $.scimSecretToken;
     }
 
     public static Builder builder() {
@@ -837,6 +885,27 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param oauthPingIdentityRegion enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthPingIdentityRegion(@Nullable Output<String> oauthPingIdentityRegion) {
+            $.oauthPingIdentityRegion = oauthPingIdentityRegion;
+            return this;
+        }
+
+        /**
+         * @param oauthPingIdentityRegion enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oauthPingIdentityRegion(String oauthPingIdentityRegion) {
+            return oauthPingIdentityRegion(Output.of(oauthPingIdentityRegion));
+        }
+
+        /**
          * @param oauthRopcClientId if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
          * 
          * @return builder
@@ -927,6 +996,48 @@ public final class NacidpArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        /**
+         * @param scimEnabled if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimEnabled(@Nullable Output<Boolean> scimEnabled) {
+            $.scimEnabled = scimEnabled;
+            return this;
+        }
+
+        /**
+         * @param scimEnabled if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimEnabled(Boolean scimEnabled) {
+            return scimEnabled(Output.of(scimEnabled));
+        }
+
+        /**
+         * @param scimSecretToken if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimSecretToken(@Nullable Output<String> scimSecretToken) {
+            $.scimSecretToken = scimSecretToken;
+            return this;
+        }
+
+        /**
+         * @param scimSecretToken if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimSecretToken(String scimSecretToken) {
+            return scimSecretToken(Output.of(scimSecretToken));
         }
 
         public NacidpArgs build() {

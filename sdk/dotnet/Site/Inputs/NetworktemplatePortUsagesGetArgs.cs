@@ -19,9 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? AllNetworks { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-        /// All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        /// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         /// </summary>
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
@@ -99,8 +97,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
-        /// NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        /// Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }
@@ -220,8 +217,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// Switch storm control
-        /// Only if `mode`!=`dynamic`
+        /// Switch storm control. Only if `mode`!=`dynamic`
         /// </summary>
         [Input("stormControl")]
         public Input<Inputs.NetworktemplatePortUsagesStormControlGetArgs>? StormControl { get; set; }

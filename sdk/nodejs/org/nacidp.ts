@@ -179,6 +179,10 @@ export class Nacidp extends pulumi.CustomResource {
      */
     public readonly oauthDiscoveryUrl!: pulumi.Output<string | undefined>;
     /**
+     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     */
+    public readonly oauthPingIdentityRegion!: pulumi.Output<string>;
+    /**
      * if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     public readonly oauthRopcClientId!: pulumi.Output<string | undefined>;
@@ -195,6 +199,14 @@ export class Nacidp extends pulumi.CustomResource {
      */
     public readonly oauthType!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
+    /**
+     * if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     */
+    public readonly scimEnabled!: pulumi.Output<boolean>;
+    /**
+     * if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     */
+    public readonly scimSecretToken!: pulumi.Output<string>;
 
     /**
      * Create a Nacidp resource with the given unique name, arguments, and options.
@@ -228,11 +240,14 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["oauthCcClientId"] = state ? state.oauthCcClientId : undefined;
             resourceInputs["oauthCcClientSecret"] = state ? state.oauthCcClientSecret : undefined;
             resourceInputs["oauthDiscoveryUrl"] = state ? state.oauthDiscoveryUrl : undefined;
+            resourceInputs["oauthPingIdentityRegion"] = state ? state.oauthPingIdentityRegion : undefined;
             resourceInputs["oauthRopcClientId"] = state ? state.oauthRopcClientId : undefined;
             resourceInputs["oauthRopcClientSecret"] = state ? state.oauthRopcClientSecret : undefined;
             resourceInputs["oauthTenantId"] = state ? state.oauthTenantId : undefined;
             resourceInputs["oauthType"] = state ? state.oauthType : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["scimEnabled"] = state ? state.scimEnabled : undefined;
+            resourceInputs["scimSecretToken"] = state ? state.scimSecretToken : undefined;
         } else {
             const args = argsOrState as NacidpArgs | undefined;
             if ((!args || args.idpType === undefined) && !opts.urn) {
@@ -260,11 +275,14 @@ export class Nacidp extends pulumi.CustomResource {
             resourceInputs["oauthCcClientId"] = args ? args.oauthCcClientId : undefined;
             resourceInputs["oauthCcClientSecret"] = args ? args.oauthCcClientSecret : undefined;
             resourceInputs["oauthDiscoveryUrl"] = args ? args.oauthDiscoveryUrl : undefined;
+            resourceInputs["oauthPingIdentityRegion"] = args ? args.oauthPingIdentityRegion : undefined;
             resourceInputs["oauthRopcClientId"] = args ? args.oauthRopcClientId : undefined;
             resourceInputs["oauthRopcClientSecret"] = args ? args.oauthRopcClientSecret : undefined;
             resourceInputs["oauthTenantId"] = args ? args.oauthTenantId : undefined;
             resourceInputs["oauthType"] = args ? args.oauthType : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["scimEnabled"] = args ? args.scimEnabled : undefined;
+            resourceInputs["scimSecretToken"] = args ? args.scimSecretToken : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Nacidp.__pulumiType, name, resourceInputs, opts);
@@ -352,6 +370,10 @@ export interface NacidpState {
      */
     oauthDiscoveryUrl?: pulumi.Input<string>;
     /**
+     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     */
+    oauthPingIdentityRegion?: pulumi.Input<string>;
+    /**
      * if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     oauthRopcClientId?: pulumi.Input<string>;
@@ -368,6 +390,14 @@ export interface NacidpState {
      */
     oauthType?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
+    /**
+     * if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     */
+    scimEnabled?: pulumi.Input<boolean>;
+    /**
+     * if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     */
+    scimSecretToken?: pulumi.Input<string>;
 }
 
 /**
@@ -451,6 +481,10 @@ export interface NacidpArgs {
      */
     oauthDiscoveryUrl?: pulumi.Input<string>;
     /**
+     * enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+     */
+    oauthPingIdentityRegion?: pulumi.Input<string>;
+    /**
      * if `idpType`==`oauth`, ropc = Resource Owner Password Credentials
      */
     oauthRopcClientId?: pulumi.Input<string>;
@@ -467,4 +501,12 @@ export interface NacidpArgs {
      */
     oauthType?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
+    /**
+     * if `idpType`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+     */
+    scimEnabled?: pulumi.Input<boolean>;
+    /**
+     * if `idpType`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scimEnabled`==`true`, empty string when `scimEnabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+     */
+    scimSecretToken?: pulumi.Input<string>;
 }

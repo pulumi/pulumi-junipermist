@@ -35,6 +35,18 @@ namespace Pulumi.JuniperMist.Device.Inputs
             set => _addTargetVrfs = value;
         }
 
+        [Input("aggregates")]
+        private InputList<string>? _aggregates;
+
+        /// <summary>
+        /// route aggregation
+        /// </summary>
+        public InputList<string> Aggregates
+        {
+            get => _aggregates ?? (_aggregates = new InputList<string>());
+            set => _aggregates = value;
+        }
+
         [Input("communities")]
         private InputList<string>? _communities;
 

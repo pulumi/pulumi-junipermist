@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? AuthAlgo;
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`. enum:
+        /// Only if `provider`==`custom-ipsec`. enum:
         ///   * 1
         ///   * 2 (1024-bit)
         ///   * 5

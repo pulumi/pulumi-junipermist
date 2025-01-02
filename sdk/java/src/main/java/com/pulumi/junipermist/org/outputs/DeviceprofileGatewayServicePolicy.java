@@ -39,8 +39,7 @@ public final class DeviceprofileGatewayServicePolicy {
      */
     private @Nullable String name;
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     private @Nullable String pathPreference;
@@ -96,8 +95,7 @@ public final class DeviceprofileGatewayServicePolicy {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     public Optional<String> pathPreference() {

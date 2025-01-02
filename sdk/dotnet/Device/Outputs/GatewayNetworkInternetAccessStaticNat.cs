@@ -13,18 +13,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayNetworkInternetAccessStaticNat
     {
-        public readonly string? InternalIp;
-        public readonly string? Name;
         /// <summary>
-        /// If not set, we configure the nat policies against all WAN ports for simplicity
+        /// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
+        public readonly string InternalIp;
+        public readonly string Name;
+        /// <summary>
+        /// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? WanName;
 
         [OutputConstructor]
         private GatewayNetworkInternetAccessStaticNat(
-            string? internalIp,
+            string internalIp,
 
-            string? name,
+            string name,
 
             string? wanName)
         {

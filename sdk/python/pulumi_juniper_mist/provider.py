@@ -19,6 +19,7 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 api_debug: Optional[pulumi.Input[bool]] = None,
                  api_timeout: Optional[pulumi.Input[float]] = None,
                  apitoken: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class ProviderArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
+        :param pulumi.Input[bool] api_debug: Flag to enable debugging API calls. Default is false.
         :param pulumi.Input[float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
                results in infinite timeout.
         :param pulumi.Input[str] apitoken: For API Token authentication, the Mist API Token.
@@ -37,6 +39,8 @@ class ProviderArgs:
                are supported.
         :param pulumi.Input[str] username: For username/password authentication, the Mist Account username.
         """
+        if api_debug is not None:
+            pulumi.set(__self__, "api_debug", api_debug)
         if api_timeout is not None:
             pulumi.set(__self__, "api_timeout", api_timeout)
         if apitoken is not None:
@@ -49,6 +53,18 @@ class ProviderArgs:
             pulumi.set(__self__, "proxy", proxy)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="apiDebug")
+    def api_debug(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to enable debugging API calls. Default is false.
+        """
+        return pulumi.get(self, "api_debug")
+
+    @api_debug.setter
+    def api_debug(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "api_debug", value)
 
     @property
     @pulumi.getter(name="apiTimeout")
@@ -131,6 +147,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_debug: Optional[pulumi.Input[bool]] = None,
                  api_timeout: Optional[pulumi.Input[float]] = None,
                  apitoken: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -146,6 +163,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] api_debug: Flag to enable debugging API calls. Default is false.
         :param pulumi.Input[float] api_timeout: Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
                results in infinite timeout.
         :param pulumi.Input[str] apitoken: For API Token authentication, the Mist API Token.
@@ -183,6 +201,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_debug: Optional[pulumi.Input[bool]] = None,
                  api_timeout: Optional[pulumi.Input[float]] = None,
                  apitoken: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -198,6 +217,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["api_debug"] = pulumi.Output.from_input(api_debug).apply(pulumi.runtime.to_json) if api_debug is not None else None
             __props__.__dict__["api_timeout"] = pulumi.Output.from_input(api_timeout).apply(pulumi.runtime.to_json) if api_timeout is not None else None
             __props__.__dict__["apitoken"] = None if apitoken is None else pulumi.Output.secret(apitoken)
             __props__.__dict__["host"] = host

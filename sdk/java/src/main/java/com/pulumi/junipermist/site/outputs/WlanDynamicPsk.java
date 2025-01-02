@@ -20,8 +20,7 @@ public final class WlanDynamicPsk {
     private @Nullable String defaultVlanId;
     private @Nullable Boolean enabled;
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled
-     * `false` means auto
+     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     private @Nullable Boolean forceLookup;
@@ -46,8 +45,7 @@ public final class WlanDynamicPsk {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled
-     * `false` means auto
+     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     public Optional<Boolean> forceLookup() {

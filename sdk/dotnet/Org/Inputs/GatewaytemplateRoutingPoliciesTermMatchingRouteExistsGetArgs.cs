@@ -16,8 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Route { get; set; }
 
         /// <summary>
-        /// name of the vrf instance
-        /// it can also be the name of the VPN or wan if they
+        /// name of the vrf instance, it can also be the name of the VPN or wan if they
         /// </summary>
         [Input("vrfName")]
         public Input<string>? VrfName { get; set; }

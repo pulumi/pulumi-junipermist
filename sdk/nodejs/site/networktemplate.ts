@@ -96,7 +96,7 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly ospfAreas!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateOspfAreas} | undefined>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      */
@@ -253,7 +253,7 @@ export interface NetworktemplateState {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      */
@@ -339,7 +339,7 @@ export interface NetworktemplateArgs {
      */
     ospfAreas?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateOspfAreas>}>;
     /**
-     * Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      */

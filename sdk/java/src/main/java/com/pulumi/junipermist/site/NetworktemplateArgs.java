@@ -208,7 +208,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      * 
@@ -217,7 +217,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Map<String,NetworktemplatePortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      * 
@@ -691,7 +691,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
          * maximum 4 port mirrorings is allowed
          * 
@@ -704,7 +704,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
          * maximum 4 port mirrorings is allowed
          * 

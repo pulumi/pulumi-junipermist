@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class DeviceprofileGateway : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -426,7 +426,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {

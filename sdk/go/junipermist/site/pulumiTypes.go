@@ -903,12 +903,14 @@ func (o EvpnTopologySwitchesMapOutput) MapIndex(k pulumi.StringInput) EvpnTopolo
 }
 
 type NetworktemplateAclPolicy struct {
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Actions:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	Actions []NetworktemplateAclPolicyAction `pulumi:"actions"`
 	Name    *string                          `pulumi:"name"`
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Source Tags:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	SrcTags []string `pulumi:"srcTags"`
 }
 
@@ -924,12 +926,14 @@ type NetworktemplateAclPolicyInput interface {
 }
 
 type NetworktemplateAclPolicyArgs struct {
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Actions:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	Actions NetworktemplateAclPolicyActionArrayInput `pulumi:"actions"`
 	Name    pulumi.StringPtrInput                    `pulumi:"name"`
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Source Tags:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	SrcTags pulumi.StringArrayInput `pulumi:"srcTags"`
 }
 
@@ -984,8 +988,9 @@ func (o NetworktemplateAclPolicyOutput) ToNetworktemplateAclPolicyOutputWithCont
 	return o
 }
 
-// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+// ACL Policy Actions:
+//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 func (o NetworktemplateAclPolicyOutput) Actions() NetworktemplateAclPolicyActionArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclPolicy) []NetworktemplateAclPolicyAction { return v.Actions }).(NetworktemplateAclPolicyActionArrayOutput)
 }
@@ -994,8 +999,9 @@ func (o NetworktemplateAclPolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+// ACL Policy Source Tags:
+//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 func (o NetworktemplateAclPolicyOutput) SrcTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclPolicy) []string { return v.SrcTags }).(pulumi.StringArrayOutput)
 }
@@ -1125,9 +1131,9 @@ func (o NetworktemplateAclPolicyActionArrayOutput) Index(i pulumi.IntInput) Netw
 
 type NetworktemplateAclTags struct {
 	// required if
-	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-	// - `type`==`gbpResource`
-	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
+	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	//   - `type`==`gbpResource`
+	//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag *int `pulumi:"gbpTag"`
 	// required if
 	// - `type`==`mac`
@@ -1145,8 +1151,7 @@ type NetworktemplateAclTags struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	// if `type`==`resource` or `type`==`gbpResource`
-	// empty means unrestricted, i.e. any
+	// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs []NetworktemplateAclTagsSpec `pulumi:"specs"`
 	// if
 	// - `type`==`subnet`
@@ -1179,9 +1184,9 @@ type NetworktemplateAclTagsInput interface {
 
 type NetworktemplateAclTagsArgs struct {
 	// required if
-	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-	// - `type`==`gbpResource`
-	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
+	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	//   - `type`==`gbpResource`
+	//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag pulumi.IntPtrInput `pulumi:"gbpTag"`
 	// required if
 	// - `type`==`mac`
@@ -1199,8 +1204,7 @@ type NetworktemplateAclTagsArgs struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
-	// if `type`==`resource` or `type`==`gbpResource`
-	// empty means unrestricted, i.e. any
+	// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs NetworktemplateAclTagsSpecArrayInput `pulumi:"specs"`
 	// if
 	// - `type`==`subnet`
@@ -1272,9 +1276,9 @@ func (o NetworktemplateAclTagsOutput) ToNetworktemplateAclTagsOutputWithContext(
 }
 
 // required if
-// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-// - `type`==`gbpResource`
-// - `type`==`staticGbp` (applying gbp tag against matching conditions)
+//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+//   - `type`==`gbpResource`
+//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 func (o NetworktemplateAclTagsOutput) GbpTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *int { return v.GbpTag }).(pulumi.IntPtrOutput)
 }
@@ -1304,8 +1308,7 @@ func (o NetworktemplateAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) *string { return v.RadiusGroup }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`resource` or `type`==`gbpResource`
-// empty means unrestricted, i.e. any
+// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 func (o NetworktemplateAclTagsOutput) Specs() NetworktemplateAclTagsSpecArrayOutput {
 	return o.ApplyT(func(v NetworktemplateAclTags) []NetworktemplateAclTagsSpec { return v.Specs }).(NetworktemplateAclTagsSpecArrayOutput)
 }
@@ -1355,7 +1358,7 @@ func (o NetworktemplateAclTagsMapOutput) MapIndex(k pulumi.StringInput) Networkt
 type NetworktemplateAclTagsSpec struct {
 	// matched dst port, "0" means any
 	PortRange *string `pulumi:"portRange"`
-	// `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+	// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -1373,7 +1376,7 @@ type NetworktemplateAclTagsSpecInput interface {
 type NetworktemplateAclTagsSpecArgs struct {
 	// matched dst port, "0" means any
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
-	// `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+	// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -1433,7 +1436,7 @@ func (o NetworktemplateAclTagsSpecOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTagsSpec) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
-// `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 func (o NetworktemplateAclTagsSpecOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateAclTagsSpec) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -2280,8 +2283,7 @@ type NetworktemplateNetworks struct {
 	Gateway *string `pulumi:"gateway"`
 	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 *string `pulumi:"gateway6"`
-	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-	// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       *bool   `pulumi:"isolation"`
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
 	// optional for pure switching, required when L3 / routing features are used
@@ -2307,8 +2309,7 @@ type NetworktemplateNetworksArgs struct {
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
-	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-	// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       pulumi.BoolPtrInput   `pulumi:"isolation"`
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
 	// optional for pure switching, required when L3 / routing features are used
@@ -2379,8 +2380,7 @@ func (o NetworktemplateNetworksOutput) Gateway6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
 }
 
-// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 func (o NetworktemplateNetworksOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplateNetworks) *bool { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
@@ -2848,9 +2848,7 @@ func (o NetworktemplatePortMirroringMapOutput) MapIndex(k pulumi.StringInput) Ne
 type NetworktemplatePortUsages struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
@@ -2874,8 +2872,7 @@ type NetworktemplatePortUsages struct {
 	EnableQos *bool `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -2911,8 +2908,7 @@ type NetworktemplatePortUsages struct {
 	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
-	// Switch storm control
-	// Only if `mode`!=`dynamic`
+	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl *NetworktemplatePortUsagesStormControl `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
 	StpEdge       *bool `pulumi:"stpEdge"`
@@ -2940,9 +2936,7 @@ type NetworktemplatePortUsagesInput interface {
 type NetworktemplatePortUsagesArgs struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
@@ -2966,8 +2960,7 @@ type NetworktemplatePortUsagesArgs struct {
 	EnableQos pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -3003,8 +2996,7 @@ type NetworktemplatePortUsagesArgs struct {
 	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
-	// Switch storm control
-	// Only if `mode`!=`dynamic`
+	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl NetworktemplatePortUsagesStormControlPtrInput `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
 	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
@@ -3074,9 +3066,7 @@ func (o NetworktemplatePortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 func (o NetworktemplatePortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -3136,8 +3126,7 @@ func (o NetworktemplatePortUsagesOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 func (o NetworktemplatePortUsagesOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -3227,8 +3216,7 @@ func (o NetworktemplatePortUsagesOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
 
-// Switch storm control
-// Only if `mode`!=`dynamic`
+// Switch storm control. Only if `mode`!=`dynamic`
 func (o NetworktemplatePortUsagesOutput) StormControl() NetworktemplatePortUsagesStormControlPtrOutput {
 	return o.ApplyT(func(v NetworktemplatePortUsages) *NetworktemplatePortUsagesStormControl { return v.StormControl }).(NetworktemplatePortUsagesStormControlPtrOutput)
 }
@@ -3639,8 +3627,7 @@ type NetworktemplateRadiusConfig struct {
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// radius auth session timeout
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
-	// use `network`or `sourceIp`
-	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network *string `pulumi:"network"`
 	// use `network`or `sourceIp`
 	SourceIp *string `pulumi:"sourceIp"`
@@ -3666,8 +3653,7 @@ type NetworktemplateRadiusConfigArgs struct {
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
 	// radius auth session timeout
 	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
-	// use `network`or `sourceIp`
-	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// use `network`or `sourceIp`
 	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
@@ -3773,8 +3759,7 @@ func (o NetworktemplateRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOut
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
 
-// use `network`or `sourceIp`
-// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o NetworktemplateRadiusConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateRadiusConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -3856,8 +3841,7 @@ func (o NetworktemplateRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// use `network`or `sourceIp`
-// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o NetworktemplateRadiusConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworktemplateRadiusConfig) *string {
 		if v == nil {
@@ -7296,13 +7280,11 @@ func (o NetworktemplateSnmpConfigV3ConfigUsmPtrOutput) Users() NetworktemplateSn
 }
 
 type NetworktemplateSnmpConfigV3ConfigUsmUser struct {
-	// Not required if `authenticationType`==`authenticationNone`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters.
+	// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 	AuthenticationPassword *string `pulumi:"authenticationPassword"`
 	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
 	AuthenticationType *string `pulumi:"authenticationType"`
-	// Not required if `encryptionType`==`privacy-none`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters
+	// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 	EncryptionPassword *string `pulumi:"encryptionPassword"`
 	// enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
 	EncryptionType *string `pulumi:"encryptionType"`
@@ -7321,13 +7303,11 @@ type NetworktemplateSnmpConfigV3ConfigUsmUserInput interface {
 }
 
 type NetworktemplateSnmpConfigV3ConfigUsmUserArgs struct {
-	// Not required if `authenticationType`==`authenticationNone`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters.
+	// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 	AuthenticationPassword pulumi.StringPtrInput `pulumi:"authenticationPassword"`
 	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
 	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
-	// Not required if `encryptionType`==`privacy-none`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters
+	// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 	EncryptionPassword pulumi.StringPtrInput `pulumi:"encryptionPassword"`
 	// enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
 	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
@@ -7385,8 +7365,7 @@ func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) ToNetworktemplateSnmpCon
 	return o
 }
 
-// Not required if `authenticationType`==`authenticationNone`
-// include alphabetic, numeric, and special characters, but it cannot include control characters.
+// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) AuthenticationPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsmUser) *string { return v.AuthenticationPassword }).(pulumi.StringPtrOutput)
 }
@@ -7396,8 +7375,7 @@ func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) AuthenticationType() pul
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsmUser) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
 }
 
-// Not required if `encryptionType`==`privacy-none`
-// include alphabetic, numeric, and special characters, but it cannot include control characters
+// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 func (o NetworktemplateSnmpConfigV3ConfigUsmUserOutput) EncryptionPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworktemplateSnmpConfigV3ConfigUsmUser) *string { return v.EncryptionPassword }).(pulumi.StringPtrOutput)
 }
@@ -8380,8 +8358,7 @@ type NetworktemplateSwitchMatchingRule struct {
 	OobIpConfig *NetworktemplateSwitchMatchingRuleOobIpConfig `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig map[string]NetworktemplateSwitchMatchingRulePortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name
-	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
 	PortMirroring map[string]NetworktemplateSwitchMatchingRulePortMirroring `pulumi:"portMirroring"`
 }
 
@@ -8422,8 +8399,7 @@ type NetworktemplateSwitchMatchingRuleArgs struct {
 	OobIpConfig NetworktemplateSwitchMatchingRuleOobIpConfigPtrInput `pulumi:"oobIpConfig"`
 	// Propery key is the interface name or interface range
 	PortConfig NetworktemplateSwitchMatchingRulePortConfigMapInput `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name
-	// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
 	PortMirroring NetworktemplateSwitchMatchingRulePortMirroringMapInput `pulumi:"portMirroring"`
 }
 
@@ -8542,8 +8518,7 @@ func (o NetworktemplateSwitchMatchingRuleOutput) PortConfig() NetworktemplateSwi
 	}).(NetworktemplateSwitchMatchingRulePortConfigMapOutput)
 }
 
-// Property key is the port mirroring instance name
-// portMirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
 func (o NetworktemplateSwitchMatchingRuleOutput) PortMirroring() NetworktemplateSwitchMatchingRulePortMirroringMapOutput {
 	return o.ApplyT(func(v NetworktemplateSwitchMatchingRule) map[string]NetworktemplateSwitchMatchingRulePortMirroring {
 		return v.PortMirroring
@@ -18773,8 +18748,7 @@ type WlanAppLimit struct {
 	// Property key is the app key, defined in Get Application List
 	Apps    map[string]int `pulumi:"apps"`
 	Enabled *bool          `pulumi:"enabled"`
-	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-	// Property key is the wxtag id
+	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
 	WxtagIds map[string]int `pulumi:"wxtagIds"`
 }
 
@@ -18794,8 +18768,7 @@ type WlanAppLimitArgs struct {
 	// Property key is the app key, defined in Get Application List
 	Apps    pulumi.IntMapInput  `pulumi:"apps"`
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-	// Property key is the wxtag id
+	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
 	WxtagIds pulumi.IntMapInput `pulumi:"wxtagIds"`
 }
 
@@ -18886,8 +18859,7 @@ func (o WlanAppLimitOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanAppLimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-// Property key is the wxtag id
+// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
 func (o WlanAppLimitOutput) WxtagIds() pulumi.IntMapOutput {
 	return o.ApplyT(func(v WlanAppLimit) map[string]int { return v.WxtagIds }).(pulumi.IntMapOutput)
 }
@@ -18936,8 +18908,7 @@ func (o WlanAppLimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps
-// Property key is the wxtag id
+// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
 func (o WlanAppLimitPtrOutput) WxtagIds() pulumi.IntMapOutput {
 	return o.ApplyT(func(v *WlanAppLimit) map[string]int {
 		if v == nil {
@@ -20444,8 +20415,7 @@ func (o WlanCoaServerArrayOutput) Index(i pulumi.IntInput) WlanCoaServerOutput {
 
 type WlanDnsServerRewrite struct {
 	Enabled *bool `pulumi:"enabled"`
-	// map between radiusGroup and the desired DNS server (IPv4 only)
-	// Property key is the RADIUS group, property value is the desired DNS Server
+	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups map[string]string `pulumi:"radiusGroups"`
 }
 
@@ -20462,8 +20432,7 @@ type WlanDnsServerRewriteInput interface {
 
 type WlanDnsServerRewriteArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// map between radiusGroup and the desired DNS server (IPv4 only)
-	// Property key is the RADIUS group, property value is the desired DNS Server
+	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 	RadiusGroups pulumi.StringMapInput `pulumi:"radiusGroups"`
 }
 
@@ -20548,8 +20517,7 @@ func (o WlanDnsServerRewriteOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDnsServerRewrite) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// map between radiusGroup and the desired DNS server (IPv4 only)
-// Property key is the RADIUS group, property value is the desired DNS Server
+// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 func (o WlanDnsServerRewriteOutput) RadiusGroups() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WlanDnsServerRewrite) map[string]string { return v.RadiusGroups }).(pulumi.StringMapOutput)
 }
@@ -20587,8 +20555,7 @@ func (o WlanDnsServerRewritePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// map between radiusGroup and the desired DNS server (IPv4 only)
-// Property key is the RADIUS group, property value is the desired DNS Server
+// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
 func (o WlanDnsServerRewritePtrOutput) RadiusGroups() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WlanDnsServerRewrite) map[string]string {
 		if v == nil {
@@ -20603,8 +20570,7 @@ type WlanDynamicPsk struct {
 	DefaultPsk    *string `pulumi:"defaultPsk"`
 	DefaultVlanId *string `pulumi:"defaultVlanId"`
 	Enabled       *bool   `pulumi:"enabled"`
-	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-	// `false` means auto
+	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup *bool `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
 	Source *string `pulumi:"source"`
@@ -20626,8 +20592,7 @@ type WlanDynamicPskArgs struct {
 	DefaultPsk    pulumi.StringPtrInput `pulumi:"defaultPsk"`
 	DefaultVlanId pulumi.StringPtrInput `pulumi:"defaultVlanId"`
 	Enabled       pulumi.BoolPtrInput   `pulumi:"enabled"`
-	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-	// `false` means auto
+	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 	ForceLookup pulumi.BoolPtrInput `pulumi:"forceLookup"`
 	// enum: `cloudPsks`, `radius`
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -20723,8 +20688,7 @@ func (o WlanDynamicPskOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-// `false` means auto
+// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 func (o WlanDynamicPskOutput) ForceLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v WlanDynamicPsk) *bool { return v.ForceLookup }).(pulumi.BoolPtrOutput)
 }
@@ -20786,8 +20750,7 @@ func (o WlanDynamicPskPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-// `false` means auto
+// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
 func (o WlanDynamicPskPtrOutput) ForceLookup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WlanDynamicPsk) *bool {
 		if v == nil {
@@ -26450,11 +26413,9 @@ type WlanRadsec struct {
 	CoaEnabled  *bool `pulumi:"coaEnabled"`
 	Enabled     *bool `pulumi:"enabled"`
 	IdleTimeout *int  `pulumi:"idleTimeout"`
-	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-	// Org mxedge(s) identified by mxcluster_ids
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds []string `pulumi:"mxclusterIds"`
-	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-	// when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 	ProxyHosts []string `pulumi:"proxyHosts"`
 	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 	ServerName *string `pulumi:"serverName"`
@@ -26481,11 +26442,9 @@ type WlanRadsecArgs struct {
 	CoaEnabled  pulumi.BoolPtrInput `pulumi:"coaEnabled"`
 	Enabled     pulumi.BoolPtrInput `pulumi:"enabled"`
 	IdleTimeout pulumi.IntPtrInput  `pulumi:"idleTimeout"`
-	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-	// Org mxedge(s) identified by mxcluster_ids
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
-	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-	// when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
 	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
 	ServerName pulumi.StringPtrInput `pulumi:"serverName"`
@@ -26586,14 +26545,12 @@ func (o WlanRadsecOutput) IdleTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WlanRadsec) *int { return v.IdleTimeout }).(pulumi.IntPtrOutput)
 }
 
-// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-// Org mxedge(s) identified by mxcluster_ids
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 func (o WlanRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
 }
 
-// default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-// when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 func (o WlanRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WlanRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
 }
@@ -26669,8 +26626,7 @@ func (o WlanRadsecPtrOutput) IdleTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-// Org mxedge(s) identified by mxcluster_ids
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
 func (o WlanRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []string {
 		if v == nil {
@@ -26680,8 +26636,7 @@ func (o WlanRadsecPtrOutput) MxclusterIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-// when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
 func (o WlanRadsecPtrOutput) ProxyHosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WlanRadsec) []string {
 		if v == nil {

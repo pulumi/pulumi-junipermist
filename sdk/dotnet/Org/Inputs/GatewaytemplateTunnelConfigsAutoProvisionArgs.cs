@@ -15,11 +15,26 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
+        /// <summary>
+        /// API override for POP selection
+        /// </summary>
         [Input("latlng")]
         public Input<Inputs.GatewaytemplateTunnelConfigsAutoProvisionLatlngArgs>? Latlng { get; set; }
 
         [Input("primary")]
         public Input<Inputs.GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs>? Primary { get; set; }
+
+        /// <summary>
+        /// enum: `jse-ipsec`, `zscaler-ipsec`
+        /// </summary>
+        [Input("provider", required: true)]
+        public Input<string> Provider { get; set; } = null!;
+
+        /// <summary>
+        /// API override for POP selection
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("secondary")]
         public Input<Inputs.GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs>? Secondary { get; set; }

@@ -39,10 +39,13 @@ class NacidpArgs:
                  oauth_cc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_cc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[str]] = None,
+                 oauth_ping_identity_region: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[str]] = None,
-                 oauth_type: Optional[pulumi.Input[str]] = None):
+                 oauth_type: Optional[pulumi.Input[str]] = None,
+                 scim_enabled: Optional[pulumi.Input[bool]] = None,
+                 scim_secret_token: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Nacidp resource.
         :param pulumi.Input[str] idp_type: enum: `ldap`, `mxedge_proxy`, `oauth`
@@ -64,10 +67,13 @@ class NacidpArgs:
         :param pulumi.Input[str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         :param pulumi.Input[str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         pulumi.set(__self__, "idp_type", idp_type)
         pulumi.set(__self__, "org_id", org_id)
@@ -107,6 +113,8 @@ class NacidpArgs:
             pulumi.set(__self__, "oauth_cc_client_secret", oauth_cc_client_secret)
         if oauth_discovery_url is not None:
             pulumi.set(__self__, "oauth_discovery_url", oauth_discovery_url)
+        if oauth_ping_identity_region is not None:
+            pulumi.set(__self__, "oauth_ping_identity_region", oauth_ping_identity_region)
         if oauth_ropc_client_id is not None:
             pulumi.set(__self__, "oauth_ropc_client_id", oauth_ropc_client_id)
         if oauth_ropc_client_secret is not None:
@@ -115,6 +123,10 @@ class NacidpArgs:
             pulumi.set(__self__, "oauth_tenant_id", oauth_tenant_id)
         if oauth_type is not None:
             pulumi.set(__self__, "oauth_type", oauth_type)
+        if scim_enabled is not None:
+            pulumi.set(__self__, "scim_enabled", scim_enabled)
+        if scim_secret_token is not None:
+            pulumi.set(__self__, "scim_secret_token", scim_secret_token)
 
     @property
     @pulumi.getter(name="idpType")
@@ -354,6 +366,18 @@ class NacidpArgs:
         pulumi.set(self, "oauth_discovery_url", value)
 
     @property
+    @pulumi.getter(name="oauthPingIdentityRegion")
+    def oauth_ping_identity_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        """
+        return pulumi.get(self, "oauth_ping_identity_region")
+
+    @oauth_ping_identity_region.setter
+    def oauth_ping_identity_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_ping_identity_region", value)
+
+    @property
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -401,6 +425,30 @@ class NacidpArgs:
     def oauth_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "oauth_type", value)
 
+    @property
+    @pulumi.getter(name="scimEnabled")
+    def scim_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        """
+        return pulumi.get(self, "scim_enabled")
+
+    @scim_enabled.setter
+    def scim_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "scim_enabled", value)
+
+    @property
+    @pulumi.getter(name="scimSecretToken")
+    def scim_secret_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        """
+        return pulumi.get(self, "scim_secret_token")
+
+    @scim_secret_token.setter
+    def scim_secret_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scim_secret_token", value)
+
 
 @pulumi.input_type
 class _NacidpState:
@@ -424,11 +472,14 @@ class _NacidpState:
                  oauth_cc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_cc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[str]] = None,
+                 oauth_ping_identity_region: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[str]] = None,
                  oauth_type: Optional[pulumi.Input[str]] = None,
-                 org_id: Optional[pulumi.Input[str]] = None):
+                 org_id: Optional[pulumi.Input[str]] = None,
+                 scim_enabled: Optional[pulumi.Input[bool]] = None,
+                 scim_secret_token: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Nacidp resources.
         :param pulumi.Input[str] group_filter: Required if `ldap_type`==`custom`, LDAP filter that will identify the type of group
@@ -450,10 +501,13 @@ class _NacidpState:
         :param pulumi.Input[str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         :param pulumi.Input[str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         if group_filter is not None:
             pulumi.set(__self__, "group_filter", group_filter)
@@ -493,6 +547,8 @@ class _NacidpState:
             pulumi.set(__self__, "oauth_cc_client_secret", oauth_cc_client_secret)
         if oauth_discovery_url is not None:
             pulumi.set(__self__, "oauth_discovery_url", oauth_discovery_url)
+        if oauth_ping_identity_region is not None:
+            pulumi.set(__self__, "oauth_ping_identity_region", oauth_ping_identity_region)
         if oauth_ropc_client_id is not None:
             pulumi.set(__self__, "oauth_ropc_client_id", oauth_ropc_client_id)
         if oauth_ropc_client_secret is not None:
@@ -503,6 +559,10 @@ class _NacidpState:
             pulumi.set(__self__, "oauth_type", oauth_type)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if scim_enabled is not None:
+            pulumi.set(__self__, "scim_enabled", scim_enabled)
+        if scim_secret_token is not None:
+            pulumi.set(__self__, "scim_secret_token", scim_secret_token)
 
     @property
     @pulumi.getter(name="groupFilter")
@@ -733,6 +793,18 @@ class _NacidpState:
         pulumi.set(self, "oauth_discovery_url", value)
 
     @property
+    @pulumi.getter(name="oauthPingIdentityRegion")
+    def oauth_ping_identity_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        """
+        return pulumi.get(self, "oauth_ping_identity_region")
+
+    @oauth_ping_identity_region.setter
+    def oauth_ping_identity_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oauth_ping_identity_region", value)
+
+    @property
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -789,6 +861,30 @@ class _NacidpState:
     def org_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "org_id", value)
 
+    @property
+    @pulumi.getter(name="scimEnabled")
+    def scim_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        """
+        return pulumi.get(self, "scim_enabled")
+
+    @scim_enabled.setter
+    def scim_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "scim_enabled", value)
+
+    @property
+    @pulumi.getter(name="scimSecretToken")
+    def scim_secret_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        """
+        return pulumi.get(self, "scim_secret_token")
+
+    @scim_secret_token.setter
+    def scim_secret_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scim_secret_token", value)
+
 
 class Nacidp(pulumi.CustomResource):
     @overload
@@ -814,11 +910,14 @@ class Nacidp(pulumi.CustomResource):
                  oauth_cc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_cc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[str]] = None,
+                 oauth_ping_identity_region: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[str]] = None,
                  oauth_type: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 scim_enabled: Optional[pulumi.Input[bool]] = None,
+                 scim_secret_token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         This resource manages NAC IDPs (Identity Providers).
@@ -909,10 +1008,13 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         :param pulumi.Input[str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         ...
     @overload
@@ -1022,11 +1124,14 @@ class Nacidp(pulumi.CustomResource):
                  oauth_cc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_cc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_discovery_url: Optional[pulumi.Input[str]] = None,
+                 oauth_ping_identity_region: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_id: Optional[pulumi.Input[str]] = None,
                  oauth_ropc_client_secret: Optional[pulumi.Input[str]] = None,
                  oauth_tenant_id: Optional[pulumi.Input[str]] = None,
                  oauth_type: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 scim_enabled: Optional[pulumi.Input[bool]] = None,
+                 scim_secret_token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1057,6 +1162,7 @@ class Nacidp(pulumi.CustomResource):
             __props__.__dict__["oauth_cc_client_id"] = oauth_cc_client_id
             __props__.__dict__["oauth_cc_client_secret"] = oauth_cc_client_secret
             __props__.__dict__["oauth_discovery_url"] = oauth_discovery_url
+            __props__.__dict__["oauth_ping_identity_region"] = oauth_ping_identity_region
             __props__.__dict__["oauth_ropc_client_id"] = oauth_ropc_client_id
             __props__.__dict__["oauth_ropc_client_secret"] = oauth_ropc_client_secret
             __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
@@ -1064,6 +1170,8 @@ class Nacidp(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["scim_enabled"] = scim_enabled
+            __props__.__dict__["scim_secret_token"] = scim_secret_token
         super(Nacidp, __self__).__init__(
             'junipermist:org/nacidp:Nacidp',
             resource_name,
@@ -1093,11 +1201,14 @@ class Nacidp(pulumi.CustomResource):
             oauth_cc_client_id: Optional[pulumi.Input[str]] = None,
             oauth_cc_client_secret: Optional[pulumi.Input[str]] = None,
             oauth_discovery_url: Optional[pulumi.Input[str]] = None,
+            oauth_ping_identity_region: Optional[pulumi.Input[str]] = None,
             oauth_ropc_client_id: Optional[pulumi.Input[str]] = None,
             oauth_ropc_client_secret: Optional[pulumi.Input[str]] = None,
             oauth_tenant_id: Optional[pulumi.Input[str]] = None,
             oauth_type: Optional[pulumi.Input[str]] = None,
-            org_id: Optional[pulumi.Input[str]] = None) -> 'Nacidp':
+            org_id: Optional[pulumi.Input[str]] = None,
+            scim_enabled: Optional[pulumi.Input[bool]] = None,
+            scim_secret_token: Optional[pulumi.Input[str]] = None) -> 'Nacidp':
         """
         Get an existing Nacidp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1124,10 +1235,13 @@ class Nacidp(pulumi.CustomResource):
         :param pulumi.Input[str] oauth_cc_client_id: Required if `idp_type`==`oauth`, Client Credentials
         :param pulumi.Input[str] oauth_cc_client_secret: Required if `idp_type`==`oauth`, oauth*cc*client_secret is RSA private key, of the form "-----BEGIN RSA PRIVATE KEY--...."
         :param pulumi.Input[str] oauth_discovery_url: if `idp_type`==`oauth`
+        :param pulumi.Input[str] oauth_ping_identity_region: enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
         :param pulumi.Input[str] oauth_ropc_client_id: if `idp_type`==`oauth`, ropc = Resource Owner Password Credentials
         :param pulumi.Input[str] oauth_ropc_client_secret: if `oauth_type`==`azure` or `oauth_type`==`azure-gov`. oauth*ropc*client_secret can be empty
         :param pulumi.Input[str] oauth_tenant_id: Required if `idp_type`==`oauth`, oauth*tenant*id
         :param pulumi.Input[str] oauth_type: if `idp_type`==`oauth`. enum: `azure`, `azure-gov`, `okta`, `ping_identity`
+        :param pulumi.Input[bool] scim_enabled: if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        :param pulumi.Input[str] scim_secret_token: if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1152,11 +1266,14 @@ class Nacidp(pulumi.CustomResource):
         __props__.__dict__["oauth_cc_client_id"] = oauth_cc_client_id
         __props__.__dict__["oauth_cc_client_secret"] = oauth_cc_client_secret
         __props__.__dict__["oauth_discovery_url"] = oauth_discovery_url
+        __props__.__dict__["oauth_ping_identity_region"] = oauth_ping_identity_region
         __props__.__dict__["oauth_ropc_client_id"] = oauth_ropc_client_id
         __props__.__dict__["oauth_ropc_client_secret"] = oauth_ropc_client_secret
         __props__.__dict__["oauth_tenant_id"] = oauth_tenant_id
         __props__.__dict__["oauth_type"] = oauth_type
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["scim_enabled"] = scim_enabled
+        __props__.__dict__["scim_secret_token"] = scim_secret_token
         return Nacidp(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1312,6 +1429,14 @@ class Nacidp(pulumi.CustomResource):
         return pulumi.get(self, "oauth_discovery_url")
 
     @property
+    @pulumi.getter(name="oauthPingIdentityRegion")
+    def oauth_ping_identity_region(self) -> pulumi.Output[str]:
+        """
+        enum: `us` (United States, default), `ca` (Canada), `eu` (Europe), `asia` (Asia), `au` (Australia)
+        """
+        return pulumi.get(self, "oauth_ping_identity_region")
+
+    @property
     @pulumi.getter(name="oauthRopcClientId")
     def oauth_ropc_client_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1347,4 +1472,20 @@ class Nacidp(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter(name="scimEnabled")
+    def scim_enabled(self) -> pulumi.Output[bool]:
+        """
+        if `idp_type`==`oauth`, indicates if SCIM provisioning is enabled for the OAuth IDP
+        """
+        return pulumi.get(self, "scim_enabled")
+
+    @property
+    @pulumi.getter(name="scimSecretToken")
+    def scim_secret_token(self) -> pulumi.Output[str]:
+        """
+        if `idp_type`==`oauth`, scim*secret*token (auto-generated when not provided by caller and `scim_enabled`==`true`, empty string when `scim_enabled`==`false`) is used as the Bearer token in the Authorization header of SCIM provisioning requests by the IDP
+        """
+        return pulumi.get(self, "scim_secret_token")
 

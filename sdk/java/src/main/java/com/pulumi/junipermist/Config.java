@@ -4,6 +4,7 @@
 package com.pulumi.junipermist;
 
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Optional;
@@ -11,6 +12,13 @@ import java.util.Optional;
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("junipermist");
+/**
+ * Flag to enable debugging API calls. Default is false.
+ * 
+ */
+    public Optional<Boolean> apiDebug() {
+        return Codegen.booleanProp("apiDebug").config(config).get();
+    }
 /**
  * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
  * results in infinite timeout.

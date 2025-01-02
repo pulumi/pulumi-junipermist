@@ -68,6 +68,10 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("tenants")]
         private InputMap<Inputs.DeviceprofileGatewayNetworkTenantsArgs>? _tenants;
+
+        /// <summary>
+        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public InputMap<Inputs.DeviceprofileGatewayNetworkTenantsArgs> Tenants
         {
             get => _tenants ?? (_tenants = new InputMap<Inputs.DeviceprofileGatewayNetworkTenantsArgs>());

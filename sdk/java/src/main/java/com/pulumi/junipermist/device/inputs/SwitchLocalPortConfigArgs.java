@@ -36,18 +36,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -196,16 +192,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -315,6 +309,21 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<List<String>>> networks() {
         return Optional.ofNullable(this.networks);
+    }
+
+    /**
+     * Additional note for the port config override
+     * 
+     */
+    @Import(name="note")
+    private @Nullable Output<String> note;
+
+    /**
+     * @return Additional note for the port config override
+     * 
+     */
+    public Optional<Output<String>> note() {
+        return Optional.ofNullable(this.note);
     }
 
     /**
@@ -550,6 +559,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         this.mode = $.mode;
         this.mtu = $.mtu;
         this.networks = $.networks;
+        this.note = $.note;
         this.persistMac = $.persistMac;
         this.poeDisabled = $.poeDisabled;
         this.portAuth = $.portAuth;
@@ -607,9 +617,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-         * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
          * 
          * @return builder
          * 
@@ -620,9 +628,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-         * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
          * 
          * @return builder
          * 
@@ -837,8 +843,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks
-         * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -849,8 +854,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks
-         * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -1014,6 +1018,27 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder networks(String... networks) {
             return networks(List.of(networks));
+        }
+
+        /**
+         * @param note Additional note for the port config override
+         * 
+         * @return builder
+         * 
+         */
+        public Builder note(@Nullable Output<String> note) {
+            $.note = note;
+            return this;
+        }
+
+        /**
+         * @param note Additional note for the port config override
+         * 
+         * @return builder
+         * 
+         */
+        public Builder note(String note) {
+            return note(Output.of(note));
         }
 
         /**
