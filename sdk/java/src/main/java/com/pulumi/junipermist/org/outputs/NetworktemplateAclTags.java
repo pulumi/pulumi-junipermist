@@ -17,9 +17,9 @@ import javax.annotation.Nullable;
 public final class NetworktemplateAclTags {
     /**
      * @return required if
-     * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     * - `type`==`gbp_resource`
-     * - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbp_resource`
+     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
     private @Nullable Integer gbpTag;
@@ -49,8 +49,7 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable String radiusGroup;
     /**
-     * @return if `type`==`resource` or `type`==`gbp_resource`
-     * empty means unrestricted, i.e. any
+     * @return if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     private @Nullable List<NetworktemplateAclTagsSpec> specs;
@@ -80,9 +79,9 @@ public final class NetworktemplateAclTags {
     private NetworktemplateAclTags() {}
     /**
      * @return required if
-     * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     * - `type`==`gbp_resource`
-     * - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbp_resource`
+     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
     public Optional<Integer> gbpTag() {
@@ -120,8 +119,7 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.radiusGroup);
     }
     /**
-     * @return if `type`==`resource` or `type`==`gbp_resource`
-     * empty means unrestricted, i.e. any
+     * @return if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     public List<NetworktemplateAclTagsSpec> specs() {

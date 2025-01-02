@@ -13,17 +13,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelProviderOptionsJse
     {
-        public readonly string? Name;
         public readonly int? NumUsers;
+        /// <summary>
+        /// JSE Organization name
+        /// </summary>
+        public readonly string? OrgName;
 
         [OutputConstructor]
         private GatewayTunnelProviderOptionsJse(
-            string? name,
+            int? numUsers,
 
-            int? numUsers)
+            string? orgName)
         {
-            Name = name;
             NumUsers = numUsers;
+            OrgName = orgName;
         }
     }
 }

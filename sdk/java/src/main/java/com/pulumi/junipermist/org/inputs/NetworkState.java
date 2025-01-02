@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.NetworkInternalAccessArgs;
 import com.pulumi.junipermist.org.inputs.NetworkInternetAccessArgs;
+import com.pulumi.junipermist.org.inputs.NetworkMulticastArgs;
 import com.pulumi.junipermist.org.inputs.NetworkTenantsArgs;
 import com.pulumi.junipermist.org.inputs.NetworkVpnAccessArgs;
 import java.lang.Boolean;
@@ -88,6 +89,21 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.isolation);
     }
 
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    @Import(name="multicast")
+    private @Nullable Output<NetworkMulticastArgs> multicast;
+
+    /**
+     * @return whether to enable multicast support (only PIM-sparse mode is supported)
+     * 
+     */
+    public Optional<Output<NetworkMulticastArgs>> multicast() {
+        return Optional.ofNullable(this.multicast);
+    }
+
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -131,9 +147,17 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.subnet6);
     }
 
+    /**
+     * Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     @Import(name="tenants")
     private @Nullable Output<Map<String,NetworkTenantsArgs>> tenants;
 
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<Output<Map<String,NetworkTenantsArgs>>> tenants() {
         return Optional.ofNullable(this.tenants);
     }
@@ -169,6 +193,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.internalAccess = $.internalAccess;
         this.internetAccess = $.internetAccess;
         this.isolation = $.isolation;
+        this.multicast = $.multicast;
         this.name = $.name;
         this.orgId = $.orgId;
         this.routedForNetworks = $.routedForNetworks;
@@ -287,6 +312,27 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
             return isolation(Output.of(isolation));
         }
 
+        /**
+         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(@Nullable Output<NetworkMulticastArgs> multicast) {
+            $.multicast = multicast;
+            return this;
+        }
+
+        /**
+         * @param multicast whether to enable multicast support (only PIM-sparse mode is supported)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multicast(NetworkMulticastArgs multicast) {
+            return multicast(Output.of(multicast));
+        }
+
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -354,11 +400,23 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
             return subnet6(Output.of(subnet6));
         }
 
+        /**
+         * @param tenants Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(@Nullable Output<Map<String,NetworkTenantsArgs>> tenants) {
             $.tenants = tenants;
             return this;
         }
 
+        /**
+         * @param tenants Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder tenants(Map<String,NetworkTenantsArgs> tenants) {
             return tenants(Output.of(tenants));
         }

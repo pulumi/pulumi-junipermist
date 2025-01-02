@@ -32,7 +32,7 @@ type Switch struct {
 	AclPolicies SwitchAclPolicyArrayOutput `pulumi:"aclPolicies"`
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags SwitchAclTagsMapOutput `pulumi:"aclTags"`
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
 	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
@@ -42,9 +42,7 @@ type Switch struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes pulumi.StringArrayOutput `pulumi:"dnsSuffixes"`
-	// EVPN Junos settings
-	EvpnConfig  SwitchEvpnConfigOutput     `pulumi:"evpnConfig"`
+	DnsSuffixes pulumi.StringArrayOutput   `pulumi:"dnsSuffixes"`
 	ExtraRoutes SwitchExtraRoutesMapOutput `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapOutput `pulumi:"extraRoutes6"`
@@ -72,8 +70,8 @@ type Switch struct {
 	Notes    pulumi.StringPtrOutput  `pulumi:"notes"`
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-	//   set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput        `pulumi:"orgId"`
 	// Junos OSPF areas
@@ -82,7 +80,7 @@ type Switch struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapOutput `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapOutput `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring SwitchPortMirroringMapOutput `pulumi:"portMirroring"`
@@ -159,7 +157,7 @@ type switchState struct {
 	AclPolicies []SwitchAclPolicy `pulumi:"aclPolicies"`
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags map[string]SwitchAclTags `pulumi:"aclTags"`
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string            `pulumi:"additionalConfigCmds"`
 	DeviceId             *string             `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
@@ -169,9 +167,7 @@ type switchState struct {
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
-	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// EVPN Junos settings
-	EvpnConfig  *SwitchEvpnConfig            `pulumi:"evpnConfig"`
+	DnsSuffixes []string                     `pulumi:"dnsSuffixes"`
 	ExtraRoutes map[string]SwitchExtraRoutes `pulumi:"extraRoutes"`
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 map[string]SwitchExtraRoutes6 `pulumi:"extraRoutes6"`
@@ -199,8 +195,8 @@ type switchState struct {
 	Notes    *string                   `pulumi:"notes"`
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-	//   set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string            `pulumi:"orgId"`
 	// Junos OSPF areas
@@ -209,7 +205,7 @@ type switchState struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
@@ -251,7 +247,7 @@ type SwitchState struct {
 	AclPolicies SwitchAclPolicyArrayInput
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags SwitchAclTagsMapInput
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	DeviceId             pulumi.StringPtrInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
@@ -262,8 +258,6 @@ type SwitchState struct {
 	DnsServers pulumi.StringArrayInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsSuffixes pulumi.StringArrayInput
-	// EVPN Junos settings
-	EvpnConfig  SwitchEvpnConfigPtrInput
 	ExtraRoutes SwitchExtraRoutesMapInput
 	// Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
 	ExtraRoutes6 SwitchExtraRoutes6MapInput
@@ -291,8 +285,8 @@ type SwitchState struct {
 	Notes    pulumi.StringPtrInput
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-	//   set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
 	// Junos OSPF areas
@@ -301,7 +295,7 @@ type SwitchState struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring SwitchPortMirroringMapInput
@@ -347,7 +341,7 @@ type switchArgs struct {
 	AclPolicies []SwitchAclPolicy `pulumi:"aclPolicies"`
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags map[string]SwitchAclTags `pulumi:"aclTags"`
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string            `pulumi:"additionalConfigCmds"`
 	DeviceId             string              `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
@@ -378,8 +372,8 @@ type switchArgs struct {
 	Notes    *string                   `pulumi:"notes"`
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-	//   set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig *SwitchOobIpConfig `pulumi:"oobIpConfig"`
 	// Junos OSPF areas
 	OspfAreas map[string]SwitchOspfAreas `pulumi:"ospfAreas"`
@@ -387,7 +381,7 @@ type switchArgs struct {
 	OtherIpConfigs map[string]SwitchOtherIpConfigs `pulumi:"otherIpConfigs"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig map[string]SwitchPortConfig `pulumi:"portConfig"`
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring map[string]SwitchPortMirroring `pulumi:"portMirroring"`
@@ -426,7 +420,7 @@ type SwitchArgs struct {
 	AclPolicies SwitchAclPolicyArrayInput
 	// ACL Tags to identify traffic source or destination. Key name is the tag name
 	AclTags SwitchAclTagsMapInput
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	DeviceId             pulumi.StringInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
@@ -457,8 +451,8 @@ type SwitchArgs struct {
 	Notes    pulumi.StringPtrInput
 	// list of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-	//   set separately (if desired): key parameter = `re1`
+	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 	OobIpConfig SwitchOobIpConfigPtrInput
 	// Junos OSPF areas
 	OspfAreas SwitchOspfAreasMapInput
@@ -466,7 +460,7 @@ type SwitchArgs struct {
 	OtherIpConfigs SwitchOtherIpConfigsMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig SwitchPortConfigMapInput
-	// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+	// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 	// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 	// maximum 4 port mirrorings is allowed
 	PortMirroring SwitchPortMirroringMapInput
@@ -596,7 +590,7 @@ func (o SwitchOutput) AclTags() SwitchAclTagsMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchAclTagsMapOutput { return v.AclTags }).(SwitchAclTagsMapOutput)
 }
 
-// additional CLI commands to append to the generated Junos config **Note**: no check is done
+// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 func (o SwitchOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
@@ -626,11 +620,6 @@ func (o SwitchOutput) DnsServers() pulumi.StringArrayOutput {
 // Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 func (o SwitchOutput) DnsSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
-}
-
-// EVPN Junos settings
-func (o SwitchOutput) EvpnConfig() SwitchEvpnConfigOutput {
-	return o.ApplyT(func(v *Switch) SwitchEvpnConfigOutput { return v.EvpnConfig }).(SwitchEvpnConfigOutput)
 }
 
 func (o SwitchOutput) ExtraRoutes() SwitchExtraRoutesMapOutput {
@@ -708,8 +697,8 @@ func (o SwitchOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-//   - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-//     set separately (if desired): key parameter = `re1`
+// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
 func (o SwitchOutput) OobIpConfig() SwitchOobIpConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchOobIpConfigPtrOutput { return v.OobIpConfig }).(SwitchOobIpConfigPtrOutput)
 }
@@ -733,7 +722,7 @@ func (o SwitchOutput) PortConfig() SwitchPortConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchPortConfigMapOutput { return v.PortConfig }).(SwitchPortConfigMapOutput)
 }
 
-// Property key is the port mirroring instance name portMirroring can be added under device/site settings. It takes
+// Property key is the port mirroring instance name. `portMirroring` can be added under device/site settings. It takes
 // interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
 // maximum 4 port mirrorings is allowed
 func (o SwitchOutput) PortMirroring() SwitchPortMirroringMapOutput {

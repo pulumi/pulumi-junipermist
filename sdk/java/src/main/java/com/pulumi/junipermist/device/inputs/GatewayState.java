@@ -37,14 +37,14 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     public static final GatewayState Empty = new GatewayState();
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
@@ -556,7 +556,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -577,7 +577,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 

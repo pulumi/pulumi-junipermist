@@ -37,16 +37,19 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// except for out-of_band interface (vme/em0/fxp0)
+        /// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
+        /// <summary>
+        /// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// used only if `subnet` is not specified in `networks`
+        /// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }

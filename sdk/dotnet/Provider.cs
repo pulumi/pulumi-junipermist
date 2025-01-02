@@ -85,6 +85,12 @@ namespace Pulumi.JuniperMist
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Flag to enable debugging API calls. Default is false.
+        /// </summary>
+        [Input("apiDebug", json: true)]
+        public Input<bool>? ApiDebug { get; set; }
+
+        /// <summary>
         /// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
         /// results in infinite timeout.
         /// </summary>

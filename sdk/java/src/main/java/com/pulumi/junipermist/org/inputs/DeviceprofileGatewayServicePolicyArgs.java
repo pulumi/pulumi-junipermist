@@ -95,16 +95,14 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
     }
 
     /**
-     * by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     @Import(name="pathPreference")
     private @Nullable Output<String> pathPreference;
 
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
      * 
      */
     public Optional<Output<String>> pathPreference() {
@@ -296,8 +294,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param pathPreference by default, we derive all paths available and use them
-         * optionally, you can customize by using `path_preference`
+         * @param pathPreference by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
          * 
          * @return builder
          * 
@@ -308,8 +305,7 @@ public final class DeviceprofileGatewayServicePolicyArgs extends com.pulumi.reso
         }
 
         /**
-         * @param pathPreference by default, we derive all paths available and use them
-         * optionally, you can customize by using `path_preference`
+         * @param pathPreference by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
          * 
          * @return builder
          * 

@@ -20,8 +20,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string? DefaultVlanId;
         public readonly bool? Enabled;
         /// <summary>
-        /// when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-        /// `false` means auto
+        /// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         /// </summary>
         public readonly bool? ForceLookup;
         /// <summary>

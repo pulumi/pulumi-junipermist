@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelConfigsAutoProvisionSecondary
     {
-        public readonly string? NumHosts;
+        public readonly ImmutableArray<string> ProbeIps;
         /// <summary>
         /// optional, only needed if `vars_only`==`false`
         /// </summary>
@@ -21,11 +21,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
         [OutputConstructor]
         private GatewayTunnelConfigsAutoProvisionSecondary(
-            string? numHosts,
+            ImmutableArray<string> probeIps,
 
             ImmutableArray<string> wanNames)
         {
-            NumHosts = numHosts;
+            ProbeIps = probeIps;
             WanNames = wanNames;
         }
     }

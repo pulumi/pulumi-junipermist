@@ -12,55 +12,86 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class GatewaytemplateTunnelProviderOptionsZscalerSubLocationGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("aupAcceptanceRequired")]
-        public Input<bool>? AupAcceptanceRequired { get; set; }
+        [Input("aupBlockInternetUntilAccepted")]
+        public Input<bool>? AupBlockInternetUntilAccepted { get; set; }
 
         /// <summary>
-        /// days before AUP is requested again
+        /// Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
         /// </summary>
-        [Input("aupExpire")]
-        public Input<int>? AupExpire { get; set; }
+        [Input("aupEnabled")]
+        public Input<bool>? AupEnabled { get; set; }
 
         /// <summary>
         /// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         /// </summary>
-        [Input("aupSslProxy")]
-        public Input<bool>? AupSslProxy { get; set; }
+        [Input("aupForceSslInspection")]
+        public Input<bool>? AupForceSslInspection { get; set; }
 
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps
+        /// Required if `aup_enabled`==`true`. Days before AUP is requested again
         /// </summary>
-        [Input("downloadMbps")]
-        public Input<int>? DownloadMbps { get; set; }
+        [Input("aupTimeoutInDays")]
+        public Input<int>? AupTimeoutInDays { get; set; }
 
         /// <summary>
-        /// if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+        /// Enable this option to authenticate users
         /// </summary>
-        [Input("enableAup")]
-        public Input<bool>? EnableAup { get; set; }
+        [Input("authRequired")]
+        public Input<bool>? AuthRequired { get; set; }
 
         /// <summary>
-        /// when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+        /// Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
         /// </summary>
-        [Input("enableCaution")]
-        public Input<bool>? EnableCaution { get; set; }
-
-        [Input("enforceAuthentication")]
-        public Input<bool>? EnforceAuthentication { get; set; }
-
-        [Input("subnets")]
-        private InputList<string>? _subnets;
-        public InputList<string> Subnets
-        {
-            get => _subnets ?? (_subnets = new InputList<string>());
-            set => _subnets = value;
-        }
+        [Input("cautionEnabled")]
+        public Input<bool>? CautionEnabled { get; set; }
 
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps
+        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
         /// </summary>
-        [Input("uploadMbps")]
-        public Input<int>? UploadMbps { get; set; }
+        [Input("dnBandwidth")]
+        public Input<double>? DnBandwidth { get; set; }
+
+        /// <summary>
+        /// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        /// </summary>
+        [Input("idleTimeInMinutes")]
+        public Input<int>? IdleTimeInMinutes { get; set; }
+
+        /// <summary>
+        /// Network name
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// if `true`, enable the firewall control option
+        /// </summary>
+        [Input("ofwEnabled")]
+        public Input<bool>? OfwEnabled { get; set; }
+
+        /// <summary>
+        /// Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        /// </summary>
+        [Input("surrogateIp")]
+        public Input<bool>? SurrogateIp { get; set; }
+
+        /// <summary>
+        /// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        /// </summary>
+        [Input("surrogateIpEnforcedForKnownBrowsers")]
+        public Input<bool>? SurrogateIpEnforcedForKnownBrowsers { get; set; }
+
+        /// <summary>
+        /// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        /// </summary>
+        [Input("surrogateRefreshTimeInMinutes")]
+        public Input<int>? SurrogateRefreshTimeInMinutes { get; set; }
+
+        /// <summary>
+        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
+        /// </summary>
+        [Input("upBandwidth")]
+        public Input<double>? UpBandwidth { get; set; }
 
         public GatewaytemplateTunnelProviderOptionsZscalerSubLocationGetArgs()
         {

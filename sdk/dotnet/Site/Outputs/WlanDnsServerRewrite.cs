@@ -15,8 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly bool? Enabled;
         /// <summary>
-        /// map between radius_group and the desired DNS server (IPv4 only)
-        /// Property key is the RADIUS group, property value is the desired DNS Server
+        /// map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         /// </summary>
         public readonly ImmutableDictionary<string, string>? RadiusGroups;
 

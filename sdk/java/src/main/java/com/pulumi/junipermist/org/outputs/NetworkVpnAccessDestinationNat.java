@@ -4,7 +4,6 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,18 +11,26 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworkVpnAccessDestinationNat {
+    /**
+     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     private @Nullable String internalIp;
     private @Nullable String name;
-    private @Nullable Integer port;
+    private @Nullable String port;
 
     private NetworkVpnAccessDestinationNat() {}
+    /**
+     * @return The Destination NAT destination IP Address. Must be an IP (i.e. &#34;192.168.70.30&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<String> internalIp() {
         return Optional.ofNullable(this.internalIp);
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    public Optional<Integer> port() {
+    public Optional<String> port() {
         return Optional.ofNullable(this.port);
     }
 
@@ -38,7 +45,7 @@ public final class NetworkVpnAccessDestinationNat {
     public static final class Builder {
         private @Nullable String internalIp;
         private @Nullable String name;
-        private @Nullable Integer port;
+        private @Nullable String port;
         public Builder() {}
         public Builder(NetworkVpnAccessDestinationNat defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,7 +67,7 @@ public final class NetworkVpnAccessDestinationNat {
             return this;
         }
         @CustomType.Setter
-        public Builder port(@Nullable Integer port) {
+        public Builder port(@Nullable String port) {
 
             this.port = port;
             return this;

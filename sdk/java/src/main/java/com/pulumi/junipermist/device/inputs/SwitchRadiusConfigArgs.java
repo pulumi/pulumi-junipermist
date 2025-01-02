@@ -79,16 +79,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * use `network`or `source_ip`
-     * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return use `network`or `source_ip`
-     * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<Output<String>> network() {
@@ -230,8 +228,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network use `network`or `source_ip`
-         * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
          * 
          * @return builder
          * 
@@ -242,8 +239,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network use `network`or `source_ip`
-         * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
          * 
          * @return builder
          * 

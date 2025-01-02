@@ -5,6 +5,7 @@ package com.pulumi.junipermist;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
+
+    /**
+     * Flag to enable debugging API calls. Default is false.
+     * 
+     */
+    @Import(name="apiDebug", json=true)
+    private @Nullable Output<Boolean> apiDebug;
+
+    /**
+     * @return Flag to enable debugging API calls. Default is false.
+     * 
+     */
+    public Optional<Output<Boolean>> apiDebug() {
+        return Optional.ofNullable(this.apiDebug);
+    }
 
     /**
      * Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0
@@ -115,6 +131,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
+        this.apiDebug = $.apiDebug;
         this.apiTimeout = $.apiTimeout;
         this.apitoken = $.apitoken;
         this.host = $.host;
@@ -139,6 +156,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiDebug Flag to enable debugging API calls. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiDebug(@Nullable Output<Boolean> apiDebug) {
+            $.apiDebug = apiDebug;
+            return this;
+        }
+
+        /**
+         * @param apiDebug Flag to enable debugging API calls. Default is false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiDebug(Boolean apiDebug) {
+            return apiDebug(Output.of(apiDebug));
         }
 
         /**

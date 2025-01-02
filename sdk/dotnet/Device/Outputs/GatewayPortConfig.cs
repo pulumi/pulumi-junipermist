@@ -22,9 +22,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? AeIdx;
         /// <summary>
-        /// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-        /// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-        /// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        /// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         /// </summary>
         public readonly bool? AeLacpForceUp;
         public readonly bool? Aggregated;
@@ -32,6 +30,9 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// if want to generate port up/down alarm, set it to true
         /// </summary>
         public readonly bool? Critical;
+        /// <summary>
+        /// Interface Description. Can be a variable (i.e. "{{myvar}}")
+        /// </summary>
         public readonly string? Description;
         public readonly bool? DisableAutoneg;
         /// <summary>
@@ -43,13 +44,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? DslType;
         /// <summary>
-        /// if `wan_type`==`dsl`
-        /// 16 bit int
+        /// if `wan_type`==`dsl`, 16 bit int
         /// </summary>
         public readonly int? DslVci;
         /// <summary>
-        /// if `wan_type`==`dsl`
-        /// 8 bit int
+        /// if `wan_type`==`dsl`, 8 bit int
         /// </summary>
         public readonly int? DslVpi;
         /// <summary>
@@ -83,7 +82,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// if `usage`==`lan`
+        /// if `usage`==`lan`, name of the `junipermist.org.Network` resource
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
@@ -92,7 +91,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly int? OuterVlanId;
         public readonly bool? PoeDisabled;
         /// <summary>
-        /// if `usage`==`lan`
+        /// Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
@@ -129,36 +128,37 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         /// </summary>
         public readonly string Usage;
-        /// <summary>
-        /// if WAN interface is on a VLAN
-        /// </summary>
-        public readonly int? VlanId;
+        public readonly string? VlanId;
         /// <summary>
         /// Property key is the VPN name
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayPortConfigVpnPaths>? VpnPaths;
         /// <summary>
-        /// when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+        /// Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
         /// </summary>
         public readonly string? WanArpPolicer;
         /// <summary>
-        /// optional, if spoke should reach this port by a different IP
+        /// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         /// </summary>
         public readonly string? WanExtIp;
         /// <summary>
-        /// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        /// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.GatewayPortConfigWanExtraRoutes>? WanExtraRoutes;
         /// <summary>
-        /// if `usage`==`wan`
+        /// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        /// </summary>
+        public readonly ImmutableArray<string> WanNetworks;
+        /// <summary>
+        /// Only if `usage`==`wan`
         /// </summary>
         public readonly Outputs.GatewayPortConfigWanProbeOverride? WanProbeOverride;
         /// <summary>
-        /// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+        /// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         /// </summary>
         public readonly Outputs.GatewayPortConfigWanSourceNat? WanSourceNat;
         /// <summary>
-        /// if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+        /// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         /// </summary>
         public readonly string? WanType;
 
@@ -232,7 +232,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             string usage,
 
-            int? vlanId,
+            string? vlanId,
 
             ImmutableDictionary<string, Outputs.GatewayPortConfigVpnPaths>? vpnPaths,
 
@@ -241,6 +241,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
             string? wanExtIp,
 
             ImmutableDictionary<string, Outputs.GatewayPortConfigWanExtraRoutes>? wanExtraRoutes,
+
+            ImmutableArray<string> wanNetworks,
 
             Outputs.GatewayPortConfigWanProbeOverride? wanProbeOverride,
 
@@ -287,6 +289,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             WanArpPolicer = wanArpPolicer;
             WanExtIp = wanExtIp;
             WanExtraRoutes = wanExtraRoutes;
+            WanNetworks = wanNetworks;
             WanProbeOverride = wanProbeOverride;
             WanSourceNat = wanSourceNat;
             WanType = wanType;

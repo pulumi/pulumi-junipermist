@@ -16,13 +16,6 @@ public final class DeviceprofileGatewayTunnelProviderOptionsJseArgs extends com.
 
     public static final DeviceprofileGatewayTunnelProviderOptionsJseArgs Empty = new DeviceprofileGatewayTunnelProviderOptionsJseArgs();
 
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
     @Import(name="numUsers")
     private @Nullable Output<Integer> numUsers;
 
@@ -30,11 +23,26 @@ public final class DeviceprofileGatewayTunnelProviderOptionsJseArgs extends com.
         return Optional.ofNullable(this.numUsers);
     }
 
+    /**
+     * JSE Organization name
+     * 
+     */
+    @Import(name="orgName")
+    private @Nullable Output<String> orgName;
+
+    /**
+     * @return JSE Organization name
+     * 
+     */
+    public Optional<Output<String>> orgName() {
+        return Optional.ofNullable(this.orgName);
+    }
+
     private DeviceprofileGatewayTunnelProviderOptionsJseArgs() {}
 
     private DeviceprofileGatewayTunnelProviderOptionsJseArgs(DeviceprofileGatewayTunnelProviderOptionsJseArgs $) {
-        this.name = $.name;
         this.numUsers = $.numUsers;
+        this.orgName = $.orgName;
     }
 
     public static Builder builder() {
@@ -55,15 +63,6 @@ public final class DeviceprofileGatewayTunnelProviderOptionsJseArgs extends com.
             $ = new DeviceprofileGatewayTunnelProviderOptionsJseArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        public Builder name(String name) {
-            return name(Output.of(name));
-        }
-
         public Builder numUsers(@Nullable Output<Integer> numUsers) {
             $.numUsers = numUsers;
             return this;
@@ -71,6 +70,27 @@ public final class DeviceprofileGatewayTunnelProviderOptionsJseArgs extends com.
 
         public Builder numUsers(Integer numUsers) {
             return numUsers(Output.of(numUsers));
+        }
+
+        /**
+         * @param orgName JSE Organization name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orgName(@Nullable Output<String> orgName) {
+            $.orgName = orgName;
+            return this;
+        }
+
+        /**
+         * @param orgName JSE Organization name
+         * 
+         * @return builder
+         * 
+         */
+        public Builder orgName(String orgName) {
+            return orgName(Output.of(orgName));
         }
 
         public DeviceprofileGatewayTunnelProviderOptionsJseArgs build() {

@@ -7,8 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,111 +19,142 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
 
     public static final DeviceprofileGatewayTunnelProviderOptionsZscalerArgs Empty = new DeviceprofileGatewayTunnelProviderOptionsZscalerArgs();
 
-    @Import(name="aupAcceptanceRequired")
-    private @Nullable Output<Boolean> aupAcceptanceRequired;
+    @Import(name="aupBlockInternetUntilAccepted")
+    private @Nullable Output<Boolean> aupBlockInternetUntilAccepted;
 
-    public Optional<Output<Boolean>> aupAcceptanceRequired() {
-        return Optional.ofNullable(this.aupAcceptanceRequired);
+    public Optional<Output<Boolean>> aupBlockInternetUntilAccepted() {
+        return Optional.ofNullable(this.aupBlockInternetUntilAccepted);
     }
 
     /**
-     * days before AUP is requested again
+     * Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
      * 
      */
-    @Import(name="aupExpire")
-    private @Nullable Output<Integer> aupExpire;
+    @Import(name="aupEnabled")
+    private @Nullable Output<Boolean> aupEnabled;
 
     /**
-     * @return days before AUP is requested again
+     * @return Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
      * 
      */
-    public Optional<Output<Integer>> aupExpire() {
-        return Optional.ofNullable(this.aupExpire);
+    public Optional<Output<Boolean>> aupEnabled() {
+        return Optional.ofNullable(this.aupEnabled);
     }
 
     /**
      * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
-    @Import(name="aupSslProxy")
-    private @Nullable Output<Boolean> aupSslProxy;
+    @Import(name="aupForceSslInspection")
+    private @Nullable Output<Boolean> aupForceSslInspection;
 
     /**
      * @return proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
-    public Optional<Output<Boolean>> aupSslProxy() {
-        return Optional.ofNullable(this.aupSslProxy);
+    public Optional<Output<Boolean>> aupForceSslInspection() {
+        return Optional.ofNullable(this.aupForceSslInspection);
     }
 
     /**
-     * the download bandwidth cap of the link, in Mbps
+     * Required if `aup_enabled`==`true`. Days before AUP is requested again
      * 
      */
-    @Import(name="downloadMbps")
-    private @Nullable Output<Integer> downloadMbps;
+    @Import(name="aupTimeoutInDays")
+    private @Nullable Output<Integer> aupTimeoutInDays;
 
     /**
-     * @return the download bandwidth cap of the link, in Mbps
+     * @return Required if `aup_enabled`==`true`. Days before AUP is requested again
      * 
      */
-    public Optional<Output<Integer>> downloadMbps() {
-        return Optional.ofNullable(this.downloadMbps);
+    public Optional<Output<Integer>> aupTimeoutInDays() {
+        return Optional.ofNullable(this.aupTimeoutInDays);
     }
 
     /**
-     * if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+     * Enable this option to enforce user authentication
      * 
      */
-    @Import(name="enableAup")
-    private @Nullable Output<Boolean> enableAup;
+    @Import(name="authRequired")
+    private @Nullable Output<Boolean> authRequired;
 
     /**
-     * @return if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+     * @return Enable this option to enforce user authentication
      * 
      */
-    public Optional<Output<Boolean>> enableAup() {
-        return Optional.ofNullable(this.enableAup);
+    public Optional<Output<Boolean>> authRequired() {
+        return Optional.ofNullable(this.authRequired);
     }
 
     /**
-     * when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+     * Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
      * 
      */
-    @Import(name="enableCaution")
-    private @Nullable Output<Boolean> enableCaution;
+    @Import(name="cautionEnabled")
+    private @Nullable Output<Boolean> cautionEnabled;
 
     /**
-     * @return when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+     * @return Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
      * 
      */
-    public Optional<Output<Boolean>> enableCaution() {
-        return Optional.ofNullable(this.enableCaution);
-    }
-
-    @Import(name="enforceAuthentication")
-    private @Nullable Output<Boolean> enforceAuthentication;
-
-    public Optional<Output<Boolean>> enforceAuthentication() {
-        return Optional.ofNullable(this.enforceAuthentication);
-    }
-
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<Output<Boolean>> cautionEnabled() {
+        return Optional.ofNullable(this.cautionEnabled);
     }
 
     /**
-     * if `use_xff`==`true`
+     * the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * 
+     */
+    @Import(name="dnBandwidth")
+    private @Nullable Output<Double> dnBandwidth;
+
+    /**
+     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * 
+     */
+    public Optional<Output<Double>> dnBandwidth() {
+        return Optional.ofNullable(this.dnBandwidth);
+    }
+
+    /**
+     * Required if `surrogate_IP`==`true`, idle Time to Disassociation
+     * 
+     */
+    @Import(name="idleTimeInMinutes")
+    private @Nullable Output<Integer> idleTimeInMinutes;
+
+    /**
+     * @return Required if `surrogate_IP`==`true`, idle Time to Disassociation
+     * 
+     */
+    public Optional<Output<Integer>> idleTimeInMinutes() {
+        return Optional.ofNullable(this.idleTimeInMinutes);
+    }
+
+    /**
+     * if `true`, enable the firewall control option
+     * 
+     */
+    @Import(name="ofwEnabled")
+    private @Nullable Output<Boolean> ofwEnabled;
+
+    /**
+     * @return if `true`, enable the firewall control option
+     * 
+     */
+    public Optional<Output<Boolean>> ofwEnabled() {
+        return Optional.ofNullable(this.ofwEnabled);
+    }
+
+    /**
+     * `sub-locations` can be used for specific uses cases to define different configuration based on the user network
      * 
      */
     @Import(name="subLocations")
     private @Nullable Output<List<DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs>> subLocations;
 
     /**
-     * @return if `use_xff`==`true`
+     * @return `sub-locations` can be used for specific uses cases to define different configuration based on the user network
      * 
      */
     public Optional<Output<List<DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs>>> subLocations() {
@@ -131,49 +162,98 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
     }
 
     /**
-     * the download bandwidth cap of the link, in Mbps
+     * Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
      * 
      */
-    @Import(name="uploadMbps")
-    private @Nullable Output<Integer> uploadMbps;
+    @Import(name="surrogateIp")
+    private @Nullable Output<Boolean> surrogateIp;
 
     /**
-     * @return the download bandwidth cap of the link, in Mbps
+     * @return Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
      * 
      */
-    public Optional<Output<Integer>> uploadMbps() {
-        return Optional.ofNullable(this.uploadMbps);
+    public Optional<Output<Boolean>> surrogateIp() {
+        return Optional.ofNullable(this.surrogateIp);
+    }
+
+    /**
+     * Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+     * 
+     */
+    @Import(name="surrogateIpEnforcedForKnownBrowsers")
+    private @Nullable Output<Boolean> surrogateIpEnforcedForKnownBrowsers;
+
+    /**
+     * @return Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+     * 
+     */
+    public Optional<Output<Boolean>> surrogateIpEnforcedForKnownBrowsers() {
+        return Optional.ofNullable(this.surrogateIpEnforcedForKnownBrowsers);
+    }
+
+    /**
+     * Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+     * 
+     */
+    @Import(name="surrogateRefreshTimeInMinutes")
+    private @Nullable Output<Integer> surrogateRefreshTimeInMinutes;
+
+    /**
+     * @return Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+     * 
+     */
+    public Optional<Output<Integer>> surrogateRefreshTimeInMinutes() {
+        return Optional.ofNullable(this.surrogateRefreshTimeInMinutes);
+    }
+
+    /**
+     * the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * 
+     */
+    @Import(name="upBandwidth")
+    private @Nullable Output<Double> upBandwidth;
+
+    /**
+     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * 
+     */
+    public Optional<Output<Double>> upBandwidth() {
+        return Optional.ofNullable(this.upBandwidth);
     }
 
     /**
      * location uses proxy chaining to forward traffic
      * 
      */
-    @Import(name="useXff")
-    private @Nullable Output<Boolean> useXff;
+    @Import(name="xffForwardEnabled")
+    private @Nullable Output<Boolean> xffForwardEnabled;
 
     /**
      * @return location uses proxy chaining to forward traffic
      * 
      */
-    public Optional<Output<Boolean>> useXff() {
-        return Optional.ofNullable(this.useXff);
+    public Optional<Output<Boolean>> xffForwardEnabled() {
+        return Optional.ofNullable(this.xffForwardEnabled);
     }
 
     private DeviceprofileGatewayTunnelProviderOptionsZscalerArgs() {}
 
     private DeviceprofileGatewayTunnelProviderOptionsZscalerArgs(DeviceprofileGatewayTunnelProviderOptionsZscalerArgs $) {
-        this.aupAcceptanceRequired = $.aupAcceptanceRequired;
-        this.aupExpire = $.aupExpire;
-        this.aupSslProxy = $.aupSslProxy;
-        this.downloadMbps = $.downloadMbps;
-        this.enableAup = $.enableAup;
-        this.enableCaution = $.enableCaution;
-        this.enforceAuthentication = $.enforceAuthentication;
-        this.name = $.name;
+        this.aupBlockInternetUntilAccepted = $.aupBlockInternetUntilAccepted;
+        this.aupEnabled = $.aupEnabled;
+        this.aupForceSslInspection = $.aupForceSslInspection;
+        this.aupTimeoutInDays = $.aupTimeoutInDays;
+        this.authRequired = $.authRequired;
+        this.cautionEnabled = $.cautionEnabled;
+        this.dnBandwidth = $.dnBandwidth;
+        this.idleTimeInMinutes = $.idleTimeInMinutes;
+        this.ofwEnabled = $.ofwEnabled;
         this.subLocations = $.subLocations;
-        this.uploadMbps = $.uploadMbps;
-        this.useXff = $.useXff;
+        this.surrogateIp = $.surrogateIp;
+        this.surrogateIpEnforcedForKnownBrowsers = $.surrogateIpEnforcedForKnownBrowsers;
+        this.surrogateRefreshTimeInMinutes = $.surrogateRefreshTimeInMinutes;
+        this.upBandwidth = $.upBandwidth;
+        this.xffForwardEnabled = $.xffForwardEnabled;
     }
 
     public static Builder builder() {
@@ -194,140 +274,185 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
             $ = new DeviceprofileGatewayTunnelProviderOptionsZscalerArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder aupAcceptanceRequired(@Nullable Output<Boolean> aupAcceptanceRequired) {
-            $.aupAcceptanceRequired = aupAcceptanceRequired;
+        public Builder aupBlockInternetUntilAccepted(@Nullable Output<Boolean> aupBlockInternetUntilAccepted) {
+            $.aupBlockInternetUntilAccepted = aupBlockInternetUntilAccepted;
             return this;
         }
 
-        public Builder aupAcceptanceRequired(Boolean aupAcceptanceRequired) {
-            return aupAcceptanceRequired(Output.of(aupAcceptanceRequired));
+        public Builder aupBlockInternetUntilAccepted(Boolean aupBlockInternetUntilAccepted) {
+            return aupBlockInternetUntilAccepted(Output.of(aupBlockInternetUntilAccepted));
         }
 
         /**
-         * @param aupExpire days before AUP is requested again
+         * @param aupEnabled Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
          * 
          * @return builder
          * 
          */
-        public Builder aupExpire(@Nullable Output<Integer> aupExpire) {
-            $.aupExpire = aupExpire;
-            return this;
-        }
-
-        /**
-         * @param aupExpire days before AUP is requested again
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aupExpire(Integer aupExpire) {
-            return aupExpire(Output.of(aupExpire));
-        }
-
-        /**
-         * @param aupSslProxy proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-         * 
-         * @return builder
-         * 
-         */
-        public Builder aupSslProxy(@Nullable Output<Boolean> aupSslProxy) {
-            $.aupSslProxy = aupSslProxy;
+        public Builder aupEnabled(@Nullable Output<Boolean> aupEnabled) {
+            $.aupEnabled = aupEnabled;
             return this;
         }
 
         /**
-         * @param aupSslProxy proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+         * @param aupEnabled Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
          * 
          * @return builder
          * 
          */
-        public Builder aupSslProxy(Boolean aupSslProxy) {
-            return aupSslProxy(Output.of(aupSslProxy));
+        public Builder aupEnabled(Boolean aupEnabled) {
+            return aupEnabled(Output.of(aupEnabled));
         }
 
         /**
-         * @param downloadMbps the download bandwidth cap of the link, in Mbps
+         * @param aupForceSslInspection proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          * 
          * @return builder
          * 
          */
-        public Builder downloadMbps(@Nullable Output<Integer> downloadMbps) {
-            $.downloadMbps = downloadMbps;
+        public Builder aupForceSslInspection(@Nullable Output<Boolean> aupForceSslInspection) {
+            $.aupForceSslInspection = aupForceSslInspection;
             return this;
         }
 
         /**
-         * @param downloadMbps the download bandwidth cap of the link, in Mbps
+         * @param aupForceSslInspection proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          * 
          * @return builder
          * 
          */
-        public Builder downloadMbps(Integer downloadMbps) {
-            return downloadMbps(Output.of(downloadMbps));
+        public Builder aupForceSslInspection(Boolean aupForceSslInspection) {
+            return aupForceSslInspection(Output.of(aupForceSslInspection));
         }
 
         /**
-         * @param enableAup if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+         * @param aupTimeoutInDays Required if `aup_enabled`==`true`. Days before AUP is requested again
          * 
          * @return builder
          * 
          */
-        public Builder enableAup(@Nullable Output<Boolean> enableAup) {
-            $.enableAup = enableAup;
+        public Builder aupTimeoutInDays(@Nullable Output<Integer> aupTimeoutInDays) {
+            $.aupTimeoutInDays = aupTimeoutInDays;
             return this;
         }
 
         /**
-         * @param enableAup if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+         * @param aupTimeoutInDays Required if `aup_enabled`==`true`. Days before AUP is requested again
          * 
          * @return builder
          * 
          */
-        public Builder enableAup(Boolean enableAup) {
-            return enableAup(Output.of(enableAup));
+        public Builder aupTimeoutInDays(Integer aupTimeoutInDays) {
+            return aupTimeoutInDays(Output.of(aupTimeoutInDays));
         }
 
         /**
-         * @param enableCaution when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+         * @param authRequired Enable this option to enforce user authentication
          * 
          * @return builder
          * 
          */
-        public Builder enableCaution(@Nullable Output<Boolean> enableCaution) {
-            $.enableCaution = enableCaution;
+        public Builder authRequired(@Nullable Output<Boolean> authRequired) {
+            $.authRequired = authRequired;
             return this;
         }
 
         /**
-         * @param enableCaution when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+         * @param authRequired Enable this option to enforce user authentication
          * 
          * @return builder
          * 
          */
-        public Builder enableCaution(Boolean enableCaution) {
-            return enableCaution(Output.of(enableCaution));
-        }
-
-        public Builder enforceAuthentication(@Nullable Output<Boolean> enforceAuthentication) {
-            $.enforceAuthentication = enforceAuthentication;
-            return this;
-        }
-
-        public Builder enforceAuthentication(Boolean enforceAuthentication) {
-            return enforceAuthentication(Output.of(enforceAuthentication));
-        }
-
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        public Builder name(String name) {
-            return name(Output.of(name));
+        public Builder authRequired(Boolean authRequired) {
+            return authRequired(Output.of(authRequired));
         }
 
         /**
-         * @param subLocations if `use_xff`==`true`
+         * @param cautionEnabled Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cautionEnabled(@Nullable Output<Boolean> cautionEnabled) {
+            $.cautionEnabled = cautionEnabled;
+            return this;
+        }
+
+        /**
+         * @param cautionEnabled Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cautionEnabled(Boolean cautionEnabled) {
+            return cautionEnabled(Output.of(cautionEnabled));
+        }
+
+        /**
+         * @param dnBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnBandwidth(@Nullable Output<Double> dnBandwidth) {
+            $.dnBandwidth = dnBandwidth;
+            return this;
+        }
+
+        /**
+         * @param dnBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnBandwidth(Double dnBandwidth) {
+            return dnBandwidth(Output.of(dnBandwidth));
+        }
+
+        /**
+         * @param idleTimeInMinutes Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeInMinutes(@Nullable Output<Integer> idleTimeInMinutes) {
+            $.idleTimeInMinutes = idleTimeInMinutes;
+            return this;
+        }
+
+        /**
+         * @param idleTimeInMinutes Required if `surrogate_IP`==`true`, idle Time to Disassociation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeInMinutes(Integer idleTimeInMinutes) {
+            return idleTimeInMinutes(Output.of(idleTimeInMinutes));
+        }
+
+        /**
+         * @param ofwEnabled if `true`, enable the firewall control option
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ofwEnabled(@Nullable Output<Boolean> ofwEnabled) {
+            $.ofwEnabled = ofwEnabled;
+            return this;
+        }
+
+        /**
+         * @param ofwEnabled if `true`, enable the firewall control option
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ofwEnabled(Boolean ofwEnabled) {
+            return ofwEnabled(Output.of(ofwEnabled));
+        }
+
+        /**
+         * @param subLocations `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          * 
          * @return builder
          * 
@@ -338,7 +463,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param subLocations if `use_xff`==`true`
+         * @param subLocations `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          * 
          * @return builder
          * 
@@ -348,7 +473,7 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param subLocations if `use_xff`==`true`
+         * @param subLocations `sub-locations` can be used for specific uses cases to define different configuration based on the user network
          * 
          * @return builder
          * 
@@ -358,45 +483,108 @@ public final class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs extends 
         }
 
         /**
-         * @param uploadMbps the download bandwidth cap of the link, in Mbps
+         * @param surrogateIp Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
          * 
          * @return builder
          * 
          */
-        public Builder uploadMbps(@Nullable Output<Integer> uploadMbps) {
-            $.uploadMbps = uploadMbps;
+        public Builder surrogateIp(@Nullable Output<Boolean> surrogateIp) {
+            $.surrogateIp = surrogateIp;
             return this;
         }
 
         /**
-         * @param uploadMbps the download bandwidth cap of the link, in Mbps
+         * @param surrogateIp Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user&#39;s policies, instead of the location&#39;s policies
          * 
          * @return builder
          * 
          */
-        public Builder uploadMbps(Integer uploadMbps) {
-            return uploadMbps(Output.of(uploadMbps));
+        public Builder surrogateIp(Boolean surrogateIp) {
+            return surrogateIp(Output.of(surrogateIp));
         }
 
         /**
-         * @param useXff location uses proxy chaining to forward traffic
+         * @param surrogateIpEnforcedForKnownBrowsers Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
          * 
          * @return builder
          * 
          */
-        public Builder useXff(@Nullable Output<Boolean> useXff) {
-            $.useXff = useXff;
+        public Builder surrogateIpEnforcedForKnownBrowsers(@Nullable Output<Boolean> surrogateIpEnforcedForKnownBrowsers) {
+            $.surrogateIpEnforcedForKnownBrowsers = surrogateIpEnforcedForKnownBrowsers;
             return this;
         }
 
         /**
-         * @param useXff location uses proxy chaining to forward traffic
+         * @param surrogateIpEnforcedForKnownBrowsers Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
          * 
          * @return builder
          * 
          */
-        public Builder useXff(Boolean useXff) {
-            return useXff(Output.of(useXff));
+        public Builder surrogateIpEnforcedForKnownBrowsers(Boolean surrogateIpEnforcedForKnownBrowsers) {
+            return surrogateIpEnforcedForKnownBrowsers(Output.of(surrogateIpEnforcedForKnownBrowsers));
+        }
+
+        /**
+         * @param surrogateRefreshTimeInMinutes Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder surrogateRefreshTimeInMinutes(@Nullable Output<Integer> surrogateRefreshTimeInMinutes) {
+            $.surrogateRefreshTimeInMinutes = surrogateRefreshTimeInMinutes;
+            return this;
+        }
+
+        /**
+         * @param surrogateRefreshTimeInMinutes Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+         * 
+         * @return builder
+         * 
+         */
+        public Builder surrogateRefreshTimeInMinutes(Integer surrogateRefreshTimeInMinutes) {
+            return surrogateRefreshTimeInMinutes(Output.of(surrogateRefreshTimeInMinutes));
+        }
+
+        /**
+         * @param upBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upBandwidth(@Nullable Output<Double> upBandwidth) {
+            $.upBandwidth = upBandwidth;
+            return this;
+        }
+
+        /**
+         * @param upBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upBandwidth(Double upBandwidth) {
+            return upBandwidth(Output.of(upBandwidth));
+        }
+
+        /**
+         * @param xffForwardEnabled location uses proxy chaining to forward traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xffForwardEnabled(@Nullable Output<Boolean> xffForwardEnabled) {
+            $.xffForwardEnabled = xffForwardEnabled;
+            return this;
+        }
+
+        /**
+         * @param xffForwardEnabled location uses proxy chaining to forward traffic
+         * 
+         * @return builder
+         * 
+         */
+        public Builder xffForwardEnabled(Boolean xffForwardEnabled) {
+            return xffForwardEnabled(Output.of(xffForwardEnabled));
         }
 
         public DeviceprofileGatewayTunnelProviderOptionsZscalerArgs build() {

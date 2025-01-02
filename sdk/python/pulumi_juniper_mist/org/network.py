@@ -29,6 +29,7 @@ class NetworkArgs:
                  internal_access: Optional[pulumi.Input['NetworkInternalAccessArgs']] = None,
                  internet_access: Optional[pulumi.Input['NetworkInternetAccessArgs']] = None,
                  isolation: Optional[pulumi.Input[bool]] = None,
+                 multicast: Optional[pulumi.Input['NetworkMulticastArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnet6: Optional[pulumi.Input[str]] = None,
@@ -40,7 +41,9 @@ class NetworkArgs:
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
         :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: whether this network has direct internet access
         :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
+        :param pulumi.Input['NetworkMulticastArgs'] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         pulumi.set(__self__, "org_id", org_id)
@@ -57,6 +60,8 @@ class NetworkArgs:
             pulumi.set(__self__, "internet_access", internet_access)
         if isolation is not None:
             pulumi.set(__self__, "isolation", isolation)
+        if multicast is not None:
+            pulumi.set(__self__, "multicast", multicast)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if routed_for_networks is not None:
@@ -153,6 +158,18 @@ class NetworkArgs:
 
     @property
     @pulumi.getter
+    def multicast(self) -> Optional[pulumi.Input['NetworkMulticastArgs']]:
+        """
+        whether to enable multicast support (only PIM-sparse mode is supported)
+        """
+        return pulumi.get(self, "multicast")
+
+    @multicast.setter
+    def multicast(self, value: Optional[pulumi.Input['NetworkMulticastArgs']]):
+        pulumi.set(self, "multicast", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
 
@@ -184,6 +201,9 @@ class NetworkArgs:
     @property
     @pulumi.getter
     def tenants(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
+        """
+        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
@@ -221,6 +241,7 @@ class _NetworkState:
                  internal_access: Optional[pulumi.Input['NetworkInternalAccessArgs']] = None,
                  internet_access: Optional[pulumi.Input['NetworkInternetAccessArgs']] = None,
                  isolation: Optional[pulumi.Input[bool]] = None,
+                 multicast: Optional[pulumi.Input['NetworkMulticastArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -234,7 +255,9 @@ class _NetworkState:
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
         :param pulumi.Input['NetworkInternetAccessArgs'] internet_access: whether this network has direct internet access
         :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
+        :param pulumi.Input['NetworkMulticastArgs'] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         if disallow_mist_services is not None:
@@ -249,6 +272,8 @@ class _NetworkState:
             pulumi.set(__self__, "internet_access", internet_access)
         if isolation is not None:
             pulumi.set(__self__, "isolation", isolation)
+        if multicast is not None:
+            pulumi.set(__self__, "multicast", multicast)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
@@ -331,6 +356,18 @@ class _NetworkState:
 
     @property
     @pulumi.getter
+    def multicast(self) -> Optional[pulumi.Input['NetworkMulticastArgs']]:
+        """
+        whether to enable multicast support (only PIM-sparse mode is supported)
+        """
+        return pulumi.get(self, "multicast")
+
+    @multicast.setter
+    def multicast(self, value: Optional[pulumi.Input['NetworkMulticastArgs']]):
+        pulumi.set(self, "multicast", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "name")
 
@@ -380,6 +417,9 @@ class _NetworkState:
     @property
     @pulumi.getter
     def tenants(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['NetworkTenantsArgs']]]]:
+        """
+        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "tenants")
 
     @tenants.setter
@@ -419,6 +459,7 @@ class Network(pulumi.CustomResource):
                  internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
                  internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
                  isolation: Optional[pulumi.Input[bool]] = None,
+                 multicast: Optional[pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -460,7 +501,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
         :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: whether this network has direct internet access
         :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         ...
@@ -517,6 +560,7 @@ class Network(pulumi.CustomResource):
                  internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
                  internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
                  isolation: Optional[pulumi.Input[bool]] = None,
+                 multicast: Optional[pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
                  routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -540,6 +584,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["internal_access"] = internal_access
             __props__.__dict__["internet_access"] = internet_access
             __props__.__dict__["isolation"] = isolation
+            __props__.__dict__["multicast"] = multicast
             __props__.__dict__["name"] = name
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -568,6 +613,7 @@ class Network(pulumi.CustomResource):
             internal_access: Optional[pulumi.Input[Union['NetworkInternalAccessArgs', 'NetworkInternalAccessArgsDict']]] = None,
             internet_access: Optional[pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']]] = None,
             isolation: Optional[pulumi.Input[bool]] = None,
+            multicast: Optional[pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
             routed_for_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -586,7 +632,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
         :param pulumi.Input[Union['NetworkInternetAccessArgs', 'NetworkInternetAccessArgsDict']] internet_access: whether this network has direct internet access
         :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
+        :param pulumi.Input[Union['NetworkMulticastArgs', 'NetworkMulticastArgsDict']] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkTenantsArgs', 'NetworkTenantsArgsDict']]]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['NetworkVpnAccessArgs', 'NetworkVpnAccessArgsDict']]]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -599,6 +647,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["internal_access"] = internal_access
         __props__.__dict__["internet_access"] = internet_access
         __props__.__dict__["isolation"] = isolation
+        __props__.__dict__["multicast"] = multicast
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["routed_for_networks"] = routed_for_networks
@@ -650,6 +699,14 @@ class Network(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def multicast(self) -> pulumi.Output[Optional['outputs.NetworkMulticast']]:
+        """
+        whether to enable multicast support (only PIM-sparse mode is supported)
+        """
+        return pulumi.get(self, "multicast")
+
+    @property
+    @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "name")
 
@@ -679,6 +736,9 @@ class Network(pulumi.CustomResource):
     @property
     @pulumi.getter
     def tenants(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.NetworkTenants']]]:
+        """
+        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "tenants")
 
     @property

@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayNetworkVpnAccessDestinationNatGetArgs>? _destinationNat;
 
         /// <summary>
-        /// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         /// </summary>
         public InputMap<Inputs.GatewayNetworkVpnAccessDestinationNatGetArgs> DestinationNat
         {
@@ -55,8 +55,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? NoReadvertiseToLanOspf { get; set; }
 
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         [Input("noReadvertiseToOverlay")]
         public Input<bool>? NoReadvertiseToOverlay { get; set; }
@@ -65,8 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _otherVrfs;
 
         /// <summary>
-        /// by default, the routes are only readvertised toward the same vrf on spoke
-        /// to allow it to be leaked to other vrfs
+        /// by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         /// </summary>
         public InputList<string> OtherVrfs
         {
@@ -90,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayNetworkVpnAccessStaticNatGetArgs>? _staticNat;
 
         /// <summary>
-        /// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewayNetworkVpnAccessStaticNatGetArgs> StaticNat
         {
@@ -99,8 +97,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         [Input("summarizedSubnet")]
         public Input<string>? SummarizedSubnet { get; set; }

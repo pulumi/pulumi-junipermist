@@ -71,7 +71,7 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput    `pulumi:"additionalConfigCmds"`
 	BgpConfig            GatewayBgpConfigMapOutput   `pulumi:"bgpConfig"`
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
@@ -171,7 +171,7 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                    `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
 	DeviceId             *string                     `pulumi:"deviceId"`
@@ -236,7 +236,7 @@ type gatewayState struct {
 }
 
 type GatewayState struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            GatewayBgpConfigMapInput
 	DeviceId             pulumi.StringPtrInput
@@ -305,7 +305,7 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                    `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]GatewayBgpConfig `pulumi:"bgpConfig"`
 	DeviceId             string                      `pulumi:"deviceId"`
@@ -359,7 +359,7 @@ type gatewayArgs struct {
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            GatewayBgpConfigMapInput
 	DeviceId             pulumi.StringInput
@@ -498,7 +498,7 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
-// additional CLI commands to append to the generated Junos config **Note**: no check is done
+// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 func (o GatewayOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }

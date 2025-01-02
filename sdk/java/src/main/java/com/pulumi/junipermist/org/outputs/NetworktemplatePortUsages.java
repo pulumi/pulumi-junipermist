@@ -22,9 +22,7 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -84,8 +82,7 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable String guestNetwork;
     /**
-     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     private @Nullable Boolean interSwitchLink;
@@ -175,8 +172,7 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable String speed;
     /**
-     * @return Switch storm control
-     * Only if `mode`!=`dynamic`
+     * @return Switch storm control. Only if `mode`!=`dynamic`
      * 
      */
     private @Nullable NetworktemplatePortUsagesStormControl stormControl;
@@ -212,9 +208,7 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -298,8 +292,7 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.guestNetwork);
     }
     /**
-     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Boolean> interSwitchLink() {
@@ -425,8 +418,7 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return Switch storm control
-     * Only if `mode`!=`dynamic`
+     * @return Switch storm control. Only if `mode`!=`dynamic`
      * 
      */
     public Optional<NetworktemplatePortUsagesStormControl> stormControl() {

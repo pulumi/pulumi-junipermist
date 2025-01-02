@@ -16,8 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<int>? _classPercentages;
 
         /// <summary>
-        /// percentages for differet class of traffic: high / medium / low / best-effort
-        /// sum must be equal to 100
+        /// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         /// </summary>
         public InputList<int> ClassPercentages
         {
@@ -27,6 +26,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// Interface Transmit Cap in kbps
+        /// </summary>
+        [Input("maxTxKbps")]
+        public Input<int>? MaxTxKbps { get; set; }
 
         public GatewaytemplatePortConfigVpnPathsTrafficShapingArgs()
         {

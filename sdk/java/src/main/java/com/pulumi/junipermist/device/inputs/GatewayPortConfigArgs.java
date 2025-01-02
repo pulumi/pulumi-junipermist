@@ -57,18 +57,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
      * 
      */
     @Import(name="aeLacpForceUp")
     private @Nullable Output<Boolean> aeLacpForceUp;
 
     /**
-     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-     * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-     * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+     * @return For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
      * 
      */
     public Optional<Output<Boolean>> aeLacpForceUp() {
@@ -97,9 +93,17 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.critical);
     }
 
+    /**
+     * Interface Description. Can be a variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Interface Description. Can be a variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -142,16 +146,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`dsl`
-     * 16 bit int
+     * if `wan_type`==`dsl`, 16 bit int
      * 
      */
     @Import(name="dslVci")
     private @Nullable Output<Integer> dslVci;
 
     /**
-     * @return if `wan_type`==`dsl`
-     * 16 bit int
+     * @return if `wan_type`==`dsl`, 16 bit int
      * 
      */
     public Optional<Output<Integer>> dslVci() {
@@ -159,16 +161,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`dsl`
-     * 8 bit int
+     * if `wan_type`==`dsl`, 8 bit int
      * 
      */
     @Import(name="dslVpi")
     private @Nullable Output<Integer> dslVpi;
 
     /**
-     * @return if `wan_type`==`dsl`
-     * 8 bit int
+     * @return if `wan_type`==`dsl`, 8 bit int
      * 
      */
     public Optional<Output<Integer>> dslVpi() {
@@ -295,14 +295,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `usage`==`lan`
+     * if `usage`==`lan`, name of the `junipermist.org.Network` resource
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return if `usage`==`lan`
+     * @return if `usage`==`lan`, name of the `junipermist.org.Network` resource
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -332,14 +332,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `usage`==`lan`
+     * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
      * 
      */
     @Import(name="portNetwork")
     private @Nullable Output<String> portNetwork;
 
     /**
-     * @return if `usage`==`lan`
+     * @return Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
      * 
      */
     public Optional<Output<String>> portNetwork() {
@@ -480,18 +480,10 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         return this.usage;
     }
 
-    /**
-     * if WAN interface is on a VLAN
-     * 
-     */
     @Import(name="vlanId")
-    private @Nullable Output<Integer> vlanId;
+    private @Nullable Output<String> vlanId;
 
-    /**
-     * @return if WAN interface is on a VLAN
-     * 
-     */
-    public Optional<Output<Integer>> vlanId() {
+    public Optional<Output<String>> vlanId() {
         return Optional.ofNullable(this.vlanId);
     }
 
@@ -511,14 +503,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     @Import(name="wanArpPolicer")
     private @Nullable Output<String> wanArpPolicer;
 
     /**
-     * @return when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+     * @return Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
      * 
      */
     public Optional<Output<String>> wanArpPolicer() {
@@ -526,14 +518,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * optional, if spoke should reach this port by a different IP
+     * Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
     @Import(name="wanExtIp")
     private @Nullable Output<String> wanExtIp;
 
     /**
-     * @return optional, if spoke should reach this port by a different IP
+     * @return Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
      * 
      */
     public Optional<Output<String>> wanExtIp() {
@@ -541,14 +533,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
      * 
      */
     @Import(name="wanExtraRoutes")
     private @Nullable Output<Map<String,GatewayPortConfigWanExtraRoutesArgs>> wanExtraRoutes;
 
     /**
-     * @return Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+     * @return Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
      * 
      */
     public Optional<Output<Map<String,GatewayPortConfigWanExtraRoutesArgs>>> wanExtraRoutes() {
@@ -556,14 +548,29 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `usage`==`wan`
+     * Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * 
+     */
+    @Import(name="wanNetworks")
+    private @Nullable Output<List<String>> wanNetworks;
+
+    /**
+     * @return Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+     * 
+     */
+    public Optional<Output<List<String>>> wanNetworks() {
+        return Optional.ofNullable(this.wanNetworks);
+    }
+
+    /**
+     * Only if `usage`==`wan`
      * 
      */
     @Import(name="wanProbeOverride")
     private @Nullable Output<GatewayPortConfigWanProbeOverrideArgs> wanProbeOverride;
 
     /**
-     * @return if `usage`==`wan`
+     * @return Only if `usage`==`wan`
      * 
      */
     public Optional<Output<GatewayPortConfigWanProbeOverrideArgs>> wanProbeOverride() {
@@ -571,14 +578,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+     * Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
      * 
      */
     @Import(name="wanSourceNat")
     private @Nullable Output<GatewayPortConfigWanSourceNatArgs> wanSourceNat;
 
     /**
-     * @return optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+     * @return Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
      * 
      */
     public Optional<Output<GatewayPortConfigWanSourceNatArgs>> wanSourceNat() {
@@ -586,14 +593,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
      * 
      */
     @Import(name="wanType")
     private @Nullable Output<String> wanType;
 
     /**
-     * @return if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+     * @return Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
      * 
      */
     public Optional<Output<String>> wanType() {
@@ -642,6 +649,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         this.wanArpPolicer = $.wanArpPolicer;
         this.wanExtIp = $.wanExtIp;
         this.wanExtraRoutes = $.wanExtraRoutes;
+        this.wanNetworks = $.wanNetworks;
         this.wanProbeOverride = $.wanProbeOverride;
         this.wanSourceNat = $.wanSourceNat;
         this.wanType = $.wanType;
@@ -708,9 +716,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aeLacpForceUp For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * @param aeLacpForceUp For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          * 
          * @return builder
          * 
@@ -721,9 +727,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aeLacpForceUp For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-         * Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-         * Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+         * @param aeLacpForceUp For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
          * 
          * @return builder
          * 
@@ -762,11 +766,23 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return critical(Output.of(critical));
         }
 
+        /**
+         * @param description Interface Description. Can be a variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Interface Description. Can be a variable (i.e. &#34;{{myvar}}&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -823,8 +839,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVci if `wan_type`==`dsl`
-         * 16 bit int
+         * @param dslVci if `wan_type`==`dsl`, 16 bit int
          * 
          * @return builder
          * 
@@ -835,8 +850,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVci if `wan_type`==`dsl`
-         * 16 bit int
+         * @param dslVci if `wan_type`==`dsl`, 16 bit int
          * 
          * @return builder
          * 
@@ -846,8 +860,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVpi if `wan_type`==`dsl`
-         * 8 bit int
+         * @param dslVpi if `wan_type`==`dsl`, 8 bit int
          * 
          * @return builder
          * 
@@ -858,8 +871,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVpi if `wan_type`==`dsl`
-         * 8 bit int
+         * @param dslVpi if `wan_type`==`dsl`, 8 bit int
          * 
          * @return builder
          * 
@@ -1034,7 +1046,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networks if `usage`==`lan`
+         * @param networks if `usage`==`lan`, name of the `junipermist.org.Network` resource
          * 
          * @return builder
          * 
@@ -1045,7 +1057,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networks if `usage`==`lan`
+         * @param networks if `usage`==`lan`, name of the `junipermist.org.Network` resource
          * 
          * @return builder
          * 
@@ -1055,7 +1067,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param networks if `usage`==`lan`
+         * @param networks if `usage`==`lan`, name of the `junipermist.org.Network` resource
          * 
          * @return builder
          * 
@@ -1095,7 +1107,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param portNetwork if `usage`==`lan`
+         * @param portNetwork Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          * 
          * @return builder
          * 
@@ -1106,7 +1118,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param portNetwork if `usage`==`lan`
+         * @param portNetwork Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
          * 
          * @return builder
          * 
@@ -1311,24 +1323,12 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
             return usage(Output.of(usage));
         }
 
-        /**
-         * @param vlanId if WAN interface is on a VLAN
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vlanId(@Nullable Output<Integer> vlanId) {
+        public Builder vlanId(@Nullable Output<String> vlanId) {
             $.vlanId = vlanId;
             return this;
         }
 
-        /**
-         * @param vlanId if WAN interface is on a VLAN
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vlanId(Integer vlanId) {
+        public Builder vlanId(String vlanId) {
             return vlanId(Output.of(vlanId));
         }
 
@@ -1354,7 +1354,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanArpPolicer when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+         * @param wanArpPolicer Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
          * 
          * @return builder
          * 
@@ -1365,7 +1365,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanArpPolicer when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+         * @param wanArpPolicer Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
          * 
          * @return builder
          * 
@@ -1375,7 +1375,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanExtIp optional, if spoke should reach this port by a different IP
+         * @param wanExtIp Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          * 
          * @return builder
          * 
@@ -1386,7 +1386,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanExtIp optional, if spoke should reach this port by a different IP
+         * @param wanExtIp Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
          * 
          * @return builder
          * 
@@ -1396,7 +1396,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanExtraRoutes Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
          * 
          * @return builder
          * 
@@ -1407,7 +1407,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanExtraRoutes Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
+         * @param wanExtraRoutes Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g &#34;100.100.100.0/24&#34;)
          * 
          * @return builder
          * 
@@ -1417,7 +1417,38 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanProbeOverride if `usage`==`wan`
+         * @param wanNetworks Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanNetworks(@Nullable Output<List<String>> wanNetworks) {
+            $.wanNetworks = wanNetworks;
+            return this;
+        }
+
+        /**
+         * @param wanNetworks Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanNetworks(List<String> wanNetworks) {
+            return wanNetworks(Output.of(wanNetworks));
+        }
+
+        /**
+         * @param wanNetworks Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wanNetworks(String... wanNetworks) {
+            return wanNetworks(List.of(wanNetworks));
+        }
+
+        /**
+         * @param wanProbeOverride Only if `usage`==`wan`
          * 
          * @return builder
          * 
@@ -1428,7 +1459,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanProbeOverride if `usage`==`wan`
+         * @param wanProbeOverride Only if `usage`==`wan`
          * 
          * @return builder
          * 
@@ -1438,7 +1469,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanSourceNat optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * @param wanSourceNat Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          * 
          * @return builder
          * 
@@ -1449,7 +1480,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanSourceNat optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+         * @param wanSourceNat Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
          * 
          * @return builder
          * 
@@ -1459,7 +1490,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanType if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * @param wanType Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          * 
          * @return builder
          * 
@@ -1470,7 +1501,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param wanType if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+         * @param wanType Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
          * 
          * @return builder
          * 

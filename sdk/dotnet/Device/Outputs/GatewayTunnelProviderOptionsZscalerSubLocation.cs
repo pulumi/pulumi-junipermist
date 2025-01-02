@@ -13,63 +13,104 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayTunnelProviderOptionsZscalerSubLocation
     {
-        public readonly bool? AupAcceptanceRequired;
+        public readonly bool? AupBlockInternetUntilAccepted;
         /// <summary>
-        /// days before AUP is requested again
+        /// Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
         /// </summary>
-        public readonly int? AupExpire;
+        public readonly bool? AupEnabled;
         /// <summary>
         /// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         /// </summary>
-        public readonly bool? AupSslProxy;
+        public readonly bool? AupForceSslInspection;
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps
+        /// Required if `aup_enabled`==`true`. Days before AUP is requested again
         /// </summary>
-        public readonly int? DownloadMbps;
+        public readonly int? AupTimeoutInDays;
         /// <summary>
-        /// if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+        /// Enable this option to authenticate users
         /// </summary>
-        public readonly bool? EnableAup;
+        public readonly bool? AuthRequired;
         /// <summary>
-        /// when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+        /// Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
         /// </summary>
-        public readonly bool? EnableCaution;
-        public readonly bool? EnforceAuthentication;
-        public readonly ImmutableArray<string> Subnets;
+        public readonly bool? CautionEnabled;
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps
+        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
         /// </summary>
-        public readonly int? UploadMbps;
+        public readonly double? DnBandwidth;
+        /// <summary>
+        /// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        /// </summary>
+        public readonly int? IdleTimeInMinutes;
+        /// <summary>
+        /// Network name
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
+        /// if `true`, enable the firewall control option
+        /// </summary>
+        public readonly bool? OfwEnabled;
+        /// <summary>
+        /// Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        /// </summary>
+        public readonly bool? SurrogateIp;
+        /// <summary>
+        /// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        /// </summary>
+        public readonly bool? SurrogateIpEnforcedForKnownBrowsers;
+        /// <summary>
+        /// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        /// </summary>
+        public readonly int? SurrogateRefreshTimeInMinutes;
+        /// <summary>
+        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
+        /// </summary>
+        public readonly double? UpBandwidth;
 
         [OutputConstructor]
         private GatewayTunnelProviderOptionsZscalerSubLocation(
-            bool? aupAcceptanceRequired,
+            bool? aupBlockInternetUntilAccepted,
 
-            int? aupExpire,
+            bool? aupEnabled,
 
-            bool? aupSslProxy,
+            bool? aupForceSslInspection,
 
-            int? downloadMbps,
+            int? aupTimeoutInDays,
 
-            bool? enableAup,
+            bool? authRequired,
 
-            bool? enableCaution,
+            bool? cautionEnabled,
 
-            bool? enforceAuthentication,
+            double? dnBandwidth,
 
-            ImmutableArray<string> subnets,
+            int? idleTimeInMinutes,
 
-            int? uploadMbps)
+            string? name,
+
+            bool? ofwEnabled,
+
+            bool? surrogateIp,
+
+            bool? surrogateIpEnforcedForKnownBrowsers,
+
+            int? surrogateRefreshTimeInMinutes,
+
+            double? upBandwidth)
         {
-            AupAcceptanceRequired = aupAcceptanceRequired;
-            AupExpire = aupExpire;
-            AupSslProxy = aupSslProxy;
-            DownloadMbps = downloadMbps;
-            EnableAup = enableAup;
-            EnableCaution = enableCaution;
-            EnforceAuthentication = enforceAuthentication;
-            Subnets = subnets;
-            UploadMbps = uploadMbps;
+            AupBlockInternetUntilAccepted = aupBlockInternetUntilAccepted;
+            AupEnabled = aupEnabled;
+            AupForceSslInspection = aupForceSslInspection;
+            AupTimeoutInDays = aupTimeoutInDays;
+            AuthRequired = authRequired;
+            CautionEnabled = cautionEnabled;
+            DnBandwidth = dnBandwidth;
+            IdleTimeInMinutes = idleTimeInMinutes;
+            Name = name;
+            OfwEnabled = ofwEnabled;
+            SurrogateIp = surrogateIp;
+            SurrogateIpEnforcedForKnownBrowsers = surrogateIpEnforcedForKnownBrowsers;
+            SurrogateRefreshTimeInMinutes = surrogateRefreshTimeInMinutes;
+            UpBandwidth = upBandwidth;
         }
     }
 }

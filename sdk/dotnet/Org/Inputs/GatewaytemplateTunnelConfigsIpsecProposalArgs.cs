@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? AuthAlgo { get; set; }
 
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`. enum:
+        /// Only if `provider`==`custom-ipsec`. enum:
         ///   * 1
         ///   * 2 (1024-bit)
         ///   * 5

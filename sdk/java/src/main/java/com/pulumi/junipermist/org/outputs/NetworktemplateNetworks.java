@@ -24,8 +24,7 @@ public final class NetworktemplateNetworks {
      */
     private @Nullable String gateway6;
     /**
-     * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-     * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+     * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
      * 
      */
     private @Nullable Boolean isolation;
@@ -58,8 +57,7 @@ public final class NetworktemplateNetworks {
         return Optional.ofNullable(this.gateway6);
     }
     /**
-     * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-     * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+     * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
      * 
      */
     public Optional<Boolean> isolation() {

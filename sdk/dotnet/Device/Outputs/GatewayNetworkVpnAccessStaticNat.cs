@@ -13,24 +13,20 @@ namespace Pulumi.JuniperMist.Device.Outputs
     [OutputType]
     public sealed class GatewayNetworkVpnAccessStaticNat
     {
-        public readonly string? InternalIp;
-        public readonly string? Name;
         /// <summary>
-        /// If not set, we configure the nat policies against all WAN ports for simplicity
+        /// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
         /// </summary>
-        public readonly string? WanName;
+        public readonly string InternalIp;
+        public readonly string Name;
 
         [OutputConstructor]
         private GatewayNetworkVpnAccessStaticNat(
-            string? internalIp,
+            string internalIp,
 
-            string? name,
-
-            string? wanName)
+            string name)
         {
             InternalIp = internalIp;
             Name = name;
-            WanName = wanName;
         }
     }
 }

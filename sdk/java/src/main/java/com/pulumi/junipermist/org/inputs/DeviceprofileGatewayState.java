@@ -35,14 +35,14 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
     public static final DeviceprofileGatewayState Empty = new DeviceprofileGatewayState();
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
@@ -394,7 +394,7 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class DeviceprofileGatewayState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 

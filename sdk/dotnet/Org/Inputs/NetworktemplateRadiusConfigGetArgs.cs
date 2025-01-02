@@ -47,8 +47,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? AuthServersTimeout { get; set; }
 
         /// <summary>
-        /// use `network`or `source_ip`
-        /// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

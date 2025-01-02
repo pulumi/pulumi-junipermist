@@ -28,7 +28,7 @@ public final class NetworkVpnAccess {
      */
     private @Nullable Boolean allowPing;
     /**
-     * @return Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
      * 
      */
     private @Nullable Map<String,NetworkVpnAccessDestinationNat> destinationNat;
@@ -70,7 +70,7 @@ public final class NetworkVpnAccess {
      */
     private @Nullable NetworkVpnAccessSourceNat sourceNat;
     /**
-     * @return Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable Map<String,NetworkVpnAccessStaticNat> staticNat;
@@ -107,7 +107,7 @@ public final class NetworkVpnAccess {
         return Optional.ofNullable(this.allowPing);
     }
     /**
-     * @return Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
      * 
      */
     public Map<String,NetworkVpnAccessDestinationNat> destinationNat() {
@@ -165,7 +165,7 @@ public final class NetworkVpnAccess {
         return Optional.ofNullable(this.sourceNat);
     }
     /**
-     * @return Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Map<String,NetworkVpnAccessStaticNat> staticNat() {

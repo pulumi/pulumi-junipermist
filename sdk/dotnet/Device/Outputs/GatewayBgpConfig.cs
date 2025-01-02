@@ -34,8 +34,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? ExportPolicy;
         /// <summary>
-        /// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-        /// for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        /// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         /// </summary>
         public readonly bool? ExtendedV4Nexthop;
         /// <summary>

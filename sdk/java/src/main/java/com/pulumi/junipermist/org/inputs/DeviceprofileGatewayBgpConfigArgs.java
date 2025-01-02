@@ -99,16 +99,14 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-     * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     @Import(name="extendedV4Nexthop")
     private @Nullable Output<Boolean> extendedV4Nexthop;
 
     /**
-     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-     * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     public Optional<Output<Boolean>> extendedV4Nexthop() {
@@ -436,8 +434,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param extendedV4Nexthop by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * @param extendedV4Nexthop by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          * 
          * @return builder
          * 
@@ -448,8 +445,7 @@ public final class DeviceprofileGatewayBgpConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param extendedV4Nexthop by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-         * for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+         * @param extendedV4Nexthop by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
          * 
          * @return builder
          * 

@@ -19,9 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AllNetworks { get; set; }
 
         /// <summary>
-        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-        /// All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        /// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         /// </summary>
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
@@ -90,8 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? GuestNetwork { get; set; }
 
         /// <summary>
-        /// inter_switch_link is used together with "isolation" under networks
-        /// NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        /// inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         [Input("interSwitchLink")]
         public Input<bool>? InterSwitchLink { get; set; }
@@ -143,6 +140,12 @@ namespace Pulumi.JuniperMist.Device.Inputs
             get => _networks ?? (_networks = new InputList<string>());
             set => _networks = value;
         }
+
+        /// <summary>
+        /// Additional note for the port config override
+        /// </summary>
+        [Input("note")]
+        public Input<string>? Note { get; set; }
 
         /// <summary>
         /// Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses

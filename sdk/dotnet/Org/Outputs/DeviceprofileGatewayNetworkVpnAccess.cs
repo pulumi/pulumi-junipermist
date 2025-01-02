@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? AllowPing;
         /// <summary>
-        /// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayNetworkVpnAccessDestinationNat>? DestinationNat;
         /// <summary>
@@ -38,13 +38,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? NoReadvertiseToLanOspf;
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         public readonly bool? NoReadvertiseToOverlay;
         /// <summary>
-        /// by default, the routes are only readvertised toward the same vrf on spoke
-        /// to allow it to be leaked to other vrfs
+        /// by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         /// </summary>
         public readonly ImmutableArray<string> OtherVrfs;
         /// <summary>
@@ -56,12 +54,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayNetworkVpnAccessSourceNat? SourceNat;
         /// <summary>
-        /// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.DeviceprofileGatewayNetworkVpnAccessStaticNat>? StaticNat;
         /// <summary>
-        /// toward overlay
-        /// how HUB should deal with routes it received from Spokes
+        /// toward overlay, how HUB should deal with routes it received from Spokes
         /// </summary>
         public readonly string? SummarizedSubnet;
         /// <summary>

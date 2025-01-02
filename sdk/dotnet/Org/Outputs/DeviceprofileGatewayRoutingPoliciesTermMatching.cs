@@ -34,8 +34,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly ImmutableArray<string> VpnNeighborMacs;
         public readonly Outputs.DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSla? VpnPathSla;
         /// <summary>
-        /// overlay-facing criteria (used for bgp_config where via=vpn)
-        /// ordered-
+        /// overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         /// </summary>
         public readonly ImmutableArray<string> VpnPaths;
 

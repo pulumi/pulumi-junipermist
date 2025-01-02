@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateNetworkInternetAccessDestinationNatGetArgs>? _destinationNat;
 
         /// <summary>
-        /// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        /// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         /// </summary>
         public InputMap<Inputs.GatewaytemplateNetworkInternetAccessDestinationNatGetArgs> DestinationNat
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputMap<Inputs.GatewaytemplateNetworkInternetAccessStaticNatGetArgs>? _staticNat;
 
         /// <summary>
-        /// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+        /// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public InputMap<Inputs.GatewaytemplateNetworkInternetAccessStaticNatGetArgs> StaticNat
         {

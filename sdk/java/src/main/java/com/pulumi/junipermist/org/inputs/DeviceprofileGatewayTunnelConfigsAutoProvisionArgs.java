@@ -5,10 +5,12 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs;
 import com.pulumi.junipermist.org.inputs.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -25,9 +27,17 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs extends co
         return Optional.ofNullable(this.enable);
     }
 
+    /**
+     * API override for POP selection
+     * 
+     */
     @Import(name="latlng")
     private @Nullable Output<DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs> latlng;
 
+    /**
+     * @return API override for POP selection
+     * 
+     */
     public Optional<Output<DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs>> latlng() {
         return Optional.ofNullable(this.latlng);
     }
@@ -37,6 +47,36 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs extends co
 
     public Optional<Output<DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs>> primary() {
         return Optional.ofNullable(this.primary);
+    }
+
+    /**
+     * enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    @Import(name="provider", required=true)
+    private Output<String> provider;
+
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    public Output<String> provider() {
+        return this.provider;
+    }
+
+    /**
+     * API override for POP selection
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     @Import(name="secondary")
@@ -52,6 +92,8 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs extends co
         this.enable = $.enable;
         this.latlng = $.latlng;
         this.primary = $.primary;
+        this.provider = $.provider;
+        this.region = $.region;
         this.secondary = $.secondary;
     }
 
@@ -82,11 +124,23 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs extends co
             return enable(Output.of(enable));
         }
 
+        /**
+         * @param latlng API override for POP selection
+         * 
+         * @return builder
+         * 
+         */
         public Builder latlng(@Nullable Output<DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs> latlng) {
             $.latlng = latlng;
             return this;
         }
 
+        /**
+         * @param latlng API override for POP selection
+         * 
+         * @return builder
+         * 
+         */
         public Builder latlng(DeviceprofileGatewayTunnelConfigsAutoProvisionLatlngArgs latlng) {
             return latlng(Output.of(latlng));
         }
@@ -100,6 +154,48 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs extends co
             return primary(Output.of(primary));
         }
 
+        /**
+         * @param provider enum: `jse-ipsec`, `zscaler-ipsec`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provider(Output<String> provider) {
+            $.provider = provider;
+            return this;
+        }
+
+        /**
+         * @param provider enum: `jse-ipsec`, `zscaler-ipsec`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provider(String provider) {
+            return provider(Output.of(provider));
+        }
+
+        /**
+         * @param region API override for POP selection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region API override for POP selection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
+        }
+
         public Builder secondary(@Nullable Output<DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs> secondary) {
             $.secondary = secondary;
             return this;
@@ -110,6 +206,9 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionArgs extends co
         }
 
         public DeviceprofileGatewayTunnelConfigsAutoProvisionArgs build() {
+            if ($.provider == null) {
+                throw new MissingRequiredPropertyException("DeviceprofileGatewayTunnelConfigsAutoProvisionArgs", "provider");
+            }
             return $;
         }
     }

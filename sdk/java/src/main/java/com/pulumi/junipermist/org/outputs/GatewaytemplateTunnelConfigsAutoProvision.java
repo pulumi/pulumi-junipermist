@@ -4,10 +4,12 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateTunnelConfigsAutoProvisionLatlng;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateTunnelConfigsAutoProvisionPrimary;
 import com.pulumi.junipermist.org.outputs.GatewaytemplateTunnelConfigsAutoProvisionSecondary;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,19 +17,51 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateTunnelConfigsAutoProvision {
     private @Nullable Boolean enable;
+    /**
+     * @return API override for POP selection
+     * 
+     */
     private @Nullable GatewaytemplateTunnelConfigsAutoProvisionLatlng latlng;
     private @Nullable GatewaytemplateTunnelConfigsAutoProvisionPrimary primary;
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    private String provider;
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    private @Nullable String region;
     private @Nullable GatewaytemplateTunnelConfigsAutoProvisionSecondary secondary;
 
     private GatewaytemplateTunnelConfigsAutoProvision() {}
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
+    /**
+     * @return API override for POP selection
+     * 
+     */
     public Optional<GatewaytemplateTunnelConfigsAutoProvisionLatlng> latlng() {
         return Optional.ofNullable(this.latlng);
     }
     public Optional<GatewaytemplateTunnelConfigsAutoProvisionPrimary> primary() {
         return Optional.ofNullable(this.primary);
+    }
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    public String provider() {
+        return this.provider;
+    }
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     public Optional<GatewaytemplateTunnelConfigsAutoProvisionSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
@@ -45,6 +79,8 @@ public final class GatewaytemplateTunnelConfigsAutoProvision {
         private @Nullable Boolean enable;
         private @Nullable GatewaytemplateTunnelConfigsAutoProvisionLatlng latlng;
         private @Nullable GatewaytemplateTunnelConfigsAutoProvisionPrimary primary;
+        private String provider;
+        private @Nullable String region;
         private @Nullable GatewaytemplateTunnelConfigsAutoProvisionSecondary secondary;
         public Builder() {}
         public Builder(GatewaytemplateTunnelConfigsAutoProvision defaults) {
@@ -52,6 +88,8 @@ public final class GatewaytemplateTunnelConfigsAutoProvision {
     	      this.enable = defaults.enable;
     	      this.latlng = defaults.latlng;
     	      this.primary = defaults.primary;
+    	      this.provider = defaults.provider;
+    	      this.region = defaults.region;
     	      this.secondary = defaults.secondary;
         }
 
@@ -74,6 +112,20 @@ public final class GatewaytemplateTunnelConfigsAutoProvision {
             return this;
         }
         @CustomType.Setter
+        public Builder provider(String provider) {
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GatewaytemplateTunnelConfigsAutoProvision", "provider");
+            }
+            this.provider = provider;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secondary(@Nullable GatewaytemplateTunnelConfigsAutoProvisionSecondary secondary) {
 
             this.secondary = secondary;
@@ -84,6 +136,8 @@ public final class GatewaytemplateTunnelConfigsAutoProvision {
             _resultValue.enable = enable;
             _resultValue.latlng = latlng;
             _resultValue.primary = primary;
+            _resultValue.provider = provider;
+            _resultValue.region = region;
             _resultValue.secondary = secondary;
             return _resultValue;
         }

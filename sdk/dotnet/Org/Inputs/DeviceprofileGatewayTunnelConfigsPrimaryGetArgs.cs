@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
 
     public sealed class DeviceprofileGatewayTunnelConfigsPrimaryGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("hosts")]
+        [Input("hosts", required: true)]
         private InputList<string>? _hosts;
         public InputList<string> Hosts
         {
@@ -24,9 +24,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _internalIps;
 
         /// <summary>
-        /// Only if:
-        ///   * `provider`== `zscaler-gre`
-        ///   * `provider`== `custom-gre`
+        /// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
         /// </summary>
         public InputList<string> InternalIps
         {
@@ -46,7 +44,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _remoteIds;
 
         /// <summary>
-        /// Only if `provider`== `custom-ipsec`
+        /// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         /// </summary>
         public InputList<string> RemoteIds
         {
@@ -54,7 +52,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
             set => _remoteIds = value;
         }
 
-        [Input("wanNames")]
+        [Input("wanNames", required: true)]
         private InputList<string>? _wanNames;
         public InputList<string> WanNames
         {

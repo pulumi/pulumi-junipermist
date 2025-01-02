@@ -7,12 +7,11 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateTunnelConfigsAutoProvisionPrimary {
-    private @Nullable String numHosts;
+    private @Nullable List<String> probeIps;
     /**
      * @return optional, only needed if `vars_only`==`false`
      * 
@@ -20,8 +19,8 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimary {
     private @Nullable List<String> wanNames;
 
     private GatewaytemplateTunnelConfigsAutoProvisionPrimary() {}
-    public Optional<String> numHosts() {
-        return Optional.ofNullable(this.numHosts);
+    public List<String> probeIps() {
+        return this.probeIps == null ? List.of() : this.probeIps;
     }
     /**
      * @return optional, only needed if `vars_only`==`false`
@@ -40,20 +39,23 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimary {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String numHosts;
+        private @Nullable List<String> probeIps;
         private @Nullable List<String> wanNames;
         public Builder() {}
         public Builder(GatewaytemplateTunnelConfigsAutoProvisionPrimary defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.numHosts = defaults.numHosts;
+    	      this.probeIps = defaults.probeIps;
     	      this.wanNames = defaults.wanNames;
         }
 
         @CustomType.Setter
-        public Builder numHosts(@Nullable String numHosts) {
+        public Builder probeIps(@Nullable List<String> probeIps) {
 
-            this.numHosts = numHosts;
+            this.probeIps = probeIps;
             return this;
+        }
+        public Builder probeIps(String... probeIps) {
+            return probeIps(List.of(probeIps));
         }
         @CustomType.Setter
         public Builder wanNames(@Nullable List<String> wanNames) {
@@ -66,7 +68,7 @@ public final class GatewaytemplateTunnelConfigsAutoProvisionPrimary {
         }
         public GatewaytemplateTunnelConfigsAutoProvisionPrimary build() {
             final var _resultValue = new GatewaytemplateTunnelConfigsAutoProvisionPrimary();
-            _resultValue.numHosts = numHosts;
+            _resultValue.probeIps = probeIps;
             _resultValue.wanNames = wanNames;
             return _resultValue;
         }

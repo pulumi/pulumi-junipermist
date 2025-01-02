@@ -36,18 +36,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-     * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-     * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -220,16 +216,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     @Import(name="interSwitchLink")
     private @Nullable Output<Boolean> interSwitchLink;
 
     /**
-     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks
-     * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+     * @return Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
      * 
      */
     public Optional<Output<Boolean>> interSwitchLink() {
@@ -492,16 +486,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Switch storm control
-     * Only if `mode`!=`dynamic`
+     * Switch storm control. Only if `mode`!=`dynamic`
      * 
      */
     @Import(name="stormControl")
     private @Nullable Output<NetworktemplatePortUsagesStormControlArgs> stormControl;
 
     /**
-     * @return Switch storm control
-     * Only if `mode`!=`dynamic`
+     * @return Switch storm control. Only if `mode`!=`dynamic`
      * 
      */
     public Optional<Output<NetworktemplatePortUsagesStormControlArgs>> stormControl() {
@@ -665,9 +657,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-         * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
          * 
          * @return builder
          * 
@@ -678,9 +668,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-         * All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-         * When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
          * 
          * @return builder
          * 
@@ -931,8 +919,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks
-         * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -943,8 +930,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interSwitchLink Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks
-         * NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+         * @param interSwitchLink Only if `mode`!=`dynamic` inter_switch_link is used together with &#34;isolation&#34; under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
          * 
          * @return builder
          * 
@@ -1331,8 +1317,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param stormControl Switch storm control
-         * Only if `mode`!=`dynamic`
+         * @param stormControl Switch storm control. Only if `mode`!=`dynamic`
          * 
          * @return builder
          * 
@@ -1343,8 +1328,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param stormControl Switch storm control
-         * Only if `mode`!=`dynamic`
+         * @param stormControl Switch storm control. Only if `mode`!=`dynamic`
          * 
          * @return builder
          * 

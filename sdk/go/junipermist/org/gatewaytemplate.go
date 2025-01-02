@@ -27,7 +27,7 @@ import (
 type Gatewaytemplate struct {
 	pulumi.CustomResourceState
 
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayOutput            `pulumi:"additionalConfigCmds"`
 	BgpConfig            GatewaytemplateBgpConfigMapOutput   `pulumi:"bgpConfig"`
 	DhcpdConfig          GatewaytemplateDhcpdConfigPtrOutput `pulumi:"dhcpdConfig"`
@@ -54,7 +54,8 @@ type Gatewaytemplate struct {
 	OrgId       pulumi.StringOutput              `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapOutput `pulumi:"pathPreferences"`
-	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapOutput `pulumi:"portConfig"`
 	// auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
@@ -104,7 +105,7 @@ func GetGatewaytemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gatewaytemplate resources.
 type gatewaytemplateState struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                            `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]GatewaytemplateBgpConfig `pulumi:"bgpConfig"`
 	DhcpdConfig          *GatewaytemplateDhcpdConfig         `pulumi:"dhcpdConfig"`
@@ -131,7 +132,8 @@ type gatewaytemplateState struct {
 	OrgId       *string                     `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewaytemplatePathPreferences `pulumi:"pathPreferences"`
-	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
 	// auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
@@ -149,7 +151,7 @@ type gatewaytemplateState struct {
 }
 
 type GatewaytemplateState struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            GatewaytemplateBgpConfigMapInput
 	DhcpdConfig          GatewaytemplateDhcpdConfigPtrInput
@@ -176,7 +178,8 @@ type GatewaytemplateState struct {
 	OrgId       pulumi.StringPtrInput
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapInput
-	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
 	// auto assigned if not set
 	RouterId pulumi.StringPtrInput
@@ -198,7 +201,7 @@ func (GatewaytemplateState) ElementType() reflect.Type {
 }
 
 type gatewaytemplateArgs struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds []string                            `pulumi:"additionalConfigCmds"`
 	BgpConfig            map[string]GatewaytemplateBgpConfig `pulumi:"bgpConfig"`
 	DhcpdConfig          *GatewaytemplateDhcpdConfig         `pulumi:"dhcpdConfig"`
@@ -225,7 +228,8 @@ type gatewaytemplateArgs struct {
 	OrgId       string                      `pulumi:"orgId"`
 	// Property key is the path name
 	PathPreferences map[string]GatewaytemplatePathPreferences `pulumi:"pathPreferences"`
-	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
 	// auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
@@ -244,7 +248,7 @@ type gatewaytemplateArgs struct {
 
 // The set of arguments for constructing a Gatewaytemplate resource.
 type GatewaytemplateArgs struct {
-	// additional CLI commands to append to the generated Junos config **Note**: no check is done
+	// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 	AdditionalConfigCmds pulumi.StringArrayInput
 	BgpConfig            GatewaytemplateBgpConfigMapInput
 	DhcpdConfig          GatewaytemplateDhcpdConfigPtrInput
@@ -271,7 +275,8 @@ type GatewaytemplateArgs struct {
 	OrgId       pulumi.StringInput
 	// Property key is the path name
 	PathPreferences GatewaytemplatePathPreferencesMapInput
-	// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
 	// auto assigned if not set
 	RouterId pulumi.StringPtrInput
@@ -375,7 +380,7 @@ func (o GatewaytemplateOutput) ToGatewaytemplateOutputWithContext(ctx context.Co
 	return o
 }
 
-// additional CLI commands to append to the generated Junos config **Note**: no check is done
+// additional CLI commands to append to the generated Junos config. **Note**: no check is done
 func (o GatewaytemplateOutput) AdditionalConfigCmds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.AdditionalConfigCmds }).(pulumi.StringArrayOutput)
 }
@@ -453,7 +458,8 @@ func (o GatewaytemplateOutput) PathPreferences() GatewaytemplatePathPreferencesM
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplatePathPreferencesMapOutput { return v.PathPreferences }).(GatewaytemplatePathPreferencesMapOutput)
 }
 
-// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 func (o GatewaytemplateOutput) PortConfig() GatewaytemplatePortConfigMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplatePortConfigMapOutput { return v.PortConfig }).(GatewaytemplatePortConfigMapOutput)
 }

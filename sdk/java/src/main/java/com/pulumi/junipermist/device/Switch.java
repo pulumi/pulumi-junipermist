@@ -14,7 +14,6 @@ import com.pulumi.junipermist.device.outputs.SwitchAclPolicy;
 import com.pulumi.junipermist.device.outputs.SwitchAclTags;
 import com.pulumi.junipermist.device.outputs.SwitchDhcpSnooping;
 import com.pulumi.junipermist.device.outputs.SwitchDhcpdConfig;
-import com.pulumi.junipermist.device.outputs.SwitchEvpnConfig;
 import com.pulumi.junipermist.device.outputs.SwitchExtraRoutes6;
 import com.pulumi.junipermist.device.outputs.SwitchExtraRoutes;
 import com.pulumi.junipermist.device.outputs.SwitchIpConfig;
@@ -84,14 +83,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclTags);
     }
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {
@@ -156,20 +155,6 @@ public class Switch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> dnsSuffixes() {
         return Codegen.optional(this.dnsSuffixes);
-    }
-    /**
-     * EVPN Junos settings
-     * 
-     */
-    @Export(name="evpnConfig", refs={SwitchEvpnConfig.class}, tree="[0]")
-    private Output<SwitchEvpnConfig> evpnConfig;
-
-    /**
-     * @return EVPN Junos settings
-     * 
-     */
-    public Output<SwitchEvpnConfig> evpnConfig() {
-        return this.evpnConfig;
     }
     @Export(name="extraRoutes", refs={Map.class,String.class,SwitchExtraRoutes.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SwitchExtraRoutes>> extraRoutes;
@@ -350,16 +335,16 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ntpServers);
     }
     /**
-     * - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     *   set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      * 
      */
     @Export(name="oobIpConfig", refs={SwitchOobIpConfig.class}, tree="[0]")
     private Output</* @Nullable */ SwitchOobIpConfig> oobIpConfig;
 
     /**
-     * @return - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     * set separately (if desired): key parameter = `re1`
+     * @return Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      * 
      */
     public Output<Optional<SwitchOobIpConfig>> oobIpConfig() {
@@ -414,7 +399,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      * 
@@ -423,7 +408,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,SwitchPortMirroring>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      * 

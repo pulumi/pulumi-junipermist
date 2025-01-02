@@ -86,8 +86,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _vpnPaths;
 
         /// <summary>
-        /// overlay-facing criteria (used for bgp_config where via=vpn)
-        /// ordered-
+        /// overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         /// </summary>
         public InputList<string> VpnPaths
         {

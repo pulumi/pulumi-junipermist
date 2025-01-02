@@ -109,7 +109,6 @@ __all__ = [
     'SwitchDhcpdConfigConfigFixedBindings',
     'SwitchDhcpdConfigConfigOptions',
     'SwitchDhcpdConfigConfigVendorEncapsulated',
-    'SwitchEvpnConfig',
     'SwitchExtraRoutes6',
     'SwitchExtraRoutes6NextQualified',
     'SwitchExtraRoutes',
@@ -2260,8 +2259,7 @@ class GatewayBgpConfig(dict):
         :param int bfd_multiplier: when bfd_minimum_interval_is_configured alone
         :param bool disable_bfd: BFD provides faster path failure detection and is enabled by default
         :param str export_policy: default export policies if no per-neighbor policies defined
-        :param bool extended_v4_nexthop: by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-               for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        :param bool extended_v4_nexthop: by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         :param int graceful_restart_time: `0` means disable
         :param str import_policy: default import policies if no per-neighbor policies defined
         :param Mapping[str, 'GatewayBgpConfigNeighborsArgs'] neighbors: if per-neighbor as is desired. Property key is the neighbor address
@@ -2363,8 +2361,7 @@ class GatewayBgpConfig(dict):
     @pulumi.getter(name="extendedV4Nexthop")
     def extended_v4_nexthop(self) -> Optional[bool]:
         """
-        by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-        for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         return pulumi.get(self, "extended_v4_nexthop")
 
@@ -3216,6 +3213,7 @@ class GatewayNetwork(dict):
         :param bool isolation: whether to allow clients in the network to talk to each other
         :param 'GatewayNetworkMulticastArgs' multicast: whether to enable multicast support (only PIM-sparse mode is supported)
         :param Sequence[str] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param Mapping[str, 'GatewayNetworkTenantsArgs'] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param Mapping[str, 'GatewayNetworkVpnAccessArgs'] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
         pulumi.set(__self__, "name", name)
@@ -3318,6 +3316,9 @@ class GatewayNetwork(dict):
     @property
     @pulumi.getter
     def tenants(self) -> Optional[Mapping[str, 'outputs.GatewayNetworkTenants']]:
+        """
+        Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "tenants")
 
     @property
@@ -3377,9 +3378,9 @@ class GatewayNetworkInternetAccess(dict):
                  restricted: Optional[bool] = None,
                  static_nat: Optional[Mapping[str, 'outputs.GatewayNetworkInternetAccessStaticNat']] = None):
         """
-        :param Mapping[str, 'GatewayNetworkInternetAccessDestinationNatArgs'] destination_nat: Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        :param Mapping[str, 'GatewayNetworkInternetAccessDestinationNatArgs'] destination_nat: Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         :param bool restricted: by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
-        :param Mapping[str, 'GatewayNetworkInternetAccessStaticNatArgs'] static_nat: Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+        :param Mapping[str, 'GatewayNetworkInternetAccessStaticNatArgs'] static_nat: Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         """
         if create_simple_service_policy is not None:
             pulumi.set(__self__, "create_simple_service_policy", create_simple_service_policy)
@@ -3401,7 +3402,7 @@ class GatewayNetworkInternetAccess(dict):
     @pulumi.getter(name="destinationNat")
     def destination_nat(self) -> Optional[Mapping[str, 'outputs.GatewayNetworkInternetAccessDestinationNat']]:
         """
-        Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         """
         return pulumi.get(self, "destination_nat")
 
@@ -3422,7 +3423,7 @@ class GatewayNetworkInternetAccess(dict):
     @pulumi.getter(name="staticNat")
     def static_nat(self) -> Optional[Mapping[str, 'outputs.GatewayNetworkInternetAccessStaticNat']]:
         """
-        Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+        Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "static_nat")
 
@@ -3434,6 +3435,8 @@ class GatewayNetworkInternetAccessDestinationNat(dict):
         suggest = None
         if key == "internalIp":
             suggest = "internal_ip"
+        elif key == "wanName":
+            suggest = "wan_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayNetworkInternetAccessDestinationNat. Access the value via the '{suggest}' property getter instead.")
@@ -3449,17 +3452,28 @@ class GatewayNetworkInternetAccessDestinationNat(dict):
     def __init__(__self__, *,
                  internal_ip: Optional[str] = None,
                  name: Optional[str] = None,
-                 port: Optional[int] = None):
+                 port: Optional[str] = None,
+                 wan_name: Optional[str] = None):
+        """
+        :param str internal_ip: The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        :param str port: The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+        :param str wan_name: SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+        """
         if internal_ip is not None:
             pulumi.set(__self__, "internal_ip", internal_ip)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if wan_name is not None:
+            pulumi.set(__self__, "wan_name", wan_name)
 
     @property
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> Optional[str]:
+        """
+        The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
@@ -3469,8 +3483,19 @@ class GatewayNetworkInternetAccessDestinationNat(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[int]:
+    def port(self) -> Optional[str]:
+        """
+        The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="wanName")
+    def wan_name(self) -> Optional[str]:
+        """
+        SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+        """
+        return pulumi.get(self, "wan_name")
 
 
 @pulumi.output_type
@@ -3495,34 +3520,36 @@ class GatewayNetworkInternetAccessStaticNat(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 internal_ip: Optional[str] = None,
-                 name: Optional[str] = None,
+                 internal_ip: str,
+                 name: str,
                  wan_name: Optional[str] = None):
         """
-        :param str wan_name: If not set, we configure the nat policies against all WAN ports for simplicity
+        :param str internal_ip: The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+        :param str wan_name: SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
         """
-        if internal_ip is not None:
-            pulumi.set(__self__, "internal_ip", internal_ip)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "name", name)
         if wan_name is not None:
             pulumi.set(__self__, "wan_name", wan_name)
 
     @property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[str]:
+    def internal_ip(self) -> str:
+        """
+        The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[str]:
         """
-        If not set, we configure the nat policies against all WAN ports for simplicity
+        SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "wan_name")
 
@@ -3693,19 +3720,16 @@ class GatewayNetworkVpnAccess(dict):
         """
         :param str advertised_subnet: if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         :param bool allow_ping: whether to allow ping from vpn into this routed network
-        :param Mapping[str, 'GatewayNetworkVpnAccessDestinationNatArgs'] destination_nat: Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        :param Mapping[str, 'GatewayNetworkVpnAccessDestinationNatArgs'] destination_nat: Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         :param str nat_pool: if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         :param bool no_readvertise_to_lan_bgp: toward LAN-side BGP peers
         :param bool no_readvertise_to_lan_ospf: toward LAN-side OSPF peers
-        :param bool no_readvertise_to_overlay: toward overlay
-               how HUB should deal with routes it received from Spokes
-        :param Sequence[str] other_vrfs: by default, the routes are only readvertised toward the same vrf on spoke
-               to allow it to be leaked to other vrfs
+        :param bool no_readvertise_to_overlay: toward overlay, how HUB should deal with routes it received from Spokes
+        :param Sequence[str] other_vrfs: by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         :param bool routed: whether this network is routable
         :param 'GatewayNetworkVpnAccessSourceNatArgs' source_nat: if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
-        :param Mapping[str, 'GatewayNetworkVpnAccessStaticNatArgs'] static_nat: Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
-        :param str summarized_subnet: toward overlay
-               how HUB should deal with routes it received from Spokes
+        :param Mapping[str, 'GatewayNetworkVpnAccessStaticNatArgs'] static_nat: Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
+        :param str summarized_subnet: toward overlay, how HUB should deal with routes it received from Spokes
         :param str summarized_subnet_to_lan_bgp: toward LAN-side BGP peers
         :param str summarized_subnet_to_lan_ospf: toward LAN-side OSPF peers
         """
@@ -3758,7 +3782,7 @@ class GatewayNetworkVpnAccess(dict):
     @pulumi.getter(name="destinationNat")
     def destination_nat(self) -> Optional[Mapping[str, 'outputs.GatewayNetworkVpnAccessDestinationNat']]:
         """
-        Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+        Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
         """
         return pulumi.get(self, "destination_nat")
 
@@ -3790,8 +3814,7 @@ class GatewayNetworkVpnAccess(dict):
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[bool]:
         """
-        toward overlay
-        how HUB should deal with routes it received from Spokes
+        toward overlay, how HUB should deal with routes it received from Spokes
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -3799,8 +3822,7 @@ class GatewayNetworkVpnAccess(dict):
     @pulumi.getter(name="otherVrfs")
     def other_vrfs(self) -> Optional[Sequence[str]]:
         """
-        by default, the routes are only readvertised toward the same vrf on spoke
-        to allow it to be leaked to other vrfs
+        by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         """
         return pulumi.get(self, "other_vrfs")
 
@@ -3824,7 +3846,7 @@ class GatewayNetworkVpnAccess(dict):
     @pulumi.getter(name="staticNat")
     def static_nat(self) -> Optional[Mapping[str, 'outputs.GatewayNetworkVpnAccessStaticNat']]:
         """
-        Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+        Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "static_nat")
 
@@ -3832,8 +3854,7 @@ class GatewayNetworkVpnAccess(dict):
     @pulumi.getter(name="summarizedSubnet")
     def summarized_subnet(self) -> Optional[str]:
         """
-        toward overlay
-        how HUB should deal with routes it received from Spokes
+        toward overlay, how HUB should deal with routes it received from Spokes
         """
         return pulumi.get(self, "summarized_subnet")
 
@@ -3876,7 +3897,10 @@ class GatewayNetworkVpnAccessDestinationNat(dict):
     def __init__(__self__, *,
                  internal_ip: Optional[str] = None,
                  name: Optional[str] = None,
-                 port: Optional[int] = None):
+                 port: Optional[str] = None):
+        """
+        :param str internal_ip: The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        """
         if internal_ip is not None:
             pulumi.set(__self__, "internal_ip", internal_ip)
         if name is not None:
@@ -3887,6 +3911,9 @@ class GatewayNetworkVpnAccessDestinationNat(dict):
     @property
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> Optional[str]:
+        """
+        The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
@@ -3896,7 +3923,7 @@ class GatewayNetworkVpnAccessDestinationNat(dict):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[int]:
+    def port(self) -> Optional[str]:
         return pulumi.get(self, "port")
 
 
@@ -3937,8 +3964,6 @@ class GatewayNetworkVpnAccessStaticNat(dict):
         suggest = None
         if key == "internalIp":
             suggest = "internal_ip"
-        elif key == "wanName":
-            suggest = "wan_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayNetworkVpnAccessStaticNat. Access the value via the '{suggest}' property getter instead.")
@@ -3952,36 +3977,26 @@ class GatewayNetworkVpnAccessStaticNat(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 internal_ip: Optional[str] = None,
-                 name: Optional[str] = None,
-                 wan_name: Optional[str] = None):
+                 internal_ip: str,
+                 name: str):
         """
-        :param str wan_name: If not set, we configure the nat policies against all WAN ports for simplicity
+        :param str internal_ip: The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
         """
-        if internal_ip is not None:
-            pulumi.set(__self__, "internal_ip", internal_ip)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if wan_name is not None:
-            pulumi.set(__self__, "wan_name", wan_name)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[str]:
+    def internal_ip(self) -> str:
+        """
+        The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> str:
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter(name="wanName")
-    def wan_name(self) -> Optional[str]:
-        """
-        If not set, we configure the nat policies against all WAN ports for simplicity
-        """
-        return pulumi.get(self, "wan_name")
 
 
 @pulumi.output_type
@@ -4434,6 +4449,8 @@ class GatewayPortConfig(dict):
             suggest = "wan_ext_ip"
         elif key == "wanExtraRoutes":
             suggest = "wan_extra_routes"
+        elif key == "wanNetworks":
+            suggest = "wan_networks"
         elif key == "wanProbeOverride":
             suggest = "wan_probe_override"
         elif key == "wanSourceNat":
@@ -4487,11 +4504,12 @@ class GatewayPortConfig(dict):
                  ssr_no_virtual_mac: Optional[bool] = None,
                  svr_port_range: Optional[str] = None,
                  traffic_shaping: Optional['outputs.GatewayPortConfigTrafficShaping'] = None,
-                 vlan_id: Optional[int] = None,
+                 vlan_id: Optional[str] = None,
                  vpn_paths: Optional[Mapping[str, 'outputs.GatewayPortConfigVpnPaths']] = None,
                  wan_arp_policer: Optional[str] = None,
                  wan_ext_ip: Optional[str] = None,
                  wan_extra_routes: Optional[Mapping[str, 'outputs.GatewayPortConfigWanExtraRoutes']] = None,
+                 wan_networks: Optional[Sequence[str]] = None,
                  wan_probe_override: Optional['outputs.GatewayPortConfigWanProbeOverride'] = None,
                  wan_source_nat: Optional['outputs.GatewayPortConfigWanSourceNat'] = None,
                  wan_type: Optional[str] = None):
@@ -4499,16 +4517,13 @@ class GatewayPortConfig(dict):
         :param str usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
         :param bool ae_disable_lacp: if `aggregated`==`true`. To disable LCP support for the AE interface
         :param str ae_idx: if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
-        :param bool ae_lacp_force_up: For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n
-               Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n
-               Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        :param bool ae_lacp_force_up: For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         :param bool critical: if want to generate port up/down alarm, set it to true
+        :param str description: Interface Description. Can be a variable (i.e. "{{myvar}}")
         :param bool disabled: port admin up (true) / down (false)
         :param str dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
-        :param int dsl_vci: if `wan_type`==`dsl`
-               16 bit int
-        :param int dsl_vpi: if `wan_type`==`dsl`
-               8 bit int
+        :param int dsl_vci: if `wan_type`==`dsl`, 16 bit int
+        :param int dsl_vpi: if `wan_type`==`dsl`, 8 bit int
         :param str duplex: enum: `auto`, `full`, `half`
         :param 'GatewayPortConfigIpConfigArgs' ip_config: Junos IP Config
         :param str lte_apn: if `wan_type`==`lte`
@@ -4516,9 +4531,9 @@ class GatewayPortConfig(dict):
         :param str lte_password: if `wan_type`==`lte`
         :param str lte_username: if `wan_type`==`lte`
         :param str name: name that we'll use to derive config
-        :param Sequence[str] networks: if `usage`==`lan`
+        :param Sequence[str] networks: if `usage`==`lan`, name of the `org.Network` resource
         :param int outer_vlan_id: for Q-in-Q
-        :param str port_network: if `usage`==`lan`
+        :param str port_network: Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
         :param bool preserve_dscp: whether to preserve dscp when sending traffic over VPN (SSR-only)
         :param bool redundant: if HA mode
         :param int reth_idx: if HA mode
@@ -4526,14 +4541,14 @@ class GatewayPortConfig(dict):
         :param Sequence[str] reth_nodes: SSR only - supporting vlan-based redundancy (matching the size of `networks`)
         :param bool ssr_no_virtual_mac: when SSR is running as VM, this is required on certain hosting platforms
         :param str svr_port_range: for SSR only
-        :param int vlan_id: if WAN interface is on a VLAN
         :param Mapping[str, 'GatewayPortConfigVpnPathsArgs'] vpn_paths: Property key is the VPN name
-        :param str wan_arp_policer: when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
-        :param str wan_ext_ip: optional, if spoke should reach this port by a different IP
-        :param Mapping[str, 'GatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Property Key is the destianation CIDR (e.g "100.100.100.0/24")
-        :param 'GatewayPortConfigWanProbeOverrideArgs' wan_probe_override: if `usage`==`wan`
-        :param 'GatewayPortConfigWanSourceNatArgs' wan_source_nat: optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
-        :param str wan_type: if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+        :param str wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+        :param str wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
+        :param Mapping[str, 'GatewayPortConfigWanExtraRoutesArgs'] wan_extra_routes: Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        :param Sequence[str] wan_networks: Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        :param 'GatewayPortConfigWanProbeOverrideArgs' wan_probe_override: Only if `usage`==`wan`
+        :param 'GatewayPortConfigWanSourceNatArgs' wan_source_nat: Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
+        :param str wan_type: Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         """
         pulumi.set(__self__, "usage", usage)
         if ae_disable_lacp is not None:
@@ -4612,6 +4627,8 @@ class GatewayPortConfig(dict):
             pulumi.set(__self__, "wan_ext_ip", wan_ext_ip)
         if wan_extra_routes is not None:
             pulumi.set(__self__, "wan_extra_routes", wan_extra_routes)
+        if wan_networks is not None:
+            pulumi.set(__self__, "wan_networks", wan_networks)
         if wan_probe_override is not None:
             pulumi.set(__self__, "wan_probe_override", wan_probe_override)
         if wan_source_nat is not None:
@@ -4647,9 +4664,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="aeLacpForceUp")
     def ae_lacp_force_up(self) -> Optional[bool]:
         """
-        For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\\n
-        Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\\n
-        Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+        For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
         """
         return pulumi.get(self, "ae_lacp_force_up")
 
@@ -4669,6 +4684,9 @@ class GatewayPortConfig(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        Interface Description. Can be a variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -4696,8 +4714,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="dslVci")
     def dsl_vci(self) -> Optional[int]:
         """
-        if `wan_type`==`dsl`
-        16 bit int
+        if `wan_type`==`dsl`, 16 bit int
         """
         return pulumi.get(self, "dsl_vci")
 
@@ -4705,8 +4722,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="dslVpi")
     def dsl_vpi(self) -> Optional[int]:
         """
-        if `wan_type`==`dsl`
-        8 bit int
+        if `wan_type`==`dsl`, 8 bit int
         """
         return pulumi.get(self, "dsl_vpi")
 
@@ -4780,7 +4796,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter
     def networks(self) -> Optional[Sequence[str]]:
         """
-        if `usage`==`lan`
+        if `usage`==`lan`, name of the `org.Network` resource
         """
         return pulumi.get(self, "networks")
 
@@ -4801,7 +4817,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="portNetwork")
     def port_network(self) -> Optional[str]:
         """
-        if `usage`==`lan`
+        Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
         """
         return pulumi.get(self, "port_network")
 
@@ -4873,10 +4889,7 @@ class GatewayPortConfig(dict):
 
     @property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[int]:
-        """
-        if WAN interface is on a VLAN
-        """
+    def vlan_id(self) -> Optional[str]:
         return pulumi.get(self, "vlan_id")
 
     @property
@@ -4891,7 +4904,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="wanArpPolicer")
     def wan_arp_policer(self) -> Optional[str]:
         """
-        when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
+        Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
         """
         return pulumi.get(self, "wan_arp_policer")
 
@@ -4899,7 +4912,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="wanExtIp")
     def wan_ext_ip(self) -> Optional[str]:
         """
-        optional, if spoke should reach this port by a different IP
+        Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
         """
         return pulumi.get(self, "wan_ext_ip")
 
@@ -4907,15 +4920,23 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="wanExtraRoutes")
     def wan_extra_routes(self) -> Optional[Mapping[str, 'outputs.GatewayPortConfigWanExtraRoutes']]:
         """
-        Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+        Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
         """
         return pulumi.get(self, "wan_extra_routes")
+
+    @property
+    @pulumi.getter(name="wanNetworks")
+    def wan_networks(self) -> Optional[Sequence[str]]:
+        """
+        Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+        """
+        return pulumi.get(self, "wan_networks")
 
     @property
     @pulumi.getter(name="wanProbeOverride")
     def wan_probe_override(self) -> Optional['outputs.GatewayPortConfigWanProbeOverride']:
         """
-        if `usage`==`wan`
+        Only if `usage`==`wan`
         """
         return pulumi.get(self, "wan_probe_override")
 
@@ -4923,7 +4944,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="wanSourceNat")
     def wan_source_nat(self) -> Optional['outputs.GatewayPortConfigWanSourceNat']:
         """
-        optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+        Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
         """
         return pulumi.get(self, "wan_source_nat")
 
@@ -4931,7 +4952,7 @@ class GatewayPortConfig(dict):
     @pulumi.getter(name="wanType")
     def wan_type(self) -> Optional[str]:
         """
-        if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+        Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
         """
         return pulumi.get(self, "wan_type")
 
@@ -4975,8 +4996,9 @@ class GatewayPortConfigIpConfig(dict):
         """
         :param Sequence[str] dns: except for out-of_band interface (vme/em0/fxp0)
         :param Sequence[str] dns_suffixes: except for out-of_band interface (vme/em0/fxp0)
-        :param str gateway: except for out-of_band interface (vme/em0/fxp0)
-        :param str netmask: used only if `subnet` is not specified in `networks`
+        :param str gateway: except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        :param str ip: Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        :param str netmask: used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         :param str network: optional, the network to be used for mgmt
         :param str poser_password: if `type`==`pppoe`
         :param str pppoe_auth: if `type`==`pppoe`. enum: `chap`, `none`, `pap`
@@ -5024,20 +5046,23 @@ class GatewayPortConfigIpConfig(dict):
     @pulumi.getter
     def gateway(self) -> Optional[str]:
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "gateway")
 
     @property
     @pulumi.getter
     def ip(self) -> Optional[str]:
+        """
+        Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter
     def netmask(self) -> Optional[str]:
         """
-        used only if `subnet` is not specified in `networks`
+        used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "netmask")
 
@@ -5089,6 +5114,8 @@ class GatewayPortConfigTrafficShaping(dict):
         suggest = None
         if key == "classPercentages":
             suggest = "class_percentages"
+        elif key == "maxTxKbps":
+            suggest = "max_tx_kbps"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayPortConfigTrafficShaping. Access the value via the '{suggest}' property getter instead.")
@@ -5103,22 +5130,24 @@ class GatewayPortConfigTrafficShaping(dict):
 
     def __init__(__self__, *,
                  class_percentages: Optional[Sequence[int]] = None,
-                 enabled: Optional[bool] = None):
+                 enabled: Optional[bool] = None,
+                 max_tx_kbps: Optional[int] = None):
         """
-        :param Sequence[int] class_percentages: percentages for differet class of traffic: high / medium / low / best-effort
-               sum must be equal to 100
+        :param Sequence[int] class_percentages: percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        :param int max_tx_kbps: Interface Transmit Cap in kbps
         """
         if class_percentages is not None:
             pulumi.set(__self__, "class_percentages", class_percentages)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if max_tx_kbps is not None:
+            pulumi.set(__self__, "max_tx_kbps", max_tx_kbps)
 
     @property
     @pulumi.getter(name="classPercentages")
     def class_percentages(self) -> Optional[Sequence[int]]:
         """
-        percentages for differet class of traffic: high / medium / low / best-effort
-        sum must be equal to 100
+        percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         """
         return pulumi.get(self, "class_percentages")
 
@@ -5126,6 +5155,14 @@ class GatewayPortConfigTrafficShaping(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxTxKbps")
+    def max_tx_kbps(self) -> Optional[int]:
+        """
+        Interface Transmit Cap in kbps
+        """
+        return pulumi.get(self, "max_tx_kbps")
 
 
 @pulumi.output_type
@@ -5233,6 +5270,8 @@ class GatewayPortConfigVpnPathsTrafficShaping(dict):
         suggest = None
         if key == "classPercentages":
             suggest = "class_percentages"
+        elif key == "maxTxKbps":
+            suggest = "max_tx_kbps"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayPortConfigVpnPathsTrafficShaping. Access the value via the '{suggest}' property getter instead.")
@@ -5247,22 +5286,24 @@ class GatewayPortConfigVpnPathsTrafficShaping(dict):
 
     def __init__(__self__, *,
                  class_percentages: Optional[Sequence[int]] = None,
-                 enabled: Optional[bool] = None):
+                 enabled: Optional[bool] = None,
+                 max_tx_kbps: Optional[int] = None):
         """
-        :param Sequence[int] class_percentages: percentages for differet class of traffic: high / medium / low / best-effort
-               sum must be equal to 100
+        :param Sequence[int] class_percentages: percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
+        :param int max_tx_kbps: Interface Transmit Cap in kbps
         """
         if class_percentages is not None:
             pulumi.set(__self__, "class_percentages", class_percentages)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if max_tx_kbps is not None:
+            pulumi.set(__self__, "max_tx_kbps", max_tx_kbps)
 
     @property
     @pulumi.getter(name="classPercentages")
     def class_percentages(self) -> Optional[Sequence[int]]:
         """
-        percentages for differet class of traffic: high / medium / low / best-effort
-        sum must be equal to 100
+        percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         """
         return pulumi.get(self, "class_percentages")
 
@@ -5270,6 +5311,14 @@ class GatewayPortConfigVpnPathsTrafficShaping(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="maxTxKbps")
+    def max_tx_kbps(self) -> Optional[int]:
+        """
+        Interface Transmit Cap in kbps
+        """
+        return pulumi.get(self, "max_tx_kbps")
 
 
 @pulumi.output_type
@@ -5560,6 +5609,7 @@ class GatewayRoutingPoliciesTermAction(dict):
                  accept: Optional[bool] = None,
                  add_communities: Optional[Sequence[str]] = None,
                  add_target_vrfs: Optional[Sequence[str]] = None,
+                 aggregates: Optional[Sequence[str]] = None,
                  communities: Optional[Sequence[str]] = None,
                  exclude_as_paths: Optional[Sequence[str]] = None,
                  exclude_communities: Optional[Sequence[str]] = None,
@@ -5568,6 +5618,7 @@ class GatewayRoutingPoliciesTermAction(dict):
                  prepend_as_paths: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] add_target_vrfs: for SSR, hub decides how VRF routes are leaked on spoke
+        :param Sequence[str] aggregates: route aggregation
         :param Sequence[str] communities: when used as export policy, optional
         :param Sequence[str] exclude_as_paths: when used as export policy, optional. To exclude certain AS
         :param Sequence[str] export_communitites: when used as export policy, optional
@@ -5580,6 +5631,8 @@ class GatewayRoutingPoliciesTermAction(dict):
             pulumi.set(__self__, "add_communities", add_communities)
         if add_target_vrfs is not None:
             pulumi.set(__self__, "add_target_vrfs", add_target_vrfs)
+        if aggregates is not None:
+            pulumi.set(__self__, "aggregates", aggregates)
         if communities is not None:
             pulumi.set(__self__, "communities", communities)
         if exclude_as_paths is not None:
@@ -5610,6 +5663,14 @@ class GatewayRoutingPoliciesTermAction(dict):
         for SSR, hub decides how VRF routes are leaked on spoke
         """
         return pulumi.get(self, "add_target_vrfs")
+
+    @property
+    @pulumi.getter
+    def aggregates(self) -> Optional[Sequence[str]]:
+        """
+        route aggregation
+        """
+        return pulumi.get(self, "aggregates")
 
     @property
     @pulumi.getter
@@ -5699,8 +5760,7 @@ class GatewayRoutingPoliciesTermMatching(dict):
         :param Sequence[str] prefixes: zero or more criteria/filter can be specified to match the term, all criteria have to be met
         :param Sequence[str] protocols: `direct`, `bgp`, `osp`, ...
         :param Sequence[str] vpn_neighbor_macs: overlay-facing criteria (used for bgp_config where via=vpn)
-        :param Sequence[str] vpn_paths: overlay-facing criteria (used for bgp_config where via=vpn)
-               ordered-
+        :param Sequence[str] vpn_paths: overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         """
         if as_paths is not None:
             pulumi.set(__self__, "as_paths", as_paths)
@@ -5777,8 +5837,7 @@ class GatewayRoutingPoliciesTermMatching(dict):
     @pulumi.getter(name="vpnPaths")
     def vpn_paths(self) -> Optional[Sequence[str]]:
         """
-        overlay-facing criteria (used for bgp_config where via=vpn)
-        ordered-
+        overlay-facing criteria (used for bgp_config where via=vpn). ordered-
         """
         return pulumi.get(self, "vpn_paths")
 
@@ -5806,8 +5865,7 @@ class GatewayRoutingPoliciesTermMatchingRouteExists(dict):
                  route: Optional[str] = None,
                  vrf_name: Optional[str] = None):
         """
-        :param str vrf_name: name of the vrf instance
-               it can also be the name of the VPN or wan if they
+        :param str vrf_name: name of the vrf instance, it can also be the name of the VPN or wan if they
         """
         if route is not None:
             pulumi.set(__self__, "route", route)
@@ -5823,8 +5881,7 @@ class GatewayRoutingPoliciesTermMatchingRouteExists(dict):
     @pulumi.getter(name="vrfName")
     def vrf_name(self) -> Optional[str]:
         """
-        name of the vrf instance
-        it can also be the name of the VPN or wan if they
+        name of the vrf instance, it can also be the name of the VPN or wan if they
         """
         return pulumi.get(self, "vrf_name")
 
@@ -5918,8 +5975,7 @@ class GatewayServicePolicy(dict):
         :param 'GatewayServicePolicyAppqoeArgs' appqoe: For SRX Only
         :param bool local_routing: access within the same VRF
         :param str name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
-        :param str path_preference: by default, we derive all paths available and use them
-               optionally, you can customize by using `path_preference`
+        :param str path_preference: by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         :param str servicepolicy_id: used to link servicepolicy defined at org level and overwrite some attributes
         :param Sequence[str] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
         :param Sequence[str] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
@@ -5991,8 +6047,7 @@ class GatewayServicePolicy(dict):
     @pulumi.getter(name="pathPreference")
     def path_preference(self) -> Optional[str]:
         """
-        by default, we derive all paths available and use them
-        optionally, you can customize by using `path_preference`
+        by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         """
         return pulumi.get(self, "path_preference")
 
@@ -6211,25 +6266,21 @@ class GatewayTunnelConfigs(dict):
                  secondary: Optional['outputs.GatewayTunnelConfigsSecondary'] = None,
                  version: Optional[str] = None):
         """
-        :param int ike_lifetime: Only if `provider`== `custom-ipsec`
-        :param str ike_mode: Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
-        :param Sequence['GatewayTunnelConfigsIkeProposalArgs'] ike_proposals: if `provider`== `custom-ipsec`
-        :param int ipsec_lifetime: if `provider`== `custom-ipsec`
-        :param Sequence['GatewayTunnelConfigsIpsecProposalArgs'] ipsec_proposals: Only if  `provider`== `custom-ipsec`
-        :param str local_id: Only if:
-                 * `provider`== `zscaler-ipsec`
-                 * `provider`==`jse-ipsec`
-                 * `provider`== `custom-ipsec`
-        :param str mode: enum: `active-active`, `active-standby`
-        :param Sequence[str] networks: networks reachable via this tunnel
-        :param 'GatewayTunnelConfigsProbeArgs' probe: Only if `provider`== `custom-ipsec`
-        :param str protocol: Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
-        :param str provider: enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
-        :param str psk: Only if:
-                 * `provider`== `zscaler-ipsec`
-                 * `provider`==`jse-ipsec`
-                 * `provider`== `custom-ipsec`
-        :param str version: Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+        :param int ike_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
+        :param str ike_mode: Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
+        :param Sequence['GatewayTunnelConfigsIkeProposalArgs'] ike_proposals: if `provider`==`custom-ipsec`
+        :param int ipsec_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
+        :param Sequence['GatewayTunnelConfigsIpsecProposalArgs'] ipsec_proposals: Only if  `provider`==`custom-ipsec`
+        :param str local_id: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param str mode: Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
+        :param Sequence[str] networks: if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        :param 'GatewayTunnelConfigsPrimaryArgs' primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param 'GatewayTunnelConfigsProbeArgs' probe: Only if `provider`==`custom-ipsec`
+        :param str protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
+        :param str provider: Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        :param str psk: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param 'GatewayTunnelConfigsSecondaryArgs' secondary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        :param str version: Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
         """
         if auto_provision is not None:
             pulumi.set(__self__, "auto_provision", auto_provision)
@@ -6273,7 +6324,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter(name="ikeLifetime")
     def ike_lifetime(self) -> Optional[int]:
         """
-        Only if `provider`== `custom-ipsec`
+        Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         """
         return pulumi.get(self, "ike_lifetime")
 
@@ -6281,7 +6332,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter(name="ikeMode")
     def ike_mode(self) -> Optional[str]:
         """
-        Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+        Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
         """
         return pulumi.get(self, "ike_mode")
 
@@ -6289,7 +6340,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter(name="ikeProposals")
     def ike_proposals(self) -> Optional[Sequence['outputs.GatewayTunnelConfigsIkeProposal']]:
         """
-        if `provider`== `custom-ipsec`
+        if `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "ike_proposals")
 
@@ -6297,7 +6348,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter(name="ipsecLifetime")
     def ipsec_lifetime(self) -> Optional[int]:
         """
-        if `provider`== `custom-ipsec`
+        Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         """
         return pulumi.get(self, "ipsec_lifetime")
 
@@ -6305,7 +6356,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter(name="ipsecProposals")
     def ipsec_proposals(self) -> Optional[Sequence['outputs.GatewayTunnelConfigsIpsecProposal']]:
         """
-        Only if  `provider`== `custom-ipsec`
+        Only if  `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "ipsec_proposals")
 
@@ -6313,10 +6364,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter(name="localId")
     def local_id(self) -> Optional[str]:
         """
-        Only if:
-          * `provider`== `zscaler-ipsec`
-          * `provider`==`jse-ipsec`
-          * `provider`== `custom-ipsec`
+        Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "local_id")
 
@@ -6324,7 +6372,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        enum: `active-active`, `active-standby`
+        Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
         """
         return pulumi.get(self, "mode")
 
@@ -6332,20 +6380,23 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter
     def networks(self) -> Optional[Sequence[str]]:
         """
-        networks reachable via this tunnel
+        if `provider`==`custom-ipsec`, networks reachable via this tunnel
         """
         return pulumi.get(self, "networks")
 
     @property
     @pulumi.getter
     def primary(self) -> Optional['outputs.GatewayTunnelConfigsPrimary']:
+        """
+        Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        """
         return pulumi.get(self, "primary")
 
     @property
     @pulumi.getter
     def probe(self) -> Optional['outputs.GatewayTunnelConfigsProbe']:
         """
-        Only if `provider`== `custom-ipsec`
+        Only if `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "probe")
 
@@ -6353,7 +6404,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+        Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
         """
         return pulumi.get(self, "protocol")
 
@@ -6361,7 +6412,7 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter
     def provider(self) -> Optional[str]:
         """
-        enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+        Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
         """
         return pulumi.get(self, "provider")
 
@@ -6369,23 +6420,23 @@ class GatewayTunnelConfigs(dict):
     @pulumi.getter
     def psk(self) -> Optional[str]:
         """
-        Only if:
-          * `provider`== `zscaler-ipsec`
-          * `provider`==`jse-ipsec`
-          * `provider`== `custom-ipsec`
+        Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "psk")
 
     @property
     @pulumi.getter
     def secondary(self) -> Optional['outputs.GatewayTunnelConfigsSecondary']:
+        """
+        Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+        """
         return pulumi.get(self, "secondary")
 
     @property
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
-        Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+        Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
         """
         return pulumi.get(self, "version")
 
@@ -6393,18 +6444,36 @@ class GatewayTunnelConfigs(dict):
 @pulumi.output_type
 class GatewayTunnelConfigsAutoProvision(dict):
     def __init__(__self__, *,
+                 provider: str,
                  enable: Optional[bool] = None,
                  latlng: Optional['outputs.GatewayTunnelConfigsAutoProvisionLatlng'] = None,
                  primary: Optional['outputs.GatewayTunnelConfigsAutoProvisionPrimary'] = None,
+                 region: Optional[str] = None,
                  secondary: Optional['outputs.GatewayTunnelConfigsAutoProvisionSecondary'] = None):
+        """
+        :param str provider: enum: `jse-ipsec`, `zscaler-ipsec`
+        :param 'GatewayTunnelConfigsAutoProvisionLatlngArgs' latlng: API override for POP selection
+        :param str region: API override for POP selection
+        """
+        pulumi.set(__self__, "provider", provider)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if latlng is not None:
             pulumi.set(__self__, "latlng", latlng)
         if primary is not None:
             pulumi.set(__self__, "primary", primary)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if secondary is not None:
             pulumi.set(__self__, "secondary", secondary)
+
+    @property
+    @pulumi.getter
+    def provider(self) -> str:
+        """
+        enum: `jse-ipsec`, `zscaler-ipsec`
+        """
+        return pulumi.get(self, "provider")
 
     @property
     @pulumi.getter
@@ -6414,12 +6483,23 @@ class GatewayTunnelConfigsAutoProvision(dict):
     @property
     @pulumi.getter
     def latlng(self) -> Optional['outputs.GatewayTunnelConfigsAutoProvisionLatlng']:
+        """
+        API override for POP selection
+        """
         return pulumi.get(self, "latlng")
 
     @property
     @pulumi.getter
     def primary(self) -> Optional['outputs.GatewayTunnelConfigsAutoProvisionPrimary']:
         return pulumi.get(self, "primary")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        API override for POP selection
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter
@@ -6451,8 +6531,8 @@ class GatewayTunnelConfigsAutoProvisionPrimary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "numHosts":
-            suggest = "num_hosts"
+        if key == "probeIps":
+            suggest = "probe_ips"
         elif key == "wanNames":
             suggest = "wan_names"
 
@@ -6468,20 +6548,20 @@ class GatewayTunnelConfigsAutoProvisionPrimary(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 num_hosts: Optional[str] = None,
+                 probe_ips: Optional[Sequence[str]] = None,
                  wan_names: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] wan_names: optional, only needed if `vars_only`==`false`
         """
-        if num_hosts is not None:
-            pulumi.set(__self__, "num_hosts", num_hosts)
+        if probe_ips is not None:
+            pulumi.set(__self__, "probe_ips", probe_ips)
         if wan_names is not None:
             pulumi.set(__self__, "wan_names", wan_names)
 
     @property
-    @pulumi.getter(name="numHosts")
-    def num_hosts(self) -> Optional[str]:
-        return pulumi.get(self, "num_hosts")
+    @pulumi.getter(name="probeIps")
+    def probe_ips(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "probe_ips")
 
     @property
     @pulumi.getter(name="wanNames")
@@ -6497,8 +6577,8 @@ class GatewayTunnelConfigsAutoProvisionSecondary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "numHosts":
-            suggest = "num_hosts"
+        if key == "probeIps":
+            suggest = "probe_ips"
         elif key == "wanNames":
             suggest = "wan_names"
 
@@ -6514,20 +6594,20 @@ class GatewayTunnelConfigsAutoProvisionSecondary(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 num_hosts: Optional[str] = None,
+                 probe_ips: Optional[Sequence[str]] = None,
                  wan_names: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] wan_names: optional, only needed if `vars_only`==`false`
         """
-        if num_hosts is not None:
-            pulumi.set(__self__, "num_hosts", num_hosts)
+        if probe_ips is not None:
+            pulumi.set(__self__, "probe_ips", probe_ips)
         if wan_names is not None:
             pulumi.set(__self__, "wan_names", wan_names)
 
     @property
-    @pulumi.getter(name="numHosts")
-    def num_hosts(self) -> Optional[str]:
-        return pulumi.get(self, "num_hosts")
+    @pulumi.getter(name="probeIps")
+    def probe_ips(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "probe_ips")
 
     @property
     @pulumi.getter(name="wanNames")
@@ -6651,7 +6731,7 @@ class GatewayTunnelConfigsIpsecProposal(dict):
                  enc_algo: Optional[str] = None):
         """
         :param str auth_algo: enum: `md5`, `sha1`, `sha2`
-        :param str dh_group: Only if `provider`== `custom-ipsec`. enum:
+        :param str dh_group: Only if `provider`==`custom-ipsec`. enum:
                  * 1
                  * 2 (1024-bit)
                  * 5
@@ -6683,7 +6763,7 @@ class GatewayTunnelConfigsIpsecProposal(dict):
     @pulumi.getter(name="dhGroup")
     def dh_group(self) -> Optional[str]:
         """
-        Only if `provider`== `custom-ipsec`. enum:
+        Only if `provider`==`custom-ipsec`. enum:
           * 1
           * 2 (1024-bit)
           * 5
@@ -6711,14 +6791,14 @@ class GatewayTunnelConfigsPrimary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "internalIps":
+        if key == "wanNames":
+            suggest = "wan_names"
+        elif key == "internalIps":
             suggest = "internal_ips"
         elif key == "probeIps":
             suggest = "probe_ips"
         elif key == "remoteIds":
             suggest = "remote_ids"
-        elif key == "wanNames":
-            suggest = "wan_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelConfigsPrimary. Access the value via the '{suggest}' property getter instead.")
@@ -6732,40 +6812,39 @@ class GatewayTunnelConfigsPrimary(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 hosts: Optional[Sequence[str]] = None,
+                 hosts: Sequence[str],
+                 wan_names: Sequence[str],
                  internal_ips: Optional[Sequence[str]] = None,
                  probe_ips: Optional[Sequence[str]] = None,
-                 remote_ids: Optional[Sequence[str]] = None,
-                 wan_names: Optional[Sequence[str]] = None):
+                 remote_ids: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] internal_ips: Only if:
-                 * `provider`== `zscaler-gre`
-                 * `provider`== `custom-gre`
-        :param Sequence[str] remote_ids: Only if `provider`== `custom-ipsec`
+        :param Sequence[str] internal_ips: Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+        :param Sequence[str] remote_ids: Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
-        if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "wan_names", wan_names)
         if internal_ips is not None:
             pulumi.set(__self__, "internal_ips", internal_ips)
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
         if remote_ids is not None:
             pulumi.set(__self__, "remote_ids", remote_ids)
-        if wan_names is not None:
-            pulumi.set(__self__, "wan_names", wan_names)
 
     @property
     @pulumi.getter
-    def hosts(self) -> Optional[Sequence[str]]:
+    def hosts(self) -> Sequence[str]:
         return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter(name="wanNames")
+    def wan_names(self) -> Sequence[str]:
+        return pulumi.get(self, "wan_names")
 
     @property
     @pulumi.getter(name="internalIps")
     def internal_ips(self) -> Optional[Sequence[str]]:
         """
-        Only if:
-          * `provider`== `zscaler-gre`
-          * `provider`== `custom-gre`
+        Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
         """
         return pulumi.get(self, "internal_ips")
 
@@ -6778,14 +6857,9 @@ class GatewayTunnelConfigsPrimary(dict):
     @pulumi.getter(name="remoteIds")
     def remote_ids(self) -> Optional[Sequence[str]]:
         """
-        Only if `provider`== `custom-ipsec`
+        Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "remote_ids")
-
-    @property
-    @pulumi.getter(name="wanNames")
-    def wan_names(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "wan_names")
 
 
 @pulumi.output_type
@@ -6848,14 +6922,14 @@ class GatewayTunnelConfigsSecondary(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "internalIps":
+        if key == "wanNames":
+            suggest = "wan_names"
+        elif key == "internalIps":
             suggest = "internal_ips"
         elif key == "probeIps":
             suggest = "probe_ips"
         elif key == "remoteIds":
             suggest = "remote_ids"
-        elif key == "wanNames":
-            suggest = "wan_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelConfigsSecondary. Access the value via the '{suggest}' property getter instead.")
@@ -6869,40 +6943,39 @@ class GatewayTunnelConfigsSecondary(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 hosts: Optional[Sequence[str]] = None,
+                 hosts: Sequence[str],
+                 wan_names: Sequence[str],
                  internal_ips: Optional[Sequence[str]] = None,
                  probe_ips: Optional[Sequence[str]] = None,
-                 remote_ids: Optional[Sequence[str]] = None,
-                 wan_names: Optional[Sequence[str]] = None):
+                 remote_ids: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] internal_ips: Only if:
-                 * `provider`== `zscaler-gre`
-                 * `provider`== `custom-gre`
-        :param Sequence[str] remote_ids: Only if `provider`== `custom-ipsec`
+        :param Sequence[str] internal_ips: Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
+        :param Sequence[str] remote_ids: Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
-        if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "wan_names", wan_names)
         if internal_ips is not None:
             pulumi.set(__self__, "internal_ips", internal_ips)
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
         if remote_ids is not None:
             pulumi.set(__self__, "remote_ids", remote_ids)
-        if wan_names is not None:
-            pulumi.set(__self__, "wan_names", wan_names)
 
     @property
     @pulumi.getter
-    def hosts(self) -> Optional[Sequence[str]]:
+    def hosts(self) -> Sequence[str]:
         return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter(name="wanNames")
+    def wan_names(self) -> Sequence[str]:
+        return pulumi.get(self, "wan_names")
 
     @property
     @pulumi.getter(name="internalIps")
     def internal_ips(self) -> Optional[Sequence[str]]:
         """
-        Only if:
-          * `provider`== `zscaler-gre`
-          * `provider`== `custom-gre`
+        Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
         """
         return pulumi.get(self, "internal_ips")
 
@@ -6915,14 +6988,9 @@ class GatewayTunnelConfigsSecondary(dict):
     @pulumi.getter(name="remoteIds")
     def remote_ids(self) -> Optional[Sequence[str]]:
         """
-        Only if `provider`== `custom-ipsec`
+        Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "remote_ids")
-
-    @property
-    @pulumi.getter(name="wanNames")
-    def wan_names(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "wan_names")
 
 
 @pulumi.output_type
@@ -6963,6 +7031,8 @@ class GatewayTunnelProviderOptionsJse(dict):
         suggest = None
         if key == "numUsers":
             suggest = "num_users"
+        elif key == "orgName":
+            suggest = "org_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelProviderOptionsJse. Access the value via the '{suggest}' property getter instead.")
@@ -6976,22 +7046,28 @@ class GatewayTunnelProviderOptionsJse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 name: Optional[str] = None,
-                 num_users: Optional[int] = None):
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+                 num_users: Optional[int] = None,
+                 org_name: Optional[str] = None):
+        """
+        :param str org_name: JSE Organization name
+        """
         if num_users is not None:
             pulumi.set(__self__, "num_users", num_users)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
+        if org_name is not None:
+            pulumi.set(__self__, "org_name", org_name)
 
     @property
     @pulumi.getter(name="numUsers")
     def num_users(self) -> Optional[int]:
         return pulumi.get(self, "num_users")
+
+    @property
+    @pulumi.getter(name="orgName")
+    def org_name(self) -> Optional[str]:
+        """
+        JSE Organization name
+        """
+        return pulumi.get(self, "org_name")
 
 
 @pulumi.output_type
@@ -6999,26 +7075,36 @@ class GatewayTunnelProviderOptionsZscaler(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "aupAcceptanceRequired":
-            suggest = "aup_acceptance_required"
-        elif key == "aupExpire":
-            suggest = "aup_expire"
-        elif key == "aupSslProxy":
-            suggest = "aup_ssl_proxy"
-        elif key == "downloadMbps":
-            suggest = "download_mbps"
-        elif key == "enableAup":
-            suggest = "enable_aup"
-        elif key == "enableCaution":
-            suggest = "enable_caution"
-        elif key == "enforceAuthentication":
-            suggest = "enforce_authentication"
+        if key == "aupBlockInternetUntilAccepted":
+            suggest = "aup_block_internet_until_accepted"
+        elif key == "aupEnabled":
+            suggest = "aup_enabled"
+        elif key == "aupForceSslInspection":
+            suggest = "aup_force_ssl_inspection"
+        elif key == "aupTimeoutInDays":
+            suggest = "aup_timeout_in_days"
+        elif key == "authRequired":
+            suggest = "auth_required"
+        elif key == "cautionEnabled":
+            suggest = "caution_enabled"
+        elif key == "dnBandwidth":
+            suggest = "dn_bandwidth"
+        elif key == "idleTimeInMinutes":
+            suggest = "idle_time_in_minutes"
+        elif key == "ofwEnabled":
+            suggest = "ofw_enabled"
         elif key == "subLocations":
             suggest = "sub_locations"
-        elif key == "uploadMbps":
-            suggest = "upload_mbps"
-        elif key == "useXff":
-            suggest = "use_xff"
+        elif key == "surrogateIp":
+            suggest = "surrogate_ip"
+        elif key == "surrogateIpEnforcedForKnownBrowsers":
+            suggest = "surrogate_ip_enforced_for_known_browsers"
+        elif key == "surrogateRefreshTimeInMinutes":
+            suggest = "surrogate_refresh_time_in_minutes"
+        elif key == "upBandwidth":
+            suggest = "up_bandwidth"
+        elif key == "xffForwardEnabled":
+            suggest = "xff_forward_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelProviderOptionsZscaler. Access the value via the '{suggest}' property getter instead.")
@@ -7032,128 +7118,184 @@ class GatewayTunnelProviderOptionsZscaler(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 aup_acceptance_required: Optional[bool] = None,
-                 aup_expire: Optional[int] = None,
-                 aup_ssl_proxy: Optional[bool] = None,
-                 download_mbps: Optional[int] = None,
-                 enable_aup: Optional[bool] = None,
-                 enable_caution: Optional[bool] = None,
-                 enforce_authentication: Optional[bool] = None,
-                 name: Optional[str] = None,
+                 aup_block_internet_until_accepted: Optional[bool] = None,
+                 aup_enabled: Optional[bool] = None,
+                 aup_force_ssl_inspection: Optional[bool] = None,
+                 aup_timeout_in_days: Optional[int] = None,
+                 auth_required: Optional[bool] = None,
+                 caution_enabled: Optional[bool] = None,
+                 dn_bandwidth: Optional[float] = None,
+                 idle_time_in_minutes: Optional[int] = None,
+                 ofw_enabled: Optional[bool] = None,
                  sub_locations: Optional[Sequence['outputs.GatewayTunnelProviderOptionsZscalerSubLocation']] = None,
-                 upload_mbps: Optional[int] = None,
-                 use_xff: Optional[bool] = None):
+                 surrogate_ip: Optional[bool] = None,
+                 surrogate_ip_enforced_for_known_browsers: Optional[bool] = None,
+                 surrogate_refresh_time_in_minutes: Optional[int] = None,
+                 up_bandwidth: Optional[float] = None,
+                 xff_forward_enabled: Optional[bool] = None):
         """
-        :param int aup_expire: days before AUP is requested again
-        :param bool aup_ssl_proxy: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-        :param int download_mbps: the download bandwidth cap of the link, in Mbps
-        :param bool enable_aup: if `use_xff`==`true`, display Acceptable Use Policy (AUP)
-        :param bool enable_caution: when `enforce_authentication`==`false`, display caution notification for non-authenticated users
-        :param Sequence['GatewayTunnelProviderOptionsZscalerSubLocationArgs'] sub_locations: if `use_xff`==`true`
-        :param int upload_mbps: the download bandwidth cap of the link, in Mbps
-        :param bool use_xff: location uses proxy chaining to forward traffic
+        :param bool aup_enabled: Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+        :param bool aup_force_ssl_inspection: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        :param int aup_timeout_in_days: Required if `aup_enabled`==`true`. Days before AUP is requested again
+        :param bool auth_required: Enable this option to enforce user authentication
+        :param bool caution_enabled: Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+        :param float dn_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param int idle_time_in_minutes: Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        :param bool ofw_enabled: if `true`, enable the firewall control option
+        :param Sequence['GatewayTunnelProviderOptionsZscalerSubLocationArgs'] sub_locations: `sub-locations` can be used for specific uses cases to define different configuration based on the user network
+        :param bool surrogate_ip: Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        :param bool surrogate_ip_enforced_for_known_browsers: Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        :param int surrogate_refresh_time_in_minutes: Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        :param float up_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param bool xff_forward_enabled: location uses proxy chaining to forward traffic
         """
-        if aup_acceptance_required is not None:
-            pulumi.set(__self__, "aup_acceptance_required", aup_acceptance_required)
-        if aup_expire is not None:
-            pulumi.set(__self__, "aup_expire", aup_expire)
-        if aup_ssl_proxy is not None:
-            pulumi.set(__self__, "aup_ssl_proxy", aup_ssl_proxy)
-        if download_mbps is not None:
-            pulumi.set(__self__, "download_mbps", download_mbps)
-        if enable_aup is not None:
-            pulumi.set(__self__, "enable_aup", enable_aup)
-        if enable_caution is not None:
-            pulumi.set(__self__, "enable_caution", enable_caution)
-        if enforce_authentication is not None:
-            pulumi.set(__self__, "enforce_authentication", enforce_authentication)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if aup_block_internet_until_accepted is not None:
+            pulumi.set(__self__, "aup_block_internet_until_accepted", aup_block_internet_until_accepted)
+        if aup_enabled is not None:
+            pulumi.set(__self__, "aup_enabled", aup_enabled)
+        if aup_force_ssl_inspection is not None:
+            pulumi.set(__self__, "aup_force_ssl_inspection", aup_force_ssl_inspection)
+        if aup_timeout_in_days is not None:
+            pulumi.set(__self__, "aup_timeout_in_days", aup_timeout_in_days)
+        if auth_required is not None:
+            pulumi.set(__self__, "auth_required", auth_required)
+        if caution_enabled is not None:
+            pulumi.set(__self__, "caution_enabled", caution_enabled)
+        if dn_bandwidth is not None:
+            pulumi.set(__self__, "dn_bandwidth", dn_bandwidth)
+        if idle_time_in_minutes is not None:
+            pulumi.set(__self__, "idle_time_in_minutes", idle_time_in_minutes)
+        if ofw_enabled is not None:
+            pulumi.set(__self__, "ofw_enabled", ofw_enabled)
         if sub_locations is not None:
             pulumi.set(__self__, "sub_locations", sub_locations)
-        if upload_mbps is not None:
-            pulumi.set(__self__, "upload_mbps", upload_mbps)
-        if use_xff is not None:
-            pulumi.set(__self__, "use_xff", use_xff)
+        if surrogate_ip is not None:
+            pulumi.set(__self__, "surrogate_ip", surrogate_ip)
+        if surrogate_ip_enforced_for_known_browsers is not None:
+            pulumi.set(__self__, "surrogate_ip_enforced_for_known_browsers", surrogate_ip_enforced_for_known_browsers)
+        if surrogate_refresh_time_in_minutes is not None:
+            pulumi.set(__self__, "surrogate_refresh_time_in_minutes", surrogate_refresh_time_in_minutes)
+        if up_bandwidth is not None:
+            pulumi.set(__self__, "up_bandwidth", up_bandwidth)
+        if xff_forward_enabled is not None:
+            pulumi.set(__self__, "xff_forward_enabled", xff_forward_enabled)
 
     @property
-    @pulumi.getter(name="aupAcceptanceRequired")
-    def aup_acceptance_required(self) -> Optional[bool]:
-        return pulumi.get(self, "aup_acceptance_required")
+    @pulumi.getter(name="aupBlockInternetUntilAccepted")
+    def aup_block_internet_until_accepted(self) -> Optional[bool]:
+        return pulumi.get(self, "aup_block_internet_until_accepted")
 
     @property
-    @pulumi.getter(name="aupExpire")
-    def aup_expire(self) -> Optional[int]:
+    @pulumi.getter(name="aupEnabled")
+    def aup_enabled(self) -> Optional[bool]:
         """
-        days before AUP is requested again
+        Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
         """
-        return pulumi.get(self, "aup_expire")
+        return pulumi.get(self, "aup_enabled")
 
     @property
-    @pulumi.getter(name="aupSslProxy")
-    def aup_ssl_proxy(self) -> Optional[bool]:
+    @pulumi.getter(name="aupForceSslInspection")
+    def aup_force_ssl_inspection(self) -> Optional[bool]:
         """
         proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
-        return pulumi.get(self, "aup_ssl_proxy")
+        return pulumi.get(self, "aup_force_ssl_inspection")
 
     @property
-    @pulumi.getter(name="downloadMbps")
-    def download_mbps(self) -> Optional[int]:
+    @pulumi.getter(name="aupTimeoutInDays")
+    def aup_timeout_in_days(self) -> Optional[int]:
         """
-        the download bandwidth cap of the link, in Mbps
+        Required if `aup_enabled`==`true`. Days before AUP is requested again
         """
-        return pulumi.get(self, "download_mbps")
+        return pulumi.get(self, "aup_timeout_in_days")
 
     @property
-    @pulumi.getter(name="enableAup")
-    def enable_aup(self) -> Optional[bool]:
+    @pulumi.getter(name="authRequired")
+    def auth_required(self) -> Optional[bool]:
         """
-        if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+        Enable this option to enforce user authentication
         """
-        return pulumi.get(self, "enable_aup")
+        return pulumi.get(self, "auth_required")
 
     @property
-    @pulumi.getter(name="enableCaution")
-    def enable_caution(self) -> Optional[bool]:
+    @pulumi.getter(name="cautionEnabled")
+    def caution_enabled(self) -> Optional[bool]:
         """
-        when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+        Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
         """
-        return pulumi.get(self, "enable_caution")
+        return pulumi.get(self, "caution_enabled")
 
     @property
-    @pulumi.getter(name="enforceAuthentication")
-    def enforce_authentication(self) -> Optional[bool]:
-        return pulumi.get(self, "enforce_authentication")
+    @pulumi.getter(name="dnBandwidth")
+    def dn_bandwidth(self) -> Optional[float]:
+        """
+        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        """
+        return pulumi.get(self, "dn_bandwidth")
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[str]:
-        return pulumi.get(self, "name")
+    @pulumi.getter(name="idleTimeInMinutes")
+    def idle_time_in_minutes(self) -> Optional[int]:
+        """
+        Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        """
+        return pulumi.get(self, "idle_time_in_minutes")
+
+    @property
+    @pulumi.getter(name="ofwEnabled")
+    def ofw_enabled(self) -> Optional[bool]:
+        """
+        if `true`, enable the firewall control option
+        """
+        return pulumi.get(self, "ofw_enabled")
 
     @property
     @pulumi.getter(name="subLocations")
     def sub_locations(self) -> Optional[Sequence['outputs.GatewayTunnelProviderOptionsZscalerSubLocation']]:
         """
-        if `use_xff`==`true`
+        `sub-locations` can be used for specific uses cases to define different configuration based on the user network
         """
         return pulumi.get(self, "sub_locations")
 
     @property
-    @pulumi.getter(name="uploadMbps")
-    def upload_mbps(self) -> Optional[int]:
+    @pulumi.getter(name="surrogateIp")
+    def surrogate_ip(self) -> Optional[bool]:
         """
-        the download bandwidth cap of the link, in Mbps
+        Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         """
-        return pulumi.get(self, "upload_mbps")
+        return pulumi.get(self, "surrogate_ip")
 
     @property
-    @pulumi.getter(name="useXff")
-    def use_xff(self) -> Optional[bool]:
+    @pulumi.getter(name="surrogateIpEnforcedForKnownBrowsers")
+    def surrogate_ip_enforced_for_known_browsers(self) -> Optional[bool]:
+        """
+        Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        """
+        return pulumi.get(self, "surrogate_ip_enforced_for_known_browsers")
+
+    @property
+    @pulumi.getter(name="surrogateRefreshTimeInMinutes")
+    def surrogate_refresh_time_in_minutes(self) -> Optional[int]:
+        """
+        Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        """
+        return pulumi.get(self, "surrogate_refresh_time_in_minutes")
+
+    @property
+    @pulumi.getter(name="upBandwidth")
+    def up_bandwidth(self) -> Optional[float]:
+        """
+        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        """
+        return pulumi.get(self, "up_bandwidth")
+
+    @property
+    @pulumi.getter(name="xffForwardEnabled")
+    def xff_forward_enabled(self) -> Optional[bool]:
         """
         location uses proxy chaining to forward traffic
         """
-        return pulumi.get(self, "use_xff")
+        return pulumi.get(self, "xff_forward_enabled")
 
 
 @pulumi.output_type
@@ -7161,22 +7303,32 @@ class GatewayTunnelProviderOptionsZscalerSubLocation(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "aupAcceptanceRequired":
-            suggest = "aup_acceptance_required"
-        elif key == "aupExpire":
-            suggest = "aup_expire"
-        elif key == "aupSslProxy":
-            suggest = "aup_ssl_proxy"
-        elif key == "downloadMbps":
-            suggest = "download_mbps"
-        elif key == "enableAup":
-            suggest = "enable_aup"
-        elif key == "enableCaution":
-            suggest = "enable_caution"
-        elif key == "enforceAuthentication":
-            suggest = "enforce_authentication"
-        elif key == "uploadMbps":
-            suggest = "upload_mbps"
+        if key == "aupBlockInternetUntilAccepted":
+            suggest = "aup_block_internet_until_accepted"
+        elif key == "aupEnabled":
+            suggest = "aup_enabled"
+        elif key == "aupForceSslInspection":
+            suggest = "aup_force_ssl_inspection"
+        elif key == "aupTimeoutInDays":
+            suggest = "aup_timeout_in_days"
+        elif key == "authRequired":
+            suggest = "auth_required"
+        elif key == "cautionEnabled":
+            suggest = "caution_enabled"
+        elif key == "dnBandwidth":
+            suggest = "dn_bandwidth"
+        elif key == "idleTimeInMinutes":
+            suggest = "idle_time_in_minutes"
+        elif key == "ofwEnabled":
+            suggest = "ofw_enabled"
+        elif key == "surrogateIp":
+            suggest = "surrogate_ip"
+        elif key == "surrogateIpEnforcedForKnownBrowsers":
+            suggest = "surrogate_ip_enforced_for_known_browsers"
+        elif key == "surrogateRefreshTimeInMinutes":
+            suggest = "surrogate_refresh_time_in_minutes"
+        elif key == "upBandwidth":
+            suggest = "up_bandwidth"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GatewayTunnelProviderOptionsZscalerSubLocation. Access the value via the '{suggest}' property getter instead.")
@@ -7190,104 +7342,172 @@ class GatewayTunnelProviderOptionsZscalerSubLocation(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 aup_acceptance_required: Optional[bool] = None,
-                 aup_expire: Optional[int] = None,
-                 aup_ssl_proxy: Optional[bool] = None,
-                 download_mbps: Optional[int] = None,
-                 enable_aup: Optional[bool] = None,
-                 enable_caution: Optional[bool] = None,
-                 enforce_authentication: Optional[bool] = None,
-                 subnets: Optional[Sequence[str]] = None,
-                 upload_mbps: Optional[int] = None):
+                 aup_block_internet_until_accepted: Optional[bool] = None,
+                 aup_enabled: Optional[bool] = None,
+                 aup_force_ssl_inspection: Optional[bool] = None,
+                 aup_timeout_in_days: Optional[int] = None,
+                 auth_required: Optional[bool] = None,
+                 caution_enabled: Optional[bool] = None,
+                 dn_bandwidth: Optional[float] = None,
+                 idle_time_in_minutes: Optional[int] = None,
+                 name: Optional[str] = None,
+                 ofw_enabled: Optional[bool] = None,
+                 surrogate_ip: Optional[bool] = None,
+                 surrogate_ip_enforced_for_known_browsers: Optional[bool] = None,
+                 surrogate_refresh_time_in_minutes: Optional[int] = None,
+                 up_bandwidth: Optional[float] = None):
         """
-        :param int aup_expire: days before AUP is requested again
-        :param bool aup_ssl_proxy: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-        :param int download_mbps: the download bandwidth cap of the link, in Mbps
-        :param bool enable_aup: if `use_xff`==`true`, display Acceptable Use Policy (AUP)
-        :param bool enable_caution: when `enforce_authentication`==`false`, display caution notification for non-authenticated users
-        :param int upload_mbps: the download bandwidth cap of the link, in Mbps
+        :param bool aup_enabled: Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
+        :param bool aup_force_ssl_inspection: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        :param int aup_timeout_in_days: Required if `aup_enabled`==`true`. Days before AUP is requested again
+        :param bool auth_required: Enable this option to authenticate users
+        :param bool caution_enabled: Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
+        :param float dn_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param int idle_time_in_minutes: Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        :param str name: Network name
+        :param bool ofw_enabled: if `true`, enable the firewall control option
+        :param bool surrogate_ip: Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        :param bool surrogate_ip_enforced_for_known_browsers: Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        :param int surrogate_refresh_time_in_minutes: Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        :param float up_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
         """
-        if aup_acceptance_required is not None:
-            pulumi.set(__self__, "aup_acceptance_required", aup_acceptance_required)
-        if aup_expire is not None:
-            pulumi.set(__self__, "aup_expire", aup_expire)
-        if aup_ssl_proxy is not None:
-            pulumi.set(__self__, "aup_ssl_proxy", aup_ssl_proxy)
-        if download_mbps is not None:
-            pulumi.set(__self__, "download_mbps", download_mbps)
-        if enable_aup is not None:
-            pulumi.set(__self__, "enable_aup", enable_aup)
-        if enable_caution is not None:
-            pulumi.set(__self__, "enable_caution", enable_caution)
-        if enforce_authentication is not None:
-            pulumi.set(__self__, "enforce_authentication", enforce_authentication)
-        if subnets is not None:
-            pulumi.set(__self__, "subnets", subnets)
-        if upload_mbps is not None:
-            pulumi.set(__self__, "upload_mbps", upload_mbps)
+        if aup_block_internet_until_accepted is not None:
+            pulumi.set(__self__, "aup_block_internet_until_accepted", aup_block_internet_until_accepted)
+        if aup_enabled is not None:
+            pulumi.set(__self__, "aup_enabled", aup_enabled)
+        if aup_force_ssl_inspection is not None:
+            pulumi.set(__self__, "aup_force_ssl_inspection", aup_force_ssl_inspection)
+        if aup_timeout_in_days is not None:
+            pulumi.set(__self__, "aup_timeout_in_days", aup_timeout_in_days)
+        if auth_required is not None:
+            pulumi.set(__self__, "auth_required", auth_required)
+        if caution_enabled is not None:
+            pulumi.set(__self__, "caution_enabled", caution_enabled)
+        if dn_bandwidth is not None:
+            pulumi.set(__self__, "dn_bandwidth", dn_bandwidth)
+        if idle_time_in_minutes is not None:
+            pulumi.set(__self__, "idle_time_in_minutes", idle_time_in_minutes)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ofw_enabled is not None:
+            pulumi.set(__self__, "ofw_enabled", ofw_enabled)
+        if surrogate_ip is not None:
+            pulumi.set(__self__, "surrogate_ip", surrogate_ip)
+        if surrogate_ip_enforced_for_known_browsers is not None:
+            pulumi.set(__self__, "surrogate_ip_enforced_for_known_browsers", surrogate_ip_enforced_for_known_browsers)
+        if surrogate_refresh_time_in_minutes is not None:
+            pulumi.set(__self__, "surrogate_refresh_time_in_minutes", surrogate_refresh_time_in_minutes)
+        if up_bandwidth is not None:
+            pulumi.set(__self__, "up_bandwidth", up_bandwidth)
 
     @property
-    @pulumi.getter(name="aupAcceptanceRequired")
-    def aup_acceptance_required(self) -> Optional[bool]:
-        return pulumi.get(self, "aup_acceptance_required")
+    @pulumi.getter(name="aupBlockInternetUntilAccepted")
+    def aup_block_internet_until_accepted(self) -> Optional[bool]:
+        return pulumi.get(self, "aup_block_internet_until_accepted")
 
     @property
-    @pulumi.getter(name="aupExpire")
-    def aup_expire(self) -> Optional[int]:
+    @pulumi.getter(name="aupEnabled")
+    def aup_enabled(self) -> Optional[bool]:
         """
-        days before AUP is requested again
+        Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
         """
-        return pulumi.get(self, "aup_expire")
+        return pulumi.get(self, "aup_enabled")
 
     @property
-    @pulumi.getter(name="aupSslProxy")
-    def aup_ssl_proxy(self) -> Optional[bool]:
+    @pulumi.getter(name="aupForceSslInspection")
+    def aup_force_ssl_inspection(self) -> Optional[bool]:
         """
         proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
-        return pulumi.get(self, "aup_ssl_proxy")
+        return pulumi.get(self, "aup_force_ssl_inspection")
 
     @property
-    @pulumi.getter(name="downloadMbps")
-    def download_mbps(self) -> Optional[int]:
+    @pulumi.getter(name="aupTimeoutInDays")
+    def aup_timeout_in_days(self) -> Optional[int]:
         """
-        the download bandwidth cap of the link, in Mbps
+        Required if `aup_enabled`==`true`. Days before AUP is requested again
         """
-        return pulumi.get(self, "download_mbps")
+        return pulumi.get(self, "aup_timeout_in_days")
 
     @property
-    @pulumi.getter(name="enableAup")
-    def enable_aup(self) -> Optional[bool]:
+    @pulumi.getter(name="authRequired")
+    def auth_required(self) -> Optional[bool]:
         """
-        if `use_xff`==`true`, display Acceptable Use Policy (AUP)
+        Enable this option to authenticate users
         """
-        return pulumi.get(self, "enable_aup")
+        return pulumi.get(self, "auth_required")
 
     @property
-    @pulumi.getter(name="enableCaution")
-    def enable_caution(self) -> Optional[bool]:
+    @pulumi.getter(name="cautionEnabled")
+    def caution_enabled(self) -> Optional[bool]:
         """
-        when `enforce_authentication`==`false`, display caution notification for non-authenticated users
+        Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
         """
-        return pulumi.get(self, "enable_caution")
+        return pulumi.get(self, "caution_enabled")
 
     @property
-    @pulumi.getter(name="enforceAuthentication")
-    def enforce_authentication(self) -> Optional[bool]:
-        return pulumi.get(self, "enforce_authentication")
+    @pulumi.getter(name="dnBandwidth")
+    def dn_bandwidth(self) -> Optional[float]:
+        """
+        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        """
+        return pulumi.get(self, "dn_bandwidth")
+
+    @property
+    @pulumi.getter(name="idleTimeInMinutes")
+    def idle_time_in_minutes(self) -> Optional[int]:
+        """
+        Required if `surrogate_IP`==`true`, idle Time to Disassociation
+        """
+        return pulumi.get(self, "idle_time_in_minutes")
 
     @property
     @pulumi.getter
-    def subnets(self) -> Optional[Sequence[str]]:
-        return pulumi.get(self, "subnets")
+    def name(self) -> Optional[str]:
+        """
+        Network name
+        """
+        return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="uploadMbps")
-    def upload_mbps(self) -> Optional[int]:
+    @pulumi.getter(name="ofwEnabled")
+    def ofw_enabled(self) -> Optional[bool]:
         """
-        the download bandwidth cap of the link, in Mbps
+        if `true`, enable the firewall control option
         """
-        return pulumi.get(self, "upload_mbps")
+        return pulumi.get(self, "ofw_enabled")
+
+    @property
+    @pulumi.getter(name="surrogateIp")
+    def surrogate_ip(self) -> Optional[bool]:
+        """
+        Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+        """
+        return pulumi.get(self, "surrogate_ip")
+
+    @property
+    @pulumi.getter(name="surrogateIpEnforcedForKnownBrowsers")
+    def surrogate_ip_enforced_for_known_browsers(self) -> Optional[bool]:
+        """
+        Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+        """
+        return pulumi.get(self, "surrogate_ip_enforced_for_known_browsers")
+
+    @property
+    @pulumi.getter(name="surrogateRefreshTimeInMinutes")
+    def surrogate_refresh_time_in_minutes(self) -> Optional[int]:
+        """
+        Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
+        """
+        return pulumi.get(self, "surrogate_refresh_time_in_minutes")
+
+    @property
+    @pulumi.getter(name="upBandwidth")
+    def up_bandwidth(self) -> Optional[float]:
+        """
+        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        """
+        return pulumi.get(self, "up_bandwidth")
 
 
 @pulumi.output_type
@@ -7346,10 +7566,12 @@ class SwitchAclPolicy(dict):
                  name: Optional[str] = None,
                  src_tags: Optional[Sequence[str]] = None):
         """
-        :param Sequence['SwitchAclPolicyActionArgs'] actions: - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-               - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
-        :param Sequence[str] src_tags: - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-               - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        :param Sequence['SwitchAclPolicyActionArgs'] actions: ACL Policy Actions:
+                 - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+                 - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        :param Sequence[str] src_tags: ACL Policy Source Tags:
+                 - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+                 - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -7362,8 +7584,9 @@ class SwitchAclPolicy(dict):
     @pulumi.getter
     def actions(self) -> Optional[Sequence['outputs.SwitchAclPolicyAction']]:
         """
-        - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        ACL Policy Actions:
+          - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+          - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         """
         return pulumi.get(self, "actions")
 
@@ -7376,8 +7599,9 @@ class SwitchAclPolicy(dict):
     @pulumi.getter(name="srcTags")
     def src_tags(self) -> Optional[Sequence[str]]:
         """
-        - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        ACL Policy Source Tags:
+          - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+          - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         """
         return pulumi.get(self, "src_tags")
 
@@ -7466,9 +7690,9 @@ class SwitchAclTags(dict):
                  * `static_gbp`: applying gbp tag against matching conditions
                  * `subnet`'
         :param int gbp_tag: required if
-               - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-               - `type`==`gbp_resource`
-               - `type`==`static_gbp` (applying gbp tag against matching conditions)
+                 - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+                 - `type`==`gbp_resource`
+                 - `type`==`static_gbp` (applying gbp tag against matching conditions)
         :param Sequence[str] macs: required if 
                - `type`==`mac`
                - `type`==`static_gbp` if from matching mac
@@ -7482,8 +7706,7 @@ class SwitchAclTags(dict):
                  * `type`==`radius_group`
                  * `type`==`static_gbp`
                if from matching radius_group
-        :param Sequence['SwitchAclTagsSpecArgs'] specs: if `type`==`resource` or `type`==`gbp_resource`
-               empty means unrestricted, i.e. any
+        :param Sequence['SwitchAclTagsSpecArgs'] specs: if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         :param Sequence[str] subnets: if 
                - `type`==`subnet` 
                - `type`==`resource` (optional. default is `any`)
@@ -7525,9 +7748,9 @@ class SwitchAclTags(dict):
     def gbp_tag(self) -> Optional[int]:
         """
         required if
-        - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-        - `type`==`gbp_resource`
-        - `type`==`static_gbp` (applying gbp tag against matching conditions)
+          - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+          - `type`==`gbp_resource`
+          - `type`==`static_gbp` (applying gbp tag against matching conditions)
         """
         return pulumi.get(self, "gbp_tag")
 
@@ -7569,8 +7792,7 @@ class SwitchAclTags(dict):
     @pulumi.getter
     def specs(self) -> Optional[Sequence['outputs.SwitchAclTagsSpec']]:
         """
-        if `type`==`resource` or `type`==`gbp_resource`
-        empty means unrestricted, i.e. any
+        if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         """
         return pulumi.get(self, "specs")
 
@@ -7610,7 +7832,7 @@ class SwitchAclTagsSpec(dict):
                  protocol: Optional[str] = None):
         """
         :param str port_range: matched dst port, "0" means any
-        :param str protocol: `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocol_number` is between 1-254
+        :param str protocol: `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
         """
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
@@ -7629,7 +7851,7 @@ class SwitchAclTagsSpec(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocol_number` is between 1-254
+        `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
         """
         return pulumi.get(self, "protocol")
 
@@ -8060,33 +8282,6 @@ class SwitchDhcpdConfigConfigVendorEncapsulated(dict):
 
 
 @pulumi.output_type
-class SwitchEvpnConfig(dict):
-    def __init__(__self__, *,
-                 enabled: Optional[bool] = None,
-                 role: Optional[str] = None):
-        """
-        :param str role: enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-        """
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter
-    def role(self) -> Optional[str]:
-        """
-        enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-        """
-        return pulumi.get(self, "role")
-
-
-@pulumi.output_type
 class SwitchExtraRoutes6(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8482,6 +8677,7 @@ class SwitchLocalPortConfig(dict):
                  mode: Optional[str] = None,
                  mtu: Optional[int] = None,
                  networks: Optional[Sequence[str]] = None,
+                 note: Optional[str] = None,
                  persist_mac: Optional[bool] = None,
                  poe_disabled: Optional[bool] = None,
                  port_auth: Optional[str] = None,
@@ -8499,9 +8695,7 @@ class SwitchLocalPortConfig(dict):
         """
         :param str usage: port usage name.
         :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param bool allow_dhcpd: If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-               All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-               When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        :param bool allow_dhcpd: If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         :param bool bypass_auth_when_server_down: Only if `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param bool bypass_auth_when_server_down_for_unkonwn_client: Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param bool disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -8510,8 +8704,7 @@ class SwitchLocalPortConfig(dict):
         :param Sequence[str] dynamic_vlan_networks: Only if `port_auth`==`dot1x`, if dynamic vlan is used, specify the possible networks/vlans RADIUS can return
         :param bool enable_mac_auth: Only if `port_auth`==`dot1x` whether to enable MAC Auth
         :param str guest_network: Only if `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
-        :param bool inter_switch_link: inter_switch_link is used together with "isolation" under networks
-               NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        :param bool inter_switch_link: inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         :param bool mac_auth_only: Only if `enable_mac_auth`==`true`
         :param bool mac_auth_preferred: Only if `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param str mac_auth_protocol: Only if `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
@@ -8519,6 +8712,7 @@ class SwitchLocalPortConfig(dict):
         :param str mode: enum: `access`, `inet`, `trunk`
         :param int mtu: media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
         :param Sequence[str] networks: Only if `mode`==`trunk`, the list of network/vlans
+        :param str note: Additional note for the port config override
         :param bool persist_mac: Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
         :param bool poe_disabled: whether PoE capabilities are disabled for a port
         :param str port_auth: if dot1x is desired, set to dot1x. enum: `dot1x`
@@ -8575,6 +8769,8 @@ class SwitchLocalPortConfig(dict):
             pulumi.set(__self__, "mtu", mtu)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if note is not None:
+            pulumi.set(__self__, "note", note)
         if persist_mac is not None:
             pulumi.set(__self__, "persist_mac", persist_mac)
         if poe_disabled is not None:
@@ -8624,9 +8820,7 @@ class SwitchLocalPortConfig(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[bool]:
         """
-        If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-        All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -8713,8 +8907,7 @@ class SwitchLocalPortConfig(dict):
     @pulumi.getter(name="interSwitchLink")
     def inter_switch_link(self) -> Optional[bool]:
         """
-        inter_switch_link is used together with "isolation" under networks
-        NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         """
         return pulumi.get(self, "inter_switch_link")
 
@@ -8773,6 +8966,14 @@ class SwitchLocalPortConfig(dict):
         Only if `mode`==`trunk`, the list of network/vlans
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter
+    def note(self) -> Optional[str]:
+        """
+        Additional note for the port config override
+        """
+        return pulumi.get(self, "note")
 
     @property
     @pulumi.getter(name="persistMac")
@@ -9024,8 +9225,7 @@ class SwitchNetworks(dict):
         """
         :param str gateway: only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         :param str gateway6: only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
-        :param bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-               NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        :param bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         :param str subnet: optional for pure switching, required when L3 / routing features are used
         :param str subnet6: optional for pure switching, required when L3 / routing features are used
         """
@@ -9068,8 +9268,7 @@ class SwitchNetworks(dict):
     @pulumi.getter
     def isolation(self) -> Optional[bool]:
         """
-        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-        NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         """
         return pulumi.get(self, "isolation")
 
@@ -9924,9 +10123,7 @@ class SwitchPortUsages(dict):
                  voip_network: Optional[str] = None):
         """
         :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-               All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-               When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        :param bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         :param bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param bool bypass_auth_when_server_down_for_unkonwn_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
@@ -9938,8 +10135,7 @@ class SwitchPortUsages(dict):
         :param bool enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
         :param bool enable_qos: Only if `mode`!=`dynamic`
         :param str guest_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
-        :param bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
-               NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        :param bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         :param bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
         :param bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
@@ -9957,8 +10153,7 @@ class SwitchPortUsages(dict):
         :param str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
         :param str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
         :param str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
-        :param 'SwitchPortUsagesStormControlArgs' storm_control: Switch storm control
-               Only if `mode`!=`dynamic`
+        :param 'SwitchPortUsagesStormControlArgs' storm_control: Switch storm control. Only if `mode`!=`dynamic`
         :param bool stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         :param bool use_vstp: if this is connected to a vstp network
         :param str voip_network: Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
@@ -10050,9 +10245,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[bool]:
         """
-        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-        All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -10148,8 +10341,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter(name="interSwitchLink")
     def inter_switch_link(self) -> Optional[bool]:
         """
-        Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
-        NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         """
         return pulumi.get(self, "inter_switch_link")
 
@@ -10293,8 +10485,7 @@ class SwitchPortUsages(dict):
     @pulumi.getter(name="stormControl")
     def storm_control(self) -> Optional['outputs.SwitchPortUsagesStormControl']:
         """
-        Switch storm control
-        Only if `mode`!=`dynamic`
+        Switch storm control. Only if `mode`!=`dynamic`
         """
         return pulumi.get(self, "storm_control")
 
@@ -10547,8 +10738,7 @@ class SwitchRadiusConfig(dict):
         :param int acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param int auth_servers_retries: radius auth session retries
         :param int auth_servers_timeout: radius auth session timeout
-        :param str network: use `network`or `source_ip`
-               which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        :param str network: use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         :param str source_ip: use `network`or `source_ip`
         """
         if acct_interim_interval is not None:
@@ -10604,8 +10794,7 @@ class SwitchRadiusConfig(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        use `network`or `source_ip`
-        which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         """
         return pulumi.get(self, "network")
 
@@ -12102,11 +12291,9 @@ class SwitchSnmpConfigV3ConfigUsmUser(dict):
                  encryption_type: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str authentication_password: Not required if `authentication_type`==`authentication_none`
-               include alphabetic, numeric, and special characters, but it cannot include control characters.
+        :param str authentication_password: Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         :param str authentication_type: sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
-        :param str encryption_password: Not required if `encryption_type`==`privacy-none`
-               include alphabetic, numeric, and special characters, but it cannot include control characters
+        :param str encryption_password: Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         :param str encryption_type: enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
         """
         if authentication_password is not None:
@@ -12124,8 +12311,7 @@ class SwitchSnmpConfigV3ConfigUsmUser(dict):
     @pulumi.getter(name="authenticationPassword")
     def authentication_password(self) -> Optional[str]:
         """
-        Not required if `authentication_type`==`authentication_none`
-        include alphabetic, numeric, and special characters, but it cannot include control characters.
+        Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         """
         return pulumi.get(self, "authentication_password")
 
@@ -12141,8 +12327,7 @@ class SwitchSnmpConfigV3ConfigUsmUser(dict):
     @pulumi.getter(name="encryptionPassword")
     def encryption_password(self) -> Optional[str]:
         """
-        Not required if `encryption_type`==`privacy-none`
-        include alphabetic, numeric, and special characters, but it cannot include control characters
+        Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         """
         return pulumi.get(self, "encryption_password")
 

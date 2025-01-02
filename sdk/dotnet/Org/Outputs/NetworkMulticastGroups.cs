@@ -7,26 +7,21 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.JuniperMist.Device.Outputs
+namespace Pulumi.JuniperMist.Org.Outputs
 {
 
     [OutputType]
-    public sealed class SwitchEvpnConfig
+    public sealed class NetworkMulticastGroups
     {
-        public readonly bool? Enabled;
         /// <summary>
-        /// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
+        /// RP (rendezvous point) IP Address
         /// </summary>
-        public readonly string? Role;
+        public readonly string? RpIp;
 
         [OutputConstructor]
-        private SwitchEvpnConfig(
-            bool? enabled,
-
-            string? role)
+        private NetworkMulticastGroups(string? rpIp)
         {
-            Enabled = enabled;
-            Role = role;
+            RpIp = rpIp;
         }
     }
 }

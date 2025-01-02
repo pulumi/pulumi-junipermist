@@ -51,6 +51,10 @@ public final class DeviceprofileGatewayNetwork {
     private @Nullable List<String> routedForNetworks;
     private String subnet;
     private @Nullable String subnet6;
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     private @Nullable Map<String,DeviceprofileGatewayNetworkTenants> tenants;
     private @Nullable String vlanId;
     /**
@@ -113,6 +117,10 @@ public final class DeviceprofileGatewayNetwork {
     public Optional<String> subnet6() {
         return Optional.ofNullable(this.subnet6);
     }
+    /**
+     * @return Property key must be the user/tenant name (i.e. &#34;printer-1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Map<String,DeviceprofileGatewayNetworkTenants> tenants() {
         return this.tenants == null ? Map.of() : this.tenants;
     }

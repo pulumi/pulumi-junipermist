@@ -14,20 +14,26 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayPortConfigTrafficShaping
     {
         /// <summary>
-        /// percentages for differet class of traffic: high / medium / low / best-effort
-        /// sum must be equal to 100
+        /// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
         /// </summary>
         public readonly ImmutableArray<int> ClassPercentages;
         public readonly bool? Enabled;
+        /// <summary>
+        /// Interface Transmit Cap in kbps
+        /// </summary>
+        public readonly int? MaxTxKbps;
 
         [OutputConstructor]
         private DeviceprofileGatewayPortConfigTrafficShaping(
             ImmutableArray<int> classPercentages,
 
-            bool? enabled)
+            bool? enabled,
+
+            int? maxTxKbps)
         {
             ClassPercentages = classPercentages;
             Enabled = enabled;
+            MaxTxKbps = maxTxKbps;
         }
     }
 }

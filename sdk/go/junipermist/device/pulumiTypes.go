@@ -4426,8 +4426,7 @@ type GatewayBgpConfig struct {
 	Export     *string `pulumi:"export"`
 	// default export policies if no per-neighbor policies defined
 	ExportPolicy *string `pulumi:"exportPolicy"`
-	// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-	// for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+	// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
 	ExtendedV4Nexthop *bool `pulumi:"extendedV4Nexthop"`
 	// `0` means disable
 	GracefulRestartTime *int    `pulumi:"gracefulRestartTime"`
@@ -4478,8 +4477,7 @@ type GatewayBgpConfigArgs struct {
 	Export     pulumi.StringPtrInput `pulumi:"export"`
 	// default export policies if no per-neighbor policies defined
 	ExportPolicy pulumi.StringPtrInput `pulumi:"exportPolicy"`
-	// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-	// for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+	// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
 	ExtendedV4Nexthop pulumi.BoolPtrInput `pulumi:"extendedV4Nexthop"`
 	// `0` means disable
 	GracefulRestartTime pulumi.IntPtrInput    `pulumi:"gracefulRestartTime"`
@@ -4587,8 +4585,7 @@ func (o GatewayBgpConfigOutput) ExportPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *string { return v.ExportPolicy }).(pulumi.StringPtrOutput)
 }
 
-// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6)
-// for v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
 func (o GatewayBgpConfigOutput) ExtendedV4Nexthop() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayBgpConfig) *bool { return v.ExtendedV4Nexthop }).(pulumi.BoolPtrOutput)
 }
@@ -6337,11 +6334,12 @@ type GatewayNetwork struct {
 	Multicast *GatewayNetworkMulticast `pulumi:"multicast"`
 	Name      string                   `pulumi:"name"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-	RoutedForNetworks []string                         `pulumi:"routedForNetworks"`
-	Subnet            string                           `pulumi:"subnet"`
-	Subnet6           *string                          `pulumi:"subnet6"`
-	Tenants           map[string]GatewayNetworkTenants `pulumi:"tenants"`
-	VlanId            *string                          `pulumi:"vlanId"`
+	RoutedForNetworks []string `pulumi:"routedForNetworks"`
+	Subnet            string   `pulumi:"subnet"`
+	Subnet6           *string  `pulumi:"subnet6"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants map[string]GatewayNetworkTenants `pulumi:"tenants"`
+	VlanId  *string                          `pulumi:"vlanId"`
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess map[string]GatewayNetworkVpnAccess `pulumi:"vpnAccess"`
 }
@@ -6371,11 +6369,12 @@ type GatewayNetworkArgs struct {
 	Multicast GatewayNetworkMulticastPtrInput `pulumi:"multicast"`
 	Name      pulumi.StringInput              `pulumi:"name"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-	RoutedForNetworks pulumi.StringArrayInput       `pulumi:"routedForNetworks"`
-	Subnet            pulumi.StringInput            `pulumi:"subnet"`
-	Subnet6           pulumi.StringPtrInput         `pulumi:"subnet6"`
-	Tenants           GatewayNetworkTenantsMapInput `pulumi:"tenants"`
-	VlanId            pulumi.StringPtrInput         `pulumi:"vlanId"`
+	RoutedForNetworks pulumi.StringArrayInput `pulumi:"routedForNetworks"`
+	Subnet            pulumi.StringInput      `pulumi:"subnet"`
+	Subnet6           pulumi.StringPtrInput   `pulumi:"subnet6"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants GatewayNetworkTenantsMapInput `pulumi:"tenants"`
+	VlanId  pulumi.StringPtrInput         `pulumi:"vlanId"`
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess GatewayNetworkVpnAccessMapInput `pulumi:"vpnAccess"`
 }
@@ -6480,6 +6479,7 @@ func (o GatewayNetworkOutput) Subnet6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetwork) *string { return v.Subnet6 }).(pulumi.StringPtrOutput)
 }
 
+// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkOutput) Tenants() GatewayNetworkTenantsMapOutput {
 	return o.ApplyT(func(v GatewayNetwork) map[string]GatewayNetworkTenants { return v.Tenants }).(GatewayNetworkTenantsMapOutput)
 }
@@ -6648,12 +6648,12 @@ func (o GatewayNetworkInternalAccessPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type GatewayNetworkInternetAccess struct {
 	CreateSimpleServicePolicy *bool `pulumi:"createSimpleServicePolicy"`
-	// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 	DestinationNat map[string]GatewayNetworkInternetAccessDestinationNat `pulumi:"destinationNat"`
 	Enabled        *bool                                                 `pulumi:"enabled"`
 	// by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
 	Restricted *bool `pulumi:"restricted"`
-	// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 	StaticNat map[string]GatewayNetworkInternetAccessStaticNat `pulumi:"staticNat"`
 }
 
@@ -6670,12 +6670,12 @@ type GatewayNetworkInternetAccessInput interface {
 
 type GatewayNetworkInternetAccessArgs struct {
 	CreateSimpleServicePolicy pulumi.BoolPtrInput `pulumi:"createSimpleServicePolicy"`
-	// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 	DestinationNat GatewayNetworkInternetAccessDestinationNatMapInput `pulumi:"destinationNat"`
 	Enabled        pulumi.BoolPtrInput                                `pulumi:"enabled"`
 	// by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
 	Restricted pulumi.BoolPtrInput `pulumi:"restricted"`
-	// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 	StaticNat GatewayNetworkInternetAccessStaticNatMapInput `pulumi:"staticNat"`
 }
 
@@ -6760,7 +6760,7 @@ func (o GatewayNetworkInternetAccessOutput) CreateSimpleServicePolicy() pulumi.B
 	return o.ApplyT(func(v GatewayNetworkInternetAccess) *bool { return v.CreateSimpleServicePolicy }).(pulumi.BoolPtrOutput)
 }
 
-// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 func (o GatewayNetworkInternetAccessOutput) DestinationNat() GatewayNetworkInternetAccessDestinationNatMapOutput {
 	return o.ApplyT(func(v GatewayNetworkInternetAccess) map[string]GatewayNetworkInternetAccessDestinationNat {
 		return v.DestinationNat
@@ -6776,7 +6776,7 @@ func (o GatewayNetworkInternetAccessOutput) Restricted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkInternetAccess) *bool { return v.Restricted }).(pulumi.BoolPtrOutput)
 }
 
-// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkInternetAccessOutput) StaticNat() GatewayNetworkInternetAccessStaticNatMapOutput {
 	return o.ApplyT(func(v GatewayNetworkInternetAccess) map[string]GatewayNetworkInternetAccessStaticNat {
 		return v.StaticNat
@@ -6816,7 +6816,7 @@ func (o GatewayNetworkInternetAccessPtrOutput) CreateSimpleServicePolicy() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 func (o GatewayNetworkInternetAccessPtrOutput) DestinationNat() GatewayNetworkInternetAccessDestinationNatMapOutput {
 	return o.ApplyT(func(v *GatewayNetworkInternetAccess) map[string]GatewayNetworkInternetAccessDestinationNat {
 		if v == nil {
@@ -6845,7 +6845,7 @@ func (o GatewayNetworkInternetAccessPtrOutput) Restricted() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkInternetAccessPtrOutput) StaticNat() GatewayNetworkInternetAccessStaticNatMapOutput {
 	return o.ApplyT(func(v *GatewayNetworkInternetAccess) map[string]GatewayNetworkInternetAccessStaticNat {
 		if v == nil {
@@ -6856,9 +6856,13 @@ func (o GatewayNetworkInternetAccessPtrOutput) StaticNat() GatewayNetworkInterne
 }
 
 type GatewayNetworkInternetAccessDestinationNat struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
 	InternalIp *string `pulumi:"internalIp"`
 	Name       *string `pulumi:"name"`
-	Port       *int    `pulumi:"port"`
+	// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+	Port *string `pulumi:"port"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+	WanName *string `pulumi:"wanName"`
 }
 
 // GatewayNetworkInternetAccessDestinationNatInput is an input type that accepts GatewayNetworkInternetAccessDestinationNatArgs and GatewayNetworkInternetAccessDestinationNatOutput values.
@@ -6873,9 +6877,13 @@ type GatewayNetworkInternetAccessDestinationNatInput interface {
 }
 
 type GatewayNetworkInternetAccessDestinationNatArgs struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
 	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
 	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Port       pulumi.IntPtrInput    `pulumi:"port"`
+	// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
 
 func (GatewayNetworkInternetAccessDestinationNatArgs) ElementType() reflect.Type {
@@ -6929,6 +6937,7 @@ func (o GatewayNetworkInternetAccessDestinationNatOutput) ToGatewayNetworkIntern
 	return o
 }
 
+// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkInternetAccessDestinationNatOutput) InternalIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkInternetAccessDestinationNat) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
 }
@@ -6937,8 +6946,14 @@ func (o GatewayNetworkInternetAccessDestinationNatOutput) Name() pulumi.StringPt
 	return o.ApplyT(func(v GatewayNetworkInternetAccessDestinationNat) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayNetworkInternetAccessDestinationNatOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkInternetAccessDestinationNat) *int { return v.Port }).(pulumi.IntPtrOutput)
+// The Destination NAT destination IP Address. Must be a Port (i.e. "443") or a Variable (i.e. "{{myvar}}")
+func (o GatewayNetworkInternetAccessDestinationNatOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayNetworkInternetAccessDestinationNat) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity
+func (o GatewayNetworkInternetAccessDestinationNatOutput) WanName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayNetworkInternetAccessDestinationNat) *string { return v.WanName }).(pulumi.StringPtrOutput)
 }
 
 type GatewayNetworkInternetAccessDestinationNatMapOutput struct{ *pulumi.OutputState }
@@ -6962,9 +6977,10 @@ func (o GatewayNetworkInternetAccessDestinationNatMapOutput) MapIndex(k pulumi.S
 }
 
 type GatewayNetworkInternetAccessStaticNat struct {
-	InternalIp *string `pulumi:"internalIp"`
-	Name       *string `pulumi:"name"`
-	// If not set, we configure the nat policies against all WAN ports for simplicity
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp string `pulumi:"internalIp"`
+	Name       string `pulumi:"name"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
 	WanName *string `pulumi:"wanName"`
 }
 
@@ -6980,9 +6996,10 @@ type GatewayNetworkInternetAccessStaticNatInput interface {
 }
 
 type GatewayNetworkInternetAccessStaticNatArgs struct {
-	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	// If not set, we configure the nat policies against all WAN ports for simplicity
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
 	WanName pulumi.StringPtrInput `pulumi:"wanName"`
 }
 
@@ -7037,15 +7054,16 @@ func (o GatewayNetworkInternetAccessStaticNatOutput) ToGatewayNetworkInternetAcc
 	return o
 }
 
-func (o GatewayNetworkInternetAccessStaticNatOutput) InternalIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkInternetAccessStaticNat) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+func (o GatewayNetworkInternetAccessStaticNatOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayNetworkInternetAccessStaticNat) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
-func (o GatewayNetworkInternetAccessStaticNatOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkInternetAccessStaticNat) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GatewayNetworkInternetAccessStaticNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayNetworkInternetAccessStaticNat) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// If not set, we configure the nat policies against all WAN ports for simplicity
+// SRX Only. If not set, we configure the nat policies against all WAN ports for simplicity. Can be a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkInternetAccessStaticNatOutput) WanName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkInternetAccessStaticNat) *string { return v.WanName }).(pulumi.StringPtrOutput)
 }
@@ -7437,7 +7455,7 @@ type GatewayNetworkVpnAccess struct {
 	AdvertisedSubnet *string `pulumi:"advertisedSubnet"`
 	// whether to allow ping from vpn into this routed network
 	AllowPing *bool `pulumi:"allowPing"`
-	// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 	DestinationNat map[string]GatewayNetworkVpnAccessDestinationNat `pulumi:"destinationNat"`
 	// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
 	NatPool *string `pulumi:"natPool"`
@@ -7445,20 +7463,17 @@ type GatewayNetworkVpnAccess struct {
 	NoReadvertiseToLanBgp *bool `pulumi:"noReadvertiseToLanBgp"`
 	// toward LAN-side OSPF peers
 	NoReadvertiseToLanOspf *bool `pulumi:"noReadvertiseToLanOspf"`
-	// toward overlay
-	// how HUB should deal with routes it received from Spokes
+	// toward overlay, how HUB should deal with routes it received from Spokes
 	NoReadvertiseToOverlay *bool `pulumi:"noReadvertiseToOverlay"`
-	// by default, the routes are only readvertised toward the same vrf on spoke
-	// to allow it to be leaked to other vrfs
+	// by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
 	OtherVrfs []string `pulumi:"otherVrfs"`
 	// whether this network is routable
 	Routed *bool `pulumi:"routed"`
 	// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
 	SourceNat *GatewayNetworkVpnAccessSourceNat `pulumi:"sourceNat"`
-	// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 	StaticNat map[string]GatewayNetworkVpnAccessStaticNat `pulumi:"staticNat"`
-	// toward overlay
-	// how HUB should deal with routes it received from Spokes
+	// toward overlay, how HUB should deal with routes it received from Spokes
 	SummarizedSubnet *string `pulumi:"summarizedSubnet"`
 	// toward LAN-side BGP peers
 	SummarizedSubnetToLanBgp *string `pulumi:"summarizedSubnetToLanBgp"`
@@ -7482,7 +7497,7 @@ type GatewayNetworkVpnAccessArgs struct {
 	AdvertisedSubnet pulumi.StringPtrInput `pulumi:"advertisedSubnet"`
 	// whether to allow ping from vpn into this routed network
 	AllowPing pulumi.BoolPtrInput `pulumi:"allowPing"`
-	// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+	// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 	DestinationNat GatewayNetworkVpnAccessDestinationNatMapInput `pulumi:"destinationNat"`
 	// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
 	NatPool pulumi.StringPtrInput `pulumi:"natPool"`
@@ -7490,20 +7505,17 @@ type GatewayNetworkVpnAccessArgs struct {
 	NoReadvertiseToLanBgp pulumi.BoolPtrInput `pulumi:"noReadvertiseToLanBgp"`
 	// toward LAN-side OSPF peers
 	NoReadvertiseToLanOspf pulumi.BoolPtrInput `pulumi:"noReadvertiseToLanOspf"`
-	// toward overlay
-	// how HUB should deal with routes it received from Spokes
+	// toward overlay, how HUB should deal with routes it received from Spokes
 	NoReadvertiseToOverlay pulumi.BoolPtrInput `pulumi:"noReadvertiseToOverlay"`
-	// by default, the routes are only readvertised toward the same vrf on spoke
-	// to allow it to be leaked to other vrfs
+	// by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
 	OtherVrfs pulumi.StringArrayInput `pulumi:"otherVrfs"`
 	// whether this network is routable
 	Routed pulumi.BoolPtrInput `pulumi:"routed"`
 	// if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
 	SourceNat GatewayNetworkVpnAccessSourceNatPtrInput `pulumi:"sourceNat"`
-	// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+	// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 	StaticNat GatewayNetworkVpnAccessStaticNatMapInput `pulumi:"staticNat"`
-	// toward overlay
-	// how HUB should deal with routes it received from Spokes
+	// toward overlay, how HUB should deal with routes it received from Spokes
 	SummarizedSubnet pulumi.StringPtrInput `pulumi:"summarizedSubnet"`
 	// toward LAN-side BGP peers
 	SummarizedSubnetToLanBgp pulumi.StringPtrInput `pulumi:"summarizedSubnetToLanBgp"`
@@ -7572,7 +7584,7 @@ func (o GatewayNetworkVpnAccessOutput) AllowPing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) *bool { return v.AllowPing }).(pulumi.BoolPtrOutput)
 }
 
-// Property key may be an IP/Port (i.e. "63.16.0.3:443"), or a port (i.e. ":2222")
+// Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internalIp` or `port` must be defined
 func (o GatewayNetworkVpnAccessOutput) DestinationNat() GatewayNetworkVpnAccessDestinationNatMapOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) map[string]GatewayNetworkVpnAccessDestinationNat {
 		return v.DestinationNat
@@ -7594,14 +7606,12 @@ func (o GatewayNetworkVpnAccessOutput) NoReadvertiseToLanOspf() pulumi.BoolPtrOu
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) *bool { return v.NoReadvertiseToLanOspf }).(pulumi.BoolPtrOutput)
 }
 
-// toward overlay
-// how HUB should deal with routes it received from Spokes
+// toward overlay, how HUB should deal with routes it received from Spokes
 func (o GatewayNetworkVpnAccessOutput) NoReadvertiseToOverlay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) *bool { return v.NoReadvertiseToOverlay }).(pulumi.BoolPtrOutput)
 }
 
-// by default, the routes are only readvertised toward the same vrf on spoke
-// to allow it to be leaked to other vrfs
+// by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
 func (o GatewayNetworkVpnAccessOutput) OtherVrfs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) []string { return v.OtherVrfs }).(pulumi.StringArrayOutput)
 }
@@ -7616,13 +7626,12 @@ func (o GatewayNetworkVpnAccessOutput) SourceNat() GatewayNetworkVpnAccessSource
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) *GatewayNetworkVpnAccessSourceNat { return v.SourceNat }).(GatewayNetworkVpnAccessSourceNatPtrOutput)
 }
 
-// Property key may be an IP Address (i.e. "172.16.0.1"), and IP Address and Port (i.e. "172.16.0.1:8443") or a CIDR (i.e. "172.16.0.12/20")
+// Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkVpnAccessOutput) StaticNat() GatewayNetworkVpnAccessStaticNatMapOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) map[string]GatewayNetworkVpnAccessStaticNat { return v.StaticNat }).(GatewayNetworkVpnAccessStaticNatMapOutput)
 }
 
-// toward overlay
-// how HUB should deal with routes it received from Spokes
+// toward overlay, how HUB should deal with routes it received from Spokes
 func (o GatewayNetworkVpnAccessOutput) SummarizedSubnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccess) *string { return v.SummarizedSubnet }).(pulumi.StringPtrOutput)
 }
@@ -7658,9 +7667,10 @@ func (o GatewayNetworkVpnAccessMapOutput) MapIndex(k pulumi.StringInput) Gateway
 }
 
 type GatewayNetworkVpnAccessDestinationNat struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
 	InternalIp *string `pulumi:"internalIp"`
 	Name       *string `pulumi:"name"`
-	Port       *int    `pulumi:"port"`
+	Port       *string `pulumi:"port"`
 }
 
 // GatewayNetworkVpnAccessDestinationNatInput is an input type that accepts GatewayNetworkVpnAccessDestinationNatArgs and GatewayNetworkVpnAccessDestinationNatOutput values.
@@ -7675,9 +7685,10 @@ type GatewayNetworkVpnAccessDestinationNatInput interface {
 }
 
 type GatewayNetworkVpnAccessDestinationNatArgs struct {
+	// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
 	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
 	Name       pulumi.StringPtrInput `pulumi:"name"`
-	Port       pulumi.IntPtrInput    `pulumi:"port"`
+	Port       pulumi.StringPtrInput `pulumi:"port"`
 }
 
 func (GatewayNetworkVpnAccessDestinationNatArgs) ElementType() reflect.Type {
@@ -7731,6 +7742,7 @@ func (o GatewayNetworkVpnAccessDestinationNatOutput) ToGatewayNetworkVpnAccessDe
 	return o
 }
 
+// The Destination NAT destination IP Address. Must be an IP (i.e. "192.168.70.30") or a Variable (i.e. "{{myvar}}")
 func (o GatewayNetworkVpnAccessDestinationNatOutput) InternalIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayNetworkVpnAccessDestinationNat) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
 }
@@ -7739,8 +7751,8 @@ func (o GatewayNetworkVpnAccessDestinationNatOutput) Name() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GatewayNetworkVpnAccessDestinationNat) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GatewayNetworkVpnAccessDestinationNatOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkVpnAccessDestinationNat) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o GatewayNetworkVpnAccessDestinationNatOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayNetworkVpnAccessDestinationNat) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
 type GatewayNetworkVpnAccessDestinationNatMapOutput struct{ *pulumi.OutputState }
@@ -7897,10 +7909,9 @@ func (o GatewayNetworkVpnAccessSourceNatPtrOutput) ExternalIp() pulumi.StringPtr
 }
 
 type GatewayNetworkVpnAccessStaticNat struct {
-	InternalIp *string `pulumi:"internalIp"`
-	Name       *string `pulumi:"name"`
-	// If not set, we configure the nat policies against all WAN ports for simplicity
-	WanName *string `pulumi:"wanName"`
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp string `pulumi:"internalIp"`
+	Name       string `pulumi:"name"`
 }
 
 // GatewayNetworkVpnAccessStaticNatInput is an input type that accepts GatewayNetworkVpnAccessStaticNatArgs and GatewayNetworkVpnAccessStaticNatOutput values.
@@ -7915,10 +7926,9 @@ type GatewayNetworkVpnAccessStaticNatInput interface {
 }
 
 type GatewayNetworkVpnAccessStaticNatArgs struct {
-	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
-	Name       pulumi.StringPtrInput `pulumi:"name"`
-	// If not set, we configure the nat policies against all WAN ports for simplicity
-	WanName pulumi.StringPtrInput `pulumi:"wanName"`
+	// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	Name       pulumi.StringInput `pulumi:"name"`
 }
 
 func (GatewayNetworkVpnAccessStaticNatArgs) ElementType() reflect.Type {
@@ -7972,17 +7982,13 @@ func (o GatewayNetworkVpnAccessStaticNatOutput) ToGatewayNetworkVpnAccessStaticN
 	return o
 }
 
-func (o GatewayNetworkVpnAccessStaticNatOutput) InternalIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkVpnAccessStaticNat) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+// The Static NAT destination IP Address. Must be an IP Address (i.e. "192.168.70.3") or a Variable (i.e. "{{myvar}}")
+func (o GatewayNetworkVpnAccessStaticNatOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayNetworkVpnAccessStaticNat) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
-func (o GatewayNetworkVpnAccessStaticNatOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkVpnAccessStaticNat) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// If not set, we configure the nat policies against all WAN ports for simplicity
-func (o GatewayNetworkVpnAccessStaticNatOutput) WanName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayNetworkVpnAccessStaticNat) *string { return v.WanName }).(pulumi.StringPtrOutput)
+func (o GatewayNetworkVpnAccessStaticNatOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayNetworkVpnAccessStaticNat) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GatewayNetworkVpnAccessStaticNatMapOutput struct{ *pulumi.OutputState }
@@ -8794,24 +8800,21 @@ type GatewayPortConfig struct {
 	AeDisableLacp *bool `pulumi:"aeDisableLacp"`
 	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
 	AeIdx *string `pulumi:"aeIdx"`
-	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 	AeLacpForceUp *bool `pulumi:"aeLacpForceUp"`
 	Aggregated    *bool `pulumi:"aggregated"`
 	// if want to generate port up/down alarm, set it to true
-	Critical       *bool   `pulumi:"critical"`
+	Critical *bool `pulumi:"critical"`
+	// Interface Description. Can be a variable (i.e. "{{myvar}}")
 	Description    *string `pulumi:"description"`
 	DisableAutoneg *bool   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
 	Disabled *bool `pulumi:"disabled"`
 	// if `wanType`==`dsl`. enum: `adsl`, `vdsl`
 	DslType *string `pulumi:"dslType"`
-	// if `wanType`==`dsl`
-	// 16 bit int
+	// if `wanType`==`dsl`, 16 bit int
 	DslVci *int `pulumi:"dslVci"`
-	// if `wanType`==`dsl`
-	// 8 bit int
+	// if `wanType`==`dsl`, 8 bit int
 	DslVpi *int `pulumi:"dslVpi"`
 	// enum: `auto`, `full`, `half`
 	Duplex *string `pulumi:"duplex"`
@@ -8829,12 +8832,12 @@ type GatewayPortConfig struct {
 	Mtu         *int    `pulumi:"mtu"`
 	// name that we'll use to derive config
 	Name *string `pulumi:"name"`
-	// if `usage`==`lan`
+	// if `usage`==`lan`, name of the `org.Network` resource
 	Networks []string `pulumi:"networks"`
 	// for Q-in-Q
 	OuterVlanId *int  `pulumi:"outerVlanId"`
 	PoeDisabled *bool `pulumi:"poeDisabled"`
-	// if `usage`==`lan`
+	// Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
 	PortNetwork *string `pulumi:"portNetwork"`
 	// whether to preserve dscp when sending traffic over VPN (SSR-only)
 	PreserveDscp *bool `pulumi:"preserveDscp"`
@@ -8853,22 +8856,23 @@ type GatewayPortConfig struct {
 	SvrPortRange   *string                          `pulumi:"svrPortRange"`
 	TrafficShaping *GatewayPortConfigTrafficShaping `pulumi:"trafficShaping"`
 	// port usage name. enum: `haControl`, `haData`, `lan`, `wan`
-	Usage string `pulumi:"usage"`
-	// if WAN interface is on a VLAN
-	VlanId *int `pulumi:"vlanId"`
+	Usage  string  `pulumi:"usage"`
+	VlanId *string `pulumi:"vlanId"`
 	// Property key is the VPN name
 	VpnPaths map[string]GatewayPortConfigVpnPaths `pulumi:"vpnPaths"`
-	// when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer *string `pulumi:"wanArpPolicer"`
-	// optional, if spoke should reach this port by a different IP
+	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp *string `pulumi:"wanExtIp"`
-	// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+	// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
 	WanExtraRoutes map[string]GatewayPortConfigWanExtraRoutes `pulumi:"wanExtraRoutes"`
-	// if `usage`==`wan`
+	// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+	WanNetworks []string `pulumi:"wanNetworks"`
+	// Only if `usage`==`wan`
 	WanProbeOverride *GatewayPortConfigWanProbeOverride `pulumi:"wanProbeOverride"`
-	// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat *GatewayPortConfigWanSourceNat `pulumi:"wanSourceNat"`
-	// if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType *string `pulumi:"wanType"`
 }
 
@@ -8888,24 +8892,21 @@ type GatewayPortConfigArgs struct {
 	AeDisableLacp pulumi.BoolPtrInput `pulumi:"aeDisableLacp"`
 	// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
 	AeIdx pulumi.StringPtrInput `pulumi:"aeIdx"`
-	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-	// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-	// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+	// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 	AeLacpForceUp pulumi.BoolPtrInput `pulumi:"aeLacpForceUp"`
 	Aggregated    pulumi.BoolPtrInput `pulumi:"aggregated"`
 	// if want to generate port up/down alarm, set it to true
-	Critical       pulumi.BoolPtrInput   `pulumi:"critical"`
+	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// Interface Description. Can be a variable (i.e. "{{myvar}}")
 	Description    pulumi.StringPtrInput `pulumi:"description"`
 	DisableAutoneg pulumi.BoolPtrInput   `pulumi:"disableAutoneg"`
 	// port admin up (true) / down (false)
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// if `wanType`==`dsl`. enum: `adsl`, `vdsl`
 	DslType pulumi.StringPtrInput `pulumi:"dslType"`
-	// if `wanType`==`dsl`
-	// 16 bit int
+	// if `wanType`==`dsl`, 16 bit int
 	DslVci pulumi.IntPtrInput `pulumi:"dslVci"`
-	// if `wanType`==`dsl`
-	// 8 bit int
+	// if `wanType`==`dsl`, 8 bit int
 	DslVpi pulumi.IntPtrInput `pulumi:"dslVpi"`
 	// enum: `auto`, `full`, `half`
 	Duplex pulumi.StringPtrInput `pulumi:"duplex"`
@@ -8923,12 +8924,12 @@ type GatewayPortConfigArgs struct {
 	Mtu         pulumi.IntPtrInput    `pulumi:"mtu"`
 	// name that we'll use to derive config
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// if `usage`==`lan`
+	// if `usage`==`lan`, name of the `org.Network` resource
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
 	// for Q-in-Q
 	OuterVlanId pulumi.IntPtrInput  `pulumi:"outerVlanId"`
 	PoeDisabled pulumi.BoolPtrInput `pulumi:"poeDisabled"`
-	// if `usage`==`lan`
+	// Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
 	PortNetwork pulumi.StringPtrInput `pulumi:"portNetwork"`
 	// whether to preserve dscp when sending traffic over VPN (SSR-only)
 	PreserveDscp pulumi.BoolPtrInput `pulumi:"preserveDscp"`
@@ -8947,22 +8948,23 @@ type GatewayPortConfigArgs struct {
 	SvrPortRange   pulumi.StringPtrInput                   `pulumi:"svrPortRange"`
 	TrafficShaping GatewayPortConfigTrafficShapingPtrInput `pulumi:"trafficShaping"`
 	// port usage name. enum: `haControl`, `haData`, `lan`, `wan`
-	Usage pulumi.StringInput `pulumi:"usage"`
-	// if WAN interface is on a VLAN
-	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+	Usage  pulumi.StringInput    `pulumi:"usage"`
+	VlanId pulumi.StringPtrInput `pulumi:"vlanId"`
 	// Property key is the VPN name
 	VpnPaths GatewayPortConfigVpnPathsMapInput `pulumi:"vpnPaths"`
-	// when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+	// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 	WanArpPolicer pulumi.StringPtrInput `pulumi:"wanArpPolicer"`
-	// optional, if spoke should reach this port by a different IP
+	// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 	WanExtIp pulumi.StringPtrInput `pulumi:"wanExtIp"`
-	// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+	// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
 	WanExtraRoutes GatewayPortConfigWanExtraRoutesMapInput `pulumi:"wanExtraRoutes"`
-	// if `usage`==`wan`
+	// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+	WanNetworks pulumi.StringArrayInput `pulumi:"wanNetworks"`
+	// Only if `usage`==`wan`
 	WanProbeOverride GatewayPortConfigWanProbeOverridePtrInput `pulumi:"wanProbeOverride"`
-	// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+	// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 	WanSourceNat GatewayPortConfigWanSourceNatPtrInput `pulumi:"wanSourceNat"`
-	// if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+	// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 	WanType pulumi.StringPtrInput `pulumi:"wanType"`
 }
 
@@ -9027,9 +9029,7 @@ func (o GatewayPortConfigOutput) AeIdx() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.AeIdx }).(pulumi.StringPtrOutput)
 }
 
-// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability.\n
-// Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end\n
-// Note: Turning this on will enable force-up on one of the interfaces in the bundle only
+// For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
 func (o GatewayPortConfigOutput) AeLacpForceUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.AeLacpForceUp }).(pulumi.BoolPtrOutput)
 }
@@ -9043,6 +9043,7 @@ func (o GatewayPortConfigOutput) Critical() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
 }
 
+// Interface Description. Can be a variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -9061,14 +9062,12 @@ func (o GatewayPortConfigOutput) DslType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.DslType }).(pulumi.StringPtrOutput)
 }
 
-// if `wanType`==`dsl`
-// 16 bit int
+// if `wanType`==`dsl`, 16 bit int
 func (o GatewayPortConfigOutput) DslVci() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *int { return v.DslVci }).(pulumi.IntPtrOutput)
 }
 
-// if `wanType`==`dsl`
-// 8 bit int
+// if `wanType`==`dsl`, 8 bit int
 func (o GatewayPortConfigOutput) DslVpi() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *int { return v.DslVpi }).(pulumi.IntPtrOutput)
 }
@@ -9116,7 +9115,7 @@ func (o GatewayPortConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// if `usage`==`lan`
+// if `usage`==`lan`, name of the `org.Network` resource
 func (o GatewayPortConfigOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayPortConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
@@ -9130,7 +9129,7 @@ func (o GatewayPortConfigOutput) PoeDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *bool { return v.PoeDisabled }).(pulumi.BoolPtrOutput)
 }
 
-// if `usage`==`lan`
+// Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
 func (o GatewayPortConfigOutput) PortNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.PortNetwork }).(pulumi.StringPtrOutput)
 }
@@ -9183,9 +9182,8 @@ func (o GatewayPortConfigOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v GatewayPortConfig) string { return v.Usage }).(pulumi.StringOutput)
 }
 
-// if WAN interface is on a VLAN
-func (o GatewayPortConfigOutput) VlanId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayPortConfig) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+func (o GatewayPortConfigOutput) VlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfig) *string { return v.VlanId }).(pulumi.StringPtrOutput)
 }
 
 // Property key is the VPN name
@@ -9193,32 +9191,37 @@ func (o GatewayPortConfigOutput) VpnPaths() GatewayPortConfigVpnPathsMapOutput {
 	return o.ApplyT(func(v GatewayPortConfig) map[string]GatewayPortConfigVpnPaths { return v.VpnPaths }).(GatewayPortConfigVpnPathsMapOutput)
 }
 
-// when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
+// Only when `wanType`==`broadband`. enum: `default`, `max`, `recommended`
 func (o GatewayPortConfigOutput) WanArpPolicer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanArpPolicer }).(pulumi.StringPtrOutput)
 }
 
-// optional, if spoke should reach this port by a different IP
+// Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
 func (o GatewayPortConfigOutput) WanExtIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanExtIp }).(pulumi.StringPtrOutput)
 }
 
-// Property Key is the destianation CIDR (e.g "100.100.100.0/24")
+// Only if `usage`==`wan`. Property Key is the destianation CIDR (e.g "100.100.100.0/24")
 func (o GatewayPortConfigOutput) WanExtraRoutes() GatewayPortConfigWanExtraRoutesMapOutput {
 	return o.ApplyT(func(v GatewayPortConfig) map[string]GatewayPortConfigWanExtraRoutes { return v.WanExtraRoutes }).(GatewayPortConfigWanExtraRoutesMapOutput)
 }
 
-// if `usage`==`wan`
+// Only if `usage`==`wan`. If some networks are connected to this WAN port, it can be added here so policies can be defined
+func (o GatewayPortConfigOutput) WanNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayPortConfig) []string { return v.WanNetworks }).(pulumi.StringArrayOutput)
+}
+
+// Only if `usage`==`wan`
 func (o GatewayPortConfigOutput) WanProbeOverride() GatewayPortConfigWanProbeOverridePtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *GatewayPortConfigWanProbeOverride { return v.WanProbeOverride }).(GatewayPortConfigWanProbeOverridePtrOutput)
 }
 
-// optional, by default, source-NAT is performed on all WAN Ports using the interface-ip
+// Only if `usage`==`wan`, optional. By default, source-NAT is performed on all WAN Ports using the interface-ip
 func (o GatewayPortConfigOutput) WanSourceNat() GatewayPortConfigWanSourceNatPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *GatewayPortConfigWanSourceNat { return v.WanSourceNat }).(GatewayPortConfigWanSourceNatPtrOutput)
 }
 
-// if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
+// Only if `usage`==`wan`. enum: `broadband`, `dsl`, `lte`
 func (o GatewayPortConfigOutput) WanType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfig) *string { return v.WanType }).(pulumi.StringPtrOutput)
 }
@@ -9248,10 +9251,11 @@ type GatewayPortConfigIpConfig struct {
 	Dns []string `pulumi:"dns"`
 	// except for out-of_band interface (vme/em0/fxp0)
 	DnsSuffixes []string `pulumi:"dnsSuffixes"`
-	// except for out-of_band interface (vme/em0/fxp0)
+	// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
 	Gateway *string `pulumi:"gateway"`
-	Ip      *string `pulumi:"ip"`
-	// used only if `subnet` is not specified in `networks`
+	// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+	Ip *string `pulumi:"ip"`
+	// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
 	Netmask *string `pulumi:"netmask"`
 	// optional, the network to be used for mgmt
 	Network *string `pulumi:"network"`
@@ -9281,10 +9285,11 @@ type GatewayPortConfigIpConfigArgs struct {
 	Dns pulumi.StringArrayInput `pulumi:"dns"`
 	// except for out-of_band interface (vme/em0/fxp0)
 	DnsSuffixes pulumi.StringArrayInput `pulumi:"dnsSuffixes"`
-	// except for out-of_band interface (vme/em0/fxp0)
+	// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
-	Ip      pulumi.StringPtrInput `pulumi:"ip"`
-	// used only if `subnet` is not specified in `networks`
+	// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
 	Netmask pulumi.StringPtrInput `pulumi:"netmask"`
 	// optional, the network to be used for mgmt
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -9385,16 +9390,17 @@ func (o GatewayPortConfigIpConfigOutput) DnsSuffixes() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GatewayPortConfigIpConfig) []string { return v.DnsSuffixes }).(pulumi.StringArrayOutput)
 }
 
-// except for out-of_band interface (vme/em0/fxp0)
+// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigIpConfigOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigIpConfig) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
 
+// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigIpConfigOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigIpConfig) *string { return v.Ip }).(pulumi.StringPtrOutput)
 }
 
-// used only if `subnet` is not specified in `networks`
+// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigIpConfigOutput) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigIpConfig) *string { return v.Netmask }).(pulumi.StringPtrOutput)
 }
@@ -9468,7 +9474,7 @@ func (o GatewayPortConfigIpConfigPtrOutput) DnsSuffixes() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// except for out-of_band interface (vme/em0/fxp0)
+// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigIpConfigPtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayPortConfigIpConfig) *string {
 		if v == nil {
@@ -9478,6 +9484,7 @@ func (o GatewayPortConfigIpConfigPtrOutput) Gateway() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigIpConfigPtrOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayPortConfigIpConfig) *string {
 		if v == nil {
@@ -9487,7 +9494,7 @@ func (o GatewayPortConfigIpConfigPtrOutput) Ip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// used only if `subnet` is not specified in `networks`
+// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
 func (o GatewayPortConfigIpConfigPtrOutput) Netmask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayPortConfigIpConfig) *string {
 		if v == nil {
@@ -9548,10 +9555,11 @@ func (o GatewayPortConfigIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type GatewayPortConfigTrafficShaping struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort
-	// sum must be equal to 100
+	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages []int `pulumi:"classPercentages"`
 	Enabled          *bool `pulumi:"enabled"`
+	// Interface Transmit Cap in kbps
+	MaxTxKbps *int `pulumi:"maxTxKbps"`
 }
 
 // GatewayPortConfigTrafficShapingInput is an input type that accepts GatewayPortConfigTrafficShapingArgs and GatewayPortConfigTrafficShapingOutput values.
@@ -9566,10 +9574,11 @@ type GatewayPortConfigTrafficShapingInput interface {
 }
 
 type GatewayPortConfigTrafficShapingArgs struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort
-	// sum must be equal to 100
+	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages pulumi.IntArrayInput `pulumi:"classPercentages"`
 	Enabled          pulumi.BoolPtrInput  `pulumi:"enabled"`
+	// Interface Transmit Cap in kbps
+	MaxTxKbps pulumi.IntPtrInput `pulumi:"maxTxKbps"`
 }
 
 func (GatewayPortConfigTrafficShapingArgs) ElementType() reflect.Type {
@@ -9649,14 +9658,18 @@ func (o GatewayPortConfigTrafficShapingOutput) ToGatewayPortConfigTrafficShaping
 	}).(GatewayPortConfigTrafficShapingPtrOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort
-// sum must be equal to 100
+// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigTrafficShapingOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GatewayPortConfigTrafficShaping) []int { return v.ClassPercentages }).(pulumi.IntArrayOutput)
 }
 
 func (o GatewayPortConfigTrafficShapingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigTrafficShaping) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Interface Transmit Cap in kbps
+func (o GatewayPortConfigTrafficShapingOutput) MaxTxKbps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigTrafficShaping) *int { return v.MaxTxKbps }).(pulumi.IntPtrOutput)
 }
 
 type GatewayPortConfigTrafficShapingPtrOutput struct{ *pulumi.OutputState }
@@ -9683,8 +9696,7 @@ func (o GatewayPortConfigTrafficShapingPtrOutput) Elem() GatewayPortConfigTraffi
 	}).(GatewayPortConfigTrafficShapingOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort
-// sum must be equal to 100
+// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigTrafficShapingPtrOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *GatewayPortConfigTrafficShaping) []int {
 		if v == nil {
@@ -9701,6 +9713,16 @@ func (o GatewayPortConfigTrafficShapingPtrOutput) Enabled() pulumi.BoolPtrOutput
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Interface Transmit Cap in kbps
+func (o GatewayPortConfigTrafficShapingPtrOutput) MaxTxKbps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayPortConfigTrafficShaping) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTxKbps
+	}).(pulumi.IntPtrOutput)
 }
 
 type GatewayPortConfigVpnPaths struct {
@@ -9843,10 +9865,11 @@ func (o GatewayPortConfigVpnPathsMapOutput) MapIndex(k pulumi.StringInput) Gatew
 }
 
 type GatewayPortConfigVpnPathsTrafficShaping struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort
-	// sum must be equal to 100
+	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages []int `pulumi:"classPercentages"`
 	Enabled          *bool `pulumi:"enabled"`
+	// Interface Transmit Cap in kbps
+	MaxTxKbps *int `pulumi:"maxTxKbps"`
 }
 
 // GatewayPortConfigVpnPathsTrafficShapingInput is an input type that accepts GatewayPortConfigVpnPathsTrafficShapingArgs and GatewayPortConfigVpnPathsTrafficShapingOutput values.
@@ -9861,10 +9884,11 @@ type GatewayPortConfigVpnPathsTrafficShapingInput interface {
 }
 
 type GatewayPortConfigVpnPathsTrafficShapingArgs struct {
-	// percentages for differet class of traffic: high / medium / low / best-effort
-	// sum must be equal to 100
+	// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 	ClassPercentages pulumi.IntArrayInput `pulumi:"classPercentages"`
 	Enabled          pulumi.BoolPtrInput  `pulumi:"enabled"`
+	// Interface Transmit Cap in kbps
+	MaxTxKbps pulumi.IntPtrInput `pulumi:"maxTxKbps"`
 }
 
 func (GatewayPortConfigVpnPathsTrafficShapingArgs) ElementType() reflect.Type {
@@ -9944,14 +9968,18 @@ func (o GatewayPortConfigVpnPathsTrafficShapingOutput) ToGatewayPortConfigVpnPat
 	}).(GatewayPortConfigVpnPathsTrafficShapingPtrOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort
-// sum must be equal to 100
+// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigVpnPathsTrafficShapingOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPathsTrafficShaping) []int { return v.ClassPercentages }).(pulumi.IntArrayOutput)
 }
 
 func (o GatewayPortConfigVpnPathsTrafficShapingOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayPortConfigVpnPathsTrafficShaping) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Interface Transmit Cap in kbps
+func (o GatewayPortConfigVpnPathsTrafficShapingOutput) MaxTxKbps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayPortConfigVpnPathsTrafficShaping) *int { return v.MaxTxKbps }).(pulumi.IntPtrOutput)
 }
 
 type GatewayPortConfigVpnPathsTrafficShapingPtrOutput struct{ *pulumi.OutputState }
@@ -9978,8 +10006,7 @@ func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) Elem() GatewayPortConf
 	}).(GatewayPortConfigVpnPathsTrafficShapingOutput)
 }
 
-// percentages for differet class of traffic: high / medium / low / best-effort
-// sum must be equal to 100
+// percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
 func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) ClassPercentages() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *GatewayPortConfigVpnPathsTrafficShaping) []int {
 		if v == nil {
@@ -9996,6 +10023,16 @@ func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) Enabled() pulumi.BoolP
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Interface Transmit Cap in kbps
+func (o GatewayPortConfigVpnPathsTrafficShapingPtrOutput) MaxTxKbps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayPortConfigVpnPathsTrafficShaping) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTxKbps
+	}).(pulumi.IntPtrOutput)
 }
 
 type GatewayPortConfigWanExtraRoutes struct {
@@ -10934,6 +10971,8 @@ type GatewayRoutingPoliciesTermAction struct {
 	AddCommunities []string `pulumi:"addCommunities"`
 	// for SSR, hub decides how VRF routes are leaked on spoke
 	AddTargetVrfs []string `pulumi:"addTargetVrfs"`
+	// route aggregation
+	Aggregates []string `pulumi:"aggregates"`
 	// when used as export policy, optional
 	Communities []string `pulumi:"communities"`
 	// when used as export policy, optional. To exclude certain AS
@@ -10963,6 +11002,8 @@ type GatewayRoutingPoliciesTermActionArgs struct {
 	AddCommunities pulumi.StringArrayInput `pulumi:"addCommunities"`
 	// for SSR, hub decides how VRF routes are leaked on spoke
 	AddTargetVrfs pulumi.StringArrayInput `pulumi:"addTargetVrfs"`
+	// route aggregation
+	Aggregates pulumi.StringArrayInput `pulumi:"aggregates"`
 	// when used as export policy, optional
 	Communities pulumi.StringArrayInput `pulumi:"communities"`
 	// when used as export policy, optional. To exclude certain AS
@@ -11066,6 +11107,11 @@ func (o GatewayRoutingPoliciesTermActionOutput) AddTargetVrfs() pulumi.StringArr
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.AddTargetVrfs }).(pulumi.StringArrayOutput)
 }
 
+// route aggregation
+func (o GatewayRoutingPoliciesTermActionOutput) Aggregates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.Aggregates }).(pulumi.StringArrayOutput)
+}
+
 // when used as export policy, optional
 func (o GatewayRoutingPoliciesTermActionOutput) Communities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermAction) []string { return v.Communities }).(pulumi.StringArrayOutput)
@@ -11147,6 +11193,16 @@ func (o GatewayRoutingPoliciesTermActionPtrOutput) AddTargetVrfs() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
+// route aggregation
+func (o GatewayRoutingPoliciesTermActionPtrOutput) Aggregates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Aggregates
+	}).(pulumi.StringArrayOutput)
+}
+
 // when used as export policy, optional
 func (o GatewayRoutingPoliciesTermActionPtrOutput) Communities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermAction) []string {
@@ -11219,8 +11275,7 @@ type GatewayRoutingPoliciesTermMatching struct {
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
 	VpnNeighborMacs []string                                      `pulumi:"vpnNeighborMacs"`
 	VpnPathSla      *GatewayRoutingPoliciesTermMatchingVpnPathSla `pulumi:"vpnPathSla"`
-	// overlay-facing criteria (used for bgpConfig where via=vpn)
-	// ordered-
+	// overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
 	VpnPaths []string `pulumi:"vpnPaths"`
 }
 
@@ -11248,8 +11303,7 @@ type GatewayRoutingPoliciesTermMatchingArgs struct {
 	// overlay-facing criteria (used for bgpConfig where via=vpn)
 	VpnNeighborMacs pulumi.StringArrayInput                              `pulumi:"vpnNeighborMacs"`
 	VpnPathSla      GatewayRoutingPoliciesTermMatchingVpnPathSlaPtrInput `pulumi:"vpnPathSla"`
-	// overlay-facing criteria (used for bgpConfig where via=vpn)
-	// ordered-
+	// overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
 	VpnPaths pulumi.StringArrayInput `pulumi:"vpnPaths"`
 }
 
@@ -11370,8 +11424,7 @@ func (o GatewayRoutingPoliciesTermMatchingOutput) VpnPathSla() GatewayRoutingPol
 	}).(GatewayRoutingPoliciesTermMatchingVpnPathSlaPtrOutput)
 }
 
-// overlay-facing criteria (used for bgpConfig where via=vpn)
-// ordered-
+// overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
 func (o GatewayRoutingPoliciesTermMatchingOutput) VpnPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermMatching) []string { return v.VpnPaths }).(pulumi.StringArrayOutput)
 }
@@ -11476,8 +11529,7 @@ func (o GatewayRoutingPoliciesTermMatchingPtrOutput) VpnPathSla() GatewayRouting
 	}).(GatewayRoutingPoliciesTermMatchingVpnPathSlaPtrOutput)
 }
 
-// overlay-facing criteria (used for bgpConfig where via=vpn)
-// ordered-
+// overlay-facing criteria (used for bgpConfig where via=vpn). ordered-
 func (o GatewayRoutingPoliciesTermMatchingPtrOutput) VpnPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermMatching) []string {
 		if v == nil {
@@ -11489,8 +11541,7 @@ func (o GatewayRoutingPoliciesTermMatchingPtrOutput) VpnPaths() pulumi.StringArr
 
 type GatewayRoutingPoliciesTermMatchingRouteExists struct {
 	Route *string `pulumi:"route"`
-	// name of the vrf instance
-	// it can also be the name of the VPN or wan if they
+	// name of the vrf instance, it can also be the name of the VPN or wan if they
 	VrfName *string `pulumi:"vrfName"`
 }
 
@@ -11507,8 +11558,7 @@ type GatewayRoutingPoliciesTermMatchingRouteExistsInput interface {
 
 type GatewayRoutingPoliciesTermMatchingRouteExistsArgs struct {
 	Route pulumi.StringPtrInput `pulumi:"route"`
-	// name of the vrf instance
-	// it can also be the name of the VPN or wan if they
+	// name of the vrf instance, it can also be the name of the VPN or wan if they
 	VrfName pulumi.StringPtrInput `pulumi:"vrfName"`
 }
 
@@ -11593,8 +11643,7 @@ func (o GatewayRoutingPoliciesTermMatchingRouteExistsOutput) Route() pulumi.Stri
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermMatchingRouteExists) *string { return v.Route }).(pulumi.StringPtrOutput)
 }
 
-// name of the vrf instance
-// it can also be the name of the VPN or wan if they
+// name of the vrf instance, it can also be the name of the VPN or wan if they
 func (o GatewayRoutingPoliciesTermMatchingRouteExistsOutput) VrfName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayRoutingPoliciesTermMatchingRouteExists) *string { return v.VrfName }).(pulumi.StringPtrOutput)
 }
@@ -11632,8 +11681,7 @@ func (o GatewayRoutingPoliciesTermMatchingRouteExistsPtrOutput) Route() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// name of the vrf instance
-// it can also be the name of the VPN or wan if they
+// name of the vrf instance, it can also be the name of the VPN or wan if they
 func (o GatewayRoutingPoliciesTermMatchingRouteExistsPtrOutput) VrfName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewayRoutingPoliciesTermMatchingRouteExists) *string {
 		if v == nil {
@@ -11817,8 +11865,7 @@ type GatewayServicePolicy struct {
 	LocalRouting *bool `pulumi:"localRouting"`
 	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
 	Name *string `pulumi:"name"`
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	// by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
 	PathPreference *string `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
 	ServicepolicyId *string `pulumi:"servicepolicyId"`
@@ -11850,8 +11897,7 @@ type GatewayServicePolicyArgs struct {
 	LocalRouting pulumi.BoolPtrInput `pulumi:"localRouting"`
 	// Required when `servicepolicyId` is not defined, optional otherwise (override the servicepolicy name)
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	// by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput `pulumi:"pathPreference"`
 	// used to link servicepolicy defined at org level and overwrite some attributes
 	ServicepolicyId pulumi.StringPtrInput `pulumi:"servicepolicyId"`
@@ -11940,8 +11986,7 @@ func (o GatewayServicePolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// by default, we derive all paths available and use them
-// optionally, you can customize by using `pathPreference`
+// by default, we derive all paths available and use them. Optionally, you can customize by using `pathPreference`
 func (o GatewayServicePolicyOutput) PathPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayServicePolicy) *string { return v.PathPreference }).(pulumi.StringPtrOutput)
 }
@@ -12417,39 +12462,35 @@ func (o GatewayServicePolicyIdpPtrOutput) Profile() pulumi.StringPtrOutput {
 
 type GatewayTunnelConfigs struct {
 	AutoProvision *GatewayTunnelConfigsAutoProvision `pulumi:"autoProvision"`
-	// Only if `provider`== `custom-ipsec`
+	// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 	IkeLifetime *int `pulumi:"ikeLifetime"`
-	// Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+	// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
 	IkeMode *string `pulumi:"ikeMode"`
-	// if `provider`== `custom-ipsec`
+	// if `provider`==`custom-ipsec`
 	IkeProposals []GatewayTunnelConfigsIkeProposal `pulumi:"ikeProposals"`
-	// if `provider`== `custom-ipsec`
+	// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 	IpsecLifetime *int `pulumi:"ipsecLifetime"`
-	// Only if  `provider`== `custom-ipsec`
+	// Only if  `provider`==`custom-ipsec`
 	IpsecProposals []GatewayTunnelConfigsIpsecProposal `pulumi:"ipsecProposals"`
-	// Only if:
-	//   * `provider`== `zscaler-ipsec`
-	//   * `provider`==`jse-ipsec`
-	//   * `provider`== `custom-ipsec`
+	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	LocalId *string `pulumi:"localId"`
-	// enum: `active-active`, `active-standby`
+	// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
 	Mode *string `pulumi:"mode"`
-	// networks reachable via this tunnel
-	Networks []string                     `pulumi:"networks"`
-	Primary  *GatewayTunnelConfigsPrimary `pulumi:"primary"`
-	// Only if `provider`== `custom-ipsec`
+	// if `provider`==`custom-ipsec`, networks reachable via this tunnel
+	Networks []string `pulumi:"networks"`
+	// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+	Primary *GatewayTunnelConfigsPrimary `pulumi:"primary"`
+	// Only if `provider`==`custom-ipsec`
 	Probe *GatewayTunnelConfigsProbe `pulumi:"probe"`
-	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol *string `pulumi:"protocol"`
-	// enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider *string `pulumi:"provider"`
-	// Only if:
-	//   * `provider`== `zscaler-ipsec`
-	//   * `provider`==`jse-ipsec`
-	//   * `provider`== `custom-ipsec`
-	Psk       *string                        `pulumi:"psk"`
+	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+	Psk *string `pulumi:"psk"`
+	// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Secondary *GatewayTunnelConfigsSecondary `pulumi:"secondary"`
-	// Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+	// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
 	Version *string `pulumi:"version"`
 }
 
@@ -12466,39 +12507,35 @@ type GatewayTunnelConfigsInput interface {
 
 type GatewayTunnelConfigsArgs struct {
 	AutoProvision GatewayTunnelConfigsAutoProvisionPtrInput `pulumi:"autoProvision"`
-	// Only if `provider`== `custom-ipsec`
+	// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
-	// Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+	// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
 	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
-	// if `provider`== `custom-ipsec`
+	// if `provider`==`custom-ipsec`
 	IkeProposals GatewayTunnelConfigsIkeProposalArrayInput `pulumi:"ikeProposals"`
-	// if `provider`== `custom-ipsec`
+	// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 	IpsecLifetime pulumi.IntPtrInput `pulumi:"ipsecLifetime"`
-	// Only if  `provider`== `custom-ipsec`
+	// Only if  `provider`==`custom-ipsec`
 	IpsecProposals GatewayTunnelConfigsIpsecProposalArrayInput `pulumi:"ipsecProposals"`
-	// Only if:
-	//   * `provider`== `zscaler-ipsec`
-	//   * `provider`==`jse-ipsec`
-	//   * `provider`== `custom-ipsec`
+	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	LocalId pulumi.StringPtrInput `pulumi:"localId"`
-	// enum: `active-active`, `active-standby`
+	// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// networks reachable via this tunnel
-	Networks pulumi.StringArrayInput             `pulumi:"networks"`
-	Primary  GatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
-	// Only if `provider`== `custom-ipsec`
+	// if `provider`==`custom-ipsec`, networks reachable via this tunnel
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+	Primary GatewayTunnelConfigsPrimaryPtrInput `pulumi:"primary"`
+	// Only if `provider`==`custom-ipsec`
 	Probe GatewayTunnelConfigsProbePtrInput `pulumi:"probe"`
-	// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+	// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+	// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 	Provider pulumi.StringPtrInput `pulumi:"provider"`
-	// Only if:
-	//   * `provider`== `zscaler-ipsec`
-	//   * `provider`==`jse-ipsec`
-	//   * `provider`== `custom-ipsec`
-	Psk       pulumi.StringPtrInput                 `pulumi:"psk"`
+	// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
+	Psk pulumi.StringPtrInput `pulumi:"psk"`
+	// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	Secondary GatewayTunnelConfigsSecondaryPtrInput `pulumi:"secondary"`
-	// Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+	// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -12557,81 +12594,77 @@ func (o GatewayTunnelConfigsOutput) AutoProvision() GatewayTunnelConfigsAutoProv
 	return o.ApplyT(func(v GatewayTunnelConfigs) *GatewayTunnelConfigsAutoProvision { return v.AutoProvision }).(GatewayTunnelConfigsAutoProvisionPtrOutput)
 }
 
-// Only if `provider`== `custom-ipsec`
+// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 func (o GatewayTunnelConfigsOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
-// Only if `provider`== `custom-ipsec`. enum: `aggressive`, `main`
+// Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
 func (o GatewayTunnelConfigsOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
 }
 
-// if `provider`== `custom-ipsec`
+// if `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) IkeProposals() GatewayTunnelConfigsIkeProposalArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) []GatewayTunnelConfigsIkeProposal { return v.IkeProposals }).(GatewayTunnelConfigsIkeProposalArrayOutput)
 }
 
-// if `provider`== `custom-ipsec`
+// Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
 func (o GatewayTunnelConfigsOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
 }
 
-// Only if  `provider`== `custom-ipsec`
+// Only if  `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) IpsecProposals() GatewayTunnelConfigsIpsecProposalArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) []GatewayTunnelConfigsIpsecProposal { return v.IpsecProposals }).(GatewayTunnelConfigsIpsecProposalArrayOutput)
 }
 
-// Only if:
-//   - `provider`== `zscaler-ipsec`
-//   - `provider`==`jse-ipsec`
-//   - `provider`== `custom-ipsec`
+// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.LocalId }).(pulumi.StringPtrOutput)
 }
 
-// enum: `active-active`, `active-standby`
+// Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
 func (o GatewayTunnelConfigsOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// networks reachable via this tunnel
+// if `provider`==`custom-ipsec`, networks reachable via this tunnel
 func (o GatewayTunnelConfigsOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) []string { return v.Networks }).(pulumi.StringArrayOutput)
 }
 
+// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) Primary() GatewayTunnelConfigsPrimaryPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *GatewayTunnelConfigsPrimary { return v.Primary }).(GatewayTunnelConfigsPrimaryPtrOutput)
 }
 
-// Only if `provider`== `custom-ipsec`
+// Only if `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) Probe() GatewayTunnelConfigsProbePtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *GatewayTunnelConfigsProbe { return v.Probe }).(GatewayTunnelConfigsProbePtrOutput)
 }
 
-// Only if `provider`== `custom-ipsec`. enum: `gre`, `ipsec`
+// Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
 func (o GatewayTunnelConfigsOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
+// Only if `auto_provision.enabled`==`false`. enum: `custom-ipsec`, `customer-gre`, `jse-ipsec`, `zscaler-gre`, `zscaler-ipsec`
 func (o GatewayTunnelConfigsOutput) Provider() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
-// Only if:
-//   - `provider`== `zscaler-ipsec`
-//   - `provider`==`jse-ipsec`
-//   - `provider`== `custom-ipsec`
+// Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
+// Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsOutput) Secondary() GatewayTunnelConfigsSecondaryPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *GatewayTunnelConfigsSecondary { return v.Secondary }).(GatewayTunnelConfigsSecondaryPtrOutput)
 }
 
-// Only if `provider`== `custom-gre` or `provider`== `custom-ipsec`. enum: `1`, `2`
+// Only if `provider`==`custom-gre` or `provider`==`custom-ipsec`. enum: `1`, `2`
 func (o GatewayTunnelConfigsOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigs) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -12657,9 +12690,14 @@ func (o GatewayTunnelConfigsMapOutput) MapIndex(k pulumi.StringInput) GatewayTun
 }
 
 type GatewayTunnelConfigsAutoProvision struct {
-	Enable    *bool                                       `pulumi:"enable"`
-	Latlng    *GatewayTunnelConfigsAutoProvisionLatlng    `pulumi:"latlng"`
-	Primary   *GatewayTunnelConfigsAutoProvisionPrimary   `pulumi:"primary"`
+	Enable *bool `pulumi:"enable"`
+	// API override for POP selection
+	Latlng  *GatewayTunnelConfigsAutoProvisionLatlng  `pulumi:"latlng"`
+	Primary *GatewayTunnelConfigsAutoProvisionPrimary `pulumi:"primary"`
+	// enum: `jse-ipsec`, `zscaler-ipsec`
+	Provider string `pulumi:"provider"`
+	// API override for POP selection
+	Region    *string                                     `pulumi:"region"`
 	Secondary *GatewayTunnelConfigsAutoProvisionSecondary `pulumi:"secondary"`
 }
 
@@ -12675,9 +12713,14 @@ type GatewayTunnelConfigsAutoProvisionInput interface {
 }
 
 type GatewayTunnelConfigsAutoProvisionArgs struct {
-	Enable    pulumi.BoolPtrInput                                `pulumi:"enable"`
-	Latlng    GatewayTunnelConfigsAutoProvisionLatlngPtrInput    `pulumi:"latlng"`
-	Primary   GatewayTunnelConfigsAutoProvisionPrimaryPtrInput   `pulumi:"primary"`
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// API override for POP selection
+	Latlng  GatewayTunnelConfigsAutoProvisionLatlngPtrInput  `pulumi:"latlng"`
+	Primary GatewayTunnelConfigsAutoProvisionPrimaryPtrInput `pulumi:"primary"`
+	// enum: `jse-ipsec`, `zscaler-ipsec`
+	Provider pulumi.StringInput `pulumi:"provider"`
+	// API override for POP selection
+	Region    pulumi.StringPtrInput                              `pulumi:"region"`
 	Secondary GatewayTunnelConfigsAutoProvisionSecondaryPtrInput `pulumi:"secondary"`
 }
 
@@ -12762,12 +12805,23 @@ func (o GatewayTunnelConfigsAutoProvisionOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
+// API override for POP selection
 func (o GatewayTunnelConfigsAutoProvisionOutput) Latlng() GatewayTunnelConfigsAutoProvisionLatlngPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *GatewayTunnelConfigsAutoProvisionLatlng { return v.Latlng }).(GatewayTunnelConfigsAutoProvisionLatlngPtrOutput)
 }
 
 func (o GatewayTunnelConfigsAutoProvisionOutput) Primary() GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *GatewayTunnelConfigsAutoProvisionPrimary { return v.Primary }).(GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput)
+}
+
+// enum: `jse-ipsec`, `zscaler-ipsec`
+func (o GatewayTunnelConfigsAutoProvisionOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) string { return v.Provider }).(pulumi.StringOutput)
+}
+
+// API override for POP selection
+func (o GatewayTunnelConfigsAutoProvisionOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvision) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func (o GatewayTunnelConfigsAutoProvisionOutput) Secondary() GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput {
@@ -12809,6 +12863,7 @@ func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Enable() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// API override for POP selection
 func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Latlng() GatewayTunnelConfigsAutoProvisionLatlngPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvision) *GatewayTunnelConfigsAutoProvisionLatlng {
 		if v == nil {
@@ -12825,6 +12880,26 @@ func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Primary() GatewayTunnelConfi
 		}
 		return v.Primary
 	}).(GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput)
+}
+
+// enum: `jse-ipsec`, `zscaler-ipsec`
+func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvision) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Provider
+	}).(pulumi.StringPtrOutput)
+}
+
+// API override for POP selection
+func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvision) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GatewayTunnelConfigsAutoProvisionPtrOutput) Secondary() GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput {
@@ -12985,7 +13060,7 @@ func (o GatewayTunnelConfigsAutoProvisionLatlngPtrOutput) Lng() pulumi.Float64Pt
 }
 
 type GatewayTunnelConfigsAutoProvisionPrimary struct {
-	NumHosts *string `pulumi:"numHosts"`
+	ProbeIps []string `pulumi:"probeIps"`
 	// optional, only needed if `varsOnly`==`false`
 	WanNames []string `pulumi:"wanNames"`
 }
@@ -13002,7 +13077,7 @@ type GatewayTunnelConfigsAutoProvisionPrimaryInput interface {
 }
 
 type GatewayTunnelConfigsAutoProvisionPrimaryArgs struct {
-	NumHosts pulumi.StringPtrInput `pulumi:"numHosts"`
+	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// optional, only needed if `varsOnly`==`false`
 	WanNames pulumi.StringArrayInput `pulumi:"wanNames"`
 }
@@ -13084,8 +13159,8 @@ func (o GatewayTunnelConfigsAutoProvisionPrimaryOutput) ToGatewayTunnelConfigsAu
 	}).(GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput)
 }
 
-func (o GatewayTunnelConfigsAutoProvisionPrimaryOutput) NumHosts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvisionPrimary) *string { return v.NumHosts }).(pulumi.StringPtrOutput)
+func (o GatewayTunnelConfigsAutoProvisionPrimaryOutput) ProbeIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvisionPrimary) []string { return v.ProbeIps }).(pulumi.StringArrayOutput)
 }
 
 // optional, only needed if `varsOnly`==`false`
@@ -13117,13 +13192,13 @@ func (o GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput) Elem() GatewayTunnelC
 	}).(GatewayTunnelConfigsAutoProvisionPrimaryOutput)
 }
 
-func (o GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput) NumHosts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvisionPrimary) *string {
+func (o GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput) ProbeIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvisionPrimary) []string {
 		if v == nil {
 			return nil
 		}
-		return v.NumHosts
-	}).(pulumi.StringPtrOutput)
+		return v.ProbeIps
+	}).(pulumi.StringArrayOutput)
 }
 
 // optional, only needed if `varsOnly`==`false`
@@ -13137,7 +13212,7 @@ func (o GatewayTunnelConfigsAutoProvisionPrimaryPtrOutput) WanNames() pulumi.Str
 }
 
 type GatewayTunnelConfigsAutoProvisionSecondary struct {
-	NumHosts *string `pulumi:"numHosts"`
+	ProbeIps []string `pulumi:"probeIps"`
 	// optional, only needed if `varsOnly`==`false`
 	WanNames []string `pulumi:"wanNames"`
 }
@@ -13154,7 +13229,7 @@ type GatewayTunnelConfigsAutoProvisionSecondaryInput interface {
 }
 
 type GatewayTunnelConfigsAutoProvisionSecondaryArgs struct {
-	NumHosts pulumi.StringPtrInput `pulumi:"numHosts"`
+	ProbeIps pulumi.StringArrayInput `pulumi:"probeIps"`
 	// optional, only needed if `varsOnly`==`false`
 	WanNames pulumi.StringArrayInput `pulumi:"wanNames"`
 }
@@ -13236,8 +13311,8 @@ func (o GatewayTunnelConfigsAutoProvisionSecondaryOutput) ToGatewayTunnelConfigs
 	}).(GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput)
 }
 
-func (o GatewayTunnelConfigsAutoProvisionSecondaryOutput) NumHosts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvisionSecondary) *string { return v.NumHosts }).(pulumi.StringPtrOutput)
+func (o GatewayTunnelConfigsAutoProvisionSecondaryOutput) ProbeIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GatewayTunnelConfigsAutoProvisionSecondary) []string { return v.ProbeIps }).(pulumi.StringArrayOutput)
 }
 
 // optional, only needed if `varsOnly`==`false`
@@ -13269,13 +13344,13 @@ func (o GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput) Elem() GatewayTunne
 	}).(GatewayTunnelConfigsAutoProvisionSecondaryOutput)
 }
 
-func (o GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput) NumHosts() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvisionSecondary) *string {
+func (o GatewayTunnelConfigsAutoProvisionSecondaryPtrOutput) ProbeIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GatewayTunnelConfigsAutoProvisionSecondary) []string {
 		if v == nil {
 			return nil
 		}
-		return v.NumHosts
-	}).(pulumi.StringPtrOutput)
+		return v.ProbeIps
+	}).(pulumi.StringArrayOutput)
 }
 
 // optional, only needed if `varsOnly`==`false`
@@ -13436,7 +13511,7 @@ func (o GatewayTunnelConfigsIkeProposalArrayOutput) Index(i pulumi.IntInput) Gat
 type GatewayTunnelConfigsIpsecProposal struct {
 	// enum: `md5`, `sha1`, `sha2`
 	AuthAlgo *string `pulumi:"authAlgo"`
-	// Only if `provider`== `custom-ipsec`. enum:
+	// Only if `provider`==`custom-ipsec`. enum:
 	//   * 1
 	//   * 2 (1024-bit)
 	//   * 5
@@ -13466,7 +13541,7 @@ type GatewayTunnelConfigsIpsecProposalInput interface {
 type GatewayTunnelConfigsIpsecProposalArgs struct {
 	// enum: `md5`, `sha1`, `sha2`
 	AuthAlgo pulumi.StringPtrInput `pulumi:"authAlgo"`
-	// Only if `provider`== `custom-ipsec`. enum:
+	// Only if `provider`==`custom-ipsec`. enum:
 	//   * 1
 	//   * 2 (1024-bit)
 	//   * 5
@@ -13538,7 +13613,7 @@ func (o GatewayTunnelConfigsIpsecProposalOutput) AuthAlgo() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GatewayTunnelConfigsIpsecProposal) *string { return v.AuthAlgo }).(pulumi.StringPtrOutput)
 }
 
-// Only if `provider`== `custom-ipsec`. enum:
+// Only if `provider`==`custom-ipsec`. enum:
 //   - 1
 //   - 2 (1024-bit)
 //   - 5
@@ -13580,12 +13655,10 @@ func (o GatewayTunnelConfigsIpsecProposalArrayOutput) Index(i pulumi.IntInput) G
 
 type GatewayTunnelConfigsPrimary struct {
 	Hosts []string `pulumi:"hosts"`
-	// Only if:
-	//   * `provider`== `zscaler-gre`
-	//   * `provider`== `custom-gre`
+	// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 	InternalIps []string `pulumi:"internalIps"`
 	ProbeIps    []string `pulumi:"probeIps"`
-	// Only if `provider`== `custom-ipsec`
+	// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	RemoteIds []string `pulumi:"remoteIds"`
 	WanNames  []string `pulumi:"wanNames"`
 }
@@ -13603,12 +13676,10 @@ type GatewayTunnelConfigsPrimaryInput interface {
 
 type GatewayTunnelConfigsPrimaryArgs struct {
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
-	// Only if:
-	//   * `provider`== `zscaler-gre`
-	//   * `provider`== `custom-gre`
+	// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
 	ProbeIps    pulumi.StringArrayInput `pulumi:"probeIps"`
-	// Only if `provider`== `custom-ipsec`
+	// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	RemoteIds pulumi.StringArrayInput `pulumi:"remoteIds"`
 	WanNames  pulumi.StringArrayInput `pulumi:"wanNames"`
 }
@@ -13694,9 +13765,7 @@ func (o GatewayTunnelConfigsPrimaryOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Only if:
-//   - `provider`== `zscaler-gre`
-//   - `provider`== `custom-gre`
+// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 func (o GatewayTunnelConfigsPrimaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
 }
@@ -13705,7 +13774,7 @@ func (o GatewayTunnelConfigsPrimaryOutput) ProbeIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.ProbeIps }).(pulumi.StringArrayOutput)
 }
 
-// Only if `provider`== `custom-ipsec`
+// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsPrimaryOutput) RemoteIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsPrimary) []string { return v.RemoteIds }).(pulumi.StringArrayOutput)
 }
@@ -13747,9 +13816,7 @@ func (o GatewayTunnelConfigsPrimaryPtrOutput) Hosts() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Only if:
-//   - `provider`== `zscaler-gre`
-//   - `provider`== `custom-gre`
+// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 func (o GatewayTunnelConfigsPrimaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) []string {
 		if v == nil {
@@ -13768,7 +13835,7 @@ func (o GatewayTunnelConfigsPrimaryPtrOutput) ProbeIps() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Only if `provider`== `custom-ipsec`
+// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsPrimaryPtrOutput) RemoteIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsPrimary) []string {
 		if v == nil {
@@ -13983,12 +14050,10 @@ func (o GatewayTunnelConfigsProbePtrOutput) Type() pulumi.StringPtrOutput {
 
 type GatewayTunnelConfigsSecondary struct {
 	Hosts []string `pulumi:"hosts"`
-	// Only if:
-	//   * `provider`== `zscaler-gre`
-	//   * `provider`== `custom-gre`
+	// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 	InternalIps []string `pulumi:"internalIps"`
 	ProbeIps    []string `pulumi:"probeIps"`
-	// Only if `provider`== `custom-ipsec`
+	// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	RemoteIds []string `pulumi:"remoteIds"`
 	WanNames  []string `pulumi:"wanNames"`
 }
@@ -14006,12 +14071,10 @@ type GatewayTunnelConfigsSecondaryInput interface {
 
 type GatewayTunnelConfigsSecondaryArgs struct {
 	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
-	// Only if:
-	//   * `provider`== `zscaler-gre`
-	//   * `provider`== `custom-gre`
+	// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 	InternalIps pulumi.StringArrayInput `pulumi:"internalIps"`
 	ProbeIps    pulumi.StringArrayInput `pulumi:"probeIps"`
-	// Only if `provider`== `custom-ipsec`
+	// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 	RemoteIds pulumi.StringArrayInput `pulumi:"remoteIds"`
 	WanNames  pulumi.StringArrayInput `pulumi:"wanNames"`
 }
@@ -14097,9 +14160,7 @@ func (o GatewayTunnelConfigsSecondaryOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Only if:
-//   - `provider`== `zscaler-gre`
-//   - `provider`== `custom-gre`
+// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 func (o GatewayTunnelConfigsSecondaryOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.InternalIps }).(pulumi.StringArrayOutput)
 }
@@ -14108,7 +14169,7 @@ func (o GatewayTunnelConfigsSecondaryOutput) ProbeIps() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.ProbeIps }).(pulumi.StringArrayOutput)
 }
 
-// Only if `provider`== `custom-ipsec`
+// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsSecondaryOutput) RemoteIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelConfigsSecondary) []string { return v.RemoteIds }).(pulumi.StringArrayOutput)
 }
@@ -14150,9 +14211,7 @@ func (o GatewayTunnelConfigsSecondaryPtrOutput) Hosts() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// Only if:
-//   - `provider`== `zscaler-gre`
-//   - `provider`== `custom-gre`
+// Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
 func (o GatewayTunnelConfigsSecondaryPtrOutput) InternalIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) []string {
 		if v == nil {
@@ -14171,7 +14230,7 @@ func (o GatewayTunnelConfigsSecondaryPtrOutput) ProbeIps() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-// Only if `provider`== `custom-ipsec`
+// Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
 func (o GatewayTunnelConfigsSecondaryPtrOutput) RemoteIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelConfigsSecondary) []string {
 		if v == nil {
@@ -14347,8 +14406,9 @@ func (o GatewayTunnelProviderOptionsPtrOutput) Zscaler() GatewayTunnelProviderOp
 }
 
 type GatewayTunnelProviderOptionsJse struct {
-	Name     *string `pulumi:"name"`
-	NumUsers *int    `pulumi:"numUsers"`
+	NumUsers *int `pulumi:"numUsers"`
+	// JSE Organization name
+	OrgName *string `pulumi:"orgName"`
 }
 
 // GatewayTunnelProviderOptionsJseInput is an input type that accepts GatewayTunnelProviderOptionsJseArgs and GatewayTunnelProviderOptionsJseOutput values.
@@ -14363,8 +14423,9 @@ type GatewayTunnelProviderOptionsJseInput interface {
 }
 
 type GatewayTunnelProviderOptionsJseArgs struct {
-	Name     pulumi.StringPtrInput `pulumi:"name"`
-	NumUsers pulumi.IntPtrInput    `pulumi:"numUsers"`
+	NumUsers pulumi.IntPtrInput `pulumi:"numUsers"`
+	// JSE Organization name
+	OrgName pulumi.StringPtrInput `pulumi:"orgName"`
 }
 
 func (GatewayTunnelProviderOptionsJseArgs) ElementType() reflect.Type {
@@ -14444,12 +14505,13 @@ func (o GatewayTunnelProviderOptionsJseOutput) ToGatewayTunnelProviderOptionsJse
 	}).(GatewayTunnelProviderOptionsJsePtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsJseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsJse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
 func (o GatewayTunnelProviderOptionsJseOutput) NumUsers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GatewayTunnelProviderOptionsJse) *int { return v.NumUsers }).(pulumi.IntPtrOutput)
+}
+
+// JSE Organization name
+func (o GatewayTunnelProviderOptionsJseOutput) OrgName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsJse) *string { return v.OrgName }).(pulumi.StringPtrOutput)
 }
 
 type GatewayTunnelProviderOptionsJsePtrOutput struct{ *pulumi.OutputState }
@@ -14476,15 +14538,6 @@ func (o GatewayTunnelProviderOptionsJsePtrOutput) Elem() GatewayTunnelProviderOp
 	}).(GatewayTunnelProviderOptionsJseOutput)
 }
 
-func (o GatewayTunnelProviderOptionsJsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayTunnelProviderOptionsJse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o GatewayTunnelProviderOptionsJsePtrOutput) NumUsers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsJse) *int {
 		if v == nil {
@@ -14494,26 +14547,46 @@ func (o GatewayTunnelProviderOptionsJsePtrOutput) NumUsers() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// JSE Organization name
+func (o GatewayTunnelProviderOptionsJsePtrOutput) OrgName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsJse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrgName
+	}).(pulumi.StringPtrOutput)
+}
+
 type GatewayTunnelProviderOptionsZscaler struct {
-	AupAcceptanceRequired *bool `pulumi:"aupAcceptanceRequired"`
-	// days before AUP is requested again
-	AupExpire *int `pulumi:"aupExpire"`
+	AupBlockInternetUntilAccepted *bool `pulumi:"aupBlockInternetUntilAccepted"`
+	// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+	AupEnabled *bool `pulumi:"aupEnabled"`
 	// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-	AupSslProxy *bool `pulumi:"aupSslProxy"`
-	// the download bandwidth cap of the link, in Mbps
-	DownloadMbps *int `pulumi:"downloadMbps"`
-	// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-	EnableAup *bool `pulumi:"enableAup"`
-	// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-	EnableCaution         *bool   `pulumi:"enableCaution"`
-	EnforceAuthentication *bool   `pulumi:"enforceAuthentication"`
-	Name                  *string `pulumi:"name"`
-	// if `useXff`==`true`
+	AupForceSslInspection *bool `pulumi:"aupForceSslInspection"`
+	// Required if `aupEnabled`==`true`. Days before AUP is requested again
+	AupTimeoutInDays *int `pulumi:"aupTimeoutInDays"`
+	// Enable this option to enforce user authentication
+	AuthRequired *bool `pulumi:"authRequired"`
+	// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+	CautionEnabled *bool `pulumi:"cautionEnabled"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	DnBandwidth *float64 `pulumi:"dnBandwidth"`
+	// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+	IdleTimeInMinutes *int `pulumi:"idleTimeInMinutes"`
+	// if `true`, enable the firewall control option
+	OfwEnabled *bool `pulumi:"ofwEnabled"`
+	// `sub-locations` can be used for specific uses cases to define different configuration based on the user network
 	SubLocations []GatewayTunnelProviderOptionsZscalerSubLocation `pulumi:"subLocations"`
-	// the download bandwidth cap of the link, in Mbps
-	UploadMbps *int `pulumi:"uploadMbps"`
+	// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+	SurrogateIp *bool `pulumi:"surrogateIp"`
+	// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+	SurrogateIpEnforcedForKnownBrowsers *bool `pulumi:"surrogateIpEnforcedForKnownBrowsers"`
+	// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+	SurrogateRefreshTimeInMinutes *int `pulumi:"surrogateRefreshTimeInMinutes"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	UpBandwidth *float64 `pulumi:"upBandwidth"`
 	// location uses proxy chaining to forward traffic
-	UseXff *bool `pulumi:"useXff"`
+	XffForwardEnabled *bool `pulumi:"xffForwardEnabled"`
 }
 
 // GatewayTunnelProviderOptionsZscalerInput is an input type that accepts GatewayTunnelProviderOptionsZscalerArgs and GatewayTunnelProviderOptionsZscalerOutput values.
@@ -14528,25 +14601,35 @@ type GatewayTunnelProviderOptionsZscalerInput interface {
 }
 
 type GatewayTunnelProviderOptionsZscalerArgs struct {
-	AupAcceptanceRequired pulumi.BoolPtrInput `pulumi:"aupAcceptanceRequired"`
-	// days before AUP is requested again
-	AupExpire pulumi.IntPtrInput `pulumi:"aupExpire"`
+	AupBlockInternetUntilAccepted pulumi.BoolPtrInput `pulumi:"aupBlockInternetUntilAccepted"`
+	// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+	AupEnabled pulumi.BoolPtrInput `pulumi:"aupEnabled"`
 	// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-	AupSslProxy pulumi.BoolPtrInput `pulumi:"aupSslProxy"`
-	// the download bandwidth cap of the link, in Mbps
-	DownloadMbps pulumi.IntPtrInput `pulumi:"downloadMbps"`
-	// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-	EnableAup pulumi.BoolPtrInput `pulumi:"enableAup"`
-	// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-	EnableCaution         pulumi.BoolPtrInput   `pulumi:"enableCaution"`
-	EnforceAuthentication pulumi.BoolPtrInput   `pulumi:"enforceAuthentication"`
-	Name                  pulumi.StringPtrInput `pulumi:"name"`
-	// if `useXff`==`true`
+	AupForceSslInspection pulumi.BoolPtrInput `pulumi:"aupForceSslInspection"`
+	// Required if `aupEnabled`==`true`. Days before AUP is requested again
+	AupTimeoutInDays pulumi.IntPtrInput `pulumi:"aupTimeoutInDays"`
+	// Enable this option to enforce user authentication
+	AuthRequired pulumi.BoolPtrInput `pulumi:"authRequired"`
+	// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+	CautionEnabled pulumi.BoolPtrInput `pulumi:"cautionEnabled"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	DnBandwidth pulumi.Float64PtrInput `pulumi:"dnBandwidth"`
+	// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+	IdleTimeInMinutes pulumi.IntPtrInput `pulumi:"idleTimeInMinutes"`
+	// if `true`, enable the firewall control option
+	OfwEnabled pulumi.BoolPtrInput `pulumi:"ofwEnabled"`
+	// `sub-locations` can be used for specific uses cases to define different configuration based on the user network
 	SubLocations GatewayTunnelProviderOptionsZscalerSubLocationArrayInput `pulumi:"subLocations"`
-	// the download bandwidth cap of the link, in Mbps
-	UploadMbps pulumi.IntPtrInput `pulumi:"uploadMbps"`
+	// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+	SurrogateIp pulumi.BoolPtrInput `pulumi:"surrogateIp"`
+	// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+	SurrogateIpEnforcedForKnownBrowsers pulumi.BoolPtrInput `pulumi:"surrogateIpEnforcedForKnownBrowsers"`
+	// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+	SurrogateRefreshTimeInMinutes pulumi.IntPtrInput `pulumi:"surrogateRefreshTimeInMinutes"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	UpBandwidth pulumi.Float64PtrInput `pulumi:"upBandwidth"`
 	// location uses proxy chaining to forward traffic
-	UseXff pulumi.BoolPtrInput `pulumi:"useXff"`
+	XffForwardEnabled pulumi.BoolPtrInput `pulumi:"xffForwardEnabled"`
 }
 
 func (GatewayTunnelProviderOptionsZscalerArgs) ElementType() reflect.Type {
@@ -14626,58 +14709,80 @@ func (o GatewayTunnelProviderOptionsZscalerOutput) ToGatewayTunnelProviderOption
 	}).(GatewayTunnelProviderOptionsZscalerPtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerOutput) AupAcceptanceRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.AupAcceptanceRequired }).(pulumi.BoolPtrOutput)
+func (o GatewayTunnelProviderOptionsZscalerOutput) AupBlockInternetUntilAccepted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.AupBlockInternetUntilAccepted }).(pulumi.BoolPtrOutput)
 }
 
-// days before AUP is requested again
-func (o GatewayTunnelProviderOptionsZscalerOutput) AupExpire() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *int { return v.AupExpire }).(pulumi.IntPtrOutput)
+// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+func (o GatewayTunnelProviderOptionsZscalerOutput) AupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.AupEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-func (o GatewayTunnelProviderOptionsZscalerOutput) AupSslProxy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.AupSslProxy }).(pulumi.BoolPtrOutput)
+func (o GatewayTunnelProviderOptionsZscalerOutput) AupForceSslInspection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.AupForceSslInspection }).(pulumi.BoolPtrOutput)
 }
 
-// the download bandwidth cap of the link, in Mbps
-func (o GatewayTunnelProviderOptionsZscalerOutput) DownloadMbps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *int { return v.DownloadMbps }).(pulumi.IntPtrOutput)
+// Required if `aupEnabled`==`true`. Days before AUP is requested again
+func (o GatewayTunnelProviderOptionsZscalerOutput) AupTimeoutInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *int { return v.AupTimeoutInDays }).(pulumi.IntPtrOutput)
 }
 
-// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-func (o GatewayTunnelProviderOptionsZscalerOutput) EnableAup() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.EnableAup }).(pulumi.BoolPtrOutput)
+// Enable this option to enforce user authentication
+func (o GatewayTunnelProviderOptionsZscalerOutput) AuthRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.AuthRequired }).(pulumi.BoolPtrOutput)
 }
 
-// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-func (o GatewayTunnelProviderOptionsZscalerOutput) EnableCaution() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.EnableCaution }).(pulumi.BoolPtrOutput)
+// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+func (o GatewayTunnelProviderOptionsZscalerOutput) CautionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.CautionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerOutput) EnforceAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.EnforceAuthentication }).(pulumi.BoolPtrOutput)
+// the download bandwidth cap of the link, in Mbps. Disabled if not set
+func (o GatewayTunnelProviderOptionsZscalerOutput) DnBandwidth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *float64 { return v.DnBandwidth }).(pulumi.Float64PtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+func (o GatewayTunnelProviderOptionsZscalerOutput) IdleTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *int { return v.IdleTimeInMinutes }).(pulumi.IntPtrOutput)
 }
 
-// if `useXff`==`true`
+// if `true`, enable the firewall control option
+func (o GatewayTunnelProviderOptionsZscalerOutput) OfwEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.OfwEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// `sub-locations` can be used for specific uses cases to define different configuration based on the user network
 func (o GatewayTunnelProviderOptionsZscalerOutput) SubLocations() GatewayTunnelProviderOptionsZscalerSubLocationArrayOutput {
 	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) []GatewayTunnelProviderOptionsZscalerSubLocation {
 		return v.SubLocations
 	}).(GatewayTunnelProviderOptionsZscalerSubLocationArrayOutput)
 }
 
-// the download bandwidth cap of the link, in Mbps
-func (o GatewayTunnelProviderOptionsZscalerOutput) UploadMbps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *int { return v.UploadMbps }).(pulumi.IntPtrOutput)
+// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+func (o GatewayTunnelProviderOptionsZscalerOutput) SurrogateIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.SurrogateIp }).(pulumi.BoolPtrOutput)
+}
+
+// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+func (o GatewayTunnelProviderOptionsZscalerOutput) SurrogateIpEnforcedForKnownBrowsers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.SurrogateIpEnforcedForKnownBrowsers }).(pulumi.BoolPtrOutput)
+}
+
+// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+func (o GatewayTunnelProviderOptionsZscalerOutput) SurrogateRefreshTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *int { return v.SurrogateRefreshTimeInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// the download bandwidth cap of the link, in Mbps. Disabled if not set
+func (o GatewayTunnelProviderOptionsZscalerOutput) UpBandwidth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *float64 { return v.UpBandwidth }).(pulumi.Float64PtrOutput)
 }
 
 // location uses proxy chaining to forward traffic
-func (o GatewayTunnelProviderOptionsZscalerOutput) UseXff() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.UseXff }).(pulumi.BoolPtrOutput)
+func (o GatewayTunnelProviderOptionsZscalerOutput) XffForwardEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscaler) *bool { return v.XffForwardEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type GatewayTunnelProviderOptionsZscalerPtrOutput struct{ *pulumi.OutputState }
@@ -14704,84 +14809,96 @@ func (o GatewayTunnelProviderOptionsZscalerPtrOutput) Elem() GatewayTunnelProvid
 	}).(GatewayTunnelProviderOptionsZscalerOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupAcceptanceRequired() pulumi.BoolPtrOutput {
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupBlockInternetUntilAccepted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.AupAcceptanceRequired
+		return v.AupBlockInternetUntilAccepted
 	}).(pulumi.BoolPtrOutput)
 }
 
-// days before AUP is requested again
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupExpire() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *int {
+// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.AupExpire
-	}).(pulumi.IntPtrOutput)
+		return v.AupEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupSslProxy() pulumi.BoolPtrOutput {
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupForceSslInspection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.AupSslProxy
+		return v.AupForceSslInspection
 	}).(pulumi.BoolPtrOutput)
 }
 
-// the download bandwidth cap of the link, in Mbps
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) DownloadMbps() pulumi.IntPtrOutput {
+// Required if `aupEnabled`==`true`. Days before AUP is requested again
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AupTimeoutInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *int {
 		if v == nil {
 			return nil
 		}
-		return v.DownloadMbps
+		return v.AupTimeoutInDays
 	}).(pulumi.IntPtrOutput)
 }
 
-// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) EnableAup() pulumi.BoolPtrOutput {
+// Enable this option to enforce user authentication
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) AuthRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.EnableAup
+		return v.AuthRequired
 	}).(pulumi.BoolPtrOutput)
 }
 
-// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) EnableCaution() pulumi.BoolPtrOutput {
+// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) CautionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.EnableCaution
+		return v.CautionEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) EnforceAuthentication() pulumi.BoolPtrOutput {
+// the download bandwidth cap of the link, in Mbps. Disabled if not set
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) DnBandwidth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DnBandwidth
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) IdleTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// if `true`, enable the firewall control option
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) OfwEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.EnforceAuthentication
+		return v.OfwEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// if `useXff`==`true`
+// `sub-locations` can be used for specific uses cases to define different configuration based on the user network
 func (o GatewayTunnelProviderOptionsZscalerPtrOutput) SubLocations() GatewayTunnelProviderOptionsZscalerSubLocationArrayOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) []GatewayTunnelProviderOptionsZscalerSubLocation {
 		if v == nil {
@@ -14791,42 +14908,84 @@ func (o GatewayTunnelProviderOptionsZscalerPtrOutput) SubLocations() GatewayTunn
 	}).(GatewayTunnelProviderOptionsZscalerSubLocationArrayOutput)
 }
 
-// the download bandwidth cap of the link, in Mbps
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) UploadMbps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *int {
-		if v == nil {
-			return nil
-		}
-		return v.UploadMbps
-	}).(pulumi.IntPtrOutput)
-}
-
-// location uses proxy chaining to forward traffic
-func (o GatewayTunnelProviderOptionsZscalerPtrOutput) UseXff() pulumi.BoolPtrOutput {
+// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) SurrogateIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.UseXff
+		return v.SurrogateIp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) SurrogateIpEnforcedForKnownBrowsers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SurrogateIpEnforcedForKnownBrowsers
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) SurrogateRefreshTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SurrogateRefreshTimeInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// the download bandwidth cap of the link, in Mbps. Disabled if not set
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) UpBandwidth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UpBandwidth
+	}).(pulumi.Float64PtrOutput)
+}
+
+// location uses proxy chaining to forward traffic
+func (o GatewayTunnelProviderOptionsZscalerPtrOutput) XffForwardEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GatewayTunnelProviderOptionsZscaler) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XffForwardEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
 type GatewayTunnelProviderOptionsZscalerSubLocation struct {
-	AupAcceptanceRequired *bool `pulumi:"aupAcceptanceRequired"`
-	// days before AUP is requested again
-	AupExpire *int `pulumi:"aupExpire"`
+	AupBlockInternetUntilAccepted *bool `pulumi:"aupBlockInternetUntilAccepted"`
+	// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+	AupEnabled *bool `pulumi:"aupEnabled"`
 	// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-	AupSslProxy *bool `pulumi:"aupSslProxy"`
-	// the download bandwidth cap of the link, in Mbps
-	DownloadMbps *int `pulumi:"downloadMbps"`
-	// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-	EnableAup *bool `pulumi:"enableAup"`
-	// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-	EnableCaution         *bool    `pulumi:"enableCaution"`
-	EnforceAuthentication *bool    `pulumi:"enforceAuthentication"`
-	Subnets               []string `pulumi:"subnets"`
-	// the download bandwidth cap of the link, in Mbps
-	UploadMbps *int `pulumi:"uploadMbps"`
+	AupForceSslInspection *bool `pulumi:"aupForceSslInspection"`
+	// Required if `aupEnabled`==`true`. Days before AUP is requested again
+	AupTimeoutInDays *int `pulumi:"aupTimeoutInDays"`
+	// Enable this option to authenticate users
+	AuthRequired *bool `pulumi:"authRequired"`
+	// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+	CautionEnabled *bool `pulumi:"cautionEnabled"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	DnBandwidth *float64 `pulumi:"dnBandwidth"`
+	// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+	IdleTimeInMinutes *int `pulumi:"idleTimeInMinutes"`
+	// Network name
+	Name *string `pulumi:"name"`
+	// if `true`, enable the firewall control option
+	OfwEnabled *bool `pulumi:"ofwEnabled"`
+	// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+	SurrogateIp *bool `pulumi:"surrogateIp"`
+	// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+	SurrogateIpEnforcedForKnownBrowsers *bool `pulumi:"surrogateIpEnforcedForKnownBrowsers"`
+	// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+	SurrogateRefreshTimeInMinutes *int `pulumi:"surrogateRefreshTimeInMinutes"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	UpBandwidth *float64 `pulumi:"upBandwidth"`
 }
 
 // GatewayTunnelProviderOptionsZscalerSubLocationInput is an input type that accepts GatewayTunnelProviderOptionsZscalerSubLocationArgs and GatewayTunnelProviderOptionsZscalerSubLocationOutput values.
@@ -14841,21 +15000,33 @@ type GatewayTunnelProviderOptionsZscalerSubLocationInput interface {
 }
 
 type GatewayTunnelProviderOptionsZscalerSubLocationArgs struct {
-	AupAcceptanceRequired pulumi.BoolPtrInput `pulumi:"aupAcceptanceRequired"`
-	// days before AUP is requested again
-	AupExpire pulumi.IntPtrInput `pulumi:"aupExpire"`
+	AupBlockInternetUntilAccepted pulumi.BoolPtrInput `pulumi:"aupBlockInternetUntilAccepted"`
+	// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+	AupEnabled pulumi.BoolPtrInput `pulumi:"aupEnabled"`
 	// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-	AupSslProxy pulumi.BoolPtrInput `pulumi:"aupSslProxy"`
-	// the download bandwidth cap of the link, in Mbps
-	DownloadMbps pulumi.IntPtrInput `pulumi:"downloadMbps"`
-	// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-	EnableAup pulumi.BoolPtrInput `pulumi:"enableAup"`
-	// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-	EnableCaution         pulumi.BoolPtrInput     `pulumi:"enableCaution"`
-	EnforceAuthentication pulumi.BoolPtrInput     `pulumi:"enforceAuthentication"`
-	Subnets               pulumi.StringArrayInput `pulumi:"subnets"`
-	// the download bandwidth cap of the link, in Mbps
-	UploadMbps pulumi.IntPtrInput `pulumi:"uploadMbps"`
+	AupForceSslInspection pulumi.BoolPtrInput `pulumi:"aupForceSslInspection"`
+	// Required if `aupEnabled`==`true`. Days before AUP is requested again
+	AupTimeoutInDays pulumi.IntPtrInput `pulumi:"aupTimeoutInDays"`
+	// Enable this option to authenticate users
+	AuthRequired pulumi.BoolPtrInput `pulumi:"authRequired"`
+	// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+	CautionEnabled pulumi.BoolPtrInput `pulumi:"cautionEnabled"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	DnBandwidth pulumi.Float64PtrInput `pulumi:"dnBandwidth"`
+	// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+	IdleTimeInMinutes pulumi.IntPtrInput `pulumi:"idleTimeInMinutes"`
+	// Network name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// if `true`, enable the firewall control option
+	OfwEnabled pulumi.BoolPtrInput `pulumi:"ofwEnabled"`
+	// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+	SurrogateIp pulumi.BoolPtrInput `pulumi:"surrogateIp"`
+	// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+	SurrogateIpEnforcedForKnownBrowsers pulumi.BoolPtrInput `pulumi:"surrogateIpEnforcedForKnownBrowsers"`
+	// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+	SurrogateRefreshTimeInMinutes pulumi.IntPtrInput `pulumi:"surrogateRefreshTimeInMinutes"`
+	// the download bandwidth cap of the link, in Mbps. Disabled if not set
+	UpBandwidth pulumi.Float64PtrInput `pulumi:"upBandwidth"`
 }
 
 func (GatewayTunnelProviderOptionsZscalerSubLocationArgs) ElementType() reflect.Type {
@@ -14909,46 +15080,75 @@ func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) ToGatewayTunnelPro
 	return o
 }
 
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupAcceptanceRequired() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.AupAcceptanceRequired }).(pulumi.BoolPtrOutput)
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupBlockInternetUntilAccepted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.AupBlockInternetUntilAccepted }).(pulumi.BoolPtrOutput)
 }
 
-// days before AUP is requested again
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupExpire() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *int { return v.AupExpire }).(pulumi.IntPtrOutput)
+// Can only be `true` when `authRequired`==`false`, display Acceptable Use Policy (AUP)
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.AupEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupSslProxy() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.AupSslProxy }).(pulumi.BoolPtrOutput)
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupForceSslInspection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.AupForceSslInspection }).(pulumi.BoolPtrOutput)
 }
 
-// the download bandwidth cap of the link, in Mbps
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) DownloadMbps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *int { return v.DownloadMbps }).(pulumi.IntPtrOutput)
+// Required if `aupEnabled`==`true`. Days before AUP is requested again
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AupTimeoutInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *int { return v.AupTimeoutInDays }).(pulumi.IntPtrOutput)
 }
 
-// if `useXff`==`true`, display Acceptable Use Policy (AUP)
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) EnableAup() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.EnableAup }).(pulumi.BoolPtrOutput)
+// Enable this option to authenticate users
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) AuthRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.AuthRequired }).(pulumi.BoolPtrOutput)
 }
 
-// when `enforceAuthentication`==`false`, display caution notification for non-authenticated users
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) EnableCaution() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.EnableCaution }).(pulumi.BoolPtrOutput)
+// Can only be `true` when `authRequired`==`false`, display caution notification for non-authenticated users
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) CautionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.CautionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) EnforceAuthentication() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.EnforceAuthentication }).(pulumi.BoolPtrOutput)
+// the download bandwidth cap of the link, in Mbps. Disabled if not set
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) DnBandwidth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *float64 { return v.DnBandwidth }).(pulumi.Float64PtrOutput)
 }
 
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) Subnets() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) []string { return v.Subnets }).(pulumi.StringArrayOutput)
+// Required if `surrogate_IP`==`true`, idle Time to Disassociation
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) IdleTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *int { return v.IdleTimeInMinutes }).(pulumi.IntPtrOutput)
 }
 
-// the download bandwidth cap of the link, in Mbps
-func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) UploadMbps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *int { return v.UploadMbps }).(pulumi.IntPtrOutput)
+// Network name
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// if `true`, enable the firewall control option
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) OfwEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.OfwEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Can only be `true` when `authRequired`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) SurrogateIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool { return v.SurrogateIp }).(pulumi.BoolPtrOutput)
+}
+
+// Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) SurrogateIpEnforcedForKnownBrowsers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *bool {
+		return v.SurrogateIpEnforcedForKnownBrowsers
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idleTimeInMinutes`, refresh Time for re-validation of Surrogacy
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) SurrogateRefreshTimeInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *int { return v.SurrogateRefreshTimeInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// the download bandwidth cap of the link, in Mbps. Disabled if not set
+func (o GatewayTunnelProviderOptionsZscalerSubLocationOutput) UpBandwidth() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GatewayTunnelProviderOptionsZscalerSubLocation) *float64 { return v.UpBandwidth }).(pulumi.Float64PtrOutput)
 }
 
 type GatewayTunnelProviderOptionsZscalerSubLocationArrayOutput struct{ *pulumi.OutputState }
@@ -15203,12 +15403,14 @@ func (o GatewayVrfInstancesMapOutput) MapIndex(k pulumi.StringInput) GatewayVrfI
 }
 
 type SwitchAclPolicy struct {
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Actions:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	Actions []SwitchAclPolicyAction `pulumi:"actions"`
 	Name    *string                 `pulumi:"name"`
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Source Tags:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	SrcTags []string `pulumi:"srcTags"`
 }
 
@@ -15224,12 +15426,14 @@ type SwitchAclPolicyInput interface {
 }
 
 type SwitchAclPolicyArgs struct {
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Actions:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	Actions SwitchAclPolicyActionArrayInput `pulumi:"actions"`
 	Name    pulumi.StringPtrInput           `pulumi:"name"`
-	// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-	// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+	// ACL Policy Source Tags:
+	//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+	//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 	SrcTags pulumi.StringArrayInput `pulumi:"srcTags"`
 }
 
@@ -15284,8 +15488,9 @@ func (o SwitchAclPolicyOutput) ToSwitchAclPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+// ACL Policy Actions:
+//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 func (o SwitchAclPolicyOutput) Actions() SwitchAclPolicyActionArrayOutput {
 	return o.ApplyT(func(v SwitchAclPolicy) []SwitchAclPolicyAction { return v.Actions }).(SwitchAclPolicyActionArrayOutput)
 }
@@ -15294,8 +15499,9 @@ func (o SwitchAclPolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// - for GBP-based policy, all srcTags and dstTags have to be gbp-based
-// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+// ACL Policy Source Tags:
+//   - for GBP-based policy, all srcTags and dstTags have to be gbp-based
+//   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
 func (o SwitchAclPolicyOutput) SrcTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchAclPolicy) []string { return v.SrcTags }).(pulumi.StringArrayOutput)
 }
@@ -15425,9 +15631,9 @@ func (o SwitchAclPolicyActionArrayOutput) Index(i pulumi.IntInput) SwitchAclPoli
 
 type SwitchAclTags struct {
 	// required if
-	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-	// - `type`==`gbpResource`
-	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
+	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	//   - `type`==`gbpResource`
+	//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag *int `pulumi:"gbpTag"`
 	// required if
 	// - `type`==`mac`
@@ -15445,8 +15651,7 @@ type SwitchAclTags struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup *string `pulumi:"radiusGroup"`
-	// if `type`==`resource` or `type`==`gbpResource`
-	// empty means unrestricted, i.e. any
+	// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs []SwitchAclTagsSpec `pulumi:"specs"`
 	// if
 	// - `type`==`subnet`
@@ -15479,9 +15684,9 @@ type SwitchAclTagsInput interface {
 
 type SwitchAclTagsArgs struct {
 	// required if
-	// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-	// - `type`==`gbpResource`
-	// - `type`==`staticGbp` (applying gbp tag against matching conditions)
+	//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+	//   - `type`==`gbpResource`
+	//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 	GbpTag pulumi.IntPtrInput `pulumi:"gbpTag"`
 	// required if
 	// - `type`==`mac`
@@ -15499,8 +15704,7 @@ type SwitchAclTagsArgs struct {
 	//   * `type`==`staticGbp`
 	//     if from matching radius_group
 	RadiusGroup pulumi.StringPtrInput `pulumi:"radiusGroup"`
-	// if `type`==`resource` or `type`==`gbpResource`
-	// empty means unrestricted, i.e. any
+	// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 	Specs SwitchAclTagsSpecArrayInput `pulumi:"specs"`
 	// if
 	// - `type`==`subnet`
@@ -15572,9 +15776,9 @@ func (o SwitchAclTagsOutput) ToSwitchAclTagsOutputWithContext(ctx context.Contex
 }
 
 // required if
-// - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
-// - `type`==`gbpResource`
-// - `type`==`staticGbp` (applying gbp tag against matching conditions)
+//   - `type`==`dynamicGbp` (gbp_tag received from RADIUS)
+//   - `type`==`gbpResource`
+//   - `type`==`staticGbp` (applying gbp tag against matching conditions)
 func (o SwitchAclTagsOutput) GbpTag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchAclTags) *int { return v.GbpTag }).(pulumi.IntPtrOutput)
 }
@@ -15604,8 +15808,7 @@ func (o SwitchAclTagsOutput) RadiusGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclTags) *string { return v.RadiusGroup }).(pulumi.StringPtrOutput)
 }
 
-// if `type`==`resource` or `type`==`gbpResource`
-// empty means unrestricted, i.e. any
+// if `type`==`resource` or `type`==`gbpResource`. Empty means unrestricted, i.e. any
 func (o SwitchAclTagsOutput) Specs() SwitchAclTagsSpecArrayOutput {
 	return o.ApplyT(func(v SwitchAclTags) []SwitchAclTagsSpec { return v.Specs }).(SwitchAclTagsSpecArrayOutput)
 }
@@ -15655,7 +15858,7 @@ func (o SwitchAclTagsMapOutput) MapIndex(k pulumi.StringInput) SwitchAclTagsOutp
 type SwitchAclTagsSpec struct {
 	// matched dst port, "0" means any
 	PortRange *string `pulumi:"portRange"`
-	// `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+	// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -15673,7 +15876,7 @@ type SwitchAclTagsSpecInput interface {
 type SwitchAclTagsSpecArgs struct {
 	// matched dst port, "0" means any
 	PortRange pulumi.StringPtrInput `pulumi:"portRange"`
-	// `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+	// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -15733,7 +15936,7 @@ func (o SwitchAclTagsSpecOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclTagsSpec) *string { return v.PortRange }).(pulumi.StringPtrOutput)
 }
 
-// `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocolNumber` is between 1-254
+// `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocolNumber` is between 1-254, default is `any` `protocolNumber` is between 1-254
 func (o SwitchAclTagsSpecOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchAclTagsSpec) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -16670,158 +16873,6 @@ func (o SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput) MapIndex(k pulumi.St
 	}).(SwitchDhcpdConfigConfigVendorEncapsulatedOutput)
 }
 
-type SwitchEvpnConfig struct {
-	Enabled *bool `pulumi:"enabled"`
-	// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-	Role *string `pulumi:"role"`
-}
-
-// SwitchEvpnConfigInput is an input type that accepts SwitchEvpnConfigArgs and SwitchEvpnConfigOutput values.
-// You can construct a concrete instance of `SwitchEvpnConfigInput` via:
-//
-//	SwitchEvpnConfigArgs{...}
-type SwitchEvpnConfigInput interface {
-	pulumi.Input
-
-	ToSwitchEvpnConfigOutput() SwitchEvpnConfigOutput
-	ToSwitchEvpnConfigOutputWithContext(context.Context) SwitchEvpnConfigOutput
-}
-
-type SwitchEvpnConfigArgs struct {
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-	Role pulumi.StringPtrInput `pulumi:"role"`
-}
-
-func (SwitchEvpnConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchEvpnConfig)(nil)).Elem()
-}
-
-func (i SwitchEvpnConfigArgs) ToSwitchEvpnConfigOutput() SwitchEvpnConfigOutput {
-	return i.ToSwitchEvpnConfigOutputWithContext(context.Background())
-}
-
-func (i SwitchEvpnConfigArgs) ToSwitchEvpnConfigOutputWithContext(ctx context.Context) SwitchEvpnConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchEvpnConfigOutput)
-}
-
-func (i SwitchEvpnConfigArgs) ToSwitchEvpnConfigPtrOutput() SwitchEvpnConfigPtrOutput {
-	return i.ToSwitchEvpnConfigPtrOutputWithContext(context.Background())
-}
-
-func (i SwitchEvpnConfigArgs) ToSwitchEvpnConfigPtrOutputWithContext(ctx context.Context) SwitchEvpnConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchEvpnConfigOutput).ToSwitchEvpnConfigPtrOutputWithContext(ctx)
-}
-
-// SwitchEvpnConfigPtrInput is an input type that accepts SwitchEvpnConfigArgs, SwitchEvpnConfigPtr and SwitchEvpnConfigPtrOutput values.
-// You can construct a concrete instance of `SwitchEvpnConfigPtrInput` via:
-//
-//	        SwitchEvpnConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type SwitchEvpnConfigPtrInput interface {
-	pulumi.Input
-
-	ToSwitchEvpnConfigPtrOutput() SwitchEvpnConfigPtrOutput
-	ToSwitchEvpnConfigPtrOutputWithContext(context.Context) SwitchEvpnConfigPtrOutput
-}
-
-type switchEvpnConfigPtrType SwitchEvpnConfigArgs
-
-func SwitchEvpnConfigPtr(v *SwitchEvpnConfigArgs) SwitchEvpnConfigPtrInput {
-	return (*switchEvpnConfigPtrType)(v)
-}
-
-func (*switchEvpnConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SwitchEvpnConfig)(nil)).Elem()
-}
-
-func (i *switchEvpnConfigPtrType) ToSwitchEvpnConfigPtrOutput() SwitchEvpnConfigPtrOutput {
-	return i.ToSwitchEvpnConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *switchEvpnConfigPtrType) ToSwitchEvpnConfigPtrOutputWithContext(ctx context.Context) SwitchEvpnConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SwitchEvpnConfigPtrOutput)
-}
-
-type SwitchEvpnConfigOutput struct{ *pulumi.OutputState }
-
-func (SwitchEvpnConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SwitchEvpnConfig)(nil)).Elem()
-}
-
-func (o SwitchEvpnConfigOutput) ToSwitchEvpnConfigOutput() SwitchEvpnConfigOutput {
-	return o
-}
-
-func (o SwitchEvpnConfigOutput) ToSwitchEvpnConfigOutputWithContext(ctx context.Context) SwitchEvpnConfigOutput {
-	return o
-}
-
-func (o SwitchEvpnConfigOutput) ToSwitchEvpnConfigPtrOutput() SwitchEvpnConfigPtrOutput {
-	return o.ToSwitchEvpnConfigPtrOutputWithContext(context.Background())
-}
-
-func (o SwitchEvpnConfigOutput) ToSwitchEvpnConfigPtrOutputWithContext(ctx context.Context) SwitchEvpnConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SwitchEvpnConfig) *SwitchEvpnConfig {
-		return &v
-	}).(SwitchEvpnConfigPtrOutput)
-}
-
-func (o SwitchEvpnConfigOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SwitchEvpnConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-func (o SwitchEvpnConfigOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SwitchEvpnConfig) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-type SwitchEvpnConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (SwitchEvpnConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SwitchEvpnConfig)(nil)).Elem()
-}
-
-func (o SwitchEvpnConfigPtrOutput) ToSwitchEvpnConfigPtrOutput() SwitchEvpnConfigPtrOutput {
-	return o
-}
-
-func (o SwitchEvpnConfigPtrOutput) ToSwitchEvpnConfigPtrOutputWithContext(ctx context.Context) SwitchEvpnConfigPtrOutput {
-	return o
-}
-
-func (o SwitchEvpnConfigPtrOutput) Elem() SwitchEvpnConfigOutput {
-	return o.ApplyT(func(v *SwitchEvpnConfig) SwitchEvpnConfig {
-		if v != nil {
-			return *v
-		}
-		var ret SwitchEvpnConfig
-		return ret
-	}).(SwitchEvpnConfigOutput)
-}
-
-func (o SwitchEvpnConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SwitchEvpnConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// enum: `access`, `collapsed-core`, `core`, `distribution`, `esilag-access`, `none`
-func (o SwitchEvpnConfigPtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SwitchEvpnConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Role
-	}).(pulumi.StringPtrOutput)
-}
-
 type SwitchExtraRoutes6 struct {
 	// this takes precedence
 	Discard       *bool                                      `pulumi:"discard"`
@@ -17524,9 +17575,7 @@ func (o SwitchIpConfigPtrOutput) Type() pulumi.StringPtrOutput {
 type SwitchLocalPortConfig struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd               *bool `pulumi:"allowDhcpd"`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
 	// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
@@ -17547,8 +17596,7 @@ type SwitchLocalPortConfig struct {
 	EnableQos     *bool `pulumi:"enableQos"`
 	// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// inter_switch_link is used together with "isolation" under networks
-	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -17564,6 +17612,8 @@ type SwitchLocalPortConfig struct {
 	Mtu *int `pulumi:"mtu"`
 	// Only if `mode`==`trunk`, the list of network/vlans
 	Networks []string `pulumi:"networks"`
+	// Additional note for the port config override
+	Note *string `pulumi:"note"`
 	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
 	PersistMac *bool `pulumi:"persistMac"`
 	// whether PoE capabilities are disabled for a port
@@ -17608,9 +17658,7 @@ type SwitchLocalPortConfigInput interface {
 type SwitchLocalPortConfigArgs struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd               pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
 	// Only if `portAuth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
@@ -17631,8 +17679,7 @@ type SwitchLocalPortConfigArgs struct {
 	EnableQos     pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// inter_switch_link is used together with "isolation" under networks
-	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -17648,6 +17695,8 @@ type SwitchLocalPortConfigArgs struct {
 	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
 	// Only if `mode`==`trunk`, the list of network/vlans
 	Networks pulumi.StringArrayInput `pulumi:"networks"`
+	// Additional note for the port config override
+	Note pulumi.StringPtrInput `pulumi:"note"`
 	// Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
 	PersistMac pulumi.BoolPtrInput `pulumi:"persistMac"`
 	// whether PoE capabilities are disabled for a port
@@ -17734,9 +17783,7 @@ func (o SwitchLocalPortConfigOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 func (o SwitchLocalPortConfigOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -17793,8 +17840,7 @@ func (o SwitchLocalPortConfigOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// inter_switch_link is used together with "isolation" under networks
-// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// inter_switch_link is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 func (o SwitchLocalPortConfigOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -17832,6 +17878,11 @@ func (o SwitchLocalPortConfigOutput) Mtu() pulumi.IntPtrOutput {
 // Only if `mode`==`trunk`, the list of network/vlans
 func (o SwitchLocalPortConfigOutput) Networks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SwitchLocalPortConfig) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+// Additional note for the port config override
+func (o SwitchLocalPortConfigOutput) Note() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SwitchLocalPortConfig) *string { return v.Note }).(pulumi.StringPtrOutput)
 }
 
 // Only if `mode`==`access` and `portAuth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
@@ -18293,8 +18344,7 @@ type SwitchNetworks struct {
 	Gateway *string `pulumi:"gateway"`
 	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 *string `pulumi:"gateway6"`
-	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-	// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       *bool   `pulumi:"isolation"`
 	IsolationVlanId *string `pulumi:"isolationVlanId"`
 	// optional for pure switching, required when L3 / routing features are used
@@ -18320,8 +18370,7 @@ type SwitchNetworksArgs struct {
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 	// only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
 	Gateway6 pulumi.StringPtrInput `pulumi:"gateway6"`
-	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-	// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+	// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 	Isolation       pulumi.BoolPtrInput   `pulumi:"isolation"`
 	IsolationVlanId pulumi.StringPtrInput `pulumi:"isolationVlanId"`
 	// optional for pure switching, required when L3 / routing features are used
@@ -18392,8 +18441,7 @@ func (o SwitchNetworksOutput) Gateway6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *string { return v.Gateway6 }).(pulumi.StringPtrOutput)
 }
 
-// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required)
-// NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
+// whether to stop clients to talk to each other, default is false (when enabled, a unique isolationVlanId is required). NOTE: this features requires uplink device to also a be Juniper device and `interSwitchLink` to be set
 func (o SwitchNetworksOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchNetworks) *bool { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
@@ -19464,9 +19512,7 @@ func (o SwitchPortMirroringMapOutput) MapIndex(k pulumi.StringInput) SwitchPortM
 type SwitchPortUsages struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks *bool `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd *bool `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants *bool `pulumi:"allowMultipleSupplicants"`
@@ -19490,8 +19536,7 @@ type SwitchPortUsages struct {
 	EnableQos *bool `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork *string `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink *bool `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly *bool `pulumi:"macAuthOnly"`
@@ -19527,8 +19572,7 @@ type SwitchPortUsages struct {
 	ServerRejectNetwork *string `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed *string `pulumi:"speed"`
-	// Switch storm control
-	// Only if `mode`!=`dynamic`
+	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl *SwitchPortUsagesStormControl `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
 	StpEdge       *bool `pulumi:"stpEdge"`
@@ -19554,9 +19598,7 @@ type SwitchPortUsagesInput interface {
 type SwitchPortUsagesArgs struct {
 	// Only if `mode`==`trunk` whether to trunk all network/vlans
 	AllNetworks pulumi.BoolPtrInput `pulumi:"allNetworks"`
-	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-	// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-	// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+	// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 	AllowDhcpd pulumi.BoolPtrInput `pulumi:"allowDhcpd"`
 	// Only if `mode`!=`dynamic`
 	AllowMultipleSupplicants pulumi.BoolPtrInput `pulumi:"allowMultipleSupplicants"`
@@ -19580,8 +19622,7 @@ type SwitchPortUsagesArgs struct {
 	EnableQos pulumi.BoolPtrInput `pulumi:"enableQos"`
 	// Only if `mode`!=`dynamic` and `portAuth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
 	GuestNetwork pulumi.StringPtrInput `pulumi:"guestNetwork"`
-	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-	// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+	// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 	InterSwitchLink pulumi.BoolPtrInput `pulumi:"interSwitchLink"`
 	// Only if `mode`!=`dynamic` and `enableMacAuth`==`true`
 	MacAuthOnly pulumi.BoolPtrInput `pulumi:"macAuthOnly"`
@@ -19617,8 +19658,7 @@ type SwitchPortUsagesArgs struct {
 	ServerRejectNetwork pulumi.StringPtrInput `pulumi:"serverRejectNetwork"`
 	// Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
 	Speed pulumi.StringPtrInput `pulumi:"speed"`
-	// Switch storm control
-	// Only if `mode`!=`dynamic`
+	// Switch storm control. Only if `mode`!=`dynamic`
 	StormControl SwitchPortUsagesStormControlPtrInput `pulumi:"stormControl"`
 	// Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
 	StpEdge       pulumi.BoolPtrInput `pulumi:"stpEdge"`
@@ -19686,9 +19726,7 @@ func (o SwitchPortUsagesOutput) AllNetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.AllNetworks }).(pulumi.BoolPtrOutput)
 }
 
-// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-// All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state.
-// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allowDhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
 func (o SwitchPortUsagesOutput) AllowDhcpd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.AllowDhcpd }).(pulumi.BoolPtrOutput)
 }
@@ -19748,8 +19786,7 @@ func (o SwitchPortUsagesOutput) GuestNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.GuestNetwork }).(pulumi.StringPtrOutput)
 }
 
-// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks
-// NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
+// Only if `mode`!=`dynamic` interSwitchLink is used together with "isolation" under networks. NOTE: interSwitchLink works only between Juniper device. This has to be applied to both ports connected together
 func (o SwitchPortUsagesOutput) InterSwitchLink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *bool { return v.InterSwitchLink }).(pulumi.BoolPtrOutput)
 }
@@ -19839,8 +19876,7 @@ func (o SwitchPortUsagesOutput) Speed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *string { return v.Speed }).(pulumi.StringPtrOutput)
 }
 
-// Switch storm control
-// Only if `mode`!=`dynamic`
+// Switch storm control. Only if `mode`!=`dynamic`
 func (o SwitchPortUsagesOutput) StormControl() SwitchPortUsagesStormControlPtrOutput {
 	return o.ApplyT(func(v SwitchPortUsages) *SwitchPortUsagesStormControl { return v.StormControl }).(SwitchPortUsagesStormControlPtrOutput)
 }
@@ -20246,8 +20282,7 @@ type SwitchRadiusConfig struct {
 	AuthServersRetries *int `pulumi:"authServersRetries"`
 	// radius auth session timeout
 	AuthServersTimeout *int `pulumi:"authServersTimeout"`
-	// use `network`or `sourceIp`
-	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network *string `pulumi:"network"`
 	// use `network`or `sourceIp`
 	SourceIp *string `pulumi:"sourceIp"`
@@ -20273,8 +20308,7 @@ type SwitchRadiusConfigArgs struct {
 	AuthServersRetries pulumi.IntPtrInput `pulumi:"authServersRetries"`
 	// radius auth session timeout
 	AuthServersTimeout pulumi.IntPtrInput `pulumi:"authServersTimeout"`
-	// use `network`or `sourceIp`
-	// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+	// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// use `network`or `sourceIp`
 	SourceIp pulumi.StringPtrInput `pulumi:"sourceIp"`
@@ -20380,8 +20414,7 @@ func (o SwitchRadiusConfigOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SwitchRadiusConfig) *int { return v.AuthServersTimeout }).(pulumi.IntPtrOutput)
 }
 
-// use `network`or `sourceIp`
-// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o SwitchRadiusConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchRadiusConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -20463,8 +20496,7 @@ func (o SwitchRadiusConfigPtrOutput) AuthServersTimeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// use `network`or `sourceIp`
-// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+// use `network`or `sourceIp`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
 func (o SwitchRadiusConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SwitchRadiusConfig) *string {
 		if v == nil {
@@ -23891,13 +23923,11 @@ func (o SwitchSnmpConfigV3ConfigUsmPtrOutput) Users() SwitchSnmpConfigV3ConfigUs
 }
 
 type SwitchSnmpConfigV3ConfigUsmUser struct {
-	// Not required if `authenticationType`==`authenticationNone`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters.
+	// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 	AuthenticationPassword *string `pulumi:"authenticationPassword"`
 	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
 	AuthenticationType *string `pulumi:"authenticationType"`
-	// Not required if `encryptionType`==`privacy-none`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters
+	// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 	EncryptionPassword *string `pulumi:"encryptionPassword"`
 	// enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
 	EncryptionType *string `pulumi:"encryptionType"`
@@ -23916,13 +23946,11 @@ type SwitchSnmpConfigV3ConfigUsmUserInput interface {
 }
 
 type SwitchSnmpConfigV3ConfigUsmUserArgs struct {
-	// Not required if `authenticationType`==`authenticationNone`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters.
+	// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 	AuthenticationPassword pulumi.StringPtrInput `pulumi:"authenticationPassword"`
 	// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authenticationMd5`, `authenticationNone`, `authenticationSha`, `authenticationSha224`, `authenticationSha256`, `authenticationSha384`, `authenticationSha512`
 	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
-	// Not required if `encryptionType`==`privacy-none`
-	// include alphabetic, numeric, and special characters, but it cannot include control characters
+	// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 	EncryptionPassword pulumi.StringPtrInput `pulumi:"encryptionPassword"`
 	// enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
 	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
@@ -23980,8 +24008,7 @@ func (o SwitchSnmpConfigV3ConfigUsmUserOutput) ToSwitchSnmpConfigV3ConfigUsmUser
 	return o
 }
 
-// Not required if `authenticationType`==`authenticationNone`
-// include alphabetic, numeric, and special characters, but it cannot include control characters.
+// Not required if `authenticationType`==`authenticationNone`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
 func (o SwitchSnmpConfigV3ConfigUsmUserOutput) AuthenticationPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchSnmpConfigV3ConfigUsmUser) *string { return v.AuthenticationPassword }).(pulumi.StringPtrOutput)
 }
@@ -23991,8 +24018,7 @@ func (o SwitchSnmpConfigV3ConfigUsmUserOutput) AuthenticationType() pulumi.Strin
 	return o.ApplyT(func(v SwitchSnmpConfigV3ConfigUsmUser) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
 }
 
-// Not required if `encryptionType`==`privacy-none`
-// include alphabetic, numeric, and special characters, but it cannot include control characters
+// Not required if `encryptionType`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
 func (o SwitchSnmpConfigV3ConfigUsmUserOutput) EncryptionPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SwitchSnmpConfigV3ConfigUsmUser) *string { return v.EncryptionPassword }).(pulumi.StringPtrOutput)
 }
@@ -38937,8 +38963,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigOptionsMapInput)(nil)).Elem(), SwitchDhcpdConfigConfigOptionsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapsulatedInput)(nil)).Elem(), SwitchDhcpdConfigConfigVendorEncapsulatedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchDhcpdConfigConfigVendorEncapsulatedMapInput)(nil)).Elem(), SwitchDhcpdConfigConfigVendorEncapsulatedMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchEvpnConfigInput)(nil)).Elem(), SwitchEvpnConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SwitchEvpnConfigPtrInput)(nil)).Elem(), SwitchEvpnConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchExtraRoutes6Input)(nil)).Elem(), SwitchExtraRoutes6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchExtraRoutes6MapInput)(nil)).Elem(), SwitchExtraRoutes6Map{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwitchExtraRoutes6NextQualifiedInput)(nil)).Elem(), SwitchExtraRoutes6NextQualifiedArgs{})
@@ -39406,8 +39430,6 @@ func init() {
 	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigOptionsMapOutput{})
 	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigVendorEncapsulatedOutput{})
 	pulumi.RegisterOutputType(SwitchDhcpdConfigConfigVendorEncapsulatedMapOutput{})
-	pulumi.RegisterOutputType(SwitchEvpnConfigOutput{})
-	pulumi.RegisterOutputType(SwitchEvpnConfigPtrOutput{})
 	pulumi.RegisterOutputType(SwitchExtraRoutes6Output{})
 	pulumi.RegisterOutputType(SwitchExtraRoutes6MapOutput{})
 	pulumi.RegisterOutputType(SwitchExtraRoutes6NextQualifiedOutput{})

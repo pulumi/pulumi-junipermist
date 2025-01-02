@@ -14,14 +14,16 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchAclPolicy
     {
         /// <summary>
-        /// - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        /// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        /// ACL Policy Actions:
+        ///   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+        ///   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchAclPolicyAction> Actions;
         public readonly string? Name;
         /// <summary>
-        /// - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        /// - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        /// ACL Policy Source Tags:
+        ///   - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+        ///   - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         /// </summary>
         public readonly ImmutableArray<string> SrcTags;
 

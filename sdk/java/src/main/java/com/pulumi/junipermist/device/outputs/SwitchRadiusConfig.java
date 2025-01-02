@@ -33,8 +33,7 @@ public final class SwitchRadiusConfig {
      */
     private @Nullable Integer authServersTimeout;
     /**
-     * @return use `network`or `source_ip`
-     * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     private @Nullable String network;
@@ -73,8 +72,7 @@ public final class SwitchRadiusConfig {
         return Optional.ofNullable(this.authServersTimeout);
     }
     /**
-     * @return use `network`or `source_ip`
-     * which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<String> network() {

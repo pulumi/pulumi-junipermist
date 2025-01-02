@@ -12,15 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GatewaytemplateTunnelProviderOptionsJse {
-    private @Nullable String name;
     private @Nullable Integer numUsers;
+    /**
+     * @return JSE Organization name
+     * 
+     */
+    private @Nullable String orgName;
 
     private GatewaytemplateTunnelProviderOptionsJse() {}
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
     public Optional<Integer> numUsers() {
         return Optional.ofNullable(this.numUsers);
+    }
+    /**
+     * @return JSE Organization name
+     * 
+     */
+    public Optional<String> orgName() {
+        return Optional.ofNullable(this.orgName);
     }
 
     public static Builder builder() {
@@ -32,31 +40,31 @@ public final class GatewaytemplateTunnelProviderOptionsJse {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
         private @Nullable Integer numUsers;
+        private @Nullable String orgName;
         public Builder() {}
         public Builder(GatewaytemplateTunnelProviderOptionsJse defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.name = defaults.name;
     	      this.numUsers = defaults.numUsers;
+    	      this.orgName = defaults.orgName;
         }
 
-        @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
-            this.name = name;
-            return this;
-        }
         @CustomType.Setter
         public Builder numUsers(@Nullable Integer numUsers) {
 
             this.numUsers = numUsers;
             return this;
         }
+        @CustomType.Setter
+        public Builder orgName(@Nullable String orgName) {
+
+            this.orgName = orgName;
+            return this;
+        }
         public GatewaytemplateTunnelProviderOptionsJse build() {
             final var _resultValue = new GatewaytemplateTunnelProviderOptionsJse();
-            _resultValue.name = name;
             _resultValue.numUsers = numUsers;
+            _resultValue.orgName = orgName;
             return _resultValue;
         }
     }

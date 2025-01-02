@@ -14,9 +14,9 @@ namespace Pulumi.JuniperMist.Device.Inputs
     {
         /// <summary>
         /// required if
-        /// - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-        /// - `type`==`gbp_resource`
-        /// - `type`==`static_gbp` (applying gbp tag against matching conditions)
+        ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+        ///   - `type`==`gbp_resource`
+        ///   - `type`==`static_gbp` (applying gbp tag against matching conditions)
         /// </summary>
         [Input("gbpTag")]
         public Input<int>? GbpTag { get; set; }
@@ -59,8 +59,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<Inputs.SwitchAclTagsSpecArgs>? _specs;
 
         /// <summary>
-        /// if `type`==`resource` or `type`==`gbp_resource`
-        /// empty means unrestricted, i.e. any
+        /// if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         /// </summary>
         public InputList<Inputs.SwitchAclTagsSpecArgs> Specs
         {

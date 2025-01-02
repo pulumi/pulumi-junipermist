@@ -4,34 +4,29 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworkVpnAccessStaticNat {
-    private @Nullable String internalIp;
-    private @Nullable String name;
     /**
-     * @return If not set, we configure the nat policies against all WAN ports for simplicity
+     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
-    private @Nullable String wanName;
+    private String internalIp;
+    private String name;
 
     private NetworkVpnAccessStaticNat() {}
-    public Optional<String> internalIp() {
-        return Optional.ofNullable(this.internalIp);
-    }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
     /**
-     * @return If not set, we configure the nat policies against all WAN ports for simplicity
+     * @return The Static NAT destination IP Address. Must be an IP Address (i.e. &#34;192.168.70.3&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
-    public Optional<String> wanName() {
-        return Optional.ofNullable(this.wanName);
+    public String internalIp() {
+        return this.internalIp;
+    }
+    public String name() {
+        return this.name;
     }
 
     public static Builder builder() {
@@ -43,40 +38,35 @@ public final class NetworkVpnAccessStaticNat {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String internalIp;
-        private @Nullable String name;
-        private @Nullable String wanName;
+        private String internalIp;
+        private String name;
         public Builder() {}
         public Builder(NetworkVpnAccessStaticNat defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.internalIp = defaults.internalIp;
     	      this.name = defaults.name;
-    	      this.wanName = defaults.wanName;
         }
 
         @CustomType.Setter
-        public Builder internalIp(@Nullable String internalIp) {
-
+        public Builder internalIp(String internalIp) {
+            if (internalIp == null) {
+              throw new MissingRequiredPropertyException("NetworkVpnAccessStaticNat", "internalIp");
+            }
             this.internalIp = internalIp;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("NetworkVpnAccessStaticNat", "name");
+            }
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder wanName(@Nullable String wanName) {
-
-            this.wanName = wanName;
             return this;
         }
         public NetworkVpnAccessStaticNat build() {
             final var _resultValue = new NetworkVpnAccessStaticNat();
             _resultValue.internalIp = internalIp;
             _resultValue.name = name;
-            _resultValue.wanName = wanName;
             return _resultValue;
         }
     }

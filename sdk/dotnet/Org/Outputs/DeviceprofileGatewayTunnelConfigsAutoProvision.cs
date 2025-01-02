@@ -14,8 +14,19 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayTunnelConfigsAutoProvision
     {
         public readonly bool? Enable;
+        /// <summary>
+        /// API override for POP selection
+        /// </summary>
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionLatlng? Latlng;
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary? Primary;
+        /// <summary>
+        /// enum: `jse-ipsec`, `zscaler-ipsec`
+        /// </summary>
+        public readonly string Provider;
+        /// <summary>
+        /// API override for POP selection
+        /// </summary>
+        public readonly string? Region;
         public readonly Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary? Secondary;
 
         [OutputConstructor]
@@ -26,11 +37,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionPrimary? primary,
 
+            string provider,
+
+            string? region,
+
             Outputs.DeviceprofileGatewayTunnelConfigsAutoProvisionSecondary? secondary)
         {
             Enable = enable;
             Latlng = latlng;
             Primary = primary;
+            Provider = provider;
+            Region = region;
             Secondary = secondary;
         }
     }

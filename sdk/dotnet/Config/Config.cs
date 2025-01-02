@@ -32,6 +32,16 @@ namespace Pulumi.JuniperMist
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("junipermist");
 
+        private static readonly __Value<bool?> _apiDebug = new __Value<bool?>(() => __config.GetBoolean("apiDebug"));
+        /// <summary>
+        /// Flag to enable debugging API calls. Default is false.
+        /// </summary>
+        public static bool? ApiDebug
+        {
+            get => _apiDebug.Get();
+            set => _apiDebug.Set(value);
+        }
+
         private static readonly __Value<double?> _apiTimeout = new __Value<double?>(() => __config.GetDouble("apiTimeout"));
         /// <summary>
         /// Timeout in seconds for completing API transactions with the Mist Cloud. Omit for default value of 10 seconds. Value of 0

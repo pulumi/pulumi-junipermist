@@ -68,14 +68,14 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
@@ -292,16 +292,16 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     *   set separately (if desired): key parameter = `re1`
+     * Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<SwitchOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-     * set separately (if desired): key parameter = `re1`
+     * @return Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+     * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
      * 
      */
     public Optional<Output<SwitchOobIpConfigArgs>> oobIpConfig() {
@@ -354,7 +354,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      * 
@@ -363,7 +363,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,SwitchPortMirroringArgs>> portMirroring;
 
     /**
-     * @return Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+     * @return Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
      * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
      * maximum 4 port mirrorings is allowed
      * 
@@ -679,7 +679,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -1027,8 +1027,8 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-         * set separately (if desired): key parameter = `re1`
+         * @param oobIpConfig Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+         * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
          * 
          * @return builder
          * 
@@ -1039,8 +1039,8 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oobIpConfig - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-         * set separately (if desired): key parameter = `re1`
+         * @param oobIpConfig Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+         * re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
          * 
          * @return builder
          * 
@@ -1113,7 +1113,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
          * maximum 4 port mirrorings is allowed
          * 
@@ -1126,7 +1126,7 @@ public final class SwitchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param portMirroring Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+         * @param portMirroring Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
          * interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
          * maximum 4 port mirrorings is allowed
          * 

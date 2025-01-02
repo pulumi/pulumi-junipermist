@@ -12,11 +12,14 @@ namespace Pulumi.JuniperMist.Device.Inputs
 
     public sealed class GatewayTunnelProviderOptionsJseGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("numUsers")]
         public Input<int>? NumUsers { get; set; }
+
+        /// <summary>
+        /// JSE Organization name
+        /// </summary>
+        [Input("orgName")]
+        public Input<string>? OrgName { get; set; }
 
         public GatewayTunnelProviderOptionsJseGetArgs()
         {

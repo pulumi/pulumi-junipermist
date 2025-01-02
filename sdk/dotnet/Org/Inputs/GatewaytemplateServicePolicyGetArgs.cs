@@ -48,8 +48,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// by default, we derive all paths available and use them
-        /// optionally, you can customize by using `path_preference`
+        /// by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }

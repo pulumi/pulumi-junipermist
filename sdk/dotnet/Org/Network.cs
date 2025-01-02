@@ -74,6 +74,12 @@ namespace Pulumi.JuniperMist.Org
         [Output("isolation")]
         public Output<bool?> Isolation { get; private set; } = null!;
 
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        [Output("multicast")]
+        public Output<Outputs.NetworkMulticast?> Multicast { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -92,6 +98,9 @@ namespace Pulumi.JuniperMist.Org
         [Output("subnet6")]
         public Output<string?> Subnet6 { get; private set; } = null!;
 
+        /// <summary>
+        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         [Output("tenants")]
         public Output<ImmutableDictionary<string, Outputs.NetworkTenants>?> Tenants { get; private set; } = null!;
 
@@ -178,6 +187,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        [Input("multicast")]
+        public Input<Inputs.NetworkMulticastArgs>? Multicast { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -204,6 +219,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("tenants")]
         private InputMap<Inputs.NetworkTenantsArgs>? _tenants;
+
+        /// <summary>
+        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public InputMap<Inputs.NetworkTenantsArgs> Tenants
         {
             get => _tenants ?? (_tenants = new InputMap<Inputs.NetworkTenantsArgs>());
@@ -260,6 +279,12 @@ namespace Pulumi.JuniperMist.Org
         [Input("isolation")]
         public Input<bool>? Isolation { get; set; }
 
+        /// <summary>
+        /// whether to enable multicast support (only PIM-sparse mode is supported)
+        /// </summary>
+        [Input("multicast")]
+        public Input<Inputs.NetworkMulticastGetArgs>? Multicast { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -286,6 +311,10 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("tenants")]
         private InputMap<Inputs.NetworkTenantsGetArgs>? _tenants;
+
+        /// <summary>
+        /// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public InputMap<Inputs.NetworkTenantsGetArgs> Tenants
         {
             get => _tenants ?? (_tenants = new InputMap<Inputs.NetworkTenantsGetArgs>());

@@ -22,12 +22,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DnsSuffixes;
         /// <summary>
-        /// except for out-of_band interface (vme/em0/fxp0)
+        /// except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Gateway;
+        /// <summary>
+        /// Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
+        /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// used only if `subnet` is not specified in `networks`
+        /// used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         /// </summary>
         public readonly string? Netmask;
         /// <summary>

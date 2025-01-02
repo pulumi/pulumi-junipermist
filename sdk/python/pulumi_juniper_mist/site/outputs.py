@@ -579,10 +579,12 @@ class NetworktemplateAclPolicy(dict):
                  name: Optional[str] = None,
                  src_tags: Optional[Sequence[str]] = None):
         """
-        :param Sequence['NetworktemplateAclPolicyActionArgs'] actions: - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-               - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
-        :param Sequence[str] src_tags: - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-               - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        :param Sequence['NetworktemplateAclPolicyActionArgs'] actions: ACL Policy Actions:
+                 - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+                 - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        :param Sequence[str] src_tags: ACL Policy Source Tags:
+                 - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+                 - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -595,8 +597,9 @@ class NetworktemplateAclPolicy(dict):
     @pulumi.getter
     def actions(self) -> Optional[Sequence['outputs.NetworktemplateAclPolicyAction']]:
         """
-        - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        ACL Policy Actions:
+          - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+          - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         """
         return pulumi.get(self, "actions")
 
@@ -609,8 +612,9 @@ class NetworktemplateAclPolicy(dict):
     @pulumi.getter(name="srcTags")
     def src_tags(self) -> Optional[Sequence[str]]:
         """
-        - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
-        - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
+        ACL Policy Source Tags:
+          - for GBP-based policy, all src_tags and dst_tags have to be gbp-based
+          - for ACL-based policy, `network` is required in either the source or destination so that we know where to attach the policy to
         """
         return pulumi.get(self, "src_tags")
 
@@ -699,9 +703,9 @@ class NetworktemplateAclTags(dict):
                  * `static_gbp`: applying gbp tag against matching conditions
                  * `subnet`'
         :param int gbp_tag: required if
-               - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-               - `type`==`gbp_resource`
-               - `type`==`static_gbp` (applying gbp tag against matching conditions)
+                 - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+                 - `type`==`gbp_resource`
+                 - `type`==`static_gbp` (applying gbp tag against matching conditions)
         :param Sequence[str] macs: required if 
                - `type`==`mac`
                - `type`==`static_gbp` if from matching mac
@@ -715,8 +719,7 @@ class NetworktemplateAclTags(dict):
                  * `type`==`radius_group`
                  * `type`==`static_gbp`
                if from matching radius_group
-        :param Sequence['NetworktemplateAclTagsSpecArgs'] specs: if `type`==`resource` or `type`==`gbp_resource`
-               empty means unrestricted, i.e. any
+        :param Sequence['NetworktemplateAclTagsSpecArgs'] specs: if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         :param Sequence[str] subnets: if 
                - `type`==`subnet` 
                - `type`==`resource` (optional. default is `any`)
@@ -758,9 +761,9 @@ class NetworktemplateAclTags(dict):
     def gbp_tag(self) -> Optional[int]:
         """
         required if
-        - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-        - `type`==`gbp_resource`
-        - `type`==`static_gbp` (applying gbp tag against matching conditions)
+          - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+          - `type`==`gbp_resource`
+          - `type`==`static_gbp` (applying gbp tag against matching conditions)
         """
         return pulumi.get(self, "gbp_tag")
 
@@ -802,8 +805,7 @@ class NetworktemplateAclTags(dict):
     @pulumi.getter
     def specs(self) -> Optional[Sequence['outputs.NetworktemplateAclTagsSpec']]:
         """
-        if `type`==`resource` or `type`==`gbp_resource`
-        empty means unrestricted, i.e. any
+        if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         """
         return pulumi.get(self, "specs")
 
@@ -843,7 +845,7 @@ class NetworktemplateAclTagsSpec(dict):
                  protocol: Optional[str] = None):
         """
         :param str port_range: matched dst port, "0" means any
-        :param str protocol: `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocol_number` is between 1-254
+        :param str protocol: `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
         """
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
@@ -862,7 +864,7 @@ class NetworktemplateAclTagsSpec(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        `tcp` / `udp` / `icmp` / `gre` / `any` / `:protocol_number`. `protocol_number` is between 1-254
+        `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
         """
         return pulumi.get(self, "protocol")
 
@@ -1204,8 +1206,7 @@ class NetworktemplateNetworks(dict):
         """
         :param str gateway: only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         :param str gateway6: only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
-        :param bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-               NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        :param bool isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         :param str subnet: optional for pure switching, required when L3 / routing features are used
         :param str subnet6: optional for pure switching, required when L3 / routing features are used
         """
@@ -1248,8 +1249,7 @@ class NetworktemplateNetworks(dict):
     @pulumi.getter
     def isolation(self) -> Optional[bool]:
         """
-        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-        NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+        whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
         """
         return pulumi.get(self, "isolation")
 
@@ -1700,9 +1700,7 @@ class NetworktemplatePortUsages(dict):
                  voip_network: Optional[str] = None):
         """
         :param bool all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-               All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-               When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        :param bool allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         :param bool allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param bool bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         :param bool bypass_auth_when_server_down_for_unkonwn_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
@@ -1714,8 +1712,7 @@ class NetworktemplatePortUsages(dict):
         :param bool enable_mac_auth: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` whether to enable MAC Auth
         :param bool enable_qos: Only if `mode`!=`dynamic`
         :param str guest_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` which network to put the device into if the device cannot do dot1x. default is null (i.e. not allowed)
-        :param bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
-               NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        :param bool inter_switch_link: Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         :param bool mac_auth_only: Only if `mode`!=`dynamic` and `enable_mac_auth`==`true`
         :param bool mac_auth_preferred: Only if `mode`!=`dynamic` + `enable_mac_auth`==`true` + `mac_auth_only`==`false`, dot1x will be given priority then mac_auth. Enable this to prefer mac_auth over dot1x.
         :param str mac_auth_protocol: Only if `mode`!=`dynamic` and `enable_mac_auth` ==`true`. This type is ignored if mist_nac is enabled. enum: `eap-md5`, `eap-peap`, `pap`
@@ -1733,8 +1730,7 @@ class NetworktemplatePortUsages(dict):
         :param str server_fail_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` sets server fail fallback vlan
         :param str server_reject_network: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` when radius server reject / fails
         :param str speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
-        :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Switch storm control
-               Only if `mode`!=`dynamic`
+        :param 'NetworktemplatePortUsagesStormControlArgs' storm_control: Switch storm control. Only if `mode`!=`dynamic`
         :param bool stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
         :param str ui_evpntopo_id: optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
         :param bool use_vstp: if this is connected to a vstp network
@@ -1829,9 +1825,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[bool]:
         """
-        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-        All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -1927,8 +1921,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="interSwitchLink")
     def inter_switch_link(self) -> Optional[bool]:
         """
-        Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks
-        NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        Only if `mode`!=`dynamic` inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         """
         return pulumi.get(self, "inter_switch_link")
 
@@ -2072,8 +2065,7 @@ class NetworktemplatePortUsages(dict):
     @pulumi.getter(name="stormControl")
     def storm_control(self) -> Optional['outputs.NetworktemplatePortUsagesStormControl']:
         """
-        Switch storm control
-        Only if `mode`!=`dynamic`
+        Switch storm control. Only if `mode`!=`dynamic`
         """
         return pulumi.get(self, "storm_control")
 
@@ -2334,8 +2326,7 @@ class NetworktemplateRadiusConfig(dict):
         :param int acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         :param int auth_servers_retries: radius auth session retries
         :param int auth_servers_timeout: radius auth session timeout
-        :param str network: use `network`or `source_ip`
-               which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        :param str network: use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         :param str source_ip: use `network`or `source_ip`
         """
         if acct_interim_interval is not None:
@@ -2391,8 +2382,7 @@ class NetworktemplateRadiusConfig(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        use `network`or `source_ip`
-        which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         """
         return pulumi.get(self, "network")
 
@@ -3889,11 +3879,9 @@ class NetworktemplateSnmpConfigV3ConfigUsmUser(dict):
                  encryption_type: Optional[str] = None,
                  name: Optional[str] = None):
         """
-        :param str authentication_password: Not required if `authentication_type`==`authentication_none`
-               include alphabetic, numeric, and special characters, but it cannot include control characters.
+        :param str authentication_password: Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         :param str authentication_type: sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
-        :param str encryption_password: Not required if `encryption_type`==`privacy-none`
-               include alphabetic, numeric, and special characters, but it cannot include control characters
+        :param str encryption_password: Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         :param str encryption_type: enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
         """
         if authentication_password is not None:
@@ -3911,8 +3899,7 @@ class NetworktemplateSnmpConfigV3ConfigUsmUser(dict):
     @pulumi.getter(name="authenticationPassword")
     def authentication_password(self) -> Optional[str]:
         """
-        Not required if `authentication_type`==`authentication_none`
-        include alphabetic, numeric, and special characters, but it cannot include control characters.
+        Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         """
         return pulumi.get(self, "authentication_password")
 
@@ -3928,8 +3915,7 @@ class NetworktemplateSnmpConfigV3ConfigUsmUser(dict):
     @pulumi.getter(name="encryptionPassword")
     def encryption_password(self) -> Optional[str]:
         """
-        Not required if `encryption_type`==`privacy-none`
-        include alphabetic, numeric, and special characters, but it cannot include control characters
+        Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         """
         return pulumi.get(self, "encryption_password")
 
@@ -4372,8 +4358,7 @@ class NetworktemplateSwitchMatchingRule(dict):
         :param str match_type: 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         :param 'NetworktemplateSwitchMatchingRuleOobIpConfigArgs' oob_ip_config: Out-of-Band Management interface configuration
         :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortConfigArgs'] port_config: Propery key is the interface name or interface range
-        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortMirroringArgs'] port_mirroring: Property key is the port mirroring instance name
-               port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+        :param Mapping[str, 'NetworktemplateSwitchMatchingRulePortMirroringArgs'] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -4490,8 +4475,7 @@ Please update your configurations.""")
     @pulumi.getter(name="portMirroring")
     def port_mirroring(self) -> Optional[Mapping[str, 'outputs.NetworktemplateSwitchMatchingRulePortMirroring']]:
         """
-        Property key is the port mirroring instance name
-        port_mirroring can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
+        Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
         """
         return pulumi.get(self, "port_mirroring")
 
@@ -8298,8 +8282,7 @@ class WlanAppLimit(dict):
         """
         :param Mapping[str, int] apps: Map from app key to bandwidth in kbps. 
                Property key is the app key, defined in Get Application List
-        :param Mapping[str, int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps
-               Property key is the wxtag id
+        :param Mapping[str, int] wxtag_ids: Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
         """
         if apps is not None:
             pulumi.set(__self__, "apps", apps)
@@ -8326,8 +8309,7 @@ class WlanAppLimit(dict):
     @pulumi.getter(name="wxtagIds")
     def wxtag_ids(self) -> Optional[Mapping[str, int]]:
         """
-        Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps
-        Property key is the wxtag id
+        Map from wxtag_id of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtag_id`
         """
         return pulumi.get(self, "wxtag_ids")
 
@@ -9062,8 +9044,7 @@ class WlanDnsServerRewrite(dict):
                  enabled: Optional[bool] = None,
                  radius_groups: Optional[Mapping[str, str]] = None):
         """
-        :param Mapping[str, str] radius_groups: map between radius_group and the desired DNS server (IPv4 only)
-               Property key is the RADIUS group, property value is the desired DNS Server
+        :param Mapping[str, str] radius_groups: map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -9079,8 +9060,7 @@ class WlanDnsServerRewrite(dict):
     @pulumi.getter(name="radiusGroups")
     def radius_groups(self) -> Optional[Mapping[str, str]]:
         """
-        map between radius_group and the desired DNS server (IPv4 only)
-        Property key is the RADIUS group, property value is the desired DNS Server
+        map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         """
         return pulumi.get(self, "radius_groups")
 
@@ -9116,8 +9096,7 @@ class WlanDynamicPsk(dict):
                  source: Optional[str] = None):
         """
         :param str default_psk: default PSK to use if cloud WLC is not available, 8-63 characters
-        :param bool force_lookup: when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-               `false` means auto
+        :param bool force_lookup: when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         :param str source: enum: `cloud_psks`, `radius`
         """
         if default_psk is not None:
@@ -9153,8 +9132,7 @@ class WlanDynamicPsk(dict):
     @pulumi.getter(name="forceLookup")
     def force_lookup(self) -> Optional[bool]:
         """
-        when 11r is enabled, we'll try to use the cached PMK, this can be disabled
-        `false` means auto
+        when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         """
         return pulumi.get(self, "force_lookup")
 
@@ -13301,10 +13279,8 @@ class WlanRadsec(dict):
                  use_mxedge: Optional[bool] = None,
                  use_site_mxedge: Optional[bool] = None):
         """
-        :param Sequence[str] mxcluster_ids: To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-               Org mxedge(s) identified by mxcluster_ids
-        :param Sequence[str] proxy_hosts: default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-               when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+        :param Sequence[str] mxcluster_ids: To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+        :param Sequence[str] proxy_hosts: default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
         :param str server_name: name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
         :param Sequence['WlanRadsecServerArgs'] servers: List of Radsec Servers. Only if not Mist Edge.
         :param bool use_mxedge: use mxedge(s) as radsecproxy
@@ -13348,8 +13324,7 @@ class WlanRadsec(dict):
     @pulumi.getter(name="mxclusterIds")
     def mxcluster_ids(self) -> Optional[Sequence[str]]:
         """
-        To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids.
-        Org mxedge(s) identified by mxcluster_ids
+        To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
         """
         return pulumi.get(self, "mxcluster_ids")
 
@@ -13357,8 +13332,7 @@ class WlanRadsec(dict):
     @pulumi.getter(name="proxyHosts")
     def proxy_hosts(self) -> Optional[Sequence[str]]:
         """
-        default is site.mxedge.radsec.proxy_hosts which must be a superset of all wlans[*].radsec.proxy_hosts
-        when radsec.proxy_hosts are not used, tunnel peers (org or site mxedges) are used irrespective of use_site_mxedge
+        default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
         """
         return pulumi.get(self, "proxy_hosts")
 

@@ -65,14 +65,17 @@ type Network struct {
 	InternetAccess NetworkInternetAccessPtrOutput `pulumi:"internetAccess"`
 	// whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrOutput `pulumi:"isolation"`
-	Name      pulumi.StringOutput  `pulumi:"name"`
-	OrgId     pulumi.StringOutput  `pulumi:"orgId"`
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast NetworkMulticastPtrOutput `pulumi:"multicast"`
+	Name      pulumi.StringOutput       `pulumi:"name"`
+	OrgId     pulumi.StringOutput       `pulumi:"orgId"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayOutput `pulumi:"routedForNetworks"`
 	Subnet            pulumi.StringOutput      `pulumi:"subnet"`
 	Subnet6           pulumi.StringPtrOutput   `pulumi:"subnet6"`
-	Tenants           NetworkTenantsMapOutput  `pulumi:"tenants"`
-	VlanId            pulumi.StringPtrOutput   `pulumi:"vlanId"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants NetworkTenantsMapOutput `pulumi:"tenants"`
+	VlanId  pulumi.StringPtrOutput  `pulumi:"vlanId"`
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess NetworkVpnAccessMapOutput `pulumi:"vpnAccess"`
 }
@@ -121,15 +124,18 @@ type networkState struct {
 	// whether this network has direct internet access
 	InternetAccess *NetworkInternetAccess `pulumi:"internetAccess"`
 	// whether to allow clients in the network to talk to each other
-	Isolation *bool   `pulumi:"isolation"`
-	Name      *string `pulumi:"name"`
-	OrgId     *string `pulumi:"orgId"`
+	Isolation *bool `pulumi:"isolation"`
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast *NetworkMulticast `pulumi:"multicast"`
+	Name      *string           `pulumi:"name"`
+	OrgId     *string           `pulumi:"orgId"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-	RoutedForNetworks []string                  `pulumi:"routedForNetworks"`
-	Subnet            *string                   `pulumi:"subnet"`
-	Subnet6           *string                   `pulumi:"subnet6"`
-	Tenants           map[string]NetworkTenants `pulumi:"tenants"`
-	VlanId            *string                   `pulumi:"vlanId"`
+	RoutedForNetworks []string `pulumi:"routedForNetworks"`
+	Subnet            *string  `pulumi:"subnet"`
+	Subnet6           *string  `pulumi:"subnet6"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants map[string]NetworkTenants `pulumi:"tenants"`
+	VlanId  *string                   `pulumi:"vlanId"`
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess map[string]NetworkVpnAccess `pulumi:"vpnAccess"`
 }
@@ -144,14 +150,17 @@ type NetworkState struct {
 	InternetAccess NetworkInternetAccessPtrInput
 	// whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrInput
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast NetworkMulticastPtrInput
 	Name      pulumi.StringPtrInput
 	OrgId     pulumi.StringPtrInput
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayInput
 	Subnet            pulumi.StringPtrInput
 	Subnet6           pulumi.StringPtrInput
-	Tenants           NetworkTenantsMapInput
-	VlanId            pulumi.StringPtrInput
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants NetworkTenantsMapInput
+	VlanId  pulumi.StringPtrInput
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess NetworkVpnAccessMapInput
 }
@@ -169,15 +178,18 @@ type networkArgs struct {
 	// whether this network has direct internet access
 	InternetAccess *NetworkInternetAccess `pulumi:"internetAccess"`
 	// whether to allow clients in the network to talk to each other
-	Isolation *bool   `pulumi:"isolation"`
-	Name      *string `pulumi:"name"`
-	OrgId     string  `pulumi:"orgId"`
+	Isolation *bool `pulumi:"isolation"`
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast *NetworkMulticast `pulumi:"multicast"`
+	Name      *string           `pulumi:"name"`
+	OrgId     string            `pulumi:"orgId"`
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
-	RoutedForNetworks []string                  `pulumi:"routedForNetworks"`
-	Subnet            string                    `pulumi:"subnet"`
-	Subnet6           *string                   `pulumi:"subnet6"`
-	Tenants           map[string]NetworkTenants `pulumi:"tenants"`
-	VlanId            *string                   `pulumi:"vlanId"`
+	RoutedForNetworks []string `pulumi:"routedForNetworks"`
+	Subnet            string   `pulumi:"subnet"`
+	Subnet6           *string  `pulumi:"subnet6"`
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants map[string]NetworkTenants `pulumi:"tenants"`
+	VlanId  *string                   `pulumi:"vlanId"`
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess map[string]NetworkVpnAccess `pulumi:"vpnAccess"`
 }
@@ -193,14 +205,17 @@ type NetworkArgs struct {
 	InternetAccess NetworkInternetAccessPtrInput
 	// whether to allow clients in the network to talk to each other
 	Isolation pulumi.BoolPtrInput
+	// whether to enable multicast support (only PIM-sparse mode is supported)
+	Multicast NetworkMulticastPtrInput
 	Name      pulumi.StringPtrInput
 	OrgId     pulumi.StringInput
 	// for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
 	RoutedForNetworks pulumi.StringArrayInput
 	Subnet            pulumi.StringInput
 	Subnet6           pulumi.StringPtrInput
-	Tenants           NetworkTenantsMapInput
-	VlanId            pulumi.StringPtrInput
+	// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+	Tenants NetworkTenantsMapInput
+	VlanId  pulumi.StringPtrInput
 	// Property key is the VPN name. Whether this network can be accessed from vpn
 	VpnAccess NetworkVpnAccessMapInput
 }
@@ -319,6 +334,11 @@ func (o NetworkOutput) Isolation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.Isolation }).(pulumi.BoolPtrOutput)
 }
 
+// whether to enable multicast support (only PIM-sparse mode is supported)
+func (o NetworkOutput) Multicast() NetworkMulticastPtrOutput {
+	return o.ApplyT(func(v *Network) NetworkMulticastPtrOutput { return v.Multicast }).(NetworkMulticastPtrOutput)
+}
+
 func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -340,6 +360,7 @@ func (o NetworkOutput) Subnet6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Subnet6 }).(pulumi.StringPtrOutput)
 }
 
+// Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
 func (o NetworkOutput) Tenants() NetworkTenantsMapOutput {
 	return o.ApplyT(func(v *Network) NetworkTenantsMapOutput { return v.Tenants }).(NetworkTenantsMapOutput)
 }

@@ -23,13 +23,17 @@ public final class GatewaytemplatePortConfigIpConfig {
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String gateway;
+    /**
+     * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     private @Nullable String ip;
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable String netmask;
@@ -75,17 +79,21 @@ public final class GatewaytemplatePortConfigIpConfig {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
+    /**
+     * @return Interface IP Address (i.e. &#34;192.168.1.8&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<String> netmask() {

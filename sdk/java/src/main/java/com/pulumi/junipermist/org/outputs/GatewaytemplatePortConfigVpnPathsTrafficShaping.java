@@ -14,17 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplatePortConfigVpnPathsTrafficShaping {
     /**
-     * @return percentages for differet class of traffic: high / medium / low / best-effort
-     * sum must be equal to 100
+     * @return percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     private @Nullable List<Integer> classPercentages;
     private @Nullable Boolean enabled;
+    /**
+     * @return Interface Transmit Cap in kbps
+     * 
+     */
+    private @Nullable Integer maxTxKbps;
 
     private GatewaytemplatePortConfigVpnPathsTrafficShaping() {}
     /**
-     * @return percentages for differet class of traffic: high / medium / low / best-effort
-     * sum must be equal to 100
+     * @return percentages for differet class of traffic: high / medium / low / best-effort. Sum must be equal to 100
      * 
      */
     public List<Integer> classPercentages() {
@@ -32,6 +35,13 @@ public final class GatewaytemplatePortConfigVpnPathsTrafficShaping {
     }
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Interface Transmit Cap in kbps
+     * 
+     */
+    public Optional<Integer> maxTxKbps() {
+        return Optional.ofNullable(this.maxTxKbps);
     }
 
     public static Builder builder() {
@@ -45,11 +55,13 @@ public final class GatewaytemplatePortConfigVpnPathsTrafficShaping {
     public static final class Builder {
         private @Nullable List<Integer> classPercentages;
         private @Nullable Boolean enabled;
+        private @Nullable Integer maxTxKbps;
         public Builder() {}
         public Builder(GatewaytemplatePortConfigVpnPathsTrafficShaping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.classPercentages = defaults.classPercentages;
     	      this.enabled = defaults.enabled;
+    	      this.maxTxKbps = defaults.maxTxKbps;
         }
 
         @CustomType.Setter
@@ -67,10 +79,17 @@ public final class GatewaytemplatePortConfigVpnPathsTrafficShaping {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder maxTxKbps(@Nullable Integer maxTxKbps) {
+
+            this.maxTxKbps = maxTxKbps;
+            return this;
+        }
         public GatewaytemplatePortConfigVpnPathsTrafficShaping build() {
             final var _resultValue = new GatewaytemplatePortConfigVpnPathsTrafficShaping();
             _resultValue.classPercentages = classPercentages;
             _resultValue.enabled = enabled;
+            _resultValue.maxTxKbps = maxTxKbps;
             return _resultValue;
         }
     }

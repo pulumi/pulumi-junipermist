@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Gatewaytemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
@@ -108,7 +108,8 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplatePathPreferences>?> PathPreferences { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+        /// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         /// </summary>
         [Output("portConfig")]
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplatePortConfig>?> PortConfig { get; private set; } = null!;
@@ -203,7 +204,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -348,7 +349,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplatePortConfigArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+        /// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         /// </summary>
         public InputMap<Inputs.GatewaytemplatePortConfigArgs> PortConfig
         {
@@ -430,7 +432,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -575,7 +577,8 @@ namespace Pulumi.JuniperMist.Org
         private InputMap<Inputs.GatewaytemplatePortConfigGetArgs>? _portConfig;
 
         /// <summary>
-        /// Property key is the port(s) name or range (e.g. "ge-0/0/0-10")
+        /// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
+        /// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
         /// </summary>
         public InputMap<Inputs.GatewaytemplatePortConfigGetArgs> PortConfig
         {

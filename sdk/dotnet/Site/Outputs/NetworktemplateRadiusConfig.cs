@@ -28,8 +28,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int? AuthServersTimeout;
         /// <summary>
-        /// use `network`or `source_ip`
-        /// which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         public readonly string? Network;
         /// <summary>

@@ -4,10 +4,12 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsAutoProvisionLatlng;
 import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsAutoProvisionPrimary;
 import com.pulumi.junipermist.device.outputs.GatewayTunnelConfigsAutoProvisionSecondary;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,19 +17,51 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayTunnelConfigsAutoProvision {
     private @Nullable Boolean enable;
+    /**
+     * @return API override for POP selection
+     * 
+     */
     private @Nullable GatewayTunnelConfigsAutoProvisionLatlng latlng;
     private @Nullable GatewayTunnelConfigsAutoProvisionPrimary primary;
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    private String provider;
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    private @Nullable String region;
     private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
 
     private GatewayTunnelConfigsAutoProvision() {}
     public Optional<Boolean> enable() {
         return Optional.ofNullable(this.enable);
     }
+    /**
+     * @return API override for POP selection
+     * 
+     */
     public Optional<GatewayTunnelConfigsAutoProvisionLatlng> latlng() {
         return Optional.ofNullable(this.latlng);
     }
     public Optional<GatewayTunnelConfigsAutoProvisionPrimary> primary() {
         return Optional.ofNullable(this.primary);
+    }
+    /**
+     * @return enum: `jse-ipsec`, `zscaler-ipsec`
+     * 
+     */
+    public String provider() {
+        return this.provider;
+    }
+    /**
+     * @return API override for POP selection
+     * 
+     */
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     public Optional<GatewayTunnelConfigsAutoProvisionSecondary> secondary() {
         return Optional.ofNullable(this.secondary);
@@ -45,6 +79,8 @@ public final class GatewayTunnelConfigsAutoProvision {
         private @Nullable Boolean enable;
         private @Nullable GatewayTunnelConfigsAutoProvisionLatlng latlng;
         private @Nullable GatewayTunnelConfigsAutoProvisionPrimary primary;
+        private String provider;
+        private @Nullable String region;
         private @Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary;
         public Builder() {}
         public Builder(GatewayTunnelConfigsAutoProvision defaults) {
@@ -52,6 +88,8 @@ public final class GatewayTunnelConfigsAutoProvision {
     	      this.enable = defaults.enable;
     	      this.latlng = defaults.latlng;
     	      this.primary = defaults.primary;
+    	      this.provider = defaults.provider;
+    	      this.region = defaults.region;
     	      this.secondary = defaults.secondary;
         }
 
@@ -74,6 +112,20 @@ public final class GatewayTunnelConfigsAutoProvision {
             return this;
         }
         @CustomType.Setter
+        public Builder provider(String provider) {
+            if (provider == null) {
+              throw new MissingRequiredPropertyException("GatewayTunnelConfigsAutoProvision", "provider");
+            }
+            this.provider = provider;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
+            return this;
+        }
+        @CustomType.Setter
         public Builder secondary(@Nullable GatewayTunnelConfigsAutoProvisionSecondary secondary) {
 
             this.secondary = secondary;
@@ -84,6 +136,8 @@ public final class GatewayTunnelConfigsAutoProvision {
             _resultValue.enable = enable;
             _resultValue.latlng = latlng;
             _resultValue.primary = primary;
+            _resultValue.provider = provider;
+            _resultValue.region = region;
             _resultValue.secondary = secondary;
             return _resultValue;
         }

@@ -47,6 +47,21 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
     }
 
     /**
+     * route aggregation
+     * 
+     */
+    @Import(name="aggregates")
+    private @Nullable Output<List<String>> aggregates;
+
+    /**
+     * @return route aggregation
+     * 
+     */
+    public Optional<Output<List<String>>> aggregates() {
+        return Optional.ofNullable(this.aggregates);
+    }
+
+    /**
      * when used as export policy, optional
      * 
      */
@@ -134,6 +149,7 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
         this.accept = $.accept;
         this.addCommunities = $.addCommunities;
         this.addTargetVrfs = $.addTargetVrfs;
+        this.aggregates = $.aggregates;
         this.communities = $.communities;
         this.excludeAsPaths = $.excludeAsPaths;
         this.excludeCommunities = $.excludeCommunities;
@@ -211,6 +227,37 @@ public final class GatewaytemplateRoutingPoliciesTermActionArgs extends com.pulu
          */
         public Builder addTargetVrfs(String... addTargetVrfs) {
             return addTargetVrfs(List.of(addTargetVrfs));
+        }
+
+        /**
+         * @param aggregates route aggregation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregates(@Nullable Output<List<String>> aggregates) {
+            $.aggregates = aggregates;
+            return this;
+        }
+
+        /**
+         * @param aggregates route aggregation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregates(List<String> aggregates) {
+            return aggregates(Output.of(aggregates));
+        }
+
+        /**
+         * @param aggregates route aggregation
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregates(String... aggregates) {
+            return aggregates(List.of(aggregates));
         }
 
         /**

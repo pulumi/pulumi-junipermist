@@ -32,8 +32,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// by default, we derive all paths available and use them
-        /// optionally, you can customize by using `path_preference`
+        /// by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         /// </summary>
         public readonly string? PathPreference;
         /// <summary>

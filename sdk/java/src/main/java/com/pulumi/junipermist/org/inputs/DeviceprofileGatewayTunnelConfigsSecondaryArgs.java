@@ -5,6 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,26 +17,22 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
 
     public static final DeviceprofileGatewayTunnelConfigsSecondaryArgs Empty = new DeviceprofileGatewayTunnelConfigsSecondaryArgs();
 
-    @Import(name="hosts")
-    private @Nullable Output<List<String>> hosts;
+    @Import(name="hosts", required=true)
+    private Output<List<String>> hosts;
 
-    public Optional<Output<List<String>>> hosts() {
-        return Optional.ofNullable(this.hosts);
+    public Output<List<String>> hosts() {
+        return this.hosts;
     }
 
     /**
-     * Only if:
-     *   * `provider`== `zscaler-gre`
-     *   * `provider`== `custom-gre`
+     * Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
      * 
      */
     @Import(name="internalIps")
     private @Nullable Output<List<String>> internalIps;
 
     /**
-     * @return Only if:
-     *   * `provider`== `zscaler-gre`
-     *   * `provider`== `custom-gre`
+     * @return Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
      * 
      */
     public Optional<Output<List<String>>> internalIps() {
@@ -50,25 +47,25 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
     }
 
     /**
-     * Only if `provider`== `custom-ipsec`
+     * Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     @Import(name="remoteIds")
     private @Nullable Output<List<String>> remoteIds;
 
     /**
-     * @return Only if `provider`== `custom-ipsec`
+     * @return Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
      * 
      */
     public Optional<Output<List<String>>> remoteIds() {
         return Optional.ofNullable(this.remoteIds);
     }
 
-    @Import(name="wanNames")
-    private @Nullable Output<List<String>> wanNames;
+    @Import(name="wanNames", required=true)
+    private Output<List<String>> wanNames;
 
-    public Optional<Output<List<String>>> wanNames() {
-        return Optional.ofNullable(this.wanNames);
+    public Output<List<String>> wanNames() {
+        return this.wanNames;
     }
 
     private DeviceprofileGatewayTunnelConfigsSecondaryArgs() {}
@@ -99,7 +96,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
             $ = new DeviceprofileGatewayTunnelConfigsSecondaryArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder hosts(@Nullable Output<List<String>> hosts) {
+        public Builder hosts(Output<List<String>> hosts) {
             $.hosts = hosts;
             return this;
         }
@@ -113,9 +110,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param internalIps Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * @param internalIps Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          * 
          * @return builder
          * 
@@ -126,9 +121,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param internalIps Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * @param internalIps Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          * 
          * @return builder
          * 
@@ -138,9 +131,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param internalIps Only if:
-         *   * `provider`== `zscaler-gre`
-         *   * `provider`== `custom-gre`
+         * @param internalIps Only if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`, `provider`==`custom-ipsec` or `provider`==`custom-gre`
          * 
          * @return builder
          * 
@@ -163,7 +154,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param remoteIds Only if `provider`== `custom-ipsec`
+         * @param remoteIds Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -174,7 +165,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param remoteIds Only if `provider`== `custom-ipsec`
+         * @param remoteIds Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -184,7 +175,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         /**
-         * @param remoteIds Only if `provider`== `custom-ipsec`
+         * @param remoteIds Only if  `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
          * 
          * @return builder
          * 
@@ -193,7 +184,7 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
             return remoteIds(List.of(remoteIds));
         }
 
-        public Builder wanNames(@Nullable Output<List<String>> wanNames) {
+        public Builder wanNames(Output<List<String>> wanNames) {
             $.wanNames = wanNames;
             return this;
         }
@@ -207,6 +198,12 @@ public final class DeviceprofileGatewayTunnelConfigsSecondaryArgs extends com.pu
         }
 
         public DeviceprofileGatewayTunnelConfigsSecondaryArgs build() {
+            if ($.hosts == null) {
+                throw new MissingRequiredPropertyException("DeviceprofileGatewayTunnelConfigsSecondaryArgs", "hosts");
+            }
+            if ($.wanNames == null) {
+                throw new MissingRequiredPropertyException("DeviceprofileGatewayTunnelConfigsSecondaryArgs", "wanNames");
+            }
             return $;
         }
     }

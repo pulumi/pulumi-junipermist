@@ -27,14 +27,10 @@ func TestTsExamples(t *testing.T) {
 		"TestSiteSettingTs":            {directoryName: "site-setting-ts"},
 		"TestSiteNetworkTemplateTs":    {directoryName: "site-networktemplate-ts"},
 		"TestSiteWlanPortalTemplateTs": {directoryName: "site-wlan-portal-template-ts"},
-		//TODO: unskip once https://github.com/Juniper/terraform-provider-mist/issues/66 is addressed.
-		// Tracked in https://github.com/pulumi/pulumi-junipermist/issues/237
-		//"TestOrgWlanPortalTemplateTs":  {directoryName: "org-wlan-portal-template-ts"},
-		"TestSiteWlanPortalImageTs": {directoryName: "site-wlan-portal-image-ts"},
-		//TODO: unskip once https://github.com/Juniper/terraform-provider-mist/issues/66 is addressed.
-		// Tracked in https://github.com/pulumi/pulumi-junipermist/issues/237
-		//"TestOrgWlanPortalImageTs":     {directoryName: "org-wlan-portal-image-ts"},
-		"TestAlarmtemplateTs": {directoryName: "org-alarmtemplate-ts"},
+		"TestOrgWlanPortalTemplateTs":  {directoryName: "org-wlan-portal-template-ts"},
+		"TestSiteWlanPortalImageTs":    {directoryName: "site-wlan-portal-image-ts"},
+		"TestOrgWlanPortalImageTs":     {directoryName: "org-wlan-portal-image-ts"},
+		"TestAlarmtemplateTs":          {directoryName: "org-alarmtemplate-ts"},
 		"TestOrgInventoryTs": {
 			directoryName:    "org-inventory-ts",
 			additionalConfig: map[string]string{"claimCode1": os.Getenv(EnvClaimCode1), "claimCode2": os.Getenv(EnvClaimCode2)},

@@ -28,7 +28,7 @@ public final class GatewayNetworkVpnAccess {
      */
     private @Nullable Boolean allowPing;
     /**
-     * @return Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
      * 
      */
     private @Nullable Map<String,GatewayNetworkVpnAccessDestinationNat> destinationNat;
@@ -48,14 +48,12 @@ public final class GatewayNetworkVpnAccess {
      */
     private @Nullable Boolean noReadvertiseToLanOspf;
     /**
-     * @return toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * @return toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return by default, the routes are only readvertised toward the same vrf on spoke
-     * to allow it to be leaked to other vrfs
+     * @return by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     private @Nullable List<String> otherVrfs;
@@ -70,13 +68,12 @@ public final class GatewayNetworkVpnAccess {
      */
     private @Nullable GatewayNetworkVpnAccessSourceNat sourceNat;
     /**
-     * @return Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     private @Nullable Map<String,GatewayNetworkVpnAccessStaticNat> staticNat;
     /**
-     * @return toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * @return toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     private @Nullable String summarizedSubnet;
@@ -107,7 +104,7 @@ public final class GatewayNetworkVpnAccess {
         return Optional.ofNullable(this.allowPing);
     }
     /**
-     * @return Property key may be an IP/Port (i.e. &#34;63.16.0.3:443&#34;), or a port (i.e. &#34;:2222&#34;)
+     * @return Property key can be an External IP (i.e. &#34;63.16.0.3&#34;), an External IP:Port (i.e. &#34;63.16.0.3:443&#34;), an External Port (i.e. &#34;:443&#34;), an External CIDR (i.e. &#34;63.16.0.0/30&#34;), an External CIDR:Port (i.e. &#34;63.16.0.0/30:443&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;). At least one of the `internal_ip` or `port` must be defined
      * 
      */
     public Map<String,GatewayNetworkVpnAccessDestinationNat> destinationNat() {
@@ -135,16 +132,14 @@ public final class GatewayNetworkVpnAccess {
         return Optional.ofNullable(this.noReadvertiseToLanOspf);
     }
     /**
-     * @return toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * @return toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     public Optional<Boolean> noReadvertiseToOverlay() {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return by default, the routes are only readvertised toward the same vrf on spoke
-     * to allow it to be leaked to other vrfs
+     * @return by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     public List<String> otherVrfs() {
@@ -165,15 +160,14 @@ public final class GatewayNetworkVpnAccess {
         return Optional.ofNullable(this.sourceNat);
     }
     /**
-     * @return Property key may be an IP Address (i.e. &#34;172.16.0.1&#34;), and IP Address and Port (i.e. &#34;172.16.0.1:8443&#34;) or a CIDR (i.e. &#34;172.16.0.12/20&#34;)
+     * @return Property key may be an External IP Address (i.e. &#34;63.16.0.3&#34;), a CIDR (i.e. &#34;63.16.0.12/20&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Map<String,GatewayNetworkVpnAccessStaticNat> staticNat() {
         return this.staticNat == null ? Map.of() : this.staticNat;
     }
     /**
-     * @return toward overlay
-     * how HUB should deal with routes it received from Spokes
+     * @return toward overlay, how HUB should deal with routes it received from Spokes
      * 
      */
     public Optional<String> summarizedSubnet() {

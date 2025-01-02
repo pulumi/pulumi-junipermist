@@ -48,16 +48,14 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-     * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+     * whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
      * 
      */
     @Import(name="isolation")
     private @Nullable Output<Boolean> isolation;
 
     /**
-     * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-     * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+     * @return whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
      * 
      */
     public Optional<Output<Boolean>> isolation() {
@@ -181,8 +179,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param isolation whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+         * @param isolation whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
          * 
          * @return builder
          * 
@@ -193,8 +190,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param isolation whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required)
-         * NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
+         * @param isolation whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
          * 
          * @return builder
          * 

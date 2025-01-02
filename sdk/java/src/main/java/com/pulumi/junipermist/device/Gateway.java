@@ -104,14 +104,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:device/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Export(name="additionalConfigCmds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Output<Optional<List<String>>> additionalConfigCmds() {

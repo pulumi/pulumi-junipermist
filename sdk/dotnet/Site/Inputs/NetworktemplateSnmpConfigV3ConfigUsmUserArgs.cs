@@ -16,8 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _authenticationPassword;
 
         /// <summary>
-        /// Not required if `authentication_type`==`authentication_none`
-        /// include alphabetic, numeric, and special characters, but it cannot include control characters.
+        /// Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         /// </summary>
         public Input<string>? AuthenticationPassword
         {
@@ -39,8 +38,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _encryptionPassword;
 
         /// <summary>
-        /// Not required if `encryption_type`==`privacy-none`
-        /// include alphabetic, numeric, and special characters, but it cannot include control characters
+        /// Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         /// </summary>
         public Input<string>? EncryptionPassword
         {

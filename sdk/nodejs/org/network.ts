@@ -77,6 +77,10 @@ export class Network extends pulumi.CustomResource {
      * whether to allow clients in the network to talk to each other
      */
     public readonly isolation!: pulumi.Output<boolean | undefined>;
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     */
+    public readonly multicast!: pulumi.Output<outputs.org.NetworkMulticast | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -85,6 +89,9 @@ export class Network extends pulumi.CustomResource {
     public readonly routedForNetworks!: pulumi.Output<string[] | undefined>;
     public readonly subnet!: pulumi.Output<string>;
     public readonly subnet6!: pulumi.Output<string | undefined>;
+    /**
+     * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+     */
     public readonly tenants!: pulumi.Output<{[key: string]: outputs.org.NetworkTenants} | undefined>;
     public readonly vlanId!: pulumi.Output<string | undefined>;
     /**
@@ -111,6 +118,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["internalAccess"] = state ? state.internalAccess : undefined;
             resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
             resourceInputs["isolation"] = state ? state.isolation : undefined;
+            resourceInputs["multicast"] = state ? state.multicast : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["routedForNetworks"] = state ? state.routedForNetworks : undefined;
@@ -133,6 +141,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["internalAccess"] = args ? args.internalAccess : undefined;
             resourceInputs["internetAccess"] = args ? args.internetAccess : undefined;
             resourceInputs["isolation"] = args ? args.isolation : undefined;
+            resourceInputs["multicast"] = args ? args.multicast : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["routedForNetworks"] = args ? args.routedForNetworks : undefined;
@@ -166,6 +175,10 @@ export interface NetworkState {
      * whether to allow clients in the network to talk to each other
      */
     isolation?: pulumi.Input<boolean>;
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     */
+    multicast?: pulumi.Input<inputs.org.NetworkMulticast>;
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
@@ -174,6 +187,9 @@ export interface NetworkState {
     routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     subnet?: pulumi.Input<string>;
     subnet6?: pulumi.Input<string>;
+    /**
+     * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+     */
     tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>}>;
     vlanId?: pulumi.Input<string>;
     /**
@@ -201,6 +217,10 @@ export interface NetworkArgs {
      * whether to allow clients in the network to talk to each other
      */
     isolation?: pulumi.Input<boolean>;
+    /**
+     * whether to enable multicast support (only PIM-sparse mode is supported)
+     */
+    multicast?: pulumi.Input<inputs.org.NetworkMulticast>;
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
@@ -209,6 +229,9 @@ export interface NetworkArgs {
     routedForNetworks?: pulumi.Input<pulumi.Input<string>[]>;
     subnet: pulumi.Input<string>;
     subnet6?: pulumi.Input<string>;
+    /**
+     * Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
+     */
     tenants?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.NetworkTenants>}>;
     vlanId?: pulumi.Input<string>;
     /**

@@ -18,9 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
-        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with.
-        /// All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state.
-        /// When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
         /// </summary>
         public readonly bool? AllowDhcpd;
         public readonly bool? AllowMultipleSupplicants;
@@ -59,8 +57,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? GuestNetwork;
         /// <summary>
-        /// inter_switch_link is used together with "isolation" under networks
-        /// NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
+        /// inter_switch_link is used together with "isolation" under networks. NOTE: inter_switch_link works only between Juniper device. This has to be applied to both ports connected together
         /// </summary>
         public readonly bool? InterSwitchLink;
         /// <summary>
@@ -91,6 +88,10 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// Only if `mode`==`trunk`, the list of network/vlans
         /// </summary>
         public readonly ImmutableArray<string> Networks;
+        /// <summary>
+        /// Additional note for the port config override
+        /// </summary>
+        public readonly string? Note;
         /// <summary>
         /// Only if `mode`==`access` and `port_auth`!=`dot1x` whether the port should retain dynamically learned MAC addresses
         /// </summary>
@@ -190,6 +191,8 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             ImmutableArray<string> networks,
 
+            string? note,
+
             bool? persistMac,
 
             bool? poeDisabled,
@@ -241,6 +244,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             Mode = mode;
             Mtu = mtu;
             Networks = networks;
+            Note = note;
             PersistMac = persistMac;
             PoeDisabled = poeDisabled;
             PortAuth = portAuth;

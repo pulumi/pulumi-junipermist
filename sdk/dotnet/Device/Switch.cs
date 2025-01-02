@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchAclTags>?> AclTags { get; private set; } = null!;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         [Output("additionalConfigCmds")]
         public Output<ImmutableArray<string>> AdditionalConfigCmds { get; private set; } = null!;
@@ -69,12 +69,6 @@ namespace Pulumi.JuniperMist.Device
         /// </summary>
         [Output("dnsSuffixes")]
         public Output<ImmutableArray<string>> DnsSuffixes { get; private set; } = null!;
-
-        /// <summary>
-        /// EVPN Junos settings
-        /// </summary>
-        [Output("evpnConfig")]
-        public Output<Outputs.SwitchEvpnConfig> EvpnConfig { get; private set; } = null!;
 
         [Output("extraRoutes")]
         public Output<ImmutableDictionary<string, Outputs.SwitchExtraRoutes>?> ExtraRoutes { get; private set; } = null!;
@@ -156,8 +150,8 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-        /// set separately (if desired): key parameter = `re1`
+        /// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+        /// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.SwitchOobIpConfig?> OobIpConfig { get; private set; } = null!;
@@ -184,7 +178,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchPortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 port mirrorings is allowed
         /// </summary>
@@ -358,7 +352,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -493,8 +487,8 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-        /// set separately (if desired): key parameter = `re1`
+        /// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+        /// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigArgs>? OobIpConfig { get; set; }
@@ -539,7 +533,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 port mirrorings is allowed
         /// </summary>
@@ -683,7 +677,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _additionalConfigCmds;
 
         /// <summary>
-        /// additional CLI commands to append to the generated Junos config **Note**: no check is done
+        /// additional CLI commands to append to the generated Junos config. **Note**: no check is done
         /// </summary>
         public InputList<string> AdditionalConfigCmds
         {
@@ -729,12 +723,6 @@ namespace Pulumi.JuniperMist.Device
             get => _dnsSuffixes ?? (_dnsSuffixes = new InputList<string>());
             set => _dnsSuffixes = value;
         }
-
-        /// <summary>
-        /// EVPN Junos settings
-        /// </summary>
-        [Input("evpnConfig")]
-        public Input<Inputs.SwitchEvpnConfigGetArgs>? EvpnConfig { get; set; }
 
         [Input("extraRoutes")]
         private InputMap<Inputs.SwitchExtraRoutesGetArgs>? _extraRoutes;
@@ -845,8 +833,8 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines, re1 mgmt IP has to be
-        /// set separately (if desired): key parameter = `re1`
+        /// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
+        /// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.SwitchOobIpConfigGetArgs>? OobIpConfig { get; set; }
@@ -894,7 +882,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<Inputs.SwitchPortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 port mirrorings is allowed
         /// </summary>

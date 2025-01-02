@@ -21,9 +21,9 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
 
     /**
      * required if
-     * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     * - `type`==`gbp_resource`
-     * - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbp_resource`
+     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
     @Import(name="gbpTag")
@@ -31,9 +31,9 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
 
     /**
      * @return required if
-     * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-     * - `type`==`gbp_resource`
-     * - `type`==`static_gbp` (applying gbp tag against matching conditions)
+     *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+     *   - `type`==`gbp_resource`
+     *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
      * 
      */
     public Optional<Output<Integer>> gbpTag() {
@@ -106,16 +106,14 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * if `type`==`resource` or `type`==`gbp_resource`
-     * empty means unrestricted, i.e. any
+     * if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<NetworktemplateAclTagsSpecArgs>> specs;
 
     /**
-     * @return if `type`==`resource` or `type`==`gbp_resource`
-     * empty means unrestricted, i.e. any
+     * @return if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     public Optional<Output<List<NetworktemplateAclTagsSpecArgs>>> specs() {
@@ -208,9 +206,9 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param gbpTag required if
-         * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbp_resource`
-         * - `type`==`static_gbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbp_resource`
+         *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
          * 
          * @return builder
          * 
@@ -222,9 +220,9 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param gbpTag required if
-         * - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
-         * - `type`==`gbp_resource`
-         * - `type`==`static_gbp` (applying gbp tag against matching conditions)
+         *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
+         *   - `type`==`gbp_resource`
+         *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
          * 
          * @return builder
          * 
@@ -329,8 +327,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource` or `type`==`gbp_resource`
-         * empty means unrestricted, i.e. any
+         * @param specs if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -341,8 +338,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource` or `type`==`gbp_resource`
-         * empty means unrestricted, i.e. any
+         * @param specs if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -352,8 +348,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource` or `type`==`gbp_resource`
-         * empty means unrestricted, i.e. any
+         * @param specs if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 

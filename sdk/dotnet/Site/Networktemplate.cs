@@ -100,7 +100,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateOspfAreas>?> OspfAreas { get; private set; } = null!;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 port mirrorings is allowed
         /// </summary>
@@ -342,7 +342,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 port mirrorings is allowed
         /// </summary>
@@ -560,7 +560,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.NetworktemplatePortMirroringGetArgs>? _portMirroring;
 
         /// <summary>
-        /// Property key is the port mirroring instance name port_mirroring can be added under device/site settings. It takes
+        /// Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes
         /// interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A
         /// maximum 4 port mirrorings is allowed
         /// </summary>

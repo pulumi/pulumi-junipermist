@@ -36,14 +36,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     public static final GatewaytemplateArgs Empty = new GatewaytemplateArgs();
 
     /**
-     * additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     @Import(name="additionalConfigCmds")
     private @Nullable Output<List<String>> additionalConfigCmds;
 
     /**
-     * @return additional CLI commands to append to the generated Junos config **Note**: no check is done
+     * @return additional CLI commands to append to the generated Junos config. **Note**: no check is done
      * 
      */
     public Optional<Output<List<String>>> additionalConfigCmds() {
@@ -235,14 +235,16 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Property key is the port(s) name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
+     * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
      * 
      */
     @Import(name="portConfig")
     private @Nullable Output<Map<String,GatewaytemplatePortConfigArgs>> portConfig;
 
     /**
-     * @return Property key is the port(s) name or range (e.g. &#34;ge-0/0/0-10&#34;)
+     * @return Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
+     * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
      * 
      */
     public Optional<Output<Map<String,GatewaytemplatePortConfigArgs>>> portConfig() {
@@ -395,7 +397,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -406,7 +408,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -416,7 +418,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config **Note**: no check is done
+         * @param additionalConfigCmds additional CLI commands to append to the generated Junos config. **Note**: no check is done
          * 
          * @return builder
          * 
@@ -712,7 +714,8 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portConfig Property key is the port(s) name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param portConfig Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
+         * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
          * 
          * @return builder
          * 
@@ -723,7 +726,8 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param portConfig Property key is the port(s) name or range (e.g. &#34;ge-0/0/0-10&#34;)
+         * @param portConfig Property key is the Port Name (i.e. &#34;ge-0/0/0&#34;), the Ports Range (i.e. &#34;ge-0/0/0-10&#34;), the List of Ports (i.e.
+         * &#34;ge-0/0/0,ge-1/0/0&#34;, only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. &#34;{{myvar}}&#34;).
          * 
          * @return builder
          * 
