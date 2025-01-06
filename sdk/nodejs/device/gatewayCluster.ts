@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * 2. Form the Cluster with the `junipermist.device.GatewayCluster` resource by providing the `siteId` and the two nodes MAC Addresses (the first in the list will be the node0)
  * 3. Configure the Cluster with the `junipermist.device.Gateway` resource
  *
- * Please check the Juniper Documentation first to validate the cabling between the Gateways
+ * Please check the [SRX Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/srx-high-availability-configuration.html)or the [SSR Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/ssr-high-availability-configuration.html) first to validate the cabling between the Gateways
  *
  * > Both gateways must belong to the same site when creating the Gateway Cluster
  *
