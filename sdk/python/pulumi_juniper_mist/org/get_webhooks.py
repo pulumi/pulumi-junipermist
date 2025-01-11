@@ -27,22 +27,16 @@ class GetWebhooksResult:
     """
     A collection of values returned by getWebhooks.
     """
-    def __init__(__self__, id=None, limit=None, org_id=None, org_webhooks=None, page=None):
+    def __init__(__self__, id=None, org_id=None, org_webhooks=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if limit and not isinstance(limit, int):
-            raise TypeError("Expected argument 'limit' to be a int")
-        pulumi.set(__self__, "limit", limit)
         if org_id and not isinstance(org_id, str):
             raise TypeError("Expected argument 'org_id' to be a str")
         pulumi.set(__self__, "org_id", org_id)
         if org_webhooks and not isinstance(org_webhooks, list):
             raise TypeError("Expected argument 'org_webhooks' to be a list")
         pulumi.set(__self__, "org_webhooks", org_webhooks)
-        if page and not isinstance(page, int):
-            raise TypeError("Expected argument 'page' to be a int")
-        pulumi.set(__self__, "page", page)
 
     @property
     @pulumi.getter
@@ -51,11 +45,6 @@ class GetWebhooksResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def limit(self) -> Optional[int]:
-        return pulumi.get(self, "limit")
 
     @property
     @pulumi.getter(name="orgId")
@@ -67,11 +56,6 @@ class GetWebhooksResult:
     def org_webhooks(self) -> Sequence['outputs.GetWebhooksOrgWebhookResult']:
         return pulumi.get(self, "org_webhooks")
 
-    @property
-    @pulumi.getter
-    def page(self) -> Optional[int]:
-        return pulumi.get(self, "page")
-
 
 class AwaitableGetWebhooksResult(GetWebhooksResult):
     # pylint: disable=using-constant-test
@@ -80,18 +64,18 @@ class AwaitableGetWebhooksResult(GetWebhooksResult):
             yield self
         return GetWebhooksResult(
             id=self.id,
-            limit=self.limit,
             org_id=self.org_id,
-            org_webhooks=self.org_webhooks,
-            page=self.page)
+            org_webhooks=self.org_webhooks)
 
 
-def get_webhooks(limit: Optional[int] = None,
-                 org_id: Optional[str] = None,
-                 page: Optional[int] = None,
+def get_webhooks(org_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebhooksResult:
     """
     This data source provides the list of Org Webhooks.
+
+    A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\\
+    It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\\
+    The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
 
     ## Example Usage
 
@@ -103,24 +87,22 @@ def get_webhooks(limit: Optional[int] = None,
     ```
     """
     __args__ = dict()
-    __args__['limit'] = limit
     __args__['orgId'] = org_id
-    __args__['page'] = page
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('junipermist:org/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult).value
 
     return AwaitableGetWebhooksResult(
         id=pulumi.get(__ret__, 'id'),
-        limit=pulumi.get(__ret__, 'limit'),
         org_id=pulumi.get(__ret__, 'org_id'),
-        org_webhooks=pulumi.get(__ret__, 'org_webhooks'),
-        page=pulumi.get(__ret__, 'page'))
-def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
-                        org_id: Optional[pulumi.Input[str]] = None,
-                        page: Optional[pulumi.Input[Optional[int]]] = None,
+        org_webhooks=pulumi.get(__ret__, 'org_webhooks'))
+def get_webhooks_output(org_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source provides the list of Org Webhooks.
+
+    A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\\
+    It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\\
+    The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
 
     ## Example Usage
 
@@ -132,14 +114,10 @@ def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     ```
     """
     __args__ = dict()
-    __args__['limit'] = limit
     __args__['orgId'] = org_id
-    __args__['page'] = page
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:org/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
         id=pulumi.get(__response__, 'id'),
-        limit=pulumi.get(__response__, 'limit'),
         org_id=pulumi.get(__response__, 'org_id'),
-        org_webhooks=pulumi.get(__response__, 'org_webhooks'),
-        page=pulumi.get(__response__, 'page')))
+        org_webhooks=pulumi.get(__response__, 'org_webhooks')))

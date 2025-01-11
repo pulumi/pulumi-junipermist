@@ -6,12 +6,9 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.org.outputs.GetWebhooksOrgWebhook;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWebhooksResult {
@@ -20,10 +17,8 @@ public final class GetWebhooksResult {
      * 
      */
     private String id;
-    private @Nullable Integer limit;
     private String orgId;
     private List<GetWebhooksOrgWebhook> orgWebhooks;
-    private @Nullable Integer page;
 
     private GetWebhooksResult() {}
     /**
@@ -33,17 +28,11 @@ public final class GetWebhooksResult {
     public String id() {
         return this.id;
     }
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
     public String orgId() {
         return this.orgId;
     }
     public List<GetWebhooksOrgWebhook> orgWebhooks() {
         return this.orgWebhooks;
-    }
-    public Optional<Integer> page() {
-        return Optional.ofNullable(this.page);
     }
 
     public static Builder builder() {
@@ -56,18 +45,14 @@ public final class GetWebhooksResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable Integer limit;
         private String orgId;
         private List<GetWebhooksOrgWebhook> orgWebhooks;
-        private @Nullable Integer page;
         public Builder() {}
         public Builder(GetWebhooksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.limit = defaults.limit;
     	      this.orgId = defaults.orgId;
     	      this.orgWebhooks = defaults.orgWebhooks;
-    	      this.page = defaults.page;
         }
 
         @CustomType.Setter
@@ -76,12 +61,6 @@ public final class GetWebhooksResult {
               throw new MissingRequiredPropertyException("GetWebhooksResult", "id");
             }
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder limit(@Nullable Integer limit) {
-
-            this.limit = limit;
             return this;
         }
         @CustomType.Setter
@@ -103,19 +82,11 @@ public final class GetWebhooksResult {
         public Builder orgWebhooks(GetWebhooksOrgWebhook... orgWebhooks) {
             return orgWebhooks(List.of(orgWebhooks));
         }
-        @CustomType.Setter
-        public Builder page(@Nullable Integer page) {
-
-            this.page = page;
-            return this;
-        }
         public GetWebhooksResult build() {
             final var _resultValue = new GetWebhooksResult();
             _resultValue.id = id;
-            _resultValue.limit = limit;
             _resultValue.orgId = orgId;
             _resultValue.orgWebhooks = orgWebhooks;
-            _resultValue.page = page;
             return _resultValue;
         }
     }

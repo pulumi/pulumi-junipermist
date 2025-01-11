@@ -28,6 +28,14 @@ namespace Pulumi.JuniperMist.Device
         ///     var switchStats = JuniperMist.Device.GetSwitchStats.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "485a0d000000",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        ///         Status = "connected",
+        ///         EvpnUnused = "true",
+        ///         EvpntopoId = "92984e2f-94db-4cd8-9763-9cf83fbd079e",
+        ///         Duration = "1d",
+        ///         Start = 1736031600,
+        ///         End = 1736175934,
         ///     });
         /// 
         /// });
@@ -53,6 +61,14 @@ namespace Pulumi.JuniperMist.Device
         ///     var switchStats = JuniperMist.Device.GetSwitchStats.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "485a0d000000",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        ///         Status = "connected",
+        ///         EvpnUnused = "true",
+        ///         EvpntopoId = "92984e2f-94db-4cd8-9763-9cf83fbd079e",
+        ///         Duration = "1d",
+        ///         Start = 1736031600,
+        ///         End = 1736175934,
         ///     });
         /// 
         /// });
@@ -78,6 +94,14 @@ namespace Pulumi.JuniperMist.Device
         ///     var switchStats = JuniperMist.Device.GetSwitchStats.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "485a0d000000",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        ///         Status = "connected",
+        ///         EvpnUnused = "true",
+        ///         EvpntopoId = "92984e2f-94db-4cd8-9763-9cf83fbd079e",
+        ///         Duration = "1d",
+        ///         Start = 1736031600,
+        ///         End = 1736175934,
         ///     });
         /// 
         /// });

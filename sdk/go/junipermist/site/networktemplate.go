@@ -13,6 +13,7 @@ import (
 )
 
 // This resource manages the Site Network configuration (Switch configuration).
+//
 // The Site Network template can be used to override the Org Network template assign to the site, or to configure common switch settings accross the site without having to create an Org Network template.
 //
 // > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, the `site.Networktemplate` resource has been created to centralize all the site level switches related settings.

@@ -76,6 +76,47 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.sitegroupId);
     }
 
+    /**
+     * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+     * Below are the list of supported UI views. Note that this is UI only feature.
+     * 
+     *   | UI View | Required Role | Description |
+     *   | --- | --- | --- |
+     *   | `reporting` | `read` | full access to all analytics tools |
+     *   | `marketing` | `read` | can view analytics and location maps |
+     *   | `super_observer` | `read` | can view all the organization except the subscription page |
+     *   | `location` | `write` | can view and manage location maps, can view analytics |
+     *   | `security` | `write` | can view and manage site labels, policies and security |
+     *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+     *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+     *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+     * 
+     */
+    @Import(name="views")
+    private @Nullable Output<String> views;
+
+    /**
+     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+     * Below are the list of supported UI views. Note that this is UI only feature.
+     * 
+     *   | UI View | Required Role | Description |
+     *   | --- | --- | --- |
+     *   | `reporting` | `read` | full access to all analytics tools |
+     *   | `marketing` | `read` | can view analytics and location maps |
+     *   | `super_observer` | `read` | can view all the organization except the subscription page |
+     *   | `location` | `write` | can view and manage location maps, can view analytics |
+     *   | `security` | `write` | can view and manage site labels, policies and security |
+     *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+     *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+     *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+     * 
+     */
+    public Optional<Output<String>> views() {
+        return Optional.ofNullable(this.views);
+    }
+
     private SsoRolePrivilegeArgs() {}
 
     private SsoRolePrivilegeArgs(SsoRolePrivilegeArgs $) {
@@ -83,6 +124,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
         this.scope = $.scope;
         this.siteId = $.siteId;
         this.sitegroupId = $.sitegroupId;
+        this.views = $.views;
     }
 
     public static Builder builder() {
@@ -185,6 +227,53 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder sitegroupId(String sitegroupId) {
             return sitegroupId(Output.of(sitegroupId));
+        }
+
+        /**
+         * @param views Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+         * Below are the list of supported UI views. Note that this is UI only feature.
+         * 
+         *   | UI View | Required Role | Description |
+         *   | --- | --- | --- |
+         *   | `reporting` | `read` | full access to all analytics tools |
+         *   | `marketing` | `read` | can view analytics and location maps |
+         *   | `super_observer` | `read` | can view all the organization except the subscription page |
+         *   | `location` | `write` | can view and manage location maps, can view analytics |
+         *   | `security` | `write` | can view and manage site labels, policies and security |
+         *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+         *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+         *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+         * 
+         * @return builder
+         * 
+         */
+        public Builder views(@Nullable Output<String> views) {
+            $.views = views;
+            return this;
+        }
+
+        /**
+         * @param views Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+         * Below are the list of supported UI views. Note that this is UI only feature.
+         * 
+         *   | UI View | Required Role | Description |
+         *   | --- | --- | --- |
+         *   | `reporting` | `read` | full access to all analytics tools |
+         *   | `marketing` | `read` | can view analytics and location maps |
+         *   | `super_observer` | `read` | can view all the organization except the subscription page |
+         *   | `location` | `write` | can view and manage location maps, can view analytics |
+         *   | `security` | `write` | can view and manage site labels, policies and security |
+         *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+         *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+         *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+         * 
+         * @return builder
+         * 
+         */
+        public Builder views(String views) {
+            return views(Output.of(views));
         }
 
         public SsoRolePrivilegeArgs build() {

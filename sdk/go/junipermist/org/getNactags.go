@@ -12,7 +12,8 @@ import (
 )
 
 // This data source provides the list of NAC Tags (Auth Policy Labels).
-// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
+//
+// # The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
 //
 // ## Example Usage
 //
@@ -30,6 +31,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := org.GetNactags(ctx, &org.GetNactagsArgs{
 //				OrgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//				Type:  pulumi.StringRef("match"),
+//				Match: pulumi.StringRef("cert_issuer"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,11 +54,9 @@ func GetNactags(ctx *pulumi.Context, args *GetNactagsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNactags.
 type GetNactagsArgs struct {
-	Limit *int    `pulumi:"limit"`
 	Match *string `pulumi:"match"`
 	Name  *string `pulumi:"name"`
 	OrgId string  `pulumi:"orgId"`
-	Page  *int    `pulumi:"page"`
 	Type  *string `pulumi:"type"`
 }
 
@@ -63,12 +64,10 @@ type GetNactagsArgs struct {
 type GetNactagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id         string                `pulumi:"id"`
-	Limit      *int                  `pulumi:"limit"`
 	Match      *string               `pulumi:"match"`
 	Name       *string               `pulumi:"name"`
 	OrgId      string                `pulumi:"orgId"`
 	OrgNactags []GetNactagsOrgNactag `pulumi:"orgNactags"`
-	Page       *int                  `pulumi:"page"`
 	Type       *string               `pulumi:"type"`
 }
 
@@ -83,11 +82,9 @@ func GetNactagsOutput(ctx *pulumi.Context, args GetNactagsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNactags.
 type GetNactagsOutputArgs struct {
-	Limit pulumi.IntPtrInput    `pulumi:"limit"`
 	Match pulumi.StringPtrInput `pulumi:"match"`
 	Name  pulumi.StringPtrInput `pulumi:"name"`
 	OrgId pulumi.StringInput    `pulumi:"orgId"`
-	Page  pulumi.IntPtrInput    `pulumi:"page"`
 	Type  pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -115,10 +112,6 @@ func (o GetNactagsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNactagsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetNactagsResultOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetNactagsResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
-}
-
 func (o GetNactagsResultOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNactagsResult) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
@@ -133,10 +126,6 @@ func (o GetNactagsResultOutput) OrgId() pulumi.StringOutput {
 
 func (o GetNactagsResultOutput) OrgNactags() GetNactagsOrgNactagArrayOutput {
 	return o.ApplyT(func(v GetNactagsResult) []GetNactagsOrgNactag { return v.OrgNactags }).(GetNactagsOrgNactagArrayOutput)
-}
-
-func (o GetNactagsResultOutput) Page() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetNactagsResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
 func (o GetNactagsResultOutput) Type() pulumi.StringPtrOutput {

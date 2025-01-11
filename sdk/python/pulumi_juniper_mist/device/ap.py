@@ -1049,6 +1049,7 @@ class Ap(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Wireless Access Point configuration.
+
         It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
 
         ## Import
@@ -1094,6 +1095,7 @@ class Ap(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Wireless Access Point configuration.
+
         It can be used to define specific configuration at the device level or to override AP Device Profile (`org.DeviceprofileAp`).
 
         ## Import

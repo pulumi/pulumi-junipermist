@@ -25,6 +25,11 @@ export const getWebhooks: typeof import("./getWebhooks").getWebhooks = null as a
 export const getWebhooksOutput: typeof import("./getWebhooks").getWebhooksOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhooks","getWebhooksOutput"], () => require("./getWebhooks"));
 
+export { GetWlansArgs, GetWlansResult, GetWlansOutputArgs } from "./getWlans";
+export const getWlans: typeof import("./getWlans").getWlans = null as any;
+export const getWlansOutput: typeof import("./getWlans").getWlansOutput = null as any;
+utilities.lazyLoad(exports, ["getWlans","getWlansOutput"], () => require("./getWlans"));
+
 export { NetworktemplateArgs, NetworktemplateState } from "./networktemplate";
 export type Networktemplate = import("./networktemplate").Networktemplate;
 export const Networktemplate: typeof import("./networktemplate").Networktemplate = null as any;

@@ -13,11 +13,12 @@ import (
 )
 
 // This resource manages Alarm Templates.
+//
 // An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
 //
-// Once created, the Alarm template must be assigned with the `alarmtemplateId` attribute to one of the following
-//   - the whole org with the `org.base` resource
-//   - one or multiple sites with the `site.base` resource
+// Once created, the Alarm template must be assigned with the `alarmtemplateId` attribute to one of the following:
+// * the whole org with the `org.base` resource
+// * one or multiple sites with the `site.base` resource
 //
 // # It is possible to use the `getConstAlarms` data source to get a list of the available alarms
 //

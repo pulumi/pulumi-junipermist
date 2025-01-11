@@ -13,6 +13,7 @@ namespace Pulumi.JuniperMist.Org
     {
         /// <summary>
         /// This data source provides the list of NAC Tags (Auth Policy Labels).
+        /// 
         /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
         /// 
         /// 
@@ -29,6 +30,8 @@ namespace Pulumi.JuniperMist.Org
         ///     var nactags = JuniperMist.Org.GetNactags.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Type = "match",
+        ///         Match = "cert_issuer",
         ///     });
         /// 
         /// });
@@ -39,6 +42,7 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of NAC Tags (Auth Policy Labels).
+        /// 
         /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
         /// 
         /// 
@@ -55,6 +59,8 @@ namespace Pulumi.JuniperMist.Org
         ///     var nactags = JuniperMist.Org.GetNactags.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Type = "match",
+        ///         Match = "cert_issuer",
         ///     });
         /// 
         /// });
@@ -65,6 +71,7 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of NAC Tags (Auth Policy Labels).
+        /// 
         /// The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
         /// 
         /// 
@@ -81,6 +88,8 @@ namespace Pulumi.JuniperMist.Org
         ///     var nactags = JuniperMist.Org.GetNactags.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Type = "match",
+        ///         Match = "cert_issuer",
         ///     });
         /// 
         /// });
@@ -93,9 +102,6 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class GetNactagsArgs : global::Pulumi.InvokeArgs
     {
-        [Input("limit")]
-        public int? Limit { get; set; }
-
         [Input("match")]
         public string? Match { get; set; }
 
@@ -104,9 +110,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
-
-        [Input("page")]
-        public int? Page { get; set; }
 
         [Input("type")]
         public string? Type { get; set; }
@@ -119,9 +122,6 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class GetNactagsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("limit")]
-        public Input<int>? Limit { get; set; }
-
         [Input("match")]
         public Input<string>? Match { get; set; }
 
@@ -130,9 +130,6 @@ namespace Pulumi.JuniperMist.Org
 
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
-
-        [Input("page")]
-        public Input<int>? Page { get; set; }
 
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -151,19 +148,15 @@ namespace Pulumi.JuniperMist.Org
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly int? Limit;
         public readonly string? Match;
         public readonly string? Name;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetNactagsOrgNactagResult> OrgNactags;
-        public readonly int? Page;
         public readonly string? Type;
 
         [OutputConstructor]
         private GetNactagsResult(
             string id,
-
-            int? limit,
 
             string? match,
 
@@ -173,17 +166,13 @@ namespace Pulumi.JuniperMist.Org
 
             ImmutableArray<Outputs.GetNactagsOrgNactagResult> orgNactags,
 
-            int? page,
-
             string? type)
         {
             Id = id;
-            Limit = limit;
             Match = match;
             Name = name;
             OrgId = orgId;
             OrgNactags = orgNactags;
-            Page = page;
             Type = type;
         }
     }

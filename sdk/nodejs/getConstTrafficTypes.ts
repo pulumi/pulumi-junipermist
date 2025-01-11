@@ -8,7 +8,8 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides the of ConstTrafficTypes.
- * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+ *
+ * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
  *
  * ## Example Usage
  *
@@ -37,7 +38,8 @@ export interface GetConstTrafficTypesResult {
 }
 /**
  * This data source provides the of ConstTrafficTypes.
- * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+ *
+ * The Traffic Type values can be used to define the `trafficType` attribute in the `junipermist.org.Service` resource.
  *
  * ## Example Usage
  *

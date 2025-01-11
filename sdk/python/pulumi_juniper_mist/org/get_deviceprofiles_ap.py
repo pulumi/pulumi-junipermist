@@ -72,7 +72,8 @@ def get_deviceprofiles_ap(org_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceprofilesApResult:
     """
     This data source provides the list of AP Device Profiles.
-    AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+
+    AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
 
     ## Example Usage
 
@@ -96,7 +97,8 @@ def get_deviceprofiles_ap_output(org_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceprofilesApResult]:
     """
     This data source provides the list of AP Device Profiles.
-    AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+
+    AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
 
     ## Example Usage
 

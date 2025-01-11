@@ -14,16 +14,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingEngagement {
+    /**
+     * @return name associated to each tag
+     * 
+     */
     private @Nullable SettingEngagementDwellTagNames dwellTagNames;
     /**
-     * @return add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+     * @return add tags to visits within the duration (in seconds)
      * 
      */
     private @Nullable SettingEngagementDwellTags dwellTags;
     /**
-     * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     private @Nullable SettingEngagementHours hours;
@@ -39,20 +41,22 @@ public final class SettingEngagement {
     private @Nullable Integer minDwell;
 
     private SettingEngagement() {}
+    /**
+     * @return name associated to each tag
+     * 
+     */
     public Optional<SettingEngagementDwellTagNames> dwellTagNames() {
         return Optional.ofNullable(this.dwellTagNames);
     }
     /**
-     * @return add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+     * @return add tags to visits within the duration (in seconds)
      * 
      */
     public Optional<SettingEngagementDwellTags> dwellTags() {
         return Optional.ofNullable(this.dwellTags);
     }
     /**
-     * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     public Optional<SettingEngagementHours> hours() {

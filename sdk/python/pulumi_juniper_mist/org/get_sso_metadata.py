@@ -108,6 +108,7 @@ def get_sso_metadata(org_id: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSsoMetadataResult:
     """
     This data source provides the SSO Metadata information.
+
     The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
 
     ## Example Usage
@@ -139,6 +140,7 @@ def get_sso_metadata_output(org_id: Optional[pulumi.Input[str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSsoMetadataResult]:
     """
     This data source provides the SSO Metadata information.
+
     The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
 
     ## Example Usage

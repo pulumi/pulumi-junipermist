@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This resource provides the list of RF Templates.
-// The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
+// This data source provides the list of RF Templates.
+//
+// # The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
 //
 // ## Example Usage
 //

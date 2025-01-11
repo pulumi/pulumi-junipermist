@@ -12,7 +12,8 @@ import (
 )
 
 // This data source provides the of ConstAppSubCategories.
-// This information can be used as `appSubcategories` in the `org.Service` resource
+//
+// # This information can be used as `appSubcategories` in the `org.Service` resource
 //
 // ## Example Usage
 //

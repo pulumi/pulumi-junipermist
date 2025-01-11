@@ -12,7 +12,12 @@ import (
 )
 
 // This data source provides the list of WAN Assurance Services (Applications).
-// The Services are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+//
+// A Service is used to define a Custom Application that can be used in the `servicePolicies`. These Services can be referenced by their name in
+// * the Service Policies (`mist_org_servicepolicy.services`)
+// * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
 //
 // ## Example Usage
 //

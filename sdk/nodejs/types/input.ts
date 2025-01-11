@@ -8590,6 +8590,23 @@ Please update your configurations.
          * Required if `scope`==`sitegroup`
          */
         sitegroupId?: pulumi.Input<string>;
+        /**
+         * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+         * Below are the list of supported UI views. Note that this is UI only feature.  
+         *
+         *   | UI View | Required Role | Description |
+         *   | --- | --- | --- |
+         *   | `reporting` | `read` | full access to all analytics tools |
+         *   | `marketing` | `read` | can view analytics and location maps |
+         *   | `superObserver` | `read` | can view all the organization except the subscription page |
+         *   | `location` | `write` | can view and manage location maps, can view analytics |
+         *   | `security` | `write` | can view and manage site labels, policies and security |
+         *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+         *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
+         *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+         */
+        views?: pulumi.Input<string>;
     }
 
     export interface VpnPaths {
@@ -11388,20 +11405,39 @@ Please update your configurations.
     export interface SettingConfigPushPolicyPushWindow {
         enabled?: pulumi.Input<boolean>;
         /**
-         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-         *
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          */
         hours?: pulumi.Input<inputs.site.SettingConfigPushPolicyPushWindowHours>;
     }
 
     export interface SettingConfigPushPolicyPushWindowHours {
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         fri?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         mon?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sat?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sun?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         thu?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         tue?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         wed?: pulumi.Input<string>;
     }
 
@@ -11416,15 +11452,16 @@ Please update your configurations.
     }
 
     export interface SettingEngagement {
+        /**
+         * name associated to each tag
+         */
         dwellTagNames?: pulumi.Input<inputs.site.SettingEngagementDwellTagNames>;
         /**
-         * add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+         * add tags to visits within the duration (in seconds)
          */
         dwellTags?: pulumi.Input<inputs.site.SettingEngagementDwellTags>;
         /**
-         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-         *
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          */
         hours?: pulumi.Input<inputs.site.SettingEngagementHours>;
         /**
@@ -11438,26 +11475,71 @@ Please update your configurations.
     }
 
     export interface SettingEngagementDwellTagNames {
+        /**
+         * Default to `Visitor`
+         */
         bounce?: pulumi.Input<string>;
+        /**
+         * Default to `Associates`
+         */
         engaged?: pulumi.Input<string>;
+        /**
+         * Default to `Passerby`
+         */
         passerby?: pulumi.Input<string>;
+        /**
+         * Default to `Assets`
+         */
         stationed?: pulumi.Input<string>;
     }
 
     export interface SettingEngagementDwellTags {
+        /**
+         * Default to `301-14400`
+         */
         bounce?: pulumi.Input<string>;
+        /**
+         * Default to `14401-28800`
+         */
         engaged?: pulumi.Input<string>;
+        /**
+         * Default to `1-300`
+         */
         passerby?: pulumi.Input<string>;
+        /**
+         * Default to `28801-42000`
+         */
         stationed?: pulumi.Input<string>;
     }
 
     export interface SettingEngagementHours {
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         fri?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         mon?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sat?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sun?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         thu?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         tue?: pulumi.Input<string>;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         wed?: pulumi.Input<string>;
     }
 
@@ -11572,6 +11654,16 @@ Please update your configurations.
          */
         protocol?: pulumi.Input<string>;
         subnets: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SettingJuniperSrx {
+        gateways?: pulumi.Input<pulumi.Input<inputs.site.SettingJuniperSrxGateway>[]>;
+        sendMistNacUserInfo?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingJuniperSrxGateway {
+        apiKey?: pulumi.Input<string>;
+        apiUrl?: pulumi.Input<string>;
     }
 
     export interface SettingLed {

@@ -9,16 +9,22 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.junipermist.Utilities;
+import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
+import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesApPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayArgs;
 import com.pulumi.junipermist.org.inputs.GetDeviceprofilesGatewayPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
+import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesArgs;
 import com.pulumi.junipermist.org.inputs.GetGatewaytemplatesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetIdpprofilesArgs;
 import com.pulumi.junipermist.org.inputs.GetIdpprofilesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetInventoryArgs;
 import com.pulumi.junipermist.org.inputs.GetInventoryPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
+import com.pulumi.junipermist.org.inputs.GetNacEndpointsPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetNacidpMetadataArgs;
 import com.pulumi.junipermist.org.inputs.GetNacidpMetadataPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetNacrulesArgs;
@@ -41,19 +47,26 @@ import com.pulumi.junipermist.org.inputs.GetSitegroupsArgs;
 import com.pulumi.junipermist.org.inputs.GetSitegroupsPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetSsoMetadataArgs;
 import com.pulumi.junipermist.org.inputs.GetSsoMetadataPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
+import com.pulumi.junipermist.org.inputs.GetSsoRolesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetVpnsArgs;
 import com.pulumi.junipermist.org.inputs.GetVpnsPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetWebhooksArgs;
 import com.pulumi.junipermist.org.inputs.GetWebhooksPlainArgs;
+import com.pulumi.junipermist.org.inputs.GetWlansArgs;
+import com.pulumi.junipermist.org.inputs.GetWlansPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetWlantemplatesArgs;
 import com.pulumi.junipermist.org.inputs.GetWlantemplatesPlainArgs;
 import com.pulumi.junipermist.org.inputs.GetWxtagsArgs;
 import com.pulumi.junipermist.org.inputs.GetWxtagsPlainArgs;
+import com.pulumi.junipermist.org.outputs.GetAlarmtemplatesResult;
 import com.pulumi.junipermist.org.outputs.GetDeviceprofilesApResult;
 import com.pulumi.junipermist.org.outputs.GetDeviceprofilesGatewayResult;
+import com.pulumi.junipermist.org.outputs.GetEvpnTopologiesResult;
 import com.pulumi.junipermist.org.outputs.GetGatewaytemplatesResult;
 import com.pulumi.junipermist.org.outputs.GetIdpprofilesResult;
 import com.pulumi.junipermist.org.outputs.GetInventoryResult;
+import com.pulumi.junipermist.org.outputs.GetNacEndpointsResult;
 import com.pulumi.junipermist.org.outputs.GetNacidpMetadataResult;
 import com.pulumi.junipermist.org.outputs.GetNacrulesResult;
 import com.pulumi.junipermist.org.outputs.GetNactagsResult;
@@ -65,16 +78,239 @@ import com.pulumi.junipermist.org.outputs.GetServicepoliciesResult;
 import com.pulumi.junipermist.org.outputs.GetServicesResult;
 import com.pulumi.junipermist.org.outputs.GetSitegroupsResult;
 import com.pulumi.junipermist.org.outputs.GetSsoMetadataResult;
+import com.pulumi.junipermist.org.outputs.GetSsoRolesResult;
 import com.pulumi.junipermist.org.outputs.GetVpnsResult;
 import com.pulumi.junipermist.org.outputs.GetWebhooksResult;
+import com.pulumi.junipermist.org.outputs.GetWlansResult;
 import com.pulumi.junipermist.org.outputs.GetWlantemplatesResult;
 import com.pulumi.junipermist.org.outputs.GetWxtagsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class OrgFunctions {
     /**
+     * This data source provides the list of Alarm Templates.
+     * 
+     * An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var alarmtemplates = OrgFunctions.getAlarmtemplates(GetAlarmtemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlarmtemplatesResult> getAlarmtemplates(GetAlarmtemplatesArgs args) {
+        return getAlarmtemplates(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Alarm Templates.
+     * 
+     * An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var alarmtemplates = OrgFunctions.getAlarmtemplates(GetAlarmtemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAlarmtemplatesResult> getAlarmtemplatesPlain(GetAlarmtemplatesPlainArgs args) {
+        return getAlarmtemplatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Alarm Templates.
+     * 
+     * An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var alarmtemplates = OrgFunctions.getAlarmtemplates(GetAlarmtemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlarmtemplatesResult> getAlarmtemplates(GetAlarmtemplatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getAlarmtemplates:getAlarmtemplates", TypeShape.of(GetAlarmtemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Alarm Templates.
+     * 
+     * An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var alarmtemplates = OrgFunctions.getAlarmtemplates(GetAlarmtemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlarmtemplatesResult> getAlarmtemplates(GetAlarmtemplatesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getAlarmtemplates:getAlarmtemplates", TypeShape.of(GetAlarmtemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Alarm Templates.
+     * 
+     * An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetAlarmtemplatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var alarmtemplates = OrgFunctions.getAlarmtemplates(GetAlarmtemplatesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAlarmtemplatesResult> getAlarmtemplatesPlain(GetAlarmtemplatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getAlarmtemplates:getAlarmtemplates", TypeShape.of(GetAlarmtemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the list of AP Device Profiles.
-     * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+     * 
+     * AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
      * 
      * ## Example Usage
      * 
@@ -117,7 +353,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of AP Device Profiles.
-     * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+     * 
+     * AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
      * 
      * ## Example Usage
      * 
@@ -160,7 +397,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of AP Device Profiles.
-     * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+     * 
+     * AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
      * 
      * ## Example Usage
      * 
@@ -203,7 +441,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of AP Device Profiles.
-     * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+     * 
+     * AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
      * 
      * ## Example Usage
      * 
@@ -246,7 +485,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of AP Device Profiles.
-     * AP Device profiles for aps are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They allow for efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
+     * 
+     * AP Device profiles are used to specify a configuration that can be applied to a select set of aps from any site in the organization. They are providing efficient application of configurations based on ap groups, wlan groups, RF settings, and sites. Device profiles enable various use cases such as activating ethernet passthrough, applying different rf settings, applying mesh configuration, activating specific features like esl or vble, and more.
      * 
      * ## Example Usage
      * 
@@ -289,7 +529,10 @@ public final class OrgFunctions {
     }
     /**
      * This provides the list of Gateway Device Profiles (Hub Profile).
-     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+     * 
+     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options.
+     * 
+     * HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
      * 
      * ## Example Usage
      * 
@@ -332,7 +575,10 @@ public final class OrgFunctions {
     }
     /**
      * This provides the list of Gateway Device Profiles (Hub Profile).
-     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+     * 
+     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options.
+     * 
+     * HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
      * 
      * ## Example Usage
      * 
@@ -375,7 +621,10 @@ public final class OrgFunctions {
     }
     /**
      * This provides the list of Gateway Device Profiles (Hub Profile).
-     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+     * 
+     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options.
+     * 
+     * HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
      * 
      * ## Example Usage
      * 
@@ -418,7 +667,10 @@ public final class OrgFunctions {
     }
     /**
      * This provides the list of Gateway Device Profiles (Hub Profile).
-     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+     * 
+     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options.
+     * 
+     * HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
      * 
      * ## Example Usage
      * 
@@ -461,7 +713,10 @@ public final class OrgFunctions {
     }
     /**
      * This provides the list of Gateway Device Profiles (Hub Profile).
-     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options. HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
+     * 
+     * A HUB profile is a configuration profile that automates the creation of overlay networks and defines the attributes of a hub device in a network. It includes settings for wan interfaces, lan interfaces, dns servers, traffic steering preferences, application policies, and routing options.
+     * 
+     * HUB profiles are used to create consistent configurations for hub devices and ensure efficient connectivity between hubs and spokes in a network.
      * 
      * ## Example Usage
      * 
@@ -503,7 +758,228 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getDeviceprofilesGateway:getDeviceprofilesGateway", TypeShape.of(GetDeviceprofilesGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the list of Org Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgEvpnTopologies = OrgFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEvpnTopologiesResult> getEvpnTopologies(GetEvpnTopologiesArgs args) {
+        return getEvpnTopologies(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Org Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgEvpnTopologies = OrgFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEvpnTopologiesResult> getEvpnTopologiesPlain(GetEvpnTopologiesPlainArgs args) {
+        return getEvpnTopologiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Org Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgEvpnTopologies = OrgFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEvpnTopologiesResult> getEvpnTopologies(GetEvpnTopologiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getEvpnTopologies:getEvpnTopologies", TypeShape.of(GetEvpnTopologiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgEvpnTopologies = OrgFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEvpnTopologiesResult> getEvpnTopologies(GetEvpnTopologiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getEvpnTopologies:getEvpnTopologies", TypeShape.of(GetEvpnTopologiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Evpn Topologies
+     * 
+     * EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetEvpnTopologiesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgEvpnTopologies = OrgFunctions.getEvpnTopologies(GetEvpnTopologiesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEvpnTopologiesResult> getEvpnTopologiesPlain(GetEvpnTopologiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getEvpnTopologies:getEvpnTopologies", TypeShape.of(GetEvpnTopologiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the list of Gateway Templates.
+     * 
      * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
@@ -547,6 +1023,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Gateway Templates.
+     * 
      * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
@@ -590,6 +1067,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Gateway Templates.
+     * 
      * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
@@ -633,6 +1111,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Gateway Templates.
+     * 
      * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
@@ -676,6 +1155,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Gateway Templates.
+     * 
      * A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
      * 
      * ## Example Usage
@@ -719,7 +1199,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance IDP Profiles.
-     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+     * 
+     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+     * 
+     * The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
      * 
      * ## Example Usage
      * 
@@ -762,7 +1245,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance IDP Profiles.
-     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+     * 
+     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+     * 
+     * The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
      * 
      * ## Example Usage
      * 
@@ -805,7 +1291,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance IDP Profiles.
-     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+     * 
+     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+     * 
+     * The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
      * 
      * ## Example Usage
      * 
@@ -848,7 +1337,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance IDP Profiles.
-     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+     * 
+     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+     * 
+     * The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
      * 
      * ## Example Usage
      * 
@@ -891,7 +1383,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance IDP Profiles.
-     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+     * 
+     * An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+     * 
+     * The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
      * 
      * ## Example Usage
      * 
@@ -962,6 +1457,13 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var inventory = OrgFunctions.getInventory(GetInventoryArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .model("EX4100-F-12P")
+     *             .serial("F00000000000")
+     *             .unassigned(false)
+     *             .vc(true)
+     *             .vcMac("485a0d000001")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .build());
      * 
      *     }
@@ -1004,6 +1506,13 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var inventory = OrgFunctions.getInventory(GetInventoryArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .model("EX4100-F-12P")
+     *             .serial("F00000000000")
+     *             .unassigned(false)
+     *             .vc(true)
+     *             .vcMac("485a0d000001")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .build());
      * 
      *     }
@@ -1046,6 +1555,13 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var inventory = OrgFunctions.getInventory(GetInventoryArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .model("EX4100-F-12P")
+     *             .serial("F00000000000")
+     *             .unassigned(false)
+     *             .vc(true)
+     *             .vcMac("485a0d000001")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .build());
      * 
      *     }
@@ -1088,6 +1604,13 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var inventory = OrgFunctions.getInventory(GetInventoryArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .model("EX4100-F-12P")
+     *             .serial("F00000000000")
+     *             .unassigned(false)
+     *             .vc(true)
+     *             .vcMac("485a0d000001")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .build());
      * 
      *     }
@@ -1130,6 +1653,13 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var inventory = OrgFunctions.getInventory(GetInventoryArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .model("EX4100-F-12P")
+     *             .serial("F00000000000")
+     *             .unassigned(false)
+     *             .vc(true)
+     *             .vcMac("485a0d000001")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
      *             .build());
      * 
      *     }
@@ -1143,7 +1673,238 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getInventory:getInventory", TypeShape.of(GetInventoryResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the list of NAC Endpoints (User MACs).
+     * 
+     * NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nacEndpoints = OrgFunctions.getNacEndpoints(GetNacEndpointsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("4a422a000000")
+     *             .labels("label_one")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNacEndpointsResult> getNacEndpoints(GetNacEndpointsArgs args) {
+        return getNacEndpoints(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of NAC Endpoints (User MACs).
+     * 
+     * NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nacEndpoints = OrgFunctions.getNacEndpoints(GetNacEndpointsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("4a422a000000")
+     *             .labels("label_one")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNacEndpointsResult> getNacEndpointsPlain(GetNacEndpointsPlainArgs args) {
+        return getNacEndpointsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of NAC Endpoints (User MACs).
+     * 
+     * NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nacEndpoints = OrgFunctions.getNacEndpoints(GetNacEndpointsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("4a422a000000")
+     *             .labels("label_one")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNacEndpointsResult> getNacEndpoints(GetNacEndpointsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNacEndpoints:getNacEndpoints", TypeShape.of(GetNacEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of NAC Endpoints (User MACs).
+     * 
+     * NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nacEndpoints = OrgFunctions.getNacEndpoints(GetNacEndpointsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("4a422a000000")
+     *             .labels("label_one")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNacEndpointsResult> getNacEndpoints(GetNacEndpointsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getNacEndpoints:getNacEndpoints", TypeShape.of(GetNacEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of NAC Endpoints (User MACs).
+     * 
+     * NAC Endpoints (User MACs) provide a database of endpoints identified by their MAC addresses. They can be used assign each endpoint with various attributes, such as name, VLAN, role and client label.  Once an endpoint is labeled, the label name can be used to create `junipermist.org.Nactag` resource as match criteria.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetNacEndpointsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var nacEndpoints = OrgFunctions.getNacEndpoints(GetNacEndpointsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("4a422a000000")
+     *             .labels("label_one")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNacEndpointsResult> getNacEndpointsPlain(GetNacEndpointsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getNacEndpoints:getNacEndpoints", TypeShape.of(GetNacEndpointsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provides the NAC IDP Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -1188,6 +1949,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the NAC IDP Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -1232,6 +1994,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the NAC IDP Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -1276,6 +2039,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the NAC IDP Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -1320,6 +2084,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the NAC IDP Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -1364,6 +2129,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
+     * 
      * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
@@ -1407,6 +2173,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
+     * 
      * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
@@ -1450,6 +2217,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
+     * 
      * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
@@ -1493,6 +2261,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
+     * 
      * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
@@ -1536,6 +2305,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Rules (Auth Policies).
+     * 
      * A NAC Rule defines a list of critera (NAC Tag) the network client must match to execute the Rule, an action (Allow/Deny)and a list of RADIUS Attributes (NAC Tags) to return
      * 
      * ## Example Usage
@@ -1579,6 +2349,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
+     * 
      * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
      * 
      * ## Example Usage
@@ -1608,6 +2379,8 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var nactags = OrgFunctions.getNactags(GetNactagsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("match")
+     *             .match("cert_issuer")
      *             .build());
      * 
      *     }
@@ -1622,6 +2395,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
+     * 
      * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
      * 
      * ## Example Usage
@@ -1651,6 +2425,8 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var nactags = OrgFunctions.getNactags(GetNactagsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("match")
+     *             .match("cert_issuer")
      *             .build());
      * 
      *     }
@@ -1665,6 +2441,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
+     * 
      * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
      * 
      * ## Example Usage
@@ -1694,6 +2471,8 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var nactags = OrgFunctions.getNactags(GetNactagsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("match")
+     *             .match("cert_issuer")
      *             .build());
      * 
      *     }
@@ -1708,6 +2487,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
+     * 
      * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
      * 
      * ## Example Usage
@@ -1737,6 +2517,8 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var nactags = OrgFunctions.getNactags(GetNactagsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("match")
+     *             .match("cert_issuer")
      *             .build());
      * 
      *     }
@@ -1751,6 +2533,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of NAC Tags (Auth Policy Labels).
+     * 
      * The NAC Tags can be used in the NAC Rules to define the matching criterias or the returned RADIUS Attributes
      * 
      * ## Example Usage
@@ -1780,6 +2563,8 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var nactags = OrgFunctions.getNactags(GetNactagsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("match")
+     *             .match("cert_issuer")
      *             .build());
      * 
      *     }
@@ -1794,7 +2579,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Networks.
-     * The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -1837,7 +2623,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Networks.
-     * The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -1880,7 +2667,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Networks.
-     * The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -1923,7 +2711,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Networks.
-     * The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -1966,7 +2755,8 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Networks.
-     * The Networks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * The Networks are used in the `service_policies` from the Gateway configuration, Gateway templates or HUB Profiles
      * 
      * ## Example Usage
      * 
@@ -2009,7 +2799,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+     * 
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
      * 
@@ -2052,7 +2844,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+     * 
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
      * 
@@ -2095,7 +2889,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+     * 
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
      * 
@@ -2138,7 +2934,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+     * 
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
      * 
@@ -2181,7 +2979,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Network Templates (Switch templates).
-     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings. Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
+     * 
+     * A network template is a predefined configuration that provides a consistent and reusable set of network settings for devices within an organization. It includes various parameters such as ip addressing, vlan configurations, routing protocols, security policies, and other network-specific settings.\
+     * Network templates simplify the deployment and management of switches by ensuring consistent configurations across multiple devices and sites. They help enforce standardization, reduce human error, and streamline troubleshooting and maintenance tasks.
      * 
      * ## Example Usage
      * 
@@ -2223,8 +3023,12 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getNetworktemplates:getNetworktemplates", TypeShape.of(GetNetworktemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.
-     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list Org Psks.
+     * 
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
      * 
@@ -2253,7 +3057,9 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .name("psk_one")
      *             .role("vip")
+     *             .ssid("psk_ssid")
      *             .build());
      * 
      *     }
@@ -2267,8 +3073,12 @@ public final class OrgFunctions {
         return getPsks(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.
-     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list Org Psks.
+     * 
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
      * 
@@ -2297,7 +3107,9 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .name("psk_one")
      *             .role("vip")
+     *             .ssid("psk_ssid")
      *             .build());
      * 
      *     }
@@ -2311,8 +3123,12 @@ public final class OrgFunctions {
         return getPsksPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.
-     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list Org Psks.
+     * 
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
      * 
@@ -2341,7 +3157,9 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .name("psk_one")
      *             .role("vip")
+     *             .ssid("psk_ssid")
      *             .build());
      * 
      *     }
@@ -2355,8 +3173,12 @@ public final class OrgFunctions {
         return Deployment.getInstance().invoke("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.
-     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list Org Psks.
+     * 
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
      * 
@@ -2385,7 +3207,9 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .name("psk_one")
      *             .role("vip")
+     *             .ssid("psk_ssid")
      *             .build());
      * 
      *     }
@@ -2399,8 +3223,12 @@ public final class OrgFunctions {
         return Deployment.getInstance().invoke("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the list of WAN Assurance Psks.
-     * The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * This data source provides the list Org Psks.
+     * 
+     * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+     * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+     * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+     * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
      * 
      * ## Example Usage
      * 
@@ -2429,7 +3257,9 @@ public final class OrgFunctions {
      *     public static void stack(Context ctx) {
      *         final var psksVip = OrgFunctions.getPsks(GetPsksArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .name("psk_one")
      *             .role("vip")
+     *             .ssid("psk_ssid")
      *             .build());
      * 
      *     }
@@ -2443,7 +3273,8 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getPsks:getPsks", TypeShape.of(GetPsksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This resource provides the list of RF Templates.
+     * This data source provides the list of RF Templates.
+     * 
      * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
      * 
      * ## Example Usage
@@ -2486,7 +3317,8 @@ public final class OrgFunctions {
         return getRftemplates(args, InvokeOptions.Empty);
     }
     /**
-     * This resource provides the list of RF Templates.
+     * This data source provides the list of RF Templates.
+     * 
      * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
      * 
      * ## Example Usage
@@ -2529,7 +3361,8 @@ public final class OrgFunctions {
         return getRftemplatesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This resource provides the list of RF Templates.
+     * This data source provides the list of RF Templates.
+     * 
      * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
      * 
      * ## Example Usage
@@ -2572,7 +3405,8 @@ public final class OrgFunctions {
         return Deployment.getInstance().invoke("junipermist:org/getRftemplates:getRftemplates", TypeShape.of(GetRftemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This resource provides the list of RF Templates.
+     * This data source provides the list of RF Templates.
+     * 
      * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
      * 
      * ## Example Usage
@@ -2615,7 +3449,8 @@ public final class OrgFunctions {
         return Deployment.getInstance().invoke("junipermist:org/getRftemplates:getRftemplates", TypeShape.of(GetRftemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This resource provides the list of RF Templates.
+     * This data source provides the list of RF Templates.
+     * 
      * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
      * 
      * ## Example Usage
@@ -2659,7 +3494,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
-     * The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+     * 
+     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * * the Gateway configuration (`mist_device_gateway.service_policies`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
+     *   They can be used to manage common policies betweeen multiples configurations
      * 
      * ## Example Usage
      * 
@@ -2702,7 +3542,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
-     * The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+     * 
+     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * * the Gateway configuration (`mist_device_gateway.service_policies`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
+     *   They can be used to manage common policies betweeen multiples configurations
      * 
      * ## Example Usage
      * 
@@ -2745,7 +3590,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
-     * The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+     * 
+     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * * the Gateway configuration (`mist_device_gateway.service_policies`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
+     *   They can be used to manage common policies betweeen multiples configurations
      * 
      * ## Example Usage
      * 
@@ -2788,7 +3638,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
-     * The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+     * 
+     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * * the Gateway configuration (`mist_device_gateway.service_policies`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
+     *   They can be used to manage common policies betweeen multiples configurations
      * 
      * ## Example Usage
      * 
@@ -2831,7 +3686,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Service Policies (Application Policiess).
-     * The Service Policies are used in the `servicepolicy_policies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+     * 
+     * The Service Policies can be used in the `service_policies` object by referencing the Service Policy ID as the `servicepolicy_id` in:
+     * * the Gateway configuration (`mist_device_gateway.service_policies`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
+     *   They can be used to manage common policies betweeen multiples configurations
      * 
      * ## Example Usage
      * 
@@ -2874,7 +3734,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
-     * The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * * the Service Policies (`mist_org_servicepolicy.services`)
+     * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
      * 
      * ## Example Usage
      * 
@@ -2917,7 +3782,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
-     * The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * * the Service Policies (`mist_org_servicepolicy.services`)
+     * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
      * 
      * ## Example Usage
      * 
@@ -2960,7 +3830,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
-     * The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * * the Service Policies (`mist_org_servicepolicy.services`)
+     * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
      * 
      * ## Example Usage
      * 
@@ -3003,7 +3878,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
-     * The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * * the Service Policies (`mist_org_servicepolicy.services`)
+     * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
      * 
      * ## Example Usage
      * 
@@ -3046,7 +3926,12 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of WAN Assurance Services (Applications).
-     * The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+     * 
+     * A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+     * * the Service Policies (`mist_org_servicepolicy.services`)
+     * * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+     * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+     * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
      * 
      * ## Example Usage
      * 
@@ -3089,7 +3974,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+     * 
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
      * 
@@ -3132,7 +4019,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+     * 
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
      * 
@@ -3175,7 +4064,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+     * 
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
      * 
@@ -3218,7 +4109,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+     * 
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
      * 
@@ -3261,7 +4154,9 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Site Groups (sitegroups).
-     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+     * 
+     * A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\
+     * Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
      * 
      * ## Example Usage
      * 
@@ -3304,6 +4199,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the SSO Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -3348,6 +4244,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the SSO Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -3392,6 +4289,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the SSO Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -3436,6 +4334,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the SSO Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -3480,6 +4379,7 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the SSO Metadata information.
+     * 
      * The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
      * 
      * ## Example Usage
@@ -3523,6 +4423,236 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getSsoMetadata:getSsoMetadata", TypeShape.of(GetSsoMetadataResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This resource provides the list of SSO Roles.
+     * 
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ssoRoles = OrgFunctions.getSsoRoles(GetSsoRolesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSsoRolesResult> getSsoRoles(GetSsoRolesArgs args) {
+        return getSsoRoles(args, InvokeOptions.Empty);
+    }
+    /**
+     * This resource provides the list of SSO Roles.
+     * 
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ssoRoles = OrgFunctions.getSsoRoles(GetSsoRolesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSsoRolesResult> getSsoRolesPlain(GetSsoRolesPlainArgs args) {
+        return getSsoRolesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This resource provides the list of SSO Roles.
+     * 
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ssoRoles = OrgFunctions.getSsoRoles(GetSsoRolesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSsoRolesResult> getSsoRoles(GetSsoRolesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getSsoRoles:getSsoRoles", TypeShape.of(GetSsoRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This resource provides the list of SSO Roles.
+     * 
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ssoRoles = OrgFunctions.getSsoRoles(GetSsoRolesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSsoRolesResult> getSsoRoles(GetSsoRolesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getSsoRoles:getSsoRoles", TypeShape.of(GetSsoRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This resource provides the list of SSO Roles.
+     * 
+     * SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\
+     * These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\
+     * Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetSsoRolesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ssoRoles = OrgFunctions.getSsoRoles(GetSsoRolesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSsoRolesResult> getSsoRolesPlain(GetSsoRolesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getSsoRoles:getSsoRoles", TypeShape.of(GetSsoRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This data source provide the list of the Org VPNs.
      * 
      */
@@ -3559,6 +4689,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Webhooks.
+     * 
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
      * 
@@ -3602,6 +4736,10 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -3643,6 +4781,10 @@ public final class OrgFunctions {
     }
     /**
      * This data source provides the list of Org Webhooks.
+     * 
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
      * 
      * ## Example Usage
      * 
@@ -3686,6 +4828,10 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -3728,6 +4874,10 @@ public final class OrgFunctions {
     /**
      * This data source provides the list of Org Webhooks.
      * 
+     * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+     * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+     * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -3768,8 +4918,231 @@ public final class OrgFunctions {
         return Deployment.getInstance().invokeAsync("junipermist:org/getWebhooks:getWebhooks", TypeShape.of(GetWebhooksResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * This data source provides the list of Org Wlans.
+     * 
+     * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgWlans = OrgFunctions.getWlans(GetWlansArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWlansResult> getWlans(GetWlansArgs args) {
+        return getWlans(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Org Wlans.
+     * 
+     * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgWlans = OrgFunctions.getWlans(GetWlansArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWlansResult> getWlansPlain(GetWlansPlainArgs args) {
+        return getWlansPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of Org Wlans.
+     * 
+     * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgWlans = OrgFunctions.getWlans(GetWlansArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWlansResult> getWlans(GetWlansArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getWlans:getWlans", TypeShape.of(GetWlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Wlans.
+     * 
+     * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgWlans = OrgFunctions.getWlans(GetWlansArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWlansResult> getWlans(GetWlansArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:org/getWlans:getWlans", TypeShape.of(GetWlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Org Wlans.
+     * 
+     * The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.org.OrgFunctions;
+     * import com.pulumi.junipermist.org.inputs.GetWlansArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var orgWlans = OrgFunctions.getWlans(GetWlansArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetWlansResult> getWlansPlain(GetWlansPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:org/getWlans:getWlans", TypeShape.of(GetWlansResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+     * 
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
      * 
@@ -3812,7 +5185,10 @@ public final class OrgFunctions {
     }
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+     * 
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
      * 
@@ -3855,7 +5231,10 @@ public final class OrgFunctions {
     }
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+     * 
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
      * 
@@ -3898,7 +5277,10 @@ public final class OrgFunctions {
     }
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+     * 
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
      * 
@@ -3941,7 +5323,10 @@ public final class OrgFunctions {
     }
     /**
      * This datasource provides the list of WLAN Templates in a Mist Organization.
-     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+     * 
+     * A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\
+     * WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\
+     * They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
      * 
      * ## Example Usage
      * 
@@ -3984,7 +5369,17 @@ public final class OrgFunctions {
     }
     /**
      * This resource provides the list of Org WxLan tags (labels).
-     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+     * * within the Org WxRules to create filtering rules:
+     *   * `mist_org_wxrule.dst_allow_wxtags`
+     *   * `mist_org_wxrule.dst_deny_wxtags`
+     *   * `mist_org_wxrule.dst_wxtags`
+     *   * `mist_org_wxrule.src_wxtags`
+     * * within the Org WxRules to assign specific VLAN:
+     *   * `mist_org_wxrule.apply_tags`
+     * * in the WLANs configuration to assign a WLAN to specific APs:
+     *   * `mist_org_wlan.wxtag_ids`
+     * * to identify unknown application used by Wi-Fi clients
      * 
      * ## Example Usage
      * 
@@ -4027,7 +5422,17 @@ public final class OrgFunctions {
     }
     /**
      * This resource provides the list of Org WxLan tags (labels).
-     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+     * * within the Org WxRules to create filtering rules:
+     *   * `mist_org_wxrule.dst_allow_wxtags`
+     *   * `mist_org_wxrule.dst_deny_wxtags`
+     *   * `mist_org_wxrule.dst_wxtags`
+     *   * `mist_org_wxrule.src_wxtags`
+     * * within the Org WxRules to assign specific VLAN:
+     *   * `mist_org_wxrule.apply_tags`
+     * * in the WLANs configuration to assign a WLAN to specific APs:
+     *   * `mist_org_wlan.wxtag_ids`
+     * * to identify unknown application used by Wi-Fi clients
      * 
      * ## Example Usage
      * 
@@ -4070,7 +5475,17 @@ public final class OrgFunctions {
     }
     /**
      * This resource provides the list of Org WxLan tags (labels).
-     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+     * * within the Org WxRules to create filtering rules:
+     *   * `mist_org_wxrule.dst_allow_wxtags`
+     *   * `mist_org_wxrule.dst_deny_wxtags`
+     *   * `mist_org_wxrule.dst_wxtags`
+     *   * `mist_org_wxrule.src_wxtags`
+     * * within the Org WxRules to assign specific VLAN:
+     *   * `mist_org_wxrule.apply_tags`
+     * * in the WLANs configuration to assign a WLAN to specific APs:
+     *   * `mist_org_wlan.wxtag_ids`
+     * * to identify unknown application used by Wi-Fi clients
      * 
      * ## Example Usage
      * 
@@ -4113,7 +5528,17 @@ public final class OrgFunctions {
     }
     /**
      * This resource provides the list of Org WxLan tags (labels).
-     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+     * * within the Org WxRules to create filtering rules:
+     *   * `mist_org_wxrule.dst_allow_wxtags`
+     *   * `mist_org_wxrule.dst_deny_wxtags`
+     *   * `mist_org_wxrule.dst_wxtags`
+     *   * `mist_org_wxrule.src_wxtags`
+     * * within the Org WxRules to assign specific VLAN:
+     *   * `mist_org_wxrule.apply_tags`
+     * * in the WLANs configuration to assign a WLAN to specific APs:
+     *   * `mist_org_wlan.wxtag_ids`
+     * * to identify unknown application used by Wi-Fi clients
      * 
      * ## Example Usage
      * 
@@ -4156,7 +5581,17 @@ public final class OrgFunctions {
     }
     /**
      * This resource provides the list of Org WxLan tags (labels).
-     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+     * A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+     * * within the Org WxRules to create filtering rules:
+     *   * `mist_org_wxrule.dst_allow_wxtags`
+     *   * `mist_org_wxrule.dst_deny_wxtags`
+     *   * `mist_org_wxrule.dst_wxtags`
+     *   * `mist_org_wxrule.src_wxtags`
+     * * within the Org WxRules to assign specific VLAN:
+     *   * `mist_org_wxrule.apply_tags`
+     * * in the WLANs configuration to assign a WLAN to specific APs:
+     *   * `mist_org_wlan.wxtag_ids`
+     * * to identify unknown application used by Wi-Fi clients
      * 
      * ## Example Usage
      * 

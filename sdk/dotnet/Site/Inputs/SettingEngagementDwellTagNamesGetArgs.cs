@@ -12,15 +12,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingEngagementDwellTagNamesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default to `Visitor`
+        /// </summary>
         [Input("bounce")]
         public Input<string>? Bounce { get; set; }
 
+        /// <summary>
+        /// Default to `Associates`
+        /// </summary>
         [Input("engaged")]
         public Input<string>? Engaged { get; set; }
 
+        /// <summary>
+        /// Default to `Passerby`
+        /// </summary>
         [Input("passerby")]
         public Input<string>? Passerby { get; set; }
 
+        /// <summary>
+        /// Default to `Assets`
+        /// </summary>
         [Input("stationed")]
         public Input<string>? Stationed { get; set; }
 

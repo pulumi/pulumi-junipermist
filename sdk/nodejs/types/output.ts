@@ -8149,6 +8149,80 @@ export namespace org {
         networks?: string[];
     }
 
+    export interface GetAlarmtemplatesOrgAlarmtemplate {
+        /**
+         * when the object has been created, in epoch
+         */
+        createdTime: number;
+        /**
+         * Delivery object to configure the alarm delivery
+         */
+        delivery: outputs.org.GetAlarmtemplatesOrgAlarmtemplateDelivery;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
+        id: string;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
+        modifiedTime: number;
+        /**
+         * Some string to name the alarm template
+         */
+        name: string;
+        orgId: string;
+        /**
+         * Alarm Rules object to configure the individual alarm keys/types. Property key is the alarm name.
+         */
+        rules: {[key: string]: outputs.org.GetAlarmtemplatesOrgAlarmtemplateRules};
+    }
+
+    export interface GetAlarmtemplatesOrgAlarmtemplateDelivery {
+        /**
+         * List of additional email string to deliver the alarms via emails
+         */
+        additionalEmails: string[];
+        /**
+         * Whether to enable the alarm delivery via emails or not
+         */
+        enabled: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Org admins or not
+         */
+        toOrgAdmins: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Site admins or not
+         */
+        toSiteAdmins: boolean;
+    }
+
+    export interface GetAlarmtemplatesOrgAlarmtemplateRules {
+        /**
+         * Delivery object to configure the alarm delivery
+         */
+        delivery: outputs.org.GetAlarmtemplatesOrgAlarmtemplateRulesDelivery;
+        enabled: boolean;
+    }
+
+    export interface GetAlarmtemplatesOrgAlarmtemplateRulesDelivery {
+        /**
+         * List of additional email string to deliver the alarms via emails
+         */
+        additionalEmails: string[];
+        /**
+         * Whether to enable the alarm delivery via emails or not
+         */
+        enabled: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Org admins or not
+         */
+        toOrgAdmins: boolean;
+        /**
+         * Whether to deliver the alarms via emails to Site admins or not
+         */
+        toSiteAdmins: boolean;
+    }
+
     export interface GetDeviceprofilesApDeviceprofile {
         createdTime: number;
         id: string;
@@ -8163,6 +8237,95 @@ export namespace org {
         modifiedTime: number;
         name: string;
         orgId: string;
+    }
+
+    export interface GetEvpnTopologiesOrgEvpnTopology {
+        /**
+         * when the object has been created, in epoch
+         */
+        createdTime: number;
+        /**
+         * EVPN Options
+         */
+        evpnOptions: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptions;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
+        id: string;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
+        modifiedTime: number;
+        name: string;
+        orgId: string;
+        /**
+         * Property key is the pod number
+         */
+        podNames: {[key: string]: string};
+    }
+
+    export interface GetEvpnTopologiesOrgEvpnTopologyEvpnOptions {
+        /**
+         * optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+         */
+        autoLoopbackSubnet: string;
+        /**
+         * optional, for dhcp*relay, unique loopback IPs are required for ERB or IPClos where we can set option-82 server*id-overrides
+         */
+        autoLoopbackSubnet6: string;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet: string;
+        /**
+         * optional, this generates routerId automatically, if specified, `routerIdPrefix` is ignored
+         */
+        autoRouterIdSubnet6: string;
+        /**
+         * optional, for ERB or CLOS, you can either use esilag to upstream routers or to also be the virtual-gateway. When `routedAt` != `core`, whether to do virtual-gateway at core as well
+         */
+        coreAsBorder: boolean;
+        overlay: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay;
+        /**
+         * only for by Core-Distribution architecture when `evpn_options.routed_at`==`core`. By default, JUNOS uses 00-00-5e-00-01-01 as the virtual-gateway-address's v4*mac. If enabled, 00-00-5e-00-XX-YY will be used (where XX=vlan*id/256, YY=vlan_id%256)'
+         */
+        perVlanVgaV4Mac: boolean;
+        /**
+         * optional, where virtual-gateway should reside. enum: `core`, `distribution`, `edge`
+         */
+        routedAt: string;
+        underlay: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay;
+        /**
+         * optional, for EX9200 only to seggregate virtual-switches
+         */
+        vsInstances: {[key: string]: outputs.org.GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances};
+    }
+
+    export interface GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsOverlay {
+        /**
+         * Overlay BGP Local AS Number
+         */
+        as: number;
+    }
+
+    export interface GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsUnderlay {
+        /**
+         * Underlay BGP Base AS Number
+         */
+        asBase: number;
+        routedIdPrefix: string;
+        /**
+         * underlay subnet, by default, `10.255.240.0/20`, or `fd31:5700::/64` for ipv6
+         */
+        subnet: string;
+        /**
+         * if v6 is desired for underlay
+         */
+        useIpv6: boolean;
+    }
+
+    export interface GetEvpnTopologiesOrgEvpnTopologyEvpnOptionsVsInstances {
+        networks: string[];
     }
 
     export interface GetGatewaytemplatesOrgGatewaytemplate {
@@ -8270,6 +8433,22 @@ export namespace org {
         vcMac: string;
     }
 
+    export interface GetNacEndpointsOrgUsermac {
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
+        id: string;
+        labels: string[];
+        /**
+         * only non-local-admin MAC is accepted
+         */
+        mac: string;
+        name: string;
+        notes: string;
+        radiusGroup: string;
+        vlan: string;
+    }
+
     export interface GetNacrulesOrgNacrule {
         createdTime: number;
         id: string;
@@ -8283,6 +8462,9 @@ export namespace org {
          * can be set to true to allow the override by usermac result
          */
         allowUsermacOverride: boolean;
+        /**
+         * when the object has been created, in epoch
+         */
         createdTime: number;
         /**
          * if `type`==`egressVlanNames`, list of egress vlans to return
@@ -8292,9 +8474,12 @@ export namespace org {
          * if `type`==`gbpTag`
          */
         gbpTag: number;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id: string;
         /**
-         * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `clientMac`, `idpRole`, `mdmStatus`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
+         * if `type`==`match`. enum: `certCn`, `certIssuer`, `certSan`, `certSerial`, `certSub`, `certTemplate`, `clientMac`, `idpRole`, `ingressVlan`, `mdmStatus`, `nasIp`, `radiusGroup`, `realm`, `ssid`, `userName`, `usermacLabel`
          */
         match: string;
         /**
@@ -8303,9 +8488,12 @@ export namespace org {
          *   * `true`: means all values should be matched (i.e., match-all behavior)
          *
          *
-         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`'
+         * Currently it makes sense to set this field to `true` only if the `match`==`idpRole` or `match`==`usermacLabel`
          */
         matchAll: boolean;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         orgId: string;
@@ -8333,6 +8521,9 @@ export namespace org {
          * enum: `egressVlanNames`, `gbpTag`, `match`, `radiusAttrs`, `radiusGroup`, `radiusVendorAttrs`, `sessionTimeout`, `usernameAttr`, `vlan`
          */
         type: string;
+        /**
+         * enum: `automatic`, `cn`, `dns`, `email`, `upn`
+         */
         usernameAttr: string;
         /**
          * if `type`==`match`
@@ -8365,6 +8556,9 @@ export namespace org {
          * sso id for psk created from psk portal
          */
         adminSsoId: string;
+        /**
+         * when the object has been created, in epoch
+         */
         createdTime: number;
         /**
          * email to send psk expiring notifications to
@@ -8378,6 +8572,9 @@ export namespace org {
          * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
          */
         expiryNotificationTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id: string;
         /**
          * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
@@ -8391,6 +8588,9 @@ export namespace org {
          * For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
          */
         maxUsage: number;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         note: string;
@@ -8504,6 +8704,60 @@ export namespace org {
         siteIds: string[];
     }
 
+    export interface GetSsoRolesOrgSsoRole {
+        /**
+         * when the object has been created, in epoch
+         */
+        createdTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
+        id: string;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
+        modifiedTime: number;
+        name: string;
+        orgId: string;
+        privileges: outputs.org.GetSsoRolesOrgSsoRolePrivilege[];
+    }
+
+    export interface GetSsoRolesOrgSsoRolePrivilege {
+        /**
+         * access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
+         */
+        role: string;
+        /**
+         * enum: `org`, `site`, `sitegroup`
+         */
+        scope: string;
+        /**
+         * if `scope`==`site`
+         */
+        siteId: string;
+        /**
+         * if `scope`==`sitegroup`
+         */
+        sitegroupId: string;
+        /**
+         * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+         * Below are the list of supported UI views. Note that this is UI only feature.  
+         *
+         *   | UI View | Required Role | Description |
+         *   | --- | --- | --- |
+         *   | `reporting` | `read` | full access to all analytics tools |
+         *   | `marketing` | `read` | can view analytics and location maps |
+         *   | `superObserver` | `read` | can view all the organization except the subscription page |
+         *   | `location` | `write` | can view and manage location maps, can view analytics |
+         *   | `security` | `write` | can view and manage site labels, policies and security |
+         *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+         *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
+         *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+         */
+        views: string;
+    }
+
     export interface GetVpnsOrgVpn {
         createdTime: number;
         id: string;
@@ -8526,17 +8780,25 @@ export namespace org {
     }
 
     export interface GetWebhooksOrgWebhook {
+        /**
+         * when the object has been created, in epoch
+         */
         createdTime: number;
         /**
          * whether webhook is enabled
          */
         enabled: boolean;
         /**
-         * if `type`=`http-post`, additional custom HTTP headers to add
-         * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+         * if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
          */
         headers: {[key: string]: string};
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id: string;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         /**
          * name of the webhook
@@ -8577,12 +8839,11 @@ export namespace org {
         secret: string;
         siteId: string;
         /**
-         * required if `type`=`splunk`
-         * If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+         * required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
          */
         splunkToken: string;
         /**
-         * N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+         * List of supported webhook topics available with the API Call List Webhook Topics
          */
         topics: string[];
         /**
@@ -8594,6 +8855,1104 @@ export namespace org {
          * when url uses HTTPS, whether to verify the certificate
          */
         verifyCert: boolean;
+    }
+
+    export interface GetWlansOrgWlan {
+        /**
+         * enable coa-immediate-update and address-change-immediate-update on the access profile.
+         */
+        acctImmediateUpdate: boolean;
+        /**
+         * how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         */
+        acctInterimInterval: number;
+        /**
+         * list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         */
+        acctServers: outputs.org.GetWlansOrgWlanAcctServer[];
+        /**
+         * airwatch wlan settings
+         */
+        airwatch: outputs.org.GetWlansOrgWlanAirwatch;
+        /**
+         * only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+         */
+        allowIpv6Ndp: boolean;
+        /**
+         * only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+         */
+        allowMdns: boolean;
+        /**
+         * only applicable when `limitBcast`==`true`, which allows SSDP
+         */
+        allowSsdp: boolean;
+        /**
+         * list of device ids
+         */
+        apIds: string[];
+        /**
+         * bandwidth limiting for apps (applies to up/down)
+         */
+        appLimit: outputs.org.GetWlansOrgWlanAppLimit;
+        /**
+         * app qos wlan settings
+         */
+        appQos: outputs.org.GetWlansOrgWlanAppQos;
+        /**
+         * enum: `aps`, `site`, `wxtags`
+         */
+        applyTo: string;
+        /**
+         * whether to enable smart arp filter
+         */
+        arpFilter: boolean;
+        /**
+         * authentication wlan settings
+         */
+        auth: outputs.org.GetWlansOrgWlanAuth;
+        /**
+         * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+         */
+        authServerSelection: string;
+        /**
+         * list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+         */
+        authServers: outputs.org.GetWlansOrgWlanAuthServer[];
+        /**
+         * optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+         */
+        authServersNasId: string;
+        /**
+         * optional, NAS-IP-ADDRESS to use
+         */
+        authServersNasIp: string;
+        /**
+         * radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         */
+        authServersRetries: number;
+        /**
+         * radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+         */
+        authServersTimeout: number;
+        /**
+         * whether to enable band_steering, this works only when band==both
+         */
+        bandSteer: boolean;
+        /**
+         * force dualBand capable client to connect to 5G
+         */
+        bandSteerForceBand5: boolean;
+        /**
+         * list of radios that the wlan should apply to.
+         */
+        bands: string[];
+        /**
+         * whether to block the clients in the blacklist (up to first 256 macs)
+         */
+        blockBlacklistClients: boolean;
+        /**
+         * bonjour gateway wlan settings
+         */
+        bonjour: outputs.org.GetWlansOrgWlanBonjour;
+        /**
+         * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+         */
+        ciscoCwa: outputs.org.GetWlansOrgWlanCiscoCwa;
+        /**
+         * kbps
+         */
+        clientLimitDown: number;
+        /**
+         * if downlink limiting per-client is enabled
+         */
+        clientLimitDownEnabled: boolean;
+        /**
+         * kbps
+         */
+        clientLimitUp: number;
+        /**
+         * if uplink limiting per-client is enabled
+         */
+        clientLimitUpEnabled: boolean;
+        /**
+         * list of COA (change of authorization) servers, optional
+         */
+        coaServers: outputs.org.GetWlansOrgWlanCoaServer[];
+        /**
+         * when the object has been created, in epoch
+         */
+        createdTime: number;
+        /**
+         * some old WLAN drivers may not be compatible
+         */
+        disable11ax: boolean;
+        /**
+         * to disable ht or vht rates
+         */
+        disableHtVhtRates: boolean;
+        /**
+         * whether to disable U-APSD
+         */
+        disableUapsd: boolean;
+        /**
+         * disable sending v2 roam notification messages
+         */
+        disableV1RoamNotify: boolean;
+        /**
+         * disable sending v2 roam notification messages
+         */
+        disableV2RoamNotify: boolean;
+        /**
+         * when any of the following is true, this WLAN will be disabled
+         *    * cannot get IP
+         *    * cannot obtain default gateway
+         *    * cannot reach default gateway
+         */
+        disableWhenGatewayUnreachable: boolean;
+        disableWhenMxtunnelDown: boolean;
+        /**
+         * whether to disable WMM
+         */
+        disableWmm: boolean;
+        /**
+         * for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+         */
+        dnsServerRewrite: outputs.org.GetWlansOrgWlanDnsServerRewrite;
+        dtim: number;
+        /**
+         * for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+         *   * PSK will come from RADIUS server
+         *   * AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+         *   * AP sends BSSID:SSID as Caller-Station-ID
+         *   * `authServers` is required
+         *   * PSK will come from cloud WLC if source is cloudPsks
+         *   * defaultPsk will be used if cloud WLC is not available
+         *   * `multiPskOnly` and `psk` is ignored
+         *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+         */
+        dynamicPsk: outputs.org.GetWlansOrgWlanDynamicPsk;
+        /**
+         * for 802.1x
+         */
+        dynamicVlan: outputs.org.GetWlansOrgWlanDynamicVlan;
+        /**
+         * enable AP-AP keycaching via multicast
+         */
+        enableLocalKeycaching: boolean;
+        /**
+         * by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+         */
+        enableWirelessBridging: boolean;
+        /**
+         * if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+         */
+        enableWirelessBridgingDhcpTracking: boolean;
+        /**
+         * if this wlan is enabled
+         */
+        enabled: boolean;
+        /**
+         * if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+         */
+        fastDot1xTimers: boolean;
+        /**
+         * whether to hide SSID in beacon
+         */
+        hideSsid: boolean;
+        /**
+         * include hostname inside IE in AP beacons / probe responses
+         */
+        hostnameIe: boolean;
+        /**
+         * hostspot 2.0 wlan settings
+         */
+        hotspot20: outputs.org.GetWlansOrgWlanHotspot20;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
+        id: string;
+        injectDhcpOption82: outputs.org.GetWlansOrgWlanInjectDhcpOption82;
+        /**
+         * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+         */
+        interface: string;
+        /**
+         * whether to stop clients to talk to each other
+         */
+        isolation: boolean;
+        /**
+         * if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+         */
+        l2Isolation: boolean;
+        /**
+         * legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+         */
+        legacyOverds: boolean;
+        /**
+         * whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+         */
+        limitBcast: boolean;
+        /**
+         * limit probe response base on some heuristic rules
+         */
+        limitProbeResponse: boolean;
+        /**
+         * max idle time in seconds
+         */
+        maxIdletime: number;
+        /**
+         * maximum number of client connected to the SSID. `0` means unlimited
+         */
+        maxNumClients: number;
+        mistNac: outputs.org.GetWlansOrgWlanMistNac;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
+        modifiedTime: number;
+        mspId: string;
+        /**
+         * when `interface`=`mxtunnel`, id of the Mist Tunnel
+         */
+        mxtunnelIds: string[];
+        /**
+         * when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         */
+        mxtunnelNames: string[];
+        /**
+         * whether to only allow client to use DNS that we’ve learned from DHCP response
+         */
+        noStaticDns: boolean;
+        /**
+         * whether to only allow client that we’ve learned from DHCP exchange to talk
+         */
+        noStaticIp: boolean;
+        orgId: string;
+        /**
+         * portal wlan settings
+         */
+        portal: outputs.org.GetWlansOrgWlanPortal;
+        /**
+         * list of hostnames without http(s):// (matched by substring)
+         */
+        portalAllowedHostnames: string[];
+        /**
+         * list of CIDRs
+         */
+        portalAllowedSubnets: string[];
+        /**
+         * api secret (auto-generated) that can be used to sign guest authorization requests
+         */
+        portalApiSecret: string;
+        /**
+         * list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+         */
+        portalDeniedHostnames: string[];
+        /**
+         * Url of portal background image
+         */
+        portalImage: string;
+        portalSsoUrl: string;
+        qos: outputs.org.GetWlansOrgWlanQos;
+        /**
+         * Radsec settings
+         */
+        radsec: outputs.org.GetWlansOrgWlanRadsec;
+        /**
+         * Property key is the RF band. enum: `24`, `5`, `6`
+         */
+        rateset: {[key: string]: outputs.org.GetWlansOrgWlanRateset};
+        /**
+         * when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+         */
+        reconnectClientsWhenRoamingMxcluster: boolean;
+        /**
+         * enum: `11r`, `OKC`, `NONE`
+         */
+        roamMode: string;
+        /**
+         * WLAN operating schedule, default is disabled
+         */
+        schedule: outputs.org.GetWlansOrgWlanSchedule;
+        /**
+         * whether to exclude this WLAN from SLE metrics
+         */
+        sleExcluded: boolean;
+        /**
+         * the name of the SSID
+         */
+        ssid: string;
+        templateId: string;
+        /**
+         * if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+         */
+        useEapolV1: boolean;
+        /**
+         * if vlan tagging is enabled
+         */
+        vlanEnabled: boolean;
+        vlanId: string;
+        /**
+         * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         */
+        vlanIds: string[];
+        /**
+         * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+         */
+        vlanPooling: boolean;
+        /**
+         * kbps
+         */
+        wlanLimitDown: number;
+        /**
+         * if downlink limiting for whole wlan is enabled
+         */
+        wlanLimitDownEnabled: boolean;
+        /**
+         * kbps
+         */
+        wlanLimitUp: number;
+        /**
+         * if uplink limiting for whole wlan is enabled
+         */
+        wlanLimitUpEnabled: boolean;
+        /**
+         * list of wxtag_ids
+         */
+        wxtagIds: string[];
+        /**
+         * when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+         */
+        wxtunnelId: string;
+        /**
+         * when `interface`=`wxtunnel`, remote tunnel identifier
+         */
+        wxtunnelRemoteId: string;
+    }
+
+    export interface GetWlansOrgWlanAcctServer {
+        /**
+         * ip / hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat: string;
+        keywrapKek: string;
+        keywrapMack: string;
+        /**
+         * Acct port of RADIUS server
+         */
+        port: number;
+        /**
+         * secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface GetWlansOrgWlanAirwatch {
+        /**
+         * API Key
+         */
+        apiKey: string;
+        /**
+         * console URL
+         */
+        consoleUrl: string;
+        enabled: boolean;
+        /**
+         * password
+         */
+        password: string;
+        /**
+         * username
+         */
+        username: string;
+    }
+
+    export interface GetWlansOrgWlanAppLimit {
+        /**
+         * Map from app key to bandwidth in kbps. 
+         * Property key is the app key, defined in Get Application List
+         */
+        apps: {[key: string]: number};
+        enabled: boolean;
+        /**
+         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
+         */
+        wxtagIds: {[key: string]: number};
+    }
+
+    export interface GetWlansOrgWlanAppQos {
+        apps: {[key: string]: outputs.org.GetWlansOrgWlanAppQosApps};
+        enabled: boolean;
+        others: outputs.org.GetWlansOrgWlanAppQosOther[];
+    }
+
+    export interface GetWlansOrgWlanAppQosApps {
+        dscp: number;
+        /**
+         * subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         */
+        dstSubnet: string;
+        /**
+         * subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         */
+        srcSubnet: string;
+    }
+
+    export interface GetWlansOrgWlanAppQosOther {
+        dscp: number;
+        dstSubnet: string;
+        portRanges: string;
+        protocol: string;
+        srcSubnet: string;
+    }
+
+    export interface GetWlansOrgWlanAuth {
+        /**
+         * SAE anti-clogging token threshold
+         */
+        anticlogThreshold: number;
+        /**
+         * whether to trigger EAP reauth when the session ends
+         */
+        eapReauth: boolean;
+        /**
+         * whether to enable MAC Auth, uses the same auth_servers
+         */
+        enableMacAuth: boolean;
+        /**
+         * when `type`==`wep`
+         */
+        keyIdx: number;
+        /**
+         * when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         */
+        keys: string[];
+        /**
+         * when `type`==`psk`, whether to only use multi_psk
+         */
+        multiPskOnly: boolean;
+        /**
+         * if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+         */
+        owe: string;
+        /**
+         * when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         */
+        pairwises: string[];
+        /**
+         * when `multiPskOnly`==`true`, whether private wlan is enabled
+         */
+        privateWlan: boolean;
+        /**
+         * when `type`==`psk`, 8-64 characters, or 64 hex characters
+         */
+        psk: string;
+        /**
+         * enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+         */
+        type: string;
+        /**
+         * enable WEP as secondary auth
+         */
+        wepAsSecondaryAuth: boolean;
+    }
+
+    export interface GetWlansOrgWlanAuthServer {
+        /**
+         * ip / hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat: string;
+        keywrapKek: string;
+        keywrapMack: string;
+        /**
+         * Auth port of RADIUS server
+         */
+        port: number;
+        /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
+         * secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface GetWlansOrgWlanBonjour {
+        /**
+         * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         */
+        additionalVlanIds: string[];
+        /**
+         * whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+         */
+        enabled: boolean;
+        /**
+         * what services are allowed. 
+         * Property key is the service name
+         */
+        services: {[key: string]: outputs.org.GetWlansOrgWlanBonjourServices};
+    }
+
+    export interface GetWlansOrgWlanBonjourServices {
+        /**
+         * whether to prevent wireless clients to discover bonjour devices on the same WLAN
+         */
+        disableLocal: boolean;
+        /**
+         * optional, if the service is further restricted for certain RADIUS groups
+         */
+        radiusGroups: string[];
+        /**
+         * how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+         */
+        scope: string;
+    }
+
+    export interface GetWlansOrgWlanCiscoCwa {
+        /**
+         * list of hostnames without http(s):// (matched by substring)
+         */
+        allowedHostnames: string[];
+        /**
+         * list of CIDRs
+         */
+        allowedSubnets: string[];
+        /**
+         * list of blocked CIDRs
+         */
+        blockedSubnets: string[];
+        enabled: boolean;
+    }
+
+    export interface GetWlansOrgWlanCoaServer {
+        /**
+         * whether to disable Event-Timestamp Check
+         */
+        disableEventTimestampCheck: boolean;
+        enabled: boolean;
+        ip: string;
+        port: number;
+        secret: string;
+    }
+
+    export interface GetWlansOrgWlanDnsServerRewrite {
+        enabled: boolean;
+        /**
+         * map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+         */
+        radiusGroups: {[key: string]: string};
+    }
+
+    export interface GetWlansOrgWlanDynamicPsk {
+        /**
+         * default PSK to use if cloud WLC is not available, 8-63 characters
+         */
+        defaultPsk: string;
+        defaultVlanId: string;
+        enabled: boolean;
+        /**
+         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+         */
+        forceLookup: boolean;
+        /**
+         * enum: `cloudPsks`, `radius`
+         */
+        source: string;
+    }
+
+    export interface GetWlansOrgWlanDynamicVlan {
+        /**
+         * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+         */
+        defaultVlanIds: string[];
+        /**
+         * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+         */
+        enabled: boolean;
+        /**
+         * vlan_ids to be locally bridged
+         */
+        localVlanIds: string[];
+        /**
+         * standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+         */
+        type: string;
+        /**
+         * map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+         *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+         */
+        vlans: {[key: string]: string};
+    }
+
+    export interface GetWlansOrgWlanHotspot20 {
+        domainNames: string[];
+        /**
+         * whether to enable hotspot 2.0 config
+         */
+        enabled: boolean;
+        naiRealms: string[];
+        /**
+         * list of operators to support
+         */
+        operators: string[];
+        rcois: string[];
+        /**
+         * venue name, default is site name
+         */
+        venueName: string;
+    }
+
+    export interface GetWlansOrgWlanInjectDhcpOption82 {
+        /**
+         * information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         */
+        circuitId: string;
+        /**
+         * whether to inject option 82 when forwarding DHCP packets
+         */
+        enabled: boolean;
+    }
+
+    export interface GetWlansOrgWlanMistNac {
+        /**
+         * when enabled:
+         *   * `authServers` is ignored
+         *   * `acctServers` is ignored
+         *   * `auth_servers_*` are ignored
+         *   * `coaServers` is ignored
+         *   * `radsec` is ignored
+         *   * `coaEnabled` is assumed'
+         */
+        enabled: boolean;
+    }
+
+    export interface GetWlansOrgWlanPortal {
+        /**
+         * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        allowWlanIdRoam: boolean;
+        /**
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         */
+        amazonClientId: string;
+        /**
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        amazonClientSecret: string;
+        /**
+         * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        amazonEmailDomains: string[];
+        /**
+         * whether amazon is enabled as a login method
+         */
+        amazonEnabled: boolean;
+        /**
+         * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         */
+        amazonExpire: number;
+        /**
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         */
+        auth: string;
+        /**
+         * Required if `azureEnabled`==`true`. Azure active directory app client id
+         */
+        azureClientId: string;
+        /**
+         * Required if `azureEnabled`==`true`. Azure active directory app client secret
+         */
+        azureClientSecret: string;
+        /**
+         * whether Azure Active Directory is enabled as a login method
+         */
+        azureEnabled: boolean;
+        /**
+         * interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+         */
+        azureExpire: number;
+        /**
+         * Required if `azureEnabled`==`true`. Azure active directory tenant id.
+         */
+        azureTenantId: string;
+        /**
+         * Required if `smsProvider`==`broadnet`
+         */
+        broadnetPassword: string;
+        /**
+         * Required if `smsProvider`==`broadnet`
+         */
+        broadnetSid: string;
+        /**
+         * Required if `smsProvider`==`broadnet`
+         */
+        broadnetUserId: string;
+        /**
+         * whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+         */
+        bypassWhenCloudDown: boolean;
+        /**
+         * Required if `smsProvider`==`clickatell`
+         */
+        clickatellApiKey: string;
+        /**
+         * whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        crossSite: boolean;
+        /**
+         * whether email (access code verification) is enabled as a login method
+         */
+        emailEnabled: boolean;
+        /**
+         * whether guest portal is enabled
+         */
+        enabled: boolean;
+        /**
+         * how long to remain authorized, in minutes
+         */
+        expire: number;
+        /**
+         * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+         */
+        externalPortalUrl: string;
+        /**
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         */
+        facebookClientId: string;
+        /**
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        facebookClientSecret: string;
+        /**
+         * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        facebookEmailDomains: string[];
+        /**
+         * whether facebook is enabled as a login method
+         */
+        facebookEnabled: boolean;
+        /**
+         * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         */
+        facebookExpire: number;
+        /**
+         * whether to forward the user to another URL after authorized
+         */
+        forward: boolean;
+        /**
+         * the URL to forward the user to
+         */
+        forwardUrl: string;
+        /**
+         * Google OAuth2 app id. This is optional. If not provided, it will use a default one.
+         */
+        googleClientId: string;
+        /**
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        googleClientSecret: string;
+        /**
+         * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        googleEmailDomains: string[];
+        /**
+         * whether google is enabled as login method
+         */
+        googleEnabled: boolean;
+        /**
+         * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+         */
+        googleExpire: number;
+        /**
+         * Required if `smsProvider`==`gupshup`
+         */
+        gupshupPassword: string;
+        /**
+         * Required if `smsProvider`==`gupshup`
+         */
+        gupshupUserid: string;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         */
+        microsoftClientId: string;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        microsoftClientSecret: string;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        microsoftEmailDomains: string[];
+        /**
+         * whether microsoft 365 is enabled as a login method
+         */
+        microsoftEnabled: boolean;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         */
+        microsoftExpire: number;
+        /**
+         * Whether password is enabled
+         */
+        passphraseEnabled: boolean;
+        /**
+         * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         */
+        passphraseExpire: number;
+        /**
+         * Required if `passphraseEnabled`==`true`.
+         */
+        password: string;
+        /**
+         * whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         */
+        predefinedSponsorsEnabled: boolean;
+        /**
+         * whether to hide sponsor’s email from list of sponsors
+         */
+        predefinedSponsorsHideEmail: boolean;
+        privacy: boolean;
+        /**
+         * Required if `smsProvider`==`puzzel`
+         */
+        puzzelPassword: string;
+        /**
+         * Required if `smsProvider`==`puzzel`
+         */
+        puzzelServiceId: string;
+        /**
+         * Required if `smsProvider`==`puzzel`
+         */
+        puzzelUsername: string;
+        /**
+         * whether sms is enabled as a login method
+         */
+        smsEnabled: boolean;
+        /**
+         * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         */
+        smsExpire: number;
+        /**
+         * Optional if `smsEnabled`==`true`. SMS Message format
+         */
+        smsMessageFormat: string;
+        /**
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         */
+        smsProvider: string;
+        /**
+         * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+         */
+        sponsorAutoApprove: boolean;
+        /**
+         * list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+         */
+        sponsorEmailDomains: string[];
+        /**
+         * whether sponsor is enabled
+         */
+        sponsorEnabled: boolean;
+        /**
+         * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         */
+        sponsorExpire: number;
+        /**
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         */
+        sponsorLinkValidityDuration: string;
+        /**
+         * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         */
+        sponsorNotifyAll: boolean;
+        /**
+         * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+         */
+        sponsorStatusNotify: boolean;
+        /**
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
+         */
+        sponsors: {[key: string]: string};
+        /**
+         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         */
+        ssoDefaultRole: string;
+        /**
+         * Optionl if `wlanPortalAuth`==`sso`
+         */
+        ssoForcedRole: string;
+        /**
+         * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
+         */
+        ssoIdpCert: string;
+        /**
+         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         */
+        ssoIdpSignAlgo: string;
+        /**
+         * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+         */
+        ssoIdpSsoUrl: string;
+        /**
+         * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
+         */
+        ssoIssuer: string;
+        /**
+         * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+         */
+        ssoNameidFormat: string;
+        /**
+         * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
+         */
+        telstraClientId: string;
+        /**
+         * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
+         */
+        telstraClientSecret: string;
+        /**
+         * Required if `smsProvider`==`twilio`, Auth token account with twilio account
+         */
+        twilioAuthToken: string;
+        /**
+         * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         */
+        twilioPhoneNumber: string;
+        /**
+         * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
+         */
+        twilioSid: string;
+    }
+
+    export interface GetWlansOrgWlanQos {
+        /**
+         * enum: `background`, `bestEffort`, `video`, `voice`
+         */
+        class: string;
+        /**
+         * whether to overwrite QoS
+         */
+        overwrite: boolean;
+    }
+
+    export interface GetWlansOrgWlanRadsec {
+        coaEnabled: boolean;
+        enabled: boolean;
+        idleTimeout: number;
+        /**
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         */
+        mxclusterIds: string[];
+        /**
+         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         */
+        proxyHosts: string[];
+        /**
+         * name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         */
+        serverName: string;
+        /**
+         * List of Radsec Servers. Only if not Mist Edge.
+         */
+        servers: outputs.org.GetWlansOrgWlanRadsecServer[];
+        /**
+         * use mxedge(s) as radsecproxy
+         */
+        useMxedge: boolean;
+        /**
+         * To use Site mxedges when this WLAN does not use mxtunnel
+         */
+        useSiteMxedge: boolean;
+    }
+
+    export interface GetWlansOrgWlanRadsecServer {
+        host: string;
+        port: number;
+    }
+
+    export interface GetWlansOrgWlanRateset {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht: string;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies: string[];
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi: number;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template: string;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht: string;
+    }
+
+    export interface GetWlansOrgWlanSchedule {
+        enabled: boolean;
+        /**
+         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         */
+        hours: outputs.org.GetWlansOrgWlanScheduleHours;
+    }
+
+    export interface GetWlansOrgWlanScheduleHours {
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        fri: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        mon: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        sat: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        sun: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        thu: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        tue: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        wed: string;
     }
 
     export interface GetWlantemplatesOrgWlantemplate {
@@ -10733,6 +12092,23 @@ Please update your configurations.
          * Required if `scope`==`sitegroup`
          */
         sitegroupId?: string;
+        /**
+         * Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+         * Below are the list of supported UI views. Note that this is UI only feature.  
+         *
+         *   | UI View | Required Role | Description |
+         *   | --- | --- | --- |
+         *   | `reporting` | `read` | full access to all analytics tools |
+         *   | `marketing` | `read` | can view analytics and location maps |
+         *   | `superObserver` | `read` | can view all the organization except the subscription page |
+         *   | `location` | `write` | can view and manage location maps, can view analytics |
+         *   | `security` | `write` | can view and manage site labels, policies and security |
+         *   | `switchAdmin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+         *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
+         *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
+         */
+        views?: string;
     }
 
     export interface VpnPaths {
@@ -12259,6 +13635,9 @@ export namespace site {
          * sso id for psk created from psk portal
          */
         adminSsoId: string;
+        /**
+         * when the object has been created, in epoch
+         */
         createdTime: number;
         /**
          * email to send psk expiring notifications to
@@ -12272,11 +13651,17 @@ export namespace site {
          * Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
          */
         expiryNotificationTime: number;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id: string;
         /**
          * if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
          */
         mac: string;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         name: string;
         note: string;
@@ -12311,17 +13696,25 @@ export namespace site {
     }
 
     export interface GetWebhooksSiteWebhook {
+        /**
+         * when the object has been created, in epoch
+         */
         createdTime: number;
         /**
          * whether webhook is enabled
          */
         enabled: boolean;
         /**
-         * if `type`=`http-post`, additional custom HTTP headers to add
-         * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+         * if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
          */
         headers: {[key: string]: string};
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
         id: string;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
         modifiedTime: number;
         /**
          * name of the webhook
@@ -12362,12 +13755,11 @@ export namespace site {
         secret: string;
         siteId: string;
         /**
-         * required if `type`=`splunk`
-         * If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+         * required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
          */
         splunkToken: string;
         /**
-         * N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+         * List of supported webhook topics available with the API Call List Webhook Topics
          */
         topics: string[];
         /**
@@ -12379,6 +13771,1104 @@ export namespace site {
          * when url uses HTTPS, whether to verify the certificate
          */
         verifyCert: boolean;
+    }
+
+    export interface GetWlansSiteWlan {
+        /**
+         * enable coa-immediate-update and address-change-immediate-update on the access profile.
+         */
+        acctImmediateUpdate: boolean;
+        /**
+         * how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         */
+        acctInterimInterval: number;
+        /**
+         * list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+         */
+        acctServers: outputs.site.GetWlansSiteWlanAcctServer[];
+        /**
+         * airwatch wlan settings
+         */
+        airwatch: outputs.site.GetWlansSiteWlanAirwatch;
+        /**
+         * only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+         */
+        allowIpv6Ndp: boolean;
+        /**
+         * only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+         */
+        allowMdns: boolean;
+        /**
+         * only applicable when `limitBcast`==`true`, which allows SSDP
+         */
+        allowSsdp: boolean;
+        /**
+         * list of device ids
+         */
+        apIds: string[];
+        /**
+         * bandwidth limiting for apps (applies to up/down)
+         */
+        appLimit: outputs.site.GetWlansSiteWlanAppLimit;
+        /**
+         * app qos wlan settings
+         */
+        appQos: outputs.site.GetWlansSiteWlanAppQos;
+        /**
+         * enum: `aps`, `site`, `wxtags`
+         */
+        applyTo: string;
+        /**
+         * whether to enable smart arp filter
+         */
+        arpFilter: boolean;
+        /**
+         * authentication wlan settings
+         */
+        auth: outputs.site.GetWlansSiteWlanAuth;
+        /**
+         * When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+         */
+        authServerSelection: string;
+        /**
+         * list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+         */
+        authServers: outputs.site.GetWlansSiteWlanAuthServer[];
+        /**
+         * optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+         */
+        authServersNasId: string;
+        /**
+         * optional, NAS-IP-ADDRESS to use
+         */
+        authServersNasIp: string;
+        /**
+         * radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+         */
+        authServersRetries: number;
+        /**
+         * radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+         */
+        authServersTimeout: number;
+        /**
+         * whether to enable band_steering, this works only when band==both
+         */
+        bandSteer: boolean;
+        /**
+         * force dualBand capable client to connect to 5G
+         */
+        bandSteerForceBand5: boolean;
+        /**
+         * list of radios that the wlan should apply to.
+         */
+        bands: string[];
+        /**
+         * whether to block the clients in the blacklist (up to first 256 macs)
+         */
+        blockBlacklistClients: boolean;
+        /**
+         * bonjour gateway wlan settings
+         */
+        bonjour: outputs.site.GetWlansSiteWlanBonjour;
+        /**
+         * Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+         */
+        ciscoCwa: outputs.site.GetWlansSiteWlanCiscoCwa;
+        /**
+         * kbps
+         */
+        clientLimitDown: number;
+        /**
+         * if downlink limiting per-client is enabled
+         */
+        clientLimitDownEnabled: boolean;
+        /**
+         * kbps
+         */
+        clientLimitUp: number;
+        /**
+         * if uplink limiting per-client is enabled
+         */
+        clientLimitUpEnabled: boolean;
+        /**
+         * list of COA (change of authorization) servers, optional
+         */
+        coaServers: outputs.site.GetWlansSiteWlanCoaServer[];
+        /**
+         * when the object has been created, in epoch
+         */
+        createdTime: number;
+        /**
+         * some old WLAN drivers may not be compatible
+         */
+        disable11ax: boolean;
+        /**
+         * to disable ht or vht rates
+         */
+        disableHtVhtRates: boolean;
+        /**
+         * whether to disable U-APSD
+         */
+        disableUapsd: boolean;
+        /**
+         * disable sending v2 roam notification messages
+         */
+        disableV1RoamNotify: boolean;
+        /**
+         * disable sending v2 roam notification messages
+         */
+        disableV2RoamNotify: boolean;
+        /**
+         * when any of the following is true, this WLAN will be disabled
+         *    * cannot get IP
+         *    * cannot obtain default gateway
+         *    * cannot reach default gateway
+         */
+        disableWhenGatewayUnreachable: boolean;
+        disableWhenMxtunnelDown: boolean;
+        /**
+         * whether to disable WMM
+         */
+        disableWmm: boolean;
+        /**
+         * for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+         */
+        dnsServerRewrite: outputs.site.GetWlansSiteWlanDnsServerRewrite;
+        dtim: number;
+        /**
+         * for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+         *   * PSK will come from RADIUS server
+         *   * AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+         *   * AP sends BSSID:SSID as Caller-Station-ID
+         *   * `authServers` is required
+         *   * PSK will come from cloud WLC if source is cloudPsks
+         *   * defaultPsk will be used if cloud WLC is not available
+         *   * `multiPskOnly` and `psk` is ignored
+         *   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+         */
+        dynamicPsk: outputs.site.GetWlansSiteWlanDynamicPsk;
+        /**
+         * for 802.1x
+         */
+        dynamicVlan: outputs.site.GetWlansSiteWlanDynamicVlan;
+        /**
+         * enable AP-AP keycaching via multicast
+         */
+        enableLocalKeycaching: boolean;
+        /**
+         * by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+         */
+        enableWirelessBridging: boolean;
+        /**
+         * if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+         */
+        enableWirelessBridgingDhcpTracking: boolean;
+        /**
+         * if this wlan is enabled
+         */
+        enabled: boolean;
+        /**
+         * if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+         */
+        fastDot1xTimers: boolean;
+        /**
+         * whether to hide SSID in beacon
+         */
+        hideSsid: boolean;
+        /**
+         * include hostname inside IE in AP beacons / probe responses
+         */
+        hostnameIe: boolean;
+        /**
+         * hostspot 2.0 wlan settings
+         */
+        hotspot20: outputs.site.GetWlansSiteWlanHotspot20;
+        /**
+         * Unique ID of the object instance in the Mist Organnization
+         */
+        id: string;
+        injectDhcpOption82: outputs.site.GetWlansSiteWlanInjectDhcpOption82;
+        /**
+         * where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+         */
+        interface: string;
+        /**
+         * whether to stop clients to talk to each other
+         */
+        isolation: boolean;
+        /**
+         * if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+         */
+        l2Isolation: boolean;
+        /**
+         * legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+         */
+        legacyOverds: boolean;
+        /**
+         * whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+         */
+        limitBcast: boolean;
+        /**
+         * limit probe response base on some heuristic rules
+         */
+        limitProbeResponse: boolean;
+        /**
+         * max idle time in seconds
+         */
+        maxIdletime: number;
+        /**
+         * maximum number of client connected to the SSID. `0` means unlimited
+         */
+        maxNumClients: number;
+        mistNac: outputs.site.GetWlansSiteWlanMistNac;
+        /**
+         * when the object has been modified for the last time, in epoch
+         */
+        modifiedTime: number;
+        mspId: string;
+        /**
+         * when `interface`=`mxtunnel`, id of the Mist Tunnel
+         */
+        mxtunnelIds: string[];
+        /**
+         * when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+         */
+        mxtunnelNames: string[];
+        /**
+         * whether to only allow client to use DNS that we’ve learned from DHCP response
+         */
+        noStaticDns: boolean;
+        /**
+         * whether to only allow client that we’ve learned from DHCP exchange to talk
+         */
+        noStaticIp: boolean;
+        orgId: string;
+        /**
+         * portal wlan settings
+         */
+        portal: outputs.site.GetWlansSiteWlanPortal;
+        /**
+         * list of hostnames without http(s):// (matched by substring)
+         */
+        portalAllowedHostnames: string[];
+        /**
+         * list of CIDRs
+         */
+        portalAllowedSubnets: string[];
+        /**
+         * api secret (auto-generated) that can be used to sign guest authorization requests
+         */
+        portalApiSecret: string;
+        /**
+         * list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+         */
+        portalDeniedHostnames: string[];
+        /**
+         * Url of portal background image
+         */
+        portalImage: string;
+        portalSsoUrl: string;
+        qos: outputs.site.GetWlansSiteWlanQos;
+        /**
+         * Radsec settings
+         */
+        radsec: outputs.site.GetWlansSiteWlanRadsec;
+        /**
+         * Property key is the RF band. enum: `24`, `5`, `6`
+         */
+        rateset: {[key: string]: outputs.site.GetWlansSiteWlanRateset};
+        /**
+         * when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+         */
+        reconnectClientsWhenRoamingMxcluster: boolean;
+        /**
+         * enum: `11r`, `OKC`, `NONE`
+         */
+        roamMode: string;
+        /**
+         * WLAN operating schedule, default is disabled
+         */
+        schedule: outputs.site.GetWlansSiteWlanSchedule;
+        siteId: string;
+        /**
+         * whether to exclude this WLAN from SLE metrics
+         */
+        sleExcluded: boolean;
+        /**
+         * the name of the SSID
+         */
+        ssid: string;
+        /**
+         * if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+         */
+        useEapolV1: boolean;
+        /**
+         * if vlan tagging is enabled
+         */
+        vlanEnabled: boolean;
+        vlanId: string;
+        /**
+         * if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+         */
+        vlanIds: string[];
+        /**
+         * Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+         */
+        vlanPooling: boolean;
+        /**
+         * kbps
+         */
+        wlanLimitDown: number;
+        /**
+         * if downlink limiting for whole wlan is enabled
+         */
+        wlanLimitDownEnabled: boolean;
+        /**
+         * kbps
+         */
+        wlanLimitUp: number;
+        /**
+         * if uplink limiting for whole wlan is enabled
+         */
+        wlanLimitUpEnabled: boolean;
+        /**
+         * list of wxtag_ids
+         */
+        wxtagIds: string[];
+        /**
+         * when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+         */
+        wxtunnelId: string;
+        /**
+         * when `interface`=`wxtunnel`, remote tunnel identifier
+         */
+        wxtunnelRemoteId: string;
+    }
+
+    export interface GetWlansSiteWlanAcctServer {
+        /**
+         * ip / hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat: string;
+        keywrapKek: string;
+        keywrapMack: string;
+        /**
+         * Acct port of RADIUS server
+         */
+        port: number;
+        /**
+         * secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface GetWlansSiteWlanAirwatch {
+        /**
+         * API Key
+         */
+        apiKey: string;
+        /**
+         * console URL
+         */
+        consoleUrl: string;
+        enabled: boolean;
+        /**
+         * password
+         */
+        password: string;
+        /**
+         * username
+         */
+        username: string;
+    }
+
+    export interface GetWlansSiteWlanAppLimit {
+        /**
+         * Map from app key to bandwidth in kbps. 
+         * Property key is the app key, defined in Get Application List
+         */
+        apps: {[key: string]: number};
+        enabled: boolean;
+        /**
+         * Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
+         */
+        wxtagIds: {[key: string]: number};
+    }
+
+    export interface GetWlansSiteWlanAppQos {
+        apps: {[key: string]: outputs.site.GetWlansSiteWlanAppQosApps};
+        enabled: boolean;
+        others: outputs.site.GetWlansSiteWlanAppQosOther[];
+    }
+
+    export interface GetWlansSiteWlanAppQosApps {
+        dscp: number;
+        /**
+         * subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         */
+        dstSubnet: string;
+        /**
+         * subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+         */
+        srcSubnet: string;
+    }
+
+    export interface GetWlansSiteWlanAppQosOther {
+        dscp: number;
+        dstSubnet: string;
+        portRanges: string;
+        protocol: string;
+        srcSubnet: string;
+    }
+
+    export interface GetWlansSiteWlanAuth {
+        /**
+         * SAE anti-clogging token threshold
+         */
+        anticlogThreshold: number;
+        /**
+         * whether to trigger EAP reauth when the session ends
+         */
+        eapReauth: boolean;
+        /**
+         * whether to enable MAC Auth, uses the same auth_servers
+         */
+        enableMacAuth: boolean;
+        /**
+         * when `type`==`wep`
+         */
+        keyIdx: number;
+        /**
+         * when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         */
+        keys: string[];
+        /**
+         * when `type`==`psk`, whether to only use multi_psk
+         */
+        multiPskOnly: boolean;
+        /**
+         * if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+         */
+        owe: string;
+        /**
+         * when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         */
+        pairwises: string[];
+        /**
+         * when `multiPskOnly`==`true`, whether private wlan is enabled
+         */
+        privateWlan: boolean;
+        /**
+         * when `type`==`psk`, 8-64 characters, or 64 hex characters
+         */
+        psk: string;
+        /**
+         * enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+         */
+        type: string;
+        /**
+         * enable WEP as secondary auth
+         */
+        wepAsSecondaryAuth: boolean;
+    }
+
+    export interface GetWlansSiteWlanAuthServer {
+        /**
+         * ip / hostname of RADIUS server
+         */
+        host: string;
+        keywrapEnabled: boolean;
+        /**
+         * enum: `ascii`, `hex`
+         */
+        keywrapFormat: string;
+        keywrapKek: string;
+        keywrapMack: string;
+        /**
+         * Auth port of RADIUS server
+         */
+        port: number;
+        /**
+         * whether to require Message-Authenticator in requests
+         */
+        requireMessageAuthenticator: boolean;
+        /**
+         * secret of RADIUS server
+         */
+        secret: string;
+    }
+
+    export interface GetWlansSiteWlanBonjour {
+        /**
+         * additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+         */
+        additionalVlanIds: string[];
+        /**
+         * whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+         */
+        enabled: boolean;
+        /**
+         * what services are allowed. 
+         * Property key is the service name
+         */
+        services: {[key: string]: outputs.site.GetWlansSiteWlanBonjourServices};
+    }
+
+    export interface GetWlansSiteWlanBonjourServices {
+        /**
+         * whether to prevent wireless clients to discover bonjour devices on the same WLAN
+         */
+        disableLocal: boolean;
+        /**
+         * optional, if the service is further restricted for certain RADIUS groups
+         */
+        radiusGroups: string[];
+        /**
+         * how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+         */
+        scope: string;
+    }
+
+    export interface GetWlansSiteWlanCiscoCwa {
+        /**
+         * list of hostnames without http(s):// (matched by substring)
+         */
+        allowedHostnames: string[];
+        /**
+         * list of CIDRs
+         */
+        allowedSubnets: string[];
+        /**
+         * list of blocked CIDRs
+         */
+        blockedSubnets: string[];
+        enabled: boolean;
+    }
+
+    export interface GetWlansSiteWlanCoaServer {
+        /**
+         * whether to disable Event-Timestamp Check
+         */
+        disableEventTimestampCheck: boolean;
+        enabled: boolean;
+        ip: string;
+        port: number;
+        secret: string;
+    }
+
+    export interface GetWlansSiteWlanDnsServerRewrite {
+        enabled: boolean;
+        /**
+         * map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+         */
+        radiusGroups: {[key: string]: string};
+    }
+
+    export interface GetWlansSiteWlanDynamicPsk {
+        /**
+         * default PSK to use if cloud WLC is not available, 8-63 characters
+         */
+        defaultPsk: string;
+        defaultVlanId: string;
+        enabled: boolean;
+        /**
+         * when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+         */
+        forceLookup: boolean;
+        /**
+         * enum: `cloudPsks`, `radius`
+         */
+        source: string;
+    }
+
+    export interface GetWlansSiteWlanDynamicVlan {
+        /**
+         * Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+         */
+        defaultVlanIds: string[];
+        /**
+         * Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+         */
+        enabled: boolean;
+        /**
+         * vlan_ids to be locally bridged
+         */
+        localVlanIds: string[];
+        /**
+         * standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+         */
+        type: string;
+        /**
+         * map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+         *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+         */
+        vlans: {[key: string]: string};
+    }
+
+    export interface GetWlansSiteWlanHotspot20 {
+        domainNames: string[];
+        /**
+         * whether to enable hotspot 2.0 config
+         */
+        enabled: boolean;
+        naiRealms: string[];
+        /**
+         * list of operators to support
+         */
+        operators: string[];
+        rcois: string[];
+        /**
+         * venue name, default is site name
+         */
+        venueName: string;
+    }
+
+    export interface GetWlansSiteWlanInjectDhcpOption82 {
+        /**
+         * information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         *   * {{AP_MAC}}
+         *   * {{AP_MAC_DASHED}}
+         *   * {{AP_MODEL}}
+         *   * {{AP_NAME}}
+         *   * {{SITE_NAME}}
+         *   * {{SSID}}
+         */
+        circuitId: string;
+        /**
+         * whether to inject option 82 when forwarding DHCP packets
+         */
+        enabled: boolean;
+    }
+
+    export interface GetWlansSiteWlanMistNac {
+        /**
+         * when enabled:
+         *   * `authServers` is ignored
+         *   * `acctServers` is ignored
+         *   * `auth_servers_*` are ignored
+         *   * `coaServers` is ignored
+         *   * `radsec` is ignored
+         *   * `coaEnabled` is assumed'
+         */
+        enabled: boolean;
+    }
+
+    export interface GetWlansSiteWlanPortal {
+        /**
+         * Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        allowWlanIdRoam: boolean;
+        /**
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+         */
+        amazonClientId: string;
+        /**
+         * Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        amazonClientSecret: string;
+        /**
+         * Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        amazonEmailDomains: string[];
+        /**
+         * whether amazon is enabled as a login method
+         */
+        amazonEnabled: boolean;
+        /**
+         * Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+         */
+        amazonExpire: number;
+        /**
+         * authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+         */
+        auth: string;
+        /**
+         * Required if `azureEnabled`==`true`. Azure active directory app client id
+         */
+        azureClientId: string;
+        /**
+         * Required if `azureEnabled`==`true`. Azure active directory app client secret
+         */
+        azureClientSecret: string;
+        /**
+         * whether Azure Active Directory is enabled as a login method
+         */
+        azureEnabled: boolean;
+        /**
+         * interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+         */
+        azureExpire: number;
+        /**
+         * Required if `azureEnabled`==`true`. Azure active directory tenant id.
+         */
+        azureTenantId: string;
+        /**
+         * Required if `smsProvider`==`broadnet`
+         */
+        broadnetPassword: string;
+        /**
+         * Required if `smsProvider`==`broadnet`
+         */
+        broadnetSid: string;
+        /**
+         * Required if `smsProvider`==`broadnet`
+         */
+        broadnetUserId: string;
+        /**
+         * whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+         */
+        bypassWhenCloudDown: boolean;
+        /**
+         * Required if `smsProvider`==`clickatell`
+         */
+        clickatellApiKey: string;
+        /**
+         * whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+         */
+        crossSite: boolean;
+        /**
+         * whether email (access code verification) is enabled as a login method
+         */
+        emailEnabled: boolean;
+        /**
+         * whether guest portal is enabled
+         */
+        enabled: boolean;
+        /**
+         * how long to remain authorized, in minutes
+         */
+        expire: number;
+        /**
+         * Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+         */
+        externalPortalUrl: string;
+        /**
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+         */
+        facebookClientId: string;
+        /**
+         * Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        facebookClientSecret: string;
+        /**
+         * Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        facebookEmailDomains: string[];
+        /**
+         * whether facebook is enabled as a login method
+         */
+        facebookEnabled: boolean;
+        /**
+         * Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+         */
+        facebookExpire: number;
+        /**
+         * whether to forward the user to another URL after authorized
+         */
+        forward: boolean;
+        /**
+         * the URL to forward the user to
+         */
+        forwardUrl: string;
+        /**
+         * Google OAuth2 app id. This is optional. If not provided, it will use a default one.
+         */
+        googleClientId: string;
+        /**
+         * Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        googleClientSecret: string;
+        /**
+         * Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        googleEmailDomains: string[];
+        /**
+         * whether google is enabled as login method
+         */
+        googleEnabled: boolean;
+        /**
+         * Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+         */
+        googleExpire: number;
+        /**
+         * Required if `smsProvider`==`gupshup`
+         */
+        gupshupPassword: string;
+        /**
+         * Required if `smsProvider`==`gupshup`
+         */
+        gupshupUserid: string;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+         */
+        microsoftClientId: string;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+         */
+        microsoftClientSecret: string;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+         */
+        microsoftEmailDomains: string[];
+        /**
+         * whether microsoft 365 is enabled as a login method
+         */
+        microsoftEnabled: boolean;
+        /**
+         * Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+         */
+        microsoftExpire: number;
+        /**
+         * Whether password is enabled
+         */
+        passphraseEnabled: boolean;
+        /**
+         * Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+         */
+        passphraseExpire: number;
+        /**
+         * Required if `passphraseEnabled`==`true`.
+         */
+        password: string;
+        /**
+         * whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+         */
+        predefinedSponsorsEnabled: boolean;
+        /**
+         * whether to hide sponsor’s email from list of sponsors
+         */
+        predefinedSponsorsHideEmail: boolean;
+        privacy: boolean;
+        /**
+         * Required if `smsProvider`==`puzzel`
+         */
+        puzzelPassword: string;
+        /**
+         * Required if `smsProvider`==`puzzel`
+         */
+        puzzelServiceId: string;
+        /**
+         * Required if `smsProvider`==`puzzel`
+         */
+        puzzelUsername: string;
+        /**
+         * whether sms is enabled as a login method
+         */
+        smsEnabled: boolean;
+        /**
+         * Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+         */
+        smsExpire: number;
+        /**
+         * Optional if `smsEnabled`==`true`. SMS Message format
+         */
+        smsMessageFormat: string;
+        /**
+         * Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+         */
+        smsProvider: string;
+        /**
+         * Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+         */
+        sponsorAutoApprove: boolean;
+        /**
+         * list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+         */
+        sponsorEmailDomains: string[];
+        /**
+         * whether sponsor is enabled
+         */
+        sponsorEnabled: boolean;
+        /**
+         * Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+         */
+        sponsorExpire: number;
+        /**
+         * Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+         */
+        sponsorLinkValidityDuration: string;
+        /**
+         * Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+         */
+        sponsorNotifyAll: boolean;
+        /**
+         * Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+         */
+        sponsorStatusNotify: boolean;
+        /**
+         * object of allowed sponsors email with name. Required if `sponsorEnabled`
+         *             is `true` and `sponsorEmailDomains` is empty.
+         *
+         *             Property key is the sponsor email, Property value is the sponsor name
+         */
+        sponsors: {[key: string]: string};
+        /**
+         * Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+         */
+        ssoDefaultRole: string;
+        /**
+         * Optionl if `wlanPortalAuth`==`sso`
+         */
+        ssoForcedRole: string;
+        /**
+         * Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
+         */
+        ssoIdpCert: string;
+        /**
+         * Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+         */
+        ssoIdpSignAlgo: string;
+        /**
+         * Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+         */
+        ssoIdpSsoUrl: string;
+        /**
+         * Required if `wlanPortalAuth`==`sso`, IDP issuer URL
+         */
+        ssoIssuer: string;
+        /**
+         * Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+         */
+        ssoNameidFormat: string;
+        /**
+         * Required if `smsProvider`==`telstra`, Client ID provided by Telstra
+         */
+        telstraClientId: string;
+        /**
+         * Required if `smsProvider`==`telstra`, Client secret provided by Telstra
+         */
+        telstraClientSecret: string;
+        /**
+         * Required if `smsProvider`==`twilio`, Auth token account with twilio account
+         */
+        twilioAuthToken: string;
+        /**
+         * Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+         */
+        twilioPhoneNumber: string;
+        /**
+         * Required if `smsProvider`==`twilio`, Account SID provided by Twilio
+         */
+        twilioSid: string;
+    }
+
+    export interface GetWlansSiteWlanQos {
+        /**
+         * enum: `background`, `bestEffort`, `video`, `voice`
+         */
+        class: string;
+        /**
+         * whether to overwrite QoS
+         */
+        overwrite: boolean;
+    }
+
+    export interface GetWlansSiteWlanRadsec {
+        coaEnabled: boolean;
+        enabled: boolean;
+        idleTimeout: number;
+        /**
+         * To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+         */
+        mxclusterIds: string[];
+        /**
+         * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+         */
+        proxyHosts: string[];
+        /**
+         * name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         */
+        serverName: string;
+        /**
+         * List of Radsec Servers. Only if not Mist Edge.
+         */
+        servers: outputs.site.GetWlansSiteWlanRadsecServer[];
+        /**
+         * use mxedge(s) as radsecproxy
+         */
+        useMxedge: boolean;
+        /**
+         * To use Site mxedges when this WLAN does not use mxtunnel
+         */
+        useSiteMxedge: boolean;
+    }
+
+    export interface GetWlansSiteWlanRadsecServer {
+        host: string;
+        port: number;
+    }
+
+    export interface GetWlansSiteWlanRateset {
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+         */
+        ht: string;
+        /**
+         * if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+         */
+        legacies: string[];
+        /**
+         * Minimum RSSI for client to connect, 0 means not enforcing
+         */
+        minRssi: number;
+        /**
+         * Data Rates template to apply. enum: 
+         *   * `no-legacy`: no 11b
+         *   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+         *   * `legacy-only`: disable 802.11n and 802.11ac
+         *   * `high-density`: no 11b, no low rates
+         *   * `custom`: user defined
+         */
+        template: string;
+        /**
+         * if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+         */
+        vht: string;
+    }
+
+    export interface GetWlansSiteWlanSchedule {
+        enabled: boolean;
+        /**
+         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+         */
+        hours: outputs.site.GetWlansSiteWlanScheduleHours;
+    }
+
+    export interface GetWlansSiteWlanScheduleHours {
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        fri: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        mon: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        sat: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        sun: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        thu: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        tue: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
+        wed: string;
     }
 
     export interface NetworktemplateAclPolicy {
@@ -13659,20 +16149,39 @@ Please update your configurations.
     export interface SettingConfigPushPolicyPushWindow {
         enabled: boolean;
         /**
-         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-         *
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          */
         hours?: outputs.site.SettingConfigPushPolicyPushWindowHours;
     }
 
     export interface SettingConfigPushPolicyPushWindowHours {
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         fri: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         mon: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sat: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sun: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         thu: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         tue: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         wed: string;
     }
 
@@ -13687,15 +16196,16 @@ Please update your configurations.
     }
 
     export interface SettingEngagement {
+        /**
+         * name associated to each tag
+         */
         dwellTagNames?: outputs.site.SettingEngagementDwellTagNames;
         /**
-         * add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+         * add tags to visits within the duration (in seconds)
          */
         dwellTags?: outputs.site.SettingEngagementDwellTags;
         /**
-         * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-         *
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          */
         hours?: outputs.site.SettingEngagementHours;
         /**
@@ -13709,26 +16219,71 @@ Please update your configurations.
     }
 
     export interface SettingEngagementDwellTagNames {
-        bounce?: string;
-        engaged?: string;
-        passerby?: string;
-        stationed?: string;
+        /**
+         * Default to `Visitor`
+         */
+        bounce: string;
+        /**
+         * Default to `Associates`
+         */
+        engaged: string;
+        /**
+         * Default to `Passerby`
+         */
+        passerby: string;
+        /**
+         * Default to `Assets`
+         */
+        stationed: string;
     }
 
     export interface SettingEngagementDwellTags {
-        bounce?: string;
-        engaged?: string;
-        passerby?: string;
-        stationed?: string;
+        /**
+         * Default to `301-14400`
+         */
+        bounce: string;
+        /**
+         * Default to `14401-28800`
+         */
+        engaged: string;
+        /**
+         * Default to `1-300`
+         */
+        passerby: string;
+        /**
+         * Default to `28801-42000`
+         */
+        stationed: string;
     }
 
     export interface SettingEngagementHours {
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         fri: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         mon: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sat: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         sun: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         thu: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         tue: string;
+        /**
+         * Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+         */
         wed: string;
     }
 
@@ -13843,6 +16398,16 @@ Please update your configurations.
          */
         protocol: string;
         subnets: string[];
+    }
+
+    export interface SettingJuniperSrx {
+        gateways?: outputs.site.SettingJuniperSrxGateway[];
+        sendMistNacUserInfo?: boolean;
+    }
+
+    export interface SettingJuniperSrxGateway {
+        apiKey?: string;
+        apiUrl?: string;
     }
 
     export interface SettingLed {

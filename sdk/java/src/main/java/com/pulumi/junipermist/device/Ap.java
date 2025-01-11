@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
 
 /**
  * This resource manages the Wireless Access Point configuration.
+ * 
  * It can be used to define specific configuration at the device level or to override AP Device Profile (`junipermist.org.DeviceprofileAp`).
  * 
  * ## Import

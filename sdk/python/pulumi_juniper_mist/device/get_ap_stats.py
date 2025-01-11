@@ -148,7 +148,13 @@ def get_ap_stats(duration: Optional[str] = None,
     import pulumi
     import pulumi_junipermist as junipermist
 
-    ap_stats = junipermist.device.get_ap_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    ap_stats = junipermist.device.get_ap_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
+        mac="5c5b35000000",
+        site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        status="connected",
+        duration="1d",
+        start=1736031600,
+        end=1736175934)
     ```
 
 
@@ -194,7 +200,13 @@ def get_ap_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_junipermist as junipermist
 
-    ap_stats = junipermist.device.get_ap_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    ap_stats = junipermist.device.get_ap_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
+        mac="5c5b35000000",
+        site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        status="connected",
+        duration="1d",
+        start=1736031600,
+        end=1736175934)
     ```
 
 

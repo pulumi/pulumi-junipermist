@@ -15,30 +15,62 @@ public final class SettingEngagementDwellTagNamesArgs extends com.pulumi.resourc
 
     public static final SettingEngagementDwellTagNamesArgs Empty = new SettingEngagementDwellTagNamesArgs();
 
+    /**
+     * Default to `Visitor`
+     * 
+     */
     @Import(name="bounce")
     private @Nullable Output<String> bounce;
 
+    /**
+     * @return Default to `Visitor`
+     * 
+     */
     public Optional<Output<String>> bounce() {
         return Optional.ofNullable(this.bounce);
     }
 
+    /**
+     * Default to `Associates`
+     * 
+     */
     @Import(name="engaged")
     private @Nullable Output<String> engaged;
 
+    /**
+     * @return Default to `Associates`
+     * 
+     */
     public Optional<Output<String>> engaged() {
         return Optional.ofNullable(this.engaged);
     }
 
+    /**
+     * Default to `Passerby`
+     * 
+     */
     @Import(name="passerby")
     private @Nullable Output<String> passerby;
 
+    /**
+     * @return Default to `Passerby`
+     * 
+     */
     public Optional<Output<String>> passerby() {
         return Optional.ofNullable(this.passerby);
     }
 
+    /**
+     * Default to `Assets`
+     * 
+     */
     @Import(name="stationed")
     private @Nullable Output<String> stationed;
 
+    /**
+     * @return Default to `Assets`
+     * 
+     */
     public Optional<Output<String>> stationed() {
         return Optional.ofNullable(this.stationed);
     }
@@ -70,38 +102,86 @@ public final class SettingEngagementDwellTagNamesArgs extends com.pulumi.resourc
             $ = new SettingEngagementDwellTagNamesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bounce Default to `Visitor`
+         * 
+         * @return builder
+         * 
+         */
         public Builder bounce(@Nullable Output<String> bounce) {
             $.bounce = bounce;
             return this;
         }
 
+        /**
+         * @param bounce Default to `Visitor`
+         * 
+         * @return builder
+         * 
+         */
         public Builder bounce(String bounce) {
             return bounce(Output.of(bounce));
         }
 
+        /**
+         * @param engaged Default to `Associates`
+         * 
+         * @return builder
+         * 
+         */
         public Builder engaged(@Nullable Output<String> engaged) {
             $.engaged = engaged;
             return this;
         }
 
+        /**
+         * @param engaged Default to `Associates`
+         * 
+         * @return builder
+         * 
+         */
         public Builder engaged(String engaged) {
             return engaged(Output.of(engaged));
         }
 
+        /**
+         * @param passerby Default to `Passerby`
+         * 
+         * @return builder
+         * 
+         */
         public Builder passerby(@Nullable Output<String> passerby) {
             $.passerby = passerby;
             return this;
         }
 
+        /**
+         * @param passerby Default to `Passerby`
+         * 
+         * @return builder
+         * 
+         */
         public Builder passerby(String passerby) {
             return passerby(Output.of(passerby));
         }
 
+        /**
+         * @param stationed Default to `Assets`
+         * 
+         * @return builder
+         * 
+         */
         public Builder stationed(@Nullable Output<String> stationed) {
             $.stationed = stationed;
             return this;
         }
 
+        /**
+         * @param stationed Default to `Assets`
+         * 
+         * @return builder
+         * 
+         */
         public Builder stationed(String stationed) {
             return stationed(Output.of(stationed));
         }

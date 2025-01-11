@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides the of ConstCountries.
+ *
  * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
  *
  * ## Example Usage
@@ -37,6 +38,7 @@ export interface GetConstCountriesResult {
 }
 /**
  * This data source provides the of ConstCountries.
+ *
  * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
  *
  * ## Example Usage

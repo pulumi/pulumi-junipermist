@@ -13,7 +13,8 @@ import (
 )
 
 // This resource manages NAC IDPs (Identity Providers).
-// The NAC IDPs to validate NAC client accounts against an IDP with OAuth2.0, LDAP/LDAPS, or a local Mist Edge.
+//
+// The NAC IDPs are used to validate NAC client accounts against an IDP with OAuth2.0, LDAP/LDAPS, or a local Mist Edge.\
 // Mist Access Assurance can also retrieve group membership from the IDP, and use this information in the NAC Rules (`org.Nacrule` resource)
 //
 // IMPORTANT:

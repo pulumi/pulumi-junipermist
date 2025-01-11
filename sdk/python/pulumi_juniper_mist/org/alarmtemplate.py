@@ -163,11 +163,12 @@ class Alarmtemplate(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages Alarm Templates.
+
         An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
 
-        Once created, the Alarm template must be assigned with the `alarmtemplate_id` attribute to one of the following
-        	* the whole org with the `org.base` resource
-        	* one or multiple sites with the `site.base` resource
+        Once created, the Alarm template must be assigned with the `alarmtemplate_id` attribute to one of the following:
+        * the whole org with the `org.base` resource
+        * one or multiple sites with the `site.base` resource
 
         It is possible to use the `get_const_alarms` data source to get a list of the available alarms
 
@@ -195,11 +196,12 @@ class Alarmtemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages Alarm Templates.
+
         An Alarm Template is a set of Alarm Rules that could be applied to one or more sites (while each site can only pick one Alarm Template), or to the whole org.
 
-        Once created, the Alarm template must be assigned with the `alarmtemplate_id` attribute to one of the following
-        	* the whole org with the `org.base` resource
-        	* one or multiple sites with the `site.base` resource
+        Once created, the Alarm template must be assigned with the `alarmtemplate_id` attribute to one of the following:
+        * the whole org with the `org.base` resource
+        * one or multiple sites with the `site.base` resource
 
         It is possible to use the `get_const_alarms` data source to get a list of the available alarms
 

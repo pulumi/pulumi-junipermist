@@ -5,23 +5,13 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWebhooksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWebhooksPlainArgs Empty = new GetWebhooksPlainArgs();
-
-    @Import(name="limit")
-    private @Nullable Integer limit;
-
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
 
     @Import(name="orgId", required=true)
     private String orgId;
@@ -30,19 +20,10 @@ public final class GetWebhooksPlainArgs extends com.pulumi.resources.InvokeArgs 
         return this.orgId;
     }
 
-    @Import(name="page")
-    private @Nullable Integer page;
-
-    public Optional<Integer> page() {
-        return Optional.ofNullable(this.page);
-    }
-
     private GetWebhooksPlainArgs() {}
 
     private GetWebhooksPlainArgs(GetWebhooksPlainArgs $) {
-        this.limit = $.limit;
         this.orgId = $.orgId;
-        this.page = $.page;
     }
 
     public static Builder builder() {
@@ -63,18 +44,8 @@ public final class GetWebhooksPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetWebhooksPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder limit(@Nullable Integer limit) {
-            $.limit = limit;
-            return this;
-        }
-
         public Builder orgId(String orgId) {
             $.orgId = orgId;
-            return this;
-        }
-
-        public Builder page(@Nullable Integer page) {
-            $.page = page;
             return this;
         }
 

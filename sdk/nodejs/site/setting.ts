@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * This resource manages the Site Settings.
+ *
  * The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
  *
  * > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
@@ -85,10 +86,8 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly deviceUpdownThreshold!: pulumi.Output<number>;
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-     * = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+     * ranges for the same day
      */
     public readonly engagement!: pulumi.Output<outputs.site.SettingEngagement | undefined>;
     /**
@@ -100,6 +99,7 @@ export class Setting extends pulumi.CustomResource {
      * `deviceUpdownThreshold` is ignored.
      */
     public readonly gatewayUpdownThreshold!: pulumi.Output<number>;
+    public readonly juniperSrx!: pulumi.Output<outputs.site.SettingJuniperSrx | undefined>;
     /**
      * LED AP settings
      */
@@ -157,6 +157,9 @@ export class Setting extends pulumi.CustomResource {
      * whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      */
     public readonly trackAnonymousDevices!: pulumi.Output<boolean>;
+    /**
+     * AP Uplink port configuration
+     */
     public readonly uplinkPortConfig!: pulumi.Output<outputs.site.SettingUplinkPortConfig | undefined>;
     /**
      * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -209,6 +212,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["engagement"] = state ? state.engagement : undefined;
             resourceInputs["gatewayMgmt"] = state ? state.gatewayMgmt : undefined;
             resourceInputs["gatewayUpdownThreshold"] = state ? state.gatewayUpdownThreshold : undefined;
+            resourceInputs["juniperSrx"] = state ? state.juniperSrx : undefined;
             resourceInputs["led"] = state ? state.led : undefined;
             resourceInputs["occupancy"] = state ? state.occupancy : undefined;
             resourceInputs["persistConfigOnDevice"] = state ? state.persistConfigOnDevice : undefined;
@@ -253,6 +257,7 @@ export class Setting extends pulumi.CustomResource {
             resourceInputs["engagement"] = args ? args.engagement : undefined;
             resourceInputs["gatewayMgmt"] = args ? args.gatewayMgmt : undefined;
             resourceInputs["gatewayUpdownThreshold"] = args ? args.gatewayUpdownThreshold : undefined;
+            resourceInputs["juniperSrx"] = args ? args.juniperSrx : undefined;
             resourceInputs["led"] = args ? args.led : undefined;
             resourceInputs["occupancy"] = args ? args.occupancy : undefined;
             resourceInputs["persistConfigOnDevice"] = args ? args.persistConfigOnDevice : undefined;
@@ -325,10 +330,8 @@ export interface SettingState {
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-     * = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+     * ranges for the same day
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement>;
     /**
@@ -340,6 +343,7 @@ export interface SettingState {
      * `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
+    juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx>;
     /**
      * LED AP settings
      */
@@ -397,6 +401,9 @@ export interface SettingState {
      * whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      */
     trackAnonymousDevices?: pulumi.Input<boolean>;
+    /**
+     * AP Uplink port configuration
+     */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig>;
     /**
      * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
@@ -461,10 +468,8 @@ export interface SettingArgs {
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-     * = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+     * ranges for the same day
      */
     engagement?: pulumi.Input<inputs.site.SettingEngagement>;
     /**
@@ -476,6 +481,7 @@ export interface SettingArgs {
      * `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
+    juniperSrx?: pulumi.Input<inputs.site.SettingJuniperSrx>;
     /**
      * LED AP settings
      */
@@ -533,6 +539,9 @@ export interface SettingArgs {
      * whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      */
     trackAnonymousDevices?: pulumi.Input<boolean>;
+    /**
+     * AP Uplink port configuration
+     */
     uplinkPortConfig?: pulumi.Input<inputs.site.SettingUplinkPortConfig>;
     /**
      * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars

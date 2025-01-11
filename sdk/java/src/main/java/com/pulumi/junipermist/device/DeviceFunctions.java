@@ -51,6 +51,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var apStats = DeviceFunctions.getApStats(GetApStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("5c5b35000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -93,6 +99,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var apStats = DeviceFunctions.getApStats(GetApStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("5c5b35000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -135,6 +147,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var apStats = DeviceFunctions.getApStats(GetApStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("5c5b35000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -177,6 +195,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var apStats = DeviceFunctions.getApStats(GetApStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("5c5b35000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -219,6 +243,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var apStats = DeviceFunctions.getApStats(GetApStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("5c5b35000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -261,6 +291,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var gatewayStats = DeviceFunctions.getGatewayStats(GetGatewayStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("e8a245000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -303,6 +339,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var gatewayStats = DeviceFunctions.getGatewayStats(GetGatewayStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("e8a245000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -345,6 +387,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var gatewayStats = DeviceFunctions.getGatewayStats(GetGatewayStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("e8a245000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -387,6 +435,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var gatewayStats = DeviceFunctions.getGatewayStats(GetGatewayStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("e8a245000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -429,6 +483,12 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var gatewayStats = DeviceFunctions.getGatewayStats(GetGatewayStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("e8a245000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -471,6 +531,14 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var switchStats = DeviceFunctions.getSwitchStats(GetSwitchStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .evpnUnused(true)
+     *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -513,6 +581,14 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var switchStats = DeviceFunctions.getSwitchStats(GetSwitchStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .evpnUnused(true)
+     *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -555,6 +631,14 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var switchStats = DeviceFunctions.getSwitchStats(GetSwitchStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .evpnUnused(true)
+     *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -597,6 +681,14 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var switchStats = DeviceFunctions.getSwitchStats(GetSwitchStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .evpnUnused(true)
+     *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }
@@ -639,6 +731,14 @@ public final class DeviceFunctions {
      *     public static void stack(Context ctx) {
      *         final var switchStats = DeviceFunctions.getSwitchStats(GetSwitchStatsArgs.builder()
      *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .mac("485a0d000000")
+     *             .siteId("4a422ae5-7ca0-4599-87a3-8e49aa63685f")
+     *             .status("connected")
+     *             .evpnUnused(true)
+     *             .evpntopoId("92984e2f-94db-4cd8-9763-9cf83fbd079e")
+     *             .duration("1d")
+     *             .start(1736031600)
+     *             .end(1736175934)
      *             .build());
      * 
      *     }

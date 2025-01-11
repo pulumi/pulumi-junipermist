@@ -13,6 +13,10 @@ import (
 
 // This data source provides the list of Org Webhooks.
 //
+// A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+// It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+//
 // ## Example Usage
 //
 // ```go
@@ -50,19 +54,15 @@ func GetWebhooks(ctx *pulumi.Context, args *GetWebhooksArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getWebhooks.
 type GetWebhooksArgs struct {
-	Limit *int   `pulumi:"limit"`
 	OrgId string `pulumi:"orgId"`
-	Page  *int   `pulumi:"page"`
 }
 
 // A collection of values returned by getWebhooks.
 type GetWebhooksResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id          string                  `pulumi:"id"`
-	Limit       *int                    `pulumi:"limit"`
 	OrgId       string                  `pulumi:"orgId"`
 	OrgWebhooks []GetWebhooksOrgWebhook `pulumi:"orgWebhooks"`
-	Page        *int                    `pulumi:"page"`
 }
 
 func GetWebhooksOutput(ctx *pulumi.Context, args GetWebhooksOutputArgs, opts ...pulumi.InvokeOption) GetWebhooksResultOutput {
@@ -76,9 +76,7 @@ func GetWebhooksOutput(ctx *pulumi.Context, args GetWebhooksOutputArgs, opts ...
 
 // A collection of arguments for invoking getWebhooks.
 type GetWebhooksOutputArgs struct {
-	Limit pulumi.IntPtrInput `pulumi:"limit"`
 	OrgId pulumi.StringInput `pulumi:"orgId"`
-	Page  pulumi.IntPtrInput `pulumi:"page"`
 }
 
 func (GetWebhooksOutputArgs) ElementType() reflect.Type {
@@ -105,20 +103,12 @@ func (o GetWebhooksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetWebhooksResultOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetWebhooksResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
-}
-
 func (o GetWebhooksResultOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksResult) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
 func (o GetWebhooksResultOutput) OrgWebhooks() GetWebhooksOrgWebhookArrayOutput {
 	return o.ApplyT(func(v GetWebhooksResult) []GetWebhooksOrgWebhook { return v.OrgWebhooks }).(GetWebhooksOrgWebhookArrayOutput)
-}
-
-func (o GetWebhooksResultOutput) Page() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetWebhooksResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
 func init() {
