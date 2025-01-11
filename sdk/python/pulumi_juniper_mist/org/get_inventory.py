@@ -173,7 +173,14 @@ def get_inventory(mac: Optional[str] = None,
     import pulumi
     import pulumi_junipermist as junipermist
 
-    inventory = junipermist.org.get_inventory(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    inventory = junipermist.org.get_inventory(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
+        mac="485a0d000000",
+        model="EX4100-F-12P",
+        serial="F00000000000",
+        unassigned=False,
+        vc=True,
+        vc_mac="485a0d000001",
+        site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f")
     ```
 
 
@@ -226,7 +233,14 @@ def get_inventory_output(mac: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_junipermist as junipermist
 
-    inventory = junipermist.org.get_inventory(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    inventory = junipermist.org.get_inventory(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
+        mac="485a0d000000",
+        model="EX4100-F-12P",
+        serial="F00000000000",
+        unassigned=False,
+        vc=True,
+        vc_mac="485a0d000001",
+        site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f")
     ```
 
 

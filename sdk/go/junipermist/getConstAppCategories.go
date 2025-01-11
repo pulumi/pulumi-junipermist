@@ -12,7 +12,8 @@ import (
 )
 
 // This data source provides the of ConstAppCategories.
-// This information can be used as `appCategories` in the `org.Service` resource
+//
+// # This information can be used as `appCategories` in the `org.Service` resource
 //
 // ## Example Usage
 //

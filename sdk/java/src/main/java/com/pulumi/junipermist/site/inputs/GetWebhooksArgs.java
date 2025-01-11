@@ -6,30 +6,13 @@ package com.pulumi.junipermist.site.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWebhooksArgs Empty = new GetWebhooksArgs();
-
-    @Import(name="limit")
-    private @Nullable Output<Integer> limit;
-
-    public Optional<Output<Integer>> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-
-    @Import(name="page")
-    private @Nullable Output<Integer> page;
-
-    public Optional<Output<Integer>> page() {
-        return Optional.ofNullable(this.page);
-    }
 
     @Import(name="siteId", required=true)
     private Output<String> siteId;
@@ -41,8 +24,6 @@ public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
     private GetWebhooksArgs() {}
 
     private GetWebhooksArgs(GetWebhooksArgs $) {
-        this.limit = $.limit;
-        this.page = $.page;
         this.siteId = $.siteId;
     }
 
@@ -62,24 +43,6 @@ public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetWebhooksArgs defaults) {
             $ = new GetWebhooksArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder limit(@Nullable Output<Integer> limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        public Builder limit(Integer limit) {
-            return limit(Output.of(limit));
-        }
-
-        public Builder page(@Nullable Output<Integer> page) {
-            $.page = page;
-            return this;
-        }
-
-        public Builder page(Integer page) {
-            return page(Output.of(page));
         }
 
         public Builder siteId(Output<String> siteId) {

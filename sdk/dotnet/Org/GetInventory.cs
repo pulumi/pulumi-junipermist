@@ -28,6 +28,13 @@ namespace Pulumi.JuniperMist.Org
         ///     var inventory = JuniperMist.Org.GetInventory.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "485a0d000000",
+        ///         Model = "EX4100-F-12P",
+        ///         Serial = "F00000000000",
+        ///         Unassigned = false,
+        ///         Vc = true,
+        ///         VcMac = "485a0d000001",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         ///     });
         /// 
         /// });
@@ -53,6 +60,13 @@ namespace Pulumi.JuniperMist.Org
         ///     var inventory = JuniperMist.Org.GetInventory.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "485a0d000000",
+        ///         Model = "EX4100-F-12P",
+        ///         Serial = "F00000000000",
+        ///         Unassigned = false,
+        ///         Vc = true,
+        ///         VcMac = "485a0d000001",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         ///     });
         /// 
         /// });
@@ -78,6 +92,13 @@ namespace Pulumi.JuniperMist.Org
         ///     var inventory = JuniperMist.Org.GetInventory.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "485a0d000000",
+        ///         Model = "EX4100-F-12P",
+        ///         Serial = "F00000000000",
+        ///         Unassigned = false,
+        ///         Vc = true,
+        ///         VcMac = "485a0d000001",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
         ///     });
         /// 
         /// });

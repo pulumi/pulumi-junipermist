@@ -32,6 +32,24 @@ public final class SsoRolePrivilege {
      * 
      */
     private @Nullable String sitegroupId;
+    /**
+     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+     * Below are the list of supported UI views. Note that this is UI only feature.
+     * 
+     *   | UI View | Required Role | Description |
+     *   | --- | --- | --- |
+     *   | `reporting` | `read` | full access to all analytics tools |
+     *   | `marketing` | `read` | can view analytics and location maps |
+     *   | `super_observer` | `read` | can view all the organization except the subscription page |
+     *   | `location` | `write` | can view and manage location maps, can view analytics |
+     *   | `security` | `write` | can view and manage site labels, policies and security |
+     *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+     *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+     *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+     * 
+     */
+    private @Nullable String views;
 
     private SsoRolePrivilege() {}
     /**
@@ -62,6 +80,26 @@ public final class SsoRolePrivilege {
     public Optional<String> sitegroupId() {
         return Optional.ofNullable(this.sitegroupId);
     }
+    /**
+     * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+     * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+     * Below are the list of supported UI views. Note that this is UI only feature.
+     * 
+     *   | UI View | Required Role | Description |
+     *   | --- | --- | --- |
+     *   | `reporting` | `read` | full access to all analytics tools |
+     *   | `marketing` | `read` | can view analytics and location maps |
+     *   | `super_observer` | `read` | can view all the organization except the subscription page |
+     *   | `location` | `write` | can view and manage location maps, can view analytics |
+     *   | `security` | `write` | can view and manage site labels, policies and security |
+     *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+     *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+     *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+     * 
+     */
+    public Optional<String> views() {
+        return Optional.ofNullable(this.views);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +114,7 @@ public final class SsoRolePrivilege {
         private String scope;
         private @Nullable String siteId;
         private @Nullable String sitegroupId;
+        private @Nullable String views;
         public Builder() {}
         public Builder(SsoRolePrivilege defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +122,7 @@ public final class SsoRolePrivilege {
     	      this.scope = defaults.scope;
     	      this.siteId = defaults.siteId;
     	      this.sitegroupId = defaults.sitegroupId;
+    	      this.views = defaults.views;
         }
 
         @CustomType.Setter
@@ -113,12 +153,19 @@ public final class SsoRolePrivilege {
             this.sitegroupId = sitegroupId;
             return this;
         }
+        @CustomType.Setter
+        public Builder views(@Nullable String views) {
+
+            this.views = views;
+            return this;
+        }
         public SsoRolePrivilege build() {
             final var _resultValue = new SsoRolePrivilege();
             _resultValue.role = role;
             _resultValue.scope = scope;
             _resultValue.siteId = siteId;
             _resultValue.sitegroupId = sitegroupId;
+            _resultValue.views = views;
             return _resultValue;
         }
     }

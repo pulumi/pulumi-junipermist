@@ -62,7 +62,11 @@ class AwaitableGetConstApplicationsResult(GetConstApplicationsResult):
 def get_const_applications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstApplicationsResult:
     """
     This data source provides the of ConstApplications.
-    This information can be used as `apps` in the `org.Service` resource, the `site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+
+    This information can be used as `apps` in:
+    * `org.Service` resource
+    * `site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+    * `org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
 
     ## Example Usage
 
@@ -83,7 +87,11 @@ def get_const_applications(opts: Optional[pulumi.InvokeOptions] = None) -> Await
 def get_const_applications_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstApplicationsResult]:
     """
     This data source provides the of ConstApplications.
-    This information can be used as `apps` in the `org.Service` resource, the `site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+
+    This information can be used as `apps` in:
+    * `org.Service` resource
+    * `site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+    * `org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
 
     ## Example Usage
 

@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * This resources manages the Site basic information.
+ *
  * This resource can be used to assign templates to a site, or to change basic information (e.g. Site Address)
  *
  * ## Example Usage

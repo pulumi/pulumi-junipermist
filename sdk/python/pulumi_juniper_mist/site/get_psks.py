@@ -27,19 +27,13 @@ class GetPsksResult:
     """
     A collection of values returned by getPsks.
     """
-    def __init__(__self__, id=None, limit=None, name=None, page=None, role=None, site_id=None, site_psks=None, ssid=None):
+    def __init__(__self__, id=None, name=None, role=None, site_id=None, site_psks=None, ssid=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if limit and not isinstance(limit, int):
-            raise TypeError("Expected argument 'limit' to be a int")
-        pulumi.set(__self__, "limit", limit)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if page and not isinstance(page, int):
-            raise TypeError("Expected argument 'page' to be a int")
-        pulumi.set(__self__, "page", page)
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
@@ -63,18 +57,8 @@ class GetPsksResult:
 
     @property
     @pulumi.getter
-    def limit(self) -> Optional[int]:
-        return pulumi.get(self, "limit")
-
-    @property
-    @pulumi.getter
     def name(self) -> Optional[str]:
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def page(self) -> Optional[int]:
-        return pulumi.get(self, "page")
 
     @property
     @pulumi.getter
@@ -104,25 +88,25 @@ class AwaitableGetPsksResult(GetPsksResult):
             yield self
         return GetPsksResult(
             id=self.id,
-            limit=self.limit,
             name=self.name,
-            page=self.page,
             role=self.role,
             site_id=self.site_id,
             site_psks=self.site_psks,
             ssid=self.ssid)
 
 
-def get_psks(limit: Optional[int] = None,
-             name: Optional[str] = None,
-             page: Optional[int] = None,
+def get_psks(name: Optional[str] = None,
              role: Optional[str] = None,
              site_id: Optional[str] = None,
              ssid: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPsksResult:
     """
-    This data source provides the list of WAN Assurance Psks.
-    The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of Site Psks.
+
+    A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\\
+    It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\\
+    Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\\
+    Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
 
     ## Example Usage
 
@@ -131,13 +115,13 @@ def get_psks(limit: Optional[int] = None,
     import pulumi_junipermist as junipermist
 
     psks_vip = junipermist.site.get_psks(site_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
-        role="vip")
+        name="psk_one",
+        role="vip",
+        ssid="psk_ssid")
     ```
     """
     __args__ = dict()
-    __args__['limit'] = limit
     __args__['name'] = name
-    __args__['page'] = page
     __args__['role'] = role
     __args__['siteId'] = site_id
     __args__['ssid'] = ssid
@@ -146,23 +130,23 @@ def get_psks(limit: Optional[int] = None,
 
     return AwaitableGetPsksResult(
         id=pulumi.get(__ret__, 'id'),
-        limit=pulumi.get(__ret__, 'limit'),
         name=pulumi.get(__ret__, 'name'),
-        page=pulumi.get(__ret__, 'page'),
         role=pulumi.get(__ret__, 'role'),
         site_id=pulumi.get(__ret__, 'site_id'),
         site_psks=pulumi.get(__ret__, 'site_psks'),
         ssid=pulumi.get(__ret__, 'ssid'))
-def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
-                    name: Optional[pulumi.Input[Optional[str]]] = None,
-                    page: Optional[pulumi.Input[Optional[int]]] = None,
+def get_psks_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                     role: Optional[pulumi.Input[Optional[str]]] = None,
                     site_id: Optional[pulumi.Input[str]] = None,
                     ssid: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPsksResult]:
     """
-    This data source provides the list of WAN Assurance Psks.
-    The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+    This data source provides the list of Site Psks.
+
+    A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\\
+    It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\\
+    Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\\
+    Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
 
     ## Example Usage
 
@@ -171,13 +155,13 @@ def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     import pulumi_junipermist as junipermist
 
     psks_vip = junipermist.site.get_psks(site_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
-        role="vip")
+        name="psk_one",
+        role="vip",
+        ssid="psk_ssid")
     ```
     """
     __args__ = dict()
-    __args__['limit'] = limit
     __args__['name'] = name
-    __args__['page'] = page
     __args__['role'] = role
     __args__['siteId'] = site_id
     __args__['ssid'] = ssid
@@ -185,9 +169,7 @@ def get_psks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
     __ret__ = pulumi.runtime.invoke_output('junipermist:site/getPsks:getPsks', __args__, opts=opts, typ=GetPsksResult)
     return __ret__.apply(lambda __response__: GetPsksResult(
         id=pulumi.get(__response__, 'id'),
-        limit=pulumi.get(__response__, 'limit'),
         name=pulumi.get(__response__, 'name'),
-        page=pulumi.get(__response__, 'page'),
         role=pulumi.get(__response__, 'role'),
         site_id=pulumi.get(__response__, 'site_id'),
         site_psks=pulumi.get(__response__, 'site_psks'),

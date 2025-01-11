@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the NAC IDP Metadata information.
+ *
  * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the informationrequired to configure the IDP
  *
  * ## Example Usage
@@ -53,6 +54,7 @@ export interface GetNacidpMetadataResult {
 }
 /**
  * This data source provides the NAC IDP Metadata information.
+ *
  * The provided information (`entityId`, `acsUrl`, `logoutUrl` and `metadata`) are the informationrequired to configure the IDP
  *
  * ## Example Usage

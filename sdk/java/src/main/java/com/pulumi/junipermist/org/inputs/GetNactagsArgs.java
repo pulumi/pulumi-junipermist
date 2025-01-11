@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,13 +15,6 @@ import javax.annotation.Nullable;
 public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNactagsArgs Empty = new GetNactagsArgs();
-
-    @Import(name="limit")
-    private @Nullable Output<Integer> limit;
-
-    public Optional<Output<Integer>> limit() {
-        return Optional.ofNullable(this.limit);
-    }
 
     @Import(name="match")
     private @Nullable Output<String> match;
@@ -45,13 +37,6 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
         return this.orgId;
     }
 
-    @Import(name="page")
-    private @Nullable Output<Integer> page;
-
-    public Optional<Output<Integer>> page() {
-        return Optional.ofNullable(this.page);
-    }
-
     @Import(name="type")
     private @Nullable Output<String> type;
 
@@ -62,11 +47,9 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
     private GetNactagsArgs() {}
 
     private GetNactagsArgs(GetNactagsArgs $) {
-        this.limit = $.limit;
         this.match = $.match;
         this.name = $.name;
         this.orgId = $.orgId;
-        this.page = $.page;
         this.type = $.type;
     }
 
@@ -86,15 +69,6 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetNactagsArgs defaults) {
             $ = new GetNactagsArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder limit(@Nullable Output<Integer> limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        public Builder limit(Integer limit) {
-            return limit(Output.of(limit));
         }
 
         public Builder match(@Nullable Output<String> match) {
@@ -122,15 +96,6 @@ public final class GetNactagsArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
-        }
-
-        public Builder page(@Nullable Output<Integer> page) {
-            $.page = page;
-            return this;
-        }
-
-        public Builder page(Integer page) {
-            return page(Output.of(page));
         }
 
         public Builder type(@Nullable Output<String> type) {

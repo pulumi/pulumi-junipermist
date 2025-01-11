@@ -17,6 +17,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// can be set to true to allow the override by usermac result
         /// </summary>
         public readonly bool AllowUsermacOverride;
+        /// <summary>
+        /// when the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
         /// <summary>
         /// if `type`==`egress_vlan_names`, list of egress vlans to return
@@ -26,9 +29,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// if `type`==`gbp_tag`
         /// </summary>
         public readonly int GbpTag;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organnization
+        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`, `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+        /// if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
         /// </summary>
         public readonly string Match;
         /// <summary>
@@ -37,9 +43,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   * `true`: means all values should be matched (i.e., match-all behavior)
         /// 
         /// 
-        /// Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`'
+        /// Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
         /// </summary>
         public readonly bool MatchAll;
+        /// <summary>
+        /// when the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string OrgId;
@@ -67,6 +76,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// enum: `egress_vlan_names`, `gbp_tag`, `match`, `radius_attrs`, `radius_group`, `radius_vendor_attrs`, `session_timeout`, `username_attr`, `vlan`
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// enum: `automatic`, `cn`, `dns`, `email`, `upn`
+        /// </summary>
         public readonly string UsernameAttr;
         /// <summary>
         /// if `type`==`match`

@@ -13,6 +13,7 @@ import com.pulumi.junipermist.site.inputs.SettingConfigPushPolicyArgs;
 import com.pulumi.junipermist.site.inputs.SettingCriticalUrlMonitoringArgs;
 import com.pulumi.junipermist.site.inputs.SettingEngagementArgs;
 import com.pulumi.junipermist.site.inputs.SettingGatewayMgmtArgs;
+import com.pulumi.junipermist.site.inputs.SettingJuniperSrxArgs;
 import com.pulumi.junipermist.site.inputs.SettingLedArgs;
 import com.pulumi.junipermist.site.inputs.SettingOccupancyArgs;
 import com.pulumi.junipermist.site.inputs.SettingProxyArgs;
@@ -162,20 +163,16 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-     * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+     * ranges for the same day
      * 
      */
     @Import(name="engagement")
     private @Nullable Output<SettingEngagementArgs> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-     * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+     * ranges for the same day
      * 
      */
     public Optional<Output<SettingEngagementArgs>> engagement() {
@@ -212,6 +209,13 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> gatewayUpdownThreshold() {
         return Optional.ofNullable(this.gatewayUpdownThreshold);
+    }
+
+    @Import(name="juniperSrx")
+    private @Nullable Output<SettingJuniperSrxArgs> juniperSrx;
+
+    public Optional<Output<SettingJuniperSrxArgs>> juniperSrx() {
+        return Optional.ofNullable(this.juniperSrx);
     }
 
     /**
@@ -437,9 +441,17 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.trackAnonymousDevices);
     }
 
+    /**
+     * AP Uplink port configuration
+     * 
+     */
     @Import(name="uplinkPortConfig")
     private @Nullable Output<SettingUplinkPortConfigArgs> uplinkPortConfig;
 
+    /**
+     * @return AP Uplink port configuration
+     * 
+     */
     public Optional<Output<SettingUplinkPortConfigArgs>> uplinkPortConfig() {
         return Optional.ofNullable(this.uplinkPortConfig);
     }
@@ -554,6 +566,7 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         this.engagement = $.engagement;
         this.gatewayMgmt = $.gatewayMgmt;
         this.gatewayUpdownThreshold = $.gatewayUpdownThreshold;
+        this.juniperSrx = $.juniperSrx;
         this.led = $.led;
         this.occupancy = $.occupancy;
         this.persistConfigOnDevice = $.persistConfigOnDevice;
@@ -761,10 +774,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-         * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-         * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-         * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+         * ranges for the same day
          * 
          * @return builder
          * 
@@ -775,10 +786,8 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engagement **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-         * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-         * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-         * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+         * @param engagement **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+         * ranges for the same day
          * 
          * @return builder
          * 
@@ -829,6 +838,15 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder gatewayUpdownThreshold(Integer gatewayUpdownThreshold) {
             return gatewayUpdownThreshold(Output.of(gatewayUpdownThreshold));
+        }
+
+        public Builder juniperSrx(@Nullable Output<SettingJuniperSrxArgs> juniperSrx) {
+            $.juniperSrx = juniperSrx;
+            return this;
+        }
+
+        public Builder juniperSrx(SettingJuniperSrxArgs juniperSrx) {
+            return juniperSrx(Output.of(juniperSrx));
         }
 
         /**
@@ -1147,11 +1165,23 @@ public final class SettingArgs extends com.pulumi.resources.ResourceArgs {
             return trackAnonymousDevices(Output.of(trackAnonymousDevices));
         }
 
+        /**
+         * @param uplinkPortConfig AP Uplink port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinkPortConfig(@Nullable Output<SettingUplinkPortConfigArgs> uplinkPortConfig) {
             $.uplinkPortConfig = uplinkPortConfig;
             return this;
         }
 
+        /**
+         * @param uplinkPortConfig AP Uplink port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinkPortConfig(SettingUplinkPortConfigArgs uplinkPortConfig) {
             return uplinkPortConfig(Output.of(uplinkPortConfig));
         }

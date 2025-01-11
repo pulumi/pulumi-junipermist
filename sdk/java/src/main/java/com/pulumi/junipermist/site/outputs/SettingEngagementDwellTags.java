@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingEngagementDwellTags {
+    /**
+     * @return Default to `301-14400`
+     * 
+     */
     private @Nullable String bounce;
+    /**
+     * @return Default to `14401-28800`
+     * 
+     */
     private @Nullable String engaged;
+    /**
+     * @return Default to `1-300`
+     * 
+     */
     private @Nullable String passerby;
+    /**
+     * @return Default to `28801-42000`
+     * 
+     */
     private @Nullable String stationed;
 
     private SettingEngagementDwellTags() {}
+    /**
+     * @return Default to `301-14400`
+     * 
+     */
     public Optional<String> bounce() {
         return Optional.ofNullable(this.bounce);
     }
+    /**
+     * @return Default to `14401-28800`
+     * 
+     */
     public Optional<String> engaged() {
         return Optional.ofNullable(this.engaged);
     }
+    /**
+     * @return Default to `1-300`
+     * 
+     */
     public Optional<String> passerby() {
         return Optional.ofNullable(this.passerby);
     }
+    /**
+     * @return Default to `28801-42000`
+     * 
+     */
     public Optional<String> stationed() {
         return Optional.ofNullable(this.stationed);
     }

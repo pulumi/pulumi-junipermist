@@ -72,7 +72,12 @@ def get_services(org_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicesResult:
     """
     This data source provides the list of WAN Assurance Services (Applications).
-    The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+
+    A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+    * the Service Policies (`mist_org_servicepolicy.services`)
+    * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+    * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+    * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
 
     ## Example Usage
 
@@ -96,7 +101,12 @@ def get_services_output(org_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicesResult]:
     """
     This data source provides the list of WAN Assurance Services (Applications).
-    The Services are used in the `service_policies` from the Gateway configuration and Gateway templates
+
+    A Service is used to define a Custom Application that can be used in the `service_policies`. These Services can be referenced by their name in
+    * the Service Policies (`mist_org_servicepolicy.services`)
+    * the Gateway configuration (`mist_device_gateway.service_policies.services`)
+    * the Gateway Templates (`mist_org_gatewaytemplate.service_policies.services`)
+    * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies.services`)
 
     ## Example Usage
 

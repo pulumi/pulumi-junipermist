@@ -17,6 +17,13 @@ import * as utilities from "../utilities";
  *
  * const inventory = junipermist.org.getInventory({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     mac: "485a0d000000",
+ *     model: "EX4100-F-12P",
+ *     serial: "F00000000000",
+ *     unassigned: false,
+ *     vc: true,
+ *     vcMac: "485a0d000001",
+ *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
  * });
  * ```
  */
@@ -122,6 +129,13 @@ export interface GetInventoryResult {
  *
  * const inventory = junipermist.org.getInventory({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     mac: "485a0d000000",
+ *     model: "EX4100-F-12P",
+ *     serial: "F00000000000",
+ *     unassigned: false,
+ *     vc: true,
+ *     vcMac: "485a0d000001",
+ *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
  * });
  * ```
  */

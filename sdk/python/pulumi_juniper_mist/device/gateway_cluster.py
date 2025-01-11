@@ -97,11 +97,11 @@ class GatewayCluster(pulumi.CustomResource):
                  site_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource can be used to form or delete a Gateway
-         Clusters. It can be used with two Gateways assigned to the same site.
-        Once the Cluster is formed, it can be create just like a Gateway with the `device.Gateway` resource:
+        This resource can be used to form or delete a Gateway Clusters.
+
+        A Gateway Cluster can be formed with two Gateways assigned to the same site. Once the Cluster is formed, it can be configured just like a Gateway with the `device.Gateway` resource:
         1. Claim the gateways and assign them to the same site with the `org.Inventory` resource
-        2. Form the Cluster with the `device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)
+        2. Form the Cluster with the `device.GatewayCluster` resource by providing the `site_id` and the MAC Addresses of two nodes (the first in the list will be the node0)
         3. Configure the Cluster with the `device.Gateway` resource
 
         Please check the [SRX Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/srx-high-availability-configuration.html)or the [SSR Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/ssr-high-availability-configuration.html) first to validate the cabling between the Gateways
@@ -147,11 +147,11 @@ class GatewayCluster(pulumi.CustomResource):
                  args: GatewayClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource can be used to form or delete a Gateway
-         Clusters. It can be used with two Gateways assigned to the same site.
-        Once the Cluster is formed, it can be create just like a Gateway with the `device.Gateway` resource:
+        This resource can be used to form or delete a Gateway Clusters.
+
+        A Gateway Cluster can be formed with two Gateways assigned to the same site. Once the Cluster is formed, it can be configured just like a Gateway with the `device.Gateway` resource:
         1. Claim the gateways and assign them to the same site with the `org.Inventory` resource
-        2. Form the Cluster with the `device.GatewayCluster` resource by providing the `site_id` and the two nodes MAC Addresses (the first in the list will be the node0)
+        2. Form the Cluster with the `device.GatewayCluster` resource by providing the `site_id` and the MAC Addresses of two nodes (the first in the list will be the node0)
         3. Configure the Cluster with the `device.Gateway` resource
 
         Please check the [SRX Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/srx-high-availability-configuration.html)or the [SSR Juniper Documentation](https://www.juniper.net/documentation/us/en/software/mist/mist-wan/topics/topic-map/ssr-high-availability-configuration.html) first to validate the cabling between the Gateways

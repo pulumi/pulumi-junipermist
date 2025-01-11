@@ -62,6 +62,7 @@ class AwaitableGetConstAlarmsResult(GetConstAlarmsResult):
 def get_const_alarms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstAlarmsResult:
     """
     This data source provides the list of  available Alarms.
+
     The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
 
     ## Example Usage
@@ -83,6 +84,7 @@ def get_const_alarms(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 def get_const_alarms_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstAlarmsResult]:
     """
     This data source provides the list of  available Alarms.
+
     The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
 
     ## Example Usage

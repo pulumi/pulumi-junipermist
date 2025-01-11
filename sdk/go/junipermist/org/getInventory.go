@@ -28,7 +28,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := org.LookupInventory(ctx, &org.LookupInventoryArgs{
-//				OrgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//				OrgId:      "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//				Mac:        pulumi.StringRef("485a0d000000"),
+//				Model:      pulumi.StringRef("EX4100-F-12P"),
+//				Serial:     pulumi.StringRef("F00000000000"),
+//				Unassigned: pulumi.BoolRef(false),
+//				Vc:         pulumi.BoolRef(true),
+//				VcMac:      pulumi.StringRef("485a0d000001"),
+//				SiteId:     pulumi.StringRef("4a422ae5-7ca0-4599-87a3-8e49aa63685f"),
 //			}, nil)
 //			if err != nil {
 //				return err

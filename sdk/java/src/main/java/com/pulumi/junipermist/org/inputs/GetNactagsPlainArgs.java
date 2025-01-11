@@ -5,7 +5,6 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,13 +14,6 @@ import javax.annotation.Nullable;
 public final class GetNactagsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetNactagsPlainArgs Empty = new GetNactagsPlainArgs();
-
-    @Import(name="limit")
-    private @Nullable Integer limit;
-
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
 
     @Import(name="match")
     private @Nullable String match;
@@ -44,13 +36,6 @@ public final class GetNactagsPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.orgId;
     }
 
-    @Import(name="page")
-    private @Nullable Integer page;
-
-    public Optional<Integer> page() {
-        return Optional.ofNullable(this.page);
-    }
-
     @Import(name="type")
     private @Nullable String type;
 
@@ -61,11 +46,9 @@ public final class GetNactagsPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetNactagsPlainArgs() {}
 
     private GetNactagsPlainArgs(GetNactagsPlainArgs $) {
-        this.limit = $.limit;
         this.match = $.match;
         this.name = $.name;
         this.orgId = $.orgId;
-        this.page = $.page;
         this.type = $.type;
     }
 
@@ -87,11 +70,6 @@ public final class GetNactagsPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetNactagsPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder limit(@Nullable Integer limit) {
-            $.limit = limit;
-            return this;
-        }
-
         public Builder match(@Nullable String match) {
             $.match = match;
             return this;
@@ -104,11 +82,6 @@ public final class GetNactagsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orgId(String orgId) {
             $.orgId = orgId;
-            return this;
-        }
-
-        public Builder page(@Nullable Integer page) {
-            $.page = page;
             return this;
         }
 

@@ -72,7 +72,10 @@ def get_idpprofiles(org_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIdpprofilesResult:
     """
     This data source provides the list of WAN Assurance IDP Profiles.
-    An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+
+    An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+
+    The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 
     ## Example Usage
 
@@ -96,7 +99,10 @@ def get_idpprofiles_output(org_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdpprofilesResult]:
     """
     This data source provides the list of WAN Assurance IDP Profiles.
-    An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system.It specifies how the idp system should detect and respond to potential security threats or attacks on a network.The profile includes rules and policies that determine which types of traffic or attacks should be monitored,what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
+
+    An IDP Profile is a configuration setting that defines the behavior and actions of an intrusion detection and prevention (IDP) system. It specifies how the idp system should detect and respond to potential security threats or attacks on a network.
+
+    The profile includes rules and policies that determine which types of traffic or attacks should be monitored, what actions should be taken when a threat is detected, and any exceptions or exclusions for specific destinations or attack types.
 
     ## Example Usage
 

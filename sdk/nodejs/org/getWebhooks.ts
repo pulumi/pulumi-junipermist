@@ -9,6 +9,10 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the list of Org Webhooks.
  *
+ * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+ * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+ * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -23,9 +27,7 @@ import * as utilities from "../utilities";
 export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getWebhooks:getWebhooks", {
-        "limit": args.limit,
         "orgId": args.orgId,
-        "page": args.page,
     }, opts);
 }
 
@@ -33,9 +35,7 @@ export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getWebhooks.
  */
 export interface GetWebhooksArgs {
-    limit?: number;
     orgId: string;
-    page?: number;
 }
 
 /**
@@ -46,13 +46,15 @@ export interface GetWebhooksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly limit?: number;
     readonly orgId: string;
     readonly orgWebhooks: outputs.org.GetWebhooksOrgWebhook[];
-    readonly page?: number;
 }
 /**
  * This data source provides the list of Org Webhooks.
+ *
+ * A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.\
+ * It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.\
+ * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
  *
  * ## Example Usage
  *
@@ -68,9 +70,7 @@ export interface GetWebhooksResult {
 export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getWebhooks:getWebhooks", {
-        "limit": args.limit,
         "orgId": args.orgId,
-        "page": args.page,
     }, opts);
 }
 
@@ -78,7 +78,5 @@ export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getWebhooks.
  */
 export interface GetWebhooksOutputArgs {
-    limit?: pulumi.Input<number>;
     orgId: pulumi.Input<string>;
-    page?: pulumi.Input<number>;
 }

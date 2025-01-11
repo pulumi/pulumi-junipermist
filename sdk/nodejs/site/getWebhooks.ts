@@ -8,12 +8,14 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the list of Site Webhooks.
+ *
+ * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
+ * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+ * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
  */
 export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:site/getWebhooks:getWebhooks", {
-        "limit": args.limit,
-        "page": args.page,
         "siteId": args.siteId,
     }, opts);
 }
@@ -22,8 +24,6 @@ export function getWebhooks(args: GetWebhooksArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getWebhooks.
  */
 export interface GetWebhooksArgs {
-    limit?: number;
-    page?: number;
     siteId: string;
 }
 
@@ -35,19 +35,19 @@ export interface GetWebhooksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly limit?: number;
-    readonly page?: number;
     readonly siteId: string;
     readonly siteWebhooks: outputs.site.GetWebhooksSiteWebhook[];
 }
 /**
  * This data source provides the list of Site Webhooks.
+ *
+ * A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
+ * It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+ * The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
  */
 export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebhooksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:site/getWebhooks:getWebhooks", {
-        "limit": args.limit,
-        "page": args.page,
         "siteId": args.siteId,
     }, opts);
 }
@@ -56,7 +56,5 @@ export function getWebhooksOutput(args: GetWebhooksOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getWebhooks.
  */
 export interface GetWebhooksOutputArgs {
-    limit?: pulumi.Input<number>;
-    page?: pulumi.Input<number>;
     siteId: pulumi.Input<string>;
 }

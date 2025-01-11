@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingEngagementDwellTagNames {
+    /**
+     * @return Default to `Visitor`
+     * 
+     */
     private @Nullable String bounce;
+    /**
+     * @return Default to `Associates`
+     * 
+     */
     private @Nullable String engaged;
+    /**
+     * @return Default to `Passerby`
+     * 
+     */
     private @Nullable String passerby;
+    /**
+     * @return Default to `Assets`
+     * 
+     */
     private @Nullable String stationed;
 
     private SettingEngagementDwellTagNames() {}
+    /**
+     * @return Default to `Visitor`
+     * 
+     */
     public Optional<String> bounce() {
         return Optional.ofNullable(this.bounce);
     }
+    /**
+     * @return Default to `Associates`
+     * 
+     */
     public Optional<String> engaged() {
         return Optional.ofNullable(this.engaged);
     }
+    /**
+     * @return Default to `Passerby`
+     * 
+     */
     public Optional<String> passerby() {
         return Optional.ofNullable(this.passerby);
     }
+    /**
+     * @return Default to `Assets`
+     * 
+     */
     public Optional<String> stationed() {
         return Optional.ofNullable(this.stationed);
     }

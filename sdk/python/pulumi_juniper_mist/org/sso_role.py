@@ -115,8 +115,9 @@ class SsoRole(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages Org SSO Roles for Admin Authantication.
-        SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.
-        These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.
+
+        SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\\
+        These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\\
         Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
 
         ## Import
@@ -140,8 +141,9 @@ class SsoRole(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages Org SSO Roles for Admin Authantication.
-        SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.
-        These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.
+
+        SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\\
+        These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\\
         Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
 
         ## Import

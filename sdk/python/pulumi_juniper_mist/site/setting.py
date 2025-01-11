@@ -33,6 +33,7 @@ class SettingArgs:
                  engagement: Optional[pulumi.Input['SettingEngagementArgs']] = None,
                  gateway_mgmt: Optional[pulumi.Input['SettingGatewayMgmtArgs']] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
+                 juniper_srx: Optional[pulumi.Input['SettingJuniperSrxArgs']] = None,
                  led: Optional[pulumi.Input['SettingLedArgs']] = None,
                  occupancy: Optional[pulumi.Input['SettingOccupancyArgs']] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
@@ -69,10 +70,8 @@ class SettingArgs:
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+               ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -92,6 +91,7 @@ class SettingArgs:
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
@@ -121,6 +121,8 @@ class SettingArgs:
             pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
         if gateway_updown_threshold is not None:
             pulumi.set(__self__, "gateway_updown_threshold", gateway_updown_threshold)
+        if juniper_srx is not None:
+            pulumi.set(__self__, "juniper_srx", juniper_srx)
         if led is not None:
             pulumi.set(__self__, "led", led)
         if occupancy is not None:
@@ -280,10 +282,8 @@ class SettingArgs:
     @pulumi.getter
     def engagement(self) -> Optional[pulumi.Input['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-        multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-        (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-        bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        ranges for the same day
         """
         return pulumi.get(self, "engagement")
 
@@ -315,6 +315,15 @@ class SettingArgs:
     @gateway_updown_threshold.setter
     def gateway_updown_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "gateway_updown_threshold", value)
+
+    @property
+    @pulumi.getter(name="juniperSrx")
+    def juniper_srx(self) -> Optional[pulumi.Input['SettingJuniperSrxArgs']]:
+        return pulumi.get(self, "juniper_srx")
+
+    @juniper_srx.setter
+    def juniper_srx(self, value: Optional[pulumi.Input['SettingJuniperSrxArgs']]):
+        pulumi.set(self, "juniper_srx", value)
 
     @property
     @pulumi.getter
@@ -503,6 +512,9 @@ class SettingArgs:
     @property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> Optional[pulumi.Input['SettingUplinkPortConfigArgs']]:
+        """
+        AP Uplink port configuration
+        """
         return pulumi.get(self, "uplink_port_config")
 
     @uplink_port_config.setter
@@ -612,6 +624,7 @@ class _SettingState:
                  engagement: Optional[pulumi.Input['SettingEngagementArgs']] = None,
                  gateway_mgmt: Optional[pulumi.Input['SettingGatewayMgmtArgs']] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
+                 juniper_srx: Optional[pulumi.Input['SettingJuniperSrxArgs']] = None,
                  led: Optional[pulumi.Input['SettingLedArgs']] = None,
                  occupancy: Optional[pulumi.Input['SettingOccupancyArgs']] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
@@ -651,10 +664,8 @@ class _SettingState:
         :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+               ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -674,6 +685,7 @@ class _SettingState:
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
@@ -704,6 +716,8 @@ class _SettingState:
             pulumi.set(__self__, "gateway_mgmt", gateway_mgmt)
         if gateway_updown_threshold is not None:
             pulumi.set(__self__, "gateway_updown_threshold", gateway_updown_threshold)
+        if juniper_srx is not None:
+            pulumi.set(__self__, "juniper_srx", juniper_srx)
         if led is not None:
             pulumi.set(__self__, "led", led)
         if occupancy is not None:
@@ -869,10 +883,8 @@ class _SettingState:
     @pulumi.getter
     def engagement(self) -> Optional[pulumi.Input['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-        multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-        (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-        bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        ranges for the same day
         """
         return pulumi.get(self, "engagement")
 
@@ -904,6 +916,15 @@ class _SettingState:
     @gateway_updown_threshold.setter
     def gateway_updown_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "gateway_updown_threshold", value)
+
+    @property
+    @pulumi.getter(name="juniperSrx")
+    def juniper_srx(self) -> Optional[pulumi.Input['SettingJuniperSrxArgs']]:
+        return pulumi.get(self, "juniper_srx")
+
+    @juniper_srx.setter
+    def juniper_srx(self, value: Optional[pulumi.Input['SettingJuniperSrxArgs']]):
+        pulumi.set(self, "juniper_srx", value)
 
     @property
     @pulumi.getter
@@ -1101,6 +1122,9 @@ class _SettingState:
     @property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> Optional[pulumi.Input['SettingUplinkPortConfigArgs']]:
+        """
+        AP Uplink port configuration
+        """
         return pulumi.get(self, "uplink_port_config")
 
     @uplink_port_config.setter
@@ -1229,6 +1253,7 @@ class Setting(pulumi.CustomResource):
                  engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
                  gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
+                 juniper_srx: Optional[pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
@@ -1258,6 +1283,7 @@ class Setting(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Site Settings.
+
         The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
@@ -1285,10 +1311,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+               ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -1308,6 +1332,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
@@ -1322,6 +1347,7 @@ class Setting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Site Settings.
+
         The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
@@ -1364,6 +1390,7 @@ class Setting(pulumi.CustomResource):
                  engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
                  gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
                  gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
+                 juniper_srx: Optional[pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
                  occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
                  persist_config_on_device: Optional[pulumi.Input[bool]] = None,
@@ -1410,6 +1437,7 @@ class Setting(pulumi.CustomResource):
             __props__.__dict__["engagement"] = engagement
             __props__.__dict__["gateway_mgmt"] = gateway_mgmt
             __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
+            __props__.__dict__["juniper_srx"] = juniper_srx
             __props__.__dict__["led"] = led
             __props__.__dict__["occupancy"] = occupancy
             __props__.__dict__["persist_config_on_device"] = persist_config_on_device
@@ -1463,6 +1491,7 @@ class Setting(pulumi.CustomResource):
             engagement: Optional[pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']]] = None,
             gateway_mgmt: Optional[pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']]] = None,
             gateway_updown_threshold: Optional[pulumi.Input[int]] = None,
+            juniper_srx: Optional[pulumi.Input[Union['SettingJuniperSrxArgs', 'SettingJuniperSrxArgsDict']]] = None,
             led: Optional[pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']]] = None,
             occupancy: Optional[pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']]] = None,
             persist_config_on_device: Optional[pulumi.Input[bool]] = None,
@@ -1507,10 +1536,8 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
         :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-               multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-               (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-               bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+               ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
         :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
@@ -1530,6 +1557,7 @@ class Setting(pulumi.CustomResource):
         :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
@@ -1552,6 +1580,7 @@ class Setting(pulumi.CustomResource):
         __props__.__dict__["engagement"] = engagement
         __props__.__dict__["gateway_mgmt"] = gateway_mgmt
         __props__.__dict__["gateway_updown_threshold"] = gateway_updown_threshold
+        __props__.__dict__["juniper_srx"] = juniper_srx
         __props__.__dict__["led"] = led
         __props__.__dict__["occupancy"] = occupancy
         __props__.__dict__["persist_config_on_device"] = persist_config_on_device
@@ -1654,10 +1683,8 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def engagement(self) -> pulumi.Output[Optional['outputs.SettingEngagement']]:
         """
-        **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-        multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-        (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-        bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        ranges for the same day
         """
         return pulumi.get(self, "engagement")
 
@@ -1677,6 +1704,11 @@ class Setting(pulumi.CustomResource):
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
+
+    @property
+    @pulumi.getter(name="juniperSrx")
+    def juniper_srx(self) -> pulumi.Output[Optional['outputs.SettingJuniperSrx']]:
+        return pulumi.get(self, "juniper_srx")
 
     @property
     @pulumi.getter
@@ -1806,6 +1838,9 @@ class Setting(pulumi.CustomResource):
     @property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Output[Optional['outputs.SettingUplinkPortConfig']]:
+        """
+        AP Uplink port configuration
+        """
         return pulumi.get(self, "uplink_port_config")
 
     @property

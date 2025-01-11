@@ -29651,6 +29651,23 @@ if not MYPY:
         """
         Required if `scope`==`sitegroup`
         """
+        views: NotRequired[pulumi.Input[str]]
+        """
+        Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+        You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+        Below are the list of supported UI views. Note that this is UI only feature.  
+
+          | UI View | Required Role | Description |
+          | --- | --- | --- |
+          | `reporting` | `read` | full access to all analytics tools |
+          | `marketing` | `read` | can view analytics and location maps |
+          | `super_observer` | `read` | can view all the organization except the subscription page |
+          | `location` | `write` | can view and manage location maps, can view analytics |
+          | `security` | `write` | can view and manage site labels, policies and security |
+          | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+          | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+          | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+        """
 elif False:
     SsoRolePrivilegeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -29660,12 +29677,27 @@ class SsoRolePrivilegeArgs:
                  role: pulumi.Input[str],
                  scope: pulumi.Input[str],
                  site_id: Optional[pulumi.Input[str]] = None,
-                 sitegroup_id: Optional[pulumi.Input[str]] = None):
+                 sitegroup_id: Optional[pulumi.Input[str]] = None,
+                 views: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] role: access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
         :param pulumi.Input[str] scope: enum: `org`, `site`, `sitegroup`
         :param pulumi.Input[str] site_id: Required if `scope`==`site`
         :param pulumi.Input[str] sitegroup_id: Required if `scope`==`sitegroup`
+        :param pulumi.Input[str] views: Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+               You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+               Below are the list of supported UI views. Note that this is UI only feature.  
+               
+                 | UI View | Required Role | Description |
+                 | --- | --- | --- |
+                 | `reporting` | `read` | full access to all analytics tools |
+                 | `marketing` | `read` | can view analytics and location maps |
+                 | `super_observer` | `read` | can view all the organization except the subscription page |
+                 | `location` | `write` | can view and manage location maps, can view analytics |
+                 | `security` | `write` | can view and manage site labels, policies and security |
+                 | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+                 | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+                 | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
         """
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "scope", scope)
@@ -29673,6 +29705,8 @@ class SsoRolePrivilegeArgs:
             pulumi.set(__self__, "site_id", site_id)
         if sitegroup_id is not None:
             pulumi.set(__self__, "sitegroup_id", sitegroup_id)
+        if views is not None:
+            pulumi.set(__self__, "views", views)
 
     @property
     @pulumi.getter
@@ -29721,6 +29755,31 @@ class SsoRolePrivilegeArgs:
     @sitegroup_id.setter
     def sitegroup_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sitegroup_id", value)
+
+    @property
+    @pulumi.getter
+    def views(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+        You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
+        Below are the list of supported UI views. Note that this is UI only feature.  
+
+          | UI View | Required Role | Description |
+          | --- | --- | --- |
+          | `reporting` | `read` | full access to all analytics tools |
+          | `marketing` | `read` | can view analytics and location maps |
+          | `super_observer` | `read` | can view all the organization except the subscription page |
+          | `location` | `write` | can view and manage location maps, can view analytics |
+          | `security` | `write` | can view and manage site labels, policies and security |
+          | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+          | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+          | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+        """
+        return pulumi.get(self, "views")
+
+    @views.setter
+    def views(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "views", value)
 
 
 if not MYPY:

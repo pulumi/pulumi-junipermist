@@ -12,6 +12,7 @@ import (
 )
 
 // This data source provides the of ConstCountries.
+//
 // This information can be used to define the Country in the RF templates (`org.Rftemplate`)
 //
 // ## Example Usage

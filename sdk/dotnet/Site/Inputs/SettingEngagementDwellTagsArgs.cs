@@ -12,15 +12,27 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingEngagementDwellTagsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default to `301-14400`
+        /// </summary>
         [Input("bounce")]
         public Input<string>? Bounce { get; set; }
 
+        /// <summary>
+        /// Default to `14401-28800`
+        /// </summary>
         [Input("engaged")]
         public Input<string>? Engaged { get; set; }
 
+        /// <summary>
+        /// Default to `1-300`
+        /// </summary>
         [Input("passerby")]
         public Input<string>? Passerby { get; set; }
 
+        /// <summary>
+        /// Default to `28801-42000`
+        /// </summary>
         [Input("stationed")]
         public Input<string>? Stationed { get; set; }
 

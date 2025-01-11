@@ -13,6 +13,7 @@ namespace Pulumi.JuniperMist.Org
     {
         /// <summary>
         /// This data source provides the SSO Metadata information.
+        /// 
         /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
         /// 
         /// 
@@ -40,6 +41,7 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the SSO Metadata information.
+        /// 
         /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
         /// 
         /// 
@@ -67,6 +69,7 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the SSO Metadata information.
+        /// 
         /// The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
         /// 
         /// 

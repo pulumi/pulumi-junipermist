@@ -191,6 +191,10 @@ __all__ = [
     'SettingGatewayMgmtProtectReArgsDict',
     'SettingGatewayMgmtProtectReCustomArgs',
     'SettingGatewayMgmtProtectReCustomArgsDict',
+    'SettingJuniperSrxArgs',
+    'SettingJuniperSrxArgsDict',
+    'SettingJuniperSrxGatewayArgs',
+    'SettingJuniperSrxGatewayArgsDict',
     'SettingLedArgs',
     'SettingLedArgsDict',
     'SettingOccupancyArgs',
@@ -7975,9 +7979,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         hours: NotRequired[pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgsDict']]
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-
-        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
 elif False:
     SettingConfigPushPolicyPushWindowArgsDict: TypeAlias = Mapping[str, Any]
@@ -7988,9 +7990,7 @@ class SettingConfigPushPolicyPushWindowArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hours: Optional[pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgs']] = None):
         """
-        :param pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgs'] hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-               
-               **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        :param pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgs'] hours: Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -8010,9 +8010,7 @@ class SettingConfigPushPolicyPushWindowArgs:
     @pulumi.getter
     def hours(self) -> Optional[pulumi.Input['SettingConfigPushPolicyPushWindowHoursArgs']]:
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-
-        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
         return pulumi.get(self, "hours")
 
@@ -8024,12 +8022,33 @@ class SettingConfigPushPolicyPushWindowArgs:
 if not MYPY:
     class SettingConfigPushPolicyPushWindowHoursArgsDict(TypedDict):
         fri: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         mon: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         sat: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         sun: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         thu: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         tue: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         wed: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
 elif False:
     SettingConfigPushPolicyPushWindowHoursArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8043,6 +8062,15 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
                  thu: Optional[pulumi.Input[str]] = None,
                  tue: Optional[pulumi.Input[str]] = None,
                  wed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fri: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] mon: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] sat: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] sun: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] thu: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] tue: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] wed: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         if fri is not None:
             pulumi.set(__self__, "fri", fri)
         if mon is not None:
@@ -8061,6 +8089,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def fri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "fri")
 
     @fri.setter
@@ -8070,6 +8101,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def mon(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "mon")
 
     @mon.setter
@@ -8079,6 +8113,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def sat(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "sat")
 
     @sat.setter
@@ -8088,6 +8125,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def sun(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "sun")
 
     @sun.setter
@@ -8097,6 +8137,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def thu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "thu")
 
     @thu.setter
@@ -8106,6 +8149,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def tue(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "tue")
 
     @tue.setter
@@ -8115,6 +8161,9 @@ class SettingConfigPushPolicyPushWindowHoursArgs:
     @property
     @pulumi.getter
     def wed(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "wed")
 
     @wed.setter
@@ -8197,15 +8246,16 @@ class SettingCriticalUrlMonitoringMonitorArgs:
 if not MYPY:
     class SettingEngagementArgsDict(TypedDict):
         dwell_tag_names: NotRequired[pulumi.Input['SettingEngagementDwellTagNamesArgsDict']]
+        """
+        name associated to each tag
+        """
         dwell_tags: NotRequired[pulumi.Input['SettingEngagementDwellTagsArgsDict']]
         """
-        add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+        add tags to visits within the duration (in seconds)
         """
         hours: NotRequired[pulumi.Input['SettingEngagementHoursArgsDict']]
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-
-        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
         max_dwell: NotRequired[pulumi.Input[int]]
         """
@@ -8227,10 +8277,9 @@ class SettingEngagementArgs:
                  max_dwell: Optional[pulumi.Input[int]] = None,
                  min_dwell: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['SettingEngagementDwellTagsArgs'] dwell_tags: add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
-        :param pulumi.Input['SettingEngagementHoursArgs'] hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-               
-               **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        :param pulumi.Input['SettingEngagementDwellTagNamesArgs'] dwell_tag_names: name associated to each tag
+        :param pulumi.Input['SettingEngagementDwellTagsArgs'] dwell_tags: add tags to visits within the duration (in seconds)
+        :param pulumi.Input['SettingEngagementHoursArgs'] hours: Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         :param pulumi.Input[int] max_dwell: max time, default is 43200(12h), max is 68400 (18h)
         :param pulumi.Input[int] min_dwell: min time
         """
@@ -8248,6 +8297,9 @@ class SettingEngagementArgs:
     @property
     @pulumi.getter(name="dwellTagNames")
     def dwell_tag_names(self) -> Optional[pulumi.Input['SettingEngagementDwellTagNamesArgs']]:
+        """
+        name associated to each tag
+        """
         return pulumi.get(self, "dwell_tag_names")
 
     @dwell_tag_names.setter
@@ -8258,7 +8310,7 @@ class SettingEngagementArgs:
     @pulumi.getter(name="dwellTags")
     def dwell_tags(self) -> Optional[pulumi.Input['SettingEngagementDwellTagsArgs']]:
         """
-        add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+        add tags to visits within the duration (in seconds)
         """
         return pulumi.get(self, "dwell_tags")
 
@@ -8270,9 +8322,7 @@ class SettingEngagementArgs:
     @pulumi.getter
     def hours(self) -> Optional[pulumi.Input['SettingEngagementHoursArgs']]:
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-
-        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
         return pulumi.get(self, "hours")
 
@@ -8308,9 +8358,21 @@ class SettingEngagementArgs:
 if not MYPY:
     class SettingEngagementDwellTagNamesArgsDict(TypedDict):
         bounce: NotRequired[pulumi.Input[str]]
+        """
+        Default to `Visitor`
+        """
         engaged: NotRequired[pulumi.Input[str]]
+        """
+        Default to `Associates`
+        """
         passerby: NotRequired[pulumi.Input[str]]
+        """
+        Default to `Passerby`
+        """
         stationed: NotRequired[pulumi.Input[str]]
+        """
+        Default to `Assets`
+        """
 elif False:
     SettingEngagementDwellTagNamesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8321,6 +8383,12 @@ class SettingEngagementDwellTagNamesArgs:
                  engaged: Optional[pulumi.Input[str]] = None,
                  passerby: Optional[pulumi.Input[str]] = None,
                  stationed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bounce: Default to `Visitor`
+        :param pulumi.Input[str] engaged: Default to `Associates`
+        :param pulumi.Input[str] passerby: Default to `Passerby`
+        :param pulumi.Input[str] stationed: Default to `Assets`
+        """
         if bounce is not None:
             pulumi.set(__self__, "bounce", bounce)
         if engaged is not None:
@@ -8333,6 +8401,9 @@ class SettingEngagementDwellTagNamesArgs:
     @property
     @pulumi.getter
     def bounce(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `Visitor`
+        """
         return pulumi.get(self, "bounce")
 
     @bounce.setter
@@ -8342,6 +8413,9 @@ class SettingEngagementDwellTagNamesArgs:
     @property
     @pulumi.getter
     def engaged(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `Associates`
+        """
         return pulumi.get(self, "engaged")
 
     @engaged.setter
@@ -8351,6 +8425,9 @@ class SettingEngagementDwellTagNamesArgs:
     @property
     @pulumi.getter
     def passerby(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `Passerby`
+        """
         return pulumi.get(self, "passerby")
 
     @passerby.setter
@@ -8360,6 +8437,9 @@ class SettingEngagementDwellTagNamesArgs:
     @property
     @pulumi.getter
     def stationed(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `Assets`
+        """
         return pulumi.get(self, "stationed")
 
     @stationed.setter
@@ -8370,9 +8450,21 @@ class SettingEngagementDwellTagNamesArgs:
 if not MYPY:
     class SettingEngagementDwellTagsArgsDict(TypedDict):
         bounce: NotRequired[pulumi.Input[str]]
+        """
+        Default to `301-14400`
+        """
         engaged: NotRequired[pulumi.Input[str]]
+        """
+        Default to `14401-28800`
+        """
         passerby: NotRequired[pulumi.Input[str]]
+        """
+        Default to `1-300`
+        """
         stationed: NotRequired[pulumi.Input[str]]
+        """
+        Default to `28801-42000`
+        """
 elif False:
     SettingEngagementDwellTagsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8383,6 +8475,12 @@ class SettingEngagementDwellTagsArgs:
                  engaged: Optional[pulumi.Input[str]] = None,
                  passerby: Optional[pulumi.Input[str]] = None,
                  stationed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bounce: Default to `301-14400`
+        :param pulumi.Input[str] engaged: Default to `14401-28800`
+        :param pulumi.Input[str] passerby: Default to `1-300`
+        :param pulumi.Input[str] stationed: Default to `28801-42000`
+        """
         if bounce is not None:
             pulumi.set(__self__, "bounce", bounce)
         if engaged is not None:
@@ -8395,6 +8493,9 @@ class SettingEngagementDwellTagsArgs:
     @property
     @pulumi.getter
     def bounce(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `301-14400`
+        """
         return pulumi.get(self, "bounce")
 
     @bounce.setter
@@ -8404,6 +8505,9 @@ class SettingEngagementDwellTagsArgs:
     @property
     @pulumi.getter
     def engaged(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `14401-28800`
+        """
         return pulumi.get(self, "engaged")
 
     @engaged.setter
@@ -8413,6 +8517,9 @@ class SettingEngagementDwellTagsArgs:
     @property
     @pulumi.getter
     def passerby(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `1-300`
+        """
         return pulumi.get(self, "passerby")
 
     @passerby.setter
@@ -8422,6 +8529,9 @@ class SettingEngagementDwellTagsArgs:
     @property
     @pulumi.getter
     def stationed(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default to `28801-42000`
+        """
         return pulumi.get(self, "stationed")
 
     @stationed.setter
@@ -8432,12 +8542,33 @@ class SettingEngagementDwellTagsArgs:
 if not MYPY:
     class SettingEngagementHoursArgsDict(TypedDict):
         fri: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         mon: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         sat: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         sun: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         thu: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         tue: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         wed: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
 elif False:
     SettingEngagementHoursArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -8451,6 +8582,15 @@ class SettingEngagementHoursArgs:
                  thu: Optional[pulumi.Input[str]] = None,
                  tue: Optional[pulumi.Input[str]] = None,
                  wed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fri: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] mon: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] sat: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] sun: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] thu: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] tue: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] wed: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         if fri is not None:
             pulumi.set(__self__, "fri", fri)
         if mon is not None:
@@ -8469,6 +8609,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def fri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "fri")
 
     @fri.setter
@@ -8478,6 +8621,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def mon(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "mon")
 
     @mon.setter
@@ -8487,6 +8633,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def sat(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "sat")
 
     @sat.setter
@@ -8496,6 +8645,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def sun(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "sun")
 
     @sun.setter
@@ -8505,6 +8657,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def thu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "thu")
 
     @thu.setter
@@ -8514,6 +8669,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def tue(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "tue")
 
     @tue.setter
@@ -8523,6 +8681,9 @@ class SettingEngagementHoursArgs:
     @property
     @pulumi.getter
     def wed(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "wed")
 
     @wed.setter
@@ -9195,6 +9356,78 @@ class SettingGatewayMgmtProtectReCustomArgs:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
+    class SettingJuniperSrxArgsDict(TypedDict):
+        gateways: NotRequired[pulumi.Input[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgsDict']]]]
+        send_mist_nac_user_info: NotRequired[pulumi.Input[bool]]
+elif False:
+    SettingJuniperSrxArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingJuniperSrxArgs:
+    def __init__(__self__, *,
+                 gateways: Optional[pulumi.Input[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgs']]]] = None,
+                 send_mist_nac_user_info: Optional[pulumi.Input[bool]] = None):
+        if gateways is not None:
+            pulumi.set(__self__, "gateways", gateways)
+        if send_mist_nac_user_info is not None:
+            pulumi.set(__self__, "send_mist_nac_user_info", send_mist_nac_user_info)
+
+    @property
+    @pulumi.getter
+    def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgs']]]]:
+        return pulumi.get(self, "gateways")
+
+    @gateways.setter
+    def gateways(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SettingJuniperSrxGatewayArgs']]]]):
+        pulumi.set(self, "gateways", value)
+
+    @property
+    @pulumi.getter(name="sendMistNacUserInfo")
+    def send_mist_nac_user_info(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "send_mist_nac_user_info")
+
+    @send_mist_nac_user_info.setter
+    def send_mist_nac_user_info(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_mist_nac_user_info", value)
+
+
+if not MYPY:
+    class SettingJuniperSrxGatewayArgsDict(TypedDict):
+        api_key: NotRequired[pulumi.Input[str]]
+        api_url: NotRequired[pulumi.Input[str]]
+elif False:
+    SettingJuniperSrxGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SettingJuniperSrxGatewayArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[str]] = None,
+                 api_url: Optional[pulumi.Input[str]] = None):
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if api_url is not None:
+            pulumi.set(__self__, "api_url", api_url)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter(name="apiUrl")
+    def api_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "api_url")
+
+    @api_url.setter
+    def api_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_url", value)
 
 
 if not MYPY:

@@ -17,6 +17,7 @@ import com.pulumi.junipermist.site.outputs.SettingConfigPushPolicy;
 import com.pulumi.junipermist.site.outputs.SettingCriticalUrlMonitoring;
 import com.pulumi.junipermist.site.outputs.SettingEngagement;
 import com.pulumi.junipermist.site.outputs.SettingGatewayMgmt;
+import com.pulumi.junipermist.site.outputs.SettingJuniperSrx;
 import com.pulumi.junipermist.site.outputs.SettingLed;
 import com.pulumi.junipermist.site.outputs.SettingOccupancy;
 import com.pulumi.junipermist.site.outputs.SettingProxy;
@@ -45,6 +46,7 @@ import javax.annotation.Nullable;
 
 /**
  * This resource manages the Site Settings.
+ * 
  * The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
  * 
  * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
@@ -235,20 +237,16 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.deviceUpdownThreshold;
     }
     /**
-     * **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-     * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+     * ranges for the same day
      * 
      */
     @Export(name="engagement", refs={SettingEngagement.class}, tree="[0]")
     private Output</* @Nullable */ SettingEngagement> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-     * multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-     * (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-     * bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+     * ranges for the same day
      * 
      */
     public Output<Optional<SettingEngagement>> engagement() {
@@ -283,6 +281,12 @@ public class Setting extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> gatewayUpdownThreshold() {
         return this.gatewayUpdownThreshold;
+    }
+    @Export(name="juniperSrx", refs={SettingJuniperSrx.class}, tree="[0]")
+    private Output</* @Nullable */ SettingJuniperSrx> juniperSrx;
+
+    public Output<Optional<SettingJuniperSrx>> juniperSrx() {
+        return Codegen.optional(this.juniperSrx);
     }
     /**
      * LED AP settings
@@ -490,9 +494,17 @@ public class Setting extends com.pulumi.resources.CustomResource {
     public Output<Boolean> trackAnonymousDevices() {
         return this.trackAnonymousDevices;
     }
+    /**
+     * AP Uplink port configuration
+     * 
+     */
     @Export(name="uplinkPortConfig", refs={SettingUplinkPortConfig.class}, tree="[0]")
     private Output</* @Nullable */ SettingUplinkPortConfig> uplinkPortConfig;
 
+    /**
+     * @return AP Uplink port configuration
+     * 
+     */
     public Output<Optional<SettingUplinkPortConfig>> uplinkPortConfig() {
         return Codegen.optional(this.uplinkPortConfig);
     }
