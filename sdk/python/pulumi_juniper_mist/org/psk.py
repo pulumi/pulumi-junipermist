@@ -559,6 +559,16 @@ class Psk(pulumi.CustomResource):
         """
         This data source provides the list of Org PSKs.
 
+        A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\\
+        It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\\
+        Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\\
+        Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
+
+        Mist supports three methods of Org PSKs lookup:
+        * local
+        * radius
+        * cloud
+
         ## Example Usage
 
         ```python
@@ -606,6 +616,16 @@ class Psk(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This data source provides the list of Org PSKs.
+
+        A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\\
+        It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\\
+        Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\\
+        Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
+
+        Mist supports three methods of Org PSKs lookup:
+        * local
+        * radius
+        * cloud
 
         ## Example Usage
 

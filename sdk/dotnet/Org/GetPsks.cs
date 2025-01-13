@@ -12,8 +12,12 @@ namespace Pulumi.JuniperMist.Org
     public static class GetPsks
     {
         /// <summary>
-        /// This data source provides the list of WAN Assurance Psks.
-        /// The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list Org Psks.
+        /// 
+        /// A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.  
+        /// It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.  
+        /// Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.  
+        /// Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
         /// 
         /// 
         /// ## Example Usage
@@ -29,7 +33,9 @@ namespace Pulumi.JuniperMist.Org
         ///     var psksVip = JuniperMist.Org.GetPsks.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Name = "psk_one",
         ///         Role = "vip",
+        ///         Ssid = "psk_ssid",
         ///     });
         /// 
         /// });
@@ -39,8 +45,12 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPsksResult>("junipermist:org/getPsks:getPsks", args ?? new GetPsksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of WAN Assurance Psks.
-        /// The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list Org Psks.
+        /// 
+        /// A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.  
+        /// It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.  
+        /// Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.  
+        /// Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
         /// 
         /// 
         /// ## Example Usage
@@ -56,7 +66,9 @@ namespace Pulumi.JuniperMist.Org
         ///     var psksVip = JuniperMist.Org.GetPsks.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Name = "psk_one",
         ///         Role = "vip",
+        ///         Ssid = "psk_ssid",
         ///     });
         /// 
         /// });
@@ -66,8 +78,12 @@ namespace Pulumi.JuniperMist.Org
             => global::Pulumi.Deployment.Instance.Invoke<GetPsksResult>("junipermist:org/getPsks:getPsks", args ?? new GetPsksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the list of WAN Assurance Psks.
-        /// The Psks are used in the `service_policies` from the Gateway configuration and Gateway templates
+        /// This data source provides the list Org Psks.
+        /// 
+        /// A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.  
+        /// It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.  
+        /// Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.  
+        /// Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
         /// 
         /// 
         /// ## Example Usage
@@ -83,7 +99,9 @@ namespace Pulumi.JuniperMist.Org
         ///     var psksVip = JuniperMist.Org.GetPsks.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Name = "psk_one",
         ///         Role = "vip",
+        ///         Ssid = "psk_ssid",
         ///     });
         /// 
         /// });
@@ -96,17 +114,11 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class GetPsksArgs : global::Pulumi.InvokeArgs
     {
-        [Input("limit")]
-        public int? Limit { get; set; }
-
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
-
-        [Input("page")]
-        public int? Page { get; set; }
 
         [Input("role")]
         public string? Role { get; set; }
@@ -122,17 +134,11 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class GetPsksInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("limit")]
-        public Input<int>? Limit { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
-
-        [Input("page")]
-        public Input<int>? Page { get; set; }
 
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -154,11 +160,9 @@ namespace Pulumi.JuniperMist.Org
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly int? Limit;
         public readonly string? Name;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetPsksOrgPskResult> OrgPsks;
-        public readonly int? Page;
         public readonly string? Role;
         public readonly string? Ssid;
 
@@ -166,26 +170,20 @@ namespace Pulumi.JuniperMist.Org
         private GetPsksResult(
             string id,
 
-            int? limit,
-
             string? name,
 
             string orgId,
 
             ImmutableArray<Outputs.GetPsksOrgPskResult> orgPsks,
 
-            int? page,
-
             string? role,
 
             string? ssid)
         {
             Id = id;
-            Limit = limit;
             Name = name;
             OrgId = orgId;
             OrgPsks = orgPsks;
-            Page = page;
             Role = role;
             Ssid = ssid;
         }

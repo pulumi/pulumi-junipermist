@@ -18,6 +18,10 @@ public final class GetPsksSitePsk {
      * 
      */
     private String adminSsoId;
+    /**
+     * @return when the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
     /**
      * @return email to send psk expiring notifications to
@@ -34,12 +38,20 @@ public final class GetPsksSitePsk {
      * 
      */
     private Integer expiryNotificationTime;
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     private String id;
     /**
      * @return if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
      * 
      */
     private String mac;
+    /**
+     * @return when the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String note;
@@ -86,6 +98,10 @@ public final class GetPsksSitePsk {
     public String adminSsoId() {
         return this.adminSsoId;
     }
+    /**
+     * @return when the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
@@ -110,6 +126,10 @@ public final class GetPsksSitePsk {
     public Integer expiryNotificationTime() {
         return this.expiryNotificationTime;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -120,6 +140,10 @@ public final class GetPsksSitePsk {
     public String mac() {
         return this.mac;
     }
+    /**
+     * @return when the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }

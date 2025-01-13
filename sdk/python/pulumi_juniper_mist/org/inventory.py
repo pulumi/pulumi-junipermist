@@ -162,15 +162,13 @@ class Inventory(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Org Inventory.
+
         It can be used to claim, unclaim, assign, unassign, reassign devices.
 
         ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
 
-        > **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
-
-        The `devices` attribute will generate inconsistent result after apply when
-        * a device other than the last one is removed from the list
-        * a device is added somewhere other than the end of the list
+        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.\\
+        The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
         ## Import
 
@@ -199,15 +197,13 @@ class Inventory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org Inventory.
+
         It can be used to claim, unclaim, assign, unassign, reassign devices.
 
         ->Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
 
-        > **WARNING** The `devices` attribute (list) is deprecated and is replaced by the `inventory` attribute (map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.
-
-        The `devices` attribute will generate inconsistent result after apply when
-        * a device other than the last one is removed from the list
-        * a device is added somewhere other than the end of the list
+        !> The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate "inconsistent result after apply" errors. If this happen, is is required to force a refresh of the state to synchronise the new list.\\
+        The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
 
         ## Import
 

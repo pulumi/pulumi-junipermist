@@ -165,6 +165,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/nacEndpoint",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/nacEndpoint:NacEndpoint": "NacEndpoint"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/nacidp",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {

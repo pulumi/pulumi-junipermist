@@ -28,6 +28,12 @@ namespace Pulumi.JuniperMist.Device
         ///     var gatewayStats = JuniperMist.Device.GetGatewayStats.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "e8a245000000",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        ///         Status = "connected",
+        ///         Duration = "1d",
+        ///         Start = 1736031600,
+        ///         End = 1736175934,
         ///     });
         /// 
         /// });
@@ -53,6 +59,12 @@ namespace Pulumi.JuniperMist.Device
         ///     var gatewayStats = JuniperMist.Device.GetGatewayStats.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "e8a245000000",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        ///         Status = "connected",
+        ///         Duration = "1d",
+        ///         Start = 1736031600,
+        ///         End = 1736175934,
         ///     });
         /// 
         /// });
@@ -78,6 +90,12 @@ namespace Pulumi.JuniperMist.Device
         ///     var gatewayStats = JuniperMist.Device.GetGatewayStats.Invoke(new()
         ///     {
         ///         OrgId = "15fca2ac-b1a6-47cc-9953-cc6906281550",
+        ///         Mac = "e8a245000000",
+        ///         SiteId = "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        ///         Status = "connected",
+        ///         Duration = "1d",
+        ///         Start = 1736031600,
+        ///         End = 1736175934,
         ///     });
         /// 
         /// });

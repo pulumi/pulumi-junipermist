@@ -13,15 +13,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingEngagement
     {
+        /// <summary>
+        /// name associated to each tag
+        /// </summary>
         public readonly Outputs.SettingEngagementDwellTagNames? DwellTagNames;
         /// <summary>
-        /// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+        /// add tags to visits within the duration (in seconds)
         /// </summary>
         public readonly Outputs.SettingEngagementDwellTags? DwellTags;
         /// <summary>
-        /// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-        /// 
-        /// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         /// </summary>
         public readonly Outputs.SettingEngagementHours? Hours;
         /// <summary>

@@ -13,7 +13,8 @@ import (
 )
 
 // This resource manages the Org Settings.
-// The Org Settings can be used to customize the Org configuration
+//
+// # The Org Settings can be used to customize the Org configuration
 //
 // ## Import
 //

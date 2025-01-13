@@ -939,6 +939,7 @@ class Setting(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Org Settings.
+
         The Org Settings can be used to customize the Org configuration
 
         ## Import
@@ -980,6 +981,7 @@ class Setting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org Settings.
+
         The Org Settings can be used to customize the Org configuration
 
         ## Import

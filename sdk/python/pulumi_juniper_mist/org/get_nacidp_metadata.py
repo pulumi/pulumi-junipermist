@@ -108,6 +108,7 @@ def get_nacidp_metadata(nacidp_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNacidpMetadataResult:
     """
     This data source provides the NAC IDP Metadata information.
+
     The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
 
     ## Example Usage
@@ -139,6 +140,7 @@ def get_nacidp_metadata_output(nacidp_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacidpMetadataResult]:
     """
     This data source provides the NAC IDP Metadata information.
+
     The provided information (`entity_id`, `acs_url`, `logout_url` and `metadata`) are the informationrequired to configure the IDP
 
     ## Example Usage

@@ -12,7 +12,8 @@ import (
 )
 
 // This data source provides the of ConstTrafficTypes.
-// This information can be used to define the Country in the RF templates (`org.Rftemplate`)
+//
+// The Traffic Type values can be used to define the `trafficType` attribute in the `org.Service` resource.
 //
 // ## Example Usage
 //

@@ -12,19 +12,20 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingEngagementGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// name associated to each tag
+        /// </summary>
         [Input("dwellTagNames")]
         public Input<Inputs.SettingEngagementDwellTagNamesGetArgs>? DwellTagNames { get; set; }
 
         /// <summary>
-        /// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+        /// add tags to visits within the duration (in seconds)
         /// </summary>
         [Input("dwellTags")]
         public Input<Inputs.SettingEngagementDwellTagsGetArgs>? DwellTags { get; set; }
 
         /// <summary>
-        /// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-        /// 
-        /// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+        /// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         /// </summary>
         [Input("hours")]
         public Input<Inputs.SettingEngagementHoursGetArgs>? Hours { get; set; }

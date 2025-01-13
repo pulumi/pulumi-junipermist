@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This manages the RF Templates.
+ * This resource manages the RF Templates.
+ *
  * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
  *
  * ## Import

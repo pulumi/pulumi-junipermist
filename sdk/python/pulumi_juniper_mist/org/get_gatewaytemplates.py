@@ -72,6 +72,7 @@ def get_gatewaytemplates(org_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewaytemplatesResult:
     """
     This data source provides the list of Gateway Templates.
+
     A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
 
     ## Example Usage
@@ -96,6 +97,7 @@ def get_gatewaytemplates_output(org_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaytemplatesResult]:
     """
     This data source provides the list of Gateway Templates.
+
     A Gateway template can be used to define generic gateway configuration at the org level andbe applied to one or multiple Sites. It works like a blueprint of the network of the site.
 
     ## Example Usage

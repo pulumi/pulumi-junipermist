@@ -17,6 +17,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// sso id for psk created from psk portal
         /// </summary>
         public readonly string AdminSsoId;
+        /// <summary>
+        /// when the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
         /// <summary>
         /// email to send psk expiring notifications to
@@ -30,6 +33,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
         /// </summary>
         public readonly int ExpiryNotificationTime;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organnization
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
@@ -43,6 +49,9 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// For Org PSK Only. Max concurrent users for this PSK key. Default is 0 (unlimited)
         /// </summary>
         public readonly int MaxUsage;
+        /// <summary>
+        /// when the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string Note;

@@ -7,8 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the list of WAN Assurance Psks.
- * The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This data source provides the list Org Psks.
+ *
+ * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+ * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+ * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+ * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
  *
  * ## Example Usage
  *
@@ -18,17 +22,17 @@ import * as utilities from "../utilities";
  *
  * const psksVip = junipermist.org.getPsks({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     name: "psk_one",
  *     role: "vip",
+ *     ssid: "psk_ssid",
  * });
  * ```
  */
 export function getPsks(args: GetPsksArgs, opts?: pulumi.InvokeOptions): Promise<GetPsksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("junipermist:org/getPsks:getPsks", {
-        "limit": args.limit,
         "name": args.name,
         "orgId": args.orgId,
-        "page": args.page,
         "role": args.role,
         "ssid": args.ssid,
     }, opts);
@@ -38,10 +42,8 @@ export function getPsks(args: GetPsksArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getPsks.
  */
 export interface GetPsksArgs {
-    limit?: number;
     name?: string;
     orgId: string;
-    page?: number;
     role?: string;
     ssid?: string;
 }
@@ -54,17 +56,19 @@ export interface GetPsksResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly limit?: number;
     readonly name?: string;
     readonly orgId: string;
     readonly orgPsks: outputs.org.GetPsksOrgPsk[];
-    readonly page?: number;
     readonly role?: string;
     readonly ssid?: string;
 }
 /**
- * This data source provides the list of WAN Assurance Psks.
- * The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ * This data source provides the list Org Psks.
+ *
+ * A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+ * It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+ * Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+ * Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
  *
  * ## Example Usage
  *
@@ -74,17 +78,17 @@ export interface GetPsksResult {
  *
  * const psksVip = junipermist.org.getPsks({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     name: "psk_one",
  *     role: "vip",
+ *     ssid: "psk_ssid",
  * });
  * ```
  */
 export function getPsksOutput(args: GetPsksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPsksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("junipermist:org/getPsks:getPsks", {
-        "limit": args.limit,
         "name": args.name,
         "orgId": args.orgId,
-        "page": args.page,
         "role": args.role,
         "ssid": args.ssid,
     }, opts);
@@ -94,10 +98,8 @@ export function getPsksOutput(args: GetPsksOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getPsks.
  */
 export interface GetPsksOutputArgs {
-    limit?: pulumi.Input<number>;
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
-    page?: pulumi.Input<number>;
     role?: pulumi.Input<string>;
     ssid?: pulumi.Input<string>;
 }

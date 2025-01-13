@@ -13,17 +13,25 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class GetWebhooksSiteWebhookResult
     {
+        /// <summary>
+        /// when the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
         /// <summary>
         /// whether webhook is enabled
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// if `type`=`http-post`, additional custom HTTP headers to add
-        /// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public readonly ImmutableDictionary<string, string> Headers;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organnization
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// when the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         /// <summary>
         /// name of the webhook
@@ -64,12 +72,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string Secret;
         public readonly string SiteId;
         /// <summary>
-        /// required if `type`=`splunk`
-        /// If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        /// required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
         /// </summary>
         public readonly string SplunkToken;
         /// <summary>
-        /// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+        /// List of supported webhook topics available with the API Call List Webhook Topics
         /// </summary>
         public readonly ImmutableArray<string> Topics;
         /// <summary>

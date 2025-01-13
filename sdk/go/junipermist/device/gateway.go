@@ -13,6 +13,7 @@ import (
 )
 
 // This resource manages the Gateway configuration.
+//
 // It can be used to define specific configuration at the device level or to override Org Gateway template settings.
 //
 // > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the gateway

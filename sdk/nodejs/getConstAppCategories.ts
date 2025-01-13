@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides the of ConstAppCategories.
+ *
  * This information can be used as `appCategories` in the `junipermist.org.Service` resource
  *
  * ## Example Usage
@@ -37,6 +38,7 @@ export interface GetConstAppCategoriesResult {
 }
 /**
  * This data source provides the of ConstAppCategories.
+ *
  * This information can be used as `appCategories` in the `junipermist.org.Service` resource
  *
  * ## Example Usage

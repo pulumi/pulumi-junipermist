@@ -62,6 +62,7 @@ class AwaitableGetConstAppSubCategoriesResult(GetConstAppSubCategoriesResult):
 def get_const_app_sub_categories(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstAppSubCategoriesResult:
     """
     This data source provides the of ConstAppSubCategories.
+
     This information can be used as `app_subcategories` in the `org.Service` resource
 
     ## Example Usage
@@ -83,6 +84,7 @@ def get_const_app_sub_categories(opts: Optional[pulumi.InvokeOptions] = None) ->
 def get_const_app_sub_categories_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstAppSubCategoriesResult]:
     """
     This data source provides the of ConstAppSubCategories.
+
     This information can be used as `app_subcategories` in the `org.Service` resource
 
     ## Example Usage

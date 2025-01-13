@@ -89,7 +89,9 @@ class Sitegroup(pulumi.CustomResource):
                  __props__=None):
         """
         This resource managed the Org Site Groups (sitegroups).
-        A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+
+        A site group is a feature that allows admins to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\\
+        Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
 
         ## Example Usage
 
@@ -123,7 +125,9 @@ class Sitegroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource managed the Org Site Groups (sitegroups).
-        A site group is a feature that allows users to group multiple sites together based on regions, functions, or other parameters for efficient management of devices. Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
+
+        A site group is a feature that allows admins to group multiple sites together based on regions, functions, or other parameters for efficient management of devices.\\
+        Sites can exist in multiple groups simultaneously, and site groups can be used to ensure consistent settings, manage administrator access, and apply specific templates to groups of sites.
 
         ## Example Usage
 

@@ -6,7 +6,6 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,13 +15,6 @@ import javax.annotation.Nullable;
 public final class GetPsksArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPsksArgs Empty = new GetPsksArgs();
-
-    @Import(name="limit")
-    private @Nullable Output<Integer> limit;
-
-    public Optional<Output<Integer>> limit() {
-        return Optional.ofNullable(this.limit);
-    }
 
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -36,13 +28,6 @@ public final class GetPsksArgs extends com.pulumi.resources.InvokeArgs {
 
     public Output<String> orgId() {
         return this.orgId;
-    }
-
-    @Import(name="page")
-    private @Nullable Output<Integer> page;
-
-    public Optional<Output<Integer>> page() {
-        return Optional.ofNullable(this.page);
     }
 
     @Import(name="role")
@@ -62,10 +47,8 @@ public final class GetPsksArgs extends com.pulumi.resources.InvokeArgs {
     private GetPsksArgs() {}
 
     private GetPsksArgs(GetPsksArgs $) {
-        this.limit = $.limit;
         this.name = $.name;
         this.orgId = $.orgId;
-        this.page = $.page;
         this.role = $.role;
         this.ssid = $.ssid;
     }
@@ -88,15 +71,6 @@ public final class GetPsksArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetPsksArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder limit(@Nullable Output<Integer> limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        public Builder limit(Integer limit) {
-            return limit(Output.of(limit));
-        }
-
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -113,15 +87,6 @@ public final class GetPsksArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
-        }
-
-        public Builder page(@Nullable Output<Integer> page) {
-            $.page = page;
-            return this;
-        }
-
-        public Builder page(Integer page) {
-            return page(Output.of(page));
         }
 
         public Builder role(@Nullable Output<String> role) {

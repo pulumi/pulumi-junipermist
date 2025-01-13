@@ -9,6 +9,7 @@ from .base import *
 from .evpn_topology import *
 from .get_psks import *
 from .get_webhooks import *
+from .get_wlans import *
 from .networktemplate import *
 from .psk import *
 from .setting import *

@@ -13,7 +13,8 @@ namespace Pulumi.JuniperMist
     {
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.
-        /// This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+        /// 
+        /// The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
         /// 
         /// 
         /// ## Example Usage
@@ -36,7 +37,8 @@ namespace Pulumi.JuniperMist
 
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.
-        /// This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+        /// 
+        /// The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
         /// 
         /// 
         /// ## Example Usage
@@ -59,7 +61,8 @@ namespace Pulumi.JuniperMist
 
         /// <summary>
         /// This data source provides the of ConstTrafficTypes.
-        /// This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+        /// 
+        /// The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
         /// 
         /// 
         /// ## Example Usage

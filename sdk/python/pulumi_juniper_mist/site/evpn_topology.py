@@ -201,6 +201,7 @@ class EvpnTopology(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Site Evpn Topologys.
+
         EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
 
         > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.
@@ -282,6 +283,7 @@ class EvpnTopology(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Site Evpn Topologys.
+
         EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
 
         > To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.

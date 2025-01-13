@@ -19,6 +19,10 @@ public final class GetNactagsOrgNactag {
      * 
      */
     private Boolean allowUsermacOverride;
+    /**
+     * @return when the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
     /**
      * @return if `type`==`egress_vlan_names`, list of egress vlans to return
@@ -30,9 +34,13 @@ public final class GetNactagsOrgNactag {
      * 
      */
     private Integer gbpTag;
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     private String id;
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`, `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
      * 
      */
     private String match;
@@ -41,10 +49,14 @@ public final class GetNactagsOrgNactag {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`&#39;
+     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
     private Boolean matchAll;
+    /**
+     * @return when the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     private String name;
     private String orgId;
@@ -77,6 +89,10 @@ public final class GetNactagsOrgNactag {
      * 
      */
     private String type;
+    /**
+     * @return enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * 
+     */
     private String usernameAttr;
     /**
      * @return if `type`==`match`
@@ -97,6 +113,10 @@ public final class GetNactagsOrgNactag {
     public Boolean allowUsermacOverride() {
         return this.allowUsermacOverride;
     }
+    /**
+     * @return when the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
@@ -114,11 +134,15 @@ public final class GetNactagsOrgNactag {
     public Integer gbpTag() {
         return this.gbpTag;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public String id() {
         return this.id;
     }
     /**
-     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `client_mac`, `idp_role`, `mdm_status`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
+     * @return if `type`==`match`. enum: `cert_cn`, `cert_issuer`, `cert_san`, `cert_serial`, `cert_sub`, `cert_template`, `client_mac`, `idp_role`, `ingress_vlan`, `mdm_status`, `nas_ip`, `radius_group`, `realm`, `ssid`, `user_name`, `usermac_label`
      * 
      */
     public String match() {
@@ -129,12 +153,16 @@ public final class GetNactagsOrgNactag {
      *   * `false`: means it is sufficient to match any of the values (i.e., match-any behavior)
      *   * `true`: means all values should be matched (i.e., match-all behavior)
      * 
-     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`&#39;
+     * Currently it makes sense to set this field to `true` only if the `match`==`idp_role` or `match`==`usermac_label`
      * 
      */
     public Boolean matchAll() {
         return this.matchAll;
     }
+    /**
+     * @return when the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
@@ -183,6 +211,10 @@ public final class GetNactagsOrgNactag {
     public String type() {
         return this.type;
     }
+    /**
+     * @return enum: `automatic`, `cn`, `dns`, `email`, `upn`
+     * 
+     */
     public String usernameAttr() {
         return this.usernameAttr;
     }

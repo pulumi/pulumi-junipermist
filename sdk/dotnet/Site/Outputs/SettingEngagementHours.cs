@@ -13,12 +13,33 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingEngagementHours
     {
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Fri;
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Mon;
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Sat;
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Sun;
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Thu;
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Tue;
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         public readonly string? Wed;
 
         [OutputConstructor]

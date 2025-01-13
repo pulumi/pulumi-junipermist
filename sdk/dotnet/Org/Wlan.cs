@@ -11,6 +11,7 @@ namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
     /// This resource manages the Org Wlans.
+    /// 
     /// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
     /// 
     /// ## Example Usage

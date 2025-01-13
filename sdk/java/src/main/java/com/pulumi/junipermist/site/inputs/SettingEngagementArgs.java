@@ -18,22 +18,30 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
 
     public static final SettingEngagementArgs Empty = new SettingEngagementArgs();
 
+    /**
+     * name associated to each tag
+     * 
+     */
     @Import(name="dwellTagNames")
     private @Nullable Output<SettingEngagementDwellTagNamesArgs> dwellTagNames;
 
+    /**
+     * @return name associated to each tag
+     * 
+     */
     public Optional<Output<SettingEngagementDwellTagNamesArgs>> dwellTagNames() {
         return Optional.ofNullable(this.dwellTagNames);
     }
 
     /**
-     * add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+     * add tags to visits within the duration (in seconds)
      * 
      */
     @Import(name="dwellTags")
     private @Nullable Output<SettingEngagementDwellTagsArgs> dwellTags;
 
     /**
-     * @return add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+     * @return add tags to visits within the duration (in seconds)
      * 
      */
     public Optional<Output<SettingEngagementDwellTagsArgs>> dwellTags() {
@@ -41,18 +49,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     @Import(name="hours")
     private @Nullable Output<SettingEngagementHoursArgs> hours;
 
     /**
-     * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     public Optional<Output<SettingEngagementHoursArgs>> hours() {
@@ -117,17 +121,29 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
             $ = new SettingEngagementArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dwellTagNames name associated to each tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder dwellTagNames(@Nullable Output<SettingEngagementDwellTagNamesArgs> dwellTagNames) {
             $.dwellTagNames = dwellTagNames;
             return this;
         }
 
+        /**
+         * @param dwellTagNames name associated to each tag
+         * 
+         * @return builder
+         * 
+         */
         public Builder dwellTagNames(SettingEngagementDwellTagNamesArgs dwellTagNames) {
             return dwellTagNames(Output.of(dwellTagNames));
         }
 
         /**
-         * @param dwellTags add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+         * @param dwellTags add tags to visits within the duration (in seconds)
          * 
          * @return builder
          * 
@@ -138,7 +154,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTags add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+         * @param dwellTags add tags to visits within the duration (in seconds)
          * 
          * @return builder
          * 
@@ -148,9 +164,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hours hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-         * 
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          * 
          * @return builder
          * 
@@ -161,9 +175,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param hours hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-         * 
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          * 
          * @return builder
          * 

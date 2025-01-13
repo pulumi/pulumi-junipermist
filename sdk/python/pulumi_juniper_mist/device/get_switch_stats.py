@@ -174,7 +174,15 @@ def get_switch_stats(duration: Optional[str] = None,
     import pulumi
     import pulumi_junipermist as junipermist
 
-    switch_stats = junipermist.device.get_switch_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    switch_stats = junipermist.device.get_switch_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
+        mac="485a0d000000",
+        site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        status="connected",
+        evpn_unused="true",
+        evpntopo_id="92984e2f-94db-4cd8-9763-9cf83fbd079e",
+        duration="1d",
+        start=1736031600,
+        end=1736175934)
     ```
 
 
@@ -228,7 +236,15 @@ def get_switch_stats_output(duration: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi
     import pulumi_junipermist as junipermist
 
-    switch_stats = junipermist.device.get_switch_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550")
+    switch_stats = junipermist.device.get_switch_stats(org_id="15fca2ac-b1a6-47cc-9953-cc6906281550",
+        mac="485a0d000000",
+        site_id="4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+        status="connected",
+        evpn_unused="true",
+        evpntopo_id="92984e2f-94db-4cd8-9763-9cf83fbd079e",
+        duration="1d",
+        start=1736031600,
+        end=1736175934)
     ```
 
 

@@ -11,6 +11,7 @@ namespace Pulumi.JuniperMist.Site
 {
     /// <summary>
     /// This resource manages the Site Settings.
+    /// 
     /// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
     /// 
     /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
@@ -81,10 +82,8 @@ namespace Pulumi.JuniperMist.Site
         public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-        /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-        /// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-        /// bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        /// ranges for the same day
         /// </summary>
         [Output("engagement")]
         public Output<Outputs.SettingEngagement?> Engagement { get; private set; } = null!;
@@ -101,6 +100,9 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Output("gatewayUpdownThreshold")]
         public Output<int> GatewayUpdownThreshold { get; private set; } = null!;
+
+        [Output("juniperSrx")]
+        public Output<Outputs.SettingJuniperSrx?> JuniperSrx { get; private set; } = null!;
 
         /// <summary>
         /// LED AP settings
@@ -193,6 +195,9 @@ namespace Pulumi.JuniperMist.Site
         [Output("trackAnonymousDevices")]
         public Output<bool> TrackAnonymousDevices { get; private set; } = null!;
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Output("uplinkPortConfig")]
         public Output<Outputs.SettingUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
@@ -336,10 +341,8 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-        /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-        /// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-        /// bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        /// ranges for the same day
         /// </summary>
         [Input("engagement")]
         public Input<Inputs.SettingEngagementArgs>? Engagement { get; set; }
@@ -356,6 +359,9 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
+
+        [Input("juniperSrx")]
+        public Input<Inputs.SettingJuniperSrxArgs>? JuniperSrx { get; set; }
 
         /// <summary>
         /// LED AP settings
@@ -454,6 +460,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("trackAnonymousDevices")]
         public Input<bool>? TrackAnonymousDevices { get; set; }
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigArgs>? UplinkPortConfig { get; set; }
 
@@ -567,10 +576,8 @@ namespace Pulumi.JuniperMist.Site
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-        /// multiple ranges for the same day **Note**: default values for `dwell_tags`: passerby (1,300) bounce (301, 14400) engaged
-        /// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwell_tag_names`: passerby = “Passerby”,
-        /// bounce = “Visitor”, engaged = “Associates”, stationed = “Assets”
+        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        /// ranges for the same day
         /// </summary>
         [Input("engagement")]
         public Input<Inputs.SettingEngagementGetArgs>? Engagement { get; set; }
@@ -587,6 +594,9 @@ namespace Pulumi.JuniperMist.Site
         /// </summary>
         [Input("gatewayUpdownThreshold")]
         public Input<int>? GatewayUpdownThreshold { get; set; }
+
+        [Input("juniperSrx")]
+        public Input<Inputs.SettingJuniperSrxGetArgs>? JuniperSrx { get; set; }
 
         /// <summary>
         /// LED AP settings
@@ -685,6 +695,9 @@ namespace Pulumi.JuniperMist.Site
         [Input("trackAnonymousDevices")]
         public Input<bool>? TrackAnonymousDevices { get; set; }
 
+        /// <summary>
+        /// AP Uplink port configuration
+        /// </summary>
         [Input("uplinkPortConfig")]
         public Input<Inputs.SettingUplinkPortConfigGetArgs>? UplinkPortConfig { get; set; }
 

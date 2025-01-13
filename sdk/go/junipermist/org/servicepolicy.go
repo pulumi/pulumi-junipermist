@@ -13,7 +13,12 @@ import (
 )
 
 // This resource manages WAN Assurance Service Policies (Application Policiess).
-// The Service Policies are used in the `servicepolicyPolicies` from the Gateway configuration and Gateway templates.They can be used to manage common policies betweeen multiples configurations
+//
+// The Service Policies can be used in the `servicePolicies` object by referencing the Service Policy ID as the `servicepolicyId` in:
+//   - the Gateway configuration (`mist_device_gateway.service_policies`)
+//   - the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
+//   - the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
+//     They can be used to manage common policies betweeen multiples configurations
 //
 // ## Import
 //

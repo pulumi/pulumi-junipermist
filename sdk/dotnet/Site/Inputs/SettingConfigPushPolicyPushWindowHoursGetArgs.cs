@@ -12,24 +12,45 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class SettingConfigPushPolicyPushWindowHoursGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("fri")]
         public Input<string>? Fri { get; set; }
 
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("mon")]
         public Input<string>? Mon { get; set; }
 
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("sat")]
         public Input<string>? Sat { get; set; }
 
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("sun")]
         public Input<string>? Sun { get; set; }
 
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("thu")]
         public Input<string>? Thu { get; set; }
 
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("tue")]
         public Input<string>? Tue { get; set; }
 
+        /// <summary>
+        /// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        /// </summary>
         [Input("wed")]
         public Input<string>? Wed { get; set; }
 
