@@ -27,16 +27,10 @@ class GetWebhooksResult:
     """
     A collection of values returned by getWebhooks.
     """
-    def __init__(__self__, id=None, limit=None, page=None, site_id=None, site_webhooks=None):
+    def __init__(__self__, id=None, site_id=None, site_webhooks=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if limit and not isinstance(limit, int):
-            raise TypeError("Expected argument 'limit' to be a int")
-        pulumi.set(__self__, "limit", limit)
-        if page and not isinstance(page, int):
-            raise TypeError("Expected argument 'page' to be a int")
-        pulumi.set(__self__, "page", page)
         if site_id and not isinstance(site_id, str):
             raise TypeError("Expected argument 'site_id' to be a str")
         pulumi.set(__self__, "site_id", site_id)
@@ -51,16 +45,6 @@ class GetWebhooksResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def limit(self) -> Optional[int]:
-        return pulumi.get(self, "limit")
-
-    @property
-    @pulumi.getter
-    def page(self) -> Optional[int]:
-        return pulumi.get(self, "page")
 
     @property
     @pulumi.getter(name="siteId")
@@ -80,48 +64,42 @@ class AwaitableGetWebhooksResult(GetWebhooksResult):
             yield self
         return GetWebhooksResult(
             id=self.id,
-            limit=self.limit,
-            page=self.page,
             site_id=self.site_id,
             site_webhooks=self.site_webhooks)
 
 
-def get_webhooks(limit: Optional[int] = None,
-                 page: Optional[int] = None,
-                 site_id: Optional[str] = None,
+def get_webhooks(site_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebhooksResult:
     """
     This data source provides the list of Site Webhooks.
+
+    A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\\
+    It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\\
+    The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
     """
     __args__ = dict()
-    __args__['limit'] = limit
-    __args__['page'] = page
     __args__['siteId'] = site_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('junipermist:site/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult).value
 
     return AwaitableGetWebhooksResult(
         id=pulumi.get(__ret__, 'id'),
-        limit=pulumi.get(__ret__, 'limit'),
-        page=pulumi.get(__ret__, 'page'),
         site_id=pulumi.get(__ret__, 'site_id'),
         site_webhooks=pulumi.get(__ret__, 'site_webhooks'))
-def get_webhooks_output(limit: Optional[pulumi.Input[Optional[int]]] = None,
-                        page: Optional[pulumi.Input[Optional[int]]] = None,
-                        site_id: Optional[pulumi.Input[str]] = None,
+def get_webhooks_output(site_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebhooksResult]:
     """
     This data source provides the list of Site Webhooks.
+
+    A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\\
+    It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\\
+    The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
     """
     __args__ = dict()
-    __args__['limit'] = limit
-    __args__['page'] = page
     __args__['siteId'] = site_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('junipermist:site/getWebhooks:getWebhooks', __args__, opts=opts, typ=GetWebhooksResult)
     return __ret__.apply(lambda __response__: GetWebhooksResult(
         id=pulumi.get(__response__, 'id'),
-        limit=pulumi.get(__response__, 'limit'),
-        page=pulumi.get(__response__, 'page'),
         site_id=pulumi.get(__response__, 'site_id'),
         site_webhooks=pulumi.get(__response__, 'site_webhooks')))

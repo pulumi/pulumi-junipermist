@@ -111,8 +111,9 @@ class DeviceprofileAssign(pulumi.CustomResource):
                  org_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resourceis used to assign/unassign a device profile to one or multiple devices
-        The `org.DeviceprofileGateway` resource can be assigned to GatewaysThe `org.DeviceprofileAp` resource can be assigned the Wireless Access Points
+        This resourceis used to assign/unassign a device profile to one or multiple devices.
+
+        The `org.DeviceprofileGateway` resource can be assigned to Gateways, and the`org.DeviceprofileAp` resource can be assigned the Wireless Access Points
 
         ## Example Usage
 
@@ -139,8 +140,9 @@ class DeviceprofileAssign(pulumi.CustomResource):
                  args: DeviceprofileAssignArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resourceis used to assign/unassign a device profile to one or multiple devices
-        The `org.DeviceprofileGateway` resource can be assigned to GatewaysThe `org.DeviceprofileAp` resource can be assigned the Wireless Access Points
+        This resourceis used to assign/unassign a device profile to one or multiple devices.
+
+        The `org.DeviceprofileGateway` resource can be assigned to Gateways, and the`org.DeviceprofileAp` resource can be assigned the Wireless Access Points
 
         ## Example Usage
 

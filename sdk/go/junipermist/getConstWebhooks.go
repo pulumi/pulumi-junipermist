@@ -12,7 +12,8 @@ import (
 )
 
 // This data source provides the list of Webhook Topics.
-// This information can be used to configure webhooks at the Org level or at the Site level with the `org.Webhook` resource or the `site.Webhook` resource.
+//
+// This information can be used to configure webhooks at the Org level (`org.Webhook` resource) or at the Site level (`site.Webhook` resource).
 //
 // > Only the Webhook topics with `forOrg`==`  true ` are supported at the Org level.
 //

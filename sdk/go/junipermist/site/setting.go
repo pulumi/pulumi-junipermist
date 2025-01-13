@@ -13,6 +13,7 @@ import (
 )
 
 // This resource manages the Site Settings.
+//
 // The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 //
 // > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
@@ -49,16 +50,15 @@ type Setting struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntOutput `pulumi:"deviceUpdownThreshold"`
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// ranges for the same day
 	Engagement SettingEngagementPtrOutput `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrOutput `pulumi:"gatewayMgmt"`
 	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold pulumi.IntOutput `pulumi:"gatewayUpdownThreshold"`
+	GatewayUpdownThreshold pulumi.IntOutput           `pulumi:"gatewayUpdownThreshold"`
+	JuniperSrx             SettingJuniperSrxPtrOutput `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led SettingLedPtrOutput `pulumi:"led"`
 	// Occupancy Analytics settings
@@ -91,8 +91,9 @@ type Setting struct {
 	SwitchUpdownThreshold pulumi.IntOutput              `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         SettingSyntheticTestPtrOutput `pulumi:"syntheticTest"`
 	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
-	TrackAnonymousDevices pulumi.BoolOutput                `pulumi:"trackAnonymousDevices"`
-	UplinkPortConfig      SettingUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
+	TrackAnonymousDevices pulumi.BoolOutput `pulumi:"trackAnonymousDevices"`
+	// AP Uplink port configuration
+	UplinkPortConfig SettingUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
 	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 	Vna  SettingVnaPtrOutput    `pulumi:"vna"`
@@ -161,16 +162,15 @@ type settingState struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
 	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold *int `pulumi:"gatewayUpdownThreshold"`
+	GatewayUpdownThreshold *int               `pulumi:"gatewayUpdownThreshold"`
+	JuniperSrx             *SettingJuniperSrx `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led *SettingLed `pulumi:"led"`
 	// Occupancy Analytics settings
@@ -203,8 +203,9 @@ type settingState struct {
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
-	TrackAnonymousDevices *bool                    `pulumi:"trackAnonymousDevices"`
-	UplinkPortConfig      *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
+	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
+	// AP Uplink port configuration
+	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
@@ -241,16 +242,15 @@ type SettingState struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// ranges for the same day
 	Engagement SettingEngagementPtrInput
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
 	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
+	JuniperSrx             SettingJuniperSrxPtrInput
 	// LED AP settings
 	Led SettingLedPtrInput
 	// Occupancy Analytics settings
@@ -284,7 +284,8 @@ type SettingState struct {
 	SyntheticTest         SettingSyntheticTestPtrInput
 	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices pulumi.BoolPtrInput
-	UplinkPortConfig      SettingUplinkPortConfigPtrInput
+	// AP Uplink port configuration
+	UplinkPortConfig SettingUplinkPortConfigPtrInput
 	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
@@ -324,16 +325,15 @@ type settingArgs struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold *int `pulumi:"deviceUpdownThreshold"`
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// ranges for the same day
 	Engagement *SettingEngagement `pulumi:"engagement"`
 	// Gateway Site settings
 	GatewayMgmt *SettingGatewayMgmt `pulumi:"gatewayMgmt"`
 	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
-	GatewayUpdownThreshold *int `pulumi:"gatewayUpdownThreshold"`
+	GatewayUpdownThreshold *int               `pulumi:"gatewayUpdownThreshold"`
+	JuniperSrx             *SettingJuniperSrx `pulumi:"juniperSrx"`
 	// LED AP settings
 	Led *SettingLed `pulumi:"led"`
 	// Occupancy Analytics settings
@@ -366,8 +366,9 @@ type settingArgs struct {
 	SwitchUpdownThreshold *int                  `pulumi:"switchUpdownThreshold"`
 	SyntheticTest         *SettingSyntheticTest `pulumi:"syntheticTest"`
 	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
-	TrackAnonymousDevices *bool                    `pulumi:"trackAnonymousDevices"`
-	UplinkPortConfig      *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
+	TrackAnonymousDevices *bool `pulumi:"trackAnonymousDevices"`
+	// AP Uplink port configuration
+	UplinkPortConfig *SettingUplinkPortConfig `pulumi:"uplinkPortConfig"`
 	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 	Vna  *SettingVna       `pulumi:"vna"`
@@ -402,16 +403,15 @@ type SettingArgs struct {
 	// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
 	// is desired, use the following
 	DeviceUpdownThreshold pulumi.IntPtrInput
-	// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-	// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-	// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-	// = “Visitor”, engaged = “Associates”, stationed = “Assets”
+	// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+	// ranges for the same day
 	Engagement SettingEngagementPtrInput
 	// Gateway Site settings
 	GatewayMgmt SettingGatewayMgmtPtrInput
 	// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
 	// `deviceUpdownThreshold` is ignored.
 	GatewayUpdownThreshold pulumi.IntPtrInput
+	JuniperSrx             SettingJuniperSrxPtrInput
 	// LED AP settings
 	Led SettingLedPtrInput
 	// Occupancy Analytics settings
@@ -445,7 +445,8 @@ type SettingArgs struct {
 	SyntheticTest         SettingSyntheticTestPtrInput
 	// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
 	TrackAnonymousDevices pulumi.BoolPtrInput
-	UplinkPortConfig      SettingUplinkPortConfigPtrInput
+	// AP Uplink port configuration
+	UplinkPortConfig SettingUplinkPortConfigPtrInput
 	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 	Vna  SettingVnaPtrInput
@@ -593,10 +594,8 @@ func (o SettingOutput) DeviceUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.DeviceUpdownThreshold }).(pulumi.IntOutput)
 }
 
-// **Note**: if hours does not exist, it’s treated as everyday of the week, 00:00-23:59. Currently we don’t allow
-// multiple ranges for the same day **Note**: default values for `dwellTags`: passerby (1,300) bounce (301, 14400) engaged
-// (14401, 28800) stationed (28801, 42000) **Note**: default values for `dwellTagNames`: passerby = “Passerby”, bounce
-// = “Visitor”, engaged = “Associates”, stationed = “Assets”
+// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+// ranges for the same day
 func (o SettingOutput) Engagement() SettingEngagementPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingEngagementPtrOutput { return v.Engagement }).(SettingEngagementPtrOutput)
 }
@@ -610,6 +609,10 @@ func (o SettingOutput) GatewayMgmt() SettingGatewayMgmtPtrOutput {
 // `deviceUpdownThreshold` is ignored.
 func (o SettingOutput) GatewayUpdownThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *Setting) pulumi.IntOutput { return v.GatewayUpdownThreshold }).(pulumi.IntOutput)
+}
+
+func (o SettingOutput) JuniperSrx() SettingJuniperSrxPtrOutput {
+	return o.ApplyT(func(v *Setting) SettingJuniperSrxPtrOutput { return v.JuniperSrx }).(SettingJuniperSrxPtrOutput)
 }
 
 // LED AP settings
@@ -696,6 +699,7 @@ func (o SettingOutput) TrackAnonymousDevices() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Setting) pulumi.BoolOutput { return v.TrackAnonymousDevices }).(pulumi.BoolOutput)
 }
 
+// AP Uplink port configuration
 func (o SettingOutput) UplinkPortConfig() SettingUplinkPortConfigPtrOutput {
 	return o.ApplyT(func(v *Setting) SettingUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(SettingUplinkPortConfigPtrOutput)
 }

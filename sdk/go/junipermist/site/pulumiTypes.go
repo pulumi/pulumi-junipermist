@@ -11887,9 +11887,7 @@ func (o SettingConfigPushPolicyPtrOutput) PushWindow() SettingConfigPushPolicyPu
 
 type SettingConfigPushPolicyPushWindow struct {
 	Enabled *bool `pulumi:"enabled"`
-	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-	//
-	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours *SettingConfigPushPolicyPushWindowHours `pulumi:"hours"`
 }
 
@@ -11906,9 +11904,7 @@ type SettingConfigPushPolicyPushWindowInput interface {
 
 type SettingConfigPushPolicyPushWindowArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-	//
-	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours SettingConfigPushPolicyPushWindowHoursPtrInput `pulumi:"hours"`
 }
 
@@ -11993,9 +11989,7 @@ func (o SettingConfigPushPolicyPushWindowOutput) Enabled() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindow) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-//
-// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 func (o SettingConfigPushPolicyPushWindowOutput) Hours() SettingConfigPushPolicyPushWindowHoursPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindow) *SettingConfigPushPolicyPushWindowHours { return v.Hours }).(SettingConfigPushPolicyPushWindowHoursPtrOutput)
 }
@@ -12033,9 +12027,7 @@ func (o SettingConfigPushPolicyPushWindowPtrOutput) Enabled() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-//
-// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 func (o SettingConfigPushPolicyPushWindowPtrOutput) Hours() SettingConfigPushPolicyPushWindowHoursPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindow) *SettingConfigPushPolicyPushWindowHours {
 		if v == nil {
@@ -12046,12 +12038,19 @@ func (o SettingConfigPushPolicyPushWindowPtrOutput) Hours() SettingConfigPushPol
 }
 
 type SettingConfigPushPolicyPushWindowHours struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Fri *string `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Mon *string `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sat *string `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sun *string `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Thu *string `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Tue *string `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Wed *string `pulumi:"wed"`
 }
 
@@ -12067,12 +12066,19 @@ type SettingConfigPushPolicyPushWindowHoursInput interface {
 }
 
 type SettingConfigPushPolicyPushWindowHoursArgs struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Tue pulumi.StringPtrInput `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
@@ -12153,30 +12159,37 @@ func (o SettingConfigPushPolicyPushWindowHoursOutput) ToSettingConfigPushPolicyP
 	}).(SettingConfigPushPolicyPushWindowHoursPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingConfigPushPolicyPushWindowHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -12205,6 +12218,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Elem() SettingConfigPus
 	}).(SettingConfigPushPolicyPushWindowHoursOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12214,6 +12228,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Fri() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12223,6 +12238,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Mon() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12232,6 +12248,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sat() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12241,6 +12258,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Sun() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12250,6 +12268,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Thu() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12259,6 +12278,7 @@ func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Tue() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingConfigPushPolicyPushWindowHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingConfigPushPolicyPushWindowHours) *string {
 		if v == nil {
@@ -12517,12 +12537,11 @@ func (o SettingCriticalUrlMonitoringMonitorArrayOutput) Index(i pulumi.IntInput)
 }
 
 type SettingEngagement struct {
+	// name associated to each tag
 	DwellTagNames *SettingEngagementDwellTagNames `pulumi:"dwellTagNames"`
-	// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+	// add tags to visits within the duration (in seconds)
 	DwellTags *SettingEngagementDwellTags `pulumi:"dwellTags"`
-	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-	//
-	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours *SettingEngagementHours `pulumi:"hours"`
 	// max time, default is 43200(12h), max is 68400 (18h)
 	MaxDwell *int `pulumi:"maxDwell"`
@@ -12542,12 +12561,11 @@ type SettingEngagementInput interface {
 }
 
 type SettingEngagementArgs struct {
+	// name associated to each tag
 	DwellTagNames SettingEngagementDwellTagNamesPtrInput `pulumi:"dwellTagNames"`
-	// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+	// add tags to visits within the duration (in seconds)
 	DwellTags SettingEngagementDwellTagsPtrInput `pulumi:"dwellTags"`
-	// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-	//
-	// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 	Hours SettingEngagementHoursPtrInput `pulumi:"hours"`
 	// max time, default is 43200(12h), max is 68400 (18h)
 	MaxDwell pulumi.IntPtrInput `pulumi:"maxDwell"`
@@ -12632,18 +12650,17 @@ func (o SettingEngagementOutput) ToSettingEngagementPtrOutputWithContext(ctx con
 	}).(SettingEngagementPtrOutput)
 }
 
+// name associated to each tag
 func (o SettingEngagementOutput) DwellTagNames() SettingEngagementDwellTagNamesPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementDwellTagNames { return v.DwellTagNames }).(SettingEngagementDwellTagNamesPtrOutput)
 }
 
-// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+// add tags to visits within the duration (in seconds)
 func (o SettingEngagementOutput) DwellTags() SettingEngagementDwellTagsPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementDwellTags { return v.DwellTags }).(SettingEngagementDwellTagsPtrOutput)
 }
 
-// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-//
-// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 func (o SettingEngagementOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v SettingEngagement) *SettingEngagementHours { return v.Hours }).(SettingEngagementHoursPtrOutput)
 }
@@ -12682,6 +12699,7 @@ func (o SettingEngagementPtrOutput) Elem() SettingEngagementOutput {
 	}).(SettingEngagementOutput)
 }
 
+// name associated to each tag
 func (o SettingEngagementPtrOutput) DwellTagNames() SettingEngagementDwellTagNamesPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementDwellTagNames {
 		if v == nil {
@@ -12691,7 +12709,7 @@ func (o SettingEngagementPtrOutput) DwellTagNames() SettingEngagementDwellTagNam
 	}).(SettingEngagementDwellTagNamesPtrOutput)
 }
 
-// add tags to visits within the duration (in seconds), available tags (passerby, bounce, engaged, stationed)
+// add tags to visits within the duration (in seconds)
 func (o SettingEngagementPtrOutput) DwellTags() SettingEngagementDwellTagsPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementDwellTags {
 		if v == nil {
@@ -12701,9 +12719,7 @@ func (o SettingEngagementPtrOutput) DwellTags() SettingEngagementDwellTagsPtrOut
 	}).(SettingEngagementDwellTagsPtrOutput)
 }
 
-// hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-//
-// **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
 func (o SettingEngagementPtrOutput) Hours() SettingEngagementHoursPtrOutput {
 	return o.ApplyT(func(v *SettingEngagement) *SettingEngagementHours {
 		if v == nil {
@@ -12734,9 +12750,13 @@ func (o SettingEngagementPtrOutput) MinDwell() pulumi.IntPtrOutput {
 }
 
 type SettingEngagementDwellTagNames struct {
-	Bounce    *string `pulumi:"bounce"`
-	Engaged   *string `pulumi:"engaged"`
-	Passerby  *string `pulumi:"passerby"`
+	// Default to `Visitor`
+	Bounce *string `pulumi:"bounce"`
+	// Default to `Associates`
+	Engaged *string `pulumi:"engaged"`
+	// Default to `Passerby`
+	Passerby *string `pulumi:"passerby"`
+	// Default to `Assets`
 	Stationed *string `pulumi:"stationed"`
 }
 
@@ -12752,9 +12772,13 @@ type SettingEngagementDwellTagNamesInput interface {
 }
 
 type SettingEngagementDwellTagNamesArgs struct {
-	Bounce    pulumi.StringPtrInput `pulumi:"bounce"`
-	Engaged   pulumi.StringPtrInput `pulumi:"engaged"`
-	Passerby  pulumi.StringPtrInput `pulumi:"passerby"`
+	// Default to `Visitor`
+	Bounce pulumi.StringPtrInput `pulumi:"bounce"`
+	// Default to `Associates`
+	Engaged pulumi.StringPtrInput `pulumi:"engaged"`
+	// Default to `Passerby`
+	Passerby pulumi.StringPtrInput `pulumi:"passerby"`
+	// Default to `Assets`
 	Stationed pulumi.StringPtrInput `pulumi:"stationed"`
 }
 
@@ -12835,18 +12859,22 @@ func (o SettingEngagementDwellTagNamesOutput) ToSettingEngagementDwellTagNamesPt
 	}).(SettingEngagementDwellTagNamesPtrOutput)
 }
 
+// Default to `Visitor`
 func (o SettingEngagementDwellTagNamesOutput) Bounce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTagNames) *string { return v.Bounce }).(pulumi.StringPtrOutput)
 }
 
+// Default to `Associates`
 func (o SettingEngagementDwellTagNamesOutput) Engaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTagNames) *string { return v.Engaged }).(pulumi.StringPtrOutput)
 }
 
+// Default to `Passerby`
 func (o SettingEngagementDwellTagNamesOutput) Passerby() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTagNames) *string { return v.Passerby }).(pulumi.StringPtrOutput)
 }
 
+// Default to `Assets`
 func (o SettingEngagementDwellTagNamesOutput) Stationed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTagNames) *string { return v.Stationed }).(pulumi.StringPtrOutput)
 }
@@ -12875,6 +12903,7 @@ func (o SettingEngagementDwellTagNamesPtrOutput) Elem() SettingEngagementDwellTa
 	}).(SettingEngagementDwellTagNamesOutput)
 }
 
+// Default to `Visitor`
 func (o SettingEngagementDwellTagNamesPtrOutput) Bounce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTagNames) *string {
 		if v == nil {
@@ -12884,6 +12913,7 @@ func (o SettingEngagementDwellTagNamesPtrOutput) Bounce() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default to `Associates`
 func (o SettingEngagementDwellTagNamesPtrOutput) Engaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTagNames) *string {
 		if v == nil {
@@ -12893,6 +12923,7 @@ func (o SettingEngagementDwellTagNamesPtrOutput) Engaged() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default to `Passerby`
 func (o SettingEngagementDwellTagNamesPtrOutput) Passerby() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTagNames) *string {
 		if v == nil {
@@ -12902,6 +12933,7 @@ func (o SettingEngagementDwellTagNamesPtrOutput) Passerby() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default to `Assets`
 func (o SettingEngagementDwellTagNamesPtrOutput) Stationed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTagNames) *string {
 		if v == nil {
@@ -12912,9 +12944,13 @@ func (o SettingEngagementDwellTagNamesPtrOutput) Stationed() pulumi.StringPtrOut
 }
 
 type SettingEngagementDwellTags struct {
-	Bounce    *string `pulumi:"bounce"`
-	Engaged   *string `pulumi:"engaged"`
-	Passerby  *string `pulumi:"passerby"`
+	// Default to `301-14400`
+	Bounce *string `pulumi:"bounce"`
+	// Default to `14401-28800`
+	Engaged *string `pulumi:"engaged"`
+	// Default to `1-300`
+	Passerby *string `pulumi:"passerby"`
+	// Default to `28801-42000`
 	Stationed *string `pulumi:"stationed"`
 }
 
@@ -12930,9 +12966,13 @@ type SettingEngagementDwellTagsInput interface {
 }
 
 type SettingEngagementDwellTagsArgs struct {
-	Bounce    pulumi.StringPtrInput `pulumi:"bounce"`
-	Engaged   pulumi.StringPtrInput `pulumi:"engaged"`
-	Passerby  pulumi.StringPtrInput `pulumi:"passerby"`
+	// Default to `301-14400`
+	Bounce pulumi.StringPtrInput `pulumi:"bounce"`
+	// Default to `14401-28800`
+	Engaged pulumi.StringPtrInput `pulumi:"engaged"`
+	// Default to `1-300`
+	Passerby pulumi.StringPtrInput `pulumi:"passerby"`
+	// Default to `28801-42000`
 	Stationed pulumi.StringPtrInput `pulumi:"stationed"`
 }
 
@@ -13013,18 +13053,22 @@ func (o SettingEngagementDwellTagsOutput) ToSettingEngagementDwellTagsPtrOutputW
 	}).(SettingEngagementDwellTagsPtrOutput)
 }
 
+// Default to `301-14400`
 func (o SettingEngagementDwellTagsOutput) Bounce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTags) *string { return v.Bounce }).(pulumi.StringPtrOutput)
 }
 
+// Default to `14401-28800`
 func (o SettingEngagementDwellTagsOutput) Engaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTags) *string { return v.Engaged }).(pulumi.StringPtrOutput)
 }
 
+// Default to `1-300`
 func (o SettingEngagementDwellTagsOutput) Passerby() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTags) *string { return v.Passerby }).(pulumi.StringPtrOutput)
 }
 
+// Default to `28801-42000`
 func (o SettingEngagementDwellTagsOutput) Stationed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementDwellTags) *string { return v.Stationed }).(pulumi.StringPtrOutput)
 }
@@ -13053,6 +13097,7 @@ func (o SettingEngagementDwellTagsPtrOutput) Elem() SettingEngagementDwellTagsOu
 	}).(SettingEngagementDwellTagsOutput)
 }
 
+// Default to `301-14400`
 func (o SettingEngagementDwellTagsPtrOutput) Bounce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTags) *string {
 		if v == nil {
@@ -13062,6 +13107,7 @@ func (o SettingEngagementDwellTagsPtrOutput) Bounce() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default to `14401-28800`
 func (o SettingEngagementDwellTagsPtrOutput) Engaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTags) *string {
 		if v == nil {
@@ -13071,6 +13117,7 @@ func (o SettingEngagementDwellTagsPtrOutput) Engaged() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default to `1-300`
 func (o SettingEngagementDwellTagsPtrOutput) Passerby() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTags) *string {
 		if v == nil {
@@ -13080,6 +13127,7 @@ func (o SettingEngagementDwellTagsPtrOutput) Passerby() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Default to `28801-42000`
 func (o SettingEngagementDwellTagsPtrOutput) Stationed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementDwellTags) *string {
 		if v == nil {
@@ -13090,12 +13138,19 @@ func (o SettingEngagementDwellTagsPtrOutput) Stationed() pulumi.StringPtrOutput 
 }
 
 type SettingEngagementHours struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Fri *string `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Mon *string `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sat *string `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sun *string `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Thu *string `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Tue *string `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Wed *string `pulumi:"wed"`
 }
 
@@ -13111,12 +13166,19 @@ type SettingEngagementHoursInput interface {
 }
 
 type SettingEngagementHoursArgs struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Fri pulumi.StringPtrInput `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Mon pulumi.StringPtrInput `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sat pulumi.StringPtrInput `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Sun pulumi.StringPtrInput `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Thu pulumi.StringPtrInput `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Tue pulumi.StringPtrInput `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 	Wed pulumi.StringPtrInput `pulumi:"wed"`
 }
 
@@ -13197,30 +13259,37 @@ func (o SettingEngagementHoursOutput) ToSettingEngagementHoursPtrOutputWithConte
 	}).(SettingEngagementHoursPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Fri }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Mon }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Sat }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Sun }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Thu }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Tue }).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingEngagementHours) *string { return v.Wed }).(pulumi.StringPtrOutput)
 }
@@ -13249,6 +13318,7 @@ func (o SettingEngagementHoursPtrOutput) Elem() SettingEngagementHoursOutput {
 	}).(SettingEngagementHoursOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -13258,6 +13328,7 @@ func (o SettingEngagementHoursPtrOutput) Fri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -13267,6 +13338,7 @@ func (o SettingEngagementHoursPtrOutput) Mon() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -13276,6 +13348,7 @@ func (o SettingEngagementHoursPtrOutput) Sat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -13285,6 +13358,7 @@ func (o SettingEngagementHoursPtrOutput) Sun() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -13294,6 +13368,7 @@ func (o SettingEngagementHoursPtrOutput) Thu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -13303,6 +13378,7 @@ func (o SettingEngagementHoursPtrOutput) Tue() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
 func (o SettingEngagementHoursPtrOutput) Wed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingEngagementHours) *string {
 		if v == nil {
@@ -14457,6 +14533,254 @@ func (o SettingGatewayMgmtProtectReCustomArrayOutput) Index(i pulumi.IntInput) S
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingGatewayMgmtProtectReCustom {
 		return vs[0].([]SettingGatewayMgmtProtectReCustom)[vs[1].(int)]
 	}).(SettingGatewayMgmtProtectReCustomOutput)
+}
+
+type SettingJuniperSrx struct {
+	Gateways            []SettingJuniperSrxGateway `pulumi:"gateways"`
+	SendMistNacUserInfo *bool                      `pulumi:"sendMistNacUserInfo"`
+}
+
+// SettingJuniperSrxInput is an input type that accepts SettingJuniperSrxArgs and SettingJuniperSrxOutput values.
+// You can construct a concrete instance of `SettingJuniperSrxInput` via:
+//
+//	SettingJuniperSrxArgs{...}
+type SettingJuniperSrxInput interface {
+	pulumi.Input
+
+	ToSettingJuniperSrxOutput() SettingJuniperSrxOutput
+	ToSettingJuniperSrxOutputWithContext(context.Context) SettingJuniperSrxOutput
+}
+
+type SettingJuniperSrxArgs struct {
+	Gateways            SettingJuniperSrxGatewayArrayInput `pulumi:"gateways"`
+	SendMistNacUserInfo pulumi.BoolPtrInput                `pulumi:"sendMistNacUserInfo"`
+}
+
+func (SettingJuniperSrxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingJuniperSrx)(nil)).Elem()
+}
+
+func (i SettingJuniperSrxArgs) ToSettingJuniperSrxOutput() SettingJuniperSrxOutput {
+	return i.ToSettingJuniperSrxOutputWithContext(context.Background())
+}
+
+func (i SettingJuniperSrxArgs) ToSettingJuniperSrxOutputWithContext(ctx context.Context) SettingJuniperSrxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingJuniperSrxOutput)
+}
+
+func (i SettingJuniperSrxArgs) ToSettingJuniperSrxPtrOutput() SettingJuniperSrxPtrOutput {
+	return i.ToSettingJuniperSrxPtrOutputWithContext(context.Background())
+}
+
+func (i SettingJuniperSrxArgs) ToSettingJuniperSrxPtrOutputWithContext(ctx context.Context) SettingJuniperSrxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingJuniperSrxOutput).ToSettingJuniperSrxPtrOutputWithContext(ctx)
+}
+
+// SettingJuniperSrxPtrInput is an input type that accepts SettingJuniperSrxArgs, SettingJuniperSrxPtr and SettingJuniperSrxPtrOutput values.
+// You can construct a concrete instance of `SettingJuniperSrxPtrInput` via:
+//
+//	        SettingJuniperSrxArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingJuniperSrxPtrInput interface {
+	pulumi.Input
+
+	ToSettingJuniperSrxPtrOutput() SettingJuniperSrxPtrOutput
+	ToSettingJuniperSrxPtrOutputWithContext(context.Context) SettingJuniperSrxPtrOutput
+}
+
+type settingJuniperSrxPtrType SettingJuniperSrxArgs
+
+func SettingJuniperSrxPtr(v *SettingJuniperSrxArgs) SettingJuniperSrxPtrInput {
+	return (*settingJuniperSrxPtrType)(v)
+}
+
+func (*settingJuniperSrxPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingJuniperSrx)(nil)).Elem()
+}
+
+func (i *settingJuniperSrxPtrType) ToSettingJuniperSrxPtrOutput() SettingJuniperSrxPtrOutput {
+	return i.ToSettingJuniperSrxPtrOutputWithContext(context.Background())
+}
+
+func (i *settingJuniperSrxPtrType) ToSettingJuniperSrxPtrOutputWithContext(ctx context.Context) SettingJuniperSrxPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingJuniperSrxPtrOutput)
+}
+
+type SettingJuniperSrxOutput struct{ *pulumi.OutputState }
+
+func (SettingJuniperSrxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingJuniperSrx)(nil)).Elem()
+}
+
+func (o SettingJuniperSrxOutput) ToSettingJuniperSrxOutput() SettingJuniperSrxOutput {
+	return o
+}
+
+func (o SettingJuniperSrxOutput) ToSettingJuniperSrxOutputWithContext(ctx context.Context) SettingJuniperSrxOutput {
+	return o
+}
+
+func (o SettingJuniperSrxOutput) ToSettingJuniperSrxPtrOutput() SettingJuniperSrxPtrOutput {
+	return o.ToSettingJuniperSrxPtrOutputWithContext(context.Background())
+}
+
+func (o SettingJuniperSrxOutput) ToSettingJuniperSrxPtrOutputWithContext(ctx context.Context) SettingJuniperSrxPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingJuniperSrx) *SettingJuniperSrx {
+		return &v
+	}).(SettingJuniperSrxPtrOutput)
+}
+
+func (o SettingJuniperSrxOutput) Gateways() SettingJuniperSrxGatewayArrayOutput {
+	return o.ApplyT(func(v SettingJuniperSrx) []SettingJuniperSrxGateway { return v.Gateways }).(SettingJuniperSrxGatewayArrayOutput)
+}
+
+func (o SettingJuniperSrxOutput) SendMistNacUserInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingJuniperSrx) *bool { return v.SendMistNacUserInfo }).(pulumi.BoolPtrOutput)
+}
+
+type SettingJuniperSrxPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingJuniperSrxPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingJuniperSrx)(nil)).Elem()
+}
+
+func (o SettingJuniperSrxPtrOutput) ToSettingJuniperSrxPtrOutput() SettingJuniperSrxPtrOutput {
+	return o
+}
+
+func (o SettingJuniperSrxPtrOutput) ToSettingJuniperSrxPtrOutputWithContext(ctx context.Context) SettingJuniperSrxPtrOutput {
+	return o
+}
+
+func (o SettingJuniperSrxPtrOutput) Elem() SettingJuniperSrxOutput {
+	return o.ApplyT(func(v *SettingJuniperSrx) SettingJuniperSrx {
+		if v != nil {
+			return *v
+		}
+		var ret SettingJuniperSrx
+		return ret
+	}).(SettingJuniperSrxOutput)
+}
+
+func (o SettingJuniperSrxPtrOutput) Gateways() SettingJuniperSrxGatewayArrayOutput {
+	return o.ApplyT(func(v *SettingJuniperSrx) []SettingJuniperSrxGateway {
+		if v == nil {
+			return nil
+		}
+		return v.Gateways
+	}).(SettingJuniperSrxGatewayArrayOutput)
+}
+
+func (o SettingJuniperSrxPtrOutput) SendMistNacUserInfo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingJuniperSrx) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SendMistNacUserInfo
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingJuniperSrxGateway struct {
+	ApiKey *string `pulumi:"apiKey"`
+	ApiUrl *string `pulumi:"apiUrl"`
+}
+
+// SettingJuniperSrxGatewayInput is an input type that accepts SettingJuniperSrxGatewayArgs and SettingJuniperSrxGatewayOutput values.
+// You can construct a concrete instance of `SettingJuniperSrxGatewayInput` via:
+//
+//	SettingJuniperSrxGatewayArgs{...}
+type SettingJuniperSrxGatewayInput interface {
+	pulumi.Input
+
+	ToSettingJuniperSrxGatewayOutput() SettingJuniperSrxGatewayOutput
+	ToSettingJuniperSrxGatewayOutputWithContext(context.Context) SettingJuniperSrxGatewayOutput
+}
+
+type SettingJuniperSrxGatewayArgs struct {
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
+}
+
+func (SettingJuniperSrxGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingJuniperSrxGateway)(nil)).Elem()
+}
+
+func (i SettingJuniperSrxGatewayArgs) ToSettingJuniperSrxGatewayOutput() SettingJuniperSrxGatewayOutput {
+	return i.ToSettingJuniperSrxGatewayOutputWithContext(context.Background())
+}
+
+func (i SettingJuniperSrxGatewayArgs) ToSettingJuniperSrxGatewayOutputWithContext(ctx context.Context) SettingJuniperSrxGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingJuniperSrxGatewayOutput)
+}
+
+// SettingJuniperSrxGatewayArrayInput is an input type that accepts SettingJuniperSrxGatewayArray and SettingJuniperSrxGatewayArrayOutput values.
+// You can construct a concrete instance of `SettingJuniperSrxGatewayArrayInput` via:
+//
+//	SettingJuniperSrxGatewayArray{ SettingJuniperSrxGatewayArgs{...} }
+type SettingJuniperSrxGatewayArrayInput interface {
+	pulumi.Input
+
+	ToSettingJuniperSrxGatewayArrayOutput() SettingJuniperSrxGatewayArrayOutput
+	ToSettingJuniperSrxGatewayArrayOutputWithContext(context.Context) SettingJuniperSrxGatewayArrayOutput
+}
+
+type SettingJuniperSrxGatewayArray []SettingJuniperSrxGatewayInput
+
+func (SettingJuniperSrxGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingJuniperSrxGateway)(nil)).Elem()
+}
+
+func (i SettingJuniperSrxGatewayArray) ToSettingJuniperSrxGatewayArrayOutput() SettingJuniperSrxGatewayArrayOutput {
+	return i.ToSettingJuniperSrxGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i SettingJuniperSrxGatewayArray) ToSettingJuniperSrxGatewayArrayOutputWithContext(ctx context.Context) SettingJuniperSrxGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingJuniperSrxGatewayArrayOutput)
+}
+
+type SettingJuniperSrxGatewayOutput struct{ *pulumi.OutputState }
+
+func (SettingJuniperSrxGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingJuniperSrxGateway)(nil)).Elem()
+}
+
+func (o SettingJuniperSrxGatewayOutput) ToSettingJuniperSrxGatewayOutput() SettingJuniperSrxGatewayOutput {
+	return o
+}
+
+func (o SettingJuniperSrxGatewayOutput) ToSettingJuniperSrxGatewayOutputWithContext(ctx context.Context) SettingJuniperSrxGatewayOutput {
+	return o
+}
+
+func (o SettingJuniperSrxGatewayOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingJuniperSrxGateway) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+func (o SettingJuniperSrxGatewayOutput) ApiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingJuniperSrxGateway) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+}
+
+type SettingJuniperSrxGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (SettingJuniperSrxGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SettingJuniperSrxGateway)(nil)).Elem()
+}
+
+func (o SettingJuniperSrxGatewayArrayOutput) ToSettingJuniperSrxGatewayArrayOutput() SettingJuniperSrxGatewayArrayOutput {
+	return o
+}
+
+func (o SettingJuniperSrxGatewayArrayOutput) ToSettingJuniperSrxGatewayArrayOutputWithContext(ctx context.Context) SettingJuniperSrxGatewayArrayOutput {
+	return o
+}
+
+func (o SettingJuniperSrxGatewayArrayOutput) Index(i pulumi.IntInput) SettingJuniperSrxGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SettingJuniperSrxGateway {
+		return vs[0].([]SettingJuniperSrxGateway)[vs[1].(int)]
+	}).(SettingJuniperSrxGatewayOutput)
 }
 
 type SettingLed struct {
@@ -27582,17 +27906,20 @@ func (o BaseLatlngPtrOutput) Lng() pulumi.Float64PtrOutput {
 
 type GetPsksSitePsk struct {
 	// sso id for psk created from psk portal
-	AdminSsoId  string  `pulumi:"adminSsoId"`
+	AdminSsoId string `pulumi:"adminSsoId"`
+	// when the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
 	// email to send psk expiring notifications to
 	Email string `pulumi:"email"`
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime int `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-	ExpiryNotificationTime int    `pulumi:"expiryNotificationTime"`
-	Id                     string `pulumi:"id"`
+	ExpiryNotificationTime int `pulumi:"expiryNotificationTime"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id string `pulumi:"id"`
 	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac          string  `pulumi:"mac"`
+	Mac string `pulumi:"mac"`
+	// when the object has been modified for the last time, in epoch
 	ModifiedTime float64 `pulumi:"modifiedTime"`
 	Name         string  `pulumi:"name"`
 	Note         string  `pulumi:"note"`
@@ -27627,17 +27954,20 @@ type GetPsksSitePskInput interface {
 
 type GetPsksSitePskArgs struct {
 	// sso id for psk created from psk portal
-	AdminSsoId  pulumi.StringInput  `pulumi:"adminSsoId"`
+	AdminSsoId pulumi.StringInput `pulumi:"adminSsoId"`
+	// when the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
 	// email to send psk expiring notifications to
 	Email pulumi.StringInput `pulumi:"email"`
 	// Expire time for this PSK key (epoch time in seconds). Default `null` (as no expiration)
 	ExpireTime pulumi.IntInput `pulumi:"expireTime"`
 	// Number of days before psk is expired. Used as to when to start sending reminder notification when the psk is about to expire
-	ExpiryNotificationTime pulumi.IntInput    `pulumi:"expiryNotificationTime"`
-	Id                     pulumi.StringInput `pulumi:"id"`
+	ExpiryNotificationTime pulumi.IntInput `pulumi:"expiryNotificationTime"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id pulumi.StringInput `pulumi:"id"`
 	// if `usage`==`single`, the mac that this PSK ties to, empty if `auto-binding`
-	Mac          pulumi.StringInput  `pulumi:"mac"`
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// when the object has been modified for the last time, in epoch
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
 	Name         pulumi.StringInput  `pulumi:"name"`
 	Note         pulumi.StringInput  `pulumi:"note"`
@@ -27715,6 +28045,7 @@ func (o GetPsksSitePskOutput) AdminSsoId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPsksSitePsk) string { return v.AdminSsoId }).(pulumi.StringOutput)
 }
 
+// when the object has been created, in epoch
 func (o GetPsksSitePskOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetPsksSitePsk) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
@@ -27734,6 +28065,7 @@ func (o GetPsksSitePskOutput) ExpiryNotificationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPsksSitePsk) int { return v.ExpiryNotificationTime }).(pulumi.IntOutput)
 }
 
+// Unique ID of the object instance in the Mist Organnization
 func (o GetPsksSitePskOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -27743,6 +28075,7 @@ func (o GetPsksSitePskOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPsksSitePsk) string { return v.Mac }).(pulumi.StringOutput)
 }
 
+// when the object has been modified for the last time, in epoch
 func (o GetPsksSitePskOutput) ModifiedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetPsksSitePsk) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
@@ -27822,14 +28155,16 @@ func (o GetPsksSitePskArrayOutput) Index(i pulumi.IntInput) GetPsksSitePskOutput
 }
 
 type GetWebhooksSiteWebhook struct {
+	// when the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
 	// whether webhook is enabled
 	Enabled bool `pulumi:"enabled"`
-	// if `type`=`http-post`, additional custom HTTP headers to add
-	// the headers name and value must be string, total bytes of headers name and value must be less than 1000
-	Headers      map[string]string `pulumi:"headers"`
-	Id           string            `pulumi:"id"`
-	ModifiedTime float64           `pulumi:"modifiedTime"`
+	// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+	Headers map[string]string `pulumi:"headers"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id string `pulumi:"id"`
+	// when the object has been modified for the last time, in epoch
+	ModifiedTime float64 `pulumi:"modifiedTime"`
 	// name of the webhook
 	Name string `pulumi:"name"`
 	// required when `oauth2GrantType`==`clientCredentials`
@@ -27850,10 +28185,9 @@ type GetWebhooksSiteWebhook struct {
 	// only if `type`=`http-post`
 	Secret string `pulumi:"secret"`
 	SiteId string `pulumi:"siteId"`
-	// required if `type`=`splunk`
-	// If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	// required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
 	SplunkToken string `pulumi:"splunkToken"`
-	// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+	// List of supported webhook topics available with the API Call List Webhook Topics
 	Topics []string `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type string `pulumi:"type"`
@@ -27874,14 +28208,16 @@ type GetWebhooksSiteWebhookInput interface {
 }
 
 type GetWebhooksSiteWebhookArgs struct {
+	// when the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
 	// whether webhook is enabled
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// if `type`=`http-post`, additional custom HTTP headers to add
-	// the headers name and value must be string, total bytes of headers name and value must be less than 1000
-	Headers      pulumi.StringMapInput `pulumi:"headers"`
-	Id           pulumi.StringInput    `pulumi:"id"`
-	ModifiedTime pulumi.Float64Input   `pulumi:"modifiedTime"`
+	// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id pulumi.StringInput `pulumi:"id"`
+	// when the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
 	// name of the webhook
 	Name pulumi.StringInput `pulumi:"name"`
 	// required when `oauth2GrantType`==`clientCredentials`
@@ -27902,10 +28238,9 @@ type GetWebhooksSiteWebhookArgs struct {
 	// only if `type`=`http-post`
 	Secret pulumi.StringInput `pulumi:"secret"`
 	SiteId pulumi.StringInput `pulumi:"siteId"`
-	// required if `type`=`splunk`
-	// If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	// required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
 	SplunkToken pulumi.StringInput `pulumi:"splunkToken"`
-	// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+	// List of supported webhook topics available with the API Call List Webhook Topics
 	Topics pulumi.StringArrayInput `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type pulumi.StringInput `pulumi:"type"`
@@ -27965,6 +28300,7 @@ func (o GetWebhooksSiteWebhookOutput) ToGetWebhooksSiteWebhookOutputWithContext(
 	return o
 }
 
+// when the object has been created, in epoch
 func (o GetWebhooksSiteWebhookOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
@@ -27974,16 +28310,17 @@ func (o GetWebhooksSiteWebhookOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// if `type`=`http-post`, additional custom HTTP headers to add
-// the headers name and value must be string, total bytes of headers name and value must be less than 1000
+// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 func (o GetWebhooksSiteWebhookOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
 
+// Unique ID of the object instance in the Mist Organnization
 func (o GetWebhooksSiteWebhookOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// when the object has been modified for the last time, in epoch
 func (o GetWebhooksSiteWebhookOutput) ModifiedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
@@ -28041,13 +28378,12 @@ func (o GetWebhooksSiteWebhookOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// required if `type`=`splunk`
-// If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+// required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
 func (o GetWebhooksSiteWebhookOutput) SplunkToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SplunkToken }).(pulumi.StringOutput)
 }
 
-// N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+// List of supported webhook topics available with the API Call List Webhook Topics
 func (o GetWebhooksSiteWebhookOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) []string { return v.Topics }).(pulumi.StringArrayOutput)
 }
@@ -28084,6 +28420,4020 @@ func (o GetWebhooksSiteWebhookArrayOutput) Index(i pulumi.IntInput) GetWebhooksS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWebhooksSiteWebhook {
 		return vs[0].([]GetWebhooksSiteWebhook)[vs[1].(int)]
 	}).(GetWebhooksSiteWebhookOutput)
+}
+
+type GetWlansSiteWlan struct {
+	// enable coa-immediate-update and address-change-immediate-update on the access profile.
+	AcctImmediateUpdate bool `pulumi:"acctImmediateUpdate"`
+	// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	AcctInterimInterval int `pulumi:"acctInterimInterval"`
+	// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	AcctServers []GetWlansSiteWlanAcctServer `pulumi:"acctServers"`
+	// airwatch wlan settings
+	Airwatch GetWlansSiteWlanAirwatch `pulumi:"airwatch"`
+	// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	AllowIpv6Ndp bool `pulumi:"allowIpv6Ndp"`
+	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	AllowMdns bool `pulumi:"allowMdns"`
+	// only applicable when `limitBcast`==`true`, which allows SSDP
+	AllowSsdp bool `pulumi:"allowSsdp"`
+	// list of device ids
+	ApIds []string `pulumi:"apIds"`
+	// bandwidth limiting for apps (applies to up/down)
+	AppLimit GetWlansSiteWlanAppLimit `pulumi:"appLimit"`
+	// app qos wlan settings
+	AppQos GetWlansSiteWlanAppQos `pulumi:"appQos"`
+	// enum: `aps`, `site`, `wxtags`
+	ApplyTo string `pulumi:"applyTo"`
+	// whether to enable smart arp filter
+	ArpFilter bool `pulumi:"arpFilter"`
+	// authentication wlan settings
+	Auth GetWlansSiteWlanAuth `pulumi:"auth"`
+	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	AuthServerSelection string `pulumi:"authServerSelection"`
+	// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	AuthServers []GetWlansSiteWlanAuthServer `pulumi:"authServers"`
+	// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+	AuthServersNasId string `pulumi:"authServersNasId"`
+	// optional, NAS-IP-ADDRESS to use
+	AuthServersNasIp string `pulumi:"authServersNasIp"`
+	// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	AuthServersRetries int `pulumi:"authServersRetries"`
+	// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	AuthServersTimeout int `pulumi:"authServersTimeout"`
+	// whether to enable band_steering, this works only when band==both
+	BandSteer bool `pulumi:"bandSteer"`
+	// force dualBand capable client to connect to 5G
+	BandSteerForceBand5 bool `pulumi:"bandSteerForceBand5"`
+	// list of radios that the wlan should apply to.
+	Bands []string `pulumi:"bands"`
+	// whether to block the clients in the blacklist (up to first 256 macs)
+	BlockBlacklistClients bool `pulumi:"blockBlacklistClients"`
+	// bonjour gateway wlan settings
+	Bonjour GetWlansSiteWlanBonjour `pulumi:"bonjour"`
+	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+	CiscoCwa GetWlansSiteWlanCiscoCwa `pulumi:"ciscoCwa"`
+	// kbps
+	ClientLimitDown int `pulumi:"clientLimitDown"`
+	// if downlink limiting per-client is enabled
+	ClientLimitDownEnabled bool `pulumi:"clientLimitDownEnabled"`
+	// kbps
+	ClientLimitUp int `pulumi:"clientLimitUp"`
+	// if uplink limiting per-client is enabled
+	ClientLimitUpEnabled bool `pulumi:"clientLimitUpEnabled"`
+	// list of COA (change of authorization) servers, optional
+	CoaServers []GetWlansSiteWlanCoaServer `pulumi:"coaServers"`
+	// when the object has been created, in epoch
+	CreatedTime float64 `pulumi:"createdTime"`
+	// some old WLAN drivers may not be compatible
+	Disable11ax bool `pulumi:"disable11ax"`
+	// to disable ht or vht rates
+	DisableHtVhtRates bool `pulumi:"disableHtVhtRates"`
+	// whether to disable U-APSD
+	DisableUapsd bool `pulumi:"disableUapsd"`
+	// disable sending v2 roam notification messages
+	DisableV1RoamNotify bool `pulumi:"disableV1RoamNotify"`
+	// disable sending v2 roam notification messages
+	DisableV2RoamNotify bool `pulumi:"disableV2RoamNotify"`
+	// when any of the following is true, this WLAN will be disabled
+	//    * cannot get IP
+	//    * cannot obtain default gateway
+	//    * cannot reach default gateway
+	DisableWhenGatewayUnreachable bool `pulumi:"disableWhenGatewayUnreachable"`
+	DisableWhenMxtunnelDown       bool `pulumi:"disableWhenMxtunnelDown"`
+	// whether to disable WMM
+	DisableWmm bool `pulumi:"disableWmm"`
+	// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	DnsServerRewrite GetWlansSiteWlanDnsServerRewrite `pulumi:"dnsServerRewrite"`
+	Dtim             int                              `pulumi:"dtim"`
+	// for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+	//   * PSK will come from RADIUS server
+	//   * AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+	//   * AP sends BSSID:SSID as Caller-Station-ID
+	//   * `authServers` is required
+	//   * PSK will come from cloud WLC if source is cloudPsks
+	//   * defaultPsk will be used if cloud WLC is not available
+	//   * `multiPskOnly` and `psk` is ignored
+	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	DynamicPsk GetWlansSiteWlanDynamicPsk `pulumi:"dynamicPsk"`
+	// for 802.1x
+	DynamicVlan GetWlansSiteWlanDynamicVlan `pulumi:"dynamicVlan"`
+	// enable AP-AP keycaching via multicast
+	EnableLocalKeycaching bool `pulumi:"enableLocalKeycaching"`
+	// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	EnableWirelessBridging bool `pulumi:"enableWirelessBridging"`
+	// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+	EnableWirelessBridgingDhcpTracking bool `pulumi:"enableWirelessBridgingDhcpTracking"`
+	// if this wlan is enabled
+	Enabled bool `pulumi:"enabled"`
+	// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+	FastDot1xTimers bool `pulumi:"fastDot1xTimers"`
+	// whether to hide SSID in beacon
+	HideSsid bool `pulumi:"hideSsid"`
+	// include hostname inside IE in AP beacons / probe responses
+	HostnameIe bool `pulumi:"hostnameIe"`
+	// hostspot 2.0 wlan settings
+	Hotspot20 GetWlansSiteWlanHotspot20 `pulumi:"hotspot20"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id                 string                             `pulumi:"id"`
+	InjectDhcpOption82 GetWlansSiteWlanInjectDhcpOption82 `pulumi:"injectDhcpOption82"`
+	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	Interface string `pulumi:"interface"`
+	// whether to stop clients to talk to each other
+	Isolation bool `pulumi:"isolation"`
+	// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+	L2Isolation bool `pulumi:"l2Isolation"`
+	// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+	LegacyOverds bool `pulumi:"legacyOverds"`
+	// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+	LimitBcast bool `pulumi:"limitBcast"`
+	// limit probe response base on some heuristic rules
+	LimitProbeResponse bool `pulumi:"limitProbeResponse"`
+	// max idle time in seconds
+	MaxIdletime int `pulumi:"maxIdletime"`
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients int                     `pulumi:"maxNumClients"`
+	MistNac       GetWlansSiteWlanMistNac `pulumi:"mistNac"`
+	// when the object has been modified for the last time, in epoch
+	ModifiedTime float64 `pulumi:"modifiedTime"`
+	MspId        string  `pulumi:"mspId"`
+	// when `interface`=`mxtunnel`, id of the Mist Tunnel
+	MxtunnelIds []string `pulumi:"mxtunnelIds"`
+	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	MxtunnelNames []string `pulumi:"mxtunnelNames"`
+	// whether to only allow client to use DNS that we’ve learned from DHCP response
+	NoStaticDns bool `pulumi:"noStaticDns"`
+	// whether to only allow client that we’ve learned from DHCP exchange to talk
+	NoStaticIp bool   `pulumi:"noStaticIp"`
+	OrgId      string `pulumi:"orgId"`
+	// portal wlan settings
+	Portal GetWlansSiteWlanPortal `pulumi:"portal"`
+	// list of hostnames without http(s):// (matched by substring)
+	PortalAllowedHostnames []string `pulumi:"portalAllowedHostnames"`
+	// list of CIDRs
+	PortalAllowedSubnets []string `pulumi:"portalAllowedSubnets"`
+	// api secret (auto-generated) that can be used to sign guest authorization requests
+	PortalApiSecret string `pulumi:"portalApiSecret"`
+	// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	PortalDeniedHostnames []string `pulumi:"portalDeniedHostnames"`
+	// Url of portal background image
+	PortalImage  string              `pulumi:"portalImage"`
+	PortalSsoUrl string              `pulumi:"portalSsoUrl"`
+	Qos          GetWlansSiteWlanQos `pulumi:"qos"`
+	// Radsec settings
+	Radsec GetWlansSiteWlanRadsec `pulumi:"radsec"`
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset map[string]GetWlansSiteWlanRateset `pulumi:"rateset"`
+	// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+	ReconnectClientsWhenRoamingMxcluster bool `pulumi:"reconnectClientsWhenRoamingMxcluster"`
+	// enum: `11r`, `OKC`, `NONE`
+	RoamMode string `pulumi:"roamMode"`
+	// WLAN operating schedule, default is disabled
+	Schedule GetWlansSiteWlanSchedule `pulumi:"schedule"`
+	SiteId   string                   `pulumi:"siteId"`
+	// whether to exclude this WLAN from SLE metrics
+	SleExcluded bool `pulumi:"sleExcluded"`
+	// the name of the SSID
+	Ssid string `pulumi:"ssid"`
+	// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+	UseEapolV1 bool `pulumi:"useEapolV1"`
+	// if vlan tagging is enabled
+	VlanEnabled bool   `pulumi:"vlanEnabled"`
+	VlanId      string `pulumi:"vlanId"`
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	VlanIds []string `pulumi:"vlanIds"`
+	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+	VlanPooling bool `pulumi:"vlanPooling"`
+	// kbps
+	WlanLimitDown int `pulumi:"wlanLimitDown"`
+	// if downlink limiting for whole wlan is enabled
+	WlanLimitDownEnabled bool `pulumi:"wlanLimitDownEnabled"`
+	// kbps
+	WlanLimitUp int `pulumi:"wlanLimitUp"`
+	// if uplink limiting for whole wlan is enabled
+	WlanLimitUpEnabled bool `pulumi:"wlanLimitUpEnabled"`
+	// list of wxtag_ids
+	WxtagIds []string `pulumi:"wxtagIds"`
+	// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+	WxtunnelId string `pulumi:"wxtunnelId"`
+	// when `interface`=`wxtunnel`, remote tunnel identifier
+	WxtunnelRemoteId string `pulumi:"wxtunnelRemoteId"`
+}
+
+// GetWlansSiteWlanInput is an input type that accepts GetWlansSiteWlanArgs and GetWlansSiteWlanOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanInput` via:
+//
+//	GetWlansSiteWlanArgs{...}
+type GetWlansSiteWlanInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanOutput() GetWlansSiteWlanOutput
+	ToGetWlansSiteWlanOutputWithContext(context.Context) GetWlansSiteWlanOutput
+}
+
+type GetWlansSiteWlanArgs struct {
+	// enable coa-immediate-update and address-change-immediate-update on the access profile.
+	AcctImmediateUpdate pulumi.BoolInput `pulumi:"acctImmediateUpdate"`
+	// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+	AcctInterimInterval pulumi.IntInput `pulumi:"acctInterimInterval"`
+	// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+	AcctServers GetWlansSiteWlanAcctServerArrayInput `pulumi:"acctServers"`
+	// airwatch wlan settings
+	Airwatch GetWlansSiteWlanAirwatchInput `pulumi:"airwatch"`
+	// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+	AllowIpv6Ndp pulumi.BoolInput `pulumi:"allowIpv6Ndp"`
+	// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+	AllowMdns pulumi.BoolInput `pulumi:"allowMdns"`
+	// only applicable when `limitBcast`==`true`, which allows SSDP
+	AllowSsdp pulumi.BoolInput `pulumi:"allowSsdp"`
+	// list of device ids
+	ApIds pulumi.StringArrayInput `pulumi:"apIds"`
+	// bandwidth limiting for apps (applies to up/down)
+	AppLimit GetWlansSiteWlanAppLimitInput `pulumi:"appLimit"`
+	// app qos wlan settings
+	AppQos GetWlansSiteWlanAppQosInput `pulumi:"appQos"`
+	// enum: `aps`, `site`, `wxtags`
+	ApplyTo pulumi.StringInput `pulumi:"applyTo"`
+	// whether to enable smart arp filter
+	ArpFilter pulumi.BoolInput `pulumi:"arpFilter"`
+	// authentication wlan settings
+	Auth GetWlansSiteWlanAuthInput `pulumi:"auth"`
+	// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+	AuthServerSelection pulumi.StringInput `pulumi:"authServerSelection"`
+	// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+	AuthServers GetWlansSiteWlanAuthServerArrayInput `pulumi:"authServers"`
+	// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+	AuthServersNasId pulumi.StringInput `pulumi:"authServersNasId"`
+	// optional, NAS-IP-ADDRESS to use
+	AuthServersNasIp pulumi.StringInput `pulumi:"authServersNasIp"`
+	// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+	AuthServersRetries pulumi.IntInput `pulumi:"authServersRetries"`
+	// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+	AuthServersTimeout pulumi.IntInput `pulumi:"authServersTimeout"`
+	// whether to enable band_steering, this works only when band==both
+	BandSteer pulumi.BoolInput `pulumi:"bandSteer"`
+	// force dualBand capable client to connect to 5G
+	BandSteerForceBand5 pulumi.BoolInput `pulumi:"bandSteerForceBand5"`
+	// list of radios that the wlan should apply to.
+	Bands pulumi.StringArrayInput `pulumi:"bands"`
+	// whether to block the clients in the blacklist (up to first 256 macs)
+	BlockBlacklistClients pulumi.BoolInput `pulumi:"blockBlacklistClients"`
+	// bonjour gateway wlan settings
+	Bonjour GetWlansSiteWlanBonjourInput `pulumi:"bonjour"`
+	// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+	CiscoCwa GetWlansSiteWlanCiscoCwaInput `pulumi:"ciscoCwa"`
+	// kbps
+	ClientLimitDown pulumi.IntInput `pulumi:"clientLimitDown"`
+	// if downlink limiting per-client is enabled
+	ClientLimitDownEnabled pulumi.BoolInput `pulumi:"clientLimitDownEnabled"`
+	// kbps
+	ClientLimitUp pulumi.IntInput `pulumi:"clientLimitUp"`
+	// if uplink limiting per-client is enabled
+	ClientLimitUpEnabled pulumi.BoolInput `pulumi:"clientLimitUpEnabled"`
+	// list of COA (change of authorization) servers, optional
+	CoaServers GetWlansSiteWlanCoaServerArrayInput `pulumi:"coaServers"`
+	// when the object has been created, in epoch
+	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
+	// some old WLAN drivers may not be compatible
+	Disable11ax pulumi.BoolInput `pulumi:"disable11ax"`
+	// to disable ht or vht rates
+	DisableHtVhtRates pulumi.BoolInput `pulumi:"disableHtVhtRates"`
+	// whether to disable U-APSD
+	DisableUapsd pulumi.BoolInput `pulumi:"disableUapsd"`
+	// disable sending v2 roam notification messages
+	DisableV1RoamNotify pulumi.BoolInput `pulumi:"disableV1RoamNotify"`
+	// disable sending v2 roam notification messages
+	DisableV2RoamNotify pulumi.BoolInput `pulumi:"disableV2RoamNotify"`
+	// when any of the following is true, this WLAN will be disabled
+	//    * cannot get IP
+	//    * cannot obtain default gateway
+	//    * cannot reach default gateway
+	DisableWhenGatewayUnreachable pulumi.BoolInput `pulumi:"disableWhenGatewayUnreachable"`
+	DisableWhenMxtunnelDown       pulumi.BoolInput `pulumi:"disableWhenMxtunnelDown"`
+	// whether to disable WMM
+	DisableWmm pulumi.BoolInput `pulumi:"disableWmm"`
+	// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+	DnsServerRewrite GetWlansSiteWlanDnsServerRewriteInput `pulumi:"dnsServerRewrite"`
+	Dtim             pulumi.IntInput                       `pulumi:"dtim"`
+	// for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+	//   * PSK will come from RADIUS server
+	//   * AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+	//   * AP sends BSSID:SSID as Caller-Station-ID
+	//   * `authServers` is required
+	//   * PSK will come from cloud WLC if source is cloudPsks
+	//   * defaultPsk will be used if cloud WLC is not available
+	//   * `multiPskOnly` and `psk` is ignored
+	//   * `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+	DynamicPsk GetWlansSiteWlanDynamicPskInput `pulumi:"dynamicPsk"`
+	// for 802.1x
+	DynamicVlan GetWlansSiteWlanDynamicVlanInput `pulumi:"dynamicVlan"`
+	// enable AP-AP keycaching via multicast
+	EnableLocalKeycaching pulumi.BoolInput `pulumi:"enableLocalKeycaching"`
+	// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+	EnableWirelessBridging pulumi.BoolInput `pulumi:"enableWirelessBridging"`
+	// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+	EnableWirelessBridgingDhcpTracking pulumi.BoolInput `pulumi:"enableWirelessBridgingDhcpTracking"`
+	// if this wlan is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+	FastDot1xTimers pulumi.BoolInput `pulumi:"fastDot1xTimers"`
+	// whether to hide SSID in beacon
+	HideSsid pulumi.BoolInput `pulumi:"hideSsid"`
+	// include hostname inside IE in AP beacons / probe responses
+	HostnameIe pulumi.BoolInput `pulumi:"hostnameIe"`
+	// hostspot 2.0 wlan settings
+	Hotspot20 GetWlansSiteWlanHotspot20Input `pulumi:"hotspot20"`
+	// Unique ID of the object instance in the Mist Organnization
+	Id                 pulumi.StringInput                      `pulumi:"id"`
+	InjectDhcpOption82 GetWlansSiteWlanInjectDhcpOption82Input `pulumi:"injectDhcpOption82"`
+	// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// whether to stop clients to talk to each other
+	Isolation pulumi.BoolInput `pulumi:"isolation"`
+	// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+	L2Isolation pulumi.BoolInput `pulumi:"l2Isolation"`
+	// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+	LegacyOverds pulumi.BoolInput `pulumi:"legacyOverds"`
+	// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+	LimitBcast pulumi.BoolInput `pulumi:"limitBcast"`
+	// limit probe response base on some heuristic rules
+	LimitProbeResponse pulumi.BoolInput `pulumi:"limitProbeResponse"`
+	// max idle time in seconds
+	MaxIdletime pulumi.IntInput `pulumi:"maxIdletime"`
+	// maximum number of client connected to the SSID. `0` means unlimited
+	MaxNumClients pulumi.IntInput              `pulumi:"maxNumClients"`
+	MistNac       GetWlansSiteWlanMistNacInput `pulumi:"mistNac"`
+	// when the object has been modified for the last time, in epoch
+	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
+	MspId        pulumi.StringInput  `pulumi:"mspId"`
+	// when `interface`=`mxtunnel`, id of the Mist Tunnel
+	MxtunnelIds pulumi.StringArrayInput `pulumi:"mxtunnelIds"`
+	// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+	MxtunnelNames pulumi.StringArrayInput `pulumi:"mxtunnelNames"`
+	// whether to only allow client to use DNS that we’ve learned from DHCP response
+	NoStaticDns pulumi.BoolInput `pulumi:"noStaticDns"`
+	// whether to only allow client that we’ve learned from DHCP exchange to talk
+	NoStaticIp pulumi.BoolInput   `pulumi:"noStaticIp"`
+	OrgId      pulumi.StringInput `pulumi:"orgId"`
+	// portal wlan settings
+	Portal GetWlansSiteWlanPortalInput `pulumi:"portal"`
+	// list of hostnames without http(s):// (matched by substring)
+	PortalAllowedHostnames pulumi.StringArrayInput `pulumi:"portalAllowedHostnames"`
+	// list of CIDRs
+	PortalAllowedSubnets pulumi.StringArrayInput `pulumi:"portalAllowedSubnets"`
+	// api secret (auto-generated) that can be used to sign guest authorization requests
+	PortalApiSecret pulumi.StringInput `pulumi:"portalApiSecret"`
+	// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+	PortalDeniedHostnames pulumi.StringArrayInput `pulumi:"portalDeniedHostnames"`
+	// Url of portal background image
+	PortalImage  pulumi.StringInput       `pulumi:"portalImage"`
+	PortalSsoUrl pulumi.StringInput       `pulumi:"portalSsoUrl"`
+	Qos          GetWlansSiteWlanQosInput `pulumi:"qos"`
+	// Radsec settings
+	Radsec GetWlansSiteWlanRadsecInput `pulumi:"radsec"`
+	// Property key is the RF band. enum: `24`, `5`, `6`
+	Rateset GetWlansSiteWlanRatesetMapInput `pulumi:"rateset"`
+	// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+	ReconnectClientsWhenRoamingMxcluster pulumi.BoolInput `pulumi:"reconnectClientsWhenRoamingMxcluster"`
+	// enum: `11r`, `OKC`, `NONE`
+	RoamMode pulumi.StringInput `pulumi:"roamMode"`
+	// WLAN operating schedule, default is disabled
+	Schedule GetWlansSiteWlanScheduleInput `pulumi:"schedule"`
+	SiteId   pulumi.StringInput            `pulumi:"siteId"`
+	// whether to exclude this WLAN from SLE metrics
+	SleExcluded pulumi.BoolInput `pulumi:"sleExcluded"`
+	// the name of the SSID
+	Ssid pulumi.StringInput `pulumi:"ssid"`
+	// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+	UseEapolV1 pulumi.BoolInput `pulumi:"useEapolV1"`
+	// if vlan tagging is enabled
+	VlanEnabled pulumi.BoolInput   `pulumi:"vlanEnabled"`
+	VlanId      pulumi.StringInput `pulumi:"vlanId"`
+	// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+	VlanIds pulumi.StringArrayInput `pulumi:"vlanIds"`
+	// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+	VlanPooling pulumi.BoolInput `pulumi:"vlanPooling"`
+	// kbps
+	WlanLimitDown pulumi.IntInput `pulumi:"wlanLimitDown"`
+	// if downlink limiting for whole wlan is enabled
+	WlanLimitDownEnabled pulumi.BoolInput `pulumi:"wlanLimitDownEnabled"`
+	// kbps
+	WlanLimitUp pulumi.IntInput `pulumi:"wlanLimitUp"`
+	// if uplink limiting for whole wlan is enabled
+	WlanLimitUpEnabled pulumi.BoolInput `pulumi:"wlanLimitUpEnabled"`
+	// list of wxtag_ids
+	WxtagIds pulumi.StringArrayInput `pulumi:"wxtagIds"`
+	// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+	WxtunnelId pulumi.StringInput `pulumi:"wxtunnelId"`
+	// when `interface`=`wxtunnel`, remote tunnel identifier
+	WxtunnelRemoteId pulumi.StringInput `pulumi:"wxtunnelRemoteId"`
+}
+
+func (GetWlansSiteWlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlan)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanArgs) ToGetWlansSiteWlanOutput() GetWlansSiteWlanOutput {
+	return i.ToGetWlansSiteWlanOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanArgs) ToGetWlansSiteWlanOutputWithContext(ctx context.Context) GetWlansSiteWlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanOutput)
+}
+
+// GetWlansSiteWlanArrayInput is an input type that accepts GetWlansSiteWlanArray and GetWlansSiteWlanArrayOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanArrayInput` via:
+//
+//	GetWlansSiteWlanArray{ GetWlansSiteWlanArgs{...} }
+type GetWlansSiteWlanArrayInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanArrayOutput() GetWlansSiteWlanArrayOutput
+	ToGetWlansSiteWlanArrayOutputWithContext(context.Context) GetWlansSiteWlanArrayOutput
+}
+
+type GetWlansSiteWlanArray []GetWlansSiteWlanInput
+
+func (GetWlansSiteWlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlan)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanArray) ToGetWlansSiteWlanArrayOutput() GetWlansSiteWlanArrayOutput {
+	return i.ToGetWlansSiteWlanArrayOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanArray) ToGetWlansSiteWlanArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanArrayOutput)
+}
+
+type GetWlansSiteWlanOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlan)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanOutput) ToGetWlansSiteWlanOutput() GetWlansSiteWlanOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanOutput) ToGetWlansSiteWlanOutputWithContext(ctx context.Context) GetWlansSiteWlanOutput {
+	return o
+}
+
+// enable coa-immediate-update and address-change-immediate-update on the access profile.
+func (o GetWlansSiteWlanOutput) AcctImmediateUpdate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AcctImmediateUpdate }).(pulumi.BoolOutput)
+}
+
+// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+func (o GetWlansSiteWlanOutput) AcctInterimInterval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.AcctInterimInterval }).(pulumi.IntOutput)
+}
+
+// list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+func (o GetWlansSiteWlanOutput) AcctServers() GetWlansSiteWlanAcctServerArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []GetWlansSiteWlanAcctServer { return v.AcctServers }).(GetWlansSiteWlanAcctServerArrayOutput)
+}
+
+// airwatch wlan settings
+func (o GetWlansSiteWlanOutput) Airwatch() GetWlansSiteWlanAirwatchOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAirwatch { return v.Airwatch }).(GetWlansSiteWlanAirwatchOutput)
+}
+
+// only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+func (o GetWlansSiteWlanOutput) AllowIpv6Ndp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AllowIpv6Ndp }).(pulumi.BoolOutput)
+}
+
+// only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+func (o GetWlansSiteWlanOutput) AllowMdns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AllowMdns }).(pulumi.BoolOutput)
+}
+
+// only applicable when `limitBcast`==`true`, which allows SSDP
+func (o GetWlansSiteWlanOutput) AllowSsdp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.AllowSsdp }).(pulumi.BoolOutput)
+}
+
+// list of device ids
+func (o GetWlansSiteWlanOutput) ApIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.ApIds }).(pulumi.StringArrayOutput)
+}
+
+// bandwidth limiting for apps (applies to up/down)
+func (o GetWlansSiteWlanOutput) AppLimit() GetWlansSiteWlanAppLimitOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAppLimit { return v.AppLimit }).(GetWlansSiteWlanAppLimitOutput)
+}
+
+// app qos wlan settings
+func (o GetWlansSiteWlanOutput) AppQos() GetWlansSiteWlanAppQosOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAppQos { return v.AppQos }).(GetWlansSiteWlanAppQosOutput)
+}
+
+// enum: `aps`, `site`, `wxtags`
+func (o GetWlansSiteWlanOutput) ApplyTo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.ApplyTo }).(pulumi.StringOutput)
+}
+
+// whether to enable smart arp filter
+func (o GetWlansSiteWlanOutput) ArpFilter() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ArpFilter }).(pulumi.BoolOutput)
+}
+
+// authentication wlan settings
+func (o GetWlansSiteWlanOutput) Auth() GetWlansSiteWlanAuthOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanAuth { return v.Auth }).(GetWlansSiteWlanAuthOutput)
+}
+
+// When ordered, AP will prefer and go back to the first server if possible. enum: `ordered`, `unordered`
+func (o GetWlansSiteWlanOutput) AuthServerSelection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.AuthServerSelection }).(pulumi.StringOutput)
+}
+
+// list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+func (o GetWlansSiteWlanOutput) AuthServers() GetWlansSiteWlanAuthServerArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []GetWlansSiteWlanAuthServer { return v.AuthServers }).(GetWlansSiteWlanAuthServerArrayOutput)
+}
+
+// optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+func (o GetWlansSiteWlanOutput) AuthServersNasId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.AuthServersNasId }).(pulumi.StringOutput)
+}
+
+// optional, NAS-IP-ADDRESS to use
+func (o GetWlansSiteWlanOutput) AuthServersNasIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.AuthServersNasIp }).(pulumi.StringOutput)
+}
+
+// radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting authServersRetries and is set to default value to 3.
+func (o GetWlansSiteWlanOutput) AuthServersRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.AuthServersRetries }).(pulumi.IntOutput)
+}
+
+// radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting authServersTimeout and is set to default value of 10.
+func (o GetWlansSiteWlanOutput) AuthServersTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.AuthServersTimeout }).(pulumi.IntOutput)
+}
+
+// whether to enable band_steering, this works only when band==both
+func (o GetWlansSiteWlanOutput) BandSteer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.BandSteer }).(pulumi.BoolOutput)
+}
+
+// force dualBand capable client to connect to 5G
+func (o GetWlansSiteWlanOutput) BandSteerForceBand5() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.BandSteerForceBand5 }).(pulumi.BoolOutput)
+}
+
+// list of radios that the wlan should apply to.
+func (o GetWlansSiteWlanOutput) Bands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.Bands }).(pulumi.StringArrayOutput)
+}
+
+// whether to block the clients in the blacklist (up to first 256 macs)
+func (o GetWlansSiteWlanOutput) BlockBlacklistClients() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.BlockBlacklistClients }).(pulumi.BoolOutput)
+}
+
+// bonjour gateway wlan settings
+func (o GetWlansSiteWlanOutput) Bonjour() GetWlansSiteWlanBonjourOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanBonjour { return v.Bonjour }).(GetWlansSiteWlanBonjourOutput)
+}
+
+// Cisco CWA (central web authentication) required RADIUS with COA in order to work. See CWA: https://www.cisco.com/c/en/us/support/docs/security/identity-services-engine/115732-central-web-auth-00.html
+func (o GetWlansSiteWlanOutput) CiscoCwa() GetWlansSiteWlanCiscoCwaOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanCiscoCwa { return v.CiscoCwa }).(GetWlansSiteWlanCiscoCwaOutput)
+}
+
+// kbps
+func (o GetWlansSiteWlanOutput) ClientLimitDown() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.ClientLimitDown }).(pulumi.IntOutput)
+}
+
+// if downlink limiting per-client is enabled
+func (o GetWlansSiteWlanOutput) ClientLimitDownEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ClientLimitDownEnabled }).(pulumi.BoolOutput)
+}
+
+// kbps
+func (o GetWlansSiteWlanOutput) ClientLimitUp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.ClientLimitUp }).(pulumi.IntOutput)
+}
+
+// if uplink limiting per-client is enabled
+func (o GetWlansSiteWlanOutput) ClientLimitUpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ClientLimitUpEnabled }).(pulumi.BoolOutput)
+}
+
+// list of COA (change of authorization) servers, optional
+func (o GetWlansSiteWlanOutput) CoaServers() GetWlansSiteWlanCoaServerArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []GetWlansSiteWlanCoaServer { return v.CoaServers }).(GetWlansSiteWlanCoaServerArrayOutput)
+}
+
+// when the object has been created, in epoch
+func (o GetWlansSiteWlanOutput) CreatedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWlansSiteWlan) float64 { return v.CreatedTime }).(pulumi.Float64Output)
+}
+
+// some old WLAN drivers may not be compatible
+func (o GetWlansSiteWlanOutput) Disable11ax() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.Disable11ax }).(pulumi.BoolOutput)
+}
+
+// to disable ht or vht rates
+func (o GetWlansSiteWlanOutput) DisableHtVhtRates() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableHtVhtRates }).(pulumi.BoolOutput)
+}
+
+// whether to disable U-APSD
+func (o GetWlansSiteWlanOutput) DisableUapsd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableUapsd }).(pulumi.BoolOutput)
+}
+
+// disable sending v2 roam notification messages
+func (o GetWlansSiteWlanOutput) DisableV1RoamNotify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableV1RoamNotify }).(pulumi.BoolOutput)
+}
+
+// disable sending v2 roam notification messages
+func (o GetWlansSiteWlanOutput) DisableV2RoamNotify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableV2RoamNotify }).(pulumi.BoolOutput)
+}
+
+// when any of the following is true, this WLAN will be disabled
+//   - cannot get IP
+//   - cannot obtain default gateway
+//   - cannot reach default gateway
+func (o GetWlansSiteWlanOutput) DisableWhenGatewayUnreachable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableWhenGatewayUnreachable }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanOutput) DisableWhenMxtunnelDown() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableWhenMxtunnelDown }).(pulumi.BoolOutput)
+}
+
+// whether to disable WMM
+func (o GetWlansSiteWlanOutput) DisableWmm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.DisableWmm }).(pulumi.BoolOutput)
+}
+
+// for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+func (o GetWlansSiteWlanOutput) DnsServerRewrite() GetWlansSiteWlanDnsServerRewriteOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanDnsServerRewrite { return v.DnsServerRewrite }).(GetWlansSiteWlanDnsServerRewriteOutput)
+}
+
+func (o GetWlansSiteWlanOutput) Dtim() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.Dtim }).(pulumi.IntOutput)
+}
+
+// for dynamic PSK where we get perUser PSK from Radius. dynamicPsk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+//   - PSK will come from RADIUS server
+//   - AP sends client MAC as username ans password (i.e. `enableMacAuth` is assumed)
+//   - AP sends BSSID:SSID as Caller-Station-ID
+//   - `authServers` is required
+//   - PSK will come from cloud WLC if source is cloudPsks
+//   - defaultPsk will be used if cloud WLC is not available
+//   - `multiPskOnly` and `psk` is ignored
+//   - `pairwise` can only be wpa2-ccmp (for now, wpa3 support on the roadmap)
+func (o GetWlansSiteWlanOutput) DynamicPsk() GetWlansSiteWlanDynamicPskOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanDynamicPsk { return v.DynamicPsk }).(GetWlansSiteWlanDynamicPskOutput)
+}
+
+// for 802.1x
+func (o GetWlansSiteWlanOutput) DynamicVlan() GetWlansSiteWlanDynamicVlanOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanDynamicVlan { return v.DynamicVlan }).(GetWlansSiteWlanDynamicVlanOutput)
+}
+
+// enable AP-AP keycaching via multicast
+func (o GetWlansSiteWlanOutput) EnableLocalKeycaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.EnableLocalKeycaching }).(pulumi.BoolOutput)
+}
+
+// by default, we'd inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wirelessBridging can be enabled
+func (o GetWlansSiteWlanOutput) EnableWirelessBridging() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.EnableWirelessBridging }).(pulumi.BoolOutput)
+}
+
+// if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcpTracking will cut down DHCP response packets to be forwarded to wireless
+func (o GetWlansSiteWlanOutput) EnableWirelessBridgingDhcpTracking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.EnableWirelessBridgingDhcpTracking }).(pulumi.BoolOutput)
+}
+
+// if this wlan is enabled
+func (o GetWlansSiteWlanOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+func (o GetWlansSiteWlanOutput) FastDot1xTimers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.FastDot1xTimers }).(pulumi.BoolOutput)
+}
+
+// whether to hide SSID in beacon
+func (o GetWlansSiteWlanOutput) HideSsid() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.HideSsid }).(pulumi.BoolOutput)
+}
+
+// include hostname inside IE in AP beacons / probe responses
+func (o GetWlansSiteWlanOutput) HostnameIe() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.HostnameIe }).(pulumi.BoolOutput)
+}
+
+// hostspot 2.0 wlan settings
+func (o GetWlansSiteWlanOutput) Hotspot20() GetWlansSiteWlanHotspot20Output {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanHotspot20 { return v.Hotspot20 }).(GetWlansSiteWlanHotspot20Output)
+}
+
+// Unique ID of the object instance in the Mist Organnization
+func (o GetWlansSiteWlanOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanOutput) InjectDhcpOption82() GetWlansSiteWlanInjectDhcpOption82Output {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanInjectDhcpOption82 { return v.InjectDhcpOption82 }).(GetWlansSiteWlanInjectDhcpOption82Output)
+}
+
+// where this WLAN will be connected to. enum: `all`, `eth0`, `eth1`, `eth2`, `eth3`, `mxtunnel`, `siteMxedge`, `wxtunnel`
+func (o GetWlansSiteWlanOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+// whether to stop clients to talk to each other
+func (o GetWlansSiteWlanOutput) Isolation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.Isolation }).(pulumi.BoolOutput)
+}
+
+// if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+func (o GetWlansSiteWlanOutput) L2Isolation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.L2Isolation }).(pulumi.BoolOutput)
+}
+
+// legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+func (o GetWlansSiteWlanOutput) LegacyOverds() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.LegacyOverds }).(pulumi.BoolOutput)
+}
+
+// whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+func (o GetWlansSiteWlanOutput) LimitBcast() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.LimitBcast }).(pulumi.BoolOutput)
+}
+
+// limit probe response base on some heuristic rules
+func (o GetWlansSiteWlanOutput) LimitProbeResponse() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.LimitProbeResponse }).(pulumi.BoolOutput)
+}
+
+// max idle time in seconds
+func (o GetWlansSiteWlanOutput) MaxIdletime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.MaxIdletime }).(pulumi.IntOutput)
+}
+
+// maximum number of client connected to the SSID. `0` means unlimited
+func (o GetWlansSiteWlanOutput) MaxNumClients() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.MaxNumClients }).(pulumi.IntOutput)
+}
+
+func (o GetWlansSiteWlanOutput) MistNac() GetWlansSiteWlanMistNacOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanMistNac { return v.MistNac }).(GetWlansSiteWlanMistNacOutput)
+}
+
+// when the object has been modified for the last time, in epoch
+func (o GetWlansSiteWlanOutput) ModifiedTime() pulumi.Float64Output {
+	return o.ApplyT(func(v GetWlansSiteWlan) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
+}
+
+func (o GetWlansSiteWlanOutput) MspId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.MspId }).(pulumi.StringOutput)
+}
+
+// when `interface`=`mxtunnel`, id of the Mist Tunnel
+func (o GetWlansSiteWlanOutput) MxtunnelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.MxtunnelIds }).(pulumi.StringArrayOutput)
+}
+
+// when `interface`=`siteMedge`, name of the mxtunnel that in mxtunnels under Site Setting
+func (o GetWlansSiteWlanOutput) MxtunnelNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.MxtunnelNames }).(pulumi.StringArrayOutput)
+}
+
+// whether to only allow client to use DNS that we’ve learned from DHCP response
+func (o GetWlansSiteWlanOutput) NoStaticDns() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.NoStaticDns }).(pulumi.BoolOutput)
+}
+
+// whether to only allow client that we’ve learned from DHCP exchange to talk
+func (o GetWlansSiteWlanOutput) NoStaticIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.NoStaticIp }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// portal wlan settings
+func (o GetWlansSiteWlanOutput) Portal() GetWlansSiteWlanPortalOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanPortal { return v.Portal }).(GetWlansSiteWlanPortalOutput)
+}
+
+// list of hostnames without http(s):// (matched by substring)
+func (o GetWlansSiteWlanOutput) PortalAllowedHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.PortalAllowedHostnames }).(pulumi.StringArrayOutput)
+}
+
+// list of CIDRs
+func (o GetWlansSiteWlanOutput) PortalAllowedSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.PortalAllowedSubnets }).(pulumi.StringArrayOutput)
+}
+
+// api secret (auto-generated) that can be used to sign guest authorization requests
+func (o GetWlansSiteWlanOutput) PortalApiSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.PortalApiSecret }).(pulumi.StringOutput)
+}
+
+// list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+func (o GetWlansSiteWlanOutput) PortalDeniedHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.PortalDeniedHostnames }).(pulumi.StringArrayOutput)
+}
+
+// Url of portal background image
+func (o GetWlansSiteWlanOutput) PortalImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.PortalImage }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanOutput) PortalSsoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.PortalSsoUrl }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanOutput) Qos() GetWlansSiteWlanQosOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanQos { return v.Qos }).(GetWlansSiteWlanQosOutput)
+}
+
+// Radsec settings
+func (o GetWlansSiteWlanOutput) Radsec() GetWlansSiteWlanRadsecOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanRadsec { return v.Radsec }).(GetWlansSiteWlanRadsecOutput)
+}
+
+// Property key is the RF band. enum: `24`, `5`, `6`
+func (o GetWlansSiteWlanOutput) Rateset() GetWlansSiteWlanRatesetMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) map[string]GetWlansSiteWlanRateset { return v.Rateset }).(GetWlansSiteWlanRatesetMapOutput)
+}
+
+// when different mxcluster is on different subnet, we'd want to disconnect clients (so they'll reconnect and get new IPs)
+func (o GetWlansSiteWlanOutput) ReconnectClientsWhenRoamingMxcluster() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.ReconnectClientsWhenRoamingMxcluster }).(pulumi.BoolOutput)
+}
+
+// enum: `11r`, `OKC`, `NONE`
+func (o GetWlansSiteWlanOutput) RoamMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.RoamMode }).(pulumi.StringOutput)
+}
+
+// WLAN operating schedule, default is disabled
+func (o GetWlansSiteWlanOutput) Schedule() GetWlansSiteWlanScheduleOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) GetWlansSiteWlanSchedule { return v.Schedule }).(GetWlansSiteWlanScheduleOutput)
+}
+
+func (o GetWlansSiteWlanOutput) SiteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.SiteId }).(pulumi.StringOutput)
+}
+
+// whether to exclude this WLAN from SLE metrics
+func (o GetWlansSiteWlanOutput) SleExcluded() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.SleExcluded }).(pulumi.BoolOutput)
+}
+
+// the name of the SSID
+func (o GetWlansSiteWlanOutput) Ssid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.Ssid }).(pulumi.StringOutput)
+}
+
+// if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+func (o GetWlansSiteWlanOutput) UseEapolV1() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.UseEapolV1 }).(pulumi.BoolOutput)
+}
+
+// if vlan tagging is enabled
+func (o GetWlansSiteWlanOutput) VlanEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.VlanEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanOutput) VlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.VlanId }).(pulumi.StringOutput)
+}
+
+// if `vlanEnabled`==`true` and `vlanPooling`==`true`. List of VLAN IDs (comma separeted) to be used in the VLAN Pool
+func (o GetWlansSiteWlanOutput) VlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.VlanIds }).(pulumi.StringArrayOutput)
+}
+
+// Requires `vlanEnabled`==`true` to be set to `true`. Vlan pooling allows AP to place client on different VLAN using a deterministic algorithm
+func (o GetWlansSiteWlanOutput) VlanPooling() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.VlanPooling }).(pulumi.BoolOutput)
+}
+
+// kbps
+func (o GetWlansSiteWlanOutput) WlanLimitDown() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.WlanLimitDown }).(pulumi.IntOutput)
+}
+
+// if downlink limiting for whole wlan is enabled
+func (o GetWlansSiteWlanOutput) WlanLimitDownEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.WlanLimitDownEnabled }).(pulumi.BoolOutput)
+}
+
+// kbps
+func (o GetWlansSiteWlanOutput) WlanLimitUp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) int { return v.WlanLimitUp }).(pulumi.IntOutput)
+}
+
+// if uplink limiting for whole wlan is enabled
+func (o GetWlansSiteWlanOutput) WlanLimitUpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) bool { return v.WlanLimitUpEnabled }).(pulumi.BoolOutput)
+}
+
+// list of wxtag_ids
+func (o GetWlansSiteWlanOutput) WxtagIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) []string { return v.WxtagIds }).(pulumi.StringArrayOutput)
+}
+
+// when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+func (o GetWlansSiteWlanOutput) WxtunnelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.WxtunnelId }).(pulumi.StringOutput)
+}
+
+// when `interface`=`wxtunnel`, remote tunnel identifier
+func (o GetWlansSiteWlanOutput) WxtunnelRemoteId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlan) string { return v.WxtunnelRemoteId }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlan)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanArrayOutput) ToGetWlansSiteWlanArrayOutput() GetWlansSiteWlanArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanArrayOutput) ToGetWlansSiteWlanArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWlansSiteWlan {
+		return vs[0].([]GetWlansSiteWlan)[vs[1].(int)]
+	}).(GetWlansSiteWlanOutput)
+}
+
+type GetWlansSiteWlanAcctServer struct {
+	// ip / hostname of RADIUS server
+	Host           string `pulumi:"host"`
+	KeywrapEnabled bool   `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat string `pulumi:"keywrapFormat"`
+	KeywrapKek    string `pulumi:"keywrapKek"`
+	KeywrapMack   string `pulumi:"keywrapMack"`
+	// Acct port of RADIUS server
+	Port int `pulumi:"port"`
+	// secret of RADIUS server
+	Secret string `pulumi:"secret"`
+}
+
+// GetWlansSiteWlanAcctServerInput is an input type that accepts GetWlansSiteWlanAcctServerArgs and GetWlansSiteWlanAcctServerOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAcctServerInput` via:
+//
+//	GetWlansSiteWlanAcctServerArgs{...}
+type GetWlansSiteWlanAcctServerInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAcctServerOutput() GetWlansSiteWlanAcctServerOutput
+	ToGetWlansSiteWlanAcctServerOutputWithContext(context.Context) GetWlansSiteWlanAcctServerOutput
+}
+
+type GetWlansSiteWlanAcctServerArgs struct {
+	// ip / hostname of RADIUS server
+	Host           pulumi.StringInput `pulumi:"host"`
+	KeywrapEnabled pulumi.BoolInput   `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringInput `pulumi:"keywrapFormat"`
+	KeywrapKek    pulumi.StringInput `pulumi:"keywrapKek"`
+	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
+	// Acct port of RADIUS server
+	Port pulumi.IntInput `pulumi:"port"`
+	// secret of RADIUS server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (GetWlansSiteWlanAcctServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAcctServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAcctServerArgs) ToGetWlansSiteWlanAcctServerOutput() GetWlansSiteWlanAcctServerOutput {
+	return i.ToGetWlansSiteWlanAcctServerOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAcctServerArgs) ToGetWlansSiteWlanAcctServerOutputWithContext(ctx context.Context) GetWlansSiteWlanAcctServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAcctServerOutput)
+}
+
+// GetWlansSiteWlanAcctServerArrayInput is an input type that accepts GetWlansSiteWlanAcctServerArray and GetWlansSiteWlanAcctServerArrayOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAcctServerArrayInput` via:
+//
+//	GetWlansSiteWlanAcctServerArray{ GetWlansSiteWlanAcctServerArgs{...} }
+type GetWlansSiteWlanAcctServerArrayInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAcctServerArrayOutput() GetWlansSiteWlanAcctServerArrayOutput
+	ToGetWlansSiteWlanAcctServerArrayOutputWithContext(context.Context) GetWlansSiteWlanAcctServerArrayOutput
+}
+
+type GetWlansSiteWlanAcctServerArray []GetWlansSiteWlanAcctServerInput
+
+func (GetWlansSiteWlanAcctServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanAcctServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAcctServerArray) ToGetWlansSiteWlanAcctServerArrayOutput() GetWlansSiteWlanAcctServerArrayOutput {
+	return i.ToGetWlansSiteWlanAcctServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAcctServerArray) ToGetWlansSiteWlanAcctServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanAcctServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAcctServerArrayOutput)
+}
+
+type GetWlansSiteWlanAcctServerOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAcctServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAcctServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAcctServerOutput) ToGetWlansSiteWlanAcctServerOutput() GetWlansSiteWlanAcctServerOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAcctServerOutput) ToGetWlansSiteWlanAcctServerOutputWithContext(ctx context.Context) GetWlansSiteWlanAcctServerOutput {
+	return o
+}
+
+// ip / hostname of RADIUS server
+func (o GetWlansSiteWlanAcctServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAcctServerOutput) KeywrapEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) bool { return v.KeywrapEnabled }).(pulumi.BoolOutput)
+}
+
+// enum: `ascii`, `hex`
+func (o GetWlansSiteWlanAcctServerOutput) KeywrapFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.KeywrapFormat }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAcctServerOutput) KeywrapKek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.KeywrapKek }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAcctServerOutput) KeywrapMack() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.KeywrapMack }).(pulumi.StringOutput)
+}
+
+// Acct port of RADIUS server
+func (o GetWlansSiteWlanAcctServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// secret of RADIUS server
+func (o GetWlansSiteWlanAcctServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAcctServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanAcctServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAcctServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanAcctServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAcctServerArrayOutput) ToGetWlansSiteWlanAcctServerArrayOutput() GetWlansSiteWlanAcctServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAcctServerArrayOutput) ToGetWlansSiteWlanAcctServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanAcctServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAcctServerArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanAcctServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWlansSiteWlanAcctServer {
+		return vs[0].([]GetWlansSiteWlanAcctServer)[vs[1].(int)]
+	}).(GetWlansSiteWlanAcctServerOutput)
+}
+
+type GetWlansSiteWlanAirwatch struct {
+	// API Key
+	ApiKey string `pulumi:"apiKey"`
+	// console URL
+	ConsoleUrl string `pulumi:"consoleUrl"`
+	Enabled    bool   `pulumi:"enabled"`
+	// password
+	Password string `pulumi:"password"`
+	// username
+	Username string `pulumi:"username"`
+}
+
+// GetWlansSiteWlanAirwatchInput is an input type that accepts GetWlansSiteWlanAirwatchArgs and GetWlansSiteWlanAirwatchOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAirwatchInput` via:
+//
+//	GetWlansSiteWlanAirwatchArgs{...}
+type GetWlansSiteWlanAirwatchInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAirwatchOutput() GetWlansSiteWlanAirwatchOutput
+	ToGetWlansSiteWlanAirwatchOutputWithContext(context.Context) GetWlansSiteWlanAirwatchOutput
+}
+
+type GetWlansSiteWlanAirwatchArgs struct {
+	// API Key
+	ApiKey pulumi.StringInput `pulumi:"apiKey"`
+	// console URL
+	ConsoleUrl pulumi.StringInput `pulumi:"consoleUrl"`
+	Enabled    pulumi.BoolInput   `pulumi:"enabled"`
+	// password
+	Password pulumi.StringInput `pulumi:"password"`
+	// username
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetWlansSiteWlanAirwatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAirwatch)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAirwatchArgs) ToGetWlansSiteWlanAirwatchOutput() GetWlansSiteWlanAirwatchOutput {
+	return i.ToGetWlansSiteWlanAirwatchOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAirwatchArgs) ToGetWlansSiteWlanAirwatchOutputWithContext(ctx context.Context) GetWlansSiteWlanAirwatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAirwatchOutput)
+}
+
+type GetWlansSiteWlanAirwatchOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAirwatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAirwatch)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAirwatchOutput) ToGetWlansSiteWlanAirwatchOutput() GetWlansSiteWlanAirwatchOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAirwatchOutput) ToGetWlansSiteWlanAirwatchOutputWithContext(ctx context.Context) GetWlansSiteWlanAirwatchOutput {
+	return o
+}
+
+// API Key
+func (o GetWlansSiteWlanAirwatchOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// console URL
+func (o GetWlansSiteWlanAirwatchOutput) ConsoleUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.ConsoleUrl }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAirwatchOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// password
+func (o GetWlansSiteWlanAirwatchOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// username
+func (o GetWlansSiteWlanAirwatchOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAirwatch) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanAppLimit struct {
+	// Map from app key to bandwidth in kbps.
+	// Property key is the app key, defined in Get Application List
+	Apps    map[string]int `pulumi:"apps"`
+	Enabled bool           `pulumi:"enabled"`
+	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
+	WxtagIds map[string]int `pulumi:"wxtagIds"`
+}
+
+// GetWlansSiteWlanAppLimitInput is an input type that accepts GetWlansSiteWlanAppLimitArgs and GetWlansSiteWlanAppLimitOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAppLimitInput` via:
+//
+//	GetWlansSiteWlanAppLimitArgs{...}
+type GetWlansSiteWlanAppLimitInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAppLimitOutput() GetWlansSiteWlanAppLimitOutput
+	ToGetWlansSiteWlanAppLimitOutputWithContext(context.Context) GetWlansSiteWlanAppLimitOutput
+}
+
+type GetWlansSiteWlanAppLimitArgs struct {
+	// Map from app key to bandwidth in kbps.
+	// Property key is the app key, defined in Get Application List
+	Apps    pulumi.IntMapInput `pulumi:"apps"`
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
+	WxtagIds pulumi.IntMapInput `pulumi:"wxtagIds"`
+}
+
+func (GetWlansSiteWlanAppLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppLimit)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAppLimitArgs) ToGetWlansSiteWlanAppLimitOutput() GetWlansSiteWlanAppLimitOutput {
+	return i.ToGetWlansSiteWlanAppLimitOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAppLimitArgs) ToGetWlansSiteWlanAppLimitOutputWithContext(ctx context.Context) GetWlansSiteWlanAppLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAppLimitOutput)
+}
+
+type GetWlansSiteWlanAppLimitOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAppLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppLimit)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAppLimitOutput) ToGetWlansSiteWlanAppLimitOutput() GetWlansSiteWlanAppLimitOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppLimitOutput) ToGetWlansSiteWlanAppLimitOutputWithContext(ctx context.Context) GetWlansSiteWlanAppLimitOutput {
+	return o
+}
+
+// Map from app key to bandwidth in kbps.
+// Property key is the app key, defined in Get Application List
+func (o GetWlansSiteWlanAppLimitOutput) Apps() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppLimit) map[string]int { return v.Apps }).(pulumi.IntMapOutput)
+}
+
+func (o GetWlansSiteWlanAppLimitOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppLimit) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Map from wxtagId of Hostname Wxlan Tags to bandwidth in kbps. Property key is the `wxtagId`
+func (o GetWlansSiteWlanAppLimitOutput) WxtagIds() pulumi.IntMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppLimit) map[string]int { return v.WxtagIds }).(pulumi.IntMapOutput)
+}
+
+type GetWlansSiteWlanAppQos struct {
+	Apps    map[string]GetWlansSiteWlanAppQosApps `pulumi:"apps"`
+	Enabled bool                                  `pulumi:"enabled"`
+	Others  []GetWlansSiteWlanAppQosOther         `pulumi:"others"`
+}
+
+// GetWlansSiteWlanAppQosInput is an input type that accepts GetWlansSiteWlanAppQosArgs and GetWlansSiteWlanAppQosOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAppQosInput` via:
+//
+//	GetWlansSiteWlanAppQosArgs{...}
+type GetWlansSiteWlanAppQosInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAppQosOutput() GetWlansSiteWlanAppQosOutput
+	ToGetWlansSiteWlanAppQosOutputWithContext(context.Context) GetWlansSiteWlanAppQosOutput
+}
+
+type GetWlansSiteWlanAppQosArgs struct {
+	Apps    GetWlansSiteWlanAppQosAppsMapInput    `pulumi:"apps"`
+	Enabled pulumi.BoolInput                      `pulumi:"enabled"`
+	Others  GetWlansSiteWlanAppQosOtherArrayInput `pulumi:"others"`
+}
+
+func (GetWlansSiteWlanAppQosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppQos)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAppQosArgs) ToGetWlansSiteWlanAppQosOutput() GetWlansSiteWlanAppQosOutput {
+	return i.ToGetWlansSiteWlanAppQosOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAppQosArgs) ToGetWlansSiteWlanAppQosOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAppQosOutput)
+}
+
+type GetWlansSiteWlanAppQosOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAppQosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppQos)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAppQosOutput) ToGetWlansSiteWlanAppQosOutput() GetWlansSiteWlanAppQosOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosOutput) ToGetWlansSiteWlanAppQosOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosOutput) Apps() GetWlansSiteWlanAppQosAppsMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQos) map[string]GetWlansSiteWlanAppQosApps { return v.Apps }).(GetWlansSiteWlanAppQosAppsMapOutput)
+}
+
+func (o GetWlansSiteWlanAppQosOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQos) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanAppQosOutput) Others() GetWlansSiteWlanAppQosOtherArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQos) []GetWlansSiteWlanAppQosOther { return v.Others }).(GetWlansSiteWlanAppQosOtherArrayOutput)
+}
+
+type GetWlansSiteWlanAppQosApps struct {
+	Dscp int `pulumi:"dscp"`
+	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	DstSubnet string `pulumi:"dstSubnet"`
+	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	SrcSubnet string `pulumi:"srcSubnet"`
+}
+
+// GetWlansSiteWlanAppQosAppsInput is an input type that accepts GetWlansSiteWlanAppQosAppsArgs and GetWlansSiteWlanAppQosAppsOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAppQosAppsInput` via:
+//
+//	GetWlansSiteWlanAppQosAppsArgs{...}
+type GetWlansSiteWlanAppQosAppsInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAppQosAppsOutput() GetWlansSiteWlanAppQosAppsOutput
+	ToGetWlansSiteWlanAppQosAppsOutputWithContext(context.Context) GetWlansSiteWlanAppQosAppsOutput
+}
+
+type GetWlansSiteWlanAppQosAppsArgs struct {
+	Dscp pulumi.IntInput `pulumi:"dscp"`
+	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	DstSubnet pulumi.StringInput `pulumi:"dstSubnet"`
+	// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+	SrcSubnet pulumi.StringInput `pulumi:"srcSubnet"`
+}
+
+func (GetWlansSiteWlanAppQosAppsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppQosApps)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAppQosAppsArgs) ToGetWlansSiteWlanAppQosAppsOutput() GetWlansSiteWlanAppQosAppsOutput {
+	return i.ToGetWlansSiteWlanAppQosAppsOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAppQosAppsArgs) ToGetWlansSiteWlanAppQosAppsOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosAppsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAppQosAppsOutput)
+}
+
+// GetWlansSiteWlanAppQosAppsMapInput is an input type that accepts GetWlansSiteWlanAppQosAppsMap and GetWlansSiteWlanAppQosAppsMapOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAppQosAppsMapInput` via:
+//
+//	GetWlansSiteWlanAppQosAppsMap{ "key": GetWlansSiteWlanAppQosAppsArgs{...} }
+type GetWlansSiteWlanAppQosAppsMapInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAppQosAppsMapOutput() GetWlansSiteWlanAppQosAppsMapOutput
+	ToGetWlansSiteWlanAppQosAppsMapOutputWithContext(context.Context) GetWlansSiteWlanAppQosAppsMapOutput
+}
+
+type GetWlansSiteWlanAppQosAppsMap map[string]GetWlansSiteWlanAppQosAppsInput
+
+func (GetWlansSiteWlanAppQosAppsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetWlansSiteWlanAppQosApps)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAppQosAppsMap) ToGetWlansSiteWlanAppQosAppsMapOutput() GetWlansSiteWlanAppQosAppsMapOutput {
+	return i.ToGetWlansSiteWlanAppQosAppsMapOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAppQosAppsMap) ToGetWlansSiteWlanAppQosAppsMapOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosAppsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAppQosAppsMapOutput)
+}
+
+type GetWlansSiteWlanAppQosAppsOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAppQosAppsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppQosApps)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAppQosAppsOutput) ToGetWlansSiteWlanAppQosAppsOutput() GetWlansSiteWlanAppQosAppsOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosAppsOutput) ToGetWlansSiteWlanAppQosAppsOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosAppsOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosAppsOutput) Dscp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosApps) int { return v.Dscp }).(pulumi.IntOutput)
+}
+
+// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+func (o GetWlansSiteWlanAppQosAppsOutput) DstSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosApps) string { return v.DstSubnet }).(pulumi.StringOutput)
+}
+
+// subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+func (o GetWlansSiteWlanAppQosAppsOutput) SrcSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosApps) string { return v.SrcSubnet }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanAppQosAppsMapOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAppQosAppsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetWlansSiteWlanAppQosApps)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAppQosAppsMapOutput) ToGetWlansSiteWlanAppQosAppsMapOutput() GetWlansSiteWlanAppQosAppsMapOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosAppsMapOutput) ToGetWlansSiteWlanAppQosAppsMapOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosAppsMapOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosAppsMapOutput) MapIndex(k pulumi.StringInput) GetWlansSiteWlanAppQosAppsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetWlansSiteWlanAppQosApps {
+		return vs[0].(map[string]GetWlansSiteWlanAppQosApps)[vs[1].(string)]
+	}).(GetWlansSiteWlanAppQosAppsOutput)
+}
+
+type GetWlansSiteWlanAppQosOther struct {
+	Dscp       int    `pulumi:"dscp"`
+	DstSubnet  string `pulumi:"dstSubnet"`
+	PortRanges string `pulumi:"portRanges"`
+	Protocol   string `pulumi:"protocol"`
+	SrcSubnet  string `pulumi:"srcSubnet"`
+}
+
+// GetWlansSiteWlanAppQosOtherInput is an input type that accepts GetWlansSiteWlanAppQosOtherArgs and GetWlansSiteWlanAppQosOtherOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAppQosOtherInput` via:
+//
+//	GetWlansSiteWlanAppQosOtherArgs{...}
+type GetWlansSiteWlanAppQosOtherInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAppQosOtherOutput() GetWlansSiteWlanAppQosOtherOutput
+	ToGetWlansSiteWlanAppQosOtherOutputWithContext(context.Context) GetWlansSiteWlanAppQosOtherOutput
+}
+
+type GetWlansSiteWlanAppQosOtherArgs struct {
+	Dscp       pulumi.IntInput    `pulumi:"dscp"`
+	DstSubnet  pulumi.StringInput `pulumi:"dstSubnet"`
+	PortRanges pulumi.StringInput `pulumi:"portRanges"`
+	Protocol   pulumi.StringInput `pulumi:"protocol"`
+	SrcSubnet  pulumi.StringInput `pulumi:"srcSubnet"`
+}
+
+func (GetWlansSiteWlanAppQosOtherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppQosOther)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAppQosOtherArgs) ToGetWlansSiteWlanAppQosOtherOutput() GetWlansSiteWlanAppQosOtherOutput {
+	return i.ToGetWlansSiteWlanAppQosOtherOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAppQosOtherArgs) ToGetWlansSiteWlanAppQosOtherOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosOtherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAppQosOtherOutput)
+}
+
+// GetWlansSiteWlanAppQosOtherArrayInput is an input type that accepts GetWlansSiteWlanAppQosOtherArray and GetWlansSiteWlanAppQosOtherArrayOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAppQosOtherArrayInput` via:
+//
+//	GetWlansSiteWlanAppQosOtherArray{ GetWlansSiteWlanAppQosOtherArgs{...} }
+type GetWlansSiteWlanAppQosOtherArrayInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAppQosOtherArrayOutput() GetWlansSiteWlanAppQosOtherArrayOutput
+	ToGetWlansSiteWlanAppQosOtherArrayOutputWithContext(context.Context) GetWlansSiteWlanAppQosOtherArrayOutput
+}
+
+type GetWlansSiteWlanAppQosOtherArray []GetWlansSiteWlanAppQosOtherInput
+
+func (GetWlansSiteWlanAppQosOtherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanAppQosOther)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAppQosOtherArray) ToGetWlansSiteWlanAppQosOtherArrayOutput() GetWlansSiteWlanAppQosOtherArrayOutput {
+	return i.ToGetWlansSiteWlanAppQosOtherArrayOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAppQosOtherArray) ToGetWlansSiteWlanAppQosOtherArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosOtherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAppQosOtherArrayOutput)
+}
+
+type GetWlansSiteWlanAppQosOtherOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAppQosOtherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAppQosOther)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) ToGetWlansSiteWlanAppQosOtherOutput() GetWlansSiteWlanAppQosOtherOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) ToGetWlansSiteWlanAppQosOtherOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosOtherOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) Dscp() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosOther) int { return v.Dscp }).(pulumi.IntOutput)
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) DstSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosOther) string { return v.DstSubnet }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) PortRanges() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosOther) string { return v.PortRanges }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosOther) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAppQosOtherOutput) SrcSubnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAppQosOther) string { return v.SrcSubnet }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanAppQosOtherArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAppQosOtherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanAppQosOther)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAppQosOtherArrayOutput) ToGetWlansSiteWlanAppQosOtherArrayOutput() GetWlansSiteWlanAppQosOtherArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosOtherArrayOutput) ToGetWlansSiteWlanAppQosOtherArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanAppQosOtherArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAppQosOtherArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanAppQosOtherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWlansSiteWlanAppQosOther {
+		return vs[0].([]GetWlansSiteWlanAppQosOther)[vs[1].(int)]
+	}).(GetWlansSiteWlanAppQosOtherOutput)
+}
+
+type GetWlansSiteWlanAuth struct {
+	// SAE anti-clogging token threshold
+	AnticlogThreshold int `pulumi:"anticlogThreshold"`
+	// whether to trigger EAP reauth when the session ends
+	EapReauth bool `pulumi:"eapReauth"`
+	// whether to enable MAC Auth, uses the same auth_servers
+	EnableMacAuth bool `pulumi:"enableMacAuth"`
+	// when `type`==`wep`
+	KeyIdx int `pulumi:"keyIdx"`
+	// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	Keys []string `pulumi:"keys"`
+	// when `type`==`psk`, whether to only use multi_psk
+	MultiPskOnly bool `pulumi:"multiPskOnly"`
+	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+	Owe string `pulumi:"owe"`
+	// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	Pairwises []string `pulumi:"pairwises"`
+	// when `multiPskOnly`==`true`, whether private wlan is enabled
+	PrivateWlan bool `pulumi:"privateWlan"`
+	// when `type`==`psk`, 8-64 characters, or 64 hex characters
+	Psk string `pulumi:"psk"`
+	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+	Type string `pulumi:"type"`
+	// enable WEP as secondary auth
+	WepAsSecondaryAuth bool `pulumi:"wepAsSecondaryAuth"`
+}
+
+// GetWlansSiteWlanAuthInput is an input type that accepts GetWlansSiteWlanAuthArgs and GetWlansSiteWlanAuthOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAuthInput` via:
+//
+//	GetWlansSiteWlanAuthArgs{...}
+type GetWlansSiteWlanAuthInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAuthOutput() GetWlansSiteWlanAuthOutput
+	ToGetWlansSiteWlanAuthOutputWithContext(context.Context) GetWlansSiteWlanAuthOutput
+}
+
+type GetWlansSiteWlanAuthArgs struct {
+	// SAE anti-clogging token threshold
+	AnticlogThreshold pulumi.IntInput `pulumi:"anticlogThreshold"`
+	// whether to trigger EAP reauth when the session ends
+	EapReauth pulumi.BoolInput `pulumi:"eapReauth"`
+	// whether to enable MAC Auth, uses the same auth_servers
+	EnableMacAuth pulumi.BoolInput `pulumi:"enableMacAuth"`
+	// when `type`==`wep`
+	KeyIdx pulumi.IntInput `pulumi:"keyIdx"`
+	// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+	Keys pulumi.StringArrayInput `pulumi:"keys"`
+	// when `type`==`psk`, whether to only use multi_psk
+	MultiPskOnly pulumi.BoolInput `pulumi:"multiPskOnly"`
+	// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+	Owe pulumi.StringInput `pulumi:"owe"`
+	// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+	Pairwises pulumi.StringArrayInput `pulumi:"pairwises"`
+	// when `multiPskOnly`==`true`, whether private wlan is enabled
+	PrivateWlan pulumi.BoolInput `pulumi:"privateWlan"`
+	// when `type`==`psk`, 8-64 characters, or 64 hex characters
+	Psk pulumi.StringInput `pulumi:"psk"`
+	// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+	Type pulumi.StringInput `pulumi:"type"`
+	// enable WEP as secondary auth
+	WepAsSecondaryAuth pulumi.BoolInput `pulumi:"wepAsSecondaryAuth"`
+}
+
+func (GetWlansSiteWlanAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAuth)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAuthArgs) ToGetWlansSiteWlanAuthOutput() GetWlansSiteWlanAuthOutput {
+	return i.ToGetWlansSiteWlanAuthOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAuthArgs) ToGetWlansSiteWlanAuthOutputWithContext(ctx context.Context) GetWlansSiteWlanAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAuthOutput)
+}
+
+type GetWlansSiteWlanAuthOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAuth)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAuthOutput) ToGetWlansSiteWlanAuthOutput() GetWlansSiteWlanAuthOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAuthOutput) ToGetWlansSiteWlanAuthOutputWithContext(ctx context.Context) GetWlansSiteWlanAuthOutput {
+	return o
+}
+
+// SAE anti-clogging token threshold
+func (o GetWlansSiteWlanAuthOutput) AnticlogThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) int { return v.AnticlogThreshold }).(pulumi.IntOutput)
+}
+
+// whether to trigger EAP reauth when the session ends
+func (o GetWlansSiteWlanAuthOutput) EapReauth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.EapReauth }).(pulumi.BoolOutput)
+}
+
+// whether to enable MAC Auth, uses the same auth_servers
+func (o GetWlansSiteWlanAuthOutput) EnableMacAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.EnableMacAuth }).(pulumi.BoolOutput)
+}
+
+// when `type`==`wep`
+func (o GetWlansSiteWlanAuthOutput) KeyIdx() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) int { return v.KeyIdx }).(pulumi.IntOutput)
+}
+
+// when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+func (o GetWlansSiteWlanAuthOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) []string { return v.Keys }).(pulumi.StringArrayOutput)
+}
+
+// when `type`==`psk`, whether to only use multi_psk
+func (o GetWlansSiteWlanAuthOutput) MultiPskOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.MultiPskOnly }).(pulumi.BoolOutput)
+}
+
+// if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
+func (o GetWlansSiteWlanAuthOutput) Owe() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) string { return v.Owe }).(pulumi.StringOutput)
+}
+
+// when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+func (o GetWlansSiteWlanAuthOutput) Pairwises() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) []string { return v.Pairwises }).(pulumi.StringArrayOutput)
+}
+
+// when `multiPskOnly`==`true`, whether private wlan is enabled
+func (o GetWlansSiteWlanAuthOutput) PrivateWlan() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.PrivateWlan }).(pulumi.BoolOutput)
+}
+
+// when `type`==`psk`, 8-64 characters, or 64 hex characters
+func (o GetWlansSiteWlanAuthOutput) Psk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) string { return v.Psk }).(pulumi.StringOutput)
+}
+
+// enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
+func (o GetWlansSiteWlanAuthOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// enable WEP as secondary auth
+func (o GetWlansSiteWlanAuthOutput) WepAsSecondaryAuth() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuth) bool { return v.WepAsSecondaryAuth }).(pulumi.BoolOutput)
+}
+
+type GetWlansSiteWlanAuthServer struct {
+	// ip / hostname of RADIUS server
+	Host           string `pulumi:"host"`
+	KeywrapEnabled bool   `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat string `pulumi:"keywrapFormat"`
+	KeywrapKek    string `pulumi:"keywrapKek"`
+	KeywrapMack   string `pulumi:"keywrapMack"`
+	// Auth port of RADIUS server
+	Port int `pulumi:"port"`
+	// whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator bool `pulumi:"requireMessageAuthenticator"`
+	// secret of RADIUS server
+	Secret string `pulumi:"secret"`
+}
+
+// GetWlansSiteWlanAuthServerInput is an input type that accepts GetWlansSiteWlanAuthServerArgs and GetWlansSiteWlanAuthServerOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAuthServerInput` via:
+//
+//	GetWlansSiteWlanAuthServerArgs{...}
+type GetWlansSiteWlanAuthServerInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAuthServerOutput() GetWlansSiteWlanAuthServerOutput
+	ToGetWlansSiteWlanAuthServerOutputWithContext(context.Context) GetWlansSiteWlanAuthServerOutput
+}
+
+type GetWlansSiteWlanAuthServerArgs struct {
+	// ip / hostname of RADIUS server
+	Host           pulumi.StringInput `pulumi:"host"`
+	KeywrapEnabled pulumi.BoolInput   `pulumi:"keywrapEnabled"`
+	// enum: `ascii`, `hex`
+	KeywrapFormat pulumi.StringInput `pulumi:"keywrapFormat"`
+	KeywrapKek    pulumi.StringInput `pulumi:"keywrapKek"`
+	KeywrapMack   pulumi.StringInput `pulumi:"keywrapMack"`
+	// Auth port of RADIUS server
+	Port pulumi.IntInput `pulumi:"port"`
+	// whether to require Message-Authenticator in requests
+	RequireMessageAuthenticator pulumi.BoolInput `pulumi:"requireMessageAuthenticator"`
+	// secret of RADIUS server
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (GetWlansSiteWlanAuthServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAuthServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAuthServerArgs) ToGetWlansSiteWlanAuthServerOutput() GetWlansSiteWlanAuthServerOutput {
+	return i.ToGetWlansSiteWlanAuthServerOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAuthServerArgs) ToGetWlansSiteWlanAuthServerOutputWithContext(ctx context.Context) GetWlansSiteWlanAuthServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAuthServerOutput)
+}
+
+// GetWlansSiteWlanAuthServerArrayInput is an input type that accepts GetWlansSiteWlanAuthServerArray and GetWlansSiteWlanAuthServerArrayOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanAuthServerArrayInput` via:
+//
+//	GetWlansSiteWlanAuthServerArray{ GetWlansSiteWlanAuthServerArgs{...} }
+type GetWlansSiteWlanAuthServerArrayInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanAuthServerArrayOutput() GetWlansSiteWlanAuthServerArrayOutput
+	ToGetWlansSiteWlanAuthServerArrayOutputWithContext(context.Context) GetWlansSiteWlanAuthServerArrayOutput
+}
+
+type GetWlansSiteWlanAuthServerArray []GetWlansSiteWlanAuthServerInput
+
+func (GetWlansSiteWlanAuthServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanAuthServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanAuthServerArray) ToGetWlansSiteWlanAuthServerArrayOutput() GetWlansSiteWlanAuthServerArrayOutput {
+	return i.ToGetWlansSiteWlanAuthServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanAuthServerArray) ToGetWlansSiteWlanAuthServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanAuthServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanAuthServerArrayOutput)
+}
+
+type GetWlansSiteWlanAuthServerOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAuthServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanAuthServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAuthServerOutput) ToGetWlansSiteWlanAuthServerOutput() GetWlansSiteWlanAuthServerOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAuthServerOutput) ToGetWlansSiteWlanAuthServerOutputWithContext(ctx context.Context) GetWlansSiteWlanAuthServerOutput {
+	return o
+}
+
+// ip / hostname of RADIUS server
+func (o GetWlansSiteWlanAuthServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAuthServerOutput) KeywrapEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) bool { return v.KeywrapEnabled }).(pulumi.BoolOutput)
+}
+
+// enum: `ascii`, `hex`
+func (o GetWlansSiteWlanAuthServerOutput) KeywrapFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.KeywrapFormat }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAuthServerOutput) KeywrapKek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.KeywrapKek }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanAuthServerOutput) KeywrapMack() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.KeywrapMack }).(pulumi.StringOutput)
+}
+
+// Auth port of RADIUS server
+func (o GetWlansSiteWlanAuthServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// whether to require Message-Authenticator in requests
+func (o GetWlansSiteWlanAuthServerOutput) RequireMessageAuthenticator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) bool { return v.RequireMessageAuthenticator }).(pulumi.BoolOutput)
+}
+
+// secret of RADIUS server
+func (o GetWlansSiteWlanAuthServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanAuthServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanAuthServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanAuthServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanAuthServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanAuthServerArrayOutput) ToGetWlansSiteWlanAuthServerArrayOutput() GetWlansSiteWlanAuthServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAuthServerArrayOutput) ToGetWlansSiteWlanAuthServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanAuthServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanAuthServerArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanAuthServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWlansSiteWlanAuthServer {
+		return vs[0].([]GetWlansSiteWlanAuthServer)[vs[1].(int)]
+	}).(GetWlansSiteWlanAuthServerOutput)
+}
+
+type GetWlansSiteWlanBonjour struct {
+	// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+	AdditionalVlanIds []string `pulumi:"additionalVlanIds"`
+	// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+	Enabled bool `pulumi:"enabled"`
+	// what services are allowed.
+	// Property key is the service name
+	Services map[string]GetWlansSiteWlanBonjourServices `pulumi:"services"`
+}
+
+// GetWlansSiteWlanBonjourInput is an input type that accepts GetWlansSiteWlanBonjourArgs and GetWlansSiteWlanBonjourOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanBonjourInput` via:
+//
+//	GetWlansSiteWlanBonjourArgs{...}
+type GetWlansSiteWlanBonjourInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanBonjourOutput() GetWlansSiteWlanBonjourOutput
+	ToGetWlansSiteWlanBonjourOutputWithContext(context.Context) GetWlansSiteWlanBonjourOutput
+}
+
+type GetWlansSiteWlanBonjourArgs struct {
+	// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+	AdditionalVlanIds pulumi.StringArrayInput `pulumi:"additionalVlanIds"`
+	// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// what services are allowed.
+	// Property key is the service name
+	Services GetWlansSiteWlanBonjourServicesMapInput `pulumi:"services"`
+}
+
+func (GetWlansSiteWlanBonjourArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanBonjour)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanBonjourArgs) ToGetWlansSiteWlanBonjourOutput() GetWlansSiteWlanBonjourOutput {
+	return i.ToGetWlansSiteWlanBonjourOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanBonjourArgs) ToGetWlansSiteWlanBonjourOutputWithContext(ctx context.Context) GetWlansSiteWlanBonjourOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanBonjourOutput)
+}
+
+type GetWlansSiteWlanBonjourOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanBonjourOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanBonjour)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanBonjourOutput) ToGetWlansSiteWlanBonjourOutput() GetWlansSiteWlanBonjourOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanBonjourOutput) ToGetWlansSiteWlanBonjourOutputWithContext(ctx context.Context) GetWlansSiteWlanBonjourOutput {
+	return o
+}
+
+// additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
+func (o GetWlansSiteWlanBonjourOutput) AdditionalVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanBonjour) []string { return v.AdditionalVlanIds }).(pulumi.StringArrayOutput)
+}
+
+// whether to enable bonjour for this WLAN. Once enabled, limitBcast is assumed true, allowMdns is assumed false
+func (o GetWlansSiteWlanBonjourOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanBonjour) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// what services are allowed.
+// Property key is the service name
+func (o GetWlansSiteWlanBonjourOutput) Services() GetWlansSiteWlanBonjourServicesMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanBonjour) map[string]GetWlansSiteWlanBonjourServices { return v.Services }).(GetWlansSiteWlanBonjourServicesMapOutput)
+}
+
+type GetWlansSiteWlanBonjourServices struct {
+	// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+	DisableLocal bool `pulumi:"disableLocal"`
+	// optional, if the service is further restricted for certain RADIUS groups
+	RadiusGroups []string `pulumi:"radiusGroups"`
+	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+	Scope string `pulumi:"scope"`
+}
+
+// GetWlansSiteWlanBonjourServicesInput is an input type that accepts GetWlansSiteWlanBonjourServicesArgs and GetWlansSiteWlanBonjourServicesOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanBonjourServicesInput` via:
+//
+//	GetWlansSiteWlanBonjourServicesArgs{...}
+type GetWlansSiteWlanBonjourServicesInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanBonjourServicesOutput() GetWlansSiteWlanBonjourServicesOutput
+	ToGetWlansSiteWlanBonjourServicesOutputWithContext(context.Context) GetWlansSiteWlanBonjourServicesOutput
+}
+
+type GetWlansSiteWlanBonjourServicesArgs struct {
+	// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+	DisableLocal pulumi.BoolInput `pulumi:"disableLocal"`
+	// optional, if the service is further restricted for certain RADIUS groups
+	RadiusGroups pulumi.StringArrayInput `pulumi:"radiusGroups"`
+	// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetWlansSiteWlanBonjourServicesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanBonjourServices)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanBonjourServicesArgs) ToGetWlansSiteWlanBonjourServicesOutput() GetWlansSiteWlanBonjourServicesOutput {
+	return i.ToGetWlansSiteWlanBonjourServicesOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanBonjourServicesArgs) ToGetWlansSiteWlanBonjourServicesOutputWithContext(ctx context.Context) GetWlansSiteWlanBonjourServicesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanBonjourServicesOutput)
+}
+
+// GetWlansSiteWlanBonjourServicesMapInput is an input type that accepts GetWlansSiteWlanBonjourServicesMap and GetWlansSiteWlanBonjourServicesMapOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanBonjourServicesMapInput` via:
+//
+//	GetWlansSiteWlanBonjourServicesMap{ "key": GetWlansSiteWlanBonjourServicesArgs{...} }
+type GetWlansSiteWlanBonjourServicesMapInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanBonjourServicesMapOutput() GetWlansSiteWlanBonjourServicesMapOutput
+	ToGetWlansSiteWlanBonjourServicesMapOutputWithContext(context.Context) GetWlansSiteWlanBonjourServicesMapOutput
+}
+
+type GetWlansSiteWlanBonjourServicesMap map[string]GetWlansSiteWlanBonjourServicesInput
+
+func (GetWlansSiteWlanBonjourServicesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetWlansSiteWlanBonjourServices)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanBonjourServicesMap) ToGetWlansSiteWlanBonjourServicesMapOutput() GetWlansSiteWlanBonjourServicesMapOutput {
+	return i.ToGetWlansSiteWlanBonjourServicesMapOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanBonjourServicesMap) ToGetWlansSiteWlanBonjourServicesMapOutputWithContext(ctx context.Context) GetWlansSiteWlanBonjourServicesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanBonjourServicesMapOutput)
+}
+
+type GetWlansSiteWlanBonjourServicesOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanBonjourServicesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanBonjourServices)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanBonjourServicesOutput) ToGetWlansSiteWlanBonjourServicesOutput() GetWlansSiteWlanBonjourServicesOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanBonjourServicesOutput) ToGetWlansSiteWlanBonjourServicesOutputWithContext(ctx context.Context) GetWlansSiteWlanBonjourServicesOutput {
+	return o
+}
+
+// whether to prevent wireless clients to discover bonjour devices on the same WLAN
+func (o GetWlansSiteWlanBonjourServicesOutput) DisableLocal() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanBonjourServices) bool { return v.DisableLocal }).(pulumi.BoolOutput)
+}
+
+// optional, if the service is further restricted for certain RADIUS groups
+func (o GetWlansSiteWlanBonjourServicesOutput) RadiusGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanBonjourServices) []string { return v.RadiusGroups }).(pulumi.StringArrayOutput)
+}
+
+// how bonjour services should be discovered for the same WLAN. enum: `sameAp`, `sameMap`, `sameSite`
+func (o GetWlansSiteWlanBonjourServicesOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanBonjourServices) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanBonjourServicesMapOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanBonjourServicesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetWlansSiteWlanBonjourServices)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanBonjourServicesMapOutput) ToGetWlansSiteWlanBonjourServicesMapOutput() GetWlansSiteWlanBonjourServicesMapOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanBonjourServicesMapOutput) ToGetWlansSiteWlanBonjourServicesMapOutputWithContext(ctx context.Context) GetWlansSiteWlanBonjourServicesMapOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanBonjourServicesMapOutput) MapIndex(k pulumi.StringInput) GetWlansSiteWlanBonjourServicesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetWlansSiteWlanBonjourServices {
+		return vs[0].(map[string]GetWlansSiteWlanBonjourServices)[vs[1].(string)]
+	}).(GetWlansSiteWlanBonjourServicesOutput)
+}
+
+type GetWlansSiteWlanCiscoCwa struct {
+	// list of hostnames without http(s):// (matched by substring)
+	AllowedHostnames []string `pulumi:"allowedHostnames"`
+	// list of CIDRs
+	AllowedSubnets []string `pulumi:"allowedSubnets"`
+	// list of blocked CIDRs
+	BlockedSubnets []string `pulumi:"blockedSubnets"`
+	Enabled        bool     `pulumi:"enabled"`
+}
+
+// GetWlansSiteWlanCiscoCwaInput is an input type that accepts GetWlansSiteWlanCiscoCwaArgs and GetWlansSiteWlanCiscoCwaOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanCiscoCwaInput` via:
+//
+//	GetWlansSiteWlanCiscoCwaArgs{...}
+type GetWlansSiteWlanCiscoCwaInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanCiscoCwaOutput() GetWlansSiteWlanCiscoCwaOutput
+	ToGetWlansSiteWlanCiscoCwaOutputWithContext(context.Context) GetWlansSiteWlanCiscoCwaOutput
+}
+
+type GetWlansSiteWlanCiscoCwaArgs struct {
+	// list of hostnames without http(s):// (matched by substring)
+	AllowedHostnames pulumi.StringArrayInput `pulumi:"allowedHostnames"`
+	// list of CIDRs
+	AllowedSubnets pulumi.StringArrayInput `pulumi:"allowedSubnets"`
+	// list of blocked CIDRs
+	BlockedSubnets pulumi.StringArrayInput `pulumi:"blockedSubnets"`
+	Enabled        pulumi.BoolInput        `pulumi:"enabled"`
+}
+
+func (GetWlansSiteWlanCiscoCwaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanCiscoCwa)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanCiscoCwaArgs) ToGetWlansSiteWlanCiscoCwaOutput() GetWlansSiteWlanCiscoCwaOutput {
+	return i.ToGetWlansSiteWlanCiscoCwaOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanCiscoCwaArgs) ToGetWlansSiteWlanCiscoCwaOutputWithContext(ctx context.Context) GetWlansSiteWlanCiscoCwaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanCiscoCwaOutput)
+}
+
+type GetWlansSiteWlanCiscoCwaOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanCiscoCwaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanCiscoCwa)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanCiscoCwaOutput) ToGetWlansSiteWlanCiscoCwaOutput() GetWlansSiteWlanCiscoCwaOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanCiscoCwaOutput) ToGetWlansSiteWlanCiscoCwaOutputWithContext(ctx context.Context) GetWlansSiteWlanCiscoCwaOutput {
+	return o
+}
+
+// list of hostnames without http(s):// (matched by substring)
+func (o GetWlansSiteWlanCiscoCwaOutput) AllowedHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) []string { return v.AllowedHostnames }).(pulumi.StringArrayOutput)
+}
+
+// list of CIDRs
+func (o GetWlansSiteWlanCiscoCwaOutput) AllowedSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) []string { return v.AllowedSubnets }).(pulumi.StringArrayOutput)
+}
+
+// list of blocked CIDRs
+func (o GetWlansSiteWlanCiscoCwaOutput) BlockedSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) []string { return v.BlockedSubnets }).(pulumi.StringArrayOutput)
+}
+
+func (o GetWlansSiteWlanCiscoCwaOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCiscoCwa) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetWlansSiteWlanCoaServer struct {
+	// whether to disable Event-Timestamp Check
+	DisableEventTimestampCheck bool   `pulumi:"disableEventTimestampCheck"`
+	Enabled                    bool   `pulumi:"enabled"`
+	Ip                         string `pulumi:"ip"`
+	Port                       int    `pulumi:"port"`
+	Secret                     string `pulumi:"secret"`
+}
+
+// GetWlansSiteWlanCoaServerInput is an input type that accepts GetWlansSiteWlanCoaServerArgs and GetWlansSiteWlanCoaServerOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanCoaServerInput` via:
+//
+//	GetWlansSiteWlanCoaServerArgs{...}
+type GetWlansSiteWlanCoaServerInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanCoaServerOutput() GetWlansSiteWlanCoaServerOutput
+	ToGetWlansSiteWlanCoaServerOutputWithContext(context.Context) GetWlansSiteWlanCoaServerOutput
+}
+
+type GetWlansSiteWlanCoaServerArgs struct {
+	// whether to disable Event-Timestamp Check
+	DisableEventTimestampCheck pulumi.BoolInput   `pulumi:"disableEventTimestampCheck"`
+	Enabled                    pulumi.BoolInput   `pulumi:"enabled"`
+	Ip                         pulumi.StringInput `pulumi:"ip"`
+	Port                       pulumi.IntInput    `pulumi:"port"`
+	Secret                     pulumi.StringInput `pulumi:"secret"`
+}
+
+func (GetWlansSiteWlanCoaServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanCoaServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanCoaServerArgs) ToGetWlansSiteWlanCoaServerOutput() GetWlansSiteWlanCoaServerOutput {
+	return i.ToGetWlansSiteWlanCoaServerOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanCoaServerArgs) ToGetWlansSiteWlanCoaServerOutputWithContext(ctx context.Context) GetWlansSiteWlanCoaServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanCoaServerOutput)
+}
+
+// GetWlansSiteWlanCoaServerArrayInput is an input type that accepts GetWlansSiteWlanCoaServerArray and GetWlansSiteWlanCoaServerArrayOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanCoaServerArrayInput` via:
+//
+//	GetWlansSiteWlanCoaServerArray{ GetWlansSiteWlanCoaServerArgs{...} }
+type GetWlansSiteWlanCoaServerArrayInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanCoaServerArrayOutput() GetWlansSiteWlanCoaServerArrayOutput
+	ToGetWlansSiteWlanCoaServerArrayOutputWithContext(context.Context) GetWlansSiteWlanCoaServerArrayOutput
+}
+
+type GetWlansSiteWlanCoaServerArray []GetWlansSiteWlanCoaServerInput
+
+func (GetWlansSiteWlanCoaServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanCoaServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanCoaServerArray) ToGetWlansSiteWlanCoaServerArrayOutput() GetWlansSiteWlanCoaServerArrayOutput {
+	return i.ToGetWlansSiteWlanCoaServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanCoaServerArray) ToGetWlansSiteWlanCoaServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanCoaServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanCoaServerArrayOutput)
+}
+
+type GetWlansSiteWlanCoaServerOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanCoaServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanCoaServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanCoaServerOutput) ToGetWlansSiteWlanCoaServerOutput() GetWlansSiteWlanCoaServerOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanCoaServerOutput) ToGetWlansSiteWlanCoaServerOutputWithContext(ctx context.Context) GetWlansSiteWlanCoaServerOutput {
+	return o
+}
+
+// whether to disable Event-Timestamp Check
+func (o GetWlansSiteWlanCoaServerOutput) DisableEventTimestampCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) bool { return v.DisableEventTimestampCheck }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanCoaServerOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanCoaServerOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanCoaServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetWlansSiteWlanCoaServerOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanCoaServer) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanCoaServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanCoaServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanCoaServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanCoaServerArrayOutput) ToGetWlansSiteWlanCoaServerArrayOutput() GetWlansSiteWlanCoaServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanCoaServerArrayOutput) ToGetWlansSiteWlanCoaServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanCoaServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanCoaServerArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanCoaServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWlansSiteWlanCoaServer {
+		return vs[0].([]GetWlansSiteWlanCoaServer)[vs[1].(int)]
+	}).(GetWlansSiteWlanCoaServerOutput)
+}
+
+type GetWlansSiteWlanDnsServerRewrite struct {
+	Enabled bool `pulumi:"enabled"`
+	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+	RadiusGroups map[string]string `pulumi:"radiusGroups"`
+}
+
+// GetWlansSiteWlanDnsServerRewriteInput is an input type that accepts GetWlansSiteWlanDnsServerRewriteArgs and GetWlansSiteWlanDnsServerRewriteOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanDnsServerRewriteInput` via:
+//
+//	GetWlansSiteWlanDnsServerRewriteArgs{...}
+type GetWlansSiteWlanDnsServerRewriteInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanDnsServerRewriteOutput() GetWlansSiteWlanDnsServerRewriteOutput
+	ToGetWlansSiteWlanDnsServerRewriteOutputWithContext(context.Context) GetWlansSiteWlanDnsServerRewriteOutput
+}
+
+type GetWlansSiteWlanDnsServerRewriteArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+	RadiusGroups pulumi.StringMapInput `pulumi:"radiusGroups"`
+}
+
+func (GetWlansSiteWlanDnsServerRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanDnsServerRewrite)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanDnsServerRewriteArgs) ToGetWlansSiteWlanDnsServerRewriteOutput() GetWlansSiteWlanDnsServerRewriteOutput {
+	return i.ToGetWlansSiteWlanDnsServerRewriteOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanDnsServerRewriteArgs) ToGetWlansSiteWlanDnsServerRewriteOutputWithContext(ctx context.Context) GetWlansSiteWlanDnsServerRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanDnsServerRewriteOutput)
+}
+
+type GetWlansSiteWlanDnsServerRewriteOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanDnsServerRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanDnsServerRewrite)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanDnsServerRewriteOutput) ToGetWlansSiteWlanDnsServerRewriteOutput() GetWlansSiteWlanDnsServerRewriteOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanDnsServerRewriteOutput) ToGetWlansSiteWlanDnsServerRewriteOutputWithContext(ctx context.Context) GetWlansSiteWlanDnsServerRewriteOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanDnsServerRewriteOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDnsServerRewrite) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// map between radiusGroup and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+func (o GetWlansSiteWlanDnsServerRewriteOutput) RadiusGroups() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDnsServerRewrite) map[string]string { return v.RadiusGroups }).(pulumi.StringMapOutput)
+}
+
+type GetWlansSiteWlanDynamicPsk struct {
+	// default PSK to use if cloud WLC is not available, 8-63 characters
+	DefaultPsk    string `pulumi:"defaultPsk"`
+	DefaultVlanId string `pulumi:"defaultVlanId"`
+	Enabled       bool   `pulumi:"enabled"`
+	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+	ForceLookup bool `pulumi:"forceLookup"`
+	// enum: `cloudPsks`, `radius`
+	Source string `pulumi:"source"`
+}
+
+// GetWlansSiteWlanDynamicPskInput is an input type that accepts GetWlansSiteWlanDynamicPskArgs and GetWlansSiteWlanDynamicPskOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanDynamicPskInput` via:
+//
+//	GetWlansSiteWlanDynamicPskArgs{...}
+type GetWlansSiteWlanDynamicPskInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanDynamicPskOutput() GetWlansSiteWlanDynamicPskOutput
+	ToGetWlansSiteWlanDynamicPskOutputWithContext(context.Context) GetWlansSiteWlanDynamicPskOutput
+}
+
+type GetWlansSiteWlanDynamicPskArgs struct {
+	// default PSK to use if cloud WLC is not available, 8-63 characters
+	DefaultPsk    pulumi.StringInput `pulumi:"defaultPsk"`
+	DefaultVlanId pulumi.StringInput `pulumi:"defaultVlanId"`
+	Enabled       pulumi.BoolInput   `pulumi:"enabled"`
+	// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+	ForceLookup pulumi.BoolInput `pulumi:"forceLookup"`
+	// enum: `cloudPsks`, `radius`
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetWlansSiteWlanDynamicPskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanDynamicPsk)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanDynamicPskArgs) ToGetWlansSiteWlanDynamicPskOutput() GetWlansSiteWlanDynamicPskOutput {
+	return i.ToGetWlansSiteWlanDynamicPskOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanDynamicPskArgs) ToGetWlansSiteWlanDynamicPskOutputWithContext(ctx context.Context) GetWlansSiteWlanDynamicPskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanDynamicPskOutput)
+}
+
+type GetWlansSiteWlanDynamicPskOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanDynamicPskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanDynamicPsk)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanDynamicPskOutput) ToGetWlansSiteWlanDynamicPskOutput() GetWlansSiteWlanDynamicPskOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanDynamicPskOutput) ToGetWlansSiteWlanDynamicPskOutputWithContext(ctx context.Context) GetWlansSiteWlanDynamicPskOutput {
+	return o
+}
+
+// default PSK to use if cloud WLC is not available, 8-63 characters
+func (o GetWlansSiteWlanDynamicPskOutput) DefaultPsk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) string { return v.DefaultPsk }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanDynamicPskOutput) DefaultVlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) string { return v.DefaultVlanId }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanDynamicPskOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+func (o GetWlansSiteWlanDynamicPskOutput) ForceLookup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) bool { return v.ForceLookup }).(pulumi.BoolOutput)
+}
+
+// enum: `cloudPsks`, `radius`
+func (o GetWlansSiteWlanDynamicPskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicPsk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanDynamicVlan struct {
+	// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+	DefaultVlanIds []string `pulumi:"defaultVlanIds"`
+	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+	Enabled bool `pulumi:"enabled"`
+	// vlan_ids to be locally bridged
+	LocalVlanIds []string `pulumi:"localVlanIds"`
+	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+	Type string `pulumi:"type"`
+	// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+	Vlans map[string]string `pulumi:"vlans"`
+}
+
+// GetWlansSiteWlanDynamicVlanInput is an input type that accepts GetWlansSiteWlanDynamicVlanArgs and GetWlansSiteWlanDynamicVlanOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanDynamicVlanInput` via:
+//
+//	GetWlansSiteWlanDynamicVlanArgs{...}
+type GetWlansSiteWlanDynamicVlanInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanDynamicVlanOutput() GetWlansSiteWlanDynamicVlanOutput
+	ToGetWlansSiteWlanDynamicVlanOutputWithContext(context.Context) GetWlansSiteWlanDynamicVlanOutput
+}
+
+type GetWlansSiteWlanDynamicVlanArgs struct {
+	// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+	DefaultVlanIds pulumi.StringArrayInput `pulumi:"defaultVlanIds"`
+	// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// vlan_ids to be locally bridged
+	LocalVlanIds pulumi.StringArrayInput `pulumi:"localVlanIds"`
+	// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+	Type pulumi.StringInput `pulumi:"type"`
+	// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+	//   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+	//   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+	Vlans pulumi.StringMapInput `pulumi:"vlans"`
+}
+
+func (GetWlansSiteWlanDynamicVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanDynamicVlan)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanDynamicVlanArgs) ToGetWlansSiteWlanDynamicVlanOutput() GetWlansSiteWlanDynamicVlanOutput {
+	return i.ToGetWlansSiteWlanDynamicVlanOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanDynamicVlanArgs) ToGetWlansSiteWlanDynamicVlanOutputWithContext(ctx context.Context) GetWlansSiteWlanDynamicVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanDynamicVlanOutput)
+}
+
+type GetWlansSiteWlanDynamicVlanOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanDynamicVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanDynamicVlan)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanDynamicVlanOutput) ToGetWlansSiteWlanDynamicVlanOutput() GetWlansSiteWlanDynamicVlanOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanDynamicVlanOutput) ToGetWlansSiteWlanDynamicVlanOutputWithContext(ctx context.Context) GetWlansSiteWlanDynamicVlanOutput {
+	return o
+}
+
+// Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
+func (o GetWlansSiteWlanDynamicVlanOutput) DefaultVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) []string { return v.DefaultVlanIds }).(pulumi.StringArrayOutput)
+}
+
+// Requires `vlanEnabled`==`true` to be set to `true`. Whether to enable dynamic vlan
+func (o GetWlansSiteWlanDynamicVlanOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// vlan_ids to be locally bridged
+func (o GetWlansSiteWlanDynamicVlanOutput) LocalVlanIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) []string { return v.LocalVlanIds }).(pulumi.StringArrayOutput)
+}
+
+// standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
+func (o GetWlansSiteWlanDynamicVlanOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// map between vlanId (as string) to airespace interface names (comma-separated) or null for stndard mapping
+//   - if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \"\"
+//   - if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
+func (o GetWlansSiteWlanDynamicVlanOutput) Vlans() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanDynamicVlan) map[string]string { return v.Vlans }).(pulumi.StringMapOutput)
+}
+
+type GetWlansSiteWlanHotspot20 struct {
+	DomainNames []string `pulumi:"domainNames"`
+	// whether to enable hotspot 2.0 config
+	Enabled   bool     `pulumi:"enabled"`
+	NaiRealms []string `pulumi:"naiRealms"`
+	// list of operators to support
+	Operators []string `pulumi:"operators"`
+	Rcois     []string `pulumi:"rcois"`
+	// venue name, default is site name
+	VenueName string `pulumi:"venueName"`
+}
+
+// GetWlansSiteWlanHotspot20Input is an input type that accepts GetWlansSiteWlanHotspot20Args and GetWlansSiteWlanHotspot20Output values.
+// You can construct a concrete instance of `GetWlansSiteWlanHotspot20Input` via:
+//
+//	GetWlansSiteWlanHotspot20Args{...}
+type GetWlansSiteWlanHotspot20Input interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanHotspot20Output() GetWlansSiteWlanHotspot20Output
+	ToGetWlansSiteWlanHotspot20OutputWithContext(context.Context) GetWlansSiteWlanHotspot20Output
+}
+
+type GetWlansSiteWlanHotspot20Args struct {
+	DomainNames pulumi.StringArrayInput `pulumi:"domainNames"`
+	// whether to enable hotspot 2.0 config
+	Enabled   pulumi.BoolInput        `pulumi:"enabled"`
+	NaiRealms pulumi.StringArrayInput `pulumi:"naiRealms"`
+	// list of operators to support
+	Operators pulumi.StringArrayInput `pulumi:"operators"`
+	Rcois     pulumi.StringArrayInput `pulumi:"rcois"`
+	// venue name, default is site name
+	VenueName pulumi.StringInput `pulumi:"venueName"`
+}
+
+func (GetWlansSiteWlanHotspot20Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanHotspot20)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanHotspot20Args) ToGetWlansSiteWlanHotspot20Output() GetWlansSiteWlanHotspot20Output {
+	return i.ToGetWlansSiteWlanHotspot20OutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanHotspot20Args) ToGetWlansSiteWlanHotspot20OutputWithContext(ctx context.Context) GetWlansSiteWlanHotspot20Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanHotspot20Output)
+}
+
+type GetWlansSiteWlanHotspot20Output struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanHotspot20Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanHotspot20)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanHotspot20Output) ToGetWlansSiteWlanHotspot20Output() GetWlansSiteWlanHotspot20Output {
+	return o
+}
+
+func (o GetWlansSiteWlanHotspot20Output) ToGetWlansSiteWlanHotspot20OutputWithContext(ctx context.Context) GetWlansSiteWlanHotspot20Output {
+	return o
+}
+
+func (o GetWlansSiteWlanHotspot20Output) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.DomainNames }).(pulumi.StringArrayOutput)
+}
+
+// whether to enable hotspot 2.0 config
+func (o GetWlansSiteWlanHotspot20Output) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanHotspot20Output) NaiRealms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.NaiRealms }).(pulumi.StringArrayOutput)
+}
+
+// list of operators to support
+func (o GetWlansSiteWlanHotspot20Output) Operators() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.Operators }).(pulumi.StringArrayOutput)
+}
+
+func (o GetWlansSiteWlanHotspot20Output) Rcois() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) []string { return v.Rcois }).(pulumi.StringArrayOutput)
+}
+
+// venue name, default is site name
+func (o GetWlansSiteWlanHotspot20Output) VenueName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanHotspot20) string { return v.VenueName }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanInjectDhcpOption82 struct {
+	// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+	//   * {{AP_MAC}}
+	//   * {{AP_MAC_DASHED}}
+	//   * {{AP_MODEL}}
+	//   * {{AP_NAME}}
+	//   * {{SITE_NAME}}
+	//   * {{SSID}}
+	CircuitId string `pulumi:"circuitId"`
+	// whether to inject option 82 when forwarding DHCP packets
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetWlansSiteWlanInjectDhcpOption82Input is an input type that accepts GetWlansSiteWlanInjectDhcpOption82Args and GetWlansSiteWlanInjectDhcpOption82Output values.
+// You can construct a concrete instance of `GetWlansSiteWlanInjectDhcpOption82Input` via:
+//
+//	GetWlansSiteWlanInjectDhcpOption82Args{...}
+type GetWlansSiteWlanInjectDhcpOption82Input interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanInjectDhcpOption82Output() GetWlansSiteWlanInjectDhcpOption82Output
+	ToGetWlansSiteWlanInjectDhcpOption82OutputWithContext(context.Context) GetWlansSiteWlanInjectDhcpOption82Output
+}
+
+type GetWlansSiteWlanInjectDhcpOption82Args struct {
+	// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+	//   * {{AP_MAC}}
+	//   * {{AP_MAC_DASHED}}
+	//   * {{AP_MODEL}}
+	//   * {{AP_NAME}}
+	//   * {{SITE_NAME}}
+	//   * {{SSID}}
+	CircuitId pulumi.StringInput `pulumi:"circuitId"`
+	// whether to inject option 82 when forwarding DHCP packets
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetWlansSiteWlanInjectDhcpOption82Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanInjectDhcpOption82)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanInjectDhcpOption82Args) ToGetWlansSiteWlanInjectDhcpOption82Output() GetWlansSiteWlanInjectDhcpOption82Output {
+	return i.ToGetWlansSiteWlanInjectDhcpOption82OutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanInjectDhcpOption82Args) ToGetWlansSiteWlanInjectDhcpOption82OutputWithContext(ctx context.Context) GetWlansSiteWlanInjectDhcpOption82Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanInjectDhcpOption82Output)
+}
+
+type GetWlansSiteWlanInjectDhcpOption82Output struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanInjectDhcpOption82Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanInjectDhcpOption82)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanInjectDhcpOption82Output) ToGetWlansSiteWlanInjectDhcpOption82Output() GetWlansSiteWlanInjectDhcpOption82Output {
+	return o
+}
+
+func (o GetWlansSiteWlanInjectDhcpOption82Output) ToGetWlansSiteWlanInjectDhcpOption82OutputWithContext(ctx context.Context) GetWlansSiteWlanInjectDhcpOption82Output {
+	return o
+}
+
+// information to set in the `circuitId` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+//   - {{AP_MAC}}
+//   - {{AP_MAC_DASHED}}
+//   - {{AP_MODEL}}
+//   - {{AP_NAME}}
+//   - {{SITE_NAME}}
+//   - {{SSID}}
+func (o GetWlansSiteWlanInjectDhcpOption82Output) CircuitId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanInjectDhcpOption82) string { return v.CircuitId }).(pulumi.StringOutput)
+}
+
+// whether to inject option 82 when forwarding DHCP packets
+func (o GetWlansSiteWlanInjectDhcpOption82Output) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanInjectDhcpOption82) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetWlansSiteWlanMistNac struct {
+	// when enabled:
+	//   * `authServers` is ignored
+	//   * `acctServers` is ignored
+	//   * `auth_servers_*` are ignored
+	//   * `coaServers` is ignored
+	//   * `radsec` is ignored
+	//   * `coaEnabled` is assumed'
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetWlansSiteWlanMistNacInput is an input type that accepts GetWlansSiteWlanMistNacArgs and GetWlansSiteWlanMistNacOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanMistNacInput` via:
+//
+//	GetWlansSiteWlanMistNacArgs{...}
+type GetWlansSiteWlanMistNacInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanMistNacOutput() GetWlansSiteWlanMistNacOutput
+	ToGetWlansSiteWlanMistNacOutputWithContext(context.Context) GetWlansSiteWlanMistNacOutput
+}
+
+type GetWlansSiteWlanMistNacArgs struct {
+	// when enabled:
+	//   * `authServers` is ignored
+	//   * `acctServers` is ignored
+	//   * `auth_servers_*` are ignored
+	//   * `coaServers` is ignored
+	//   * `radsec` is ignored
+	//   * `coaEnabled` is assumed'
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetWlansSiteWlanMistNacArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanMistNac)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanMistNacArgs) ToGetWlansSiteWlanMistNacOutput() GetWlansSiteWlanMistNacOutput {
+	return i.ToGetWlansSiteWlanMistNacOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanMistNacArgs) ToGetWlansSiteWlanMistNacOutputWithContext(ctx context.Context) GetWlansSiteWlanMistNacOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanMistNacOutput)
+}
+
+type GetWlansSiteWlanMistNacOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanMistNacOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanMistNac)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanMistNacOutput) ToGetWlansSiteWlanMistNacOutput() GetWlansSiteWlanMistNacOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanMistNacOutput) ToGetWlansSiteWlanMistNacOutputWithContext(ctx context.Context) GetWlansSiteWlanMistNacOutput {
+	return o
+}
+
+// when enabled:
+//   - `authServers` is ignored
+//   - `acctServers` is ignored
+//   - `auth_servers_*` are ignored
+//   - `coaServers` is ignored
+//   - `radsec` is ignored
+//   - `coaEnabled` is assumed'
+func (o GetWlansSiteWlanMistNacOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanMistNac) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetWlansSiteWlanPortal struct {
+	// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+	AllowWlanIdRoam bool `pulumi:"allowWlanIdRoam"`
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+	AmazonClientId string `pulumi:"amazonClientId"`
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+	AmazonClientSecret string `pulumi:"amazonClientSecret"`
+	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	AmazonEmailDomains []string `pulumi:"amazonEmailDomains"`
+	// whether amazon is enabled as a login method
+	AmazonEnabled bool `pulumi:"amazonEnabled"`
+	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+	AmazonExpire int `pulumi:"amazonExpire"`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	Auth string `pulumi:"auth"`
+	// Required if `azureEnabled`==`true`. Azure active directory app client id
+	AzureClientId string `pulumi:"azureClientId"`
+	// Required if `azureEnabled`==`true`. Azure active directory app client secret
+	AzureClientSecret string `pulumi:"azureClientSecret"`
+	// whether Azure Active Directory is enabled as a login method
+	AzureEnabled bool `pulumi:"azureEnabled"`
+	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+	AzureExpire int `pulumi:"azureExpire"`
+	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
+	AzureTenantId string `pulumi:"azureTenantId"`
+	// Required if `smsProvider`==`broadnet`
+	BroadnetPassword string `pulumi:"broadnetPassword"`
+	// Required if `smsProvider`==`broadnet`
+	BroadnetSid string `pulumi:"broadnetSid"`
+	// Required if `smsProvider`==`broadnet`
+	BroadnetUserId string `pulumi:"broadnetUserId"`
+	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+	BypassWhenCloudDown bool `pulumi:"bypassWhenCloudDown"`
+	// Required if `smsProvider`==`clickatell`
+	ClickatellApiKey string `pulumi:"clickatellApiKey"`
+	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+	CrossSite bool `pulumi:"crossSite"`
+	// whether email (access code verification) is enabled as a login method
+	EmailEnabled bool `pulumi:"emailEnabled"`
+	// whether guest portal is enabled
+	Enabled bool `pulumi:"enabled"`
+	// how long to remain authorized, in minutes
+	Expire int `pulumi:"expire"`
+	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+	ExternalPortalUrl string `pulumi:"externalPortalUrl"`
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+	FacebookClientId string `pulumi:"facebookClientId"`
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+	FacebookClientSecret string `pulumi:"facebookClientSecret"`
+	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	FacebookEmailDomains []string `pulumi:"facebookEmailDomains"`
+	// whether facebook is enabled as a login method
+	FacebookEnabled bool `pulumi:"facebookEnabled"`
+	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+	FacebookExpire int `pulumi:"facebookExpire"`
+	// whether to forward the user to another URL after authorized
+	Forward bool `pulumi:"forward"`
+	// the URL to forward the user to
+	ForwardUrl string `pulumi:"forwardUrl"`
+	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
+	GoogleClientId string `pulumi:"googleClientId"`
+	// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+	GoogleClientSecret string `pulumi:"googleClientSecret"`
+	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	GoogleEmailDomains []string `pulumi:"googleEmailDomains"`
+	// whether google is enabled as login method
+	GoogleEnabled bool `pulumi:"googleEnabled"`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	GoogleExpire int `pulumi:"googleExpire"`
+	// Required if `smsProvider`==`gupshup`
+	GupshupPassword string `pulumi:"gupshupPassword"`
+	// Required if `smsProvider`==`gupshup`
+	GupshupUserid string `pulumi:"gupshupUserid"`
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+	MicrosoftClientId string `pulumi:"microsoftClientId"`
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+	MicrosoftClientSecret string `pulumi:"microsoftClientSecret"`
+	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	MicrosoftEmailDomains []string `pulumi:"microsoftEmailDomains"`
+	// whether microsoft 365 is enabled as a login method
+	MicrosoftEnabled bool `pulumi:"microsoftEnabled"`
+	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+	MicrosoftExpire int `pulumi:"microsoftExpire"`
+	// Whether password is enabled
+	PassphraseEnabled bool `pulumi:"passphraseEnabled"`
+	// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+	PassphraseExpire int `pulumi:"passphraseExpire"`
+	// Required if `passphraseEnabled`==`true`.
+	Password string `pulumi:"password"`
+	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	PredefinedSponsorsEnabled bool `pulumi:"predefinedSponsorsEnabled"`
+	// whether to hide sponsor’s email from list of sponsors
+	PredefinedSponsorsHideEmail bool `pulumi:"predefinedSponsorsHideEmail"`
+	Privacy                     bool `pulumi:"privacy"`
+	// Required if `smsProvider`==`puzzel`
+	PuzzelPassword string `pulumi:"puzzelPassword"`
+	// Required if `smsProvider`==`puzzel`
+	PuzzelServiceId string `pulumi:"puzzelServiceId"`
+	// Required if `smsProvider`==`puzzel`
+	PuzzelUsername string `pulumi:"puzzelUsername"`
+	// whether sms is enabled as a login method
+	SmsEnabled bool `pulumi:"smsEnabled"`
+	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+	SmsExpire int `pulumi:"smsExpire"`
+	// Optional if `smsEnabled`==`true`. SMS Message format
+	SmsMessageFormat string `pulumi:"smsMessageFormat"`
+	// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+	SmsProvider string `pulumi:"smsProvider"`
+	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+	SponsorAutoApprove bool `pulumi:"sponsorAutoApprove"`
+	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	SponsorEmailDomains []string `pulumi:"sponsorEmailDomains"`
+	// whether sponsor is enabled
+	SponsorEnabled bool `pulumi:"sponsorEnabled"`
+	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+	SponsorExpire int `pulumi:"sponsorExpire"`
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	SponsorLinkValidityDuration string `pulumi:"sponsorLinkValidityDuration"`
+	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+	SponsorNotifyAll bool `pulumi:"sponsorNotifyAll"`
+	// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+	SponsorStatusNotify bool `pulumi:"sponsorStatusNotify"`
+	// object of allowed sponsors email with name. Required if `sponsorEnabled`
+	//             is `true` and `sponsorEmailDomains` is empty.
+	//
+	//             Property key is the sponsor email, Property value is the sponsor name
+	Sponsors map[string]string `pulumi:"sponsors"`
+	// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+	SsoDefaultRole string `pulumi:"ssoDefaultRole"`
+	// Optionl if `wlanPortalAuth`==`sso`
+	SsoForcedRole string `pulumi:"ssoForcedRole"`
+	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
+	SsoIdpCert string `pulumi:"ssoIdpCert"`
+	// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	SsoIdpSignAlgo string `pulumi:"ssoIdpSignAlgo"`
+	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+	SsoIdpSsoUrl string `pulumi:"ssoIdpSsoUrl"`
+	// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
+	SsoIssuer string `pulumi:"ssoIssuer"`
+	// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+	SsoNameidFormat string `pulumi:"ssoNameidFormat"`
+	// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
+	TelstraClientId string `pulumi:"telstraClientId"`
+	// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
+	TelstraClientSecret string `pulumi:"telstraClientSecret"`
+	// Required if `smsProvider`==`twilio`, Auth token account with twilio account
+	TwilioAuthToken string `pulumi:"twilioAuthToken"`
+	// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+	TwilioPhoneNumber string `pulumi:"twilioPhoneNumber"`
+	// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
+	TwilioSid string `pulumi:"twilioSid"`
+}
+
+// GetWlansSiteWlanPortalInput is an input type that accepts GetWlansSiteWlanPortalArgs and GetWlansSiteWlanPortalOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanPortalInput` via:
+//
+//	GetWlansSiteWlanPortalArgs{...}
+type GetWlansSiteWlanPortalInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanPortalOutput() GetWlansSiteWlanPortalOutput
+	ToGetWlansSiteWlanPortalOutputWithContext(context.Context) GetWlansSiteWlanPortalOutput
+}
+
+type GetWlansSiteWlanPortalArgs struct {
+	// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+	AllowWlanIdRoam pulumi.BoolInput `pulumi:"allowWlanIdRoam"`
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+	AmazonClientId pulumi.StringInput `pulumi:"amazonClientId"`
+	// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+	AmazonClientSecret pulumi.StringInput `pulumi:"amazonClientSecret"`
+	// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	AmazonEmailDomains pulumi.StringArrayInput `pulumi:"amazonEmailDomains"`
+	// whether amazon is enabled as a login method
+	AmazonEnabled pulumi.BoolInput `pulumi:"amazonEnabled"`
+	// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+	AmazonExpire pulumi.IntInput `pulumi:"amazonExpire"`
+	// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+	Auth pulumi.StringInput `pulumi:"auth"`
+	// Required if `azureEnabled`==`true`. Azure active directory app client id
+	AzureClientId pulumi.StringInput `pulumi:"azureClientId"`
+	// Required if `azureEnabled`==`true`. Azure active directory app client secret
+	AzureClientSecret pulumi.StringInput `pulumi:"azureClientSecret"`
+	// whether Azure Active Directory is enabled as a login method
+	AzureEnabled pulumi.BoolInput `pulumi:"azureEnabled"`
+	// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+	AzureExpire pulumi.IntInput `pulumi:"azureExpire"`
+	// Required if `azureEnabled`==`true`. Azure active directory tenant id.
+	AzureTenantId pulumi.StringInput `pulumi:"azureTenantId"`
+	// Required if `smsProvider`==`broadnet`
+	BroadnetPassword pulumi.StringInput `pulumi:"broadnetPassword"`
+	// Required if `smsProvider`==`broadnet`
+	BroadnetSid pulumi.StringInput `pulumi:"broadnetSid"`
+	// Required if `smsProvider`==`broadnet`
+	BroadnetUserId pulumi.StringInput `pulumi:"broadnetUserId"`
+	// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+	BypassWhenCloudDown pulumi.BoolInput `pulumi:"bypassWhenCloudDown"`
+	// Required if `smsProvider`==`clickatell`
+	ClickatellApiKey pulumi.StringInput `pulumi:"clickatellApiKey"`
+	// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+	CrossSite pulumi.BoolInput `pulumi:"crossSite"`
+	// whether email (access code verification) is enabled as a login method
+	EmailEnabled pulumi.BoolInput `pulumi:"emailEnabled"`
+	// whether guest portal is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// how long to remain authorized, in minutes
+	Expire pulumi.IntInput `pulumi:"expire"`
+	// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+	ExternalPortalUrl pulumi.StringInput `pulumi:"externalPortalUrl"`
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+	FacebookClientId pulumi.StringInput `pulumi:"facebookClientId"`
+	// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+	FacebookClientSecret pulumi.StringInput `pulumi:"facebookClientSecret"`
+	// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	FacebookEmailDomains pulumi.StringArrayInput `pulumi:"facebookEmailDomains"`
+	// whether facebook is enabled as a login method
+	FacebookEnabled pulumi.BoolInput `pulumi:"facebookEnabled"`
+	// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+	FacebookExpire pulumi.IntInput `pulumi:"facebookExpire"`
+	// whether to forward the user to another URL after authorized
+	Forward pulumi.BoolInput `pulumi:"forward"`
+	// the URL to forward the user to
+	ForwardUrl pulumi.StringInput `pulumi:"forwardUrl"`
+	// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
+	GoogleClientId pulumi.StringInput `pulumi:"googleClientId"`
+	// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+	GoogleClientSecret pulumi.StringInput `pulumi:"googleClientSecret"`
+	// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	GoogleEmailDomains pulumi.StringArrayInput `pulumi:"googleEmailDomains"`
+	// whether google is enabled as login method
+	GoogleEnabled pulumi.BoolInput `pulumi:"googleEnabled"`
+	// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+	GoogleExpire pulumi.IntInput `pulumi:"googleExpire"`
+	// Required if `smsProvider`==`gupshup`
+	GupshupPassword pulumi.StringInput `pulumi:"gupshupPassword"`
+	// Required if `smsProvider`==`gupshup`
+	GupshupUserid pulumi.StringInput `pulumi:"gupshupUserid"`
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+	MicrosoftClientId pulumi.StringInput `pulumi:"microsoftClientId"`
+	// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+	MicrosoftClientSecret pulumi.StringInput `pulumi:"microsoftClientSecret"`
+	// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+	MicrosoftEmailDomains pulumi.StringArrayInput `pulumi:"microsoftEmailDomains"`
+	// whether microsoft 365 is enabled as a login method
+	MicrosoftEnabled pulumi.BoolInput `pulumi:"microsoftEnabled"`
+	// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+	MicrosoftExpire pulumi.IntInput `pulumi:"microsoftExpire"`
+	// Whether password is enabled
+	PassphraseEnabled pulumi.BoolInput `pulumi:"passphraseEnabled"`
+	// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+	PassphraseExpire pulumi.IntInput `pulumi:"passphraseExpire"`
+	// Required if `passphraseEnabled`==`true`.
+	Password pulumi.StringInput `pulumi:"password"`
+	// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+	PredefinedSponsorsEnabled pulumi.BoolInput `pulumi:"predefinedSponsorsEnabled"`
+	// whether to hide sponsor’s email from list of sponsors
+	PredefinedSponsorsHideEmail pulumi.BoolInput `pulumi:"predefinedSponsorsHideEmail"`
+	Privacy                     pulumi.BoolInput `pulumi:"privacy"`
+	// Required if `smsProvider`==`puzzel`
+	PuzzelPassword pulumi.StringInput `pulumi:"puzzelPassword"`
+	// Required if `smsProvider`==`puzzel`
+	PuzzelServiceId pulumi.StringInput `pulumi:"puzzelServiceId"`
+	// Required if `smsProvider`==`puzzel`
+	PuzzelUsername pulumi.StringInput `pulumi:"puzzelUsername"`
+	// whether sms is enabled as a login method
+	SmsEnabled pulumi.BoolInput `pulumi:"smsEnabled"`
+	// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+	SmsExpire pulumi.IntInput `pulumi:"smsExpire"`
+	// Optional if `smsEnabled`==`true`. SMS Message format
+	SmsMessageFormat pulumi.StringInput `pulumi:"smsMessageFormat"`
+	// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+	SmsProvider pulumi.StringInput `pulumi:"smsProvider"`
+	// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+	SponsorAutoApprove pulumi.BoolInput `pulumi:"sponsorAutoApprove"`
+	// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+	SponsorEmailDomains pulumi.StringArrayInput `pulumi:"sponsorEmailDomains"`
+	// whether sponsor is enabled
+	SponsorEnabled pulumi.BoolInput `pulumi:"sponsorEnabled"`
+	// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+	SponsorExpire pulumi.IntInput `pulumi:"sponsorExpire"`
+	// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+	SponsorLinkValidityDuration pulumi.StringInput `pulumi:"sponsorLinkValidityDuration"`
+	// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+	SponsorNotifyAll pulumi.BoolInput `pulumi:"sponsorNotifyAll"`
+	// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+	SponsorStatusNotify pulumi.BoolInput `pulumi:"sponsorStatusNotify"`
+	// object of allowed sponsors email with name. Required if `sponsorEnabled`
+	//             is `true` and `sponsorEmailDomains` is empty.
+	//
+	//             Property key is the sponsor email, Property value is the sponsor name
+	Sponsors pulumi.StringMapInput `pulumi:"sponsors"`
+	// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+	SsoDefaultRole pulumi.StringInput `pulumi:"ssoDefaultRole"`
+	// Optionl if `wlanPortalAuth`==`sso`
+	SsoForcedRole pulumi.StringInput `pulumi:"ssoForcedRole"`
+	// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
+	SsoIdpCert pulumi.StringInput `pulumi:"ssoIdpCert"`
+	// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+	SsoIdpSignAlgo pulumi.StringInput `pulumi:"ssoIdpSignAlgo"`
+	// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+	SsoIdpSsoUrl pulumi.StringInput `pulumi:"ssoIdpSsoUrl"`
+	// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
+	SsoIssuer pulumi.StringInput `pulumi:"ssoIssuer"`
+	// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+	SsoNameidFormat pulumi.StringInput `pulumi:"ssoNameidFormat"`
+	// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
+	TelstraClientId pulumi.StringInput `pulumi:"telstraClientId"`
+	// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
+	TelstraClientSecret pulumi.StringInput `pulumi:"telstraClientSecret"`
+	// Required if `smsProvider`==`twilio`, Auth token account with twilio account
+	TwilioAuthToken pulumi.StringInput `pulumi:"twilioAuthToken"`
+	// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+	TwilioPhoneNumber pulumi.StringInput `pulumi:"twilioPhoneNumber"`
+	// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
+	TwilioSid pulumi.StringInput `pulumi:"twilioSid"`
+}
+
+func (GetWlansSiteWlanPortalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanPortal)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanPortalArgs) ToGetWlansSiteWlanPortalOutput() GetWlansSiteWlanPortalOutput {
+	return i.ToGetWlansSiteWlanPortalOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanPortalArgs) ToGetWlansSiteWlanPortalOutputWithContext(ctx context.Context) GetWlansSiteWlanPortalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanPortalOutput)
+}
+
+type GetWlansSiteWlanPortalOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanPortalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanPortal)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanPortalOutput) ToGetWlansSiteWlanPortalOutput() GetWlansSiteWlanPortalOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanPortalOutput) ToGetWlansSiteWlanPortalOutputWithContext(ctx context.Context) GetWlansSiteWlanPortalOutput {
+	return o
+}
+
+// Optional if `amazonEnabled`==`true`. Whether to allow guest to connect to other Guest WLANs (with different `WLAN.ssid`) of same org without reauthentication (disable randomMac for seamless roaming)
+func (o GetWlansSiteWlanPortalOutput) AllowWlanIdRoam() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.AllowWlanIdRoam }).(pulumi.BoolOutput)
+}
+
+// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
+func (o GetWlansSiteWlanPortalOutput) AmazonClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.AmazonClientId }).(pulumi.StringOutput)
+}
+
+// Optional if `amazonEnabled`==`true`. Amazon OAuth2 client secret. If amazonClientId was provided, provide a correspoinding value. Else leave blank.
+func (o GetWlansSiteWlanPortalOutput) AmazonClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.AmazonClientSecret }).(pulumi.StringOutput)
+}
+
+// Optional if `amazonEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+func (o GetWlansSiteWlanPortalOutput) AmazonEmailDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.AmazonEmailDomains }).(pulumi.StringArrayOutput)
+}
+
+// whether amazon is enabled as a login method
+func (o GetWlansSiteWlanPortalOutput) AmazonEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.AmazonEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `amazonEnabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) AmazonExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.AmazonExpire }).(pulumi.IntOutput)
+}
+
+// authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
+func (o GetWlansSiteWlanPortalOutput) Auth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.Auth }).(pulumi.StringOutput)
+}
+
+// Required if `azureEnabled`==`true`. Azure active directory app client id
+func (o GetWlansSiteWlanPortalOutput) AzureClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.AzureClientId }).(pulumi.StringOutput)
+}
+
+// Required if `azureEnabled`==`true`. Azure active directory app client secret
+func (o GetWlansSiteWlanPortalOutput) AzureClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.AzureClientSecret }).(pulumi.StringOutput)
+}
+
+// whether Azure Active Directory is enabled as a login method
+func (o GetWlansSiteWlanPortalOutput) AzureEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.AzureEnabled }).(pulumi.BoolOutput)
+}
+
+// interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) AzureExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.AzureExpire }).(pulumi.IntOutput)
+}
+
+// Required if `azureEnabled`==`true`. Azure active directory tenant id.
+func (o GetWlansSiteWlanPortalOutput) AzureTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.AzureTenantId }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`broadnet`
+func (o GetWlansSiteWlanPortalOutput) BroadnetPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.BroadnetPassword }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`broadnet`
+func (o GetWlansSiteWlanPortalOutput) BroadnetSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.BroadnetSid }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`broadnet`
+func (o GetWlansSiteWlanPortalOutput) BroadnetUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.BroadnetUserId }).(pulumi.StringOutput)
+}
+
+// whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+func (o GetWlansSiteWlanPortalOutput) BypassWhenCloudDown() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.BypassWhenCloudDown }).(pulumi.BoolOutput)
+}
+
+// Required if `smsProvider`==`clickatell`
+func (o GetWlansSiteWlanPortalOutput) ClickatellApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.ClickatellApiKey }).(pulumi.StringOutput)
+}
+
+// whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable randomMac for seamless roaming)
+func (o GetWlansSiteWlanPortalOutput) CrossSite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.CrossSite }).(pulumi.BoolOutput)
+}
+
+// whether email (access code verification) is enabled as a login method
+func (o GetWlansSiteWlanPortalOutput) EmailEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.EmailEnabled }).(pulumi.BoolOutput)
+}
+
+// whether guest portal is enabled
+func (o GetWlansSiteWlanPortalOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// how long to remain authorized, in minutes
+func (o GetWlansSiteWlanPortalOutput) Expire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.Expire }).(pulumi.IntOutput)
+}
+
+// Required if `wlanPortalAuth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
+func (o GetWlansSiteWlanPortalOutput) ExternalPortalUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.ExternalPortalUrl }).(pulumi.StringOutput)
+}
+
+// Required if `facebookEnabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
+func (o GetWlansSiteWlanPortalOutput) FacebookClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.FacebookClientId }).(pulumi.StringOutput)
+}
+
+// Required if `facebookEnabled`==`true`. Facebook OAuth2 app secret. If facebookClientId was provided, provide a correspoinding value. Else leave blank.
+func (o GetWlansSiteWlanPortalOutput) FacebookClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.FacebookClientSecret }).(pulumi.StringOutput)
+}
+
+// Optional if `facebookEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+func (o GetWlansSiteWlanPortalOutput) FacebookEmailDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.FacebookEmailDomains }).(pulumi.StringArrayOutput)
+}
+
+// whether facebook is enabled as a login method
+func (o GetWlansSiteWlanPortalOutput) FacebookEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.FacebookEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `facebookEnabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) FacebookExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.FacebookExpire }).(pulumi.IntOutput)
+}
+
+// whether to forward the user to another URL after authorized
+func (o GetWlansSiteWlanPortalOutput) Forward() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.Forward }).(pulumi.BoolOutput)
+}
+
+// the URL to forward the user to
+func (o GetWlansSiteWlanPortalOutput) ForwardUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.ForwardUrl }).(pulumi.StringOutput)
+}
+
+// Google OAuth2 app id. This is optional. If not provided, it will use a default one.
+func (o GetWlansSiteWlanPortalOutput) GoogleClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.GoogleClientId }).(pulumi.StringOutput)
+}
+
+// Optional if `googleEnabled`==`true`. Google OAuth2 app secret. If googleClientId was provided, provide a correspoinding value. Else leave blank.
+func (o GetWlansSiteWlanPortalOutput) GoogleClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.GoogleClientSecret }).(pulumi.StringOutput)
+}
+
+// Optional if `googleEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+func (o GetWlansSiteWlanPortalOutput) GoogleEmailDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.GoogleEmailDomains }).(pulumi.StringArrayOutput)
+}
+
+// whether google is enabled as login method
+func (o GetWlansSiteWlanPortalOutput) GoogleEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.GoogleEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `googleEnabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) GoogleExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.GoogleExpire }).(pulumi.IntOutput)
+}
+
+// Required if `smsProvider`==`gupshup`
+func (o GetWlansSiteWlanPortalOutput) GupshupPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.GupshupPassword }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`gupshup`
+func (o GetWlansSiteWlanPortalOutput) GupshupUserid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.GupshupUserid }).(pulumi.StringOutput)
+}
+
+// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
+func (o GetWlansSiteWlanPortalOutput) MicrosoftClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.MicrosoftClientId }).(pulumi.StringOutput)
+}
+
+// Optional if `microsoftEnabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoftClientId was provided, provide a correspoinding value. Else leave blank.
+func (o GetWlansSiteWlanPortalOutput) MicrosoftClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.MicrosoftClientSecret }).(pulumi.StringOutput)
+}
+
+// Optional if `microsoftEnabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
+func (o GetWlansSiteWlanPortalOutput) MicrosoftEmailDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.MicrosoftEmailDomains }).(pulumi.StringArrayOutput)
+}
+
+// whether microsoft 365 is enabled as a login method
+func (o GetWlansSiteWlanPortalOutput) MicrosoftEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.MicrosoftEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `microsoftEnabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) MicrosoftExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.MicrosoftExpire }).(pulumi.IntOutput)
+}
+
+// Whether password is enabled
+func (o GetWlansSiteWlanPortalOutput) PassphraseEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.PassphraseEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `passphraseEnabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
+func (o GetWlansSiteWlanPortalOutput) PassphraseExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.PassphraseExpire }).(pulumi.IntOutput)
+}
+
+// Required if `passphraseEnabled`==`true`.
+func (o GetWlansSiteWlanPortalOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsorNotifyAll` and `predefinedSponsorsEnabled` are false, behaviour is acc to `sponsorEmailDomains`
+func (o GetWlansSiteWlanPortalOutput) PredefinedSponsorsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.PredefinedSponsorsEnabled }).(pulumi.BoolOutput)
+}
+
+// whether to hide sponsor’s email from list of sponsors
+func (o GetWlansSiteWlanPortalOutput) PredefinedSponsorsHideEmail() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.PredefinedSponsorsHideEmail }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanPortalOutput) Privacy() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.Privacy }).(pulumi.BoolOutput)
+}
+
+// Required if `smsProvider`==`puzzel`
+func (o GetWlansSiteWlanPortalOutput) PuzzelPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.PuzzelPassword }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`puzzel`
+func (o GetWlansSiteWlanPortalOutput) PuzzelServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.PuzzelServiceId }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`puzzel`
+func (o GetWlansSiteWlanPortalOutput) PuzzelUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.PuzzelUsername }).(pulumi.StringOutput)
+}
+
+// whether sms is enabled as a login method
+func (o GetWlansSiteWlanPortalOutput) SmsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SmsEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `smsEnabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) SmsExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.SmsExpire }).(pulumi.IntOutput)
+}
+
+// Optional if `smsEnabled`==`true`. SMS Message format
+func (o GetWlansSiteWlanPortalOutput) SmsMessageFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SmsMessageFormat }).(pulumi.StringOutput)
+}
+
+// Optioanl if `smsEnabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
+func (o GetWlansSiteWlanPortalOutput) SmsProvider() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SmsProvider }).(pulumi.StringOutput)
+}
+
+// Optional if `sponsorEnabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefinedSponsorsEnabled enabled and sponsorNotifyAll disabled
+func (o GetWlansSiteWlanPortalOutput) SponsorAutoApprove() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SponsorAutoApprove }).(pulumi.BoolOutput)
+}
+
+// list of domain allowed for sponsor email. Required if `sponsorEnabled` is `true` and `sponsors` is empty.
+func (o GetWlansSiteWlanPortalOutput) SponsorEmailDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) []string { return v.SponsorEmailDomains }).(pulumi.StringArrayOutput)
+}
+
+// whether sponsor is enabled
+func (o GetWlansSiteWlanPortalOutput) SponsorEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SponsorEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional if `sponsorEnabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
+func (o GetWlansSiteWlanPortalOutput) SponsorExpire() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) int { return v.SponsorExpire }).(pulumi.IntOutput)
+}
+
+// Optional if `sponsorEnabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
+func (o GetWlansSiteWlanPortalOutput) SponsorLinkValidityDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SponsorLinkValidityDuration }).(pulumi.StringOutput)
+}
+
+// Optional if `sponsorEnabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsorNotifyAll` and `predefinedSponsorsEnabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
+func (o GetWlansSiteWlanPortalOutput) SponsorNotifyAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SponsorNotifyAll }).(pulumi.BoolOutput)
+}
+
+// Optional if `sponsorEnabled`==`true`. If enabled, guest will get email about sponsor's action (approve/deny)
+func (o GetWlansSiteWlanPortalOutput) SponsorStatusNotify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) bool { return v.SponsorStatusNotify }).(pulumi.BoolOutput)
+}
+
+// object of allowed sponsors email with name. Required if `sponsorEnabled`
+//
+//	is `true` and `sponsorEmailDomains` is empty.
+//
+//	Property key is the sponsor email, Property value is the sponsor name
+func (o GetWlansSiteWlanPortalOutput) Sponsors() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) map[string]string { return v.Sponsors }).(pulumi.StringMapOutput)
+}
+
+// Optionl if `wlanPortalAuth`==`sso`, default role to assign if there’s no match. By default, an assertion is treated as invalid when there’s no role matched
+func (o GetWlansSiteWlanPortalOutput) SsoDefaultRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoDefaultRole }).(pulumi.StringOutput)
+}
+
+// Optionl if `wlanPortalAuth`==`sso`
+func (o GetWlansSiteWlanPortalOutput) SsoForcedRole() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoForcedRole }).(pulumi.StringOutput)
+}
+
+// Required if `wlanPortalAuth`==`sso`. IDP Cert (used to verify the signed response)
+func (o GetWlansSiteWlanPortalOutput) SsoIdpCert() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoIdpCert }).(pulumi.StringOutput)
+}
+
+// Optioanl if `wlanPortalAuth`==`sso`, Signing algorithm for SAML Assertion. enum: `sha1`, `sha256`, `sha384`, `sha512`
+func (o GetWlansSiteWlanPortalOutput) SsoIdpSignAlgo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoIdpSignAlgo }).(pulumi.StringOutput)
+}
+
+// Required if `wlanPortalAuth`==`sso`, IDP Single-Sign-On URL
+func (o GetWlansSiteWlanPortalOutput) SsoIdpSsoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoIdpSsoUrl }).(pulumi.StringOutput)
+}
+
+// Required if `wlanPortalAuth`==`sso`, IDP issuer URL
+func (o GetWlansSiteWlanPortalOutput) SsoIssuer() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoIssuer }).(pulumi.StringOutput)
+}
+
+// Optional if `wlanPortalAuth`==`sso`. enum: `email`, `unspecified`
+func (o GetWlansSiteWlanPortalOutput) SsoNameidFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.SsoNameidFormat }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`telstra`, Client ID provided by Telstra
+func (o GetWlansSiteWlanPortalOutput) TelstraClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.TelstraClientId }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`telstra`, Client secret provided by Telstra
+func (o GetWlansSiteWlanPortalOutput) TelstraClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.TelstraClientSecret }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`twilio`, Auth token account with twilio account
+func (o GetWlansSiteWlanPortalOutput) TwilioAuthToken() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.TwilioAuthToken }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`twilio`, Twilio phone number associated with the account. See example for accepted format.
+func (o GetWlansSiteWlanPortalOutput) TwilioPhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.TwilioPhoneNumber }).(pulumi.StringOutput)
+}
+
+// Required if `smsProvider`==`twilio`, Account SID provided by Twilio
+func (o GetWlansSiteWlanPortalOutput) TwilioSid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanPortal) string { return v.TwilioSid }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanQos struct {
+	// enum: `background`, `bestEffort`, `video`, `voice`
+	Class string `pulumi:"class"`
+	// whether to overwrite QoS
+	Overwrite bool `pulumi:"overwrite"`
+}
+
+// GetWlansSiteWlanQosInput is an input type that accepts GetWlansSiteWlanQosArgs and GetWlansSiteWlanQosOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanQosInput` via:
+//
+//	GetWlansSiteWlanQosArgs{...}
+type GetWlansSiteWlanQosInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanQosOutput() GetWlansSiteWlanQosOutput
+	ToGetWlansSiteWlanQosOutputWithContext(context.Context) GetWlansSiteWlanQosOutput
+}
+
+type GetWlansSiteWlanQosArgs struct {
+	// enum: `background`, `bestEffort`, `video`, `voice`
+	Class pulumi.StringInput `pulumi:"class"`
+	// whether to overwrite QoS
+	Overwrite pulumi.BoolInput `pulumi:"overwrite"`
+}
+
+func (GetWlansSiteWlanQosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanQos)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanQosArgs) ToGetWlansSiteWlanQosOutput() GetWlansSiteWlanQosOutput {
+	return i.ToGetWlansSiteWlanQosOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanQosArgs) ToGetWlansSiteWlanQosOutputWithContext(ctx context.Context) GetWlansSiteWlanQosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanQosOutput)
+}
+
+type GetWlansSiteWlanQosOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanQosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanQos)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanQosOutput) ToGetWlansSiteWlanQosOutput() GetWlansSiteWlanQosOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanQosOutput) ToGetWlansSiteWlanQosOutputWithContext(ctx context.Context) GetWlansSiteWlanQosOutput {
+	return o
+}
+
+// enum: `background`, `bestEffort`, `video`, `voice`
+func (o GetWlansSiteWlanQosOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanQos) string { return v.Class }).(pulumi.StringOutput)
+}
+
+// whether to overwrite QoS
+func (o GetWlansSiteWlanQosOutput) Overwrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanQos) bool { return v.Overwrite }).(pulumi.BoolOutput)
+}
+
+type GetWlansSiteWlanRadsec struct {
+	CoaEnabled  bool `pulumi:"coaEnabled"`
+	Enabled     bool `pulumi:"enabled"`
+	IdleTimeout int  `pulumi:"idleTimeout"`
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	MxclusterIds []string `pulumi:"mxclusterIds"`
+	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	ProxyHosts []string `pulumi:"proxyHosts"`
+	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	ServerName string `pulumi:"serverName"`
+	// List of Radsec Servers. Only if not Mist Edge.
+	Servers []GetWlansSiteWlanRadsecServer `pulumi:"servers"`
+	// use mxedge(s) as radsecproxy
+	UseMxedge bool `pulumi:"useMxedge"`
+	// To use Site mxedges when this WLAN does not use mxtunnel
+	UseSiteMxedge bool `pulumi:"useSiteMxedge"`
+}
+
+// GetWlansSiteWlanRadsecInput is an input type that accepts GetWlansSiteWlanRadsecArgs and GetWlansSiteWlanRadsecOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanRadsecInput` via:
+//
+//	GetWlansSiteWlanRadsecArgs{...}
+type GetWlansSiteWlanRadsecInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanRadsecOutput() GetWlansSiteWlanRadsecOutput
+	ToGetWlansSiteWlanRadsecOutputWithContext(context.Context) GetWlansSiteWlanRadsecOutput
+}
+
+type GetWlansSiteWlanRadsecArgs struct {
+	CoaEnabled  pulumi.BoolInput `pulumi:"coaEnabled"`
+	Enabled     pulumi.BoolInput `pulumi:"enabled"`
+	IdleTimeout pulumi.IntInput  `pulumi:"idleTimeout"`
+	// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+	MxclusterIds pulumi.StringArrayInput `pulumi:"mxclusterIds"`
+	// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+	ProxyHosts pulumi.StringArrayInput `pulumi:"proxyHosts"`
+	// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// List of Radsec Servers. Only if not Mist Edge.
+	Servers GetWlansSiteWlanRadsecServerArrayInput `pulumi:"servers"`
+	// use mxedge(s) as radsecproxy
+	UseMxedge pulumi.BoolInput `pulumi:"useMxedge"`
+	// To use Site mxedges when this WLAN does not use mxtunnel
+	UseSiteMxedge pulumi.BoolInput `pulumi:"useSiteMxedge"`
+}
+
+func (GetWlansSiteWlanRadsecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanRadsec)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanRadsecArgs) ToGetWlansSiteWlanRadsecOutput() GetWlansSiteWlanRadsecOutput {
+	return i.ToGetWlansSiteWlanRadsecOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanRadsecArgs) ToGetWlansSiteWlanRadsecOutputWithContext(ctx context.Context) GetWlansSiteWlanRadsecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanRadsecOutput)
+}
+
+type GetWlansSiteWlanRadsecOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanRadsecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanRadsec)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanRadsecOutput) ToGetWlansSiteWlanRadsecOutput() GetWlansSiteWlanRadsecOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRadsecOutput) ToGetWlansSiteWlanRadsecOutputWithContext(ctx context.Context) GetWlansSiteWlanRadsecOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRadsecOutput) CoaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) bool { return v.CoaEnabled }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanRadsecOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetWlansSiteWlanRadsecOutput) IdleTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) int { return v.IdleTimeout }).(pulumi.IntOutput)
+}
+
+// To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
+func (o GetWlansSiteWlanRadsecOutput) MxclusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) []string { return v.MxclusterIds }).(pulumi.StringArrayOutput)
+}
+
+// default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `useSiteMxedge`
+func (o GetWlansSiteWlanRadsecOutput) ProxyHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) []string { return v.ProxyHosts }).(pulumi.StringArrayOutput)
+}
+
+// name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+func (o GetWlansSiteWlanRadsecOutput) ServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+// List of Radsec Servers. Only if not Mist Edge.
+func (o GetWlansSiteWlanRadsecOutput) Servers() GetWlansSiteWlanRadsecServerArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) []GetWlansSiteWlanRadsecServer { return v.Servers }).(GetWlansSiteWlanRadsecServerArrayOutput)
+}
+
+// use mxedge(s) as radsecproxy
+func (o GetWlansSiteWlanRadsecOutput) UseMxedge() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) bool { return v.UseMxedge }).(pulumi.BoolOutput)
+}
+
+// To use Site mxedges when this WLAN does not use mxtunnel
+func (o GetWlansSiteWlanRadsecOutput) UseSiteMxedge() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsec) bool { return v.UseSiteMxedge }).(pulumi.BoolOutput)
+}
+
+type GetWlansSiteWlanRadsecServer struct {
+	Host string `pulumi:"host"`
+	Port int    `pulumi:"port"`
+}
+
+// GetWlansSiteWlanRadsecServerInput is an input type that accepts GetWlansSiteWlanRadsecServerArgs and GetWlansSiteWlanRadsecServerOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanRadsecServerInput` via:
+//
+//	GetWlansSiteWlanRadsecServerArgs{...}
+type GetWlansSiteWlanRadsecServerInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanRadsecServerOutput() GetWlansSiteWlanRadsecServerOutput
+	ToGetWlansSiteWlanRadsecServerOutputWithContext(context.Context) GetWlansSiteWlanRadsecServerOutput
+}
+
+type GetWlansSiteWlanRadsecServerArgs struct {
+	Host pulumi.StringInput `pulumi:"host"`
+	Port pulumi.IntInput    `pulumi:"port"`
+}
+
+func (GetWlansSiteWlanRadsecServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanRadsecServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanRadsecServerArgs) ToGetWlansSiteWlanRadsecServerOutput() GetWlansSiteWlanRadsecServerOutput {
+	return i.ToGetWlansSiteWlanRadsecServerOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanRadsecServerArgs) ToGetWlansSiteWlanRadsecServerOutputWithContext(ctx context.Context) GetWlansSiteWlanRadsecServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanRadsecServerOutput)
+}
+
+// GetWlansSiteWlanRadsecServerArrayInput is an input type that accepts GetWlansSiteWlanRadsecServerArray and GetWlansSiteWlanRadsecServerArrayOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanRadsecServerArrayInput` via:
+//
+//	GetWlansSiteWlanRadsecServerArray{ GetWlansSiteWlanRadsecServerArgs{...} }
+type GetWlansSiteWlanRadsecServerArrayInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanRadsecServerArrayOutput() GetWlansSiteWlanRadsecServerArrayOutput
+	ToGetWlansSiteWlanRadsecServerArrayOutputWithContext(context.Context) GetWlansSiteWlanRadsecServerArrayOutput
+}
+
+type GetWlansSiteWlanRadsecServerArray []GetWlansSiteWlanRadsecServerInput
+
+func (GetWlansSiteWlanRadsecServerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanRadsecServer)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanRadsecServerArray) ToGetWlansSiteWlanRadsecServerArrayOutput() GetWlansSiteWlanRadsecServerArrayOutput {
+	return i.ToGetWlansSiteWlanRadsecServerArrayOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanRadsecServerArray) ToGetWlansSiteWlanRadsecServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanRadsecServerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanRadsecServerArrayOutput)
+}
+
+type GetWlansSiteWlanRadsecServerOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanRadsecServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanRadsecServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanRadsecServerOutput) ToGetWlansSiteWlanRadsecServerOutput() GetWlansSiteWlanRadsecServerOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRadsecServerOutput) ToGetWlansSiteWlanRadsecServerOutputWithContext(ctx context.Context) GetWlansSiteWlanRadsecServerOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRadsecServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsecServer) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetWlansSiteWlanRadsecServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRadsecServer) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetWlansSiteWlanRadsecServerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanRadsecServerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWlansSiteWlanRadsecServer)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanRadsecServerArrayOutput) ToGetWlansSiteWlanRadsecServerArrayOutput() GetWlansSiteWlanRadsecServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRadsecServerArrayOutput) ToGetWlansSiteWlanRadsecServerArrayOutputWithContext(ctx context.Context) GetWlansSiteWlanRadsecServerArrayOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRadsecServerArrayOutput) Index(i pulumi.IntInput) GetWlansSiteWlanRadsecServerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWlansSiteWlanRadsecServer {
+		return vs[0].([]GetWlansSiteWlanRadsecServer)[vs[1].(int)]
+	}).(GetWlansSiteWlanRadsecServerOutput)
+}
+
+type GetWlansSiteWlanRateset struct {
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	Ht string `pulumi:"ht"`
+	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+	Legacies []string `pulumi:"legacies"`
+	// Minimum RSSI for client to connect, 0 means not enforcing
+	MinRssi int `pulumi:"minRssi"`
+	// Data Rates template to apply. enum:
+	//   * `no-legacy`: no 11b
+	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+	//   * `legacy-only`: disable 802.11n and 802.11ac
+	//   * `high-density`: no 11b, no low rates
+	//   * `custom`: user defined
+	Template string `pulumi:"template"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	Vht string `pulumi:"vht"`
+}
+
+// GetWlansSiteWlanRatesetInput is an input type that accepts GetWlansSiteWlanRatesetArgs and GetWlansSiteWlanRatesetOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanRatesetInput` via:
+//
+//	GetWlansSiteWlanRatesetArgs{...}
+type GetWlansSiteWlanRatesetInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanRatesetOutput() GetWlansSiteWlanRatesetOutput
+	ToGetWlansSiteWlanRatesetOutputWithContext(context.Context) GetWlansSiteWlanRatesetOutput
+}
+
+type GetWlansSiteWlanRatesetArgs struct {
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+	Ht pulumi.StringInput `pulumi:"ht"`
+	// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+	Legacies pulumi.StringArrayInput `pulumi:"legacies"`
+	// Minimum RSSI for client to connect, 0 means not enforcing
+	MinRssi pulumi.IntInput `pulumi:"minRssi"`
+	// Data Rates template to apply. enum:
+	//   * `no-legacy`: no 11b
+	//   * `compatible`: all, like before, default setting that Broadcom/Atheros used
+	//   * `legacy-only`: disable 802.11n and 802.11ac
+	//   * `high-density`: no 11b, no low rates
+	//   * `custom`: user defined
+	Template pulumi.StringInput `pulumi:"template"`
+	// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+	Vht pulumi.StringInput `pulumi:"vht"`
+}
+
+func (GetWlansSiteWlanRatesetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanRateset)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanRatesetArgs) ToGetWlansSiteWlanRatesetOutput() GetWlansSiteWlanRatesetOutput {
+	return i.ToGetWlansSiteWlanRatesetOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanRatesetArgs) ToGetWlansSiteWlanRatesetOutputWithContext(ctx context.Context) GetWlansSiteWlanRatesetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanRatesetOutput)
+}
+
+// GetWlansSiteWlanRatesetMapInput is an input type that accepts GetWlansSiteWlanRatesetMap and GetWlansSiteWlanRatesetMapOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanRatesetMapInput` via:
+//
+//	GetWlansSiteWlanRatesetMap{ "key": GetWlansSiteWlanRatesetArgs{...} }
+type GetWlansSiteWlanRatesetMapInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanRatesetMapOutput() GetWlansSiteWlanRatesetMapOutput
+	ToGetWlansSiteWlanRatesetMapOutputWithContext(context.Context) GetWlansSiteWlanRatesetMapOutput
+}
+
+type GetWlansSiteWlanRatesetMap map[string]GetWlansSiteWlanRatesetInput
+
+func (GetWlansSiteWlanRatesetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetWlansSiteWlanRateset)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanRatesetMap) ToGetWlansSiteWlanRatesetMapOutput() GetWlansSiteWlanRatesetMapOutput {
+	return i.ToGetWlansSiteWlanRatesetMapOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanRatesetMap) ToGetWlansSiteWlanRatesetMapOutputWithContext(ctx context.Context) GetWlansSiteWlanRatesetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanRatesetMapOutput)
+}
+
+type GetWlansSiteWlanRatesetOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanRatesetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanRateset)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanRatesetOutput) ToGetWlansSiteWlanRatesetOutput() GetWlansSiteWlanRatesetOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRatesetOutput) ToGetWlansSiteWlanRatesetOutputWithContext(ctx context.Context) GetWlansSiteWlanRatesetOutput {
+	return o
+}
+
+// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+func (o GetWlansSiteWlanRatesetOutput) Ht() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRateset) string { return v.Ht }).(pulumi.StringOutput)
+}
+
+// if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values
+func (o GetWlansSiteWlanRatesetOutput) Legacies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRateset) []string { return v.Legacies }).(pulumi.StringArrayOutput)
+}
+
+// Minimum RSSI for client to connect, 0 means not enforcing
+func (o GetWlansSiteWlanRatesetOutput) MinRssi() pulumi.IntOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRateset) int { return v.MinRssi }).(pulumi.IntOutput)
+}
+
+// Data Rates template to apply. enum:
+//   - `no-legacy`: no 11b
+//   - `compatible`: all, like before, default setting that Broadcom/Atheros used
+//   - `legacy-only`: disable 802.11n and 802.11ac
+//   - `high-density`: no 11b, no low rates
+//   - `custom`: user defined
+func (o GetWlansSiteWlanRatesetOutput) Template() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRateset) string { return v.Template }).(pulumi.StringOutput)
+}
+
+// if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+func (o GetWlansSiteWlanRatesetOutput) Vht() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanRateset) string { return v.Vht }).(pulumi.StringOutput)
+}
+
+type GetWlansSiteWlanRatesetMapOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanRatesetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetWlansSiteWlanRateset)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanRatesetMapOutput) ToGetWlansSiteWlanRatesetMapOutput() GetWlansSiteWlanRatesetMapOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRatesetMapOutput) ToGetWlansSiteWlanRatesetMapOutputWithContext(ctx context.Context) GetWlansSiteWlanRatesetMapOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanRatesetMapOutput) MapIndex(k pulumi.StringInput) GetWlansSiteWlanRatesetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetWlansSiteWlanRateset {
+		return vs[0].(map[string]GetWlansSiteWlanRateset)[vs[1].(string)]
+	}).(GetWlansSiteWlanRatesetOutput)
+}
+
+type GetWlansSiteWlanSchedule struct {
+	Enabled bool `pulumi:"enabled"`
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	Hours GetWlansSiteWlanScheduleHours `pulumi:"hours"`
+}
+
+// GetWlansSiteWlanScheduleInput is an input type that accepts GetWlansSiteWlanScheduleArgs and GetWlansSiteWlanScheduleOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanScheduleInput` via:
+//
+//	GetWlansSiteWlanScheduleArgs{...}
+type GetWlansSiteWlanScheduleInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanScheduleOutput() GetWlansSiteWlanScheduleOutput
+	ToGetWlansSiteWlanScheduleOutputWithContext(context.Context) GetWlansSiteWlanScheduleOutput
+}
+
+type GetWlansSiteWlanScheduleArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+	Hours GetWlansSiteWlanScheduleHoursInput `pulumi:"hours"`
+}
+
+func (GetWlansSiteWlanScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanSchedule)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanScheduleArgs) ToGetWlansSiteWlanScheduleOutput() GetWlansSiteWlanScheduleOutput {
+	return i.ToGetWlansSiteWlanScheduleOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanScheduleArgs) ToGetWlansSiteWlanScheduleOutputWithContext(ctx context.Context) GetWlansSiteWlanScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanScheduleOutput)
+}
+
+type GetWlansSiteWlanScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanSchedule)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanScheduleOutput) ToGetWlansSiteWlanScheduleOutput() GetWlansSiteWlanScheduleOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanScheduleOutput) ToGetWlansSiteWlanScheduleOutputWithContext(ctx context.Context) GetWlansSiteWlanScheduleOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanScheduleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanSchedule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
+func (o GetWlansSiteWlanScheduleOutput) Hours() GetWlansSiteWlanScheduleHoursOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanSchedule) GetWlansSiteWlanScheduleHours { return v.Hours }).(GetWlansSiteWlanScheduleHoursOutput)
+}
+
+type GetWlansSiteWlanScheduleHours struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Fri string `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Mon string `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Sat string `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Sun string `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Thu string `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Tue string `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Wed string `pulumi:"wed"`
+}
+
+// GetWlansSiteWlanScheduleHoursInput is an input type that accepts GetWlansSiteWlanScheduleHoursArgs and GetWlansSiteWlanScheduleHoursOutput values.
+// You can construct a concrete instance of `GetWlansSiteWlanScheduleHoursInput` via:
+//
+//	GetWlansSiteWlanScheduleHoursArgs{...}
+type GetWlansSiteWlanScheduleHoursInput interface {
+	pulumi.Input
+
+	ToGetWlansSiteWlanScheduleHoursOutput() GetWlansSiteWlanScheduleHoursOutput
+	ToGetWlansSiteWlanScheduleHoursOutputWithContext(context.Context) GetWlansSiteWlanScheduleHoursOutput
+}
+
+type GetWlansSiteWlanScheduleHoursArgs struct {
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Fri pulumi.StringInput `pulumi:"fri"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Mon pulumi.StringInput `pulumi:"mon"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Sat pulumi.StringInput `pulumi:"sat"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Sun pulumi.StringInput `pulumi:"sun"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Thu pulumi.StringInput `pulumi:"thu"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Tue pulumi.StringInput `pulumi:"tue"`
+	// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+	Wed pulumi.StringInput `pulumi:"wed"`
+}
+
+func (GetWlansSiteWlanScheduleHoursArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanScheduleHours)(nil)).Elem()
+}
+
+func (i GetWlansSiteWlanScheduleHoursArgs) ToGetWlansSiteWlanScheduleHoursOutput() GetWlansSiteWlanScheduleHoursOutput {
+	return i.ToGetWlansSiteWlanScheduleHoursOutputWithContext(context.Background())
+}
+
+func (i GetWlansSiteWlanScheduleHoursArgs) ToGetWlansSiteWlanScheduleHoursOutputWithContext(ctx context.Context) GetWlansSiteWlanScheduleHoursOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWlansSiteWlanScheduleHoursOutput)
+}
+
+type GetWlansSiteWlanScheduleHoursOutput struct{ *pulumi.OutputState }
+
+func (GetWlansSiteWlanScheduleHoursOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWlansSiteWlanScheduleHours)(nil)).Elem()
+}
+
+func (o GetWlansSiteWlanScheduleHoursOutput) ToGetWlansSiteWlanScheduleHoursOutput() GetWlansSiteWlanScheduleHoursOutput {
+	return o
+}
+
+func (o GetWlansSiteWlanScheduleHoursOutput) ToGetWlansSiteWlanScheduleHoursOutputWithContext(ctx context.Context) GetWlansSiteWlanScheduleHoursOutput {
+	return o
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Fri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Fri }).(pulumi.StringOutput)
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Mon() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Mon }).(pulumi.StringOutput)
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Sat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Sat }).(pulumi.StringOutput)
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Sun() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Sun }).(pulumi.StringOutput)
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Thu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Thu }).(pulumi.StringOutput)
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Tue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Tue }).(pulumi.StringOutput)
+}
+
+// Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+func (o GetWlansSiteWlanScheduleHoursOutput) Wed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWlansSiteWlanScheduleHours) string { return v.Wed }).(pulumi.StringOutput)
 }
 
 func init() {
@@ -28263,6 +32613,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectRePtrInput)(nil)).Elem(), SettingGatewayMgmtProtectReArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReCustomInput)(nil)).Elem(), SettingGatewayMgmtProtectReCustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingGatewayMgmtProtectReCustomArrayInput)(nil)).Elem(), SettingGatewayMgmtProtectReCustomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxInput)(nil)).Elem(), SettingJuniperSrxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxPtrInput)(nil)).Elem(), SettingJuniperSrxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxGatewayInput)(nil)).Elem(), SettingJuniperSrxGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingJuniperSrxGatewayArrayInput)(nil)).Elem(), SettingJuniperSrxGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingLedInput)(nil)).Elem(), SettingLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingLedPtrInput)(nil)).Elem(), SettingLedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingOccupancyInput)(nil)).Elem(), SettingOccupancyArgs{})
@@ -28373,6 +32727,41 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPsksSitePskArrayInput)(nil)).Elem(), GetPsksSitePskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksSiteWebhookInput)(nil)).Elem(), GetWebhooksSiteWebhookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWebhooksSiteWebhookArrayInput)(nil)).Elem(), GetWebhooksSiteWebhookArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanInput)(nil)).Elem(), GetWlansSiteWlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanArrayInput)(nil)).Elem(), GetWlansSiteWlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAcctServerInput)(nil)).Elem(), GetWlansSiteWlanAcctServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAcctServerArrayInput)(nil)).Elem(), GetWlansSiteWlanAcctServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAirwatchInput)(nil)).Elem(), GetWlansSiteWlanAirwatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAppLimitInput)(nil)).Elem(), GetWlansSiteWlanAppLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAppQosInput)(nil)).Elem(), GetWlansSiteWlanAppQosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAppQosAppsInput)(nil)).Elem(), GetWlansSiteWlanAppQosAppsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAppQosAppsMapInput)(nil)).Elem(), GetWlansSiteWlanAppQosAppsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAppQosOtherInput)(nil)).Elem(), GetWlansSiteWlanAppQosOtherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAppQosOtherArrayInput)(nil)).Elem(), GetWlansSiteWlanAppQosOtherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAuthInput)(nil)).Elem(), GetWlansSiteWlanAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAuthServerInput)(nil)).Elem(), GetWlansSiteWlanAuthServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanAuthServerArrayInput)(nil)).Elem(), GetWlansSiteWlanAuthServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanBonjourInput)(nil)).Elem(), GetWlansSiteWlanBonjourArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanBonjourServicesInput)(nil)).Elem(), GetWlansSiteWlanBonjourServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanBonjourServicesMapInput)(nil)).Elem(), GetWlansSiteWlanBonjourServicesMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanCiscoCwaInput)(nil)).Elem(), GetWlansSiteWlanCiscoCwaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanCoaServerInput)(nil)).Elem(), GetWlansSiteWlanCoaServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanCoaServerArrayInput)(nil)).Elem(), GetWlansSiteWlanCoaServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanDnsServerRewriteInput)(nil)).Elem(), GetWlansSiteWlanDnsServerRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanDynamicPskInput)(nil)).Elem(), GetWlansSiteWlanDynamicPskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanDynamicVlanInput)(nil)).Elem(), GetWlansSiteWlanDynamicVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanHotspot20Input)(nil)).Elem(), GetWlansSiteWlanHotspot20Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanInjectDhcpOption82Input)(nil)).Elem(), GetWlansSiteWlanInjectDhcpOption82Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanMistNacInput)(nil)).Elem(), GetWlansSiteWlanMistNacArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanPortalInput)(nil)).Elem(), GetWlansSiteWlanPortalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanQosInput)(nil)).Elem(), GetWlansSiteWlanQosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanRadsecInput)(nil)).Elem(), GetWlansSiteWlanRadsecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanRadsecServerInput)(nil)).Elem(), GetWlansSiteWlanRadsecServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanRadsecServerArrayInput)(nil)).Elem(), GetWlansSiteWlanRadsecServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanRatesetInput)(nil)).Elem(), GetWlansSiteWlanRatesetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanRatesetMapInput)(nil)).Elem(), GetWlansSiteWlanRatesetMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanScheduleInput)(nil)).Elem(), GetWlansSiteWlanScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWlansSiteWlanScheduleHoursInput)(nil)).Elem(), GetWlansSiteWlanScheduleHoursArgs{})
 	pulumi.RegisterOutputType(EvpnTopologyEvpnOptionsOutput{})
 	pulumi.RegisterOutputType(EvpnTopologyEvpnOptionsPtrOutput{})
 	pulumi.RegisterOutputType(EvpnTopologyEvpnOptionsOverlayOutput{})
@@ -28549,6 +32938,10 @@ func init() {
 	pulumi.RegisterOutputType(SettingGatewayMgmtProtectRePtrOutput{})
 	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReCustomOutput{})
 	pulumi.RegisterOutputType(SettingGatewayMgmtProtectReCustomArrayOutput{})
+	pulumi.RegisterOutputType(SettingJuniperSrxOutput{})
+	pulumi.RegisterOutputType(SettingJuniperSrxPtrOutput{})
+	pulumi.RegisterOutputType(SettingJuniperSrxGatewayOutput{})
+	pulumi.RegisterOutputType(SettingJuniperSrxGatewayArrayOutput{})
 	pulumi.RegisterOutputType(SettingLedOutput{})
 	pulumi.RegisterOutputType(SettingLedPtrOutput{})
 	pulumi.RegisterOutputType(SettingOccupancyOutput{})
@@ -28659,4 +33052,39 @@ func init() {
 	pulumi.RegisterOutputType(GetPsksSitePskArrayOutput{})
 	pulumi.RegisterOutputType(GetWebhooksSiteWebhookOutput{})
 	pulumi.RegisterOutputType(GetWebhooksSiteWebhookArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAcctServerOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAcctServerArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAirwatchOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAppLimitOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAppQosOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAppQosAppsOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAppQosAppsMapOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAppQosOtherOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAppQosOtherArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAuthOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAuthServerOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanAuthServerArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanBonjourOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanBonjourServicesOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanBonjourServicesMapOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanCiscoCwaOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanCoaServerOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanCoaServerArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanDnsServerRewriteOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanDynamicPskOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanDynamicVlanOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanHotspot20Output{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanInjectDhcpOption82Output{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanMistNacOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanPortalOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanQosOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanRadsecOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanRadsecServerOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanRadsecServerArrayOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanRatesetOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanRatesetMapOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanScheduleOutput{})
+	pulumi.RegisterOutputType(GetWlansSiteWlanScheduleHoursOutput{})
 }

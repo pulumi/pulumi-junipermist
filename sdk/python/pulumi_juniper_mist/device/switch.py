@@ -1450,6 +1450,7 @@ class Switch(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Switch configuration.
+
         It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
 
         > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch
@@ -1508,6 +1509,7 @@ class Switch(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Switch configuration.
+
         It can be used to define specific configuration at the device level or to override Org/Site Network template settings.
 
         > **WARNING** For **adopted** devices, make sure to set `managed`=`true` to allow Mist to manage the switch

@@ -361,7 +361,18 @@ class Wxtag(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Org WxLan tags (labels).
-        A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+
+        A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+        * within the Org WxRules to create filtering rules:
+          * `mist_org_wxrule.dst_allow_wxtags`
+          * `mist_org_wxrule.dst_deny_wxtags`
+          * `mist_org_wxrule.dst_wxtags`
+          * `mist_org_wxrule.src_wxtags`
+        * within the Org WxRules to assign specific VLAN:
+          * `mist_org_wxrule.apply_tags`
+        * in the WLANs configuration to assign a WLAN to specific APs:
+          * `mist_org_wlan.wxtag_ids`
+        * to identify unknown application used by Wi-Fi clients
 
         ## Example Usage
 
@@ -416,7 +427,18 @@ class Wxtag(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org WxLan tags (labels).
-        A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+
+        A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+        * within the Org WxRules to create filtering rules:
+          * `mist_org_wxrule.dst_allow_wxtags`
+          * `mist_org_wxrule.dst_deny_wxtags`
+          * `mist_org_wxrule.dst_wxtags`
+          * `mist_org_wxrule.src_wxtags`
+        * within the Org WxRules to assign specific VLAN:
+          * `mist_org_wxrule.apply_tags`
+        * in the WLANs configuration to assign a WLAN to specific APs:
+          * `mist_org_wlan.wxtag_ids`
+        * to identify unknown application used by Wi-Fi clients
 
         ## Example Usage
 

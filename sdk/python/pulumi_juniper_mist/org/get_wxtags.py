@@ -72,7 +72,17 @@ def get_wxtags(org_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWxtagsResult:
     """
     This resource provides the list of Org WxLan tags (labels).
-    A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+    A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+    * within the Org WxRules to create filtering rules:
+      * `mist_org_wxrule.dst_allow_wxtags`
+      * `mist_org_wxrule.dst_deny_wxtags`
+      * `mist_org_wxrule.dst_wxtags`
+      * `mist_org_wxrule.src_wxtags`
+    * within the Org WxRules to assign specific VLAN:
+      * `mist_org_wxrule.apply_tags`
+    * in the WLANs configuration to assign a WLAN to specific APs:
+      * `mist_org_wlan.wxtag_ids`
+    * to identify unknown application used by Wi-Fi clients
 
     ## Example Usage
 
@@ -96,7 +106,17 @@ def get_wxtags_output(org_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWxtagsResult]:
     """
     This resource provides the list of Org WxLan tags (labels).
-    A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used   * within the WxRules to create filtering rules, or assign specific VLAN  * in the WLANs configuration to assign a WLAN to specific APs  * to identify unknown application used by Wi-Fi clients
+    A WxTag is a label or tag used in the mist system to classify and categorize applications, users, and resources for the purpose of creating policies and making network management decisions.They can be used
+    * within the Org WxRules to create filtering rules:
+      * `mist_org_wxrule.dst_allow_wxtags`
+      * `mist_org_wxrule.dst_deny_wxtags`
+      * `mist_org_wxrule.dst_wxtags`
+      * `mist_org_wxrule.src_wxtags`
+    * within the Org WxRules to assign specific VLAN:
+      * `mist_org_wxrule.apply_tags`
+    * in the WLANs configuration to assign a WLAN to specific APs:
+      * `mist_org_wlan.wxtag_ids`
+    * to identify unknown application used by Wi-Fi clients
 
     ## Example Usage
 

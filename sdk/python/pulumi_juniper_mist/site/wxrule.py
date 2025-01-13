@@ -343,7 +343,8 @@ class Wxrule(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Site WxRules (WLAN policies).
-        A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+        A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege.\\
+        WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
 
         ## Example Usage
 
@@ -388,7 +389,8 @@ class Wxrule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Site WxRules (WLAN policies).
-        A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege. WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
+        A WxLAN policy is a set of rules and settings that can be applied to devices in a network to determine how they are treated. it provides support for access policies, network segmentation, role-based policies, micro-segmentation, and least privilege.\\
+        WxLAN policies are used to allow or deny specific users from accessing specific resources in a wireless network.
 
         ## Example Usage
 

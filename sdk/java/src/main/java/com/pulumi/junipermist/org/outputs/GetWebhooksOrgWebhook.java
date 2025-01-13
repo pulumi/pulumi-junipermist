@@ -14,6 +14,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWebhooksOrgWebhook {
+    /**
+     * @return when the object has been created, in epoch
+     * 
+     */
     private Double createdTime;
     /**
      * @return whether webhook is enabled
@@ -21,12 +25,19 @@ public final class GetWebhooksOrgWebhook {
      */
     private Boolean enabled;
     /**
-     * @return if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * @return if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     private Map<String,String> headers;
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     private String id;
+    /**
+     * @return when the object has been modified for the last time, in epoch
+     * 
+     */
     private Double modifiedTime;
     /**
      * @return name of the webhook
@@ -76,13 +87,12 @@ public final class GetWebhooksOrgWebhook {
     private String secret;
     private String siteId;
     /**
-     * @return required if `type`=`splunk`
-     * If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
+     * @return required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
      * 
      */
     private String splunkToken;
     /**
-     * @return N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+     * @return List of supported webhook topics available with the API Call List Webhook Topics
      * 
      */
     private List<String> topics;
@@ -99,6 +109,10 @@ public final class GetWebhooksOrgWebhook {
     private Boolean verifyCert;
 
     private GetWebhooksOrgWebhook() {}
+    /**
+     * @return when the object has been created, in epoch
+     * 
+     */
     public Double createdTime() {
         return this.createdTime;
     }
@@ -110,16 +124,23 @@ public final class GetWebhooksOrgWebhook {
         return this.enabled;
     }
     /**
-     * @return if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * @return if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     public Map<String,String> headers() {
         return this.headers;
     }
+    /**
+     * @return Unique ID of the object instance in the Mist Organnization
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return when the object has been modified for the last time, in epoch
+     * 
+     */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
@@ -193,15 +214,14 @@ public final class GetWebhooksOrgWebhook {
         return this.siteId;
     }
     /**
-     * @return required if `type`=`splunk`
-     * If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
+     * @return required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
      * 
      */
     public String splunkToken() {
         return this.splunkToken;
     }
     /**
-     * @return N.B. For org webhooks, only device_events/alarms/audits/client-join/client-sessions/nac-sessions/nac_events topics are supported.
+     * @return List of supported webhook topics available with the API Call List Webhook Topics
      * 
      */
     public List<String> topics() {

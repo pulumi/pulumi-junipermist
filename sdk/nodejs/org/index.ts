@@ -45,6 +45,11 @@ export type Gatewaytemplate = import("./gatewaytemplate").Gatewaytemplate;
 export const Gatewaytemplate: typeof import("./gatewaytemplate").Gatewaytemplate = null as any;
 utilities.lazyLoad(exports, ["Gatewaytemplate"], () => require("./gatewaytemplate"));
 
+export { GetAlarmtemplatesArgs, GetAlarmtemplatesResult, GetAlarmtemplatesOutputArgs } from "./getAlarmtemplates";
+export const getAlarmtemplates: typeof import("./getAlarmtemplates").getAlarmtemplates = null as any;
+export const getAlarmtemplatesOutput: typeof import("./getAlarmtemplates").getAlarmtemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAlarmtemplates","getAlarmtemplatesOutput"], () => require("./getAlarmtemplates"));
+
 export { GetDeviceprofilesApArgs, GetDeviceprofilesApResult, GetDeviceprofilesApOutputArgs } from "./getDeviceprofilesAp";
 export const getDeviceprofilesAp: typeof import("./getDeviceprofilesAp").getDeviceprofilesAp = null as any;
 export const getDeviceprofilesApOutput: typeof import("./getDeviceprofilesAp").getDeviceprofilesApOutput = null as any;
@@ -54,6 +59,11 @@ export { GetDeviceprofilesGatewayArgs, GetDeviceprofilesGatewayResult, GetDevice
 export const getDeviceprofilesGateway: typeof import("./getDeviceprofilesGateway").getDeviceprofilesGateway = null as any;
 export const getDeviceprofilesGatewayOutput: typeof import("./getDeviceprofilesGateway").getDeviceprofilesGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getDeviceprofilesGateway","getDeviceprofilesGatewayOutput"], () => require("./getDeviceprofilesGateway"));
+
+export { GetEvpnTopologiesArgs, GetEvpnTopologiesResult, GetEvpnTopologiesOutputArgs } from "./getEvpnTopologies";
+export const getEvpnTopologies: typeof import("./getEvpnTopologies").getEvpnTopologies = null as any;
+export const getEvpnTopologiesOutput: typeof import("./getEvpnTopologies").getEvpnTopologiesOutput = null as any;
+utilities.lazyLoad(exports, ["getEvpnTopologies","getEvpnTopologiesOutput"], () => require("./getEvpnTopologies"));
 
 export { GetGatewaytemplatesArgs, GetGatewaytemplatesResult, GetGatewaytemplatesOutputArgs } from "./getGatewaytemplates";
 export const getGatewaytemplates: typeof import("./getGatewaytemplates").getGatewaytemplates = null as any;
@@ -69,6 +79,11 @@ export { GetInventoryArgs, GetInventoryResult, GetInventoryOutputArgs } from "./
 export const getInventory: typeof import("./getInventory").getInventory = null as any;
 export const getInventoryOutput: typeof import("./getInventory").getInventoryOutput = null as any;
 utilities.lazyLoad(exports, ["getInventory","getInventoryOutput"], () => require("./getInventory"));
+
+export { GetNacEndpointsArgs, GetNacEndpointsResult, GetNacEndpointsOutputArgs } from "./getNacEndpoints";
+export const getNacEndpoints: typeof import("./getNacEndpoints").getNacEndpoints = null as any;
+export const getNacEndpointsOutput: typeof import("./getNacEndpoints").getNacEndpointsOutput = null as any;
+utilities.lazyLoad(exports, ["getNacEndpoints","getNacEndpointsOutput"], () => require("./getNacEndpoints"));
 
 export { GetNacidpMetadataArgs, GetNacidpMetadataResult, GetNacidpMetadataOutputArgs } from "./getNacidpMetadata";
 export const getNacidpMetadata: typeof import("./getNacidpMetadata").getNacidpMetadata = null as any;
@@ -125,6 +140,11 @@ export const getSsoMetadata: typeof import("./getSsoMetadata").getSsoMetadata = 
 export const getSsoMetadataOutput: typeof import("./getSsoMetadata").getSsoMetadataOutput = null as any;
 utilities.lazyLoad(exports, ["getSsoMetadata","getSsoMetadataOutput"], () => require("./getSsoMetadata"));
 
+export { GetSsoRolesArgs, GetSsoRolesResult, GetSsoRolesOutputArgs } from "./getSsoRoles";
+export const getSsoRoles: typeof import("./getSsoRoles").getSsoRoles = null as any;
+export const getSsoRolesOutput: typeof import("./getSsoRoles").getSsoRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getSsoRoles","getSsoRolesOutput"], () => require("./getSsoRoles"));
+
 export { GetVpnsArgs, GetVpnsResult, GetVpnsOutputArgs } from "./getVpns";
 export const getVpns: typeof import("./getVpns").getVpns = null as any;
 export const getVpnsOutput: typeof import("./getVpns").getVpnsOutput = null as any;
@@ -134,6 +154,11 @@ export { GetWebhooksArgs, GetWebhooksResult, GetWebhooksOutputArgs } from "./get
 export const getWebhooks: typeof import("./getWebhooks").getWebhooks = null as any;
 export const getWebhooksOutput: typeof import("./getWebhooks").getWebhooksOutput = null as any;
 utilities.lazyLoad(exports, ["getWebhooks","getWebhooksOutput"], () => require("./getWebhooks"));
+
+export { GetWlansArgs, GetWlansResult, GetWlansOutputArgs } from "./getWlans";
+export const getWlans: typeof import("./getWlans").getWlans = null as any;
+export const getWlansOutput: typeof import("./getWlans").getWlansOutput = null as any;
+utilities.lazyLoad(exports, ["getWlans","getWlansOutput"], () => require("./getWlans"));
 
 export { GetWlantemplatesArgs, GetWlantemplatesResult, GetWlantemplatesOutputArgs } from "./getWlantemplates";
 export const getWlantemplates: typeof import("./getWlantemplates").getWlantemplates = null as any;
@@ -154,6 +179,11 @@ export { InventoryArgs, InventoryState } from "./inventory";
 export type Inventory = import("./inventory").Inventory;
 export const Inventory: typeof import("./inventory").Inventory = null as any;
 utilities.lazyLoad(exports, ["Inventory"], () => require("./inventory"));
+
+export { NacEndpointArgs, NacEndpointState } from "./nacEndpoint";
+export type NacEndpoint = import("./nacEndpoint").NacEndpoint;
+export const NacEndpoint: typeof import("./nacEndpoint").NacEndpoint = null as any;
+utilities.lazyLoad(exports, ["NacEndpoint"], () => require("./nacEndpoint"));
 
 export { NacidpArgs, NacidpState } from "./nacidp";
 export type Nacidp = import("./nacidp").Nacidp;
@@ -285,6 +315,8 @@ const _module = {
                 return new Idpprofile(name, <any>undefined, { urn })
             case "junipermist:org/inventory:Inventory":
                 return new Inventory(name, <any>undefined, { urn })
+            case "junipermist:org/nacEndpoint:NacEndpoint":
+                return new NacEndpoint(name, <any>undefined, { urn })
             case "junipermist:org/nacidp:Nacidp":
                 return new Nacidp(name, <any>undefined, { urn })
             case "junipermist:org/nacrule:Nacrule":
@@ -342,6 +374,7 @@ pulumi.runtime.registerResourceModule("junipermist", "org/evpnTopology", _module
 pulumi.runtime.registerResourceModule("junipermist", "org/gatewaytemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/idpprofile", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/inventory", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/nacEndpoint", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacidp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nacrule", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/nactag", _module)

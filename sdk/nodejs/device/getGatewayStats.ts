@@ -17,6 +17,12 @@ import * as utilities from "../utilities";
  *
  * const gatewayStats = junipermist.device.getGatewayStats({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     mac: "e8a245000000",
+ *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+ *     status: "connected",
+ *     duration: "1d",
+ *     start: 1736031600,
+ *     end: 1736175934,
  * });
  * ```
  */
@@ -92,6 +98,12 @@ export interface GetGatewayStatsResult {
  *
  * const gatewayStats = junipermist.device.getGatewayStats({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     mac: "e8a245000000",
+ *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+ *     status: "connected",
+ *     duration: "1d",
+ *     start: 1736031600,
+ *     end: 1736175934,
  * });
  * ```
  */

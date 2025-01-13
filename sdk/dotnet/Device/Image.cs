@@ -11,7 +11,10 @@ namespace Pulumi.JuniperMist.Device
 {
     /// <summary>
     /// This resource is used to upload a Device picture.
+    /// 
     /// This resource can be used to add a picture to a Wireless Access point, a Switch or a Gateway. A Maximum of 3 pictures can be uploaded.
+    /// 
+    /// !&gt; There is no validation on the Image currently uploaded to the Mist Cloud. Defining the same image twice (e.g. `image = 1`) for the same device will override the first image image any warning or error.
     /// </summary>
     [JuniperMistResourceType("junipermist:device/image:Image")]
     public partial class Image : global::Pulumi.CustomResource

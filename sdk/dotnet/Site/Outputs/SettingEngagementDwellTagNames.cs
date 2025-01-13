@@ -13,9 +13,21 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingEngagementDwellTagNames
     {
+        /// <summary>
+        /// Default to `Visitor`
+        /// </summary>
         public readonly string? Bounce;
+        /// <summary>
+        /// Default to `Associates`
+        /// </summary>
         public readonly string? Engaged;
+        /// <summary>
+        /// Default to `Passerby`
+        /// </summary>
         public readonly string? Passerby;
+        /// <summary>
+        /// Default to `Assets`
+        /// </summary>
         public readonly string? Stationed;
 
         [OutputConstructor]

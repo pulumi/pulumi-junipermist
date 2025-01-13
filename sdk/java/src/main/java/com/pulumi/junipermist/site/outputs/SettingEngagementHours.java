@@ -11,33 +11,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SettingEngagementHours {
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String fri;
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String mon;
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String sat;
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String sun;
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String thu;
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String tue;
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     private @Nullable String wed;
 
     private SettingEngagementHours() {}
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> fri() {
         return Optional.ofNullable(this.fri);
     }
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> mon() {
         return Optional.ofNullable(this.mon);
     }
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> sat() {
         return Optional.ofNullable(this.sat);
     }
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> sun() {
         return Optional.ofNullable(this.sun);
     }
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> thu() {
         return Optional.ofNullable(this.thu);
     }
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> tue() {
         return Optional.ofNullable(this.tue);
     }
+    /**
+     * @return Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it&#39;s treated as 00:00-23:59.
+     * 
+     */
     public Optional<String> wed() {
         return Optional.ofNullable(this.wed);
     }

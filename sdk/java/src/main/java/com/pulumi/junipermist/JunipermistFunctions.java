@@ -25,6 +25,7 @@ import java.util.concurrent.CompletableFuture;
 public final class JunipermistFunctions {
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -65,6 +66,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -105,6 +107,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -145,6 +148,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -185,6 +189,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -225,6 +230,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -265,6 +271,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of  available Alarms.
+     * 
      * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
      * 
      * ## Example Usage
@@ -305,6 +312,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -345,6 +353,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -385,6 +394,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -425,6 +435,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -465,6 +476,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -505,6 +517,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -545,6 +558,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppCategories.
+     * 
      * This information can be used as `app_categories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -585,6 +599,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -625,6 +640,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -665,6 +681,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -705,6 +722,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -745,6 +763,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -785,6 +804,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -825,6 +845,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstAppSubCategories.
+     * 
      * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
      * 
      * ## Example Usage
@@ -865,7 +886,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -905,7 +930,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -945,7 +974,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -985,7 +1018,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -1025,7 +1062,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -1065,7 +1106,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -1105,7 +1150,11 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstApplications.
-     * This information can be used as `apps` in the `junipermist.org.Service` resource, the `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`) or in the `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
      * 
      * ## Example Usage
      * 
@@ -1145,6 +1194,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1185,6 +1235,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1225,6 +1276,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1265,6 +1317,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1305,6 +1358,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1345,6 +1399,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1385,6 +1440,7 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstCountries.
+     * 
      * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
      * 
      * ## Example Usage
@@ -1425,7 +1481,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1465,7 +1522,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1505,7 +1563,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1545,7 +1604,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1585,7 +1645,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1625,7 +1686,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1665,7 +1727,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the of ConstTrafficTypes.
-     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
      * 
      * ## Example Usage
      * 
@@ -1705,7 +1768,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 
@@ -1747,7 +1811,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 
@@ -1789,7 +1854,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 
@@ -1831,7 +1897,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 
@@ -1873,7 +1940,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 
@@ -1915,7 +1983,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 
@@ -1957,7 +2026,8 @@ public final class JunipermistFunctions {
     }
     /**
      * This data source provides the list of Webhook Topics.
-     * This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
      * 
      * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
      * 

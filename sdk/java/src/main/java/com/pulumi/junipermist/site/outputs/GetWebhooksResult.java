@@ -6,12 +6,9 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.outputs.GetWebhooksSiteWebhook;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWebhooksResult {
@@ -20,8 +17,6 @@ public final class GetWebhooksResult {
      * 
      */
     private String id;
-    private @Nullable Integer limit;
-    private @Nullable Integer page;
     private String siteId;
     private List<GetWebhooksSiteWebhook> siteWebhooks;
 
@@ -32,12 +27,6 @@ public final class GetWebhooksResult {
      */
     public String id() {
         return this.id;
-    }
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-    public Optional<Integer> page() {
-        return Optional.ofNullable(this.page);
     }
     public String siteId() {
         return this.siteId;
@@ -56,16 +45,12 @@ public final class GetWebhooksResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable Integer limit;
-        private @Nullable Integer page;
         private String siteId;
         private List<GetWebhooksSiteWebhook> siteWebhooks;
         public Builder() {}
         public Builder(GetWebhooksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.limit = defaults.limit;
-    	      this.page = defaults.page;
     	      this.siteId = defaults.siteId;
     	      this.siteWebhooks = defaults.siteWebhooks;
         }
@@ -76,18 +61,6 @@ public final class GetWebhooksResult {
               throw new MissingRequiredPropertyException("GetWebhooksResult", "id");
             }
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder limit(@Nullable Integer limit) {
-
-            this.limit = limit;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder page(@Nullable Integer page) {
-
-            this.page = page;
             return this;
         }
         @CustomType.Setter
@@ -112,8 +85,6 @@ public final class GetWebhooksResult {
         public GetWebhooksResult build() {
             final var _resultValue = new GetWebhooksResult();
             _resultValue.id = id;
-            _resultValue.limit = limit;
-            _resultValue.page = page;
             _resultValue.siteId = siteId;
             _resultValue.siteWebhooks = siteWebhooks;
             return _resultValue;

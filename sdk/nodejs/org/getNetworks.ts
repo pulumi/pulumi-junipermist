@@ -8,7 +8,8 @@ import * as utilities from "../utilities";
 
 /**
  * This data source provides the list of WAN Assurance Networks.
- * The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ *
+ * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
  *
  * ## Example Usage
  *
@@ -48,7 +49,8 @@ export interface GetNetworksResult {
 }
 /**
  * This data source provides the list of WAN Assurance Networks.
- * The Networks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+ *
+ * The Networks are used in the `servicePolicies` from the Gateway configuration, Gateway templates or HUB Profiles
  *
  * ## Example Usage
  *

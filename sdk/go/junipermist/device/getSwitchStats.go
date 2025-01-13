@@ -28,7 +28,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := device.GetSwitchStats(ctx, &device.GetSwitchStatsArgs{
-//				OrgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//				OrgId:      "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//				Mac:        pulumi.StringRef("485a0d000000"),
+//				SiteId:     pulumi.StringRef("4a422ae5-7ca0-4599-87a3-8e49aa63685f"),
+//				Status:     pulumi.StringRef("connected"),
+//				EvpnUnused: pulumi.StringRef("true"),
+//				EvpntopoId: pulumi.StringRef("92984e2f-94db-4cd8-9763-9cf83fbd079e"),
+//				Duration:   pulumi.StringRef("1d"),
+//				Start:      pulumi.IntRef(1736031600),
+//				End:        pulumi.IntRef(1736175934),
 //			}, nil)
 //			if err != nil {
 //				return err

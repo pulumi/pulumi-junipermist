@@ -14,6 +14,10 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of Org Webhooks.
         /// 
+        /// A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.  
+        /// It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.  
+        /// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -39,6 +43,10 @@ namespace Pulumi.JuniperMist.Org
         /// <summary>
         /// This data source provides the list of Org Webhooks.
         /// 
+        /// A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.  
+        /// It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.  
+        /// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -63,6 +71,10 @@ namespace Pulumi.JuniperMist.Org
 
         /// <summary>
         /// This data source provides the list of Org Webhooks.
+        /// 
+        /// A Webhook is a configuration that allows real-time events and data from the Org to be pushed to a provided url.  
+        /// It enables the collection of information about various topics such as device events, alarms, and audits updates at the org level.  
+        /// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
         /// 
         /// 
         /// ## Example Usage
@@ -90,14 +102,8 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class GetWebhooksArgs : global::Pulumi.InvokeArgs
     {
-        [Input("limit")]
-        public int? Limit { get; set; }
-
         [Input("orgId", required: true)]
         public string OrgId { get; set; } = null!;
-
-        [Input("page")]
-        public int? Page { get; set; }
 
         public GetWebhooksArgs()
         {
@@ -107,14 +113,8 @@ namespace Pulumi.JuniperMist.Org
 
     public sealed class GetWebhooksInvokeArgs : global::Pulumi.InvokeArgs
     {
-        [Input("limit")]
-        public Input<int>? Limit { get; set; }
-
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
-
-        [Input("page")]
-        public Input<int>? Page { get; set; }
 
         public GetWebhooksInvokeArgs()
         {
@@ -130,28 +130,20 @@ namespace Pulumi.JuniperMist.Org
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly int? Limit;
         public readonly string OrgId;
         public readonly ImmutableArray<Outputs.GetWebhooksOrgWebhookResult> OrgWebhooks;
-        public readonly int? Page;
 
         [OutputConstructor]
         private GetWebhooksResult(
             string id,
 
-            int? limit,
-
             string orgId,
 
-            ImmutableArray<Outputs.GetWebhooksOrgWebhookResult> orgWebhooks,
-
-            int? page)
+            ImmutableArray<Outputs.GetWebhooksOrgWebhookResult> orgWebhooks)
         {
             Id = id;
-            Limit = limit;
             OrgId = orgId;
             OrgWebhooks = orgWebhooks;
-            Page = page;
         }
     }
 }

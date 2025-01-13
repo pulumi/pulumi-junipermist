@@ -13,7 +13,8 @@ namespace Pulumi.JuniperMist
     {
         /// <summary>
         /// This data source provides the list of Webhook Topics.
-        /// This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+        /// 
+        /// This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
         /// 
         /// &gt; Only the Webhook topics with `for_org`==` true` are supported at the Org level.
         /// 
@@ -38,7 +39,8 @@ namespace Pulumi.JuniperMist
 
         /// <summary>
         /// This data source provides the list of Webhook Topics.
-        /// This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+        /// 
+        /// This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
         /// 
         /// &gt; Only the Webhook topics with `for_org`==` true` are supported at the Org level.
         /// 
@@ -63,7 +65,8 @@ namespace Pulumi.JuniperMist
 
         /// <summary>
         /// This data source provides the list of Webhook Topics.
-        /// This information can be used to configure webhooks at the Org level or at the Site level with the `junipermist.org.Webhook` resource or the `junipermist.site.Webhook` resource.
+        /// 
+        /// This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
         /// 
         /// &gt; Only the Webhook topics with `for_org`==` true` are supported at the Org level.
         /// 

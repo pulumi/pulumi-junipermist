@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.JuniperMist.Org
 {
     /// <summary>
-    /// This resource manages the Org Evpn Topologys.
+    /// This resource manages the Org Evpn Topology.
+    /// 
     /// EVPN allows an alternative but more efficient LAN architecture utilizing VxLAN / MP-BGP to separate the control plane (MAC / IP Learning) from the forwarding plane.
     /// 
     /// &gt; To create or manage your EVPN Topology with the Mist Provider, please refer to the `How To - EVPN Topology` Guide.

@@ -17,6 +17,14 @@ import * as utilities from "../utilities";
  *
  * const switchStats = junipermist.device.getSwitchStats({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     mac: "485a0d000000",
+ *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+ *     status: "connected",
+ *     evpnUnused: "true",
+ *     evpntopoId: "92984e2f-94db-4cd8-9763-9cf83fbd079e",
+ *     duration: "1d",
+ *     start: 1736031600,
+ *     end: 1736175934,
  * });
  * ```
  */
@@ -110,6 +118,14 @@ export interface GetSwitchStatsResult {
  *
  * const switchStats = junipermist.device.getSwitchStats({
  *     orgId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+ *     mac: "485a0d000000",
+ *     siteId: "4a422ae5-7ca0-4599-87a3-8e49aa63685f",
+ *     status: "connected",
+ *     evpnUnused: "true",
+ *     evpntopoId: "92984e2f-94db-4cd8-9763-9cf83fbd079e",
+ *     duration: "1d",
+ *     start: 1736031600,
+ *     end: 1736175934,
  * });
  * ```
  */

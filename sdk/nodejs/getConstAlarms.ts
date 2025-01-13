@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * This data source provides the list of  available Alarms.
+ *
  * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
  *
  * ## Example Usage
@@ -37,6 +38,7 @@ export interface GetConstAlarmsResult {
 }
 /**
  * This data source provides the list of  available Alarms.
+ *
  * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
  *
  * ## Example Usage

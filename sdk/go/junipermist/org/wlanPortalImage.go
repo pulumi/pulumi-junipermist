@@ -13,7 +13,6 @@ import (
 )
 
 // This resource is used to upload a WLAN Captive Web Portal background image.
-// The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 type WlanPortalImage struct {
 	pulumi.CustomResourceState
 

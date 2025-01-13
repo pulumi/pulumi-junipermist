@@ -6,7 +6,6 @@ package com.pulumi.junipermist.site.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.site.outputs.GetPsksSitePsk;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -20,9 +19,7 @@ public final class GetPsksResult {
      * 
      */
     private String id;
-    private @Nullable Integer limit;
     private @Nullable String name;
-    private @Nullable Integer page;
     private @Nullable String role;
     private String siteId;
     private List<GetPsksSitePsk> sitePsks;
@@ -36,14 +33,8 @@ public final class GetPsksResult {
     public String id() {
         return this.id;
     }
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
-    }
-    public Optional<Integer> page() {
-        return Optional.ofNullable(this.page);
     }
     public Optional<String> role() {
         return Optional.ofNullable(this.role);
@@ -68,9 +59,7 @@ public final class GetPsksResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private @Nullable Integer limit;
         private @Nullable String name;
-        private @Nullable Integer page;
         private @Nullable String role;
         private String siteId;
         private List<GetPsksSitePsk> sitePsks;
@@ -79,9 +68,7 @@ public final class GetPsksResult {
         public Builder(GetPsksResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.limit = defaults.limit;
     	      this.name = defaults.name;
-    	      this.page = defaults.page;
     	      this.role = defaults.role;
     	      this.siteId = defaults.siteId;
     	      this.sitePsks = defaults.sitePsks;
@@ -97,21 +84,9 @@ public final class GetPsksResult {
             return this;
         }
         @CustomType.Setter
-        public Builder limit(@Nullable Integer limit) {
-
-            this.limit = limit;
-            return this;
-        }
-        @CustomType.Setter
         public Builder name(@Nullable String name) {
 
             this.name = name;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder page(@Nullable Integer page) {
-
-            this.page = page;
             return this;
         }
         @CustomType.Setter
@@ -148,9 +123,7 @@ public final class GetPsksResult {
         public GetPsksResult build() {
             final var _resultValue = new GetPsksResult();
             _resultValue.id = id;
-            _resultValue.limit = limit;
             _resultValue.name = name;
-            _resultValue.page = page;
             _resultValue.role = role;
             _resultValue.siteId = siteId;
             _resultValue.sitePsks = sitePsks;

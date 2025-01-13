@@ -13,9 +13,21 @@ namespace Pulumi.JuniperMist.Site.Outputs
     [OutputType]
     public sealed class SettingEngagementDwellTags
     {
+        /// <summary>
+        /// Default to `301-14400`
+        /// </summary>
         public readonly string? Bounce;
+        /// <summary>
+        /// Default to `14401-28800`
+        /// </summary>
         public readonly string? Engaged;
+        /// <summary>
+        /// Default to `1-300`
+        /// </summary>
         public readonly string? Passerby;
+        /// <summary>
+        /// Default to `28801-42000`
+        /// </summary>
         public readonly string? Stationed;
 
         [OutputConstructor]

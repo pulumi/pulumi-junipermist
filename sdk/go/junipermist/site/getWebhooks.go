@@ -12,6 +12,10 @@ import (
 )
 
 // This data source provides the list of Site Webhooks.
+//
+// A Site Webhook is a configuration that allows real-time events and data from a specific site to be pushed to a provided url.\
+// It enables the collection of information about various topics such as device events, alarms, audits, client sessions and location updates at the site level.\
+// The Webhook can be set up and customized using the Mist API, allowing users to receive and analyze specific data from a particular site.
 func GetWebhooks(ctx *pulumi.Context, args *GetWebhooksArgs, opts ...pulumi.InvokeOption) (*GetWebhooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebhooksResult
@@ -24,8 +28,6 @@ func GetWebhooks(ctx *pulumi.Context, args *GetWebhooksArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getWebhooks.
 type GetWebhooksArgs struct {
-	Limit  *int   `pulumi:"limit"`
-	Page   *int   `pulumi:"page"`
 	SiteId string `pulumi:"siteId"`
 }
 
@@ -33,8 +35,6 @@ type GetWebhooksArgs struct {
 type GetWebhooksResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                   `pulumi:"id"`
-	Limit        *int                     `pulumi:"limit"`
-	Page         *int                     `pulumi:"page"`
 	SiteId       string                   `pulumi:"siteId"`
 	SiteWebhooks []GetWebhooksSiteWebhook `pulumi:"siteWebhooks"`
 }
@@ -50,8 +50,6 @@ func GetWebhooksOutput(ctx *pulumi.Context, args GetWebhooksOutputArgs, opts ...
 
 // A collection of arguments for invoking getWebhooks.
 type GetWebhooksOutputArgs struct {
-	Limit  pulumi.IntPtrInput `pulumi:"limit"`
-	Page   pulumi.IntPtrInput `pulumi:"page"`
 	SiteId pulumi.StringInput `pulumi:"siteId"`
 }
 
@@ -77,14 +75,6 @@ func (o GetWebhooksResultOutput) ToGetWebhooksResultOutputWithContext(ctx contex
 // The provider-assigned unique ID for this managed resource.
 func (o GetWebhooksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetWebhooksResultOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetWebhooksResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
-}
-
-func (o GetWebhooksResultOutput) Page() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetWebhooksResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
 func (o GetWebhooksResultOutput) SiteId() pulumi.StringOutput {

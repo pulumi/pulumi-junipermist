@@ -5,7 +5,6 @@ package com.pulumi.junipermist.site.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,25 +15,11 @@ public final class GetPsksPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetPsksPlainArgs Empty = new GetPsksPlainArgs();
 
-    @Import(name="limit")
-    private @Nullable Integer limit;
-
-    public Optional<Integer> limit() {
-        return Optional.ofNullable(this.limit);
-    }
-
     @Import(name="name")
     private @Nullable String name;
 
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
-    }
-
-    @Import(name="page")
-    private @Nullable Integer page;
-
-    public Optional<Integer> page() {
-        return Optional.ofNullable(this.page);
     }
 
     @Import(name="role")
@@ -61,9 +46,7 @@ public final class GetPsksPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetPsksPlainArgs() {}
 
     private GetPsksPlainArgs(GetPsksPlainArgs $) {
-        this.limit = $.limit;
         this.name = $.name;
-        this.page = $.page;
         this.role = $.role;
         this.siteId = $.siteId;
         this.ssid = $.ssid;
@@ -87,18 +70,8 @@ public final class GetPsksPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetPsksPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder limit(@Nullable Integer limit) {
-            $.limit = limit;
-            return this;
-        }
-
         public Builder name(@Nullable String name) {
             $.name = name;
-            return this;
-        }
-
-        public Builder page(@Nullable Integer page) {
-            $.page = page;
             return this;
         }
 

@@ -62,7 +62,8 @@ class AwaitableGetConstWebhooksResult(GetConstWebhooksResult):
 def get_const_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConstWebhooksResult:
     """
     This data source provides the list of Webhook Topics.
-    This information can be used to configure webhooks at the Org level or at the Site level with the `org.Webhook` resource or the `site.Webhook` resource.
+
+    This information can be used to configure webhooks at the Org level (`org.Webhook` resource) or at the Site level (`site.Webhook` resource).
 
     > Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
 
@@ -85,7 +86,8 @@ def get_const_webhooks(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitable
 def get_const_webhooks_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConstWebhooksResult]:
     """
     This data source provides the list of Webhook Topics.
-    This information can be used to configure webhooks at the Org level or at the Site level with the `org.Webhook` resource or the `site.Webhook` resource.
+
+    This information can be used to configure webhooks at the Org level (`org.Webhook` resource) or at the Site level (`site.Webhook` resource).
 
     > Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
 

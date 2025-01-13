@@ -3077,6 +3077,7 @@ class Wlan(pulumi.CustomResource):
                  __props__=None):
         """
         This resource manages the Org Wlans.
+
         The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 
         ## Example Usage
@@ -3228,6 +3229,7 @@ class Wlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource manages the Org Wlans.
+
         The WLAN object contains all the required configuration to broadcast an SSID (Authentication, VLAN, ...)
 
         ## Example Usage

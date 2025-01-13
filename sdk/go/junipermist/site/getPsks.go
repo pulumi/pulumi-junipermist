@@ -11,8 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the list of WAN Assurance Psks.
-// The Psks are used in the `servicePolicies` from the Gateway configuration and Gateway templates
+// This data source provides the list of Site Psks.
+//
+// A multi PSK (Pre-Shared Key) is a feature that allows the use of multiple PSKs for securing network connections.\
+// It provides a simple and comprehensive way to onboard client devices without relying on client mac addresses.\
+// Each psk has its own key name, which can be used for user-level accountability, key rotation, and visibility in the management platform. It supports the creation, rotation, and auto-expiration of psks, and allows vlan assignment and role assignment for dynamic per-user policies.\
+// Multi PSKs create virtual broadcast domains and can be used for end-user onboarding via authenticated sso login.
 //
 // ## Example Usage
 //
@@ -30,7 +34,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := site.GetPsks(ctx, &site.GetPsksArgs{
 //				SiteId: "15fca2ac-b1a6-47cc-9953-cc6906281550",
+//				Name:   pulumi.StringRef("psk_one"),
 //				Role:   pulumi.StringRef("vip"),
+//				Ssid:   pulumi.StringRef("psk_ssid"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,9 +58,7 @@ func GetPsks(ctx *pulumi.Context, args *GetPsksArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getPsks.
 type GetPsksArgs struct {
-	Limit  *int    `pulumi:"limit"`
 	Name   *string `pulumi:"name"`
-	Page   *int    `pulumi:"page"`
 	Role   *string `pulumi:"role"`
 	SiteId string  `pulumi:"siteId"`
 	Ssid   *string `pulumi:"ssid"`
@@ -64,9 +68,7 @@ type GetPsksArgs struct {
 type GetPsksResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string           `pulumi:"id"`
-	Limit    *int             `pulumi:"limit"`
 	Name     *string          `pulumi:"name"`
-	Page     *int             `pulumi:"page"`
 	Role     *string          `pulumi:"role"`
 	SiteId   string           `pulumi:"siteId"`
 	SitePsks []GetPsksSitePsk `pulumi:"sitePsks"`
@@ -84,9 +86,7 @@ func GetPsksOutput(ctx *pulumi.Context, args GetPsksOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getPsks.
 type GetPsksOutputArgs struct {
-	Limit  pulumi.IntPtrInput    `pulumi:"limit"`
 	Name   pulumi.StringPtrInput `pulumi:"name"`
-	Page   pulumi.IntPtrInput    `pulumi:"page"`
 	Role   pulumi.StringPtrInput `pulumi:"role"`
 	SiteId pulumi.StringInput    `pulumi:"siteId"`
 	Ssid   pulumi.StringPtrInput `pulumi:"ssid"`
@@ -116,16 +116,8 @@ func (o GetPsksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPsksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetPsksResultOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetPsksResult) *int { return v.Limit }).(pulumi.IntPtrOutput)
-}
-
 func (o GetPsksResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPsksResult) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-func (o GetPsksResultOutput) Page() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetPsksResult) *int { return v.Page }).(pulumi.IntPtrOutput)
 }
 
 func (o GetPsksResultOutput) Role() pulumi.StringPtrOutput {

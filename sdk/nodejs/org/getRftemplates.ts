@@ -7,7 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This resource provides the list of RF Templates.
+ * This data source provides the list of RF Templates.
+ *
  * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
  *
  * ## Example Usage
@@ -47,7 +48,8 @@ export interface GetRftemplatesResult {
     readonly orgRftemplates: outputs.org.GetRftemplatesOrgRftemplate[];
 }
 /**
- * This resource provides the list of RF Templates.
+ * This data source provides the list of RF Templates.
+ *
  * The RF Templates can be used to define Wireless Access Points radio configuration, and can be assigned to the sites
  *
  * ## Example Usage

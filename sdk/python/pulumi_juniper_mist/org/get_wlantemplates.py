@@ -72,7 +72,10 @@ def get_wlantemplates(org_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWlantemplatesResult:
     """
     This datasource provides the list of WLAN Templates in a Mist Organization.
-    A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+
+    A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\\
+    WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\\
+    They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 
     ## Example Usage
 
@@ -96,7 +99,10 @@ def get_wlantemplates_output(org_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWlantemplatesResult]:
     """
     This datasource provides the list of WLAN Templates in a Mist Organization.
-    A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level. WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles. They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
+
+    A WLAN template is a collection of WLANs, tunneling policies, and wxlan policies. It is used to create and manage wlan configurations at an organizational level.\\
+    WLAN templates allow for modular, scalable, and easy-to-manage configuration of ssids and their application to specific sites, site groups, or ap device profiles.\\
+    They are valuable for automating configuration across multiple sites and profiles, making it easier to scale efficiently.
 
     ## Example Usage
 

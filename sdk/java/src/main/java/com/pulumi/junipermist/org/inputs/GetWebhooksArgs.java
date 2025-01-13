@@ -6,23 +6,13 @@ package com.pulumi.junipermist.org.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetWebhooksArgs Empty = new GetWebhooksArgs();
-
-    @Import(name="limit")
-    private @Nullable Output<Integer> limit;
-
-    public Optional<Output<Integer>> limit() {
-        return Optional.ofNullable(this.limit);
-    }
 
     @Import(name="orgId", required=true)
     private Output<String> orgId;
@@ -31,19 +21,10 @@ public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
         return this.orgId;
     }
 
-    @Import(name="page")
-    private @Nullable Output<Integer> page;
-
-    public Optional<Output<Integer>> page() {
-        return Optional.ofNullable(this.page);
-    }
-
     private GetWebhooksArgs() {}
 
     private GetWebhooksArgs(GetWebhooksArgs $) {
-        this.limit = $.limit;
         this.orgId = $.orgId;
-        this.page = $.page;
     }
 
     public static Builder builder() {
@@ -64,15 +45,6 @@ public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetWebhooksArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder limit(@Nullable Output<Integer> limit) {
-            $.limit = limit;
-            return this;
-        }
-
-        public Builder limit(Integer limit) {
-            return limit(Output.of(limit));
-        }
-
         public Builder orgId(Output<String> orgId) {
             $.orgId = orgId;
             return this;
@@ -80,15 +52,6 @@ public final class GetWebhooksArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
-        }
-
-        public Builder page(@Nullable Output<Integer> page) {
-            $.page = page;
-            return this;
-        }
-
-        public Builder page(Integer page) {
-            return page(Output.of(page));
         }
 
         public GetWebhooksArgs build() {
