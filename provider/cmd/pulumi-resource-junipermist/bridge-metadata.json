@@ -1650,6 +1650,14 @@
                     }
                 }
             },
+            "mist_org_nac_endpoint": {
+                "current": "junipermist:org/nacEndpoint:NacEndpoint",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_org_nacidp": {
                 "current": "junipermist:org/nacidp:Nacidp",
                 "fields": {
@@ -2892,6 +2900,13 @@
                             }
                         }
                     },
+                    "juniper_srx": {
+                        "fields": {
+                            "gateways": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "rogue": {
                         "fields": {
                             "whitelisted_bssids": {
@@ -3536,6 +3551,38 @@
                     }
                 }
             },
+            "mist_org_alarmtemplates": {
+                "current": "junipermist:org/getAlarmtemplates:getAlarmtemplates",
+                "fields": {
+                    "org_alarmtemplates": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "delivery": {
+                                    "fields": {
+                                        "additional_emails": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "rules": {
+                                    "elem": {
+                                        "fields": {
+                                            "delivery": {
+                                                "fields": {
+                                                    "additional_emails": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "mist_org_deviceprofiles_ap": {
                 "current": "junipermist:org/getDeviceprofilesAp:getDeviceprofilesAp",
                 "fields": {
@@ -3549,6 +3596,31 @@
                 "fields": {
                     "deviceprofiles": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_org_evpn_topologies": {
+                "current": "junipermist:org/getEvpnTopologies:getEvpnTopologies",
+                "fields": {
+                    "org_evpn_topologies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "evpn_options": {
+                                    "fields": {
+                                        "vs_instances": {
+                                            "elem": {
+                                                "fields": {
+                                                    "networks": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3597,6 +3669,24 @@
                 "fields": {
                     "org_inventory": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "mist_org_nac_endpoints": {
+                "current": "junipermist:org/getNacEndpoints:getNacEndpoints",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "org_usermacs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3721,6 +3811,21 @@
             "mist_org_sso_metadata": {
                 "current": "junipermist:org/getSsoMetadata:getSsoMetadata"
             },
+            "mist_org_sso_roles": {
+                "current": "junipermist:org/getSsoRoles:getSsoRoles",
+                "fields": {
+                    "org_sso_roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "privileges": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "mist_org_vpns": {
                 "current": "junipermist:org/getVpns:getVpns",
                 "fields": {
@@ -3740,6 +3845,167 @@
                                     "maxItemsOne": false
                                 },
                                 "topics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_org_wlans": {
+                "current": "junipermist:org/getWlans:getWlans",
+                "fields": {
+                    "org_wlans": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "acct_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "ap_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "app_qos": {
+                                    "fields": {
+                                        "others": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "auth": {
+                                    "fields": {
+                                        "keys": {
+                                            "maxItemsOne": false
+                                        },
+                                        "pairwise": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "auth_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "bands": {
+                                    "maxItemsOne": false
+                                },
+                                "bonjour": {
+                                    "fields": {
+                                        "additional_vlan_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "services": {
+                                            "elem": {
+                                                "fields": {
+                                                    "radius_groups": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "cisco_cwa": {
+                                    "fields": {
+                                        "allowed_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "allowed_subnets": {
+                                            "maxItemsOne": false
+                                        },
+                                        "blocked_subnets": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "coa_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "dynamic_vlan": {
+                                    "fields": {
+                                        "default_vlan_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "local_vlan_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "hotspot20": {
+                                    "fields": {
+                                        "domain_name": {
+                                            "maxItemsOne": false
+                                        },
+                                        "nai_realms": {
+                                            "maxItemsOne": false
+                                        },
+                                        "operators": {
+                                            "maxItemsOne": false
+                                        },
+                                        "rcoi": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "mxtunnel_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "mxtunnel_name": {
+                                    "maxItemsOne": false
+                                },
+                                "portal": {
+                                    "fields": {
+                                        "amazon_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "facebook_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "google_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "microsoft_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "sponsor_email_domains": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "portal_allowed_hostnames": {
+                                    "maxItemsOne": false
+                                },
+                                "portal_allowed_subnets": {
+                                    "maxItemsOne": false
+                                },
+                                "portal_denied_hostnames": {
+                                    "maxItemsOne": false
+                                },
+                                "radsec": {
+                                    "fields": {
+                                        "mxcluster_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "proxy_hosts": {
+                                            "maxItemsOne": false
+                                        },
+                                        "servers": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "rateset": {
+                                    "elem": {
+                                        "fields": {
+                                            "legacy": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "vlan_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "wxtag_ids": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -3782,6 +4048,167 @@
                                     "maxItemsOne": false
                                 },
                                 "topics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "mist_site_wlans": {
+                "current": "junipermist:site/getWlans:getWlans",
+                "fields": {
+                    "site_wlans": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "acct_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "ap_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "app_qos": {
+                                    "fields": {
+                                        "others": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "auth": {
+                                    "fields": {
+                                        "keys": {
+                                            "maxItemsOne": false
+                                        },
+                                        "pairwise": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "auth_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "bands": {
+                                    "maxItemsOne": false
+                                },
+                                "bonjour": {
+                                    "fields": {
+                                        "additional_vlan_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "services": {
+                                            "elem": {
+                                                "fields": {
+                                                    "radius_groups": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "cisco_cwa": {
+                                    "fields": {
+                                        "allowed_hostnames": {
+                                            "maxItemsOne": false
+                                        },
+                                        "allowed_subnets": {
+                                            "maxItemsOne": false
+                                        },
+                                        "blocked_subnets": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "coa_servers": {
+                                    "maxItemsOne": false
+                                },
+                                "dynamic_vlan": {
+                                    "fields": {
+                                        "default_vlan_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "local_vlan_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "hotspot20": {
+                                    "fields": {
+                                        "domain_name": {
+                                            "maxItemsOne": false
+                                        },
+                                        "nai_realms": {
+                                            "maxItemsOne": false
+                                        },
+                                        "operators": {
+                                            "maxItemsOne": false
+                                        },
+                                        "rcoi": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "mxtunnel_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "mxtunnel_name": {
+                                    "maxItemsOne": false
+                                },
+                                "portal": {
+                                    "fields": {
+                                        "amazon_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "facebook_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "google_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "microsoft_email_domains": {
+                                            "maxItemsOne": false
+                                        },
+                                        "sponsor_email_domains": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "portal_allowed_hostnames": {
+                                    "maxItemsOne": false
+                                },
+                                "portal_allowed_subnets": {
+                                    "maxItemsOne": false
+                                },
+                                "portal_denied_hostnames": {
+                                    "maxItemsOne": false
+                                },
+                                "radsec": {
+                                    "fields": {
+                                        "mxcluster_ids": {
+                                            "maxItemsOne": false
+                                        },
+                                        "proxy_hosts": {
+                                            "maxItemsOne": false
+                                        },
+                                        "servers": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "rateset": {
+                                    "elem": {
+                                        "fields": {
+                                            "legacy": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "vlan_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "wxtag_ids": {
                                     "maxItemsOne": false
                                 }
                             }
