@@ -112,6 +112,7 @@ func Provider(_ context.Context) tfbridge.ProviderInfo {
 				"Pulumi": "3.*",
 			},
 		},
+		EnableAccurateBridgePreview: true,
 	}
 
 	tfbridge.MustTraverseProperties(&prov, "ids", applyResourceIDs)
