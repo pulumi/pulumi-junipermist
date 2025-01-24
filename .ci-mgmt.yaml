@@ -23,3 +23,4 @@ integrationTestProvider: true
 
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
+registryDocs: true
