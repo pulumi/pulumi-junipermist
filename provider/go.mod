@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-junipermist/provider
 
-go 1.24.0
+go 1.22.7
+
+toolchain go1.22.9
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250124205414-92ccb3765401
 

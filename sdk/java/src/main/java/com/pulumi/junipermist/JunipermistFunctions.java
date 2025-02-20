@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.inputs.GetSitesArgs;
 import com.pulumi.junipermist.inputs.GetSitesPlainArgs;
@@ -225,6 +226,47 @@ public final class JunipermistFunctions {
      * 
      */
     public static Output<GetConstAlarmsResult> getConstAlarms(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstAlarms:getConstAlarms", TypeShape.of(GetConstAlarmsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of  available Alarms.
+     * 
+     * The alarm `key` can be used to configure the `mist_org_alarmtemplate.rules`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAlarms = JunipermistFunctions.getConstAlarms();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstAlarmsResult> getConstAlarms(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:index/getConstAlarms:getConstAlarms", TypeShape.of(GetConstAlarmsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -511,6 +553,47 @@ public final class JunipermistFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConstAppCategoriesResult> getConstAppCategories(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstAppCategories:getConstAppCategories", TypeShape.of(GetConstAppCategoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of ConstAppCategories.
+     * 
+     * This information can be used as `app_categories` in the `junipermist.org.Service` resource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAppCategories = JunipermistFunctions.getConstAppCategories();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConstAppCategoriesResult> getConstAppCategoriesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstAppCategories:getConstAppCategories", TypeShape.of(GetConstAppCategoriesResult.class), args, Utilities.withVersion(options));
     }
@@ -717,6 +800,47 @@ public final class JunipermistFunctions {
      * 
      */
     public static Output<GetConstAppSubCategoriesResult> getConstAppSubCategories(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", TypeShape.of(GetConstAppSubCategoriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of ConstAppSubCategories.
+     * 
+     * This information can be used as `app_subcategories` in the `junipermist.org.Service` resource
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfAppSubCategories = JunipermistFunctions.getConstAppSubCategories();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstAppSubCategoriesResult> getConstAppSubCategories(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:index/getConstAppSubCategories:getConstAppSubCategories", TypeShape.of(GetConstAppSubCategoriesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1021,6 +1145,50 @@ public final class JunipermistFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConstApplicationsResult> getConstApplications(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstApplications:getConstApplications", TypeShape.of(GetConstApplicationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of ConstApplications.
+     * 
+     * This information can be used as `apps` in:
+     * * `junipermist.org.Service` resource
+     * * `junipermist.site.Setting` resource (`mist_site_setting.gateway_mgmt.app_probing.apps`)
+     * * `junipermist.org.Setting` resource (`mist_org_setting.gateway_mgmt.app_probing.apps`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfApplications = JunipermistFunctions.getConstApplications();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConstApplicationsResult> getConstApplicationsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstApplications:getConstApplications", TypeShape.of(GetConstApplicationsResult.class), args, Utilities.withVersion(options));
     }
@@ -1267,6 +1435,47 @@ public final class JunipermistFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConstCountriesResult> getConstCountries(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstCountries:getConstCountries", TypeShape.of(GetConstCountriesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of ConstCountries.
+     * 
+     * This information can be used to define the Country in the RF templates (`junipermist.org.Rftemplate`)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfCountries = JunipermistFunctions.getConstCountries();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConstCountriesResult> getConstCountriesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstCountries:getConstCountries", TypeShape.of(GetConstCountriesResult.class), args, Utilities.withVersion(options));
     }
@@ -1473,6 +1682,47 @@ public final class JunipermistFunctions {
      * 
      */
     public static Output<GetConstTrafficTypesResult> getConstTrafficTypes(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", TypeShape.of(GetConstTrafficTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the of ConstTrafficTypes.
+     * 
+     * The Traffic Type values can be used to define the `traffic_type` attribute in the `junipermist.org.Service` resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfTrafficTypes = JunipermistFunctions.getConstTrafficTypes();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConstTrafficTypesResult> getConstTrafficTypes(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:index/getConstTrafficTypes:getConstTrafficTypes", TypeShape.of(GetConstTrafficTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1771,6 +2021,49 @@ public final class JunipermistFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetConstWebhooksResult> getConstWebhooks(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getConstWebhooks:getConstWebhooks", TypeShape.of(GetConstWebhooksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of Webhook Topics.
+     * 
+     * This information can be used to configure webhooks at the Org level (`junipermist.org.Webhook` resource) or at the Site level (`junipermist.site.Webhook` resource).
+     * 
+     * &gt; Only the Webhook topics with `for_org`==`  true ` are supported at the Org level.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var listOfWebhooks = JunipermistFunctions.getConstWebhooks();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetConstWebhooksResult> getConstWebhooksPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:index/getConstWebhooks:getConstWebhooks", TypeShape.of(GetConstWebhooksResult.class), args, Utilities.withVersion(options));
     }
@@ -1901,6 +2194,49 @@ public final class JunipermistFunctions {
      * 
      */
     public static Output<GetSitesResult> getSites(GetSitesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:index/getSites:getSites", TypeShape.of(GetSitesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This datasource provides the list of sites in a Mist Organization.
+     * A site represents a project, a deployment. A site contains a set of Maps, Wlans, Policies, Zones, ...
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.JunipermistFunctions;
+     * import com.pulumi.junipermist.inputs.GetSitesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sites = JunipermistFunctions.getSites(GetSitesArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSitesResult> getSites(GetSitesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("junipermist:index/getSites:getSites", TypeShape.of(GetSitesResult.class), args, Utilities.withVersion(options));
     }
     /**
