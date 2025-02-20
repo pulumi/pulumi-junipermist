@@ -179,6 +179,10 @@ func applyResourceIDs(info tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitRe
 	//		}
 	//
 	switch field {
+	case "upgrade_id":
+		if strings.HasPrefix(res.TfToken, "mist_upgrade") {
+			return setField()
+		}
 	case "device_id":
 		if strings.HasPrefix(res.TfToken, "mist_device") {
 			return setField()
