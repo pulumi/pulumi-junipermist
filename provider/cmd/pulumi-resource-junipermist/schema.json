@@ -10139,6 +10139,65 @@
                 }
             }
         },
+        "junipermist:device/getVersionsDeviceVersion:getVersionsDeviceVersion": {
+            "properties": {
+                "model": {
+                    "type": "string",
+                    "description": "Device model (as seen in the device stats)\n"
+                },
+                "tag": {
+                    "type": "string",
+                    "description": "Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Firmware version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "model",
+                "tag",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "junipermist:index/UpgradeDeviceFwupdate:UpgradeDeviceFwupdate": {
+            "properties": {
+                "progress": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "enum: `inprogress`, `failed`, `upgraded`\n"
+                },
+                "statusId": {
+                    "type": "integer"
+                },
+                "timestamp": {
+                    "type": "number"
+                },
+                "willRetry": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "progress",
+                        "status",
+                        "statusId",
+                        "timestamp",
+                        "willRetry"
+                    ]
+                }
+            }
+        },
         "junipermist:index/getConstAlarmsConstAlarm:getConstAlarmsConstAlarm": {
             "properties": {
                 "display": {
@@ -19677,7 +19736,10 @@
                     "description": "Required if `scope`==`sitegroup`\n"
                 },
                 "views": {
-                    "type": "string",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  \nYou can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  \nBelow are the list of supported UI views. Note that this is UI only feature.  \n\n  | UI View | Required Role | Description |\n  | --- | --- | --- |\n  | `reporting` | `read` | full access to all analytics tools |\n  | `marketing` | `read` | can view analytics and location maps |\n  | `super_observer` | `read` | can view all the organization except the subscription page |\n  | `location` | `write` | can view and manage location maps, can view analytics |\n  | `security` | `write` | can view and manage site labels, policies and security |\n  | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |\n  | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |\n  | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |\n"
                 }
             },
@@ -19685,7 +19747,16 @@
             "required": [
                 "role",
                 "scope"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "role",
+                        "scope",
+                        "views"
+                    ]
+                }
+            }
         },
         "junipermist:org/VpnPaths:VpnPaths": {
             "properties": {
@@ -23136,7 +23207,7 @@
             "properties": {
                 "createdTime": {
                     "type": "number",
-                    "description": "when the object has been created, in epoch\n"
+                    "description": "When the object has been created, in epoch\n"
                 },
                 "id": {
                     "type": "string",
@@ -23144,7 +23215,7 @@
                 },
                 "modifiedTime": {
                     "type": "number",
-                    "description": "when the object has been modified for the last time, in epoch\n"
+                    "description": "When the object has been modified for the last time, in epoch\n"
                 },
                 "name": {
                     "type": "string"
@@ -23186,14 +23257,17 @@
                 },
                 "siteId": {
                     "type": "string",
-                    "description": "if `scope`==`site`\n"
+                    "description": "If `scope`==`site`\n"
                 },
                 "sitegroupId": {
                     "type": "string",
-                    "description": "if `scope`==`sitegroup`\n"
+                    "description": "If `scope`==`sitegroup`\n"
                 },
                 "views": {
-                    "type": "string",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  \nYou can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  \nBelow are the list of supported UI views. Note that this is UI only feature.  \n\n  | UI View | Required Role | Description |\n  | --- | --- | --- |\n  | `reporting` | `read` | full access to all analytics tools |\n  | `marketing` | `read` | can view analytics and location maps |\n  | `super_observer` | `read` | can view all the organization except the subscription page |\n  | `location` | `write` | can view and manage location maps, can view analytics |\n  | `security` | `write` | can view and manage site labels, policies and security |\n  | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |\n  | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |\n  | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |\n"
                 }
             },
@@ -23280,18 +23354,18 @@
             "properties": {
                 "createdTime": {
                     "type": "number",
-                    "description": "when the object has been created, in epoch\n"
+                    "description": "When the object has been created, in epoch\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "whether webhook is enabled\n"
+                    "description": "Whether webhook is enabled\n"
                 },
                 "headers": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000\n"
+                    "description": "If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000\n"
                 },
                 "id": {
                     "type": "string",
@@ -23299,19 +23373,19 @@
                 },
                 "modifiedTime": {
                     "type": "number",
-                    "description": "when the object has been modified for the last time, in epoch\n"
+                    "description": "When the object has been modified for the last time, in epoch\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "name of the webhook\n"
+                    "description": "Name of the webhook\n"
                 },
                 "oauth2ClientId": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`client_credentials`\n"
+                    "description": "Required when `oauth2_grant_type`==`client_credentials`\n"
                 },
                 "oauth2ClientSecret": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`client_credentials`\n",
+                    "description": "Required when `oauth2_grant_type`==`client_credentials`\n",
                     "secret": true
                 },
                 "oauth2GrantType": {
@@ -23320,7 +23394,7 @@
                 },
                 "oauth2Password": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`password`\n",
+                    "description": "Required when `oauth2_grant_type`==`password`\n",
                     "secret": true
                 },
                 "oauth2Scopes": {
@@ -23328,30 +23402,27 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "required when `type`==`oauth2`, if provided, will be used in the token request\n"
+                    "description": "Required when `type`==`oauth2`, if provided, will be used in the token request\n"
                 },
                 "oauth2TokenUrl": {
                     "type": "string",
-                    "description": "required when `type`==`oauth2`\n"
+                    "description": "Required when `type`==`oauth2`\n"
                 },
                 "oauth2Username": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`password`\n"
+                    "description": "Required when `oauth2_grant_type`==`password`\n"
                 },
                 "orgId": {
                     "type": "string"
                 },
                 "secret": {
                     "type": "string",
-                    "description": "only if `type`=`http-post`\n",
+                    "description": "Only if `type`=`http-post`\n",
                     "secret": true
-                },
-                "siteId": {
-                    "type": "string"
                 },
                 "splunkToken": {
                     "type": "string",
-                    "description": "required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'\n",
+                    "description": "Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'\n",
                     "secret": true
                 },
                 "topics": {
@@ -23370,7 +23441,7 @@
                 },
                 "verifyCert": {
                     "type": "boolean",
-                    "description": "when url uses HTTPS, whether to verify the certificate\n"
+                    "description": "When url uses HTTPS, whether to verify the certificate\n"
                 }
             },
             "type": "object",
@@ -23390,7 +23461,6 @@
                 "oauth2Username",
                 "orgId",
                 "secret",
-                "siteId",
                 "splunkToken",
                 "topics",
                 "type",
@@ -31012,18 +31082,18 @@
             "properties": {
                 "createdTime": {
                     "type": "number",
-                    "description": "when the object has been created, in epoch\n"
+                    "description": "When the object has been created, in epoch\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "whether webhook is enabled\n"
+                    "description": "Whether webhook is enabled\n"
                 },
                 "headers": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000\n"
+                    "description": "If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000\n"
                 },
                 "id": {
                     "type": "string",
@@ -31031,19 +31101,19 @@
                 },
                 "modifiedTime": {
                     "type": "number",
-                    "description": "when the object has been modified for the last time, in epoch\n"
+                    "description": "When the object has been modified for the last time, in epoch\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "name of the webhook\n"
+                    "description": "Name of the webhook\n"
                 },
                 "oauth2ClientId": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`client_credentials`\n"
+                    "description": "Required when `oauth2_grant_type`==`client_credentials`\n"
                 },
                 "oauth2ClientSecret": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`client_credentials`\n",
+                    "description": "Required when `oauth2_grant_type`==`client_credentials`\n",
                     "secret": true
                 },
                 "oauth2GrantType": {
@@ -31052,7 +31122,7 @@
                 },
                 "oauth2Password": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`password`\n",
+                    "description": "Required when `oauth2_grant_type`==`password`\n",
                     "secret": true
                 },
                 "oauth2Scopes": {
@@ -31060,22 +31130,22 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "required when `type`==`oauth2`, if provided, will be used in the token request\n"
+                    "description": "Required when `type`==`oauth2`, if provided, will be used in the token request\n"
                 },
                 "oauth2TokenUrl": {
                     "type": "string",
-                    "description": "required when `type`==`oauth2`\n"
+                    "description": "Required when `type`==`oauth2`\n"
                 },
                 "oauth2Username": {
                     "type": "string",
-                    "description": "required when `oauth2_grant_type`==`password`\n"
+                    "description": "Required when `oauth2_grant_type`==`password`\n"
                 },
                 "orgId": {
                     "type": "string"
                 },
                 "secret": {
                     "type": "string",
-                    "description": "only if `type`=`http-post`\n",
+                    "description": "Only if `type`=`http-post`\n",
                     "secret": true
                 },
                 "siteId": {
@@ -31083,7 +31153,7 @@
                 },
                 "splunkToken": {
                     "type": "string",
-                    "description": "required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'\n",
+                    "description": "Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'\n",
                     "secret": true
                 },
                 "topics": {
@@ -31102,7 +31172,7 @@
                 },
                 "verifyCert": {
                     "type": "boolean",
-                    "description": "when url uses HTTPS, whether to verify the certificate\n"
+                    "description": "When url uses HTTPS, whether to verify the certificate\n"
                 }
             },
             "type": "object",
@@ -35047,6 +35117,195 @@
                     "y": {
                         "type": "number",
                         "description": "y in pixel\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "junipermist:index/upgradeDevice:UpgradeDevice": {
+            "description": "This resource can be used to upgrade the frimware of a single device (Wi-Fi Access Points, Switches and SRX/SSR Gateways).\n\nThe resource will send the upgrade command to Mist, which will take care of deploying the new firmware version to the device, and reboot it if required.\n\nThe time required to upgrade a device depends on the type of device and its hardware. By default, the resource will track the upgrade process and only return the result once the device is upgraded and rebooted (unless `reboot`==`false` or `reboot_at` is set).  \nIf required it is possible to run the upgrade in async mode (attribute `sync`=`false`). In this case, the resource will only trigger the upgrade and return the Mist response, but will not track the upgrade progress.\n\nThe list of available firmware versions can be retrieved with the `junipermist.device.getVersions` data source.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/juniper-mist\";\n\nconst apUpgrade = new junipermist.UpgradeDevice(\"ap_upgrade\", {\n    siteId: terraformTest.id,\n    deviceId: apOne.id,\n    targetVersion: \"0.14.29543\",\n});\nconst switchUpgrade = new junipermist.UpgradeDevice(\"switch_upgrade\", {\n    siteId: terraformTest.id,\n    deviceId: switchOne.id,\n    targetVersion: \"24.2R1-S1.10\",\n    reboot: true,\n    syncUpgradeTimeout: 3600,\n});\n```\n```python\nimport pulumi\nimport pulumi_juniper_mist as junipermist\n\nap_upgrade = junipermist.UpgradeDevice(\"ap_upgrade\",\n    site_id=terraform_test[\"id\"],\n    device_id=ap_one[\"id\"],\n    target_version=\"0.14.29543\")\nswitch_upgrade = junipermist.UpgradeDevice(\"switch_upgrade\",\n    site_id=terraform_test[\"id\"],\n    device_id=switch_one[\"id\"],\n    target_version=\"24.2R1-S1.10\",\n    reboot=True,\n    sync_upgrade_timeout=3600)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var apUpgrade = new JuniperMist.UpgradeDevice(\"ap_upgrade\", new()\n    {\n        SiteId = terraformTest.Id,\n        DeviceId = apOne.Id,\n        TargetVersion = \"0.14.29543\",\n    });\n\n    var switchUpgrade = new JuniperMist.UpgradeDevice(\"switch_upgrade\", new()\n    {\n        SiteId = terraformTest.Id,\n        DeviceId = switchOne.Id,\n        TargetVersion = \"24.2R1-S1.10\",\n        Reboot = true,\n        SyncUpgradeTimeout = 3600,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := junipermist.NewUpgradeDevice(ctx, \"ap_upgrade\", \u0026junipermist.UpgradeDeviceArgs{\n\t\t\tSiteId:        pulumi.Any(terraformTest.Id),\n\t\t\tDeviceId:      pulumi.Any(apOne.Id),\n\t\t\tTargetVersion: pulumi.String(\"0.14.29543\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = junipermist.NewUpgradeDevice(ctx, \"switch_upgrade\", \u0026junipermist.UpgradeDeviceArgs{\n\t\t\tSiteId:             pulumi.Any(terraformTest.Id),\n\t\t\tDeviceId:           pulumi.Any(switchOne.Id),\n\t\t\tTargetVersion:      pulumi.String(\"24.2R1-S1.10\"),\n\t\t\tReboot:             pulumi.Bool(true),\n\t\t\tSyncUpgradeTimeout: pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.UpgradeDevice;\nimport com.pulumi.junipermist.UpgradeDeviceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var apUpgrade = new UpgradeDevice(\"apUpgrade\", UpgradeDeviceArgs.builder()\n            .siteId(terraformTest.id())\n            .deviceId(apOne.id())\n            .targetVersion(\"0.14.29543\")\n            .build());\n\n        var switchUpgrade = new UpgradeDevice(\"switchUpgrade\", UpgradeDeviceArgs.builder()\n            .siteId(terraformTest.id())\n            .deviceId(switchOne.id())\n            .targetVersion(\"24.2R1-S1.10\")\n            .reboot(true)\n            .syncUpgradeTimeout(3600)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  apUpgrade:\n    type: junipermist:UpgradeDevice\n    name: ap_upgrade\n    properties:\n      siteId: ${terraformTest.id}\n      deviceId: ${apOne.id}\n      targetVersion: 0.14.29543\n  switchUpgrade:\n    type: junipermist:UpgradeDevice\n    name: switch_upgrade\n    properties:\n      siteId: ${terraformTest.id}\n      deviceId: ${switchOne.id}\n      targetVersion: 24.2R1-S1.10\n      reboot: true\n      syncUpgradeTimeout: 3600\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "deviceId": {
+                    "type": "string"
+                },
+                "deviceVersion": {
+                    "type": "string",
+                    "description": "current device firmware version\n"
+                },
+                "fwupdate": {
+                    "$ref": "#/types/junipermist:index/UpgradeDeviceFwupdate:UpgradeDeviceFwupdate"
+                },
+                "reboot": {
+                    "type": "boolean",
+                    "description": "For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed\n"
+                },
+                "rebootAt": {
+                    "type": "integer",
+                    "description": "For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "snapshot": {
+                    "type": "boolean",
+                    "description": "For Junos devices only. Perform recovery snapshot after device is rebooted\n"
+                },
+                "startTime": {
+                    "type": "integer",
+                    "description": "Firmware download start time in epoch\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "enum: `error`, `inprogress`, `scheduled`, `starting`, `success`\n"
+                },
+                "syncUpgrade": {
+                    "type": "boolean",
+                    "description": "if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`\n"
+                },
+                "syncUpgradeRefreshInterval": {
+                    "type": "integer",
+                    "description": "if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15\n"
+                },
+                "syncUpgradeStartTimeout": {
+                    "type": "integer",
+                    "description": "if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60\n"
+                },
+                "syncUpgradeTimeout": {
+                    "type": "integer",
+                    "description": "if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800\n"
+                },
+                "targetVersion": {
+                    "type": "string",
+                    "description": "firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions\n"
+                },
+                "timestamp": {
+                    "type": "number",
+                    "description": "Timestamp\n"
+                }
+            },
+            "required": [
+                "deviceId",
+                "deviceVersion",
+                "fwupdate",
+                "reboot",
+                "siteId",
+                "snapshot",
+                "status",
+                "syncUpgrade",
+                "syncUpgradeRefreshInterval",
+                "syncUpgradeStartTimeout",
+                "syncUpgradeTimeout",
+                "targetVersion",
+                "timestamp"
+            ],
+            "inputProperties": {
+                "deviceId": {
+                    "type": "string"
+                },
+                "reboot": {
+                    "type": "boolean",
+                    "description": "For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed\n"
+                },
+                "rebootAt": {
+                    "type": "integer",
+                    "description": "For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`\n"
+                },
+                "siteId": {
+                    "type": "string"
+                },
+                "snapshot": {
+                    "type": "boolean",
+                    "description": "For Junos devices only. Perform recovery snapshot after device is rebooted\n"
+                },
+                "startTime": {
+                    "type": "integer",
+                    "description": "Firmware download start time in epoch\n"
+                },
+                "syncUpgrade": {
+                    "type": "boolean",
+                    "description": "if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`\n"
+                },
+                "syncUpgradeRefreshInterval": {
+                    "type": "integer",
+                    "description": "if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15\n"
+                },
+                "syncUpgradeStartTimeout": {
+                    "type": "integer",
+                    "description": "if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60\n"
+                },
+                "syncUpgradeTimeout": {
+                    "type": "integer",
+                    "description": "if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800\n"
+                },
+                "targetVersion": {
+                    "type": "string",
+                    "description": "firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions\n"
+                }
+            },
+            "requiredInputs": [
+                "deviceId",
+                "siteId",
+                "targetVersion"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UpgradeDevice resources.\n",
+                "properties": {
+                    "deviceId": {
+                        "type": "string"
+                    },
+                    "deviceVersion": {
+                        "type": "string",
+                        "description": "current device firmware version\n"
+                    },
+                    "fwupdate": {
+                        "$ref": "#/types/junipermist:index/UpgradeDeviceFwupdate:UpgradeDeviceFwupdate"
+                    },
+                    "reboot": {
+                        "type": "boolean",
+                        "description": "For Switches and Gateways only (APs are automatically rebooted). Reboot device immediately after upgrade is completed\n"
+                    },
+                    "rebootAt": {
+                        "type": "integer",
+                        "description": "For Switches and Gateways only and if `reboot`==`true`. Reboot start time in epoch seconds, default is `start_time`\n"
+                    },
+                    "siteId": {
+                        "type": "string"
+                    },
+                    "snapshot": {
+                        "type": "boolean",
+                        "description": "For Junos devices only. Perform recovery snapshot after device is rebooted\n"
+                    },
+                    "startTime": {
+                        "type": "integer",
+                        "description": "Firmware download start time in epoch\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "enum: `error`, `inprogress`, `scheduled`, `starting`, `success`\n"
+                    },
+                    "syncUpgrade": {
+                        "type": "boolean",
+                        "description": "if set to `false`, the provider will just trigger the upgrade and not wait for the end of the upgrade process. Default is `true`\n"
+                    },
+                    "syncUpgradeRefreshInterval": {
+                        "type": "integer",
+                        "description": "if set to `sync_upgrade`==`true`, how long to wait between each refresh of the upgrade status, in seconds. Default is 30, minimum is 15\n"
+                    },
+                    "syncUpgradeStartTimeout": {
+                        "type": "integer",
+                        "description": "if set to `sync_upgrade`==`true`, how long to wait for the upgrade to start before raising an error, in seconds. Default is 60, minimum is 60\n"
+                    },
+                    "syncUpgradeTimeout": {
+                        "type": "integer",
+                        "description": "if set to `sync_upgrade`==`true`, how long to wait for the upgrade to end before raising an error, in seconds. Default is 1800\n"
+                    },
+                    "targetVersion": {
+                        "type": "string",
+                        "description": "firmware version to deploy to the device. Use the `junipermist.device.getVersions` datasource to get the list of available firmware versions\n"
+                    },
+                    "timestamp": {
+                        "type": "number",
+                        "description": "Timestamp\n"
                     }
                 },
                 "type": "object"
@@ -45640,6 +45899,65 @@
                 "required": [
                     "deviceSwitchStats",
                     "orgId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "junipermist:device/getVersions:getVersions": {
+            "description": "This data source provides the list of available Firmware Versions.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as junipermist from \"@pulumi/junipermist\";\n\nconst ap24Versions = junipermist.device.getVersions({\n    orgId: \"15fca2ac-b1a6-47cc-9953-cc6906281550\",\n    type: \"ap\",\n    model: \"AP24\",\n});\n```\n```python\nimport pulumi\nimport pulumi_junipermist as junipermist\n\nap24_versions = junipermist.device.get_versions(org_id=\"15fca2ac-b1a6-47cc-9953-cc6906281550\",\n    type=\"ap\",\n    model=\"AP24\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing JuniperMist = Pulumi.JuniperMist;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ap24Versions = JuniperMist.Device.GetVersions.Invoke(new()\n    {\n        OrgId = \"15fca2ac-b1a6-47cc-9953-cc6906281550\",\n        Type = \"ap\",\n        Model = \"AP24\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-junipermist/sdk/go/junipermist/device\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := device.GetVersions(ctx, \u0026device.GetVersionsArgs{\n\t\t\tOrgId: \"15fca2ac-b1a6-47cc-9953-cc6906281550\",\n\t\t\tType:  \"ap\",\n\t\t\tModel: \"AP24\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.junipermist.device.DeviceFunctions;\nimport com.pulumi.junipermist.device.inputs.GetVersionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ap24Versions = DeviceFunctions.getVersions(GetVersionsArgs.builder()\n            .orgId(\"15fca2ac-b1a6-47cc-9953-cc6906281550\")\n            .type(\"ap\")\n            .model(\"AP24\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  ap24Versions:\n    fn::invoke:\n      function: junipermist:device:getVersions\n      arguments:\n        orgId: 15fca2ac-b1a6-47cc-9953-cc6906281550\n        type: ap\n        model: AP24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVersions.\n",
+                "properties": {
+                    "model": {
+                        "type": "string",
+                        "description": "Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)\n"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "enum: `ap`, `gateway`, `switch`\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "model",
+                    "orgId",
+                    "type"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVersions.\n",
+                "properties": {
+                    "deviceVersions": {
+                        "items": {
+                            "$ref": "#/types/junipermist:device/getVersionsDeviceVersion:getVersionsDeviceVersion"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Fetch version for device model, use/combine with `type` as needed (for switch and gateway devices)\n",
+                        "type": "string"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "enum: `ap`, `gateway`, `switch`\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "deviceVersions",
+                    "model",
+                    "orgId",
+                    "type",
                     "id"
                 ],
                 "type": "object"
