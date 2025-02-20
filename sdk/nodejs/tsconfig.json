@@ -22,6 +22,7 @@
         "device/getApStats.ts",
         "device/getGatewayStats.ts",
         "device/getSwitchStats.ts",
+        "device/getVersions.ts",
         "device/image.ts",
         "device/index.ts",
         "device/switch.ts",
@@ -111,6 +112,7 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
+        "upgradeDevice.ts",
         "utilities.ts"
     ]
 }

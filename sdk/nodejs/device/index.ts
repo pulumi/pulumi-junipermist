@@ -40,6 +40,11 @@ export const getSwitchStats: typeof import("./getSwitchStats").getSwitchStats = 
 export const getSwitchStatsOutput: typeof import("./getSwitchStats").getSwitchStatsOutput = null as any;
 utilities.lazyLoad(exports, ["getSwitchStats","getSwitchStatsOutput"], () => require("./getSwitchStats"));
 
+export { GetVersionsArgs, GetVersionsResult, GetVersionsOutputArgs } from "./getVersions";
+export const getVersions: typeof import("./getVersions").getVersions = null as any;
+export const getVersionsOutput: typeof import("./getVersions").getVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getVersions","getVersionsOutput"], () => require("./getVersions"));
+
 export { ImageArgs, ImageState } from "./image";
 export type Image = import("./image").Image;
 export const Image: typeof import("./image").Image = null as any;

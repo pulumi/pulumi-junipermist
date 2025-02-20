@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -21,12 +22,12 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
      */
     private String scope;
     /**
-     * @return if `scope`==`site`
+     * @return If `scope`==`site`
      * 
      */
     private String siteId;
     /**
-     * @return if `scope`==`sitegroup`
+     * @return If `scope`==`sitegroup`
      * 
      */
     private String sitegroupId;
@@ -47,7 +48,7 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
      *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
-    private String views;
+    private List<String> views;
 
     private GetSsoRolesOrgSsoRolePrivilege() {}
     /**
@@ -65,14 +66,14 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
         return this.scope;
     }
     /**
-     * @return if `scope`==`site`
+     * @return If `scope`==`site`
      * 
      */
     public String siteId() {
         return this.siteId;
     }
     /**
-     * @return if `scope`==`sitegroup`
+     * @return If `scope`==`sitegroup`
      * 
      */
     public String sitegroupId() {
@@ -95,7 +96,7 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
      *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
-    public String views() {
+    public List<String> views() {
         return this.views;
     }
 
@@ -112,7 +113,7 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
         private String scope;
         private String siteId;
         private String sitegroupId;
-        private String views;
+        private List<String> views;
         public Builder() {}
         public Builder(GetSsoRolesOrgSsoRolePrivilege defaults) {
     	      Objects.requireNonNull(defaults);
@@ -156,12 +157,15 @@ public final class GetSsoRolesOrgSsoRolePrivilege {
             return this;
         }
         @CustomType.Setter
-        public Builder views(String views) {
+        public Builder views(List<String> views) {
             if (views == null) {
               throw new MissingRequiredPropertyException("GetSsoRolesOrgSsoRolePrivilege", "views");
             }
             this.views = views;
             return this;
+        }
+        public Builder views(String... views) {
+            return views(List.of(views));
         }
         public GetSsoRolesOrgSsoRolePrivilege build() {
             final var _resultValue = new GetSsoRolesOrgSsoRolePrivilege();

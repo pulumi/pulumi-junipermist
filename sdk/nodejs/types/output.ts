@@ -177,6 +177,17 @@ export interface GetSitesSiteLatlng {
     lng: number;
 }
 
+export interface UpgradeDeviceFwupdate {
+    progress: number;
+    /**
+     * enum: `inprogress`, `failed`, `upgraded`
+     */
+    status: string;
+    statusId: number;
+    timestamp: number;
+    willRetry: boolean;
+}
+
 export namespace device {
     export interface ApAeroscout {
         /**
@@ -3514,6 +3525,21 @@ export namespace device {
     export interface GetSwitchStatsDeviceSwitchStatVcSetupInfo {
         configType: string;
         errMissingDevIdFpc: boolean;
+    }
+
+    export interface GetVersionsDeviceVersion {
+        /**
+         * Device model (as seen in the device stats)
+         */
+        model: string;
+        /**
+         * Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build
+         */
+        tag: string;
+        /**
+         * Firmware version
+         */
+        version: string;
     }
 
     export interface SwitchAclPolicy {
@@ -8706,7 +8732,7 @@ export namespace org {
 
     export interface GetSsoRolesOrgSsoRole {
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
@@ -8714,7 +8740,7 @@ export namespace org {
          */
         id: string;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         name: string;
@@ -8732,11 +8758,11 @@ export namespace org {
          */
         scope: string;
         /**
-         * if `scope`==`site`
+         * If `scope`==`site`
          */
         siteId: string;
         /**
-         * if `scope`==`sitegroup`
+         * If `scope`==`sitegroup`
          */
         sitegroupId: string;
         /**
@@ -8755,7 +8781,7 @@ export namespace org {
          *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
          *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
          */
-        views: string;
+        views: string[];
     }
 
     export interface GetVpnsOrgVpn {
@@ -8781,15 +8807,15 @@ export namespace org {
 
     export interface GetWebhooksOrgWebhook {
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
-         * whether webhook is enabled
+         * Whether webhook is enabled
          */
         enabled: boolean;
         /**
-         * if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+         * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
          */
         headers: {[key: string]: string};
         /**
@@ -8797,19 +8823,19 @@ export namespace org {
          */
         id: string;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         /**
-         * name of the webhook
+         * Name of the webhook
          */
         name: string;
         /**
-         * required when `oauth2GrantType`==`clientCredentials`
+         * Required when `oauth2GrantType`==`clientCredentials`
          */
         oauth2ClientId: string;
         /**
-         * required when `oauth2GrantType`==`clientCredentials`
+         * Required when `oauth2GrantType`==`clientCredentials`
          */
         oauth2ClientSecret: string;
         /**
@@ -8817,29 +8843,28 @@ export namespace org {
          */
         oauth2GrantType: string;
         /**
-         * required when `oauth2GrantType`==`password`
+         * Required when `oauth2GrantType`==`password`
          */
         oauth2Password: string;
         /**
-         * required when `type`==`oauth2`, if provided, will be used in the token request
+         * Required when `type`==`oauth2`, if provided, will be used in the token request
          */
         oauth2Scopes: string[];
         /**
-         * required when `type`==`oauth2`
+         * Required when `type`==`oauth2`
          */
         oauth2TokenUrl: string;
         /**
-         * required when `oauth2GrantType`==`password`
+         * Required when `oauth2GrantType`==`password`
          */
         oauth2Username: string;
         orgId: string;
         /**
-         * only if `type`=`http-post`
+         * Only if `type`=`http-post`
          */
         secret: string;
-        siteId: string;
         /**
-         * required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+         * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
          */
         splunkToken: string;
         /**
@@ -8852,7 +8877,7 @@ export namespace org {
         type: string;
         url: string;
         /**
-         * when url uses HTTPS, whether to verify the certificate
+         * When url uses HTTPS, whether to verify the certificate
          */
         verifyCert: boolean;
     }
@@ -12108,7 +12133,7 @@ Please update your configurations.
          *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
          *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
          */
-        views?: string;
+        views: string[];
     }
 
     export interface VpnPaths {
@@ -13697,15 +13722,15 @@ export namespace site {
 
     export interface GetWebhooksSiteWebhook {
         /**
-         * when the object has been created, in epoch
+         * When the object has been created, in epoch
          */
         createdTime: number;
         /**
-         * whether webhook is enabled
+         * Whether webhook is enabled
          */
         enabled: boolean;
         /**
-         * if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+         * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
          */
         headers: {[key: string]: string};
         /**
@@ -13713,19 +13738,19 @@ export namespace site {
          */
         id: string;
         /**
-         * when the object has been modified for the last time, in epoch
+         * When the object has been modified for the last time, in epoch
          */
         modifiedTime: number;
         /**
-         * name of the webhook
+         * Name of the webhook
          */
         name: string;
         /**
-         * required when `oauth2GrantType`==`clientCredentials`
+         * Required when `oauth2GrantType`==`clientCredentials`
          */
         oauth2ClientId: string;
         /**
-         * required when `oauth2GrantType`==`clientCredentials`
+         * Required when `oauth2GrantType`==`clientCredentials`
          */
         oauth2ClientSecret: string;
         /**
@@ -13733,29 +13758,29 @@ export namespace site {
          */
         oauth2GrantType: string;
         /**
-         * required when `oauth2GrantType`==`password`
+         * Required when `oauth2GrantType`==`password`
          */
         oauth2Password: string;
         /**
-         * required when `type`==`oauth2`, if provided, will be used in the token request
+         * Required when `type`==`oauth2`, if provided, will be used in the token request
          */
         oauth2Scopes: string[];
         /**
-         * required when `type`==`oauth2`
+         * Required when `type`==`oauth2`
          */
         oauth2TokenUrl: string;
         /**
-         * required when `oauth2GrantType`==`password`
+         * Required when `oauth2GrantType`==`password`
          */
         oauth2Username: string;
         orgId: string;
         /**
-         * only if `type`=`http-post`
+         * Only if `type`=`http-post`
          */
         secret: string;
         siteId: string;
         /**
-         * required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+         * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
          */
         splunkToken: string;
         /**
@@ -13768,7 +13793,7 @@ export namespace site {
         type: string;
         url: string;
         /**
-         * when url uses HTTPS, whether to verify the certificate
+         * When url uses HTTPS, whether to verify the certificate
          */
         verifyCert: boolean;
     }

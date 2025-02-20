@@ -29651,7 +29651,7 @@ if not MYPY:
         """
         Required if `scope`==`sitegroup`
         """
-        views: NotRequired[pulumi.Input[str]]
+        views: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
         You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
@@ -29678,13 +29678,13 @@ class SsoRolePrivilegeArgs:
                  scope: pulumi.Input[str],
                  site_id: Optional[pulumi.Input[str]] = None,
                  sitegroup_id: Optional[pulumi.Input[str]] = None,
-                 views: Optional[pulumi.Input[str]] = None):
+                 views: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] role: access permissions. enum: `admin`, `helpdesk`, `installer`, `read`, `write`
         :param pulumi.Input[str] scope: enum: `org`, `site`, `sitegroup`
         :param pulumi.Input[str] site_id: Required if `scope`==`site`
         :param pulumi.Input[str] sitegroup_id: Required if `scope`==`sitegroup`
-        :param pulumi.Input[str] views: Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] views: Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
                You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
                Below are the list of supported UI views. Note that this is UI only feature.  
                
@@ -29758,7 +29758,7 @@ class SsoRolePrivilegeArgs:
 
     @property
     @pulumi.getter
-    def views(self) -> Optional[pulumi.Input[str]]:
+    def views(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
         You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
@@ -29778,7 +29778,7 @@ class SsoRolePrivilegeArgs:
         return pulumi.get(self, "views")
 
     @views.setter
-    def views(self, value: Optional[pulumi.Input[str]]):
+    def views(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "views", value)
 
 

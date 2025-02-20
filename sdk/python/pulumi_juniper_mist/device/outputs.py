@@ -276,6 +276,7 @@ __all__ = [
     'GetSwitchStatsDeviceSwitchStatRouteSummaryStatsResult',
     'GetSwitchStatsDeviceSwitchStatServiceStatResult',
     'GetSwitchStatsDeviceSwitchStatVcSetupInfoResult',
+    'GetVersionsDeviceVersionResult',
 ]
 
 @pulumi.output_type
@@ -19888,5 +19889,45 @@ class GetSwitchStatsDeviceSwitchStatVcSetupInfoResult(dict):
     @pulumi.getter(name="errMissingDevIdFpc")
     def err_missing_dev_id_fpc(self) -> bool:
         return pulumi.get(self, "err_missing_dev_id_fpc")
+
+
+@pulumi.output_type
+class GetVersionsDeviceVersionResult(dict):
+    def __init__(__self__, *,
+                 model: str,
+                 tag: str,
+                 version: str):
+        """
+        :param str model: Device model (as seen in the device stats)
+        :param str tag: Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build
+        :param str version: Firmware version
+        """
+        pulumi.set(__self__, "model", model)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def model(self) -> str:
+        """
+        Device model (as seen in the device stats)
+        """
+        return pulumi.get(self, "model")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        """
+        Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Firmware version
+        """
+        return pulumi.get(self, "version")
 
 

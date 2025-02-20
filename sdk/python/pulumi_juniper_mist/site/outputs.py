@@ -14080,24 +14080,24 @@ class GetWebhooksSiteWebhookResult(dict):
                  url: str,
                  verify_cert: bool):
         """
-        :param float created_time: when the object has been created, in epoch
-        :param bool enabled: whether webhook is enabled
-        :param Mapping[str, str] headers: if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        :param float created_time: When the object has been created, in epoch
+        :param bool enabled: Whether webhook is enabled
+        :param Mapping[str, str] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         :param str id: Unique ID of the object instance in the Mist Organnization
-        :param float modified_time: when the object has been modified for the last time, in epoch
-        :param str name: name of the webhook
-        :param str oauth2_client_id: required when `oauth2_grant_type`==`client_credentials`
-        :param str oauth2_client_secret: required when `oauth2_grant_type`==`client_credentials`
+        :param float modified_time: When the object has been modified for the last time, in epoch
+        :param str name: Name of the webhook
+        :param str oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
+        :param str oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
         :param str oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param str oauth2_password: required when `oauth2_grant_type`==`password`
-        :param Sequence[str] oauth2_scopes: required when `type`==`oauth2`, if provided, will be used in the token request
-        :param str oauth2_token_url: required when `type`==`oauth2`
-        :param str oauth2_username: required when `oauth2_grant_type`==`password`
-        :param str secret: only if `type`=`http-post`
-        :param str splunk_token: required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        :param str oauth2_password: Required when `oauth2_grant_type`==`password`
+        :param Sequence[str] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
+        :param str oauth2_token_url: Required when `type`==`oauth2`
+        :param str oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param str secret: Only if `type`=`http-post`
+        :param str splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
         :param Sequence[str] topics: List of supported webhook topics available with the API Call List Webhook Topics
         :param str type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
-        :param bool verify_cert: when url uses HTTPS, whether to verify the certificate
+        :param bool verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         pulumi.set(__self__, "created_time", created_time)
         pulumi.set(__self__, "enabled", enabled)
@@ -14125,7 +14125,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="createdTime")
     def created_time(self) -> float:
         """
-        when the object has been created, in epoch
+        When the object has been created, in epoch
         """
         return pulumi.get(self, "created_time")
 
@@ -14133,7 +14133,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        whether webhook is enabled
+        Whether webhook is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -14141,7 +14141,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter
     def headers(self) -> Mapping[str, str]:
         """
-        if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         """
         return pulumi.get(self, "headers")
 
@@ -14157,7 +14157,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="modifiedTime")
     def modified_time(self) -> float:
         """
-        when the object has been modified for the last time, in epoch
+        When the object has been modified for the last time, in epoch
         """
         return pulumi.get(self, "modified_time")
 
@@ -14165,7 +14165,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        name of the webhook
+        Name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -14173,7 +14173,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> str:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -14181,7 +14181,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> str:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -14197,7 +14197,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> str:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -14205,7 +14205,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> Sequence[str]:
         """
-        required when `type`==`oauth2`, if provided, will be used in the token request
+        Required when `type`==`oauth2`, if provided, will be used in the token request
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -14213,7 +14213,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> str:
         """
-        required when `type`==`oauth2`
+        Required when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -14221,7 +14221,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> str:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_username")
 
@@ -14234,7 +14234,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter
     def secret(self) -> str:
         """
-        only if `type`=`http-post`
+        Only if `type`=`http-post`
         """
         return pulumi.get(self, "secret")
 
@@ -14247,7 +14247,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> str:
         """
-        required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
         """
         return pulumi.get(self, "splunk_token")
 
@@ -14276,7 +14276,7 @@ class GetWebhooksSiteWebhookResult(dict):
     @pulumi.getter(name="verifyCert")
     def verify_cert(self) -> bool:
         """
-        when url uses HTTPS, whether to verify the certificate
+        When url uses HTTPS, whether to verify the certificate
         """
         return pulumi.get(self, "verify_cert")
 

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GetSsoRolesOrgSsoRoleResult
     {
         /// <summary>
-        /// when the object has been created, in epoch
+        /// When the object has been created, in epoch
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// when the object has been modified for the last time, in epoch
+        /// When the object has been modified for the last time, in epoch
         /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;

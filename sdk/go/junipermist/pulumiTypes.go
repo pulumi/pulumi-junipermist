@@ -13,6 +13,203 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type UpgradeDeviceFwupdate struct {
+	Progress *int `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status    *string  `pulumi:"status"`
+	StatusId  *int     `pulumi:"statusId"`
+	Timestamp *float64 `pulumi:"timestamp"`
+	WillRetry *bool    `pulumi:"willRetry"`
+}
+
+// UpgradeDeviceFwupdateInput is an input type that accepts UpgradeDeviceFwupdateArgs and UpgradeDeviceFwupdateOutput values.
+// You can construct a concrete instance of `UpgradeDeviceFwupdateInput` via:
+//
+//	UpgradeDeviceFwupdateArgs{...}
+type UpgradeDeviceFwupdateInput interface {
+	pulumi.Input
+
+	ToUpgradeDeviceFwupdateOutput() UpgradeDeviceFwupdateOutput
+	ToUpgradeDeviceFwupdateOutputWithContext(context.Context) UpgradeDeviceFwupdateOutput
+}
+
+type UpgradeDeviceFwupdateArgs struct {
+	Progress pulumi.IntPtrInput `pulumi:"progress"`
+	// enum: `inprogress`, `failed`, `upgraded`
+	Status    pulumi.StringPtrInput  `pulumi:"status"`
+	StatusId  pulumi.IntPtrInput     `pulumi:"statusId"`
+	Timestamp pulumi.Float64PtrInput `pulumi:"timestamp"`
+	WillRetry pulumi.BoolPtrInput    `pulumi:"willRetry"`
+}
+
+func (UpgradeDeviceFwupdateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeDeviceFwupdate)(nil)).Elem()
+}
+
+func (i UpgradeDeviceFwupdateArgs) ToUpgradeDeviceFwupdateOutput() UpgradeDeviceFwupdateOutput {
+	return i.ToUpgradeDeviceFwupdateOutputWithContext(context.Background())
+}
+
+func (i UpgradeDeviceFwupdateArgs) ToUpgradeDeviceFwupdateOutputWithContext(ctx context.Context) UpgradeDeviceFwupdateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDeviceFwupdateOutput)
+}
+
+func (i UpgradeDeviceFwupdateArgs) ToUpgradeDeviceFwupdatePtrOutput() UpgradeDeviceFwupdatePtrOutput {
+	return i.ToUpgradeDeviceFwupdatePtrOutputWithContext(context.Background())
+}
+
+func (i UpgradeDeviceFwupdateArgs) ToUpgradeDeviceFwupdatePtrOutputWithContext(ctx context.Context) UpgradeDeviceFwupdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDeviceFwupdateOutput).ToUpgradeDeviceFwupdatePtrOutputWithContext(ctx)
+}
+
+// UpgradeDeviceFwupdatePtrInput is an input type that accepts UpgradeDeviceFwupdateArgs, UpgradeDeviceFwupdatePtr and UpgradeDeviceFwupdatePtrOutput values.
+// You can construct a concrete instance of `UpgradeDeviceFwupdatePtrInput` via:
+//
+//	        UpgradeDeviceFwupdateArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpgradeDeviceFwupdatePtrInput interface {
+	pulumi.Input
+
+	ToUpgradeDeviceFwupdatePtrOutput() UpgradeDeviceFwupdatePtrOutput
+	ToUpgradeDeviceFwupdatePtrOutputWithContext(context.Context) UpgradeDeviceFwupdatePtrOutput
+}
+
+type upgradeDeviceFwupdatePtrType UpgradeDeviceFwupdateArgs
+
+func UpgradeDeviceFwupdatePtr(v *UpgradeDeviceFwupdateArgs) UpgradeDeviceFwupdatePtrInput {
+	return (*upgradeDeviceFwupdatePtrType)(v)
+}
+
+func (*upgradeDeviceFwupdatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeDeviceFwupdate)(nil)).Elem()
+}
+
+func (i *upgradeDeviceFwupdatePtrType) ToUpgradeDeviceFwupdatePtrOutput() UpgradeDeviceFwupdatePtrOutput {
+	return i.ToUpgradeDeviceFwupdatePtrOutputWithContext(context.Background())
+}
+
+func (i *upgradeDeviceFwupdatePtrType) ToUpgradeDeviceFwupdatePtrOutputWithContext(ctx context.Context) UpgradeDeviceFwupdatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradeDeviceFwupdatePtrOutput)
+}
+
+type UpgradeDeviceFwupdateOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDeviceFwupdateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradeDeviceFwupdate)(nil)).Elem()
+}
+
+func (o UpgradeDeviceFwupdateOutput) ToUpgradeDeviceFwupdateOutput() UpgradeDeviceFwupdateOutput {
+	return o
+}
+
+func (o UpgradeDeviceFwupdateOutput) ToUpgradeDeviceFwupdateOutputWithContext(ctx context.Context) UpgradeDeviceFwupdateOutput {
+	return o
+}
+
+func (o UpgradeDeviceFwupdateOutput) ToUpgradeDeviceFwupdatePtrOutput() UpgradeDeviceFwupdatePtrOutput {
+	return o.ToUpgradeDeviceFwupdatePtrOutputWithContext(context.Background())
+}
+
+func (o UpgradeDeviceFwupdateOutput) ToUpgradeDeviceFwupdatePtrOutputWithContext(ctx context.Context) UpgradeDeviceFwupdatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradeDeviceFwupdate) *UpgradeDeviceFwupdate {
+		return &v
+	}).(UpgradeDeviceFwupdatePtrOutput)
+}
+
+func (o UpgradeDeviceFwupdateOutput) Progress() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.Progress }).(pulumi.IntPtrOutput)
+}
+
+// enum: `inprogress`, `failed`, `upgraded`
+func (o UpgradeDeviceFwupdateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpgradeDeviceFwupdate) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+func (o UpgradeDeviceFwupdateOutput) StatusId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpgradeDeviceFwupdate) *int { return v.StatusId }).(pulumi.IntPtrOutput)
+}
+
+func (o UpgradeDeviceFwupdateOutput) Timestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v UpgradeDeviceFwupdate) *float64 { return v.Timestamp }).(pulumi.Float64PtrOutput)
+}
+
+func (o UpgradeDeviceFwupdateOutput) WillRetry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UpgradeDeviceFwupdate) *bool { return v.WillRetry }).(pulumi.BoolPtrOutput)
+}
+
+type UpgradeDeviceFwupdatePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradeDeviceFwupdatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradeDeviceFwupdate)(nil)).Elem()
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) ToUpgradeDeviceFwupdatePtrOutput() UpgradeDeviceFwupdatePtrOutput {
+	return o
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) ToUpgradeDeviceFwupdatePtrOutputWithContext(ctx context.Context) UpgradeDeviceFwupdatePtrOutput {
+	return o
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) Elem() UpgradeDeviceFwupdateOutput {
+	return o.ApplyT(func(v *UpgradeDeviceFwupdate) UpgradeDeviceFwupdate {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradeDeviceFwupdate
+		return ret
+	}).(UpgradeDeviceFwupdateOutput)
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) Progress() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Progress
+	}).(pulumi.IntPtrOutput)
+}
+
+// enum: `inprogress`, `failed`, `upgraded`
+func (o UpgradeDeviceFwupdatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) StatusId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StatusId
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) Timestamp() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Timestamp
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o UpgradeDeviceFwupdatePtrOutput) WillRetry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UpgradeDeviceFwupdate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WillRetry
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetConstAlarmsConstAlarm struct {
 	// Description of the alarm type
 	Display string `pulumi:"display"`
@@ -1238,6 +1435,8 @@ func (o GetSitesSiteLatlngOutput) Lng() pulumi.Float64Output {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDeviceFwupdateInput)(nil)).Elem(), UpgradeDeviceFwupdateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeDeviceFwupdatePtrInput)(nil)).Elem(), UpgradeDeviceFwupdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAlarmsConstAlarmInput)(nil)).Elem(), GetConstAlarmsConstAlarmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAlarmsConstAlarmArrayInput)(nil)).Elem(), GetConstAlarmsConstAlarmArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetConstAppCategoriesConstAppCategoryInput)(nil)).Elem(), GetConstAppCategoriesConstAppCategoryArgs{})
@@ -1256,6 +1455,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteInput)(nil)).Elem(), GetSitesSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteArrayInput)(nil)).Elem(), GetSitesSiteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSitesSiteLatlngInput)(nil)).Elem(), GetSitesSiteLatlngArgs{})
+	pulumi.RegisterOutputType(UpgradeDeviceFwupdateOutput{})
+	pulumi.RegisterOutputType(UpgradeDeviceFwupdatePtrOutput{})
 	pulumi.RegisterOutputType(GetConstAlarmsConstAlarmOutput{})
 	pulumi.RegisterOutputType(GetConstAlarmsConstAlarmArrayOutput{})
 	pulumi.RegisterOutputType(GetConstAppCategoriesConstAppCategoryOutput{})

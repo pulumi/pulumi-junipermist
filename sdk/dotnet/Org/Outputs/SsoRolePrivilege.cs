@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
         ///   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
         /// </summary>
-        public readonly string? Views;
+        public readonly ImmutableArray<string> Views;
 
         [OutputConstructor]
         private SsoRolePrivilege(
@@ -57,7 +57,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string? sitegroupId,
 
-            string? views)
+            ImmutableArray<string> views)
         {
             Role = role;
             Scope = scope;

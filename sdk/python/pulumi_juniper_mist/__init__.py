@@ -14,6 +14,8 @@ from .get_const_traffic_types import *
 from .get_const_webhooks import *
 from .get_sites import *
 from .provider import *
+from .upgrade_device import *
+from ._inputs import *
 from . import outputs
 
 # Make subpackages available:
@@ -81,6 +83,14 @@ _utilities.register(
   "fqn": "pulumi_juniper_mist.device",
   "classes": {
    "junipermist:device/switch:Switch": "Switch"
+  }
+ },
+ {
+  "pkg": "junipermist",
+  "mod": "index/upgradeDevice",
+  "fqn": "pulumi_juniper_mist",
+  "classes": {
+   "junipermist:index/upgradeDevice:UpgradeDevice": "UpgradeDevice"
   }
  },
  {
