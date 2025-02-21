@@ -38776,6 +38776,121 @@ func (o GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput) ErrMissingDevIdFpc() pu
 	return o.ApplyT(func(v GetSwitchStatsDeviceSwitchStatVcSetupInfo) bool { return v.ErrMissingDevIdFpc }).(pulumi.BoolOutput)
 }
 
+type GetVersionsDeviceVersion struct {
+	// Device model (as seen in the device stats)
+	Model string `pulumi:"model"`
+	// Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build
+	Tag string `pulumi:"tag"`
+	// Firmware version
+	Version string `pulumi:"version"`
+}
+
+// GetVersionsDeviceVersionInput is an input type that accepts GetVersionsDeviceVersionArgs and GetVersionsDeviceVersionOutput values.
+// You can construct a concrete instance of `GetVersionsDeviceVersionInput` via:
+//
+//	GetVersionsDeviceVersionArgs{...}
+type GetVersionsDeviceVersionInput interface {
+	pulumi.Input
+
+	ToGetVersionsDeviceVersionOutput() GetVersionsDeviceVersionOutput
+	ToGetVersionsDeviceVersionOutputWithContext(context.Context) GetVersionsDeviceVersionOutput
+}
+
+type GetVersionsDeviceVersionArgs struct {
+	// Device model (as seen in the device stats)
+	Model pulumi.StringInput `pulumi:"model"`
+	// Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// Firmware version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetVersionsDeviceVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsDeviceVersion)(nil)).Elem()
+}
+
+func (i GetVersionsDeviceVersionArgs) ToGetVersionsDeviceVersionOutput() GetVersionsDeviceVersionOutput {
+	return i.ToGetVersionsDeviceVersionOutputWithContext(context.Background())
+}
+
+func (i GetVersionsDeviceVersionArgs) ToGetVersionsDeviceVersionOutputWithContext(ctx context.Context) GetVersionsDeviceVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsDeviceVersionOutput)
+}
+
+// GetVersionsDeviceVersionArrayInput is an input type that accepts GetVersionsDeviceVersionArray and GetVersionsDeviceVersionArrayOutput values.
+// You can construct a concrete instance of `GetVersionsDeviceVersionArrayInput` via:
+//
+//	GetVersionsDeviceVersionArray{ GetVersionsDeviceVersionArgs{...} }
+type GetVersionsDeviceVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetVersionsDeviceVersionArrayOutput() GetVersionsDeviceVersionArrayOutput
+	ToGetVersionsDeviceVersionArrayOutputWithContext(context.Context) GetVersionsDeviceVersionArrayOutput
+}
+
+type GetVersionsDeviceVersionArray []GetVersionsDeviceVersionInput
+
+func (GetVersionsDeviceVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsDeviceVersion)(nil)).Elem()
+}
+
+func (i GetVersionsDeviceVersionArray) ToGetVersionsDeviceVersionArrayOutput() GetVersionsDeviceVersionArrayOutput {
+	return i.ToGetVersionsDeviceVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetVersionsDeviceVersionArray) ToGetVersionsDeviceVersionArrayOutputWithContext(ctx context.Context) GetVersionsDeviceVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVersionsDeviceVersionArrayOutput)
+}
+
+type GetVersionsDeviceVersionOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsDeviceVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVersionsDeviceVersion)(nil)).Elem()
+}
+
+func (o GetVersionsDeviceVersionOutput) ToGetVersionsDeviceVersionOutput() GetVersionsDeviceVersionOutput {
+	return o
+}
+
+func (o GetVersionsDeviceVersionOutput) ToGetVersionsDeviceVersionOutputWithContext(ctx context.Context) GetVersionsDeviceVersionOutput {
+	return o
+}
+
+// Device model (as seen in the device stats)
+func (o GetVersionsDeviceVersionOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsDeviceVersion) string { return v.Model }).(pulumi.StringOutput)
+}
+
+// Annotation, stable / beta / alpha. Or it can be empty or nothing which is likely a dev build
+func (o GetVersionsDeviceVersionOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsDeviceVersion) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// Firmware version
+func (o GetVersionsDeviceVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVersionsDeviceVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetVersionsDeviceVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVersionsDeviceVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVersionsDeviceVersion)(nil)).Elem()
+}
+
+func (o GetVersionsDeviceVersionArrayOutput) ToGetVersionsDeviceVersionArrayOutput() GetVersionsDeviceVersionArrayOutput {
+	return o
+}
+
+func (o GetVersionsDeviceVersionArrayOutput) ToGetVersionsDeviceVersionArrayOutputWithContext(ctx context.Context) GetVersionsDeviceVersionArrayOutput {
+	return o
+}
+
+func (o GetVersionsDeviceVersionArrayOutput) Index(i pulumi.IntInput) GetVersionsDeviceVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVersionsDeviceVersion {
+		return vs[0].([]GetVersionsDeviceVersion)[vs[1].(int)]
+	}).(GetVersionsDeviceVersionOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApAeroscoutInput)(nil)).Elem(), ApAeroscoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApAeroscoutPtrInput)(nil)).Elem(), ApAeroscoutArgs{})
@@ -39244,6 +39359,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatServiceStatInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatServiceStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatServiceStatMapInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatServiceStatMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSwitchStatsDeviceSwitchStatVcSetupInfoInput)(nil)).Elem(), GetSwitchStatsDeviceSwitchStatVcSetupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsDeviceVersionInput)(nil)).Elem(), GetVersionsDeviceVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVersionsDeviceVersionArrayInput)(nil)).Elem(), GetVersionsDeviceVersionArray{})
 	pulumi.RegisterOutputType(ApAeroscoutOutput{})
 	pulumi.RegisterOutputType(ApAeroscoutPtrOutput{})
 	pulumi.RegisterOutputType(ApBleConfigOutput{})
@@ -39711,4 +39828,6 @@ func init() {
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatServiceStatOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatServiceStatMapOutput{})
 	pulumi.RegisterOutputType(GetSwitchStatsDeviceSwitchStatVcSetupInfoOutput{})
+	pulumi.RegisterOutputType(GetVersionsDeviceVersionOutput{})
+	pulumi.RegisterOutputType(GetVersionsDeviceVersionArrayOutput{})
 }

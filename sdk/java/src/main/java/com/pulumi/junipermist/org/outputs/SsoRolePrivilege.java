@@ -6,6 +6,7 @@ package com.pulumi.junipermist.org.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -49,7 +50,7 @@ public final class SsoRolePrivilege {
      *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
-    private @Nullable String views;
+    private @Nullable List<String> views;
 
     private SsoRolePrivilege() {}
     /**
@@ -97,8 +98,8 @@ public final class SsoRolePrivilege {
      *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
-    public Optional<String> views() {
-        return Optional.ofNullable(this.views);
+    public List<String> views() {
+        return this.views == null ? List.of() : this.views;
     }
 
     public static Builder builder() {
@@ -114,7 +115,7 @@ public final class SsoRolePrivilege {
         private String scope;
         private @Nullable String siteId;
         private @Nullable String sitegroupId;
-        private @Nullable String views;
+        private @Nullable List<String> views;
         public Builder() {}
         public Builder(SsoRolePrivilege defaults) {
     	      Objects.requireNonNull(defaults);
@@ -154,10 +155,13 @@ public final class SsoRolePrivilege {
             return this;
         }
         @CustomType.Setter
-        public Builder views(@Nullable String views) {
+        public Builder views(@Nullable List<String> views) {
 
             this.views = views;
             return this;
+        }
+        public Builder views(String... views) {
+            return views(List.of(views));
         }
         public SsoRolePrivilege build() {
             final var _resultValue = new SsoRolePrivilege();

@@ -179,12 +179,12 @@ func applyResourceIDs(info tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitRe
 	//		}
 	//
 	switch field {
-	case "upgrade_id":
-		if strings.HasPrefix(res.TfToken, "mist_upgrade") {
-			return setField()
-		}
 	case "device_id":
-		if strings.HasPrefix(res.TfToken, "mist_device") {
+		// It turns out that `mist_upgrade_device` has both a "site_id" and "device_id" field,
+		// despite the token not matching the naming paradigm for the module as described above.
+		// Because it is part of the Devices module, we use "device_id" as the computed id field here.
+		//nolint:lll
+		if strings.HasPrefix(res.TfToken, "mist_device") || strings.HasPrefix(res.TfToken, "mist_upgrade_device") {
 			return setField()
 		}
 	case "site_id":

@@ -2245,7 +2245,14 @@
                 "current": "junipermist:org/ssoRole:SsoRole",
                 "fields": {
                     "privileges": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "views": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3173,6 +3180,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "mist_upgrade_device": {
+                "current": "junipermist:index/upgradeDevice:UpgradeDevice"
             }
         },
         "datasources": {
@@ -3551,6 +3561,14 @@
                     }
                 }
             },
+            "mist_device_versions": {
+                "current": "junipermist:device/getVersions:getVersions",
+                "fields": {
+                    "device_versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "mist_org_alarmtemplates": {
                 "current": "junipermist:org/getAlarmtemplates:getAlarmtemplates",
                 "fields": {
@@ -3819,7 +3837,14 @@
                         "elem": {
                             "fields": {
                                 "privileges": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "views": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -4282,6 +4307,9 @@
             ],
             "mist_site_wlan_portal_template": [
                 "site_id"
+            ],
+            "mist_upgrade_device": [
+                "device_id"
             ]
         }
     }

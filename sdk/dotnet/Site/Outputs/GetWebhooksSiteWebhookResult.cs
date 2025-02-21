@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class GetWebhooksSiteWebhookResult
     {
         /// <summary>
-        /// when the object has been created, in epoch
+        /// When the object has been created, in epoch
         /// </summary>
         public readonly double CreatedTime;
         /// <summary>
-        /// whether webhook is enabled
+        /// Whether webhook is enabled
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        /// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         /// </summary>
         public readonly ImmutableDictionary<string, string> Headers;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// when the object has been modified for the last time, in epoch
+        /// When the object has been modified for the last time, in epoch
         /// </summary>
         public readonly double ModifiedTime;
         /// <summary>
-        /// name of the webhook
+        /// Name of the webhook
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         public readonly string Oauth2ClientId;
         /// <summary>
-        /// required when `oauth2_grant_type`==`client_credentials`
+        /// Required when `oauth2_grant_type`==`client_credentials`
         /// </summary>
         public readonly string Oauth2ClientSecret;
         /// <summary>
@@ -50,29 +50,29 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string Oauth2GrantType;
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         public readonly string Oauth2Password;
         /// <summary>
-        /// required when `type`==`oauth2`, if provided, will be used in the token request
+        /// Required when `type`==`oauth2`, if provided, will be used in the token request
         /// </summary>
         public readonly ImmutableArray<string> Oauth2Scopes;
         /// <summary>
-        /// required when `type`==`oauth2`
+        /// Required when `type`==`oauth2`
         /// </summary>
         public readonly string Oauth2TokenUrl;
         /// <summary>
-        /// required when `oauth2_grant_type`==`password`
+        /// Required when `oauth2_grant_type`==`password`
         /// </summary>
         public readonly string Oauth2Username;
         public readonly string OrgId;
         /// <summary>
-        /// only if `type`=`http-post`
+        /// Only if `type`=`http-post`
         /// </summary>
         public readonly string Secret;
         public readonly string SiteId;
         /// <summary>
-        /// required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+        /// Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
         /// </summary>
         public readonly string SplunkToken;
         /// <summary>
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string Type;
         public readonly string Url;
         /// <summary>
-        /// when url uses HTTPS, whether to verify the certificate
+        /// When url uses HTTPS, whether to verify the certificate
         /// </summary>
         public readonly bool VerifyCert;
 

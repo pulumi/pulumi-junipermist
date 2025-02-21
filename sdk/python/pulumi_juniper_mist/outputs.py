@@ -16,6 +16,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'UpgradeDeviceFwupdate',
     'GetConstAlarmsConstAlarmResult',
     'GetConstAppCategoriesConstAppCategoryResult',
     'GetConstAppCategoriesConstAppCategoryFiltersResult',
@@ -27,6 +28,76 @@ __all__ = [
     'GetSitesSiteResult',
     'GetSitesSiteLatlngResult',
 ]
+
+@pulumi.output_type
+class UpgradeDeviceFwupdate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusId":
+            suggest = "status_id"
+        elif key == "willRetry":
+            suggest = "will_retry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeDeviceFwupdate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeDeviceFwupdate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeDeviceFwupdate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 progress: Optional[int] = None,
+                 status: Optional[str] = None,
+                 status_id: Optional[int] = None,
+                 timestamp: Optional[float] = None,
+                 will_retry: Optional[bool] = None):
+        """
+        :param str status: enum: `inprogress`, `failed`, `upgraded`
+        """
+        if progress is not None:
+            pulumi.set(__self__, "progress", progress)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if status_id is not None:
+            pulumi.set(__self__, "status_id", status_id)
+        if timestamp is not None:
+            pulumi.set(__self__, "timestamp", timestamp)
+        if will_retry is not None:
+            pulumi.set(__self__, "will_retry", will_retry)
+
+    @property
+    @pulumi.getter
+    def progress(self) -> Optional[int]:
+        return pulumi.get(self, "progress")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        enum: `inprogress`, `failed`, `upgraded`
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusId")
+    def status_id(self) -> Optional[int]:
+        return pulumi.get(self, "status_id")
+
+    @property
+    @pulumi.getter
+    def timestamp(self) -> Optional[float]:
+        return pulumi.get(self, "timestamp")
+
+    @property
+    @pulumi.getter(name="willRetry")
+    def will_retry(self) -> Optional[bool]:
+        return pulumi.get(self, "will_retry")
+
 
 @pulumi.output_type
 class GetConstAlarmsConstAlarmResult(dict):

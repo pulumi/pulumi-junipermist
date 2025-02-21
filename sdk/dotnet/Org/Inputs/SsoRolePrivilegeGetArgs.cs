@@ -36,6 +36,9 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("sitegroupId")]
         public Input<string>? SitegroupId { get; set; }
 
+        [Input("views")]
+        private InputList<string>? _views;
+
         /// <summary>
         /// Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.  
         /// You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.  
@@ -52,8 +55,11 @@ namespace Pulumi.JuniperMist.Org.Inputs
         ///   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
         ///   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
         /// </summary>
-        [Input("views")]
-        public Input<string>? Views { get; set; }
+        public InputList<string> Views
+        {
+            get => _views ?? (_views = new InputList<string>());
+            set => _views = value;
+        }
 
         public SsoRolePrivilegeGetArgs()
         {

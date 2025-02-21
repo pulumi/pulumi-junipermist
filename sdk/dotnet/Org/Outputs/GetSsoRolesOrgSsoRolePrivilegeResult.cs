@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string Scope;
         /// <summary>
-        /// if `scope`==`site`
+        /// If `scope`==`site`
         /// </summary>
         public readonly string SiteId;
         /// <summary>
-        /// if `scope`==`sitegroup`
+        /// If `scope`==`sitegroup`
         /// </summary>
         public readonly string SitegroupId;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         ///   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
         ///   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
         /// </summary>
-        public readonly string Views;
+        public readonly ImmutableArray<string> Views;
 
         [OutputConstructor]
         private GetSsoRolesOrgSsoRolePrivilegeResult(
@@ -57,7 +57,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             string sitegroupId,
 
-            string views)
+            ImmutableArray<string> views)
         {
             Role = role;
             Scope = scope;

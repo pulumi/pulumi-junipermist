@@ -15,17 +15,17 @@ import java.util.Objects;
 @CustomType
 public final class GetWebhooksOrgWebhook {
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
     /**
-     * @return whether webhook is enabled
+     * @return Whether webhook is enabled
      * 
      */
     private Boolean enabled;
     /**
-     * @return if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * @return If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     private Map<String,String> headers;
@@ -35,22 +35,22 @@ public final class GetWebhooksOrgWebhook {
      */
     private String id;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
     /**
-     * @return name of the webhook
+     * @return Name of the webhook
      * 
      */
     private String name;
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     private String oauth2ClientId;
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     private String oauth2ClientSecret;
@@ -60,34 +60,33 @@ public final class GetWebhooksOrgWebhook {
      */
     private String oauth2GrantType;
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     private String oauth2Password;
     /**
-     * @return required when `type`==`oauth2`, if provided, will be used in the token request
+     * @return Required when `type`==`oauth2`, if provided, will be used in the token request
      * 
      */
     private List<String> oauth2Scopes;
     /**
-     * @return required when `type`==`oauth2`
+     * @return Required when `type`==`oauth2`
      * 
      */
     private String oauth2TokenUrl;
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     private String oauth2Username;
     private String orgId;
     /**
-     * @return only if `type`=`http-post`
+     * @return Only if `type`=`http-post`
      * 
      */
     private String secret;
-    private String siteId;
     /**
-     * @return required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
      * 
      */
     private String splunkToken;
@@ -103,28 +102,28 @@ public final class GetWebhooksOrgWebhook {
     private String type;
     private String url;
     /**
-     * @return when url uses HTTPS, whether to verify the certificate
+     * @return When url uses HTTPS, whether to verify the certificate
      * 
      */
     private Boolean verifyCert;
 
     private GetWebhooksOrgWebhook() {}
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
         return this.createdTime;
     }
     /**
-     * @return whether webhook is enabled
+     * @return Whether webhook is enabled
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * @return If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     public Map<String,String> headers() {
@@ -138,28 +137,28 @@ public final class GetWebhooksOrgWebhook {
         return this.id;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {
         return this.modifiedTime;
     }
     /**
-     * @return name of the webhook
+     * @return Name of the webhook
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     public String oauth2ClientId() {
         return this.oauth2ClientId;
     }
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     public String oauth2ClientSecret() {
@@ -173,28 +172,28 @@ public final class GetWebhooksOrgWebhook {
         return this.oauth2GrantType;
     }
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     public String oauth2Password() {
         return this.oauth2Password;
     }
     /**
-     * @return required when `type`==`oauth2`, if provided, will be used in the token request
+     * @return Required when `type`==`oauth2`, if provided, will be used in the token request
      * 
      */
     public List<String> oauth2Scopes() {
         return this.oauth2Scopes;
     }
     /**
-     * @return required when `type`==`oauth2`
+     * @return Required when `type`==`oauth2`
      * 
      */
     public String oauth2TokenUrl() {
         return this.oauth2TokenUrl;
     }
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     public String oauth2Username() {
@@ -204,17 +203,14 @@ public final class GetWebhooksOrgWebhook {
         return this.orgId;
     }
     /**
-     * @return only if `type`=`http-post`
+     * @return Only if `type`=`http-post`
      * 
      */
     public String secret() {
         return this.secret;
     }
-    public String siteId() {
-        return this.siteId;
-    }
     /**
-     * @return required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
      * 
      */
     public String splunkToken() {
@@ -238,7 +234,7 @@ public final class GetWebhooksOrgWebhook {
         return this.url;
     }
     /**
-     * @return when url uses HTTPS, whether to verify the certificate
+     * @return When url uses HTTPS, whether to verify the certificate
      * 
      */
     public Boolean verifyCert() {
@@ -269,7 +265,6 @@ public final class GetWebhooksOrgWebhook {
         private String oauth2Username;
         private String orgId;
         private String secret;
-        private String siteId;
         private String splunkToken;
         private List<String> topics;
         private String type;
@@ -293,7 +288,6 @@ public final class GetWebhooksOrgWebhook {
     	      this.oauth2Username = defaults.oauth2Username;
     	      this.orgId = defaults.orgId;
     	      this.secret = defaults.secret;
-    	      this.siteId = defaults.siteId;
     	      this.splunkToken = defaults.splunkToken;
     	      this.topics = defaults.topics;
     	      this.type = defaults.type;
@@ -425,14 +419,6 @@ public final class GetWebhooksOrgWebhook {
             return this;
         }
         @CustomType.Setter
-        public Builder siteId(String siteId) {
-            if (siteId == null) {
-              throw new MissingRequiredPropertyException("GetWebhooksOrgWebhook", "siteId");
-            }
-            this.siteId = siteId;
-            return this;
-        }
-        @CustomType.Setter
         public Builder splunkToken(String splunkToken) {
             if (splunkToken == null) {
               throw new MissingRequiredPropertyException("GetWebhooksOrgWebhook", "splunkToken");
@@ -492,7 +478,6 @@ public final class GetWebhooksOrgWebhook {
             _resultValue.oauth2Username = oauth2Username;
             _resultValue.orgId = orgId;
             _resultValue.secret = secret;
-            _resultValue.siteId = siteId;
             _resultValue.splunkToken = splunkToken;
             _resultValue.topics = topics;
             _resultValue.type = type;

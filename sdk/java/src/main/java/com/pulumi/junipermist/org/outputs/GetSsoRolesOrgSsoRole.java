@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSsoRolesOrgSsoRole {
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
@@ -24,7 +24,7 @@ public final class GetSsoRolesOrgSsoRole {
      */
     private String id;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
@@ -34,7 +34,7 @@ public final class GetSsoRolesOrgSsoRole {
 
     private GetSsoRolesOrgSsoRole() {}
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
@@ -48,7 +48,7 @@ public final class GetSsoRolesOrgSsoRole {
         return this.id;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {

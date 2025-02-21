@@ -50,6 +50,11 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
+export { UpgradeDeviceArgs, UpgradeDeviceState } from "./upgradeDevice";
+export type UpgradeDevice = import("./upgradeDevice").UpgradeDevice;
+export const UpgradeDevice: typeof import("./upgradeDevice").UpgradeDevice = null as any;
+utilities.lazyLoad(exports, ["UpgradeDevice"], () => require("./upgradeDevice"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -65,6 +70,19 @@ export {
     site,
     types,
 };
+
+const _module = {
+    version: utilities.getVersion(),
+    construct: (name: string, type: string, urn: string): pulumi.Resource => {
+        switch (type) {
+            case "junipermist:index/upgradeDevice:UpgradeDevice":
+                return new UpgradeDevice(name, <any>undefined, { urn })
+            default:
+                throw new Error(`unknown resource type ${type}`);
+        }
+    },
+};
+pulumi.runtime.registerResourceModule("junipermist", "index/upgradeDevice", _module)
 pulumi.runtime.registerResourcePackage("junipermist", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -94,7 +95,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="views")
-    private @Nullable Output<String> views;
+    private @Nullable Output<List<String>> views;
 
     /**
      * @return Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
@@ -113,7 +114,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
      *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
      * 
      */
-    public Optional<Output<String>> views() {
+    public Optional<Output<List<String>>> views() {
         return Optional.ofNullable(this.views);
     }
 
@@ -248,7 +249,7 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder views(@Nullable Output<String> views) {
+        public Builder views(@Nullable Output<List<String>> views) {
             $.views = views;
             return this;
         }
@@ -272,8 +273,31 @@ public final class SsoRolePrivilegeArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder views(String views) {
+        public Builder views(List<String> views) {
             return views(Output.of(views));
+        }
+
+        /**
+         * @param views Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users. Custom roles restrict Org users to specific UI views. This is useful for limiting UI access of Org users.\
+         * You can define custom roles by adding the `views` attribute along with `role` when assigning privileges.\
+         * Below are the list of supported UI views. Note that this is UI only feature.
+         * 
+         *   | UI View | Required Role | Description |
+         *   | --- | --- | --- |
+         *   | `reporting` | `read` | full access to all analytics tools |
+         *   | `marketing` | `read` | can view analytics and location maps |
+         *   | `super_observer` | `read` | can view all the organization except the subscription page |
+         *   | `location` | `write` | can view and manage location maps, can view analytics |
+         *   | `security` | `write` | can view and manage site labels, policies and security |
+         *   | `switch_admin` | `helpdesk` | can view and manage Switch ports, can view wired clients |
+         *   | `mxedge_admin` | `admin` | can view and manage Mist edges and Mist tunnels |
+         *   | `lobby_admin` | `admin` | full access to Org and Site Pre-shared keys |
+         * 
+         * @return builder
+         * 
+         */
+        public Builder views(String... views) {
+            return views(List.of(views));
         }
 
         public SsoRolePrivilegeArgs build() {

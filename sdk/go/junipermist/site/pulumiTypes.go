@@ -28155,44 +28155,44 @@ func (o GetPsksSitePskArrayOutput) Index(i pulumi.IntInput) GetPsksSitePskOutput
 }
 
 type GetWebhooksSiteWebhook struct {
-	// when the object has been created, in epoch
+	// When the object has been created, in epoch
 	CreatedTime float64 `pulumi:"createdTime"`
-	// whether webhook is enabled
+	// Whether webhook is enabled
 	Enabled bool `pulumi:"enabled"`
-	// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers map[string]string `pulumi:"headers"`
 	// Unique ID of the object instance in the Mist Organnization
 	Id string `pulumi:"id"`
-	// when the object has been modified for the last time, in epoch
+	// When the object has been modified for the last time, in epoch
 	ModifiedTime float64 `pulumi:"modifiedTime"`
-	// name of the webhook
+	// Name of the webhook
 	Name string `pulumi:"name"`
-	// required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`
 	Oauth2ClientId string `pulumi:"oauth2ClientId"`
-	// required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`
 	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
 	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
 	Oauth2GrantType string `pulumi:"oauth2GrantType"`
-	// required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`
 	Oauth2Password string `pulumi:"oauth2Password"`
-	// required when `type`==`oauth2`, if provided, will be used in the token request
+	// Required when `type`==`oauth2`, if provided, will be used in the token request
 	Oauth2Scopes []string `pulumi:"oauth2Scopes"`
-	// required when `type`==`oauth2`
+	// Required when `type`==`oauth2`
 	Oauth2TokenUrl string `pulumi:"oauth2TokenUrl"`
-	// required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`
 	Oauth2Username string `pulumi:"oauth2Username"`
 	OrgId          string `pulumi:"orgId"`
-	// only if `type`=`http-post`
+	// Only if `type`=`http-post`
 	Secret string `pulumi:"secret"`
 	SiteId string `pulumi:"siteId"`
-	// required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
 	SplunkToken string `pulumi:"splunkToken"`
 	// List of supported webhook topics available with the API Call List Webhook Topics
 	Topics []string `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type string `pulumi:"type"`
 	Url  string `pulumi:"url"`
-	// when url uses HTTPS, whether to verify the certificate
+	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert bool `pulumi:"verifyCert"`
 }
 
@@ -28208,44 +28208,44 @@ type GetWebhooksSiteWebhookInput interface {
 }
 
 type GetWebhooksSiteWebhookArgs struct {
-	// when the object has been created, in epoch
+	// When the object has been created, in epoch
 	CreatedTime pulumi.Float64Input `pulumi:"createdTime"`
-	// whether webhook is enabled
+	// Whether webhook is enabled
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+	// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Unique ID of the object instance in the Mist Organnization
 	Id pulumi.StringInput `pulumi:"id"`
-	// when the object has been modified for the last time, in epoch
+	// When the object has been modified for the last time, in epoch
 	ModifiedTime pulumi.Float64Input `pulumi:"modifiedTime"`
-	// name of the webhook
+	// Name of the webhook
 	Name pulumi.StringInput `pulumi:"name"`
-	// required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`
 	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
-	// required when `oauth2GrantType`==`clientCredentials`
+	// Required when `oauth2GrantType`==`clientCredentials`
 	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
 	// required when `type`==`oauth2`. enum: `clientCredentials`, `password`
 	Oauth2GrantType pulumi.StringInput `pulumi:"oauth2GrantType"`
-	// required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`
 	Oauth2Password pulumi.StringInput `pulumi:"oauth2Password"`
-	// required when `type`==`oauth2`, if provided, will be used in the token request
+	// Required when `type`==`oauth2`, if provided, will be used in the token request
 	Oauth2Scopes pulumi.StringArrayInput `pulumi:"oauth2Scopes"`
-	// required when `type`==`oauth2`
+	// Required when `type`==`oauth2`
 	Oauth2TokenUrl pulumi.StringInput `pulumi:"oauth2TokenUrl"`
-	// required when `oauth2GrantType`==`password`
+	// Required when `oauth2GrantType`==`password`
 	Oauth2Username pulumi.StringInput `pulumi:"oauth2Username"`
 	OrgId          pulumi.StringInput `pulumi:"orgId"`
-	// only if `type`=`http-post`
+	// Only if `type`=`http-post`
 	Secret pulumi.StringInput `pulumi:"secret"`
 	SiteId pulumi.StringInput `pulumi:"siteId"`
-	// required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+	// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
 	SplunkToken pulumi.StringInput `pulumi:"splunkToken"`
 	// List of supported webhook topics available with the API Call List Webhook Topics
 	Topics pulumi.StringArrayInput `pulumi:"topics"`
 	// enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
 	Type pulumi.StringInput `pulumi:"type"`
 	Url  pulumi.StringInput `pulumi:"url"`
-	// when url uses HTTPS, whether to verify the certificate
+	// When url uses HTTPS, whether to verify the certificate
 	VerifyCert pulumi.BoolInput `pulumi:"verifyCert"`
 }
 
@@ -28300,17 +28300,17 @@ func (o GetWebhooksSiteWebhookOutput) ToGetWebhooksSiteWebhookOutputWithContext(
 	return o
 }
 
-// when the object has been created, in epoch
+// When the object has been created, in epoch
 func (o GetWebhooksSiteWebhookOutput) CreatedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) float64 { return v.CreatedTime }).(pulumi.Float64Output)
 }
 
-// whether webhook is enabled
+// Whether webhook is enabled
 func (o GetWebhooksSiteWebhookOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// if `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+// If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
 func (o GetWebhooksSiteWebhookOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
@@ -28320,22 +28320,22 @@ func (o GetWebhooksSiteWebhookOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// when the object has been modified for the last time, in epoch
+// When the object has been modified for the last time, in epoch
 func (o GetWebhooksSiteWebhookOutput) ModifiedTime() pulumi.Float64Output {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) float64 { return v.ModifiedTime }).(pulumi.Float64Output)
 }
 
-// name of the webhook
+// Name of the webhook
 func (o GetWebhooksSiteWebhookOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// required when `oauth2GrantType`==`clientCredentials`
+// Required when `oauth2GrantType`==`clientCredentials`
 func (o GetWebhooksSiteWebhookOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
-// required when `oauth2GrantType`==`clientCredentials`
+// Required when `oauth2GrantType`==`clientCredentials`
 func (o GetWebhooksSiteWebhookOutput) Oauth2ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
@@ -28345,22 +28345,22 @@ func (o GetWebhooksSiteWebhookOutput) Oauth2GrantType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2GrantType }).(pulumi.StringOutput)
 }
 
-// required when `oauth2GrantType`==`password`
+// Required when `oauth2GrantType`==`password`
 func (o GetWebhooksSiteWebhookOutput) Oauth2Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2Password }).(pulumi.StringOutput)
 }
 
-// required when `type`==`oauth2`, if provided, will be used in the token request
+// Required when `type`==`oauth2`, if provided, will be used in the token request
 func (o GetWebhooksSiteWebhookOutput) Oauth2Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) []string { return v.Oauth2Scopes }).(pulumi.StringArrayOutput)
 }
 
-// required when `type`==`oauth2`
+// Required when `type`==`oauth2`
 func (o GetWebhooksSiteWebhookOutput) Oauth2TokenUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2TokenUrl }).(pulumi.StringOutput)
 }
 
-// required when `oauth2GrantType`==`password`
+// Required when `oauth2GrantType`==`password`
 func (o GetWebhooksSiteWebhookOutput) Oauth2Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Oauth2Username }).(pulumi.StringOutput)
 }
@@ -28369,7 +28369,7 @@ func (o GetWebhooksSiteWebhookOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// only if `type`=`http-post`
+// Only if `type`=`http-post`
 func (o GetWebhooksSiteWebhookOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -28378,7 +28378,7 @@ func (o GetWebhooksSiteWebhookOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SiteId }).(pulumi.StringOutput)
 }
 
-// required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
+// Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.'
 func (o GetWebhooksSiteWebhookOutput) SplunkToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.SplunkToken }).(pulumi.StringOutput)
 }
@@ -28397,7 +28397,7 @@ func (o GetWebhooksSiteWebhookOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// when url uses HTTPS, whether to verify the certificate
+// When url uses HTTPS, whether to verify the certificate
 func (o GetWebhooksSiteWebhookOutput) VerifyCert() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetWebhooksSiteWebhook) bool { return v.VerifyCert }).(pulumi.BoolOutput)
 }

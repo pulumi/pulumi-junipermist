@@ -15,9 +15,12 @@ import com.pulumi.junipermist.device.inputs.GetGatewayStatsArgs;
 import com.pulumi.junipermist.device.inputs.GetGatewayStatsPlainArgs;
 import com.pulumi.junipermist.device.inputs.GetSwitchStatsArgs;
 import com.pulumi.junipermist.device.inputs.GetSwitchStatsPlainArgs;
+import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
+import com.pulumi.junipermist.device.inputs.GetVersionsPlainArgs;
 import com.pulumi.junipermist.device.outputs.GetApStatsResult;
 import com.pulumi.junipermist.device.outputs.GetGatewayStatsResult;
 import com.pulumi.junipermist.device.outputs.GetSwitchStatsResult;
+import com.pulumi.junipermist.device.outputs.GetVersionsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DeviceFunctions {
@@ -750,5 +753,225 @@ public final class DeviceFunctions {
      */
     public static CompletableFuture<GetSwitchStatsResult> getSwitchStatsPlain(GetSwitchStatsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("junipermist:device/getSwitchStats:getSwitchStats", TypeShape.of(GetSwitchStatsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of available Firmware Versions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.device.DeviceFunctions;
+     * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ap24Versions = DeviceFunctions.getVersions(GetVersionsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("ap")
+     *             .model("AP24")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args) {
+        return getVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of available Firmware Versions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.device.DeviceFunctions;
+     * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ap24Versions = DeviceFunctions.getVersions(GetVersionsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("ap")
+     *             .model("AP24")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVersionsResult> getVersionsPlain(GetVersionsPlainArgs args) {
+        return getVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the list of available Firmware Versions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.device.DeviceFunctions;
+     * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ap24Versions = DeviceFunctions.getVersions(GetVersionsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("ap")
+     *             .model("AP24")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("junipermist:device/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of available Firmware Versions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.device.DeviceFunctions;
+     * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ap24Versions = DeviceFunctions.getVersions(GetVersionsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("ap")
+     *             .model("AP24")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVersionsResult> getVersions(GetVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("junipermist:device/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the list of available Firmware Versions.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.junipermist.device.DeviceFunctions;
+     * import com.pulumi.junipermist.device.inputs.GetVersionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ap24Versions = DeviceFunctions.getVersions(GetVersionsArgs.builder()
+     *             .orgId("15fca2ac-b1a6-47cc-9953-cc6906281550")
+     *             .type("ap")
+     *             .model("AP24")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVersionsResult> getVersionsPlain(GetVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("junipermist:device/getVersions:getVersions", TypeShape.of(GetVersionsResult.class), args, Utilities.withVersion(options));
     }
 }

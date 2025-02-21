@@ -12,6 +12,7 @@ from .gateway_cluster import *
 from .get_ap_stats import *
 from .get_gateway_stats import *
 from .get_switch_stats import *
+from .get_versions import *
 from .image import *
 from .switch import *
 from ._inputs import *

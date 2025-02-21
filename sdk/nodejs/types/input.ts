@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface UpgradeDeviceFwupdate {
+    progress?: pulumi.Input<number>;
+    /**
+     * enum: `inprogress`, `failed`, `upgraded`
+     */
+    status?: pulumi.Input<string>;
+    statusId?: pulumi.Input<number>;
+    timestamp?: pulumi.Input<number>;
+    willRetry?: pulumi.Input<boolean>;
+}
 export namespace device {
     export interface ApAeroscout {
         /**
@@ -8606,7 +8616,7 @@ Please update your configurations.
          *   | `mxedgeAdmin` | `admin` | can view and manage Mist edges and Mist tunnels |
          *   | `lobbyAdmin` | `admin` | full access to Org and Site Pre-shared keys |
          */
-        views?: pulumi.Input<string>;
+        views?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface VpnPaths {
