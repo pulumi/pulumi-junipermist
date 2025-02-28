@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Class { get; set; }
 
         /// <summary>
-        /// whether to overwrite QoS
+        /// Whether to overwrite QoS
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }

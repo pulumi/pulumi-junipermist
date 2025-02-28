@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -13,14 +14,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSnmpConfigV3ConfigNotifyFilterContent {
     private @Nullable Boolean include;
-    private @Nullable String oid;
+    private String oid;
 
     private SwitchSnmpConfigV3ConfigNotifyFilterContent() {}
     public Optional<Boolean> include() {
         return Optional.ofNullable(this.include);
     }
-    public Optional<String> oid() {
-        return Optional.ofNullable(this.oid);
+    public String oid() {
+        return this.oid;
     }
 
     public static Builder builder() {
@@ -33,7 +34,7 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContent {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean include;
-        private @Nullable String oid;
+        private String oid;
         public Builder() {}
         public Builder(SwitchSnmpConfigV3ConfigNotifyFilterContent defaults) {
     	      Objects.requireNonNull(defaults);
@@ -48,8 +49,10 @@ public final class SwitchSnmpConfigV3ConfigNotifyFilterContent {
             return this;
         }
         @CustomType.Setter
-        public Builder oid(@Nullable String oid) {
-
+        public Builder oid(String oid) {
+            if (oid == null) {
+              throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigNotifyFilterContent", "oid");
+            }
             this.oid = oid;
             return this;
         }

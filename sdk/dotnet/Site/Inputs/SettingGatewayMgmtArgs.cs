@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _adminSshkeys;
 
         /// <summary>
-        /// for SSR only, as direct root access is not allowed
+        /// For SSR only, as direct root access is not allowed
         /// </summary>
         public InputList<string> AdminSshkeys
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.SettingGatewayMgmtAppProbingArgs>? AppProbing { get; set; }
 
         /// <summary>
-        /// consumes uplink bandwidth, requires WA license
+        /// Consumes uplink bandwidth, requires WA license
         /// </summary>
         [Input("appUsage")]
         public Input<bool>? AppUsage { get; set; }
@@ -37,19 +37,19 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<Inputs.SettingGatewayMgmtAutoSignatureUpdateArgs>? AutoSignatureUpdate { get; set; }
 
         /// <summary>
-        /// he rollback timer for commit confirmed
+        /// Rollback timer for commit confirmed
         /// </summary>
         [Input("configRevertTimer")]
         public Input<int>? ConfigRevertTimer { get; set; }
 
         /// <summary>
-        /// for both SSR and SRX disable console port
+        /// For both SSR and SRX disable console port
         /// </summary>
         [Input("disableConsole")]
         public Input<bool>? DisableConsole { get; set; }
 
         /// <summary>
-        /// for both SSR and SRX disable management interface
+        /// For both SSR and SRX disable management interface
         /// </summary>
         [Input("disableOob")]
         public Input<bool>? DisableOob { get; set; }
@@ -63,7 +63,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// restrict inbound-traffic to host
+        /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
         /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         /// </summary>
@@ -74,7 +74,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _rootPassword;
 
         /// <summary>
-        /// for SRX only
+        /// For SRX only
         /// </summary>
         public Input<string>? RootPassword
         {

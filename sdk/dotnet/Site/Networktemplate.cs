@@ -50,7 +50,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateDhcpSnooping?> DhcpSnooping { get; private set; } = null!;
 
         /// <summary>
-        /// if some system-default port usages are not desired - namely, ap / iot / uplink
+        /// If some system-default port usages are not desired - namely, ap / iot / uplink
         /// </summary>
         [Output("disabledSystemDefinedPortUsages")]
         public Output<ImmutableArray<string>> DisabledSystemDefinedPortUsages { get; private set; } = null!;
@@ -77,7 +77,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateExtraRoutes6>?> ExtraRoutes6 { get; private set; } = null!;
 
         /// <summary>
-        /// enable mist_nac to use radsec
+        /// Enable mist_nac to use RadSec
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.NetworktemplateMistNac?> MistNac { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<ImmutableDictionary<string, Outputs.NetworktemplateNetworks>?> Networks { get; private set; } = null!;
 
         /// <summary>
-        /// list of NTP servers
+        /// List of NTP servers
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateRemoteSyslog?> RemoteSyslog { get; private set; } = null!;
 
         /// <summary>
-        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Output("removeExistingConfigs")]
         public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.NetworktemplateSnmpConfig?> SnmpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criterias
         /// </summary>
         [Output("switchMatching")]
         public Output<Outputs.NetworktemplateSwitchMatching?> SwitchMatching { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _disabledSystemDefinedPortUsages;
 
         /// <summary>
-        /// if some system-default port usages are not desired - namely, ap / iot / uplink
+        /// If some system-default port usages are not desired - namely, ap / iot / uplink
         /// </summary>
         public InputList<string> DisabledSystemDefinedPortUsages
         {
@@ -298,7 +298,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// enable mist_nac to use radsec
+        /// Enable mist_nac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacArgs>? MistNac { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// list of NTP servers
+        /// List of NTP servers
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -375,7 +375,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateRemoteSyslogArgs>? RemoteSyslog { get; set; }
 
         /// <summary>
-        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSnmpConfigArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criterias
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingArgs>? SwitchMatching { get; set; }
@@ -463,7 +463,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _disabledSystemDefinedPortUsages;
 
         /// <summary>
-        /// if some system-default port usages are not desired - namely, ap / iot / uplink
+        /// If some system-default port usages are not desired - namely, ap / iot / uplink
         /// </summary>
         public InputList<string> DisabledSystemDefinedPortUsages
         {
@@ -516,7 +516,7 @@ namespace Pulumi.JuniperMist.Site
         }
 
         /// <summary>
-        /// enable mist_nac to use radsec
+        /// Enable mist_nac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.NetworktemplateMistNacGetArgs>? MistNac { get; set; }
@@ -537,7 +537,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// list of NTP servers
+        /// List of NTP servers
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -593,7 +593,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateRemoteSyslogGetArgs>? RemoteSyslog { get; set; }
 
         /// <summary>
-        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
@@ -608,7 +608,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.NetworktemplateSnmpConfigGetArgs>? SnmpConfig { get; set; }
 
         /// <summary>
-        /// defines custom switch configuration based on different criterias
+        /// Defines custom switch configuration based on different criterias
         /// </summary>
         [Input("switchMatching")]
         public Input<Inputs.NetworktemplateSwitchMatchingGetArgs>? SwitchMatching { get; set; }

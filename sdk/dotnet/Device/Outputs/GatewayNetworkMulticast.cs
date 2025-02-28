@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayNetworkMulticast
     {
         /// <summary>
-        /// if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        /// If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         /// </summary>
         public readonly bool? DisableIgmp;
         public readonly bool? Enabled;

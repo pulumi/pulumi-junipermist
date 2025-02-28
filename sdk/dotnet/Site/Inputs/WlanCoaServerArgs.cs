@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WlanCoaServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether to disable Event-Timestamp Check
+        /// Whether to disable Event-Timestamp Check
         /// </summary>
         [Input("disableEventTimestampCheck")]
         public Input<bool>? DisableEventTimestampCheck { get; set; }

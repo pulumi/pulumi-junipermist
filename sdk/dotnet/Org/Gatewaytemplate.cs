@@ -88,13 +88,13 @@ namespace Pulumi.JuniperMist.Org
         public Output<bool> NtpOverride { get; private set; } = null!;
 
         /// <summary>
-        /// list of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.GatewaytemplateOobIpConfig> OobIpConfig { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<ImmutableDictionary<string, Outputs.GatewaytemplatePortConfig>?> PortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// auto assigned if not set
+        /// Auto assigned if not set
         /// </summary>
         [Output("routerId")]
         public Output<string?> RouterId { get; private set; } = null!;
@@ -317,7 +317,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// list of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -326,7 +326,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.GatewaytemplateOobIpConfigArgs>? OobIpConfig { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// auto assigned if not set
+        /// Auto assigned if not set
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -545,7 +545,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// list of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -554,7 +554,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.GatewaytemplateOobIpConfigGetArgs>? OobIpConfig { get; set; }
@@ -588,7 +588,7 @@ namespace Pulumi.JuniperMist.Org
         }
 
         /// <summary>
-        /// auto assigned if not set
+        /// Auto assigned if not set
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }

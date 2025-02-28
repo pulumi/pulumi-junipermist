@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchAclTagsSpec {
     /**
-     * @return matched dst port, &#34;0&#34; means any
+     * @return Matched dst port, &#34;0&#34; means any
      * 
      */
     private @Nullable String portRange;
@@ -24,7 +24,7 @@ public final class SwitchAclTagsSpec {
 
     private SwitchAclTagsSpec() {}
     /**
-     * @return matched dst port, &#34;0&#34; means any
+     * @return Matched dst port, &#34;0&#34; means any
      * 
      */
     public Optional<String> portRange() {

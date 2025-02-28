@@ -14,13 +14,13 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class WlanDynamicPsk
     {
         /// <summary>
-        /// default PSK to use if cloud WLC is not available, 8-63 characters
+        /// Default PSK to use if cloud WLC is not available, 8-63 characters
         /// </summary>
         public readonly string? DefaultPsk;
         public readonly string? DefaultVlanId;
         public readonly bool? Enabled;
         /// <summary>
-        /// when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        /// When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         /// </summary>
         public readonly bool? ForceLookup;
         /// <summary>

@@ -26,7 +26,7 @@ class WlanPortalTemplateArgs:
                  wlan_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a WlanPortalTemplate resource.
-        :param pulumi.Input['WlanPortalTemplatePortalTemplateArgs'] portal_template: portal template wlan settings
+        :param pulumi.Input['WlanPortalTemplatePortalTemplateArgs'] portal_template: Portal template wlan settings
         :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         pulumi.set(__self__, "portal_template", portal_template)
@@ -37,7 +37,7 @@ class WlanPortalTemplateArgs:
     @pulumi.getter(name="portalTemplate")
     def portal_template(self) -> pulumi.Input['WlanPortalTemplatePortalTemplateArgs']:
         """
-        portal template wlan settings
+        Portal template wlan settings
         """
         return pulumi.get(self, "portal_template")
 
@@ -75,7 +75,7 @@ class _WlanPortalTemplateState:
                  wlan_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WlanPortalTemplate resources.
-        :param pulumi.Input['WlanPortalTemplatePortalTemplateArgs'] portal_template: portal template wlan settings
+        :param pulumi.Input['WlanPortalTemplatePortalTemplateArgs'] portal_template: Portal template wlan settings
         :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         if portal_template is not None:
@@ -89,7 +89,7 @@ class _WlanPortalTemplateState:
     @pulumi.getter(name="portalTemplate")
     def portal_template(self) -> Optional[pulumi.Input['WlanPortalTemplatePortalTemplateArgs']]:
         """
-        portal template wlan settings
+        Portal template wlan settings
         """
         return pulumi.get(self, "portal_template")
 
@@ -140,7 +140,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: portal template wlan settings
+        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: Portal template wlan settings
         :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         ...
@@ -215,7 +215,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: portal template wlan settings
+        :param pulumi.Input[Union['WlanPortalTemplatePortalTemplateArgs', 'WlanPortalTemplatePortalTemplateArgsDict']] portal_template: Portal template wlan settings
         :param pulumi.Input[str] wlan_id: Site WLAN ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -231,7 +231,7 @@ class WlanPortalTemplate(pulumi.CustomResource):
     @pulumi.getter(name="portalTemplate")
     def portal_template(self) -> pulumi.Output['outputs.WlanPortalTemplatePortalTemplate']:
         """
-        portal template wlan settings
+        Portal template wlan settings
         """
         return pulumi.get(self, "portal_template")
 

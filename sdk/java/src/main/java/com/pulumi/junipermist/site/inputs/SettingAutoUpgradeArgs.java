@@ -18,14 +18,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     public static final SettingAutoUpgradeArgs Empty = new SettingAutoUpgradeArgs();
 
     /**
-     * custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
      * 
      */
     @Import(name="customVersions")
     private @Nullable Output<Map<String,String>> customVersions;
 
     /**
-     * @return custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+     * @return Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
      * 
      */
     public Optional<Output<Map<String,String>>> customVersions() {
@@ -48,14 +48,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+     * Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+     * @return Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -63,14 +63,14 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+     * `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
      * 
      */
     @Import(name="timeOfDay")
     private @Nullable Output<String> timeOfDay;
 
     /**
-     * @return any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+     * @return `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
      * 
      */
     public Optional<Output<String>> timeOfDay() {
@@ -121,7 +121,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param customVersions custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+         * @param customVersions Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param customVersions custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
+         * @param customVersions Custom versions for different models. Property key is the model name (e.g. &#34;AP41&#34;)
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+         * @param enabled Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+         * @param enabled Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timeOfDay any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+         * @param timeOfDay `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class SettingAutoUpgradeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timeOfDay any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+         * @param timeOfDay `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
          * 
          * @return builder
          * 

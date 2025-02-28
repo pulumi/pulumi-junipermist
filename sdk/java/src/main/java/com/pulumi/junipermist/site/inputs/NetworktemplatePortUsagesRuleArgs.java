@@ -25,14 +25,14 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
     }
 
     /**
-     * use `equals_any` to match any item in a list
+     * Use `equals_any` to match any item in a list
      * 
      */
     @Import(name="equalsAnies")
     private @Nullable Output<List<String>> equalsAnies;
 
     /**
-     * @return use `equals_any` to match any item in a list
+     * @return Use `equals_any` to match any item in a list
      * 
      */
     public Optional<Output<List<String>>> equalsAnies() {
@@ -126,7 +126,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param equalsAnies use `equals_any` to match any item in a list
+         * @param equalsAnies Use `equals_any` to match any item in a list
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param equalsAnies use `equals_any` to match any item in a list
+         * @param equalsAnies Use `equals_any` to match any item in a list
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class NetworktemplatePortUsagesRuleArgs extends com.pulumi.resource
         }
 
         /**
-         * @param equalsAnies use `equals_any` to match any item in a list
+         * @param equalsAnies Use `equals_any` to match any item in a list
          * 
          * @return builder
          * 

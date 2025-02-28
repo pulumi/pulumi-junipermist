@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApAeroscout {
     /**
-     * @return whether to enable aeroscout config
+     * @return Whether to enable aeroscout config
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return required if enabled, aeroscout server host
+     * @return Required if enabled, aeroscout server host
      * 
      */
     private @Nullable String host;
     /**
-     * @return whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+     * @return Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
      * 
      */
     private @Nullable Boolean locateConnected;
 
     private ApAeroscout() {}
     /**
-     * @return whether to enable aeroscout config
+     * @return Whether to enable aeroscout config
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return required if enabled, aeroscout server host
+     * @return Required if enabled, aeroscout server host
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+     * @return Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
      * 
      */
     public Optional<Boolean> locateConnected() {

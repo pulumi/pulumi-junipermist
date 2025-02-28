@@ -46,14 +46,14 @@ public final class ServicepolicyIdpArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * `strict` (default) / `standard` / or keys from from idp_profiles
+     * enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
      * 
      */
     @Import(name="profile")
     private @Nullable Output<String> profile;
 
     /**
-     * @return `strict` (default) / `standard` / or keys from from idp_profiles
+     * @return enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
      * 
      */
     public Optional<Output<String>> profile() {
@@ -127,7 +127,7 @@ public final class ServicepolicyIdpArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param profile `strict` (default) / `standard` / or keys from from idp_profiles
+         * @param profile enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class ServicepolicyIdpArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param profile `strict` (default) / `standard` / or keys from from idp_profiles
+         * @param profile enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
          * 
          * @return builder
          * 

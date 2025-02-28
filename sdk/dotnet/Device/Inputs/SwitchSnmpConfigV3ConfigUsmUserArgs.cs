@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private Input<string>? _authenticationPassword;
 
         /// <summary>
-        /// Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+        /// Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         /// </summary>
         public Input<string>? AuthenticationPassword
         {
@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+        /// sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
         /// </summary>
         [Input("authenticationType")]
         public Input<string>? AuthenticationType { get; set; }

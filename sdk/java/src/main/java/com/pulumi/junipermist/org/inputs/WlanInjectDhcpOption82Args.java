@@ -17,7 +17,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
     public static final WlanInjectDhcpOption82Args Empty = new WlanInjectDhcpOption82Args();
 
     /**
-     * information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -30,7 +30,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
     private @Nullable Output<String> circuitId;
 
     /**
-     * @return information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -44,14 +44,14 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * whether to inject option 82 when forwarding DHCP packets
+     * Whether to inject option 82 when forwarding DHCP packets
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to inject option 82 when forwarding DHCP packets
+     * @return Whether to inject option 82 when forwarding DHCP packets
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -84,7 +84,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param circuitId information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         * @param circuitId Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
          *   * {{AP_MAC}}
          *   * {{AP_MAC_DASHED}}
          *   * {{AP_MODEL}}
@@ -101,7 +101,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param circuitId information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+         * @param circuitId Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
          *   * {{AP_MAC}}
          *   * {{AP_MAC_DASHED}}
          *   * {{AP_MODEL}}
@@ -117,7 +117,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled whether to inject option 82 when forwarding DHCP packets
+         * @param enabled Whether to inject option 82 when forwarding DHCP packets
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class WlanInjectDhcpOption82Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param enabled whether to inject option 82 when forwarding DHCP packets
+         * @param enabled Whether to inject option 82 when forwarding DHCP packets
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchAclTagsSpec
     {
         /// <summary>
-        /// matched dst port, "0" means any
+        /// Matched dst port, "0" means any
         /// </summary>
         public readonly string? PortRange;
         /// <summary>

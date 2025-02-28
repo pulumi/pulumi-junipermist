@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchOtherIpConfigs
     {
         /// <summary>
-        /// for EVPN, if anycast is desired
+        /// For EVPN, if anycast is desired
         /// </summary>
         public readonly bool? EvpnAnycast;
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         public readonly string? Ip;
         /// <summary>
-        /// required if `type6`==`static`
+        /// Required if `type6`==`static`
         /// </summary>
         public readonly string? Ip6;
         /// <summary>
-        /// optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `subnet` from `network` definition will be used if defined
         /// </summary>
         public readonly string? Netmask;
         /// <summary>
-        /// optional, `subnet` from `network` definition will be used if defined
+        /// Optional, `subnet` from `network` definition will be used if defined
         /// </summary>
         public readonly string? Netmask6;
         /// <summary>

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="junipermist:org/setting:Setting")
 public class Setting extends com.pulumi.resources.CustomResource {
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -72,7 +72,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> apUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -86,14 +86,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.apiPolicy);
     }
     /**
-     * list of PEM-encoded ca certs
+     * List of PEM-encoded ca certs
      * 
      */
     @Export(name="cacerts", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> cacerts;
 
     /**
-     * @return list of PEM-encoded ca certs
+     * @return List of PEM-encoded ca certs
      * 
      */
     public Output<List<String>> cacerts() {
@@ -132,7 +132,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deviceCert);
     }
     /**
-     * enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      * 
@@ -141,7 +141,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * @return Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      * 
@@ -150,35 +150,35 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.deviceUpdownThreshold;
     }
     /**
-     * whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      * 
      */
     @Export(name="disablePcap", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disablePcap;
 
     /**
-     * @return whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * @return Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      * 
      */
     public Output<Boolean> disablePcap() {
         return this.disablePcap;
     }
     /**
-     * whether to disable remote shell access for an entire org
+     * Whether to disable remote shell access for an entire org
      * 
      */
     @Export(name="disableRemoteShell", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableRemoteShell;
 
     /**
-     * @return whether to disable remote shell access for an entire org
+     * @return Whether to disable remote shell access for an entire org
      * 
      */
     public Output<Boolean> disableRemoteShell() {
         return this.disableRemoteShell;
     }
     /**
-     * enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -186,7 +186,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> gatewayUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -310,7 +310,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.switchMgmt);
     }
     /**
-     * enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -318,7 +318,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> switchUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -332,14 +332,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.syntheticTest);
     }
     /**
-     * automatically logout the user when UI session is inactive. `0` means disabled
+     * Automatically logout the user when UI session is inactive. `0` means disabled
      * 
      */
     @Export(name="uiIdleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> uiIdleTimeout;
 
     /**
-     * @return automatically logout the user when UI session is inactive. `0` means disabled
+     * @return Automatically logout the user when UI session is inactive. `0` means disabled
      * 
      */
     public Output<Integer> uiIdleTimeout() {

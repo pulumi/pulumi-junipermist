@@ -41,12 +41,12 @@ public final class SwitchOspfAreasNetworks {
     private @Nullable String interfaceType;
     private @Nullable Integer metric;
     /**
-     * @return by default, we&#39;ll re-advertise all learned OSPF routes toward overlay
+     * @return By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
      * 
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return whether to send OSPF-Hello
+     * @return Whether to send OSPF-Hello
      * 
      */
     private @Nullable Boolean passive;
@@ -99,14 +99,14 @@ public final class SwitchOspfAreasNetworks {
         return Optional.ofNullable(this.metric);
     }
     /**
-     * @return by default, we&#39;ll re-advertise all learned OSPF routes toward overlay
+     * @return By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
      * 
      */
     public Optional<Boolean> noReadvertiseToOverlay() {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return whether to send OSPF-Hello
+     * @return Whether to send OSPF-Hello
      * 
      */
     public Optional<Boolean> passive() {

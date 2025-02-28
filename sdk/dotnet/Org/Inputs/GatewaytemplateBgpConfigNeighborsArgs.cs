@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ImportPolicy { get; set; }
 
         /// <summary>
-        /// assuming BGP neighbor is directly connected
+        /// Assuming BGP neighbor is directly connected
         /// </summary>
         [Input("multihopTtl")]
         public Input<int>? MultihopTtl { get; set; }

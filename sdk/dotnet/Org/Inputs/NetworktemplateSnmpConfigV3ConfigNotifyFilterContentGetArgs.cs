@@ -15,8 +15,8 @@ namespace Pulumi.JuniperMist.Org.Inputs
         [Input("include")]
         public Input<bool>? Include { get; set; }
 
-        [Input("oid")]
-        public Input<string>? Oid { get; set; }
+        [Input("oid", required: true)]
+        public Input<string> Oid { get; set; } = null!;
 
         public NetworktemplateSnmpConfigV3ConfigNotifyFilterContentGetArgs()
         {

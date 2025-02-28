@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingOpticPortConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable channelization
+        /// Enable channelization
         /// </summary>
         [Input("channelized")]
         public Input<bool>? Channelized { get; set; }
 
         /// <summary>
-        /// interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+        /// Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
         /// </summary>
         [Input("speed")]
         public Input<string>? Speed { get; set; }

@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingWidsRepeatedAuthFailures {
     /**
-     * @return window where a trigger will be detected and action to be taken (in seconds)
+     * @return Window where a trigger will be detected and action to be taken (in seconds)
      * 
      */
     private @Nullable Integer duration;
     /**
-     * @return count of events to trigger
+     * @return Count of events to trigger
      * 
      */
     private @Nullable Integer threshold;
 
     private SettingWidsRepeatedAuthFailures() {}
     /**
-     * @return window where a trigger will be detected and action to be taken (in seconds)
+     * @return Window where a trigger will be detected and action to be taken (in seconds)
      * 
      */
     public Optional<Integer> duration() {
         return Optional.ofNullable(this.duration);
     }
     /**
-     * @return count of events to trigger
+     * @return Count of events to trigger
      * 
      */
     public Optional<Integer> threshold() {

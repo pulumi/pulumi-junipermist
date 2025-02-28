@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingOccupancy {
     /**
-     * @return indicate whether named BLE assets should be included in the zone occupancy calculation
+     * @return Indicate whether named BLE assets should be included in the zone occupancy calculation
      * 
      */
     private @Nullable Boolean assetsEnabled;
     /**
-     * @return indicate whether connected WiFi clients should be included in the zone occupancy calculation
+     * @return Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     private @Nullable Boolean clientsEnabled;
     /**
-     * @return minimum duration
+     * @return Minimum duration
      * 
      */
     private @Nullable Integer minDuration;
     /**
-     * @return indicate whether SDK clients should be included in the zone occupancy calculation
+     * @return Indicate whether SDK clients should be included in the zone occupancy calculation
      * 
      */
     private @Nullable Boolean sdkclientsEnabled;
     /**
-     * @return indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+     * @return Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     private @Nullable Boolean unconnectedClientsEnabled;
 
     private SettingOccupancy() {}
     /**
-     * @return indicate whether named BLE assets should be included in the zone occupancy calculation
+     * @return Indicate whether named BLE assets should be included in the zone occupancy calculation
      * 
      */
     public Optional<Boolean> assetsEnabled() {
         return Optional.ofNullable(this.assetsEnabled);
     }
     /**
-     * @return indicate whether connected WiFi clients should be included in the zone occupancy calculation
+     * @return Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     public Optional<Boolean> clientsEnabled() {
         return Optional.ofNullable(this.clientsEnabled);
     }
     /**
-     * @return minimum duration
+     * @return Minimum duration
      * 
      */
     public Optional<Integer> minDuration() {
         return Optional.ofNullable(this.minDuration);
     }
     /**
-     * @return indicate whether SDK clients should be included in the zone occupancy calculation
+     * @return Indicate whether SDK clients should be included in the zone occupancy calculation
      * 
      */
     public Optional<Boolean> sdkclientsEnabled() {
         return Optional.ofNullable(this.sdkclientsEnabled);
     }
     /**
-     * @return indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+     * @return Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
      * 
      */
     public Optional<Boolean> unconnectedClientsEnabled() {

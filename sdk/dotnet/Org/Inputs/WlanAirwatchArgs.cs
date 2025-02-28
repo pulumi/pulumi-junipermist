@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? ApiKey { get; set; }
 
         /// <summary>
-        /// console URL
+        /// Console URL
         /// </summary>
         [Input("consoleUrl")]
         public Input<string>? ConsoleUrl { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// password
+        /// Password
         /// </summary>
         public Input<string>? Password
         {
@@ -44,7 +44,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// username
+        /// Username
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

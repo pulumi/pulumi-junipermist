@@ -20,14 +20,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     public static final WebhookArgs Empty = new WebhookArgs();
 
     /**
-     * whether webhook is enabled
+     * Whether webhook is enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether webhook is enabled
+     * @return Whether webhook is enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -35,16 +35,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     @Import(name="headers")
     private @Nullable Output<Map<String,String>> headers;
 
     /**
-     * @return if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * @return If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      * 
      */
     public Optional<Output<Map<String,String>>> headers() {
@@ -52,14 +50,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name of the webhook
+     * Name of the webhook
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return name of the webhook
+     * @return Name of the webhook
      * 
      */
     public Optional<Output<String>> name() {
@@ -67,14 +65,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     @Import(name="oauth2ClientId")
     private @Nullable Output<String> oauth2ClientId;
 
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     public Optional<Output<String>> oauth2ClientId() {
@@ -82,14 +80,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `oauth2_grant_type`==`client_credentials`
+     * Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     @Import(name="oauth2ClientSecret")
     private @Nullable Output<String> oauth2ClientSecret;
 
     /**
-     * @return required when `oauth2_grant_type`==`client_credentials`
+     * @return Required when `oauth2_grant_type`==`client_credentials`
      * 
      */
     public Optional<Output<String>> oauth2ClientSecret() {
@@ -112,14 +110,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `oauth2_grant_type`==`password`
+     * Required when `oauth2_grant_type`==`password`
      * 
      */
     @Import(name="oauth2Password")
     private @Nullable Output<String> oauth2Password;
 
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     public Optional<Output<String>> oauth2Password() {
@@ -127,14 +125,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `type`==`oauth2`, if provided, will be used in the token request
+     * Required when `type`==`oauth2`, if provided, will be used in the token request
      * 
      */
     @Import(name="oauth2Scopes")
     private @Nullable Output<List<String>> oauth2Scopes;
 
     /**
-     * @return required when `type`==`oauth2`, if provided, will be used in the token request
+     * @return Required when `type`==`oauth2`, if provided, will be used in the token request
      * 
      */
     public Optional<Output<List<String>>> oauth2Scopes() {
@@ -142,14 +140,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `type`==`oauth2`
+     * Required when `type`==`oauth2`
      * 
      */
     @Import(name="oauth2TokenUrl")
     private @Nullable Output<String> oauth2TokenUrl;
 
     /**
-     * @return required when `type`==`oauth2`
+     * @return Required when `type`==`oauth2`
      * 
      */
     public Optional<Output<String>> oauth2TokenUrl() {
@@ -157,14 +155,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required when `oauth2_grant_type`==`password`
+     * Required when `oauth2_grant_type`==`password`
      * 
      */
     @Import(name="oauth2Username")
     private @Nullable Output<String> oauth2Username;
 
     /**
-     * @return required when `oauth2_grant_type`==`password`
+     * @return Required when `oauth2_grant_type`==`password`
      * 
      */
     public Optional<Output<String>> oauth2Username() {
@@ -179,14 +177,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * only if `type`=`http-post`
+     * Only if `type`=`http-post`
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return only if `type`=`http-post`
+     * @return Only if `type`=`http-post`
      * 
      */
     public Optional<Output<String>> secret() {
@@ -194,16 +192,16 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-     * the webhook receiver is configured to accept it.&#39;
+     * Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      * 
      */
     @Import(name="splunkToken")
     private @Nullable Output<String> splunkToken;
 
     /**
-     * @return required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-     * the webhook receiver is configured to accept it.&#39;
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      * 
      */
     public Optional<Output<String>> splunkToken() {
@@ -248,14 +246,14 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when url uses HTTPS, whether to verify the certificate
+     * When url uses HTTPS, whether to verify the certificate
      * 
      */
     @Import(name="verifyCert")
     private @Nullable Output<Boolean> verifyCert;
 
     /**
-     * @return when url uses HTTPS, whether to verify the certificate
+     * @return When url uses HTTPS, whether to verify the certificate
      * 
      */
     public Optional<Output<Boolean>> verifyCert() {
@@ -303,7 +301,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled whether webhook is enabled
+         * @param enabled Whether webhook is enabled
          * 
          * @return builder
          * 
@@ -314,7 +312,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled whether webhook is enabled
+         * @param enabled Whether webhook is enabled
          * 
          * @return builder
          * 
@@ -324,8 +322,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers if `type`=`http-post`, additional custom HTTP headers to add
-         * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+         * @param headers If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
          * 
          * @return builder
          * 
@@ -336,8 +333,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers if `type`=`http-post`, additional custom HTTP headers to add
-         * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+         * @param headers If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
          * 
          * @return builder
          * 
@@ -347,7 +343,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name of the webhook
+         * @param name Name of the webhook
          * 
          * @return builder
          * 
@@ -358,7 +354,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name name of the webhook
+         * @param name Name of the webhook
          * 
          * @return builder
          * 
@@ -368,7 +364,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientId required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientId Required when `oauth2_grant_type`==`client_credentials`
          * 
          * @return builder
          * 
@@ -379,7 +375,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientId required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientId Required when `oauth2_grant_type`==`client_credentials`
          * 
          * @return builder
          * 
@@ -389,7 +385,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientSecret required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientSecret Required when `oauth2_grant_type`==`client_credentials`
          * 
          * @return builder
          * 
@@ -400,7 +396,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2ClientSecret required when `oauth2_grant_type`==`client_credentials`
+         * @param oauth2ClientSecret Required when `oauth2_grant_type`==`client_credentials`
          * 
          * @return builder
          * 
@@ -431,7 +427,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Password required when `oauth2_grant_type`==`password`
+         * @param oauth2Password Required when `oauth2_grant_type`==`password`
          * 
          * @return builder
          * 
@@ -442,7 +438,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Password required when `oauth2_grant_type`==`password`
+         * @param oauth2Password Required when `oauth2_grant_type`==`password`
          * 
          * @return builder
          * 
@@ -452,7 +448,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Scopes required when `type`==`oauth2`, if provided, will be used in the token request
+         * @param oauth2Scopes Required when `type`==`oauth2`, if provided, will be used in the token request
          * 
          * @return builder
          * 
@@ -463,7 +459,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Scopes required when `type`==`oauth2`, if provided, will be used in the token request
+         * @param oauth2Scopes Required when `type`==`oauth2`, if provided, will be used in the token request
          * 
          * @return builder
          * 
@@ -473,7 +469,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Scopes required when `type`==`oauth2`, if provided, will be used in the token request
+         * @param oauth2Scopes Required when `type`==`oauth2`, if provided, will be used in the token request
          * 
          * @return builder
          * 
@@ -483,7 +479,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2TokenUrl required when `type`==`oauth2`
+         * @param oauth2TokenUrl Required when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -494,7 +490,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2TokenUrl required when `type`==`oauth2`
+         * @param oauth2TokenUrl Required when `type`==`oauth2`
          * 
          * @return builder
          * 
@@ -504,7 +500,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Username required when `oauth2_grant_type`==`password`
+         * @param oauth2Username Required when `oauth2_grant_type`==`password`
          * 
          * @return builder
          * 
@@ -515,7 +511,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param oauth2Username required when `oauth2_grant_type`==`password`
+         * @param oauth2Username Required when `oauth2_grant_type`==`password`
          * 
          * @return builder
          * 
@@ -534,7 +530,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret only if `type`=`http-post`
+         * @param secret Only if `type`=`http-post`
          * 
          * @return builder
          * 
@@ -545,7 +541,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret only if `type`=`http-post`
+         * @param secret Only if `type`=`http-post`
          * 
          * @return builder
          * 
@@ -555,8 +551,8 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splunkToken required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-         * the webhook receiver is configured to accept it.&#39;
+         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+         * the webhook receiver is configured to accept it.
          * 
          * @return builder
          * 
@@ -567,8 +563,8 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param splunkToken required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-         * the webhook receiver is configured to accept it.&#39;
+         * @param splunkToken Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+         * the webhook receiver is configured to accept it.
          * 
          * @return builder
          * 
@@ -639,7 +635,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifyCert when url uses HTTPS, whether to verify the certificate
+         * @param verifyCert When url uses HTTPS, whether to verify the certificate
          * 
          * @return builder
          * 
@@ -650,7 +646,7 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param verifyCert when url uses HTTPS, whether to verify the certificate
+         * @param verifyCert When url uses HTTPS, whether to verify the certificate
          * 
          * @return builder
          * 

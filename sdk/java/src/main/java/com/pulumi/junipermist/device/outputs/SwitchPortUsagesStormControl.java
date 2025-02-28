@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchPortUsagesStormControl {
     /**
-     * @return whether to disable storm control on broadcast traffic
+     * @return Whether to disable storm control on broadcast traffic
      * 
      */
     private @Nullable Boolean noBroadcast;
     /**
-     * @return whether to disable storm control on multicast traffic
+     * @return Whether to disable storm control on multicast traffic
      * 
      */
     private @Nullable Boolean noMulticast;
     /**
-     * @return whether to disable storm control on registered multicast traffic
+     * @return Whether to disable storm control on registered multicast traffic
      * 
      */
     private @Nullable Boolean noRegisteredMulticast;
     /**
-     * @return whether to disable storm control on unknown unicast traffic
+     * @return Whether to disable storm control on unknown unicast traffic
      * 
      */
     private @Nullable Boolean noUnknownUnicast;
     /**
-     * @return bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+     * @return Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
      * 
      */
     private @Nullable Integer percentage;
 
     private SwitchPortUsagesStormControl() {}
     /**
-     * @return whether to disable storm control on broadcast traffic
+     * @return Whether to disable storm control on broadcast traffic
      * 
      */
     public Optional<Boolean> noBroadcast() {
         return Optional.ofNullable(this.noBroadcast);
     }
     /**
-     * @return whether to disable storm control on multicast traffic
+     * @return Whether to disable storm control on multicast traffic
      * 
      */
     public Optional<Boolean> noMulticast() {
         return Optional.ofNullable(this.noMulticast);
     }
     /**
-     * @return whether to disable storm control on registered multicast traffic
+     * @return Whether to disable storm control on registered multicast traffic
      * 
      */
     public Optional<Boolean> noRegisteredMulticast() {
         return Optional.ofNullable(this.noRegisteredMulticast);
     }
     /**
-     * @return whether to disable storm control on unknown unicast traffic
+     * @return Whether to disable storm control on unknown unicast traffic
      * 
      */
     public Optional<Boolean> noUnknownUnicast() {
         return Optional.ofNullable(this.noUnknownUnicast);
     }
     /**
-     * @return bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+     * @return Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
      * 
      */
     public Optional<Integer> percentage() {

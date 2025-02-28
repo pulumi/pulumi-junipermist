@@ -23,14 +23,14 @@ public final class SettingSkyatpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to send IP-MAC mapping to SkyATP
+     * Whether to send IP-MAC mapping to SkyATP
      * 
      */
     @Import(name="sendIpMacMapping")
     private @Nullable Output<Boolean> sendIpMacMapping;
 
     /**
-     * @return whether to send IP-MAC mapping to SkyATP
+     * @return Whether to send IP-MAC mapping to SkyATP
      * 
      */
     public Optional<Output<Boolean>> sendIpMacMapping() {
@@ -72,7 +72,7 @@ public final class SettingSkyatpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendIpMacMapping whether to send IP-MAC mapping to SkyATP
+         * @param sendIpMacMapping Whether to send IP-MAC mapping to SkyATP
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class SettingSkyatpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendIpMacMapping whether to send IP-MAC mapping to SkyATP
+         * @param sendIpMacMapping Whether to send IP-MAC mapping to SkyATP
          * 
          * @return builder
          * 

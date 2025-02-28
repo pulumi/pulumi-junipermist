@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class WlanAcctServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ip / hostname of RADIUS server
+        /// IP/ hostname of RADIUS server
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private Input<string>? _secret;
 
         /// <summary>
-        /// secret of RADIUS server
+        /// Secretof RADIUS server
         /// </summary>
         public Input<string>? Secret
         {

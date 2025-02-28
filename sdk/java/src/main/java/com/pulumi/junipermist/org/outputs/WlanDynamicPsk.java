@@ -13,14 +13,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanDynamicPsk {
     /**
-     * @return default PSK to use if cloud WLC is not available, 8-63 characters
+     * @return Default PSK to use if cloud WLC is not available, 8-63 characters
      * 
      */
     private @Nullable String defaultPsk;
     private @Nullable String defaultVlanId;
     private @Nullable Boolean enabled;
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+     * @return When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     private @Nullable Boolean forceLookup;
@@ -32,7 +32,7 @@ public final class WlanDynamicPsk {
 
     private WlanDynamicPsk() {}
     /**
-     * @return default PSK to use if cloud WLC is not available, 8-63 characters
+     * @return Default PSK to use if cloud WLC is not available, 8-63 characters
      * 
      */
     public Optional<String> defaultPsk() {
@@ -45,7 +45,7 @@ public final class WlanDynamicPsk {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+     * @return When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     public Optional<Boolean> forceLookup() {

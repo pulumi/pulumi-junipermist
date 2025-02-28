@@ -4,34 +4,33 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class SwitchSnmpConfigV3ConfigNotify {
-    private @Nullable String name;
-    private @Nullable String tag;
+    private String name;
+    private String tag;
     /**
      * @return enum: `inform`, `trap`
      * 
      */
-    private @Nullable String type;
+    private String type;
 
     private SwitchSnmpConfigV3ConfigNotify() {}
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
-    public Optional<String> tag() {
-        return Optional.ofNullable(this.tag);
+    public String tag() {
+        return this.tag;
     }
     /**
      * @return enum: `inform`, `trap`
      * 
      */
-    public Optional<String> type() {
-        return Optional.ofNullable(this.type);
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
@@ -43,9 +42,9 @@ public final class SwitchSnmpConfigV3ConfigNotify {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String name;
-        private @Nullable String tag;
-        private @Nullable String type;
+        private String name;
+        private String tag;
+        private String type;
         public Builder() {}
         public Builder(SwitchSnmpConfigV3ConfigNotify defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,20 +54,26 @@ public final class SwitchSnmpConfigV3ConfigNotify {
         }
 
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigNotify", "name");
+            }
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder tag(@Nullable String tag) {
-
+        public Builder tag(String tag) {
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigNotify", "tag");
+            }
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
-        public Builder type(@Nullable String type) {
-
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigNotify", "type");
+            }
             this.type = type;
             return this;
         }

@@ -36,14 +36,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -84,15 +84,15 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
      * Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    @Import(name="bypassAuthWhenServerDownForUnkonwnClient")
-    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnkonwnClient;
+    @Import(name="bypassAuthWhenServerDownForUnkownClient")
+    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient;
 
     /**
      * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnkonwnClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkonwnClient);
+    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnkownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
     }
 
     /**
@@ -530,14 +530,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
      * 
      */
     @Import(name="uiEvpntopoId")
     private @Nullable Output<String> uiEvpntopoId;
 
     /**
-     * @return optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * @return Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
      * 
      */
     public Optional<Output<String>> uiEvpntopoId() {
@@ -545,14 +545,14 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * if this is connected to a vstp network
+     * If this is connected to a vstp network
      * 
      */
     @Import(name="useVstp")
     private @Nullable Output<Boolean> useVstp;
 
     /**
-     * @return if this is connected to a vstp network
+     * @return If this is connected to a vstp network
      * 
      */
     public Optional<Output<Boolean>> useVstp() {
@@ -581,7 +581,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         this.allowDhcpd = $.allowDhcpd;
         this.allowMultipleSupplicants = $.allowMultipleSupplicants;
         this.bypassAuthWhenServerDown = $.bypassAuthWhenServerDown;
-        this.bypassAuthWhenServerDownForUnkonwnClient = $.bypassAuthWhenServerDownForUnkonwnClient;
+        this.bypassAuthWhenServerDownForUnkownClient = $.bypassAuthWhenServerDownForUnkownClient;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
         this.disabled = $.disabled;
@@ -657,7 +657,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
          * 
          * @return builder
          * 
@@ -668,7 +668,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
          * 
          * @return builder
          * 
@@ -720,24 +720,24 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkonwnClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnkownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkonwnClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnkonwnClient) {
-            $.bypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient) {
+            $.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             return this;
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkonwnClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnkownClient Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkonwnClient(Boolean bypassAuthWhenServerDownForUnkonwnClient) {
-            return bypassAuthWhenServerDownForUnkonwnClient(Output.of(bypassAuthWhenServerDownForUnkonwnClient));
+        public Builder bypassAuthWhenServerDownForUnkownClient(Boolean bypassAuthWhenServerDownForUnkownClient) {
+            return bypassAuthWhenServerDownForUnkownClient(Output.of(bypassAuthWhenServerDownForUnkownClient));
         }
 
         /**
@@ -1377,7 +1377,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param uiEvpntopoId optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         * @param uiEvpntopoId Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          * 
          * @return builder
          * 
@@ -1388,7 +1388,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param uiEvpntopoId optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+         * @param uiEvpntopoId Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
          * 
          * @return builder
          * 
@@ -1398,7 +1398,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param useVstp if this is connected to a vstp network
+         * @param useVstp If this is connected to a vstp network
          * 
          * @return builder
          * 
@@ -1409,7 +1409,7 @@ public final class NetworktemplatePortUsagesArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param useVstp if this is connected to a vstp network
+         * @param useVstp If this is connected to a vstp network
          * 
          * @return builder
          * 

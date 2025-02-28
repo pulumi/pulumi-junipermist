@@ -48,14 +48,14 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * usb*config is ignored if esl*config enabled
+     * usb_config is ignored if esl_config enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return usb*config is ignored if esl*config enabled
+     * @return usb_config is ignored if esl_config enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -93,14 +93,14 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+     * @return note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
      * 
      */
     public Optional<Output<String>> type() {
@@ -211,7 +211,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled usb*config is ignored if esl*config enabled
+         * @param enabled usb_config is ignored if esl_config enabled
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled usb*config is ignored if esl*config enabled
+         * @param enabled usb_config is ignored if esl_config enabled
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * @param type note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class DeviceprofileApEslConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+         * @param type note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
          * 
          * @return builder
          * 

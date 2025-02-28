@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _inputNetworksIngresses;
 
         /// <summary>
-        /// at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         /// </summary>
         public InputList<string> InputNetworksIngresses
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _inputPortIdsEgresses;
 
         /// <summary>
-        /// at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         /// </summary>
         public InputList<string> InputPortIdsEgresses
         {
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _inputPortIdsIngresses;
 
         /// <summary>
-        /// at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        /// At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         /// </summary>
         public InputList<string> InputPortIdsIngresses
         {
@@ -49,13 +49,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// exaclty one of the `output_port_id` or `output_network` should be provided
+        /// Exaclty one of the `output_port_id` or `output_network` should be provided
         /// </summary>
         [Input("outputNetwork")]
         public Input<string>? OutputNetwork { get; set; }
 
         /// <summary>
-        /// exaclty one of the `output_port_id` or `output_network` should be provided
+        /// Exaclty one of the `output_port_id` or `output_network` should be provided
         /// </summary>
         [Input("outputPortId")]
         public Input<string>? OutputPortId { get; set; }

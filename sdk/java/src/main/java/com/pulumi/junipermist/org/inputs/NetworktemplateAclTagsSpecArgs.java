@@ -16,14 +16,14 @@ public final class NetworktemplateAclTagsSpecArgs extends com.pulumi.resources.R
     public static final NetworktemplateAclTagsSpecArgs Empty = new NetworktemplateAclTagsSpecArgs();
 
     /**
-     * matched dst port, &#34;0&#34; means any
+     * Matched dst port, &#34;0&#34; means any
      * 
      */
     @Import(name="portRange")
     private @Nullable Output<String> portRange;
 
     /**
-     * @return matched dst port, &#34;0&#34; means any
+     * @return Matched dst port, &#34;0&#34; means any
      * 
      */
     public Optional<Output<String>> portRange() {
@@ -71,7 +71,7 @@ public final class NetworktemplateAclTagsSpecArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param portRange matched dst port, &#34;0&#34; means any
+         * @param portRange Matched dst port, &#34;0&#34; means any
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NetworktemplateAclTagsSpecArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param portRange matched dst port, &#34;0&#34; means any
+         * @param portRange Matched dst port, &#34;0&#34; means any
          * 
          * @return builder
          * 

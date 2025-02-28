@@ -53,14 +53,14 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * used only if `subnet` is not specified in `networks`
+     * Used only if `subnet` is not specified in `networks`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -68,14 +68,14 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+     * @return Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
      * 
      */
     public Optional<Output<String>> network() {
@@ -190,7 +190,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask Used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask Used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param network the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+         * @param network Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class SwitchIpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param network the network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
+         * @param network Network where this mgmt IP reside, this will be used as default network for outbound-ssh, dns, ntp, dns, tacplus, radius, syslog, snmp
          * 
          * @return builder
          * 

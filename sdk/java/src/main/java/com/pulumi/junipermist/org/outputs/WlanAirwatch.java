@@ -18,18 +18,18 @@ public final class WlanAirwatch {
      */
     private @Nullable String apiKey;
     /**
-     * @return console URL
+     * @return Console URL
      * 
      */
     private @Nullable String consoleUrl;
     private @Nullable Boolean enabled;
     /**
-     * @return password
+     * @return Password
      * 
      */
     private @Nullable String password;
     /**
-     * @return username
+     * @return Username
      * 
      */
     private @Nullable String username;
@@ -43,7 +43,7 @@ public final class WlanAirwatch {
         return Optional.ofNullable(this.apiKey);
     }
     /**
-     * @return console URL
+     * @return Console URL
      * 
      */
     public Optional<String> consoleUrl() {
@@ -53,14 +53,14 @@ public final class WlanAirwatch {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return password
+     * @return Password
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return username
+     * @return Username
      * 
      */
     public Optional<String> username() {

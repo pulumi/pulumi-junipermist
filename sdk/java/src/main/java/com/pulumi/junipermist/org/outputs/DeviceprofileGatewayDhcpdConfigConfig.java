@@ -19,52 +19,52 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayDhcpdConfigConfig {
     /**
-     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     private @Nullable List<String> dnsServers;
     /**
-     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigFixedBindings> fixedBindings;
     /**
-     * @return if `type`==`local` - optional, `ip` will be used if not provided
+     * @return If `type`==`local` - optional, `ip` will be used if not provided
      * 
      */
     private @Nullable String gateway;
     /**
-     * @return if `type`==`local`
+     * @return If `type`==`local`
      * 
      */
     private @Nullable String ipEnd;
     /**
-     * @return if `type6`==`local`
+     * @return If `type6`==`local`
      * 
      */
     private @Nullable String ipEnd6;
     /**
-     * @return if `type`==`local`
+     * @return If `type`==`local`
      * 
      */
     private @Nullable String ipStart;
     /**
-     * @return if `type6`==`local`
+     * @return If `type6`==`local`
      * 
      */
     private @Nullable String ipStart6;
     /**
-     * @return in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+     * @return In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
      * 
      */
     private @Nullable Integer leaseTime;
     /**
-     * @return if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+     * @return If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigOptions> options;
@@ -75,12 +75,12 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      */
     private @Nullable Boolean serverIdOverride;
     /**
-     * @return if `type`==`relay`
+     * @return If `type`==`relay`
      * 
      */
     private @Nullable List<String> servers;
     /**
-     * @return if `type6`==`relay`
+     * @return If `type6`==`relay`
      * 
      */
     private @Nullable List<String> servers6s;
@@ -95,79 +95,79 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
      */
     private @Nullable String type6;
     /**
-     * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code&#39;
+     *   * sub option code: 1-255, sub-option code
      * 
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated;
 
     private DeviceprofileGatewayDhcpdConfigConfig() {}
     /**
-     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     public List<String> dnsServers() {
         return this.dnsServers == null ? List.of() : this.dnsServers;
     }
     /**
-     * @return if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+     * @return If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
+     * @return If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g &#34;5684dae9ac8b&#34;)
      * 
      */
     public Map<String,DeviceprofileGatewayDhcpdConfigConfigFixedBindings> fixedBindings() {
         return this.fixedBindings == null ? Map.of() : this.fixedBindings;
     }
     /**
-     * @return if `type`==`local` - optional, `ip` will be used if not provided
+     * @return If `type`==`local` - optional, `ip` will be used if not provided
      * 
      */
     public Optional<String> gateway() {
         return Optional.ofNullable(this.gateway);
     }
     /**
-     * @return if `type`==`local`
+     * @return If `type`==`local`
      * 
      */
     public Optional<String> ipEnd() {
         return Optional.ofNullable(this.ipEnd);
     }
     /**
-     * @return if `type6`==`local`
+     * @return If `type6`==`local`
      * 
      */
     public Optional<String> ipEnd6() {
         return Optional.ofNullable(this.ipEnd6);
     }
     /**
-     * @return if `type`==`local`
+     * @return If `type`==`local`
      * 
      */
     public Optional<String> ipStart() {
         return Optional.ofNullable(this.ipStart);
     }
     /**
-     * @return if `type6`==`local`
+     * @return If `type6`==`local`
      * 
      */
     public Optional<String> ipStart6() {
         return Optional.ofNullable(this.ipStart6);
     }
     /**
-     * @return in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+     * @return In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
      * 
      */
     public Optional<Integer> leaseTime() {
         return Optional.ofNullable(this.leaseTime);
     }
     /**
-     * @return if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+     * @return If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
      * 
      */
     public Map<String,DeviceprofileGatewayDhcpdConfigConfigOptions> options() {
@@ -182,14 +182,14 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.serverIdOverride);
     }
     /**
-     * @return if `type`==`relay`
+     * @return If `type`==`relay`
      * 
      */
     public List<String> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return if `type6`==`relay`
+     * @return If `type6`==`relay`
      * 
      */
     public List<String> servers6s() {
@@ -210,9 +210,9 @@ public final class DeviceprofileGatewayDhcpdConfigConfig {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return if `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
+     * @return If `type`==`local` or `type6`==`local`. Property key is &lt;enterprise number&gt;:&lt;sub option code&gt;, with
      *   * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-     *   * sub option code: 1-255, sub-option code&#39;
+     *   * sub option code: 1-255, sub-option code
      * 
      */
     public Map<String,DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulated> vendorEncapsulated() {

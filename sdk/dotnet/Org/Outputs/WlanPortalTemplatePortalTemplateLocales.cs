@@ -14,56 +14,56 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WlanPortalTemplatePortalTemplateLocales
     {
         /// <summary>
-        /// label for Amazon auth button
+        /// Label for Amazon auth button
         /// </summary>
         public readonly string? AuthButtonAmazon;
         /// <summary>
-        /// label for Azure auth button
+        /// Label for Azure auth button
         /// </summary>
         public readonly string? AuthButtonAzure;
         /// <summary>
-        /// label for Email auth button
+        /// Label for Email auth button
         /// </summary>
         public readonly string? AuthButtonEmail;
         /// <summary>
-        /// label for Facebook auth button
+        /// Label for Facebook auth button
         /// </summary>
         public readonly string? AuthButtonFacebook;
         /// <summary>
-        /// label for Google auth button
+        /// Label for Google auth button
         /// </summary>
         public readonly string? AuthButtonGoogle;
         /// <summary>
-        /// label for Microsoft auth button
+        /// Label for Microsoft auth button
         /// </summary>
         public readonly string? AuthButtonMicrosoft;
         /// <summary>
-        /// label for passphrase auth button
+        /// Label for passphrase auth button
         /// </summary>
         public readonly string? AuthButtonPassphrase;
         /// <summary>
-        /// label for SMS auth button
+        /// Label for SMS auth button
         /// </summary>
         public readonly string? AuthButtonSms;
         /// <summary>
-        /// label for Sponsor auth button
+        /// Label for Sponsor auth button
         /// </summary>
         public readonly string? AuthButtonSponsor;
         public readonly string? AuthLabel;
         /// <summary>
-        /// label of the link to go back to /logon
+        /// Label of the link to go back to /logon
         /// </summary>
         public readonly string? BackLink;
         /// <summary>
-        /// error message when company not provided
+        /// Error message when company not provided
         /// </summary>
         public readonly string? CompanyError;
         /// <summary>
-        /// label of company field
+        /// Label of company field
         /// </summary>
         public readonly string? CompanyLabel;
         /// <summary>
-        /// error message when a user has valid social login but doesn't match specified email domains.
+        /// Error message when a user has valid social login but doesn't match specified email domains.
         /// </summary>
         public readonly string? EmailAccessDomainError;
         /// <summary>
@@ -77,12 +77,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? EmailCodeSubmit;
         public readonly string? EmailCodeTitle;
         /// <summary>
-        /// error message when email not provided
+        /// Error message when email not provided
         /// </summary>
         public readonly string? EmailError;
         public readonly string? EmailFieldLabel;
         /// <summary>
-        /// label of email field
+        /// Label of email field
         /// </summary>
         public readonly string? EmailLabel;
         public readonly string? EmailMessage;
@@ -95,48 +95,48 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? EmailTitle;
         /// <summary>
-        /// error message when field1 not provided
+        /// Error message when field1 not provided
         /// </summary>
         public readonly string? Field1error;
         /// <summary>
-        /// label of field1
+        /// Label of field1
         /// </summary>
         public readonly string? Field1label;
         /// <summary>
-        /// error message when field2 not provided
+        /// Error message when field2 not provided
         /// </summary>
         public readonly string? Field2error;
         /// <summary>
-        /// label of field2
+        /// Label of field2
         /// </summary>
         public readonly string? Field2label;
         /// <summary>
-        /// error message when field3 not provided
+        /// Error message when field3 not provided
         /// </summary>
         public readonly string? Field3error;
         /// <summary>
-        /// label of field3
+        /// Label of field3
         /// </summary>
         public readonly string? Field3label;
         /// <summary>
-        /// error message when field4 not provided
+        /// Error message when field4 not provided
         /// </summary>
         public readonly string? Field4error;
         /// <summary>
-        /// label of field4
+        /// Label of field4
         /// </summary>
         public readonly string? Field4label;
         public readonly string? Message;
         /// <summary>
-        /// error message when name not provided
+        /// Error message when name not provided
         /// </summary>
         public readonly string? NameError;
         /// <summary>
-        /// label of name field
+        /// Label of name field
         /// </summary>
         public readonly string? NameLabel;
         /// <summary>
-        /// label for Do Not Store My Personal Information
+        /// Label for Do Not Store My Personal Information
         /// </summary>
         public readonly string? OptoutLabel;
         public readonly string? PageTitle;
@@ -145,7 +145,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PassphraseCancel;
         /// <summary>
-        /// error message when invalid passphrase is provided
+        /// Error message when invalid passphrase is provided
         /// </summary>
         public readonly string? PassphraseError;
         /// <summary>
@@ -162,33 +162,33 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? PassphraseTitle;
         /// <summary>
-        /// prefix of the label of the link to go to Privacy Policy
+        /// Prefix of the label of the link to go to Privacy Policy
         /// </summary>
         public readonly string? PrivacyPolicyAcceptLabel;
         /// <summary>
-        /// error message when Privacy Policy not accepted
+        /// Error message when Privacy Policy not accepted
         /// </summary>
         public readonly string? PrivacyPolicyError;
         /// <summary>
-        /// label of the link to go to Privacy Policy
+        /// Label of the link to go to Privacy Policy
         /// </summary>
         public readonly string? PrivacyPolicyLink;
         /// <summary>
-        /// text of the Privacy Policy
+        /// Text of the Privacy Policy
         /// </summary>
         public readonly string? PrivacyPolicyText;
         /// <summary>
-        /// label to denote required field
+        /// Label to denote required field
         /// </summary>
         public readonly string? RequiredFieldLabel;
         /// <summary>
-        /// label of the button to /signin
+        /// Label of the button to /signin
         /// </summary>
         public readonly string? SignInLabel;
         public readonly string? SmsCarrierDefault;
         public readonly string? SmsCarrierError;
         /// <summary>
-        /// label for mobile carrier drop-down list
+        /// Label for mobile carrier drop-down list
         /// </summary>
         public readonly string? SmsCarrierFieldLabel;
         /// <summary>
@@ -196,7 +196,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? SmsCodeCancel;
         /// <summary>
-        /// error message when confirmation code is invalid
+        /// Error message when confirmation code is invalid
         /// </summary>
         public readonly string? SmsCodeError;
         public readonly string? SmsCodeFieldLabel;
@@ -213,22 +213,22 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? SmsHaveAccessCode;
         /// <summary>
-        /// format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        /// Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         /// </summary>
         public readonly string? SmsMessageFormat;
         /// <summary>
-        /// label for canceling mobile details for SMS auth
+        /// Label for canceling mobile details for SMS auth
         /// </summary>
         public readonly string? SmsNumberCancel;
         public readonly string? SmsNumberError;
         /// <summary>
-        /// label for field to provide mobile number
+        /// Label for field to provide mobile number
         /// </summary>
         public readonly string? SmsNumberFieldLabel;
         public readonly string? SmsNumberFormat;
         public readonly string? SmsNumberMessage;
         /// <summary>
-        /// label for submit button for code generation
+        /// Label for submit button for code generation
         /// </summary>
         public readonly string? SmsNumberSubmit;
         /// <summary>
@@ -239,7 +239,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? SponsorBackLink;
         public readonly string? SponsorCancel;
         /// <summary>
-        /// label for Sponsor Email
+        /// Label for Sponsor Email
         /// </summary>
         public readonly string? SponsorEmail;
         public readonly string? SponsorEmailError;
@@ -247,47 +247,47 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? SponsorInfoDenied;
         public readonly string? SponsorInfoPending;
         /// <summary>
-        /// label for Sponsor Name
+        /// Label for Sponsor Name
         /// </summary>
         public readonly string? SponsorName;
         public readonly string? SponsorNameError;
         public readonly string? SponsorNotePending;
         /// <summary>
-        /// submit button label request Wifi Access and notify sponsor about guest request
+        /// Submit button label request Wifi Access and notify sponsor about guest request
         /// </summary>
         public readonly string? SponsorRequestAccess;
         /// <summary>
-        /// text to display if sponsor approves request
+        /// Text to display if sponsor approves request
         /// </summary>
         public readonly string? SponsorStatusApproved;
         /// <summary>
-        /// text to display when sponsor denies request
+        /// Text to display when sponsor denies request
         /// </summary>
         public readonly string? SponsorStatusDenied;
         /// <summary>
-        /// text to display if request is still pending
+        /// Text to display if request is still pending
         /// </summary>
         public readonly string? SponsorStatusPending;
         /// <summary>
-        /// submit button label to notify sponsor about guest request
+        /// Submit button label to notify sponsor about guest request
         /// </summary>
         public readonly string? SponsorSubmit;
         public readonly string? SponsorsError;
         public readonly string? SponsorsFieldLabel;
         /// <summary>
-        /// prefix of the label of the link to go to tos
+        /// Prefix of the label of the link to go to tos
         /// </summary>
         public readonly string? TosAcceptLabel;
         /// <summary>
-        /// error message when tos not accepted
+        /// Error message when tos not accepted
         /// </summary>
         public readonly string? TosError;
         /// <summary>
-        /// label of the link to go to tos
+        /// Label of the link to go to tos
         /// </summary>
         public readonly string? TosLink;
         /// <summary>
-        /// text of the Terms of Service
+        /// Text of the Terms of Service
         /// </summary>
         public readonly string? TosText;
 

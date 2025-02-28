@@ -12,26 +12,26 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs : global::Pulumi.ResourceArgs
     {
-        [Input("address")]
-        public Input<string>? Address { get; set; }
+        [Input("address", required: true)]
+        public Input<string> Address { get; set; } = null!;
 
-        [Input("addressMask")]
-        public Input<string>? AddressMask { get; set; }
+        [Input("addressMask", required: true)]
+        public Input<string> AddressMask { get; set; } = null!;
 
         [Input("port")]
-        public Input<int>? Port { get; set; }
+        public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// &lt;refer to notify tag, can be multiple with blank
+        /// Refer to notify tag, can be multiple with blank
         /// </summary>
         [Input("tagList")]
         public Input<string>? TagList { get; set; }
 
-        [Input("targetAddressName")]
-        public Input<string>? TargetAddressName { get; set; }
+        [Input("targetAddressName", required: true)]
+        public Input<string> TargetAddressName { get; set; } = null!;
 
         /// <summary>
-        /// refer to notify target parameters name
+        /// Refer to notify target parameters name
         /// </summary>
         [Input("targetParameters")]
         public Input<string>? TargetParameters { get; set; }

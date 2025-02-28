@@ -15,38 +15,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingZoneOccupancyAlert {
     /**
-     * @return list of email addresses to send email notifications when the alert threshold is reached
+     * @return List of email addresses to send email notifications when the alert threshold is reached
      * 
      */
     private @Nullable List<String> emailNotifiers;
     /**
-     * @return indicate whether zone occupancy alert is enabled for the site
+     * @return Indicate whether zone occupancy alert is enabled for the site
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+     * @return Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
      * 
      */
     private @Nullable Integer threshold;
 
     private SettingZoneOccupancyAlert() {}
     /**
-     * @return list of email addresses to send email notifications when the alert threshold is reached
+     * @return List of email addresses to send email notifications when the alert threshold is reached
      * 
      */
     public List<String> emailNotifiers() {
         return this.emailNotifiers == null ? List.of() : this.emailNotifiers;
     }
     /**
-     * @return indicate whether zone occupancy alert is enabled for the site
+     * @return Indicate whether zone occupancy alert is enabled for the site
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+     * @return Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
      * 
      */
     public Optional<Integer> threshold() {

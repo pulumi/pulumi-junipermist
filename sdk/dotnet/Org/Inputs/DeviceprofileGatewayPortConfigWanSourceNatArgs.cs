@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class DeviceprofileGatewayPortConfigWanSourceNatArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// or to disable the source-nat
+        /// Or to disable the source-nat
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// if alternative nat_pool is desired
+        /// If alternative nat_pool is desired
         /// </summary>
         [Input("natPool")]
         public Input<string>? NatPool { get; set; }

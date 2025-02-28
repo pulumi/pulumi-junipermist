@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if source_address is configured, will use the vlan firstly otherwise use source_ip
+        /// If source_address is configured, will use the vlan firstly otherwise use source_ip
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

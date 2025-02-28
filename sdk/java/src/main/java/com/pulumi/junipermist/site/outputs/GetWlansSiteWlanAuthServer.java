@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansSiteWlanAuthServer {
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     private String host;
@@ -31,19 +31,19 @@ public final class GetWlansSiteWlanAuthServer {
      */
     private Integer port;
     /**
-     * @return whether to require Message-Authenticator in requests
+     * @return Whether to require Message-Authenticator in requests
      * 
      */
     private Boolean requireMessageAuthenticator;
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     private String secret;
 
     private GetWlansSiteWlanAuthServer() {}
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     public String host() {
@@ -73,14 +73,14 @@ public final class GetWlansSiteWlanAuthServer {
         return this.port;
     }
     /**
-     * @return whether to require Message-Authenticator in requests
+     * @return Whether to require Message-Authenticator in requests
      * 
      */
     public Boolean requireMessageAuthenticator() {
         return this.requireMessageAuthenticator;
     }
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     public String secret() {

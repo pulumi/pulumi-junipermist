@@ -49,11 +49,11 @@ public final class NetworktemplateSnmpConfigV3ConfigArgs extends com.pulumi.reso
         return Optional.ofNullable(this.targetParameters);
     }
 
-    @Import(name="usm")
-    private @Nullable Output<NetworktemplateSnmpConfigV3ConfigUsmArgs> usm;
+    @Import(name="usms")
+    private @Nullable Output<List<NetworktemplateSnmpConfigV3ConfigUsmArgs>> usms;
 
-    public Optional<Output<NetworktemplateSnmpConfigV3ConfigUsmArgs>> usm() {
-        return Optional.ofNullable(this.usm);
+    public Optional<Output<List<NetworktemplateSnmpConfigV3ConfigUsmArgs>>> usms() {
+        return Optional.ofNullable(this.usms);
     }
 
     @Import(name="vacm")
@@ -70,7 +70,7 @@ public final class NetworktemplateSnmpConfigV3ConfigArgs extends com.pulumi.reso
         this.notifyFilters = $.notifyFilters;
         this.targetAddresses = $.targetAddresses;
         this.targetParameters = $.targetParameters;
-        this.usm = $.usm;
+        this.usms = $.usms;
         this.vacm = $.vacm;
     }
 
@@ -144,13 +144,17 @@ public final class NetworktemplateSnmpConfigV3ConfigArgs extends com.pulumi.reso
             return targetParameters(List.of(targetParameters));
         }
 
-        public Builder usm(@Nullable Output<NetworktemplateSnmpConfigV3ConfigUsmArgs> usm) {
-            $.usm = usm;
+        public Builder usms(@Nullable Output<List<NetworktemplateSnmpConfigV3ConfigUsmArgs>> usms) {
+            $.usms = usms;
             return this;
         }
 
-        public Builder usm(NetworktemplateSnmpConfigV3ConfigUsmArgs usm) {
-            return usm(Output.of(usm));
+        public Builder usms(List<NetworktemplateSnmpConfigV3ConfigUsmArgs> usms) {
+            return usms(Output.of(usms));
+        }
+
+        public Builder usms(NetworktemplateSnmpConfigV3ConfigUsmArgs... usms) {
+            return usms(List.of(usms));
         }
 
         public Builder vacm(@Nullable Output<NetworktemplateSnmpConfigV3ConfigVacmArgs> vacm) {

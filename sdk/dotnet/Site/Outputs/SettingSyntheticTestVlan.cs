@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly ImmutableArray<string> CustomTestUrls;
         /// <summary>
-        /// for some vlans where we don't want this to run
+        /// For some vlans where we don't want this to run
         /// </summary>
         public readonly bool? Disabled;
         public readonly ImmutableArray<string> VlanIds;

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchVrfConfig {
     /**
-     * @return whether to enable VRF (when supported on the device)
+     * @return Whether to enable VRF (when supported on the device)
      * 
      */
     private @Nullable Boolean enabled;
 
     private SwitchVrfConfig() {}
     /**
-     * @return whether to enable VRF (when supported on the device)
+     * @return Whether to enable VRF (when supported on the device)
      * 
      */
     public Optional<Boolean> enabled() {

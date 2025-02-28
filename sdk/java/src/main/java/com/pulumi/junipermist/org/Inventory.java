@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * -&gt;Removing a device from the `devices` list or `inventory` map will NOT release it unless `unclaim_when_destroyed` is set to `true`
  * 
- * !&gt; The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate &#34;inconsistent result after apply&#34; errors. If this happen, is is required to force a refresh of the state to synchronise the new list.\
+ * !&gt; The `devices` attribute (List) is deprecated and is replaced by the `inventory` attribute (Map) as it can generate &#34;inconsistent result after apply&#34; errors. If this happens, it is required to force a refresh of the state to synchronise the new list.\
  * The `devices` attribute will generate inconsistent result after apply when a device other than the last one is removed from the list or when a device is added somewhere other than the end of the list
  * 
  * ## Import
@@ -66,7 +66,7 @@ Please update your configurations to use the `inventory` attribute. */
     }
     /**
      * Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
      * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
      * 
      */
@@ -75,7 +75,7 @@ Please update your configurations to use the `inventory` attribute. */
 
     /**
      * @return Property key can be the device Claim Code or the device MAC Address: * Claim Code: used to claim the device to the Mist
-     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to managed a device
+     * Organization and manage it. Format is `[0-9A-Z]{15}` (e.g `01234ABCDE56789`) * MAC Address: used to manage a device
      * already in the Mist Organization (claimed or adopted devices). Format is `[0-9a-f]{12}` (e.g `5684dae9ac8b`) &gt;
      * 
      */

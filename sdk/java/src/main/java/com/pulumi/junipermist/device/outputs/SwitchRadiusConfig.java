@@ -16,36 +16,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchRadiusConfig {
     /**
-     * @return how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      * 
      */
     private @Nullable Integer acctInterimInterval;
     private @Nullable List<SwitchRadiusConfigAcctServer> acctServers;
     private @Nullable List<SwitchRadiusConfigAuthServer> authServers;
     /**
-     * @return radius auth session retries
+     * @return Radius auth session retries
      * 
      */
     private @Nullable Integer authServersRetries;
     /**
-     * @return radius auth session timeout
+     * @return Radius auth session timeout
      * 
      */
     private @Nullable Integer authServersTimeout;
     /**
-     * @return use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     private @Nullable String network;
     /**
-     * @return use `network`or `source_ip`
+     * @return Use `network`or `source_ip`
      * 
      */
     private @Nullable String sourceIp;
 
     private SwitchRadiusConfig() {}
     /**
-     * @return how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Integer> acctInterimInterval() {
@@ -58,28 +58,28 @@ public final class SwitchRadiusConfig {
         return this.authServers == null ? List.of() : this.authServers;
     }
     /**
-     * @return radius auth session retries
+     * @return Radius auth session retries
      * 
      */
     public Optional<Integer> authServersRetries() {
         return Optional.ofNullable(this.authServersRetries);
     }
     /**
-     * @return radius auth session timeout
+     * @return Radius auth session timeout
      * 
      */
     public Optional<Integer> authServersTimeout() {
         return Optional.ofNullable(this.authServersTimeout);
     }
     /**
-     * @return use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return use `network`or `source_ip`
+     * @return Use `network`or `source_ip`
      * 
      */
     public Optional<String> sourceIp() {

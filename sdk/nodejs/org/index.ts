@@ -15,6 +15,11 @@ export type Apitoken = import("./apitoken").Apitoken;
 export const Apitoken: typeof import("./apitoken").Apitoken = null as any;
 utilities.lazyLoad(exports, ["Apitoken"], () => require("./apitoken"));
 
+export { AvprofileArgs, AvprofileState } from "./avprofile";
+export type Avprofile = import("./avprofile").Avprofile;
+export const Avprofile: typeof import("./avprofile").Avprofile = null as any;
+utilities.lazyLoad(exports, ["Avprofile"], () => require("./avprofile"));
+
 export { BaseArgs, BaseState } from "./base";
 export type Base = import("./base").Base;
 export const Base: typeof import("./base").Base = null as any;
@@ -49,6 +54,11 @@ export { GetAlarmtemplatesArgs, GetAlarmtemplatesResult, GetAlarmtemplatesOutput
 export const getAlarmtemplates: typeof import("./getAlarmtemplates").getAlarmtemplates = null as any;
 export const getAlarmtemplatesOutput: typeof import("./getAlarmtemplates").getAlarmtemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getAlarmtemplates","getAlarmtemplatesOutput"], () => require("./getAlarmtemplates"));
+
+export { GetAvprofilesArgs, GetAvprofilesResult, GetAvprofilesOutputArgs } from "./getAvprofiles";
+export const getAvprofiles: typeof import("./getAvprofiles").getAvprofiles = null as any;
+export const getAvprofilesOutput: typeof import("./getAvprofiles").getAvprofilesOutput = null as any;
+utilities.lazyLoad(exports, ["getAvprofiles","getAvprofilesOutput"], () => require("./getAvprofiles"));
 
 export { GetDeviceprofilesApArgs, GetDeviceprofilesApResult, GetDeviceprofilesApOutputArgs } from "./getDeviceprofilesAp";
 export const getDeviceprofilesAp: typeof import("./getDeviceprofilesAp").getDeviceprofilesAp = null as any;
@@ -299,6 +309,8 @@ const _module = {
                 return new Alarmtemplate(name, <any>undefined, { urn })
             case "junipermist:org/apitoken:Apitoken":
                 return new Apitoken(name, <any>undefined, { urn })
+            case "junipermist:org/avprofile:Avprofile":
+                return new Avprofile(name, <any>undefined, { urn })
             case "junipermist:org/base:base":
                 return new Base(name, <any>undefined, { urn })
             case "junipermist:org/deviceprofileAp:DeviceprofileAp":
@@ -366,6 +378,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("junipermist", "org/alarmtemplate", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/apitoken", _module)
+pulumi.runtime.registerResourceModule("junipermist", "org/avprofile", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/base", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileAp", _module)
 pulumi.runtime.registerResourceModule("junipermist", "org/deviceprofileAssign", _module)

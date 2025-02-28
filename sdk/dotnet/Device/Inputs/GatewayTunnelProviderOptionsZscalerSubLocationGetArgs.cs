@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AupEnabled { get; set; }
 
         /// <summary>
-        /// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        /// Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         /// </summary>
         [Input("aupForceSslInspection")]
         public Input<bool>? AupForceSslInspection { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? CautionEnabled { get; set; }
 
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
+        /// Download bandwidth cap of the link, in Mbps. Disabled if not set
         /// </summary>
         [Input("dnBandwidth")]
         public Input<double>? DnBandwidth { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// if `true`, enable the firewall control option
+        /// If `true`, enable the firewall control option
         /// </summary>
         [Input("ofwEnabled")]
         public Input<bool>? OfwEnabled { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? SurrogateRefreshTimeInMinutes { get; set; }
 
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
+        /// Download bandwidth cap of the link, in Mbps. Disabled if not set
         /// </summary>
         [Input("upBandwidth")]
         public Input<double>? UpBandwidth { get; set; }

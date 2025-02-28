@@ -24,22 +24,22 @@ public final class WlanRadsec {
      */
     private @Nullable List<String> mxclusterIds;
     /**
-     * @return default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
      * 
      */
     private @Nullable List<String> proxyHosts;
     /**
-     * @return name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * @return Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
      * 
      */
     private @Nullable String serverName;
     /**
-     * @return List of Radsec Servers. Only if not Mist Edge.
+     * @return List of RadSec Servers. Only if not Mist Edge.
      * 
      */
     private @Nullable List<WlanRadsecServer> servers;
     /**
-     * @return use mxedge(s) as radsecproxy
+     * @return use mxedge(s) as RadSec Proxy
      * 
      */
     private @Nullable Boolean useMxedge;
@@ -67,28 +67,28 @@ public final class WlanRadsec {
         return this.mxclusterIds == null ? List.of() : this.mxclusterIds;
     }
     /**
-     * @return default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
      * 
      */
     public List<String> proxyHosts() {
         return this.proxyHosts == null ? List.of() : this.proxyHosts;
     }
     /**
-     * @return name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * @return Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
      * 
      */
     public Optional<String> serverName() {
         return Optional.ofNullable(this.serverName);
     }
     /**
-     * @return List of Radsec Servers. Only if not Mist Edge.
+     * @return List of RadSec Servers. Only if not Mist Edge.
      * 
      */
     public List<WlanRadsecServer> servers() {
         return this.servers == null ? List.of() : this.servers;
     }
     /**
-     * @return use mxedge(s) as radsecproxy
+     * @return use mxedge(s) as RadSec Proxy
      * 
      */
     public Optional<Boolean> useMxedge() {

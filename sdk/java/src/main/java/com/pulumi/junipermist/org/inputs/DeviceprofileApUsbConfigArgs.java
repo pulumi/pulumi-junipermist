@@ -18,14 +18,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     public static final DeviceprofileApUsbConfigArgs Empty = new DeviceprofileApUsbConfigArgs();
 
     /**
-     * only if `type`==`imagotag`
+     * Only if `type`==`imagotag`
      * 
      */
     @Import(name="cacert")
     private @Nullable Output<String> cacert;
 
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     public Optional<Output<String>> cacert() {
@@ -33,14 +33,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+     * Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
      * 
      */
     @Import(name="channel")
     private @Nullable Output<Integer> channel;
 
     /**
-     * @return only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+     * @return Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
      * 
      */
     public Optional<Output<Integer>> channel() {
@@ -48,14 +48,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * whether to enable any usb config
+     * Whether to enable any usb config
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to enable any usb config
+     * @return Whether to enable any usb config
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -63,14 +63,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `type`==`imagotag`
+     * Only if `type`==`imagotag`
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     public Optional<Output<String>> host() {
@@ -78,14 +78,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `type`==`imagotag`
+     * Only if `type`==`imagotag`
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -108,14 +108,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `type`==`imagotag`, whether to turn on SSL verification
+     * Only if `type`==`imagotag`, whether to turn on SSL verification
      * 
      */
     @Import(name="verifyCert")
     private @Nullable Output<Boolean> verifyCert;
 
     /**
-     * @return only if `type`==`imagotag`, whether to turn on SSL verification
+     * @return Only if `type`==`imagotag`, whether to turn on SSL verification
      * 
      */
     public Optional<Output<Boolean>> verifyCert() {
@@ -123,14 +123,14 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * only if `type`==`solum` or `type`==`hanshow`
+     * Only if `type`==`solum` or `type`==`hanshow`
      * 
      */
     @Import(name="vlanId")
     private @Nullable Output<Integer> vlanId;
 
     /**
-     * @return only if `type`==`solum` or `type`==`hanshow`
+     * @return Only if `type`==`solum` or `type`==`hanshow`
      * 
      */
     public Optional<Output<Integer>> vlanId() {
@@ -169,7 +169,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cacert only if `type`==`imagotag`
+         * @param cacert Only if `type`==`imagotag`
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cacert only if `type`==`imagotag`
+         * @param cacert Only if `type`==`imagotag`
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param channel only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+         * @param channel Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param channel only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+         * @param channel Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled whether to enable any usb config
+         * @param enabled Whether to enable any usb config
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled whether to enable any usb config
+         * @param enabled Whether to enable any usb config
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param host only if `type`==`imagotag`
+         * @param host Only if `type`==`imagotag`
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param host only if `type`==`imagotag`
+         * @param host Only if `type`==`imagotag`
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port only if `type`==`imagotag`
+         * @param port Only if `type`==`imagotag`
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param port only if `type`==`imagotag`
+         * @param port Only if `type`==`imagotag`
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param verifyCert only if `type`==`imagotag`, whether to turn on SSL verification
+         * @param verifyCert Only if `type`==`imagotag`, whether to turn on SSL verification
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param verifyCert only if `type`==`imagotag`, whether to turn on SSL verification
+         * @param verifyCert Only if `type`==`imagotag`, whether to turn on SSL verification
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vlanId only if `type`==`solum` or `type`==`hanshow`
+         * @param vlanId Only if `type`==`solum` or `type`==`hanshow`
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class DeviceprofileApUsbConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vlanId only if `type`==`solum` or `type`==`hanshow`
+         * @param vlanId Only if `type`==`solum` or `type`==`hanshow`
          * 
          * @return builder
          * 

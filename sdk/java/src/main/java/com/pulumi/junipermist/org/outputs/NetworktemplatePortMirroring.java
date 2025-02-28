@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplatePortMirroring {
     /**
-     * @return at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
      * 
      */
     private @Nullable List<String> inputNetworksIngresses;
     /**
-     * @return at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
      * 
      */
     private @Nullable List<String> inputPortIdsEgresses;
     /**
-     * @return at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
      * 
      */
     private @Nullable List<String> inputPortIdsIngresses;
     /**
-     * @return exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
      * 
      */
     private @Nullable String outputNetwork;
     /**
-     * @return exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
      * 
      */
     private @Nullable String outputPortId;
 
     private NetworktemplatePortMirroring() {}
     /**
-     * @return at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
      * 
      */
     public List<String> inputNetworksIngresses() {
         return this.inputNetworksIngresses == null ? List.of() : this.inputNetworksIngresses;
     }
     /**
-     * @return at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
      * 
      */
     public List<String> inputPortIdsEgresses() {
         return this.inputPortIdsEgresses == null ? List.of() : this.inputPortIdsEgresses;
     }
     /**
-     * @return at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
+     * @return At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or ` input_networks_ingress  ` should be specified
      * 
      */
     public List<String> inputPortIdsIngresses() {
         return this.inputPortIdsIngresses == null ? List.of() : this.inputPortIdsIngresses;
     }
     /**
-     * @return exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<String> outputNetwork() {
         return Optional.ofNullable(this.outputNetwork);
     }
     /**
-     * @return exaclty one of the `output_port_id` or `output_network` should be provided
+     * @return Exaclty one of the `output_port_id` or `output_network` should be provided
      * 
      */
     public Optional<String> outputPortId() {

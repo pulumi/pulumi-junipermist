@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _mxtunnelIds;
 
         /// <summary>
-        /// list of Mist Tunnels
+        /// List of Mist Tunnels
         /// </summary>
         public InputList<string> MxtunnelIds
         {
@@ -25,13 +25,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+        /// Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
         /// </summary>
         [Input("useMxtunnel")]
         public Input<bool>? UseMxtunnel { get; set; }
 
         /// <summary>
-        /// whether to use wxtunnel for mgmt connectivity
+        /// Whether to use wxtunnel for mgmt connectivity
         /// </summary>
         [Input("useWxtunnel")]
         public Input<bool>? UseWxtunnel { get; set; }

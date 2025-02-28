@@ -69,7 +69,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string?> DefaultRole { get; private set; } = null!;
 
         /// <summary>
-        /// random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+        /// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
         /// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
         /// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         /// </summary>
@@ -107,7 +107,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-        /// name
+        /// Name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -125,8 +125,8 @@ namespace Pulumi.JuniperMist.Org
         /// custom role attribute parsing scheme. Supported Role Parsing Schemes
         /// &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
         /// Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        /// entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        /// “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+        /// “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Output("roleAttrExtraction")]
         public Output<string?> RoleAttrExtraction { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> Issuer { get; set; } = null!;
 
         /// <summary>
-        /// name
+        /// Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -247,8 +247,8 @@ namespace Pulumi.JuniperMist.Org
         /// custom role attribute parsing scheme. Supported Role Parsing Schemes
         /// &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
         /// Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        /// entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        /// “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+        /// “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Input("roleAttrExtraction")]
         public Input<string>? RoleAttrExtraction { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? DefaultRole { get; set; }
 
         /// <summary>
-        /// random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+        /// Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
         /// `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
         /// `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
         /// </summary>
@@ -320,7 +320,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Issuer { get; set; }
 
         /// <summary>
-        /// name
+        /// Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -338,8 +338,8 @@ namespace Pulumi.JuniperMist.Org
         /// custom role attribute parsing scheme. Supported Role Parsing Schemes
         /// &lt;table&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Scheme&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;`cn`&lt;/td&gt;&lt;td&gt;&lt;ul&gt;&lt;li&gt;The expected role attribute format in SAML
         /// Assertion is “CN=cn,OU=ou1,OU=ou2,…”&lt;/li&gt;&lt;li&gt;CN (the key) is case insensitive and exactly 1 CN is expected (or the
-        /// entire entry will be ignored)&lt;/li&gt;&lt;li&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-        /// “cn”&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+        /// entire entry will be ignored)&lt;/li&gt;&lt;/ul&gt;E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+        /// “cn”&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
         /// </summary>
         [Input("roleAttrExtraction")]
         public Input<string>? RoleAttrExtraction { get; set; }

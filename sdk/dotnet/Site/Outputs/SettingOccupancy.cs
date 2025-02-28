@@ -14,23 +14,23 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingOccupancy
     {
         /// <summary>
-        /// indicate whether named BLE assets should be included in the zone occupancy calculation
+        /// Indicate whether named BLE assets should be included in the zone occupancy calculation
         /// </summary>
         public readonly bool? AssetsEnabled;
         /// <summary>
-        /// indicate whether connected WiFi clients should be included in the zone occupancy calculation
+        /// Indicate whether connected Wi-Fi clients should be included in the zone occupancy calculation
         /// </summary>
         public readonly bool? ClientsEnabled;
         /// <summary>
-        /// minimum duration
+        /// Minimum duration
         /// </summary>
         public readonly int? MinDuration;
         /// <summary>
-        /// indicate whether SDK clients should be included in the zone occupancy calculation
+        /// Indicate whether SDK clients should be included in the zone occupancy calculation
         /// </summary>
         public readonly bool? SdkclientsEnabled;
         /// <summary>
-        /// indicate whether unconnected WiFi clients should be included in the zone occupancy calculation
+        /// Indicate whether unconnected Wi-Fi clients should be included in the zone occupancy calculation
         /// </summary>
         public readonly bool? UnconnectedClientsEnabled;
 

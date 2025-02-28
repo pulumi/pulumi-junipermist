@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanCoaServer {
     /**
-     * @return whether to disable Event-Timestamp Check
+     * @return Whether to disable Event-Timestamp Check
      * 
      */
     private Boolean disableEventTimestampCheck;
@@ -24,7 +24,7 @@ public final class GetWlansOrgWlanCoaServer {
 
     private GetWlansOrgWlanCoaServer() {}
     /**
-     * @return whether to disable Event-Timestamp Check
+     * @return Whether to disable Event-Timestamp Check
      * 
      */
     public Boolean disableEventTimestampCheck() {

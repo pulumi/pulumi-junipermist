@@ -292,28 +292,28 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return this.ntpOverride;
     }
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
     /**
-     * @return list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     public Output<Optional<List<String>>> ntpServers() {
         return Codegen.optional(this.ntpServers);
     }
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      * 
      */
     @Export(name="oobIpConfig", refs={GatewaytemplateOobIpConfig.class}, tree="[0]")
     private Output<GatewaytemplateOobIpConfig> oobIpConfig;
 
     /**
-     * @return out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band (vme/em0/fxp0) IP config
      * 
      */
     public Output<GatewaytemplateOobIpConfig> oobIpConfig() {
@@ -356,14 +356,14 @@ public class Gatewaytemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portConfig);
     }
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routerId;
 
     /**
-     * @return auto assigned if not set
+     * @return Auto assigned if not set
      * 
      */
     public Output<Optional<String>> routerId() {

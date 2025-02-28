@@ -14,30 +14,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApIpConfig {
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     private @Nullable List<String> dns;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private @Nullable List<String> dnsSuffixes;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private @Nullable String gateway;
     private @Nullable String gateway6;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private @Nullable String ip;
     private @Nullable String ip6;
     private @Nullable Integer mtu;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private @Nullable String netmask;
@@ -53,28 +53,28 @@ public final class ApIpConfig {
      */
     private @Nullable String type6;
     /**
-     * @return management vlan id, default is 1 (untagged)
+     * @return Management VLAN id, default is 1 (untagged)
      * 
      */
     private @Nullable Integer vlanId;
 
     private ApIpConfig() {}
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public List<String> dns() {
         return this.dns == null ? List.of() : this.dns;
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public List<String> dnsSuffixes() {
         return this.dnsSuffixes == null ? List.of() : this.dnsSuffixes;
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<String> gateway() {
@@ -84,7 +84,7 @@ public final class ApIpConfig {
         return Optional.ofNullable(this.gateway6);
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<String> ip() {
@@ -97,7 +97,7 @@ public final class ApIpConfig {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<String> netmask() {
@@ -121,7 +121,7 @@ public final class ApIpConfig {
         return Optional.ofNullable(this.type6);
     }
     /**
-     * @return management vlan id, default is 1 (untagged)
+     * @return Management VLAN id, default is 1 (untagged)
      * 
      */
     public Optional<Integer> vlanId() {

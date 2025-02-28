@@ -18,42 +18,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingGatewayMgmt {
     /**
-     * @return for SSR only, as direct root access is not allowed
+     * @return For SSR only, as direct root access is not allowed
      * 
      */
     private @Nullable List<String> adminSshkeys;
     private @Nullable SettingGatewayMgmtAppProbing appProbing;
     /**
-     * @return consumes uplink bandwidth, requires WA license
+     * @return Consumes uplink bandwidth, requires WA license
      * 
      */
     private @Nullable Boolean appUsage;
     private @Nullable SettingGatewayMgmtAutoSignatureUpdate autoSignatureUpdate;
     /**
-     * @return he rollback timer for commit confirmed
+     * @return Rollback timer for commit confirmed
      * 
      */
     private @Nullable Integer configRevertTimer;
     /**
-     * @return for both SSR and SRX disable console port
+     * @return For both SSR and SRX disable console port
      * 
      */
     private @Nullable Boolean disableConsole;
     /**
-     * @return for both SSR and SRX disable management interface
+     * @return For both SSR and SRX disable management interface
      * 
      */
     private @Nullable Boolean disableOob;
     private @Nullable List<String> probeHosts;
     /**
-     * @return restrict inbound-traffic to host
+     * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
      * 
      */
     private @Nullable SettingGatewayMgmtProtectRe protectRe;
     /**
-     * @return for SRX only
+     * @return For SRX only
      * 
      */
     private @Nullable String rootPassword;
@@ -62,7 +62,7 @@ public final class SettingGatewayMgmt {
 
     private SettingGatewayMgmt() {}
     /**
-     * @return for SSR only, as direct root access is not allowed
+     * @return For SSR only, as direct root access is not allowed
      * 
      */
     public List<String> adminSshkeys() {
@@ -72,7 +72,7 @@ public final class SettingGatewayMgmt {
         return Optional.ofNullable(this.appProbing);
     }
     /**
-     * @return consumes uplink bandwidth, requires WA license
+     * @return Consumes uplink bandwidth, requires WA license
      * 
      */
     public Optional<Boolean> appUsage() {
@@ -82,21 +82,21 @@ public final class SettingGatewayMgmt {
         return Optional.ofNullable(this.autoSignatureUpdate);
     }
     /**
-     * @return he rollback timer for commit confirmed
+     * @return Rollback timer for commit confirmed
      * 
      */
     public Optional<Integer> configRevertTimer() {
         return Optional.ofNullable(this.configRevertTimer);
     }
     /**
-     * @return for both SSR and SRX disable console port
+     * @return For both SSR and SRX disable console port
      * 
      */
     public Optional<Boolean> disableConsole() {
         return Optional.ofNullable(this.disableConsole);
     }
     /**
-     * @return for both SSR and SRX disable management interface
+     * @return For both SSR and SRX disable management interface
      * 
      */
     public Optional<Boolean> disableOob() {
@@ -106,7 +106,7 @@ public final class SettingGatewayMgmt {
         return this.probeHosts == null ? List.of() : this.probeHosts;
     }
     /**
-     * @return restrict inbound-traffic to host
+     * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -115,7 +115,7 @@ public final class SettingGatewayMgmt {
         return Optional.ofNullable(this.protectRe);
     }
     /**
-     * @return for SRX only
+     * @return For SRX only
      * 
      */
     public Optional<String> rootPassword() {

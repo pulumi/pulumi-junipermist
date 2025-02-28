@@ -18,14 +18,14 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingMgmtArgs Empty = new SettingMgmtArgs();
 
     /**
-     * list of Mist Tunnels
+     * List of Mist Tunnels
      * 
      */
     @Import(name="mxtunnelIds")
     private @Nullable Output<List<String>> mxtunnelIds;
 
     /**
-     * @return list of Mist Tunnels
+     * @return List of Mist Tunnels
      * 
      */
     public Optional<Output<List<String>>> mxtunnelIds() {
@@ -33,14 +33,14 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+     * Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
      * 
      */
     @Import(name="useMxtunnel")
     private @Nullable Output<Boolean> useMxtunnel;
 
     /**
-     * @return whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+     * @return Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
      * 
      */
     public Optional<Output<Boolean>> useMxtunnel() {
@@ -48,14 +48,14 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to use wxtunnel for mgmt connectivity
+     * Whether to use wxtunnel for mgmt connectivity
      * 
      */
     @Import(name="useWxtunnel")
     private @Nullable Output<Boolean> useWxtunnel;
 
     /**
-     * @return whether to use wxtunnel for mgmt connectivity
+     * @return Whether to use wxtunnel for mgmt connectivity
      * 
      */
     public Optional<Output<Boolean>> useWxtunnel() {
@@ -89,7 +89,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds list of Mist Tunnels
+         * @param mxtunnelIds List of Mist Tunnels
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds list of Mist Tunnels
+         * @param mxtunnelIds List of Mist Tunnels
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mxtunnelIds list of Mist Tunnels
+         * @param mxtunnelIds List of Mist Tunnels
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMxtunnel whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+         * @param useMxtunnel Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMxtunnel whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+         * @param useMxtunnel Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useWxtunnel whether to use wxtunnel for mgmt connectivity
+         * @param useWxtunnel Whether to use wxtunnel for mgmt connectivity
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class SettingMgmtArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useWxtunnel whether to use wxtunnel for mgmt connectivity
+         * @param useWxtunnel Whether to use wxtunnel for mgmt connectivity
          * 
          * @return builder
          * 

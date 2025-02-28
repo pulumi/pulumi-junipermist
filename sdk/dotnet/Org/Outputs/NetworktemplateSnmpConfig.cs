@@ -17,9 +17,6 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? Contact;
         public readonly string? Description;
         public readonly bool? Enabled;
-        /// <summary>
-        /// enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-        /// </summary>
         public readonly string? EngineId;
         public readonly string? Location;
         public readonly string? Name;

@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.junipermist.Utilities;
 import com.pulumi.junipermist.org.ServicepolicyArgs;
 import com.pulumi.junipermist.org.inputs.ServicepolicyState;
+import com.pulumi.junipermist.org.outputs.ServicepolicyAntivirus;
 import com.pulumi.junipermist.org.outputs.ServicepolicyAppqoe;
 import com.pulumi.junipermist.org.outputs.ServicepolicyEwf;
 import com.pulumi.junipermist.org.outputs.ServicepolicyIdp;
+import com.pulumi.junipermist.org.outputs.ServicepolicySslProxy;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -26,7 +28,7 @@ import javax.annotation.Nullable;
  * * the Gateway configuration (`mist_device_gateway.service_policies`)
  * * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
  * * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
- *   They can be used to manage common policies betweeen multiples configurations
+ *   They can be used to manage common policies between multiples configurations
  * 
  * ## Example Usage
  * 
@@ -101,6 +103,20 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
         return this.action;
     }
     /**
+     * For SRX-only
+     * 
+     */
+    @Export(name="antivirus", refs={ServicepolicyAntivirus.class}, tree="[0]")
+    private Output</* @Nullable */ ServicepolicyAntivirus> antivirus;
+
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Output<Optional<ServicepolicyAntivirus>> antivirus() {
+        return Codegen.optional(this.antivirus);
+    }
+    /**
      * For SRX Only
      * 
      */
@@ -131,14 +147,14 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="localRouting", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> localRouting;
+    private Output</* @Nullable */ Boolean> localRouting;
 
     /**
      * @return access within the same VRF
      * 
      */
-    public Output<Boolean> localRouting() {
-        return this.localRouting;
+    public Output<Optional<Boolean>> localRouting() {
+        return Codegen.optional(this.localRouting);
     }
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -153,16 +169,14 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
      * 
      */
     @Export(name="pathPreference", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pathPreference;
 
     /**
-     * @return by default, we derive all paths available and use them
-     * optionally, you can customize by using `path_preference`
+     * @return By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
      * 
      */
     public Output<Optional<String>> pathPreference() {
@@ -173,6 +187,20 @@ public class Servicepolicy extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<String>>> services() {
         return Codegen.optional(this.services);
+    }
+    /**
+     * For SRX-only
+     * 
+     */
+    @Export(name="sslProxy", refs={ServicepolicySslProxy.class}, tree="[0]")
+    private Output</* @Nullable */ ServicepolicySslProxy> sslProxy;
+
+    /**
+     * @return For SRX-only
+     * 
+     */
+    public Output<Optional<ServicepolicySslProxy>> sslProxy() {
+        return Codegen.optional(this.sslProxy);
     }
     @Export(name="tenants", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tenants;

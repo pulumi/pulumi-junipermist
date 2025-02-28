@@ -32,6 +32,7 @@ class ApArgs:
                  disable_eth3: Optional[pulumi.Input[bool]] = None,
                  disable_module: Optional[pulumi.Input[bool]] = None,
                  esl_config: Optional[pulumi.Input['ApEslConfigArgs']] = None,
+                 flow_control: Optional[pulumi.Input[bool]] = None,
                  height: Optional[pulumi.Input[float]] = None,
                  ip_config: Optional[pulumi.Input['ApIpConfigArgs']] = None,
                  led: Optional[pulumi.Input['ApLedArgs']] = None,
@@ -54,26 +55,28 @@ class ApArgs:
         The set of arguments for constructing a Ap resource.
         :param pulumi.Input['ApAeroscoutArgs'] aeroscout: Aeroscout AP settings
         :param pulumi.Input['ApBleConfigArgs'] ble_config: BLE AP settings
-        :param pulumi.Input[bool] disable_eth1: whether to disable eth1 port
-        :param pulumi.Input[bool] disable_eth2: whether to disable eth2 port
-        :param pulumi.Input[bool] disable_eth3: whether to disable eth3 port
-        :param pulumi.Input[bool] disable_module: whether to disable module port
-        :param pulumi.Input[float] height: height, in meters, optional
+        :param pulumi.Input[bool] disable_eth1: Whether to disable eth1 port
+        :param pulumi.Input[bool] disable_eth2: Whether to disable eth2 port
+        :param pulumi.Input[bool] disable_eth3: Whether to disable eth3 port
+        :param pulumi.Input[bool] disable_module: Whether to disable module port
+        :param pulumi.Input[bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
+        :param pulumi.Input[float] height: Height, in meters, optional
         :param pulumi.Input['ApIpConfigArgs'] ip_config: IP AP settings
         :param pulumi.Input['ApLedArgs'] led: LED AP settings
-        :param pulumi.Input[bool] locked: whether this map is considered locked down
-        :param pulumi.Input[str] map_id: map where the device belongs to
+        :param pulumi.Input[bool] locked: Whether this map is considered locked down
+        :param pulumi.Input[str] map_id: Map where the device belongs to
         :param pulumi.Input['ApMeshArgs'] mesh: Mesh AP settings
-        :param pulumi.Input[str] notes: any notes about this AP
-        :param pulumi.Input[int] orientation: orientation, 0-359, in degrees, up is 0, right is 90.
-        :param pulumi.Input[bool] poe_passthrough: whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: power related configs
+        :param pulumi.Input[str] notes: Any notes about this AP
+        :param pulumi.Input[int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
-        :param pulumi.Input['ApUsbConfigArgs'] usb_config: USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-               to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input['ApUsbConfigArgs'] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+               moved to ESL Config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "site_id", site_id)
@@ -95,6 +98,8 @@ class ApArgs:
             pulumi.set(__self__, "disable_module", disable_module)
         if esl_config is not None:
             pulumi.set(__self__, "esl_config", esl_config)
+        if flow_control is not None:
+            pulumi.set(__self__, "flow_control", flow_control)
         if height is not None:
             pulumi.set(__self__, "height", height)
         if ip_config is not None:
@@ -196,7 +201,7 @@ class ApArgs:
     @pulumi.getter(name="disableEth1")
     def disable_eth1(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable eth1 port
+        Whether to disable eth1 port
         """
         return pulumi.get(self, "disable_eth1")
 
@@ -208,7 +213,7 @@ class ApArgs:
     @pulumi.getter(name="disableEth2")
     def disable_eth2(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable eth2 port
+        Whether to disable eth2 port
         """
         return pulumi.get(self, "disable_eth2")
 
@@ -220,7 +225,7 @@ class ApArgs:
     @pulumi.getter(name="disableEth3")
     def disable_eth3(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable eth3 port
+        Whether to disable eth3 port
         """
         return pulumi.get(self, "disable_eth3")
 
@@ -232,7 +237,7 @@ class ApArgs:
     @pulumi.getter(name="disableModule")
     def disable_module(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable module port
+        Whether to disable module port
         """
         return pulumi.get(self, "disable_module")
 
@@ -250,10 +255,22 @@ class ApArgs:
         pulumi.set(self, "esl_config", value)
 
     @property
+    @pulumi.getter(name="flowControl")
+    def flow_control(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For some AP models, flow_control can be enabled to address some switch compatibility issue
+        """
+        return pulumi.get(self, "flow_control")
+
+    @flow_control.setter
+    def flow_control(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "flow_control", value)
+
+    @property
     @pulumi.getter
     def height(self) -> Optional[pulumi.Input[float]]:
         """
-        height, in meters, optional
+        Height, in meters, optional
         """
         return pulumi.get(self, "height")
 
@@ -289,7 +306,7 @@ class ApArgs:
     @pulumi.getter
     def locked(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether this map is considered locked down
+        Whether this map is considered locked down
         """
         return pulumi.get(self, "locked")
 
@@ -301,7 +318,7 @@ class ApArgs:
     @pulumi.getter(name="mapId")
     def map_id(self) -> Optional[pulumi.Input[str]]:
         """
-        map where the device belongs to
+        Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
@@ -334,7 +351,7 @@ class ApArgs:
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[str]]:
         """
-        any notes about this AP
+        Any notes about this AP
         """
         return pulumi.get(self, "notes")
 
@@ -355,7 +372,7 @@ class ApArgs:
     @pulumi.getter
     def orientation(self) -> Optional[pulumi.Input[int]]:
         """
-        orientation, 0-359, in degrees, up is 0, right is 90.
+        Orientation, 0-359, in degrees, up is 0, right is 90.
         """
         return pulumi.get(self, "orientation")
 
@@ -367,7 +384,7 @@ class ApArgs:
     @pulumi.getter(name="poePassthrough")
     def poe_passthrough(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
 
@@ -379,7 +396,7 @@ class ApArgs:
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> Optional[pulumi.Input['ApPwrConfigArgs']]:
         """
-        power related configs
+        Power related configs
         """
         return pulumi.get(self, "pwr_config")
 
@@ -402,6 +419,9 @@ class ApArgs:
     @property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> Optional[pulumi.Input['ApUplinkPortConfigArgs']]:
+        """
+        AP Uplink port configuration
+        """
         return pulumi.get(self, "uplink_port_config")
 
     @uplink_port_config.setter
@@ -412,8 +432,8 @@ class ApArgs:
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> Optional[pulumi.Input['ApUsbConfigArgs']]:
         """
-        USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-        to ESL Config.
+        USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        moved to ESL Config.
         """
         return pulumi.get(self, "usb_config")
 
@@ -425,7 +445,7 @@ class ApArgs:
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -437,7 +457,7 @@ class ApArgs:
     @pulumi.getter
     def x(self) -> Optional[pulumi.Input[float]]:
         """
-        x in pixel
+        X in pixel
         """
         return pulumi.get(self, "x")
 
@@ -449,7 +469,7 @@ class ApArgs:
     @pulumi.getter
     def y(self) -> Optional[pulumi.Input[float]]:
         """
-        y in pixel
+        Y in pixel
         """
         return pulumi.get(self, "y")
 
@@ -471,6 +491,7 @@ class _ApState:
                  disable_eth3: Optional[pulumi.Input[bool]] = None,
                  disable_module: Optional[pulumi.Input[bool]] = None,
                  esl_config: Optional[pulumi.Input['ApEslConfigArgs']] = None,
+                 flow_control: Optional[pulumi.Input[bool]] = None,
                  height: Optional[pulumi.Input[float]] = None,
                  image1_url: Optional[pulumi.Input[str]] = None,
                  image2_url: Optional[pulumi.Input[str]] = None,
@@ -502,30 +523,32 @@ class _ApState:
         Input properties used for looking up and filtering Ap resources.
         :param pulumi.Input['ApAeroscoutArgs'] aeroscout: Aeroscout AP settings
         :param pulumi.Input['ApBleConfigArgs'] ble_config: BLE AP settings
-        :param pulumi.Input[bool] disable_eth1: whether to disable eth1 port
-        :param pulumi.Input[bool] disable_eth2: whether to disable eth2 port
-        :param pulumi.Input[bool] disable_eth3: whether to disable eth3 port
-        :param pulumi.Input[bool] disable_module: whether to disable module port
-        :param pulumi.Input[float] height: height, in meters, optional
+        :param pulumi.Input[bool] disable_eth1: Whether to disable eth1 port
+        :param pulumi.Input[bool] disable_eth2: Whether to disable eth2 port
+        :param pulumi.Input[bool] disable_eth3: Whether to disable eth3 port
+        :param pulumi.Input[bool] disable_module: Whether to disable module port
+        :param pulumi.Input[bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
+        :param pulumi.Input[float] height: Height, in meters, optional
         :param pulumi.Input['ApIpConfigArgs'] ip_config: IP AP settings
         :param pulumi.Input['ApLedArgs'] led: LED AP settings
-        :param pulumi.Input[bool] locked: whether this map is considered locked down
-        :param pulumi.Input[str] mac: device MAC address
-        :param pulumi.Input[str] map_id: map where the device belongs to
+        :param pulumi.Input[bool] locked: Whether this map is considered locked down
+        :param pulumi.Input[str] mac: Device MAC address
+        :param pulumi.Input[str] map_id: Map where the device belongs to
         :param pulumi.Input['ApMeshArgs'] mesh: Mesh AP settings
-        :param pulumi.Input[str] model: device Model
-        :param pulumi.Input[str] notes: any notes about this AP
-        :param pulumi.Input[int] orientation: orientation, 0-359, in degrees, up is 0, right is 90.
-        :param pulumi.Input[bool] poe_passthrough: whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: power related configs
+        :param pulumi.Input[str] model: Device Model
+        :param pulumi.Input[str] notes: Any notes about this AP
+        :param pulumi.Input[int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input['ApPwrConfigArgs'] pwr_config: Power related configs
         :param pulumi.Input['ApRadioConfigArgs'] radio_config: Radio AP settings
-        :param pulumi.Input[str] serial: device Serial
+        :param pulumi.Input[str] serial: Device Serial
         :param pulumi.Input[str] type: Device Type. enum: `ap`
-        :param pulumi.Input['ApUsbConfigArgs'] usb_config: USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-               to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input['ApUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input['ApUsbConfigArgs'] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+               moved to ESL Config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         if aeroscout is not None:
             pulumi.set(__self__, "aeroscout", aeroscout)
@@ -547,6 +570,8 @@ class _ApState:
             pulumi.set(__self__, "disable_module", disable_module)
         if esl_config is not None:
             pulumi.set(__self__, "esl_config", esl_config)
+        if flow_control is not None:
+            pulumi.set(__self__, "flow_control", flow_control)
         if height is not None:
             pulumi.set(__self__, "height", height)
         if image1_url is not None:
@@ -657,7 +682,7 @@ class _ApState:
     @pulumi.getter(name="disableEth1")
     def disable_eth1(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable eth1 port
+        Whether to disable eth1 port
         """
         return pulumi.get(self, "disable_eth1")
 
@@ -669,7 +694,7 @@ class _ApState:
     @pulumi.getter(name="disableEth2")
     def disable_eth2(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable eth2 port
+        Whether to disable eth2 port
         """
         return pulumi.get(self, "disable_eth2")
 
@@ -681,7 +706,7 @@ class _ApState:
     @pulumi.getter(name="disableEth3")
     def disable_eth3(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable eth3 port
+        Whether to disable eth3 port
         """
         return pulumi.get(self, "disable_eth3")
 
@@ -693,7 +718,7 @@ class _ApState:
     @pulumi.getter(name="disableModule")
     def disable_module(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable module port
+        Whether to disable module port
         """
         return pulumi.get(self, "disable_module")
 
@@ -711,10 +736,22 @@ class _ApState:
         pulumi.set(self, "esl_config", value)
 
     @property
+    @pulumi.getter(name="flowControl")
+    def flow_control(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For some AP models, flow_control can be enabled to address some switch compatibility issue
+        """
+        return pulumi.get(self, "flow_control")
+
+    @flow_control.setter
+    def flow_control(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "flow_control", value)
+
+    @property
     @pulumi.getter
     def height(self) -> Optional[pulumi.Input[float]]:
         """
-        height, in meters, optional
+        Height, in meters, optional
         """
         return pulumi.get(self, "height")
 
@@ -777,7 +814,7 @@ class _ApState:
     @pulumi.getter
     def locked(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether this map is considered locked down
+        Whether this map is considered locked down
         """
         return pulumi.get(self, "locked")
 
@@ -789,7 +826,7 @@ class _ApState:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        device MAC address
+        Device MAC address
         """
         return pulumi.get(self, "mac")
 
@@ -801,7 +838,7 @@ class _ApState:
     @pulumi.getter(name="mapId")
     def map_id(self) -> Optional[pulumi.Input[str]]:
         """
-        map where the device belongs to
+        Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
@@ -825,7 +862,7 @@ class _ApState:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input[str]]:
         """
-        device Model
+        Device Model
         """
         return pulumi.get(self, "model")
 
@@ -846,7 +883,7 @@ class _ApState:
     @pulumi.getter
     def notes(self) -> Optional[pulumi.Input[str]]:
         """
-        any notes about this AP
+        Any notes about this AP
         """
         return pulumi.get(self, "notes")
 
@@ -876,7 +913,7 @@ class _ApState:
     @pulumi.getter
     def orientation(self) -> Optional[pulumi.Input[int]]:
         """
-        orientation, 0-359, in degrees, up is 0, right is 90.
+        Orientation, 0-359, in degrees, up is 0, right is 90.
         """
         return pulumi.get(self, "orientation")
 
@@ -888,7 +925,7 @@ class _ApState:
     @pulumi.getter(name="poePassthrough")
     def poe_passthrough(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
 
@@ -900,7 +937,7 @@ class _ApState:
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> Optional[pulumi.Input['ApPwrConfigArgs']]:
         """
-        power related configs
+        Power related configs
         """
         return pulumi.get(self, "pwr_config")
 
@@ -924,7 +961,7 @@ class _ApState:
     @pulumi.getter
     def serial(self) -> Optional[pulumi.Input[str]]:
         """
-        device Serial
+        Device Serial
         """
         return pulumi.get(self, "serial")
 
@@ -956,6 +993,9 @@ class _ApState:
     @property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> Optional[pulumi.Input['ApUplinkPortConfigArgs']]:
+        """
+        AP Uplink port configuration
+        """
         return pulumi.get(self, "uplink_port_config")
 
     @uplink_port_config.setter
@@ -966,8 +1006,8 @@ class _ApState:
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> Optional[pulumi.Input['ApUsbConfigArgs']]:
         """
-        USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-        to ESL Config.
+        USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        moved to ESL Config.
         """
         return pulumi.get(self, "usb_config")
 
@@ -979,7 +1019,7 @@ class _ApState:
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -991,7 +1031,7 @@ class _ApState:
     @pulumi.getter
     def x(self) -> Optional[pulumi.Input[float]]:
         """
-        x in pixel
+        X in pixel
         """
         return pulumi.get(self, "x")
 
@@ -1003,7 +1043,7 @@ class _ApState:
     @pulumi.getter
     def y(self) -> Optional[pulumi.Input[float]]:
         """
-        y in pixel
+        Y in pixel
         """
         return pulumi.get(self, "y")
 
@@ -1027,6 +1067,7 @@ class Ap(pulumi.CustomResource):
                  disable_eth3: Optional[pulumi.Input[bool]] = None,
                  disable_module: Optional[pulumi.Input[bool]] = None,
                  esl_config: Optional[pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
+                 flow_control: Optional[pulumi.Input[bool]] = None,
                  height: Optional[pulumi.Input[float]] = None,
                  ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
@@ -1066,26 +1107,28 @@ class Ap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']] aeroscout: Aeroscout AP settings
         :param pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']] ble_config: BLE AP settings
-        :param pulumi.Input[bool] disable_eth1: whether to disable eth1 port
-        :param pulumi.Input[bool] disable_eth2: whether to disable eth2 port
-        :param pulumi.Input[bool] disable_eth3: whether to disable eth3 port
-        :param pulumi.Input[bool] disable_module: whether to disable module port
-        :param pulumi.Input[float] height: height, in meters, optional
+        :param pulumi.Input[bool] disable_eth1: Whether to disable eth1 port
+        :param pulumi.Input[bool] disable_eth2: Whether to disable eth2 port
+        :param pulumi.Input[bool] disable_eth3: Whether to disable eth3 port
+        :param pulumi.Input[bool] disable_module: Whether to disable module port
+        :param pulumi.Input[bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
+        :param pulumi.Input[float] height: Height, in meters, optional
         :param pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']] ip_config: IP AP settings
         :param pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']] led: LED AP settings
-        :param pulumi.Input[bool] locked: whether this map is considered locked down
-        :param pulumi.Input[str] map_id: map where the device belongs to
+        :param pulumi.Input[bool] locked: Whether this map is considered locked down
+        :param pulumi.Input[str] map_id: Map where the device belongs to
         :param pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']] mesh: Mesh AP settings
-        :param pulumi.Input[str] notes: any notes about this AP
-        :param pulumi.Input[int] orientation: orientation, 0-359, in degrees, up is 0, right is 90.
-        :param pulumi.Input[bool] poe_passthrough: whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: power related configs
+        :param pulumi.Input[str] notes: Any notes about this AP
+        :param pulumi.Input[int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
-        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-               to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+               moved to ESL Config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         ...
     @overload
@@ -1133,6 +1176,7 @@ class Ap(pulumi.CustomResource):
                  disable_eth3: Optional[pulumi.Input[bool]] = None,
                  disable_module: Optional[pulumi.Input[bool]] = None,
                  esl_config: Optional[pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
+                 flow_control: Optional[pulumi.Input[bool]] = None,
                  height: Optional[pulumi.Input[float]] = None,
                  ip_config: Optional[pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']]] = None,
                  led: Optional[pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']]] = None,
@@ -1173,6 +1217,7 @@ class Ap(pulumi.CustomResource):
             __props__.__dict__["disable_eth3"] = disable_eth3
             __props__.__dict__["disable_module"] = disable_module
             __props__.__dict__["esl_config"] = esl_config
+            __props__.__dict__["flow_control"] = flow_control
             __props__.__dict__["height"] = height
             __props__.__dict__["ip_config"] = ip_config
             __props__.__dict__["led"] = led
@@ -1222,6 +1267,7 @@ class Ap(pulumi.CustomResource):
             disable_eth3: Optional[pulumi.Input[bool]] = None,
             disable_module: Optional[pulumi.Input[bool]] = None,
             esl_config: Optional[pulumi.Input[Union['ApEslConfigArgs', 'ApEslConfigArgsDict']]] = None,
+            flow_control: Optional[pulumi.Input[bool]] = None,
             height: Optional[pulumi.Input[float]] = None,
             image1_url: Optional[pulumi.Input[str]] = None,
             image2_url: Optional[pulumi.Input[str]] = None,
@@ -1258,30 +1304,32 @@ class Ap(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ApAeroscoutArgs', 'ApAeroscoutArgsDict']] aeroscout: Aeroscout AP settings
         :param pulumi.Input[Union['ApBleConfigArgs', 'ApBleConfigArgsDict']] ble_config: BLE AP settings
-        :param pulumi.Input[bool] disable_eth1: whether to disable eth1 port
-        :param pulumi.Input[bool] disable_eth2: whether to disable eth2 port
-        :param pulumi.Input[bool] disable_eth3: whether to disable eth3 port
-        :param pulumi.Input[bool] disable_module: whether to disable module port
-        :param pulumi.Input[float] height: height, in meters, optional
+        :param pulumi.Input[bool] disable_eth1: Whether to disable eth1 port
+        :param pulumi.Input[bool] disable_eth2: Whether to disable eth2 port
+        :param pulumi.Input[bool] disable_eth3: Whether to disable eth3 port
+        :param pulumi.Input[bool] disable_module: Whether to disable module port
+        :param pulumi.Input[bool] flow_control: For some AP models, flow_control can be enabled to address some switch compatibility issue
+        :param pulumi.Input[float] height: Height, in meters, optional
         :param pulumi.Input[Union['ApIpConfigArgs', 'ApIpConfigArgsDict']] ip_config: IP AP settings
         :param pulumi.Input[Union['ApLedArgs', 'ApLedArgsDict']] led: LED AP settings
-        :param pulumi.Input[bool] locked: whether this map is considered locked down
-        :param pulumi.Input[str] mac: device MAC address
-        :param pulumi.Input[str] map_id: map where the device belongs to
+        :param pulumi.Input[bool] locked: Whether this map is considered locked down
+        :param pulumi.Input[str] mac: Device MAC address
+        :param pulumi.Input[str] map_id: Map where the device belongs to
         :param pulumi.Input[Union['ApMeshArgs', 'ApMeshArgsDict']] mesh: Mesh AP settings
-        :param pulumi.Input[str] model: device Model
-        :param pulumi.Input[str] notes: any notes about this AP
-        :param pulumi.Input[int] orientation: orientation, 0-359, in degrees, up is 0, right is 90.
-        :param pulumi.Input[bool] poe_passthrough: whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
-        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: power related configs
+        :param pulumi.Input[str] model: Device Model
+        :param pulumi.Input[str] notes: Any notes about this AP
+        :param pulumi.Input[int] orientation: Orientation, 0-359, in degrees, up is 0, right is 90.
+        :param pulumi.Input[bool] poe_passthrough: Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        :param pulumi.Input[Union['ApPwrConfigArgs', 'ApPwrConfigArgsDict']] pwr_config: Power related configs
         :param pulumi.Input[Union['ApRadioConfigArgs', 'ApRadioConfigArgsDict']] radio_config: Radio AP settings
-        :param pulumi.Input[str] serial: device Serial
+        :param pulumi.Input[str] serial: Device Serial
         :param pulumi.Input[str] type: Device Type. enum: `ap`
-        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-               to ESL Config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input[Union['ApUplinkPortConfigArgs', 'ApUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
+        :param pulumi.Input[Union['ApUsbConfigArgs', 'ApUsbConfigArgsDict']] usb_config: USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+               moved to ESL Config.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1297,6 +1345,7 @@ class Ap(pulumi.CustomResource):
         __props__.__dict__["disable_eth3"] = disable_eth3
         __props__.__dict__["disable_module"] = disable_module
         __props__.__dict__["esl_config"] = esl_config
+        __props__.__dict__["flow_control"] = flow_control
         __props__.__dict__["height"] = height
         __props__.__dict__["image1_url"] = image1_url
         __props__.__dict__["image2_url"] = image2_url
@@ -1361,7 +1410,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="disableEth1")
     def disable_eth1(self) -> pulumi.Output[bool]:
         """
-        whether to disable eth1 port
+        Whether to disable eth1 port
         """
         return pulumi.get(self, "disable_eth1")
 
@@ -1369,7 +1418,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="disableEth2")
     def disable_eth2(self) -> pulumi.Output[bool]:
         """
-        whether to disable eth2 port
+        Whether to disable eth2 port
         """
         return pulumi.get(self, "disable_eth2")
 
@@ -1377,7 +1426,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="disableEth3")
     def disable_eth3(self) -> pulumi.Output[bool]:
         """
-        whether to disable eth3 port
+        Whether to disable eth3 port
         """
         return pulumi.get(self, "disable_eth3")
 
@@ -1385,7 +1434,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="disableModule")
     def disable_module(self) -> pulumi.Output[bool]:
         """
-        whether to disable module port
+        Whether to disable module port
         """
         return pulumi.get(self, "disable_module")
 
@@ -1395,10 +1444,18 @@ class Ap(pulumi.CustomResource):
         return pulumi.get(self, "esl_config")
 
     @property
+    @pulumi.getter(name="flowControl")
+    def flow_control(self) -> pulumi.Output[bool]:
+        """
+        For some AP models, flow_control can be enabled to address some switch compatibility issue
+        """
+        return pulumi.get(self, "flow_control")
+
+    @property
     @pulumi.getter
     def height(self) -> pulumi.Output[Optional[float]]:
         """
-        height, in meters, optional
+        Height, in meters, optional
         """
         return pulumi.get(self, "height")
 
@@ -1437,7 +1494,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def locked(self) -> pulumi.Output[Optional[bool]]:
         """
-        whether this map is considered locked down
+        Whether this map is considered locked down
         """
         return pulumi.get(self, "locked")
 
@@ -1445,7 +1502,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[str]:
         """
-        device MAC address
+        Device MAC address
         """
         return pulumi.get(self, "mac")
 
@@ -1453,7 +1510,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="mapId")
     def map_id(self) -> pulumi.Output[Optional[str]]:
         """
-        map where the device belongs to
+        Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
@@ -1469,7 +1526,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[str]:
         """
-        device Model
+        Device Model
         """
         return pulumi.get(self, "model")
 
@@ -1482,7 +1539,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def notes(self) -> pulumi.Output[Optional[str]]:
         """
-        any notes about this AP
+        Any notes about this AP
         """
         return pulumi.get(self, "notes")
 
@@ -1500,7 +1557,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def orientation(self) -> pulumi.Output[Optional[int]]:
         """
-        orientation, 0-359, in degrees, up is 0, right is 90.
+        Orientation, 0-359, in degrees, up is 0, right is 90.
         """
         return pulumi.get(self, "orientation")
 
@@ -1508,7 +1565,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="poePassthrough")
     def poe_passthrough(self) -> pulumi.Output[bool]:
         """
-        whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+        Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
         """
         return pulumi.get(self, "poe_passthrough")
 
@@ -1516,7 +1573,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter(name="pwrConfig")
     def pwr_config(self) -> pulumi.Output[Optional['outputs.ApPwrConfig']]:
         """
-        power related configs
+        Power related configs
         """
         return pulumi.get(self, "pwr_config")
 
@@ -1532,7 +1589,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def serial(self) -> pulumi.Output[str]:
         """
-        device Serial
+        Device Serial
         """
         return pulumi.get(self, "serial")
 
@@ -1552,14 +1609,17 @@ class Ap(pulumi.CustomResource):
     @property
     @pulumi.getter(name="uplinkPortConfig")
     def uplink_port_config(self) -> pulumi.Output[Optional['outputs.ApUplinkPortConfig']]:
+        """
+        AP Uplink port configuration
+        """
         return pulumi.get(self, "uplink_port_config")
 
     @property
     @pulumi.getter(name="usbConfig")
     def usb_config(self) -> pulumi.Output[Optional['outputs.ApUsbConfig']]:
         """
-        USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-        to ESL Config.
+        USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+        moved to ESL Config.
         """
         return pulumi.get(self, "usb_config")
 
@@ -1567,7 +1627,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -1575,7 +1635,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def x(self) -> pulumi.Output[Optional[float]]:
         """
-        x in pixel
+        X in pixel
         """
         return pulumi.get(self, "x")
 
@@ -1583,7 +1643,7 @@ class Ap(pulumi.CustomResource):
     @pulumi.getter
     def y(self) -> pulumi.Output[Optional[float]]:
         """
-        y in pixel
+        Y in pixel
         """
         return pulumi.get(self, "y")
 

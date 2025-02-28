@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// refer to group_name under access
+        /// Refer to group_name under access
         /// </summary>
         [Input("group")]
         public Input<string>? Group { get; set; }

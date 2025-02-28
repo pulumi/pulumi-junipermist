@@ -25,14 +25,14 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * for some vlans where we don&#39;t want this to run
+     * For some vlans where we don&#39;t want this to run
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return for some vlans where we don&#39;t want this to run
+     * @return For some vlans where we don&#39;t want this to run
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -86,7 +86,7 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param disabled for some vlans where we don&#39;t want this to run
+         * @param disabled For some vlans where we don&#39;t want this to run
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class SettingSyntheticTestVlanArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param disabled for some vlans where we don&#39;t want this to run
+         * @param disabled For some vlans where we don&#39;t want this to run
          * 
          * @return builder
          * 

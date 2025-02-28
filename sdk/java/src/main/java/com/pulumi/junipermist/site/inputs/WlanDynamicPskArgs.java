@@ -17,14 +17,14 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     public static final WlanDynamicPskArgs Empty = new WlanDynamicPskArgs();
 
     /**
-     * default PSK to use if cloud WLC is not available, 8-63 characters
+     * Default PSK to use if cloud WLC is not available, 8-63 characters
      * 
      */
     @Import(name="defaultPsk")
     private @Nullable Output<String> defaultPsk;
 
     /**
-     * @return default PSK to use if cloud WLC is not available, 8-63 characters
+     * @return Default PSK to use if cloud WLC is not available, 8-63 characters
      * 
      */
     public Optional<Output<String>> defaultPsk() {
@@ -46,14 +46,14 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+     * When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     @Import(name="forceLookup")
     private @Nullable Output<Boolean> forceLookup;
 
     /**
-     * @return when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+     * @return When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
      * 
      */
     public Optional<Output<Boolean>> forceLookup() {
@@ -104,7 +104,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultPsk default PSK to use if cloud WLC is not available, 8-63 characters
+         * @param defaultPsk Default PSK to use if cloud WLC is not available, 8-63 characters
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param defaultPsk default PSK to use if cloud WLC is not available, 8-63 characters
+         * @param defaultPsk Default PSK to use if cloud WLC is not available, 8-63 characters
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceLookup when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+         * @param forceLookup When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class WlanDynamicPskArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forceLookup when 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
+         * @param forceLookup When 11r is enabled, we&#39;ll try to use the cached PMK, this can be disabled. `false` means auto
          * 
          * @return builder
          * 

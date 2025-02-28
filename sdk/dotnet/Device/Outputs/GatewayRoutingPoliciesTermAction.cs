@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? Accept;
         public readonly ImmutableArray<string> AddCommunities;
         /// <summary>
-        /// for SSR, hub decides how VRF routes are leaked on spoke
+        /// For SSR, hub decides how VRF routes are leaked on spoke
         /// </summary>
         public readonly ImmutableArray<string> AddTargetVrfs;
         /// <summary>
@@ -24,24 +24,24 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Aggregates;
         /// <summary>
-        /// when used as export policy, optional
+        /// When used as export policy, optional
         /// </summary>
         public readonly ImmutableArray<string> Communities;
         /// <summary>
-        /// when used as export policy, optional. To exclude certain AS
+        /// When used as export policy, optional. To exclude certain AS
         /// </summary>
         public readonly ImmutableArray<string> ExcludeAsPaths;
         public readonly ImmutableArray<string> ExcludeCommunities;
         /// <summary>
-        /// when used as export policy, optional
+        /// When used as export policy, optional
         /// </summary>
         public readonly ImmutableArray<string> ExportCommunitites;
         /// <summary>
-        /// optional, for an import policy, local_preference can be changed
+        /// Optional, for an import policy, local_preference can be changed
         /// </summary>
         public readonly string? LocalPreference;
         /// <summary>
-        /// when used as export policy, optional. By default, the local AS will be prepended, to change it
+        /// When used as export policy, optional. By default, the local AS will be prepended, to change it
         /// </summary>
         public readonly ImmutableArray<string> PrependAsPaths;
 

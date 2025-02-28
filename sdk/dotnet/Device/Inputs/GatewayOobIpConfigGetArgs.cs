@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayOobIpConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
 
         /// <summary>
-        /// for HA Cluster, node1 can have different IP Config
+        /// For HA Cluster, node1 can have different IP Config
         /// </summary>
         [Input("node1")]
         public Input<Inputs.GatewayOobIpConfigNode1GetArgs>? Node1 { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// If supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         [Input("useMgmtVrf")]
         public Input<bool>? UseMgmtVrf { get; set; }
 
         /// <summary>
-        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }

@@ -49,11 +49,11 @@ public final class SwitchSnmpConfigV3ConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.targetParameters);
     }
 
-    @Import(name="usm")
-    private @Nullable Output<SwitchSnmpConfigV3ConfigUsmArgs> usm;
+    @Import(name="usms")
+    private @Nullable Output<List<SwitchSnmpConfigV3ConfigUsmArgs>> usms;
 
-    public Optional<Output<SwitchSnmpConfigV3ConfigUsmArgs>> usm() {
-        return Optional.ofNullable(this.usm);
+    public Optional<Output<List<SwitchSnmpConfigV3ConfigUsmArgs>>> usms() {
+        return Optional.ofNullable(this.usms);
     }
 
     @Import(name="vacm")
@@ -70,7 +70,7 @@ public final class SwitchSnmpConfigV3ConfigArgs extends com.pulumi.resources.Res
         this.notifyFilters = $.notifyFilters;
         this.targetAddresses = $.targetAddresses;
         this.targetParameters = $.targetParameters;
-        this.usm = $.usm;
+        this.usms = $.usms;
         this.vacm = $.vacm;
     }
 
@@ -144,13 +144,17 @@ public final class SwitchSnmpConfigV3ConfigArgs extends com.pulumi.resources.Res
             return targetParameters(List.of(targetParameters));
         }
 
-        public Builder usm(@Nullable Output<SwitchSnmpConfigV3ConfigUsmArgs> usm) {
-            $.usm = usm;
+        public Builder usms(@Nullable Output<List<SwitchSnmpConfigV3ConfigUsmArgs>> usms) {
+            $.usms = usms;
             return this;
         }
 
-        public Builder usm(SwitchSnmpConfigV3ConfigUsmArgs usm) {
-            return usm(Output.of(usm));
+        public Builder usms(List<SwitchSnmpConfigV3ConfigUsmArgs> usms) {
+            return usms(Output.of(usms));
+        }
+
+        public Builder usms(SwitchSnmpConfigV3ConfigUsmArgs... usms) {
+            return usms(List.of(usms));
         }
 
         public Builder vacm(@Nullable Output<SwitchSnmpConfigV3ConfigVacmArgs> vacm) {

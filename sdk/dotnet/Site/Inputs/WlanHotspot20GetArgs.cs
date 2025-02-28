@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// whether to enable hotspot 2.0 config
+        /// Whether to enable hotspot 2.0 config
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _operators;
 
         /// <summary>
-        /// list of operators to support
+        /// List of operators to support
         /// </summary>
         public InputList<string> Operators
         {
@@ -55,7 +55,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// venue name, default is site name
+        /// Venue name, default is site name
         /// </summary>
         [Input("venueName")]
         public Input<string>? VenueName { get; set; }

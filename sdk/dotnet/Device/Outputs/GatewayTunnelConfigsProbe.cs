@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayTunnelConfigsProbe
     {
         /// <summary>
-        /// how often to trigger the probe
+        /// How often to trigger the probe
         /// </summary>
         public readonly int? Interval;
         /// <summary>
-        /// number of consecutive misses before declaring the tunnel down
+        /// Number of consecutive misses before declaring the tunnel down
         /// </summary>
         public readonly int? Threshold;
         /// <summary>
-        /// time within which to complete the connectivity check
+        /// Time within which to complete the connectivity check
         /// </summary>
         public readonly int? Timeout;
         /// <summary>

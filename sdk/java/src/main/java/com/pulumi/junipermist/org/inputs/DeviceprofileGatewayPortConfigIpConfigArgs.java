@@ -17,14 +17,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     public static final DeviceprofileGatewayPortConfigIpConfigArgs Empty = new DeviceprofileGatewayPortConfigIpConfigArgs();
 
     /**
-     * except for out-of_band interface (vme/em0/fxp0)
+     * Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     @Import(name="dns")
     private @Nullable Output<List<String>> dns;
 
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     public Optional<Output<List<String>>> dns() {
@@ -32,14 +32,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * except for out-of_band interface (vme/em0/fxp0)
+     * Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     @Import(name="dnsSuffixes")
     private @Nullable Output<List<String>> dnsSuffixes;
 
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0)
+     * @return Except for out-of_band interface (vme/em0/fxp0)
      * 
      */
     public Optional<Output<List<String>>> dnsSuffixes() {
@@ -47,14 +47,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -77,14 +77,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+     * @return Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -92,14 +92,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * optional, the network to be used for mgmt
+     * Optional, the network to be used for mgmt
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return optional, the network to be used for mgmt
+     * @return Optional, the network to be used for mgmt
      * 
      */
     public Optional<Output<String>> network() {
@@ -107,14 +107,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * if `type`==`pppoe`
+     * If `type`==`pppoe`
      * 
      */
     @Import(name="poserPassword")
     private @Nullable Output<String> poserPassword;
 
     /**
-     * @return if `type`==`pppoe`
+     * @return If `type`==`pppoe`
      * 
      */
     public Optional<Output<String>> poserPassword() {
@@ -137,14 +137,14 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
     }
 
     /**
-     * if `type`==`pppoe`
+     * If `type`==`pppoe`
      * 
      */
     @Import(name="pppoeUsername")
     private @Nullable Output<String> pppoeUsername;
 
     /**
-     * @return if `type`==`pppoe`
+     * @return If `type`==`pppoe`
      * 
      */
     public Optional<Output<String>> pppoeUsername() {
@@ -200,7 +200,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dns except for out-of_band interface (vme/em0/fxp0)
+         * @param dns Except for out-of_band interface (vme/em0/fxp0)
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dns except for out-of_band interface (vme/em0/fxp0)
+         * @param dns Except for out-of_band interface (vme/em0/fxp0)
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dns except for out-of_band interface (vme/em0/fxp0)
+         * @param dns Except for out-of_band interface (vme/em0/fxp0)
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dnsSuffixes except for out-of_band interface (vme/em0/fxp0)
+         * @param dnsSuffixes Except for out-of_band interface (vme/em0/fxp0)
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dnsSuffixes except for out-of_band interface (vme/em0/fxp0)
+         * @param dnsSuffixes Except for out-of_band interface (vme/em0/fxp0)
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param dnsSuffixes except for out-of_band interface (vme/em0/fxp0)
+         * @param dnsSuffixes Except for out-of_band interface (vme/em0/fxp0)
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param gateway except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param gateway Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param gateway except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param gateway Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. &#34;192.168.1.1&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param netmask Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
+         * @param netmask Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. &#34;/24&#34;) or a Variable (i.e. &#34;{{myvar}}&#34;)
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param network optional, the network to be used for mgmt
+         * @param network Optional, the network to be used for mgmt
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param network optional, the network to be used for mgmt
+         * @param network Optional, the network to be used for mgmt
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param poserPassword if `type`==`pppoe`
+         * @param poserPassword If `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param poserPassword if `type`==`pppoe`
+         * @param poserPassword If `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param pppoeUsername if `type`==`pppoe`
+         * @param pppoeUsername If `type`==`pppoe`
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class DeviceprofileGatewayPortConfigIpConfigArgs extends com.pulumi
         }
 
         /**
-         * @param pppoeUsername if `type`==`pppoe`
+         * @param pppoeUsername If `type`==`pppoe`
          * 
          * @return builder
          * 

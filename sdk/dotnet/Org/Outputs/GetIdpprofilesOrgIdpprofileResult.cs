@@ -17,8 +17,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// enum: `critical`, `standard`, `strict`
         /// </summary>
         public readonly string BaseProfile;
+        /// <summary>
+        /// When the object has been created, in epoch
+        /// </summary>
         public readonly double CreatedTime;
+        /// <summary>
+        /// Unique ID of the object instance in the Mist Organnization
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// When the object has been modified for the last time, in epoch
+        /// </summary>
         public readonly double ModifiedTime;
         public readonly string Name;
         public readonly string OrgId;

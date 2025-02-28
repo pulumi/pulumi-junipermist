@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class GatewaytemplateRoutingPoliciesTerm
     {
         /// <summary>
-        /// when used as import policy
+        /// When used as import policy
         /// </summary>
         public readonly Outputs.GatewaytemplateRoutingPoliciesTermAction? Action;
         /// <summary>

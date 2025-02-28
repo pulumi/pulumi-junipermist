@@ -16,10 +16,10 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// <summary>
         /// enum: `v1`, `v2c`, `v3`
         /// </summary>
-        public readonly string? MessageProcessingModel;
-        public readonly string? Name;
+        public readonly string MessageProcessingModel;
+        public readonly string Name;
         /// <summary>
-        /// refer to profile-name in notify_filter
+        /// Refer to profile-name in notify_filter
         /// </summary>
         public readonly string? NotifyFilter;
         /// <summary>
@@ -31,15 +31,15 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? SecurityModel;
         /// <summary>
-        /// refer to security_name in usm
+        /// Refer to security_name in usm
         /// </summary>
         public readonly string? SecurityName;
 
         [OutputConstructor]
         private NetworktemplateSnmpConfigV3ConfigTargetParameter(
-            string? messageProcessingModel,
+            string messageProcessingModel,
 
-            string? name,
+            string name,
 
             string? notifyFilter,
 

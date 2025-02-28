@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingMistNacIdp {
     /**
-     * @return when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * @return When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
      * 
      */
     private @Nullable List<String> excludeRealms;
@@ -23,7 +23,7 @@ public final class SettingMistNacIdp {
      */
     private String id;
     /**
-     * @return which realm should trigger this IDP. User Realm is extracted from:
+     * @return Which realm should trigger this IDP. User Realm is extracted from:
      *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
      *   * Cert CN
      * 
@@ -32,7 +32,7 @@ public final class SettingMistNacIdp {
 
     private SettingMistNacIdp() {}
     /**
-     * @return when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+     * @return When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
      * 
      */
     public List<String> excludeRealms() {
@@ -46,7 +46,7 @@ public final class SettingMistNacIdp {
         return this.id;
     }
     /**
-     * @return which realm should trigger this IDP. User Realm is extracted from:
+     * @return Which realm should trigger this IDP. User Realm is extracted from:
      *   * Username-AVP (`mist.com` from john{@literal @}mist.com)
      *   * Cert CN
      * 

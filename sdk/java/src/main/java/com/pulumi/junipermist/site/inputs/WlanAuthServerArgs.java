@@ -19,14 +19,14 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
     public static final WlanAuthServerArgs Empty = new WlanAuthServerArgs();
 
     /**
-     * ip / hostname of RADIUS server
+     * IP/ hostname of RADIUS server
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     public Output<String> host() {
@@ -85,14 +85,14 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * whether to require Message-Authenticator in requests
+     * Whether to require Message-Authenticator in requests
      * 
      */
     @Import(name="requireMessageAuthenticator")
     private @Nullable Output<Boolean> requireMessageAuthenticator;
 
     /**
-     * @return whether to require Message-Authenticator in requests
+     * @return Whether to require Message-Authenticator in requests
      * 
      */
     public Optional<Output<Boolean>> requireMessageAuthenticator() {
@@ -100,14 +100,14 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * secret of RADIUS server
+     * Secretof RADIUS server
      * 
      */
     @Import(name="secret", required=true)
     private Output<String> secret;
 
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     public Output<String> secret() {
@@ -146,7 +146,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param host ip / hostname of RADIUS server
+         * @param host IP/ hostname of RADIUS server
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param host ip / hostname of RADIUS server
+         * @param host IP/ hostname of RADIUS server
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requireMessageAuthenticator whether to require Message-Authenticator in requests
+         * @param requireMessageAuthenticator Whether to require Message-Authenticator in requests
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param requireMessageAuthenticator whether to require Message-Authenticator in requests
+         * @param requireMessageAuthenticator Whether to require Message-Authenticator in requests
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param secret secret of RADIUS server
+         * @param secret Secretof RADIUS server
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class WlanAuthServerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param secret secret of RADIUS server
+         * @param secret Secretof RADIUS server
          * 
          * @return builder
          * 

@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.device.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.junipermist.device.outputs.SwitchSnmpConfigV3ConfigUsmUser;
 import java.lang.String;
 import java.util.List;
@@ -17,12 +18,12 @@ public final class SwitchSnmpConfigV3ConfigUsm {
      * @return enum: `local_engine`, `remote_engine`
      * 
      */
-    private @Nullable String engineType;
+    private String engineType;
     /**
-     * @return required only if `engine_type`==`remote_engine`
+     * @return Required only if `engine_type`==`remote_engine`
      * 
      */
-    private @Nullable String engineid;
+    private @Nullable String remoteEngineId;
     private @Nullable List<SwitchSnmpConfigV3ConfigUsmUser> users;
 
     private SwitchSnmpConfigV3ConfigUsm() {}
@@ -30,15 +31,15 @@ public final class SwitchSnmpConfigV3ConfigUsm {
      * @return enum: `local_engine`, `remote_engine`
      * 
      */
-    public Optional<String> engineType() {
-        return Optional.ofNullable(this.engineType);
+    public String engineType() {
+        return this.engineType;
     }
     /**
-     * @return required only if `engine_type`==`remote_engine`
+     * @return Required only if `engine_type`==`remote_engine`
      * 
      */
-    public Optional<String> engineid() {
-        return Optional.ofNullable(this.engineid);
+    public Optional<String> remoteEngineId() {
+        return Optional.ofNullable(this.remoteEngineId);
     }
     public List<SwitchSnmpConfigV3ConfigUsmUser> users() {
         return this.users == null ? List.of() : this.users;
@@ -53,27 +54,29 @@ public final class SwitchSnmpConfigV3ConfigUsm {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String engineType;
-        private @Nullable String engineid;
+        private String engineType;
+        private @Nullable String remoteEngineId;
         private @Nullable List<SwitchSnmpConfigV3ConfigUsmUser> users;
         public Builder() {}
         public Builder(SwitchSnmpConfigV3ConfigUsm defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.engineType = defaults.engineType;
-    	      this.engineid = defaults.engineid;
+    	      this.remoteEngineId = defaults.remoteEngineId;
     	      this.users = defaults.users;
         }
 
         @CustomType.Setter
-        public Builder engineType(@Nullable String engineType) {
-
+        public Builder engineType(String engineType) {
+            if (engineType == null) {
+              throw new MissingRequiredPropertyException("SwitchSnmpConfigV3ConfigUsm", "engineType");
+            }
             this.engineType = engineType;
             return this;
         }
         @CustomType.Setter
-        public Builder engineid(@Nullable String engineid) {
+        public Builder remoteEngineId(@Nullable String remoteEngineId) {
 
-            this.engineid = engineid;
+            this.remoteEngineId = remoteEngineId;
             return this;
         }
         @CustomType.Setter
@@ -88,7 +91,7 @@ public final class SwitchSnmpConfigV3ConfigUsm {
         public SwitchSnmpConfigV3ConfigUsm build() {
             final var _resultValue = new SwitchSnmpConfigV3ConfigUsm();
             _resultValue.engineType = engineType;
-            _resultValue.engineid = engineid;
+            _resultValue.remoteEngineId = remoteEngineId;
             _resultValue.users = users;
             return _resultValue;
         }

@@ -20,7 +20,7 @@ public final class DeviceprofileGatewayDhcpdConfig {
      */
     private @Nullable Map<String,DeviceprofileGatewayDhcpdConfigConfig> config;
     /**
-     * @return if set to `false`, disable the DHCP server
+     * @return If set to `false`, disable the DHCP server
      * 
      */
     private @Nullable Boolean enabled;
@@ -34,7 +34,7 @@ public final class DeviceprofileGatewayDhcpdConfig {
         return this.config == null ? Map.of() : this.config;
     }
     /**
-     * @return if set to `false`, disable the DHCP server
+     * @return If set to `false`, disable the DHCP server
      * 
      */
     public Optional<Boolean> enabled() {

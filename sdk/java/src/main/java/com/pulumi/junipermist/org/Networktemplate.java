@@ -215,14 +215,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extraRoutes6);
     }
     /**
-     * enable mist_nac to use radsec
+     * Enable mist_nac to use RadSec
      * 
      */
     @Export(name="mistNac", refs={NetworktemplateMistNac.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateMistNac> mistNac;
 
     /**
-     * @return enable mist_nac to use radsec
+     * @return Enable mist_nac to use RadSec
      * 
      */
     public Output<Optional<NetworktemplateMistNac>> mistNac() {
@@ -249,14 +249,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networks);
     }
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
     /**
-     * @return list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     public Output<Optional<List<String>>> ntpServers() {
@@ -335,14 +335,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.remoteSyslog);
     }
     /**
-     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
     @Export(name="removeExistingConfigs", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> removeExistingConfigs;
 
     /**
-     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * @return By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
     public Output<Boolean> removeExistingConfigs() {
@@ -355,14 +355,14 @@ public class Networktemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.snmpConfig);
     }
     /**
-     * defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criterias
      * 
      */
     @Export(name="switchMatching", refs={NetworktemplateSwitchMatching.class}, tree="[0]")
     private Output</* @Nullable */ NetworktemplateSwitchMatching> switchMatching;
 
     /**
-     * @return defines custom switch configuration based on different criterias
+     * @return Defines custom switch configuration based on different criterias
      * 
      */
     public Output<Optional<NetworktemplateSwitchMatching>> switchMatching() {

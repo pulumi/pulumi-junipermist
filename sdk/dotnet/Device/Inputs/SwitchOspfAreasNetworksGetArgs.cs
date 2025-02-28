@@ -61,13 +61,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Metric { get; set; }
 
         /// <summary>
-        /// by default, we'll re-advertise all learned OSPF routes toward overlay
+        /// By default, we'll re-advertise all learned OSPF routes toward overlay
         /// </summary>
         [Input("noReadvertiseToOverlay")]
         public Input<bool>? NoReadvertiseToOverlay { get; set; }
 
         /// <summary>
-        /// whether to send OSPF-Hello
+        /// Whether to send OSPF-Hello
         /// </summary>
         [Input("passive")]
         public Input<bool>? Passive { get; set; }

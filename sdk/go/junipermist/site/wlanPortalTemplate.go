@@ -23,7 +23,7 @@ import (
 type WlanPortalTemplate struct {
 	pulumi.CustomResourceState
 
-	// portal template wlan settings
+	// Portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplateOutput `pulumi:"portalTemplate"`
 	SiteId         pulumi.StringOutput                    `pulumi:"siteId"`
 	// Site WLAN ID
@@ -69,7 +69,7 @@ func GetWlanPortalTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WlanPortalTemplate resources.
 type wlanPortalTemplateState struct {
-	// portal template wlan settings
+	// Portal template wlan settings
 	PortalTemplate *WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
 	SiteId         *string                           `pulumi:"siteId"`
 	// Site WLAN ID
@@ -77,7 +77,7 @@ type wlanPortalTemplateState struct {
 }
 
 type WlanPortalTemplateState struct {
-	// portal template wlan settings
+	// Portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplatePtrInput
 	SiteId         pulumi.StringPtrInput
 	// Site WLAN ID
@@ -89,7 +89,7 @@ func (WlanPortalTemplateState) ElementType() reflect.Type {
 }
 
 type wlanPortalTemplateArgs struct {
-	// portal template wlan settings
+	// Portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplate `pulumi:"portalTemplate"`
 	SiteId         string                           `pulumi:"siteId"`
 	// Site WLAN ID
@@ -98,7 +98,7 @@ type wlanPortalTemplateArgs struct {
 
 // The set of arguments for constructing a WlanPortalTemplate resource.
 type WlanPortalTemplateArgs struct {
-	// portal template wlan settings
+	// Portal template wlan settings
 	PortalTemplate WlanPortalTemplatePortalTemplateInput
 	SiteId         pulumi.StringInput
 	// Site WLAN ID
@@ -192,7 +192,7 @@ func (o WlanPortalTemplateOutput) ToWlanPortalTemplateOutputWithContext(ctx cont
 	return o
 }
 
-// portal template wlan settings
+// Portal template wlan settings
 func (o WlanPortalTemplateOutput) PortalTemplate() WlanPortalTemplatePortalTemplateOutput {
 	return o.ApplyT(func(v *WlanPortalTemplate) WlanPortalTemplatePortalTemplateOutput { return v.PortalTemplate }).(WlanPortalTemplatePortalTemplateOutput)
 }

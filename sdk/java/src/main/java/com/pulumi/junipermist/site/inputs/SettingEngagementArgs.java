@@ -19,14 +19,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     public static final SettingEngagementArgs Empty = new SettingEngagementArgs();
 
     /**
-     * name associated to each tag
+     * Name associated to each tag
      * 
      */
     @Import(name="dwellTagNames")
     private @Nullable Output<SettingEngagementDwellTagNamesArgs> dwellTagNames;
 
     /**
-     * @return name associated to each tag
+     * @return Name associated to each tag
      * 
      */
     public Optional<Output<SettingEngagementDwellTagNamesArgs>> dwellTagNames() {
@@ -64,14 +64,14 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * max time, default is 43200(12h), max is 68400 (18h)
+     * Max time, default is 43200(12h), max is 68400 (18h)
      * 
      */
     @Import(name="maxDwell")
     private @Nullable Output<Integer> maxDwell;
 
     /**
-     * @return max time, default is 43200(12h), max is 68400 (18h)
+     * @return Max time, default is 43200(12h), max is 68400 (18h)
      * 
      */
     public Optional<Output<Integer>> maxDwell() {
@@ -122,7 +122,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTagNames name associated to each tag
+         * @param dwellTagNames Name associated to each tag
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dwellTagNames name associated to each tag
+         * @param dwellTagNames Name associated to each tag
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxDwell max time, default is 43200(12h), max is 68400 (18h)
+         * @param maxDwell Max time, default is 43200(12h), max is 68400 (18h)
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SettingEngagementArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxDwell max time, default is 43200(12h), max is 68400 (18h)
+         * @param maxDwell Max time, default is 43200(12h), max is 68400 (18h)
          * 
          * @return builder
          * 

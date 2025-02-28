@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewayVrfConfig {
     /**
-     * @return whether to enable VRF (when supported on the device)
+     * @return Whether to enable VRF (when supported on the device)
      * 
      */
     private @Nullable Boolean enabled;
 
     private GatewayVrfConfig() {}
     /**
-     * @return whether to enable VRF (when supported on the device)
+     * @return Whether to enable VRF (when supported on the device)
      * 
      */
     public Optional<Boolean> enabled() {

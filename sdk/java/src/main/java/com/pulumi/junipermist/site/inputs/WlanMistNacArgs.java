@@ -16,26 +16,26 @@ public final class WlanMistNacArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanMistNacArgs Empty = new WlanMistNacArgs();
 
     /**
-     * when enabled:
+     * When enabled:
      *   * `auth_servers` is ignored
      *   * `acct_servers` is ignored
      *   * `auth_servers_*` are ignored
      *   * `coa_servers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed&#39;
+     *   * `coa_enabled` is assumed
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return when enabled:
+     * @return When enabled:
      *   * `auth_servers` is ignored
      *   * `acct_servers` is ignored
      *   * `auth_servers_*` are ignored
      *   * `coa_servers` is ignored
      *   * `radsec` is ignored
-     *   * `coa_enabled` is assumed&#39;
+     *   * `coa_enabled` is assumed
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -67,13 +67,13 @@ public final class WlanMistNacArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled when enabled:
+         * @param enabled When enabled:
          *   * `auth_servers` is ignored
          *   * `acct_servers` is ignored
          *   * `auth_servers_*` are ignored
          *   * `coa_servers` is ignored
          *   * `radsec` is ignored
-         *   * `coa_enabled` is assumed&#39;
+         *   * `coa_enabled` is assumed
          * 
          * @return builder
          * 
@@ -84,13 +84,13 @@ public final class WlanMistNacArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled when enabled:
+         * @param enabled When enabled:
          *   * `auth_servers` is ignored
          *   * `acct_servers` is ignored
          *   * `auth_servers_*` are ignored
          *   * `coa_servers` is ignored
          *   * `radsec` is ignored
-         *   * `coa_enabled` is assumed&#39;
+         *   * `coa_enabled` is assumed
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
     public static final GatewayPortConfigWanSourceNatArgs Empty = new GatewayPortConfigWanSourceNatArgs();
 
     /**
-     * or to disable the source-nat
+     * Or to disable the source-nat
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return or to disable the source-nat
+     * @return Or to disable the source-nat
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -32,14 +32,14 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
     }
 
     /**
-     * if alternative nat_pool is desired
+     * If alternative nat_pool is desired
      * 
      */
     @Import(name="natPool")
     private @Nullable Output<String> natPool;
 
     /**
-     * @return if alternative nat_pool is desired
+     * @return If alternative nat_pool is desired
      * 
      */
     public Optional<Output<String>> natPool() {
@@ -72,7 +72,7 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disabled or to disable the source-nat
+         * @param disabled Or to disable the source-nat
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
         }
 
         /**
-         * @param disabled or to disable the source-nat
+         * @param disabled Or to disable the source-nat
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
         }
 
         /**
-         * @param natPool if alternative nat_pool is desired
+         * @param natPool If alternative nat_pool is desired
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GatewayPortConfigWanSourceNatArgs extends com.pulumi.resource
         }
 
         /**
-         * @param natPool if alternative nat_pool is desired
+         * @param natPool If alternative nat_pool is desired
          * 
          * @return builder
          * 

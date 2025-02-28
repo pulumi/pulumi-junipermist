@@ -39,22 +39,21 @@ class WebhookArgs:
         """
         The set of arguments for constructing a Webhook resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
-        :param pulumi.Input[bool] enabled: whether webhook is enabled
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: if `type`=`http-post`, additional custom HTTP headers to add
-               the headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[str] name: name of the webhook
-        :param pulumi.Input[str] oauth2_client_id: required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[str] oauth2_client_secret: required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[bool] enabled: Whether webhook is enabled
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        :param pulumi.Input[str] name: Name of the webhook
+        :param pulumi.Input[str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
         :param pulumi.Input[str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[str] oauth2_password: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[str] oauth2_token_url: required when `type`==`oauth2`
-        :param pulumi.Input[str] oauth2_username: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[str] secret: only if `type`=`http-post`
-        :param pulumi.Input[str] splunk_token: required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.'
+        :param pulumi.Input[str] oauth2_password: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
+        :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
+        :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+               the webhook receiver is configured to accept it.
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
-        :param pulumi.Input[bool] verify_cert: when url uses HTTPS, whether to verify the certificate
+        :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "topics", topics)
@@ -122,7 +121,7 @@ class WebhookArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether webhook is enabled
+        Whether webhook is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -134,8 +133,7 @@ class WebhookArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        if `type`=`http-post`, additional custom HTTP headers to add
-        the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         """
         return pulumi.get(self, "headers")
 
@@ -147,7 +145,7 @@ class WebhookArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the webhook
+        Name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -159,7 +157,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -171,7 +169,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -195,7 +193,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -207,7 +205,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required when `type`==`oauth2`, if provided, will be used in the token request
+        Required when `type`==`oauth2`, if provided, will be used in the token request
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -219,7 +217,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `type`==`oauth2`
+        Required when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -231,7 +229,7 @@ class WebhookArgs:
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_username")
 
@@ -243,7 +241,7 @@ class WebhookArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        only if `type`=`http-post`
+        Only if `type`=`http-post`
         """
         return pulumi.get(self, "secret")
 
@@ -255,8 +253,8 @@ class WebhookArgs:
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[pulumi.Input[str]]:
         """
-        required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        the webhook receiver is configured to accept it.'
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+        the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
@@ -280,7 +278,7 @@ class WebhookArgs:
     @pulumi.getter(name="verifyCert")
     def verify_cert(self) -> Optional[pulumi.Input[bool]]:
         """
-        when url uses HTTPS, whether to verify the certificate
+        When url uses HTTPS, whether to verify the certificate
         """
         return pulumi.get(self, "verify_cert")
 
@@ -311,23 +309,22 @@ class _WebhookState:
                  verify_cert: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Webhook resources.
-        :param pulumi.Input[bool] enabled: whether webhook is enabled
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: if `type`=`http-post`, additional custom HTTP headers to add
-               the headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[str] name: name of the webhook
-        :param pulumi.Input[str] oauth2_client_id: required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[str] oauth2_client_secret: required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[bool] enabled: Whether webhook is enabled
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        :param pulumi.Input[str] name: Name of the webhook
+        :param pulumi.Input[str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
         :param pulumi.Input[str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[str] oauth2_password: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[str] oauth2_token_url: required when `type`==`oauth2`
-        :param pulumi.Input[str] oauth2_username: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[str] secret: only if `type`=`http-post`
-        :param pulumi.Input[str] splunk_token: required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.'
+        :param pulumi.Input[str] oauth2_password: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
+        :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
+        :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+               the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
-        :param pulumi.Input[bool] verify_cert: when url uses HTTPS, whether to verify the certificate
+        :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -368,7 +365,7 @@ class _WebhookState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether webhook is enabled
+        Whether webhook is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -380,8 +377,7 @@ class _WebhookState:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        if `type`=`http-post`, additional custom HTTP headers to add
-        the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         """
         return pulumi.get(self, "headers")
 
@@ -393,7 +389,7 @@ class _WebhookState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the webhook
+        Name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -405,7 +401,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -417,7 +413,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -441,7 +437,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -453,7 +449,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required when `type`==`oauth2`, if provided, will be used in the token request
+        Required when `type`==`oauth2`, if provided, will be used in the token request
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -465,7 +461,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `type`==`oauth2`
+        Required when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -477,7 +473,7 @@ class _WebhookState:
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> Optional[pulumi.Input[str]]:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_username")
 
@@ -498,7 +494,7 @@ class _WebhookState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        only if `type`=`http-post`
+        Only if `type`=`http-post`
         """
         return pulumi.get(self, "secret")
 
@@ -510,8 +506,8 @@ class _WebhookState:
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> Optional[pulumi.Input[str]]:
         """
-        required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        the webhook receiver is configured to accept it.'
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+        the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
@@ -556,7 +552,7 @@ class _WebhookState:
     @pulumi.getter(name="verifyCert")
     def verify_cert(self) -> Optional[pulumi.Input[bool]]:
         """
-        when url uses HTTPS, whether to verify the certificate
+        When url uses HTTPS, whether to verify the certificate
         """
         return pulumi.get(self, "verify_cert")
 
@@ -607,23 +603,22 @@ class Webhook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: whether webhook is enabled
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: if `type`=`http-post`, additional custom HTTP headers to add
-               the headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[str] name: name of the webhook
-        :param pulumi.Input[str] oauth2_client_id: required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[str] oauth2_client_secret: required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[bool] enabled: Whether webhook is enabled
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        :param pulumi.Input[str] name: Name of the webhook
+        :param pulumi.Input[str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
         :param pulumi.Input[str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[str] oauth2_password: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[str] oauth2_token_url: required when `type`==`oauth2`
-        :param pulumi.Input[str] oauth2_username: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[str] secret: only if `type`=`http-post`
-        :param pulumi.Input[str] splunk_token: required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.'
+        :param pulumi.Input[str] oauth2_password: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
+        :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
+        :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+               the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
-        :param pulumi.Input[bool] verify_cert: when url uses HTTPS, whether to verify the certificate
+        :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         ...
     @overload
@@ -748,23 +743,22 @@ class Webhook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] enabled: whether webhook is enabled
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: if `type`=`http-post`, additional custom HTTP headers to add
-               the headers name and value must be string, total bytes of headers name and value must be less than 1000
-        :param pulumi.Input[str] name: name of the webhook
-        :param pulumi.Input[str] oauth2_client_id: required when `oauth2_grant_type`==`client_credentials`
-        :param pulumi.Input[str] oauth2_client_secret: required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[bool] enabled: Whether webhook is enabled
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
+        :param pulumi.Input[str] name: Name of the webhook
+        :param pulumi.Input[str] oauth2_client_id: Required when `oauth2_grant_type`==`client_credentials`
+        :param pulumi.Input[str] oauth2_client_secret: Required when `oauth2_grant_type`==`client_credentials`
         :param pulumi.Input[str] oauth2_grant_type: required when `type`==`oauth2`. enum: `client_credentials`, `password`
-        :param pulumi.Input[str] oauth2_password: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: required when `type`==`oauth2`, if provided, will be used in the token request
-        :param pulumi.Input[str] oauth2_token_url: required when `type`==`oauth2`
-        :param pulumi.Input[str] oauth2_username: required when `oauth2_grant_type`==`password`
-        :param pulumi.Input[str] secret: only if `type`=`http-post`
-        :param pulumi.Input[str] splunk_token: required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-               the webhook receiver is configured to accept it.'
+        :param pulumi.Input[str] oauth2_password: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth2_scopes: Required when `type`==`oauth2`, if provided, will be used in the token request
+        :param pulumi.Input[str] oauth2_token_url: Required when `type`==`oauth2`
+        :param pulumi.Input[str] oauth2_username: Required when `oauth2_grant_type`==`password`
+        :param pulumi.Input[str] secret: Only if `type`=`http-post`
+        :param pulumi.Input[str] splunk_token: Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+               the webhook receiver is configured to accept it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: enum: `alarms`, `audits`, `client-info`, `client-join`, `client-sessions`, `device-updowns`, `device-events`, `mxedge-events`, `nac-accounting`, `nac_events`
         :param pulumi.Input[str] type: enum: `aws-sns`, `google-pubsub`, `http-post`, `oauth2`, `splunk`
-        :param pulumi.Input[bool] verify_cert: when url uses HTTPS, whether to verify the certificate
+        :param pulumi.Input[bool] verify_cert: When url uses HTTPS, whether to verify the certificate
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -793,7 +787,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        whether webhook is enabled
+        Whether webhook is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -801,8 +795,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def headers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        if `type`=`http-post`, additional custom HTTP headers to add
-        the headers name and value must be string, total bytes of headers name and value must be less than 1000
+        If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
         """
         return pulumi.get(self, "headers")
 
@@ -810,7 +803,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        name of the webhook
+        Name of the webhook
         """
         return pulumi.get(self, "name")
 
@@ -818,7 +811,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2ClientId")
     def oauth2_client_id(self) -> pulumi.Output[Optional[str]]:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_id")
 
@@ -826,7 +819,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2ClientSecret")
     def oauth2_client_secret(self) -> pulumi.Output[Optional[str]]:
         """
-        required when `oauth2_grant_type`==`client_credentials`
+        Required when `oauth2_grant_type`==`client_credentials`
         """
         return pulumi.get(self, "oauth2_client_secret")
 
@@ -842,7 +835,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2Password")
     def oauth2_password(self) -> pulumi.Output[Optional[str]]:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_password")
 
@@ -850,7 +843,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2Scopes")
     def oauth2_scopes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        required when `type`==`oauth2`, if provided, will be used in the token request
+        Required when `type`==`oauth2`, if provided, will be used in the token request
         """
         return pulumi.get(self, "oauth2_scopes")
 
@@ -858,7 +851,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2TokenUrl")
     def oauth2_token_url(self) -> pulumi.Output[Optional[str]]:
         """
-        required when `type`==`oauth2`
+        Required when `type`==`oauth2`
         """
         return pulumi.get(self, "oauth2_token_url")
 
@@ -866,7 +859,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="oauth2Username")
     def oauth2_username(self) -> pulumi.Output[Optional[str]]:
         """
-        required when `oauth2_grant_type`==`password`
+        Required when `oauth2_grant_type`==`password`
         """
         return pulumi.get(self, "oauth2_username")
 
@@ -879,7 +872,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[Optional[str]]:
         """
-        only if `type`=`http-post`
+        Only if `type`=`http-post`
         """
         return pulumi.get(self, "secret")
 
@@ -887,8 +880,8 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="splunkToken")
     def splunk_token(self) -> pulumi.Output[Optional[str]]:
         """
-        required if `type`=`splunk` If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
-        the webhook receiver is configured to accept it.'
+        Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if
+        the webhook receiver is configured to accept it.
         """
         return pulumi.get(self, "splunk_token")
 
@@ -917,7 +910,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="verifyCert")
     def verify_cert(self) -> pulumi.Output[bool]:
         """
-        when url uses HTTPS, whether to verify the certificate
+        When url uses HTTPS, whether to verify the certificate
         """
         return pulumi.get(self, "verify_cert")
 

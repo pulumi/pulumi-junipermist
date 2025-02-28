@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanCiscoCwa {
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     private @Nullable List<String> allowedHostnames;
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     private @Nullable List<String> allowedSubnets;
     /**
-     * @return list of blocked CIDRs
+     * @return List of blocked CIDRs
      * 
      */
     private @Nullable List<String> blockedSubnets;
@@ -32,21 +32,21 @@ public final class WlanCiscoCwa {
 
     private WlanCiscoCwa() {}
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     public List<String> allowedHostnames() {
         return this.allowedHostnames == null ? List.of() : this.allowedHostnames;
     }
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     public List<String> allowedSubnets() {
         return this.allowedSubnets == null ? List.of() : this.allowedSubnets;
     }
     /**
-     * @return list of blocked CIDRs
+     * @return List of blocked CIDRs
      * 
      */
     public List<String> blockedSubnets() {

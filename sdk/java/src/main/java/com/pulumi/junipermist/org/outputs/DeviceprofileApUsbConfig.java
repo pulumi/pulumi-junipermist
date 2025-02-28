@@ -14,27 +14,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileApUsbConfig {
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     private @Nullable String cacert;
     /**
-     * @return only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+     * @return Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
      * 
      */
     private @Nullable Integer channel;
     /**
-     * @return whether to enable any usb config
+     * @return Whether to enable any usb config
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     private @Nullable String host;
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     private @Nullable Integer port;
@@ -44,47 +44,47 @@ public final class DeviceprofileApUsbConfig {
      */
     private @Nullable String type;
     /**
-     * @return only if `type`==`imagotag`, whether to turn on SSL verification
+     * @return Only if `type`==`imagotag`, whether to turn on SSL verification
      * 
      */
     private @Nullable Boolean verifyCert;
     /**
-     * @return only if `type`==`solum` or `type`==`hanshow`
+     * @return Only if `type`==`solum` or `type`==`hanshow`
      * 
      */
     private @Nullable Integer vlanId;
 
     private DeviceprofileApUsbConfig() {}
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     public Optional<String> cacert() {
         return Optional.ofNullable(this.cacert);
     }
     /**
-     * @return only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+     * @return Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
      * 
      */
     public Optional<Integer> channel() {
         return Optional.ofNullable(this.channel);
     }
     /**
-     * @return whether to enable any usb config
+     * @return Whether to enable any usb config
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
     /**
-     * @return only if `type`==`imagotag`
+     * @return Only if `type`==`imagotag`
      * 
      */
     public Optional<Integer> port() {
@@ -98,14 +98,14 @@ public final class DeviceprofileApUsbConfig {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return only if `type`==`imagotag`, whether to turn on SSL verification
+     * @return Only if `type`==`imagotag`, whether to turn on SSL verification
      * 
      */
     public Optional<Boolean> verifyCert() {
         return Optional.ofNullable(this.verifyCert);
     }
     /**
-     * @return only if `type`==`solum` or `type`==`hanshow`
+     * @return Only if `type`==`solum` or `type`==`hanshow`
      * 
      */
     public Optional<Integer> vlanId() {

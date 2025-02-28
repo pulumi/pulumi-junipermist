@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Channels;
         /// <summary>
-        /// whether to disable the radio
+        /// Whether to disable the radio
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
@@ -40,11 +40,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? Power;
         /// <summary>
-        /// when power=0, max tx power to use, HW-specific values will be used if not set
+        /// When power=0, max tx power to use, HW-specific values will be used if not set
         /// </summary>
         public readonly int? PowerMax;
         /// <summary>
-        /// when power=0, min tx power to use, HW-specific values will be used if not set
+        /// When power=0, min tx power to use, HW-specific values will be used if not set
         /// </summary>
         public readonly int? PowerMin;
         /// <summary>

@@ -23,7 +23,7 @@ namespace Pulumi.JuniperMist.Site
     public partial class WlanPortalTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// portal template wlan settings
+        /// Portal template wlan settings
         /// </summary>
         [Output("portalTemplate")]
         public Output<Outputs.WlanPortalTemplatePortalTemplate> PortalTemplate { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Site
     public sealed class WlanPortalTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// portal template wlan settings
+        /// Portal template wlan settings
         /// </summary>
         [Input("portalTemplate", required: true)]
         public Input<Inputs.WlanPortalTemplatePortalTemplateArgs> PortalTemplate { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.JuniperMist.Site
     public sealed class WlanPortalTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// portal template wlan settings
+        /// Portal template wlan settings
         /// </summary>
         [Input("portalTemplate")]
         public Input<Inputs.WlanPortalTemplatePortalTemplateGetArgs>? PortalTemplate { get; set; }

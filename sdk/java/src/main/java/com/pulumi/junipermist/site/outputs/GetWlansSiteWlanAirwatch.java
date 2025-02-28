@@ -17,18 +17,18 @@ public final class GetWlansSiteWlanAirwatch {
      */
     private String apiKey;
     /**
-     * @return console URL
+     * @return Console URL
      * 
      */
     private String consoleUrl;
     private Boolean enabled;
     /**
-     * @return password
+     * @return Password
      * 
      */
     private String password;
     /**
-     * @return username
+     * @return Username
      * 
      */
     private String username;
@@ -42,7 +42,7 @@ public final class GetWlansSiteWlanAirwatch {
         return this.apiKey;
     }
     /**
-     * @return console URL
+     * @return Console URL
      * 
      */
     public String consoleUrl() {
@@ -52,14 +52,14 @@ public final class GetWlansSiteWlanAirwatch {
         return this.enabled;
     }
     /**
-     * @return password
+     * @return Password
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return username
+     * @return Username
      * 
      */
     public String username() {

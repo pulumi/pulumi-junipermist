@@ -27,14 +27,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     public static final GatewayPortConfigArgs Empty = new GatewayPortConfigArgs();
 
     /**
-     * if `aggregated`==`true`. To disable LCP support for the AE interface
+     * If `aggregated`==`true`. To disable LCP support for the AE interface
      * 
      */
     @Import(name="aeDisableLacp")
     private @Nullable Output<Boolean> aeDisableLacp;
 
     /**
-     * @return if `aggregated`==`true`. To disable LCP support for the AE interface
+     * @return If `aggregated`==`true`. To disable LCP support for the AE interface
      * 
      */
     public Optional<Output<Boolean>> aeDisableLacp() {
@@ -42,14 +42,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
      * 
      */
     @Import(name="aeIdx")
     private @Nullable Output<String> aeIdx;
 
     /**
-     * @return if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * @return If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
      * 
      */
     public Optional<Output<String>> aeIdx() {
@@ -79,14 +79,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if want to generate port up/down alarm, set it to true
+     * To generate port up/down alarm, set it to true
      * 
      */
     @Import(name="critical")
     private @Nullable Output<Boolean> critical;
 
     /**
-     * @return if want to generate port up/down alarm, set it to true
+     * @return To generate port up/down alarm, set it to true
      * 
      */
     public Optional<Output<Boolean>> critical() {
@@ -116,14 +116,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * port admin up (true) / down (false)
+     * Port admin up (true) / down (false)
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return port admin up (true) / down (false)
+     * @return Port admin up (true) / down (false)
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -146,14 +146,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`dsl`, 16 bit int
+     * If `wan_type`==`dsl`, 16 bit int
      * 
      */
     @Import(name="dslVci")
     private @Nullable Output<Integer> dslVci;
 
     /**
-     * @return if `wan_type`==`dsl`, 16 bit int
+     * @return If `wan_type`==`dsl`, 16 bit int
      * 
      */
     public Optional<Output<Integer>> dslVci() {
@@ -161,14 +161,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`dsl`, 8 bit int
+     * If `wan_type`==`dsl`, 8 bit int
      * 
      */
     @Import(name="dslVpi")
     private @Nullable Output<Integer> dslVpi;
 
     /**
-     * @return if `wan_type`==`dsl`, 8 bit int
+     * @return If `wan_type`==`dsl`, 8 bit int
      * 
      */
     public Optional<Output<Integer>> dslVpi() {
@@ -206,14 +206,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`lte`
+     * If `wan_type`==`lte`
      * 
      */
     @Import(name="lteApn")
     private @Nullable Output<String> lteApn;
 
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     public Optional<Output<String>> lteApn() {
@@ -243,14 +243,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`lte`
+     * If `wan_type`==`lte`
      * 
      */
     @Import(name="ltePassword")
     private @Nullable Output<String> ltePassword;
 
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     public Optional<Output<String>> ltePassword() {
@@ -258,14 +258,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if `wan_type`==`lte`
+     * If `wan_type`==`lte`
      * 
      */
     @Import(name="lteUsername")
     private @Nullable Output<String> lteUsername;
 
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     public Optional<Output<String>> lteUsername() {
@@ -280,14 +280,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * name that we&#39;ll use to derive config
+     * Name that we&#39;ll use to derive config
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return name that we&#39;ll use to derive config
+     * @return Name that we&#39;ll use to derive config
      * 
      */
     public Optional<Output<String>> name() {
@@ -310,14 +310,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * for Q-in-Q
+     * For Q-in-Q
      * 
      */
     @Import(name="outerVlanId")
     private @Nullable Output<Integer> outerVlanId;
 
     /**
-     * @return for Q-in-Q
+     * @return For Q-in-Q
      * 
      */
     public Optional<Output<Integer>> outerVlanId() {
@@ -332,14 +332,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+     * Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
     @Import(name="portNetwork")
     private @Nullable Output<String> portNetwork;
 
     /**
-     * @return Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+     * @return Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
     public Optional<Output<String>> portNetwork() {
@@ -347,14 +347,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * whether to preserve dscp when sending traffic over VPN (SSR-only)
+     * Whether to preserve dscp when sending traffic over VPN (SSR-only)
      * 
      */
     @Import(name="preserveDscp")
     private @Nullable Output<Boolean> preserveDscp;
 
     /**
-     * @return whether to preserve dscp when sending traffic over VPN (SSR-only)
+     * @return Whether to preserve dscp when sending traffic over VPN (SSR-only)
      * 
      */
     public Optional<Output<Boolean>> preserveDscp() {
@@ -362,14 +362,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if HA mode
+     * If HA mode
      * 
      */
     @Import(name="redundant")
     private @Nullable Output<Boolean> redundant;
 
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     public Optional<Output<Boolean>> redundant() {
@@ -377,14 +377,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if HA mode
+     * If HA mode
      * 
      */
     @Import(name="rethIdx")
     private @Nullable Output<Integer> rethIdx;
 
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     public Optional<Output<Integer>> rethIdx() {
@@ -392,14 +392,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if HA mode
+     * If HA mode
      * 
      */
     @Import(name="rethNode")
     private @Nullable Output<String> rethNode;
 
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     public Optional<Output<String>> rethNode() {
@@ -429,14 +429,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * when SSR is running as VM, this is required on certain hosting platforms
+     * When SSR is running as VM, this is required on certain hosting platforms
      * 
      */
     @Import(name="ssrNoVirtualMac")
     private @Nullable Output<Boolean> ssrNoVirtualMac;
 
     /**
-     * @return when SSR is running as VM, this is required on certain hosting platforms
+     * @return When SSR is running as VM, this is required on certain hosting platforms
      * 
      */
     public Optional<Output<Boolean>> ssrNoVirtualMac() {
@@ -444,14 +444,14 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * for SSR only
+     * For SSR only
      * 
      */
     @Import(name="svrPortRange")
     private @Nullable Output<String> svrPortRange;
 
     /**
-     * @return for SSR only
+     * @return For SSR only
      * 
      */
     public Optional<Output<String>> svrPortRange() {
@@ -674,7 +674,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aeDisableLacp if `aggregated`==`true`. To disable LCP support for the AE interface
+         * @param aeDisableLacp If `aggregated`==`true`. To disable LCP support for the AE interface
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aeDisableLacp if `aggregated`==`true`. To disable LCP support for the AE interface
+         * @param aeDisableLacp If `aggregated`==`true`. To disable LCP support for the AE interface
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aeIdx if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         * @param aeIdx If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param aeIdx if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+         * @param aeIdx If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
          * 
          * @return builder
          * 
@@ -746,7 +746,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param critical if want to generate port up/down alarm, set it to true
+         * @param critical To generate port up/down alarm, set it to true
          * 
          * @return builder
          * 
@@ -757,7 +757,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param critical if want to generate port up/down alarm, set it to true
+         * @param critical To generate port up/down alarm, set it to true
          * 
          * @return builder
          * 
@@ -797,7 +797,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disabled port admin up (true) / down (false)
+         * @param disabled Port admin up (true) / down (false)
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param disabled port admin up (true) / down (false)
+         * @param disabled Port admin up (true) / down (false)
          * 
          * @return builder
          * 
@@ -839,7 +839,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVci if `wan_type`==`dsl`, 16 bit int
+         * @param dslVci If `wan_type`==`dsl`, 16 bit int
          * 
          * @return builder
          * 
@@ -850,7 +850,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVci if `wan_type`==`dsl`, 16 bit int
+         * @param dslVci If `wan_type`==`dsl`, 16 bit int
          * 
          * @return builder
          * 
@@ -860,7 +860,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVpi if `wan_type`==`dsl`, 8 bit int
+         * @param dslVpi If `wan_type`==`dsl`, 8 bit int
          * 
          * @return builder
          * 
@@ -871,7 +871,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dslVpi if `wan_type`==`dsl`, 8 bit int
+         * @param dslVpi If `wan_type`==`dsl`, 8 bit int
          * 
          * @return builder
          * 
@@ -923,7 +923,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteApn if `wan_type`==`lte`
+         * @param lteApn If `wan_type`==`lte`
          * 
          * @return builder
          * 
@@ -934,7 +934,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteApn if `wan_type`==`lte`
+         * @param lteApn If `wan_type`==`lte`
          * 
          * @return builder
          * 
@@ -974,7 +974,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ltePassword if `wan_type`==`lte`
+         * @param ltePassword If `wan_type`==`lte`
          * 
          * @return builder
          * 
@@ -985,7 +985,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ltePassword if `wan_type`==`lte`
+         * @param ltePassword If `wan_type`==`lte`
          * 
          * @return builder
          * 
@@ -995,7 +995,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteUsername if `wan_type`==`lte`
+         * @param lteUsername If `wan_type`==`lte`
          * 
          * @return builder
          * 
@@ -1006,7 +1006,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param lteUsername if `wan_type`==`lte`
+         * @param lteUsername If `wan_type`==`lte`
          * 
          * @return builder
          * 
@@ -1025,7 +1025,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name name that we&#39;ll use to derive config
+         * @param name Name that we&#39;ll use to derive config
          * 
          * @return builder
          * 
@@ -1036,7 +1036,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name name that we&#39;ll use to derive config
+         * @param name Name that we&#39;ll use to derive config
          * 
          * @return builder
          * 
@@ -1077,7 +1077,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param outerVlanId for Q-in-Q
+         * @param outerVlanId For Q-in-Q
          * 
          * @return builder
          * 
@@ -1088,7 +1088,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param outerVlanId for Q-in-Q
+         * @param outerVlanId For Q-in-Q
          * 
          * @return builder
          * 
@@ -1107,7 +1107,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param portNetwork Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+         * @param portNetwork Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          * 
          * @return builder
          * 
@@ -1118,7 +1118,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param portNetwork Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+         * @param portNetwork Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
          * 
          * @return builder
          * 
@@ -1128,7 +1128,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param preserveDscp whether to preserve dscp when sending traffic over VPN (SSR-only)
+         * @param preserveDscp Whether to preserve dscp when sending traffic over VPN (SSR-only)
          * 
          * @return builder
          * 
@@ -1139,7 +1139,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param preserveDscp whether to preserve dscp when sending traffic over VPN (SSR-only)
+         * @param preserveDscp Whether to preserve dscp when sending traffic over VPN (SSR-only)
          * 
          * @return builder
          * 
@@ -1149,7 +1149,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param redundant if HA mode
+         * @param redundant If HA mode
          * 
          * @return builder
          * 
@@ -1160,7 +1160,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param redundant if HA mode
+         * @param redundant If HA mode
          * 
          * @return builder
          * 
@@ -1170,7 +1170,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethIdx if HA mode
+         * @param rethIdx If HA mode
          * 
          * @return builder
          * 
@@ -1181,7 +1181,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethIdx if HA mode
+         * @param rethIdx If HA mode
          * 
          * @return builder
          * 
@@ -1191,7 +1191,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNode if HA mode
+         * @param rethNode If HA mode
          * 
          * @return builder
          * 
@@ -1202,7 +1202,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rethNode if HA mode
+         * @param rethNode If HA mode
          * 
          * @return builder
          * 
@@ -1252,7 +1252,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ssrNoVirtualMac when SSR is running as VM, this is required on certain hosting platforms
+         * @param ssrNoVirtualMac When SSR is running as VM, this is required on certain hosting platforms
          * 
          * @return builder
          * 
@@ -1263,7 +1263,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ssrNoVirtualMac when SSR is running as VM, this is required on certain hosting platforms
+         * @param ssrNoVirtualMac When SSR is running as VM, this is required on certain hosting platforms
          * 
          * @return builder
          * 
@@ -1273,7 +1273,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param svrPortRange for SSR only
+         * @param svrPortRange For SSR only
          * 
          * @return builder
          * 
@@ -1284,7 +1284,7 @@ public final class GatewayPortConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param svrPortRange for SSR only
+         * @param svrPortRange For SSR only
          * 
          * @return builder
          * 

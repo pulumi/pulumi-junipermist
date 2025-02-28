@@ -23,7 +23,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? IkeMode;
         /// <summary>
-        /// if `provider`==`custom-ipsec`
+        /// If `provider`==`custom-ipsec`
         /// </summary>
         public readonly ImmutableArray<Outputs.GatewayTunnelConfigsIkeProposal> IkeProposals;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        /// If `provider`==`custom-ipsec`, networks reachable via this tunnel
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>

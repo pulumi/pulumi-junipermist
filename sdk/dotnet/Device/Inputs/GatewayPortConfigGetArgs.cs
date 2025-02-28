@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayPortConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// if `aggregated`==`true`. To disable LCP support for the AE interface
+        /// If `aggregated`==`true`. To disable LCP support for the AE interface
         /// </summary>
         [Input("aeDisableLacp")]
         public Input<bool>? AeDisableLacp { get; set; }
 
         /// <summary>
-        /// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        /// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         /// </summary>
         [Input("aeIdx")]
         public Input<string>? AeIdx { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Aggregated { get; set; }
 
         /// <summary>
-        /// if want to generate port up/down alarm, set it to true
+        /// To generate port up/down alarm, set it to true
         /// </summary>
         [Input("critical")]
         public Input<bool>? Critical { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? DisableAutoneg { get; set; }
 
         /// <summary>
-        /// port admin up (true) / down (false)
+        /// Port admin up (true) / down (false)
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -61,13 +61,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? DslType { get; set; }
 
         /// <summary>
-        /// if `wan_type`==`dsl`, 16 bit int
+        /// If `wan_type`==`dsl`, 16 bit int
         /// </summary>
         [Input("dslVci")]
         public Input<int>? DslVci { get; set; }
 
         /// <summary>
-        /// if `wan_type`==`dsl`, 8 bit int
+        /// If `wan_type`==`dsl`, 8 bit int
         /// </summary>
         [Input("dslVpi")]
         public Input<int>? DslVpi { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.GatewayPortConfigIpConfigGetArgs>? IpConfig { get; set; }
 
         /// <summary>
-        /// if `wan_type`==`lte`
+        /// If `wan_type`==`lte`
         /// </summary>
         [Input("lteApn")]
         public Input<string>? LteApn { get; set; }
@@ -103,7 +103,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private Input<string>? _ltePassword;
 
         /// <summary>
-        /// if `wan_type`==`lte`
+        /// If `wan_type`==`lte`
         /// </summary>
         public Input<string>? LtePassword
         {
@@ -116,7 +116,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// if `wan_type`==`lte`
+        /// If `wan_type`==`lte`
         /// </summary>
         [Input("lteUsername")]
         public Input<string>? LteUsername { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// name that we'll use to derive config
+        /// Name that we'll use to derive config
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// for Q-in-Q
+        /// For Q-in-Q
         /// </summary>
         [Input("outerVlanId")]
         public Input<int>? OuterVlanId { get; set; }
@@ -152,31 +152,31 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? PoeDisabled { get; set; }
 
         /// <summary>
-        /// Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+        /// Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         /// </summary>
         [Input("portNetwork")]
         public Input<string>? PortNetwork { get; set; }
 
         /// <summary>
-        /// whether to preserve dscp when sending traffic over VPN (SSR-only)
+        /// Whether to preserve dscp when sending traffic over VPN (SSR-only)
         /// </summary>
         [Input("preserveDscp")]
         public Input<bool>? PreserveDscp { get; set; }
 
         /// <summary>
-        /// if HA mode
+        /// If HA mode
         /// </summary>
         [Input("redundant")]
         public Input<bool>? Redundant { get; set; }
 
         /// <summary>
-        /// if HA mode
+        /// If HA mode
         /// </summary>
         [Input("rethIdx")]
         public Input<int>? RethIdx { get; set; }
 
         /// <summary>
-        /// if HA mode
+        /// If HA mode
         /// </summary>
         [Input("rethNode")]
         public Input<string>? RethNode { get; set; }
@@ -197,13 +197,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// when SSR is running as VM, this is required on certain hosting platforms
+        /// When SSR is running as VM, this is required on certain hosting platforms
         /// </summary>
         [Input("ssrNoVirtualMac")]
         public Input<bool>? SsrNoVirtualMac { get; set; }
 
         /// <summary>
-        /// for SSR only
+        /// For SSR only
         /// </summary>
         [Input("svrPortRange")]
         public Input<string>? SvrPortRange { get; set; }

@@ -24,14 +24,14 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs e
     }
 
     /**
-     * optional, only needed if `vars_only`==`false`
+     * Optional, only needed if `vars_only`==`false`
      * 
      */
     @Import(name="wanNames")
     private @Nullable Output<List<String>> wanNames;
 
     /**
-     * @return optional, only needed if `vars_only`==`false`
+     * @return Optional, only needed if `vars_only`==`false`
      * 
      */
     public Optional<Output<List<String>>> wanNames() {
@@ -77,7 +77,7 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs e
         }
 
         /**
-         * @param wanNames optional, only needed if `vars_only`==`false`
+         * @param wanNames Optional, only needed if `vars_only`==`false`
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs e
         }
 
         /**
-         * @param wanNames optional, only needed if `vars_only`==`false`
+         * @param wanNames Optional, only needed if `vars_only`==`false`
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs e
         }
 
         /**
-         * @param wanNames optional, only needed if `vars_only`==`false`
+         * @param wanNames Optional, only needed if `vars_only`==`false`
          * 
          * @return builder
          * 

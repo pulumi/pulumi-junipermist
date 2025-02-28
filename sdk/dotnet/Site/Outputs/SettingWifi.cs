@@ -15,45 +15,45 @@ namespace Pulumi.JuniperMist.Site.Outputs
     {
         public readonly bool? CiscoEnabled;
         /// <summary>
-        /// whether to disable 11k
+        /// Whether to disable 11k
         /// </summary>
         public readonly bool? Disable11k;
         public readonly bool? DisableRadiosWhenPowerConstrained;
         /// <summary>
-        /// when proxy_arp is enabled, check for arp spoofing.
+        /// When proxy_arp is enabled, check for arp spoofing.
         /// </summary>
         public readonly bool? EnableArpSpoofCheck;
         public readonly bool? EnableSharedRadioScanning;
         /// <summary>
-        /// enable WIFI feature (using SUB-MAN license)
+        /// Enable Wi-Fi feature (using SUB-MAN license)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// whether to locate connected clients
+        /// Whether to locate connected clients
         /// </summary>
         public readonly bool? LocateConnected;
         /// <summary>
-        /// whether to locate unconnected clients
+        /// Whether to locate unconnected clients
         /// </summary>
         public readonly bool? LocateUnconnected;
         /// <summary>
-        /// whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+        /// Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
         /// </summary>
         public readonly bool? MeshAllowDfs;
         /// <summary>
-        /// used to enable/disable CRM
+        /// Used to enable/disable CRM
         /// </summary>
         public readonly bool? MeshEnableCrm;
         /// <summary>
-        /// whether to enable Mesh feature for the site
+        /// Whether to enable Mesh feature for the site
         /// </summary>
         public readonly bool? MeshEnabled;
         /// <summary>
-        /// optional passphrase of mesh networking, default is generated randomly
+        /// Optional passphrase of mesh networking, default is generated randomly
         /// </summary>
         public readonly string? MeshPsk;
         /// <summary>
-        /// optional ssid of mesh networking, default is based on site_id
+        /// Optional ssid of mesh networking, default is based on site_id
         /// </summary>
         public readonly string? MeshSsid;
         /// <summary>

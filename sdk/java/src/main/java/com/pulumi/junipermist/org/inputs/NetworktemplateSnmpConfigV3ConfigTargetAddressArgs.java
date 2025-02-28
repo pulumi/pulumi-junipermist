@@ -5,7 +5,7 @@ package com.pulumi.junipermist.org.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,58 +16,58 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
 
     public static final NetworktemplateSnmpConfigV3ConfigTargetAddressArgs Empty = new NetworktemplateSnmpConfigV3ConfigTargetAddressArgs();
 
-    @Import(name="address")
-    private @Nullable Output<String> address;
+    @Import(name="address", required=true)
+    private Output<String> address;
 
-    public Optional<Output<String>> address() {
-        return Optional.ofNullable(this.address);
+    public Output<String> address() {
+        return this.address;
     }
 
-    @Import(name="addressMask")
-    private @Nullable Output<String> addressMask;
+    @Import(name="addressMask", required=true)
+    private Output<String> addressMask;
 
-    public Optional<Output<String>> addressMask() {
-        return Optional.ofNullable(this.addressMask);
+    public Output<String> addressMask() {
+        return this.addressMask;
     }
 
     @Import(name="port")
-    private @Nullable Output<Integer> port;
+    private @Nullable Output<String> port;
 
-    public Optional<Output<Integer>> port() {
+    public Optional<Output<String>> port() {
         return Optional.ofNullable(this.port);
     }
 
     /**
-     * &lt;refer to notify tag, can be multiple with blank
+     * Refer to notify tag, can be multiple with blank
      * 
      */
     @Import(name="tagList")
     private @Nullable Output<String> tagList;
 
     /**
-     * @return &lt;refer to notify tag, can be multiple with blank
+     * @return Refer to notify tag, can be multiple with blank
      * 
      */
     public Optional<Output<String>> tagList() {
         return Optional.ofNullable(this.tagList);
     }
 
-    @Import(name="targetAddressName")
-    private @Nullable Output<String> targetAddressName;
+    @Import(name="targetAddressName", required=true)
+    private Output<String> targetAddressName;
 
-    public Optional<Output<String>> targetAddressName() {
-        return Optional.ofNullable(this.targetAddressName);
+    public Output<String> targetAddressName() {
+        return this.targetAddressName;
     }
 
     /**
-     * refer to notify target parameters name
+     * Refer to notify target parameters name
      * 
      */
     @Import(name="targetParameters")
     private @Nullable Output<String> targetParameters;
 
     /**
-     * @return refer to notify target parameters name
+     * @return Refer to notify target parameters name
      * 
      */
     public Optional<Output<String>> targetParameters() {
@@ -103,7 +103,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
             $ = new NetworktemplateSnmpConfigV3ConfigTargetAddressArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder address(@Nullable Output<String> address) {
+        public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
@@ -112,7 +112,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
             return address(Output.of(address));
         }
 
-        public Builder addressMask(@Nullable Output<String> addressMask) {
+        public Builder addressMask(Output<String> addressMask) {
             $.addressMask = addressMask;
             return this;
         }
@@ -121,17 +121,17 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
             return addressMask(Output.of(addressMask));
         }
 
-        public Builder port(@Nullable Output<Integer> port) {
+        public Builder port(@Nullable Output<String> port) {
             $.port = port;
             return this;
         }
 
-        public Builder port(Integer port) {
+        public Builder port(String port) {
             return port(Output.of(port));
         }
 
         /**
-         * @param tagList &lt;refer to notify tag, can be multiple with blank
+         * @param tagList Refer to notify tag, can be multiple with blank
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
         }
 
         /**
-         * @param tagList &lt;refer to notify tag, can be multiple with blank
+         * @param tagList Refer to notify tag, can be multiple with blank
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
             return tagList(Output.of(tagList));
         }
 
-        public Builder targetAddressName(@Nullable Output<String> targetAddressName) {
+        public Builder targetAddressName(Output<String> targetAddressName) {
             $.targetAddressName = targetAddressName;
             return this;
         }
@@ -161,7 +161,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
         }
 
         /**
-         * @param targetParameters refer to notify target parameters name
+         * @param targetParameters Refer to notify target parameters name
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
         }
 
         /**
-         * @param targetParameters refer to notify target parameters name
+         * @param targetParameters Refer to notify target parameters name
          * 
          * @return builder
          * 
@@ -182,6 +182,15 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs extends co
         }
 
         public NetworktemplateSnmpConfigV3ConfigTargetAddressArgs build() {
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigTargetAddressArgs", "address");
+            }
+            if ($.addressMask == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigTargetAddressArgs", "addressMask");
+            }
+            if ($.targetAddressName == null) {
+                throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigTargetAddressArgs", "targetAddressName");
+            }
             return $;
         }
     }

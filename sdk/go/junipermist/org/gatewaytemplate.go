@@ -48,9 +48,9 @@ type Gatewaytemplate struct {
 	Name        pulumi.StringOutput               `pulumi:"name"`
 	Networks    GatewaytemplateNetworkArrayOutput `pulumi:"networks"`
 	NtpOverride pulumi.BoolOutput                 `pulumi:"ntpOverride"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewaytemplateOobIpConfigOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput              `pulumi:"orgId"`
 	// Property key is the path name
@@ -58,7 +58,7 @@ type Gatewaytemplate struct {
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
 	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapOutput `pulumi:"portConfig"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
@@ -126,9 +126,9 @@ type gatewaytemplateState struct {
 	Name        *string                             `pulumi:"name"`
 	Networks    []GatewaytemplateNetwork            `pulumi:"networks"`
 	NtpOverride *bool                               `pulumi:"ntpOverride"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *GatewaytemplateOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string                     `pulumi:"orgId"`
 	// Property key is the path name
@@ -136,7 +136,7 @@ type gatewaytemplateState struct {
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
 	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies map[string]GatewaytemplateRoutingPolicies `pulumi:"routingPolicies"`
@@ -172,9 +172,9 @@ type GatewaytemplateState struct {
 	Name        pulumi.StringPtrInput
 	Networks    GatewaytemplateNetworkArrayInput
 	NtpOverride pulumi.BoolPtrInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewaytemplateOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
 	// Property key is the path name
@@ -182,7 +182,7 @@ type GatewaytemplateState struct {
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
 	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
 	// Property key is the routing policy name
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapInput
@@ -222,9 +222,9 @@ type gatewaytemplateArgs struct {
 	Name        *string                             `pulumi:"name"`
 	Networks    []GatewaytemplateNetwork            `pulumi:"networks"`
 	NtpOverride *bool                               `pulumi:"ntpOverride"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *GatewaytemplateOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       string                      `pulumi:"orgId"`
 	// Property key is the path name
@@ -232,7 +232,7 @@ type gatewaytemplateArgs struct {
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
 	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig map[string]GatewaytemplatePortConfig `pulumi:"portConfig"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies map[string]GatewaytemplateRoutingPolicies `pulumi:"routingPolicies"`
@@ -269,9 +269,9 @@ type GatewaytemplateArgs struct {
 	Name        pulumi.StringPtrInput
 	Networks    GatewaytemplateNetworkArrayInput
 	NtpOverride pulumi.BoolPtrInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewaytemplateOobIpConfigPtrInput
 	OrgId       pulumi.StringInput
 	// Property key is the path name
@@ -279,7 +279,7 @@ type GatewaytemplateArgs struct {
 	// Property key is the Port Name (i.e. "ge-0/0/0"), the Ports Range (i.e. "ge-0/0/0-10"), the List of Ports (i.e.
 	// "ge-0/0/0,ge-1/0/0", only allowed for Aggregated or Redundant interfaces) or a Variable (i.e. "{{myvar}}").
 	PortConfig GatewaytemplatePortConfigMapInput
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
 	// Property key is the routing policy name
 	RoutingPolicies GatewaytemplateRoutingPoliciesMapInput
@@ -440,12 +440,12 @@ func (o GatewaytemplateOutput) NtpOverride() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.BoolOutput { return v.NtpOverride }).(pulumi.BoolOutput)
 }
 
-// list of NTP servers specific to this device. By default, those in Site Settings will be used
+// List of NTP servers specific to this device. By default, those in Site Settings will be used
 func (o GatewaytemplateOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// out-of-band (vme/em0/fxp0) IP config
+// Out-of-band (vme/em0/fxp0) IP config
 func (o GatewaytemplateOutput) OobIpConfig() GatewaytemplateOobIpConfigOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplateOobIpConfigOutput { return v.OobIpConfig }).(GatewaytemplateOobIpConfigOutput)
 }
@@ -465,7 +465,7 @@ func (o GatewaytemplateOutput) PortConfig() GatewaytemplatePortConfigMapOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) GatewaytemplatePortConfigMapOutput { return v.PortConfig }).(GatewaytemplatePortConfigMapOutput)
 }
 
-// auto assigned if not set
+// Auto assigned if not set
 func (o GatewaytemplateOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gatewaytemplate) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
 }

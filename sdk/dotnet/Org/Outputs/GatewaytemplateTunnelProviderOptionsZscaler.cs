@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? AupEnabled;
         /// <summary>
-        /// proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        /// Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         /// </summary>
         public readonly bool? AupForceSslInspection;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly bool? CautionEnabled;
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
+        /// Download bandwidth cap of the link, in Mbps. Disabled if not set
         /// </summary>
         public readonly double? DnBandwidth;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? IdleTimeInMinutes;
         /// <summary>
-        /// if `true`, enable the firewall control option
+        /// If `true`, enable the firewall control option
         /// </summary>
         public readonly bool? OfwEnabled;
         /// <summary>
@@ -63,11 +63,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? SurrogateRefreshTimeInMinutes;
         /// <summary>
-        /// the download bandwidth cap of the link, in Mbps. Disabled if not set
+        /// Download bandwidth cap of the link, in Mbps. Disabled if not set
         /// </summary>
         public readonly double? UpBandwidth;
         /// <summary>
-        /// location uses proxy chaining to forward traffic
+        /// Location uses proxy chaining to forward traffic
         /// </summary>
         public readonly bool? XffForwardEnabled;
 

@@ -19,7 +19,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? AllNetworks { get; set; }
 
         /// <summary>
-        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         /// </summary>
         [Input("allowDhcpd")]
         public Input<bool>? AllowDhcpd { get; set; }
@@ -39,8 +39,8 @@ namespace Pulumi.JuniperMist.Device.Inputs
         /// <summary>
         /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        [Input("bypassAuthWhenServerDownForUnkonwnClient")]
-        public Input<bool>? BypassAuthWhenServerDownForUnkonwnClient { get; set; }
+        [Input("bypassAuthWhenServerDownForUnkownClient")]
+        public Input<bool>? BypassAuthWhenServerDownForUnkownClient { get; set; }
 
         /// <summary>
         /// Only if `mode`!=`dynamic`
@@ -235,7 +235,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? StpP2p { get; set; }
 
         /// <summary>
-        /// if this is connected to a vstp network
+        /// If this is connected to a vstp network
         /// </summary>
         [Input("useVstp")]
         public Input<bool>? UseVstp { get; set; }

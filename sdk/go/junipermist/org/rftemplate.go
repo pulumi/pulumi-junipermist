@@ -41,14 +41,14 @@ type Rftemplate struct {
 	Band5On24Radio RftemplateBand5On24RadioPtrOutput `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 RftemplateBand6PtrOutput `pulumi:"band6"`
-	// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapOutput `pulumi:"modelSpecific"`
 	// The name of the RF template
 	Name  pulumi.StringOutput `pulumi:"name"`
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// whether scanning radio is enabled
+	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrOutput `pulumi:"scanningEnabled"`
 }
 
@@ -98,14 +98,14 @@ type rftemplateState struct {
 	Band5On24Radio *RftemplateBand5On24Radio `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 *RftemplateBand6 `pulumi:"band6"`
-	// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode *string `pulumi:"countryCode"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific map[string]RftemplateModelSpecific `pulumi:"modelSpecific"`
 	// The name of the RF template
 	Name  *string `pulumi:"name"`
 	OrgId *string `pulumi:"orgId"`
-	// whether scanning radio is enabled
+	// Whether scanning radio is enabled
 	ScanningEnabled *bool `pulumi:"scanningEnabled"`
 }
 
@@ -123,14 +123,14 @@ type RftemplateState struct {
 	Band5On24Radio RftemplateBand5On24RadioPtrInput
 	// Radio Band AP settings
 	Band6 RftemplateBand6PtrInput
-	// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrInput
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapInput
 	// The name of the RF template
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringPtrInput
-	// whether scanning radio is enabled
+	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrInput
 }
 
@@ -152,14 +152,14 @@ type rftemplateArgs struct {
 	Band5On24Radio *RftemplateBand5On24Radio `pulumi:"band5On24Radio"`
 	// Radio Band AP settings
 	Band6 *RftemplateBand6 `pulumi:"band6"`
-	// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode *string `pulumi:"countryCode"`
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific map[string]RftemplateModelSpecific `pulumi:"modelSpecific"`
 	// The name of the RF template
 	Name  *string `pulumi:"name"`
 	OrgId string  `pulumi:"orgId"`
-	// whether scanning radio is enabled
+	// Whether scanning radio is enabled
 	ScanningEnabled *bool `pulumi:"scanningEnabled"`
 }
 
@@ -178,14 +178,14 @@ type RftemplateArgs struct {
 	Band5On24Radio RftemplateBand5On24RadioPtrInput
 	// Radio Band AP settings
 	Band6 RftemplateBand6PtrInput
-	// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+	// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 	CountryCode pulumi.StringPtrInput
 	// overwrites for a specific model. If a band is specified, it will shadow the default. Property key is the model name (e.g. "AP63")
 	ModelSpecific RftemplateModelSpecificMapInput
 	// The name of the RF template
 	Name  pulumi.StringPtrInput
 	OrgId pulumi.StringInput
-	// whether scanning radio is enabled
+	// Whether scanning radio is enabled
 	ScanningEnabled pulumi.BoolPtrInput
 }
 
@@ -313,7 +313,7 @@ func (o RftemplateOutput) Band6() RftemplateBand6PtrOutput {
 	return o.ApplyT(func(v *Rftemplate) RftemplateBand6PtrOutput { return v.Band6 }).(RftemplateBand6PtrOutput)
 }
 
-// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
 func (o RftemplateOutput) CountryCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
 }
@@ -332,7 +332,7 @@ func (o RftemplateOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// whether scanning radio is enabled
+// Whether scanning radio is enabled
 func (o RftemplateOutput) ScanningEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Rftemplate) pulumi.BoolPtrOutput { return v.ScanningEnabled }).(pulumi.BoolPtrOutput)
 }

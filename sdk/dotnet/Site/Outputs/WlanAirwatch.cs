@@ -18,16 +18,16 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? ApiKey;
         /// <summary>
-        /// console URL
+        /// Console URL
         /// </summary>
         public readonly string? ConsoleUrl;
         public readonly bool? Enabled;
         /// <summary>
-        /// password
+        /// Password
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// username
+        /// Username
         /// </summary>
         public readonly string? Username;
 

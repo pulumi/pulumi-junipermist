@@ -17,14 +17,14 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
     public static final GatewayTunnelConfigsProbeArgs Empty = new GatewayTunnelConfigsProbeArgs();
 
     /**
-     * how often to trigger the probe
+     * How often to trigger the probe
      * 
      */
     @Import(name="interval")
     private @Nullable Output<Integer> interval;
 
     /**
-     * @return how often to trigger the probe
+     * @return How often to trigger the probe
      * 
      */
     public Optional<Output<Integer>> interval() {
@@ -32,14 +32,14 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * number of consecutive misses before declaring the tunnel down
+     * Number of consecutive misses before declaring the tunnel down
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<Integer> threshold;
 
     /**
-     * @return number of consecutive misses before declaring the tunnel down
+     * @return Number of consecutive misses before declaring the tunnel down
      * 
      */
     public Optional<Output<Integer>> threshold() {
@@ -47,14 +47,14 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * time within which to complete the connectivity check
+     * Time within which to complete the connectivity check
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return time within which to complete the connectivity check
+     * @return Time within which to complete the connectivity check
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -104,7 +104,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interval how often to trigger the probe
+         * @param interval How often to trigger the probe
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interval how often to trigger the probe
+         * @param interval How often to trigger the probe
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param threshold number of consecutive misses before declaring the tunnel down
+         * @param threshold Number of consecutive misses before declaring the tunnel down
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param threshold number of consecutive misses before declaring the tunnel down
+         * @param threshold Number of consecutive misses before declaring the tunnel down
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeout time within which to complete the connectivity check
+         * @param timeout Time within which to complete the connectivity check
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class GatewayTunnelConfigsProbeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param timeout time within which to complete the connectivity check
+         * @param timeout Time within which to complete the connectivity check
          * 
          * @return builder
          * 

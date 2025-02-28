@@ -18,12 +18,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayNetworkVpnAccess {
     /**
-     * @return if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
+     * @return If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
      * 
      */
     private @Nullable String advertisedSubnet;
     /**
-     * @return whether to allow ping from vpn into this routed network
+     * @return Whether to allow ping from vpn into this routed network
      * 
      */
     private @Nullable Boolean allowPing;
@@ -33,7 +33,7 @@ public final class DeviceprofileGatewayNetworkVpnAccess {
      */
     private @Nullable Map<String,DeviceprofileGatewayNetworkVpnAccessDestinationNat> destinationNat;
     /**
-     * @return if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
      * 
      */
     private @Nullable String natPool;
@@ -53,17 +53,17 @@ public final class DeviceprofileGatewayNetworkVpnAccess {
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * @return By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     private @Nullable List<String> otherVrfs;
     /**
-     * @return whether this network is routable
+     * @return Whether this network is routable
      * 
      */
     private @Nullable Boolean routed;
     /**
-     * @return if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
      * 
      */
     private @Nullable DeviceprofileGatewayNetworkVpnAccessSourceNat sourceNat;
@@ -90,14 +90,14 @@ public final class DeviceprofileGatewayNetworkVpnAccess {
 
     private DeviceprofileGatewayNetworkVpnAccess() {}
     /**
-     * @return if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
+     * @return If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE&#39;s side
      * 
      */
     public Optional<String> advertisedSubnet() {
         return Optional.ofNullable(this.advertisedSubnet);
     }
     /**
-     * @return whether to allow ping from vpn into this routed network
+     * @return Whether to allow ping from vpn into this routed network
      * 
      */
     public Optional<Boolean> allowPing() {
@@ -111,7 +111,7 @@ public final class DeviceprofileGatewayNetworkVpnAccess {
         return this.destinationNat == null ? Map.of() : this.destinationNat;
     }
     /**
-     * @return if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
      * 
      */
     public Optional<String> natPool() {
@@ -139,21 +139,21 @@ public final class DeviceprofileGatewayNetworkVpnAccess {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+     * @return By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
      * 
      */
     public List<String> otherVrfs() {
         return this.otherVrfs == null ? List.of() : this.otherVrfs;
     }
     /**
-     * @return whether this network is routable
+     * @return Whether this network is routable
      * 
      */
     public Optional<Boolean> routed() {
         return Optional.ofNullable(this.routed);
     }
     /**
-     * @return if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+     * @return If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
      * 
      */
     public Optional<DeviceprofileGatewayNetworkVpnAccessSourceNat> sourceNat() {

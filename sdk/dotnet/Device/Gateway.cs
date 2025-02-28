@@ -127,7 +127,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.GatewayIpConfigs>?> IpConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
@@ -136,13 +136,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<bool?> Managed { get; private set; } = null!;
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Output("mapId")]
         public Output<string?> MapId { get; private set; } = null!;
 
         /// <summary>
-        /// device Model
+        /// Device Model
         /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
 
         /// <summary>
-        /// out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Output("oobIpConfig")]
         public Output<Outputs.GatewayOobIpConfig> OobIpConfig { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.GatewayPortMirroring?> PortMirroring { get; private set; } = null!;
 
         /// <summary>
-        /// auto assigned if not set
+        /// Auto assigned if not set
         /// </summary>
         [Output("routerId")]
         public Output<string?> RouterId { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.GatewayRoutingPolicies>?> RoutingPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// device Serial
+        /// Device Serial
         /// </summary>
         [Output("serial")]
         public Output<string> Serial { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
@@ -241,13 +241,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.GatewayVrfInstances>?> VrfInstances { get; private set; } = null!;
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Output("x")]
         public Output<double?> X { get; private set; } = null!;
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Output("y")]
         public Output<double?> Y { get; private set; } = null!;
@@ -401,7 +401,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? Managed { get; set; }
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.GatewayOobIpConfigArgs>? OobIpConfig { get; set; }
@@ -465,7 +465,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.GatewayPortMirroringArgs>? PortMirroring { get; set; }
 
         /// <summary>
-        /// auto assigned if not set
+        /// Auto assigned if not set
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -512,7 +512,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -536,13 +536,13 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
@@ -663,7 +663,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
@@ -672,13 +672,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<bool>? Managed { get; set; }
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
 
         /// <summary>
-        /// device Model
+        /// Device Model
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
@@ -709,7 +709,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// out-of-band (vme/em0/fxp0) IP config
+        /// Out-of-band (vme/em0/fxp0) IP config
         /// </summary>
         [Input("oobIpConfig")]
         public Input<Inputs.GatewayOobIpConfigGetArgs>? OobIpConfig { get; set; }
@@ -745,7 +745,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.GatewayPortMirroringGetArgs>? PortMirroring { get; set; }
 
         /// <summary>
-        /// auto assigned if not set
+        /// Auto assigned if not set
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -763,7 +763,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// device Serial
+        /// Device Serial
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
@@ -804,7 +804,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -828,13 +828,13 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }

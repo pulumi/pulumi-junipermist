@@ -25,7 +25,7 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * when acted as client bridge:
+     * When acted as client bridge:
      *   * only 5G radio can be used
      *   * will not serve as AP on any radios
      * 
@@ -34,7 +34,7 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return when acted as client bridge:
+     * @return When acted as client bridge:
      *   * only 5G radio can be used
      *   * will not serve as AP on any radios
      * 
@@ -86,7 +86,7 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enabled when acted as client bridge:
+         * @param enabled When acted as client bridge:
          *   * only 5G radio can be used
          *   * will not serve as AP on any radios
          * 
@@ -99,7 +99,7 @@ public final class ApClientBridgeArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enabled when acted as client bridge:
+         * @param enabled When acted as client bridge:
          *   * only 5G radio can be used
          *   * will not serve as AP on any radios
          * 

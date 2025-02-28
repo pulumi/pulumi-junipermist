@@ -19,14 +19,14 @@ public final class GatewayNetworkMulticastArgs extends com.pulumi.resources.Reso
     public static final GatewayNetworkMulticastArgs Empty = new GatewayNetworkMulticastArgs();
 
     /**
-     * if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+     * If the network will only be the soruce of the multicast traffic, IGMP can be disabled
      * 
      */
     @Import(name="disableIgmp")
     private @Nullable Output<Boolean> disableIgmp;
 
     /**
-     * @return if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+     * @return If the network will only be the soruce of the multicast traffic, IGMP can be disabled
      * 
      */
     public Optional<Output<Boolean>> disableIgmp() {
@@ -82,7 +82,7 @@ public final class GatewayNetworkMulticastArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param disableIgmp if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         * @param disableIgmp If the network will only be the soruce of the multicast traffic, IGMP can be disabled
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class GatewayNetworkMulticastArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param disableIgmp if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+         * @param disableIgmp If the network will only be the soruce of the multicast traffic, IGMP can be disabled
          * 
          * @return builder
          * 

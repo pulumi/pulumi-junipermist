@@ -22,17 +22,17 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly int? AeIdx;
         /// <summary>
-        /// to use fast timeout
+        /// To use fast timeout
         /// </summary>
         public readonly bool? AeLacpSlow;
         public readonly bool? Aggregated;
         /// <summary>
-        /// if want to generate port up/down alarm
+        /// To generate port up/down alarm
         /// </summary>
         public readonly bool? Critical;
         public readonly string? Description;
         /// <summary>
-        /// if `speed` and `duplex` are specified, whether to disable autonegotiation
+        /// If `speed` and `duplex` are specified, whether to disable autonegotiation
         /// </summary>
         public readonly bool? DisableAutoneg;
         /// <summary>
@@ -45,11 +45,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? DynamicUsage;
         public readonly bool? Esilag;
         /// <summary>
-        /// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        /// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
-        /// prevent helpdesk to override the port config
+        /// Prevent helpdesk to override the port config
         /// </summary>
         public readonly bool? NoLocalOverwrite;
         public readonly bool? PoeDisabled;
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Speed;
         /// <summary>
-        /// port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        /// Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         /// </summary>
         public readonly string Usage;
 

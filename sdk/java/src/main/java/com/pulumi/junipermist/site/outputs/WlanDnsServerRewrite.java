@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class WlanDnsServerRewrite {
     private @Nullable Boolean enabled;
     /**
-     * @return map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+     * @return Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
      * 
      */
     private @Nullable Map<String,String> radiusGroups;
@@ -25,7 +25,7 @@ public final class WlanDnsServerRewrite {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+     * @return Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
      * 
      */
     public Map<String,String> radiusGroups() {

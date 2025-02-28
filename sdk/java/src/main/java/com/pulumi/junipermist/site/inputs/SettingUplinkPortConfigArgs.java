@@ -31,14 +31,14 @@ public final class SettingUplinkPortConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+     * By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
      * 
      */
     @Import(name="keepWlansUpIfDown")
     private @Nullable Output<Boolean> keepWlansUpIfDown;
 
     /**
-     * @return by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+     * @return By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
      * 
      */
     public Optional<Output<Boolean>> keepWlansUpIfDown() {
@@ -92,7 +92,7 @@ public final class SettingUplinkPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param keepWlansUpIfDown by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+         * @param keepWlansUpIfDown By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class SettingUplinkPortConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param keepWlansUpIfDown by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+         * @param keepWlansUpIfDown By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
          * 
          * @return builder
          * 

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingGatewayMgmtAppProbing {
     /**
-     * @return app-keys from /api/v1/const/applications
+     * @return APp-keys from /api/v1/const/applications
      * 
      */
     private @Nullable List<String> apps;
@@ -24,7 +24,7 @@ public final class SettingGatewayMgmtAppProbing {
 
     private SettingGatewayMgmtAppProbing() {}
     /**
-     * @return app-keys from /api/v1/const/applications
+     * @return APp-keys from /api/v1/const/applications
      * 
      */
     public List<String> apps() {

@@ -44,14 +44,14 @@ public final class SettingRtsaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * asset tracking related
+     * Asset tracking related
      * 
      */
     @Import(name="trackAsset")
     private @Nullable Output<Boolean> trackAsset;
 
     /**
-     * @return asset tracking related
+     * @return Asset tracking related
      * 
      */
     public Optional<Output<Boolean>> trackAsset() {
@@ -123,7 +123,7 @@ public final class SettingRtsaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trackAsset asset tracking related
+         * @param trackAsset Asset tracking related
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class SettingRtsaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param trackAsset asset tracking related
+         * @param trackAsset Asset tracking related
          * 
          * @return builder
          * 

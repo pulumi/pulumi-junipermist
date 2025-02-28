@@ -20,12 +20,12 @@ public final class GetWlansSiteWlanBonjour {
      */
     private List<String> additionalVlanIds;
     /**
-     * @return whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
      * 
      */
     private Boolean enabled;
     /**
-     * @return what services are allowed.
+     * @return What services are allowed.
      * Property key is the service name
      * 
      */
@@ -40,14 +40,14 @@ public final class GetWlansSiteWlanBonjour {
         return this.additionalVlanIds;
     }
     /**
-     * @return whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+     * @return Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return what services are allowed.
+     * @return What services are allowed.
      * Property key is the service name
      * 
      */

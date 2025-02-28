@@ -50,13 +50,13 @@ export class Setting extends pulumi.CustomResource {
     }
 
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `deviceUpdownThreshold` is ignored.
      */
     public readonly apUpdownThreshold!: pulumi.Output<number>;
     public readonly apiPolicy!: pulumi.Output<outputs.org.SettingApiPolicy | undefined>;
     /**
-     * list of PEM-encoded ca certs
+     * List of PEM-encoded ca certs
      */
     public readonly cacerts!: pulumi.Output<string[]>;
     public readonly celona!: pulumi.Output<outputs.org.SettingCelona | undefined>;
@@ -67,21 +67,21 @@ export class Setting extends pulumi.CustomResource {
      */
     public readonly deviceCert!: pulumi.Output<outputs.org.SettingDeviceCert | undefined>;
     /**
-     * enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      */
     public readonly deviceUpdownThreshold!: pulumi.Output<number>;
     /**
-     * whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
     public readonly disablePcap!: pulumi.Output<boolean>;
     /**
-     * whether to disable remote shell access for an entire org
+     * Whether to disable remote shell access for an entire org
      */
     public readonly disableRemoteShell!: pulumi.Output<boolean>;
     /**
-     * enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     public readonly gatewayUpdownThreshold!: pulumi.Output<number>;
@@ -112,13 +112,13 @@ export class Setting extends pulumi.CustomResource {
     public readonly security!: pulumi.Output<outputs.org.SettingSecurity | undefined>;
     public readonly switchMgmt!: pulumi.Output<outputs.org.SettingSwitchMgmt | undefined>;
     /**
-     * enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     public readonly switchUpdownThreshold!: pulumi.Output<number>;
     public readonly syntheticTest!: pulumi.Output<outputs.org.SettingSyntheticTest | undefined>;
     /**
-     * automatically logout the user when UI session is inactive. `0` means disabled
+     * Automatically logout the user when UI session is inactive. `0` means disabled
      */
     public readonly uiIdleTimeout!: pulumi.Output<number>;
     public readonly vpnOptions!: pulumi.Output<outputs.org.SettingVpnOptions | undefined>;
@@ -219,13 +219,13 @@ export class Setting extends pulumi.CustomResource {
  */
 export interface SettingState {
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
     /**
-     * list of PEM-encoded ca certs
+     * List of PEM-encoded ca certs
      */
     cacerts?: pulumi.Input<pulumi.Input<string>[]>;
     celona?: pulumi.Input<inputs.org.SettingCelona>;
@@ -236,21 +236,21 @@ export interface SettingState {
      */
     deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert>;
     /**
-     * enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
-     * whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
     disablePcap?: pulumi.Input<boolean>;
     /**
-     * whether to disable remote shell access for an entire org
+     * Whether to disable remote shell access for an entire org
      */
     disableRemoteShell?: pulumi.Input<boolean>;
     /**
-     * enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
@@ -281,13 +281,13 @@ export interface SettingState {
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
-     * enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number>;
     syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest>;
     /**
-     * automatically logout the user when UI session is inactive. `0` means disabled
+     * Automatically logout the user when UI session is inactive. `0` means disabled
      */
     uiIdleTimeout?: pulumi.Input<number>;
     vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;
@@ -301,13 +301,13 @@ export interface SettingState {
  */
 export interface SettingArgs {
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `deviceUpdownThreshold` is ignored.
      */
     apUpdownThreshold?: pulumi.Input<number>;
     apiPolicy?: pulumi.Input<inputs.org.SettingApiPolicy>;
     /**
-     * list of PEM-encoded ca certs
+     * List of PEM-encoded ca certs
      */
     cacerts?: pulumi.Input<pulumi.Input<string>[]>;
     celona?: pulumi.Input<inputs.org.SettingCelona>;
@@ -317,21 +317,21 @@ export interface SettingArgs {
      */
     deviceCert?: pulumi.Input<inputs.org.SettingDeviceCert>;
     /**
-     * enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      */
     deviceUpdownThreshold?: pulumi.Input<number>;
     /**
-     * whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      */
     disablePcap?: pulumi.Input<boolean>;
     /**
-     * whether to disable remote shell access for an entire org
+     * Whether to disable remote shell access for an entire org
      */
     disableRemoteShell?: pulumi.Input<boolean>;
     /**
-     * enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     gatewayUpdownThreshold?: pulumi.Input<number>;
@@ -361,13 +361,13 @@ export interface SettingArgs {
     security?: pulumi.Input<inputs.org.SettingSecurity>;
     switchMgmt?: pulumi.Input<inputs.org.SettingSwitchMgmt>;
     /**
-     * enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `deviceUpdownThreshold` is ignored.
      */
     switchUpdownThreshold?: pulumi.Input<number>;
     syntheticTest?: pulumi.Input<inputs.org.SettingSyntheticTest>;
     /**
-     * automatically logout the user when UI session is inactive. `0` means disabled
+     * Automatically logout the user when UI session is inactive. `0` means disabled
      */
     uiIdleTimeout?: pulumi.Input<number>;
     vpnOptions?: pulumi.Input<inputs.org.SettingVpnOptions>;

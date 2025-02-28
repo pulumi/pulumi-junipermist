@@ -22,7 +22,7 @@ public final class NetworktemplatePortUsages {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -40,7 +40,7 @@ public final class NetworktemplatePortUsages {
      * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    private @Nullable Boolean bypassAuthWhenServerDownForUnkonwnClient;
+    private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
     /**
      * @return Only if `mode`!=`dynamic`
      * 
@@ -184,12 +184,12 @@ public final class NetworktemplatePortUsages {
     private @Nullable Boolean stpNoRootPort;
     private @Nullable Boolean stpP2p;
     /**
-     * @return optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * @return Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
      * 
      */
     private @Nullable String uiEvpntopoId;
     /**
-     * @return if this is connected to a vstp network
+     * @return If this is connected to a vstp network
      * 
      */
     private @Nullable Boolean useVstp;
@@ -208,7 +208,7 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -232,8 +232,8 @@ public final class NetworktemplatePortUsages {
      * @return Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Boolean> bypassAuthWhenServerDownForUnkonwnClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkonwnClient);
+    public Optional<Boolean> bypassAuthWhenServerDownForUnkownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
     }
     /**
      * @return Only if `mode`!=`dynamic`
@@ -438,14 +438,14 @@ public final class NetworktemplatePortUsages {
         return Optional.ofNullable(this.stpP2p);
     }
     /**
-     * @return optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+     * @return Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
      * 
      */
     public Optional<String> uiEvpntopoId() {
         return Optional.ofNullable(this.uiEvpntopoId);
     }
     /**
-     * @return if this is connected to a vstp network
+     * @return If this is connected to a vstp network
      * 
      */
     public Optional<Boolean> useVstp() {
@@ -472,7 +472,7 @@ public final class NetworktemplatePortUsages {
         private @Nullable Boolean allowDhcpd;
         private @Nullable Boolean allowMultipleSupplicants;
         private @Nullable Boolean bypassAuthWhenServerDown;
-        private @Nullable Boolean bypassAuthWhenServerDownForUnkonwnClient;
+        private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
         private @Nullable Boolean disabled;
@@ -513,7 +513,7 @@ public final class NetworktemplatePortUsages {
     	      this.allowDhcpd = defaults.allowDhcpd;
     	      this.allowMultipleSupplicants = defaults.allowMultipleSupplicants;
     	      this.bypassAuthWhenServerDown = defaults.bypassAuthWhenServerDown;
-    	      this.bypassAuthWhenServerDownForUnkonwnClient = defaults.bypassAuthWhenServerDownForUnkonwnClient;
+    	      this.bypassAuthWhenServerDownForUnkownClient = defaults.bypassAuthWhenServerDownForUnkownClient;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
     	      this.disabled = defaults.disabled;
@@ -574,9 +574,9 @@ public final class NetworktemplatePortUsages {
             return this;
         }
         @CustomType.Setter
-        public Builder bypassAuthWhenServerDownForUnkonwnClient(@Nullable Boolean bypassAuthWhenServerDownForUnkonwnClient) {
+        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Boolean bypassAuthWhenServerDownForUnkownClient) {
 
-            this.bypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+            this.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             return this;
         }
         @CustomType.Setter
@@ -792,7 +792,7 @@ public final class NetworktemplatePortUsages {
             _resultValue.allowDhcpd = allowDhcpd;
             _resultValue.allowMultipleSupplicants = allowMultipleSupplicants;
             _resultValue.bypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            _resultValue.bypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+            _resultValue.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
             _resultValue.disabled = disabled;

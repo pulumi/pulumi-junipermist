@@ -75,7 +75,7 @@ def get_sso_roles(org_id: Optional[str] = None,
 
     SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\\
     These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\\
-    Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+    Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
 
     ## Example Usage
 
@@ -102,7 +102,7 @@ def get_sso_roles_output(org_id: Optional[pulumi.Input[str]] = None,
 
     SSO roles refer to the different functions assigned to users within a Single Sign-On (SSO) system.\\
     These roles determine the tasks and actions that users can perform within the SSO system. There are typically predefined roles and custom roles in an SSO system.\\
-    Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects..
+    Roles in SSO provide a well-defined separation of responsibility and visibility, allowing for granular-level access control on SSO objects.
 
     ## Example Usage
 

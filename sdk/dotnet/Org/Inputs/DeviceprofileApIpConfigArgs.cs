@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dns;
 
         /// <summary>
-        /// if `type`==`static`
+        /// If `type`==`static`
         /// </summary>
         public InputList<string> Dns
         {
@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _dnsSuffixes;
 
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         public InputList<string> DnsSuffixes
         {
@@ -37,7 +37,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// required if `type`==`static`
+        /// Required if `type`==`static`
         /// </summary>
         [Input("netmask")]
         public Input<string>? Netmask { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Type6 { get; set; }
 
         /// <summary>
-        /// management vlan id, default is 1 (untagged)
+        /// Management VLAN id, default is 1 (untagged)
         /// </summary>
         [Input("vlanId")]
         public Input<int>? VlanId { get; set; }

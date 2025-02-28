@@ -13,17 +13,17 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlanCiscoCwa {
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     private List<String> allowedHostnames;
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     private List<String> allowedSubnets;
     /**
-     * @return list of blocked CIDRs
+     * @return List of blocked CIDRs
      * 
      */
     private List<String> blockedSubnets;
@@ -31,21 +31,21 @@ public final class GetWlansOrgWlanCiscoCwa {
 
     private GetWlansOrgWlanCiscoCwa() {}
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     public List<String> allowedHostnames() {
         return this.allowedHostnames;
     }
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     public List<String> allowedSubnets() {
         return this.allowedSubnets;
     }
     /**
-     * @return list of blocked CIDRs
+     * @return List of blocked CIDRs
      * 
      */
     public List<String> blockedSubnets() {

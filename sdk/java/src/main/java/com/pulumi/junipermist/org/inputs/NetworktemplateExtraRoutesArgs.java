@@ -21,14 +21,14 @@ public final class NetworktemplateExtraRoutesArgs extends com.pulumi.resources.R
     public static final NetworktemplateExtraRoutesArgs Empty = new NetworktemplateExtraRoutesArgs();
 
     /**
-     * this takes precedence
+     * This takes precedence
      * 
      */
     @Import(name="discard")
     private @Nullable Output<Boolean> discard;
 
     /**
-     * @return this takes precedence
+     * @return This takes precedence
      * 
      */
     public Optional<Output<Boolean>> discard() {
@@ -64,14 +64,14 @@ public final class NetworktemplateExtraRoutesArgs extends com.pulumi.resources.R
     }
 
     /**
-     * next-hop IP Address
+     * Next-hop IP Address
      * 
      */
     @Import(name="via", required=true)
     private Output<String> via;
 
     /**
-     * @return next-hop IP Address
+     * @return Next-hop IP Address
      * 
      */
     public Output<String> via() {
@@ -108,7 +108,7 @@ public final class NetworktemplateExtraRoutesArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param discard this takes precedence
+         * @param discard This takes precedence
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class NetworktemplateExtraRoutesArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param discard this takes precedence
+         * @param discard This takes precedence
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class NetworktemplateExtraRoutesArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param via next-hop IP Address
+         * @param via Next-hop IP Address
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class NetworktemplateExtraRoutesArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param via next-hop IP Address
+         * @param via Next-hop IP Address
          * 
          * @return builder
          * 

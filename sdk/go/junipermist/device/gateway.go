@@ -92,19 +92,19 @@ type Gateway struct {
 	Image3Url   pulumi.StringOutput         `pulumi:"image3Url"`
 	// Property key is the network name
 	IpConfigs GatewayIpConfigsMapOutput `pulumi:"ipConfigs"`
-	// device MAC address
+	// Device MAC address
 	Mac     pulumi.StringOutput  `pulumi:"mac"`
 	Managed pulumi.BoolPtrOutput `pulumi:"managed"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
-	// device Model
+	// Device Model
 	Model      pulumi.StringOutput       `pulumi:"model"`
 	MspId      pulumi.StringPtrOutput    `pulumi:"mspId"`
 	Name       pulumi.StringOutput       `pulumi:"name"`
 	Networks   GatewayNetworkArrayOutput `pulumi:"networks"`
 	Notes      pulumi.StringPtrOutput    `pulumi:"notes"`
 	NtpServers pulumi.StringArrayOutput  `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewayOobIpConfigOutput `pulumi:"oobIpConfig"`
 	OrgId       pulumi.StringOutput      `pulumi:"orgId"`
 	// Property key is the path name
@@ -112,11 +112,11 @@ type Gateway struct {
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig    GatewayPortConfigMapOutput    `pulumi:"portConfig"`
 	PortMirroring GatewayPortMirroringPtrOutput `pulumi:"portMirroring"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrOutput `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies GatewayRoutingPoliciesMapOutput `pulumi:"routingPolicies"`
-	// device Serial
+	// Device Serial
 	Serial          pulumi.StringOutput             `pulumi:"serial"`
 	ServicePolicies GatewayServicePolicyArrayOutput `pulumi:"servicePolicies"`
 	SiteId          pulumi.StringOutput             `pulumi:"siteId"`
@@ -125,14 +125,14 @@ type Gateway struct {
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrOutput `pulumi:"tunnelProviderOptions"`
 	// Device Type. enum: `gateway`
 	Type pulumi.StringOutput `pulumi:"type"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      pulumi.StringMapOutput    `pulumi:"vars"`
 	VrfConfig GatewayVrfConfigPtrOutput `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances GatewayVrfInstancesMapOutput `pulumi:"vrfInstances"`
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrOutput `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrOutput `pulumi:"y"`
 }
 
@@ -192,19 +192,19 @@ type gatewayState struct {
 	Image3Url   *string                       `pulumi:"image3Url"`
 	// Property key is the network name
 	IpConfigs map[string]GatewayIpConfigs `pulumi:"ipConfigs"`
-	// device MAC address
+	// Device MAC address
 	Mac     *string `pulumi:"mac"`
 	Managed *bool   `pulumi:"managed"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
-	// device Model
+	// Device Model
 	Model      *string          `pulumi:"model"`
 	MspId      *string          `pulumi:"mspId"`
 	Name       *string          `pulumi:"name"`
 	Networks   []GatewayNetwork `pulumi:"networks"`
 	Notes      *string          `pulumi:"notes"`
 	NtpServers []string         `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *GatewayOobIpConfig `pulumi:"oobIpConfig"`
 	OrgId       *string             `pulumi:"orgId"`
 	// Property key is the path name
@@ -212,11 +212,11 @@ type gatewayState struct {
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig    map[string]GatewayPortConfig `pulumi:"portConfig"`
 	PortMirroring *GatewayPortMirroring        `pulumi:"portMirroring"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies map[string]GatewayRoutingPolicies `pulumi:"routingPolicies"`
-	// device Serial
+	// Device Serial
 	Serial          *string                `pulumi:"serial"`
 	ServicePolicies []GatewayServicePolicy `pulumi:"servicePolicies"`
 	SiteId          *string                `pulumi:"siteId"`
@@ -225,14 +225,14 @@ type gatewayState struct {
 	TunnelProviderOptions *GatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
 	// Device Type. enum: `gateway`
 	Type *string `pulumi:"type"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      map[string]string `pulumi:"vars"`
 	VrfConfig *GatewayVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]GatewayVrfInstances `pulumi:"vrfInstances"`
-	// x in pixel
+	// X in pixel
 	X *float64 `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y *float64 `pulumi:"y"`
 }
 
@@ -257,19 +257,19 @@ type GatewayState struct {
 	Image3Url   pulumi.StringPtrInput
 	// Property key is the network name
 	IpConfigs GatewayIpConfigsMapInput
-	// device MAC address
+	// Device MAC address
 	Mac     pulumi.StringPtrInput
 	Managed pulumi.BoolPtrInput
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
-	// device Model
+	// Device Model
 	Model      pulumi.StringPtrInput
 	MspId      pulumi.StringPtrInput
 	Name       pulumi.StringPtrInput
 	Networks   GatewayNetworkArrayInput
 	Notes      pulumi.StringPtrInput
 	NtpServers pulumi.StringArrayInput
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewayOobIpConfigPtrInput
 	OrgId       pulumi.StringPtrInput
 	// Property key is the path name
@@ -277,11 +277,11 @@ type GatewayState struct {
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig    GatewayPortConfigMapInput
 	PortMirroring GatewayPortMirroringPtrInput
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
 	// Property key is the routing policy name
 	RoutingPolicies GatewayRoutingPoliciesMapInput
-	// device Serial
+	// Device Serial
 	Serial          pulumi.StringPtrInput
 	ServicePolicies GatewayServicePolicyArrayInput
 	SiteId          pulumi.StringPtrInput
@@ -290,14 +290,14 @@ type GatewayState struct {
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrInput
 	// Device Type. enum: `gateway`
 	Type pulumi.StringPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      pulumi.StringMapInput
 	VrfConfig GatewayVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances GatewayVrfInstancesMapInput
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrInput
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrInput
 }
 
@@ -324,21 +324,21 @@ type gatewayArgs struct {
 	// Property key is the network name
 	IpConfigs map[string]GatewayIpConfigs `pulumi:"ipConfigs"`
 	Managed   *bool                       `pulumi:"managed"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId      *string          `pulumi:"mapId"`
 	MspId      *string          `pulumi:"mspId"`
 	Name       *string          `pulumi:"name"`
 	Networks   []GatewayNetwork `pulumi:"networks"`
 	Notes      *string          `pulumi:"notes"`
 	NtpServers []string         `pulumi:"ntpServers"`
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig *GatewayOobIpConfig `pulumi:"oobIpConfig"`
 	// Property key is the path name
 	PathPreferences map[string]GatewayPathPreferences `pulumi:"pathPreferences"`
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig    map[string]GatewayPortConfig `pulumi:"portConfig"`
 	PortMirroring *GatewayPortMirroring        `pulumi:"portMirroring"`
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId *string `pulumi:"routerId"`
 	// Property key is the routing policy name
 	RoutingPolicies map[string]GatewayRoutingPolicies `pulumi:"routingPolicies"`
@@ -347,14 +347,14 @@ type gatewayArgs struct {
 	// Property key is the tunnel name
 	TunnelConfigs         map[string]GatewayTunnelConfigs `pulumi:"tunnelConfigs"`
 	TunnelProviderOptions *GatewayTunnelProviderOptions   `pulumi:"tunnelProviderOptions"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      map[string]string `pulumi:"vars"`
 	VrfConfig *GatewayVrfConfig `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]GatewayVrfInstances `pulumi:"vrfInstances"`
-	// x in pixel
+	// X in pixel
 	X *float64 `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y *float64 `pulumi:"y"`
 }
 
@@ -378,21 +378,21 @@ type GatewayArgs struct {
 	// Property key is the network name
 	IpConfigs GatewayIpConfigsMapInput
 	Managed   pulumi.BoolPtrInput
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId      pulumi.StringPtrInput
 	MspId      pulumi.StringPtrInput
 	Name       pulumi.StringPtrInput
 	Networks   GatewayNetworkArrayInput
 	Notes      pulumi.StringPtrInput
 	NtpServers pulumi.StringArrayInput
-	// out-of-band (vme/em0/fxp0) IP config
+	// Out-of-band (vme/em0/fxp0) IP config
 	OobIpConfig GatewayOobIpConfigPtrInput
 	// Property key is the path name
 	PathPreferences GatewayPathPreferencesMapInput
 	// Property key is the port name or range (e.g. "ge-0/0/0-10")
 	PortConfig    GatewayPortConfigMapInput
 	PortMirroring GatewayPortMirroringPtrInput
-	// auto assigned if not set
+	// Auto assigned if not set
 	RouterId pulumi.StringPtrInput
 	// Property key is the routing policy name
 	RoutingPolicies GatewayRoutingPoliciesMapInput
@@ -401,14 +401,14 @@ type GatewayArgs struct {
 	// Property key is the tunnel name
 	TunnelConfigs         GatewayTunnelConfigsMapInput
 	TunnelProviderOptions GatewayTunnelProviderOptionsPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars      pulumi.StringMapInput
 	VrfConfig GatewayVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances GatewayVrfInstancesMapInput
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrInput
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrInput
 }
 
@@ -558,7 +558,7 @@ func (o GatewayOutput) IpConfigs() GatewayIpConfigsMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayIpConfigsMapOutput { return v.IpConfigs }).(GatewayIpConfigsMapOutput)
 }
 
-// device MAC address
+// Device MAC address
 func (o GatewayOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
@@ -567,12 +567,12 @@ func (o GatewayOutput) Managed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.Managed }).(pulumi.BoolPtrOutput)
 }
 
-// map where the device belongs to
+// Map where the device belongs to
 func (o GatewayOutput) MapId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.MapId }).(pulumi.StringPtrOutput)
 }
 
-// device Model
+// Device Model
 func (o GatewayOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
@@ -597,7 +597,7 @@ func (o GatewayOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
 
-// out-of-band (vme/em0/fxp0) IP config
+// Out-of-band (vme/em0/fxp0) IP config
 func (o GatewayOutput) OobIpConfig() GatewayOobIpConfigOutput {
 	return o.ApplyT(func(v *Gateway) GatewayOobIpConfigOutput { return v.OobIpConfig }).(GatewayOobIpConfigOutput)
 }
@@ -620,7 +620,7 @@ func (o GatewayOutput) PortMirroring() GatewayPortMirroringPtrOutput {
 	return o.ApplyT(func(v *Gateway) GatewayPortMirroringPtrOutput { return v.PortMirroring }).(GatewayPortMirroringPtrOutput)
 }
 
-// auto assigned if not set
+// Auto assigned if not set
 func (o GatewayOutput) RouterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.RouterId }).(pulumi.StringPtrOutput)
 }
@@ -630,7 +630,7 @@ func (o GatewayOutput) RoutingPolicies() GatewayRoutingPoliciesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayRoutingPoliciesMapOutput { return v.RoutingPolicies }).(GatewayRoutingPoliciesMapOutput)
 }
 
-// device Serial
+// Device Serial
 func (o GatewayOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Serial }).(pulumi.StringOutput)
 }
@@ -657,7 +657,7 @@ func (o GatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o GatewayOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }
@@ -671,12 +671,12 @@ func (o GatewayOutput) VrfInstances() GatewayVrfInstancesMapOutput {
 	return o.ApplyT(func(v *Gateway) GatewayVrfInstancesMapOutput { return v.VrfInstances }).(GatewayVrfInstancesMapOutput)
 }
 
-// x in pixel
+// X in pixel
 func (o GatewayOutput) X() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.Float64PtrOutput { return v.X }).(pulumi.Float64PtrOutput)
 }
 
-// y in pixel
+// Y in pixel
 func (o GatewayOutput) Y() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.Float64PtrOutput { return v.Y }).(pulumi.Float64PtrOutput)
 }

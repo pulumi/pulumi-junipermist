@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchVirtualChassis
     {
         /// <summary>
-        /// list of Virtual Chassis members
+        /// List of Virtual Chassis members
         /// </summary>
         public readonly ImmutableArray<Outputs.SwitchVirtualChassisMember> Members;
         /// <summary>
-        /// to configure whether the VC is preprovisioned or nonprovisioned
+        /// To configure whether the VC is preprovisioned or nonprovisioned
         /// </summary>
         public readonly bool? Preprovisioned;
 

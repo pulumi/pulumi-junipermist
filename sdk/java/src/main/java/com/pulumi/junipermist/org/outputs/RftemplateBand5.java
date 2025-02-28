@@ -32,22 +32,22 @@ public final class RftemplateBand5 {
      */
     private @Nullable List<Integer> channels;
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
      * 
      */
     private @Nullable Integer power;
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMax;
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMin;
@@ -86,28 +86,28 @@ public final class RftemplateBand5 {
         return this.channels == null ? List.of() : this.channels;
     }
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
      * 
      */
     public Optional<Integer> power() {
         return Optional.ofNullable(this.power);
     }
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMax() {
         return Optional.ofNullable(this.powerMax);
     }
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMin() {

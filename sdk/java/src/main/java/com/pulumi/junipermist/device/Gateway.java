@@ -239,14 +239,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipConfigs);
     }
     /**
-     * device MAC address
+     * Device MAC address
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return device MAC address
+     * @return Device MAC address
      * 
      */
     public Output<String> mac() {
@@ -259,28 +259,28 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.managed);
     }
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      * 
      */
     @Export(name="mapId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mapId;
 
     /**
-     * @return map where the device belongs to
+     * @return Map where the device belongs to
      * 
      */
     public Output<Optional<String>> mapId() {
         return Codegen.optional(this.mapId);
     }
     /**
-     * device Model
+     * Device Model
      * 
      */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
     /**
-     * @return device Model
+     * @return Device Model
      * 
      */
     public Output<String> model() {
@@ -317,14 +317,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ntpServers);
     }
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      * 
      */
     @Export(name="oobIpConfig", refs={GatewayOobIpConfig.class}, tree="[0]")
     private Output<GatewayOobIpConfig> oobIpConfig;
 
     /**
-     * @return out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band (vme/em0/fxp0) IP config
      * 
      */
     public Output<GatewayOobIpConfig> oobIpConfig() {
@@ -371,14 +371,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.portMirroring);
     }
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routerId;
 
     /**
-     * @return auto assigned if not set
+     * @return Auto assigned if not set
      * 
      */
     public Output<Optional<String>> routerId() {
@@ -399,14 +399,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routingPolicies);
     }
     /**
-     * device Serial
+     * Device Serial
      * 
      */
     @Export(name="serial", refs={String.class}, tree="[0]")
     private Output<String> serial;
 
     /**
-     * @return device Serial
+     * @return Device Serial
      * 
      */
     public Output<String> serial() {
@@ -459,14 +459,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
@@ -493,28 +493,28 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vrfInstances);
     }
     /**
-     * x in pixel
+     * X in pixel
      * 
      */
     @Export(name="x", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> x;
 
     /**
-     * @return x in pixel
+     * @return X in pixel
      * 
      */
     public Output<Optional<Double>> x() {
         return Codegen.optional(this.x);
     }
     /**
-     * y in pixel
+     * Y in pixel
      * 
      */
     @Export(name="y", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> y;
 
     /**
-     * @return y in pixel
+     * @return Y in pixel
      * 
      */
     public Output<Optional<Double>> y() {

@@ -54,7 +54,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchDhcpdConfig?> DhcpdConfig { get; private set; } = null!;
 
         /// <summary>
-        /// for a claimed switch, we control the configs by default. This option (disables the behavior)
+        /// For a claimed switch, we control the configs by default. This option (disables the behavior)
         /// </summary>
         [Output("disableAutoConfig")]
         public Output<bool> DisableAutoConfig { get; private set; } = null!;
@@ -103,31 +103,31 @@ namespace Pulumi.JuniperMist.Device
         public Output<ImmutableDictionary<string, Outputs.SwitchLocalPortConfig>?> LocalPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         [Output("mac")]
         public Output<string> Mac { get; private set; } = null!;
 
         /// <summary>
-        /// for an adopted switch, we don’t overwrite their existing configs automatically
+        /// For an adopted switch, we don’t overwrite their existing configs automatically
         /// </summary>
         [Output("managed")]
         public Output<bool> Managed { get; private set; } = null!;
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Output("mapId")]
         public Output<string?> MapId { get; private set; } = null!;
 
         /// <summary>
-        /// enable mist_nac to use radsec
+        /// Enable mist_nac to use RadSec
         /// </summary>
         [Output("mistNac")]
         public Output<Outputs.SwitchMistNac?> MistNac { get; private set; } = null!;
 
         /// <summary>
-        /// device Model
+        /// Device Model
         /// </summary>
         [Output("model")]
         public Output<string> Model { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.JuniperMist.Device
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// list of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
         /// </summary>
         [Output("ntpServers")]
         public Output<ImmutableArray<string>> NtpServers { get; private set; } = null!;
@@ -205,13 +205,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// used for OSPF / BGP / EVPN
+        /// Used for OSPF / BGP / EVPN
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// device Serial
+        /// Device Serial
         /// </summary>
         [Output("serial")]
         public Output<string> Serial { get; private set; } = null!;
@@ -238,19 +238,19 @@ namespace Pulumi.JuniperMist.Device
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// whether to use it for snmp / syslog / tacplus / radius
+        /// Whether to use it for snmp / syslog / tacplus / radius
         /// </summary>
         [Output("useRouterIdAsSourceIp")]
         public Output<bool> UseRouterIdAsSourceIp { get; private set; } = null!;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
 
         /// <summary>
-        /// required for preprovisioned Virtual Chassis
+        /// Required for preprovisioned Virtual Chassis
         /// </summary>
         [Output("virtualChassis")]
         public Output<Outputs.SwitchVirtualChassis?> VirtualChassis { get; private set; } = null!;
@@ -271,13 +271,13 @@ namespace Pulumi.JuniperMist.Device
         public Output<Outputs.SwitchVrrpConfig?> VrrpConfig { get; private set; } = null!;
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Output("x")]
         public Output<double?> X { get; private set; } = null!;
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Output("y")]
         public Output<double?> Y { get; private set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchDhcpdConfigArgs>? DhcpdConfig { get; set; }
 
         /// <summary>
-        /// for a claimed switch, we control the configs by default. This option (disables the behavior)
+        /// For a claimed switch, we control the configs by default. This option (disables the behavior)
         /// </summary>
         [Input("disableAutoConfig")]
         public Input<bool>? DisableAutoConfig { get; set; }
@@ -440,19 +440,19 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// for an adopted switch, we don’t overwrite their existing configs automatically
+        /// For an adopted switch, we don’t overwrite their existing configs automatically
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
 
         /// <summary>
-        /// enable mist_nac to use radsec
+        /// Enable mist_nac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.SwitchMistNacArgs>? MistNac { get; set; }
@@ -479,7 +479,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// list of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -569,7 +569,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// used for OSPF / BGP / EVPN
+        /// Used for OSPF / BGP / EVPN
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -590,7 +590,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
         /// <summary>
-        /// whether to use it for snmp / syslog / tacplus / radius
+        /// Whether to use it for snmp / syslog / tacplus / radius
         /// </summary>
         [Input("useRouterIdAsSourceIp")]
         public Input<bool>? UseRouterIdAsSourceIp { get; set; }
@@ -599,7 +599,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -608,7 +608,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// required for preprovisioned Virtual Chassis
+        /// Required for preprovisioned Virtual Chassis
         /// </summary>
         [Input("virtualChassis")]
         public Input<Inputs.SwitchVirtualChassisArgs>? VirtualChassis { get; set; }
@@ -635,13 +635,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchVrrpConfigArgs>? VrrpConfig { get; set; }
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }
@@ -696,7 +696,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchDhcpdConfigGetArgs>? DhcpdConfig { get; set; }
 
         /// <summary>
-        /// for a claimed switch, we control the configs by default. This option (disables the behavior)
+        /// For a claimed switch, we control the configs by default. This option (disables the behavior)
         /// </summary>
         [Input("disableAutoConfig")]
         public Input<bool>? DisableAutoConfig { get; set; }
@@ -774,31 +774,31 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// device MAC address
+        /// Device MAC address
         /// </summary>
         [Input("mac")]
         public Input<string>? Mac { get; set; }
 
         /// <summary>
-        /// for an adopted switch, we don’t overwrite their existing configs automatically
+        /// For an adopted switch, we don’t overwrite their existing configs automatically
         /// </summary>
         [Input("managed")]
         public Input<bool>? Managed { get; set; }
 
         /// <summary>
-        /// map where the device belongs to
+        /// Map where the device belongs to
         /// </summary>
         [Input("mapId")]
         public Input<string>? MapId { get; set; }
 
         /// <summary>
-        /// enable mist_nac to use radsec
+        /// Enable mist_nac to use RadSec
         /// </summary>
         [Input("mistNac")]
         public Input<Inputs.SwitchMistNacGetArgs>? MistNac { get; set; }
 
         /// <summary>
-        /// device Model
+        /// Device Model
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }
@@ -825,7 +825,7 @@ namespace Pulumi.JuniperMist.Device
         private InputList<string>? _ntpServers;
 
         /// <summary>
-        /// list of NTP servers specific to this device. By default, those in Site Settings will be used
+        /// List of NTP servers specific to this device. By default, those in Site Settings will be used
         /// </summary>
         public InputList<string> NtpServers
         {
@@ -918,13 +918,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// used for OSPF / BGP / EVPN
+        /// Used for OSPF / BGP / EVPN
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// device Serial
+        /// Device Serial
         /// </summary>
         [Input("serial")]
         public Input<string>? Serial { get; set; }
@@ -951,7 +951,7 @@ namespace Pulumi.JuniperMist.Device
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// whether to use it for snmp / syslog / tacplus / radius
+        /// Whether to use it for snmp / syslog / tacplus / radius
         /// </summary>
         [Input("useRouterIdAsSourceIp")]
         public Input<bool>? UseRouterIdAsSourceIp { get; set; }
@@ -960,7 +960,7 @@ namespace Pulumi.JuniperMist.Device
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -969,7 +969,7 @@ namespace Pulumi.JuniperMist.Device
         }
 
         /// <summary>
-        /// required for preprovisioned Virtual Chassis
+        /// Required for preprovisioned Virtual Chassis
         /// </summary>
         [Input("virtualChassis")]
         public Input<Inputs.SwitchVirtualChassisGetArgs>? VirtualChassis { get; set; }
@@ -996,13 +996,13 @@ namespace Pulumi.JuniperMist.Device
         public Input<Inputs.SwitchVrrpConfigGetArgs>? VrrpConfig { get; set; }
 
         /// <summary>
-        /// x in pixel
+        /// X in pixel
         /// </summary>
         [Input("x")]
         public Input<double>? X { get; set; }
 
         /// <summary>
-        /// y in pixel
+        /// Y in pixel
         /// </summary>
         [Input("y")]
         public Input<double>? Y { get; set; }

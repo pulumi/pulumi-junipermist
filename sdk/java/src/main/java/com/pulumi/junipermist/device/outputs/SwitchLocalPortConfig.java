@@ -22,7 +22,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean allNetworks;
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     private @Nullable Boolean allowDhcpd;
@@ -36,7 +36,7 @@ public final class SwitchLocalPortConfig {
      * @return Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    private @Nullable Boolean bypassAuthWhenServerDownForUnkonwnClient;
+    private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
     private @Nullable String description;
     /**
      * @return Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
@@ -44,7 +44,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean disableAutoneg;
     /**
-     * @return whether the port is disabled
+     * @return Whether the port is disabled
      * 
      */
     private @Nullable Boolean disabled;
@@ -90,7 +90,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String macAuthProtocol;
     /**
-     * @return max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     private @Nullable Integer macLimit;
@@ -100,7 +100,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String mode;
     /**
-     * @return media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+     * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
      * 
      */
     private @Nullable Integer mtu;
@@ -120,7 +120,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable Boolean persistMac;
     /**
-     * @return whether PoE capabilities are disabled for a port
+     * @return Whether PoE capabilities are disabled for a port
      * 
      */
     private @Nullable Boolean poeDisabled;
@@ -130,7 +130,7 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable String portAuth;
     /**
-     * @return native network/vlan for untagged traffic
+     * @return Native network/vlan for untagged traffic
      * 
      */
     private @Nullable String portNetwork;
@@ -160,24 +160,24 @@ public final class SwitchLocalPortConfig {
      */
     private @Nullable SwitchLocalPortConfigStormControl stormControl;
     /**
-     * @return when enabled, the port is not expected to receive BPDU frames
+     * @return When enabled, the port is not expected to receive BPDU frames
      * 
      */
     private @Nullable Boolean stpEdge;
     private @Nullable Boolean stpNoRootPort;
     private @Nullable Boolean stpP2p;
     /**
-     * @return port usage name.
+     * @return Port usage name.
      * 
      */
     private String usage;
     /**
-     * @return if this is connected to a vstp network
+     * @return If this is connected to a vstp network
      * 
      */
     private @Nullable Boolean useVstp;
     /**
-     * @return network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * @return Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     private @Nullable String voipNetwork;
@@ -191,7 +191,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.allNetworks);
     }
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     public Optional<Boolean> allowDhcpd() {
@@ -211,8 +211,8 @@ public final class SwitchLocalPortConfig {
      * @return Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Boolean> bypassAuthWhenServerDownForUnkonwnClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkonwnClient);
+    public Optional<Boolean> bypassAuthWhenServerDownForUnkownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
     }
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
@@ -225,7 +225,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.disableAutoneg);
     }
     /**
-     * @return whether the port is disabled
+     * @return Whether the port is disabled
      * 
      */
     public Optional<Boolean> disabled() {
@@ -291,7 +291,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.macAuthProtocol);
     }
     /**
-     * @return max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     public Optional<Integer> macLimit() {
@@ -305,7 +305,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+     * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
      * 
      */
     public Optional<Integer> mtu() {
@@ -333,7 +333,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.persistMac);
     }
     /**
-     * @return whether PoE capabilities are disabled for a port
+     * @return Whether PoE capabilities are disabled for a port
      * 
      */
     public Optional<Boolean> poeDisabled() {
@@ -347,7 +347,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.portAuth);
     }
     /**
-     * @return native network/vlan for untagged traffic
+     * @return Native network/vlan for untagged traffic
      * 
      */
     public Optional<String> portNetwork() {
@@ -389,7 +389,7 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.stormControl);
     }
     /**
-     * @return when enabled, the port is not expected to receive BPDU frames
+     * @return When enabled, the port is not expected to receive BPDU frames
      * 
      */
     public Optional<Boolean> stpEdge() {
@@ -402,21 +402,21 @@ public final class SwitchLocalPortConfig {
         return Optional.ofNullable(this.stpP2p);
     }
     /**
-     * @return port usage name.
+     * @return Port usage name.
      * 
      */
     public String usage() {
         return this.usage;
     }
     /**
-     * @return if this is connected to a vstp network
+     * @return If this is connected to a vstp network
      * 
      */
     public Optional<Boolean> useVstp() {
         return Optional.ofNullable(this.useVstp);
     }
     /**
-     * @return network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * @return Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     public Optional<String> voipNetwork() {
@@ -436,7 +436,7 @@ public final class SwitchLocalPortConfig {
         private @Nullable Boolean allowDhcpd;
         private @Nullable Boolean allowMultipleSupplicants;
         private @Nullable Boolean bypassAuthWhenServerDown;
-        private @Nullable Boolean bypassAuthWhenServerDownForUnkonwnClient;
+        private @Nullable Boolean bypassAuthWhenServerDownForUnkownClient;
         private @Nullable String description;
         private @Nullable Boolean disableAutoneg;
         private @Nullable Boolean disabled;
@@ -476,7 +476,7 @@ public final class SwitchLocalPortConfig {
     	      this.allowDhcpd = defaults.allowDhcpd;
     	      this.allowMultipleSupplicants = defaults.allowMultipleSupplicants;
     	      this.bypassAuthWhenServerDown = defaults.bypassAuthWhenServerDown;
-    	      this.bypassAuthWhenServerDownForUnkonwnClient = defaults.bypassAuthWhenServerDownForUnkonwnClient;
+    	      this.bypassAuthWhenServerDownForUnkownClient = defaults.bypassAuthWhenServerDownForUnkownClient;
     	      this.description = defaults.description;
     	      this.disableAutoneg = defaults.disableAutoneg;
     	      this.disabled = defaults.disabled;
@@ -536,9 +536,9 @@ public final class SwitchLocalPortConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder bypassAuthWhenServerDownForUnkonwnClient(@Nullable Boolean bypassAuthWhenServerDownForUnkonwnClient) {
+        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Boolean bypassAuthWhenServerDownForUnkownClient) {
 
-            this.bypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+            this.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             return this;
         }
         @CustomType.Setter
@@ -747,7 +747,7 @@ public final class SwitchLocalPortConfig {
             _resultValue.allowDhcpd = allowDhcpd;
             _resultValue.allowMultipleSupplicants = allowMultipleSupplicants;
             _resultValue.bypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            _resultValue.bypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+            _resultValue.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             _resultValue.description = description;
             _resultValue.disableAutoneg = disableAutoneg;
             _resultValue.disabled = disabled;

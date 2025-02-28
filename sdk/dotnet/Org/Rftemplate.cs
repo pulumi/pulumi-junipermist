@@ -67,7 +67,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.RftemplateBand6?> Band6 { get; private set; } = null!;
 
         /// <summary>
-        /// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        /// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         /// </summary>
         [Output("countryCode")]
         public Output<string?> CountryCode { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// whether scanning radio is enabled
+        /// Whether scanning radio is enabled
         /// </summary>
         [Output("scanningEnabled")]
         public Output<bool?> ScanningEnabled { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand6Args>? Band6 { get; set; }
 
         /// <summary>
-        /// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        /// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// whether scanning radio is enabled
+        /// Whether scanning radio is enabled
         /// </summary>
         [Input("scanningEnabled")]
         public Input<bool>? ScanningEnabled { get; set; }
@@ -260,7 +260,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.RftemplateBand6GetArgs>? Band6 { get; set; }
 
         /// <summary>
-        /// optional, country code to use. If specified, this gets applied to all sites using the RF Template
+        /// Optional, country code to use. If specified, this gets applied to all sites using the RF Template
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
@@ -287,7 +287,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// whether scanning radio is enabled
+        /// Whether scanning radio is enabled
         /// </summary>
         [Input("scanningEnabled")]
         public Input<bool>? ScanningEnabled { get; set; }

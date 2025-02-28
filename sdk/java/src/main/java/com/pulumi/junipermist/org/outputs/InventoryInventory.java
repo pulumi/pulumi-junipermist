@@ -64,7 +64,7 @@ public final class InventoryInventory {
      */
     private @Nullable Boolean unclaimWhenDestroyed;
     /**
-     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
      * 
      */
     private @Nullable String vcMac;
@@ -144,7 +144,7 @@ public final class InventoryInventory {
         return Optional.ofNullable(this.unclaimWhenDestroyed);
     }
     /**
-     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
      * 
      */
     public Optional<String> vcMac() {

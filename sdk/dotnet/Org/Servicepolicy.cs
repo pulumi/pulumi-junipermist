@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Org
     /// * the Gateway configuration (`mist_device_gateway.service_policies`)
     /// * the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
     /// * the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-    ///   They can be used to manage common policies betweeen multiples configurations
+    ///   They can be used to manage common policies between multiples configurations
     /// 
     /// ## Import
     /// 
@@ -38,6 +38,12 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Output("antivirus")]
+        public Output<Outputs.ServicepolicyAntivirus?> Antivirus { get; private set; } = null!;
+
+        /// <summary>
         /// For SRX Only
         /// </summary>
         [Output("appqoe")]
@@ -53,7 +59,7 @@ namespace Pulumi.JuniperMist.Org
         /// access within the same VRF
         /// </summary>
         [Output("localRouting")]
-        public Output<bool> LocalRouting { get; private set; } = null!;
+        public Output<bool?> LocalRouting { get; private set; } = null!;
 
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -62,14 +68,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// by default, we derive all paths available and use them
-        /// optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         /// </summary>
         [Output("pathPreference")]
         public Output<string?> PathPreference { get; private set; } = null!;
 
         [Output("services")]
         public Output<ImmutableArray<string>> Services { get; private set; } = null!;
+
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Output("sslProxy")]
+        public Output<Outputs.ServicepolicySslProxy?> SslProxy { get; private set; } = null!;
 
         [Output("tenants")]
         public Output<ImmutableArray<string>> Tenants { get; private set; } = null!;
@@ -128,6 +139,12 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? Action { get; set; }
 
         /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Input("antivirus")]
+        public Input<Inputs.ServicepolicyAntivirusArgs>? Antivirus { get; set; }
+
+        /// <summary>
         /// For SRX Only
         /// </summary>
         [Input("appqoe")]
@@ -157,8 +174,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// by default, we derive all paths available and use them
-        /// optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }
@@ -170,6 +186,12 @@ namespace Pulumi.JuniperMist.Org
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
+
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Input("sslProxy")]
+        public Input<Inputs.ServicepolicySslProxyArgs>? SslProxy { get; set; }
 
         [Input("tenants")]
         private InputList<string>? _tenants;
@@ -192,6 +214,12 @@ namespace Pulumi.JuniperMist.Org
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
+
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Input("antivirus")]
+        public Input<Inputs.ServicepolicyAntivirusGetArgs>? Antivirus { get; set; }
 
         /// <summary>
         /// For SRX Only
@@ -223,8 +251,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// by default, we derive all paths available and use them
-        /// optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them, optionally, you can customize by using `path_preference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }
@@ -236,6 +263,12 @@ namespace Pulumi.JuniperMist.Org
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
+
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Input("sslProxy")]
+        public Input<Inputs.ServicepolicySslProxyGetArgs>? SslProxy { get; set; }
 
         [Input("tenants")]
         private InputList<string>? _tenants;

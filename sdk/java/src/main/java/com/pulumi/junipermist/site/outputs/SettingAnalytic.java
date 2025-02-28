@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingAnalytic {
     /**
-     * @return enable Advanced Analytic feature (using SUB-ANA license)
+     * @return Enable Advanced Analytic feature (using SUB-ANA license)
      * 
      */
     private @Nullable Boolean enabled;
 
     private SettingAnalytic() {}
     /**
-     * @return enable Advanced Analytic feature (using SUB-ANA license)
+     * @return Enable Advanced Analytic feature (using SUB-ANA license)
      * 
      */
     public Optional<Boolean> enabled() {

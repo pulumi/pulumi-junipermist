@@ -16,7 +16,7 @@ public final class GatewayIpConfigs {
     private String ip;
     private String netmask;
     /**
-     * @return optional list of secondary IPs in CIDR format
+     * @return Optional list of secondary IPs in CIDR format
      * 
      */
     private @Nullable List<String> secondaryIps;
@@ -34,7 +34,7 @@ public final class GatewayIpConfigs {
         return this.netmask;
     }
     /**
-     * @return optional list of secondary IPs in CIDR format
+     * @return Optional list of secondary IPs in CIDR format
      * 
      */
     public List<String> secondaryIps() {

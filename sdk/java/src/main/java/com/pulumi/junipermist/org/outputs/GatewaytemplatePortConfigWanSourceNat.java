@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplatePortConfigWanSourceNat {
     /**
-     * @return or to disable the source-nat
+     * @return Or to disable the source-nat
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return if alternative nat_pool is desired
+     * @return If alternative nat_pool is desired
      * 
      */
     private @Nullable String natPool;
 
     private GatewaytemplatePortConfigWanSourceNat() {}
     /**
-     * @return or to disable the source-nat
+     * @return Or to disable the source-nat
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return if alternative nat_pool is desired
+     * @return If alternative nat_pool is desired
      * 
      */
     public Optional<String> natPool() {

@@ -17,14 +17,14 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
     public static final SettingOpticPortConfigArgs Empty = new SettingOpticPortConfigArgs();
 
     /**
-     * enable channelization
+     * Enable channelization
      * 
      */
     @Import(name="channelized")
     private @Nullable Output<Boolean> channelized;
 
     /**
-     * @return enable channelization
+     * @return Enable channelization
      * 
      */
     public Optional<Output<Boolean>> channelized() {
@@ -32,14 +32,14 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+     * Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
      * 
      */
     @Import(name="speed")
     private @Nullable Output<String> speed;
 
     /**
-     * @return interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+     * @return Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
      * 
      */
     public Optional<Output<String>> speed() {
@@ -72,7 +72,7 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param channelized enable channelization
+         * @param channelized Enable channelization
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param channelized enable channelization
+         * @param channelized Enable channelization
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param speed interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+         * @param speed Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class SettingOpticPortConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param speed interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+         * @param speed Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
          * 
          * @return builder
          * 

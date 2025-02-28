@@ -22,7 +22,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _secondaryIps;
 
         /// <summary>
-        /// optional list of secondary IPs in CIDR format
+        /// Optional list of secondary IPs in CIDR format
         /// </summary>
         public InputList<string> SecondaryIps
         {

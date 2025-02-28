@@ -12,7 +12,7 @@ namespace Pulumi.JuniperMist.Site
     /// <summary>
     /// This resource manages the Site Settings.
     /// 
-    /// The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+    /// The Site Settings can be used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
     /// 
     /// &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
     /// 
@@ -35,7 +35,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingAnalytic?> Analytic { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
@@ -57,32 +57,32 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingBleConfig?> BleConfig { get; private set; } = null!;
 
         /// <summary>
-        /// whether to enable ap auto config revert
+        /// Whether to enable ap auto config revert
         /// </summary>
         [Output("configAutoRevert")]
         public Output<bool> ConfigAutoRevert { get; private set; } = null!;
 
         /// <summary>
-        /// mist also uses some heuristic rules to prevent destructive configs from being pushed
+        /// Mist also uses some heuristic rules to prevent destructive configs from being pushed
         /// </summary>
         [Output("configPushPolicy")]
         public Output<Outputs.SettingConfigPushPolicy?> ConfigPushPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        /// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         /// </summary>
         [Output("criticalUrlMonitoring")]
         public Output<Outputs.SettingCriticalUrlMonitoring?> CriticalUrlMonitoring { get; private set; } = null!;
 
         /// <summary>
-        /// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        /// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
         /// is desired, use the following
         /// </summary>
         [Output("deviceUpdownThreshold")]
         public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         /// ranges for the same day
         /// </summary>
         [Output("engagement")]
@@ -95,7 +95,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingGatewayMgmt?> GatewayMgmt { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("gatewayUpdownThreshold")]
@@ -117,7 +117,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingOccupancy?> Occupancy { get; private set; } = null!;
 
         /// <summary>
-        /// whether to store the config on AP
+        /// Whether to store the config on AP
         /// </summary>
         [Output("persistConfigOnDevice")]
         public Output<bool> PersistConfigOnDevice { get; private set; } = null!;
@@ -129,13 +129,13 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingProxy?> Proxy { get; private set; } = null!;
 
         /// <summary>
-        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Output("removeExistingConfigs")]
         public Output<bool> RemoveExistingConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        /// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         /// serial number, battery %, temperature, humidity)
         /// </summary>
         [Output("reportGatt")]
@@ -148,7 +148,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingRogue?> Rogue { get; private set; } = null!;
 
         /// <summary>
-        /// managed mobility
+        /// Managed mobility
         /// </summary>
         [Output("rtsa")]
         public Output<Outputs.SettingRtsa?> Rtsa { get; private set; } = null!;
@@ -170,7 +170,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingSrxApp?> SrxApp { get; private set; } = null!;
 
         /// <summary>
-        /// when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        /// When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
         /// Org:Setting)
         /// </summary>
         [Output("sshKeys")]
@@ -180,7 +180,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingSsr?> Ssr { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("switchUpdownThreshold")]
@@ -190,7 +190,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingSyntheticTest?> SyntheticTest { get; private set; } = null!;
 
         /// <summary>
-        /// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        /// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         /// </summary>
         [Output("trackAnonymousDevices")]
         public Output<bool> TrackAnonymousDevices { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingUplinkPortConfig?> UplinkPortConfig { get; private set; } = null!;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         [Output("vars")]
         public Output<ImmutableDictionary<string, string>?> Vars { get; private set; } = null!;
@@ -211,7 +211,7 @@ namespace Pulumi.JuniperMist.Site
         public Output<Outputs.SettingVna?> Vna { get; private set; } = null!;
 
         /// <summary>
-        /// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        /// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         /// </summary>
         [Output("vsInstance")]
         public Output<ImmutableDictionary<string, Outputs.SettingVsInstance>?> VsInstance { get; private set; } = null!;
@@ -297,7 +297,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingAnalyticArgs>? Analytic { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
@@ -316,32 +316,32 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingBleConfigArgs>? BleConfig { get; set; }
 
         /// <summary>
-        /// whether to enable ap auto config revert
+        /// Whether to enable ap auto config revert
         /// </summary>
         [Input("configAutoRevert")]
         public Input<bool>? ConfigAutoRevert { get; set; }
 
         /// <summary>
-        /// mist also uses some heuristic rules to prevent destructive configs from being pushed
+        /// Mist also uses some heuristic rules to prevent destructive configs from being pushed
         /// </summary>
         [Input("configPushPolicy")]
         public Input<Inputs.SettingConfigPushPolicyArgs>? ConfigPushPolicy { get; set; }
 
         /// <summary>
-        /// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        /// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         /// </summary>
         [Input("criticalUrlMonitoring")]
         public Input<Inputs.SettingCriticalUrlMonitoringArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        /// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
         /// is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         /// ranges for the same day
         /// </summary>
         [Input("engagement")]
@@ -354,7 +354,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingGatewayMgmtArgs>? GatewayMgmt { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
@@ -376,7 +376,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingOccupancyArgs>? Occupancy { get; set; }
 
         /// <summary>
-        /// whether to store the config on AP
+        /// Whether to store the config on AP
         /// </summary>
         [Input("persistConfigOnDevice")]
         public Input<bool>? PersistConfigOnDevice { get; set; }
@@ -388,13 +388,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingProxyArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
 
         /// <summary>
-        /// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        /// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         /// serial number, battery %, temperature, humidity)
         /// </summary>
         [Input("reportGatt")]
@@ -407,7 +407,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingRogueArgs>? Rogue { get; set; }
 
         /// <summary>
-        /// managed mobility
+        /// Managed mobility
         /// </summary>
         [Input("rtsa")]
         public Input<Inputs.SettingRtsaArgs>? Rtsa { get; set; }
@@ -432,7 +432,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _sshKeys;
 
         /// <summary>
-        /// when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        /// When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
         /// Org:Setting)
         /// </summary>
         public InputList<string> SshKeys
@@ -445,7 +445,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingSsrArgs>? Ssr { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("switchUpdownThreshold")]
@@ -455,7 +455,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingSyntheticTestArgs>? SyntheticTest { get; set; }
 
         /// <summary>
-        /// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        /// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         /// </summary>
         [Input("trackAnonymousDevices")]
         public Input<bool>? TrackAnonymousDevices { get; set; }
@@ -470,7 +470,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -485,7 +485,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVsInstanceArgs>? _vsInstance;
 
         /// <summary>
-        /// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        /// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         /// </summary>
         public InputMap<Inputs.SettingVsInstanceArgs> VsInstance
         {
@@ -529,7 +529,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingAnalyticGetArgs>? Analytic { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
@@ -551,32 +551,32 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingBleConfigGetArgs>? BleConfig { get; set; }
 
         /// <summary>
-        /// whether to enable ap auto config revert
+        /// Whether to enable ap auto config revert
         /// </summary>
         [Input("configAutoRevert")]
         public Input<bool>? ConfigAutoRevert { get; set; }
 
         /// <summary>
-        /// mist also uses some heuristic rules to prevent destructive configs from being pushed
+        /// Mist also uses some heuristic rules to prevent destructive configs from being pushed
         /// </summary>
         [Input("configPushPolicy")]
         public Input<Inputs.SettingConfigPushPolicyGetArgs>? ConfigPushPolicy { get; set; }
 
         /// <summary>
-        /// you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        /// You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         /// </summary>
         [Input("criticalUrlMonitoring")]
         public Input<Inputs.SettingCriticalUrlMonitoringGetArgs>? CriticalUrlMonitoring { get; set; }
 
         /// <summary>
-        /// by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        /// By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
         /// is desired, use the following
         /// </summary>
         [Input("deviceUpdownThreshold")]
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
         /// <summary>
-        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        /// **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         /// ranges for the same day
         /// </summary>
         [Input("engagement")]
@@ -589,7 +589,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingGatewayMgmtGetArgs>? GatewayMgmt { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
@@ -611,7 +611,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingOccupancyGetArgs>? Occupancy { get; set; }
 
         /// <summary>
-        /// whether to store the config on AP
+        /// Whether to store the config on AP
         /// </summary>
         [Input("persistConfigOnDevice")]
         public Input<bool>? PersistConfigOnDevice { get; set; }
@@ -623,13 +623,13 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingProxyGetArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        /// By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         /// </summary>
         [Input("removeExistingConfigs")]
         public Input<bool>? RemoveExistingConfigs { get; set; }
 
         /// <summary>
-        /// whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        /// Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         /// serial number, battery %, temperature, humidity)
         /// </summary>
         [Input("reportGatt")]
@@ -642,7 +642,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingRogueGetArgs>? Rogue { get; set; }
 
         /// <summary>
-        /// managed mobility
+        /// Managed mobility
         /// </summary>
         [Input("rtsa")]
         public Input<Inputs.SettingRtsaGetArgs>? Rtsa { get; set; }
@@ -667,7 +667,7 @@ namespace Pulumi.JuniperMist.Site
         private InputList<string>? _sshKeys;
 
         /// <summary>
-        /// when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        /// When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
         /// Org:Setting)
         /// </summary>
         public InputList<string> SshKeys
@@ -680,7 +680,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingSsrGetArgs>? Ssr { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("switchUpdownThreshold")]
@@ -690,7 +690,7 @@ namespace Pulumi.JuniperMist.Site
         public Input<Inputs.SettingSyntheticTestGetArgs>? SyntheticTest { get; set; }
 
         /// <summary>
-        /// whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        /// Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         /// </summary>
         [Input("trackAnonymousDevices")]
         public Input<bool>? TrackAnonymousDevices { get; set; }
@@ -705,7 +705,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<string>? _vars;
 
         /// <summary>
-        /// a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        /// Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         /// </summary>
         public InputMap<string> Vars
         {
@@ -720,7 +720,7 @@ namespace Pulumi.JuniperMist.Site
         private InputMap<Inputs.SettingVsInstanceGetArgs>? _vsInstance;
 
         /// <summary>
-        /// optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        /// Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         /// </summary>
         public InputMap<Inputs.SettingVsInstanceGetArgs> VsInstance
         {

@@ -61,24 +61,28 @@ export class Ap extends pulumi.CustomResource {
     public readonly clientBridge!: pulumi.Output<outputs.device.ApClientBridge | undefined>;
     public readonly deviceId!: pulumi.Output<string>;
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      */
     public readonly disableEth1!: pulumi.Output<boolean>;
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      */
     public readonly disableEth2!: pulumi.Output<boolean>;
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      */
     public readonly disableEth3!: pulumi.Output<boolean>;
     /**
-     * whether to disable module port
+     * Whether to disable module port
      */
     public readonly disableModule!: pulumi.Output<boolean>;
     public readonly eslConfig!: pulumi.Output<outputs.device.ApEslConfig | undefined>;
     /**
-     * height, in meters, optional
+     * For some AP models, flowControl can be enabled to address some switch compatibility issue
+     */
+    public readonly flowControl!: pulumi.Output<boolean>;
+    /**
+     * Height, in meters, optional
      */
     public readonly height!: pulumi.Output<number | undefined>;
     public /*out*/ readonly image1Url!: pulumi.Output<string>;
@@ -93,15 +97,15 @@ export class Ap extends pulumi.CustomResource {
      */
     public readonly led!: pulumi.Output<outputs.device.ApLed | undefined>;
     /**
-     * whether this map is considered locked down
+     * Whether this map is considered locked down
      */
     public readonly locked!: pulumi.Output<boolean | undefined>;
     /**
-     * device MAC address
+     * Device MAC address
      */
     public /*out*/ readonly mac!: pulumi.Output<string>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     public readonly mapId!: pulumi.Output<string | undefined>;
     /**
@@ -109,26 +113,26 @@ export class Ap extends pulumi.CustomResource {
      */
     public readonly mesh!: pulumi.Output<outputs.device.ApMesh | undefined>;
     /**
-     * device Model
+     * Device Model
      */
     public /*out*/ readonly model!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     /**
-     * any notes about this AP
+     * Any notes about this AP
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
     /**
-     * orientation, 0-359, in degrees, up is 0, right is 90.
+     * Orientation, 0-359, in degrees, up is 0, right is 90.
      */
     public readonly orientation!: pulumi.Output<number | undefined>;
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
-     * power related configs
+     * Power related configs
      */
     public readonly pwrConfig!: pulumi.Output<outputs.device.ApPwrConfig | undefined>;
     /**
@@ -136,7 +140,7 @@ export class Ap extends pulumi.CustomResource {
      */
     public readonly radioConfig!: pulumi.Output<outputs.device.ApRadioConfig | undefined>;
     /**
-     * device Serial
+     * Device Serial
      */
     public /*out*/ readonly serial!: pulumi.Output<string>;
     public readonly siteId!: pulumi.Output<string>;
@@ -144,22 +148,25 @@ export class Ap extends pulumi.CustomResource {
      * Device Type. enum: `ap`
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * AP Uplink port configuration
+     */
     public readonly uplinkPortConfig!: pulumi.Output<outputs.device.ApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      */
     public readonly usbConfig!: pulumi.Output<outputs.device.ApUsbConfig | undefined>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * x in pixel
+     * X in pixel
      */
     public readonly x!: pulumi.Output<number | undefined>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     public readonly y!: pulumi.Output<number | undefined>;
 
@@ -186,6 +193,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["disableEth3"] = state ? state.disableEth3 : undefined;
             resourceInputs["disableModule"] = state ? state.disableModule : undefined;
             resourceInputs["eslConfig"] = state ? state.eslConfig : undefined;
+            resourceInputs["flowControl"] = state ? state.flowControl : undefined;
             resourceInputs["height"] = state ? state.height : undefined;
             resourceInputs["image1Url"] = state ? state.image1Url : undefined;
             resourceInputs["image2Url"] = state ? state.image2Url : undefined;
@@ -231,6 +239,7 @@ export class Ap extends pulumi.CustomResource {
             resourceInputs["disableEth3"] = args ? args.disableEth3 : undefined;
             resourceInputs["disableModule"] = args ? args.disableModule : undefined;
             resourceInputs["eslConfig"] = args ? args.eslConfig : undefined;
+            resourceInputs["flowControl"] = args ? args.flowControl : undefined;
             resourceInputs["height"] = args ? args.height : undefined;
             resourceInputs["ipConfig"] = args ? args.ipConfig : undefined;
             resourceInputs["led"] = args ? args.led : undefined;
@@ -280,24 +289,28 @@ export interface ApState {
     clientBridge?: pulumi.Input<inputs.device.ApClientBridge>;
     deviceId?: pulumi.Input<string>;
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      */
     disableEth1?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      */
     disableEth2?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      */
     disableEth3?: pulumi.Input<boolean>;
     /**
-     * whether to disable module port
+     * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean>;
     eslConfig?: pulumi.Input<inputs.device.ApEslConfig>;
     /**
-     * height, in meters, optional
+     * For some AP models, flowControl can be enabled to address some switch compatibility issue
+     */
+    flowControl?: pulumi.Input<boolean>;
+    /**
+     * Height, in meters, optional
      */
     height?: pulumi.Input<number>;
     image1Url?: pulumi.Input<string>;
@@ -312,15 +325,15 @@ export interface ApState {
      */
     led?: pulumi.Input<inputs.device.ApLed>;
     /**
-     * whether this map is considered locked down
+     * Whether this map is considered locked down
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * device MAC address
+     * Device MAC address
      */
     mac?: pulumi.Input<string>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
     /**
@@ -328,26 +341,26 @@ export interface ApState {
      */
     mesh?: pulumi.Input<inputs.device.ApMesh>;
     /**
-     * device Model
+     * Device Model
      */
     model?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     /**
-     * any notes about this AP
+     * Any notes about this AP
      */
     notes?: pulumi.Input<string>;
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     orgId?: pulumi.Input<string>;
     /**
-     * orientation, 0-359, in degrees, up is 0, right is 90.
+     * Orientation, 0-359, in degrees, up is 0, right is 90.
      */
     orientation?: pulumi.Input<number>;
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * power related configs
+     * Power related configs
      */
     pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig>;
     /**
@@ -355,7 +368,7 @@ export interface ApState {
      */
     radioConfig?: pulumi.Input<inputs.device.ApRadioConfig>;
     /**
-     * device Serial
+     * Device Serial
      */
     serial?: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
@@ -363,22 +376,25 @@ export interface ApState {
      * Device Type. enum: `ap`
      */
     type?: pulumi.Input<string>;
+    /**
+     * AP Uplink port configuration
+     */
     uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig>;
     /**
-     * USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * x in pixel
+     * X in pixel
      */
     x?: pulumi.Input<number>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     y?: pulumi.Input<number>;
 }
@@ -399,24 +415,28 @@ export interface ApArgs {
     clientBridge?: pulumi.Input<inputs.device.ApClientBridge>;
     deviceId: pulumi.Input<string>;
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      */
     disableEth1?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      */
     disableEth2?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      */
     disableEth3?: pulumi.Input<boolean>;
     /**
-     * whether to disable module port
+     * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean>;
     eslConfig?: pulumi.Input<inputs.device.ApEslConfig>;
     /**
-     * height, in meters, optional
+     * For some AP models, flowControl can be enabled to address some switch compatibility issue
+     */
+    flowControl?: pulumi.Input<boolean>;
+    /**
+     * Height, in meters, optional
      */
     height?: pulumi.Input<number>;
     /**
@@ -428,11 +448,11 @@ export interface ApArgs {
      */
     led?: pulumi.Input<inputs.device.ApLed>;
     /**
-     * whether this map is considered locked down
+     * Whether this map is considered locked down
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
     /**
@@ -441,20 +461,20 @@ export interface ApArgs {
     mesh?: pulumi.Input<inputs.device.ApMesh>;
     name?: pulumi.Input<string>;
     /**
-     * any notes about this AP
+     * Any notes about this AP
      */
     notes?: pulumi.Input<string>;
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * orientation, 0-359, in degrees, up is 0, right is 90.
+     * Orientation, 0-359, in degrees, up is 0, right is 90.
      */
     orientation?: pulumi.Input<number>;
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * power related configs
+     * Power related configs
      */
     pwrConfig?: pulumi.Input<inputs.device.ApPwrConfig>;
     /**
@@ -462,22 +482,25 @@ export interface ApArgs {
      */
     radioConfig?: pulumi.Input<inputs.device.ApRadioConfig>;
     siteId: pulumi.Input<string>;
+    /**
+     * AP Uplink port configuration
+     */
     uplinkPortConfig?: pulumi.Input<inputs.device.ApUplinkPortConfig>;
     /**
-     * USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      */
     usbConfig?: pulumi.Input<inputs.device.ApUsbConfig>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * x in pixel
+     * X in pixel
      */
     x?: pulumi.Input<number>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     y?: pulumi.Input<number>;
 }

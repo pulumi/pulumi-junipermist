@@ -20,7 +20,7 @@ public final class GatewaytemplateDhcpdConfig {
      */
     private @Nullable Map<String,GatewaytemplateDhcpdConfigConfig> config;
     /**
-     * @return if set to `false`, disable the DHCP server
+     * @return If set to `false`, disable the DHCP server
      * 
      */
     private @Nullable Boolean enabled;
@@ -34,7 +34,7 @@ public final class GatewaytemplateDhcpdConfig {
         return this.config == null ? Map.of() : this.config;
     }
     /**
-     * @return if set to `false`, disable the DHCP server
+     * @return If set to `false`, disable the DHCP server
      * 
      */
     public Optional<Boolean> enabled() {

@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class GetWlansSiteWlanAcctServerResult
     {
         /// <summary>
-        /// ip / hostname of RADIUS server
+        /// IP/ hostname of RADIUS server
         /// </summary>
         public readonly string Host;
         public readonly bool KeywrapEnabled;
@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// secret of RADIUS server
+        /// Secretof RADIUS server
         /// </summary>
         public readonly string Secret;
 

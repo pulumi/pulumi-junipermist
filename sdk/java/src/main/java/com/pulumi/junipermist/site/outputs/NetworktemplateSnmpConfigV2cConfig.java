@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 public final class NetworktemplateSnmpConfigV2cConfig {
     private @Nullable String authorization;
     /**
-     * @return client_list_name here should refer to client_list above
+     * @return Client_list_name here should refer to client_list above
      * 
      */
     private @Nullable String clientListName;
     private @Nullable String communityName;
     /**
-     * @return view name here should be defined in views above
+     * @return View name here should be defined in views above
      * 
      */
     private @Nullable String view;
@@ -29,7 +29,7 @@ public final class NetworktemplateSnmpConfigV2cConfig {
         return Optional.ofNullable(this.authorization);
     }
     /**
-     * @return client_list_name here should refer to client_list above
+     * @return Client_list_name here should refer to client_list above
      * 
      */
     public Optional<String> clientListName() {
@@ -39,7 +39,7 @@ public final class NetworktemplateSnmpConfigV2cConfig {
         return Optional.ofNullable(this.communityName);
     }
     /**
-     * @return view name here should be defined in views above
+     * @return View name here should be defined in views above
      * 
      */
     public Optional<String> view() {

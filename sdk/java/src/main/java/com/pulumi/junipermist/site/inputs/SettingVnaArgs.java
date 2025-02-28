@@ -16,14 +16,14 @@ public final class SettingVnaArgs extends com.pulumi.resources.ResourceArgs {
     public static final SettingVnaArgs Empty = new SettingVnaArgs();
 
     /**
-     * enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+     * Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+     * @return Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class SettingVnaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+         * @param enabled Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SettingVnaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+         * @param enabled Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
          * 
          * @return builder
          * 

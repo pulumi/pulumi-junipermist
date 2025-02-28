@@ -34,14 +34,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to trigger EAP reauth when the session ends
+     * Whether to trigger EAP reauth when the session ends
      * 
      */
     @Import(name="eapReauth")
     private @Nullable Output<Boolean> eapReauth;
 
     /**
-     * @return whether to trigger EAP reauth when the session ends
+     * @return Whether to trigger EAP reauth when the session ends
      * 
      */
     public Optional<Output<Boolean>> eapReauth() {
@@ -49,14 +49,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to enable MAC Auth, uses the same auth_servers
+     * Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
     @Import(name="enableMacAuth")
     private @Nullable Output<Boolean> enableMacAuth;
 
     /**
-     * @return whether to enable MAC Auth, uses the same auth_servers
+     * @return Whether to enable MAC Auth, uses the same auth_servers
      * 
      */
     public Optional<Output<Boolean>> enableMacAuth() {
@@ -64,14 +64,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`wep`
+     * When `type`==`wep`
      * 
      */
     @Import(name="keyIdx")
     private @Nullable Output<Integer> keyIdx;
 
     /**
-     * @return when `type`==`wep`
+     * @return When `type`==`wep`
      * 
      */
     public Optional<Output<Integer>> keyIdx() {
@@ -79,14 +79,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
      * 
      */
     @Import(name="keys")
     private @Nullable Output<List<String>> keys;
 
     /**
-     * @return when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+     * @return When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
      * 
      */
     public Optional<Output<List<String>>> keys() {
@@ -94,14 +94,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`psk`, whether to only use multi_psk
+     * When `type`==`psk`, whether to only use multi_psk
      * 
      */
     @Import(name="multiPskOnly")
     private @Nullable Output<Boolean> multiPskOnly;
 
     /**
-     * @return when `type`==`psk`, whether to only use multi_psk
+     * @return When `type`==`psk`, whether to only use multi_psk
      * 
      */
     public Optional<Output<Boolean>> multiPskOnly() {
@@ -124,14 +124,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
      * 
      */
     @Import(name="pairwises")
     private @Nullable Output<List<String>> pairwises;
 
     /**
-     * @return when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+     * @return When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
      * 
      */
     public Optional<Output<List<String>>> pairwises() {
@@ -139,14 +139,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `multi_psk_only`==`true`, whether private wlan is enabled
+     * When `multi_psk_only`==`true`, whether private wlan is enabled
      * 
      */
     @Import(name="privateWlan")
     private @Nullable Output<Boolean> privateWlan;
 
     /**
-     * @return when `multi_psk_only`==`true`, whether private wlan is enabled
+     * @return When `multi_psk_only`==`true`, whether private wlan is enabled
      * 
      */
     public Optional<Output<Boolean>> privateWlan() {
@@ -154,14 +154,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * when `type`==`psk`, 8-64 characters, or 64 hex characters
+     * When `type`==`psk`, 8-64 characters, or 64 hex characters
      * 
      */
     @Import(name="psk")
     private @Nullable Output<String> psk;
 
     /**
-     * @return when `type`==`psk`, 8-64 characters, or 64 hex characters
+     * @return When `type`==`psk`, 8-64 characters, or 64 hex characters
      * 
      */
     public Optional<Output<String>> psk() {
@@ -184,14 +184,14 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable WEP as secondary auth
+     * Enable WEP as secondary auth
      * 
      */
     @Import(name="wepAsSecondaryAuth")
     private @Nullable Output<Boolean> wepAsSecondaryAuth;
 
     /**
-     * @return enable WEP as secondary auth
+     * @return Enable WEP as secondary auth
      * 
      */
     public Optional<Output<Boolean>> wepAsSecondaryAuth() {
@@ -255,7 +255,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eapReauth whether to trigger EAP reauth when the session ends
+         * @param eapReauth Whether to trigger EAP reauth when the session ends
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eapReauth whether to trigger EAP reauth when the session ends
+         * @param eapReauth Whether to trigger EAP reauth when the session ends
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMacAuth whether to enable MAC Auth, uses the same auth_servers
+         * @param enableMacAuth Whether to enable MAC Auth, uses the same auth_servers
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMacAuth whether to enable MAC Auth, uses the same auth_servers
+         * @param enableMacAuth Whether to enable MAC Auth, uses the same auth_servers
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyIdx when `type`==`wep`
+         * @param keyIdx When `type`==`wep`
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyIdx when `type`==`wep`
+         * @param keyIdx When `type`==`wep`
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         * @param keys When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         * @param keys When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keys when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+         * @param keys When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiPskOnly when `type`==`psk`, whether to only use multi_psk
+         * @param multiPskOnly When `type`==`psk`, whether to only use multi_psk
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiPskOnly when `type`==`psk`, whether to only use multi_psk
+         * @param multiPskOnly When `type`==`psk`, whether to only use multi_psk
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pairwises when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         * @param pairwises When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pairwises when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         * @param pairwises When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pairwises when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+         * @param pairwises When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWlan when `multi_psk_only`==`true`, whether private wlan is enabled
+         * @param privateWlan When `multi_psk_only`==`true`, whether private wlan is enabled
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param privateWlan when `multi_psk_only`==`true`, whether private wlan is enabled
+         * @param privateWlan When `multi_psk_only`==`true`, whether private wlan is enabled
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param psk when `type`==`psk`, 8-64 characters, or 64 hex characters
+         * @param psk When `type`==`psk`, 8-64 characters, or 64 hex characters
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param psk when `type`==`psk`, 8-64 characters, or 64 hex characters
+         * @param psk When `type`==`psk`, 8-64 characters, or 64 hex characters
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wepAsSecondaryAuth enable WEP as secondary auth
+         * @param wepAsSecondaryAuth Enable WEP as secondary auth
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class WlanAuthArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param wepAsSecondaryAuth enable WEP as secondary auth
+         * @param wepAsSecondaryAuth Enable WEP as secondary auth
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
     public static final DeviceprofileApAeroscoutArgs Empty = new DeviceprofileApAeroscoutArgs();
 
     /**
-     * whether to enable aeroscout config
+     * Whether to enable aeroscout config
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to enable aeroscout config
+     * @return Whether to enable aeroscout config
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * required if enabled, aeroscout server host
+     * Required if enabled, aeroscout server host
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return required if enabled, aeroscout server host
+     * @return Required if enabled, aeroscout server host
      * 
      */
     public Optional<Output<String>> host() {
@@ -47,14 +47,14 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+     * Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
      * 
      */
     @Import(name="locateConnected")
     private @Nullable Output<Boolean> locateConnected;
 
     /**
-     * @return whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+     * @return Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
      * 
      */
     public Optional<Output<Boolean>> locateConnected() {
@@ -88,7 +88,7 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled whether to enable aeroscout config
+         * @param enabled Whether to enable aeroscout config
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled whether to enable aeroscout config
+         * @param enabled Whether to enable aeroscout config
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param host required if enabled, aeroscout server host
+         * @param host Required if enabled, aeroscout server host
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param host required if enabled, aeroscout server host
+         * @param host Required if enabled, aeroscout server host
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param locateConnected whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+         * @param locateConnected Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DeviceprofileApAeroscoutArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param locateConnected whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+         * @param locateConnected Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
          * 
          * @return builder
          * 

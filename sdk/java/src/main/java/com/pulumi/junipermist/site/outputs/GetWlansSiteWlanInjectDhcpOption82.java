@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansSiteWlanInjectDhcpOption82 {
     /**
-     * @return information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -23,14 +23,14 @@ public final class GetWlansSiteWlanInjectDhcpOption82 {
      */
     private String circuitId;
     /**
-     * @return whether to inject option 82 when forwarding DHCP packets
+     * @return Whether to inject option 82 when forwarding DHCP packets
      * 
      */
     private Boolean enabled;
 
     private GetWlansSiteWlanInjectDhcpOption82() {}
     /**
-     * @return information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+     * @return Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
      *   * {{AP_MAC}}
      *   * {{AP_MAC_DASHED}}
      *   * {{AP_MODEL}}
@@ -43,7 +43,7 @@ public final class GetWlansSiteWlanInjectDhcpOption82 {
         return this.circuitId;
     }
     /**
-     * @return whether to inject option 82 when forwarding DHCP packets
+     * @return Whether to inject option 82 when forwarding DHCP packets
      * 
      */
     public Boolean enabled() {

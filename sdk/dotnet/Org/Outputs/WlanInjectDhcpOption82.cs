@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class WlanInjectDhcpOption82
     {
         /// <summary>
-        /// information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+        /// Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
         ///   * {{AP_MAC}}
         ///   * {{AP_MAC_DASHED}}
         ///   * {{AP_MODEL}}
@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? CircuitId;
         /// <summary>
-        /// whether to inject option 82 when forwarding DHCP packets
+        /// Whether to inject option 82 when forwarding DHCP packets
         /// </summary>
         public readonly bool? Enabled;
 

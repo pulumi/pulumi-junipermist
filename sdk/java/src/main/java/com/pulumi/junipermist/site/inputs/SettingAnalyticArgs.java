@@ -16,14 +16,14 @@ public final class SettingAnalyticArgs extends com.pulumi.resources.ResourceArgs
     public static final SettingAnalyticArgs Empty = new SettingAnalyticArgs();
 
     /**
-     * enable Advanced Analytic feature (using SUB-ANA license)
+     * Enable Advanced Analytic feature (using SUB-ANA license)
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return enable Advanced Analytic feature (using SUB-ANA license)
+     * @return Enable Advanced Analytic feature (using SUB-ANA license)
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class SettingAnalyticArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled enable Advanced Analytic feature (using SUB-ANA license)
+         * @param enabled Enable Advanced Analytic feature (using SUB-ANA license)
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class SettingAnalyticArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param enabled enable Advanced Analytic feature (using SUB-ANA license)
+         * @param enabled Enable Advanced Analytic feature (using SUB-ANA license)
          * 
          * @return builder
          * 

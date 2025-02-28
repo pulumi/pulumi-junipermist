@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingApiPolicy {
     /**
-     * @return by default, API hides password/secrets when the user doesn&#39;t have write access
+     * @return By default, API hides password/secrets when the user doesn&#39;t have write access
      *   * `true`: API will hide passwords/secrets for all users
      *   * `false`: API will hide passwords/secrets for read-only users
      * 
@@ -21,7 +21,7 @@ public final class SettingApiPolicy {
 
     private SettingApiPolicy() {}
     /**
-     * @return by default, API hides password/secrets when the user doesn&#39;t have write access
+     * @return By default, API hides password/secrets when the user doesn&#39;t have write access
      *   * `true`: API will hide passwords/secrets for all users
      *   * `false`: API will hide passwords/secrets for read-only users
      * 

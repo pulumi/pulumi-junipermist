@@ -19,14 +19,14 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
     public static final WlanCoaServerArgs Empty = new WlanCoaServerArgs();
 
     /**
-     * whether to disable Event-Timestamp Check
+     * Whether to disable Event-Timestamp Check
      * 
      */
     @Import(name="disableEventTimestampCheck")
     private @Nullable Output<Boolean> disableEventTimestampCheck;
 
     /**
-     * @return whether to disable Event-Timestamp Check
+     * @return Whether to disable Event-Timestamp Check
      * 
      */
     public Optional<Output<Boolean>> disableEventTimestampCheck() {
@@ -90,7 +90,7 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEventTimestampCheck whether to disable Event-Timestamp Check
+         * @param disableEventTimestampCheck Whether to disable Event-Timestamp Check
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class WlanCoaServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEventTimestampCheck whether to disable Event-Timestamp Check
+         * @param disableEventTimestampCheck Whether to disable Event-Timestamp Check
          * 
          * @return builder
          * 

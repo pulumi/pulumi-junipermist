@@ -13,25 +13,25 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingRogueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether or not rogue detection is enabled
+        /// Whether rogue detection is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// whether or not honeypot detection is enabled
+        /// Whether honeypot detection is enabled
         /// </summary>
         [Input("honeypotEnabled")]
         public Input<bool>? HoneypotEnabled { get; set; }
 
         /// <summary>
-        /// minimum duration for a bssid to be considered rogue
+        /// Minimum duration for a bssid to be considered rogue
         /// </summary>
         [Input("minDuration")]
         public Input<int>? MinDuration { get; set; }
 
         /// <summary>
-        /// minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
+        /// Minimum RSSI for an AP to be considered rogue (ignoring APs that’s far away)
         /// </summary>
         [Input("minRssi")]
         public Input<int>? MinRssi { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _whitelistedSsids;
 
         /// <summary>
-        /// list of SSIDs to whitelist
+        /// List of SSIDs to whitelist
         /// </summary>
         public InputList<string> WhitelistedSsids
         {

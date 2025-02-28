@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingVna
     {
         /// <summary>
-        /// enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+        /// Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
         /// </summary>
         public readonly bool? Enabled;
 

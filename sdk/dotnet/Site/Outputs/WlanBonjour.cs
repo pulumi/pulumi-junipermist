@@ -18,11 +18,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AdditionalVlanIds;
         /// <summary>
-        /// whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        /// Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// what services are allowed. 
+        /// What services are allowed. 
         /// Property key is the service name
         /// </summary>
         public readonly ImmutableDictionary<string, Outputs.WlanBonjourServices> Services;

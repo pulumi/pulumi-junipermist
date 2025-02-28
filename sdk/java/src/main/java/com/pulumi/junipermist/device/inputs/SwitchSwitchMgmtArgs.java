@@ -22,14 +22,14 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
     public static final SwitchSwitchMgmtArgs Empty = new SwitchSwitchMgmtArgs();
 
     /**
-     * ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
      * 
      */
     @Import(name="apAffinityThreshold")
     private @Nullable Output<Integer> apAffinityThreshold;
 
     /**
-     * @return ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+     * @return AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
      * 
      */
     public Optional<Output<Integer>> apAffinityThreshold() {
@@ -67,14 +67,14 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * the rollback timer for commit confirmed
+     * Rollback timer for commit confirmed
      * 
      */
     @Import(name="configRevertTimer")
     private @Nullable Output<Integer> configRevertTimer;
 
     /**
-     * @return the rollback timer for commit confirmed
+     * @return Rollback timer for commit confirmed
      * 
      */
     public Optional<Output<Integer>> configRevertTimer() {
@@ -133,7 +133,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * restrict inbound-traffic to host
+     * Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -142,7 +142,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<SwitchSwitchMgmtProtectReArgs> protectRe;
 
     /**
-     * @return restrict inbound-traffic to host
+     * @return Restrict inbound-traffic to host
      * when enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -166,14 +166,14 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * to use mxedge as proxy
+     * To use mxedge as proxy
      * 
      */
     @Import(name="useMxedgeProxy")
     private @Nullable Output<Boolean> useMxedgeProxy;
 
     /**
-     * @return to use mxedge as proxy
+     * @return To use mxedge as proxy
      * 
      */
     public Optional<Output<Boolean>> useMxedgeProxy() {
@@ -217,7 +217,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apAffinityThreshold ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * @param apAffinityThreshold AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param apAffinityThreshold ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+         * @param apAffinityThreshold AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param configRevertTimer the rollback timer for commit confirmed
+         * @param configRevertTimer Rollback timer for commit confirmed
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param configRevertTimer the rollback timer for commit confirmed
+         * @param configRevertTimer Rollback timer for commit confirmed
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param protectRe restrict inbound-traffic to host
+         * @param protectRe Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
          * 
@@ -383,7 +383,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param protectRe restrict inbound-traffic to host
+         * @param protectRe Restrict inbound-traffic to host
          * when enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we&#39;ll make sure it works
          * 
@@ -413,7 +413,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param useMxedgeProxy to use mxedge as proxy
+         * @param useMxedgeProxy To use mxedge as proxy
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class SwitchSwitchMgmtArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param useMxedgeProxy to use mxedge as proxy
+         * @param useMxedgeProxy To use mxedge as proxy
          * 
          * @return builder
          * 

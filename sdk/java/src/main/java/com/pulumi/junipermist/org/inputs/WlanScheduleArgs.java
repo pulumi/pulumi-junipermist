@@ -24,18 +24,14 @@ public final class WlanScheduleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     @Import(name="hours")
     private @Nullable Output<WlanScheduleHoursArgs> hours;
 
     /**
-     * @return hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-     * 
-     * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+     * @return Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
      * 
      */
     public Optional<Output<WlanScheduleHoursArgs>> hours() {
@@ -77,9 +73,7 @@ public final class WlanScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hours hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-         * 
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          * 
          * @return builder
          * 
@@ -90,9 +84,7 @@ public final class WlanScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hours hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun).
-         * 
-         * **Note**: If the dow is not defined then it\u2019\ s treated as 00:00-23:59.
+         * @param hours Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
          * 
          * @return builder
          * 

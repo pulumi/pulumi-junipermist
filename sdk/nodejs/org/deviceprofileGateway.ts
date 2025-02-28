@@ -86,11 +86,11 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
     public readonly networks!: pulumi.Output<outputs.org.DeviceprofileGatewayNetwork[] | undefined>;
     public readonly ntpOverride!: pulumi.Output<boolean>;
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      */
     public readonly oobIpConfig!: pulumi.Output<outputs.org.DeviceprofileGatewayOobIpConfig>;
     public readonly orgId!: pulumi.Output<string>;
@@ -103,7 +103,7 @@ export class DeviceprofileGateway extends pulumi.CustomResource {
      */
     public readonly portConfig!: pulumi.Output<{[key: string]: outputs.org.DeviceprofileGatewayPortConfig} | undefined>;
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      */
     public readonly routerId!: pulumi.Output<string | undefined>;
     /**
@@ -241,11 +241,11 @@ export interface DeviceprofileGatewayState {
     networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[]>;
     ntpOverride?: pulumi.Input<boolean>;
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      */
     oobIpConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayOobIpConfig>;
     orgId?: pulumi.Input<string>;
@@ -258,7 +258,7 @@ export interface DeviceprofileGatewayState {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfig>}>;
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      */
     routerId?: pulumi.Input<string>;
     /**
@@ -321,11 +321,11 @@ export interface DeviceprofileGatewayArgs {
     networks?: pulumi.Input<pulumi.Input<inputs.org.DeviceprofileGatewayNetwork>[]>;
     ntpOverride?: pulumi.Input<boolean>;
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      */
     oobIpConfig?: pulumi.Input<inputs.org.DeviceprofileGatewayOobIpConfig>;
     orgId: pulumi.Input<string>;
@@ -338,7 +338,7 @@ export interface DeviceprofileGatewayArgs {
      */
     portConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.org.DeviceprofileGatewayPortConfig>}>;
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      */
     routerId?: pulumi.Input<string>;
     /**

@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateAclTagsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// required if
+        /// Required if
         ///   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
         ///   - `type`==`gbp_resource`
         ///   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _macs;
 
         /// <summary>
-        /// required if 
+        /// Required if 
         /// - `type`==`mac`
         /// - `type`==`static_gbp` if from matching mac
         /// </summary>
@@ -36,18 +36,18 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// if:
+        /// If:
         ///   * `type`==`mac` (optional. default is `any`)
         ///   * `type`==`subnet` (optional. default is `any`)
         ///   * `type`==`network`
         ///   * `type`==`resource` (optional. default is `any`)
-        ///   * `type`==`static_gbp` if from matching network (vlan)'
+        ///   * `type`==`static_gbp` if from matching network (vlan)
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// required if:
+        /// Required if:
         ///   * `type`==`radius_group`
         ///   * `type`==`static_gbp`
         /// if from matching radius_group
@@ -59,7 +59,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<Inputs.NetworktemplateAclTagsSpecGetArgs>? _specs;
 
         /// <summary>
-        /// if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        /// If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         /// </summary>
         public InputList<Inputs.NetworktemplateAclTagsSpecGetArgs> Specs
         {
@@ -71,7 +71,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _subnets;
 
         /// <summary>
-        /// if 
+        /// If 
         /// - `type`==`subnet` 
         /// - `type`==`resource` (optional. default is `any`)
         /// - `type`==`static_gbp` if from matching subnet

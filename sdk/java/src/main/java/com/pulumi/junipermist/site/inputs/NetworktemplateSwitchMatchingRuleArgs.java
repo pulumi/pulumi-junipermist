@@ -113,7 +113,7 @@ public final class NetworktemplateSwitchMatchingRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * &#39;property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+     * property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
      * 
      * @deprecated
      * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
@@ -126,7 +126,7 @@ Please update your configurations. */
     private @Nullable Output<String> matchType;
 
     /**
-     * @return &#39;property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+     * @return property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
      * 
      * @deprecated
      * The `match_type` attribute has been deprecated in version v0.2.8 of the Juniper-Mist Provider. It has been replaced with the `match_name`, `match_model` and `match_role`attribuites and may be removed in future versions.
@@ -386,7 +386,7 @@ Please update your configurations. */
         }
 
         /**
-         * @param matchType &#39;property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+         * @param matchType property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ Please update your configurations. */
         }
 
         /**
-         * @param matchType &#39;property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+         * @param matchType property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
          * 
          * @return builder
          * 

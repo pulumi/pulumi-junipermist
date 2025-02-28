@@ -42,7 +42,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     public static final SettingState Empty = new SettingState();
 
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -50,7 +50,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> apUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -66,14 +66,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of PEM-encoded ca certs
+     * List of PEM-encoded ca certs
      * 
      */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
     /**
-     * @return list of PEM-encoded ca certs
+     * @return List of PEM-encoded ca certs
      * 
      */
     public Optional<Output<List<String>>> cacerts() {
@@ -117,7 +117,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      * 
@@ -126,7 +126,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+     * @return Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
      * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
      * immediate)
      * 
@@ -136,14 +136,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      * 
      */
     @Import(name="disablePcap")
     private @Nullable Output<Boolean> disablePcap;
 
     /**
-     * @return whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+     * @return Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
      * 
      */
     public Optional<Output<Boolean>> disablePcap() {
@@ -151,14 +151,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disable remote shell access for an entire org
+     * Whether to disable remote shell access for an entire org
      * 
      */
     @Import(name="disableRemoteShell")
     private @Nullable Output<Boolean> disableRemoteShell;
 
     /**
-     * @return whether to disable remote shell access for an entire org
+     * @return Whether to disable remote shell access for an entire org
      * 
      */
     public Optional<Output<Boolean>> disableRemoteShell() {
@@ -166,7 +166,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -174,7 +174,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> gatewayUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -313,7 +313,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -321,7 +321,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> switchUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -337,14 +337,14 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * automatically logout the user when UI session is inactive. `0` means disabled
+     * Automatically logout the user when UI session is inactive. `0` means disabled
      * 
      */
     @Import(name="uiIdleTimeout")
     private @Nullable Output<Integer> uiIdleTimeout;
 
     /**
-     * @return automatically logout the user when UI session is inactive. `0` means disabled
+     * @return Automatically logout the user when UI session is inactive. `0` means disabled
      * 
      */
     public Optional<Output<Integer>> uiIdleTimeout() {
@@ -435,7 +435,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apUpdownThreshold enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+         * @param apUpdownThreshold Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
          * `device_updown_threshold` is ignored.
          * 
          * @return builder
@@ -447,7 +447,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apUpdownThreshold enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+         * @param apUpdownThreshold Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
          * `device_updown_threshold` is ignored.
          * 
          * @return builder
@@ -467,7 +467,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts list of PEM-encoded ca certs
+         * @param cacerts List of PEM-encoded ca certs
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts list of PEM-encoded ca certs
+         * @param cacerts List of PEM-encoded ca certs
          * 
          * @return builder
          * 
@@ -488,7 +488,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cacerts list of PEM-encoded ca certs
+         * @param cacerts List of PEM-encoded ca certs
          * 
          * @return builder
          * 
@@ -546,7 +546,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+         * @param deviceUpdownThreshold Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
          * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
          * immediate)
          * 
@@ -559,7 +559,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deviceUpdownThreshold enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+         * @param deviceUpdownThreshold Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
          * AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
          * immediate)
          * 
@@ -571,7 +571,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disablePcap whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+         * @param disablePcap Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
          * 
          * @return builder
          * 
@@ -582,7 +582,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disablePcap whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+         * @param disablePcap Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
          * 
          * @return builder
          * 
@@ -592,7 +592,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableRemoteShell whether to disable remote shell access for an entire org
+         * @param disableRemoteShell Whether to disable remote shell access for an entire org
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableRemoteShell whether to disable remote shell access for an entire org
+         * @param disableRemoteShell Whether to disable remote shell access for an entire org
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayUpdownThreshold enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+         * @param gatewayUpdownThreshold Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
          * `device_updown_threshold` is ignored.
          * 
          * @return builder
@@ -625,7 +625,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayUpdownThreshold enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+         * @param gatewayUpdownThreshold Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
          * `device_updown_threshold` is ignored.
          * 
          * @return builder
@@ -810,7 +810,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchUpdownThreshold enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+         * @param switchUpdownThreshold Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
          * `device_updown_threshold` is ignored.
          * 
          * @return builder
@@ -822,7 +822,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param switchUpdownThreshold enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+         * @param switchUpdownThreshold Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
          * `device_updown_threshold` is ignored.
          * 
          * @return builder
@@ -842,7 +842,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiIdleTimeout automatically logout the user when UI session is inactive. `0` means disabled
+         * @param uiIdleTimeout Automatically logout the user when UI session is inactive. `0` means disabled
          * 
          * @return builder
          * 
@@ -853,7 +853,7 @@ public final class SettingState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiIdleTimeout automatically logout the user when UI session is inactive. `0` means disabled
+         * @param uiIdleTimeout Automatically logout the user when UI session is inactive. `0` means disabled
          * 
          * @return builder
          * 

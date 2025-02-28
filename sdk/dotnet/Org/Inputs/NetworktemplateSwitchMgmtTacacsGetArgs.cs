@@ -30,7 +30,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// which network the TACACS server resides
+        /// Which network the TACACS server resides
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

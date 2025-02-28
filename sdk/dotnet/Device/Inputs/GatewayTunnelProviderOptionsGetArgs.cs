@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class GatewayTunnelProviderOptionsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        /// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         /// </summary>
         [Input("jse")]
         public Input<Inputs.GatewayTunnelProviderOptionsJseGetArgs>? Jse { get; set; }
 
         /// <summary>
-        /// for zscaler-ipsec and zscaler-gre
+        /// For zscaler-ipsec and zscaler-gre
         /// </summary>
         [Input("zscaler")]
         public Input<Inputs.GatewayTunnelProviderOptionsZscalerGetArgs>? Zscaler { get; set; }

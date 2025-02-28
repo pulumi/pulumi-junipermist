@@ -50,14 +50,14 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * vlan_ids to be locally bridged
+     * VLAN_ids to be locally bridged
      * 
      */
     @Import(name="localVlanIds")
     private @Nullable Output<List<String>> localVlanIds;
 
     /**
-     * @return vlan_ids to be locally bridged
+     * @return VLAN_ids to be locally bridged
      * 
      */
     public Optional<Output<List<String>>> localVlanIds() {
@@ -80,7 +80,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+     * Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -89,7 +89,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Map<String,String>> vlans;
 
     /**
-     * @return map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+     * @return Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
      *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
      *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
      * 
@@ -179,7 +179,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localVlanIds vlan_ids to be locally bridged
+         * @param localVlanIds VLAN_ids to be locally bridged
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localVlanIds vlan_ids to be locally bridged
+         * @param localVlanIds VLAN_ids to be locally bridged
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param localVlanIds vlan_ids to be locally bridged
+         * @param localVlanIds VLAN_ids to be locally bridged
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         * @param vlans Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          * 
@@ -244,7 +244,7 @@ public final class WlanDynamicVlanArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vlans map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+         * @param vlans Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
          *   * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \&#34;\&#34;
          *   * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
          * 

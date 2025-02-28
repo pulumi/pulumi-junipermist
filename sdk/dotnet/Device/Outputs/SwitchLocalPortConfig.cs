@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
-        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        /// If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         /// </summary>
         public readonly bool? AllowDhcpd;
         public readonly bool? AllowMultipleSupplicants;
@@ -29,14 +29,14 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        public readonly bool? BypassAuthWhenServerDownForUnkonwnClient;
+        public readonly bool? BypassAuthWhenServerDownForUnkownClient;
         public readonly string? Description;
         /// <summary>
         /// Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         /// </summary>
         public readonly bool? DisableAutoneg;
         /// <summary>
-        /// whether the port is disabled
+        /// Whether the port is disabled
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
@@ -73,7 +73,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? MacAuthProtocol;
         /// <summary>
-        /// max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+        /// Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
         /// </summary>
         public readonly int? MacLimit;
         /// <summary>
@@ -81,7 +81,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? Mode;
         /// <summary>
-        /// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+        /// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
         /// </summary>
         public readonly int? Mtu;
         /// <summary>
@@ -97,7 +97,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? PersistMac;
         /// <summary>
-        /// whether PoE capabilities are disabled for a port
+        /// Whether PoE capabilities are disabled for a port
         /// </summary>
         public readonly bool? PoeDisabled;
         /// <summary>
@@ -105,7 +105,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly string? PortAuth;
         /// <summary>
-        /// native network/vlan for untagged traffic
+        /// Native network/vlan for untagged traffic
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
@@ -129,21 +129,21 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly Outputs.SwitchLocalPortConfigStormControl? StormControl;
         /// <summary>
-        /// when enabled, the port is not expected to receive BPDU frames
+        /// When enabled, the port is not expected to receive BPDU frames
         /// </summary>
         public readonly bool? StpEdge;
         public readonly bool? StpNoRootPort;
         public readonly bool? StpP2p;
         /// <summary>
-        /// port usage name.
+        /// Port usage name.
         /// </summary>
         public readonly string Usage;
         /// <summary>
-        /// if this is connected to a vstp network
+        /// If this is connected to a vstp network
         /// </summary>
         public readonly bool? UseVstp;
         /// <summary>
-        /// network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+        /// Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         /// </summary>
         public readonly string? VoipNetwork;
 
@@ -157,7 +157,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? bypassAuthWhenServerDown,
 
-            bool? bypassAuthWhenServerDownForUnkonwnClient,
+            bool? bypassAuthWhenServerDownForUnkownClient,
 
             string? description,
 
@@ -227,7 +227,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             AllowDhcpd = allowDhcpd;
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            BypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+            BypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;

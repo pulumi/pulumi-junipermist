@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class SwitchSwitchMgmtArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        /// AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
         /// </summary>
         [Input("apAffinityThreshold")]
         public Input<int>? ApAffinityThreshold { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? CliIdleTimeout { get; set; }
 
         /// <summary>
-        /// the rollback timer for commit confirmed
+        /// Rollback timer for commit confirmed
         /// </summary>
         [Input("configRevertTimer")]
         public Input<int>? ConfigRevertTimer { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? MxedgeProxyPort { get; set; }
 
         /// <summary>
-        /// restrict inbound-traffic to host
+        /// Restrict inbound-traffic to host
         /// when enabled, all traffic that is not essential to our operation will be dropped 
         /// e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         /// </summary>
@@ -87,7 +87,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<Inputs.SwitchSwitchMgmtTacacsArgs>? Tacacs { get; set; }
 
         /// <summary>
-        /// to use mxedge as proxy
+        /// To use mxedge as proxy
         /// </summary>
         [Input("useMxedgeProxy")]
         public Input<bool>? UseMxedgeProxy { get; set; }

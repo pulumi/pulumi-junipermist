@@ -13,27 +13,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchOtherIpConfigs {
     /**
-     * @return for EVPN, if anycast is desired
+     * @return For EVPN, if anycast is desired
      * 
      */
     private @Nullable Boolean evpnAnycast;
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     private @Nullable String ip;
     /**
-     * @return required if `type6`==`static`
+     * @return Required if `type6`==`static`
      * 
      */
     private @Nullable String ip6;
     /**
-     * @return optional, `subnet` from `network` definition will be used if defined
+     * @return Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     private @Nullable String netmask;
     /**
-     * @return optional, `subnet` from `network` definition will be used if defined
+     * @return Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     private @Nullable String netmask6;
@@ -50,35 +50,35 @@ public final class SwitchOtherIpConfigs {
 
     private SwitchOtherIpConfigs() {}
     /**
-     * @return for EVPN, if anycast is desired
+     * @return For EVPN, if anycast is desired
      * 
      */
     public Optional<Boolean> evpnAnycast() {
         return Optional.ofNullable(this.evpnAnycast);
     }
     /**
-     * @return required if `type`==`static`
+     * @return Required if `type`==`static`
      * 
      */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return required if `type6`==`static`
+     * @return Required if `type6`==`static`
      * 
      */
     public Optional<String> ip6() {
         return Optional.ofNullable(this.ip6);
     }
     /**
-     * @return optional, `subnet` from `network` definition will be used if defined
+     * @return Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<String> netmask() {
         return Optional.ofNullable(this.netmask);
     }
     /**
-     * @return optional, `subnet` from `network` definition will be used if defined
+     * @return Optional, `subnet` from `network` definition will be used if defined
      * 
      */
     public Optional<String> netmask6() {

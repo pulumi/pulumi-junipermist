@@ -78,7 +78,7 @@ export class Sso extends pulumi.CustomResource {
      */
     public readonly defaultRole!: pulumi.Output<string | undefined>;
     /**
-     * random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
      * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
      * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      */
@@ -104,7 +104,7 @@ export class Sso extends pulumi.CustomResource {
      */
     public readonly issuer!: pulumi.Output<string>;
     /**
-     * name
+     * Name
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -116,8 +116,8 @@ export class Sso extends pulumi.CustomResource {
      * custom role attribute parsing scheme. Supported Role Parsing Schemes
      * <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
      * Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)</li><li>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”</li></ul></td></tr></table>
+     * entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+     * “cn”</td></tr></table>
      */
     public readonly roleAttrExtraction!: pulumi.Output<string | undefined>;
     /**
@@ -202,7 +202,7 @@ export interface SsoState {
      */
     defaultRole?: pulumi.Input<string>;
     /**
-     * random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
+     * Random string generated during the SSO creation and used to generate the SAML URLs: * ACS URL =
      * `/api/v1/saml/{domain}/login` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/login`) * Single Logout URL =
      * `/api/v1/saml/{domain}/logout` (e.g. `https://api.mist.com/api/v1/saml/s4t5vwv8/logout`)
      */
@@ -228,7 +228,7 @@ export interface SsoState {
      */
     issuer?: pulumi.Input<string>;
     /**
-     * name
+     * Name
      */
     name?: pulumi.Input<string>;
     /**
@@ -240,8 +240,8 @@ export interface SsoState {
      * custom role attribute parsing scheme. Supported Role Parsing Schemes
      * <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
      * Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)</li><li>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”</li></ul></td></tr></table>
+     * entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+     * “cn”</td></tr></table>
      */
     roleAttrExtraction?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface SsoArgs {
      */
     issuer: pulumi.Input<string>;
     /**
-     * name
+     * Name
      */
     name?: pulumi.Input<string>;
     /**
@@ -297,8 +297,8 @@ export interface SsoArgs {
      * custom role attribute parsing scheme. Supported Role Parsing Schemes
      * <table><tr><th>Name</th><th>Scheme</th></tr><tr><td>`cn`</td><td><ul><li>The expected role attribute format in SAML
      * Assertion is “CN=cn,OU=ou1,OU=ou2,…”</li><li>CN (the key) is case insensitive and exactly 1 CN is expected (or the
-     * entire entry will be ignored)</li><li>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
-     * “cn”</li></ul></td></tr></table>
+     * entire entry will be ignored)</li></ul>E.g. if role attribute is “CN=cn,OU=ou1,OU=ou2” then parsed role value is
+     * “cn”</td></tr></table>
      */
     roleAttrExtraction?: pulumi.Input<string>;
     /**

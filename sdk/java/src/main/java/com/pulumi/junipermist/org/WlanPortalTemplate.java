@@ -78,14 +78,14 @@ public class WlanPortalTemplate extends com.pulumi.resources.CustomResource {
         return this.orgId;
     }
     /**
-     * portal template wlan settings
+     * Portal template wlan settings
      * 
      */
     @Export(name="portalTemplate", refs={WlanPortalTemplatePortalTemplate.class}, tree="[0]")
     private Output<WlanPortalTemplatePortalTemplate> portalTemplate;
 
     /**
-     * @return portal template wlan settings
+     * @return Portal template wlan settings
      * 
      */
     public Output<WlanPortalTemplatePortalTemplate> portalTemplate() {

@@ -18,14 +18,14 @@ import javax.annotation.Nullable;
 public final class GatewayBgpConfig {
     private @Nullable String authKey;
     /**
-     * @return when bfd_multiplier is configured alone. Default:
+     * @return When bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
      */
     private @Nullable Integer bfdMinimumInterval;
     /**
-     * @return when bfd_minimum_interval_is_configured alone
+     * @return When bfd_minimum_interval_is_configured alone
      * 
      */
     private @Nullable Integer bfdMultiplier;
@@ -36,12 +36,12 @@ public final class GatewayBgpConfig {
     private @Nullable Boolean disableBfd;
     private @Nullable String export;
     /**
-     * @return default export policies if no per-neighbor policies defined
+     * @return Default export policies if no per-neighbor policies defined
      * 
      */
     private @Nullable String exportPolicy;
     /**
-     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     private @Nullable Boolean extendedV4Nexthop;
@@ -53,29 +53,29 @@ public final class GatewayBgpConfig {
     private @Nullable Integer holdTime;
     private @Nullable String import_;
     /**
-     * @return default import policies if no per-neighbor policies defined
+     * @return Default import policies if no per-neighbor policies defined
      * 
      */
     private @Nullable String importPolicy;
     private @Nullable Integer localAs;
     private @Nullable Integer neighborAs;
     /**
-     * @return if per-neighbor as is desired. Property key is the neighbor address
+     * @return If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     private @Nullable Map<String,GatewayBgpConfigNeighbors> neighbors;
     /**
-     * @return if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * @return If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return by default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     private @Nullable Boolean noReadvertiseToOverlay;
     /**
-     * @return if `type`==`tunnel`
+     * @return If `type`==`tunnel`
      * 
      */
     private @Nullable String tunnelName;
@@ -91,7 +91,7 @@ public final class GatewayBgpConfig {
     private @Nullable String via;
     private @Nullable String vpnName;
     /**
-     * @return if `via`==`wan`
+     * @return If `via`==`wan`
      * 
      */
     private @Nullable String wanName;
@@ -101,7 +101,7 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.authKey);
     }
     /**
-     * @return when bfd_multiplier is configured alone. Default:
+     * @return When bfd_multiplier is configured alone. Default:
      *   * 1000 if `type`==`external`
      *   * 350 `type`==`internal`
      * 
@@ -110,7 +110,7 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.bfdMinimumInterval);
     }
     /**
-     * @return when bfd_minimum_interval_is_configured alone
+     * @return When bfd_minimum_interval_is_configured alone
      * 
      */
     public Optional<Integer> bfdMultiplier() {
@@ -127,14 +127,14 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.export);
     }
     /**
-     * @return default export policies if no per-neighbor policies defined
+     * @return Default export policies if no per-neighbor policies defined
      * 
      */
     public Optional<String> exportPolicy() {
         return Optional.ofNullable(this.exportPolicy);
     }
     /**
-     * @return by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+     * @return By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
      * 
      */
     public Optional<Boolean> extendedV4Nexthop() {
@@ -154,7 +154,7 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.import_);
     }
     /**
-     * @return default import policies if no per-neighbor policies defined
+     * @return Default import policies if no per-neighbor policies defined
      * 
      */
     public Optional<String> importPolicy() {
@@ -167,28 +167,28 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.neighborAs);
     }
     /**
-     * @return if per-neighbor as is desired. Property key is the neighbor address
+     * @return If per-neighbor as is desired. Property key is the neighbor address
      * 
      */
     public Map<String,GatewayBgpConfigNeighbors> neighbors() {
         return this.neighbors == null ? Map.of() : this.neighbors;
     }
     /**
-     * @return if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+     * @return If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return by default, we&#39;ll re-advertise all learned BGP routers toward overlay
+     * @return By default, we&#39;ll re-advertise all learned BGP routers toward overlay
      * 
      */
     public Optional<Boolean> noReadvertiseToOverlay() {
         return Optional.ofNullable(this.noReadvertiseToOverlay);
     }
     /**
-     * @return if `type`==`tunnel`
+     * @return If `type`==`tunnel`
      * 
      */
     public Optional<String> tunnelName() {
@@ -212,7 +212,7 @@ public final class GatewayBgpConfig {
         return Optional.ofNullable(this.vpnName);
     }
     /**
-     * @return if `via`==`wan`
+     * @return If `via`==`wan`
      * 
      */
     public Optional<String> wanName() {

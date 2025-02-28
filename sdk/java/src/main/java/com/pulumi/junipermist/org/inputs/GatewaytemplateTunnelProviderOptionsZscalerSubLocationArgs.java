@@ -41,14 +41,14 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
     }
 
     /**
-     * proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+     * Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
     @Import(name="aupForceSslInspection")
     private @Nullable Output<Boolean> aupForceSslInspection;
 
     /**
-     * @return proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+     * @return Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
     public Optional<Output<Boolean>> aupForceSslInspection() {
@@ -101,14 +101,14 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
     }
 
     /**
-     * the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     @Import(name="dnBandwidth")
     private @Nullable Output<Double> dnBandwidth;
 
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     public Optional<Output<Double>> dnBandwidth() {
@@ -146,14 +146,14 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
     }
 
     /**
-     * if `true`, enable the firewall control option
+     * If `true`, enable the firewall control option
      * 
      */
     @Import(name="ofwEnabled")
     private @Nullable Output<Boolean> ofwEnabled;
 
     /**
-     * @return if `true`, enable the firewall control option
+     * @return If `true`, enable the firewall control option
      * 
      */
     public Optional<Output<Boolean>> ofwEnabled() {
@@ -206,14 +206,14 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
     }
 
     /**
-     * the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     @Import(name="upBandwidth")
     private @Nullable Output<Double> upBandwidth;
 
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     public Optional<Output<Double>> upBandwidth() {
@@ -288,7 +288,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param aupForceSslInspection proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+         * @param aupForceSslInspection Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param aupForceSslInspection proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+         * @param aupForceSslInspection Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param dnBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param dnBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param dnBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param dnBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param ofwEnabled if `true`, enable the firewall control option
+         * @param ofwEnabled If `true`, enable the firewall control option
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param ofwEnabled if `true`, enable the firewall control option
+         * @param ofwEnabled If `true`, enable the firewall control option
          * 
          * @return builder
          * 
@@ -519,7 +519,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param upBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param upBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 
@@ -530,7 +530,7 @@ public final class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs ex
         }
 
         /**
-         * @param upBandwidth the download bandwidth cap of the link, in Mbps. Disabled if not set
+         * @param upBandwidth Download bandwidth cap of the link, in Mbps. Disabled if not set
          * 
          * @return builder
          * 

@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly string Name;
         public readonly string? Network;
         /// <summary>
-        /// if `protocol`==`icmp`
+        /// If `protocol`==`icmp`
         /// </summary>
         public readonly int? PacketSize;
         /// <summary>

@@ -20,14 +20,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     public static final SwitchRadiusConfigArgs Empty = new SwitchRadiusConfigArgs();
 
     /**
-     * how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      * 
      */
     @Import(name="acctInterimInterval")
     private @Nullable Output<Integer> acctInterimInterval;
 
     /**
-     * @return how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      * 
      */
     public Optional<Output<Integer>> acctInterimInterval() {
@@ -49,14 +49,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * radius auth session retries
+     * Radius auth session retries
      * 
      */
     @Import(name="authServersRetries")
     private @Nullable Output<Integer> authServersRetries;
 
     /**
-     * @return radius auth session retries
+     * @return Radius auth session retries
      * 
      */
     public Optional<Output<Integer>> authServersRetries() {
@@ -64,14 +64,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * radius auth session timeout
+     * Radius auth session timeout
      * 
      */
     @Import(name="authServersTimeout")
     private @Nullable Output<Integer> authServersTimeout;
 
     /**
-     * @return radius auth session timeout
+     * @return Radius auth session timeout
      * 
      */
     public Optional<Output<Integer>> authServersTimeout() {
@@ -79,14 +79,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+     * @return Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
      * 
      */
     public Optional<Output<String>> network() {
@@ -94,14 +94,14 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * use `network`or `source_ip`
+     * Use `network`or `source_ip`
      * 
      */
     @Import(name="sourceIp")
     private @Nullable Output<String> sourceIp;
 
     /**
-     * @return use `network`or `source_ip`
+     * @return Use `network`or `source_ip`
      * 
      */
     public Optional<Output<String>> sourceIp() {
@@ -139,7 +139,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param acctInterimInterval how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param acctInterimInterval how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+         * @param acctInterimInterval How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authServersRetries radius auth session retries
+         * @param authServersRetries Radius auth session retries
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authServersRetries radius auth session retries
+         * @param authServersRetries Radius auth session retries
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authServersTimeout radius auth session timeout
+         * @param authServersTimeout Radius auth session timeout
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param authServersTimeout radius auth session timeout
+         * @param authServersTimeout Radius auth session timeout
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param network use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
+         * @param network Use `network`or `source_ip`. Which network the RADIUS server resides, if there&#39;s static IP for this network, we&#39;d use it as source-ip
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceIp use `network`or `source_ip`
+         * @param sourceIp Use `network`or `source_ip`
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class SwitchRadiusConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceIp use `network`or `source_ip`
+         * @param sourceIp Use `network`or `source_ip`
          * 
          * @return builder
          * 

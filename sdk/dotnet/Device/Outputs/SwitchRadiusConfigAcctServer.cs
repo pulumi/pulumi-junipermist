@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchRadiusConfigAcctServer
     {
         /// <summary>
-        /// ip / hostname of RADIUS server
+        /// IP/ hostname of RADIUS server
         /// </summary>
         public readonly string Host;
         public readonly bool? KeywrapEnabled;
@@ -29,7 +29,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
-        /// secret of RADIUS server
+        /// Secretof RADIUS server
         /// </summary>
         public readonly string Secret;
 

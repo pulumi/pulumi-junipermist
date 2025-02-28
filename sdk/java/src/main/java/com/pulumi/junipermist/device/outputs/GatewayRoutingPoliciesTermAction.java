@@ -16,7 +16,7 @@ public final class GatewayRoutingPoliciesTermAction {
     private @Nullable Boolean accept;
     private @Nullable List<String> addCommunities;
     /**
-     * @return for SSR, hub decides how VRF routes are leaked on spoke
+     * @return For SSR, hub decides how VRF routes are leaked on spoke
      * 
      */
     private @Nullable List<String> addTargetVrfs;
@@ -26,28 +26,28 @@ public final class GatewayRoutingPoliciesTermAction {
      */
     private @Nullable List<String> aggregates;
     /**
-     * @return when used as export policy, optional
+     * @return When used as export policy, optional
      * 
      */
     private @Nullable List<String> communities;
     /**
-     * @return when used as export policy, optional. To exclude certain AS
+     * @return When used as export policy, optional. To exclude certain AS
      * 
      */
     private @Nullable List<String> excludeAsPaths;
     private @Nullable List<String> excludeCommunities;
     /**
-     * @return when used as export policy, optional
+     * @return When used as export policy, optional
      * 
      */
     private @Nullable List<String> exportCommunitites;
     /**
-     * @return optional, for an import policy, local_preference can be changed
+     * @return Optional, for an import policy, local_preference can be changed
      * 
      */
     private @Nullable String localPreference;
     /**
-     * @return when used as export policy, optional. By default, the local AS will be prepended, to change it
+     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it
      * 
      */
     private @Nullable List<String> prependAsPaths;
@@ -60,7 +60,7 @@ public final class GatewayRoutingPoliciesTermAction {
         return this.addCommunities == null ? List.of() : this.addCommunities;
     }
     /**
-     * @return for SSR, hub decides how VRF routes are leaked on spoke
+     * @return For SSR, hub decides how VRF routes are leaked on spoke
      * 
      */
     public List<String> addTargetVrfs() {
@@ -74,14 +74,14 @@ public final class GatewayRoutingPoliciesTermAction {
         return this.aggregates == null ? List.of() : this.aggregates;
     }
     /**
-     * @return when used as export policy, optional
+     * @return When used as export policy, optional
      * 
      */
     public List<String> communities() {
         return this.communities == null ? List.of() : this.communities;
     }
     /**
-     * @return when used as export policy, optional. To exclude certain AS
+     * @return When used as export policy, optional. To exclude certain AS
      * 
      */
     public List<String> excludeAsPaths() {
@@ -91,21 +91,21 @@ public final class GatewayRoutingPoliciesTermAction {
         return this.excludeCommunities == null ? List.of() : this.excludeCommunities;
     }
     /**
-     * @return when used as export policy, optional
+     * @return When used as export policy, optional
      * 
      */
     public List<String> exportCommunitites() {
         return this.exportCommunitites == null ? List.of() : this.exportCommunitites;
     }
     /**
-     * @return optional, for an import policy, local_preference can be changed
+     * @return Optional, for an import policy, local_preference can be changed
      * 
      */
     public Optional<String> localPreference() {
         return Optional.ofNullable(this.localPreference);
     }
     /**
-     * @return when used as export policy, optional. By default, the local AS will be prepended, to change it
+     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it
      * 
      */
     public List<String> prependAsPaths() {

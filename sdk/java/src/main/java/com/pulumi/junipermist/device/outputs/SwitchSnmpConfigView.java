@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchSnmpConfigView {
     /**
-     * @return if the root oid configured is included
+     * @return If the root oid configured is included
      * 
      */
     private @Nullable Boolean include;
@@ -22,7 +22,7 @@ public final class SwitchSnmpConfigView {
 
     private SwitchSnmpConfigView() {}
     /**
-     * @return if the root oid configured is included
+     * @return If the root oid configured is included
      * 
      */
     public Optional<Boolean> include() {

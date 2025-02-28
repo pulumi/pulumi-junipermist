@@ -36,52 +36,52 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansOrgWlan {
     /**
-     * @return enable coa-immediate-update and address-change-immediate-update on the access profile.
+     * @return Enable coa-immediate-update and address-change-immediate-update on the access profile.
      * 
      */
     private Boolean acctImmediateUpdate;
     /**
-     * @return how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      * 
      */
     private Integer acctInterimInterval;
     /**
-     * @return list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
      * 
      */
     private List<GetWlansOrgWlanAcctServer> acctServers;
     /**
-     * @return airwatch wlan settings
+     * @return Airwatch wlan settings
      * 
      */
     private GetWlansOrgWlanAirwatch airwatch;
     /**
-     * @return only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * @return Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     private Boolean allowIpv6Ndp;
     /**
-     * @return only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * @return Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
      * 
      */
     private Boolean allowMdns;
     /**
-     * @return only applicable when `limit_bcast`==`true`, which allows SSDP
+     * @return Only applicable when `limit_bcast`==`true`, which allows SSDP
      * 
      */
     private Boolean allowSsdp;
     /**
-     * @return list of device ids
+     * @return List of device ids
      * 
      */
     private List<String> apIds;
     /**
-     * @return bandwidth limiting for apps (applies to up/down)
+     * @return Bandwidth limiting for apps (applies to up/down)
      * 
      */
     private GetWlansOrgWlanAppLimit appLimit;
     /**
-     * @return app qos wlan settings
+     * @return APp qos wlan settings
      * 
      */
     private GetWlansOrgWlanAppQos appQos;
@@ -91,12 +91,12 @@ public final class GetWlansOrgWlan {
      */
     private String applyTo;
     /**
-     * @return whether to enable smart arp filter
+     * @return Whether to enable smart arp filter
      * 
      */
     private Boolean arpFilter;
     /**
-     * @return authentication wlan settings
+     * @return Authentication wlan settings
      * 
      */
     private GetWlansOrgWlanAuth auth;
@@ -106,52 +106,52 @@ public final class GetWlansOrgWlan {
      */
     private String authServerSelection;
     /**
-     * @return list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * @return List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
      * 
      */
     private List<GetWlansOrgWlanAuthServer> authServers;
     /**
-     * @return optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+     * @return Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
      * 
      */
     private String authServersNasId;
     /**
-     * @return optional, NAS-IP-ADDRESS to use
+     * @return Optional, NAS-IP-ADDRESS to use
      * 
      */
     private String authServersNasIp;
     /**
-     * @return radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
      * 
      */
     private Integer authServersRetries;
     /**
-     * @return radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+     * @return Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
      * 
      */
     private Integer authServersTimeout;
     /**
-     * @return whether to enable band_steering, this works only when band==both
+     * @return Whether to enable band_steering, this works only when band==both
      * 
      */
     private Boolean bandSteer;
     /**
-     * @return force dual_band capable client to connect to 5G
+     * @return Force dual_band capable client to connect to 5G
      * 
      */
     private Boolean bandSteerForceBand5;
     /**
-     * @return list of radios that the wlan should apply to.
+     * @return List of radios that the wlan should apply to.
      * 
      */
     private List<String> bands;
     /**
-     * @return whether to block the clients in the blacklist (up to first 256 macs)
+     * @return Whether to block the clients in the blacklist (up to first 256 macs)
      * 
      */
     private Boolean blockBlacklistClients;
     /**
-     * @return bonjour gateway wlan settings
+     * @return Bonjour gateway wlan settings
      * 
      */
     private GetWlansOrgWlanBonjour bonjour;
@@ -161,62 +161,62 @@ public final class GetWlansOrgWlan {
      */
     private GetWlansOrgWlanCiscoCwa ciscoCwa;
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     private Integer clientLimitDown;
     /**
-     * @return if downlink limiting per-client is enabled
+     * @return If downlink limiting per-client is enabled
      * 
      */
     private Boolean clientLimitDownEnabled;
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     private Integer clientLimitUp;
     /**
-     * @return if uplink limiting per-client is enabled
+     * @return If uplink limiting per-client is enabled
      * 
      */
     private Boolean clientLimitUpEnabled;
     /**
-     * @return list of COA (change of authorization) servers, optional
+     * @return List of COA (change of authorization) servers, optional
      * 
      */
     private List<GetWlansOrgWlanCoaServer> coaServers;
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     private Double createdTime;
     /**
-     * @return some old WLAN drivers may not be compatible
+     * @return Some old WLAN drivers may not be compatible
      * 
      */
     private Boolean disable11ax;
     /**
-     * @return to disable ht or vht rates
+     * @return To disable ht or vht rates
      * 
      */
     private Boolean disableHtVhtRates;
     /**
-     * @return whether to disable U-APSD
+     * @return Whether to disable U-APSD
      * 
      */
     private Boolean disableUapsd;
     /**
-     * @return disable sending v2 roam notification messages
+     * @return Disable sending v2 roam notification messages
      * 
      */
     private Boolean disableV1RoamNotify;
     /**
-     * @return disable sending v2 roam notification messages
+     * @return Disable sending v2 roam notification messages
      * 
      */
     private Boolean disableV2RoamNotify;
     /**
-     * @return when any of the following is true, this WLAN will be disabled
+     * @return When any of the following is true, this WLAN will be disabled
      *    * cannot get IP
      *    * cannot obtain default gateway
      *    * cannot reach default gateway
@@ -225,20 +225,20 @@ public final class GetWlansOrgWlan {
     private Boolean disableWhenGatewayUnreachable;
     private Boolean disableWhenMxtunnelDown;
     /**
-     * @return whether to disable WMM
+     * @return Whether to disable WMM
      * 
      */
     private Boolean disableWmm;
     /**
-     * @return for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * @return For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
      * 
      */
     private GetWlansOrgWlanDnsServerRewrite dnsServerRewrite;
     private Integer dtim;
     /**
-     * @return for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     * @return For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
      *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed)
+     *   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
      *   * AP sends BSSID:SSID as Caller-Station-ID
      *   * `auth_servers` is required
      *   * PSK will come from cloud WLC if source is cloud_psks
@@ -249,47 +249,47 @@ public final class GetWlansOrgWlan {
      */
     private GetWlansOrgWlanDynamicPsk dynamicPsk;
     /**
-     * @return for 802.1x
+     * @return For 802.1x
      * 
      */
     private GetWlansOrgWlanDynamicVlan dynamicVlan;
     /**
-     * @return enable AP-AP keycaching via multicast
+     * @return Enable AP-AP keycaching via multicast
      * 
      */
     private Boolean enableLocalKeycaching;
     /**
-     * @return by default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
      * 
      */
     private Boolean enableWirelessBridging;
     /**
-     * @return if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+     * @return If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
      * 
      */
     private Boolean enableWirelessBridgingDhcpTracking;
     /**
-     * @return if this wlan is enabled
+     * @return If this wlan is enabled
      * 
      */
     private Boolean enabled;
     /**
-     * @return if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+     * @return If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
      * 
      */
     private Boolean fastDot1xTimers;
     /**
-     * @return whether to hide SSID in beacon
+     * @return Whether to hide SSID in beacon
      * 
      */
     private Boolean hideSsid;
     /**
-     * @return include hostname inside IE in AP beacons / probe responses
+     * @return Include hostname inside IE in AP beacons / probe responses
      * 
      */
     private Boolean hostnameIe;
     /**
-     * @return hostspot 2.0 wlan settings
+     * @return Hostspot 2.0 wlan settings
      * 
      */
     private GetWlansOrgWlanHotspot20 hotspot20;
@@ -305,90 +305,90 @@ public final class GetWlansOrgWlan {
      */
     private String interface_;
     /**
-     * @return whether to stop clients to talk to each other
+     * @return Whether to stop clients to talk to each other
      * 
      */
     private Boolean isolation;
     /**
-     * @return if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+     * @return If isolation is enabled, whether to deny clients to talk to L2 on the LAN
      * 
      */
     private Boolean l2Isolation;
     /**
-     * @return legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+     * @return Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
      * 
      */
     private Boolean legacyOverds;
     /**
-     * @return whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+     * @return Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
      * 
      */
     private Boolean limitBcast;
     /**
-     * @return limit probe response base on some heuristic rules
+     * @return Limit probe response base on some heuristic rules
      * 
      */
     private Boolean limitProbeResponse;
     /**
-     * @return max idle time in seconds
+     * @return Max idle time in seconds
      * 
      */
     private Integer maxIdletime;
     /**
-     * @return maximum number of client connected to the SSID. `0` means unlimited
+     * @return Maximum number of client connected to the SSID. `0` means unlimited
      * 
      */
     private Integer maxNumClients;
     private GetWlansOrgWlanMistNac mistNac;
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     private Double modifiedTime;
     private String mspId;
     /**
-     * @return when `interface`=`mxtunnel`, id of the Mist Tunnel
+     * @return When `interface`=`mxtunnel`, id of the Mist Tunnel
      * 
      */
     private List<String> mxtunnelIds;
     /**
-     * @return when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     private List<String> mxtunnelNames;
     /**
-     * @return whether to only allow client to use DNS that we’ve learned from DHCP response
+     * @return Whether to only allow client to use DNS that we’ve learned from DHCP response
      * 
      */
     private Boolean noStaticDns;
     /**
-     * @return whether to only allow client that we’ve learned from DHCP exchange to talk
+     * @return Whether to only allow client that we’ve learned from DHCP exchange to talk
      * 
      */
     private Boolean noStaticIp;
     private String orgId;
     /**
-     * @return portal wlan settings
+     * @return Portal wlan settings
      * 
      */
     private GetWlansOrgWlanPortal portal;
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     private List<String> portalAllowedHostnames;
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     private List<String> portalAllowedSubnets;
     /**
-     * @return api secret (auto-generated) that can be used to sign guest authorization requests
+     * @return APi secret (auto-generated) that can be used to sign guest authorization requests
      * 
      */
     private String portalApiSecret;
     /**
-     * @return list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * @return List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
      * 
      */
     private List<String> portalDeniedHostnames;
@@ -400,7 +400,7 @@ public final class GetWlansOrgWlan {
     private String portalSsoUrl;
     private GetWlansOrgWlanQos qos;
     /**
-     * @return Radsec settings
+     * @return RadSec settings
      * 
      */
     private GetWlansOrgWlanRadsec radsec;
@@ -410,7 +410,7 @@ public final class GetWlansOrgWlan {
      */
     private Map<String,GetWlansOrgWlanRateset> rateset;
     /**
-     * @return when different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
+     * @return When different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
      * 
      */
     private Boolean reconnectClientsWhenRoamingMxcluster;
@@ -425,23 +425,23 @@ public final class GetWlansOrgWlan {
      */
     private GetWlansOrgWlanSchedule schedule;
     /**
-     * @return whether to exclude this WLAN from SLE metrics
+     * @return Whether to exclude this WLAN from SLE metrics
      * 
      */
     private Boolean sleExcluded;
     /**
-     * @return the name of the SSID
+     * @return Name of the SSID
      * 
      */
     private String ssid;
     private String templateId;
     /**
-     * @return if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+     * @return If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
      * 
      */
     private Boolean useEapolV1;
     /**
-     * @return if vlan tagging is enabled
+     * @return If vlan tagging is enabled
      * 
      */
     private Boolean vlanEnabled;
@@ -457,107 +457,107 @@ public final class GetWlansOrgWlan {
      */
     private Boolean vlanPooling;
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     private Integer wlanLimitDown;
     /**
-     * @return if downlink limiting for whole wlan is enabled
+     * @return If downlink limiting for whole wlan is enabled
      * 
      */
     private Boolean wlanLimitDownEnabled;
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     private Integer wlanLimitUp;
     /**
-     * @return if uplink limiting for whole wlan is enabled
+     * @return If uplink limiting for whole wlan is enabled
      * 
      */
     private Boolean wlanLimitUpEnabled;
     /**
-     * @return list of wxtag_ids
+     * @return List of wxtag_ids
      * 
      */
     private List<String> wxtagIds;
     /**
-     * @return when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+     * @return When `interface`=`wxtunnel`, id of the WXLAN Tunnel
      * 
      */
     private String wxtunnelId;
     /**
-     * @return when `interface`=`wxtunnel`, remote tunnel identifier
+     * @return When `interface`=`wxtunnel`, remote tunnel identifier
      * 
      */
     private String wxtunnelRemoteId;
 
     private GetWlansOrgWlan() {}
     /**
-     * @return enable coa-immediate-update and address-change-immediate-update on the access profile.
+     * @return Enable coa-immediate-update and address-change-immediate-update on the access profile.
      * 
      */
     public Boolean acctImmediateUpdate() {
         return this.acctImmediateUpdate;
     }
     /**
-     * @return how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+     * @return How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
      * 
      */
     public Integer acctInterimInterval() {
         return this.acctInterimInterval;
     }
     /**
-     * @return list of RADIUS accounting servers, optional, order matters where the first one is treated as primary
+     * @return List of RADIUS accounting servers, optional, order matters where the first one is treated as primary
      * 
      */
     public List<GetWlansOrgWlanAcctServer> acctServers() {
         return this.acctServers;
     }
     /**
-     * @return airwatch wlan settings
+     * @return Airwatch wlan settings
      * 
      */
     public GetWlansOrgWlanAirwatch airwatch() {
         return this.airwatch;
     }
     /**
-     * @return only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
+     * @return Only applicable when limit_bcast==true, which allows or disallows ipv6 Neighbor Discovery packets to go through
      * 
      */
     public Boolean allowIpv6Ndp() {
         return this.allowIpv6Ndp;
     }
     /**
-     * @return only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
+     * @return Only applicable when limit_bcast==true, which allows mDNS / Bonjour packets to go through
      * 
      */
     public Boolean allowMdns() {
         return this.allowMdns;
     }
     /**
-     * @return only applicable when `limit_bcast`==`true`, which allows SSDP
+     * @return Only applicable when `limit_bcast`==`true`, which allows SSDP
      * 
      */
     public Boolean allowSsdp() {
         return this.allowSsdp;
     }
     /**
-     * @return list of device ids
+     * @return List of device ids
      * 
      */
     public List<String> apIds() {
         return this.apIds;
     }
     /**
-     * @return bandwidth limiting for apps (applies to up/down)
+     * @return Bandwidth limiting for apps (applies to up/down)
      * 
      */
     public GetWlansOrgWlanAppLimit appLimit() {
         return this.appLimit;
     }
     /**
-     * @return app qos wlan settings
+     * @return APp qos wlan settings
      * 
      */
     public GetWlansOrgWlanAppQos appQos() {
@@ -571,14 +571,14 @@ public final class GetWlansOrgWlan {
         return this.applyTo;
     }
     /**
-     * @return whether to enable smart arp filter
+     * @return Whether to enable smart arp filter
      * 
      */
     public Boolean arpFilter() {
         return this.arpFilter;
     }
     /**
-     * @return authentication wlan settings
+     * @return Authentication wlan settings
      * 
      */
     public GetWlansOrgWlanAuth auth() {
@@ -592,70 +592,70 @@ public final class GetWlansOrgWlan {
         return this.authServerSelection;
     }
     /**
-     * @return list of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
+     * @return List of RADIUS authentication servers, at least one is needed if `auth type`==`eap`, order matters where the first one is treated as primary
      * 
      */
     public List<GetWlansOrgWlanAuthServer> authServers() {
         return this.authServers;
     }
     /**
-     * @return optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
+     * @return Optional, up to 48 bytes, will be dynamically generated if not provided. used only for authentication servers
      * 
      */
     public String authServersNasId() {
         return this.authServersNasId;
     }
     /**
-     * @return optional, NAS-IP-ADDRESS to use
+     * @return Optional, NAS-IP-ADDRESS to use
      * 
      */
     public String authServersNasIp() {
         return this.authServersNasIp;
     }
     /**
-     * @return radius auth session retries. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
+     * @return Radius auth session retries. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘retries’  are set to value of auth_servers_retries. ‘max-requests’ is also set when setting auth_servers_retries and is set to default value to 3.
      * 
      */
     public Integer authServersRetries() {
         return this.authServersRetries;
     }
     /**
-     * @return radius auth session timeout. Following fast timers are set if “fast_dot1x_timers” knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
+     * @return Radius auth session timeout. Following fast timers are set if &#34;fast_dot1x_timers&#34; knob is enabled. ‘quite-period’  and ‘transmit-period’ are set to half the value of auth_servers_timeout. ‘supplicant-timeout’ is also set when setting auth_servers_timeout and is set to default value of 10.
      * 
      */
     public Integer authServersTimeout() {
         return this.authServersTimeout;
     }
     /**
-     * @return whether to enable band_steering, this works only when band==both
+     * @return Whether to enable band_steering, this works only when band==both
      * 
      */
     public Boolean bandSteer() {
         return this.bandSteer;
     }
     /**
-     * @return force dual_band capable client to connect to 5G
+     * @return Force dual_band capable client to connect to 5G
      * 
      */
     public Boolean bandSteerForceBand5() {
         return this.bandSteerForceBand5;
     }
     /**
-     * @return list of radios that the wlan should apply to.
+     * @return List of radios that the wlan should apply to.
      * 
      */
     public List<String> bands() {
         return this.bands;
     }
     /**
-     * @return whether to block the clients in the blacklist (up to first 256 macs)
+     * @return Whether to block the clients in the blacklist (up to first 256 macs)
      * 
      */
     public Boolean blockBlacklistClients() {
         return this.blockBlacklistClients;
     }
     /**
-     * @return bonjour gateway wlan settings
+     * @return Bonjour gateway wlan settings
      * 
      */
     public GetWlansOrgWlanBonjour bonjour() {
@@ -669,84 +669,84 @@ public final class GetWlansOrgWlan {
         return this.ciscoCwa;
     }
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     public Integer clientLimitDown() {
         return this.clientLimitDown;
     }
     /**
-     * @return if downlink limiting per-client is enabled
+     * @return If downlink limiting per-client is enabled
      * 
      */
     public Boolean clientLimitDownEnabled() {
         return this.clientLimitDownEnabled;
     }
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     public Integer clientLimitUp() {
         return this.clientLimitUp;
     }
     /**
-     * @return if uplink limiting per-client is enabled
+     * @return If uplink limiting per-client is enabled
      * 
      */
     public Boolean clientLimitUpEnabled() {
         return this.clientLimitUpEnabled;
     }
     /**
-     * @return list of COA (change of authorization) servers, optional
+     * @return List of COA (change of authorization) servers, optional
      * 
      */
     public List<GetWlansOrgWlanCoaServer> coaServers() {
         return this.coaServers;
     }
     /**
-     * @return when the object has been created, in epoch
+     * @return When the object has been created, in epoch
      * 
      */
     public Double createdTime() {
         return this.createdTime;
     }
     /**
-     * @return some old WLAN drivers may not be compatible
+     * @return Some old WLAN drivers may not be compatible
      * 
      */
     public Boolean disable11ax() {
         return this.disable11ax;
     }
     /**
-     * @return to disable ht or vht rates
+     * @return To disable ht or vht rates
      * 
      */
     public Boolean disableHtVhtRates() {
         return this.disableHtVhtRates;
     }
     /**
-     * @return whether to disable U-APSD
+     * @return Whether to disable U-APSD
      * 
      */
     public Boolean disableUapsd() {
         return this.disableUapsd;
     }
     /**
-     * @return disable sending v2 roam notification messages
+     * @return Disable sending v2 roam notification messages
      * 
      */
     public Boolean disableV1RoamNotify() {
         return this.disableV1RoamNotify;
     }
     /**
-     * @return disable sending v2 roam notification messages
+     * @return Disable sending v2 roam notification messages
      * 
      */
     public Boolean disableV2RoamNotify() {
         return this.disableV2RoamNotify;
     }
     /**
-     * @return when any of the following is true, this WLAN will be disabled
+     * @return When any of the following is true, this WLAN will be disabled
      *    * cannot get IP
      *    * cannot obtain default gateway
      *    * cannot reach default gateway
@@ -759,14 +759,14 @@ public final class GetWlansOrgWlan {
         return this.disableWhenMxtunnelDown;
     }
     /**
-     * @return whether to disable WMM
+     * @return Whether to disable WMM
      * 
      */
     public Boolean disableWmm() {
         return this.disableWmm;
     }
     /**
-     * @return for radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
+     * @return For radius_group-based DNS server (rewrite DNS request depending on the Group RADIUS server returns)
      * 
      */
     public GetWlansOrgWlanDnsServerRewrite dnsServerRewrite() {
@@ -776,9 +776,9 @@ public final class GetWlansOrgWlan {
         return this.dtim;
     }
     /**
-     * @return for dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
+     * @return For dynamic PSK where we get per_user PSK from Radius. dynamic_psk allows PSK to be selected at runtime depending on context (wlan/site/user/...) thus following configurations are assumed (currently)
      *   * PSK will come from RADIUS server
-     *   * AP sends client MAC as username ans password (i.e. `enable_mac_auth` is assumed)
+     *   * AP sends client MAC as username and password (i.e. `enable_mac_auth` is assumed)
      *   * AP sends BSSID:SSID as Caller-Station-ID
      *   * `auth_servers` is required
      *   * PSK will come from cloud WLC if source is cloud_psks
@@ -791,63 +791,63 @@ public final class GetWlansOrgWlan {
         return this.dynamicPsk;
     }
     /**
-     * @return for 802.1x
+     * @return For 802.1x
      * 
      */
     public GetWlansOrgWlanDynamicVlan dynamicVlan() {
         return this.dynamicVlan;
     }
     /**
-     * @return enable AP-AP keycaching via multicast
+     * @return Enable AP-AP keycaching via multicast
      * 
      */
     public Boolean enableLocalKeycaching() {
         return this.enableLocalKeycaching;
     }
     /**
-     * @return by default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
+     * @return By default, we&#39;d inspect all DHCP packets and drop those unrelated to the wireless client itself in the case where client is a wireless bridge (DHCP packets for other MACs will need to be orwarded), wireless_bridging can be enabled
      * 
      */
     public Boolean enableWirelessBridging() {
         return this.enableWirelessBridging;
     }
     /**
-     * @return if the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
+     * @return If the client bridge is doing DHCP on behalf of other devices (L2-NAT), enable dhcp_tracking will cut down DHCP response packets to be forwarded to wireless
      * 
      */
     public Boolean enableWirelessBridgingDhcpTracking() {
         return this.enableWirelessBridgingDhcpTracking;
     }
     /**
-     * @return if this wlan is enabled
+     * @return If this wlan is enabled
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return if set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
+     * @return If set to true, sets default fast-timers with values calculated from ‘auth_servers_timeout’ and ‘auth_server_retries’ .
      * 
      */
     public Boolean fastDot1xTimers() {
         return this.fastDot1xTimers;
     }
     /**
-     * @return whether to hide SSID in beacon
+     * @return Whether to hide SSID in beacon
      * 
      */
     public Boolean hideSsid() {
         return this.hideSsid;
     }
     /**
-     * @return include hostname inside IE in AP beacons / probe responses
+     * @return Include hostname inside IE in AP beacons / probe responses
      * 
      */
     public Boolean hostnameIe() {
         return this.hostnameIe;
     }
     /**
-     * @return hostspot 2.0 wlan settings
+     * @return Hostspot 2.0 wlan settings
      * 
      */
     public GetWlansOrgWlanHotspot20 hotspot20() {
@@ -871,49 +871,49 @@ public final class GetWlansOrgWlan {
         return this.interface_;
     }
     /**
-     * @return whether to stop clients to talk to each other
+     * @return Whether to stop clients to talk to each other
      * 
      */
     public Boolean isolation() {
         return this.isolation;
     }
     /**
-     * @return if isolation is enabled, whether to deny clients to talk to L2 on the LAN
+     * @return If isolation is enabled, whether to deny clients to talk to L2 on the LAN
      * 
      */
     public Boolean l2Isolation() {
         return this.l2Isolation;
     }
     /**
-     * @return legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
+     * @return Legacy devices requires the Over-DS (for Fast BSS Transition) bit set (while our chip doesn’t support it). Warning! Enabling this will cause problem for iOS devices.
      * 
      */
     public Boolean legacyOverds() {
         return this.legacyOverds;
     }
     /**
-     * @return whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
+     * @return Whether to limit broadcast packets going to wireless (i.e. only allow certain bcast packets to go through)
      * 
      */
     public Boolean limitBcast() {
         return this.limitBcast;
     }
     /**
-     * @return limit probe response base on some heuristic rules
+     * @return Limit probe response base on some heuristic rules
      * 
      */
     public Boolean limitProbeResponse() {
         return this.limitProbeResponse;
     }
     /**
-     * @return max idle time in seconds
+     * @return Max idle time in seconds
      * 
      */
     public Integer maxIdletime() {
         return this.maxIdletime;
     }
     /**
-     * @return maximum number of client connected to the SSID. `0` means unlimited
+     * @return Maximum number of client connected to the SSID. `0` means unlimited
      * 
      */
     public Integer maxNumClients() {
@@ -923,7 +923,7 @@ public final class GetWlansOrgWlan {
         return this.mistNac;
     }
     /**
-     * @return when the object has been modified for the last time, in epoch
+     * @return When the object has been modified for the last time, in epoch
      * 
      */
     public Double modifiedTime() {
@@ -933,28 +933,28 @@ public final class GetWlansOrgWlan {
         return this.mspId;
     }
     /**
-     * @return when `interface`=`mxtunnel`, id of the Mist Tunnel
+     * @return When `interface`=`mxtunnel`, id of the Mist Tunnel
      * 
      */
     public List<String> mxtunnelIds() {
         return this.mxtunnelIds;
     }
     /**
-     * @return when `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
+     * @return When `interface`=`site_medge`, name of the mxtunnel that in mxtunnels under Site Setting
      * 
      */
     public List<String> mxtunnelNames() {
         return this.mxtunnelNames;
     }
     /**
-     * @return whether to only allow client to use DNS that we’ve learned from DHCP response
+     * @return Whether to only allow client to use DNS that we’ve learned from DHCP response
      * 
      */
     public Boolean noStaticDns() {
         return this.noStaticDns;
     }
     /**
-     * @return whether to only allow client that we’ve learned from DHCP exchange to talk
+     * @return Whether to only allow client that we’ve learned from DHCP exchange to talk
      * 
      */
     public Boolean noStaticIp() {
@@ -964,35 +964,35 @@ public final class GetWlansOrgWlan {
         return this.orgId;
     }
     /**
-     * @return portal wlan settings
+     * @return Portal wlan settings
      * 
      */
     public GetWlansOrgWlanPortal portal() {
         return this.portal;
     }
     /**
-     * @return list of hostnames without http(s):// (matched by substring)
+     * @return List of hostnames without http(s):// (matched by substring)
      * 
      */
     public List<String> portalAllowedHostnames() {
         return this.portalAllowedHostnames;
     }
     /**
-     * @return list of CIDRs
+     * @return List of CIDRs
      * 
      */
     public List<String> portalAllowedSubnets() {
         return this.portalAllowedSubnets;
     }
     /**
-     * @return api secret (auto-generated) that can be used to sign guest authorization requests
+     * @return APi secret (auto-generated) that can be used to sign guest authorization requests
      * 
      */
     public String portalApiSecret() {
         return this.portalApiSecret;
     }
     /**
-     * @return list of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
+     * @return List of hostnames without http(s):// (matched by substring), this takes precedence over portal_allowed_hostnames
      * 
      */
     public List<String> portalDeniedHostnames() {
@@ -1012,7 +1012,7 @@ public final class GetWlansOrgWlan {
         return this.qos;
     }
     /**
-     * @return Radsec settings
+     * @return RadSec settings
      * 
      */
     public GetWlansOrgWlanRadsec radsec() {
@@ -1026,7 +1026,7 @@ public final class GetWlansOrgWlan {
         return this.rateset;
     }
     /**
-     * @return when different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
+     * @return When different mxcluster is on different subnet, we&#39;d want to disconnect clients (so they&#39;ll reconnect and get new IPs)
      * 
      */
     public Boolean reconnectClientsWhenRoamingMxcluster() {
@@ -1047,14 +1047,14 @@ public final class GetWlansOrgWlan {
         return this.schedule;
     }
     /**
-     * @return whether to exclude this WLAN from SLE metrics
+     * @return Whether to exclude this WLAN from SLE metrics
      * 
      */
     public Boolean sleExcluded() {
         return this.sleExcluded;
     }
     /**
-     * @return the name of the SSID
+     * @return Name of the SSID
      * 
      */
     public String ssid() {
@@ -1064,14 +1064,14 @@ public final class GetWlansOrgWlan {
         return this.templateId;
     }
     /**
-     * @return if `auth.type`==’eap’ or ‘psk’, should only be set for legacy client, such as pre-2004, 802.11b devices
+     * @return If `auth.type`==`eap` or `auth.type`==`psk`, should only be set for legacy client, such as pre-2004, 802.11b devices
      * 
      */
     public Boolean useEapolV1() {
         return this.useEapolV1;
     }
     /**
-     * @return if vlan tagging is enabled
+     * @return If vlan tagging is enabled
      * 
      */
     public Boolean vlanEnabled() {
@@ -1095,49 +1095,49 @@ public final class GetWlansOrgWlan {
         return this.vlanPooling;
     }
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     public Integer wlanLimitDown() {
         return this.wlanLimitDown;
     }
     /**
-     * @return if downlink limiting for whole wlan is enabled
+     * @return If downlink limiting for whole wlan is enabled
      * 
      */
     public Boolean wlanLimitDownEnabled() {
         return this.wlanLimitDownEnabled;
     }
     /**
-     * @return kbps
+     * @return In kbps
      * 
      */
     public Integer wlanLimitUp() {
         return this.wlanLimitUp;
     }
     /**
-     * @return if uplink limiting for whole wlan is enabled
+     * @return If uplink limiting for whole wlan is enabled
      * 
      */
     public Boolean wlanLimitUpEnabled() {
         return this.wlanLimitUpEnabled;
     }
     /**
-     * @return list of wxtag_ids
+     * @return List of wxtag_ids
      * 
      */
     public List<String> wxtagIds() {
         return this.wxtagIds;
     }
     /**
-     * @return when `interface`=`wxtunnel`, id of the WXLAN Tunnel
+     * @return When `interface`=`wxtunnel`, id of the WXLAN Tunnel
      * 
      */
     public String wxtunnelId() {
         return this.wxtunnelId;
     }
     /**
-     * @return when `interface`=`wxtunnel`, remote tunnel identifier
+     * @return When `interface`=`wxtunnel`, remote tunnel identifier
      * 
      */
     public String wxtunnelRemoteId() {

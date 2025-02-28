@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateSnmpConfigV3ConfigUsmUser {
     /**
-     * @return Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * @return Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     private @Nullable String authenticationPassword;
     /**
-     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
      * 
      */
     private @Nullable String authenticationType;
@@ -35,14 +35,14 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUser {
 
     private NetworktemplateSnmpConfigV3ConfigUsmUser() {}
     /**
-     * @return Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * @return Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     public Optional<String> authenticationPassword() {
         return Optional.ofNullable(this.authenticationPassword);
     }
     /**
-     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
      * 
      */
     public Optional<String> authenticationType() {

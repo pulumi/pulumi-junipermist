@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class NetworktemplatePortUsagesRule {
     private @Nullable String equals;
     /**
-     * @return use `equals_any` to match any item in a list
+     * @return Use `equals_any` to match any item in a list
      * 
      */
     private @Nullable List<String> equalsAnies;
@@ -42,7 +42,7 @@ public final class NetworktemplatePortUsagesRule {
         return Optional.ofNullable(this.equals);
     }
     /**
-     * @return use `equals_any` to match any item in a list
+     * @return Use `equals_any` to match any item in a list
      * 
      */
     public List<String> equalsAnies() {

@@ -37,7 +37,7 @@ public final class DeviceprofileApRadioConfigBand24 {
      */
     private @Nullable List<Integer> channels;
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     private @Nullable Boolean disabled;
@@ -47,12 +47,12 @@ public final class DeviceprofileApRadioConfigBand24 {
      */
     private @Nullable Integer power;
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMax;
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMin;
@@ -98,7 +98,7 @@ public final class DeviceprofileApRadioConfigBand24 {
         return this.channels == null ? List.of() : this.channels;
     }
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     public Optional<Boolean> disabled() {
@@ -112,14 +112,14 @@ public final class DeviceprofileApRadioConfigBand24 {
         return Optional.ofNullable(this.power);
     }
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMax() {
         return Optional.ofNullable(this.powerMax);
     }
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMin() {

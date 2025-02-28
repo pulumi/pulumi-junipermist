@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? DisablePressureSensor;
         public readonly bool? Enabled;
         /// <summary>
-        /// asset tracking related
+        /// Asset tracking related
         /// </summary>
         public readonly bool? TrackAsset;
 

@@ -15,19 +15,19 @@ import javax.annotation.Nullable;
 public final class WlanHotspot20 {
     private @Nullable List<String> domainNames;
     /**
-     * @return whether to enable hotspot 2.0 config
+     * @return Whether to enable hotspot 2.0 config
      * 
      */
     private @Nullable Boolean enabled;
     private @Nullable List<String> naiRealms;
     /**
-     * @return list of operators to support
+     * @return List of operators to support
      * 
      */
     private @Nullable List<String> operators;
     private @Nullable List<String> rcois;
     /**
-     * @return venue name, default is site name
+     * @return Venue name, default is site name
      * 
      */
     private @Nullable String venueName;
@@ -37,7 +37,7 @@ public final class WlanHotspot20 {
         return this.domainNames == null ? List.of() : this.domainNames;
     }
     /**
-     * @return whether to enable hotspot 2.0 config
+     * @return Whether to enable hotspot 2.0 config
      * 
      */
     public Optional<Boolean> enabled() {
@@ -47,7 +47,7 @@ public final class WlanHotspot20 {
         return this.naiRealms == null ? List.of() : this.naiRealms;
     }
     /**
-     * @return list of operators to support
+     * @return List of operators to support
      * 
      */
     public List<String> operators() {
@@ -57,7 +57,7 @@ public final class WlanHotspot20 {
         return this.rcois == null ? List.of() : this.rcois;
     }
     /**
-     * @return venue name, default is site name
+     * @return Venue name, default is site name
      * 
      */
     public Optional<String> venueName() {

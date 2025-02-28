@@ -31,14 +31,14 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * used only if `subnet` is not specified in `networks`
+     * Used only if `subnet` is not specified in `networks`
      * 
      */
     @Import(name="netmask")
     private @Nullable Output<String> netmask;
 
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<Output<String>> netmask() {
@@ -46,14 +46,14 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * optional, the network to be used for mgmt
+     * Optional, the network to be used for mgmt
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return optional, the network to be used for mgmt
+     * @return Optional, the network to be used for mgmt
      * 
      */
     public Optional<Output<String>> network() {
@@ -76,14 +76,14 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     @Import(name="useMgmtVrf")
     private @Nullable Output<Boolean> useMgmtVrf;
 
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrf() {
@@ -91,14 +91,14 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     @Import(name="useMgmtVrfForHostOut")
     private @Nullable Output<Boolean> useMgmtVrfForHostOut;
 
     /**
-     * @return for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Output<Boolean>> useMgmtVrfForHostOut() {
@@ -154,7 +154,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask Used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param netmask used only if `subnet` is not specified in `networks`
+         * @param netmask Used only if `subnet` is not specified in `networks`
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param network optional, the network to be used for mgmt
+         * @param network Optional, the network to be used for mgmt
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param network optional, the network to be used for mgmt
+         * @param network Optional, the network to be used for mgmt
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useMgmtVrf if supported on the platform. If enabled, DNS will be using this routing-instance, too
+         * @param useMgmtVrf If supported on the platform. If enabled, DNS will be using this routing-instance, too
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class SwitchOobIpConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param useMgmtVrfForHostOut for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+         * @param useMgmtVrfForHostOut For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
          * 
          * @return builder
          * 

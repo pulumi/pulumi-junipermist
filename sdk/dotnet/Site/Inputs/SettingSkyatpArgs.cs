@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// whether to send IP-MAC mapping to SkyATP
+        /// Whether to send IP-MAC mapping to SkyATP
         /// </summary>
         [Input("sendIpMacMapping")]
         public Input<bool>? SendIpMacMapping { get; set; }

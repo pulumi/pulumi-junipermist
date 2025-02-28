@@ -86,7 +86,7 @@ public final class GetWebhooksOrgWebhook {
      */
     private String secret;
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     private String splunkToken;
@@ -210,7 +210,7 @@ public final class GetWebhooksOrgWebhook {
         return this.secret;
     }
     /**
-     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.&#39;
+     * @return Required if `type`=`splunk`. If splunk_token is not defined for a type Splunk webhook, it will not send, regardless if the webhook receiver is configured to accept it.
      * 
      */
     public String splunkToken() {

@@ -14,13 +14,13 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigNotifyFilterContent
     {
         public readonly bool? Include;
-        public readonly string? Oid;
+        public readonly string Oid;
 
         [OutputConstructor]
         private SwitchSnmpConfigV3ConfigNotifyFilterContent(
             bool? include,
 
-            string? oid)
+            string oid)
         {
             Include = include;
             Oid = oid;

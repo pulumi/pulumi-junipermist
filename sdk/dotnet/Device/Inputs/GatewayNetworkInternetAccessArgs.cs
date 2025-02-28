@@ -31,7 +31,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        /// By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }

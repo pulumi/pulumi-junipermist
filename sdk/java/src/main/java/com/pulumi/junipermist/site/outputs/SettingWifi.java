@@ -14,54 +14,54 @@ import javax.annotation.Nullable;
 public final class SettingWifi {
     private @Nullable Boolean ciscoEnabled;
     /**
-     * @return whether to disable 11k
+     * @return Whether to disable 11k
      * 
      */
     private @Nullable Boolean disable11k;
     private @Nullable Boolean disableRadiosWhenPowerConstrained;
     /**
-     * @return when proxy_arp is enabled, check for arp spoofing.
+     * @return When proxy_arp is enabled, check for arp spoofing.
      * 
      */
     private @Nullable Boolean enableArpSpoofCheck;
     private @Nullable Boolean enableSharedRadioScanning;
     /**
-     * @return enable WIFI feature (using SUB-MAN license)
+     * @return Enable Wi-Fi feature (using SUB-MAN license)
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return whether to locate connected clients
+     * @return Whether to locate connected clients
      * 
      */
     private @Nullable Boolean locateConnected;
     /**
-     * @return whether to locate unconnected clients
+     * @return Whether to locate unconnected clients
      * 
      */
     private @Nullable Boolean locateUnconnected;
     /**
-     * @return whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     private @Nullable Boolean meshAllowDfs;
     /**
-     * @return used to enable/disable CRM
+     * @return Used to enable/disable CRM
      * 
      */
     private @Nullable Boolean meshEnableCrm;
     /**
-     * @return whether to enable Mesh feature for the site
+     * @return Whether to enable Mesh feature for the site
      * 
      */
     private @Nullable Boolean meshEnabled;
     /**
-     * @return optional passphrase of mesh networking, default is generated randomly
+     * @return Optional passphrase of mesh networking, default is generated randomly
      * 
      */
     private @Nullable String meshPsk;
     /**
-     * @return optional ssid of mesh networking, default is based on site_id
+     * @return Optional ssid of mesh networking, default is based on site_id
      * 
      */
     private @Nullable String meshSsid;
@@ -76,7 +76,7 @@ public final class SettingWifi {
         return Optional.ofNullable(this.ciscoEnabled);
     }
     /**
-     * @return whether to disable 11k
+     * @return Whether to disable 11k
      * 
      */
     public Optional<Boolean> disable11k() {
@@ -86,7 +86,7 @@ public final class SettingWifi {
         return Optional.ofNullable(this.disableRadiosWhenPowerConstrained);
     }
     /**
-     * @return when proxy_arp is enabled, check for arp spoofing.
+     * @return When proxy_arp is enabled, check for arp spoofing.
      * 
      */
     public Optional<Boolean> enableArpSpoofCheck() {
@@ -96,56 +96,56 @@ public final class SettingWifi {
         return Optional.ofNullable(this.enableSharedRadioScanning);
     }
     /**
-     * @return enable WIFI feature (using SUB-MAN license)
+     * @return Enable Wi-Fi feature (using SUB-MAN license)
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return whether to locate connected clients
+     * @return Whether to locate connected clients
      * 
      */
     public Optional<Boolean> locateConnected() {
         return Optional.ofNullable(this.locateConnected);
     }
     /**
-     * @return whether to locate unconnected clients
+     * @return Whether to locate unconnected clients
      * 
      */
     public Optional<Boolean> locateUnconnected() {
         return Optional.ofNullable(this.locateUnconnected);
     }
     /**
-     * @return whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
+     * @return Whether to allow Mesh to use DFS channels. For DFS channels, Remote Mesh AP would have to do CAC when scanning for new Base AP, which is slow and will distrupt the connection. If roaming is desired, keep it disabled.
      * 
      */
     public Optional<Boolean> meshAllowDfs() {
         return Optional.ofNullable(this.meshAllowDfs);
     }
     /**
-     * @return used to enable/disable CRM
+     * @return Used to enable/disable CRM
      * 
      */
     public Optional<Boolean> meshEnableCrm() {
         return Optional.ofNullable(this.meshEnableCrm);
     }
     /**
-     * @return whether to enable Mesh feature for the site
+     * @return Whether to enable Mesh feature for the site
      * 
      */
     public Optional<Boolean> meshEnabled() {
         return Optional.ofNullable(this.meshEnabled);
     }
     /**
-     * @return optional passphrase of mesh networking, default is generated randomly
+     * @return Optional passphrase of mesh networking, default is generated randomly
      * 
      */
     public Optional<String> meshPsk() {
         return Optional.ofNullable(this.meshPsk);
     }
     /**
-     * @return optional ssid of mesh networking, default is based on site_id
+     * @return Optional ssid of mesh networking, default is based on site_id
      * 
      */
     public Optional<String> meshSsid() {

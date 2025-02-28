@@ -12,17 +12,17 @@ namespace Pulumi.JuniperMist.Site.Inputs
 
     public sealed class NetworktemplateSnmpConfigV3ConfigNotifyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        [Input("tag")]
-        public Input<string>? Tag { get; set; }
+        [Input("tag", required: true)]
+        public Input<string> Tag { get; set; } = null!;
 
         /// <summary>
         /// enum: `inform`, `trap`
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public NetworktemplateSnmpConfigV3ConfigNotifyArgs()
         {

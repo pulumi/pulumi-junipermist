@@ -18,14 +18,14 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     public static final SwitchNetworksArgs Empty = new SwitchNetworksArgs();
 
     /**
-     * only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+     * @return Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -33,14 +33,14 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
      * 
      */
     @Import(name="gateway6")
     private @Nullable Output<String> gateway6;
 
     /**
-     * @return only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+     * @return Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
      * 
      */
     public Optional<Output<String>> gateway6() {
@@ -70,14 +70,14 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * optional for pure switching, required when L3 / routing features are used
+     * Optional for pure switching, required when L3 / routing features are used
      * 
      */
     @Import(name="subnet")
     private @Nullable Output<String> subnet;
 
     /**
-     * @return optional for pure switching, required when L3 / routing features are used
+     * @return Optional for pure switching, required when L3 / routing features are used
      * 
      */
     public Optional<Output<String>> subnet() {
@@ -85,14 +85,14 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * optional for pure switching, required when L3 / routing features are used
+     * Optional for pure switching, required when L3 / routing features are used
      * 
      */
     @Import(name="subnet6")
     private @Nullable Output<String> subnet6;
 
     /**
-     * @return optional for pure switching, required when L3 / routing features are used
+     * @return Optional for pure switching, required when L3 / routing features are used
      * 
      */
     public Optional<Output<String>> subnet6() {
@@ -137,7 +137,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gateway only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         * @param gateway Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gateway only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+         * @param gateway Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gateway6 only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         * @param gateway6 Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param gateway6 only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+         * @param gateway6 Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subnet optional for pure switching, required when L3 / routing features are used
+         * @param subnet Optional for pure switching, required when L3 / routing features are used
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subnet optional for pure switching, required when L3 / routing features are used
+         * @param subnet Optional for pure switching, required when L3 / routing features are used
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subnet6 optional for pure switching, required when L3 / routing features are used
+         * @param subnet6 Optional for pure switching, required when L3 / routing features are used
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class SwitchNetworksArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param subnet6 optional for pure switching, required when L3 / routing features are used
+         * @param subnet6 Optional for pure switching, required when L3 / routing features are used
          * 
          * @return builder
          * 

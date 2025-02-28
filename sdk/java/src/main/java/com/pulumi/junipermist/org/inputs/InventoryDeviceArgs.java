@@ -174,14 +174,14 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+     * if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
      * 
      */
     @Import(name="vcMac")
     private @Nullable Output<String> vcMac;
 
     /**
-     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+     * @return if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
      * 
      */
     public Optional<Output<String>> vcMac() {
@@ -443,7 +443,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vcMac if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+         * @param vcMac if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class InventoryDeviceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vcMac if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+         * @param vcMac if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
          * 
          * @return builder
          * 

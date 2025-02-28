@@ -18,14 +18,14 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
     public static final WlanBonjourServicesArgs Empty = new WlanBonjourServicesArgs();
 
     /**
-     * whether to prevent wireless clients to discover bonjour devices on the same WLAN
+     * Whether to prevent wireless clients to discover bonjour devices on the same WLAN
      * 
      */
     @Import(name="disableLocal")
     private @Nullable Output<Boolean> disableLocal;
 
     /**
-     * @return whether to prevent wireless clients to discover bonjour devices on the same WLAN
+     * @return Whether to prevent wireless clients to discover bonjour devices on the same WLAN
      * 
      */
     public Optional<Output<Boolean>> disableLocal() {
@@ -33,14 +33,14 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * optional, if the service is further restricted for certain RADIUS groups
+     * Optional, if the service is further restricted for certain RADIUS groups
      * 
      */
     @Import(name="radiusGroups")
     private @Nullable Output<List<String>> radiusGroups;
 
     /**
-     * @return optional, if the service is further restricted for certain RADIUS groups
+     * @return Optional, if the service is further restricted for certain RADIUS groups
      * 
      */
     public Optional<Output<List<String>>> radiusGroups() {
@@ -89,7 +89,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param disableLocal whether to prevent wireless clients to discover bonjour devices on the same WLAN
+         * @param disableLocal Whether to prevent wireless clients to discover bonjour devices on the same WLAN
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param disableLocal whether to prevent wireless clients to discover bonjour devices on the same WLAN
+         * @param disableLocal Whether to prevent wireless clients to discover bonjour devices on the same WLAN
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param radiusGroups optional, if the service is further restricted for certain RADIUS groups
+         * @param radiusGroups Optional, if the service is further restricted for certain RADIUS groups
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param radiusGroups optional, if the service is further restricted for certain RADIUS groups
+         * @param radiusGroups Optional, if the service is further restricted for certain RADIUS groups
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class WlanBonjourServicesArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param radiusGroups optional, if the service is further restricted for certain RADIUS groups
+         * @param radiusGroups Optional, if the service is further restricted for certain RADIUS groups
          * 
          * @return builder
          * 

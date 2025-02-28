@@ -73,7 +73,7 @@ export class Rftemplate extends pulumi.CustomResource {
      */
     public readonly band6!: pulumi.Output<outputs.org.RftemplateBand6 | undefined>;
     /**
-     * optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
     /**
@@ -86,7 +86,7 @@ export class Rftemplate extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * whether scanning radio is enabled
+     * Whether scanning radio is enabled
      */
     public readonly scanningEnabled!: pulumi.Output<boolean | undefined>;
 
@@ -168,7 +168,7 @@ export interface RftemplateState {
      */
     band6?: pulumi.Input<inputs.org.RftemplateBand6>;
     /**
-     * optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
     countryCode?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface RftemplateState {
     name?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * whether scanning radio is enabled
+     * Whether scanning radio is enabled
      */
     scanningEnabled?: pulumi.Input<boolean>;
 }
@@ -214,7 +214,7 @@ export interface RftemplateArgs {
      */
     band6?: pulumi.Input<inputs.org.RftemplateBand6>;
     /**
-     * optional, country code to use. If specified, this gets applied to all sites using the RF Template
+     * Optional, country code to use. If specified, this gets applied to all sites using the RF Template
      */
     countryCode?: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface RftemplateArgs {
     name?: pulumi.Input<string>;
     orgId: pulumi.Input<string>;
     /**
-     * whether scanning radio is enabled
+     * Whether scanning radio is enabled
      */
     scanningEnabled?: pulumi.Input<boolean>;
 }

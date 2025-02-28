@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingAutoUpgrade
     {
         /// <summary>
-        /// custom versions for different models. Property key is the model name (e.g. "AP41")
+        /// Custom versions for different models. Property key is the model name (e.g. "AP41")
         /// </summary>
         public readonly ImmutableDictionary<string, string>? CustomVersions;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>
-        /// whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
+        /// Whether auto upgrade should happen (Note that Mist may auto-upgrade if the version is not supported)
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// any / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
+        /// `any` / HH:MM (24-hour format), upgrade will happen within up to 1-hour from this time
         /// </summary>
         public readonly string? TimeOfDay;
         /// <summary>

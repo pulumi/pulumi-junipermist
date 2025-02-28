@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// </summary>
         public readonly bool? AllNetworks;
         /// <summary>
-        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        /// Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         /// </summary>
         public readonly bool? AllowDhcpd;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         /// <summary>
         /// Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         /// </summary>
-        public readonly bool? BypassAuthWhenServerDownForUnkonwnClient;
+        public readonly bool? BypassAuthWhenServerDownForUnkownClient;
         /// <summary>
         /// Only if `mode`!=`dynamic`
         /// </summary>
@@ -148,7 +148,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly bool? StpNoRootPort;
         public readonly bool? StpP2p;
         /// <summary>
-        /// if this is connected to a vstp network
+        /// If this is connected to a vstp network
         /// </summary>
         public readonly bool? UseVstp;
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
 
             bool? bypassAuthWhenServerDown,
 
-            bool? bypassAuthWhenServerDownForUnkonwnClient,
+            bool? bypassAuthWhenServerDownForUnkownClient,
 
             string? description,
 
@@ -236,7 +236,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
             AllowDhcpd = allowDhcpd;
             AllowMultipleSupplicants = allowMultipleSupplicants;
             BypassAuthWhenServerDown = bypassAuthWhenServerDown;
-            BypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+            BypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             Description = description;
             DisableAutoneg = disableAutoneg;
             Disabled = disabled;

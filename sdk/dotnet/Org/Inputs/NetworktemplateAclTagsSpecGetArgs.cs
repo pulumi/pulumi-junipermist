@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateAclTagsSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// matched dst port, "0" means any
+        /// Matched dst port, "0" means any
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

@@ -25,14 +25,14 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to enable hotspot 2.0 config
+     * Whether to enable hotspot 2.0 config
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether to enable hotspot 2.0 config
+     * @return Whether to enable hotspot 2.0 config
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +47,14 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * list of operators to support
+     * List of operators to support
      * 
      */
     @Import(name="operators")
     private @Nullable Output<List<String>> operators;
 
     /**
-     * @return list of operators to support
+     * @return List of operators to support
      * 
      */
     public Optional<Output<List<String>>> operators() {
@@ -69,14 +69,14 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * venue name, default is site name
+     * Venue name, default is site name
      * 
      */
     @Import(name="venueName")
     private @Nullable Output<String> venueName;
 
     /**
-     * @return venue name, default is site name
+     * @return Venue name, default is site name
      * 
      */
     public Optional<Output<String>> venueName() {
@@ -126,7 +126,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled whether to enable hotspot 2.0 config
+         * @param enabled Whether to enable hotspot 2.0 config
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled whether to enable hotspot 2.0 config
+         * @param enabled Whether to enable hotspot 2.0 config
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operators list of operators to support
+         * @param operators List of operators to support
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operators list of operators to support
+         * @param operators List of operators to support
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param operators list of operators to support
+         * @param operators List of operators to support
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param venueName venue name, default is site name
+         * @param venueName Venue name, default is site name
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class WlanHotspot20Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param venueName venue name, default is site name
+         * @param venueName Venue name, default is site name
          * 
          * @return builder
          * 

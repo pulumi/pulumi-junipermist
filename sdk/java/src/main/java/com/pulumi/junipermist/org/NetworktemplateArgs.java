@@ -133,14 +133,14 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * enable mist_nac to use radsec
+     * Enable mist_nac to use RadSec
      * 
      */
     @Import(name="mistNac")
     private @Nullable Output<NetworktemplateMistNacArgs> mistNac;
 
     /**
-     * @return enable mist_nac to use radsec
+     * @return Enable mist_nac to use RadSec
      * 
      */
     public Optional<Output<NetworktemplateMistNacArgs>> mistNac() {
@@ -170,14 +170,14 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
     /**
-     * @return list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     public Optional<Output<List<String>>> ntpServers() {
@@ -263,14 +263,14 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
     @Import(name="removeExistingConfigs")
     private @Nullable Output<Boolean> removeExistingConfigs;
 
     /**
-     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * @return By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
     public Optional<Output<Boolean>> removeExistingConfigs() {
@@ -285,14 +285,14 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criterias
      * 
      */
     @Import(name="switchMatching")
     private @Nullable Output<NetworktemplateSwitchMatchingArgs> switchMatching;
 
     /**
-     * @return defines custom switch configuration based on different criterias
+     * @return Defines custom switch configuration based on different criterias
      * 
      */
     public Optional<Output<NetworktemplateSwitchMatchingArgs>> switchMatching() {
@@ -550,7 +550,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mistNac enable mist_nac to use radsec
+         * @param mistNac Enable mist_nac to use RadSec
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mistNac enable mist_nac to use radsec
+         * @param mistNac Enable mist_nac to use RadSec
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param removeExistingConfigs by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+         * @param removeExistingConfigs By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
          * 
          * @return builder
          * 
@@ -749,7 +749,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param removeExistingConfigs by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+         * @param removeExistingConfigs By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
          * 
          * @return builder
          * 
@@ -768,7 +768,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param switchMatching defines custom switch configuration based on different criterias
+         * @param switchMatching Defines custom switch configuration based on different criterias
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class NetworktemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param switchMatching defines custom switch configuration based on different criterias
+         * @param switchMatching Defines custom switch configuration based on different criterias
          * 
          * @return builder
          * 

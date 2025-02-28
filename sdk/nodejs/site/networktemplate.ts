@@ -64,7 +64,7 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly additionalConfigCmds!: pulumi.Output<string[] | undefined>;
     public readonly dhcpSnooping!: pulumi.Output<outputs.site.NetworktemplateDhcpSnooping | undefined>;
     /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * If some system-default port usages are not desired - namely, ap / iot / uplink
      */
     public readonly disabledSystemDefinedPortUsages!: pulumi.Output<string[] | undefined>;
     /**
@@ -81,7 +81,7 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly extraRoutes6!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateExtraRoutes6} | undefined>;
     /**
-     * enable mistNac to use radsec
+     * Enable mistNac to use RadSec
      */
     public readonly mistNac!: pulumi.Output<outputs.site.NetworktemplateMistNac | undefined>;
     /**
@@ -89,7 +89,7 @@ export class Networktemplate extends pulumi.CustomResource {
      */
     public readonly networks!: pulumi.Output<{[key: string]: outputs.site.NetworktemplateNetworks} | undefined>;
     /**
-     * list of NTP servers
+     * List of NTP servers
      */
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     /**
@@ -112,7 +112,7 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly radiusConfig!: pulumi.Output<outputs.site.NetworktemplateRadiusConfig | undefined>;
     public readonly remoteSyslog!: pulumi.Output<outputs.site.NetworktemplateRemoteSyslog | undefined>;
     /**
-     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      */
     public readonly removeExistingConfigs!: pulumi.Output<boolean>;
     /**
@@ -121,7 +121,7 @@ export class Networktemplate extends pulumi.CustomResource {
     public readonly siteId!: pulumi.Output<string>;
     public readonly snmpConfig!: pulumi.Output<outputs.site.NetworktemplateSnmpConfig | undefined>;
     /**
-     * defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criterias
      */
     public readonly switchMatching!: pulumi.Output<outputs.site.NetworktemplateSwitchMatching | undefined>;
     /**
@@ -221,7 +221,7 @@ export interface NetworktemplateState {
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
     /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * If some system-default port usages are not desired - namely, ap / iot / uplink
      */
     disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -238,7 +238,7 @@ export interface NetworktemplateState {
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes6>}>;
     /**
-     * enable mistNac to use radsec
+     * Enable mistNac to use RadSec
      */
     mistNac?: pulumi.Input<inputs.site.NetworktemplateMistNac>;
     /**
@@ -246,7 +246,7 @@ export interface NetworktemplateState {
      */
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateNetworks>}>;
     /**
-     * list of NTP servers
+     * List of NTP servers
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -269,7 +269,7 @@ export interface NetworktemplateState {
     radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
     /**
-     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
     /**
@@ -278,7 +278,7 @@ export interface NetworktemplateState {
     siteId?: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
-     * defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criterias
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
     /**
@@ -307,7 +307,7 @@ export interface NetworktemplateArgs {
     additionalConfigCmds?: pulumi.Input<pulumi.Input<string>[]>;
     dhcpSnooping?: pulumi.Input<inputs.site.NetworktemplateDhcpSnooping>;
     /**
-     * if some system-default port usages are not desired - namely, ap / iot / uplink
+     * If some system-default port usages are not desired - namely, ap / iot / uplink
      */
     disabledSystemDefinedPortUsages?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -324,7 +324,7 @@ export interface NetworktemplateArgs {
      */
     extraRoutes6?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateExtraRoutes6>}>;
     /**
-     * enable mistNac to use radsec
+     * Enable mistNac to use RadSec
      */
     mistNac?: pulumi.Input<inputs.site.NetworktemplateMistNac>;
     /**
@@ -332,7 +332,7 @@ export interface NetworktemplateArgs {
      */
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.site.NetworktemplateNetworks>}>;
     /**
-     * list of NTP servers
+     * List of NTP servers
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -355,7 +355,7 @@ export interface NetworktemplateArgs {
     radiusConfig?: pulumi.Input<inputs.site.NetworktemplateRadiusConfig>;
     remoteSyslog?: pulumi.Input<inputs.site.NetworktemplateRemoteSyslog>;
     /**
-     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      */
     removeExistingConfigs?: pulumi.Input<boolean>;
     /**
@@ -364,7 +364,7 @@ export interface NetworktemplateArgs {
     siteId: pulumi.Input<string>;
     snmpConfig?: pulumi.Input<inputs.site.NetworktemplateSnmpConfig>;
     /**
-     * defines custom switch configuration based on different criterias
+     * Defines custom switch configuration based on different criterias
      */
     switchMatching?: pulumi.Input<inputs.site.NetworktemplateSwitchMatching>;
     /**

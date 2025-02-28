@@ -16,23 +16,23 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// <summary>
         /// enum: `local_engine`, `remote_engine`
         /// </summary>
-        public readonly string? EngineType;
+        public readonly string EngineType;
         /// <summary>
-        /// required only if `engine_type`==`remote_engine`
+        /// Required only if `engine_type`==`remote_engine`
         /// </summary>
-        public readonly string? Engineid;
+        public readonly string? RemoteEngineId;
         public readonly ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigUsmUser> Users;
 
         [OutputConstructor]
         private NetworktemplateSnmpConfigV3ConfigUsm(
-            string? engineType,
+            string engineType,
 
-            string? engineid,
+            string? remoteEngineId,
 
             ImmutableArray<Outputs.NetworktemplateSnmpConfigV3ConfigUsmUser> users)
         {
             EngineType = engineType;
-            Engineid = engineid;
+            RemoteEngineId = remoteEngineId;
             Users = users;
         }
     }

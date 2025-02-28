@@ -61,39 +61,39 @@ class SettingArgs:
                  zone_occupancy_alert: Optional[pulumi.Input['SettingZoneOccupancyAlertArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
-        :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
-        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        :param pulumi.Input[bool] config_auto_revert: Whether to enable ap auto config revert
+        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input[int] device_updown_threshold: By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
                ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingLedArgs'] led: LED AP settings
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
-        :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
+        :param pulumi.Input[bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input['SettingProxyArgs'] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-        :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        :param pulumi.Input[bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
+        :param pulumi.Input[bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input['SettingRogueArgs'] rogue: Rogue site settings
-        :param pulumi.Input['SettingRtsaArgs'] rtsa: managed mobility
+        :param pulumi.Input['SettingRtsaArgs'] rtsa: Managed mobility
         :param pulumi.Input['SettingSimpleAlertArgs'] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
                window, there are more than Y distinct client encountring over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
                Org:Setting)
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input[bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
         :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
         :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Zone Occupancy alert site settings
@@ -196,7 +196,7 @@ class SettingArgs:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
@@ -233,7 +233,7 @@ class SettingArgs:
     @pulumi.getter(name="configAutoRevert")
     def config_auto_revert(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable ap auto config revert
+        Whether to enable ap auto config revert
         """
         return pulumi.get(self, "config_auto_revert")
 
@@ -245,7 +245,7 @@ class SettingArgs:
     @pulumi.getter(name="configPushPolicy")
     def config_push_policy(self) -> Optional[pulumi.Input['SettingConfigPushPolicyArgs']]:
         """
-        mist also uses some heuristic rules to prevent destructive configs from being pushed
+        Mist also uses some heuristic rules to prevent destructive configs from being pushed
         """
         return pulumi.get(self, "config_push_policy")
 
@@ -257,7 +257,7 @@ class SettingArgs:
     @pulumi.getter(name="criticalUrlMonitoring")
     def critical_url_monitoring(self) -> Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']]:
         """
-        you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         """
         return pulumi.get(self, "critical_url_monitoring")
 
@@ -269,7 +269,7 @@ class SettingArgs:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
         is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
@@ -282,7 +282,7 @@ class SettingArgs:
     @pulumi.getter
     def engagement(self) -> Optional[pulumi.Input['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         ranges for the same day
         """
         return pulumi.get(self, "engagement")
@@ -307,7 +307,7 @@ class SettingArgs:
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
@@ -353,7 +353,7 @@ class SettingArgs:
     @pulumi.getter(name="persistConfigOnDevice")
     def persist_config_on_device(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to store the config on AP
+        Whether to store the config on AP
         """
         return pulumi.get(self, "persist_config_on_device")
 
@@ -377,7 +377,7 @@ class SettingArgs:
     @pulumi.getter(name="removeExistingConfigs")
     def remove_existing_configs(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         """
         return pulumi.get(self, "remove_existing_configs")
 
@@ -389,7 +389,7 @@ class SettingArgs:
     @pulumi.getter(name="reportGatt")
     def report_gatt(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         serial number, battery %, temperature, humidity)
         """
         return pulumi.get(self, "report_gatt")
@@ -414,7 +414,7 @@ class SettingArgs:
     @pulumi.getter
     def rtsa(self) -> Optional[pulumi.Input['SettingRtsaArgs']]:
         """
-        managed mobility
+        Managed mobility
         """
         return pulumi.get(self, "rtsa")
 
@@ -457,7 +457,7 @@ class SettingArgs:
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
         Org:Setting)
         """
         return pulumi.get(self, "ssh_keys")
@@ -479,7 +479,7 @@ class SettingArgs:
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
@@ -501,7 +501,7 @@ class SettingArgs:
     @pulumi.getter(name="trackAnonymousDevices")
     def track_anonymous_devices(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         """
         return pulumi.get(self, "track_anonymous_devices")
 
@@ -525,7 +525,7 @@ class SettingArgs:
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -546,7 +546,7 @@ class SettingArgs:
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]]:
         """
-        optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         """
         return pulumi.get(self, "vs_instance")
 
@@ -655,39 +655,39 @@ class _SettingState:
                  zone_occupancy_alert: Optional[pulumi.Input['SettingZoneOccupancyAlertArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingAutoUpgradeArgs'] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input['SettingBleConfigArgs'] ble_config: BLE AP settings
-        :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
-        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        :param pulumi.Input[bool] config_auto_revert: Whether to enable ap auto config revert
+        :param pulumi.Input['SettingConfigPushPolicyArgs'] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        :param pulumi.Input['SettingCriticalUrlMonitoringArgs'] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input[int] device_updown_threshold: By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        :param pulumi.Input['SettingEngagementArgs'] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
                ranges for the same day
         :param pulumi.Input['SettingGatewayMgmtArgs'] gateway_mgmt: Gateway Site settings
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingLedArgs'] led: LED AP settings
         :param pulumi.Input['SettingOccupancyArgs'] occupancy: Occupancy Analytics settings
-        :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
+        :param pulumi.Input[bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input['SettingProxyArgs'] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-        :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        :param pulumi.Input[bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
+        :param pulumi.Input[bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input['SettingRogueArgs'] rogue: Rogue site settings
-        :param pulumi.Input['SettingRtsaArgs'] rtsa: managed mobility
+        :param pulumi.Input['SettingRtsaArgs'] rtsa: Managed mobility
         :param pulumi.Input['SettingSimpleAlertArgs'] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
                window, there are more than Y distinct client encountring over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
                Org:Setting)
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input[bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input['SettingUplinkPortConfigArgs'] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]] vs_instance: Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input['SettingWidsArgs'] wids: WIDS site settings
         :param pulumi.Input['SettingWifiArgs'] wifi: Wi-Fi site settings
         :param pulumi.Input['SettingZoneOccupancyAlertArgs'] zone_occupancy_alert: Zone Occupancy alert site settings
@@ -788,7 +788,7 @@ class _SettingState:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
@@ -834,7 +834,7 @@ class _SettingState:
     @pulumi.getter(name="configAutoRevert")
     def config_auto_revert(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable ap auto config revert
+        Whether to enable ap auto config revert
         """
         return pulumi.get(self, "config_auto_revert")
 
@@ -846,7 +846,7 @@ class _SettingState:
     @pulumi.getter(name="configPushPolicy")
     def config_push_policy(self) -> Optional[pulumi.Input['SettingConfigPushPolicyArgs']]:
         """
-        mist also uses some heuristic rules to prevent destructive configs from being pushed
+        Mist also uses some heuristic rules to prevent destructive configs from being pushed
         """
         return pulumi.get(self, "config_push_policy")
 
@@ -858,7 +858,7 @@ class _SettingState:
     @pulumi.getter(name="criticalUrlMonitoring")
     def critical_url_monitoring(self) -> Optional[pulumi.Input['SettingCriticalUrlMonitoringArgs']]:
         """
-        you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         """
         return pulumi.get(self, "critical_url_monitoring")
 
@@ -870,7 +870,7 @@ class _SettingState:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
         is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
@@ -883,7 +883,7 @@ class _SettingState:
     @pulumi.getter
     def engagement(self) -> Optional[pulumi.Input['SettingEngagementArgs']]:
         """
-        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         ranges for the same day
         """
         return pulumi.get(self, "engagement")
@@ -908,7 +908,7 @@ class _SettingState:
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
@@ -954,7 +954,7 @@ class _SettingState:
     @pulumi.getter(name="persistConfigOnDevice")
     def persist_config_on_device(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to store the config on AP
+        Whether to store the config on AP
         """
         return pulumi.get(self, "persist_config_on_device")
 
@@ -978,7 +978,7 @@ class _SettingState:
     @pulumi.getter(name="removeExistingConfigs")
     def remove_existing_configs(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         """
         return pulumi.get(self, "remove_existing_configs")
 
@@ -990,7 +990,7 @@ class _SettingState:
     @pulumi.getter(name="reportGatt")
     def report_gatt(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         serial number, battery %, temperature, humidity)
         """
         return pulumi.get(self, "report_gatt")
@@ -1015,7 +1015,7 @@ class _SettingState:
     @pulumi.getter
     def rtsa(self) -> Optional[pulumi.Input['SettingRtsaArgs']]:
         """
-        managed mobility
+        Managed mobility
         """
         return pulumi.get(self, "rtsa")
 
@@ -1067,7 +1067,7 @@ class _SettingState:
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
         Org:Setting)
         """
         return pulumi.get(self, "ssh_keys")
@@ -1089,7 +1089,7 @@ class _SettingState:
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
@@ -1111,7 +1111,7 @@ class _SettingState:
     @pulumi.getter(name="trackAnonymousDevices")
     def track_anonymous_devices(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         """
         return pulumi.get(self, "track_anonymous_devices")
 
@@ -1135,7 +1135,7 @@ class _SettingState:
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -1156,7 +1156,7 @@ class _SettingState:
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['SettingVsInstanceArgs']]]]:
         """
-        optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         """
         return pulumi.get(self, "vs_instance")
 
@@ -1284,7 +1284,7 @@ class Setting(pulumi.CustomResource):
         """
         This resource manages the Site Settings.
 
-        The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+        The Site Settings can be used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
 
@@ -1302,39 +1302,39 @@ class Setting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
-        :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
-        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        :param pulumi.Input[bool] config_auto_revert: Whether to enable ap auto config revert
+        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input[int] device_updown_threshold: By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
                ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
-        :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
+        :param pulumi.Input[bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-        :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        :param pulumi.Input[bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
+        :param pulumi.Input[bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
-        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: managed mobility
+        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: Managed mobility
         :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
                window, there are more than Y distinct client encountring over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
                Org:Setting)
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input[bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
         :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
         :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Zone Occupancy alert site settings
@@ -1348,7 +1348,7 @@ class Setting(pulumi.CustomResource):
         """
         This resource manages the Site Settings.
 
-        The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+        The Site Settings can be used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
 
         > When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `site.Networktemplate` resource
 
@@ -1527,39 +1527,39 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingAutoUpgradeArgs', 'SettingAutoUpgradeArgsDict']] auto_upgrade: Auto Upgrade Settings
         :param pulumi.Input[Union['SettingBleConfigArgs', 'SettingBleConfigArgsDict']] ble_config: BLE AP settings
-        :param pulumi.Input[bool] config_auto_revert: whether to enable ap auto config revert
-        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: mist also uses some heuristic rules to prevent destructive configs from being pushed
-        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
-        :param pulumi.Input[int] device_updown_threshold: by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        :param pulumi.Input[bool] config_auto_revert: Whether to enable ap auto config revert
+        :param pulumi.Input[Union['SettingConfigPushPolicyArgs', 'SettingConfigPushPolicyArgsDict']] config_push_policy: Mist also uses some heuristic rules to prevent destructive configs from being pushed
+        :param pulumi.Input[Union['SettingCriticalUrlMonitoringArgs', 'SettingCriticalUrlMonitoringArgsDict']] critical_url_monitoring: You can define some URLs that's critical to site operations the latency will be captured and considered for site health
+        :param pulumi.Input[int] device_updown_threshold: By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
                is desired, use the following
-        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        :param pulumi.Input[Union['SettingEngagementArgs', 'SettingEngagementArgsDict']] engagement: **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
                ranges for the same day
         :param pulumi.Input[Union['SettingGatewayMgmtArgs', 'SettingGatewayMgmtArgsDict']] gateway_mgmt: Gateway Site settings
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingLedArgs', 'SettingLedArgsDict']] led: LED AP settings
         :param pulumi.Input[Union['SettingOccupancyArgs', 'SettingOccupancyArgsDict']] occupancy: Occupancy Analytics settings
-        :param pulumi.Input[bool] persist_config_on_device: whether to store the config on AP
+        :param pulumi.Input[bool] persist_config_on_device: Whether to store the config on AP
         :param pulumi.Input[Union['SettingProxyArgs', 'SettingProxyArgsDict']] proxy: Proxy Configuration to talk to Mist
-        :param pulumi.Input[bool] remove_existing_configs: by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
-        :param pulumi.Input[bool] report_gatt: whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        :param pulumi.Input[bool] remove_existing_configs: By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
+        :param pulumi.Input[bool] report_gatt: Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
                serial number, battery %, temperature, humidity)
         :param pulumi.Input[Union['SettingRogueArgs', 'SettingRogueArgsDict']] rogue: Rogue site settings
-        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: managed mobility
+        :param pulumi.Input[Union['SettingRtsaArgs', 'SettingRtsaArgsDict']] rtsa: Managed mobility
         :param pulumi.Input[Union['SettingSimpleAlertArgs', 'SettingSimpleAlertArgsDict']] simple_alert: Set of heuristic rules will be enabled when marvis subscription is not available. It triggers when, in a Z minute
                window, there are more than Y distinct client encountring over X failures
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
                Org:Setting)
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[bool] track_anonymous_devices: whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        :param pulumi.Input[bool] track_anonymous_devices: Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         :param pulumi.Input[Union['SettingUplinkPortConfigArgs', 'SettingUplinkPortConfigArgsDict']] uplink_port_config: AP Uplink port configuration
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingVsInstanceArgs', 'SettingVsInstanceArgsDict']]]] vs_instance: Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         :param pulumi.Input[Union['SettingWidsArgs', 'SettingWidsArgsDict']] wids: WIDS site settings
         :param pulumi.Input[Union['SettingWifiArgs', 'SettingWifiArgsDict']] wifi: Wi-Fi site settings
         :param pulumi.Input[Union['SettingZoneOccupancyAlertArgs', 'SettingZoneOccupancyAlertArgsDict']] zone_occupancy_alert: Zone Occupancy alert site settings
@@ -1620,7 +1620,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
@@ -1650,7 +1650,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="configAutoRevert")
     def config_auto_revert(self) -> pulumi.Output[bool]:
         """
-        whether to enable ap auto config revert
+        Whether to enable ap auto config revert
         """
         return pulumi.get(self, "config_auto_revert")
 
@@ -1658,7 +1658,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="configPushPolicy")
     def config_push_policy(self) -> pulumi.Output[Optional['outputs.SettingConfigPushPolicy']]:
         """
-        mist also uses some heuristic rules to prevent destructive configs from being pushed
+        Mist also uses some heuristic rules to prevent destructive configs from being pushed
         """
         return pulumi.get(self, "config_push_policy")
 
@@ -1666,7 +1666,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="criticalUrlMonitoring")
     def critical_url_monitoring(self) -> pulumi.Output[Optional['outputs.SettingCriticalUrlMonitoring']]:
         """
-        you can define some URLs that's critical to site operaitons the latency will be captured and considered for site health
+        You can define some URLs that's critical to site operations the latency will be captured and considered for site health
         """
         return pulumi.get(self, "critical_url_monitoring")
 
@@ -1674,7 +1674,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> pulumi.Output[int]:
         """
-        by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+        By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
         is desired, use the following
         """
         return pulumi.get(self, "device_updown_threshold")
@@ -1683,7 +1683,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def engagement(self) -> pulumi.Output[Optional['outputs.SettingEngagement']]:
         """
-        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently we don't allow multiple
+        **Note**: if hours does not exist, it's treated as everyday of the week, 00:00-23:59. Currently, we don't allow multiple
         ranges for the same day
         """
         return pulumi.get(self, "engagement")
@@ -1700,7 +1700,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
@@ -1730,7 +1730,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="persistConfigOnDevice")
     def persist_config_on_device(self) -> pulumi.Output[bool]:
         """
-        whether to store the config on AP
+        Whether to store the config on AP
         """
         return pulumi.get(self, "persist_config_on_device")
 
@@ -1746,7 +1746,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="removeExistingConfigs")
     def remove_existing_configs(self) -> pulumi.Output[bool]:
         """
-        by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+        By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
         """
         return pulumi.get(self, "remove_existing_configs")
 
@@ -1754,7 +1754,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="reportGatt")
     def report_gatt(self) -> pulumi.Output[bool]:
         """
-        whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+        Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
         serial number, battery %, temperature, humidity)
         """
         return pulumi.get(self, "report_gatt")
@@ -1771,7 +1771,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def rtsa(self) -> pulumi.Output[Optional['outputs.SettingRtsa']]:
         """
-        managed mobility
+        Managed mobility
         """
         return pulumi.get(self, "rtsa")
 
@@ -1803,7 +1803,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="sshKeys")
     def ssh_keys(self) -> pulumi.Output[Sequence[str]]:
         """
-        when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+        When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
         Org:Setting)
         """
         return pulumi.get(self, "ssh_keys")
@@ -1817,7 +1817,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
@@ -1831,7 +1831,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="trackAnonymousDevices")
     def track_anonymous_devices(self) -> pulumi.Output[bool]:
         """
-        whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+        Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
         """
         return pulumi.get(self, "track_anonymous_devices")
 
@@ -1847,7 +1847,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -1860,7 +1860,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="vsInstance")
     def vs_instance(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.SettingVsInstance']]]:
         """
-        optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+        Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
         """
         return pulumi.get(self, "vs_instance")
 

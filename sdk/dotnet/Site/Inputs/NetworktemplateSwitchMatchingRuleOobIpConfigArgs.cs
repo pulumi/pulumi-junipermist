@@ -19,13 +19,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        /// If supported on the platform. If enabled, DNS will be using this routing-instance, too
         /// </summary>
         [Input("useMgmtVrf")]
         public Input<bool>? UseMgmtVrf { get; set; }
 
         /// <summary>
-        /// for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        /// For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         /// </summary>
         [Input("useMgmtVrfForHostOut")]
         public Input<bool>? UseMgmtVrfForHostOut { get; set; }

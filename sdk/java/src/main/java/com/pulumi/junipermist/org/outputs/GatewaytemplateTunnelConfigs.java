@@ -31,7 +31,7 @@ public final class GatewaytemplateTunnelConfigs {
      */
     private @Nullable String ikeMode;
     /**
-     * @return if `provider`==`custom-ipsec`
+     * @return If `provider`==`custom-ipsec`
      * 
      */
     private @Nullable List<GatewaytemplateTunnelConfigsIkeProposal> ikeProposals;
@@ -56,7 +56,7 @@ public final class GatewaytemplateTunnelConfigs {
      */
     private @Nullable String mode;
     /**
-     * @return if `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * @return If `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     private @Nullable List<String> networks;
@@ -115,7 +115,7 @@ public final class GatewaytemplateTunnelConfigs {
         return Optional.ofNullable(this.ikeMode);
     }
     /**
-     * @return if `provider`==`custom-ipsec`
+     * @return If `provider`==`custom-ipsec`
      * 
      */
     public List<GatewaytemplateTunnelConfigsIkeProposal> ikeProposals() {
@@ -150,7 +150,7 @@ public final class GatewaytemplateTunnelConfigs {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return if `provider`==`custom-ipsec`, networks reachable via this tunnel
+     * @return If `provider`==`custom-ipsec`, networks reachable via this tunnel
      * 
      */
     public List<String> networks() {

@@ -20,7 +20,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
         public readonly string? DefaultRole;
         public readonly bool? Enabled;
         /// <summary>
-        /// which network the TACACS server resides
+        /// Which network the TACACS server resides
         /// </summary>
         public readonly string? Network;
         public readonly ImmutableArray<Outputs.SwitchSwitchMgmtTacacsTacplusServer> TacplusServers;

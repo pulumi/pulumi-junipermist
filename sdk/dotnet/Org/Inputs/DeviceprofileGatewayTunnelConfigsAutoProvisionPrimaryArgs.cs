@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         private InputList<string>? _wanNames;
 
         /// <summary>
-        /// optional, only needed if `vars_only`==`false`
+        /// Optional, only needed if `vars_only`==`false`
         /// </summary>
         public InputList<string> WanNames
         {

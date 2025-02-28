@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingSecurity {
     /**
-     * @return whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * @return Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
      * 
      */
     private @Nullable Boolean disableLocalSsh;
@@ -23,14 +23,14 @@ public final class SettingSecurity {
      */
     private @Nullable String fipsZeroizePassword;
     /**
-     * @return whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+     * @return Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
      * 
      */
     private @Nullable Boolean limitSshAccess;
 
     private SettingSecurity() {}
     /**
-     * @return whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+     * @return Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
      * 
      */
     public Optional<Boolean> disableLocalSsh() {
@@ -44,7 +44,7 @@ public final class SettingSecurity {
         return Optional.ofNullable(this.fipsZeroizePassword);
     }
     /**
-     * @return whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+     * @return Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
      * 
      */
     public Optional<Boolean> limitSshAccess() {

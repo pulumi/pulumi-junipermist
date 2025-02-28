@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
     public sealed class SettingAnalytic
     {
         /// <summary>
-        /// enable Advanced Analytic feature (using SUB-ANA license)
+        /// Enable Advanced Analytic feature (using SUB-ANA license)
         /// </summary>
         public readonly bool? Enabled;
 

@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
     public sealed class SettingWidsRepeatedAuthFailuresGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// window where a trigger will be detected and action to be taken (in seconds)
+        /// Window where a trigger will be detected and action to be taken (in seconds)
         /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         /// <summary>
-        /// count of events to trigger
+        /// Count of events to trigger
         /// </summary>
         [Input("threshold")]
         public Input<int>? Threshold { get; set; }

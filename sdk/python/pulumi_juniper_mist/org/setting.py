@@ -53,24 +53,24 @@ class SettingArgs:
                  wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         The set of arguments for constructing a Setting resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: List of PEM-encoded ca certs
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
-        :param pulumi.Input[int] device_updown_threshold: enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        :param pulumi.Input[int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
                immediate)
-        :param pulumi.Input[bool] disable_pcap: whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
-        :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        :param pulumi.Input[bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[int] ui_idle_timeout: automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         pulumi.set(__self__, "org_id", org_id)
         if ap_updown_threshold is not None:
@@ -145,7 +145,7 @@ class SettingArgs:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
@@ -167,7 +167,7 @@ class SettingArgs:
     @pulumi.getter
     def cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of PEM-encoded ca certs
+        List of PEM-encoded ca certs
         """
         return pulumi.get(self, "cacerts")
 
@@ -209,7 +209,7 @@ class SettingArgs:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
         AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
         immediate)
         """
@@ -223,7 +223,7 @@ class SettingArgs:
     @pulumi.getter(name="disablePcap")
     def disable_pcap(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         """
         return pulumi.get(self, "disable_pcap")
 
@@ -235,7 +235,7 @@ class SettingArgs:
     @pulumi.getter(name="disableRemoteShell")
     def disable_remote_shell(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable remote shell access for an entire org
+        Whether to disable remote shell access for an entire org
         """
         return pulumi.get(self, "disable_remote_shell")
 
@@ -247,7 +247,7 @@ class SettingArgs:
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
@@ -380,7 +380,7 @@ class SettingArgs:
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
@@ -402,7 +402,7 @@ class SettingArgs:
     @pulumi.getter(name="uiIdleTimeout")
     def ui_idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        automatically logout the user when UI session is inactive. `0` means disabled
+        Automatically logout the user when UI session is inactive. `0` means disabled
         """
         return pulumi.get(self, "ui_idle_timeout")
 
@@ -484,24 +484,24 @@ class _SettingState:
                  wireless_pma: Optional[pulumi.Input['SettingWirelessPmaArgs']] = None):
         """
         Input properties used for looking up and filtering Setting resources.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: List of PEM-encoded ca certs
         :param pulumi.Input['SettingDeviceCertArgs'] device_cert: common device cert, optional
-        :param pulumi.Input[int] device_updown_threshold: enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        :param pulumi.Input[int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
                immediate)
-        :param pulumi.Input[bool] disable_pcap: whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
-        :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        :param pulumi.Input[bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input['SettingJcloudRaArgs'] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input['SettingMgmtArgs'] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input['SettingOpticPortConfigArgs']]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input['SettingPasswordPolicyArgs'] password_policy: password policy
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[int] ui_idle_timeout: automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         if ap_updown_threshold is not None:
             pulumi.set(__self__, "ap_updown_threshold", ap_updown_threshold)
@@ -572,7 +572,7 @@ class _SettingState:
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
@@ -594,7 +594,7 @@ class _SettingState:
     @pulumi.getter
     def cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of PEM-encoded ca certs
+        List of PEM-encoded ca certs
         """
         return pulumi.get(self, "cacerts")
 
@@ -645,7 +645,7 @@ class _SettingState:
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
         AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
         immediate)
         """
@@ -659,7 +659,7 @@ class _SettingState:
     @pulumi.getter(name="disablePcap")
     def disable_pcap(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         """
         return pulumi.get(self, "disable_pcap")
 
@@ -671,7 +671,7 @@ class _SettingState:
     @pulumi.getter(name="disableRemoteShell")
     def disable_remote_shell(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable remote shell access for an entire org
+        Whether to disable remote shell access for an entire org
         """
         return pulumi.get(self, "disable_remote_shell")
 
@@ -683,7 +683,7 @@ class _SettingState:
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
@@ -834,7 +834,7 @@ class _SettingState:
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
@@ -856,7 +856,7 @@ class _SettingState:
     @pulumi.getter(name="uiIdleTimeout")
     def ui_idle_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        automatically logout the user when UI session is inactive. `0` means disabled
+        Automatically logout the user when UI session is inactive. `0` means disabled
         """
         return pulumi.get(self, "ui_idle_timeout")
 
@@ -954,24 +954,24 @@ class Setting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: List of PEM-encoded ca certs
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
-        :param pulumi.Input[int] device_updown_threshold: enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        :param pulumi.Input[int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
                immediate)
-        :param pulumi.Input[bool] disable_pcap: whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
-        :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        :param pulumi.Input[bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[int] ui_idle_timeout: automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         ...
     @overload
@@ -1131,24 +1131,24 @@ class Setting(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] ap_updown_threshold: enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        :param pulumi.Input[int] ap_updown_threshold: Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: List of PEM-encoded ca certs
         :param pulumi.Input[Union['SettingDeviceCertArgs', 'SettingDeviceCertArgsDict']] device_cert: common device cert, optional
-        :param pulumi.Input[int] device_updown_threshold: enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        :param pulumi.Input[int] device_updown_threshold: Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
                AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
                immediate)
-        :param pulumi.Input[bool] disable_pcap: whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
-        :param pulumi.Input[bool] disable_remote_shell: whether to disable remote shell access for an entire org
-        :param pulumi.Input[int] gateway_updown_threshold: enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        :param pulumi.Input[bool] disable_pcap: Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        :param pulumi.Input[bool] disable_remote_shell: Whether to disable remote shell access for an entire org
+        :param pulumi.Input[int] gateway_updown_threshold: Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
                `device_updown_threshold` is ignored.
         :param pulumi.Input[Union['SettingJcloudRaArgs', 'SettingJcloudRaArgsDict']] jcloud_ra: JCloud Routing Assurance connexion
         :param pulumi.Input[Union['SettingMgmtArgs', 'SettingMgmtArgsDict']] mgmt: management-related properties
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['SettingOpticPortConfigArgs', 'SettingOpticPortConfigArgsDict']]]] optic_port_config: Property key is the interface name or range (e.g. `et-0/0/47`, `et-0/0/48-49`)
         :param pulumi.Input[Union['SettingPasswordPolicyArgs', 'SettingPasswordPolicyArgsDict']] password_policy: password policy
-        :param pulumi.Input[int] switch_updown_threshold: enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        :param pulumi.Input[int] switch_updown_threshold: Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
                `device_updown_threshold` is ignored.
-        :param pulumi.Input[int] ui_idle_timeout: automatically logout the user when UI session is inactive. `0` means disabled
+        :param pulumi.Input[int] ui_idle_timeout: Automatically logout the user when UI session is inactive. `0` means disabled
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1192,7 +1192,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="apUpdownThreshold")
     def ap_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "ap_updown_threshold")
@@ -1206,7 +1206,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter
     def cacerts(self) -> pulumi.Output[Sequence[str]]:
         """
-        list of PEM-encoded ca certs
+        List of PEM-encoded ca certs
         """
         return pulumi.get(self, "cacerts")
 
@@ -1237,7 +1237,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="deviceUpdownThreshold")
     def device_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
         AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
         immediate)
         """
@@ -1247,7 +1247,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="disablePcap")
     def disable_pcap(self) -> pulumi.Output[bool]:
         """
-        whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         """
         return pulumi.get(self, "disable_pcap")
 
@@ -1255,7 +1255,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="disableRemoteShell")
     def disable_remote_shell(self) -> pulumi.Output[bool]:
         """
-        whether to disable remote shell access for an entire org
+        Whether to disable remote shell access for an entire org
         """
         return pulumi.get(self, "disable_remote_shell")
 
@@ -1263,7 +1263,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="gatewayUpdownThreshold")
     def gateway_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "gateway_updown_threshold")
@@ -1354,7 +1354,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="switchUpdownThreshold")
     def switch_updown_threshold(self) -> pulumi.Output[int]:
         """
-        enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         `device_updown_threshold` is ignored.
         """
         return pulumi.get(self, "switch_updown_threshold")
@@ -1368,7 +1368,7 @@ class Setting(pulumi.CustomResource):
     @pulumi.getter(name="uiIdleTimeout")
     def ui_idle_timeout(self) -> pulumi.Output[int]:
         """
-        automatically logout the user when UI session is inactive. `0` means disabled
+        Automatically logout the user when UI session is inactive. `0` means disabled
         """
         return pulumi.get(self, "ui_idle_timeout")
 

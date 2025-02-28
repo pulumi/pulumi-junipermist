@@ -64,7 +64,7 @@ export class Switch extends pulumi.CustomResource {
     public readonly dhcpSnooping!: pulumi.Output<outputs.device.SwitchDhcpSnooping | undefined>;
     public readonly dhcpdConfig!: pulumi.Output<outputs.device.SwitchDhcpdConfig | undefined>;
     /**
-     * for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * For a claimed switch, we control the configs by default. This option (disables the behavior)
      */
     public readonly disableAutoConfig!: pulumi.Output<boolean>;
     /**
@@ -93,23 +93,23 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly localPortConfig!: pulumi.Output<{[key: string]: outputs.device.SwitchLocalPortConfig} | undefined>;
     /**
-     * device MAC address
+     * Device MAC address
      */
     public /*out*/ readonly mac!: pulumi.Output<string>;
     /**
-     * for an adopted switch, we don’t overwrite their existing configs automatically
+     * For an adopted switch, we don’t overwrite their existing configs automatically
      */
     public readonly managed!: pulumi.Output<boolean>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     public readonly mapId!: pulumi.Output<string | undefined>;
     /**
-     * enable mistNac to use radsec
+     * Enable mistNac to use RadSec
      */
     public readonly mistNac!: pulumi.Output<outputs.device.SwitchMistNac | undefined>;
     /**
-     * device Model
+     * Device Model
      */
     public /*out*/ readonly model!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
@@ -119,7 +119,7 @@ export class Switch extends pulumi.CustomResource {
     public readonly networks!: pulumi.Output<{[key: string]: outputs.device.SwitchNetworks} | undefined>;
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     /**
@@ -157,11 +157,11 @@ export class Switch extends pulumi.CustomResource {
     public readonly remoteSyslog!: pulumi.Output<outputs.device.SwitchRemoteSyslog | undefined>;
     public readonly role!: pulumi.Output<string | undefined>;
     /**
-     * used for OSPF / BGP / EVPN
+     * Used for OSPF / BGP / EVPN
      */
     public readonly routerId!: pulumi.Output<string>;
     /**
-     * device Serial
+     * Device Serial
      */
     public /*out*/ readonly serial!: pulumi.Output<string>;
     public readonly siteId!: pulumi.Output<string>;
@@ -176,15 +176,15 @@ export class Switch extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * whether to use it for snmp / syslog / tacplus / radius
+     * Whether to use it for snmp / syslog / tacplus / radius
      */
     public readonly useRouterIdAsSourceIp!: pulumi.Output<boolean>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * required for preprovisioned Virtual Chassis
+     * Required for preprovisioned Virtual Chassis
      */
     public readonly virtualChassis!: pulumi.Output<outputs.device.SwitchVirtualChassis | undefined>;
     public readonly vrfConfig!: pulumi.Output<outputs.device.SwitchVrfConfig | undefined>;
@@ -197,11 +197,11 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly vrrpConfig!: pulumi.Output<outputs.device.SwitchVrrpConfig | undefined>;
     /**
-     * x in pixel
+     * X in pixel
      */
     public readonly x!: pulumi.Output<number | undefined>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     public readonly y!: pulumi.Output<number | undefined>;
 
@@ -349,7 +349,7 @@ export interface SwitchState {
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
-     * for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * For a claimed switch, we control the configs by default. This option (disables the behavior)
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -378,23 +378,23 @@ export interface SwitchState {
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
     /**
-     * device MAC address
+     * Device MAC address
      */
     mac?: pulumi.Input<string>;
     /**
-     * for an adopted switch, we don’t overwrite their existing configs automatically
+     * For an adopted switch, we don’t overwrite their existing configs automatically
      */
     managed?: pulumi.Input<boolean>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
     /**
-     * enable mistNac to use radsec
+     * Enable mistNac to use RadSec
      */
     mistNac?: pulumi.Input<inputs.device.SwitchMistNac>;
     /**
-     * device Model
+     * Device Model
      */
     model?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
@@ -404,7 +404,7 @@ export interface SwitchState {
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchNetworks>}>;
     notes?: pulumi.Input<string>;
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -442,11 +442,11 @@ export interface SwitchState {
     remoteSyslog?: pulumi.Input<inputs.device.SwitchRemoteSyslog>;
     role?: pulumi.Input<string>;
     /**
-     * used for OSPF / BGP / EVPN
+     * Used for OSPF / BGP / EVPN
      */
     routerId?: pulumi.Input<string>;
     /**
-     * device Serial
+     * Device Serial
      */
     serial?: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
@@ -461,15 +461,15 @@ export interface SwitchState {
      */
     type?: pulumi.Input<string>;
     /**
-     * whether to use it for snmp / syslog / tacplus / radius
+     * Whether to use it for snmp / syslog / tacplus / radius
      */
     useRouterIdAsSourceIp?: pulumi.Input<boolean>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * required for preprovisioned Virtual Chassis
+     * Required for preprovisioned Virtual Chassis
      */
     virtualChassis?: pulumi.Input<inputs.device.SwitchVirtualChassis>;
     vrfConfig?: pulumi.Input<inputs.device.SwitchVrfConfig>;
@@ -482,11 +482,11 @@ export interface SwitchState {
      */
     vrrpConfig?: pulumi.Input<inputs.device.SwitchVrrpConfig>;
     /**
-     * x in pixel
+     * X in pixel
      */
     x?: pulumi.Input<number>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     y?: pulumi.Input<number>;
 }
@@ -508,7 +508,7 @@ export interface SwitchArgs {
     dhcpSnooping?: pulumi.Input<inputs.device.SwitchDhcpSnooping>;
     dhcpdConfig?: pulumi.Input<inputs.device.SwitchDhcpdConfig>;
     /**
-     * for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * For a claimed switch, we control the configs by default. This option (disables the behavior)
      */
     disableAutoConfig?: pulumi.Input<boolean>;
     /**
@@ -534,15 +534,15 @@ export interface SwitchArgs {
      */
     localPortConfig?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchLocalPortConfig>}>;
     /**
-     * for an adopted switch, we don’t overwrite their existing configs automatically
+     * For an adopted switch, we don’t overwrite their existing configs automatically
      */
     managed?: pulumi.Input<boolean>;
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      */
     mapId?: pulumi.Input<string>;
     /**
-     * enable mistNac to use radsec
+     * Enable mistNac to use RadSec
      */
     mistNac?: pulumi.Input<inputs.device.SwitchMistNac>;
     name?: pulumi.Input<string>;
@@ -552,7 +552,7 @@ export interface SwitchArgs {
     networks?: pulumi.Input<{[key: string]: pulumi.Input<inputs.device.SwitchNetworks>}>;
     notes?: pulumi.Input<string>;
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      */
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -589,7 +589,7 @@ export interface SwitchArgs {
     remoteSyslog?: pulumi.Input<inputs.device.SwitchRemoteSyslog>;
     role?: pulumi.Input<string>;
     /**
-     * used for OSPF / BGP / EVPN
+     * Used for OSPF / BGP / EVPN
      */
     routerId?: pulumi.Input<string>;
     siteId: pulumi.Input<string>;
@@ -600,15 +600,15 @@ export interface SwitchArgs {
      */
     switchMgmt?: pulumi.Input<inputs.device.SwitchSwitchMgmt>;
     /**
-     * whether to use it for snmp / syslog / tacplus / radius
+     * Whether to use it for snmp / syslog / tacplus / radius
      */
     useRouterIdAsSourceIp?: pulumi.Input<boolean>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * required for preprovisioned Virtual Chassis
+     * Required for preprovisioned Virtual Chassis
      */
     virtualChassis?: pulumi.Input<inputs.device.SwitchVirtualChassis>;
     vrfConfig?: pulumi.Input<inputs.device.SwitchVrfConfig>;
@@ -621,11 +621,11 @@ export interface SwitchArgs {
      */
     vrrpConfig?: pulumi.Input<inputs.device.SwitchVrrpConfig>;
     /**
-     * x in pixel
+     * X in pixel
      */
     x?: pulumi.Input<number>;
     /**
-     * y in pixel
+     * Y in pixel
      */
     y?: pulumi.Input<number>;
 }

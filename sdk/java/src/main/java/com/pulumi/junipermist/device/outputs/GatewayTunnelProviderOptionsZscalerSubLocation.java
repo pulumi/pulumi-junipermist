@@ -21,7 +21,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
      */
     private @Nullable Boolean aupEnabled;
     /**
-     * @return proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+     * @return Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
     private @Nullable Boolean aupForceSslInspection;
@@ -41,7 +41,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
      */
     private @Nullable Boolean cautionEnabled;
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     private @Nullable Double dnBandwidth;
@@ -56,7 +56,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
      */
     private @Nullable String name;
     /**
-     * @return if `true`, enable the firewall control option
+     * @return If `true`, enable the firewall control option
      * 
      */
     private @Nullable Boolean ofwEnabled;
@@ -76,7 +76,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
      */
     private @Nullable Integer surrogateRefreshTimeInMinutes;
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     private @Nullable Double upBandwidth;
@@ -93,7 +93,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
         return Optional.ofNullable(this.aupEnabled);
     }
     /**
-     * @return proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+     * @return Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
      * 
      */
     public Optional<Boolean> aupForceSslInspection() {
@@ -121,7 +121,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
         return Optional.ofNullable(this.cautionEnabled);
     }
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     public Optional<Double> dnBandwidth() {
@@ -142,7 +142,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return if `true`, enable the firewall control option
+     * @return If `true`, enable the firewall control option
      * 
      */
     public Optional<Boolean> ofwEnabled() {
@@ -170,7 +170,7 @@ public final class GatewayTunnelProviderOptionsZscalerSubLocation {
         return Optional.ofNullable(this.surrogateRefreshTimeInMinutes);
     }
     /**
-     * @return the download bandwidth cap of the link, in Mbps. Disabled if not set
+     * @return Download bandwidth cap of the link, in Mbps. Disabled if not set
      * 
      */
     public Optional<Double> upBandwidth() {

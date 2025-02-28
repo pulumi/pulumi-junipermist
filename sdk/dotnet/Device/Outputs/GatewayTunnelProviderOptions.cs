@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class GatewayTunnelProviderOptions
     {
         /// <summary>
-        /// for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        /// For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         /// </summary>
         public readonly Outputs.GatewayTunnelProviderOptionsJse? Jse;
         /// <summary>
-        /// for zscaler-ipsec and zscaler-gre
+        /// For zscaler-ipsec and zscaler-gre
         /// </summary>
         public readonly Outputs.GatewayTunnelProviderOptionsZscaler? Zscaler;
 

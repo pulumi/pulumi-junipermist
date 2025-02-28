@@ -116,14 +116,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dhcpdConfig);
     }
     /**
-     * for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * For a claimed switch, we control the configs by default. This option (disables the behavior)
      * 
      */
     @Export(name="disableAutoConfig", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disableAutoConfig;
 
     /**
-     * @return for a claimed switch, we control the configs by default. This option (disables the behavior)
+     * @return For a claimed switch, we control the configs by default. This option (disables the behavior)
      * 
      */
     public Output<Boolean> disableAutoConfig() {
@@ -226,70 +226,70 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.localPortConfig);
     }
     /**
-     * device MAC address
+     * Device MAC address
      * 
      */
     @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
-     * @return device MAC address
+     * @return Device MAC address
      * 
      */
     public Output<String> mac() {
         return this.mac;
     }
     /**
-     * for an adopted switch, we don’t overwrite their existing configs automatically
+     * For an adopted switch, we don’t overwrite their existing configs automatically
      * 
      */
     @Export(name="managed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> managed;
 
     /**
-     * @return for an adopted switch, we don’t overwrite their existing configs automatically
+     * @return For an adopted switch, we don’t overwrite their existing configs automatically
      * 
      */
     public Output<Boolean> managed() {
         return this.managed;
     }
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      * 
      */
     @Export(name="mapId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mapId;
 
     /**
-     * @return map where the device belongs to
+     * @return Map where the device belongs to
      * 
      */
     public Output<Optional<String>> mapId() {
         return Codegen.optional(this.mapId);
     }
     /**
-     * enable mist_nac to use radsec
+     * Enable mist_nac to use RadSec
      * 
      */
     @Export(name="mistNac", refs={SwitchMistNac.class}, tree="[0]")
     private Output</* @Nullable */ SwitchMistNac> mistNac;
 
     /**
-     * @return enable mist_nac to use radsec
+     * @return Enable mist_nac to use RadSec
      * 
      */
     public Output<Optional<SwitchMistNac>> mistNac() {
         return Codegen.optional(this.mistNac);
     }
     /**
-     * device Model
+     * Device Model
      * 
      */
     @Export(name="model", refs={String.class}, tree="[0]")
     private Output<String> model;
 
     /**
-     * @return device Model
+     * @return Device Model
      * 
      */
     public Output<String> model() {
@@ -322,14 +322,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notes);
     }
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     @Export(name="ntpServers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ntpServers;
 
     /**
-     * @return list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     public Output<Optional<List<String>>> ntpServers() {
@@ -458,28 +458,28 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.role);
     }
     /**
-     * used for OSPF / BGP / EVPN
+     * Used for OSPF / BGP / EVPN
      * 
      */
     @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
-     * @return used for OSPF / BGP / EVPN
+     * @return Used for OSPF / BGP / EVPN
      * 
      */
     public Output<String> routerId() {
         return this.routerId;
     }
     /**
-     * device Serial
+     * Device Serial
      * 
      */
     @Export(name="serial", refs={String.class}, tree="[0]")
     private Output<String> serial;
 
     /**
-     * @return device Serial
+     * @return Device Serial
      * 
      */
     public Output<String> serial() {
@@ -532,42 +532,42 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * whether to use it for snmp / syslog / tacplus / radius
+     * Whether to use it for snmp / syslog / tacplus / radius
      * 
      */
     @Export(name="useRouterIdAsSourceIp", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> useRouterIdAsSourceIp;
 
     /**
-     * @return whether to use it for snmp / syslog / tacplus / radius
+     * @return Whether to use it for snmp / syslog / tacplus / radius
      * 
      */
     public Output<Boolean> useRouterIdAsSourceIp() {
         return this.useRouterIdAsSourceIp;
     }
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
         return Codegen.optional(this.vars);
     }
     /**
-     * required for preprovisioned Virtual Chassis
+     * Required for preprovisioned Virtual Chassis
      * 
      */
     @Export(name="virtualChassis", refs={SwitchVirtualChassis.class}, tree="[0]")
     private Output</* @Nullable */ SwitchVirtualChassis> virtualChassis;
 
     /**
-     * @return required for preprovisioned Virtual Chassis
+     * @return Required for preprovisioned Virtual Chassis
      * 
      */
     public Output<Optional<SwitchVirtualChassis>> virtualChassis() {
@@ -608,28 +608,28 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vrrpConfig);
     }
     /**
-     * x in pixel
+     * X in pixel
      * 
      */
     @Export(name="x", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> x;
 
     /**
-     * @return x in pixel
+     * @return X in pixel
      * 
      */
     public Output<Optional<Double>> x() {
         return Codegen.optional(this.x);
     }
     /**
-     * y in pixel
+     * Y in pixel
      * 
      */
     @Export(name="y", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> y;
 
     /**
-     * @return y in pixel
+     * @return Y in pixel
      * 
      */
     public Output<Optional<Double>> y() {

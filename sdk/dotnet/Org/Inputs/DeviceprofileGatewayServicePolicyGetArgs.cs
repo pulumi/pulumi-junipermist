@@ -19,6 +19,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Action { get; set; }
 
         /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Input("antivirus")]
+        public Input<Inputs.DeviceprofileGatewayServicePolicyAntivirusGetArgs>? Antivirus { get; set; }
+
+        /// <summary>
         /// For SRX Only
         /// </summary>
         [Input("appqoe")]
@@ -48,13 +54,13 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         /// </summary>
         [Input("pathPreference")]
         public Input<string>? PathPreference { get; set; }
 
         /// <summary>
-        /// used to link servicepolicy defined at org level and overwrite some attributes
+        /// Used to link servicepolicy defined at org level and overwrite some attributes
         /// </summary>
         [Input("servicepolicyId")]
         public Input<string>? ServicepolicyId { get; set; }
@@ -70,6 +76,12 @@ namespace Pulumi.JuniperMist.Org.Inputs
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
         }
+
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        [Input("sslProxy")]
+        public Input<Inputs.DeviceprofileGatewayServicePolicySslProxyGetArgs>? SslProxy { get; set; }
 
         [Input("tenants")]
         private InputList<string>? _tenants;

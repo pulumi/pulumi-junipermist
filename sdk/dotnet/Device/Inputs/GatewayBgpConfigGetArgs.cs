@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? AuthKey { get; set; }
 
         /// <summary>
-        /// when bfd_multiplier is configured alone. Default:
+        /// When bfd_multiplier is configured alone. Default:
         ///   * 1000 if `type`==`external`
         ///   * 350 `type`==`internal`
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<int>? BfdMinimumInterval { get; set; }
 
         /// <summary>
-        /// when bfd_minimum_interval_is_configured alone
+        /// When bfd_minimum_interval_is_configured alone
         /// </summary>
         [Input("bfdMultiplier")]
         public Input<int>? BfdMultiplier { get; set; }
@@ -39,13 +39,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Export { get; set; }
 
         /// <summary>
-        /// default export policies if no per-neighbor policies defined
+        /// Default export policies if no per-neighbor policies defined
         /// </summary>
         [Input("exportPolicy")]
         public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
-        /// by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        /// By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         /// </summary>
         [Input("extendedV4Nexthop")]
         public Input<bool>? ExtendedV4Nexthop { get; set; }
@@ -63,7 +63,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? Import { get; set; }
 
         /// <summary>
-        /// default import policies if no per-neighbor policies defined
+        /// Default import policies if no per-neighbor policies defined
         /// </summary>
         [Input("importPolicy")]
         public Input<string>? ImportPolicy { get; set; }
@@ -78,7 +78,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputMap<Inputs.GatewayBgpConfigNeighborsGetArgs>? _neighbors;
 
         /// <summary>
-        /// if per-neighbor as is desired. Property key is the neighbor address
+        /// If per-neighbor as is desired. Property key is the neighbor address
         /// </summary>
         public InputMap<Inputs.GatewayBgpConfigNeighborsGetArgs> Neighbors
         {
@@ -90,7 +90,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _networks;
 
         /// <summary>
-        /// if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        /// If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         /// </summary>
         public InputList<string> Networks
         {
@@ -99,13 +99,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// by default, we'll re-advertise all learned BGP routers toward overlay
+        /// By default, we'll re-advertise all learned BGP routers toward overlay
         /// </summary>
         [Input("noReadvertiseToOverlay")]
         public Input<bool>? NoReadvertiseToOverlay { get; set; }
 
         /// <summary>
-        /// if `type`==`tunnel`
+        /// If `type`==`tunnel`
         /// </summary>
         [Input("tunnelName")]
         public Input<string>? TunnelName { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         public Input<string>? VpnName { get; set; }
 
         /// <summary>
-        /// if `via`==`wan`
+        /// If `via`==`wan`
         /// </summary>
         [Input("wanName")]
         public Input<string>? WanName { get; set; }

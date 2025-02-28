@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
 /**
  * This resource manages the Site Settings.
  * 
- * The Site Settings can used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
+ * The Site Settings can be used to customize the Site configuration and assign Site Variables (Sites Variables can be reused in configuration templates)
  * 
  * &gt; When using the Mist APIs, all the switch settings defined at the site level are stored under the site settings with all the rest of the site configuration (`/api/v1/sites/{site_id}/setting` Mist API Endpoint). To simplify this resource, all the site level switches related settings are moved into the `junipermist.site.Networktemplate` resource
  * 
@@ -129,7 +129,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.analytic);
     }
     /**
-     * enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -137,7 +137,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> apUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+     * @return Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -179,49 +179,49 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bleConfig);
     }
     /**
-     * whether to enable ap auto config revert
+     * Whether to enable ap auto config revert
      * 
      */
     @Export(name="configAutoRevert", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> configAutoRevert;
 
     /**
-     * @return whether to enable ap auto config revert
+     * @return Whether to enable ap auto config revert
      * 
      */
     public Output<Boolean> configAutoRevert() {
         return this.configAutoRevert;
     }
     /**
-     * mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * Mist also uses some heuristic rules to prevent destructive configs from being pushed
      * 
      */
     @Export(name="configPushPolicy", refs={SettingConfigPushPolicy.class}, tree="[0]")
     private Output</* @Nullable */ SettingConfigPushPolicy> configPushPolicy;
 
     /**
-     * @return mist also uses some heuristic rules to prevent destructive configs from being pushed
+     * @return Mist also uses some heuristic rules to prevent destructive configs from being pushed
      * 
      */
     public Output<Optional<SettingConfigPushPolicy>> configPushPolicy() {
         return Codegen.optional(this.configPushPolicy);
     }
     /**
-     * you can define some URLs that&#39;s critical to site operaitons the latency will be captured and considered for site health
+     * You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
      * 
      */
     @Export(name="criticalUrlMonitoring", refs={SettingCriticalUrlMonitoring.class}, tree="[0]")
     private Output</* @Nullable */ SettingCriticalUrlMonitoring> criticalUrlMonitoring;
 
     /**
-     * @return you can define some URLs that&#39;s critical to site operaitons the latency will be captured and considered for site health
+     * @return You can define some URLs that&#39;s critical to site operations the latency will be captured and considered for site health
      * 
      */
     public Output<Optional<SettingCriticalUrlMonitoring>> criticalUrlMonitoring() {
         return Codegen.optional(this.criticalUrlMonitoring);
     }
     /**
-     * by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
      * is desired, use the following
      * 
      */
@@ -229,7 +229,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> deviceUpdownThreshold;
 
     /**
-     * @return by default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
+     * @return By default, device_updown_thresold, if set, will apply to all devices types if different values for specific device type
      * is desired, use the following
      * 
      */
@@ -237,7 +237,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return this.deviceUpdownThreshold;
     }
     /**
-     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+     * **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
      * ranges for the same day
      * 
      */
@@ -245,7 +245,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ SettingEngagement> engagement;
 
     /**
-     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently we don&#39;t allow multiple
+     * @return **Note**: if hours does not exist, it&#39;s treated as everyday of the week, 00:00-23:59. Currently, we don&#39;t allow multiple
      * ranges for the same day
      * 
      */
@@ -267,7 +267,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gatewayMgmt);
     }
     /**
-     * enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -275,7 +275,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> gatewayUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+     * @return Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -317,14 +317,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.occupancy);
     }
     /**
-     * whether to store the config on AP
+     * Whether to store the config on AP
      * 
      */
     @Export(name="persistConfigOnDevice", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> persistConfigOnDevice;
 
     /**
-     * @return whether to store the config on AP
+     * @return Whether to store the config on AP
      * 
      */
     public Output<Boolean> persistConfigOnDevice() {
@@ -345,21 +345,21 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.proxy);
     }
     /**
-     * by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
     @Export(name="removeExistingConfigs", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> removeExistingConfigs;
 
     /**
-     * @return by default, when we configure a device, we only clean up config we generates. Remove existing configs if enabled
+     * @return By default, when we configure a device, we only clean up config we generate. Remove existing configs if enabled
      * 
      */
     public Output<Boolean> removeExistingConfigs() {
         return this.removeExistingConfigs;
     }
     /**
-     * whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+     * Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)
      * 
      */
@@ -367,7 +367,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Boolean> reportGatt;
 
     /**
-     * @return whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
+     * @return Whether AP should periodically connect to BLE devices and report GATT device info (device name, manufacturer name,
      * serial number, battery %, temperature, humidity)
      * 
      */
@@ -389,14 +389,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rogue);
     }
     /**
-     * managed mobility
+     * Managed mobility
      * 
      */
     @Export(name="rtsa", refs={SettingRtsa.class}, tree="[0]")
     private Output</* @Nullable */ SettingRtsa> rtsa;
 
     /**
-     * @return managed mobility
+     * @return Managed mobility
      * 
      */
     public Output<Optional<SettingRtsa>> rtsa() {
@@ -437,7 +437,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.srxApp);
     }
     /**
-     * when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+     * When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
      * Org:Setting)
      * 
      */
@@ -445,7 +445,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<List<String>> sshKeys;
 
     /**
-     * @return when limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
+     * @return When limit_ssh_access = true in Org Setting, list of SSH public keys provided by Mist Support to install onto APs (see
      * Org:Setting)
      * 
      */
@@ -459,7 +459,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ssr);
     }
     /**
-     * enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -467,7 +467,7 @@ public class Setting extends com.pulumi.resources.CustomResource {
     private Output<Integer> switchUpdownThreshold;
 
     /**
-     * @return enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+     * @return Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
      * `device_updown_threshold` is ignored.
      * 
      */
@@ -481,14 +481,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.syntheticTest);
     }
     /**
-     * whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      * 
      */
     @Export(name="trackAnonymousDevices", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> trackAnonymousDevices;
 
     /**
-     * @return whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
+     * @return Whether to track anonymous BLE assets (requires ‘track_asset’ enabled)
      * 
      */
     public Output<Boolean> trackAnonymousDevices() {
@@ -509,14 +509,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.uplinkPortConfig);
     }
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Export(name="vars", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Output<Optional<Map<String,String>>> vars() {
@@ -529,14 +529,14 @@ public class Setting extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vna);
     }
     /**
-     * optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
      * 
      */
     @Export(name="vsInstance", refs={Map.class,String.class,SettingVsInstance.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,SettingVsInstance>> vsInstance;
 
     /**
-     * @return optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
+     * @return Optional, for EX9200 only to seggregate virtual-switches. Property key is the instance name
      * 
      */
     public Output<Optional<Map<String,SettingVsInstance>>> vsInstance() {

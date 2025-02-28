@@ -78,24 +78,23 @@ export class Webhook extends pulumi.CustomResource {
     }
 
     /**
-     * whether webhook is enabled
+     * Whether webhook is enabled
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      */
     public readonly headers!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * name of the webhook
+     * Name of the webhook
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      */
     public readonly oauth2ClientId!: pulumi.Output<string | undefined>;
     /**
-     * required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      */
     public readonly oauth2ClientSecret!: pulumi.Output<string | undefined>;
     /**
@@ -103,30 +102,30 @@ export class Webhook extends pulumi.CustomResource {
      */
     public readonly oauth2GrantType!: pulumi.Output<string | undefined>;
     /**
-     * required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`
      */
     public readonly oauth2Password!: pulumi.Output<string | undefined>;
     /**
-     * required when `type`==`oauth2`, if provided, will be used in the token request
+     * Required when `type`==`oauth2`, if provided, will be used in the token request
      */
     public readonly oauth2Scopes!: pulumi.Output<string[] | undefined>;
     /**
-     * required when `type`==`oauth2`
+     * Required when `type`==`oauth2`
      */
     public readonly oauth2TokenUrl!: pulumi.Output<string | undefined>;
     /**
-     * required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`
      */
     public readonly oauth2Username!: pulumi.Output<string | undefined>;
     public /*out*/ readonly orgId!: pulumi.Output<string>;
     /**
-     * only if `type`=`http-post`
+     * Only if `type`=`http-post`
      */
     public readonly secret!: pulumi.Output<string | undefined>;
     public readonly siteId!: pulumi.Output<string>;
     /**
-     * required if `type`=`splunk` If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the
-     * webhook receiver is configured to accept it.'
+     * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      */
     public readonly splunkToken!: pulumi.Output<string | undefined>;
     /**
@@ -139,7 +138,7 @@ export class Webhook extends pulumi.CustomResource {
     public readonly type!: pulumi.Output<string>;
     public readonly url!: pulumi.Output<string>;
     /**
-     * when url uses HTTPS, whether to verify the certificate
+     * When url uses HTTPS, whether to verify the certificate
      */
     public readonly verifyCert!: pulumi.Output<boolean>;
 
@@ -216,24 +215,23 @@ export class Webhook extends pulumi.CustomResource {
  */
 export interface WebhookState {
     /**
-     * whether webhook is enabled
+     * Whether webhook is enabled
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * name of the webhook
+     * Name of the webhook
      */
     name?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      */
     oauth2ClientId?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      */
     oauth2ClientSecret?: pulumi.Input<string>;
     /**
@@ -241,30 +239,30 @@ export interface WebhookState {
      */
     oauth2GrantType?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`
      */
     oauth2Password?: pulumi.Input<string>;
     /**
-     * required when `type`==`oauth2`, if provided, will be used in the token request
+     * Required when `type`==`oauth2`, if provided, will be used in the token request
      */
     oauth2Scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * required when `type`==`oauth2`
+     * Required when `type`==`oauth2`
      */
     oauth2TokenUrl?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`
      */
     oauth2Username?: pulumi.Input<string>;
     orgId?: pulumi.Input<string>;
     /**
-     * only if `type`=`http-post`
+     * Only if `type`=`http-post`
      */
     secret?: pulumi.Input<string>;
     siteId?: pulumi.Input<string>;
     /**
-     * required if `type`=`splunk` If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the
-     * webhook receiver is configured to accept it.'
+     * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      */
     splunkToken?: pulumi.Input<string>;
     /**
@@ -277,7 +275,7 @@ export interface WebhookState {
     type?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
     /**
-     * when url uses HTTPS, whether to verify the certificate
+     * When url uses HTTPS, whether to verify the certificate
      */
     verifyCert?: pulumi.Input<boolean>;
 }
@@ -287,24 +285,23 @@ export interface WebhookState {
  */
 export interface WebhookArgs {
     /**
-     * whether webhook is enabled
+     * Whether webhook is enabled
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * if `type`=`http-post`, additional custom HTTP headers to add
-     * the headers name and value must be string, total bytes of headers name and value must be less than 1000
+     * If `type`=`http-post`, additional custom HTTP headers to add. The headers name and value must be string, total bytes of headers name and value must be less than 1000
      */
     headers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * name of the webhook
+     * Name of the webhook
      */
     name?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      */
     oauth2ClientId?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`clientCredentials`
+     * Required when `oauth2GrantType`==`clientCredentials`
      */
     oauth2ClientSecret?: pulumi.Input<string>;
     /**
@@ -312,29 +309,29 @@ export interface WebhookArgs {
      */
     oauth2GrantType?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`
      */
     oauth2Password?: pulumi.Input<string>;
     /**
-     * required when `type`==`oauth2`, if provided, will be used in the token request
+     * Required when `type`==`oauth2`, if provided, will be used in the token request
      */
     oauth2Scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * required when `type`==`oauth2`
+     * Required when `type`==`oauth2`
      */
     oauth2TokenUrl?: pulumi.Input<string>;
     /**
-     * required when `oauth2GrantType`==`password`
+     * Required when `oauth2GrantType`==`password`
      */
     oauth2Username?: pulumi.Input<string>;
     /**
-     * only if `type`=`http-post`
+     * Only if `type`=`http-post`
      */
     secret?: pulumi.Input<string>;
     siteId: pulumi.Input<string>;
     /**
-     * required if `type`=`splunk` If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if the
-     * webhook receiver is configured to accept it.'
+     * Required if `type`=`splunk`. If splunkToken is not defined for a type Splunk webhook, it will not send, regardless if
+     * the webhook receiver is configured to accept it.
      */
     splunkToken?: pulumi.Input<string>;
     /**
@@ -347,7 +344,7 @@ export interface WebhookArgs {
     type?: pulumi.Input<string>;
     url: pulumi.Input<string>;
     /**
-     * when url uses HTTPS, whether to verify the certificate
+     * When url uses HTTPS, whether to verify the certificate
      */
     verifyCert?: pulumi.Input<boolean>;
 }

@@ -28,7 +28,7 @@ namespace Pulumi.JuniperMist.Org
     public partial class Setting : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("apUpdownThreshold")]
@@ -38,7 +38,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingApiPolicy?> ApiPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// list of PEM-encoded ca certs
+        /// List of PEM-encoded ca certs
         /// </summary>
         [Output("cacerts")]
         public Output<ImmutableArray<string>> Cacerts { get; private set; } = null!;
@@ -59,7 +59,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingDeviceCert?> DeviceCert { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        /// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
         /// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
         /// immediate)
         /// </summary>
@@ -67,19 +67,19 @@ namespace Pulumi.JuniperMist.Org
         public Output<int> DeviceUpdownThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        /// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         /// </summary>
         [Output("disablePcap")]
         public Output<bool> DisablePcap { get; private set; } = null!;
 
         /// <summary>
-        /// whether to disable remote shell access for an entire org
+        /// Whether to disable remote shell access for an entire org
         /// </summary>
         [Output("disableRemoteShell")]
         public Output<bool> DisableRemoteShell { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("gatewayUpdownThreshold")]
@@ -140,7 +140,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingSwitchMgmt?> SwitchMgmt { get; private set; } = null!;
 
         /// <summary>
-        /// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Output("switchUpdownThreshold")]
@@ -150,7 +150,7 @@ namespace Pulumi.JuniperMist.Org
         public Output<Outputs.SettingSyntheticTest?> SyntheticTest { get; private set; } = null!;
 
         /// <summary>
-        /// automatically logout the user when UI session is inactive. `0` means disabled
+        /// Automatically logout the user when UI session is inactive. `0` means disabled
         /// </summary>
         [Output("uiIdleTimeout")]
         public Output<int> UiIdleTimeout { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
@@ -228,7 +228,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// list of PEM-encoded ca certs
+        /// List of PEM-encoded ca certs
         /// </summary>
         public InputList<string> Cacerts
         {
@@ -249,7 +249,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingDeviceCertArgs>? DeviceCert { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        /// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
         /// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
         /// immediate)
         /// </summary>
@@ -257,19 +257,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
         /// <summary>
-        /// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        /// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         /// </summary>
         [Input("disablePcap")]
         public Input<bool>? DisablePcap { get; set; }
 
         /// <summary>
-        /// whether to disable remote shell access for an entire org
+        /// Whether to disable remote shell access for an entire org
         /// </summary>
         [Input("disableRemoteShell")]
         public Input<bool>? DisableRemoteShell { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
@@ -333,7 +333,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingSwitchMgmtArgs>? SwitchMgmt { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("switchUpdownThreshold")]
@@ -343,7 +343,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingSyntheticTestArgs>? SyntheticTest { get; set; }
 
         /// <summary>
-        /// automatically logout the user when UI session is inactive. `0` means disabled
+        /// Automatically logout the user when UI session is inactive. `0` means disabled
         /// </summary>
         [Input("uiIdleTimeout")]
         public Input<int>? UiIdleTimeout { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.JuniperMist.Org
     public sealed class SettingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
+        /// Enable threshold-based device down delivery for AP devices only. When configured it takes effect for AP devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("apUpdownThreshold")]
@@ -382,7 +382,7 @@ namespace Pulumi.JuniperMist.Org
         private InputList<string>? _cacerts;
 
         /// <summary>
-        /// list of PEM-encoded ca certs
+        /// List of PEM-encoded ca certs
         /// </summary>
         public InputList<string> Cacerts
         {
@@ -406,7 +406,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingDeviceCertGetArgs>? DeviceCert { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
+        /// Enable threshold-based device down delivery via * device-updowns webhooks topic, * Mist Alert Framework; e.g. send
         /// AP/SW/GW down event only if AP/SW/GW Up is not seen within the threshold in minutes; 0 - 240, default is 0 (trigger
         /// immediate)
         /// </summary>
@@ -414,19 +414,19 @@ namespace Pulumi.JuniperMist.Org
         public Input<int>? DeviceUpdownThreshold { get; set; }
 
         /// <summary>
-        /// whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
+        /// Whether to disallow Mist to analyze pcap files (this is required for marvis pcap)
         /// </summary>
         [Input("disablePcap")]
         public Input<bool>? DisablePcap { get; set; }
 
         /// <summary>
-        /// whether to disable remote shell access for an entire org
+        /// Whether to disable remote shell access for an entire org
         /// </summary>
         [Input("disableRemoteShell")]
         public Input<bool>? DisableRemoteShell { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
+        /// Enable threshold-based device down delivery for Gateway devices only. When configured it takes effect for GW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("gatewayUpdownThreshold")]
@@ -493,7 +493,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingSwitchMgmtGetArgs>? SwitchMgmt { get; set; }
 
         /// <summary>
-        /// enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
+        /// Enable threshold-based device down delivery for Switch devices only. When configured it takes effect for SW devices and
         /// `device_updown_threshold` is ignored.
         /// </summary>
         [Input("switchUpdownThreshold")]
@@ -503,7 +503,7 @@ namespace Pulumi.JuniperMist.Org
         public Input<Inputs.SettingSyntheticTestGetArgs>? SyntheticTest { get; set; }
 
         /// <summary>
-        /// automatically logout the user when UI session is inactive. `0` means disabled
+        /// Automatically logout the user when UI session is inactive. `0` means disabled
         /// </summary>
         [Input("uiIdleTimeout")]
         public Input<int>? UiIdleTimeout { get; set; }

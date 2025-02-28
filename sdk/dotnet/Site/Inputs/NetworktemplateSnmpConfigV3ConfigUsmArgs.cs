@@ -15,14 +15,14 @@ namespace Pulumi.JuniperMist.Site.Inputs
         /// <summary>
         /// enum: `local_engine`, `remote_engine`
         /// </summary>
-        [Input("engineType")]
-        public Input<string>? EngineType { get; set; }
+        [Input("engineType", required: true)]
+        public Input<string> EngineType { get; set; } = null!;
 
         /// <summary>
-        /// required only if `engine_type`==`remote_engine`
+        /// Required only if `engine_type`==`remote_engine`
         /// </summary>
-        [Input("engineid")]
-        public Input<string>? Engineid { get; set; }
+        [Input("remoteEngineId")]
+        public Input<string>? RemoteEngineId { get; set; }
 
         [Input("users")]
         private InputList<Inputs.NetworktemplateSnmpConfigV3ConfigUsmUserArgs>? _users;

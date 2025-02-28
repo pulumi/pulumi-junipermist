@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly bool? Enabled;
         /// <summary>
-        /// any / HH:MM (24-hour format)
+        /// `any` / HH:MM (24-hour format)
         /// </summary>
         public readonly string? TimeOfDay;
 

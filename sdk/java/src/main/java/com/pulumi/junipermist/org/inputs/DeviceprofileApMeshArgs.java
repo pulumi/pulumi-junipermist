@@ -18,14 +18,14 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
     public static final DeviceprofileApMeshArgs Empty = new DeviceprofileApMeshArgs();
 
     /**
-     * whether mesh is enabled on this AP
+     * Whether mesh is enabled on this AP
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether mesh is enabled on this AP
+     * @return Whether mesh is enabled on this AP
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+     * Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
      * 
      */
     @Import(name="group")
     private @Nullable Output<Integer> group;
 
     /**
-     * @return mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+     * @return Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
      * 
      */
     public Optional<Output<Integer>> group() {
@@ -89,7 +89,7 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled whether mesh is enabled on this AP
+         * @param enabled Whether mesh is enabled on this AP
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled whether mesh is enabled on this AP
+         * @param enabled Whether mesh is enabled on this AP
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param group mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+         * @param group Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class DeviceprofileApMeshArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param group mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+         * @param group Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
          * 
          * @return builder
          * 

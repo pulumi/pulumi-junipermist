@@ -18,7 +18,7 @@ import (
 //   - the Gateway configuration (`mist_device_gateway.service_policies`)
 //   - the Gateway Templates (`mist_org_gatewaytemplate.service_policies`)
 //   - the HUB Profiles (`mist_org_deviceprofile_gateway.service_policies`)
-//     They can be used to manage common policies betweeen multiples configurations
+//     They can be used to manage common policies between multiples configurations
 //
 // ## Import
 //
@@ -34,19 +34,22 @@ type Servicepolicy struct {
 
 	// enum: `allow`, `deny`
 	Action pulumi.StringOutput `pulumi:"action"`
+	// For SRX-only
+	Antivirus ServicepolicyAntivirusPtrOutput `pulumi:"antivirus"`
 	// For SRX Only
 	Appqoe ServicepolicyAppqoePtrOutput `pulumi:"appqoe"`
 	Ewfs   ServicepolicyEwfArrayOutput  `pulumi:"ewfs"`
 	Idp    ServicepolicyIdpPtrOutput    `pulumi:"idp"`
 	// access within the same VRF
-	LocalRouting pulumi.BoolOutput   `pulumi:"localRouting"`
-	Name         pulumi.StringOutput `pulumi:"name"`
-	OrgId        pulumi.StringOutput `pulumi:"orgId"`
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	LocalRouting pulumi.BoolPtrOutput `pulumi:"localRouting"`
+	Name         pulumi.StringOutput  `pulumi:"name"`
+	OrgId        pulumi.StringOutput  `pulumi:"orgId"`
+	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrOutput   `pulumi:"pathPreference"`
 	Services       pulumi.StringArrayOutput `pulumi:"services"`
-	Tenants        pulumi.StringArrayOutput `pulumi:"tenants"`
+	// For SRX-only
+	SslProxy ServicepolicySslProxyPtrOutput `pulumi:"sslProxy"`
+	Tenants  pulumi.StringArrayOutput       `pulumi:"tenants"`
 }
 
 // NewServicepolicy registers a new resource with the given unique name, arguments, and options.
@@ -84,6 +87,8 @@ func GetServicepolicy(ctx *pulumi.Context,
 type servicepolicyState struct {
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
+	// For SRX-only
+	Antivirus *ServicepolicyAntivirus `pulumi:"antivirus"`
 	// For SRX Only
 	Appqoe *ServicepolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []ServicepolicyEwf   `pulumi:"ewfs"`
@@ -92,16 +97,19 @@ type servicepolicyState struct {
 	LocalRouting *bool   `pulumi:"localRouting"`
 	Name         *string `pulumi:"name"`
 	OrgId        *string `pulumi:"orgId"`
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference *string  `pulumi:"pathPreference"`
 	Services       []string `pulumi:"services"`
-	Tenants        []string `pulumi:"tenants"`
+	// For SRX-only
+	SslProxy *ServicepolicySslProxy `pulumi:"sslProxy"`
+	Tenants  []string               `pulumi:"tenants"`
 }
 
 type ServicepolicyState struct {
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput
+	// For SRX-only
+	Antivirus ServicepolicyAntivirusPtrInput
 	// For SRX Only
 	Appqoe ServicepolicyAppqoePtrInput
 	Ewfs   ServicepolicyEwfArrayInput
@@ -110,11 +118,12 @@ type ServicepolicyState struct {
 	LocalRouting pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 	OrgId        pulumi.StringPtrInput
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput
 	Services       pulumi.StringArrayInput
-	Tenants        pulumi.StringArrayInput
+	// For SRX-only
+	SslProxy ServicepolicySslProxyPtrInput
+	Tenants  pulumi.StringArrayInput
 }
 
 func (ServicepolicyState) ElementType() reflect.Type {
@@ -124,6 +133,8 @@ func (ServicepolicyState) ElementType() reflect.Type {
 type servicepolicyArgs struct {
 	// enum: `allow`, `deny`
 	Action *string `pulumi:"action"`
+	// For SRX-only
+	Antivirus *ServicepolicyAntivirus `pulumi:"antivirus"`
 	// For SRX Only
 	Appqoe *ServicepolicyAppqoe `pulumi:"appqoe"`
 	Ewfs   []ServicepolicyEwf   `pulumi:"ewfs"`
@@ -132,17 +143,20 @@ type servicepolicyArgs struct {
 	LocalRouting *bool   `pulumi:"localRouting"`
 	Name         *string `pulumi:"name"`
 	OrgId        string  `pulumi:"orgId"`
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference *string  `pulumi:"pathPreference"`
 	Services       []string `pulumi:"services"`
-	Tenants        []string `pulumi:"tenants"`
+	// For SRX-only
+	SslProxy *ServicepolicySslProxy `pulumi:"sslProxy"`
+	Tenants  []string               `pulumi:"tenants"`
 }
 
 // The set of arguments for constructing a Servicepolicy resource.
 type ServicepolicyArgs struct {
 	// enum: `allow`, `deny`
 	Action pulumi.StringPtrInput
+	// For SRX-only
+	Antivirus ServicepolicyAntivirusPtrInput
 	// For SRX Only
 	Appqoe ServicepolicyAppqoePtrInput
 	Ewfs   ServicepolicyEwfArrayInput
@@ -151,11 +165,12 @@ type ServicepolicyArgs struct {
 	LocalRouting pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 	OrgId        pulumi.StringInput
-	// by default, we derive all paths available and use them
-	// optionally, you can customize by using `pathPreference`
+	// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 	PathPreference pulumi.StringPtrInput
 	Services       pulumi.StringArrayInput
-	Tenants        pulumi.StringArrayInput
+	// For SRX-only
+	SslProxy ServicepolicySslProxyPtrInput
+	Tenants  pulumi.StringArrayInput
 }
 
 func (ServicepolicyArgs) ElementType() reflect.Type {
@@ -250,6 +265,11 @@ func (o ServicepolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// For SRX-only
+func (o ServicepolicyOutput) Antivirus() ServicepolicyAntivirusPtrOutput {
+	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAntivirusPtrOutput { return v.Antivirus }).(ServicepolicyAntivirusPtrOutput)
+}
+
 // For SRX Only
 func (o ServicepolicyOutput) Appqoe() ServicepolicyAppqoePtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) ServicepolicyAppqoePtrOutput { return v.Appqoe }).(ServicepolicyAppqoePtrOutput)
@@ -264,8 +284,8 @@ func (o ServicepolicyOutput) Idp() ServicepolicyIdpPtrOutput {
 }
 
 // access within the same VRF
-func (o ServicepolicyOutput) LocalRouting() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Servicepolicy) pulumi.BoolOutput { return v.LocalRouting }).(pulumi.BoolOutput)
+func (o ServicepolicyOutput) LocalRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Servicepolicy) pulumi.BoolPtrOutput { return v.LocalRouting }).(pulumi.BoolPtrOutput)
 }
 
 func (o ServicepolicyOutput) Name() pulumi.StringOutput {
@@ -276,14 +296,18 @@ func (o ServicepolicyOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// by default, we derive all paths available and use them
-// optionally, you can customize by using `pathPreference`
+// By default, we derive all paths available and use them, optionally, you can customize by using `pathPreference`
 func (o ServicepolicyOutput) PathPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringPtrOutput { return v.PathPreference }).(pulumi.StringPtrOutput)
 }
 
 func (o ServicepolicyOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Servicepolicy) pulumi.StringArrayOutput { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// For SRX-only
+func (o ServicepolicyOutput) SslProxy() ServicepolicySslProxyPtrOutput {
+	return o.ApplyT(func(v *Servicepolicy) ServicepolicySslProxyPtrOutput { return v.SslProxy }).(ServicepolicySslProxyPtrOutput)
 }
 
 func (o ServicepolicyOutput) Tenants() pulumi.StringArrayOutput {

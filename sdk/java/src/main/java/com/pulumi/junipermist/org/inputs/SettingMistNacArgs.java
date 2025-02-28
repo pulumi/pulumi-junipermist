@@ -21,14 +21,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     public static final SettingMistNacArgs Empty = new SettingMistNacArgs();
 
     /**
-     * list of PEM-encoded ca certs
+     * List of PEM-encoded ca certs
      * 
      */
     @Import(name="cacerts")
     private @Nullable Output<List<String>> cacerts;
 
     /**
-     * @return list of PEM-encoded ca certs
+     * @return List of PEM-encoded ca certs
      * 
      */
     public Optional<Output<List<String>>> cacerts() {
@@ -66,16 +66,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * eap ssl security level
-     * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+     * eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
      * 
      */
     @Import(name="eapSslSecurityLevel")
     private @Nullable Output<Integer> eapSslSecurityLevel;
 
     /**
-     * @return eap ssl security level
-     * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+     * @return eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
      * 
      */
     public Optional<Output<Integer>> eapSslSecurityLevel() {
@@ -83,16 +81,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-     * For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+     * By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
      * 
      */
     @Import(name="euOnly")
     private @Nullable Output<Boolean> euOnly;
 
     /**
-     * @return By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-     * For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+     * @return By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
      * 
      */
     public Optional<Output<Boolean>> euOnly() {
@@ -115,16 +111,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * allow customer to choose the EAP-TLS client certificate&#39;s field
-     * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+     * allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
      * 
      */
     @Import(name="idpUserCertLookupField")
     private @Nullable Output<String> idpUserCertLookupField;
 
     /**
-     * @return allow customer to choose the EAP-TLS client certificate&#39;s field
-     * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+     * @return allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
      * 
      */
     public Optional<Output<String>> idpUserCertLookupField() {
@@ -154,14 +148,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+     * by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
      * 
      */
     @Import(name="useIpVersion")
     private @Nullable Output<String> useIpVersion;
 
     /**
-     * @return by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+     * @return by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
      * 
      */
     public Optional<Output<String>> useIpVersion() {
@@ -169,18 +163,14 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac.
-     * Set `use_ssl_port`==`true` to override that port with TCP43 (ssl),
-     * This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+     * By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
      * 
      */
     @Import(name="useSslPort")
     private @Nullable Output<Boolean> useSslPort;
 
     /**
-     * @return By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac.
-     * Set `use_ssl_port`==`true` to override that port with TCP43 (ssl),
-     * This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+     * @return By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
      * 
      */
     public Optional<Output<Boolean>> useSslPort() {
@@ -222,7 +212,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cacerts list of PEM-encoded ca certs
+         * @param cacerts List of PEM-encoded ca certs
          * 
          * @return builder
          * 
@@ -233,7 +223,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cacerts list of PEM-encoded ca certs
+         * @param cacerts List of PEM-encoded ca certs
          * 
          * @return builder
          * 
@@ -243,7 +233,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param cacerts list of PEM-encoded ca certs
+         * @param cacerts List of PEM-encoded ca certs
          * 
          * @return builder
          * 
@@ -295,8 +285,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eapSslSecurityLevel eap ssl security level
-         * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+         * @param eapSslSecurityLevel eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
          * 
          * @return builder
          * 
@@ -307,8 +296,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param eapSslSecurityLevel eap ssl security level
-         * see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+         * @param eapSslSecurityLevel eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
          * 
          * @return builder
          * 
@@ -318,8 +306,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param euOnly By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-         * For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+         * @param euOnly By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
          * 
          * @return builder
          * 
@@ -330,8 +317,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param euOnly By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-         * For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+         * @param euOnly By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
          * 
          * @return builder
          * 
@@ -362,8 +348,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field
-         * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          * 
          * @return builder
          * 
@@ -374,8 +359,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field
-         * to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+         * @param idpUserCertLookupField allow customer to choose the EAP-TLS client certificate&#39;s field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
          * 
          * @return builder
          * 
@@ -419,7 +403,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useIpVersion by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+         * @param useIpVersion by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
          * 
          * @return builder
          * 
@@ -430,7 +414,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useIpVersion by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+         * @param useIpVersion by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
          * 
          * @return builder
          * 
@@ -440,9 +424,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useSslPort By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac.
-         * Set `use_ssl_port`==`true` to override that port with TCP43 (ssl),
-         * This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+         * @param useSslPort By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
          * 
          * @return builder
          * 
@@ -453,9 +435,7 @@ public final class SettingMistNacArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param useSslPort By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac.
-         * Set `use_ssl_port`==`true` to override that port with TCP43 (ssl),
-         * This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+         * @param useSslPort By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
          * 
          * @return builder
          * 

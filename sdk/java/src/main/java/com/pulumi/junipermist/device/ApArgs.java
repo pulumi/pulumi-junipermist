@@ -85,14 +85,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      * 
      */
     @Import(name="disableEth1")
     private @Nullable Output<Boolean> disableEth1;
 
     /**
-     * @return whether to disable eth1 port
+     * @return Whether to disable eth1 port
      * 
      */
     public Optional<Output<Boolean>> disableEth1() {
@@ -100,14 +100,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      * 
      */
     @Import(name="disableEth2")
     private @Nullable Output<Boolean> disableEth2;
 
     /**
-     * @return whether to disable eth2 port
+     * @return Whether to disable eth2 port
      * 
      */
     public Optional<Output<Boolean>> disableEth2() {
@@ -115,14 +115,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      * 
      */
     @Import(name="disableEth3")
     private @Nullable Output<Boolean> disableEth3;
 
     /**
-     * @return whether to disable eth3 port
+     * @return Whether to disable eth3 port
      * 
      */
     public Optional<Output<Boolean>> disableEth3() {
@@ -130,14 +130,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to disable module port
+     * Whether to disable module port
      * 
      */
     @Import(name="disableModule")
     private @Nullable Output<Boolean> disableModule;
 
     /**
-     * @return whether to disable module port
+     * @return Whether to disable module port
      * 
      */
     public Optional<Output<Boolean>> disableModule() {
@@ -152,14 +152,29 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * height, in meters, optional
+     * For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * 
+     */
+    @Import(name="flowControl")
+    private @Nullable Output<Boolean> flowControl;
+
+    /**
+     * @return For some AP models, flow_control can be enabled to address some switch compatibility issue
+     * 
+     */
+    public Optional<Output<Boolean>> flowControl() {
+        return Optional.ofNullable(this.flowControl);
+    }
+
+    /**
+     * Height, in meters, optional
      * 
      */
     @Import(name="height")
     private @Nullable Output<Double> height;
 
     /**
-     * @return height, in meters, optional
+     * @return Height, in meters, optional
      * 
      */
     public Optional<Output<Double>> height() {
@@ -197,14 +212,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether this map is considered locked down
+     * Whether this map is considered locked down
      * 
      */
     @Import(name="locked")
     private @Nullable Output<Boolean> locked;
 
     /**
-     * @return whether this map is considered locked down
+     * @return Whether this map is considered locked down
      * 
      */
     public Optional<Output<Boolean>> locked() {
@@ -212,14 +227,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * map where the device belongs to
+     * Map where the device belongs to
      * 
      */
     @Import(name="mapId")
     private @Nullable Output<String> mapId;
 
     /**
-     * @return map where the device belongs to
+     * @return Map where the device belongs to
      * 
      */
     public Optional<Output<String>> mapId() {
@@ -249,14 +264,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * any notes about this AP
+     * Any notes about this AP
      * 
      */
     @Import(name="notes")
     private @Nullable Output<String> notes;
 
     /**
-     * @return any notes about this AP
+     * @return Any notes about this AP
      * 
      */
     public Optional<Output<String>> notes() {
@@ -271,14 +286,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * orientation, 0-359, in degrees, up is 0, right is 90.
+     * Orientation, 0-359, in degrees, up is 0, right is 90.
      * 
      */
     @Import(name="orientation")
     private @Nullable Output<Integer> orientation;
 
     /**
-     * @return orientation, 0-359, in degrees, up is 0, right is 90.
+     * @return Orientation, 0-359, in degrees, up is 0, right is 90.
      * 
      */
     public Optional<Output<Integer>> orientation() {
@@ -286,14 +301,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     @Import(name="poePassthrough")
     private @Nullable Output<Boolean> poePassthrough;
 
     /**
-     * @return whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * @return Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      * 
      */
     public Optional<Output<Boolean>> poePassthrough() {
@@ -301,14 +316,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * power related configs
+     * Power related configs
      * 
      */
     @Import(name="pwrConfig")
     private @Nullable Output<ApPwrConfigArgs> pwrConfig;
 
     /**
-     * @return power related configs
+     * @return Power related configs
      * 
      */
     public Optional<Output<ApPwrConfigArgs>> pwrConfig() {
@@ -337,24 +352,32 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         return this.siteId;
     }
 
+    /**
+     * AP Uplink port configuration
+     * 
+     */
     @Import(name="uplinkPortConfig")
     private @Nullable Output<ApUplinkPortConfigArgs> uplinkPortConfig;
 
+    /**
+     * @return AP Uplink port configuration
+     * 
+     */
     public Optional<Output<ApUplinkPortConfigArgs>> uplinkPortConfig() {
         return Optional.ofNullable(this.uplinkPortConfig);
     }
 
     /**
-     * USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     @Import(name="usbConfig")
     private @Nullable Output<ApUsbConfigArgs> usbConfig;
 
     /**
-     * @return USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-     * to ESL Config.
+     * @return USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      * 
      */
     public Optional<Output<ApUsbConfigArgs>> usbConfig() {
@@ -362,14 +385,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     @Import(name="vars")
     private @Nullable Output<Map<String,String>> vars;
 
     /**
-     * @return a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * @return Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      * 
      */
     public Optional<Output<Map<String,String>>> vars() {
@@ -377,14 +400,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * x in pixel
+     * X in pixel
      * 
      */
     @Import(name="x")
     private @Nullable Output<Double> x;
 
     /**
-     * @return x in pixel
+     * @return X in pixel
      * 
      */
     public Optional<Output<Double>> x() {
@@ -392,14 +415,14 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * y in pixel
+     * Y in pixel
      * 
      */
     @Import(name="y")
     private @Nullable Output<Double> y;
 
     /**
-     * @return y in pixel
+     * @return Y in pixel
      * 
      */
     public Optional<Output<Double>> y() {
@@ -419,6 +442,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         this.disableEth3 = $.disableEth3;
         this.disableModule = $.disableModule;
         this.eslConfig = $.eslConfig;
+        this.flowControl = $.flowControl;
         this.height = $.height;
         this.ipConfig = $.ipConfig;
         this.led = $.led;
@@ -528,7 +552,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEth1 whether to disable eth1 port
+         * @param disableEth1 Whether to disable eth1 port
          * 
          * @return builder
          * 
@@ -539,7 +563,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEth1 whether to disable eth1 port
+         * @param disableEth1 Whether to disable eth1 port
          * 
          * @return builder
          * 
@@ -549,7 +573,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEth2 whether to disable eth2 port
+         * @param disableEth2 Whether to disable eth2 port
          * 
          * @return builder
          * 
@@ -560,7 +584,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEth2 whether to disable eth2 port
+         * @param disableEth2 Whether to disable eth2 port
          * 
          * @return builder
          * 
@@ -570,7 +594,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEth3 whether to disable eth3 port
+         * @param disableEth3 Whether to disable eth3 port
          * 
          * @return builder
          * 
@@ -581,7 +605,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableEth3 whether to disable eth3 port
+         * @param disableEth3 Whether to disable eth3 port
          * 
          * @return builder
          * 
@@ -591,7 +615,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableModule whether to disable module port
+         * @param disableModule Whether to disable module port
          * 
          * @return builder
          * 
@@ -602,7 +626,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disableModule whether to disable module port
+         * @param disableModule Whether to disable module port
          * 
          * @return builder
          * 
@@ -621,7 +645,28 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param height height, in meters, optional
+         * @param flowControl For some AP models, flow_control can be enabled to address some switch compatibility issue
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowControl(@Nullable Output<Boolean> flowControl) {
+            $.flowControl = flowControl;
+            return this;
+        }
+
+        /**
+         * @param flowControl For some AP models, flow_control can be enabled to address some switch compatibility issue
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowControl(Boolean flowControl) {
+            return flowControl(Output.of(flowControl));
+        }
+
+        /**
+         * @param height Height, in meters, optional
          * 
          * @return builder
          * 
@@ -632,7 +677,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param height height, in meters, optional
+         * @param height Height, in meters, optional
          * 
          * @return builder
          * 
@@ -684,7 +729,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locked whether this map is considered locked down
+         * @param locked Whether this map is considered locked down
          * 
          * @return builder
          * 
@@ -695,7 +740,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param locked whether this map is considered locked down
+         * @param locked Whether this map is considered locked down
          * 
          * @return builder
          * 
@@ -705,7 +750,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mapId map where the device belongs to
+         * @param mapId Map where the device belongs to
          * 
          * @return builder
          * 
@@ -716,7 +761,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mapId map where the device belongs to
+         * @param mapId Map where the device belongs to
          * 
          * @return builder
          * 
@@ -756,7 +801,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes any notes about this AP
+         * @param notes Any notes about this AP
          * 
          * @return builder
          * 
@@ -767,7 +812,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notes any notes about this AP
+         * @param notes Any notes about this AP
          * 
          * @return builder
          * 
@@ -790,7 +835,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orientation orientation, 0-359, in degrees, up is 0, right is 90.
+         * @param orientation Orientation, 0-359, in degrees, up is 0, right is 90.
          * 
          * @return builder
          * 
@@ -801,7 +846,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orientation orientation, 0-359, in degrees, up is 0, right is 90.
+         * @param orientation Orientation, 0-359, in degrees, up is 0, right is 90.
          * 
          * @return builder
          * 
@@ -811,7 +856,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poePassthrough whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+         * @param poePassthrough Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
          * 
          * @return builder
          * 
@@ -822,7 +867,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param poePassthrough whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+         * @param poePassthrough Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
          * 
          * @return builder
          * 
@@ -832,7 +877,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pwrConfig power related configs
+         * @param pwrConfig Power related configs
          * 
          * @return builder
          * 
@@ -843,7 +888,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pwrConfig power related configs
+         * @param pwrConfig Power related configs
          * 
          * @return builder
          * 
@@ -882,18 +927,30 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
             return siteId(Output.of(siteId));
         }
 
+        /**
+         * @param uplinkPortConfig AP Uplink port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinkPortConfig(@Nullable Output<ApUplinkPortConfigArgs> uplinkPortConfig) {
             $.uplinkPortConfig = uplinkPortConfig;
             return this;
         }
 
+        /**
+         * @param uplinkPortConfig AP Uplink port configuration
+         * 
+         * @return builder
+         * 
+         */
         public Builder uplinkPortConfig(ApUplinkPortConfigArgs uplinkPortConfig) {
             return uplinkPortConfig(Output.of(uplinkPortConfig));
         }
 
         /**
-         * @param usbConfig USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-         * to ESL Config.
+         * @param usbConfig USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+         * moved to ESL Config.
          * 
          * @return builder
          * 
@@ -904,8 +961,8 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbConfig USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-         * to ESL Config.
+         * @param usbConfig USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+         * moved to ESL Config.
          * 
          * @return builder
          * 
@@ -915,7 +972,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
          * 
@@ -926,7 +983,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vars a dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+         * @param vars Dictionary of name-&gt;value, the vars can then be used in Wlans. This can overwrite those from Site Vars
          * 
          * @return builder
          * 
@@ -936,7 +993,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x x in pixel
+         * @param x X in pixel
          * 
          * @return builder
          * 
@@ -947,7 +1004,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param x x in pixel
+         * @param x X in pixel
          * 
          * @return builder
          * 
@@ -957,7 +1014,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y y in pixel
+         * @param y Y in pixel
          * 
          * @return builder
          * 
@@ -968,7 +1025,7 @@ public final class ApArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param y y in pixel
+         * @param y Y in pixel
          * 
          * @return builder
          * 

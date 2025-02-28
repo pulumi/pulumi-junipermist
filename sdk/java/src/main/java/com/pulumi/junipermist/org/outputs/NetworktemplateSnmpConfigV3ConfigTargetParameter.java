@@ -4,6 +4,7 @@
 package com.pulumi.junipermist.org.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,10 +16,10 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
      * @return enum: `v1`, `v2c`, `v3`
      * 
      */
-    private @Nullable String messageProcessingModel;
-    private @Nullable String name;
+    private String messageProcessingModel;
+    private String name;
     /**
-     * @return refer to profile-name in notify_filter
+     * @return Refer to profile-name in notify_filter
      * 
      */
     private @Nullable String notifyFilter;
@@ -33,7 +34,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
      */
     private @Nullable String securityModel;
     /**
-     * @return refer to security_name in usm
+     * @return Refer to security_name in usm
      * 
      */
     private @Nullable String securityName;
@@ -43,14 +44,14 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
      * @return enum: `v1`, `v2c`, `v3`
      * 
      */
-    public Optional<String> messageProcessingModel() {
-        return Optional.ofNullable(this.messageProcessingModel);
+    public String messageProcessingModel() {
+        return this.messageProcessingModel;
     }
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
-     * @return refer to profile-name in notify_filter
+     * @return Refer to profile-name in notify_filter
      * 
      */
     public Optional<String> notifyFilter() {
@@ -71,7 +72,7 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
         return Optional.ofNullable(this.securityModel);
     }
     /**
-     * @return refer to security_name in usm
+     * @return Refer to security_name in usm
      * 
      */
     public Optional<String> securityName() {
@@ -87,8 +88,8 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String messageProcessingModel;
-        private @Nullable String name;
+        private String messageProcessingModel;
+        private String name;
         private @Nullable String notifyFilter;
         private @Nullable String securityLevel;
         private @Nullable String securityModel;
@@ -105,14 +106,18 @@ public final class NetworktemplateSnmpConfigV3ConfigTargetParameter {
         }
 
         @CustomType.Setter
-        public Builder messageProcessingModel(@Nullable String messageProcessingModel) {
-
+        public Builder messageProcessingModel(String messageProcessingModel) {
+            if (messageProcessingModel == null) {
+              throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigTargetParameter", "messageProcessingModel");
+            }
             this.messageProcessingModel = messageProcessingModel;
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("NetworktemplateSnmpConfigV3ConfigTargetParameter", "name");
+            }
             this.name = name;
             return this;
         }

@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplateOobIpConfigNode1 {
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     private @Nullable String gateway;
     private @Nullable String ip;
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     private @Nullable String netmask;
@@ -29,12 +29,12 @@ public final class GatewaytemplateOobIpConfigNode1 {
      */
     private @Nullable String type;
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     private @Nullable Boolean useMgmtVrf;
     /**
-     * @return whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     private @Nullable Boolean useMgmtVrfForHostOut;
@@ -42,7 +42,7 @@ public final class GatewaytemplateOobIpConfigNode1 {
 
     private GatewaytemplateOobIpConfigNode1() {}
     /**
-     * @return if `type`==`static`
+     * @return If `type`==`static`
      * 
      */
     public Optional<String> gateway() {
@@ -52,7 +52,7 @@ public final class GatewaytemplateOobIpConfigNode1 {
         return Optional.ofNullable(this.ip);
     }
     /**
-     * @return used only if `subnet` is not specified in `networks`
+     * @return Used only if `subnet` is not specified in `networks`
      * 
      */
     public Optional<String> netmask() {
@@ -66,14 +66,14 @@ public final class GatewaytemplateOobIpConfigNode1 {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return if supported on the platform. If enabled, DNS will be using this routing-instance, too
+     * @return If supported on the platform. If enabled, DNS will be using this routing-instance, too
      * 
      */
     public Optional<Boolean> useMgmtVrf() {
         return Optional.ofNullable(this.useMgmtVrf);
     }
     /**
-     * @return whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+     * @return Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
      * 
      */
     public Optional<Boolean> useMgmtVrfForHostOut() {

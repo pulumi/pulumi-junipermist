@@ -111,6 +111,14 @@ _utilities.register(
  },
  {
   "pkg": "junipermist",
+  "mod": "org/avprofile",
+  "fqn": "pulumi_juniper_mist.org",
+  "classes": {
+   "junipermist:org/avprofile:Avprofile": "Avprofile"
+  }
+ },
+ {
+  "pkg": "junipermist",
   "mod": "org/base",
   "fqn": "pulumi_juniper_mist.org",
   "classes": {

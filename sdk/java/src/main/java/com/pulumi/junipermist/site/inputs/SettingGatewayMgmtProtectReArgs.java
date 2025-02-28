@@ -41,7 +41,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
     }
 
     /**
-     * when enabled, all traffic that is not essential to our operation will be dropped
+     * When enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default
      *      if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -50,7 +50,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return when enabled, all traffic that is not essential to our operation will be dropped
+     * @return When enabled, all traffic that is not essential to our operation will be dropped
      * e.g. ntp / dns / traffic to mist will be allowed by default
      *      if dhcpd is enabled, we&#39;ll make sure it works
      * 
@@ -146,7 +146,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled when enabled, all traffic that is not essential to our operation will be dropped
+         * @param enabled When enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default
          *      if dhcpd is enabled, we&#39;ll make sure it works
          * 
@@ -159,7 +159,7 @@ public final class SettingGatewayMgmtProtectReArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled when enabled, all traffic that is not essential to our operation will be dropped
+         * @param enabled When enabled, all traffic that is not essential to our operation will be dropped
          * e.g. ntp / dns / traffic to mist will be allowed by default
          *      if dhcpd is enabled, we&#39;ll make sure it works
          * 

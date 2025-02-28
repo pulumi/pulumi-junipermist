@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SwitchVirtualChassis {
     /**
-     * @return list of Virtual Chassis members
+     * @return List of Virtual Chassis members
      * 
      */
     private @Nullable List<SwitchVirtualChassisMember> members;
     /**
-     * @return to configure whether the VC is preprovisioned or nonprovisioned
+     * @return To configure whether the VC is preprovisioned or nonprovisioned
      * 
      */
     private @Nullable Boolean preprovisioned;
 
     private SwitchVirtualChassis() {}
     /**
-     * @return list of Virtual Chassis members
+     * @return List of Virtual Chassis members
      * 
      */
     public List<SwitchVirtualChassisMember> members() {
         return this.members == null ? List.of() : this.members;
     }
     /**
-     * @return to configure whether the VC is preprovisioned or nonprovisioned
+     * @return To configure whether the VC is preprovisioned or nonprovisioned
      * 
      */
     public Optional<Boolean> preprovisioned() {

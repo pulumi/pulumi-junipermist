@@ -15,7 +15,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
     {
         public readonly string Apitoken;
         /// <summary>
-        /// if using CS Enteprise
+        /// If using CS Enteprise
         /// </summary>
         public readonly string? Url;
 

@@ -13,13 +13,13 @@ namespace Pulumi.JuniperMist.Device.Inputs
     public sealed class ApMeshGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether mesh is enabled on this AP
+        /// Whether mesh is enabled on this AP
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+        /// Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
         /// </summary>
         [Input("group")]
         public Input<int>? Group { get; set; }

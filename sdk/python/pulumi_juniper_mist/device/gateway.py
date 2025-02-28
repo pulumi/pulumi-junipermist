@@ -62,17 +62,17 @@ class GatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[str] map_id: map where the device belongs to
-        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[str] map_id: Map where the device belongs to
+        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "site_id", site_id)
@@ -270,7 +270,7 @@ class GatewayArgs:
     @pulumi.getter(name="mapId")
     def map_id(self) -> Optional[pulumi.Input[str]]:
         """
-        map where the device belongs to
+        Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
@@ -327,7 +327,7 @@ class GatewayArgs:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['GatewayOobIpConfigArgs']]:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -372,7 +372,7 @@ class GatewayArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -426,7 +426,7 @@ class GatewayArgs:
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -459,7 +459,7 @@ class GatewayArgs:
     @pulumi.getter
     def x(self) -> Optional[pulumi.Input[float]]:
         """
-        x in pixel
+        X in pixel
         """
         return pulumi.get(self, "x")
 
@@ -471,7 +471,7 @@ class GatewayArgs:
     @pulumi.getter
     def y(self) -> Optional[pulumi.Input[float]]:
         """
-        y in pixel
+        Y in pixel
         """
         return pulumi.get(self, "y")
 
@@ -532,21 +532,21 @@ class _GatewayState:
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayExtraRoutes6Args']]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIdpProfilesArgs']]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayIpConfigsArgs']]] ip_configs: Property key is the network name
-        :param pulumi.Input[str] mac: device MAC address
-        :param pulumi.Input[str] map_id: map where the device belongs to
-        :param pulumi.Input[str] model: device Model
-        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[str] mac: Device MAC address
+        :param pulumi.Input[str] map_id: Map where the device belongs to
+        :param pulumi.Input[str] model: Device Model
+        :param pulumi.Input['GatewayOobIpConfigArgs'] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPathPreferencesArgs']]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayPortConfigArgs']]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayRoutingPoliciesArgs']]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[str] serial: device Serial
+        :param pulumi.Input[str] serial: Device Serial
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayTunnelConfigsArgs']]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: Device Type. enum: `gateway`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewayVrfInstancesArgs']]] vrf_instances: Property key is the network name
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         if additional_config_cmds is not None:
             pulumi.set(__self__, "additional_config_cmds", additional_config_cmds)
@@ -771,7 +771,7 @@ class _GatewayState:
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[str]]:
         """
-        device MAC address
+        Device MAC address
         """
         return pulumi.get(self, "mac")
 
@@ -792,7 +792,7 @@ class _GatewayState:
     @pulumi.getter(name="mapId")
     def map_id(self) -> Optional[pulumi.Input[str]]:
         """
-        map where the device belongs to
+        Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
@@ -804,7 +804,7 @@ class _GatewayState:
     @pulumi.getter
     def model(self) -> Optional[pulumi.Input[str]]:
         """
-        device Model
+        Device Model
         """
         return pulumi.get(self, "model")
 
@@ -861,7 +861,7 @@ class _GatewayState:
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> Optional[pulumi.Input['GatewayOobIpConfigArgs']]:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -915,7 +915,7 @@ class _GatewayState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -939,7 +939,7 @@ class _GatewayState:
     @pulumi.getter
     def serial(self) -> Optional[pulumi.Input[str]]:
         """
-        device Serial
+        Device Serial
         """
         return pulumi.get(self, "serial")
 
@@ -1002,7 +1002,7 @@ class _GatewayState:
     @pulumi.getter
     def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -1035,7 +1035,7 @@ class _GatewayState:
     @pulumi.getter
     def x(self) -> Optional[pulumi.Input[float]]:
         """
-        x in pixel
+        X in pixel
         """
         return pulumi.get(self, "x")
 
@@ -1047,7 +1047,7 @@ class _GatewayState:
     @pulumi.getter
     def y(self) -> Optional[pulumi.Input[float]]:
         """
-        y in pixel
+        Y in pixel
         """
         return pulumi.get(self, "y")
 
@@ -1144,17 +1144,17 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[str] map_id: map where the device belongs to
-        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[str] map_id: Map where the device belongs to
+        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPathPreferencesArgs', 'GatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPortConfigArgs', 'GatewayPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         ...
     @overload
@@ -1367,21 +1367,21 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayExtraRoutes6Args', 'GatewayExtraRoutes6ArgsDict']]]] extra_routes6: Property key is the destination CIDR (e.g. "2a02:1234:420a:10c9::/64")
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIdpProfilesArgs', 'GatewayIdpProfilesArgsDict']]]] idp_profiles: Property key is the profile name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayIpConfigsArgs', 'GatewayIpConfigsArgsDict']]]] ip_configs: Property key is the network name
-        :param pulumi.Input[str] mac: device MAC address
-        :param pulumi.Input[str] map_id: map where the device belongs to
-        :param pulumi.Input[str] model: device Model
-        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: out-of-band (vme/em0/fxp0) IP config
+        :param pulumi.Input[str] mac: Device MAC address
+        :param pulumi.Input[str] map_id: Map where the device belongs to
+        :param pulumi.Input[str] model: Device Model
+        :param pulumi.Input[Union['GatewayOobIpConfigArgs', 'GatewayOobIpConfigArgsDict']] oob_ip_config: Out-of-band (vme/em0/fxp0) IP config
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPathPreferencesArgs', 'GatewayPathPreferencesArgsDict']]]] path_preferences: Property key is the path name
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayPortConfigArgs', 'GatewayPortConfigArgsDict']]]] port_config: Property key is the port name or range (e.g. "ge-0/0/0-10")
-        :param pulumi.Input[str] router_id: auto assigned if not set
+        :param pulumi.Input[str] router_id: Auto assigned if not set
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayRoutingPoliciesArgs', 'GatewayRoutingPoliciesArgsDict']]]] routing_policies: Property key is the routing policy name
-        :param pulumi.Input[str] serial: device Serial
+        :param pulumi.Input[str] serial: Device Serial
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayTunnelConfigsArgs', 'GatewayTunnelConfigsArgsDict']]]] tunnel_configs: Property key is the tunnel name
         :param pulumi.Input[str] type: Device Type. enum: `gateway`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['GatewayVrfInstancesArgs', 'GatewayVrfInstancesArgsDict']]]] vrf_instances: Property key is the network name
-        :param pulumi.Input[float] x: x in pixel
-        :param pulumi.Input[float] y: y in pixel
+        :param pulumi.Input[float] x: X in pixel
+        :param pulumi.Input[float] y: Y in pixel
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1519,7 +1519,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def mac(self) -> pulumi.Output[str]:
         """
-        device MAC address
+        Device MAC address
         """
         return pulumi.get(self, "mac")
 
@@ -1532,7 +1532,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="mapId")
     def map_id(self) -> pulumi.Output[Optional[str]]:
         """
-        map where the device belongs to
+        Map where the device belongs to
         """
         return pulumi.get(self, "map_id")
 
@@ -1540,7 +1540,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def model(self) -> pulumi.Output[str]:
         """
-        device Model
+        Device Model
         """
         return pulumi.get(self, "model")
 
@@ -1573,7 +1573,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="oobIpConfig")
     def oob_ip_config(self) -> pulumi.Output['outputs.GatewayOobIpConfig']:
         """
-        out-of-band (vme/em0/fxp0) IP config
+        Out-of-band (vme/em0/fxp0) IP config
         """
         return pulumi.get(self, "oob_ip_config")
 
@@ -1607,7 +1607,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[Optional[str]]:
         """
-        auto assigned if not set
+        Auto assigned if not set
         """
         return pulumi.get(self, "router_id")
 
@@ -1623,7 +1623,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def serial(self) -> pulumi.Output[str]:
         """
-        device Serial
+        Device Serial
         """
         return pulumi.get(self, "serial")
 
@@ -1662,7 +1662,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+        Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
         """
         return pulumi.get(self, "vars")
 
@@ -1683,7 +1683,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def x(self) -> pulumi.Output[Optional[float]]:
         """
-        x in pixel
+        X in pixel
         """
         return pulumi.get(self, "x")
 
@@ -1691,7 +1691,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def y(self) -> pulumi.Output[Optional[float]]:
         """
-        y in pixel
+        Y in pixel
         """
         return pulumi.get(self, "y")
 

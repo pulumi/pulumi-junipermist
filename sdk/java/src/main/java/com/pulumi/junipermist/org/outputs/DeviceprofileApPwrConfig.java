@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileApPwrConfig {
     /**
-     * @return additional power to request during negotiating with PSE over PoE, in mW
+     * @return Additional power to request during negotiating with PSE over PoE, in mW
      * 
      */
     private @Nullable Integer base;
     /**
-     * @return whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+     * @return Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
      * 
      */
     private @Nullable Boolean preferUsbOverWifi;
 
     private DeviceprofileApPwrConfig() {}
     /**
-     * @return additional power to request during negotiating with PSE over PoE, in mW
+     * @return Additional power to request during negotiating with PSE over PoE, in mW
      * 
      */
     public Optional<Integer> base() {
         return Optional.ofNullable(this.base);
     }
     /**
-     * @return whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+     * @return Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
      * 
      */
     public Optional<Boolean> preferUsbOverWifi() {

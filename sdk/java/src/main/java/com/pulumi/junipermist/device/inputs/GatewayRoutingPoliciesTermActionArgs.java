@@ -32,14 +32,14 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
     }
 
     /**
-     * for SSR, hub decides how VRF routes are leaked on spoke
+     * For SSR, hub decides how VRF routes are leaked on spoke
      * 
      */
     @Import(name="addTargetVrfs")
     private @Nullable Output<List<String>> addTargetVrfs;
 
     /**
-     * @return for SSR, hub decides how VRF routes are leaked on spoke
+     * @return For SSR, hub decides how VRF routes are leaked on spoke
      * 
      */
     public Optional<Output<List<String>>> addTargetVrfs() {
@@ -62,14 +62,14 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
     }
 
     /**
-     * when used as export policy, optional
+     * When used as export policy, optional
      * 
      */
     @Import(name="communities")
     private @Nullable Output<List<String>> communities;
 
     /**
-     * @return when used as export policy, optional
+     * @return When used as export policy, optional
      * 
      */
     public Optional<Output<List<String>>> communities() {
@@ -77,14 +77,14 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
     }
 
     /**
-     * when used as export policy, optional. To exclude certain AS
+     * When used as export policy, optional. To exclude certain AS
      * 
      */
     @Import(name="excludeAsPaths")
     private @Nullable Output<List<String>> excludeAsPaths;
 
     /**
-     * @return when used as export policy, optional. To exclude certain AS
+     * @return When used as export policy, optional. To exclude certain AS
      * 
      */
     public Optional<Output<List<String>>> excludeAsPaths() {
@@ -99,14 +99,14 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
     }
 
     /**
-     * when used as export policy, optional
+     * When used as export policy, optional
      * 
      */
     @Import(name="exportCommunitites")
     private @Nullable Output<List<String>> exportCommunitites;
 
     /**
-     * @return when used as export policy, optional
+     * @return When used as export policy, optional
      * 
      */
     public Optional<Output<List<String>>> exportCommunitites() {
@@ -114,14 +114,14 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
     }
 
     /**
-     * optional, for an import policy, local_preference can be changed
+     * Optional, for an import policy, local_preference can be changed
      * 
      */
     @Import(name="localPreference")
     private @Nullable Output<String> localPreference;
 
     /**
-     * @return optional, for an import policy, local_preference can be changed
+     * @return Optional, for an import policy, local_preference can be changed
      * 
      */
     public Optional<Output<String>> localPreference() {
@@ -129,14 +129,14 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
     }
 
     /**
-     * when used as export policy, optional. By default, the local AS will be prepended, to change it
+     * When used as export policy, optional. By default, the local AS will be prepended, to change it
      * 
      */
     @Import(name="prependAsPaths")
     private @Nullable Output<List<String>> prependAsPaths;
 
     /**
-     * @return when used as export policy, optional. By default, the local AS will be prepended, to change it
+     * @return When used as export policy, optional. By default, the local AS will be prepended, to change it
      * 
      */
     public Optional<Output<List<String>>> prependAsPaths() {
@@ -199,7 +199,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param addTargetVrfs for SSR, hub decides how VRF routes are leaked on spoke
+         * @param addTargetVrfs For SSR, hub decides how VRF routes are leaked on spoke
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param addTargetVrfs for SSR, hub decides how VRF routes are leaked on spoke
+         * @param addTargetVrfs For SSR, hub decides how VRF routes are leaked on spoke
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param addTargetVrfs for SSR, hub decides how VRF routes are leaked on spoke
+         * @param addTargetVrfs For SSR, hub decides how VRF routes are leaked on spoke
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param communities when used as export policy, optional
+         * @param communities When used as export policy, optional
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param communities when used as export policy, optional
+         * @param communities When used as export policy, optional
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param communities when used as export policy, optional
+         * @param communities When used as export policy, optional
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param excludeAsPaths when used as export policy, optional. To exclude certain AS
+         * @param excludeAsPaths When used as export policy, optional. To exclude certain AS
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param excludeAsPaths when used as export policy, optional. To exclude certain AS
+         * @param excludeAsPaths When used as export policy, optional. To exclude certain AS
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param excludeAsPaths when used as export policy, optional. To exclude certain AS
+         * @param excludeAsPaths When used as export policy, optional. To exclude certain AS
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exportCommunitites when used as export policy, optional
+         * @param exportCommunitites When used as export policy, optional
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exportCommunitites when used as export policy, optional
+         * @param exportCommunitites When used as export policy, optional
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exportCommunitites when used as export policy, optional
+         * @param exportCommunitites When used as export policy, optional
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localPreference optional, for an import policy, local_preference can be changed
+         * @param localPreference Optional, for an import policy, local_preference can be changed
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param localPreference optional, for an import policy, local_preference can be changed
+         * @param localPreference Optional, for an import policy, local_preference can be changed
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param prependAsPaths when used as export policy, optional. By default, the local AS will be prepended, to change it
+         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param prependAsPaths when used as export policy, optional. By default, the local AS will be prepended, to change it
+         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class GatewayRoutingPoliciesTermActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param prependAsPaths when used as export policy, optional. By default, the local AS will be prepended, to change it
+         * @param prependAsPaths When used as export policy, optional. By default, the local AS will be prepended, to change it
          * 
          * @return builder
          * 

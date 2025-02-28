@@ -23,12 +23,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GatewaytemplatePortConfig {
     /**
-     * @return if `aggregated`==`true`. To disable LCP support for the AE interface
+     * @return If `aggregated`==`true`. To disable LCP support for the AE interface
      * 
      */
     private @Nullable Boolean aeDisableLacp;
     /**
-     * @return if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * @return If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
      * 
      */
     private @Nullable String aeIdx;
@@ -39,7 +39,7 @@ public final class GatewaytemplatePortConfig {
     private @Nullable Boolean aeLacpForceUp;
     private @Nullable Boolean aggregated;
     /**
-     * @return if want to generate port up/down alarm, set it to true
+     * @return To generate port up/down alarm, set it to true
      * 
      */
     private @Nullable Boolean critical;
@@ -50,7 +50,7 @@ public final class GatewaytemplatePortConfig {
     private @Nullable String description;
     private @Nullable Boolean disableAutoneg;
     /**
-     * @return port admin up (true) / down (false)
+     * @return Port admin up (true) / down (false)
      * 
      */
     private @Nullable Boolean disabled;
@@ -60,12 +60,12 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable String dslType;
     /**
-     * @return if `wan_type`==`dsl`, 16 bit int
+     * @return If `wan_type`==`dsl`, 16 bit int
      * 
      */
     private @Nullable Integer dslVci;
     /**
-     * @return if `wan_type`==`dsl`, 8 bit int
+     * @return If `wan_type`==`dsl`, 8 bit int
      * 
      */
     private @Nullable Integer dslVpi;
@@ -80,7 +80,7 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable GatewaytemplatePortConfigIpConfig ipConfig;
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     private @Nullable String lteApn;
@@ -91,18 +91,18 @@ public final class GatewaytemplatePortConfig {
     private @Nullable String lteAuth;
     private @Nullable Boolean lteBackup;
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     private @Nullable String ltePassword;
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     private @Nullable String lteUsername;
     private @Nullable Integer mtu;
     /**
-     * @return name that we&#39;ll use to derive config
+     * @return Name that we&#39;ll use to derive config
      * 
      */
     private @Nullable String name;
@@ -112,33 +112,33 @@ public final class GatewaytemplatePortConfig {
      */
     private @Nullable List<String> networks;
     /**
-     * @return for Q-in-Q
+     * @return For Q-in-Q
      * 
      */
     private @Nullable Integer outerVlanId;
     private @Nullable Boolean poeDisabled;
     /**
-     * @return Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+     * @return Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
     private @Nullable String portNetwork;
     /**
-     * @return whether to preserve dscp when sending traffic over VPN (SSR-only)
+     * @return Whether to preserve dscp when sending traffic over VPN (SSR-only)
      * 
      */
     private @Nullable Boolean preserveDscp;
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     private @Nullable Boolean redundant;
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     private @Nullable Integer rethIdx;
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     private @Nullable String rethNode;
@@ -149,12 +149,12 @@ public final class GatewaytemplatePortConfig {
     private @Nullable List<String> rethNodes;
     private @Nullable String speed;
     /**
-     * @return when SSR is running as VM, this is required on certain hosting platforms
+     * @return When SSR is running as VM, this is required on certain hosting platforms
      * 
      */
     private @Nullable Boolean ssrNoVirtualMac;
     /**
-     * @return for SSR only
+     * @return For SSR only
      * 
      */
     private @Nullable String svrPortRange;
@@ -208,14 +208,14 @@ public final class GatewaytemplatePortConfig {
 
     private GatewaytemplatePortConfig() {}
     /**
-     * @return if `aggregated`==`true`. To disable LCP support for the AE interface
+     * @return If `aggregated`==`true`. To disable LCP support for the AE interface
      * 
      */
     public Optional<Boolean> aeDisableLacp() {
         return Optional.ofNullable(this.aeDisableLacp);
     }
     /**
-     * @return if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+     * @return If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
      * 
      */
     public Optional<String> aeIdx() {
@@ -232,7 +232,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.aggregated);
     }
     /**
-     * @return if want to generate port up/down alarm, set it to true
+     * @return To generate port up/down alarm, set it to true
      * 
      */
     public Optional<Boolean> critical() {
@@ -249,7 +249,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.disableAutoneg);
     }
     /**
-     * @return port admin up (true) / down (false)
+     * @return Port admin up (true) / down (false)
      * 
      */
     public Optional<Boolean> disabled() {
@@ -263,14 +263,14 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.dslType);
     }
     /**
-     * @return if `wan_type`==`dsl`, 16 bit int
+     * @return If `wan_type`==`dsl`, 16 bit int
      * 
      */
     public Optional<Integer> dslVci() {
         return Optional.ofNullable(this.dslVci);
     }
     /**
-     * @return if `wan_type`==`dsl`, 8 bit int
+     * @return If `wan_type`==`dsl`, 8 bit int
      * 
      */
     public Optional<Integer> dslVpi() {
@@ -291,7 +291,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.ipConfig);
     }
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     public Optional<String> lteApn() {
@@ -308,14 +308,14 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.lteBackup);
     }
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     public Optional<String> ltePassword() {
         return Optional.ofNullable(this.ltePassword);
     }
     /**
-     * @return if `wan_type`==`lte`
+     * @return If `wan_type`==`lte`
      * 
      */
     public Optional<String> lteUsername() {
@@ -325,7 +325,7 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return name that we&#39;ll use to derive config
+     * @return Name that we&#39;ll use to derive config
      * 
      */
     public Optional<String> name() {
@@ -339,7 +339,7 @@ public final class GatewaytemplatePortConfig {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return for Q-in-Q
+     * @return For Q-in-Q
      * 
      */
     public Optional<Integer> outerVlanId() {
@@ -349,35 +349,35 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.poeDisabled);
     }
     /**
-     * @return Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+     * @return Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
      * 
      */
     public Optional<String> portNetwork() {
         return Optional.ofNullable(this.portNetwork);
     }
     /**
-     * @return whether to preserve dscp when sending traffic over VPN (SSR-only)
+     * @return Whether to preserve dscp when sending traffic over VPN (SSR-only)
      * 
      */
     public Optional<Boolean> preserveDscp() {
         return Optional.ofNullable(this.preserveDscp);
     }
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     public Optional<Boolean> redundant() {
         return Optional.ofNullable(this.redundant);
     }
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     public Optional<Integer> rethIdx() {
         return Optional.ofNullable(this.rethIdx);
     }
     /**
-     * @return if HA mode
+     * @return If HA mode
      * 
      */
     public Optional<String> rethNode() {
@@ -394,14 +394,14 @@ public final class GatewaytemplatePortConfig {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return when SSR is running as VM, this is required on certain hosting platforms
+     * @return When SSR is running as VM, this is required on certain hosting platforms
      * 
      */
     public Optional<Boolean> ssrNoVirtualMac() {
         return Optional.ofNullable(this.ssrNoVirtualMac);
     }
     /**
-     * @return for SSR only
+     * @return For SSR only
      * 
      */
     public Optional<String> svrPortRange() {

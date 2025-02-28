@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputList<string>? _emailNotifiers;
 
         /// <summary>
-        /// list of email addresses to send email notifications when the alert threshold is reached
+        /// List of email addresses to send email notifications when the alert threshold is reached
         /// </summary>
         public InputList<string> EmailNotifiers
         {
@@ -25,13 +25,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// indicate whether zone occupancy alert is enabled for the site
+        /// Indicate whether zone occupancy alert is enabled for the site
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
+        /// Sending zone-occupancy-alert webhook message only if a zone stays non-compliant (i.e. actual occupancy &gt; occupancy_limit) for a minimum duration specified in the threshold, in minutes
         /// </summary>
         [Input("threshold")]
         public Input<int>? Threshold { get; set; }

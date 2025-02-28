@@ -183,14 +183,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     @Import(name="ntpServers")
     private @Nullable Output<List<String>> ntpServers;
 
     /**
-     * @return list of NTP servers specific to this device. By default, those in Site Settings will be used
+     * @return List of NTP servers specific to this device. By default, those in Site Settings will be used
      * 
      */
     public Optional<Output<List<String>>> ntpServers() {
@@ -198,14 +198,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * out-of-band (vme/em0/fxp0) IP config
+     * Out-of-band (vme/em0/fxp0) IP config
      * 
      */
     @Import(name="oobIpConfig")
     private @Nullable Output<GatewaytemplateOobIpConfigArgs> oobIpConfig;
 
     /**
-     * @return out-of-band (vme/em0/fxp0) IP config
+     * @return Out-of-band (vme/em0/fxp0) IP config
      * 
      */
     public Optional<Output<GatewaytemplateOobIpConfigArgs>> oobIpConfig() {
@@ -252,14 +252,14 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * auto assigned if not set
+     * Auto assigned if not set
      * 
      */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
-     * @return auto assigned if not set
+     * @return Auto assigned if not set
      * 
      */
     public Optional<Output<String>> routerId() {
@@ -632,7 +632,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -653,7 +653,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ntpServers list of NTP servers specific to this device. By default, those in Site Settings will be used
+         * @param ntpServers List of NTP servers specific to this device. By default, those in Site Settings will be used
          * 
          * @return builder
          * 
@@ -663,7 +663,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oobIpConfig out-of-band (vme/em0/fxp0) IP config
+         * @param oobIpConfig Out-of-band (vme/em0/fxp0) IP config
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oobIpConfig out-of-band (vme/em0/fxp0) IP config
+         * @param oobIpConfig Out-of-band (vme/em0/fxp0) IP config
          * 
          * @return builder
          * 
@@ -737,7 +737,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerId auto assigned if not set
+         * @param routerId Auto assigned if not set
          * 
          * @return builder
          * 
@@ -748,7 +748,7 @@ public final class GatewaytemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param routerId auto assigned if not set
+         * @param routerId Auto assigned if not set
          * 
          * @return builder
          * 

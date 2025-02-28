@@ -56,14 +56,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+     * Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
      * 
      */
     @Import(name="proxyHosts")
     private @Nullable Output<List<String>> proxyHosts;
 
     /**
-     * @return default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+     * @return Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
      * 
      */
     public Optional<Output<List<String>>> proxyHosts() {
@@ -71,14 +71,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
      * 
      */
     @Import(name="serverName")
     private @Nullable Output<String> serverName;
 
     /**
-     * @return name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+     * @return Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
      * 
      */
     public Optional<Output<String>> serverName() {
@@ -86,14 +86,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of Radsec Servers. Only if not Mist Edge.
+     * List of RadSec Servers. Only if not Mist Edge.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<WlanRadsecServerArgs>> servers;
 
     /**
-     * @return List of Radsec Servers. Only if not Mist Edge.
+     * @return List of RadSec Servers. Only if not Mist Edge.
      * 
      */
     public Optional<Output<List<WlanRadsecServerArgs>>> servers() {
@@ -101,14 +101,14 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * use mxedge(s) as radsecproxy
+     * use mxedge(s) as RadSec Proxy
      * 
      */
     @Import(name="useMxedge")
     private @Nullable Output<Boolean> useMxedge;
 
     /**
-     * @return use mxedge(s) as radsecproxy
+     * @return use mxedge(s) as RadSec Proxy
      * 
      */
     public Optional<Output<Boolean>> useMxedge() {
@@ -221,7 +221,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+         * @param proxyHosts Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+         * @param proxyHosts Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyHosts default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+         * @param proxyHosts Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverName name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         * @param serverName Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverName name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+         * @param serverName Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of Radsec Servers. Only if not Mist Edge.
+         * @param servers List of RadSec Servers. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of Radsec Servers. Only if not Mist Edge.
+         * @param servers List of RadSec Servers. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of Radsec Servers. Only if not Mist Edge.
+         * @param servers List of RadSec Servers. Only if not Mist Edge.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMxedge use mxedge(s) as radsecproxy
+         * @param useMxedge use mxedge(s) as RadSec Proxy
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class WlanRadsecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param useMxedge use mxedge(s) as radsecproxy
+         * @param useMxedge use mxedge(s) as RadSec Proxy
          * 
          * @return builder
          * 

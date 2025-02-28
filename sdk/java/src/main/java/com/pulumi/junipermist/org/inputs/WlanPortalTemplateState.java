@@ -24,14 +24,14 @@ public final class WlanPortalTemplateState extends com.pulumi.resources.Resource
     }
 
     /**
-     * portal template wlan settings
+     * Portal template wlan settings
      * 
      */
     @Import(name="portalTemplate")
     private @Nullable Output<WlanPortalTemplatePortalTemplateArgs> portalTemplate;
 
     /**
-     * @return portal template wlan settings
+     * @return Portal template wlan settings
      * 
      */
     public Optional<Output<WlanPortalTemplatePortalTemplateArgs>> portalTemplate() {
@@ -89,7 +89,7 @@ public final class WlanPortalTemplateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param portalTemplate portal template wlan settings
+         * @param portalTemplate Portal template wlan settings
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class WlanPortalTemplateState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param portalTemplate portal template wlan settings
+         * @param portalTemplate Portal template wlan settings
          * 
          * @return builder
          * 

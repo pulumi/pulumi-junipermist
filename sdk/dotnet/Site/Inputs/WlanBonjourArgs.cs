@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        /// Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         private InputMap<Inputs.WlanBonjourServicesArgs>? _services;
 
         /// <summary>
-        /// what services are allowed. 
+        /// What services are allowed. 
         /// Property key is the service name
         /// </summary>
         public InputMap<Inputs.WlanBonjourServicesArgs> Services

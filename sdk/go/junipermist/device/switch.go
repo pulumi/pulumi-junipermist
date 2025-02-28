@@ -38,7 +38,7 @@ type Switch struct {
 	DeviceId             pulumi.StringOutput         `pulumi:"deviceId"`
 	DhcpSnooping         SwitchDhcpSnoopingPtrOutput `pulumi:"dhcpSnooping"`
 	DhcpdConfig          SwitchDhcpdConfigPtrOutput  `pulumi:"dhcpdConfig"`
-	// for a claimed switch, we control the configs by default. This option (disables the behavior)
+	// For a claimed switch, we control the configs by default. This option (disables the behavior)
 	DisableAutoConfig pulumi.BoolOutput `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayOutput `pulumi:"dnsServers"`
@@ -55,21 +55,21 @@ type Switch struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapOutput `pulumi:"localPortConfig"`
-	// device MAC address
+	// Device MAC address
 	Mac pulumi.StringOutput `pulumi:"mac"`
-	// for an adopted switch, we don’t overwrite their existing configs automatically
+	// For an adopted switch, we don’t overwrite their existing configs automatically
 	Managed pulumi.BoolOutput `pulumi:"managed"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac SwitchMistNacPtrOutput `pulumi:"mistNac"`
-	// device Model
+	// Device Model
 	Model pulumi.StringOutput `pulumi:"model"`
 	Name  pulumi.StringOutput `pulumi:"name"`
 	// Property key is network name
 	Networks SwitchNetworksMapOutput `pulumi:"networks"`
 	Notes    pulumi.StringPtrOutput  `pulumi:"notes"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
@@ -91,9 +91,9 @@ type Switch struct {
 	RadiusConfig SwitchRadiusConfigPtrOutput `pulumi:"radiusConfig"`
 	RemoteSyslog SwitchRemoteSyslogPtrOutput `pulumi:"remoteSyslog"`
 	Role         pulumi.StringPtrOutput      `pulumi:"role"`
-	// used for OSPF / BGP / EVPN
+	// Used for OSPF / BGP / EVPN
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
-	// device Serial
+	// Device Serial
 	Serial     pulumi.StringOutput       `pulumi:"serial"`
 	SiteId     pulumi.StringOutput       `pulumi:"siteId"`
 	SnmpConfig SwitchSnmpConfigPtrOutput `pulumi:"snmpConfig"`
@@ -102,20 +102,20 @@ type Switch struct {
 	SwitchMgmt SwitchSwitchMgmtPtrOutput `pulumi:"switchMgmt"`
 	// Device Type. enum: `switch`
 	Type pulumi.StringOutput `pulumi:"type"`
-	// whether to use it for snmp / syslog / tacplus / radius
+	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp pulumi.BoolOutput `pulumi:"useRouterIdAsSourceIp"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
-	// required for preprovisioned Virtual Chassis
+	// Required for preprovisioned Virtual Chassis
 	VirtualChassis SwitchVirtualChassisPtrOutput `pulumi:"virtualChassis"`
 	VrfConfig      SwitchVrfConfigPtrOutput      `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances SwitchVrfInstancesMapOutput `pulumi:"vrfInstances"`
 	// Junos VRRP config
 	VrrpConfig SwitchVrrpConfigPtrOutput `pulumi:"vrrpConfig"`
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrOutput `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrOutput `pulumi:"y"`
 }
 
@@ -163,7 +163,7 @@ type switchState struct {
 	DeviceId             *string             `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
-	// for a claimed switch, we control the configs by default. This option (disables the behavior)
+	// For a claimed switch, we control the configs by default. This option (disables the behavior)
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -180,21 +180,21 @@ type switchState struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
-	// device MAC address
+	// Device MAC address
 	Mac *string `pulumi:"mac"`
-	// for an adopted switch, we don’t overwrite their existing configs automatically
+	// For an adopted switch, we don’t overwrite their existing configs automatically
 	Managed *bool `pulumi:"managed"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac *SwitchMistNac `pulumi:"mistNac"`
-	// device Model
+	// Device Model
 	Model *string `pulumi:"model"`
 	Name  *string `pulumi:"name"`
 	// Property key is network name
 	Networks map[string]SwitchNetworks `pulumi:"networks"`
 	Notes    *string                   `pulumi:"notes"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
@@ -216,9 +216,9 @@ type switchState struct {
 	RadiusConfig *SwitchRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *SwitchRemoteSyslog `pulumi:"remoteSyslog"`
 	Role         *string             `pulumi:"role"`
-	// used for OSPF / BGP / EVPN
+	// Used for OSPF / BGP / EVPN
 	RouterId *string `pulumi:"routerId"`
-	// device Serial
+	// Device Serial
 	Serial     *string           `pulumi:"serial"`
 	SiteId     *string           `pulumi:"siteId"`
 	SnmpConfig *SwitchSnmpConfig `pulumi:"snmpConfig"`
@@ -227,20 +227,20 @@ type switchState struct {
 	SwitchMgmt *SwitchSwitchMgmt `pulumi:"switchMgmt"`
 	// Device Type. enum: `switch`
 	Type *string `pulumi:"type"`
-	// whether to use it for snmp / syslog / tacplus / radius
+	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp *bool `pulumi:"useRouterIdAsSourceIp"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
-	// required for preprovisioned Virtual Chassis
+	// Required for preprovisioned Virtual Chassis
 	VirtualChassis *SwitchVirtualChassis `pulumi:"virtualChassis"`
 	VrfConfig      *SwitchVrfConfig      `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]SwitchVrfInstances `pulumi:"vrfInstances"`
 	// Junos VRRP config
 	VrrpConfig *SwitchVrrpConfig `pulumi:"vrrpConfig"`
-	// x in pixel
+	// X in pixel
 	X *float64 `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y *float64 `pulumi:"y"`
 }
 
@@ -253,7 +253,7 @@ type SwitchState struct {
 	DeviceId             pulumi.StringPtrInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
-	// for a claimed switch, we control the configs by default. This option (disables the behavior)
+	// For a claimed switch, we control the configs by default. This option (disables the behavior)
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -270,21 +270,21 @@ type SwitchState struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapInput
-	// device MAC address
+	// Device MAC address
 	Mac pulumi.StringPtrInput
-	// for an adopted switch, we don’t overwrite their existing configs automatically
+	// For an adopted switch, we don’t overwrite their existing configs automatically
 	Managed pulumi.BoolPtrInput
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac SwitchMistNacPtrInput
-	// device Model
+	// Device Model
 	Model pulumi.StringPtrInput
 	Name  pulumi.StringPtrInput
 	// Property key is network name
 	Networks SwitchNetworksMapInput
 	Notes    pulumi.StringPtrInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
@@ -306,9 +306,9 @@ type SwitchState struct {
 	RadiusConfig SwitchRadiusConfigPtrInput
 	RemoteSyslog SwitchRemoteSyslogPtrInput
 	Role         pulumi.StringPtrInput
-	// used for OSPF / BGP / EVPN
+	// Used for OSPF / BGP / EVPN
 	RouterId pulumi.StringPtrInput
-	// device Serial
+	// Device Serial
 	Serial     pulumi.StringPtrInput
 	SiteId     pulumi.StringPtrInput
 	SnmpConfig SwitchSnmpConfigPtrInput
@@ -317,20 +317,20 @@ type SwitchState struct {
 	SwitchMgmt SwitchSwitchMgmtPtrInput
 	// Device Type. enum: `switch`
 	Type pulumi.StringPtrInput
-	// whether to use it for snmp / syslog / tacplus / radius
+	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp pulumi.BoolPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
-	// required for preprovisioned Virtual Chassis
+	// Required for preprovisioned Virtual Chassis
 	VirtualChassis SwitchVirtualChassisPtrInput
 	VrfConfig      SwitchVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances SwitchVrfInstancesMapInput
 	// Junos VRRP config
 	VrrpConfig SwitchVrrpConfigPtrInput
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrInput
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrInput
 }
 
@@ -347,7 +347,7 @@ type switchArgs struct {
 	DeviceId             string              `pulumi:"deviceId"`
 	DhcpSnooping         *SwitchDhcpSnooping `pulumi:"dhcpSnooping"`
 	DhcpdConfig          *SwitchDhcpdConfig  `pulumi:"dhcpdConfig"`
-	// for a claimed switch, we control the configs by default. This option (disables the behavior)
+	// For a claimed switch, we control the configs by default. This option (disables the behavior)
 	DisableAutoConfig *bool `pulumi:"disableAutoConfig"`
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers []string `pulumi:"dnsServers"`
@@ -361,17 +361,17 @@ type switchArgs struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig map[string]SwitchLocalPortConfig `pulumi:"localPortConfig"`
-	// for an adopted switch, we don’t overwrite their existing configs automatically
+	// For an adopted switch, we don’t overwrite their existing configs automatically
 	Managed *bool `pulumi:"managed"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac *SwitchMistNac `pulumi:"mistNac"`
 	Name    *string        `pulumi:"name"`
 	// Property key is network name
 	Networks map[string]SwitchNetworks `pulumi:"networks"`
 	Notes    *string                   `pulumi:"notes"`
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers []string `pulumi:"ntpServers"`
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
@@ -392,27 +392,27 @@ type switchArgs struct {
 	RadiusConfig *SwitchRadiusConfig `pulumi:"radiusConfig"`
 	RemoteSyslog *SwitchRemoteSyslog `pulumi:"remoteSyslog"`
 	Role         *string             `pulumi:"role"`
-	// used for OSPF / BGP / EVPN
+	// Used for OSPF / BGP / EVPN
 	RouterId   *string           `pulumi:"routerId"`
 	SiteId     string            `pulumi:"siteId"`
 	SnmpConfig *SwitchSnmpConfig `pulumi:"snmpConfig"`
 	StpConfig  *SwitchStpConfig  `pulumi:"stpConfig"`
 	// Switch settings
 	SwitchMgmt *SwitchSwitchMgmt `pulumi:"switchMgmt"`
-	// whether to use it for snmp / syslog / tacplus / radius
+	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp *bool `pulumi:"useRouterIdAsSourceIp"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
-	// required for preprovisioned Virtual Chassis
+	// Required for preprovisioned Virtual Chassis
 	VirtualChassis *SwitchVirtualChassis `pulumi:"virtualChassis"`
 	VrfConfig      *SwitchVrfConfig      `pulumi:"vrfConfig"`
 	// Property key is the network name
 	VrfInstances map[string]SwitchVrfInstances `pulumi:"vrfInstances"`
 	// Junos VRRP config
 	VrrpConfig *SwitchVrrpConfig `pulumi:"vrrpConfig"`
-	// x in pixel
+	// X in pixel
 	X *float64 `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y *float64 `pulumi:"y"`
 }
 
@@ -426,7 +426,7 @@ type SwitchArgs struct {
 	DeviceId             pulumi.StringInput
 	DhcpSnooping         SwitchDhcpSnoopingPtrInput
 	DhcpdConfig          SwitchDhcpdConfigPtrInput
-	// for a claimed switch, we control the configs by default. This option (disables the behavior)
+	// For a claimed switch, we control the configs by default. This option (disables the behavior)
 	DisableAutoConfig pulumi.BoolPtrInput
 	// Global dns settings. To keep compatibility, dns settings in `ipConfig` and `oobIpConfig` will overwrite this setting
 	DnsServers pulumi.StringArrayInput
@@ -440,17 +440,17 @@ type SwitchArgs struct {
 	// Local port override, overriding the port configuration from `portConfig`. Property key is the port name or range (e.g.
 	// "ge-0/0/0-10")
 	LocalPortConfig SwitchLocalPortConfigMapInput
-	// for an adopted switch, we don’t overwrite their existing configs automatically
+	// For an adopted switch, we don’t overwrite their existing configs automatically
 	Managed pulumi.BoolPtrInput
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
-	// enable mistNac to use radsec
+	// Enable mistNac to use RadSec
 	MistNac SwitchMistNacPtrInput
 	Name    pulumi.StringPtrInput
 	// Property key is network name
 	Networks SwitchNetworksMapInput
 	Notes    pulumi.StringPtrInput
-	// list of NTP servers specific to this device. By default, those in Site Settings will be used
+	// List of NTP servers specific to this device. By default, those in Site Settings will be used
 	NtpServers pulumi.StringArrayInput
 	// Switch OOB IP Config: - If HA configuration: key parameter will be nodeX (eg: node1) - If there are 2 routing engines,
 	// re1 mgmt IP has to be set separately (if desired): key parameter = `re1`
@@ -471,27 +471,27 @@ type SwitchArgs struct {
 	RadiusConfig SwitchRadiusConfigPtrInput
 	RemoteSyslog SwitchRemoteSyslogPtrInput
 	Role         pulumi.StringPtrInput
-	// used for OSPF / BGP / EVPN
+	// Used for OSPF / BGP / EVPN
 	RouterId   pulumi.StringPtrInput
 	SiteId     pulumi.StringInput
 	SnmpConfig SwitchSnmpConfigPtrInput
 	StpConfig  SwitchStpConfigPtrInput
 	// Switch settings
 	SwitchMgmt SwitchSwitchMgmtPtrInput
-	// whether to use it for snmp / syslog / tacplus / radius
+	// Whether to use it for snmp / syslog / tacplus / radius
 	UseRouterIdAsSourceIp pulumi.BoolPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
-	// required for preprovisioned Virtual Chassis
+	// Required for preprovisioned Virtual Chassis
 	VirtualChassis SwitchVirtualChassisPtrInput
 	VrfConfig      SwitchVrfConfigPtrInput
 	// Property key is the network name
 	VrfInstances SwitchVrfInstancesMapInput
 	// Junos VRRP config
 	VrrpConfig SwitchVrrpConfigPtrInput
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrInput
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrInput
 }
 
@@ -608,7 +608,7 @@ func (o SwitchOutput) DhcpdConfig() SwitchDhcpdConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchDhcpdConfigPtrOutput { return v.DhcpdConfig }).(SwitchDhcpdConfigPtrOutput)
 }
 
-// for a claimed switch, we control the configs by default. This option (disables the behavior)
+// For a claimed switch, we control the configs by default. This option (disables the behavior)
 func (o SwitchOutput) DisableAutoConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.DisableAutoConfig }).(pulumi.BoolOutput)
 }
@@ -655,27 +655,27 @@ func (o SwitchOutput) LocalPortConfig() SwitchLocalPortConfigMapOutput {
 	return o.ApplyT(func(v *Switch) SwitchLocalPortConfigMapOutput { return v.LocalPortConfig }).(SwitchLocalPortConfigMapOutput)
 }
 
-// device MAC address
+// Device MAC address
 func (o SwitchOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-// for an adopted switch, we don’t overwrite their existing configs automatically
+// For an adopted switch, we don’t overwrite their existing configs automatically
 func (o SwitchOutput) Managed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.Managed }).(pulumi.BoolOutput)
 }
 
-// map where the device belongs to
+// Map where the device belongs to
 func (o SwitchOutput) MapId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.MapId }).(pulumi.StringPtrOutput)
 }
 
-// enable mistNac to use radsec
+// Enable mistNac to use RadSec
 func (o SwitchOutput) MistNac() SwitchMistNacPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchMistNacPtrOutput { return v.MistNac }).(SwitchMistNacPtrOutput)
 }
 
-// device Model
+// Device Model
 func (o SwitchOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
@@ -693,7 +693,7 @@ func (o SwitchOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// list of NTP servers specific to this device. By default, those in Site Settings will be used
+// List of NTP servers specific to this device. By default, those in Site Settings will be used
 func (o SwitchOutput) NtpServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringArrayOutput { return v.NtpServers }).(pulumi.StringArrayOutput)
 }
@@ -748,12 +748,12 @@ func (o SwitchOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringPtrOutput { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// used for OSPF / BGP / EVPN
+// Used for OSPF / BGP / EVPN
 func (o SwitchOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// device Serial
+// Device Serial
 func (o SwitchOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Serial }).(pulumi.StringOutput)
 }
@@ -780,17 +780,17 @@ func (o SwitchOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// whether to use it for snmp / syslog / tacplus / radius
+// Whether to use it for snmp / syslog / tacplus / radius
 func (o SwitchOutput) UseRouterIdAsSourceIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolOutput { return v.UseRouterIdAsSourceIp }).(pulumi.BoolOutput)
 }
 
-// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o SwitchOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }
 
-// required for preprovisioned Virtual Chassis
+// Required for preprovisioned Virtual Chassis
 func (o SwitchOutput) VirtualChassis() SwitchVirtualChassisPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchVirtualChassisPtrOutput { return v.VirtualChassis }).(SwitchVirtualChassisPtrOutput)
 }
@@ -809,12 +809,12 @@ func (o SwitchOutput) VrrpConfig() SwitchVrrpConfigPtrOutput {
 	return o.ApplyT(func(v *Switch) SwitchVrrpConfigPtrOutput { return v.VrrpConfig }).(SwitchVrrpConfigPtrOutput)
 }
 
-// x in pixel
+// X in pixel
 func (o SwitchOutput) X() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.Float64PtrOutput { return v.X }).(pulumi.Float64PtrOutput)
 }
 
-// y in pixel
+// Y in pixel
 func (o SwitchOutput) Y() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.Float64PtrOutput { return v.Y }).(pulumi.Float64PtrOutput)
 }

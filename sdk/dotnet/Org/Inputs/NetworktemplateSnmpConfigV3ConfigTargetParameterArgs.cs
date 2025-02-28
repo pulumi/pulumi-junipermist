@@ -15,14 +15,14 @@ namespace Pulumi.JuniperMist.Org.Inputs
         /// <summary>
         /// enum: `v1`, `v2c`, `v3`
         /// </summary>
-        [Input("messageProcessingModel")]
-        public Input<string>? MessageProcessingModel { get; set; }
+        [Input("messageProcessingModel", required: true)]
+        public Input<string> MessageProcessingModel { get; set; } = null!;
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// refer to profile-name in notify_filter
+        /// Refer to profile-name in notify_filter
         /// </summary>
         [Input("notifyFilter")]
         public Input<string>? NotifyFilter { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<string>? SecurityModel { get; set; }
 
         /// <summary>
-        /// refer to security_name in usm
+        /// Refer to security_name in usm
         /// </summary>
         [Input("securityName")]
         public Input<string>? SecurityName { get; set; }

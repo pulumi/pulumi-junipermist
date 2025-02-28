@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<int>? AeIdx { get; set; }
 
         /// <summary>
-        /// to use fast timeout
+        /// To use fast timeout
         /// </summary>
         [Input("aeLacpSlow")]
         public Input<bool>? AeLacpSlow { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Aggregated { get; set; }
 
         /// <summary>
-        /// if want to generate port up/down alarm
+        /// To generate port up/down alarm
         /// </summary>
         [Input("critical")]
         public Input<bool>? Critical { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// if `speed` and `duplex` are specified, whether to disable autonegotiation
+        /// If `speed` and `duplex` are specified, whether to disable autonegotiation
         /// </summary>
         [Input("disableAutoneg")]
         public Input<bool>? DisableAutoneg { get; set; }
@@ -64,13 +64,13 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<bool>? Esilag { get; set; }
 
         /// <summary>
-        /// media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        /// Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// prevent helpdesk to override the port config
+        /// Prevent helpdesk to override the port config
         /// </summary>
         [Input("noLocalOverwrite")]
         public Input<bool>? NoLocalOverwrite { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         public Input<string>? Speed { get; set; }
 
         /// <summary>
-        /// port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        /// Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;

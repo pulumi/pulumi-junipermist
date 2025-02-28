@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetWlansSiteWlanBonjourServices {
     /**
-     * @return whether to prevent wireless clients to discover bonjour devices on the same WLAN
+     * @return Whether to prevent wireless clients to discover bonjour devices on the same WLAN
      * 
      */
     private Boolean disableLocal;
     /**
-     * @return optional, if the service is further restricted for certain RADIUS groups
+     * @return Optional, if the service is further restricted for certain RADIUS groups
      * 
      */
     private List<String> radiusGroups;
@@ -30,14 +30,14 @@ public final class GetWlansSiteWlanBonjourServices {
 
     private GetWlansSiteWlanBonjourServices() {}
     /**
-     * @return whether to prevent wireless clients to discover bonjour devices on the same WLAN
+     * @return Whether to prevent wireless clients to discover bonjour devices on the same WLAN
      * 
      */
     public Boolean disableLocal() {
         return this.disableLocal;
     }
     /**
-     * @return optional, if the service is further restricted for certain RADIUS groups
+     * @return Optional, if the service is further restricted for certain RADIUS groups
      * 
      */
     public List<String> radiusGroups() {

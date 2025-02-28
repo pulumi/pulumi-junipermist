@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingVna {
     /**
-     * @return enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+     * @return Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
      * 
      */
     private @Nullable Boolean enabled;
 
     private SettingVna() {}
     /**
-     * @return enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
+     * @return Enable Virtual Network Assistant (using SUB-VNA license). This applied to AP / Switch / Gateway
      * 
      */
     public Optional<Boolean> enabled() {

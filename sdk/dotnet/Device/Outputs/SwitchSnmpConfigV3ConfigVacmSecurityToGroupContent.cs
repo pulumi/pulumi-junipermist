@@ -14,7 +14,7 @@ namespace Pulumi.JuniperMist.Device.Outputs
     public sealed class SwitchSnmpConfigV3ConfigVacmSecurityToGroupContent
     {
         /// <summary>
-        /// refer to group_name under access
+        /// Refer to group_name under access
         /// </summary>
         public readonly string? Group;
         public readonly string? SecurityName;

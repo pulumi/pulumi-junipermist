@@ -20,7 +20,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     public static final NetworktemplateAclTagsArgs Empty = new NetworktemplateAclTagsArgs();
 
     /**
-     * required if
+     * Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
      *   - `type`==`gbp_resource`
      *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -30,7 +30,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<Integer> gbpTag;
 
     /**
-     * @return required if
+     * @return Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
      *   - `type`==`gbp_resource`
      *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -41,7 +41,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * required if
+     * Required if
      * - `type`==`mac`
      * - `type`==`static_gbp` if from matching mac
      * 
@@ -50,7 +50,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> macs;
 
     /**
-     * @return required if
+     * @return Required if
      * - `type`==`mac`
      * - `type`==`static_gbp` if from matching mac
      * 
@@ -60,24 +60,24 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * if:
+     * If:
      *   * `type`==`mac` (optional. default is `any`)
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)&#39;
+     *   * `type`==`static_gbp` if from matching network (vlan)
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return if:
+     * @return If:
      *   * `type`==`mac` (optional. default is `any`)
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)&#39;
+     *   * `type`==`static_gbp` if from matching network (vlan)
      * 
      */
     public Optional<Output<String>> network() {
@@ -85,7 +85,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * required if:
+     * Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
      *     if from matching radius_group
@@ -95,7 +95,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> radiusGroup;
 
     /**
-     * @return required if:
+     * @return Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
      *     if from matching radius_group
@@ -106,14 +106,14 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     @Import(name="specs")
     private @Nullable Output<List<NetworktemplateAclTagsSpecArgs>> specs;
 
     /**
-     * @return if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     public Optional<Output<List<NetworktemplateAclTagsSpecArgs>>> specs() {
@@ -121,7 +121,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * if
+     * If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
      * - `type`==`static_gbp` if from matching subnet
@@ -131,7 +131,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
     private @Nullable Output<List<String>> subnets;
 
     /**
-     * @return if
+     * @return If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
      * - `type`==`static_gbp` if from matching subnet
@@ -205,7 +205,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gbpTag required if
+         * @param gbpTag Required if
          *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbp_resource`
          *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -219,7 +219,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gbpTag required if
+         * @param gbpTag Required if
          *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
          *   - `type`==`gbp_resource`
          *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -232,7 +232,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param macs required if
+         * @param macs Required if
          * - `type`==`mac`
          * - `type`==`static_gbp` if from matching mac
          * 
@@ -245,7 +245,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param macs required if
+         * @param macs Required if
          * - `type`==`mac`
          * - `type`==`static_gbp` if from matching mac
          * 
@@ -257,7 +257,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param macs required if
+         * @param macs Required if
          * - `type`==`mac`
          * - `type`==`static_gbp` if from matching mac
          * 
@@ -269,12 +269,12 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param network if:
+         * @param network If:
          *   * `type`==`mac` (optional. default is `any`)
          *   * `type`==`subnet` (optional. default is `any`)
          *   * `type`==`network`
          *   * `type`==`resource` (optional. default is `any`)
-         *   * `type`==`static_gbp` if from matching network (vlan)&#39;
+         *   * `type`==`static_gbp` if from matching network (vlan)
          * 
          * @return builder
          * 
@@ -285,12 +285,12 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param network if:
+         * @param network If:
          *   * `type`==`mac` (optional. default is `any`)
          *   * `type`==`subnet` (optional. default is `any`)
          *   * `type`==`network`
          *   * `type`==`resource` (optional. default is `any`)
-         *   * `type`==`static_gbp` if from matching network (vlan)&#39;
+         *   * `type`==`static_gbp` if from matching network (vlan)
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param radiusGroup required if:
+         * @param radiusGroup Required if:
          *   * `type`==`radius_group`
          *   * `type`==`static_gbp`
          *     if from matching radius_group
@@ -314,7 +314,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param radiusGroup required if:
+         * @param radiusGroup Required if:
          *   * `type`==`radius_group`
          *   * `type`==`static_gbp`
          *     if from matching radius_group
@@ -327,7 +327,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param specs if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+         * @param specs If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param subnets if
+         * @param subnets If
          * - `type`==`subnet`
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`static_gbp` if from matching subnet
@@ -372,7 +372,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param subnets if
+         * @param subnets If
          * - `type`==`subnet`
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`static_gbp` if from matching subnet
@@ -385,7 +385,7 @@ public final class NetworktemplateAclTagsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param subnets if
+         * @param subnets If
          * - `type`==`subnet`
          * - `type`==`resource` (optional. default is `any`)
          * - `type`==`static_gbp` if from matching subnet

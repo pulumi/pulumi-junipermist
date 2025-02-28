@@ -121,14 +121,14 @@ public final class NetworktemplateOspfAreasOspfNetworksArgs extends com.pulumi.r
     }
 
     /**
-     * by default, we&#39;ll re-advertise all learned OSPF routes toward overlay
+     * By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
      * 
      */
     @Import(name="noReadvertiseToOverlay")
     private @Nullable Output<Boolean> noReadvertiseToOverlay;
 
     /**
-     * @return by default, we&#39;ll re-advertise all learned OSPF routes toward overlay
+     * @return By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
      * 
      */
     public Optional<Output<Boolean>> noReadvertiseToOverlay() {
@@ -136,14 +136,14 @@ public final class NetworktemplateOspfAreasOspfNetworksArgs extends com.pulumi.r
     }
 
     /**
-     * whether to send OSPF-Hello
+     * Whether to send OSPF-Hello
      * 
      */
     @Import(name="passive")
     private @Nullable Output<Boolean> passive;
 
     /**
-     * @return whether to send OSPF-Hello
+     * @return Whether to send OSPF-Hello
      * 
      */
     public Optional<Output<Boolean>> passive() {
@@ -324,7 +324,7 @@ public final class NetworktemplateOspfAreasOspfNetworksArgs extends com.pulumi.r
         }
 
         /**
-         * @param noReadvertiseToOverlay by default, we&#39;ll re-advertise all learned OSPF routes toward overlay
+         * @param noReadvertiseToOverlay By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class NetworktemplateOspfAreasOspfNetworksArgs extends com.pulumi.r
         }
 
         /**
-         * @param noReadvertiseToOverlay by default, we&#39;ll re-advertise all learned OSPF routes toward overlay
+         * @param noReadvertiseToOverlay By default, we&#39;ll re-advertise all learned OSPF routes toward overlay
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class NetworktemplateOspfAreasOspfNetworksArgs extends com.pulumi.r
         }
 
         /**
-         * @param passive whether to send OSPF-Hello
+         * @param passive Whether to send OSPF-Hello
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class NetworktemplateOspfAreasOspfNetworksArgs extends com.pulumi.r
         }
 
         /**
-         * @param passive whether to send OSPF-Hello
+         * @param passive Whether to send OSPF-Hello
          * 
          * @return builder
          * 

@@ -65,13 +65,13 @@ type DeviceprofileAp struct {
 	Aeroscout DeviceprofileApAeroscoutPtrOutput `pulumi:"aeroscout"`
 	// BLE AP settings
 	BleConfig DeviceprofileApBleConfigPtrOutput `pulumi:"bleConfig"`
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 pulumi.BoolOutput `pulumi:"disableEth1"`
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 pulumi.BoolOutput `pulumi:"disableEth2"`
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolOutput `pulumi:"disableEth3"`
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule pulumi.BoolOutput                 `pulumi:"disableModule"`
 	EslConfig     DeviceprofileApEslConfigPtrOutput `pulumi:"eslConfig"`
 	// IP AP settings
@@ -83,21 +83,21 @@ type DeviceprofileAp struct {
 	Name       pulumi.StringOutput          `pulumi:"name"`
 	NtpServers pulumi.StringArrayOutput     `pulumi:"ntpServers"`
 	OrgId      pulumi.StringOutput          `pulumi:"orgId"`
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
-	// power related configs
+	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrOutput `pulumi:"pwrConfig"`
 	// Radio AP settings
 	RadioConfig DeviceprofileApRadioConfigPtrOutput `pulumi:"radioConfig"`
 	SiteId      pulumi.StringPtrOutput              `pulumi:"siteId"`
 	// Device Type. enum: `ap`
-	Type             pulumi.StringOutput                      `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
+	// AP Uplink port configuration
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
-	// USB AP settings
-	// Note: if native imagotag is enabled, BLE will be disabled automatically
-	// Note: legacy, new config moved to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig DeviceprofileApUsbConfigPtrOutput `pulumi:"usbConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
 }
 
@@ -138,13 +138,13 @@ type deviceprofileApState struct {
 	Aeroscout *DeviceprofileApAeroscout `pulumi:"aeroscout"`
 	// BLE AP settings
 	BleConfig *DeviceprofileApBleConfig `pulumi:"bleConfig"`
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 *bool `pulumi:"disableEth1"`
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 *bool `pulumi:"disableEth2"`
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 *bool `pulumi:"disableEth3"`
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule *bool                     `pulumi:"disableModule"`
 	EslConfig     *DeviceprofileApEslConfig `pulumi:"eslConfig"`
 	// IP AP settings
@@ -156,21 +156,21 @@ type deviceprofileApState struct {
 	Name       *string              `pulumi:"name"`
 	NtpServers []string             `pulumi:"ntpServers"`
 	OrgId      *string              `pulumi:"orgId"`
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// power related configs
+	// Power related configs
 	PwrConfig *DeviceprofileApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
 	RadioConfig *DeviceprofileApRadioConfig `pulumi:"radioConfig"`
 	SiteId      *string                     `pulumi:"siteId"`
 	// Device Type. enum: `ap`
-	Type             *string                          `pulumi:"type"`
+	Type *string `pulumi:"type"`
+	// AP Uplink port configuration
 	UplinkPortConfig *DeviceprofileApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings
-	// Note: if native imagotag is enabled, BLE will be disabled automatically
-	// Note: legacy, new config moved to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 }
 
@@ -179,13 +179,13 @@ type DeviceprofileApState struct {
 	Aeroscout DeviceprofileApAeroscoutPtrInput
 	// BLE AP settings
 	BleConfig DeviceprofileApBleConfigPtrInput
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 pulumi.BoolPtrInput
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 pulumi.BoolPtrInput
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolPtrInput
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
 	EslConfig     DeviceprofileApEslConfigPtrInput
 	// IP AP settings
@@ -197,21 +197,21 @@ type DeviceprofileApState struct {
 	Name       pulumi.StringPtrInput
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringPtrInput
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// power related configs
+	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrInput
 	// Radio AP settings
 	RadioConfig DeviceprofileApRadioConfigPtrInput
 	SiteId      pulumi.StringPtrInput
 	// Device Type. enum: `ap`
-	Type             pulumi.StringPtrInput
+	Type pulumi.StringPtrInput
+	// AP Uplink port configuration
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrInput
-	// USB AP settings
-	// Note: if native imagotag is enabled, BLE will be disabled automatically
-	// Note: legacy, new config moved to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig DeviceprofileApUsbConfigPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 }
 
@@ -224,13 +224,13 @@ type deviceprofileApArgs struct {
 	Aeroscout *DeviceprofileApAeroscout `pulumi:"aeroscout"`
 	// BLE AP settings
 	BleConfig *DeviceprofileApBleConfig `pulumi:"bleConfig"`
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 *bool `pulumi:"disableEth1"`
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 *bool `pulumi:"disableEth2"`
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 *bool `pulumi:"disableEth3"`
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule *bool                     `pulumi:"disableModule"`
 	EslConfig     *DeviceprofileApEslConfig `pulumi:"eslConfig"`
 	// IP AP settings
@@ -242,19 +242,19 @@ type deviceprofileApArgs struct {
 	Name       *string              `pulumi:"name"`
 	NtpServers []string             `pulumi:"ntpServers"`
 	OrgId      string               `pulumi:"orgId"`
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// power related configs
+	// Power related configs
 	PwrConfig *DeviceprofileApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
-	RadioConfig      *DeviceprofileApRadioConfig      `pulumi:"radioConfig"`
-	SiteId           *string                          `pulumi:"siteId"`
+	RadioConfig *DeviceprofileApRadioConfig `pulumi:"radioConfig"`
+	SiteId      *string                     `pulumi:"siteId"`
+	// AP Uplink port configuration
 	UplinkPortConfig *DeviceprofileApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings
-	// Note: if native imagotag is enabled, BLE will be disabled automatically
-	// Note: legacy, new config moved to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig *DeviceprofileApUsbConfig `pulumi:"usbConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
 }
 
@@ -264,13 +264,13 @@ type DeviceprofileApArgs struct {
 	Aeroscout DeviceprofileApAeroscoutPtrInput
 	// BLE AP settings
 	BleConfig DeviceprofileApBleConfigPtrInput
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 pulumi.BoolPtrInput
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 pulumi.BoolPtrInput
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolPtrInput
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
 	EslConfig     DeviceprofileApEslConfigPtrInput
 	// IP AP settings
@@ -282,19 +282,19 @@ type DeviceprofileApArgs struct {
 	Name       pulumi.StringPtrInput
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringInput
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// power related configs
+	// Power related configs
 	PwrConfig DeviceprofileApPwrConfigPtrInput
 	// Radio AP settings
-	RadioConfig      DeviceprofileApRadioConfigPtrInput
-	SiteId           pulumi.StringPtrInput
+	RadioConfig DeviceprofileApRadioConfigPtrInput
+	SiteId      pulumi.StringPtrInput
+	// AP Uplink port configuration
 	UplinkPortConfig DeviceprofileApUplinkPortConfigPtrInput
-	// USB AP settings
-	// Note: if native imagotag is enabled, BLE will be disabled automatically
-	// Note: legacy, new config moved to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig DeviceprofileApUsbConfigPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
 }
 
@@ -395,22 +395,22 @@ func (o DeviceprofileApOutput) BleConfig() DeviceprofileApBleConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApBleConfigPtrOutput { return v.BleConfig }).(DeviceprofileApBleConfigPtrOutput)
 }
 
-// whether to disable eth1 port
+// Whether to disable eth1 port
 func (o DeviceprofileApOutput) DisableEth1() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.DisableEth1 }).(pulumi.BoolOutput)
 }
 
-// whether to disable eth2 port
+// Whether to disable eth2 port
 func (o DeviceprofileApOutput) DisableEth2() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.DisableEth2 }).(pulumi.BoolOutput)
 }
 
-// whether to disable eth3 port
+// Whether to disable eth3 port
 func (o DeviceprofileApOutput) DisableEth3() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.DisableEth3 }).(pulumi.BoolOutput)
 }
 
-// whether to disable module port
+// Whether to disable module port
 func (o DeviceprofileApOutput) DisableModule() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.DisableModule }).(pulumi.BoolOutput)
 }
@@ -446,12 +446,12 @@ func (o DeviceprofileApOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 func (o DeviceprofileApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
 }
 
-// power related configs
+// Power related configs
 func (o DeviceprofileApOutput) PwrConfig() DeviceprofileApPwrConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApPwrConfigPtrOutput { return v.PwrConfig }).(DeviceprofileApPwrConfigPtrOutput)
 }
@@ -470,18 +470,18 @@ func (o DeviceprofileApOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// AP Uplink port configuration
 func (o DeviceprofileApOutput) UplinkPortConfig() DeviceprofileApUplinkPortConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(DeviceprofileApUplinkPortConfigPtrOutput)
 }
 
-// USB AP settings
-// Note: if native imagotag is enabled, BLE will be disabled automatically
-// Note: legacy, new config moved to ESL Config.
+// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+// moved to ESL Config.
 func (o DeviceprofileApOutput) UsbConfig() DeviceprofileApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) DeviceprofileApUsbConfigPtrOutput { return v.UsbConfig }).(DeviceprofileApUsbConfigPtrOutput)
 }
 
-// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o DeviceprofileApOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DeviceprofileAp) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }

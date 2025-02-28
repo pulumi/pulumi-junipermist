@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SettingOpticPortConfig {
     /**
-     * @return enable channelization
+     * @return Enable channelization
      * 
      */
     private @Nullable Boolean channelized;
     /**
-     * @return interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+     * @return Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
      * 
      */
     private @Nullable String speed;
 
     private SettingOpticPortConfig() {}
     /**
-     * @return enable channelization
+     * @return Enable channelization
      * 
      */
     public Optional<Boolean> channelized() {
         return Optional.ofNullable(this.channelized);
     }
     /**
-     * @return interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+     * @return Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
      * 
      */
     public Optional<String> speed() {

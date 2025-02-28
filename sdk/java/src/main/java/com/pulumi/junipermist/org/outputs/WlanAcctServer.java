@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WlanAcctServer {
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     private String host;
@@ -33,14 +33,14 @@ public final class WlanAcctServer {
      */
     private @Nullable Integer port;
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     private String secret;
 
     private WlanAcctServer() {}
     /**
-     * @return ip / hostname of RADIUS server
+     * @return IP/ hostname of RADIUS server
      * 
      */
     public String host() {
@@ -70,7 +70,7 @@ public final class WlanAcctServer {
         return Optional.ofNullable(this.port);
     }
     /**
-     * @return secret of RADIUS server
+     * @return Secretof RADIUS server
      * 
      */
     public String secret() {

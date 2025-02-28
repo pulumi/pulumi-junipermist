@@ -41,14 +41,14 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * only if `type`==`local`, if a different gateway is desired
+     * Only if `type`==`local`, if a different gateway is desired
      * 
      */
     @Import(name="gatewayIp")
     private @Nullable Output<String> gatewayIp;
 
     /**
-     * @return only if `type`==`local`, if a different gateway is desired
+     * @return Only if `type`==`local`, if a different gateway is desired
      * 
      */
     public Optional<Output<String>> gatewayIp() {
@@ -56,14 +56,14 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * only if `type`==`vpn`, if this vpn path can be used for internet
+     * Only if `type`==`vpn`, if this vpn path can be used for internet
      * 
      */
     @Import(name="internetAccess")
     private @Nullable Output<Boolean> internetAccess;
 
     /**
-     * @return only if `type`==`vpn`, if this vpn path can be used for internet
+     * @return Only if `type`==`vpn`, if this vpn path can be used for internet
      * 
      */
     public Optional<Output<Boolean>> internetAccess() {
@@ -71,18 +71,18 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * required when
+     * Required when
      *   * `type`==`vpn`: the name of the VPN Path to use
-     *   * `type`==`wan`: the name of the WAN interface to use&#39;
+     *   * `type`==`wan`: the name of the WAN interface to use
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return required when
+     * @return Required when
      *   * `type`==`vpn`: the name of the VPN Path to use
-     *   * `type`==`wan`: the name of the WAN interface to use&#39;
+     *   * `type`==`wan`: the name of the WAN interface to use
      * 
      */
     public Optional<Output<String>> name() {
@@ -90,14 +90,14 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * required when `type`==`local`
+     * Required when `type`==`local`
      * 
      */
     @Import(name="networks")
     private @Nullable Output<List<String>> networks;
 
     /**
-     * @return required when `type`==`local`
+     * @return Required when `type`==`local`
      * 
      */
     public Optional<Output<List<String>>> networks() {
@@ -105,14 +105,14 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * if `type`==`local`, if destination IP is to be replaced
+     * If `type`==`local`, if destination IP is to be replaced
      * 
      */
     @Import(name="targetIps")
     private @Nullable Output<List<String>> targetIps;
 
     /**
-     * @return if `type`==`local`, if destination IP is to be replaced
+     * @return If `type`==`local`, if destination IP is to be replaced
      * 
      */
     public Optional<Output<List<String>>> targetIps() {
@@ -135,14 +135,14 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
     }
 
     /**
-     * optional if `type`==`vpn`
+     * Optional if `type`==`vpn`
      * 
      */
     @Import(name="wanName")
     private @Nullable Output<String> wanName;
 
     /**
-     * @return optional if `type`==`vpn`
+     * @return Optional if `type`==`vpn`
      * 
      */
     public Optional<Output<String>> wanName() {
@@ -212,7 +212,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param gatewayIp only if `type`==`local`, if a different gateway is desired
+         * @param gatewayIp Only if `type`==`local`, if a different gateway is desired
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param gatewayIp only if `type`==`local`, if a different gateway is desired
+         * @param gatewayIp Only if `type`==`local`, if a different gateway is desired
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param internetAccess only if `type`==`vpn`, if this vpn path can be used for internet
+         * @param internetAccess Only if `type`==`vpn`, if this vpn path can be used for internet
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param internetAccess only if `type`==`vpn`, if this vpn path can be used for internet
+         * @param internetAccess Only if `type`==`vpn`, if this vpn path can be used for internet
          * 
          * @return builder
          * 
@@ -254,9 +254,9 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name required when
+         * @param name Required when
          *   * `type`==`vpn`: the name of the VPN Path to use
-         *   * `type`==`wan`: the name of the WAN interface to use&#39;
+         *   * `type`==`wan`: the name of the WAN interface to use
          * 
          * @return builder
          * 
@@ -267,9 +267,9 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param name required when
+         * @param name Required when
          *   * `type`==`vpn`: the name of the VPN Path to use
-         *   * `type`==`wan`: the name of the WAN interface to use&#39;
+         *   * `type`==`wan`: the name of the WAN interface to use
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param networks required when `type`==`local`
+         * @param networks Required when `type`==`local`
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param networks required when `type`==`local`
+         * @param networks Required when `type`==`local`
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param networks required when `type`==`local`
+         * @param networks Required when `type`==`local`
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetIps if `type`==`local`, if destination IP is to be replaced
+         * @param targetIps If `type`==`local`, if destination IP is to be replaced
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetIps if `type`==`local`, if destination IP is to be replaced
+         * @param targetIps If `type`==`local`, if destination IP is to be replaced
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetIps if `type`==`local`, if destination IP is to be replaced
+         * @param targetIps If `type`==`local`, if destination IP is to be replaced
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param wanName optional if `type`==`vpn`
+         * @param wanName Optional if `type`==`vpn`
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class GatewayPathPreferencesPathArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param wanName optional if `type`==`vpn`
+         * @param wanName Optional if `type`==`vpn`
          * 
          * @return builder
          * 

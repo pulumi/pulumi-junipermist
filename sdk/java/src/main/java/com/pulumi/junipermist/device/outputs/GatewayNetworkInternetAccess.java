@@ -23,7 +23,7 @@ public final class GatewayNetworkInternetAccess {
     private @Nullable Map<String,GatewayNetworkInternetAccessDestinationNat> destinationNat;
     private @Nullable Boolean enabled;
     /**
-     * @return by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+     * @return By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
      * 
      */
     private @Nullable Boolean restricted;
@@ -48,7 +48,7 @@ public final class GatewayNetworkInternetAccess {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+     * @return By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
      * 
      */
     public Optional<Boolean> restricted() {

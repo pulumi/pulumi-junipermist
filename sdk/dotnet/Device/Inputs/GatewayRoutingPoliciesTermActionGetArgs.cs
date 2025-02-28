@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _addTargetVrfs;
 
         /// <summary>
-        /// for SSR, hub decides how VRF routes are leaked on spoke
+        /// For SSR, hub decides how VRF routes are leaked on spoke
         /// </summary>
         public InputList<string> AddTargetVrfs
         {
@@ -51,7 +51,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _communities;
 
         /// <summary>
-        /// when used as export policy, optional
+        /// When used as export policy, optional
         /// </summary>
         public InputList<string> Communities
         {
@@ -63,7 +63,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _excludeAsPaths;
 
         /// <summary>
-        /// when used as export policy, optional. To exclude certain AS
+        /// When used as export policy, optional. To exclude certain AS
         /// </summary>
         public InputList<string> ExcludeAsPaths
         {
@@ -83,7 +83,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _exportCommunitites;
 
         /// <summary>
-        /// when used as export policy, optional
+        /// When used as export policy, optional
         /// </summary>
         public InputList<string> ExportCommunitites
         {
@@ -92,7 +92,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// optional, for an import policy, local_preference can be changed
+        /// Optional, for an import policy, local_preference can be changed
         /// </summary>
         [Input("localPreference")]
         public Input<string>? LocalPreference { get; set; }
@@ -101,7 +101,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<string>? _prependAsPaths;
 
         /// <summary>
-        /// when used as export policy, optional. By default, the local AS will be prepended, to change it
+        /// When used as export policy, optional. By default, the local AS will be prepended, to change it
         /// </summary>
         public InputList<string> PrependAsPaths
         {

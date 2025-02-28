@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NetworktemplateAclTags {
     /**
-     * @return required if
+     * @return Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
      *   - `type`==`gbp_resource`
      *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -24,24 +24,24 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable Integer gbpTag;
     /**
-     * @return required if
+     * @return Required if
      * - `type`==`mac`
      * - `type`==`static_gbp` if from matching mac
      * 
      */
     private @Nullable List<String> macs;
     /**
-     * @return if:
+     * @return If:
      *   * `type`==`mac` (optional. default is `any`)
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)&#39;
+     *   * `type`==`static_gbp` if from matching network (vlan)
      * 
      */
     private @Nullable String network;
     /**
-     * @return required if:
+     * @return Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
      *     if from matching radius_group
@@ -49,12 +49,12 @@ public final class NetworktemplateAclTags {
      */
     private @Nullable String radiusGroup;
     /**
-     * @return if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     private @Nullable List<NetworktemplateAclTagsSpec> specs;
     /**
-     * @return if
+     * @return If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
      * - `type`==`static_gbp` if from matching subnet
@@ -78,7 +78,7 @@ public final class NetworktemplateAclTags {
 
     private NetworktemplateAclTags() {}
     /**
-     * @return required if
+     * @return Required if
      *   - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
      *   - `type`==`gbp_resource`
      *   - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -88,7 +88,7 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.gbpTag);
     }
     /**
-     * @return required if
+     * @return Required if
      * - `type`==`mac`
      * - `type`==`static_gbp` if from matching mac
      * 
@@ -97,19 +97,19 @@ public final class NetworktemplateAclTags {
         return this.macs == null ? List.of() : this.macs;
     }
     /**
-     * @return if:
+     * @return If:
      *   * `type`==`mac` (optional. default is `any`)
      *   * `type`==`subnet` (optional. default is `any`)
      *   * `type`==`network`
      *   * `type`==`resource` (optional. default is `any`)
-     *   * `type`==`static_gbp` if from matching network (vlan)&#39;
+     *   * `type`==`static_gbp` if from matching network (vlan)
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return required if:
+     * @return Required if:
      *   * `type`==`radius_group`
      *   * `type`==`static_gbp`
      *     if from matching radius_group
@@ -119,14 +119,14 @@ public final class NetworktemplateAclTags {
         return Optional.ofNullable(this.radiusGroup);
     }
     /**
-     * @return if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+     * @return If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
      * 
      */
     public List<NetworktemplateAclTagsSpec> specs() {
         return this.specs == null ? List.of() : this.specs;
     }
     /**
-     * @return if
+     * @return If
      * - `type`==`subnet`
      * - `type`==`resource` (optional. default is `any`)
      * - `type`==`static_gbp` if from matching subnet

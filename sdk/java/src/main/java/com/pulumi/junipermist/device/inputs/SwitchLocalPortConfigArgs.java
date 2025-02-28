@@ -36,14 +36,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     @Import(name="allowDhcpd")
     private @Nullable Output<Boolean> allowDhcpd;
 
     /**
-     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+     * @return If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
      * 
      */
     public Optional<Output<Boolean>> allowDhcpd() {
@@ -76,15 +76,15 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
      * Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    @Import(name="bypassAuthWhenServerDownForUnkonwnClient")
-    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnkonwnClient;
+    @Import(name="bypassAuthWhenServerDownForUnkownClient")
+    private @Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient;
 
     /**
      * @return Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
      * 
      */
-    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnkonwnClient() {
-        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkonwnClient);
+    public Optional<Output<Boolean>> bypassAuthWhenServerDownForUnkownClient() {
+        return Optional.ofNullable(this.bypassAuthWhenServerDownForUnkownClient);
     }
 
     @Import(name="description")
@@ -110,14 +110,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * whether the port is disabled
+     * Whether the port is disabled
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return whether the port is disabled
+     * @return Whether the port is disabled
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -252,14 +252,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     @Import(name="macLimit")
     private @Nullable Output<Integer> macLimit;
 
     /**
-     * @return max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+     * @return Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
      * 
      */
     public Optional<Output<Integer>> macLimit() {
@@ -282,14 +282,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+     * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+     * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -342,14 +342,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * whether PoE capabilities are disabled for a port
+     * Whether PoE capabilities are disabled for a port
      * 
      */
     @Import(name="poeDisabled")
     private @Nullable Output<Boolean> poeDisabled;
 
     /**
-     * @return whether PoE capabilities are disabled for a port
+     * @return Whether PoE capabilities are disabled for a port
      * 
      */
     public Optional<Output<Boolean>> poeDisabled() {
@@ -372,14 +372,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * native network/vlan for untagged traffic
+     * Native network/vlan for untagged traffic
      * 
      */
     @Import(name="portNetwork")
     private @Nullable Output<String> portNetwork;
 
     /**
-     * @return native network/vlan for untagged traffic
+     * @return Native network/vlan for untagged traffic
      * 
      */
     public Optional<Output<String>> portNetwork() {
@@ -462,14 +462,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * when enabled, the port is not expected to receive BPDU frames
+     * When enabled, the port is not expected to receive BPDU frames
      * 
      */
     @Import(name="stpEdge")
     private @Nullable Output<Boolean> stpEdge;
 
     /**
-     * @return when enabled, the port is not expected to receive BPDU frames
+     * @return When enabled, the port is not expected to receive BPDU frames
      * 
      */
     public Optional<Output<Boolean>> stpEdge() {
@@ -491,14 +491,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * port usage name.
+     * Port usage name.
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return port usage name.
+     * @return Port usage name.
      * 
      */
     public Output<String> usage() {
@@ -506,14 +506,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * if this is connected to a vstp network
+     * If this is connected to a vstp network
      * 
      */
     @Import(name="useVstp")
     private @Nullable Output<Boolean> useVstp;
 
     /**
-     * @return if this is connected to a vstp network
+     * @return If this is connected to a vstp network
      * 
      */
     public Optional<Output<Boolean>> useVstp() {
@@ -521,14 +521,14 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     @Import(name="voipNetwork")
     private @Nullable Output<String> voipNetwork;
 
     /**
-     * @return network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+     * @return Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
      * 
      */
     public Optional<Output<String>> voipNetwork() {
@@ -542,7 +542,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         this.allowDhcpd = $.allowDhcpd;
         this.allowMultipleSupplicants = $.allowMultipleSupplicants;
         this.bypassAuthWhenServerDown = $.bypassAuthWhenServerDown;
-        this.bypassAuthWhenServerDownForUnkonwnClient = $.bypassAuthWhenServerDownForUnkonwnClient;
+        this.bypassAuthWhenServerDownForUnkownClient = $.bypassAuthWhenServerDownForUnkownClient;
         this.description = $.description;
         this.disableAutoneg = $.disableAutoneg;
         this.disabled = $.disabled;
@@ -617,7 +617,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is a access or trunk port.
+         * @param allowDhcpd If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system&#39;s default setting which depends on whether the port is an access or trunk port.
          * 
          * @return builder
          * 
@@ -668,24 +668,24 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkonwnClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnkownClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkonwnClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnkonwnClient) {
-            $.bypassAuthWhenServerDownForUnkonwnClient = bypassAuthWhenServerDownForUnkonwnClient;
+        public Builder bypassAuthWhenServerDownForUnkownClient(@Nullable Output<Boolean> bypassAuthWhenServerDownForUnkownClient) {
+            $.bypassAuthWhenServerDownForUnkownClient = bypassAuthWhenServerDownForUnkownClient;
             return this;
         }
 
         /**
-         * @param bypassAuthWhenServerDownForUnkonwnClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+         * @param bypassAuthWhenServerDownForUnkownClient Only if `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
          * 
          * @return builder
          * 
          */
-        public Builder bypassAuthWhenServerDownForUnkonwnClient(Boolean bypassAuthWhenServerDownForUnkonwnClient) {
-            return bypassAuthWhenServerDownForUnkonwnClient(Output.of(bypassAuthWhenServerDownForUnkonwnClient));
+        public Builder bypassAuthWhenServerDownForUnkownClient(Boolean bypassAuthWhenServerDownForUnkownClient) {
+            return bypassAuthWhenServerDownForUnkownClient(Output.of(bypassAuthWhenServerDownForUnkownClient));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -719,7 +719,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param disabled whether the port is disabled
+         * @param disabled Whether the port is disabled
          * 
          * @return builder
          * 
@@ -730,7 +730,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param disabled whether the port is disabled
+         * @param disabled Whether the port is disabled
          * 
          * @return builder
          * 
@@ -927,7 +927,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macLimit max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * @param macLimit Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
          * 
          * @return builder
          * 
@@ -938,7 +938,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param macLimit max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
+         * @param macLimit Max number of mac addresses, default is 0 for unlimited, otherwise range is 1 or higher, with upper bound constrained by platform
          * 
          * @return builder
          * 
@@ -969,7 +969,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mtu media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+         * @param mtu Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
          * 
          * @return builder
          * 
@@ -980,7 +980,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param mtu media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
+         * @param mtu Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation. The default value is 1514.
          * 
          * @return builder
          * 
@@ -1063,7 +1063,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param poeDisabled whether PoE capabilities are disabled for a port
+         * @param poeDisabled Whether PoE capabilities are disabled for a port
          * 
          * @return builder
          * 
@@ -1074,7 +1074,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param poeDisabled whether PoE capabilities are disabled for a port
+         * @param poeDisabled Whether PoE capabilities are disabled for a port
          * 
          * @return builder
          * 
@@ -1105,7 +1105,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portNetwork native network/vlan for untagged traffic
+         * @param portNetwork Native network/vlan for untagged traffic
          * 
          * @return builder
          * 
@@ -1116,7 +1116,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param portNetwork native network/vlan for untagged traffic
+         * @param portNetwork Native network/vlan for untagged traffic
          * 
          * @return builder
          * 
@@ -1231,7 +1231,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param stpEdge when enabled, the port is not expected to receive BPDU frames
+         * @param stpEdge When enabled, the port is not expected to receive BPDU frames
          * 
          * @return builder
          * 
@@ -1242,7 +1242,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param stpEdge when enabled, the port is not expected to receive BPDU frames
+         * @param stpEdge When enabled, the port is not expected to receive BPDU frames
          * 
          * @return builder
          * 
@@ -1270,7 +1270,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param usage port usage name.
+         * @param usage Port usage name.
          * 
          * @return builder
          * 
@@ -1281,7 +1281,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param usage port usage name.
+         * @param usage Port usage name.
          * 
          * @return builder
          * 
@@ -1291,7 +1291,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param useVstp if this is connected to a vstp network
+         * @param useVstp If this is connected to a vstp network
          * 
          * @return builder
          * 
@@ -1302,7 +1302,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param useVstp if this is connected to a vstp network
+         * @param useVstp If this is connected to a vstp network
          * 
          * @return builder
          * 
@@ -1312,7 +1312,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param voipNetwork network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * @param voipNetwork Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          * 
          * @return builder
          * 
@@ -1323,7 +1323,7 @@ public final class SwitchLocalPortConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param voipNetwork network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
+         * @param voipNetwork Network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
          * 
          * @return builder
          * 

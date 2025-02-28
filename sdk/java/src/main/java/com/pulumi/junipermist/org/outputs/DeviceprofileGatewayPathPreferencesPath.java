@@ -21,29 +21,29 @@ public final class DeviceprofileGatewayPathPreferencesPath {
      */
     private @Nullable Boolean disabled;
     /**
-     * @return only if `type`==`local`, if a different gateway is desired
+     * @return Only if `type`==`local`, if a different gateway is desired
      * 
      */
     private @Nullable String gatewayIp;
     /**
-     * @return only if `type`==`vpn`, if this vpn path can be used for internet
+     * @return Only if `type`==`vpn`, if this vpn path can be used for internet
      * 
      */
     private @Nullable Boolean internetAccess;
     /**
-     * @return required when
+     * @return Required when
      *   * `type`==`vpn`: the name of the VPN Path to use
-     *   * `type`==`wan`: the name of the WAN interface to use&#39;
+     *   * `type`==`wan`: the name of the WAN interface to use
      * 
      */
     private @Nullable String name;
     /**
-     * @return required when `type`==`local`
+     * @return Required when `type`==`local`
      * 
      */
     private @Nullable List<String> networks;
     /**
-     * @return if `type`==`local`, if destination IP is to be replaced
+     * @return If `type`==`local`, if destination IP is to be replaced
      * 
      */
     private @Nullable List<String> targetIps;
@@ -53,7 +53,7 @@ public final class DeviceprofileGatewayPathPreferencesPath {
      */
     private @Nullable String type;
     /**
-     * @return optional if `type`==`vpn`
+     * @return Optional if `type`==`vpn`
      * 
      */
     private @Nullable String wanName;
@@ -70,37 +70,37 @@ public final class DeviceprofileGatewayPathPreferencesPath {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return only if `type`==`local`, if a different gateway is desired
+     * @return Only if `type`==`local`, if a different gateway is desired
      * 
      */
     public Optional<String> gatewayIp() {
         return Optional.ofNullable(this.gatewayIp);
     }
     /**
-     * @return only if `type`==`vpn`, if this vpn path can be used for internet
+     * @return Only if `type`==`vpn`, if this vpn path can be used for internet
      * 
      */
     public Optional<Boolean> internetAccess() {
         return Optional.ofNullable(this.internetAccess);
     }
     /**
-     * @return required when
+     * @return Required when
      *   * `type`==`vpn`: the name of the VPN Path to use
-     *   * `type`==`wan`: the name of the WAN interface to use&#39;
+     *   * `type`==`wan`: the name of the WAN interface to use
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return required when `type`==`local`
+     * @return Required when `type`==`local`
      * 
      */
     public List<String> networks() {
         return this.networks == null ? List.of() : this.networks;
     }
     /**
-     * @return if `type`==`local`, if destination IP is to be replaced
+     * @return If `type`==`local`, if destination IP is to be replaced
      * 
      */
     public List<String> targetIps() {
@@ -114,7 +114,7 @@ public final class DeviceprofileGatewayPathPreferencesPath {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return optional if `type`==`vpn`
+     * @return Optional if `type`==`vpn`
      * 
      */
     public Optional<String> wanName() {

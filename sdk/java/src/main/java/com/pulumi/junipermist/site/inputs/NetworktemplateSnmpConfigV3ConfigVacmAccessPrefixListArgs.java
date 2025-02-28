@@ -16,14 +16,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     public static final NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs Empty = new NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs();
 
     /**
-     * only required if `type`==`context_prefix`
+     * Only required if `type`==`context_prefix`
      * 
      */
     @Import(name="contextPrefix")
     private @Nullable Output<String> contextPrefix;
 
     /**
-     * @return only required if `type`==`context_prefix`
+     * @return Only required if `type`==`context_prefix`
      * 
      */
     public Optional<Output<String>> contextPrefix() {
@@ -31,14 +31,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * refer to view name
+     * Refer to view name
      * 
      */
     @Import(name="notifyView")
     private @Nullable Output<String> notifyView;
 
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     public Optional<Output<String>> notifyView() {
@@ -46,14 +46,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * refer to view name
+     * Refer to view name
      * 
      */
     @Import(name="readView")
     private @Nullable Output<String> readView;
 
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     public Optional<Output<String>> readView() {
@@ -106,14 +106,14 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
     }
 
     /**
-     * refer to view name
+     * Refer to view name
      * 
      */
     @Import(name="writeView")
     private @Nullable Output<String> writeView;
 
     /**
-     * @return refer to view name
+     * @return Refer to view name
      * 
      */
     public Optional<Output<String>> writeView() {
@@ -151,7 +151,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param contextPrefix only required if `type`==`context_prefix`
+         * @param contextPrefix Only required if `type`==`context_prefix`
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param contextPrefix only required if `type`==`context_prefix`
+         * @param contextPrefix Only required if `type`==`context_prefix`
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param notifyView refer to view name
+         * @param notifyView Refer to view name
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param notifyView refer to view name
+         * @param notifyView Refer to view name
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param readView refer to view name
+         * @param readView Refer to view name
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param readView refer to view name
+         * @param readView Refer to view name
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param writeView refer to view name
+         * @param writeView Refer to view name
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs ext
         }
 
         /**
-         * @param writeView refer to view name
+         * @param writeView Refer to view name
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
     public static final NetworktemplateSnmpConfigV3ConfigUsmUserArgs Empty = new NetworktemplateSnmpConfigV3ConfigUsmUserArgs();
 
     /**
-     * Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     @Import(name="authenticationPassword")
     private @Nullable Output<String> authenticationPassword;
 
     /**
-     * @return Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+     * @return Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
      * 
      */
     public Optional<Output<String>> authenticationPassword() {
@@ -31,14 +31,14 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
     }
 
     /**
-     * sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+     * sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
      * 
      */
     @Import(name="authenticationType")
     private @Nullable Output<String> authenticationType;
 
     /**
-     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+     * @return sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
      * 
      */
     public Optional<Output<String>> authenticationType() {
@@ -111,7 +111,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param authenticationPassword Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * @param authenticationPassword Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param authenticationPassword Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+         * @param authenticationPassword Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param authenticationType sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+         * @param authenticationType sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class NetworktemplateSnmpConfigV3ConfigUsmUserArgs extends com.pulu
         }
 
         /**
-         * @param authenticationType sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+         * @param authenticationType sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
          * 
          * @return builder
          * 

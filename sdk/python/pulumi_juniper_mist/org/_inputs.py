@@ -139,12 +139,16 @@ __all__ = [
     'DeviceprofileGatewayRoutingPoliciesTermMatchingVpnPathSlaArgsDict',
     'DeviceprofileGatewayServicePolicyArgs',
     'DeviceprofileGatewayServicePolicyArgsDict',
+    'DeviceprofileGatewayServicePolicyAntivirusArgs',
+    'DeviceprofileGatewayServicePolicyAntivirusArgsDict',
     'DeviceprofileGatewayServicePolicyAppqoeArgs',
     'DeviceprofileGatewayServicePolicyAppqoeArgsDict',
     'DeviceprofileGatewayServicePolicyEwfArgs',
     'DeviceprofileGatewayServicePolicyEwfArgsDict',
     'DeviceprofileGatewayServicePolicyIdpArgs',
     'DeviceprofileGatewayServicePolicyIdpArgsDict',
+    'DeviceprofileGatewayServicePolicySslProxyArgs',
+    'DeviceprofileGatewayServicePolicySslProxyArgsDict',
     'DeviceprofileGatewayTunnelConfigsArgs',
     'DeviceprofileGatewayTunnelConfigsArgsDict',
     'DeviceprofileGatewayTunnelConfigsAutoProvisionArgs',
@@ -275,12 +279,16 @@ __all__ = [
     'GatewaytemplateRoutingPoliciesTermMatchingVpnPathSlaArgsDict',
     'GatewaytemplateServicePolicyArgs',
     'GatewaytemplateServicePolicyArgsDict',
+    'GatewaytemplateServicePolicyAntivirusArgs',
+    'GatewaytemplateServicePolicyAntivirusArgsDict',
     'GatewaytemplateServicePolicyAppqoeArgs',
     'GatewaytemplateServicePolicyAppqoeArgsDict',
     'GatewaytemplateServicePolicyEwfArgs',
     'GatewaytemplateServicePolicyEwfArgsDict',
     'GatewaytemplateServicePolicyIdpArgs',
     'GatewaytemplateServicePolicyIdpArgsDict',
+    'GatewaytemplateServicePolicySslProxyArgs',
+    'GatewaytemplateServicePolicySslProxyArgsDict',
     'GatewaytemplateTunnelConfigsArgs',
     'GatewaytemplateTunnelConfigsArgsDict',
     'GatewaytemplateTunnelConfigsAutoProvisionArgs',
@@ -497,12 +505,16 @@ __all__ = [
     'RftemplateModelSpecificBand6ArgsDict',
     'ServiceSpecArgs',
     'ServiceSpecArgsDict',
+    'ServicepolicyAntivirusArgs',
+    'ServicepolicyAntivirusArgsDict',
     'ServicepolicyAppqoeArgs',
     'ServicepolicyAppqoeArgsDict',
     'ServicepolicyEwfArgs',
     'ServicepolicyEwfArgsDict',
     'ServicepolicyIdpArgs',
     'ServicepolicyIdpArgsDict',
+    'ServicepolicySslProxyArgs',
+    'ServicepolicySslProxyArgsDict',
     'SettingApiPolicyArgs',
     'SettingApiPolicyArgsDict',
     'SettingCelonaArgs',
@@ -946,15 +958,15 @@ if not MYPY:
     class DeviceprofileApAeroscoutArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable aeroscout config
+        Whether to enable aeroscout config
         """
         host: NotRequired[pulumi.Input[str]]
         """
-        required if enabled, aeroscout server host
+        Required if enabled, aeroscout server host
         """
         locate_connected: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+        Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         """
 elif False:
     DeviceprofileApAeroscoutArgsDict: TypeAlias = Mapping[str, Any]
@@ -966,9 +978,9 @@ class DeviceprofileApAeroscoutArgs:
                  host: Optional[pulumi.Input[str]] = None,
                  locate_connected: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether to enable aeroscout config
-        :param pulumi.Input[str] host: required if enabled, aeroscout server host
-        :param pulumi.Input[bool] locate_connected: whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+        :param pulumi.Input[bool] enabled: Whether to enable aeroscout config
+        :param pulumi.Input[str] host: Required if enabled, aeroscout server host
+        :param pulumi.Input[bool] locate_connected: Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -981,7 +993,7 @@ class DeviceprofileApAeroscoutArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable aeroscout config
+        Whether to enable aeroscout config
         """
         return pulumi.get(self, "enabled")
 
@@ -993,7 +1005,7 @@ class DeviceprofileApAeroscoutArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        required if enabled, aeroscout server host
+        Required if enabled, aeroscout server host
         """
         return pulumi.get(self, "host")
 
@@ -1005,7 +1017,7 @@ class DeviceprofileApAeroscoutArgs:
     @pulumi.getter(name="locateConnected")
     def locate_connected(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
+        Whether to enable the feature to allow wireless clients data received and sent to AES server for location calculation
         """
         return pulumi.get(self, "locate_connected")
 
@@ -1018,11 +1030,11 @@ if not MYPY:
     class DeviceprofileApBleConfigArgsDict(TypedDict):
         beacon_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether Mist beacons is enabled
+        Whether Mist beacons is enabled
         """
         beacon_rate: NotRequired[pulumi.Input[int]]
         """
-        required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+        Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
         """
         beacon_rate_mode: NotRequired[pulumi.Input[str]]
         """
@@ -1030,11 +1042,11 @@ if not MYPY:
         """
         beam_disableds: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
         """
-        list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
         """
         custom_ble_packet_enabled: NotRequired[pulumi.Input[bool]]
         """
-        can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+        Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
         """
         custom_ble_packet_frame: NotRequired[pulumi.Input[str]]
         """
@@ -1046,12 +1058,12 @@ if not MYPY:
         """
         eddystone_uid_adv_power: NotRequired[pulumi.Input[int]]
         """
-        advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         """
         eddystone_uid_beams: NotRequired[pulumi.Input[str]]
         eddystone_uid_enabled: NotRequired[pulumi.Input[bool]]
         """
-        only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+        Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
         """
         eddystone_uid_freq_msec: NotRequired[pulumi.Input[int]]
         """
@@ -1067,12 +1079,12 @@ if not MYPY:
         """
         eddystone_url_adv_power: NotRequired[pulumi.Input[int]]
         """
-        advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         """
         eddystone_url_beams: NotRequired[pulumi.Input[str]]
         eddystone_url_enabled: NotRequired[pulumi.Input[bool]]
         """
-        only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+        Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
         """
         eddystone_url_freq_msec: NotRequired[pulumi.Input[int]]
         """
@@ -1084,12 +1096,12 @@ if not MYPY:
         """
         ibeacon_adv_power: NotRequired[pulumi.Input[int]]
         """
-        advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         """
         ibeacon_beams: NotRequired[pulumi.Input[str]]
         ibeacon_enabled: NotRequired[pulumi.Input[bool]]
         """
-        can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+        Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
         """
         ibeacon_freq_msec: NotRequired[pulumi.Input[int]]
         """
@@ -1105,11 +1117,11 @@ if not MYPY:
         """
         ibeacon_uuid: NotRequired[pulumi.Input[str]]
         """
-        optional, if not specified, the same UUID as the beacon will be used
+        Optional, if not specified, the same UUID as the beacon will be used
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        required if `power_mode`==`custom`
+        Required if `power_mode`==`custom`; else use `power_mode` as default
         """
         power_mode: NotRequired[pulumi.Input[str]]
         """
@@ -1149,29 +1161,29 @@ class DeviceprofileApBleConfigArgs:
                  power: Optional[pulumi.Input[int]] = None,
                  power_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] beacon_enabled: whether Mist beacons is enabled
-        :param pulumi.Input[int] beacon_rate: required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+        :param pulumi.Input[bool] beacon_enabled: Whether Mist beacons is enabled
+        :param pulumi.Input[int] beacon_rate: Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
         :param pulumi.Input[str] beacon_rate_mode: enum: `custom`, `default`
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] beam_disableds: list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
-        :param pulumi.Input[bool] custom_ble_packet_enabled: can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] beam_disableds: List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        :param pulumi.Input[bool] custom_ble_packet_enabled: Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
         :param pulumi.Input[str] custom_ble_packet_frame: The custom frame to be sent out in this beacon. The frame must be a hexstring
         :param pulumi.Input[int] custom_ble_packet_freq_msec: Frequency (msec) of data emitted by custom ble beacon
-        :param pulumi.Input[int] eddystone_uid_adv_power: advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-        :param pulumi.Input[bool] eddystone_uid_enabled: only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+        :param pulumi.Input[int] eddystone_uid_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        :param pulumi.Input[bool] eddystone_uid_enabled: Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
         :param pulumi.Input[int] eddystone_uid_freq_msec: Frequency (msec) of data emmit by Eddystone-UID beacon
         :param pulumi.Input[str] eddystone_uid_instance: Eddystone-UID instance for the device
         :param pulumi.Input[str] eddystone_uid_namespace: Eddystone-UID namespace
-        :param pulumi.Input[int] eddystone_url_adv_power: advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-        :param pulumi.Input[bool] eddystone_url_enabled: only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+        :param pulumi.Input[int] eddystone_url_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        :param pulumi.Input[bool] eddystone_url_enabled: Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
         :param pulumi.Input[int] eddystone_url_freq_msec: Frequency (msec) of data emit by Eddystone-UID beacon
         :param pulumi.Input[str] eddystone_url_url: URL pointed by Eddystone-URL beacon
-        :param pulumi.Input[int] ibeacon_adv_power: advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
-        :param pulumi.Input[bool] ibeacon_enabled: can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+        :param pulumi.Input[int] ibeacon_adv_power: Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        :param pulumi.Input[bool] ibeacon_enabled: Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
         :param pulumi.Input[int] ibeacon_freq_msec: Frequency (msec) of data emmit for iBeacon
         :param pulumi.Input[int] ibeacon_major: Major number for iBeacon
         :param pulumi.Input[int] ibeacon_minor: Minor number for iBeacon
-        :param pulumi.Input[str] ibeacon_uuid: optional, if not specified, the same UUID as the beacon will be used
-        :param pulumi.Input[int] power: required if `power_mode`==`custom`
+        :param pulumi.Input[str] ibeacon_uuid: Optional, if not specified, the same UUID as the beacon will be used
+        :param pulumi.Input[int] power: Required if `power_mode`==`custom`; else use `power_mode` as default
         :param pulumi.Input[str] power_mode: enum: `custom`, `default`
         """
         if beacon_enabled is not None:
@@ -1233,7 +1245,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="beaconEnabled")
     def beacon_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether Mist beacons is enabled
+        Whether Mist beacons is enabled
         """
         return pulumi.get(self, "beacon_enabled")
 
@@ -1245,7 +1257,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="beaconRate")
     def beacon_rate(self) -> Optional[pulumi.Input[int]]:
         """
-        required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
+        Required if `beacon_rate_mode`==`custom`, 1-10, in number-beacons-per-second
         """
         return pulumi.get(self, "beacon_rate")
 
@@ -1269,7 +1281,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="beamDisableds")
     def beam_disableds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
-        list of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
+        List of AP BLE location beam numbers (1-8) which should be disabled at the AP and not transmit location information (where beam 1 is oriented at the top the AP, growing counter-clock-wise, with 9 being the omni BLE beam)
         """
         return pulumi.get(self, "beam_disableds")
 
@@ -1281,7 +1293,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="customBlePacketEnabled")
     def custom_ble_packet_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        can be enabled if `beacon_enabled`==`true`, whether to send custom packet
+        Can be enabled if `beacon_enabled`==`true`, whether to send custom packet
         """
         return pulumi.get(self, "custom_ble_packet_enabled")
 
@@ -1317,7 +1329,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="eddystoneUidAdvPower")
     def eddystone_uid_adv_power(self) -> Optional[pulumi.Input[int]]:
         """
-        advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         """
         return pulumi.get(self, "eddystone_uid_adv_power")
 
@@ -1338,7 +1350,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="eddystoneUidEnabled")
     def eddystone_uid_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
+        Only if `beacon_enabled`==`false`, Whether Eddystone-UID beacon is enabled
         """
         return pulumi.get(self, "eddystone_uid_enabled")
 
@@ -1386,7 +1398,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="eddystoneUrlAdvPower")
     def eddystone_url_adv_power(self) -> Optional[pulumi.Input[int]]:
         """
-        advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         """
         return pulumi.get(self, "eddystone_url_adv_power")
 
@@ -1407,7 +1419,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="eddystoneUrlEnabled")
     def eddystone_url_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
+        Only if `beacon_enabled`==`false`, Whether Eddystone-URL beacon is enabled
         """
         return pulumi.get(self, "eddystone_url_enabled")
 
@@ -1443,7 +1455,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="ibeaconAdvPower")
     def ibeacon_adv_power(self) -> Optional[pulumi.Input[int]]:
         """
-        advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
+        Advertised TX Power, -100 to 20 (dBm), omit this attribute to use default
         """
         return pulumi.get(self, "ibeacon_adv_power")
 
@@ -1464,7 +1476,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="ibeaconEnabled")
     def ibeacon_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
+        Can be enabled if `beacon_enabled`==`true`, whether to send iBeacon
         """
         return pulumi.get(self, "ibeacon_enabled")
 
@@ -1512,7 +1524,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter(name="ibeaconUuid")
     def ibeacon_uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, if not specified, the same UUID as the beacon will be used
+        Optional, if not specified, the same UUID as the beacon will be used
         """
         return pulumi.get(self, "ibeacon_uuid")
 
@@ -1524,7 +1536,7 @@ class DeviceprofileApBleConfigArgs:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        required if `power_mode`==`custom`
+        Required if `power_mode`==`custom`; else use `power_mode` as default
         """
         return pulumi.get(self, "power")
 
@@ -1557,7 +1569,7 @@ if not MYPY:
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        usb*config is ignored if esl*config enabled
+        usb_config is ignored if esl_config enabled
         """
         host: NotRequired[pulumi.Input[str]]
         """
@@ -1569,7 +1581,7 @@ if not MYPY:
         """
         type: NotRequired[pulumi.Input[str]]
         """
-        note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         """
         verify_cert: NotRequired[pulumi.Input[bool]]
         """
@@ -1596,10 +1608,10 @@ class DeviceprofileApEslConfigArgs:
         """
         :param pulumi.Input[str] cacert: Only if `type`==`imagotag` or `type`==`native`
         :param pulumi.Input[int] channel: Only if `type`==`imagotag` or `type`==`native`
-        :param pulumi.Input[bool] enabled: usb*config is ignored if esl*config enabled
+        :param pulumi.Input[bool] enabled: usb_config is ignored if esl_config enabled
         :param pulumi.Input[str] host: Only if `type`==`imagotag` or `type`==`native`
         :param pulumi.Input[int] port: Only if `type`==`imagotag` or `type`==`native`
-        :param pulumi.Input[str] type: note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        :param pulumi.Input[str] type: note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         :param pulumi.Input[bool] verify_cert: Only if `type`==`imagotag` or `type`==`native`
         :param pulumi.Input[int] vlan_id: Only if `type`==`solum` or `type`==`hanshow`
         """
@@ -1648,7 +1660,7 @@ class DeviceprofileApEslConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        usb*config is ignored if esl*config enabled
+        usb_config is ignored if esl_config enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -1684,7 +1696,7 @@ class DeviceprofileApEslConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        note: ble*config will be ingored if esl*config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
+        note: ble_config will be ingored if esl_config is enabled and with native mode. enum: `hanshow`, `imagotag`, `native`, `solum`
         """
         return pulumi.get(self, "type")
 
@@ -1721,26 +1733,26 @@ if not MYPY:
     class DeviceprofileApIpConfigArgsDict(TypedDict):
         dns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         dns_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         gateway: NotRequired[pulumi.Input[str]]
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         gateway6: NotRequired[pulumi.Input[str]]
         ip: NotRequired[pulumi.Input[str]]
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         ip6: NotRequired[pulumi.Input[str]]
         mtu: NotRequired[pulumi.Input[int]]
         netmask: NotRequired[pulumi.Input[str]]
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         netmask6: NotRequired[pulumi.Input[str]]
         type: NotRequired[pulumi.Input[str]]
@@ -1753,7 +1765,7 @@ if not MYPY:
         """
         vlan_id: NotRequired[pulumi.Input[int]]
         """
-        management vlan id, default is 1 (untagged)
+        Management VLAN id, default is 1 (untagged)
         """
 elif False:
     DeviceprofileApIpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1774,14 +1786,14 @@ class DeviceprofileApIpConfigArgs:
                  type6: Optional[pulumi.Input[str]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns: if `type`==`static`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: required if `type`==`static`
-        :param pulumi.Input[str] gateway: required if `type`==`static`
-        :param pulumi.Input[str] ip: required if `type`==`static`
-        :param pulumi.Input[str] netmask: required if `type`==`static`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns: If `type`==`static`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Required if `type`==`static`
+        :param pulumi.Input[str] gateway: Required if `type`==`static`
+        :param pulumi.Input[str] ip: Required if `type`==`static`
+        :param pulumi.Input[str] netmask: Required if `type`==`static`
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
         :param pulumi.Input[str] type6: enum: `autoconf`, `dhcp`, `disabled`, `static`
-        :param pulumi.Input[int] vlan_id: management vlan id, default is 1 (untagged)
+        :param pulumi.Input[int] vlan_id: Management VLAN id, default is 1 (untagged)
         """
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
@@ -1812,7 +1824,7 @@ class DeviceprofileApIpConfigArgs:
     @pulumi.getter
     def dns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "dns")
 
@@ -1824,7 +1836,7 @@ class DeviceprofileApIpConfigArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -1836,7 +1848,7 @@ class DeviceprofileApIpConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "gateway")
 
@@ -1857,7 +1869,7 @@ class DeviceprofileApIpConfigArgs:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "ip")
 
@@ -1887,7 +1899,7 @@ class DeviceprofileApIpConfigArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        required if `type`==`static`
+        Required if `type`==`static`
         """
         return pulumi.get(self, "netmask")
 
@@ -1932,7 +1944,7 @@ class DeviceprofileApIpConfigArgs:
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[int]]:
         """
-        management vlan id, default is 1 (untagged)
+        Management VLAN id, default is 1 (untagged)
         """
         return pulumi.get(self, "vlan_id")
 
@@ -1981,11 +1993,11 @@ if not MYPY:
     class DeviceprofileApMeshArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether mesh is enabled on this AP
+        Whether mesh is enabled on this AP
         """
         group: NotRequired[pulumi.Input[int]]
         """
-        mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+        Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
         """
         role: NotRequired[pulumi.Input[str]]
         """
@@ -2001,8 +2013,8 @@ class DeviceprofileApMeshArgs:
                  group: Optional[pulumi.Input[int]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether mesh is enabled on this AP
-        :param pulumi.Input[int] group: mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+        :param pulumi.Input[bool] enabled: Whether mesh is enabled on this AP
+        :param pulumi.Input[int] group: Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
         :param pulumi.Input[str] role: enum: `base`, `remote`
         """
         if enabled is not None:
@@ -2016,7 +2028,7 @@ class DeviceprofileApMeshArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether mesh is enabled on this AP
+        Whether mesh is enabled on this AP
         """
         return pulumi.get(self, "enabled")
 
@@ -2028,7 +2040,7 @@ class DeviceprofileApMeshArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[int]]:
         """
-        mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
+        Mesh group, base AP(s) will only allow remote AP(s) in the same mesh group to join, 1-9, optional
         """
         return pulumi.get(self, "group")
 
@@ -2053,11 +2065,11 @@ if not MYPY:
     class DeviceprofileApPwrConfigArgsDict(TypedDict):
         base: NotRequired[pulumi.Input[int]]
         """
-        additional power to request during negotiating with PSE over PoE, in mW
+        Additional power to request during negotiating with PSE over PoE, in mW
         """
         prefer_usb_over_wifi: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+        Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
         """
 elif False:
     DeviceprofileApPwrConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2068,8 +2080,8 @@ class DeviceprofileApPwrConfigArgs:
                  base: Optional[pulumi.Input[int]] = None,
                  prefer_usb_over_wifi: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[int] base: additional power to request during negotiating with PSE over PoE, in mW
-        :param pulumi.Input[bool] prefer_usb_over_wifi: whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+        :param pulumi.Input[int] base: Additional power to request during negotiating with PSE over PoE, in mW
+        :param pulumi.Input[bool] prefer_usb_over_wifi: Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
         """
         if base is not None:
             pulumi.set(__self__, "base", base)
@@ -2080,7 +2092,7 @@ class DeviceprofileApPwrConfigArgs:
     @pulumi.getter
     def base(self) -> Optional[pulumi.Input[int]]:
         """
-        additional power to request during negotiating with PSE over PoE, in mW
+        Additional power to request during negotiating with PSE over PoE, in mW
         """
         return pulumi.get(self, "base")
 
@@ -2092,7 +2104,7 @@ class DeviceprofileApPwrConfigArgs:
     @pulumi.getter(name="preferUsbOverWifi")
     def prefer_usb_over_wifi(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable power out to peripheral, meanwhile will reduce power to wifi (only for AP45 at power mode)
+        Whether to enable power out to peripheral, meanwhile will reduce power to Wi-Fi (only for AP45 at power mode)
         """
         return pulumi.get(self, "prefer_usb_over_wifi")
 
@@ -2106,15 +2118,15 @@ if not MYPY:
         allow_rrm_disable: NotRequired[pulumi.Input[bool]]
         ant_gain24: NotRequired[pulumi.Input[int]]
         """
-        antenna gain for 2.4G - for models with external antenna only
+        Antenna gain for 2.4G - for models with external antenna only
         """
         ant_gain5: NotRequired[pulumi.Input[int]]
         """
-        antenna gain for 5G - for models with external antenna only
+        Antenna gain for 5G - for models with external antenna only
         """
         ant_gain6: NotRequired[pulumi.Input[int]]
         """
-        antenna gain for 6G - for models with external antenna only
+        Antenna gain for 6G - for models with external antenna only
         """
         antenna_mode: NotRequired[pulumi.Input[str]]
         """
@@ -2142,12 +2154,11 @@ if not MYPY:
         """
         indoor_use: NotRequired[pulumi.Input[bool]]
         """
-        to make an outdoor operate indoor.
-        for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+        To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         """
         scanning_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether scanning radio is enabled
+        Whether scanning radio is enabled
         """
 elif False:
     DeviceprofileApRadioConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2168,18 +2179,17 @@ class DeviceprofileApRadioConfigArgs:
                  indoor_use: Optional[pulumi.Input[bool]] = None,
                  scanning_enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[int] ant_gain24: antenna gain for 2.4G - for models with external antenna only
-        :param pulumi.Input[int] ant_gain5: antenna gain for 5G - for models with external antenna only
-        :param pulumi.Input[int] ant_gain6: antenna gain for 6G - for models with external antenna only
+        :param pulumi.Input[int] ant_gain24: Antenna gain for 2.4G - for models with external antenna only
+        :param pulumi.Input[int] ant_gain5: Antenna gain for 5G - for models with external antenna only
+        :param pulumi.Input[int] ant_gain6: Antenna gain for 6G - for models with external antenna only
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input['DeviceprofileApRadioConfigBand24Args'] band24: Radio Band AP settings
         :param pulumi.Input[str] band24_usage: enum: `24`, `5`, `6`, `auto`
         :param pulumi.Input['DeviceprofileApRadioConfigBand5Args'] band5: Radio Band AP settings
         :param pulumi.Input['DeviceprofileApRadioConfigBand5On24RadioArgs'] band5_on24_radio: Radio Band AP settings
         :param pulumi.Input['DeviceprofileApRadioConfigBand6Args'] band6: Radio Band AP settings
-        :param pulumi.Input[bool] indoor_use: to make an outdoor operate indoor.
-               for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
-        :param pulumi.Input[bool] scanning_enabled: whether scanning radio is enabled
+        :param pulumi.Input[bool] indoor_use: To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+        :param pulumi.Input[bool] scanning_enabled: Whether scanning radio is enabled
         """
         if allow_rrm_disable is not None:
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
@@ -2219,7 +2229,7 @@ class DeviceprofileApRadioConfigArgs:
     @pulumi.getter(name="antGain24")
     def ant_gain24(self) -> Optional[pulumi.Input[int]]:
         """
-        antenna gain for 2.4G - for models with external antenna only
+        Antenna gain for 2.4G - for models with external antenna only
         """
         return pulumi.get(self, "ant_gain24")
 
@@ -2231,7 +2241,7 @@ class DeviceprofileApRadioConfigArgs:
     @pulumi.getter(name="antGain5")
     def ant_gain5(self) -> Optional[pulumi.Input[int]]:
         """
-        antenna gain for 5G - for models with external antenna only
+        Antenna gain for 5G - for models with external antenna only
         """
         return pulumi.get(self, "ant_gain5")
 
@@ -2243,7 +2253,7 @@ class DeviceprofileApRadioConfigArgs:
     @pulumi.getter(name="antGain6")
     def ant_gain6(self) -> Optional[pulumi.Input[int]]:
         """
-        antenna gain for 6G - for models with external antenna only
+        Antenna gain for 6G - for models with external antenna only
         """
         return pulumi.get(self, "ant_gain6")
 
@@ -2327,8 +2337,7 @@ class DeviceprofileApRadioConfigArgs:
     @pulumi.getter(name="indoorUse")
     def indoor_use(self) -> Optional[pulumi.Input[bool]]:
         """
-        to make an outdoor operate indoor.
-        for an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
+        To make an outdoor operate indoor. For an outdoor-ap, some channels are disallowed by default, this allows the user to use it as an indoor-ap
         """
         return pulumi.get(self, "indoor_use")
 
@@ -2340,7 +2349,7 @@ class DeviceprofileApRadioConfigArgs:
     @pulumi.getter(name="scanningEnabled")
     def scanning_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether scanning radio is enabled
+        Whether scanning radio is enabled
         """
         return pulumi.get(self, "scanning_enabled")
 
@@ -2371,7 +2380,7 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
@@ -2379,11 +2388,11 @@ if not MYPY:
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -2411,10 +2420,10 @@ class DeviceprofileApRadioConfigBand24Args:
         :param pulumi.Input[int] bandwidth: channel width for the 2.4GHz band. enum: `20`, `40`
         :param pulumi.Input[int] channel: For Device. (primary) channel for the band, 0 means using the Site Setting
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
         :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -2510,7 +2519,7 @@ class DeviceprofileApRadioConfigBand24Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -2534,7 +2543,7 @@ class DeviceprofileApRadioConfigBand24Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -2546,7 +2555,7 @@ class DeviceprofileApRadioConfigBand24Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -2589,7 +2598,7 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
@@ -2597,11 +2606,11 @@ if not MYPY:
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -2629,10 +2638,10 @@ class DeviceprofileApRadioConfigBand5Args:
         :param pulumi.Input[int] bandwidth: channel width for the 5GHz band. enum: `20`, `40`, `80`
         :param pulumi.Input[int] channel: For Device. (primary) channel for the band, 0 means using the Site Setting
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
         :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -2728,7 +2737,7 @@ class DeviceprofileApRadioConfigBand5Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -2752,7 +2761,7 @@ class DeviceprofileApRadioConfigBand5Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -2764,7 +2773,7 @@ class DeviceprofileApRadioConfigBand5Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -2807,7 +2816,7 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
@@ -2815,11 +2824,11 @@ if not MYPY:
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -2847,10 +2856,10 @@ class DeviceprofileApRadioConfigBand5On24RadioArgs:
         :param pulumi.Input[int] bandwidth: channel width for the 5GHz band. enum: `20`, `40`, `80`
         :param pulumi.Input[int] channel: For Device. (primary) channel for the band, 0 means using the Site Setting
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
         :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -2946,7 +2955,7 @@ class DeviceprofileApRadioConfigBand5On24RadioArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -2970,7 +2979,7 @@ class DeviceprofileApRadioConfigBand5On24RadioArgs:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -2982,7 +2991,7 @@ class DeviceprofileApRadioConfigBand5On24RadioArgs:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -3025,7 +3034,7 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
@@ -3033,11 +3042,11 @@ if not MYPY:
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -3045,7 +3054,7 @@ if not MYPY:
         """
         standard_power: NotRequired[pulumi.Input[bool]]
         """
-        for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
 elif False:
     DeviceprofileApRadioConfigBand6ArgsDict: TypeAlias = Mapping[str, Any]
@@ -3070,12 +3079,12 @@ class DeviceprofileApRadioConfigBand6Args:
         :param pulumi.Input[int] bandwidth: channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
         :param pulumi.Input[int] channel: For Device. (primary) channel for the band, 0 means using the Site Setting
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
         :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
-        :param pulumi.Input[bool] standard_power: for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        :param pulumi.Input[bool] standard_power: For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
         if allow_rrm_disable is not None:
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
@@ -3172,7 +3181,7 @@ class DeviceprofileApRadioConfigBand6Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -3196,7 +3205,7 @@ class DeviceprofileApRadioConfigBand6Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -3208,7 +3217,7 @@ class DeviceprofileApRadioConfigBand6Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -3232,7 +3241,7 @@ class DeviceprofileApRadioConfigBand6Args:
     @pulumi.getter(name="standardPower")
     def standard_power(self) -> Optional[pulumi.Input[bool]]:
         """
-        for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
         return pulumi.get(self, "standard_power")
 
@@ -3249,7 +3258,7 @@ if not MYPY:
         """
         keep_wlans_up_if_down: NotRequired[pulumi.Input[bool]]
         """
-        by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+        By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
         """
 elif False:
     DeviceprofileApUplinkPortConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3261,7 +3270,7 @@ class DeviceprofileApUplinkPortConfigArgs:
                  keep_wlans_up_if_down: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] dot1x: Whether to do 802.1x against uplink switch. When enaled, AP cert will be used to do EAP-TLS and the Org's CA Cert has to be provisioned at the switch
-        :param pulumi.Input[bool] keep_wlans_up_if_down: by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+        :param pulumi.Input[bool] keep_wlans_up_if_down: By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
         """
         if dot1x is not None:
             pulumi.set(__self__, "dot1x", dot1x)
@@ -3284,7 +3293,7 @@ class DeviceprofileApUplinkPortConfigArgs:
     @pulumi.getter(name="keepWlansUpIfDown")
     def keep_wlans_up_if_down(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
+        By default, WLANs are disabled when uplink is down. In some scenario, like SiteSurvey, one would want the AP to keep sending beacons.
         """
         return pulumi.get(self, "keep_wlans_up_if_down")
 
@@ -3297,23 +3306,23 @@ if not MYPY:
     class DeviceprofileApUsbConfigArgsDict(TypedDict):
         cacert: NotRequired[pulumi.Input[str]]
         """
-        only if `type`==`imagotag`
+        Only if `type`==`imagotag`
         """
         channel: NotRequired[pulumi.Input[int]]
         """
-        only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+        Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable any usb config
+        Whether to enable any usb config
         """
         host: NotRequired[pulumi.Input[str]]
         """
-        only if `type`==`imagotag`
+        Only if `type`==`imagotag`
         """
         port: NotRequired[pulumi.Input[int]]
         """
-        only if `type`==`imagotag`
+        Only if `type`==`imagotag`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -3321,11 +3330,11 @@ if not MYPY:
         """
         verify_cert: NotRequired[pulumi.Input[bool]]
         """
-        only if `type`==`imagotag`, whether to turn on SSL verification
+        Only if `type`==`imagotag`, whether to turn on SSL verification
         """
         vlan_id: NotRequired[pulumi.Input[int]]
         """
-        only if `type`==`solum` or `type`==`hanshow`
+        Only if `type`==`solum` or `type`==`hanshow`
         """
 elif False:
     DeviceprofileApUsbConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3342,14 +3351,14 @@ class DeviceprofileApUsbConfigArgs:
                  verify_cert: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] cacert: only if `type`==`imagotag`
-        :param pulumi.Input[int] channel: only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
-        :param pulumi.Input[bool] enabled: whether to enable any usb config
-        :param pulumi.Input[str] host: only if `type`==`imagotag`
-        :param pulumi.Input[int] port: only if `type`==`imagotag`
+        :param pulumi.Input[str] cacert: Only if `type`==`imagotag`
+        :param pulumi.Input[int] channel: Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+        :param pulumi.Input[bool] enabled: Whether to enable any usb config
+        :param pulumi.Input[str] host: Only if `type`==`imagotag`
+        :param pulumi.Input[int] port: Only if `type`==`imagotag`
         :param pulumi.Input[str] type: usb config type. enum: `hanshow`, `imagotag`, `solum`
-        :param pulumi.Input[bool] verify_cert: only if `type`==`imagotag`, whether to turn on SSL verification
-        :param pulumi.Input[int] vlan_id: only if `type`==`solum` or `type`==`hanshow`
+        :param pulumi.Input[bool] verify_cert: Only if `type`==`imagotag`, whether to turn on SSL verification
+        :param pulumi.Input[int] vlan_id: Only if `type`==`solum` or `type`==`hanshow`
         """
         if cacert is not None:
             pulumi.set(__self__, "cacert", cacert)
@@ -3372,7 +3381,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter
     def cacert(self) -> Optional[pulumi.Input[str]]:
         """
-        only if `type`==`imagotag`
+        Only if `type`==`imagotag`
         """
         return pulumi.get(self, "cacert")
 
@@ -3384,7 +3393,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter
     def channel(self) -> Optional[pulumi.Input[int]]:
         """
-        only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
+        Only if `type`==`imagotag`, channel selection, not needed by default, required for manual channel override only
         """
         return pulumi.get(self, "channel")
 
@@ -3396,7 +3405,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable any usb config
+        Whether to enable any usb config
         """
         return pulumi.get(self, "enabled")
 
@@ -3408,7 +3417,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        only if `type`==`imagotag`
+        Only if `type`==`imagotag`
         """
         return pulumi.get(self, "host")
 
@@ -3420,7 +3429,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        only if `type`==`imagotag`
+        Only if `type`==`imagotag`
         """
         return pulumi.get(self, "port")
 
@@ -3444,7 +3453,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter(name="verifyCert")
     def verify_cert(self) -> Optional[pulumi.Input[bool]]:
         """
-        only if `type`==`imagotag`, whether to turn on SSL verification
+        Only if `type`==`imagotag`, whether to turn on SSL verification
         """
         return pulumi.get(self, "verify_cert")
 
@@ -3456,7 +3465,7 @@ class DeviceprofileApUsbConfigArgs:
     @pulumi.getter(name="vlanId")
     def vlan_id(self) -> Optional[pulumi.Input[int]]:
         """
-        only if `type`==`solum` or `type`==`hanshow`
+        Only if `type`==`solum` or `type`==`hanshow`
         """
         return pulumi.get(self, "vlan_id")
 
@@ -3470,13 +3479,13 @@ if not MYPY:
         auth_key: NotRequired[pulumi.Input[str]]
         bfd_minimum_interval: NotRequired[pulumi.Input[int]]
         """
-        when bfd_multiplier is configured alone. Default:
+        When bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
         bfd_multiplier: NotRequired[pulumi.Input[int]]
         """
-        when bfd_minimum_interval_is_configured alone
+        When bfd_minimum_interval_is_configured alone
         """
         disable_bfd: NotRequired[pulumi.Input[bool]]
         """
@@ -3485,11 +3494,11 @@ if not MYPY:
         export: NotRequired[pulumi.Input[str]]
         export_policy: NotRequired[pulumi.Input[str]]
         """
-        default export policies if no per-neighbor policies defined
+        Default export policies if no per-neighbor policies defined
         """
         extended_v4_nexthop: NotRequired[pulumi.Input[bool]]
         """
-        by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         graceful_restart_time: NotRequired[pulumi.Input[int]]
         """
@@ -3499,25 +3508,25 @@ if not MYPY:
         import_: NotRequired[pulumi.Input[str]]
         import_policy: NotRequired[pulumi.Input[str]]
         """
-        default import policies if no per-neighbor policies defined
+        Default import policies if no per-neighbor policies defined
         """
         local_as: NotRequired[pulumi.Input[int]]
         neighbor_as: NotRequired[pulumi.Input[int]]
         neighbors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgsDict']]]]
         """
-        if per-neighbor as is desired. Property key is the neighbor address
+        If per-neighbor as is desired. Property key is the neighbor address
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         """
         no_readvertise_to_overlay: NotRequired[pulumi.Input[bool]]
         """
-        by default, we'll re-advertise all learned BGP routers toward overlay
+        By default, we'll re-advertise all learned BGP routers toward overlay
         """
         tunnel_name: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`tunnel`
+        If `type`==`tunnel`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -3530,7 +3539,7 @@ if not MYPY:
         vpn_name: NotRequired[pulumi.Input[str]]
         wan_name: NotRequired[pulumi.Input[str]]
         """
-        if `via`==`wan`
+        If `via`==`wan`
         """
 elif False:
     DeviceprofileGatewayBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3560,22 +3569,22 @@ class DeviceprofileGatewayBgpConfigArgs:
                  vpn_name: Optional[pulumi.Input[str]] = None,
                  wan_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] bfd_minimum_interval: when bfd_multiplier is configured alone. Default:
+        :param pulumi.Input[int] bfd_minimum_interval: When bfd_multiplier is configured alone. Default:
                  * 1000 if `type`==`external`
                  * 350 `type`==`internal`
-        :param pulumi.Input[int] bfd_multiplier: when bfd_minimum_interval_is_configured alone
+        :param pulumi.Input[int] bfd_multiplier: When bfd_minimum_interval_is_configured alone
         :param pulumi.Input[bool] disable_bfd: BFD provides faster path failure detection and is enabled by default
-        :param pulumi.Input[str] export_policy: default export policies if no per-neighbor policies defined
-        :param pulumi.Input[bool] extended_v4_nexthop: by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        :param pulumi.Input[str] export_policy: Default export policies if no per-neighbor policies defined
+        :param pulumi.Input[bool] extended_v4_nexthop: By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         :param pulumi.Input[int] graceful_restart_time: `0` means disable
-        :param pulumi.Input[str] import_policy: default import policies if no per-neighbor policies defined
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]] neighbors: if per-neighbor as is desired. Property key is the neighbor address
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-        :param pulumi.Input[bool] no_readvertise_to_overlay: by default, we'll re-advertise all learned BGP routers toward overlay
-        :param pulumi.Input[str] tunnel_name: if `type`==`tunnel`
+        :param pulumi.Input[str] import_policy: Default import policies if no per-neighbor policies defined
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]] neighbors: If per-neighbor as is desired. Property key is the neighbor address
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        :param pulumi.Input[bool] no_readvertise_to_overlay: By default, we'll re-advertise all learned BGP routers toward overlay
+        :param pulumi.Input[str] tunnel_name: If `type`==`tunnel`
         :param pulumi.Input[str] type: enum: `external`, `internal`
         :param pulumi.Input[str] via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        :param pulumi.Input[str] wan_name: if `via`==`wan`
+        :param pulumi.Input[str] wan_name: If `via`==`wan`
         """
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
@@ -3633,7 +3642,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="bfdMinimumInterval")
     def bfd_minimum_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        when bfd_multiplier is configured alone. Default:
+        When bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
@@ -3647,7 +3656,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="bfdMultiplier")
     def bfd_multiplier(self) -> Optional[pulumi.Input[int]]:
         """
-        when bfd_minimum_interval_is_configured alone
+        When bfd_minimum_interval_is_configured alone
         """
         return pulumi.get(self, "bfd_multiplier")
 
@@ -3680,7 +3689,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="exportPolicy")
     def export_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        default export policies if no per-neighbor policies defined
+        Default export policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "export_policy")
 
@@ -3692,7 +3701,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="extendedV4Nexthop")
     def extended_v4_nexthop(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         return pulumi.get(self, "extended_v4_nexthop")
 
@@ -3734,7 +3743,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="importPolicy")
     def import_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        default import policies if no per-neighbor policies defined
+        Default import policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "import_policy")
 
@@ -3764,7 +3773,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter
     def neighbors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayBgpConfigNeighborsArgs']]]]:
         """
-        if per-neighbor as is desired. Property key is the neighbor address
+        If per-neighbor as is desired. Property key is the neighbor address
         """
         return pulumi.get(self, "neighbors")
 
@@ -3776,7 +3785,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         """
         return pulumi.get(self, "networks")
 
@@ -3788,7 +3797,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, we'll re-advertise all learned BGP routers toward overlay
+        By default, we'll re-advertise all learned BGP routers toward overlay
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -3800,7 +3809,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="tunnelName")
     def tunnel_name(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`tunnel`
+        If `type`==`tunnel`
         """
         return pulumi.get(self, "tunnel_name")
 
@@ -3845,7 +3854,7 @@ class DeviceprofileGatewayBgpConfigArgs:
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        if `via`==`wan`
+        If `via`==`wan`
         """
         return pulumi.get(self, "wan_name")
 
@@ -3865,7 +3874,7 @@ if not MYPY:
         import_policy: NotRequired[pulumi.Input[str]]
         multihop_ttl: NotRequired[pulumi.Input[int]]
         """
-        assuming BGP neighbor is directly connected
+        Assuming BGP neighbor is directly connected
         """
         neighbor_as: NotRequired[pulumi.Input[int]]
 elif False:
@@ -3882,7 +3891,7 @@ class DeviceprofileGatewayBgpConfigNeighborsArgs:
                  neighbor_as: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] disabled: If true, the BGP session to this neighbor will be administratively disabled/shutdown
-        :param pulumi.Input[int] multihop_ttl: assuming BGP neighbor is directly connected
+        :param pulumi.Input[int] multihop_ttl: Assuming BGP neighbor is directly connected
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -3940,7 +3949,7 @@ class DeviceprofileGatewayBgpConfigNeighborsArgs:
     @pulumi.getter(name="multihopTtl")
     def multihop_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        assuming BGP neighbor is directly connected
+        Assuming BGP neighbor is directly connected
         """
         return pulumi.get(self, "multihop_ttl")
 
@@ -3966,7 +3975,7 @@ if not MYPY:
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        if set to `false`, disable the DHCP server
+        If set to `false`, disable the DHCP server
         """
 elif False:
     DeviceprofileGatewayDhcpdConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3978,7 +3987,7 @@ class DeviceprofileGatewayDhcpdConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigArgs']]] config: Property key is the network name
-        :param pulumi.Input[bool] enabled: if set to `false`, disable the DHCP server
+        :param pulumi.Input[bool] enabled: If set to `false`, disable the DHCP server
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -4001,7 +4010,7 @@ class DeviceprofileGatewayDhcpdConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if set to `false`, disable the DHCP server
+        If set to `false`, disable the DHCP server
         """
         return pulumi.get(self, "enabled")
 
@@ -4014,43 +4023,43 @@ if not MYPY:
     class DeviceprofileGatewayDhcpdConfigConfigArgsDict(TypedDict):
         dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         dns_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         fixed_bindings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgsDict']]]]
         """
-        if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         gateway: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`local` - optional, `ip` will be used if not provided
+        If `type`==`local` - optional, `ip` will be used if not provided
         """
         ip_end: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         ip_end6: NotRequired[pulumi.Input[str]]
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         ip_start: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         ip_start6: NotRequired[pulumi.Input[str]]
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         lease_time: NotRequired[pulumi.Input[int]]
         """
-        in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         """
         options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgsDict']]]]
         """
-        if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         """
         server_id_override: NotRequired[pulumi.Input[bool]]
         """
@@ -4059,11 +4068,11 @@ if not MYPY:
         """
         servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`relay`
+        If `type`==`relay`
         """
         servers6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type6`==`relay`
+        If `type6`==`relay`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -4075,9 +4084,9 @@ if not MYPY:
         """
         vendor_encapsulated: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgsDict']]]]
         """
-        if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-          * sub option code: 1-255, sub-option code'
+          * sub option code: 1-255, sub-option code
         """
 elif False:
     DeviceprofileGatewayDhcpdConfigConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -4102,25 +4111,25 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
                  type6: Optional[pulumi.Input[str]] = None,
                  vendor_encapsulated: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
-        :param pulumi.Input[str] gateway: if `type`==`local` - optional, `ip` will be used if not provided
-        :param pulumi.Input[str] ip_end: if `type`==`local`
-        :param pulumi.Input[str] ip_end6: if `type6`==`local`
-        :param pulumi.Input[str] ip_start: if `type`==`local`
-        :param pulumi.Input[str] ip_start6: if `type6`==`local`
-        :param pulumi.Input[int] lease_time: in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgs']]] options: if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        :param pulumi.Input[str] gateway: If `type`==`local` - optional, `ip` will be used if not provided
+        :param pulumi.Input[str] ip_end: If `type`==`local`
+        :param pulumi.Input[str] ip_end6: If `type6`==`local`
+        :param pulumi.Input[str] ip_start: If `type`==`local`
+        :param pulumi.Input[str] ip_start6: If `type6`==`local`
+        :param pulumi.Input[int] lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgs']]] options: If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         :param pulumi.Input[bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: if `type`==`relay`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers6s: if `type6`==`relay`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: If `type`==`relay`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers6s: If `type6`==`relay`
         :param pulumi.Input[str] type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param pulumi.Input[str] type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
-        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs']]] vendor_encapsulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs']]] vendor_encapsulated: If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-                 * sub option code: 1-255, sub-option code'
+                 * sub option code: 1-255, sub-option code
         """
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
@@ -4159,7 +4168,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         return pulumi.get(self, "dns_servers")
 
@@ -4171,7 +4180,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -4183,7 +4192,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigFixedBindingsArgs']]]]:
         """
-        if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 
@@ -4195,7 +4204,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`local` - optional, `ip` will be used if not provided
+        If `type`==`local` - optional, `ip` will be used if not provided
         """
         return pulumi.get(self, "gateway")
 
@@ -4207,7 +4216,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipEnd")
     def ip_end(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         return pulumi.get(self, "ip_end")
 
@@ -4219,7 +4228,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipEnd6")
     def ip_end6(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         return pulumi.get(self, "ip_end6")
 
@@ -4231,7 +4240,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipStart")
     def ip_start(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         return pulumi.get(self, "ip_start")
 
@@ -4243,7 +4252,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipStart6")
     def ip_start6(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         return pulumi.get(self, "ip_start6")
 
@@ -4255,7 +4264,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="leaseTime")
     def lease_time(self) -> Optional[pulumi.Input[int]]:
         """
-        in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         """
         return pulumi.get(self, "lease_time")
 
@@ -4267,7 +4276,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigOptionsArgs']]]]:
         """
-        if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         """
         return pulumi.get(self, "options")
 
@@ -4292,7 +4301,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`relay`
+        If `type`==`relay`
         """
         return pulumi.get(self, "servers")
 
@@ -4304,7 +4313,7 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter
     def servers6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type6`==`relay`
+        If `type6`==`relay`
         """
         return pulumi.get(self, "servers6s")
 
@@ -4340,9 +4349,9 @@ class DeviceprofileGatewayDhcpdConfigConfigArgs:
     @pulumi.getter(name="vendorEncapsulated")
     def vendor_encapsulated(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayDhcpdConfigConfigVendorEncapsulatedArgs']]]]:
         """
-        if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-          * sub option code: 1-255, sub-option code'
+          * sub option code: 1-255, sub-option code
         """
         return pulumi.get(self, "vendor_encapsulated")
 
@@ -4713,7 +4722,7 @@ if not MYPY:
         netmask: pulumi.Input[str]
         secondary_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional list of secondary IPs in CIDR format
+        Optional list of secondary IPs in CIDR format
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -4730,7 +4739,7 @@ class DeviceprofileGatewayIpConfigsArgs:
                  secondary_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_ips: optional list of secondary IPs in CIDR format
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_ips: Optional list of secondary IPs in CIDR format
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
         """
         pulumi.set(__self__, "ip", ip)
@@ -4762,7 +4771,7 @@ class DeviceprofileGatewayIpConfigsArgs:
     @pulumi.getter(name="secondaryIps")
     def secondary_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional list of secondary IPs in CIDR format
+        Optional list of secondary IPs in CIDR format
         """
         return pulumi.get(self, "secondary_ips")
 
@@ -4789,26 +4798,26 @@ if not MYPY:
         subnet: pulumi.Input[str]
         disallow_mist_services: NotRequired[pulumi.Input[bool]]
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         gateway: NotRequired[pulumi.Input[str]]
         gateway6: NotRequired[pulumi.Input[str]]
         internal_access: NotRequired[pulumi.Input['DeviceprofileGatewayNetworkInternalAccessArgsDict']]
         internet_access: NotRequired[pulumi.Input['DeviceprofileGatewayNetworkInternetAccessArgsDict']]
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         isolation: NotRequired[pulumi.Input[bool]]
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         multicast: NotRequired[pulumi.Input['DeviceprofileGatewayNetworkMulticastArgsDict']]
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         routed_for_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         subnet6: NotRequired[pulumi.Input[str]]
         tenants: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkTenantsArgsDict']]]]
@@ -4841,11 +4850,11 @@ class DeviceprofileGatewayNetworkArgs:
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessArgs']]]] = None):
         """
-        :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input['DeviceprofileGatewayNetworkInternetAccessArgs'] internet_access: whether this network has direct internet access
-        :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
-        :param pulumi.Input['DeviceprofileGatewayNetworkMulticastArgs'] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[bool] disallow_mist_services: Whether to disallow Mist Devices in the network
+        :param pulumi.Input['DeviceprofileGatewayNetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[bool] isolation: Whether to allow clients in the network to talk to each other
+        :param pulumi.Input['DeviceprofileGatewayNetworkMulticastArgs'] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
@@ -4898,7 +4907,7 @@ class DeviceprofileGatewayNetworkArgs:
     @pulumi.getter(name="disallowMistServices")
     def disallow_mist_services(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
@@ -4937,7 +4946,7 @@ class DeviceprofileGatewayNetworkArgs:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> Optional[pulumi.Input['DeviceprofileGatewayNetworkInternetAccessArgs']]:
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
@@ -4949,7 +4958,7 @@ class DeviceprofileGatewayNetworkArgs:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -4961,7 +4970,7 @@ class DeviceprofileGatewayNetworkArgs:
     @pulumi.getter
     def multicast(self) -> Optional[pulumi.Input['DeviceprofileGatewayNetworkMulticastArgs']]:
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
@@ -4973,7 +4982,7 @@ class DeviceprofileGatewayNetworkArgs:
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 
@@ -5057,7 +5066,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         restricted: NotRequired[pulumi.Input[bool]]
         """
-        by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         """
         static_nat: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessStaticNatArgsDict']]]]
         """
@@ -5076,7 +5085,7 @@ class DeviceprofileGatewayNetworkInternetAccessArgs:
                  static_nat: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessStaticNatArgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessDestinationNatArgs']]] destination_nat: Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
-        :param pulumi.Input[bool] restricted: by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        :param pulumi.Input[bool] restricted: By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkInternetAccessStaticNatArgs']]] static_nat: Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         """
         if create_simple_service_policy is not None:
@@ -5124,7 +5133,7 @@ class DeviceprofileGatewayNetworkInternetAccessArgs:
     @pulumi.getter
     def restricted(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         """
         return pulumi.get(self, "restricted")
 
@@ -5297,7 +5306,7 @@ if not MYPY:
     class DeviceprofileGatewayNetworkMulticastArgsDict(TypedDict):
         disable_igmp: NotRequired[pulumi.Input[bool]]
         """
-        if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         """
         enabled: NotRequired[pulumi.Input[bool]]
         groups: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkMulticastGroupsArgsDict']]]]
@@ -5314,7 +5323,7 @@ class DeviceprofileGatewayNetworkMulticastArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  groups: Optional[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkMulticastGroupsArgs']]]] = None):
         """
-        :param pulumi.Input[bool] disable_igmp: if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        :param pulumi.Input[bool] disable_igmp: If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkMulticastGroupsArgs']]] groups: Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
         """
         if disable_igmp is not None:
@@ -5328,7 +5337,7 @@ class DeviceprofileGatewayNetworkMulticastArgs:
     @pulumi.getter(name="disableIgmp")
     def disable_igmp(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         """
         return pulumi.get(self, "disable_igmp")
 
@@ -5417,11 +5426,11 @@ if not MYPY:
     class DeviceprofileGatewayNetworkVpnAccessArgsDict(TypedDict):
         advertised_subnet: NotRequired[pulumi.Input[str]]
         """
-        if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         """
         allow_ping: NotRequired[pulumi.Input[bool]]
         """
-        whether to allow ping from vpn into this routed network
+        Whether to allow ping from vpn into this routed network
         """
         destination_nat: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessDestinationNatArgsDict']]]]
         """
@@ -5429,7 +5438,7 @@ if not MYPY:
         """
         nat_pool: NotRequired[pulumi.Input[str]]
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         """
         no_readvertise_to_lan_bgp: NotRequired[pulumi.Input[bool]]
         """
@@ -5445,15 +5454,15 @@ if not MYPY:
         """
         other_vrfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         """
         routed: NotRequired[pulumi.Input[bool]]
         """
-        whether this network is routable
+        Whether this network is routable
         """
         source_nat: NotRequired[pulumi.Input['DeviceprofileGatewayNetworkVpnAccessSourceNatArgsDict']]
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         """
         static_nat: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessStaticNatArgsDict']]]]
         """
@@ -5492,16 +5501,16 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
                  summarized_subnet_to_lan_bgp: Optional[pulumi.Input[str]] = None,
                  summarized_subnet_to_lan_ospf: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] advertised_subnet: if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
-        :param pulumi.Input[bool] allow_ping: whether to allow ping from vpn into this routed network
+        :param pulumi.Input[str] advertised_subnet: If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        :param pulumi.Input[bool] allow_ping: Whether to allow ping from vpn into this routed network
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessDestinationNatArgs']]] destination_nat: Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
-        :param pulumi.Input[str] nat_pool: if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        :param pulumi.Input[str] nat_pool: If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         :param pulumi.Input[bool] no_readvertise_to_lan_bgp: toward LAN-side BGP peers
         :param pulumi.Input[bool] no_readvertise_to_lan_ospf: toward LAN-side OSPF peers
         :param pulumi.Input[bool] no_readvertise_to_overlay: toward overlay, how HUB should deal with routes it received from Spokes
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] other_vrfs: by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
-        :param pulumi.Input[bool] routed: whether this network is routable
-        :param pulumi.Input['DeviceprofileGatewayNetworkVpnAccessSourceNatArgs'] source_nat: if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] other_vrfs: By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        :param pulumi.Input[bool] routed: Whether this network is routable
+        :param pulumi.Input['DeviceprofileGatewayNetworkVpnAccessSourceNatArgs'] source_nat: If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayNetworkVpnAccessStaticNatArgs']]] static_nat: Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[str] summarized_subnet: toward overlay, how HUB should deal with routes it received from Spokes
         :param pulumi.Input[str] summarized_subnet_to_lan_bgp: toward LAN-side BGP peers
@@ -5540,7 +5549,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
     @pulumi.getter(name="advertisedSubnet")
     def advertised_subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         """
         return pulumi.get(self, "advertised_subnet")
 
@@ -5552,7 +5561,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
     @pulumi.getter(name="allowPing")
     def allow_ping(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to allow ping from vpn into this routed network
+        Whether to allow ping from vpn into this routed network
         """
         return pulumi.get(self, "allow_ping")
 
@@ -5576,7 +5585,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
     @pulumi.getter(name="natPool")
     def nat_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         """
         return pulumi.get(self, "nat_pool")
 
@@ -5624,7 +5633,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
     @pulumi.getter(name="otherVrfs")
     def other_vrfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         """
         return pulumi.get(self, "other_vrfs")
 
@@ -5636,7 +5645,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
     @pulumi.getter
     def routed(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether this network is routable
+        Whether this network is routable
         """
         return pulumi.get(self, "routed")
 
@@ -5648,7 +5657,7 @@ class DeviceprofileGatewayNetworkVpnAccessArgs:
     @pulumi.getter(name="sourceNat")
     def source_nat(self) -> Optional[pulumi.Input['DeviceprofileGatewayNetworkVpnAccessSourceNatArgs']]:
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         """
         return pulumi.get(self, "source_nat")
 
@@ -5833,19 +5842,19 @@ if not MYPY:
     class DeviceprofileGatewayOobIpConfigArgsDict(TypedDict):
         gateway: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         ip: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         netmask: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         node1: NotRequired[pulumi.Input['DeviceprofileGatewayOobIpConfigNode1ArgsDict']]
         """
-        for HA Cluster, node1 can have different IP Config
+        For HA Cluster, node1 can have different IP Config
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -5853,11 +5862,11 @@ if not MYPY:
         """
         use_mgmt_vrf: NotRequired[pulumi.Input[bool]]
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         use_mgmt_vrf_for_host_out: NotRequired[pulumi.Input[bool]]
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         vlan_id: NotRequired[pulumi.Input[str]]
 elif False:
@@ -5875,13 +5884,13 @@ class DeviceprofileGatewayOobIpConfigArgs:
                  use_mgmt_vrf_for_host_out: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] gateway: if `type`==`static`
-        :param pulumi.Input[str] ip: if `type`==`static`
-        :param pulumi.Input[str] netmask: if `type`==`static`
-        :param pulumi.Input['DeviceprofileGatewayOobIpConfigNode1Args'] node1: for HA Cluster, node1 can have different IP Config
+        :param pulumi.Input[str] gateway: If `type`==`static`
+        :param pulumi.Input[str] ip: If `type`==`static`
+        :param pulumi.Input[str] netmask: If `type`==`static`
+        :param pulumi.Input['DeviceprofileGatewayOobIpConfigNode1Args'] node1: For HA Cluster, node1 can have different IP Config
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
-        :param pulumi.Input[bool] use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        :param pulumi.Input[bool] use_mgmt_vrf: If supported on the platform. If enabled, DNS will be using this routing-instance, too
+        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
@@ -5904,7 +5913,7 @@ class DeviceprofileGatewayOobIpConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "gateway")
 
@@ -5916,7 +5925,7 @@ class DeviceprofileGatewayOobIpConfigArgs:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "ip")
 
@@ -5928,7 +5937,7 @@ class DeviceprofileGatewayOobIpConfigArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "netmask")
 
@@ -5940,7 +5949,7 @@ class DeviceprofileGatewayOobIpConfigArgs:
     @pulumi.getter
     def node1(self) -> Optional[pulumi.Input['DeviceprofileGatewayOobIpConfigNode1Args']]:
         """
-        for HA Cluster, node1 can have different IP Config
+        For HA Cluster, node1 can have different IP Config
         """
         return pulumi.get(self, "node1")
 
@@ -5964,7 +5973,7 @@ class DeviceprofileGatewayOobIpConfigArgs:
     @pulumi.getter(name="useMgmtVrf")
     def use_mgmt_vrf(self) -> Optional[pulumi.Input[bool]]:
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         return pulumi.get(self, "use_mgmt_vrf")
 
@@ -5976,7 +5985,7 @@ class DeviceprofileGatewayOobIpConfigArgs:
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[pulumi.Input[bool]]:
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 
@@ -5998,12 +6007,12 @@ if not MYPY:
     class DeviceprofileGatewayOobIpConfigNode1ArgsDict(TypedDict):
         gateway: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         ip: NotRequired[pulumi.Input[str]]
         netmask: NotRequired[pulumi.Input[str]]
         """
-        used only if `subnet` is not specified in `networks`
+        Used only if `subnet` is not specified in `networks`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -6011,11 +6020,11 @@ if not MYPY:
         """
         use_mgmt_vrf: NotRequired[pulumi.Input[bool]]
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         use_mgmt_vrf_for_host_out: NotRequired[pulumi.Input[bool]]
         """
-        whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         vlan_id: NotRequired[pulumi.Input[str]]
 elif False:
@@ -6032,11 +6041,11 @@ class DeviceprofileGatewayOobIpConfigNode1Args:
                  use_mgmt_vrf_for_host_out: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] gateway: if `type`==`static`
-        :param pulumi.Input[str] netmask: used only if `subnet` is not specified in `networks`
+        :param pulumi.Input[str] gateway: If `type`==`static`
+        :param pulumi.Input[str] netmask: Used only if `subnet` is not specified in `networks`
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
-        :param pulumi.Input[bool] use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        :param pulumi.Input[bool] use_mgmt_vrf: If supported on the platform. If enabled, DNS will be using this routing-instance, too
+        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
@@ -6057,7 +6066,7 @@ class DeviceprofileGatewayOobIpConfigNode1Args:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "gateway")
 
@@ -6078,7 +6087,7 @@ class DeviceprofileGatewayOobIpConfigNode1Args:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        used only if `subnet` is not specified in `networks`
+        Used only if `subnet` is not specified in `networks`
         """
         return pulumi.get(self, "netmask")
 
@@ -6102,7 +6111,7 @@ class DeviceprofileGatewayOobIpConfigNode1Args:
     @pulumi.getter(name="useMgmtVrf")
     def use_mgmt_vrf(self) -> Optional[pulumi.Input[bool]]:
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         return pulumi.get(self, "use_mgmt_vrf")
 
@@ -6114,7 +6123,7 @@ class DeviceprofileGatewayOobIpConfigNode1Args:
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 
@@ -6186,25 +6195,25 @@ if not MYPY:
         """
         gateway_ip: NotRequired[pulumi.Input[str]]
         """
-        only if `type`==`local`, if a different gateway is desired
+        Only if `type`==`local`, if a different gateway is desired
         """
         internet_access: NotRequired[pulumi.Input[bool]]
         """
-        only if `type`==`vpn`, if this vpn path can be used for internet
+        Only if `type`==`vpn`, if this vpn path can be used for internet
         """
         name: NotRequired[pulumi.Input[str]]
         """
-        required when 
+        Required when 
           * `type`==`vpn`: the name of the VPN Path to use 
-          * `type`==`wan`: the name of the WAN interface to use'
+          * `type`==`wan`: the name of the WAN interface to use
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        required when `type`==`local`
+        Required when `type`==`local`
         """
         target_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`local`, if destination IP is to be replaced
+        If `type`==`local`, if destination IP is to be replaced
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -6212,7 +6221,7 @@ if not MYPY:
         """
         wan_name: NotRequired[pulumi.Input[str]]
         """
-        optional if `type`==`vpn`
+        Optional if `type`==`vpn`
         """
 elif False:
     DeviceprofileGatewayPathPreferencesPathArgsDict: TypeAlias = Mapping[str, Any]
@@ -6231,15 +6240,15 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
                  wan_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] disabled: For SSR Only. `true`, if this specific path is undesired
-        :param pulumi.Input[str] gateway_ip: only if `type`==`local`, if a different gateway is desired
-        :param pulumi.Input[bool] internet_access: only if `type`==`vpn`, if this vpn path can be used for internet
-        :param pulumi.Input[str] name: required when 
+        :param pulumi.Input[str] gateway_ip: Only if `type`==`local`, if a different gateway is desired
+        :param pulumi.Input[bool] internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
+        :param pulumi.Input[str] name: Required when 
                  * `type`==`vpn`: the name of the VPN Path to use 
-                 * `type`==`wan`: the name of the WAN interface to use'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: required when `type`==`local`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ips: if `type`==`local`, if destination IP is to be replaced
+                 * `type`==`wan`: the name of the WAN interface to use
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: Required when `type`==`local`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ips: If `type`==`local`, if destination IP is to be replaced
         :param pulumi.Input[str] type: enum: `local`, `tunnel`, `vpn`, `wan`
-        :param pulumi.Input[str] wan_name: optional if `type`==`vpn`
+        :param pulumi.Input[str] wan_name: Optional if `type`==`vpn`
         """
         if cost is not None:
             pulumi.set(__self__, "cost", cost)
@@ -6285,7 +6294,7 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        only if `type`==`local`, if a different gateway is desired
+        Only if `type`==`local`, if a different gateway is desired
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -6297,7 +6306,7 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        only if `type`==`vpn`, if this vpn path can be used for internet
+        Only if `type`==`vpn`, if this vpn path can be used for internet
         """
         return pulumi.get(self, "internet_access")
 
@@ -6309,9 +6318,9 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        required when 
+        Required when 
           * `type`==`vpn`: the name of the VPN Path to use 
-          * `type`==`wan`: the name of the WAN interface to use'
+          * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
 
@@ -6323,7 +6332,7 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required when `type`==`local`
+        Required when `type`==`local`
         """
         return pulumi.get(self, "networks")
 
@@ -6335,7 +6344,7 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter(name="targetIps")
     def target_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`local`, if destination IP is to be replaced
+        If `type`==`local`, if destination IP is to be replaced
         """
         return pulumi.get(self, "target_ips")
 
@@ -6359,7 +6368,7 @@ class DeviceprofileGatewayPathPreferencesPathArgs:
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        optional if `type`==`vpn`
+        Optional if `type`==`vpn`
         """
         return pulumi.get(self, "wan_name")
 
@@ -6376,11 +6385,11 @@ if not MYPY:
         """
         ae_disable_lacp: NotRequired[pulumi.Input[bool]]
         """
-        if `aggregated`==`true`. To disable LCP support for the AE interface
+        If `aggregated`==`true`. To disable LCP support for the AE interface
         """
         ae_idx: NotRequired[pulumi.Input[str]]
         """
-        if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         """
         ae_lacp_force_up: NotRequired[pulumi.Input[bool]]
         """
@@ -6389,7 +6398,7 @@ if not MYPY:
         aggregated: NotRequired[pulumi.Input[bool]]
         critical: NotRequired[pulumi.Input[bool]]
         """
-        if want to generate port up/down alarm, set it to true
+        To generate port up/down alarm, set it to true
         """
         description: NotRequired[pulumi.Input[str]]
         """
@@ -6398,7 +6407,7 @@ if not MYPY:
         disable_autoneg: NotRequired[pulumi.Input[bool]]
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        port admin up (true) / down (false)
+        Port admin up (true) / down (false)
         """
         dsl_type: NotRequired[pulumi.Input[str]]
         """
@@ -6406,11 +6415,11 @@ if not MYPY:
         """
         dsl_vci: NotRequired[pulumi.Input[int]]
         """
-        if `wan_type`==`dsl`, 16 bit int
+        If `wan_type`==`dsl`, 16 bit int
         """
         dsl_vpi: NotRequired[pulumi.Input[int]]
         """
-        if `wan_type`==`dsl`, 8 bit int
+        If `wan_type`==`dsl`, 8 bit int
         """
         duplex: NotRequired[pulumi.Input[str]]
         """
@@ -6422,7 +6431,7 @@ if not MYPY:
         """
         lte_apn: NotRequired[pulumi.Input[str]]
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         lte_auth: NotRequired[pulumi.Input[str]]
         """
@@ -6431,16 +6440,16 @@ if not MYPY:
         lte_backup: NotRequired[pulumi.Input[bool]]
         lte_password: NotRequired[pulumi.Input[str]]
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         lte_username: NotRequired[pulumi.Input[str]]
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         mtu: NotRequired[pulumi.Input[int]]
         name: NotRequired[pulumi.Input[str]]
         """
-        name that we'll use to derive config
+        Name that we'll use to derive config
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -6448,28 +6457,28 @@ if not MYPY:
         """
         outer_vlan_id: NotRequired[pulumi.Input[int]]
         """
-        for Q-in-Q
+        For Q-in-Q
         """
         poe_disabled: NotRequired[pulumi.Input[bool]]
         port_network: NotRequired[pulumi.Input[str]]
         """
-        Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+        Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         """
         preserve_dscp: NotRequired[pulumi.Input[bool]]
         """
-        whether to preserve dscp when sending traffic over VPN (SSR-only)
+        Whether to preserve dscp when sending traffic over VPN (SSR-only)
         """
         redundant: NotRequired[pulumi.Input[bool]]
         """
-        if HA mode
+        If HA mode
         """
         reth_idx: NotRequired[pulumi.Input[int]]
         """
-        if HA mode
+        If HA mode
         """
         reth_node: NotRequired[pulumi.Input[str]]
         """
-        if HA mode
+        If HA mode
         """
         reth_nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -6478,11 +6487,11 @@ if not MYPY:
         speed: NotRequired[pulumi.Input[str]]
         ssr_no_virtual_mac: NotRequired[pulumi.Input[bool]]
         """
-        when SSR is running as VM, this is required on certain hosting platforms
+        When SSR is running as VM, this is required on certain hosting platforms
         """
         svr_port_range: NotRequired[pulumi.Input[str]]
         """
-        for SSR only
+        For SSR only
         """
         traffic_shaping: NotRequired[pulumi.Input['DeviceprofileGatewayPortConfigTrafficShapingArgsDict']]
         vlan_id: NotRequired[pulumi.Input[str]]
@@ -6569,32 +6578,32 @@ class DeviceprofileGatewayPortConfigArgs:
                  wan_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
-        :param pulumi.Input[bool] ae_disable_lacp: if `aggregated`==`true`. To disable LCP support for the AE interface
-        :param pulumi.Input[str] ae_idx: if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        :param pulumi.Input[bool] ae_disable_lacp: If `aggregated`==`true`. To disable LCP support for the AE interface
+        :param pulumi.Input[str] ae_idx: If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         :param pulumi.Input[bool] ae_lacp_force_up: For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
-        :param pulumi.Input[bool] critical: if want to generate port up/down alarm, set it to true
+        :param pulumi.Input[bool] critical: To generate port up/down alarm, set it to true
         :param pulumi.Input[str] description: Interface Description. Can be a variable (i.e. "{{myvar}}")
-        :param pulumi.Input[bool] disabled: port admin up (true) / down (false)
+        :param pulumi.Input[bool] disabled: Port admin up (true) / down (false)
         :param pulumi.Input[str] dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
-        :param pulumi.Input[int] dsl_vci: if `wan_type`==`dsl`, 16 bit int
-        :param pulumi.Input[int] dsl_vpi: if `wan_type`==`dsl`, 8 bit int
+        :param pulumi.Input[int] dsl_vci: If `wan_type`==`dsl`, 16 bit int
+        :param pulumi.Input[int] dsl_vpi: If `wan_type`==`dsl`, 8 bit int
         :param pulumi.Input[str] duplex: enum: `auto`, `full`, `half`
         :param pulumi.Input['DeviceprofileGatewayPortConfigIpConfigArgs'] ip_config: Junos IP Config
-        :param pulumi.Input[str] lte_apn: if `wan_type`==`lte`
+        :param pulumi.Input[str] lte_apn: If `wan_type`==`lte`
         :param pulumi.Input[str] lte_auth: if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
-        :param pulumi.Input[str] lte_password: if `wan_type`==`lte`
-        :param pulumi.Input[str] lte_username: if `wan_type`==`lte`
-        :param pulumi.Input[str] name: name that we'll use to derive config
+        :param pulumi.Input[str] lte_password: If `wan_type`==`lte`
+        :param pulumi.Input[str] lte_username: If `wan_type`==`lte`
+        :param pulumi.Input[str] name: Name that we'll use to derive config
         :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `usage`==`lan`, name of the `org.Network` resource
-        :param pulumi.Input[int] outer_vlan_id: for Q-in-Q
-        :param pulumi.Input[str] port_network: Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
-        :param pulumi.Input[bool] preserve_dscp: whether to preserve dscp when sending traffic over VPN (SSR-only)
-        :param pulumi.Input[bool] redundant: if HA mode
-        :param pulumi.Input[int] reth_idx: if HA mode
-        :param pulumi.Input[str] reth_node: if HA mode
+        :param pulumi.Input[int] outer_vlan_id: For Q-in-Q
+        :param pulumi.Input[str] port_network: Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
+        :param pulumi.Input[bool] preserve_dscp: Whether to preserve dscp when sending traffic over VPN (SSR-only)
+        :param pulumi.Input[bool] redundant: If HA mode
+        :param pulumi.Input[int] reth_idx: If HA mode
+        :param pulumi.Input[str] reth_node: If HA mode
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reth_nodes: SSR only - supporting vlan-based redundancy (matching the size of `networks`)
-        :param pulumi.Input[bool] ssr_no_virtual_mac: when SSR is running as VM, this is required on certain hosting platforms
-        :param pulumi.Input[str] svr_port_range: for SSR only
+        :param pulumi.Input[bool] ssr_no_virtual_mac: When SSR is running as VM, this is required on certain hosting platforms
+        :param pulumi.Input[str] svr_port_range: For SSR only
         :param pulumi.Input[Mapping[str, pulumi.Input['DeviceprofileGatewayPortConfigVpnPathsArgs']]] vpn_paths: Property key is the VPN name
         :param pulumi.Input[str] wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
         :param pulumi.Input[str] wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
@@ -6706,7 +6715,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="aeDisableLacp")
     def ae_disable_lacp(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `aggregated`==`true`. To disable LCP support for the AE interface
+        If `aggregated`==`true`. To disable LCP support for the AE interface
         """
         return pulumi.get(self, "ae_disable_lacp")
 
@@ -6718,7 +6727,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="aeIdx")
     def ae_idx(self) -> Optional[pulumi.Input[str]]:
         """
-        if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         """
         return pulumi.get(self, "ae_idx")
 
@@ -6751,7 +6760,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter
     def critical(self) -> Optional[pulumi.Input[bool]]:
         """
-        if want to generate port up/down alarm, set it to true
+        To generate port up/down alarm, set it to true
         """
         return pulumi.get(self, "critical")
 
@@ -6784,7 +6793,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        port admin up (true) / down (false)
+        Port admin up (true) / down (false)
         """
         return pulumi.get(self, "disabled")
 
@@ -6808,7 +6817,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="dslVci")
     def dsl_vci(self) -> Optional[pulumi.Input[int]]:
         """
-        if `wan_type`==`dsl`, 16 bit int
+        If `wan_type`==`dsl`, 16 bit int
         """
         return pulumi.get(self, "dsl_vci")
 
@@ -6820,7 +6829,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="dslVpi")
     def dsl_vpi(self) -> Optional[pulumi.Input[int]]:
         """
-        if `wan_type`==`dsl`, 8 bit int
+        If `wan_type`==`dsl`, 8 bit int
         """
         return pulumi.get(self, "dsl_vpi")
 
@@ -6856,7 +6865,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="lteApn")
     def lte_apn(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         return pulumi.get(self, "lte_apn")
 
@@ -6889,7 +6898,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="ltePassword")
     def lte_password(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         return pulumi.get(self, "lte_password")
 
@@ -6901,7 +6910,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="lteUsername")
     def lte_username(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         return pulumi.get(self, "lte_username")
 
@@ -6922,7 +6931,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name that we'll use to derive config
+        Name that we'll use to derive config
         """
         return pulumi.get(self, "name")
 
@@ -6946,7 +6955,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="outerVlanId")
     def outer_vlan_id(self) -> Optional[pulumi.Input[int]]:
         """
-        for Q-in-Q
+        For Q-in-Q
         """
         return pulumi.get(self, "outer_vlan_id")
 
@@ -6967,7 +6976,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="portNetwork")
     def port_network(self) -> Optional[pulumi.Input[str]]:
         """
-        Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+        Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         """
         return pulumi.get(self, "port_network")
 
@@ -6979,7 +6988,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="preserveDscp")
     def preserve_dscp(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to preserve dscp when sending traffic over VPN (SSR-only)
+        Whether to preserve dscp when sending traffic over VPN (SSR-only)
         """
         return pulumi.get(self, "preserve_dscp")
 
@@ -6991,7 +7000,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter
     def redundant(self) -> Optional[pulumi.Input[bool]]:
         """
-        if HA mode
+        If HA mode
         """
         return pulumi.get(self, "redundant")
 
@@ -7003,7 +7012,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="rethIdx")
     def reth_idx(self) -> Optional[pulumi.Input[int]]:
         """
-        if HA mode
+        If HA mode
         """
         return pulumi.get(self, "reth_idx")
 
@@ -7015,7 +7024,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="rethNode")
     def reth_node(self) -> Optional[pulumi.Input[str]]:
         """
-        if HA mode
+        If HA mode
         """
         return pulumi.get(self, "reth_node")
 
@@ -7048,7 +7057,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="ssrNoVirtualMac")
     def ssr_no_virtual_mac(self) -> Optional[pulumi.Input[bool]]:
         """
-        when SSR is running as VM, this is required on certain hosting platforms
+        When SSR is running as VM, this is required on certain hosting platforms
         """
         return pulumi.get(self, "ssr_no_virtual_mac")
 
@@ -7060,7 +7069,7 @@ class DeviceprofileGatewayPortConfigArgs:
     @pulumi.getter(name="svrPortRange")
     def svr_port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        for SSR only
+        For SSR only
         """
         return pulumi.get(self, "svr_port_range")
 
@@ -7187,15 +7196,15 @@ if not MYPY:
     class DeviceprofileGatewayPortConfigIpConfigArgsDict(TypedDict):
         dns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         dns_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         gateway: NotRequired[pulumi.Input[str]]
         """
-        except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         """
         ip: NotRequired[pulumi.Input[str]]
         """
@@ -7203,15 +7212,15 @@ if not MYPY:
         """
         netmask: NotRequired[pulumi.Input[str]]
         """
-        used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         network: NotRequired[pulumi.Input[str]]
         """
-        optional, the network to be used for mgmt
+        Optional, the network to be used for mgmt
         """
         poser_password: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         pppoe_auth: NotRequired[pulumi.Input[str]]
         """
@@ -7219,7 +7228,7 @@ if not MYPY:
         """
         pppoe_username: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -7242,15 +7251,15 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
                  pppoe_username: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns: except for out-of_band interface (vme/em0/fxp0)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: except for out-of_band interface (vme/em0/fxp0)
-        :param pulumi.Input[str] gateway: except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns: Except for out-of_band interface (vme/em0/fxp0)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Except for out-of_band interface (vme/em0/fxp0)
+        :param pulumi.Input[str] gateway: Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[str] ip: Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[str] netmask: used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[str] network: optional, the network to be used for mgmt
-        :param pulumi.Input[str] poser_password: if `type`==`pppoe`
+        :param pulumi.Input[str] netmask: Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        :param pulumi.Input[str] network: Optional, the network to be used for mgmt
+        :param pulumi.Input[str] poser_password: If `type`==`pppoe`
         :param pulumi.Input[str] pppoe_auth: if `type`==`pppoe`. enum: `chap`, `none`, `pap`
-        :param pulumi.Input[str] pppoe_username: if `type`==`pppoe`
+        :param pulumi.Input[str] pppoe_username: If `type`==`pppoe`
         :param pulumi.Input[str] type: enum: `dhcp`, `pppoe`, `static`
         """
         if dns is not None:
@@ -7278,7 +7287,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter
     def dns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         return pulumi.get(self, "dns")
 
@@ -7290,7 +7299,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -7302,7 +7311,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "gateway")
 
@@ -7326,7 +7335,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "netmask")
 
@@ -7338,7 +7347,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, the network to be used for mgmt
+        Optional, the network to be used for mgmt
         """
         return pulumi.get(self, "network")
 
@@ -7350,7 +7359,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter(name="poserPassword")
     def poser_password(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         return pulumi.get(self, "poser_password")
 
@@ -7374,7 +7383,7 @@ class DeviceprofileGatewayPortConfigIpConfigArgs:
     @pulumi.getter(name="pppoeUsername")
     def pppoe_username(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         return pulumi.get(self, "pppoe_username")
 
@@ -7722,11 +7731,11 @@ if not MYPY:
     class DeviceprofileGatewayPortConfigWanSourceNatArgsDict(TypedDict):
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        or to disable the source-nat
+        Or to disable the source-nat
         """
         nat_pool: NotRequired[pulumi.Input[str]]
         """
-        if alternative nat_pool is desired
+        If alternative nat_pool is desired
         """
 elif False:
     DeviceprofileGatewayPortConfigWanSourceNatArgsDict: TypeAlias = Mapping[str, Any]
@@ -7737,8 +7746,8 @@ class DeviceprofileGatewayPortConfigWanSourceNatArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  nat_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] disabled: or to disable the source-nat
-        :param pulumi.Input[str] nat_pool: if alternative nat_pool is desired
+        :param pulumi.Input[bool] disabled: Or to disable the source-nat
+        :param pulumi.Input[str] nat_pool: If alternative nat_pool is desired
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -7749,7 +7758,7 @@ class DeviceprofileGatewayPortConfigWanSourceNatArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        or to disable the source-nat
+        Or to disable the source-nat
         """
         return pulumi.get(self, "disabled")
 
@@ -7761,7 +7770,7 @@ class DeviceprofileGatewayPortConfigWanSourceNatArgs:
     @pulumi.getter(name="natPool")
     def nat_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        if alternative nat_pool is desired
+        If alternative nat_pool is desired
         """
         return pulumi.get(self, "nat_pool")
 
@@ -7806,7 +7815,7 @@ if not MYPY:
     class DeviceprofileGatewayRoutingPoliciesTermArgsDict(TypedDict):
         action: NotRequired[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgsDict']]
         """
-        when used as import policy
+        When used as import policy
         """
         matching: NotRequired[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermMatchingArgsDict']]
         """
@@ -7821,7 +7830,7 @@ class DeviceprofileGatewayRoutingPoliciesTermArgs:
                  action: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs']] = None,
                  matching: Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermMatchingArgs']] = None):
         """
-        :param pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs'] action: when used as import policy
+        :param pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs'] action: When used as import policy
         :param pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermMatchingArgs'] matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
         """
         if action is not None:
@@ -7833,7 +7842,7 @@ class DeviceprofileGatewayRoutingPoliciesTermArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input['DeviceprofileGatewayRoutingPoliciesTermActionArgs']]:
         """
-        when used as import policy
+        When used as import policy
         """
         return pulumi.get(self, "action")
 
@@ -7860,7 +7869,7 @@ if not MYPY:
         add_communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         add_target_vrfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        for SSR, hub decides how VRF routes are leaked on spoke
+        For SSR, hub decides how VRF routes are leaked on spoke
         """
         aggregates: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -7868,24 +7877,24 @@ if not MYPY:
         """
         communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         exclude_as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional. To exclude certain AS
+        When used as export policy, optional. To exclude certain AS
         """
         exclude_communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         export_communitites: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         local_preference: NotRequired[pulumi.Input[str]]
         """
-        optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed
         """
         prepend_as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
 elif False:
     DeviceprofileGatewayRoutingPoliciesTermActionArgsDict: TypeAlias = Mapping[str, Any]
@@ -7904,13 +7913,13 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
                  local_preference: Optional[pulumi.Input[str]] = None,
                  prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] add_target_vrfs: for SSR, hub decides how VRF routes are leaked on spoke
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] add_target_vrfs: For SSR, hub decides how VRF routes are leaked on spoke
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aggregates: route aggregation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] communities: when used as export policy, optional
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_as_paths: when used as export policy, optional. To exclude certain AS
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_communitites: when used as export policy, optional
-        :param pulumi.Input[str] local_preference: optional, for an import policy, local_preference can be changed
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: when used as export policy, optional. By default, the local AS will be prepended, to change it
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] communities: When used as export policy, optional
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_as_paths: When used as export policy, optional. To exclude certain AS
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_communitites: When used as export policy, optional
+        :param pulumi.Input[str] local_preference: Optional, for an import policy, local_preference can be changed
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
         if accept is not None:
             pulumi.set(__self__, "accept", accept)
@@ -7955,7 +7964,7 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="addTargetVrfs")
     def add_target_vrfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        for SSR, hub decides how VRF routes are leaked on spoke
+        For SSR, hub decides how VRF routes are leaked on spoke
         """
         return pulumi.get(self, "add_target_vrfs")
 
@@ -7979,7 +7988,7 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
     @pulumi.getter
     def communities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         return pulumi.get(self, "communities")
 
@@ -7991,7 +8000,7 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="excludeAsPaths")
     def exclude_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional. To exclude certain AS
+        When used as export policy, optional. To exclude certain AS
         """
         return pulumi.get(self, "exclude_as_paths")
 
@@ -8012,7 +8021,7 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="exportCommunitites")
     def export_communitites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         return pulumi.get(self, "export_communitites")
 
@@ -8024,7 +8033,7 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="localPreference")
     def local_preference(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed
         """
         return pulumi.get(self, "local_preference")
 
@@ -8036,7 +8045,7 @@ class DeviceprofileGatewayRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="prependAsPaths")
     def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
         return pulumi.get(self, "prepend_as_paths")
 
@@ -8214,7 +8223,7 @@ if not MYPY:
         route: NotRequired[pulumi.Input[str]]
         vrf_name: NotRequired[pulumi.Input[str]]
         """
-        name of the vrf instance, it can also be the name of the VPN or wan if they
+        Name of the vrf instance, it can also be the name of the VPN or wan if they
         """
 elif False:
     DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgsDict: TypeAlias = Mapping[str, Any]
@@ -8225,7 +8234,7 @@ class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgs:
                  route: Optional[pulumi.Input[str]] = None,
                  vrf_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] vrf_name: name of the vrf instance, it can also be the name of the VPN or wan if they
+        :param pulumi.Input[str] vrf_name: Name of the vrf instance, it can also be the name of the VPN or wan if they
         """
         if route is not None:
             pulumi.set(__self__, "route", route)
@@ -8245,7 +8254,7 @@ class DeviceprofileGatewayRoutingPoliciesTermMatchingRouteExistsArgs:
     @pulumi.getter(name="vrfName")
     def vrf_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the vrf instance, it can also be the name of the VPN or wan if they
+        Name of the vrf instance, it can also be the name of the VPN or wan if they
         """
         return pulumi.get(self, "vrf_name")
 
@@ -8309,6 +8318,10 @@ if not MYPY:
         """
         Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         """
+        antivirus: NotRequired[pulumi.Input['DeviceprofileGatewayServicePolicyAntivirusArgsDict']]
+        """
+        For SRX-only
+        """
         appqoe: NotRequired[pulumi.Input['DeviceprofileGatewayServicePolicyAppqoeArgsDict']]
         """
         For SRX Only
@@ -8325,15 +8338,19 @@ if not MYPY:
         """
         path_preference: NotRequired[pulumi.Input[str]]
         """
-        by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         """
         servicepolicy_id: NotRequired[pulumi.Input[str]]
         """
-        used to link servicepolicy defined at org level and overwrite some attributes
+        Used to link servicepolicy defined at org level and overwrite some attributes
         """
         services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        """
+        ssl_proxy: NotRequired[pulumi.Input['DeviceprofileGatewayServicePolicySslProxyArgsDict']]
+        """
+        For SRX-only
         """
         tenants: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -8346,6 +8363,7 @@ elif False:
 class DeviceprofileGatewayServicePolicyArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
+                 antivirus: Optional[pulumi.Input['DeviceprofileGatewayServicePolicyAntivirusArgs']] = None,
                  appqoe: Optional[pulumi.Input['DeviceprofileGatewayServicePolicyAppqoeArgs']] = None,
                  ewfs: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayServicePolicyEwfArgs']]]] = None,
                  idp: Optional[pulumi.Input['DeviceprofileGatewayServicePolicyIdpArgs']] = None,
@@ -8354,19 +8372,24 @@ class DeviceprofileGatewayServicePolicyArgs:
                  path_preference: Optional[pulumi.Input[str]] = None,
                  servicepolicy_id: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ssl_proxy: Optional[pulumi.Input['DeviceprofileGatewayServicePolicySslProxyArgs']] = None,
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] action: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+        :param pulumi.Input['DeviceprofileGatewayServicePolicyAntivirusArgs'] antivirus: For SRX-only
         :param pulumi.Input['DeviceprofileGatewayServicePolicyAppqoeArgs'] appqoe: For SRX Only
         :param pulumi.Input[bool] local_routing: access within the same VRF
         :param pulumi.Input[str] name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
-        :param pulumi.Input[str] path_preference: by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
-        :param pulumi.Input[str] servicepolicy_id: used to link servicepolicy defined at org level and overwrite some attributes
+        :param pulumi.Input[str] path_preference: By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        :param pulumi.Input[str] servicepolicy_id: Used to link servicepolicy defined at org level and overwrite some attributes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        :param pulumi.Input['DeviceprofileGatewayServicePolicySslProxyArgs'] ssl_proxy: For SRX-only
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if antivirus is not None:
+            pulumi.set(__self__, "antivirus", antivirus)
         if appqoe is not None:
             pulumi.set(__self__, "appqoe", appqoe)
         if ewfs is not None:
@@ -8383,6 +8406,8 @@ class DeviceprofileGatewayServicePolicyArgs:
             pulumi.set(__self__, "servicepolicy_id", servicepolicy_id)
         if services is not None:
             pulumi.set(__self__, "services", services)
+        if ssl_proxy is not None:
+            pulumi.set(__self__, "ssl_proxy", ssl_proxy)
         if tenants is not None:
             pulumi.set(__self__, "tenants", tenants)
 
@@ -8397,6 +8422,18 @@ class DeviceprofileGatewayServicePolicyArgs:
     @action.setter
     def action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def antivirus(self) -> Optional[pulumi.Input['DeviceprofileGatewayServicePolicyAntivirusArgs']]:
+        """
+        For SRX-only
+        """
+        return pulumi.get(self, "antivirus")
+
+    @antivirus.setter
+    def antivirus(self, value: Optional[pulumi.Input['DeviceprofileGatewayServicePolicyAntivirusArgs']]):
+        pulumi.set(self, "antivirus", value)
 
     @property
     @pulumi.getter
@@ -8456,7 +8493,7 @@ class DeviceprofileGatewayServicePolicyArgs:
     @pulumi.getter(name="pathPreference")
     def path_preference(self) -> Optional[pulumi.Input[str]]:
         """
-        by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         """
         return pulumi.get(self, "path_preference")
 
@@ -8468,7 +8505,7 @@ class DeviceprofileGatewayServicePolicyArgs:
     @pulumi.getter(name="servicepolicyId")
     def servicepolicy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        used to link servicepolicy defined at org level and overwrite some attributes
+        Used to link servicepolicy defined at org level and overwrite some attributes
         """
         return pulumi.get(self, "servicepolicy_id")
 
@@ -8489,6 +8526,18 @@ class DeviceprofileGatewayServicePolicyArgs:
         pulumi.set(self, "services", value)
 
     @property
+    @pulumi.getter(name="sslProxy")
+    def ssl_proxy(self) -> Optional[pulumi.Input['DeviceprofileGatewayServicePolicySslProxyArgs']]:
+        """
+        For SRX-only
+        """
+        return pulumi.get(self, "ssl_proxy")
+
+    @ssl_proxy.setter
+    def ssl_proxy(self, value: Optional[pulumi.Input['DeviceprofileGatewayServicePolicySslProxyArgs']]):
+        pulumi.set(self, "ssl_proxy", value)
+
+    @property
     @pulumi.getter
     def tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -8499,6 +8548,71 @@ class DeviceprofileGatewayServicePolicyArgs:
     @tenants.setter
     def tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tenants", value)
+
+
+if not MYPY:
+    class DeviceprofileGatewayServicePolicyAntivirusArgsDict(TypedDict):
+        avprofile_id: NotRequired[pulumi.Input[str]]
+        """
+        org-level AV Profile can be used, this takes precendence over 'profile'
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        profile: NotRequired[pulumi.Input[str]]
+        """
+        Default / noftp / httponly / or keys from av_profiles
+        """
+elif False:
+    DeviceprofileGatewayServicePolicyAntivirusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileGatewayServicePolicyAntivirusArgs:
+    def __init__(__self__, *,
+                 avprofile_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 profile: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] avprofile_id: org-level AV Profile can be used, this takes precendence over 'profile'
+        :param pulumi.Input[str] profile: Default / noftp / httponly / or keys from av_profiles
+        """
+        if avprofile_id is not None:
+            pulumi.set(__self__, "avprofile_id", avprofile_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @property
+    @pulumi.getter(name="avprofileId")
+    def avprofile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        org-level AV Profile can be used, this takes precendence over 'profile'
+        """
+        return pulumi.get(self, "avprofile_id")
+
+    @avprofile_id.setter
+    def avprofile_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avprofile_id", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default / noftp / httponly / or keys from av_profiles
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "profile", value)
 
 
 if not MYPY:
@@ -8605,7 +8719,7 @@ if not MYPY:
         """
         profile: NotRequired[pulumi.Input[str]]
         """
-        enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
 elif False:
     DeviceprofileGatewayServicePolicyIdpArgsDict: TypeAlias = Mapping[str, Any]
@@ -8619,7 +8733,7 @@ class DeviceprofileGatewayServicePolicyIdpArgs:
                  profile: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] idpprofile_id: org_level IDP Profile can be used, this takes precedence over `profile`
-        :param pulumi.Input[str] profile: enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
+        :param pulumi.Input[str] profile: enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
         if alert_only is not None:
             pulumi.set(__self__, "alert_only", alert_only)
@@ -8664,13 +8778,58 @@ class DeviceprofileGatewayServicePolicyIdpArgs:
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
     def profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "profile", value)
+
+
+if not MYPY:
+    class DeviceprofileGatewayServicePolicySslProxyArgsDict(TypedDict):
+        ciphers_category: NotRequired[pulumi.Input[str]]
+        """
+        enum: `medium`, `strong`, `weak`
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    DeviceprofileGatewayServicePolicySslProxyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeviceprofileGatewayServicePolicySslProxyArgs:
+    def __init__(__self__, *,
+                 ciphers_category: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] ciphers_category: enum: `medium`, `strong`, `weak`
+        """
+        if ciphers_category is not None:
+            pulumi.set(__self__, "ciphers_category", ciphers_category)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="ciphersCategory")
+    def ciphers_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `medium`, `strong`, `weak`
+        """
+        return pulumi.get(self, "ciphers_category")
+
+    @ciphers_category.setter
+    def ciphers_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ciphers_category", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -8686,7 +8845,7 @@ if not MYPY:
         """
         ike_proposals: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgsDict']]]]
         """
-        if `provider`==`custom-ipsec`
+        If `provider`==`custom-ipsec`
         """
         ipsec_lifetime: NotRequired[pulumi.Input[int]]
         """
@@ -8706,7 +8865,7 @@ if not MYPY:
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        If `provider`==`custom-ipsec`, networks reachable via this tunnel
         """
         primary: NotRequired[pulumi.Input['DeviceprofileGatewayTunnelConfigsPrimaryArgsDict']]
         """
@@ -8761,12 +8920,12 @@ class DeviceprofileGatewayTunnelConfigsArgs:
         """
         :param pulumi.Input[int] ike_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param pulumi.Input[str] ike_mode: Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
-        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgs']]] ike_proposals: if `provider`==`custom-ipsec`
+        :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgs']]] ike_proposals: If `provider`==`custom-ipsec`
         :param pulumi.Input[int] ipsec_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIpsecProposalArgs']]] ipsec_proposals: Only if  `provider`==`custom-ipsec`
         :param pulumi.Input[str] local_id: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input[str] mode: Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: If `provider`==`custom-ipsec`, networks reachable via this tunnel
         :param pulumi.Input['DeviceprofileGatewayTunnelConfigsPrimaryArgs'] primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input['DeviceprofileGatewayTunnelConfigsProbeArgs'] probe: Only if `provider`==`custom-ipsec`
         :param pulumi.Input[str] protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
@@ -8845,7 +9004,7 @@ class DeviceprofileGatewayTunnelConfigsArgs:
     @pulumi.getter(name="ikeProposals")
     def ike_proposals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelConfigsIkeProposalArgs']]]]:
         """
-        if `provider`==`custom-ipsec`
+        If `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "ike_proposals")
 
@@ -8905,7 +9064,7 @@ class DeviceprofileGatewayTunnelConfigsArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        If `provider`==`custom-ipsec`, networks reachable via this tunnel
         """
         return pulumi.get(self, "networks")
 
@@ -9147,7 +9306,7 @@ if not MYPY:
         probe_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         wan_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
 elif False:
     DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgsDict: TypeAlias = Mapping[str, Any]
@@ -9158,7 +9317,7 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs:
                  probe_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  wan_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: optional, only needed if `vars_only`==`false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: Optional, only needed if `vars_only`==`false`
         """
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
@@ -9178,7 +9337,7 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionPrimaryArgs:
     @pulumi.getter(name="wanNames")
     def wan_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
         return pulumi.get(self, "wan_names")
 
@@ -9192,7 +9351,7 @@ if not MYPY:
         probe_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         wan_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
 elif False:
     DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgsDict: TypeAlias = Mapping[str, Any]
@@ -9203,7 +9362,7 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs:
                  probe_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  wan_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: optional, only needed if `vars_only`==`false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: Optional, only needed if `vars_only`==`false`
         """
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
@@ -9223,7 +9382,7 @@ class DeviceprofileGatewayTunnelConfigsAutoProvisionSecondaryArgs:
     @pulumi.getter(name="wanNames")
     def wan_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
         return pulumi.get(self, "wan_names")
 
@@ -9529,15 +9688,15 @@ if not MYPY:
     class DeviceprofileGatewayTunnelConfigsProbeArgsDict(TypedDict):
         interval: NotRequired[pulumi.Input[int]]
         """
-        how often to trigger the probe
+        How often to trigger the probe
         """
         threshold: NotRequired[pulumi.Input[int]]
         """
-        number of consecutive misses before declaring the tunnel down
+        Number of consecutive misses before declaring the tunnel down
         """
         timeout: NotRequired[pulumi.Input[int]]
         """
-        time within which to complete the connectivity check
+        Time within which to complete the connectivity check
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -9554,9 +9713,9 @@ class DeviceprofileGatewayTunnelConfigsProbeArgs:
                  timeout: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] interval: how often to trigger the probe
-        :param pulumi.Input[int] threshold: number of consecutive misses before declaring the tunnel down
-        :param pulumi.Input[int] timeout: time within which to complete the connectivity check
+        :param pulumi.Input[int] interval: How often to trigger the probe
+        :param pulumi.Input[int] threshold: Number of consecutive misses before declaring the tunnel down
+        :param pulumi.Input[int] timeout: Time within which to complete the connectivity check
         :param pulumi.Input[str] type: enum: `http`, `icmp`
         """
         if interval is not None:
@@ -9572,7 +9731,7 @@ class DeviceprofileGatewayTunnelConfigsProbeArgs:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
         """
-        how often to trigger the probe
+        How often to trigger the probe
         """
         return pulumi.get(self, "interval")
 
@@ -9584,7 +9743,7 @@ class DeviceprofileGatewayTunnelConfigsProbeArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        number of consecutive misses before declaring the tunnel down
+        Number of consecutive misses before declaring the tunnel down
         """
         return pulumi.get(self, "threshold")
 
@@ -9596,7 +9755,7 @@ class DeviceprofileGatewayTunnelConfigsProbeArgs:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        time within which to complete the connectivity check
+        Time within which to complete the connectivity check
         """
         return pulumi.get(self, "timeout")
 
@@ -9710,11 +9869,11 @@ if not MYPY:
     class DeviceprofileGatewayTunnelProviderOptionsArgsDict(TypedDict):
         jse: NotRequired[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsJseArgsDict']]
         """
-        for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         """
         zscaler: NotRequired[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerArgsDict']]
         """
-        for zscaler-ipsec and zscaler-gre
+        For zscaler-ipsec and zscaler-gre
         """
 elif False:
     DeviceprofileGatewayTunnelProviderOptionsArgsDict: TypeAlias = Mapping[str, Any]
@@ -9725,8 +9884,8 @@ class DeviceprofileGatewayTunnelProviderOptionsArgs:
                  jse: Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsJseArgs']] = None,
                  zscaler: Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerArgs']] = None):
         """
-        :param pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsJseArgs'] jse: for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
-        :param pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerArgs'] zscaler: for zscaler-ipsec and zscaler-gre
+        :param pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsJseArgs'] jse: For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        :param pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerArgs'] zscaler: For zscaler-ipsec and zscaler-gre
         """
         if jse is not None:
             pulumi.set(__self__, "jse", jse)
@@ -9737,7 +9896,7 @@ class DeviceprofileGatewayTunnelProviderOptionsArgs:
     @pulumi.getter
     def jse(self) -> Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsJseArgs']]:
         """
-        for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         """
         return pulumi.get(self, "jse")
 
@@ -9749,7 +9908,7 @@ class DeviceprofileGatewayTunnelProviderOptionsArgs:
     @pulumi.getter
     def zscaler(self) -> Optional[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerArgs']]:
         """
-        for zscaler-ipsec and zscaler-gre
+        For zscaler-ipsec and zscaler-gre
         """
         return pulumi.get(self, "zscaler")
 
@@ -9812,7 +9971,7 @@ if not MYPY:
         """
         aup_force_ssl_inspection: NotRequired[pulumi.Input[bool]]
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         aup_timeout_in_days: NotRequired[pulumi.Input[int]]
         """
@@ -9828,7 +9987,7 @@ if not MYPY:
         """
         dn_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         idle_time_in_minutes: NotRequired[pulumi.Input[int]]
         """
@@ -9836,7 +9995,7 @@ if not MYPY:
         """
         ofw_enabled: NotRequired[pulumi.Input[bool]]
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         sub_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgsDict']]]]
         """
@@ -9856,11 +10015,11 @@ if not MYPY:
         """
         up_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         xff_forward_enabled: NotRequired[pulumi.Input[bool]]
         """
-        location uses proxy chaining to forward traffic
+        Location uses proxy chaining to forward traffic
         """
 elif False:
     DeviceprofileGatewayTunnelProviderOptionsZscalerArgsDict: TypeAlias = Mapping[str, Any]
@@ -9885,19 +10044,19 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs:
                  xff_forward_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] aup_enabled: Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
-        :param pulumi.Input[bool] aup_force_ssl_inspection: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        :param pulumi.Input[bool] aup_force_ssl_inspection: Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         :param pulumi.Input[int] aup_timeout_in_days: Required if `aup_enabled`==`true`. Days before AUP is requested again
         :param pulumi.Input[bool] auth_required: Enable this option to enforce user authentication
         :param pulumi.Input[bool] caution_enabled: Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
-        :param pulumi.Input[float] dn_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[float] dn_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
         :param pulumi.Input[int] idle_time_in_minutes: Required if `surrogate_IP`==`true`, idle Time to Disassociation
-        :param pulumi.Input[bool] ofw_enabled: if `true`, enable the firewall control option
+        :param pulumi.Input[bool] ofw_enabled: If `true`, enable the firewall control option
         :param pulumi.Input[Sequence[pulumi.Input['DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs']]] sub_locations: `sub-locations` can be used for specific uses cases to define different configuration based on the user network
         :param pulumi.Input[bool] surrogate_ip: Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         :param pulumi.Input[bool] surrogate_ip_enforced_for_known_browsers: Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
         :param pulumi.Input[int] surrogate_refresh_time_in_minutes: Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
-        :param pulumi.Input[float] up_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
-        :param pulumi.Input[bool] xff_forward_enabled: location uses proxy chaining to forward traffic
+        :param pulumi.Input[float] up_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[bool] xff_forward_enabled: Location uses proxy chaining to forward traffic
         """
         if aup_block_internet_until_accepted is not None:
             pulumi.set(__self__, "aup_block_internet_until_accepted", aup_block_internet_until_accepted)
@@ -9955,7 +10114,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="aupForceSslInspection")
     def aup_force_ssl_inspection(self) -> Optional[pulumi.Input[bool]]:
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         return pulumi.get(self, "aup_force_ssl_inspection")
 
@@ -10003,7 +10162,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="dnBandwidth")
     def dn_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "dn_bandwidth")
 
@@ -10027,7 +10186,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="ofwEnabled")
     def ofw_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         return pulumi.get(self, "ofw_enabled")
 
@@ -10087,7 +10246,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="upBandwidth")
     def up_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "up_bandwidth")
 
@@ -10099,7 +10258,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="xffForwardEnabled")
     def xff_forward_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        location uses proxy chaining to forward traffic
+        Location uses proxy chaining to forward traffic
         """
         return pulumi.get(self, "xff_forward_enabled")
 
@@ -10117,7 +10276,7 @@ if not MYPY:
         """
         aup_force_ssl_inspection: NotRequired[pulumi.Input[bool]]
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         aup_timeout_in_days: NotRequired[pulumi.Input[int]]
         """
@@ -10133,7 +10292,7 @@ if not MYPY:
         """
         dn_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         idle_time_in_minutes: NotRequired[pulumi.Input[int]]
         """
@@ -10145,7 +10304,7 @@ if not MYPY:
         """
         ofw_enabled: NotRequired[pulumi.Input[bool]]
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         surrogate_ip: NotRequired[pulumi.Input[bool]]
         """
@@ -10161,7 +10320,7 @@ if not MYPY:
         """
         up_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
 elif False:
     DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgsDict: TypeAlias = Mapping[str, Any]
@@ -10185,18 +10344,18 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs:
                  up_bandwidth: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[bool] aup_enabled: Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
-        :param pulumi.Input[bool] aup_force_ssl_inspection: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        :param pulumi.Input[bool] aup_force_ssl_inspection: Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         :param pulumi.Input[int] aup_timeout_in_days: Required if `aup_enabled`==`true`. Days before AUP is requested again
         :param pulumi.Input[bool] auth_required: Enable this option to authenticate users
         :param pulumi.Input[bool] caution_enabled: Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
-        :param pulumi.Input[float] dn_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[float] dn_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
         :param pulumi.Input[int] idle_time_in_minutes: Required if `surrogate_IP`==`true`, idle Time to Disassociation
         :param pulumi.Input[str] name: Network name
-        :param pulumi.Input[bool] ofw_enabled: if `true`, enable the firewall control option
+        :param pulumi.Input[bool] ofw_enabled: If `true`, enable the firewall control option
         :param pulumi.Input[bool] surrogate_ip: Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         :param pulumi.Input[bool] surrogate_ip_enforced_for_known_browsers: Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
         :param pulumi.Input[int] surrogate_refresh_time_in_minutes: Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
-        :param pulumi.Input[float] up_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[float] up_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         if aup_block_internet_until_accepted is not None:
             pulumi.set(__self__, "aup_block_internet_until_accepted", aup_block_internet_until_accepted)
@@ -10252,7 +10411,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="aupForceSslInspection")
     def aup_force_ssl_inspection(self) -> Optional[pulumi.Input[bool]]:
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         return pulumi.get(self, "aup_force_ssl_inspection")
 
@@ -10300,7 +10459,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="dnBandwidth")
     def dn_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "dn_bandwidth")
 
@@ -10336,7 +10495,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="ofwEnabled")
     def ofw_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         return pulumi.get(self, "ofw_enabled")
 
@@ -10384,7 +10543,7 @@ class DeviceprofileGatewayTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="upBandwidth")
     def up_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "up_bandwidth")
 
@@ -10397,7 +10556,7 @@ if not MYPY:
     class DeviceprofileGatewayVrfConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable VRF (when supported on the device)
+        Whether to enable VRF (when supported on the device)
         """
 elif False:
     DeviceprofileGatewayVrfConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -10407,7 +10566,7 @@ class DeviceprofileGatewayVrfConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether to enable VRF (when supported on the device)
+        :param pulumi.Input[bool] enabled: Whether to enable VRF (when supported on the device)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -10416,7 +10575,7 @@ class DeviceprofileGatewayVrfConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable VRF (when supported on the device)
+        Whether to enable VRF (when supported on the device)
         """
         return pulumi.get(self, "enabled")
 
@@ -10955,13 +11114,13 @@ if not MYPY:
         auth_key: NotRequired[pulumi.Input[str]]
         bfd_minimum_interval: NotRequired[pulumi.Input[int]]
         """
-        when bfd_multiplier is configured alone. Default:
+        When bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
         bfd_multiplier: NotRequired[pulumi.Input[int]]
         """
-        when bfd_minimum_interval_is_configured alone
+        When bfd_minimum_interval_is_configured alone
         """
         disable_bfd: NotRequired[pulumi.Input[bool]]
         """
@@ -10970,11 +11129,11 @@ if not MYPY:
         export: NotRequired[pulumi.Input[str]]
         export_policy: NotRequired[pulumi.Input[str]]
         """
-        default export policies if no per-neighbor policies defined
+        Default export policies if no per-neighbor policies defined
         """
         extended_v4_nexthop: NotRequired[pulumi.Input[bool]]
         """
-        by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         graceful_restart_time: NotRequired[pulumi.Input[int]]
         """
@@ -10984,25 +11143,25 @@ if not MYPY:
         import_: NotRequired[pulumi.Input[str]]
         import_policy: NotRequired[pulumi.Input[str]]
         """
-        default import policies if no per-neighbor policies defined
+        Default import policies if no per-neighbor policies defined
         """
         local_as: NotRequired[pulumi.Input[int]]
         neighbor_as: NotRequired[pulumi.Input[int]]
         neighbors: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgsDict']]]]
         """
-        if per-neighbor as is desired. Property key is the neighbor address
+        If per-neighbor as is desired. Property key is the neighbor address
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         """
         no_readvertise_to_overlay: NotRequired[pulumi.Input[bool]]
         """
-        by default, we'll re-advertise all learned BGP routers toward overlay
+        By default, we'll re-advertise all learned BGP routers toward overlay
         """
         tunnel_name: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`tunnel`
+        If `type`==`tunnel`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -11015,7 +11174,7 @@ if not MYPY:
         vpn_name: NotRequired[pulumi.Input[str]]
         wan_name: NotRequired[pulumi.Input[str]]
         """
-        if `via`==`wan`
+        If `via`==`wan`
         """
 elif False:
     GatewaytemplateBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -11045,22 +11204,22 @@ class GatewaytemplateBgpConfigArgs:
                  vpn_name: Optional[pulumi.Input[str]] = None,
                  wan_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] bfd_minimum_interval: when bfd_multiplier is configured alone. Default:
+        :param pulumi.Input[int] bfd_minimum_interval: When bfd_multiplier is configured alone. Default:
                  * 1000 if `type`==`external`
                  * 350 `type`==`internal`
-        :param pulumi.Input[int] bfd_multiplier: when bfd_minimum_interval_is_configured alone
+        :param pulumi.Input[int] bfd_multiplier: When bfd_minimum_interval_is_configured alone
         :param pulumi.Input[bool] disable_bfd: BFD provides faster path failure detection and is enabled by default
-        :param pulumi.Input[str] export_policy: default export policies if no per-neighbor policies defined
-        :param pulumi.Input[bool] extended_v4_nexthop: by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        :param pulumi.Input[str] export_policy: Default export policies if no per-neighbor policies defined
+        :param pulumi.Input[bool] extended_v4_nexthop: By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         :param pulumi.Input[int] graceful_restart_time: `0` means disable
-        :param pulumi.Input[str] import_policy: default import policies if no per-neighbor policies defined
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]] neighbors: if per-neighbor as is desired. Property key is the neighbor address
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
-        :param pulumi.Input[bool] no_readvertise_to_overlay: by default, we'll re-advertise all learned BGP routers toward overlay
-        :param pulumi.Input[str] tunnel_name: if `type`==`tunnel`
+        :param pulumi.Input[str] import_policy: Default import policies if no per-neighbor policies defined
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]] neighbors: If per-neighbor as is desired. Property key is the neighbor address
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        :param pulumi.Input[bool] no_readvertise_to_overlay: By default, we'll re-advertise all learned BGP routers toward overlay
+        :param pulumi.Input[str] tunnel_name: If `type`==`tunnel`
         :param pulumi.Input[str] type: enum: `external`, `internal`
         :param pulumi.Input[str] via: network name. enum: `lan`, `tunnel`, `vpn`, `wan`
-        :param pulumi.Input[str] wan_name: if `via`==`wan`
+        :param pulumi.Input[str] wan_name: If `via`==`wan`
         """
         if auth_key is not None:
             pulumi.set(__self__, "auth_key", auth_key)
@@ -11118,7 +11277,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="bfdMinimumInterval")
     def bfd_minimum_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        when bfd_multiplier is configured alone. Default:
+        When bfd_multiplier is configured alone. Default:
           * 1000 if `type`==`external`
           * 350 `type`==`internal`
         """
@@ -11132,7 +11291,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="bfdMultiplier")
     def bfd_multiplier(self) -> Optional[pulumi.Input[int]]:
         """
-        when bfd_minimum_interval_is_configured alone
+        When bfd_minimum_interval_is_configured alone
         """
         return pulumi.get(self, "bfd_multiplier")
 
@@ -11165,7 +11324,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="exportPolicy")
     def export_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        default export policies if no per-neighbor policies defined
+        Default export policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "export_policy")
 
@@ -11177,7 +11336,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="extendedV4Nexthop")
     def extended_v4_nexthop(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
+        By default, either inet/net6 unicast depending on neighbor IP family (v4 or v6). For v6 neighbors, to exchange v4 nexthop, which allows dual-stack support, enable this
         """
         return pulumi.get(self, "extended_v4_nexthop")
 
@@ -11219,7 +11378,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="importPolicy")
     def import_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        default import policies if no per-neighbor policies defined
+        Default import policies if no per-neighbor policies defined
         """
         return pulumi.get(self, "import_policy")
 
@@ -11249,7 +11408,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter
     def neighbors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateBgpConfigNeighborsArgs']]]]:
         """
-        if per-neighbor as is desired. Property key is the neighbor address
+        If per-neighbor as is desired. Property key is the neighbor address
         """
         return pulumi.get(self, "neighbors")
 
@@ -11261,7 +11420,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
+        If `type`!=`external`or `via`==`wan`networks where we expect BGP neighbor to connect to/from
         """
         return pulumi.get(self, "networks")
 
@@ -11273,7 +11432,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, we'll re-advertise all learned BGP routers toward overlay
+        By default, we'll re-advertise all learned BGP routers toward overlay
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -11285,7 +11444,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="tunnelName")
     def tunnel_name(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`tunnel`
+        If `type`==`tunnel`
         """
         return pulumi.get(self, "tunnel_name")
 
@@ -11330,7 +11489,7 @@ class GatewaytemplateBgpConfigArgs:
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        if `via`==`wan`
+        If `via`==`wan`
         """
         return pulumi.get(self, "wan_name")
 
@@ -11350,7 +11509,7 @@ if not MYPY:
         import_policy: NotRequired[pulumi.Input[str]]
         multihop_ttl: NotRequired[pulumi.Input[int]]
         """
-        assuming BGP neighbor is directly connected
+        Assuming BGP neighbor is directly connected
         """
         neighbor_as: NotRequired[pulumi.Input[int]]
 elif False:
@@ -11367,7 +11526,7 @@ class GatewaytemplateBgpConfigNeighborsArgs:
                  neighbor_as: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] disabled: If true, the BGP session to this neighbor will be administratively disabled/shutdown
-        :param pulumi.Input[int] multihop_ttl: assuming BGP neighbor is directly connected
+        :param pulumi.Input[int] multihop_ttl: Assuming BGP neighbor is directly connected
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -11425,7 +11584,7 @@ class GatewaytemplateBgpConfigNeighborsArgs:
     @pulumi.getter(name="multihopTtl")
     def multihop_ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        assuming BGP neighbor is directly connected
+        Assuming BGP neighbor is directly connected
         """
         return pulumi.get(self, "multihop_ttl")
 
@@ -11451,7 +11610,7 @@ if not MYPY:
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        if set to `false`, disable the DHCP server
+        If set to `false`, disable the DHCP server
         """
 elif False:
     GatewaytemplateDhcpdConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -11463,7 +11622,7 @@ class GatewaytemplateDhcpdConfigArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigArgs']]] config: Property key is the network name
-        :param pulumi.Input[bool] enabled: if set to `false`, disable the DHCP server
+        :param pulumi.Input[bool] enabled: If set to `false`, disable the DHCP server
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -11486,7 +11645,7 @@ class GatewaytemplateDhcpdConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if set to `false`, disable the DHCP server
+        If set to `false`, disable the DHCP server
         """
         return pulumi.get(self, "enabled")
 
@@ -11499,43 +11658,43 @@ if not MYPY:
     class GatewaytemplateDhcpdConfigConfigArgsDict(TypedDict):
         dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         dns_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         fixed_bindings: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigFixedBindingsArgsDict']]]]
         """
-        if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         gateway: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`local` - optional, `ip` will be used if not provided
+        If `type`==`local` - optional, `ip` will be used if not provided
         """
         ip_end: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         ip_end6: NotRequired[pulumi.Input[str]]
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         ip_start: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         ip_start6: NotRequired[pulumi.Input[str]]
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         lease_time: NotRequired[pulumi.Input[int]]
         """
-        in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         """
         options: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgsDict']]]]
         """
-        if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         """
         server_id_override: NotRequired[pulumi.Input[bool]]
         """
@@ -11544,11 +11703,11 @@ if not MYPY:
         """
         servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`relay`
+        If `type`==`relay`
         """
         servers6s: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type6`==`relay`
+        If `type6`==`relay`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -11560,9 +11719,9 @@ if not MYPY:
         """
         vendor_encapsulated: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgsDict']]]]
         """
-        if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-          * sub option code: 1-255, sub-option code'
+          * sub option code: 1-255, sub-option code
         """
 elif False:
     GatewaytemplateDhcpdConfigConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -11587,25 +11746,25 @@ class GatewaytemplateDhcpdConfigConfigArgs:
                  type6: Optional[pulumi.Input[str]] = None,
                  vendor_encapsulated: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
-        :param pulumi.Input[str] gateway: if `type`==`local` - optional, `ip` will be used if not provided
-        :param pulumi.Input[str] ip_end: if `type`==`local`
-        :param pulumi.Input[str] ip_end6: if `type6`==`local`
-        :param pulumi.Input[str] ip_start: if `type`==`local`
-        :param pulumi.Input[str] ip_start6: if `type6`==`local`
-        :param pulumi.Input[int] lease_time: in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgs']]] options: if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigFixedBindingsArgs']]] fixed_bindings: If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        :param pulumi.Input[str] gateway: If `type`==`local` - optional, `ip` will be used if not provided
+        :param pulumi.Input[str] ip_end: If `type`==`local`
+        :param pulumi.Input[str] ip_end6: If `type6`==`local`
+        :param pulumi.Input[str] ip_start: If `type`==`local`
+        :param pulumi.Input[str] ip_start6: If `type6`==`local`
+        :param pulumi.Input[int] lease_time: In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgs']]] options: If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         :param pulumi.Input[bool] server_id_override: `server_id_override`==`true` means the device, when acts as DHCP relay and forwards DHCP responses from DHCP server to clients, 
                should overwrite the Sever Identifier option (i.e. DHCP option 54) in DHCP responses with its own IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: if `type`==`relay`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers6s: if `type6`==`relay`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers: If `type`==`relay`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] servers6s: If `type6`==`relay`
         :param pulumi.Input[str] type: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
         :param pulumi.Input[str] type6: enum: `local` (DHCP Server), `none`, `relay` (DHCP Relay)
-        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs']]] vendor_encapsulated: if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs']]] vendor_encapsulated: If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
                  * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-                 * sub option code: 1-255, sub-option code'
+                 * sub option code: 1-255, sub-option code
         """
         if dns_servers is not None:
             pulumi.set(__self__, "dns_servers", dns_servers)
@@ -11644,7 +11803,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="dnsServers")
     def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         return pulumi.get(self, "dns_servers")
 
@@ -11656,7 +11815,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
+        If `type`==`local` or `type6`==`local` - optional, if not defined, system one will be used
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -11668,7 +11827,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="fixedBindings")
     def fixed_bindings(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigFixedBindingsArgs']]]]:
         """
-        if `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
+        If `type`==`local` or `type6`==`local`. Property key is the MAC Address. Format is `[0-9a-f]{12}` (e.g "5684dae9ac8b")
         """
         return pulumi.get(self, "fixed_bindings")
 
@@ -11680,7 +11839,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`local` - optional, `ip` will be used if not provided
+        If `type`==`local` - optional, `ip` will be used if not provided
         """
         return pulumi.get(self, "gateway")
 
@@ -11692,7 +11851,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipEnd")
     def ip_end(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         return pulumi.get(self, "ip_end")
 
@@ -11704,7 +11863,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipEnd6")
     def ip_end6(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         return pulumi.get(self, "ip_end6")
 
@@ -11716,7 +11875,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipStart")
     def ip_start(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`local`
+        If `type`==`local`
         """
         return pulumi.get(self, "ip_start")
 
@@ -11728,7 +11887,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="ipStart6")
     def ip_start6(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type6`==`local`
+        If `type6`==`local`
         """
         return pulumi.get(self, "ip_start6")
 
@@ -11740,7 +11899,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="leaseTime")
     def lease_time(self) -> Optional[pulumi.Input[int]]:
         """
-        in seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
+        In seconds, lease time has to be between 3600 [1hr] - 604800 [1 week], default is 86400 [1 day]
         """
         return pulumi.get(self, "lease_time")
 
@@ -11752,7 +11911,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter
     def options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigOptionsArgs']]]]:
         """
-        if `type`==`local` or `type6`==`local`. Property key is the DHCP option number
+        If `type`==`local` or `type6`==`local`. Property key is the DHCP option number
         """
         return pulumi.get(self, "options")
 
@@ -11777,7 +11936,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`relay`
+        If `type`==`relay`
         """
         return pulumi.get(self, "servers")
 
@@ -11789,7 +11948,7 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter
     def servers6s(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type6`==`relay`
+        If `type6`==`relay`
         """
         return pulumi.get(self, "servers6s")
 
@@ -11825,9 +11984,9 @@ class GatewaytemplateDhcpdConfigConfigArgs:
     @pulumi.getter(name="vendorEncapsulated")
     def vendor_encapsulated(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateDhcpdConfigConfigVendorEncapsulatedArgs']]]]:
         """
-        if `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
+        If `type`==`local` or `type6`==`local`. Property key is <enterprise number>:<sub option code>, with
           * enterprise number: 1-65535 (https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers)
-          * sub option code: 1-255, sub-option code'
+          * sub option code: 1-255, sub-option code
         """
         return pulumi.get(self, "vendor_encapsulated")
 
@@ -12198,7 +12357,7 @@ if not MYPY:
         netmask: pulumi.Input[str]
         secondary_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional list of secondary IPs in CIDR format
+        Optional list of secondary IPs in CIDR format
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -12215,7 +12374,7 @@ class GatewaytemplateIpConfigsArgs:
                  secondary_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_ips: optional list of secondary IPs in CIDR format
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_ips: Optional list of secondary IPs in CIDR format
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
         """
         pulumi.set(__self__, "ip", ip)
@@ -12247,7 +12406,7 @@ class GatewaytemplateIpConfigsArgs:
     @pulumi.getter(name="secondaryIps")
     def secondary_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional list of secondary IPs in CIDR format
+        Optional list of secondary IPs in CIDR format
         """
         return pulumi.get(self, "secondary_ips")
 
@@ -12274,26 +12433,26 @@ if not MYPY:
         subnet: pulumi.Input[str]
         disallow_mist_services: NotRequired[pulumi.Input[bool]]
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         gateway: NotRequired[pulumi.Input[str]]
         gateway6: NotRequired[pulumi.Input[str]]
         internal_access: NotRequired[pulumi.Input['GatewaytemplateNetworkInternalAccessArgsDict']]
         internet_access: NotRequired[pulumi.Input['GatewaytemplateNetworkInternetAccessArgsDict']]
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         isolation: NotRequired[pulumi.Input[bool]]
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         multicast: NotRequired[pulumi.Input['GatewaytemplateNetworkMulticastArgsDict']]
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         routed_for_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         subnet6: NotRequired[pulumi.Input[str]]
         tenants: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkTenantsArgsDict']]]]
@@ -12326,11 +12485,11 @@ class GatewaytemplateNetworkArgs:
                  vlan_id: Optional[pulumi.Input[str]] = None,
                  vpn_access: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessArgs']]]] = None):
         """
-        :param pulumi.Input[bool] disallow_mist_services: whether to disallow Mist Devices in the network
-        :param pulumi.Input['GatewaytemplateNetworkInternetAccessArgs'] internet_access: whether this network has direct internet access
-        :param pulumi.Input[bool] isolation: whether to allow clients in the network to talk to each other
-        :param pulumi.Input['GatewaytemplateNetworkMulticastArgs'] multicast: whether to enable multicast support (only PIM-sparse mode is supported)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        :param pulumi.Input[bool] disallow_mist_services: Whether to disallow Mist Devices in the network
+        :param pulumi.Input['GatewaytemplateNetworkInternetAccessArgs'] internet_access: Whether this network has direct internet access
+        :param pulumi.Input[bool] isolation: Whether to allow clients in the network to talk to each other
+        :param pulumi.Input['GatewaytemplateNetworkMulticastArgs'] multicast: Whether to enable multicast support (only PIM-sparse mode is supported)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] routed_for_networks: For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkTenantsArgs']]] tenants: Property key must be the user/tenant name (i.e. "printer-1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessArgs']]] vpn_access: Property key is the VPN name. Whether this network can be accessed from vpn
         """
@@ -12383,7 +12542,7 @@ class GatewaytemplateNetworkArgs:
     @pulumi.getter(name="disallowMistServices")
     def disallow_mist_services(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disallow Mist Devices in the network
+        Whether to disallow Mist Devices in the network
         """
         return pulumi.get(self, "disallow_mist_services")
 
@@ -12422,7 +12581,7 @@ class GatewaytemplateNetworkArgs:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> Optional[pulumi.Input['GatewaytemplateNetworkInternetAccessArgs']]:
         """
-        whether this network has direct internet access
+        Whether this network has direct internet access
         """
         return pulumi.get(self, "internet_access")
 
@@ -12434,7 +12593,7 @@ class GatewaytemplateNetworkArgs:
     @pulumi.getter
     def isolation(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to allow clients in the network to talk to each other
+        Whether to allow clients in the network to talk to each other
         """
         return pulumi.get(self, "isolation")
 
@@ -12446,7 +12605,7 @@ class GatewaytemplateNetworkArgs:
     @pulumi.getter
     def multicast(self) -> Optional[pulumi.Input['GatewaytemplateNetworkMulticastArgs']]:
         """
-        whether to enable multicast support (only PIM-sparse mode is supported)
+        Whether to enable multicast support (only PIM-sparse mode is supported)
         """
         return pulumi.get(self, "multicast")
 
@@ -12458,7 +12617,7 @@ class GatewaytemplateNetworkArgs:
     @pulumi.getter(name="routedForNetworks")
     def routed_for_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        for a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
+        For a Network (usually LAN), it can be routable to other networks (e.g. OSPF)
         """
         return pulumi.get(self, "routed_for_networks")
 
@@ -12542,7 +12701,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         restricted: NotRequired[pulumi.Input[bool]]
         """
-        by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         """
         static_nat: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessStaticNatArgsDict']]]]
         """
@@ -12561,7 +12720,7 @@ class GatewaytemplateNetworkInternetAccessArgs:
                  static_nat: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessStaticNatArgs']]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessDestinationNatArgs']]] destination_nat: Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
-        :param pulumi.Input[bool] restricted: by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        :param pulumi.Input[bool] restricted: By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkInternetAccessStaticNatArgs']]] static_nat: Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         """
         if create_simple_service_policy is not None:
@@ -12609,7 +12768,7 @@ class GatewaytemplateNetworkInternetAccessArgs:
     @pulumi.getter
     def restricted(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
+        By default, all access is allowed, to only allow certain traffic, make `restricted`=`true` and define service_policies
         """
         return pulumi.get(self, "restricted")
 
@@ -12782,7 +12941,7 @@ if not MYPY:
     class GatewaytemplateNetworkMulticastArgsDict(TypedDict):
         disable_igmp: NotRequired[pulumi.Input[bool]]
         """
-        if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         """
         enabled: NotRequired[pulumi.Input[bool]]
         groups: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkMulticastGroupsArgsDict']]]]
@@ -12799,7 +12958,7 @@ class GatewaytemplateNetworkMulticastArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  groups: Optional[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkMulticastGroupsArgs']]]] = None):
         """
-        :param pulumi.Input[bool] disable_igmp: if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        :param pulumi.Input[bool] disable_igmp: If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkMulticastGroupsArgs']]] groups: Group address to RP (rendezvous point) mapping. Property Key is the CIDR (example "225.1.0.3/32")
         """
         if disable_igmp is not None:
@@ -12813,7 +12972,7 @@ class GatewaytemplateNetworkMulticastArgs:
     @pulumi.getter(name="disableIgmp")
     def disable_igmp(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the network will only be the soruce of the multicast traffic, IGMP can be disabled
+        If the network will only be the soruce of the multicast traffic, IGMP can be disabled
         """
         return pulumi.get(self, "disable_igmp")
 
@@ -12902,11 +13061,11 @@ if not MYPY:
     class GatewaytemplateNetworkVpnAccessArgsDict(TypedDict):
         advertised_subnet: NotRequired[pulumi.Input[str]]
         """
-        if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         """
         allow_ping: NotRequired[pulumi.Input[bool]]
         """
-        whether to allow ping from vpn into this routed network
+        Whether to allow ping from vpn into this routed network
         """
         destination_nat: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessDestinationNatArgsDict']]]]
         """
@@ -12914,7 +13073,7 @@ if not MYPY:
         """
         nat_pool: NotRequired[pulumi.Input[str]]
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         """
         no_readvertise_to_lan_bgp: NotRequired[pulumi.Input[bool]]
         """
@@ -12930,15 +13089,15 @@ if not MYPY:
         """
         other_vrfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         """
         routed: NotRequired[pulumi.Input[bool]]
         """
-        whether this network is routable
+        Whether this network is routable
         """
         source_nat: NotRequired[pulumi.Input['GatewaytemplateNetworkVpnAccessSourceNatArgsDict']]
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         """
         static_nat: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessStaticNatArgsDict']]]]
         """
@@ -12977,16 +13136,16 @@ class GatewaytemplateNetworkVpnAccessArgs:
                  summarized_subnet_to_lan_bgp: Optional[pulumi.Input[str]] = None,
                  summarized_subnet_to_lan_ospf: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] advertised_subnet: if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
-        :param pulumi.Input[bool] allow_ping: whether to allow ping from vpn into this routed network
+        :param pulumi.Input[str] advertised_subnet: If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        :param pulumi.Input[bool] allow_ping: Whether to allow ping from vpn into this routed network
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessDestinationNatArgs']]] destination_nat: Property key can be an External IP (i.e. "63.16.0.3"), an External IP:Port (i.e. "63.16.0.3:443"), an External Port (i.e. ":443"), an External CIDR (i.e. "63.16.0.0/30"), an External CIDR:Port (i.e. "63.16.0.0/30:443") or a Variable (i.e. "{{myvar}}"). At least one of the `internal_ip` or `port` must be defined
-        :param pulumi.Input[str] nat_pool: if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        :param pulumi.Input[str] nat_pool: If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         :param pulumi.Input[bool] no_readvertise_to_lan_bgp: toward LAN-side BGP peers
         :param pulumi.Input[bool] no_readvertise_to_lan_ospf: toward LAN-side OSPF peers
         :param pulumi.Input[bool] no_readvertise_to_overlay: toward overlay, how HUB should deal with routes it received from Spokes
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] other_vrfs: by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
-        :param pulumi.Input[bool] routed: whether this network is routable
-        :param pulumi.Input['GatewaytemplateNetworkVpnAccessSourceNatArgs'] source_nat: if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] other_vrfs: By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        :param pulumi.Input[bool] routed: Whether this network is routable
+        :param pulumi.Input['GatewaytemplateNetworkVpnAccessSourceNatArgs'] source_nat: If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplateNetworkVpnAccessStaticNatArgs']]] static_nat: Property key may be an External IP Address (i.e. "63.16.0.3"), a CIDR (i.e. "63.16.0.12/20") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[str] summarized_subnet: toward overlay, how HUB should deal with routes it received from Spokes
         :param pulumi.Input[str] summarized_subnet_to_lan_bgp: toward LAN-side BGP peers
@@ -13025,7 +13184,7 @@ class GatewaytemplateNetworkVpnAccessArgs:
     @pulumi.getter(name="advertisedSubnet")
     def advertised_subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        if `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
+        If `routed`==`true`, whether to advertise an aggregated subnet toward HUB this is useful when there are multiple networks on SPOKE's side
         """
         return pulumi.get(self, "advertised_subnet")
 
@@ -13037,7 +13196,7 @@ class GatewaytemplateNetworkVpnAccessArgs:
     @pulumi.getter(name="allowPing")
     def allow_ping(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to allow ping from vpn into this routed network
+        Whether to allow ping from vpn into this routed network
         """
         return pulumi.get(self, "allow_ping")
 
@@ -13061,7 +13220,7 @@ class GatewaytemplateNetworkVpnAccessArgs:
     @pulumi.getter(name="natPool")
     def nat_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub, a subnet is required to create and advertise the route to Hub
         """
         return pulumi.get(self, "nat_pool")
 
@@ -13109,7 +13268,7 @@ class GatewaytemplateNetworkVpnAccessArgs:
     @pulumi.getter(name="otherVrfs")
     def other_vrfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        by default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
+        By default, the routes are only readvertised toward the same vrf on spoke. To allow it to be leaked to other vrfs
         """
         return pulumi.get(self, "other_vrfs")
 
@@ -13121,7 +13280,7 @@ class GatewaytemplateNetworkVpnAccessArgs:
     @pulumi.getter
     def routed(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether this network is routable
+        Whether this network is routable
         """
         return pulumi.get(self, "routed")
 
@@ -13133,7 +13292,7 @@ class GatewaytemplateNetworkVpnAccessArgs:
     @pulumi.getter(name="sourceNat")
     def source_nat(self) -> Optional[pulumi.Input['GatewaytemplateNetworkVpnAccessSourceNatArgs']]:
         """
-        if `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
+        If `routed`==`false` (usually at Spoke), but some hosts needs to be reachable from Hub
         """
         return pulumi.get(self, "source_nat")
 
@@ -13318,19 +13477,19 @@ if not MYPY:
     class GatewaytemplateOobIpConfigArgsDict(TypedDict):
         gateway: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         ip: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         netmask: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         node1: NotRequired[pulumi.Input['GatewaytemplateOobIpConfigNode1ArgsDict']]
         """
-        for HA Cluster, node1 can have different IP Config
+        For HA Cluster, node1 can have different IP Config
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -13338,11 +13497,11 @@ if not MYPY:
         """
         use_mgmt_vrf: NotRequired[pulumi.Input[bool]]
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         use_mgmt_vrf_for_host_out: NotRequired[pulumi.Input[bool]]
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         vlan_id: NotRequired[pulumi.Input[str]]
 elif False:
@@ -13360,13 +13519,13 @@ class GatewaytemplateOobIpConfigArgs:
                  use_mgmt_vrf_for_host_out: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] gateway: if `type`==`static`
-        :param pulumi.Input[str] ip: if `type`==`static`
-        :param pulumi.Input[str] netmask: if `type`==`static`
-        :param pulumi.Input['GatewaytemplateOobIpConfigNode1Args'] node1: for HA Cluster, node1 can have different IP Config
+        :param pulumi.Input[str] gateway: If `type`==`static`
+        :param pulumi.Input[str] ip: If `type`==`static`
+        :param pulumi.Input[str] netmask: If `type`==`static`
+        :param pulumi.Input['GatewaytemplateOobIpConfigNode1Args'] node1: For HA Cluster, node1 can have different IP Config
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
-        :param pulumi.Input[bool] use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        :param pulumi.Input[bool] use_mgmt_vrf: If supported on the platform. If enabled, DNS will be using this routing-instance, too
+        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
@@ -13389,7 +13548,7 @@ class GatewaytemplateOobIpConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "gateway")
 
@@ -13401,7 +13560,7 @@ class GatewaytemplateOobIpConfigArgs:
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "ip")
 
@@ -13413,7 +13572,7 @@ class GatewaytemplateOobIpConfigArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "netmask")
 
@@ -13425,7 +13584,7 @@ class GatewaytemplateOobIpConfigArgs:
     @pulumi.getter
     def node1(self) -> Optional[pulumi.Input['GatewaytemplateOobIpConfigNode1Args']]:
         """
-        for HA Cluster, node1 can have different IP Config
+        For HA Cluster, node1 can have different IP Config
         """
         return pulumi.get(self, "node1")
 
@@ -13449,7 +13608,7 @@ class GatewaytemplateOobIpConfigArgs:
     @pulumi.getter(name="useMgmtVrf")
     def use_mgmt_vrf(self) -> Optional[pulumi.Input[bool]]:
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         return pulumi.get(self, "use_mgmt_vrf")
 
@@ -13461,7 +13620,7 @@ class GatewaytemplateOobIpConfigArgs:
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[pulumi.Input[bool]]:
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 
@@ -13483,12 +13642,12 @@ if not MYPY:
     class GatewaytemplateOobIpConfigNode1ArgsDict(TypedDict):
         gateway: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         ip: NotRequired[pulumi.Input[str]]
         netmask: NotRequired[pulumi.Input[str]]
         """
-        used only if `subnet` is not specified in `networks`
+        Used only if `subnet` is not specified in `networks`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -13496,11 +13655,11 @@ if not MYPY:
         """
         use_mgmt_vrf: NotRequired[pulumi.Input[bool]]
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         use_mgmt_vrf_for_host_out: NotRequired[pulumi.Input[bool]]
         """
-        whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         vlan_id: NotRequired[pulumi.Input[str]]
 elif False:
@@ -13517,11 +13676,11 @@ class GatewaytemplateOobIpConfigNode1Args:
                  use_mgmt_vrf_for_host_out: Optional[pulumi.Input[bool]] = None,
                  vlan_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] gateway: if `type`==`static`
-        :param pulumi.Input[str] netmask: used only if `subnet` is not specified in `networks`
+        :param pulumi.Input[str] gateway: If `type`==`static`
+        :param pulumi.Input[str] netmask: Used only if `subnet` is not specified in `networks`
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
-        :param pulumi.Input[bool] use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        :param pulumi.Input[bool] use_mgmt_vrf: If supported on the platform. If enabled, DNS will be using this routing-instance, too
+        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
@@ -13542,7 +13701,7 @@ class GatewaytemplateOobIpConfigNode1Args:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`static`
+        If `type`==`static`
         """
         return pulumi.get(self, "gateway")
 
@@ -13563,7 +13722,7 @@ class GatewaytemplateOobIpConfigNode1Args:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        used only if `subnet` is not specified in `networks`
+        Used only if `subnet` is not specified in `networks`
         """
         return pulumi.get(self, "netmask")
 
@@ -13587,7 +13746,7 @@ class GatewaytemplateOobIpConfigNode1Args:
     @pulumi.getter(name="useMgmtVrf")
     def use_mgmt_vrf(self) -> Optional[pulumi.Input[bool]]:
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         return pulumi.get(self, "use_mgmt_vrf")
 
@@ -13599,7 +13758,7 @@ class GatewaytemplateOobIpConfigNode1Args:
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        Whether to use `mgmt_junos` for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 
@@ -13671,25 +13830,25 @@ if not MYPY:
         """
         gateway_ip: NotRequired[pulumi.Input[str]]
         """
-        only if `type`==`local`, if a different gateway is desired
+        Only if `type`==`local`, if a different gateway is desired
         """
         internet_access: NotRequired[pulumi.Input[bool]]
         """
-        only if `type`==`vpn`, if this vpn path can be used for internet
+        Only if `type`==`vpn`, if this vpn path can be used for internet
         """
         name: NotRequired[pulumi.Input[str]]
         """
-        required when 
+        Required when 
           * `type`==`vpn`: the name of the VPN Path to use 
-          * `type`==`wan`: the name of the WAN interface to use'
+          * `type`==`wan`: the name of the WAN interface to use
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        required when `type`==`local`
+        Required when `type`==`local`
         """
         target_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `type`==`local`, if destination IP is to be replaced
+        If `type`==`local`, if destination IP is to be replaced
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -13697,7 +13856,7 @@ if not MYPY:
         """
         wan_name: NotRequired[pulumi.Input[str]]
         """
-        optional if `type`==`vpn`
+        Optional if `type`==`vpn`
         """
 elif False:
     GatewaytemplatePathPreferencesPathArgsDict: TypeAlias = Mapping[str, Any]
@@ -13716,15 +13875,15 @@ class GatewaytemplatePathPreferencesPathArgs:
                  wan_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] disabled: For SSR Only. `true`, if this specific path is undesired
-        :param pulumi.Input[str] gateway_ip: only if `type`==`local`, if a different gateway is desired
-        :param pulumi.Input[bool] internet_access: only if `type`==`vpn`, if this vpn path can be used for internet
-        :param pulumi.Input[str] name: required when 
+        :param pulumi.Input[str] gateway_ip: Only if `type`==`local`, if a different gateway is desired
+        :param pulumi.Input[bool] internet_access: Only if `type`==`vpn`, if this vpn path can be used for internet
+        :param pulumi.Input[str] name: Required when 
                  * `type`==`vpn`: the name of the VPN Path to use 
-                 * `type`==`wan`: the name of the WAN interface to use'
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: required when `type`==`local`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ips: if `type`==`local`, if destination IP is to be replaced
+                 * `type`==`wan`: the name of the WAN interface to use
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: Required when `type`==`local`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ips: If `type`==`local`, if destination IP is to be replaced
         :param pulumi.Input[str] type: enum: `local`, `tunnel`, `vpn`, `wan`
-        :param pulumi.Input[str] wan_name: optional if `type`==`vpn`
+        :param pulumi.Input[str] wan_name: Optional if `type`==`vpn`
         """
         if cost is not None:
             pulumi.set(__self__, "cost", cost)
@@ -13770,7 +13929,7 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        only if `type`==`local`, if a different gateway is desired
+        Only if `type`==`local`, if a different gateway is desired
         """
         return pulumi.get(self, "gateway_ip")
 
@@ -13782,7 +13941,7 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter(name="internetAccess")
     def internet_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        only if `type`==`vpn`, if this vpn path can be used for internet
+        Only if `type`==`vpn`, if this vpn path can be used for internet
         """
         return pulumi.get(self, "internet_access")
 
@@ -13794,9 +13953,9 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        required when 
+        Required when 
           * `type`==`vpn`: the name of the VPN Path to use 
-          * `type`==`wan`: the name of the WAN interface to use'
+          * `type`==`wan`: the name of the WAN interface to use
         """
         return pulumi.get(self, "name")
 
@@ -13808,7 +13967,7 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required when `type`==`local`
+        Required when `type`==`local`
         """
         return pulumi.get(self, "networks")
 
@@ -13820,7 +13979,7 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter(name="targetIps")
     def target_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `type`==`local`, if destination IP is to be replaced
+        If `type`==`local`, if destination IP is to be replaced
         """
         return pulumi.get(self, "target_ips")
 
@@ -13844,7 +14003,7 @@ class GatewaytemplatePathPreferencesPathArgs:
     @pulumi.getter(name="wanName")
     def wan_name(self) -> Optional[pulumi.Input[str]]:
         """
-        optional if `type`==`vpn`
+        Optional if `type`==`vpn`
         """
         return pulumi.get(self, "wan_name")
 
@@ -13861,11 +14020,11 @@ if not MYPY:
         """
         ae_disable_lacp: NotRequired[pulumi.Input[bool]]
         """
-        if `aggregated`==`true`. To disable LCP support for the AE interface
+        If `aggregated`==`true`. To disable LCP support for the AE interface
         """
         ae_idx: NotRequired[pulumi.Input[str]]
         """
-        if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         """
         ae_lacp_force_up: NotRequired[pulumi.Input[bool]]
         """
@@ -13874,7 +14033,7 @@ if not MYPY:
         aggregated: NotRequired[pulumi.Input[bool]]
         critical: NotRequired[pulumi.Input[bool]]
         """
-        if want to generate port up/down alarm, set it to true
+        To generate port up/down alarm, set it to true
         """
         description: NotRequired[pulumi.Input[str]]
         """
@@ -13883,7 +14042,7 @@ if not MYPY:
         disable_autoneg: NotRequired[pulumi.Input[bool]]
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        port admin up (true) / down (false)
+        Port admin up (true) / down (false)
         """
         dsl_type: NotRequired[pulumi.Input[str]]
         """
@@ -13891,11 +14050,11 @@ if not MYPY:
         """
         dsl_vci: NotRequired[pulumi.Input[int]]
         """
-        if `wan_type`==`dsl`, 16 bit int
+        If `wan_type`==`dsl`, 16 bit int
         """
         dsl_vpi: NotRequired[pulumi.Input[int]]
         """
-        if `wan_type`==`dsl`, 8 bit int
+        If `wan_type`==`dsl`, 8 bit int
         """
         duplex: NotRequired[pulumi.Input[str]]
         """
@@ -13907,7 +14066,7 @@ if not MYPY:
         """
         lte_apn: NotRequired[pulumi.Input[str]]
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         lte_auth: NotRequired[pulumi.Input[str]]
         """
@@ -13916,16 +14075,16 @@ if not MYPY:
         lte_backup: NotRequired[pulumi.Input[bool]]
         lte_password: NotRequired[pulumi.Input[str]]
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         lte_username: NotRequired[pulumi.Input[str]]
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         mtu: NotRequired[pulumi.Input[int]]
         name: NotRequired[pulumi.Input[str]]
         """
-        name that we'll use to derive config
+        Name that we'll use to derive config
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -13933,28 +14092,28 @@ if not MYPY:
         """
         outer_vlan_id: NotRequired[pulumi.Input[int]]
         """
-        for Q-in-Q
+        For Q-in-Q
         """
         poe_disabled: NotRequired[pulumi.Input[bool]]
         port_network: NotRequired[pulumi.Input[str]]
         """
-        Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+        Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         """
         preserve_dscp: NotRequired[pulumi.Input[bool]]
         """
-        whether to preserve dscp when sending traffic over VPN (SSR-only)
+        Whether to preserve dscp when sending traffic over VPN (SSR-only)
         """
         redundant: NotRequired[pulumi.Input[bool]]
         """
-        if HA mode
+        If HA mode
         """
         reth_idx: NotRequired[pulumi.Input[int]]
         """
-        if HA mode
+        If HA mode
         """
         reth_node: NotRequired[pulumi.Input[str]]
         """
-        if HA mode
+        If HA mode
         """
         reth_nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -13963,11 +14122,11 @@ if not MYPY:
         speed: NotRequired[pulumi.Input[str]]
         ssr_no_virtual_mac: NotRequired[pulumi.Input[bool]]
         """
-        when SSR is running as VM, this is required on certain hosting platforms
+        When SSR is running as VM, this is required on certain hosting platforms
         """
         svr_port_range: NotRequired[pulumi.Input[str]]
         """
-        for SSR only
+        For SSR only
         """
         traffic_shaping: NotRequired[pulumi.Input['GatewaytemplatePortConfigTrafficShapingArgsDict']]
         vlan_id: NotRequired[pulumi.Input[str]]
@@ -14054,32 +14213,32 @@ class GatewaytemplatePortConfigArgs:
                  wan_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] usage: port usage name. enum: `ha_control`, `ha_data`, `lan`, `wan`
-        :param pulumi.Input[bool] ae_disable_lacp: if `aggregated`==`true`. To disable LCP support for the AE interface
-        :param pulumi.Input[str] ae_idx: if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        :param pulumi.Input[bool] ae_disable_lacp: If `aggregated`==`true`. To disable LCP support for the AE interface
+        :param pulumi.Input[str] ae_idx: If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         :param pulumi.Input[bool] ae_lacp_force_up: For SRX Only, if `aggregated`==`true`.Sets the state of the interface as UP when the peer has limited LACP capability. Use case: When a device connected to this AE port is ZTPing for the first time, it will not have LACP configured on the other end. **Note:** Turning this on will enable force-up on one of the interfaces in the bundle only
-        :param pulumi.Input[bool] critical: if want to generate port up/down alarm, set it to true
+        :param pulumi.Input[bool] critical: To generate port up/down alarm, set it to true
         :param pulumi.Input[str] description: Interface Description. Can be a variable (i.e. "{{myvar}}")
-        :param pulumi.Input[bool] disabled: port admin up (true) / down (false)
+        :param pulumi.Input[bool] disabled: Port admin up (true) / down (false)
         :param pulumi.Input[str] dsl_type: if `wan_type`==`dsl`. enum: `adsl`, `vdsl`
-        :param pulumi.Input[int] dsl_vci: if `wan_type`==`dsl`, 16 bit int
-        :param pulumi.Input[int] dsl_vpi: if `wan_type`==`dsl`, 8 bit int
+        :param pulumi.Input[int] dsl_vci: If `wan_type`==`dsl`, 16 bit int
+        :param pulumi.Input[int] dsl_vpi: If `wan_type`==`dsl`, 8 bit int
         :param pulumi.Input[str] duplex: enum: `auto`, `full`, `half`
         :param pulumi.Input['GatewaytemplatePortConfigIpConfigArgs'] ip_config: Junos IP Config
-        :param pulumi.Input[str] lte_apn: if `wan_type`==`lte`
+        :param pulumi.Input[str] lte_apn: If `wan_type`==`lte`
         :param pulumi.Input[str] lte_auth: if `wan_type`==`lte`. enum: `chap`, `none`, `pap`
-        :param pulumi.Input[str] lte_password: if `wan_type`==`lte`
-        :param pulumi.Input[str] lte_username: if `wan_type`==`lte`
-        :param pulumi.Input[str] name: name that we'll use to derive config
+        :param pulumi.Input[str] lte_password: If `wan_type`==`lte`
+        :param pulumi.Input[str] lte_username: If `wan_type`==`lte`
+        :param pulumi.Input[str] name: Name that we'll use to derive config
         :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `usage`==`lan`, name of the `org.Network` resource
-        :param pulumi.Input[int] outer_vlan_id: for Q-in-Q
-        :param pulumi.Input[str] port_network: Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
-        :param pulumi.Input[bool] preserve_dscp: whether to preserve dscp when sending traffic over VPN (SSR-only)
-        :param pulumi.Input[bool] redundant: if HA mode
-        :param pulumi.Input[int] reth_idx: if HA mode
-        :param pulumi.Input[str] reth_node: if HA mode
+        :param pulumi.Input[int] outer_vlan_id: For Q-in-Q
+        :param pulumi.Input[str] port_network: Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
+        :param pulumi.Input[bool] preserve_dscp: Whether to preserve dscp when sending traffic over VPN (SSR-only)
+        :param pulumi.Input[bool] redundant: If HA mode
+        :param pulumi.Input[int] reth_idx: If HA mode
+        :param pulumi.Input[str] reth_node: If HA mode
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reth_nodes: SSR only - supporting vlan-based redundancy (matching the size of `networks`)
-        :param pulumi.Input[bool] ssr_no_virtual_mac: when SSR is running as VM, this is required on certain hosting platforms
-        :param pulumi.Input[str] svr_port_range: for SSR only
+        :param pulumi.Input[bool] ssr_no_virtual_mac: When SSR is running as VM, this is required on certain hosting platforms
+        :param pulumi.Input[str] svr_port_range: For SSR only
         :param pulumi.Input[Mapping[str, pulumi.Input['GatewaytemplatePortConfigVpnPathsArgs']]] vpn_paths: Property key is the VPN name
         :param pulumi.Input[str] wan_arp_policer: Only when `wan_type`==`broadband`. enum: `default`, `max`, `recommended`
         :param pulumi.Input[str] wan_ext_ip: Only if `usage`==`wan`, optional. If spoke should reach this port by a different IP
@@ -14191,7 +14350,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="aeDisableLacp")
     def ae_disable_lacp(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `aggregated`==`true`. To disable LCP support for the AE interface
+        If `aggregated`==`true`. To disable LCP support for the AE interface
         """
         return pulumi.get(self, "ae_disable_lacp")
 
@@ -14203,7 +14362,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="aeIdx")
     def ae_idx(self) -> Optional[pulumi.Input[str]]:
         """
-        if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         """
         return pulumi.get(self, "ae_idx")
 
@@ -14236,7 +14395,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter
     def critical(self) -> Optional[pulumi.Input[bool]]:
         """
-        if want to generate port up/down alarm, set it to true
+        To generate port up/down alarm, set it to true
         """
         return pulumi.get(self, "critical")
 
@@ -14269,7 +14428,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        port admin up (true) / down (false)
+        Port admin up (true) / down (false)
         """
         return pulumi.get(self, "disabled")
 
@@ -14293,7 +14452,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="dslVci")
     def dsl_vci(self) -> Optional[pulumi.Input[int]]:
         """
-        if `wan_type`==`dsl`, 16 bit int
+        If `wan_type`==`dsl`, 16 bit int
         """
         return pulumi.get(self, "dsl_vci")
 
@@ -14305,7 +14464,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="dslVpi")
     def dsl_vpi(self) -> Optional[pulumi.Input[int]]:
         """
-        if `wan_type`==`dsl`, 8 bit int
+        If `wan_type`==`dsl`, 8 bit int
         """
         return pulumi.get(self, "dsl_vpi")
 
@@ -14341,7 +14500,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="lteApn")
     def lte_apn(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         return pulumi.get(self, "lte_apn")
 
@@ -14374,7 +14533,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="ltePassword")
     def lte_password(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         return pulumi.get(self, "lte_password")
 
@@ -14386,7 +14545,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="lteUsername")
     def lte_username(self) -> Optional[pulumi.Input[str]]:
         """
-        if `wan_type`==`lte`
+        If `wan_type`==`lte`
         """
         return pulumi.get(self, "lte_username")
 
@@ -14407,7 +14566,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        name that we'll use to derive config
+        Name that we'll use to derive config
         """
         return pulumi.get(self, "name")
 
@@ -14431,7 +14590,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="outerVlanId")
     def outer_vlan_id(self) -> Optional[pulumi.Input[int]]:
         """
-        for Q-in-Q
+        For Q-in-Q
         """
         return pulumi.get(self, "outer_vlan_id")
 
@@ -14452,7 +14611,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="portNetwork")
     def port_network(self) -> Optional[pulumi.Input[str]]:
         """
-        Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+        Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         """
         return pulumi.get(self, "port_network")
 
@@ -14464,7 +14623,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="preserveDscp")
     def preserve_dscp(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to preserve dscp when sending traffic over VPN (SSR-only)
+        Whether to preserve dscp when sending traffic over VPN (SSR-only)
         """
         return pulumi.get(self, "preserve_dscp")
 
@@ -14476,7 +14635,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter
     def redundant(self) -> Optional[pulumi.Input[bool]]:
         """
-        if HA mode
+        If HA mode
         """
         return pulumi.get(self, "redundant")
 
@@ -14488,7 +14647,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="rethIdx")
     def reth_idx(self) -> Optional[pulumi.Input[int]]:
         """
-        if HA mode
+        If HA mode
         """
         return pulumi.get(self, "reth_idx")
 
@@ -14500,7 +14659,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="rethNode")
     def reth_node(self) -> Optional[pulumi.Input[str]]:
         """
-        if HA mode
+        If HA mode
         """
         return pulumi.get(self, "reth_node")
 
@@ -14533,7 +14692,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="ssrNoVirtualMac")
     def ssr_no_virtual_mac(self) -> Optional[pulumi.Input[bool]]:
         """
-        when SSR is running as VM, this is required on certain hosting platforms
+        When SSR is running as VM, this is required on certain hosting platforms
         """
         return pulumi.get(self, "ssr_no_virtual_mac")
 
@@ -14545,7 +14704,7 @@ class GatewaytemplatePortConfigArgs:
     @pulumi.getter(name="svrPortRange")
     def svr_port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        for SSR only
+        For SSR only
         """
         return pulumi.get(self, "svr_port_range")
 
@@ -14672,15 +14831,15 @@ if not MYPY:
     class GatewaytemplatePortConfigIpConfigArgsDict(TypedDict):
         dns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         dns_suffixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         gateway: NotRequired[pulumi.Input[str]]
         """
-        except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         """
         ip: NotRequired[pulumi.Input[str]]
         """
@@ -14688,15 +14847,15 @@ if not MYPY:
         """
         netmask: NotRequired[pulumi.Input[str]]
         """
-        used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         network: NotRequired[pulumi.Input[str]]
         """
-        optional, the network to be used for mgmt
+        Optional, the network to be used for mgmt
         """
         poser_password: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         pppoe_auth: NotRequired[pulumi.Input[str]]
         """
@@ -14704,7 +14863,7 @@ if not MYPY:
         """
         pppoe_username: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -14727,15 +14886,15 @@ class GatewaytemplatePortConfigIpConfigArgs:
                  pppoe_username: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns: except for out-of_band interface (vme/em0/fxp0)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: except for out-of_band interface (vme/em0/fxp0)
-        :param pulumi.Input[str] gateway: except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns: Except for out-of_band interface (vme/em0/fxp0)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_suffixes: Except for out-of_band interface (vme/em0/fxp0)
+        :param pulumi.Input[str] gateway: Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         :param pulumi.Input[str] ip: Interface IP Address (i.e. "192.168.1.8") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[str] netmask: used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
-        :param pulumi.Input[str] network: optional, the network to be used for mgmt
-        :param pulumi.Input[str] poser_password: if `type`==`pppoe`
+        :param pulumi.Input[str] netmask: Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        :param pulumi.Input[str] network: Optional, the network to be used for mgmt
+        :param pulumi.Input[str] poser_password: If `type`==`pppoe`
         :param pulumi.Input[str] pppoe_auth: if `type`==`pppoe`. enum: `chap`, `none`, `pap`
-        :param pulumi.Input[str] pppoe_username: if `type`==`pppoe`
+        :param pulumi.Input[str] pppoe_username: If `type`==`pppoe`
         :param pulumi.Input[str] type: enum: `dhcp`, `pppoe`, `static`
         """
         if dns is not None:
@@ -14763,7 +14922,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter
     def dns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         return pulumi.get(self, "dns")
 
@@ -14775,7 +14934,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter(name="dnsSuffixes")
     def dns_suffixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        except for out-of_band interface (vme/em0/fxp0)
+        Except for out-of_band interface (vme/em0/fxp0)
         """
         return pulumi.get(self, "dns_suffixes")
 
@@ -14787,7 +14946,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
+        Except for out-of_band interface (vme/em0/fxp0). Interface Default Gateway IP Address (i.e. "192.168.1.1") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "gateway")
 
@@ -14811,7 +14970,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter
     def netmask(self) -> Optional[pulumi.Input[str]]:
         """
-        used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
+        Used only if `subnet` is not specified in `networks`. Interface Netmask (i.e. "/24") or a Variable (i.e. "{{myvar}}")
         """
         return pulumi.get(self, "netmask")
 
@@ -14823,7 +14982,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, the network to be used for mgmt
+        Optional, the network to be used for mgmt
         """
         return pulumi.get(self, "network")
 
@@ -14835,7 +14994,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter(name="poserPassword")
     def poser_password(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         return pulumi.get(self, "poser_password")
 
@@ -14859,7 +15018,7 @@ class GatewaytemplatePortConfigIpConfigArgs:
     @pulumi.getter(name="pppoeUsername")
     def pppoe_username(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`pppoe`
+        If `type`==`pppoe`
         """
         return pulumi.get(self, "pppoe_username")
 
@@ -15207,11 +15366,11 @@ if not MYPY:
     class GatewaytemplatePortConfigWanSourceNatArgsDict(TypedDict):
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        or to disable the source-nat
+        Or to disable the source-nat
         """
         nat_pool: NotRequired[pulumi.Input[str]]
         """
-        if alternative nat_pool is desired
+        If alternative nat_pool is desired
         """
 elif False:
     GatewaytemplatePortConfigWanSourceNatArgsDict: TypeAlias = Mapping[str, Any]
@@ -15222,8 +15381,8 @@ class GatewaytemplatePortConfigWanSourceNatArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  nat_pool: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] disabled: or to disable the source-nat
-        :param pulumi.Input[str] nat_pool: if alternative nat_pool is desired
+        :param pulumi.Input[bool] disabled: Or to disable the source-nat
+        :param pulumi.Input[str] nat_pool: If alternative nat_pool is desired
         """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
@@ -15234,7 +15393,7 @@ class GatewaytemplatePortConfigWanSourceNatArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        or to disable the source-nat
+        Or to disable the source-nat
         """
         return pulumi.get(self, "disabled")
 
@@ -15246,7 +15405,7 @@ class GatewaytemplatePortConfigWanSourceNatArgs:
     @pulumi.getter(name="natPool")
     def nat_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        if alternative nat_pool is desired
+        If alternative nat_pool is desired
         """
         return pulumi.get(self, "nat_pool")
 
@@ -15291,7 +15450,7 @@ if not MYPY:
     class GatewaytemplateRoutingPoliciesTermArgsDict(TypedDict):
         action: NotRequired[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgsDict']]
         """
-        when used as import policy
+        When used as import policy
         """
         matching: NotRequired[pulumi.Input['GatewaytemplateRoutingPoliciesTermMatchingArgsDict']]
         """
@@ -15306,7 +15465,7 @@ class GatewaytemplateRoutingPoliciesTermArgs:
                  action: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs']] = None,
                  matching: Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermMatchingArgs']] = None):
         """
-        :param pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs'] action: when used as import policy
+        :param pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs'] action: When used as import policy
         :param pulumi.Input['GatewaytemplateRoutingPoliciesTermMatchingArgs'] matching: zero or more criteria/filter can be specified to match the term, all criteria have to be met
         """
         if action is not None:
@@ -15318,7 +15477,7 @@ class GatewaytemplateRoutingPoliciesTermArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input['GatewaytemplateRoutingPoliciesTermActionArgs']]:
         """
-        when used as import policy
+        When used as import policy
         """
         return pulumi.get(self, "action")
 
@@ -15345,7 +15504,7 @@ if not MYPY:
         add_communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         add_target_vrfs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        for SSR, hub decides how VRF routes are leaked on spoke
+        For SSR, hub decides how VRF routes are leaked on spoke
         """
         aggregates: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -15353,24 +15512,24 @@ if not MYPY:
         """
         communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         exclude_as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional. To exclude certain AS
+        When used as export policy, optional. To exclude certain AS
         """
         exclude_communities: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         export_communitites: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         local_preference: NotRequired[pulumi.Input[str]]
         """
-        optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed
         """
         prepend_as_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
 elif False:
     GatewaytemplateRoutingPoliciesTermActionArgsDict: TypeAlias = Mapping[str, Any]
@@ -15389,13 +15548,13 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
                  local_preference: Optional[pulumi.Input[str]] = None,
                  prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] add_target_vrfs: for SSR, hub decides how VRF routes are leaked on spoke
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] add_target_vrfs: For SSR, hub decides how VRF routes are leaked on spoke
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aggregates: route aggregation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] communities: when used as export policy, optional
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_as_paths: when used as export policy, optional. To exclude certain AS
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_communitites: when used as export policy, optional
-        :param pulumi.Input[str] local_preference: optional, for an import policy, local_preference can be changed
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: when used as export policy, optional. By default, the local AS will be prepended, to change it
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] communities: When used as export policy, optional
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_as_paths: When used as export policy, optional. To exclude certain AS
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] export_communitites: When used as export policy, optional
+        :param pulumi.Input[str] local_preference: Optional, for an import policy, local_preference can be changed
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] prepend_as_paths: When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
         if accept is not None:
             pulumi.set(__self__, "accept", accept)
@@ -15440,7 +15599,7 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="addTargetVrfs")
     def add_target_vrfs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        for SSR, hub decides how VRF routes are leaked on spoke
+        For SSR, hub decides how VRF routes are leaked on spoke
         """
         return pulumi.get(self, "add_target_vrfs")
 
@@ -15464,7 +15623,7 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
     @pulumi.getter
     def communities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         return pulumi.get(self, "communities")
 
@@ -15476,7 +15635,7 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="excludeAsPaths")
     def exclude_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional. To exclude certain AS
+        When used as export policy, optional. To exclude certain AS
         """
         return pulumi.get(self, "exclude_as_paths")
 
@@ -15497,7 +15656,7 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="exportCommunitites")
     def export_communitites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional
+        When used as export policy, optional
         """
         return pulumi.get(self, "export_communitites")
 
@@ -15509,7 +15668,7 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="localPreference")
     def local_preference(self) -> Optional[pulumi.Input[str]]:
         """
-        optional, for an import policy, local_preference can be changed
+        Optional, for an import policy, local_preference can be changed
         """
         return pulumi.get(self, "local_preference")
 
@@ -15521,7 +15680,7 @@ class GatewaytemplateRoutingPoliciesTermActionArgs:
     @pulumi.getter(name="prependAsPaths")
     def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when used as export policy, optional. By default, the local AS will be prepended, to change it
+        When used as export policy, optional. By default, the local AS will be prepended, to change it
         """
         return pulumi.get(self, "prepend_as_paths")
 
@@ -15699,7 +15858,7 @@ if not MYPY:
         route: NotRequired[pulumi.Input[str]]
         vrf_name: NotRequired[pulumi.Input[str]]
         """
-        name of the vrf instance, it can also be the name of the VPN or wan if they
+        Name of the vrf instance, it can also be the name of the VPN or wan if they
         """
 elif False:
     GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgsDict: TypeAlias = Mapping[str, Any]
@@ -15710,7 +15869,7 @@ class GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs:
                  route: Optional[pulumi.Input[str]] = None,
                  vrf_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] vrf_name: name of the vrf instance, it can also be the name of the VPN or wan if they
+        :param pulumi.Input[str] vrf_name: Name of the vrf instance, it can also be the name of the VPN or wan if they
         """
         if route is not None:
             pulumi.set(__self__, "route", route)
@@ -15730,7 +15889,7 @@ class GatewaytemplateRoutingPoliciesTermMatchingRouteExistsArgs:
     @pulumi.getter(name="vrfName")
     def vrf_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the vrf instance, it can also be the name of the VPN or wan if they
+        Name of the vrf instance, it can also be the name of the VPN or wan if they
         """
         return pulumi.get(self, "vrf_name")
 
@@ -15794,6 +15953,10 @@ if not MYPY:
         """
         Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
         """
+        antivirus: NotRequired[pulumi.Input['GatewaytemplateServicePolicyAntivirusArgsDict']]
+        """
+        For SRX-only
+        """
         appqoe: NotRequired[pulumi.Input['GatewaytemplateServicePolicyAppqoeArgsDict']]
         """
         For SRX Only
@@ -15810,15 +15973,19 @@ if not MYPY:
         """
         path_preference: NotRequired[pulumi.Input[str]]
         """
-        by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         """
         servicepolicy_id: NotRequired[pulumi.Input[str]]
         """
-        used to link servicepolicy defined at org level and overwrite some attributes
+        Used to link servicepolicy defined at org level and overwrite some attributes
         """
         services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        """
+        ssl_proxy: NotRequired[pulumi.Input['GatewaytemplateServicePolicySslProxyArgsDict']]
+        """
+        For SRX-only
         """
         tenants: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -15831,6 +15998,7 @@ elif False:
 class GatewaytemplateServicePolicyArgs:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
+                 antivirus: Optional[pulumi.Input['GatewaytemplateServicePolicyAntivirusArgs']] = None,
                  appqoe: Optional[pulumi.Input['GatewaytemplateServicePolicyAppqoeArgs']] = None,
                  ewfs: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateServicePolicyEwfArgs']]]] = None,
                  idp: Optional[pulumi.Input['GatewaytemplateServicePolicyIdpArgs']] = None,
@@ -15839,19 +16007,24 @@ class GatewaytemplateServicePolicyArgs:
                  path_preference: Optional[pulumi.Input[str]] = None,
                  servicepolicy_id: Optional[pulumi.Input[str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ssl_proxy: Optional[pulumi.Input['GatewaytemplateServicePolicySslProxyArgs']] = None,
                  tenants: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] action: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy action). enum: `allow`, `deny`
+        :param pulumi.Input['GatewaytemplateServicePolicyAntivirusArgs'] antivirus: For SRX-only
         :param pulumi.Input['GatewaytemplateServicePolicyAppqoeArgs'] appqoe: For SRX Only
         :param pulumi.Input[bool] local_routing: access within the same VRF
         :param pulumi.Input[str] name: Required when `servicepolicy_id` is not defined, optional otherwise (override the servicepolicy name)
-        :param pulumi.Input[str] path_preference: by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
-        :param pulumi.Input[str] servicepolicy_id: used to link servicepolicy defined at org level and overwrite some attributes
+        :param pulumi.Input[str] path_preference: By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        :param pulumi.Input[str] servicepolicy_id: Used to link servicepolicy defined at org level and overwrite some attributes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
+        :param pulumi.Input['GatewaytemplateServicePolicySslProxyArgs'] ssl_proxy: For SRX-only
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tenants: Required when `servicepolicy_id` is not defined. List of Networks / Users
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if antivirus is not None:
+            pulumi.set(__self__, "antivirus", antivirus)
         if appqoe is not None:
             pulumi.set(__self__, "appqoe", appqoe)
         if ewfs is not None:
@@ -15868,6 +16041,8 @@ class GatewaytemplateServicePolicyArgs:
             pulumi.set(__self__, "servicepolicy_id", servicepolicy_id)
         if services is not None:
             pulumi.set(__self__, "services", services)
+        if ssl_proxy is not None:
+            pulumi.set(__self__, "ssl_proxy", ssl_proxy)
         if tenants is not None:
             pulumi.set(__self__, "tenants", tenants)
 
@@ -15882,6 +16057,18 @@ class GatewaytemplateServicePolicyArgs:
     @action.setter
     def action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def antivirus(self) -> Optional[pulumi.Input['GatewaytemplateServicePolicyAntivirusArgs']]:
+        """
+        For SRX-only
+        """
+        return pulumi.get(self, "antivirus")
+
+    @antivirus.setter
+    def antivirus(self, value: Optional[pulumi.Input['GatewaytemplateServicePolicyAntivirusArgs']]):
+        pulumi.set(self, "antivirus", value)
 
     @property
     @pulumi.getter
@@ -15941,7 +16128,7 @@ class GatewaytemplateServicePolicyArgs:
     @pulumi.getter(name="pathPreference")
     def path_preference(self) -> Optional[pulumi.Input[str]]:
         """
-        by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         """
         return pulumi.get(self, "path_preference")
 
@@ -15953,7 +16140,7 @@ class GatewaytemplateServicePolicyArgs:
     @pulumi.getter(name="servicepolicyId")
     def servicepolicy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        used to link servicepolicy defined at org level and overwrite some attributes
+        Used to link servicepolicy defined at org level and overwrite some attributes
         """
         return pulumi.get(self, "servicepolicy_id")
 
@@ -15974,6 +16161,18 @@ class GatewaytemplateServicePolicyArgs:
         pulumi.set(self, "services", value)
 
     @property
+    @pulumi.getter(name="sslProxy")
+    def ssl_proxy(self) -> Optional[pulumi.Input['GatewaytemplateServicePolicySslProxyArgs']]:
+        """
+        For SRX-only
+        """
+        return pulumi.get(self, "ssl_proxy")
+
+    @ssl_proxy.setter
+    def ssl_proxy(self, value: Optional[pulumi.Input['GatewaytemplateServicePolicySslProxyArgs']]):
+        pulumi.set(self, "ssl_proxy", value)
+
+    @property
     @pulumi.getter
     def tenants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -15984,6 +16183,71 @@ class GatewaytemplateServicePolicyArgs:
     @tenants.setter
     def tenants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tenants", value)
+
+
+if not MYPY:
+    class GatewaytemplateServicePolicyAntivirusArgsDict(TypedDict):
+        avprofile_id: NotRequired[pulumi.Input[str]]
+        """
+        org-level AV Profile can be used, this takes precendence over 'profile'
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        profile: NotRequired[pulumi.Input[str]]
+        """
+        Default / noftp / httponly / or keys from av_profiles
+        """
+elif False:
+    GatewaytemplateServicePolicyAntivirusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GatewaytemplateServicePolicyAntivirusArgs:
+    def __init__(__self__, *,
+                 avprofile_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 profile: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] avprofile_id: org-level AV Profile can be used, this takes precendence over 'profile'
+        :param pulumi.Input[str] profile: Default / noftp / httponly / or keys from av_profiles
+        """
+        if avprofile_id is not None:
+            pulumi.set(__self__, "avprofile_id", avprofile_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @property
+    @pulumi.getter(name="avprofileId")
+    def avprofile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        org-level AV Profile can be used, this takes precendence over 'profile'
+        """
+        return pulumi.get(self, "avprofile_id")
+
+    @avprofile_id.setter
+    def avprofile_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avprofile_id", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default / noftp / httponly / or keys from av_profiles
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "profile", value)
 
 
 if not MYPY:
@@ -16090,7 +16354,7 @@ if not MYPY:
         """
         profile: NotRequired[pulumi.Input[str]]
         """
-        enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
 elif False:
     GatewaytemplateServicePolicyIdpArgsDict: TypeAlias = Mapping[str, Any]
@@ -16104,7 +16368,7 @@ class GatewaytemplateServicePolicyIdpArgs:
                  profile: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] idpprofile_id: org_level IDP Profile can be used, this takes precedence over `profile`
-        :param pulumi.Input[str] profile: enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
+        :param pulumi.Input[str] profile: enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
         if alert_only is not None:
             pulumi.set(__self__, "alert_only", alert_only)
@@ -16149,13 +16413,58 @@ class GatewaytemplateServicePolicyIdpArgs:
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[str]]:
         """
-        enum: `Custom`, `strict` (default), `standard` or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
     def profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "profile", value)
+
+
+if not MYPY:
+    class GatewaytemplateServicePolicySslProxyArgsDict(TypedDict):
+        ciphers_category: NotRequired[pulumi.Input[str]]
+        """
+        enum: `medium`, `strong`, `weak`
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    GatewaytemplateServicePolicySslProxyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GatewaytemplateServicePolicySslProxyArgs:
+    def __init__(__self__, *,
+                 ciphers_category: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] ciphers_category: enum: `medium`, `strong`, `weak`
+        """
+        if ciphers_category is not None:
+            pulumi.set(__self__, "ciphers_category", ciphers_category)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="ciphersCategory")
+    def ciphers_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `medium`, `strong`, `weak`
+        """
+        return pulumi.get(self, "ciphers_category")
+
+    @ciphers_category.setter
+    def ciphers_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ciphers_category", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -16171,7 +16480,7 @@ if not MYPY:
         """
         ike_proposals: NotRequired[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgsDict']]]]
         """
-        if `provider`==`custom-ipsec`
+        If `provider`==`custom-ipsec`
         """
         ipsec_lifetime: NotRequired[pulumi.Input[int]]
         """
@@ -16191,7 +16500,7 @@ if not MYPY:
         """
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        If `provider`==`custom-ipsec`, networks reachable via this tunnel
         """
         primary: NotRequired[pulumi.Input['GatewaytemplateTunnelConfigsPrimaryArgsDict']]
         """
@@ -16246,12 +16555,12 @@ class GatewaytemplateTunnelConfigsArgs:
         """
         :param pulumi.Input[int] ike_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param pulumi.Input[str] ike_mode: Only if `provider`==`custom-ipsec`. enum: `aggressive`, `main`
-        :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgs']]] ike_proposals: if `provider`==`custom-ipsec`
+        :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgs']]] ike_proposals: If `provider`==`custom-ipsec`
         :param pulumi.Input[int] ipsec_lifetime: Only if `provider`==`custom-ipsec`. Must be between 180 and 86400
         :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIpsecProposalArgs']]] ipsec_proposals: Only if  `provider`==`custom-ipsec`
         :param pulumi.Input[str] local_id: Required if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input[str] mode: Required if `provider`==`zscaler-gre`, `provider`==`jse-ipsec`. enum: `active-active`, `active-standby`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: If `provider`==`custom-ipsec`, networks reachable via this tunnel
         :param pulumi.Input['GatewaytemplateTunnelConfigsPrimaryArgs'] primary: Only if `provider`==`zscaler-ipsec`, `provider`==`jse-ipsec` or `provider`==`custom-ipsec`
         :param pulumi.Input['GatewaytemplateTunnelConfigsProbeArgs'] probe: Only if `provider`==`custom-ipsec`
         :param pulumi.Input[str] protocol: Only if `provider`==`custom-ipsec`. enum: `gre`, `ipsec`
@@ -16330,7 +16639,7 @@ class GatewaytemplateTunnelConfigsArgs:
     @pulumi.getter(name="ikeProposals")
     def ike_proposals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelConfigsIkeProposalArgs']]]]:
         """
-        if `provider`==`custom-ipsec`
+        If `provider`==`custom-ipsec`
         """
         return pulumi.get(self, "ike_proposals")
 
@@ -16390,7 +16699,7 @@ class GatewaytemplateTunnelConfigsArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `provider`==`custom-ipsec`, networks reachable via this tunnel
+        If `provider`==`custom-ipsec`, networks reachable via this tunnel
         """
         return pulumi.get(self, "networks")
 
@@ -16632,7 +16941,7 @@ if not MYPY:
         probe_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         wan_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
 elif False:
     GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgsDict: TypeAlias = Mapping[str, Any]
@@ -16643,7 +16952,7 @@ class GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs:
                  probe_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  wan_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: optional, only needed if `vars_only`==`false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: Optional, only needed if `vars_only`==`false`
         """
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
@@ -16663,7 +16972,7 @@ class GatewaytemplateTunnelConfigsAutoProvisionPrimaryArgs:
     @pulumi.getter(name="wanNames")
     def wan_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
         return pulumi.get(self, "wan_names")
 
@@ -16677,7 +16986,7 @@ if not MYPY:
         probe_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         wan_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
 elif False:
     GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgsDict: TypeAlias = Mapping[str, Any]
@@ -16688,7 +16997,7 @@ class GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs:
                  probe_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  wan_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: optional, only needed if `vars_only`==`false`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wan_names: Optional, only needed if `vars_only`==`false`
         """
         if probe_ips is not None:
             pulumi.set(__self__, "probe_ips", probe_ips)
@@ -16708,7 +17017,7 @@ class GatewaytemplateTunnelConfigsAutoProvisionSecondaryArgs:
     @pulumi.getter(name="wanNames")
     def wan_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional, only needed if `vars_only`==`false`
+        Optional, only needed if `vars_only`==`false`
         """
         return pulumi.get(self, "wan_names")
 
@@ -17014,15 +17323,15 @@ if not MYPY:
     class GatewaytemplateTunnelConfigsProbeArgsDict(TypedDict):
         interval: NotRequired[pulumi.Input[int]]
         """
-        how often to trigger the probe
+        How often to trigger the probe
         """
         threshold: NotRequired[pulumi.Input[int]]
         """
-        number of consecutive misses before declaring the tunnel down
+        Number of consecutive misses before declaring the tunnel down
         """
         timeout: NotRequired[pulumi.Input[int]]
         """
-        time within which to complete the connectivity check
+        Time within which to complete the connectivity check
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -17039,9 +17348,9 @@ class GatewaytemplateTunnelConfigsProbeArgs:
                  timeout: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] interval: how often to trigger the probe
-        :param pulumi.Input[int] threshold: number of consecutive misses before declaring the tunnel down
-        :param pulumi.Input[int] timeout: time within which to complete the connectivity check
+        :param pulumi.Input[int] interval: How often to trigger the probe
+        :param pulumi.Input[int] threshold: Number of consecutive misses before declaring the tunnel down
+        :param pulumi.Input[int] timeout: Time within which to complete the connectivity check
         :param pulumi.Input[str] type: enum: `http`, `icmp`
         """
         if interval is not None:
@@ -17057,7 +17366,7 @@ class GatewaytemplateTunnelConfigsProbeArgs:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[int]]:
         """
-        how often to trigger the probe
+        How often to trigger the probe
         """
         return pulumi.get(self, "interval")
 
@@ -17069,7 +17378,7 @@ class GatewaytemplateTunnelConfigsProbeArgs:
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        number of consecutive misses before declaring the tunnel down
+        Number of consecutive misses before declaring the tunnel down
         """
         return pulumi.get(self, "threshold")
 
@@ -17081,7 +17390,7 @@ class GatewaytemplateTunnelConfigsProbeArgs:
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        time within which to complete the connectivity check
+        Time within which to complete the connectivity check
         """
         return pulumi.get(self, "timeout")
 
@@ -17195,11 +17504,11 @@ if not MYPY:
     class GatewaytemplateTunnelProviderOptionsArgsDict(TypedDict):
         jse: NotRequired[pulumi.Input['GatewaytemplateTunnelProviderOptionsJseArgsDict']]
         """
-        for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         """
         zscaler: NotRequired[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerArgsDict']]
         """
-        for zscaler-ipsec and zscaler-gre
+        For zscaler-ipsec and zscaler-gre
         """
 elif False:
     GatewaytemplateTunnelProviderOptionsArgsDict: TypeAlias = Mapping[str, Any]
@@ -17210,8 +17519,8 @@ class GatewaytemplateTunnelProviderOptionsArgs:
                  jse: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsJseArgs']] = None,
                  zscaler: Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerArgs']] = None):
         """
-        :param pulumi.Input['GatewaytemplateTunnelProviderOptionsJseArgs'] jse: for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
-        :param pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerArgs'] zscaler: for zscaler-ipsec and zscaler-gre
+        :param pulumi.Input['GatewaytemplateTunnelProviderOptionsJseArgs'] jse: For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        :param pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerArgs'] zscaler: For zscaler-ipsec and zscaler-gre
         """
         if jse is not None:
             pulumi.set(__self__, "jse", jse)
@@ -17222,7 +17531,7 @@ class GatewaytemplateTunnelProviderOptionsArgs:
     @pulumi.getter
     def jse(self) -> Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsJseArgs']]:
         """
-        for jse-ipsec, this allow provisioning of adequate resource on JSE. Make sure adequate licenses are added
+        For jse-ipsec, this allows provisioning of adequate resource on JSE. Make sure adequate licenses are added
         """
         return pulumi.get(self, "jse")
 
@@ -17234,7 +17543,7 @@ class GatewaytemplateTunnelProviderOptionsArgs:
     @pulumi.getter
     def zscaler(self) -> Optional[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerArgs']]:
         """
-        for zscaler-ipsec and zscaler-gre
+        For zscaler-ipsec and zscaler-gre
         """
         return pulumi.get(self, "zscaler")
 
@@ -17297,7 +17606,7 @@ if not MYPY:
         """
         aup_force_ssl_inspection: NotRequired[pulumi.Input[bool]]
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         aup_timeout_in_days: NotRequired[pulumi.Input[int]]
         """
@@ -17313,7 +17622,7 @@ if not MYPY:
         """
         dn_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         idle_time_in_minutes: NotRequired[pulumi.Input[int]]
         """
@@ -17321,7 +17630,7 @@ if not MYPY:
         """
         ofw_enabled: NotRequired[pulumi.Input[bool]]
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         sub_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgsDict']]]]
         """
@@ -17341,11 +17650,11 @@ if not MYPY:
         """
         up_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         xff_forward_enabled: NotRequired[pulumi.Input[bool]]
         """
-        location uses proxy chaining to forward traffic
+        Location uses proxy chaining to forward traffic
         """
 elif False:
     GatewaytemplateTunnelProviderOptionsZscalerArgsDict: TypeAlias = Mapping[str, Any]
@@ -17370,19 +17679,19 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgs:
                  xff_forward_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] aup_enabled: Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
-        :param pulumi.Input[bool] aup_force_ssl_inspection: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        :param pulumi.Input[bool] aup_force_ssl_inspection: Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         :param pulumi.Input[int] aup_timeout_in_days: Required if `aup_enabled`==`true`. Days before AUP is requested again
         :param pulumi.Input[bool] auth_required: Enable this option to enforce user authentication
         :param pulumi.Input[bool] caution_enabled: Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
-        :param pulumi.Input[float] dn_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[float] dn_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
         :param pulumi.Input[int] idle_time_in_minutes: Required if `surrogate_IP`==`true`, idle Time to Disassociation
-        :param pulumi.Input[bool] ofw_enabled: if `true`, enable the firewall control option
+        :param pulumi.Input[bool] ofw_enabled: If `true`, enable the firewall control option
         :param pulumi.Input[Sequence[pulumi.Input['GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs']]] sub_locations: `sub-locations` can be used for specific uses cases to define different configuration based on the user network
         :param pulumi.Input[bool] surrogate_ip: Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         :param pulumi.Input[bool] surrogate_ip_enforced_for_known_browsers: Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
         :param pulumi.Input[int] surrogate_refresh_time_in_minutes: Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
-        :param pulumi.Input[float] up_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
-        :param pulumi.Input[bool] xff_forward_enabled: location uses proxy chaining to forward traffic
+        :param pulumi.Input[float] up_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[bool] xff_forward_enabled: Location uses proxy chaining to forward traffic
         """
         if aup_block_internet_until_accepted is not None:
             pulumi.set(__self__, "aup_block_internet_until_accepted", aup_block_internet_until_accepted)
@@ -17440,7 +17749,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="aupForceSslInspection")
     def aup_force_ssl_inspection(self) -> Optional[pulumi.Input[bool]]:
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         return pulumi.get(self, "aup_force_ssl_inspection")
 
@@ -17488,7 +17797,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="dnBandwidth")
     def dn_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "dn_bandwidth")
 
@@ -17512,7 +17821,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="ofwEnabled")
     def ofw_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         return pulumi.get(self, "ofw_enabled")
 
@@ -17572,7 +17881,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="upBandwidth")
     def up_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "up_bandwidth")
 
@@ -17584,7 +17893,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerArgs:
     @pulumi.getter(name="xffForwardEnabled")
     def xff_forward_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        location uses proxy chaining to forward traffic
+        Location uses proxy chaining to forward traffic
         """
         return pulumi.get(self, "xff_forward_enabled")
 
@@ -17602,7 +17911,7 @@ if not MYPY:
         """
         aup_force_ssl_inspection: NotRequired[pulumi.Input[bool]]
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         aup_timeout_in_days: NotRequired[pulumi.Input[int]]
         """
@@ -17618,7 +17927,7 @@ if not MYPY:
         """
         dn_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         idle_time_in_minutes: NotRequired[pulumi.Input[int]]
         """
@@ -17630,7 +17939,7 @@ if not MYPY:
         """
         ofw_enabled: NotRequired[pulumi.Input[bool]]
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         surrogate_ip: NotRequired[pulumi.Input[bool]]
         """
@@ -17646,7 +17955,7 @@ if not MYPY:
         """
         up_bandwidth: NotRequired[pulumi.Input[float]]
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
 elif False:
     GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgsDict: TypeAlias = Mapping[str, Any]
@@ -17670,18 +17979,18 @@ class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs:
                  up_bandwidth: Optional[pulumi.Input[float]] = None):
         """
         :param pulumi.Input[bool] aup_enabled: Can only be `true` when `auth_required`==`false`, display Acceptable Use Policy (AUP)
-        :param pulumi.Input[bool] aup_force_ssl_inspection: proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        :param pulumi.Input[bool] aup_force_ssl_inspection: Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         :param pulumi.Input[int] aup_timeout_in_days: Required if `aup_enabled`==`true`. Days before AUP is requested again
         :param pulumi.Input[bool] auth_required: Enable this option to authenticate users
         :param pulumi.Input[bool] caution_enabled: Can only be `true` when `auth_required`==`false`, display caution notification for non-authenticated users
-        :param pulumi.Input[float] dn_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[float] dn_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
         :param pulumi.Input[int] idle_time_in_minutes: Required if `surrogate_IP`==`true`, idle Time to Disassociation
         :param pulumi.Input[str] name: Network name
-        :param pulumi.Input[bool] ofw_enabled: if `true`, enable the firewall control option
+        :param pulumi.Input[bool] ofw_enabled: If `true`, enable the firewall control option
         :param pulumi.Input[bool] surrogate_ip: Can only be `true` when `auth_required`==`true`. Map a user to a private IP address so it applies the user's policies, instead of the location's policies
         :param pulumi.Input[bool] surrogate_ip_enforced_for_known_browsers: Can only be `true` when `surrogate_IP`==`true`, enforce surrogate IP for known browsers
         :param pulumi.Input[int] surrogate_refresh_time_in_minutes: Required if `surrogate_IP_enforced_for_known_browsers`==`true`, must be lower or equal than `idle_time_in_minutes`, refresh Time for re-validation of Surrogacy
-        :param pulumi.Input[float] up_bandwidth: the download bandwidth cap of the link, in Mbps. Disabled if not set
+        :param pulumi.Input[float] up_bandwidth: Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         if aup_block_internet_until_accepted is not None:
             pulumi.set(__self__, "aup_block_internet_until_accepted", aup_block_internet_until_accepted)
@@ -17737,7 +18046,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="aupForceSslInspection")
     def aup_force_ssl_inspection(self) -> Optional[pulumi.Input[bool]]:
         """
-        proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
+        Proxy HTTPs traffic, requiring Zscaler cert to be installed in browser
         """
         return pulumi.get(self, "aup_force_ssl_inspection")
 
@@ -17785,7 +18094,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="dnBandwidth")
     def dn_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "dn_bandwidth")
 
@@ -17821,7 +18130,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="ofwEnabled")
     def ofw_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `true`, enable the firewall control option
+        If `true`, enable the firewall control option
         """
         return pulumi.get(self, "ofw_enabled")
 
@@ -17869,7 +18178,7 @@ class GatewaytemplateTunnelProviderOptionsZscalerSubLocationArgs:
     @pulumi.getter(name="upBandwidth")
     def up_bandwidth(self) -> Optional[pulumi.Input[float]]:
         """
-        the download bandwidth cap of the link, in Mbps. Disabled if not set
+        Download bandwidth cap of the link, in Mbps. Disabled if not set
         """
         return pulumi.get(self, "up_bandwidth")
 
@@ -17882,7 +18191,7 @@ if not MYPY:
     class GatewaytemplateVrfConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable VRF (when supported on the device)
+        Whether to enable VRF (when supported on the device)
         """
 elif False:
     GatewaytemplateVrfConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -17892,7 +18201,7 @@ class GatewaytemplateVrfConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether to enable VRF (when supported on the device)
+        :param pulumi.Input[bool] enabled: Whether to enable VRF (when supported on the device)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -17901,7 +18210,7 @@ class GatewaytemplateVrfConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable VRF (when supported on the device)
+        Whether to enable VRF (when supported on the device)
         """
         return pulumi.get(self, "enabled")
 
@@ -18093,7 +18402,7 @@ if not MYPY:
         """
         vc_mac: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
 elif False:
     InventoryDeviceArgsDict: TypeAlias = Mapping[str, Any]
@@ -18124,7 +18433,7 @@ class InventoryDeviceArgs:
         :param pulumi.Input[str] site_id: Site ID. Used to assign device to a Site
         :param pulumi.Input[str] type: enum: `ap`, `gateway`, `switch`
         :param pulumi.Input[bool] unclaim_when_destroyed: Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
-        :param pulumi.Input[str] vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        :param pulumi.Input[str] vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
         if claim_code is not None:
             pulumi.set(__self__, "claim_code", claim_code)
@@ -18284,7 +18593,7 @@ class InventoryDeviceArgs:
     @pulumi.getter(name="vcMac")
     def vc_mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
         return pulumi.get(self, "vc_mac")
 
@@ -18338,7 +18647,7 @@ if not MYPY:
         """
         vc_mac: NotRequired[pulumi.Input[str]]
         """
-        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
 elif False:
     InventoryInventoryArgsDict: TypeAlias = Mapping[str, Any]
@@ -18369,7 +18678,7 @@ class InventoryInventoryArgs:
         :param pulumi.Input[str] site_id: Site ID. Used to assign device to a Site
         :param pulumi.Input[str] type: enum: `ap`, `gateway`, `switch`
         :param pulumi.Input[bool] unclaim_when_destroyed: Unclaim the device from the Mist Organization when removed from the provider inventory. Default is `false`
-        :param pulumi.Input[str] vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        :param pulumi.Input[str] vc_mac: if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
         if claim_code is not None:
             pulumi.set(__self__, "claim_code", claim_code)
@@ -18529,7 +18838,7 @@ class InventoryInventoryArgs:
     @pulumi.getter(name="vcMac")
     def vc_mac(self) -> Optional[pulumi.Input[str]]:
         """
-        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Clust, MAC Address of the Cluster
+        if `type`==`switch` and device part of a Virtual Chassis, MAC Address of the Virtual Chassis. if `type`==`gateway` and device part of a Cluster, MAC Address of the Cluster
         """
         return pulumi.get(self, "vc_mac")
 
@@ -19726,40 +20035,40 @@ if not MYPY:
         """
         gbp_tag: NotRequired[pulumi.Input[int]]
         """
-        required if
+        Required if
           - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
           - `type`==`gbp_resource`
           - `type`==`static_gbp` (applying gbp tag against matching conditions)
         """
         macs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        required if 
+        Required if 
         - `type`==`mac`
         - `type`==`static_gbp` if from matching mac
         """
         network: NotRequired[pulumi.Input[str]]
         """
-        if:
+        If:
           * `type`==`mac` (optional. default is `any`)
           * `type`==`subnet` (optional. default is `any`)
           * `type`==`network`
           * `type`==`resource` (optional. default is `any`)
-          * `type`==`static_gbp` if from matching network (vlan)'
+          * `type`==`static_gbp` if from matching network (vlan)
         """
         radius_group: NotRequired[pulumi.Input[str]]
         """
-        required if:
+        Required if:
           * `type`==`radius_group`
           * `type`==`static_gbp`
         if from matching radius_group
         """
         specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgsDict']]]]
         """
-        if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         """
         subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if 
+        If 
         - `type`==`subnet` 
         - `type`==`resource` (optional. default is `any`)
         - `type`==`static_gbp` if from matching subnet
@@ -19788,25 +20097,25 @@ class NetworktemplateAclTagsArgs:
                  * `resource`: can only be used in `dst_tags`
                  * `static_gbp`: applying gbp tag against matching conditions
                  * `subnet`'
-        :param pulumi.Input[int] gbp_tag: required if
+        :param pulumi.Input[int] gbp_tag: Required if
                  - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
                  - `type`==`gbp_resource`
                  - `type`==`static_gbp` (applying gbp tag against matching conditions)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: required if 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] macs: Required if 
                - `type`==`mac`
                - `type`==`static_gbp` if from matching mac
-        :param pulumi.Input[str] network: if:
+        :param pulumi.Input[str] network: If:
                  * `type`==`mac` (optional. default is `any`)
                  * `type`==`subnet` (optional. default is `any`)
                  * `type`==`network`
                  * `type`==`resource` (optional. default is `any`)
-                 * `type`==`static_gbp` if from matching network (vlan)'
-        :param pulumi.Input[str] radius_group: required if:
+                 * `type`==`static_gbp` if from matching network (vlan)
+        :param pulumi.Input[str] radius_group: Required if:
                  * `type`==`radius_group`
                  * `type`==`static_gbp`
                if from matching radius_group
-        :param pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]] specs: if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: if 
+        :param pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]] specs: If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnets: If 
                - `type`==`subnet` 
                - `type`==`resource` (optional. default is `any`)
                - `type`==`static_gbp` if from matching subnet
@@ -19850,7 +20159,7 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter(name="gbpTag")
     def gbp_tag(self) -> Optional[pulumi.Input[int]]:
         """
-        required if
+        Required if
           - `type`==`dynamic_gbp` (gbp_tag received from RADIUS)
           - `type`==`gbp_resource`
           - `type`==`static_gbp` (applying gbp tag against matching conditions)
@@ -19865,7 +20174,7 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter
     def macs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        required if 
+        Required if 
         - `type`==`mac`
         - `type`==`static_gbp` if from matching mac
         """
@@ -19879,12 +20188,12 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        if:
+        If:
           * `type`==`mac` (optional. default is `any`)
           * `type`==`subnet` (optional. default is `any`)
           * `type`==`network`
           * `type`==`resource` (optional. default is `any`)
-          * `type`==`static_gbp` if from matching network (vlan)'
+          * `type`==`static_gbp` if from matching network (vlan)
         """
         return pulumi.get(self, "network")
 
@@ -19896,7 +20205,7 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter(name="radiusGroup")
     def radius_group(self) -> Optional[pulumi.Input[str]]:
         """
-        required if:
+        Required if:
           * `type`==`radius_group`
           * `type`==`static_gbp`
         if from matching radius_group
@@ -19911,7 +20220,7 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter
     def specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateAclTagsSpecArgs']]]]:
         """
-        if `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
+        If `type`==`resource` or `type`==`gbp_resource`. Empty means unrestricted, i.e. any
         """
         return pulumi.get(self, "specs")
 
@@ -19923,7 +20232,7 @@ class NetworktemplateAclTagsArgs:
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if 
+        If 
         - `type`==`subnet` 
         - `type`==`resource` (optional. default is `any`)
         - `type`==`static_gbp` if from matching subnet
@@ -19939,7 +20248,7 @@ if not MYPY:
     class NetworktemplateAclTagsSpecArgsDict(TypedDict):
         port_range: NotRequired[pulumi.Input[str]]
         """
-        matched dst port, "0" means any
+        Matched dst port, "0" means any
         """
         protocol: NotRequired[pulumi.Input[str]]
         """
@@ -19954,7 +20263,7 @@ class NetworktemplateAclTagsSpecArgs:
                  port_range: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] port_range: matched dst port, "0" means any
+        :param pulumi.Input[str] port_range: Matched dst port, "0" means any
         :param pulumi.Input[str] protocol: `tcp` / `udp` / `icmp` / `icmp6` / `gre` / `any` / `:protocol_number`, `protocol_number` is between 1-254, default is `any` `protocol_number` is between 1-254
         """
         if port_range is not None:
@@ -19966,7 +20275,7 @@ class NetworktemplateAclTagsSpecArgs:
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
-        matched dst port, "0" means any
+        Matched dst port, "0" means any
         """
         return pulumi.get(self, "port_range")
 
@@ -20001,7 +20310,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        if `all_networks`==`false`, list of network with DHCP snooping enabled
+        If `all_networks`==`false`, list of network with DHCP snooping enabled
         """
 elif False:
     NetworktemplateDhcpSnoopingArgsDict: TypeAlias = Mapping[str, Any]
@@ -20017,7 +20326,7 @@ class NetworktemplateDhcpSnoopingArgs:
         """
         :param pulumi.Input[bool] enable_arp_spoof_check: Enable for dynamic ARP inspection check
         :param pulumi.Input[bool] enable_ip_source_guard: Enable for check for forging source IP address
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: if `all_networks`==`false`, list of network with DHCP snooping enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] networks: If `all_networks`==`false`, list of network with DHCP snooping enabled
         """
         if all_networks is not None:
             pulumi.set(__self__, "all_networks", all_networks)
@@ -20076,7 +20385,7 @@ class NetworktemplateDhcpSnoopingArgs:
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        if `all_networks`==`false`, list of network with DHCP snooping enabled
+        If `all_networks`==`false`, list of network with DHCP snooping enabled
         """
         return pulumi.get(self, "networks")
 
@@ -20089,11 +20398,11 @@ if not MYPY:
     class NetworktemplateExtraRoutes6ArgsDict(TypedDict):
         via: pulumi.Input[str]
         """
-        next-hop IP Address
+        Next-hop IP Address
         """
         discard: NotRequired[pulumi.Input[bool]]
         """
-        this takes precedence
+        This takes precedence
         """
         metric: NotRequired[pulumi.Input[int]]
         next_qualified: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutes6NextQualifiedArgsDict']]]]
@@ -20112,8 +20421,8 @@ class NetworktemplateExtraRoutes6Args:
                  no_resolve: Optional[pulumi.Input[bool]] = None,
                  preference: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] via: next-hop IP Address
-        :param pulumi.Input[bool] discard: this takes precedence
+        :param pulumi.Input[str] via: Next-hop IP Address
+        :param pulumi.Input[bool] discard: This takes precedence
         """
         pulumi.set(__self__, "via", via)
         if discard is not None:
@@ -20131,7 +20440,7 @@ class NetworktemplateExtraRoutes6Args:
     @pulumi.getter
     def via(self) -> pulumi.Input[str]:
         """
-        next-hop IP Address
+        Next-hop IP Address
         """
         return pulumi.get(self, "via")
 
@@ -20143,7 +20452,7 @@ class NetworktemplateExtraRoutes6Args:
     @pulumi.getter
     def discard(self) -> Optional[pulumi.Input[bool]]:
         """
-        this takes precedence
+        This takes precedence
         """
         return pulumi.get(self, "discard")
 
@@ -20228,11 +20537,11 @@ if not MYPY:
     class NetworktemplateExtraRoutesArgsDict(TypedDict):
         via: pulumi.Input[str]
         """
-        next-hop IP Address
+        Next-hop IP Address
         """
         discard: NotRequired[pulumi.Input[bool]]
         """
-        this takes precedence
+        This takes precedence
         """
         metric: NotRequired[pulumi.Input[int]]
         next_qualified: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateExtraRoutesNextQualifiedArgsDict']]]]
@@ -20251,8 +20560,8 @@ class NetworktemplateExtraRoutesArgs:
                  no_resolve: Optional[pulumi.Input[bool]] = None,
                  preference: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] via: next-hop IP Address
-        :param pulumi.Input[bool] discard: this takes precedence
+        :param pulumi.Input[str] via: Next-hop IP Address
+        :param pulumi.Input[bool] discard: This takes precedence
         """
         pulumi.set(__self__, "via", via)
         if discard is not None:
@@ -20270,7 +20579,7 @@ class NetworktemplateExtraRoutesArgs:
     @pulumi.getter
     def via(self) -> pulumi.Input[str]:
         """
-        next-hop IP Address
+        Next-hop IP Address
         """
         return pulumi.get(self, "via")
 
@@ -20282,7 +20591,7 @@ class NetworktemplateExtraRoutesArgs:
     @pulumi.getter
     def discard(self) -> Optional[pulumi.Input[bool]]:
         """
-        this takes precedence
+        This takes precedence
         """
         return pulumi.get(self, "discard")
 
@@ -20404,11 +20713,11 @@ if not MYPY:
         vlan_id: pulumi.Input[str]
         gateway: NotRequired[pulumi.Input[str]]
         """
-        only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         """
         gateway6: NotRequired[pulumi.Input[str]]
         """
-        only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         """
         isolation: NotRequired[pulumi.Input[bool]]
         """
@@ -20417,11 +20726,11 @@ if not MYPY:
         isolation_vlan_id: NotRequired[pulumi.Input[str]]
         subnet: NotRequired[pulumi.Input[str]]
         """
-        optional for pure switching, required when L3 / routing features are used
+        Optional for pure switching, required when L3 / routing features are used
         """
         subnet6: NotRequired[pulumi.Input[str]]
         """
-        optional for pure switching, required when L3 / routing features are used
+        Optional for pure switching, required when L3 / routing features are used
         """
 elif False:
     NetworktemplateNetworksArgsDict: TypeAlias = Mapping[str, Any]
@@ -20437,11 +20746,11 @@ class NetworktemplateNetworksArgs:
                  subnet: Optional[pulumi.Input[str]] = None,
                  subnet6: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] gateway: only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
-        :param pulumi.Input[str] gateway6: only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        :param pulumi.Input[str] gateway: Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        :param pulumi.Input[str] gateway6: Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         :param pulumi.Input[bool] isolation: whether to stop clients to talk to each other, default is false (when enabled, a unique isolation_vlan_id is required). NOTE: this features requires uplink device to also a be Juniper device and `inter_switch_link` to be set
-        :param pulumi.Input[str] subnet: optional for pure switching, required when L3 / routing features are used
-        :param pulumi.Input[str] subnet6: optional for pure switching, required when L3 / routing features are used
+        :param pulumi.Input[str] subnet: Optional for pure switching, required when L3 / routing features are used
+        :param pulumi.Input[str] subnet6: Optional for pure switching, required when L3 / routing features are used
         """
         pulumi.set(__self__, "vlan_id", vlan_id)
         if gateway is not None:
@@ -20470,7 +20779,7 @@ class NetworktemplateNetworksArgs:
     @pulumi.getter
     def gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
+        Only required for EVPN-VXLAN networks, IPv4 Virtual Gateway
         """
         return pulumi.get(self, "gateway")
 
@@ -20482,7 +20791,7 @@ class NetworktemplateNetworksArgs:
     @pulumi.getter
     def gateway6(self) -> Optional[pulumi.Input[str]]:
         """
-        only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
+        Only required for EVPN-VXLAN networks, IPv6 Virtual Gateway
         """
         return pulumi.get(self, "gateway6")
 
@@ -20515,7 +20824,7 @@ class NetworktemplateNetworksArgs:
     @pulumi.getter
     def subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        optional for pure switching, required when L3 / routing features are used
+        Optional for pure switching, required when L3 / routing features are used
         """
         return pulumi.get(self, "subnet")
 
@@ -20527,7 +20836,7 @@ class NetworktemplateNetworksArgs:
     @pulumi.getter
     def subnet6(self) -> Optional[pulumi.Input[str]]:
         """
-        optional for pure switching, required when L3 / routing features are used
+        Optional for pure switching, required when L3 / routing features are used
         """
         return pulumi.get(self, "subnet6")
 
@@ -20619,11 +20928,11 @@ if not MYPY:
         metric: NotRequired[pulumi.Input[int]]
         no_readvertise_to_overlay: NotRequired[pulumi.Input[bool]]
         """
-        by default, we'll re-advertise all learned OSPF routes toward overlay
+        By default, we'll re-advertise all learned OSPF routes toward overlay
         """
         passive: NotRequired[pulumi.Input[bool]]
         """
-        whether to send OSPF-Hello
+        Whether to send OSPF-Hello
         """
 elif False:
     NetworktemplateOspfAreasNetworksArgsDict: TypeAlias = Mapping[str, Any]
@@ -20648,8 +20957,8 @@ class NetworktemplateOspfAreasNetworksArgs:
         :param pulumi.Input[str] auth_password: Required if `auth_type`==`password`, the password, max length is 8
         :param pulumi.Input[str] auth_type: auth type. enum: `md5`, `none`, `password`
         :param pulumi.Input[str] interface_type: interface type (nbma = non-broadcast multi-access). enum: `broadcast`, `nbma`, `p2mp`, `p2p`
-        :param pulumi.Input[bool] no_readvertise_to_overlay: by default, we'll re-advertise all learned OSPF routes toward overlay
-        :param pulumi.Input[bool] passive: whether to send OSPF-Hello
+        :param pulumi.Input[bool] no_readvertise_to_overlay: By default, we'll re-advertise all learned OSPF routes toward overlay
+        :param pulumi.Input[bool] passive: Whether to send OSPF-Hello
         """
         if auth_keys is not None:
             pulumi.set(__self__, "auth_keys", auth_keys)
@@ -20782,7 +21091,7 @@ class NetworktemplateOspfAreasNetworksArgs:
     @pulumi.getter(name="noReadvertiseToOverlay")
     def no_readvertise_to_overlay(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, we'll re-advertise all learned OSPF routes toward overlay
+        By default, we'll re-advertise all learned OSPF routes toward overlay
         """
         return pulumi.get(self, "no_readvertise_to_overlay")
 
@@ -20794,7 +21103,7 @@ class NetworktemplateOspfAreasNetworksArgs:
     @pulumi.getter
     def passive(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to send OSPF-Hello
+        Whether to send OSPF-Hello
         """
         return pulumi.get(self, "passive")
 
@@ -20807,23 +21116,23 @@ if not MYPY:
     class NetworktemplatePortMirroringArgsDict(TypedDict):
         input_networks_ingresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         input_port_ids_egresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         input_port_ids_ingresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         output_network: NotRequired[pulumi.Input[str]]
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         output_port_id: NotRequired[pulumi.Input[str]]
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
 elif False:
     NetworktemplatePortMirroringArgsDict: TypeAlias = Mapping[str, Any]
@@ -20837,11 +21146,11 @@ class NetworktemplatePortMirroringArgs:
                  output_network: Optional[pulumi.Input[str]] = None,
                  output_port_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_networks_ingresses: at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_egresses: at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_ingresses: at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[str] output_network: exaclty one of the `output_port_id` or `output_network` should be provided
-        :param pulumi.Input[str] output_port_id: exaclty one of the `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param pulumi.Input[str] output_network: Exaclty one of the `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[str] output_port_id: Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -20858,7 +21167,7 @@ class NetworktemplatePortMirroringArgs:
     @pulumi.getter(name="inputNetworksIngresses")
     def input_networks_ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         return pulumi.get(self, "input_networks_ingresses")
 
@@ -20870,7 +21179,7 @@ class NetworktemplatePortMirroringArgs:
     @pulumi.getter(name="inputPortIdsEgresses")
     def input_port_ids_egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         return pulumi.get(self, "input_port_ids_egresses")
 
@@ -20882,7 +21191,7 @@ class NetworktemplatePortMirroringArgs:
     @pulumi.getter(name="inputPortIdsIngresses")
     def input_port_ids_ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         return pulumi.get(self, "input_port_ids_ingresses")
 
@@ -20894,7 +21203,7 @@ class NetworktemplatePortMirroringArgs:
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[pulumi.Input[str]]:
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -20906,7 +21215,7 @@ class NetworktemplatePortMirroringArgs:
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[pulumi.Input[str]]:
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -20923,7 +21232,7 @@ if not MYPY:
         """
         allow_dhcpd: NotRequired[pulumi.Input[bool]]
         """
-        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         """
         allow_multiple_supplicants: NotRequired[pulumi.Input[bool]]
         """
@@ -20933,7 +21242,7 @@ if not MYPY:
         """
         Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
         """
-        bypass_auth_when_server_down_for_unkonwn_client: NotRequired[pulumi.Input[bool]]
+        bypass_auth_when_server_down_for_unkown_client: NotRequired[pulumi.Input[bool]]
         """
         Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
@@ -21053,11 +21362,11 @@ if not MYPY:
         stp_p2p: NotRequired[pulumi.Input[bool]]
         ui_evpntopo_id: NotRequired[pulumi.Input[str]]
         """
-        optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+        Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
         """
         use_vstp: NotRequired[pulumi.Input[bool]]
         """
-        if this is connected to a vstp network
+        If this is connected to a vstp network
         """
         voip_network: NotRequired[pulumi.Input[str]]
         """
@@ -21073,7 +21382,7 @@ class NetworktemplatePortUsagesArgs:
                  allow_dhcpd: Optional[pulumi.Input[bool]] = None,
                  allow_multiple_supplicants: Optional[pulumi.Input[bool]] = None,
                  bypass_auth_when_server_down: Optional[pulumi.Input[bool]] = None,
-                 bypass_auth_when_server_down_for_unkonwn_client: Optional[pulumi.Input[bool]] = None,
+                 bypass_auth_when_server_down_for_unkown_client: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_autoneg: Optional[pulumi.Input[bool]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -21109,10 +21418,10 @@ class NetworktemplatePortUsagesArgs:
                  voip_network: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] all_networks: Only if `mode`==`trunk` whether to trunk all network/vlans
-        :param pulumi.Input[bool] allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        :param pulumi.Input[bool] allow_dhcpd: Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         :param pulumi.Input[bool] allow_multiple_supplicants: Only if `mode`!=`dynamic`
         :param pulumi.Input[bool] bypass_auth_when_server_down: Only if `mode`!=`dynamic` and `port_auth`==`dot1x` bypass auth for known clients if set to true when RADIUS server is down
-        :param pulumi.Input[bool] bypass_auth_when_server_down_for_unkonwn_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
+        :param pulumi.Input[bool] bypass_auth_when_server_down_for_unkown_client: Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         :param pulumi.Input[str] description: Only if `mode`!=`dynamic`
         :param pulumi.Input[bool] disable_autoneg: Only if `mode`!=`dynamic` if speed and duplex are specified, whether to disable autonegotiation
         :param pulumi.Input[bool] disabled: Only if `mode`!=`dynamic` whether the port is disabled
@@ -21141,8 +21450,8 @@ class NetworktemplatePortUsagesArgs:
         :param pulumi.Input[str] speed: Only if `mode`!=`dynamic` speed, default is auto to automatically negotiate speed enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         :param pulumi.Input['NetworktemplatePortUsagesStormControlArgs'] storm_control: Switch storm control. Only if `mode`!=`dynamic`
         :param pulumi.Input[bool] stp_edge: Only if `mode`!=`dynamic` when enabled, the port is not expected to receive BPDU frames
-        :param pulumi.Input[str] ui_evpntopo_id: optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
-        :param pulumi.Input[bool] use_vstp: if this is connected to a vstp network
+        :param pulumi.Input[str] ui_evpntopo_id: Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+        :param pulumi.Input[bool] use_vstp: If this is connected to a vstp network
         :param pulumi.Input[str] voip_network: Only if `mode`!=`dynamic` network/vlan for voip traffic, must also set port_network. to authenticate device, set port_auth
         """
         if all_networks is not None:
@@ -21153,8 +21462,8 @@ class NetworktemplatePortUsagesArgs:
             pulumi.set(__self__, "allow_multiple_supplicants", allow_multiple_supplicants)
         if bypass_auth_when_server_down is not None:
             pulumi.set(__self__, "bypass_auth_when_server_down", bypass_auth_when_server_down)
-        if bypass_auth_when_server_down_for_unkonwn_client is not None:
-            pulumi.set(__self__, "bypass_auth_when_server_down_for_unkonwn_client", bypass_auth_when_server_down_for_unkonwn_client)
+        if bypass_auth_when_server_down_for_unkown_client is not None:
+            pulumi.set(__self__, "bypass_auth_when_server_down_for_unkown_client", bypass_auth_when_server_down_for_unkown_client)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_autoneg is not None:
@@ -21238,7 +21547,7 @@ class NetworktemplatePortUsagesArgs:
     @pulumi.getter(name="allowDhcpd")
     def allow_dhcpd(self) -> Optional[pulumi.Input[bool]]:
         """
-        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is a access or trunk port.
+        Only if `mode`!=`dynamic`. If DHCP snooping is enabled, whether DHCP server is allowed on the interfaces with. All the interfaces from port configs using this port usage are effected. Please notice that allow_dhcpd is a tri_state. When it is not defined, it means using the system's default setting which depends on whether the port is an access or trunk port.
         """
         return pulumi.get(self, "allow_dhcpd")
 
@@ -21271,16 +21580,16 @@ class NetworktemplatePortUsagesArgs:
         pulumi.set(self, "bypass_auth_when_server_down", value)
 
     @property
-    @pulumi.getter(name="bypassAuthWhenServerDownForUnkonwnClient")
-    def bypass_auth_when_server_down_for_unkonwn_client(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="bypassAuthWhenServerDownForUnkownClient")
+    def bypass_auth_when_server_down_for_unkown_client(self) -> Optional[pulumi.Input[bool]]:
         """
         Only if `mode`!=`dynamic` and `port_auth`=`dot1x` bypass auth for all (including unknown clients) if set to true when RADIUS server is down
         """
-        return pulumi.get(self, "bypass_auth_when_server_down_for_unkonwn_client")
+        return pulumi.get(self, "bypass_auth_when_server_down_for_unkown_client")
 
-    @bypass_auth_when_server_down_for_unkonwn_client.setter
-    def bypass_auth_when_server_down_for_unkonwn_client(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "bypass_auth_when_server_down_for_unkonwn_client", value)
+    @bypass_auth_when_server_down_for_unkown_client.setter
+    def bypass_auth_when_server_down_for_unkown_client(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bypass_auth_when_server_down_for_unkown_client", value)
 
     @property
     @pulumi.getter
@@ -21640,7 +21949,7 @@ class NetworktemplatePortUsagesArgs:
     @pulumi.getter(name="uiEvpntopoId")
     def ui_evpntopo_id(self) -> Optional[pulumi.Input[str]]:
         """
-        optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
+        Optional for Campus Fabric Core-Distribution ESI-LAG profile. Helper used by the UI to select this port profile as the ESI-Lag between Distribution and Access switches
         """
         return pulumi.get(self, "ui_evpntopo_id")
 
@@ -21652,7 +21961,7 @@ class NetworktemplatePortUsagesArgs:
     @pulumi.getter(name="useVstp")
     def use_vstp(self) -> Optional[pulumi.Input[bool]]:
         """
-        if this is connected to a vstp network
+        If this is connected to a vstp network
         """
         return pulumi.get(self, "use_vstp")
 
@@ -21682,7 +21991,7 @@ if not MYPY:
         equals: NotRequired[pulumi.Input[str]]
         equals_anies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        use `equals_any` to match any item in a list
+        Use `equals_any` to match any item in a list
         """
         expression: NotRequired[pulumi.Input[str]]
         """
@@ -21707,7 +22016,7 @@ class NetworktemplatePortUsagesRuleArgs:
                  usage: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] src: enum: `link_peermac`, `lldp_chassis_id`, `lldp_hardware_revision`, `lldp_manufacturer_name`, `lldp_oui`, `lldp_serial_number`, `lldp_system_name`, `radius_dynamicfilter`, `radius_usermac`, `radius_username`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] equals_anies: use `equals_any` to match any item in a list
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] equals_anies: Use `equals_any` to match any item in a list
         :param pulumi.Input[str] expression: "[0:3]":"abcdef" > "abc"
                "split(.)[1]": "a.b.c" > "b"
                "split(-)[1][0:3]: "a1234-b5678-c90" > "b56"
@@ -21748,7 +22057,7 @@ class NetworktemplatePortUsagesRuleArgs:
     @pulumi.getter(name="equalsAnies")
     def equals_anies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        use `equals_any` to match any item in a list
+        Use `equals_any` to match any item in a list
         """
         return pulumi.get(self, "equals_anies")
 
@@ -21787,23 +22096,23 @@ if not MYPY:
     class NetworktemplatePortUsagesStormControlArgsDict(TypedDict):
         no_broadcast: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable storm control on broadcast traffic
+        Whether to disable storm control on broadcast traffic
         """
         no_multicast: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable storm control on multicast traffic
+        Whether to disable storm control on multicast traffic
         """
         no_registered_multicast: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable storm control on registered multicast traffic
+        Whether to disable storm control on registered multicast traffic
         """
         no_unknown_unicast: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable storm control on unknown unicast traffic
+        Whether to disable storm control on unknown unicast traffic
         """
         percentage: NotRequired[pulumi.Input[int]]
         """
-        bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         """
 elif False:
     NetworktemplatePortUsagesStormControlArgsDict: TypeAlias = Mapping[str, Any]
@@ -21817,11 +22126,11 @@ class NetworktemplatePortUsagesStormControlArgs:
                  no_unknown_unicast: Optional[pulumi.Input[bool]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[bool] no_broadcast: whether to disable storm control on broadcast traffic
-        :param pulumi.Input[bool] no_multicast: whether to disable storm control on multicast traffic
-        :param pulumi.Input[bool] no_registered_multicast: whether to disable storm control on registered multicast traffic
-        :param pulumi.Input[bool] no_unknown_unicast: whether to disable storm control on unknown unicast traffic
-        :param pulumi.Input[int] percentage: bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        :param pulumi.Input[bool] no_broadcast: Whether to disable storm control on broadcast traffic
+        :param pulumi.Input[bool] no_multicast: Whether to disable storm control on multicast traffic
+        :param pulumi.Input[bool] no_registered_multicast: Whether to disable storm control on registered multicast traffic
+        :param pulumi.Input[bool] no_unknown_unicast: Whether to disable storm control on unknown unicast traffic
+        :param pulumi.Input[int] percentage: Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         """
         if no_broadcast is not None:
             pulumi.set(__self__, "no_broadcast", no_broadcast)
@@ -21838,7 +22147,7 @@ class NetworktemplatePortUsagesStormControlArgs:
     @pulumi.getter(name="noBroadcast")
     def no_broadcast(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable storm control on broadcast traffic
+        Whether to disable storm control on broadcast traffic
         """
         return pulumi.get(self, "no_broadcast")
 
@@ -21850,7 +22159,7 @@ class NetworktemplatePortUsagesStormControlArgs:
     @pulumi.getter(name="noMulticast")
     def no_multicast(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable storm control on multicast traffic
+        Whether to disable storm control on multicast traffic
         """
         return pulumi.get(self, "no_multicast")
 
@@ -21862,7 +22171,7 @@ class NetworktemplatePortUsagesStormControlArgs:
     @pulumi.getter(name="noRegisteredMulticast")
     def no_registered_multicast(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable storm control on registered multicast traffic
+        Whether to disable storm control on registered multicast traffic
         """
         return pulumi.get(self, "no_registered_multicast")
 
@@ -21874,7 +22183,7 @@ class NetworktemplatePortUsagesStormControlArgs:
     @pulumi.getter(name="noUnknownUnicast")
     def no_unknown_unicast(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable storm control on unknown unicast traffic
+        Whether to disable storm control on unknown unicast traffic
         """
         return pulumi.get(self, "no_unknown_unicast")
 
@@ -21886,7 +22195,7 @@ class NetworktemplatePortUsagesStormControlArgs:
     @pulumi.getter
     def percentage(self) -> Optional[pulumi.Input[int]]:
         """
-        bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
+        Bandwidth-percentage, configures the storm control level as a percentage of the available bandwidth
         """
         return pulumi.get(self, "percentage")
 
@@ -21899,25 +22208,25 @@ if not MYPY:
     class NetworktemplateRadiusConfigArgsDict(TypedDict):
         acct_interim_interval: NotRequired[pulumi.Input[int]]
         """
-        how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         """
         acct_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateRadiusConfigAcctServerArgsDict']]]]
         auth_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateRadiusConfigAuthServerArgsDict']]]]
         auth_servers_retries: NotRequired[pulumi.Input[int]]
         """
-        radius auth session retries
+        Radius auth session retries
         """
         auth_servers_timeout: NotRequired[pulumi.Input[int]]
         """
-        radius auth session timeout
+        Radius auth session timeout
         """
         network: NotRequired[pulumi.Input[str]]
         """
-        use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         """
         source_ip: NotRequired[pulumi.Input[str]]
         """
-        use `network`or `source_ip`
+        Use `network`or `source_ip`
         """
 elif False:
     NetworktemplateRadiusConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -21933,11 +22242,11 @@ class NetworktemplateRadiusConfigArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  source_ip: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] acct_interim_interval: how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
-        :param pulumi.Input[int] auth_servers_retries: radius auth session retries
-        :param pulumi.Input[int] auth_servers_timeout: radius auth session timeout
-        :param pulumi.Input[str] network: use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
-        :param pulumi.Input[str] source_ip: use `network`or `source_ip`
+        :param pulumi.Input[int] acct_interim_interval: How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        :param pulumi.Input[int] auth_servers_retries: Radius auth session retries
+        :param pulumi.Input[int] auth_servers_timeout: Radius auth session timeout
+        :param pulumi.Input[str] network: Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        :param pulumi.Input[str] source_ip: Use `network`or `source_ip`
         """
         if acct_interim_interval is not None:
             pulumi.set(__self__, "acct_interim_interval", acct_interim_interval)
@@ -21958,7 +22267,7 @@ class NetworktemplateRadiusConfigArgs:
     @pulumi.getter(name="acctInterimInterval")
     def acct_interim_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         """
         return pulumi.get(self, "acct_interim_interval")
 
@@ -21988,7 +22297,7 @@ class NetworktemplateRadiusConfigArgs:
     @pulumi.getter(name="authServersRetries")
     def auth_servers_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        radius auth session retries
+        Radius auth session retries
         """
         return pulumi.get(self, "auth_servers_retries")
 
@@ -22000,7 +22309,7 @@ class NetworktemplateRadiusConfigArgs:
     @pulumi.getter(name="authServersTimeout")
     def auth_servers_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        radius auth session timeout
+        Radius auth session timeout
         """
         return pulumi.get(self, "auth_servers_timeout")
 
@@ -22012,7 +22321,7 @@ class NetworktemplateRadiusConfigArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         """
         return pulumi.get(self, "network")
 
@@ -22024,7 +22333,7 @@ class NetworktemplateRadiusConfigArgs:
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        use `network`or `source_ip`
+        Use `network`or `source_ip`
         """
         return pulumi.get(self, "source_ip")
 
@@ -22037,11 +22346,11 @@ if not MYPY:
     class NetworktemplateRadiusConfigAcctServerArgsDict(TypedDict):
         host: pulumi.Input[str]
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         secret: pulumi.Input[str]
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         keywrap_enabled: NotRequired[pulumi.Input[bool]]
         keywrap_format: NotRequired[pulumi.Input[str]]
@@ -22068,8 +22377,8 @@ class NetworktemplateRadiusConfigAcctServerArgs:
                  keywrap_mack: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] host: ip / hostname of RADIUS server
-        :param pulumi.Input[str] secret: secret of RADIUS server
+        :param pulumi.Input[str] host: IP/ hostname of RADIUS server
+        :param pulumi.Input[str] secret: Secretof RADIUS server
         :param pulumi.Input[str] keywrap_format: enum: `ascii`, `hex`
         :param pulumi.Input[int] port: Acct port of RADIUS server
         """
@@ -22090,7 +22399,7 @@ class NetworktemplateRadiusConfigAcctServerArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         return pulumi.get(self, "host")
 
@@ -22102,7 +22411,7 @@ class NetworktemplateRadiusConfigAcctServerArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         return pulumi.get(self, "secret")
 
@@ -22166,11 +22475,11 @@ if not MYPY:
     class NetworktemplateRadiusConfigAuthServerArgsDict(TypedDict):
         host: pulumi.Input[str]
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         secret: pulumi.Input[str]
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         keywrap_enabled: NotRequired[pulumi.Input[bool]]
         keywrap_format: NotRequired[pulumi.Input[str]]
@@ -22185,7 +22494,7 @@ if not MYPY:
         """
         require_message_authenticator: NotRequired[pulumi.Input[bool]]
         """
-        whether to require Message-Authenticator in requests
+        Whether to require Message-Authenticator in requests
         """
 elif False:
     NetworktemplateRadiusConfigAuthServerArgsDict: TypeAlias = Mapping[str, Any]
@@ -22202,11 +22511,11 @@ class NetworktemplateRadiusConfigAuthServerArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  require_message_authenticator: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] host: ip / hostname of RADIUS server
-        :param pulumi.Input[str] secret: secret of RADIUS server
+        :param pulumi.Input[str] host: IP/ hostname of RADIUS server
+        :param pulumi.Input[str] secret: Secretof RADIUS server
         :param pulumi.Input[str] keywrap_format: enum: `ascii`, `hex`
         :param pulumi.Input[int] port: Auth port of RADIUS server
-        :param pulumi.Input[bool] require_message_authenticator: whether to require Message-Authenticator in requests
+        :param pulumi.Input[bool] require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -22227,7 +22536,7 @@ class NetworktemplateRadiusConfigAuthServerArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         return pulumi.get(self, "host")
 
@@ -22239,7 +22548,7 @@ class NetworktemplateRadiusConfigAuthServerArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         return pulumi.get(self, "secret")
 
@@ -22302,7 +22611,7 @@ class NetworktemplateRadiusConfigAuthServerArgs:
     @pulumi.getter(name="requireMessageAuthenticator")
     def require_message_authenticator(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to require Message-Authenticator in requests
+        Whether to require Message-Authenticator in requests
         """
         return pulumi.get(self, "require_message_authenticator")
 
@@ -22319,7 +22628,7 @@ if not MYPY:
         files: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateRemoteSyslogFileArgsDict']]]]
         network: NotRequired[pulumi.Input[str]]
         """
-        if source_address is configured, will use the vlan firstly otherwise use source_ip
+        If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
         send_to_all_servers: NotRequired[pulumi.Input[bool]]
         servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateRemoteSyslogServerArgsDict']]]]
@@ -22344,7 +22653,7 @@ class NetworktemplateRemoteSyslogArgs:
                  time_format: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateRemoteSyslogUserArgs']]]] = None):
         """
-        :param pulumi.Input[str] network: if source_address is configured, will use the vlan firstly otherwise use source_ip
+        :param pulumi.Input[str] network: If source_address is configured, will use the vlan firstly otherwise use source_ip
         :param pulumi.Input[str] time_format: enum: `millisecond`, `year`, `year millisecond`
         """
         if archive is not None:
@@ -22406,7 +22715,7 @@ class NetworktemplateRemoteSyslogArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        if source_address is configured, will use the vlan firstly otherwise use source_ip
+        If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
         return pulumi.get(self, "network")
 
@@ -22763,7 +23072,7 @@ if not MYPY:
         """
         source_address: NotRequired[pulumi.Input[str]]
         """
-        if source_address is configured, will use the vlan firstly otherwise use source_ip
+        If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
         structured_data: NotRequired[pulumi.Input[bool]]
         tag: NotRequired[pulumi.Input[str]]
@@ -22789,7 +23098,7 @@ class NetworktemplateRemoteSyslogServerArgs:
         :param pulumi.Input[str] facility: enum: `any`, `authorization`, `change-log`, `config`, `conflict-log`, `daemon`, `dfc`, `external`, `firewall`, `ftp`, `interactive-commands`, `kernel`, `ntp`, `pfe`, `security`, `user`
         :param pulumi.Input[str] protocol: enum: `tcp`, `udp`
         :param pulumi.Input[str] severity: enum: `alert`, `any`, `critical`, `emergency`, `error`, `info`, `notice`, `warning`
-        :param pulumi.Input[str] source_address: if source_address is configured, will use the vlan firstly otherwise use source_ip
+        :param pulumi.Input[str] source_address: If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
@@ -22910,7 +23219,7 @@ class NetworktemplateRemoteSyslogServerArgs:
     @pulumi.getter(name="sourceAddress")
     def source_address(self) -> Optional[pulumi.Input[str]]:
         """
-        if source_address is configured, will use the vlan firstly otherwise use source_ip
+        If source_address is configured, will use the vlan firstly otherwise use source_ip
         """
         return pulumi.get(self, "source_address")
 
@@ -23097,9 +23406,6 @@ if not MYPY:
         description: NotRequired[pulumi.Input[str]]
         enabled: NotRequired[pulumi.Input[bool]]
         engine_id: NotRequired[pulumi.Input[str]]
-        """
-        enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-        """
         location: NotRequired[pulumi.Input[str]]
         name: NotRequired[pulumi.Input[str]]
         network: NotRequired[pulumi.Input[str]]
@@ -23125,9 +23431,6 @@ class NetworktemplateSnmpConfigArgs:
                  v2c_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV2cConfigArgs']]]] = None,
                  v3_config: Optional[pulumi.Input['NetworktemplateSnmpConfigV3ConfigArgs']] = None,
                  views: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigViewArgs']]]] = None):
-        """
-        :param pulumi.Input[str] engine_id: enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-        """
         if client_lists is not None:
             pulumi.set(__self__, "client_lists", client_lists)
         if contact is not None:
@@ -23192,9 +23495,6 @@ class NetworktemplateSnmpConfigArgs:
     @property
     @pulumi.getter(name="engineId")
     def engine_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-        """
         return pulumi.get(self, "engine_id")
 
     @engine_id.setter
@@ -23384,12 +23684,12 @@ if not MYPY:
         authorization: NotRequired[pulumi.Input[str]]
         client_list_name: NotRequired[pulumi.Input[str]]
         """
-        client_list_name here should refer to client_list above
+        Client_list_name here should refer to client_list above
         """
         community_name: NotRequired[pulumi.Input[str]]
         view: NotRequired[pulumi.Input[str]]
         """
-        view name here should be defined in views above
+        View name here should be defined in views above
         """
 elif False:
     NetworktemplateSnmpConfigV2cConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -23402,8 +23702,8 @@ class NetworktemplateSnmpConfigV2cConfigArgs:
                  community_name: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] client_list_name: client_list_name here should refer to client_list above
-        :param pulumi.Input[str] view: view name here should be defined in views above
+        :param pulumi.Input[str] client_list_name: Client_list_name here should refer to client_list above
+        :param pulumi.Input[str] view: View name here should be defined in views above
         """
         if authorization is not None:
             pulumi.set(__self__, "authorization", authorization)
@@ -23427,7 +23727,7 @@ class NetworktemplateSnmpConfigV2cConfigArgs:
     @pulumi.getter(name="clientListName")
     def client_list_name(self) -> Optional[pulumi.Input[str]]:
         """
-        client_list_name here should refer to client_list above
+        Client_list_name here should refer to client_list above
         """
         return pulumi.get(self, "client_list_name")
 
@@ -23448,7 +23748,7 @@ class NetworktemplateSnmpConfigV2cConfigArgs:
     @pulumi.getter
     def view(self) -> Optional[pulumi.Input[str]]:
         """
-        view name here should be defined in views above
+        View name here should be defined in views above
         """
         return pulumi.get(self, "view")
 
@@ -23463,7 +23763,7 @@ if not MYPY:
         notify_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyFilterArgsDict']]]]
         target_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetAddressArgsDict']]]]
         target_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetParameterArgsDict']]]]
-        usm: NotRequired[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgsDict']]
+        usms: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgsDict']]]]
         vacm: NotRequired[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmArgsDict']]
 elif False:
     NetworktemplateSnmpConfigV3ConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -23475,7 +23775,7 @@ class NetworktemplateSnmpConfigV3ConfigArgs:
                  notify_filters: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs']]]] = None,
                  target_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetAddressArgs']]]] = None,
                  target_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigTargetParameterArgs']]]] = None,
-                 usm: Optional[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']] = None,
+                 usms: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']]]] = None,
                  vacm: Optional[pulumi.Input['NetworktemplateSnmpConfigV3ConfigVacmArgs']] = None):
         if notifies is not None:
             pulumi.set(__self__, "notifies", notifies)
@@ -23485,8 +23785,8 @@ class NetworktemplateSnmpConfigV3ConfigArgs:
             pulumi.set(__self__, "target_addresses", target_addresses)
         if target_parameters is not None:
             pulumi.set(__self__, "target_parameters", target_parameters)
-        if usm is not None:
-            pulumi.set(__self__, "usm", usm)
+        if usms is not None:
+            pulumi.set(__self__, "usms", usms)
         if vacm is not None:
             pulumi.set(__self__, "vacm", vacm)
 
@@ -23528,12 +23828,12 @@ class NetworktemplateSnmpConfigV3ConfigArgs:
 
     @property
     @pulumi.getter
-    def usm(self) -> Optional[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']]:
-        return pulumi.get(self, "usm")
+    def usms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']]]]:
+        return pulumi.get(self, "usms")
 
-    @usm.setter
-    def usm(self, value: Optional[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']]):
-        pulumi.set(self, "usm", value)
+    @usms.setter
+    def usms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmArgs']]]]):
+        pulumi.set(self, "usms", value)
 
     @property
     @pulumi.getter
@@ -23547,9 +23847,9 @@ class NetworktemplateSnmpConfigV3ConfigArgs:
 
 if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigNotifyArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[str]]
-        tag: NotRequired[pulumi.Input[str]]
-        type: NotRequired[pulumi.Input[str]]
+        name: pulumi.Input[str]
+        tag: pulumi.Input[str]
+        type: pulumi.Input[str]
         """
         enum: `inform`, `trap`
         """
@@ -23559,47 +23859,44 @@ elif False:
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigNotifyArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 tag: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str],
+                 tag: pulumi.Input[str],
+                 type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] type: enum: `inform`, `trap`
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if tag is not None:
-            pulumi.set(__self__, "tag", tag)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[str]]:
+    def tag(self) -> pulumi.Input[str]:
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[str]]):
+    def tag(self, value: pulumi.Input[str]):
         pulumi.set(self, "tag", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    def type(self) -> pulumi.Input[str]:
         """
         enum: `inform`, `trap`
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
+    def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
 
@@ -23641,20 +23938,28 @@ class NetworktemplateSnmpConfigV3ConfigNotifyFilterArgs:
 
 if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgsDict(TypedDict):
+        oid: pulumi.Input[str]
         include: NotRequired[pulumi.Input[bool]]
-        oid: NotRequired[pulumi.Input[str]]
 elif False:
     NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs:
     def __init__(__self__, *,
-                 include: Optional[pulumi.Input[bool]] = None,
-                 oid: Optional[pulumi.Input[str]] = None):
+                 oid: pulumi.Input[str],
+                 include: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "oid", oid)
         if include is not None:
             pulumi.set(__self__, "include", include)
-        if oid is not None:
-            pulumi.set(__self__, "oid", oid)
+
+    @property
+    @pulumi.getter
+    def oid(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "oid")
+
+    @oid.setter
+    def oid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "oid", value)
 
     @property
     @pulumi.getter
@@ -23665,29 +23970,20 @@ class NetworktemplateSnmpConfigV3ConfigNotifyFilterContentArgs:
     def include(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "include", value)
 
-    @property
-    @pulumi.getter
-    def oid(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "oid")
-
-    @oid.setter
-    def oid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "oid", value)
-
 
 if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigTargetAddressArgsDict(TypedDict):
-        address: NotRequired[pulumi.Input[str]]
-        address_mask: NotRequired[pulumi.Input[str]]
-        port: NotRequired[pulumi.Input[int]]
+        address: pulumi.Input[str]
+        address_mask: pulumi.Input[str]
+        target_address_name: pulumi.Input[str]
+        port: NotRequired[pulumi.Input[str]]
         tag_list: NotRequired[pulumi.Input[str]]
         """
-        <refer to notify tag, can be multiple with blank
+        Refer to notify tag, can be multiple with blank
         """
-        target_address_name: NotRequired[pulumi.Input[str]]
         target_parameters: NotRequired[pulumi.Input[str]]
         """
-        refer to notify target parameters name
+        Refer to notify target parameters name
         """
 elif False:
     NetworktemplateSnmpConfigV3ConfigTargetAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -23695,61 +23991,67 @@ elif False:
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[str]] = None,
-                 address_mask: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
+                 address: pulumi.Input[str],
+                 address_mask: pulumi.Input[str],
+                 target_address_name: pulumi.Input[str],
+                 port: Optional[pulumi.Input[str]] = None,
                  tag_list: Optional[pulumi.Input[str]] = None,
-                 target_address_name: Optional[pulumi.Input[str]] = None,
                  target_parameters: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] tag_list: <refer to notify tag, can be multiple with blank
-        :param pulumi.Input[str] target_parameters: refer to notify target parameters name
+        :param pulumi.Input[str] tag_list: Refer to notify tag, can be multiple with blank
+        :param pulumi.Input[str] target_parameters: Refer to notify target parameters name
         """
-        if address is not None:
-            pulumi.set(__self__, "address", address)
-        if address_mask is not None:
-            pulumi.set(__self__, "address_mask", address_mask)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "address_mask", address_mask)
+        pulumi.set(__self__, "target_address_name", target_address_name)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if tag_list is not None:
             pulumi.set(__self__, "tag_list", tag_list)
-        if target_address_name is not None:
-            pulumi.set(__self__, "target_address_name", target_address_name)
         if target_parameters is not None:
             pulumi.set(__self__, "target_parameters", target_parameters)
 
     @property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[str]]:
+    def address(self) -> pulumi.Input[str]:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[str]]):
+    def address(self, value: pulumi.Input[str]):
         pulumi.set(self, "address", value)
 
     @property
     @pulumi.getter(name="addressMask")
-    def address_mask(self) -> Optional[pulumi.Input[str]]:
+    def address_mask(self) -> pulumi.Input[str]:
         return pulumi.get(self, "address_mask")
 
     @address_mask.setter
-    def address_mask(self, value: Optional[pulumi.Input[str]]):
+    def address_mask(self, value: pulumi.Input[str]):
         pulumi.set(self, "address_mask", value)
 
     @property
+    @pulumi.getter(name="targetAddressName")
+    def target_address_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "target_address_name")
+
+    @target_address_name.setter
+    def target_address_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_address_name", value)
+
+    @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
+    def port(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
+    def port(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="tagList")
     def tag_list(self) -> Optional[pulumi.Input[str]]:
         """
-        <refer to notify tag, can be multiple with blank
+        Refer to notify tag, can be multiple with blank
         """
         return pulumi.get(self, "tag_list")
 
@@ -23758,19 +24060,10 @@ class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs:
         pulumi.set(self, "tag_list", value)
 
     @property
-    @pulumi.getter(name="targetAddressName")
-    def target_address_name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "target_address_name")
-
-    @target_address_name.setter
-    def target_address_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_address_name", value)
-
-    @property
     @pulumi.getter(name="targetParameters")
     def target_parameters(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to notify target parameters name
+        Refer to notify target parameters name
         """
         return pulumi.get(self, "target_parameters")
 
@@ -23781,14 +24074,14 @@ class NetworktemplateSnmpConfigV3ConfigTargetAddressArgs:
 
 if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigTargetParameterArgsDict(TypedDict):
-        message_processing_model: NotRequired[pulumi.Input[str]]
+        message_processing_model: pulumi.Input[str]
         """
         enum: `v1`, `v2c`, `v3`
         """
-        name: NotRequired[pulumi.Input[str]]
+        name: pulumi.Input[str]
         notify_filter: NotRequired[pulumi.Input[str]]
         """
-        refer to profile-name in notify_filter
+        Refer to profile-name in notify_filter
         """
         security_level: NotRequired[pulumi.Input[str]]
         """
@@ -23800,7 +24093,7 @@ if not MYPY:
         """
         security_name: NotRequired[pulumi.Input[str]]
         """
-        refer to security_name in usm
+        Refer to security_name in usm
         """
 elif False:
     NetworktemplateSnmpConfigV3ConfigTargetParameterArgsDict: TypeAlias = Mapping[str, Any]
@@ -23808,23 +24101,21 @@ elif False:
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs:
     def __init__(__self__, *,
-                 message_processing_model: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 message_processing_model: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  notify_filter: Optional[pulumi.Input[str]] = None,
                  security_level: Optional[pulumi.Input[str]] = None,
                  security_model: Optional[pulumi.Input[str]] = None,
                  security_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] message_processing_model: enum: `v1`, `v2c`, `v3`
-        :param pulumi.Input[str] notify_filter: refer to profile-name in notify_filter
+        :param pulumi.Input[str] notify_filter: Refer to profile-name in notify_filter
         :param pulumi.Input[str] security_level: enum: `authentication`, `none`, `privacy`
         :param pulumi.Input[str] security_model: enum: `usm`, `v1`, `v2c`
-        :param pulumi.Input[str] security_name: refer to security_name in usm
+        :param pulumi.Input[str] security_name: Refer to security_name in usm
         """
-        if message_processing_model is not None:
-            pulumi.set(__self__, "message_processing_model", message_processing_model)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "message_processing_model", message_processing_model)
+        pulumi.set(__self__, "name", name)
         if notify_filter is not None:
             pulumi.set(__self__, "notify_filter", notify_filter)
         if security_level is not None:
@@ -23836,30 +24127,30 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs:
 
     @property
     @pulumi.getter(name="messageProcessingModel")
-    def message_processing_model(self) -> Optional[pulumi.Input[str]]:
+    def message_processing_model(self) -> pulumi.Input[str]:
         """
         enum: `v1`, `v2c`, `v3`
         """
         return pulumi.get(self, "message_processing_model")
 
     @message_processing_model.setter
-    def message_processing_model(self, value: Optional[pulumi.Input[str]]):
+    def message_processing_model(self, value: pulumi.Input[str]):
         pulumi.set(self, "message_processing_model", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="notifyFilter")
     def notify_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to profile-name in notify_filter
+        Refer to profile-name in notify_filter
         """
         return pulumi.get(self, "notify_filter")
 
@@ -23895,7 +24186,7 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs:
     @pulumi.getter(name="securityName")
     def security_name(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to security_name in usm
+        Refer to security_name in usm
         """
         return pulumi.get(self, "security_name")
 
@@ -23906,13 +24197,13 @@ class NetworktemplateSnmpConfigV3ConfigTargetParameterArgs:
 
 if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigUsmArgsDict(TypedDict):
-        engine_type: NotRequired[pulumi.Input[str]]
+        engine_type: pulumi.Input[str]
         """
         enum: `local_engine`, `remote_engine`
         """
-        engineid: NotRequired[pulumi.Input[str]]
+        remote_engine_id: NotRequired[pulumi.Input[str]]
         """
-        required only if `engine_type`==`remote_engine`
+        Required only if `engine_type`==`remote_engine`
         """
         users: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmUserArgsDict']]]]
 elif False:
@@ -23921,43 +24212,42 @@ elif False:
 @pulumi.input_type
 class NetworktemplateSnmpConfigV3ConfigUsmArgs:
     def __init__(__self__, *,
-                 engine_type: Optional[pulumi.Input[str]] = None,
-                 engineid: Optional[pulumi.Input[str]] = None,
+                 engine_type: pulumi.Input[str],
+                 remote_engine_id: Optional[pulumi.Input[str]] = None,
                  users: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSnmpConfigV3ConfigUsmUserArgs']]]] = None):
         """
         :param pulumi.Input[str] engine_type: enum: `local_engine`, `remote_engine`
-        :param pulumi.Input[str] engineid: required only if `engine_type`==`remote_engine`
+        :param pulumi.Input[str] remote_engine_id: Required only if `engine_type`==`remote_engine`
         """
-        if engine_type is not None:
-            pulumi.set(__self__, "engine_type", engine_type)
-        if engineid is not None:
-            pulumi.set(__self__, "engineid", engineid)
+        pulumi.set(__self__, "engine_type", engine_type)
+        if remote_engine_id is not None:
+            pulumi.set(__self__, "remote_engine_id", remote_engine_id)
         if users is not None:
             pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter(name="engineType")
-    def engine_type(self) -> Optional[pulumi.Input[str]]:
+    def engine_type(self) -> pulumi.Input[str]:
         """
         enum: `local_engine`, `remote_engine`
         """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
-    def engine_type(self, value: Optional[pulumi.Input[str]]):
+    def engine_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "engine_type", value)
 
     @property
-    @pulumi.getter
-    def engineid(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="remoteEngineId")
+    def remote_engine_id(self) -> Optional[pulumi.Input[str]]:
         """
-        required only if `engine_type`==`remote_engine`
+        Required only if `engine_type`==`remote_engine`
         """
-        return pulumi.get(self, "engineid")
+        return pulumi.get(self, "remote_engine_id")
 
-    @engineid.setter
-    def engineid(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "engineid", value)
+    @remote_engine_id.setter
+    def remote_engine_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "remote_engine_id", value)
 
     @property
     @pulumi.getter
@@ -23973,11 +24263,11 @@ if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigUsmUserArgsDict(TypedDict):
         authentication_password: NotRequired[pulumi.Input[str]]
         """
-        Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+        Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         """
         authentication_type: NotRequired[pulumi.Input[str]]
         """
-        sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+        sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
         """
         encryption_password: NotRequired[pulumi.Input[str]]
         """
@@ -24000,8 +24290,8 @@ class NetworktemplateSnmpConfigV3ConfigUsmUserArgs:
                  encryption_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] authentication_password: Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
-        :param pulumi.Input[str] authentication_type: sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+        :param pulumi.Input[str] authentication_password: Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+        :param pulumi.Input[str] authentication_type: sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
         :param pulumi.Input[str] encryption_password: Not required if `encryption_type`==`privacy-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters
         :param pulumi.Input[str] encryption_type: enum: `privacy-3des`, `privacy-aes128`, `privacy-des`, `privacy-none`
         """
@@ -24020,7 +24310,7 @@ class NetworktemplateSnmpConfigV3ConfigUsmUserArgs:
     @pulumi.getter(name="authenticationPassword")
     def authentication_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Not required if `authentication_type`==`authentication_none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
+        Not required if `authentication_type`==`authentication-none`. Include alphabetic, numeric, and special characters, but it cannot include control characters.
         """
         return pulumi.get(self, "authentication_password")
 
@@ -24032,7 +24322,7 @@ class NetworktemplateSnmpConfigV3ConfigUsmUserArgs:
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> Optional[pulumi.Input[str]]:
         """
-        sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication_md5`, `authentication_none`, `authentication_sha`, `authentication_sha224`, `authentication_sha256`, `authentication_sha384`, `authentication_sha512`
+        sha224, sha256, sha384, sha512 are supported in 21.1 and newer release. enum: `authentication-md5`, `authentication-none`, `authentication-sha`, `authentication-sha224`, `authentication-sha256`, `authentication-sha384`, `authentication-sha512`
         """
         return pulumi.get(self, "authentication_type")
 
@@ -24150,15 +24440,15 @@ if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgsDict(TypedDict):
         context_prefix: NotRequired[pulumi.Input[str]]
         """
-        only required if `type`==`context_prefix`
+        Only required if `type`==`context_prefix`
         """
         notify_view: NotRequired[pulumi.Input[str]]
         """
-        refer to view name
+        Refer to view name
         """
         read_view: NotRequired[pulumi.Input[str]]
         """
-        refer to view name
+        Refer to view name
         """
         security_level: NotRequired[pulumi.Input[str]]
         """
@@ -24174,7 +24464,7 @@ if not MYPY:
         """
         write_view: NotRequired[pulumi.Input[str]]
         """
-        refer to view name
+        Refer to view name
         """
 elif False:
     NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgsDict: TypeAlias = Mapping[str, Any]
@@ -24190,13 +24480,13 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs:
                  type: Optional[pulumi.Input[str]] = None,
                  write_view: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] context_prefix: only required if `type`==`context_prefix`
-        :param pulumi.Input[str] notify_view: refer to view name
-        :param pulumi.Input[str] read_view: refer to view name
+        :param pulumi.Input[str] context_prefix: Only required if `type`==`context_prefix`
+        :param pulumi.Input[str] notify_view: Refer to view name
+        :param pulumi.Input[str] read_view: Refer to view name
         :param pulumi.Input[str] security_level: enum: `authentication`, `none`, `privacy`
         :param pulumi.Input[str] security_model: enum: `any`, `usm`, `v1`, `v2c`
         :param pulumi.Input[str] type: enum: `context_prefix`, `default_context_prefix`
-        :param pulumi.Input[str] write_view: refer to view name
+        :param pulumi.Input[str] write_view: Refer to view name
         """
         if context_prefix is not None:
             pulumi.set(__self__, "context_prefix", context_prefix)
@@ -24217,7 +24507,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs:
     @pulumi.getter(name="contextPrefix")
     def context_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        only required if `type`==`context_prefix`
+        Only required if `type`==`context_prefix`
         """
         return pulumi.get(self, "context_prefix")
 
@@ -24229,7 +24519,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs:
     @pulumi.getter(name="notifyView")
     def notify_view(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to view name
+        Refer to view name
         """
         return pulumi.get(self, "notify_view")
 
@@ -24241,7 +24531,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs:
     @pulumi.getter(name="readView")
     def read_view(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to view name
+        Refer to view name
         """
         return pulumi.get(self, "read_view")
 
@@ -24289,7 +24579,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmAccessPrefixListArgs:
     @pulumi.getter(name="writeView")
     def write_view(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to view name
+        Refer to view name
         """
         return pulumi.get(self, "write_view")
 
@@ -24347,7 +24637,7 @@ if not MYPY:
     class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgsDict(TypedDict):
         group: NotRequired[pulumi.Input[str]]
         """
-        refer to group_name under access
+        Refer to group_name under access
         """
         security_name: NotRequired[pulumi.Input[str]]
 elif False:
@@ -24359,7 +24649,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs:
                  group: Optional[pulumi.Input[str]] = None,
                  security_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] group: refer to group_name under access
+        :param pulumi.Input[str] group: Refer to group_name under access
         """
         if group is not None:
             pulumi.set(__self__, "group", group)
@@ -24370,7 +24660,7 @@ class NetworktemplateSnmpConfigV3ConfigVacmSecurityToGroupContentArgs:
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[str]]:
         """
-        refer to group_name under access
+        Refer to group_name under access
         """
         return pulumi.get(self, "group")
 
@@ -24392,7 +24682,7 @@ if not MYPY:
     class NetworktemplateSnmpConfigViewArgsDict(TypedDict):
         include: NotRequired[pulumi.Input[bool]]
         """
-        if the root oid configured is included
+        If the root oid configured is included
         """
         oid: NotRequired[pulumi.Input[str]]
         view_name: NotRequired[pulumi.Input[str]]
@@ -24406,7 +24696,7 @@ class NetworktemplateSnmpConfigViewArgs:
                  oid: Optional[pulumi.Input[str]] = None,
                  view_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] include: if the root oid configured is included
+        :param pulumi.Input[bool] include: If the root oid configured is included
         """
         if include is not None:
             pulumi.set(__self__, "include", include)
@@ -24419,7 +24709,7 @@ class NetworktemplateSnmpConfigViewArgs:
     @pulumi.getter
     def include(self) -> Optional[pulumi.Input[bool]]:
         """
-        if the root oid configured is included
+        If the root oid configured is included
         """
         return pulumi.get(self, "include")
 
@@ -24519,7 +24809,7 @@ if not MYPY:
         """
         match_type: NotRequired[pulumi.Input[str]]
         """
-        'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+        property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         """
         match_value: NotRequired[pulumi.Input[str]]
         name: NotRequired[pulumi.Input[str]]
@@ -24560,7 +24850,7 @@ class NetworktemplateSwitchMatchingRuleArgs:
         :param pulumi.Input[str] match_name: string the switch name must start with to use this rule. Use the `match_name_offset` to indicate the first character of the switch name to compare to. It is possible to combine with the `match_model` and `match_role` attributes
         :param pulumi.Input[int] match_name_offset: first character of the switch name to compare to the `match_name` value
         :param pulumi.Input[str] match_role: string the switch role must start with to use this rule. It is possible to combine with the `match_name` and `match_model` attributes
-        :param pulumi.Input[str] match_type: 'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+        :param pulumi.Input[str] match_type: property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         :param pulumi.Input['NetworktemplateSwitchMatchingRuleOobIpConfigArgs'] oob_ip_config: Out-of-Band Management interface configuration
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortConfigArgs']]] port_config: Propery key is the interface name or interface range
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMatchingRulePortMirroringArgs']]] port_mirroring: Property key is the port mirroring instance name. `port_mirroring` can be added under device/site settings. It takes interface and ports as input for ingress, interface as input for egress and can take interface and port as output. A maximum 4 port mirrorings is allowed
@@ -24678,7 +24968,7 @@ Please update your configurations.""")
 Please update your configurations.""")
     def match_type(self) -> Optional[pulumi.Input[str]]:
         """
-        'property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
+        property key define the type of matching, value is the string to match. e.g: `match_name[0:3]`, `match_name[2:6]`, `match_model`,  `match_model[0-6]`
         """
         return pulumi.get(self, "match_type")
 
@@ -24803,11 +25093,11 @@ if not MYPY:
         """
         use_mgmt_vrf: NotRequired[pulumi.Input[bool]]
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         use_mgmt_vrf_for_host_out: NotRequired[pulumi.Input[bool]]
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
 elif False:
     NetworktemplateSwitchMatchingRuleOobIpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -24820,8 +25110,8 @@ class NetworktemplateSwitchMatchingRuleOobIpConfigArgs:
                  use_mgmt_vrf_for_host_out: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] type: enum: `dhcp`, `static`
-        :param pulumi.Input[bool] use_mgmt_vrf: if supported on the platform. If enabled, DNS will be using this routing-instance, too
-        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        :param pulumi.Input[bool] use_mgmt_vrf: If supported on the platform. If enabled, DNS will be using this routing-instance, too
+        :param pulumi.Input[bool] use_mgmt_vrf_for_host_out: For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -24846,7 +25136,7 @@ class NetworktemplateSwitchMatchingRuleOobIpConfigArgs:
     @pulumi.getter(name="useMgmtVrf")
     def use_mgmt_vrf(self) -> Optional[pulumi.Input[bool]]:
         """
-        if supported on the platform. If enabled, DNS will be using this routing-instance, too
+        If supported on the platform. If enabled, DNS will be using this routing-instance, too
         """
         return pulumi.get(self, "use_mgmt_vrf")
 
@@ -24858,7 +25148,7 @@ class NetworktemplateSwitchMatchingRuleOobIpConfigArgs:
     @pulumi.getter(name="useMgmtVrfForHostOut")
     def use_mgmt_vrf_for_host_out(self) -> Optional[pulumi.Input[bool]]:
         """
-        for host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
+        For host-out traffic (NTP/TACPLUS/RADIUS/SYSLOG/SNMP), if alternative source network/ip is desired
         """
         return pulumi.get(self, "use_mgmt_vrf_for_host_out")
 
@@ -24871,7 +25161,7 @@ if not MYPY:
     class NetworktemplateSwitchMatchingRulePortConfigArgsDict(TypedDict):
         usage: pulumi.Input[str]
         """
-        port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         """
         ae_disable_lacp: NotRequired[pulumi.Input[bool]]
         """
@@ -24883,17 +25173,17 @@ if not MYPY:
         """
         ae_lacp_slow: NotRequired[pulumi.Input[bool]]
         """
-        to use fast timeout
+        To use fast timeout
         """
         aggregated: NotRequired[pulumi.Input[bool]]
         critical: NotRequired[pulumi.Input[bool]]
         """
-        if want to generate port up/down alarm
+        To generate port up/down alarm
         """
         description: NotRequired[pulumi.Input[str]]
         disable_autoneg: NotRequired[pulumi.Input[bool]]
         """
-        if `speed` and `duplex` are specified, whether to disable autonegotiation
+        If `speed` and `duplex` are specified, whether to disable autonegotiation
         """
         duplex: NotRequired[pulumi.Input[str]]
         """
@@ -24906,11 +25196,11 @@ if not MYPY:
         esilag: NotRequired[pulumi.Input[bool]]
         mtu: NotRequired[pulumi.Input[int]]
         """
-        media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         """
         no_local_overwrite: NotRequired[pulumi.Input[bool]]
         """
-        prevent helpdesk to override the port config
+        Prevent helpdesk to override the port config
         """
         poe_disabled: NotRequired[pulumi.Input[bool]]
         speed: NotRequired[pulumi.Input[str]]
@@ -24939,16 +25229,16 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
                  poe_disabled: Optional[pulumi.Input[bool]] = None,
                  speed: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] usage: port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        :param pulumi.Input[str] usage: Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         :param pulumi.Input[bool] ae_disable_lacp: To disable LACP support for the AE interface
         :param pulumi.Input[int] ae_idx: Users could force to use the designated AE name
-        :param pulumi.Input[bool] ae_lacp_slow: to use fast timeout
-        :param pulumi.Input[bool] critical: if want to generate port up/down alarm
-        :param pulumi.Input[bool] disable_autoneg: if `speed` and `duplex` are specified, whether to disable autonegotiation
+        :param pulumi.Input[bool] ae_lacp_slow: To use fast timeout
+        :param pulumi.Input[bool] critical: To generate port up/down alarm
+        :param pulumi.Input[bool] disable_autoneg: If `speed` and `duplex` are specified, whether to disable autonegotiation
         :param pulumi.Input[str] duplex: enum: `auto`, `full`, `half`
         :param pulumi.Input[str] dynamic_usage: Enable dynamic usage for this port. Set to `dynamic` to enable.
-        :param pulumi.Input[int] mtu: media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
-        :param pulumi.Input[bool] no_local_overwrite: prevent helpdesk to override the port config
+        :param pulumi.Input[int] mtu: Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        :param pulumi.Input[bool] no_local_overwrite: Prevent helpdesk to override the port config
         :param pulumi.Input[str] speed: enum: `100m`, `10m`, `1g`, `2.5g`, `5g`, `10g`, `25g`, `40g`, `100g`,`auto`
         """
         pulumi.set(__self__, "usage", usage)
@@ -24985,7 +25275,7 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
     @pulumi.getter
     def usage(self) -> pulumi.Input[str]:
         """
-        port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+        Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
         """
         return pulumi.get(self, "usage")
 
@@ -25021,7 +25311,7 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
     @pulumi.getter(name="aeLacpSlow")
     def ae_lacp_slow(self) -> Optional[pulumi.Input[bool]]:
         """
-        to use fast timeout
+        To use fast timeout
         """
         return pulumi.get(self, "ae_lacp_slow")
 
@@ -25042,7 +25332,7 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
     @pulumi.getter
     def critical(self) -> Optional[pulumi.Input[bool]]:
         """
-        if want to generate port up/down alarm
+        To generate port up/down alarm
         """
         return pulumi.get(self, "critical")
 
@@ -25063,7 +25353,7 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
     @pulumi.getter(name="disableAutoneg")
     def disable_autoneg(self) -> Optional[pulumi.Input[bool]]:
         """
-        if `speed` and `duplex` are specified, whether to disable autonegotiation
+        If `speed` and `duplex` are specified, whether to disable autonegotiation
         """
         return pulumi.get(self, "disable_autoneg")
 
@@ -25108,7 +25398,7 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
-        media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+        Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
         """
         return pulumi.get(self, "mtu")
 
@@ -25120,7 +25410,7 @@ class NetworktemplateSwitchMatchingRulePortConfigArgs:
     @pulumi.getter(name="noLocalOverwrite")
     def no_local_overwrite(self) -> Optional[pulumi.Input[bool]]:
         """
-        prevent helpdesk to override the port config
+        Prevent helpdesk to override the port config
         """
         return pulumi.get(self, "no_local_overwrite")
 
@@ -25154,23 +25444,23 @@ if not MYPY:
     class NetworktemplateSwitchMatchingRulePortMirroringArgsDict(TypedDict):
         input_networks_ingresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         input_port_ids_egresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         input_port_ids_ingresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         output_network: NotRequired[pulumi.Input[str]]
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         output_port_id: NotRequired[pulumi.Input[str]]
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
 elif False:
     NetworktemplateSwitchMatchingRulePortMirroringArgsDict: TypeAlias = Mapping[str, Any]
@@ -25184,11 +25474,11 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
                  output_network: Optional[pulumi.Input[str]] = None,
                  output_port_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_networks_ingresses: at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_egresses: at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_ingresses: at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
-        :param pulumi.Input[str] output_network: exaclty one of the `output_port_id` or `output_network` should be provided
-        :param pulumi.Input[str] output_port_id: exaclty one of the `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_networks_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_egresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_port_ids_ingresses: At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        :param pulumi.Input[str] output_network: Exaclty one of the `output_port_id` or `output_network` should be provided
+        :param pulumi.Input[str] output_port_id: Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         if input_networks_ingresses is not None:
             pulumi.set(__self__, "input_networks_ingresses", input_networks_ingresses)
@@ -25205,7 +25495,7 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
     @pulumi.getter(name="inputNetworksIngresses")
     def input_networks_ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         return pulumi.get(self, "input_networks_ingresses")
 
@@ -25217,7 +25507,7 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
     @pulumi.getter(name="inputPortIdsEgresses")
     def input_port_ids_egresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         return pulumi.get(self, "input_port_ids_egresses")
 
@@ -25229,7 +25519,7 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
     @pulumi.getter(name="inputPortIdsIngresses")
     def input_port_ids_ingresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        at least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
+        At least one of the `input_port_ids_ingress`, `input_port_ids_egress` or `input_networks_ingress ` should be specified
         """
         return pulumi.get(self, "input_port_ids_ingresses")
 
@@ -25241,7 +25531,7 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
     @pulumi.getter(name="outputNetwork")
     def output_network(self) -> Optional[pulumi.Input[str]]:
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_network")
 
@@ -25253,7 +25543,7 @@ class NetworktemplateSwitchMatchingRulePortMirroringArgs:
     @pulumi.getter(name="outputPortId")
     def output_port_id(self) -> Optional[pulumi.Input[str]]:
         """
-        exaclty one of the `output_port_id` or `output_network` should be provided
+        Exaclty one of the `output_port_id` or `output_network` should be provided
         """
         return pulumi.get(self, "output_port_id")
 
@@ -25266,7 +25556,7 @@ if not MYPY:
     class NetworktemplateSwitchMgmtArgsDict(TypedDict):
         ap_affinity_threshold: NotRequired[pulumi.Input[int]]
         """
-        ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
         """
         cli_banner: NotRequired[pulumi.Input[str]]
         """
@@ -25278,7 +25568,7 @@ if not MYPY:
         """
         config_revert_timer: NotRequired[pulumi.Input[int]]
         """
-        the rollback timer for commit confirmed
+        Rollback timer for commit confirmed
         """
         dhcp_option_fqdn: NotRequired[pulumi.Input[bool]]
         """
@@ -25293,7 +25583,7 @@ if not MYPY:
         mxedge_proxy_port: NotRequired[pulumi.Input[int]]
         protect_re: NotRequired[pulumi.Input['NetworktemplateSwitchMgmtProtectReArgsDict']]
         """
-        restrict inbound-traffic to host
+        Restrict inbound-traffic to host
         when enabled, all traffic that is not essential to our operation will be dropped 
         e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         """
@@ -25301,7 +25591,7 @@ if not MYPY:
         tacacs: NotRequired[pulumi.Input['NetworktemplateSwitchMgmtTacacsArgsDict']]
         use_mxedge_proxy: NotRequired[pulumi.Input[bool]]
         """
-        to use mxedge as proxy
+        To use mxedge as proxy
         """
 elif False:
     NetworktemplateSwitchMgmtArgsDict: TypeAlias = Mapping[str, Any]
@@ -25323,16 +25613,16 @@ class NetworktemplateSwitchMgmtArgs:
                  tacacs: Optional[pulumi.Input['NetworktemplateSwitchMgmtTacacsArgs']] = None,
                  use_mxedge_proxy: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[int] ap_affinity_threshold: ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        :param pulumi.Input[int] ap_affinity_threshold: AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
         :param pulumi.Input[str] cli_banner: Set Banners for switches. Allows markup formatting
         :param pulumi.Input[int] cli_idle_timeout: Sets timeout for switches
-        :param pulumi.Input[int] config_revert_timer: the rollback timer for commit confirmed
+        :param pulumi.Input[int] config_revert_timer: Rollback timer for commit confirmed
         :param pulumi.Input[bool] dhcp_option_fqdn: Enable to provide the FQDN with DHCP option 81
         :param pulumi.Input[Mapping[str, pulumi.Input['NetworktemplateSwitchMgmtLocalAccountsArgs']]] local_accounts: Property key is the user name. For Local user authentication
-        :param pulumi.Input['NetworktemplateSwitchMgmtProtectReArgs'] protect_re: restrict inbound-traffic to host
+        :param pulumi.Input['NetworktemplateSwitchMgmtProtectReArgs'] protect_re: Restrict inbound-traffic to host
                when enabled, all traffic that is not essential to our operation will be dropped 
                e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
-        :param pulumi.Input[bool] use_mxedge_proxy: to use mxedge as proxy
+        :param pulumi.Input[bool] use_mxedge_proxy: To use mxedge as proxy
         """
         if ap_affinity_threshold is not None:
             pulumi.set(__self__, "ap_affinity_threshold", ap_affinity_threshold)
@@ -25365,7 +25655,7 @@ class NetworktemplateSwitchMgmtArgs:
     @pulumi.getter(name="apAffinityThreshold")
     def ap_affinity_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        ap_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
+        AP_affinity_threshold ap_affinity_threshold can be added as a field under site/setting. By default, this value is set to 12. If the field is set in both site/setting and org/setting, the value from site/setting will be used.
         """
         return pulumi.get(self, "ap_affinity_threshold")
 
@@ -25401,7 +25691,7 @@ class NetworktemplateSwitchMgmtArgs:
     @pulumi.getter(name="configRevertTimer")
     def config_revert_timer(self) -> Optional[pulumi.Input[int]]:
         """
-        the rollback timer for commit confirmed
+        Rollback timer for commit confirmed
         """
         return pulumi.get(self, "config_revert_timer")
 
@@ -25464,7 +25754,7 @@ class NetworktemplateSwitchMgmtArgs:
     @pulumi.getter(name="protectRe")
     def protect_re(self) -> Optional[pulumi.Input['NetworktemplateSwitchMgmtProtectReArgs']]:
         """
-        restrict inbound-traffic to host
+        Restrict inbound-traffic to host
         when enabled, all traffic that is not essential to our operation will be dropped 
         e.g. ntp / dns / traffic to mist will be allowed by default, if dhcpd is enabled, we'll make sure it works
         """
@@ -25496,7 +25786,7 @@ class NetworktemplateSwitchMgmtArgs:
     @pulumi.getter(name="useMxedgeProxy")
     def use_mxedge_proxy(self) -> Optional[pulumi.Input[bool]]:
         """
-        to use mxedge as proxy
+        To use mxedge as proxy
         """
         return pulumi.get(self, "use_mxedge_proxy")
 
@@ -25559,7 +25849,7 @@ if not MYPY:
         customs: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSwitchMgmtProtectReCustomArgsDict']]]]
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        when enabled, all traffic that is not essential to our operation will be dropped
+        When enabled, all traffic that is not essential to our operation will be dropped
         e.g. ntp / dns / traffic to mist will be allowed by default
              if dhcpd is enabled, we'll make sure it works
         """
@@ -25579,7 +25869,7 @@ class NetworktemplateSwitchMgmtProtectReArgs:
                  trusted_hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_services: optionally, services we'll allow. enum: `icmp`, `ssh`
-        :param pulumi.Input[bool] enabled: when enabled, all traffic that is not essential to our operation will be dropped
+        :param pulumi.Input[bool] enabled: When enabled, all traffic that is not essential to our operation will be dropped
                e.g. ntp / dns / traffic to mist will be allowed by default
                     if dhcpd is enabled, we'll make sure it works
         :param pulumi.Input[Sequence[pulumi.Input[str]]] trusted_hosts: host/subnets we'll allow traffic to/from
@@ -25618,7 +25908,7 @@ class NetworktemplateSwitchMgmtProtectReArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        when enabled, all traffic that is not essential to our operation will be dropped
+        When enabled, all traffic that is not essential to our operation will be dropped
         e.g. ntp / dns / traffic to mist will be allowed by default
              if dhcpd is enabled, we'll make sure it works
         """
@@ -25715,7 +26005,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         network: NotRequired[pulumi.Input[str]]
         """
-        which network the TACACS server resides
+        Which network the TACACS server resides
         """
         tacplus_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSwitchMgmtTacacsTacplusServerArgsDict']]]]
 elif False:
@@ -25731,7 +26021,7 @@ class NetworktemplateSwitchMgmtTacacsArgs:
                  tacplus_servers: Optional[pulumi.Input[Sequence[pulumi.Input['NetworktemplateSwitchMgmtTacacsTacplusServerArgs']]]] = None):
         """
         :param pulumi.Input[str] default_role: enum: `admin`, `helpdesk`, `none`, `read`
-        :param pulumi.Input[str] network: which network the TACACS server resides
+        :param pulumi.Input[str] network: Which network the TACACS server resides
         """
         if acct_servers is not None:
             pulumi.set(__self__, "acct_servers", acct_servers)
@@ -25778,7 +26068,7 @@ class NetworktemplateSwitchMgmtTacacsArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        which network the TACACS server resides
+        Which network the TACACS server resides
         """
         return pulumi.get(self, "network")
 
@@ -25924,7 +26214,7 @@ if not MYPY:
     class NetworktemplateVrfConfigArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable VRF (when supported on the device)
+        Whether to enable VRF (when supported on the device)
         """
 elif False:
     NetworktemplateVrfConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -25934,7 +26224,7 @@ class NetworktemplateVrfConfigArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether to enable VRF (when supported on the device)
+        :param pulumi.Input[bool] enabled: Whether to enable VRF (when supported on the device)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -25943,7 +26233,7 @@ class NetworktemplateVrfConfigArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable VRF (when supported on the device)
+        Whether to enable VRF (when supported on the device)
         """
         return pulumi.get(self, "enabled")
 
@@ -26046,19 +26336,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -26084,10 +26374,10 @@ class RftemplateBand24Args:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 2.4GHz band. enum: `20`, `40`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -26169,7 +26459,7 @@ class RftemplateBand24Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -26181,7 +26471,7 @@ class RftemplateBand24Args:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -26193,7 +26483,7 @@ class RftemplateBand24Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -26205,7 +26495,7 @@ class RftemplateBand24Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -26244,19 +26534,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -26282,10 +26572,10 @@ class RftemplateBand5Args:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 5GHz band. enum: `20`, `40`, `80`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -26367,7 +26657,7 @@ class RftemplateBand5Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -26379,7 +26669,7 @@ class RftemplateBand5Args:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -26391,7 +26681,7 @@ class RftemplateBand5Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -26403,7 +26693,7 @@ class RftemplateBand5Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -26442,19 +26732,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -26480,10 +26770,10 @@ class RftemplateBand5On24RadioArgs:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 5GHz band. enum: `20`, `40`, `80`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -26565,7 +26855,7 @@ class RftemplateBand5On24RadioArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -26577,7 +26867,7 @@ class RftemplateBand5On24RadioArgs:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -26589,7 +26879,7 @@ class RftemplateBand5On24RadioArgs:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -26601,7 +26891,7 @@ class RftemplateBand5On24RadioArgs:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -26640,19 +26930,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -26660,7 +26950,7 @@ if not MYPY:
         """
         standard_power: NotRequired[pulumi.Input[bool]]
         """
-        for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
 elif False:
     RftemplateBand6ArgsDict: TypeAlias = Mapping[str, Any]
@@ -26683,12 +26973,12 @@ class RftemplateBand6Args:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
-        :param pulumi.Input[bool] standard_power: for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        :param pulumi.Input[bool] standard_power: For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
         if allow_rrm_disable is not None:
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
@@ -26771,7 +27061,7 @@ class RftemplateBand6Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -26783,7 +27073,7 @@ class RftemplateBand6Args:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -26795,7 +27085,7 @@ class RftemplateBand6Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -26807,7 +27097,7 @@ class RftemplateBand6Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -26831,7 +27121,7 @@ class RftemplateBand6Args:
     @pulumi.getter(name="standardPower")
     def standard_power(self) -> Optional[pulumi.Input[bool]]:
         """
-        for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
         return pulumi.get(self, "standard_power")
 
@@ -27009,19 +27299,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -27047,10 +27337,10 @@ class RftemplateModelSpecificBand24Args:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 2.4GHz band. enum: `20`, `40`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -27132,7 +27422,7 @@ class RftemplateModelSpecificBand24Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -27144,7 +27434,7 @@ class RftemplateModelSpecificBand24Args:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -27156,7 +27446,7 @@ class RftemplateModelSpecificBand24Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -27168,7 +27458,7 @@ class RftemplateModelSpecificBand24Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -27207,19 +27497,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -27245,10 +27535,10 @@ class RftemplateModelSpecificBand5Args:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 5GHz band. enum: `20`, `40`, `80`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -27330,7 +27620,7 @@ class RftemplateModelSpecificBand5Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -27342,7 +27632,7 @@ class RftemplateModelSpecificBand5Args:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -27354,7 +27644,7 @@ class RftemplateModelSpecificBand5Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -27366,7 +27656,7 @@ class RftemplateModelSpecificBand5Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -27405,19 +27695,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -27443,10 +27733,10 @@ class RftemplateModelSpecificBand5On24RadioArgs:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 5GHz band. enum: `20`, `40`, `80`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
         """
         if allow_rrm_disable is not None:
@@ -27528,7 +27818,7 @@ class RftemplateModelSpecificBand5On24RadioArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -27540,7 +27830,7 @@ class RftemplateModelSpecificBand5On24RadioArgs:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -27552,7 +27842,7 @@ class RftemplateModelSpecificBand5On24RadioArgs:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -27564,7 +27854,7 @@ class RftemplateModelSpecificBand5On24RadioArgs:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -27603,19 +27893,19 @@ if not MYPY:
         """
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         power: NotRequired[pulumi.Input[int]]
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         power_max: NotRequired[pulumi.Input[int]]
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         power_min: NotRequired[pulumi.Input[int]]
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         preamble: NotRequired[pulumi.Input[str]]
         """
@@ -27623,7 +27913,7 @@ if not MYPY:
         """
         standard_power: NotRequired[pulumi.Input[bool]]
         """
-        for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
 elif False:
     RftemplateModelSpecificBand6ArgsDict: TypeAlias = Mapping[str, Any]
@@ -27646,12 +27936,12 @@ class RftemplateModelSpecificBand6Args:
         :param pulumi.Input[str] antenna_mode: enum: `1x1`, `2x2`, `3x3`, `4x4`, `default`
         :param pulumi.Input[int] bandwidth: channel width for the 6GHz band. enum: `20`, `40`, `80`, `160`
         :param pulumi.Input[Sequence[pulumi.Input[int]]] channels: For RFTemplates. List of channels, null or empty array means auto
-        :param pulumi.Input[bool] disabled: whether to disable the radio
-        :param pulumi.Input[int] power: TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
-        :param pulumi.Input[int] power_max: when power=0, max tx power to use, HW-specific values will be used if not set
-        :param pulumi.Input[int] power_min: when power=0, min tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[bool] disabled: Whether to disable the radio
+        :param pulumi.Input[int] power: Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        :param pulumi.Input[int] power_max: When power=0, max tx power to use, HW-specific values will be used if not set
+        :param pulumi.Input[int] power_min: When power=0, min tx power to use, HW-specific values will be used if not set
         :param pulumi.Input[str] preamble: enum: `auto`, `long`, `short`
-        :param pulumi.Input[bool] standard_power: for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        :param pulumi.Input[bool] standard_power: For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
         if allow_rrm_disable is not None:
             pulumi.set(__self__, "allow_rrm_disable", allow_rrm_disable)
@@ -27734,7 +28024,7 @@ class RftemplateModelSpecificBand6Args:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable the radio
+        Whether to disable the radio
         """
         return pulumi.get(self, "disabled")
 
@@ -27746,7 +28036,7 @@ class RftemplateModelSpecificBand6Args:
     @pulumi.getter
     def power(self) -> Optional[pulumi.Input[int]]:
         """
-        TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+        Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
         """
         return pulumi.get(self, "power")
 
@@ -27758,7 +28048,7 @@ class RftemplateModelSpecificBand6Args:
     @pulumi.getter(name="powerMax")
     def power_max(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, max tx power to use, HW-specific values will be used if not set
+        When power=0, max tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_max")
 
@@ -27770,7 +28060,7 @@ class RftemplateModelSpecificBand6Args:
     @pulumi.getter(name="powerMin")
     def power_min(self) -> Optional[pulumi.Input[int]]:
         """
-        when power=0, min tx power to use, HW-specific values will be used if not set
+        When power=0, min tx power to use, HW-specific values will be used if not set
         """
         return pulumi.get(self, "power_min")
 
@@ -27794,7 +28084,7 @@ class RftemplateModelSpecificBand6Args:
     @pulumi.getter(name="standardPower")
     def standard_power(self) -> Optional[pulumi.Input[bool]]:
         """
-        for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we'll fallback to Low Power Indoor if AFC failed
+        For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we'll fall back to Low Power Indoor if AFC failed
         """
         return pulumi.get(self, "standard_power")
 
@@ -27856,6 +28146,71 @@ class ServiceSpecArgs:
     @protocol.setter
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
+
+
+if not MYPY:
+    class ServicepolicyAntivirusArgsDict(TypedDict):
+        avprofile_id: NotRequired[pulumi.Input[str]]
+        """
+        org-level AV Profile can be used, this takes precendence over 'profile'
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        profile: NotRequired[pulumi.Input[str]]
+        """
+        Default / noftp / httponly / or keys from av_profiles
+        """
+elif False:
+    ServicepolicyAntivirusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServicepolicyAntivirusArgs:
+    def __init__(__self__, *,
+                 avprofile_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 profile: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] avprofile_id: org-level AV Profile can be used, this takes precendence over 'profile'
+        :param pulumi.Input[str] profile: Default / noftp / httponly / or keys from av_profiles
+        """
+        if avprofile_id is not None:
+            pulumi.set(__self__, "avprofile_id", avprofile_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+
+    @property
+    @pulumi.getter(name="avprofileId")
+    def avprofile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        org-level AV Profile can be used, this takes precendence over 'profile'
+        """
+        return pulumi.get(self, "avprofile_id")
+
+    @avprofile_id.setter
+    def avprofile_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "avprofile_id", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        Default / noftp / httponly / or keys from av_profiles
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "profile", value)
 
 
 if not MYPY:
@@ -27962,7 +28317,7 @@ if not MYPY:
         """
         profile: NotRequired[pulumi.Input[str]]
         """
-        `strict` (default) / `standard` / or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
 elif False:
     ServicepolicyIdpArgsDict: TypeAlias = Mapping[str, Any]
@@ -27976,7 +28331,7 @@ class ServicepolicyIdpArgs:
                  profile: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] idpprofile_id: org_level IDP Profile can be used, this takes precedence over `profile`
-        :param pulumi.Input[str] profile: `strict` (default) / `standard` / or keys from from idp_profiles
+        :param pulumi.Input[str] profile: enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
         if alert_only is not None:
             pulumi.set(__self__, "alert_only", alert_only)
@@ -28021,7 +28376,7 @@ class ServicepolicyIdpArgs:
     @pulumi.getter
     def profile(self) -> Optional[pulumi.Input[str]]:
         """
-        `strict` (default) / `standard` / or keys from from idp_profiles
+        enum: `Custom`, `strict` (default), `standard` or keys from idp_profiles
         """
         return pulumi.get(self, "profile")
 
@@ -28031,10 +28386,55 @@ class ServicepolicyIdpArgs:
 
 
 if not MYPY:
+    class ServicepolicySslProxyArgsDict(TypedDict):
+        ciphers_category: NotRequired[pulumi.Input[str]]
+        """
+        enum: `medium`, `strong`, `weak`
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+elif False:
+    ServicepolicySslProxyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServicepolicySslProxyArgs:
+    def __init__(__self__, *,
+                 ciphers_category: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] ciphers_category: enum: `medium`, `strong`, `weak`
+        """
+        if ciphers_category is not None:
+            pulumi.set(__self__, "ciphers_category", ciphers_category)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="ciphersCategory")
+    def ciphers_category(self) -> Optional[pulumi.Input[str]]:
+        """
+        enum: `medium`, `strong`, `weak`
+        """
+        return pulumi.get(self, "ciphers_category")
+
+    @ciphers_category.setter
+    def ciphers_category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ciphers_category", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
     class SettingApiPolicyArgsDict(TypedDict):
         no_reveal: NotRequired[pulumi.Input[bool]]
         """
-        by default, API hides password/secrets when the user doesn't have write access
+        By default, API hides password/secrets when the user doesn't have write access
           * `true`: API will hide passwords/secrets for all users
           * `false`: API will hide passwords/secrets for read-only users
         """
@@ -28046,7 +28446,7 @@ class SettingApiPolicyArgs:
     def __init__(__self__, *,
                  no_reveal: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] no_reveal: by default, API hides password/secrets when the user doesn't have write access
+        :param pulumi.Input[bool] no_reveal: By default, API hides password/secrets when the user doesn't have write access
                  * `true`: API will hide passwords/secrets for all users
                  * `false`: API will hide passwords/secrets for read-only users
         """
@@ -28057,7 +28457,7 @@ class SettingApiPolicyArgs:
     @pulumi.getter(name="noReveal")
     def no_reveal(self) -> Optional[pulumi.Input[bool]]:
         """
-        by default, API hides password/secrets when the user doesn't have write access
+        By default, API hides password/secrets when the user doesn't have write access
           * `true`: API will hide passwords/secrets for all users
           * `false`: API will hide passwords/secrets for read-only users
         """
@@ -28107,7 +28507,7 @@ if not MYPY:
         apitoken: pulumi.Input[str]
         url: NotRequired[pulumi.Input[str]]
         """
-        if using CS Enteprise
+        If using CS Enteprise
         """
 elif False:
     SettingCloudsharkArgsDict: TypeAlias = Mapping[str, Any]
@@ -28118,7 +28518,7 @@ class SettingCloudsharkArgs:
                  apitoken: pulumi.Input[str],
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] url: if using CS Enteprise
+        :param pulumi.Input[str] url: If using CS Enteprise
         """
         pulumi.set(__self__, "apitoken", apitoken)
         if url is not None:
@@ -28137,7 +28537,7 @@ class SettingCloudsharkArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        if using CS Enteprise
+        If using CS Enteprise
         """
         return pulumi.get(self, "url")
 
@@ -28521,15 +28921,15 @@ if not MYPY:
     class SettingMgmtArgsDict(TypedDict):
         mxtunnel_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of Mist Tunnels
+        List of Mist Tunnels
         """
         use_mxtunnel: NotRequired[pulumi.Input[bool]]
         """
-        whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+        Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
         """
         use_wxtunnel: NotRequired[pulumi.Input[bool]]
         """
-        whether to use wxtunnel for mgmt connectivity
+        Whether to use wxtunnel for mgmt connectivity
         """
 elif False:
     SettingMgmtArgsDict: TypeAlias = Mapping[str, Any]
@@ -28541,9 +28941,9 @@ class SettingMgmtArgs:
                  use_mxtunnel: Optional[pulumi.Input[bool]] = None,
                  use_wxtunnel: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: list of Mist Tunnels
-        :param pulumi.Input[bool] use_mxtunnel: whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
-        :param pulumi.Input[bool] use_wxtunnel: whether to use wxtunnel for mgmt connectivity
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mxtunnel_ids: List of Mist Tunnels
+        :param pulumi.Input[bool] use_mxtunnel: Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+        :param pulumi.Input[bool] use_wxtunnel: Whether to use wxtunnel for mgmt connectivity
         """
         if mxtunnel_ids is not None:
             pulumi.set(__self__, "mxtunnel_ids", mxtunnel_ids)
@@ -28556,7 +28956,7 @@ class SettingMgmtArgs:
     @pulumi.getter(name="mxtunnelIds")
     def mxtunnel_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of Mist Tunnels
+        List of Mist Tunnels
         """
         return pulumi.get(self, "mxtunnel_ids")
 
@@ -28568,7 +28968,7 @@ class SettingMgmtArgs:
     @pulumi.getter(name="useMxtunnel")
     def use_mxtunnel(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+        Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
         """
         return pulumi.get(self, "use_mxtunnel")
 
@@ -28580,7 +28980,7 @@ class SettingMgmtArgs:
     @pulumi.getter(name="useWxtunnel")
     def use_wxtunnel(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to use wxtunnel for mgmt connectivity
+        Whether to use wxtunnel for mgmt connectivity
         """
         return pulumi.get(self, "use_wxtunnel")
 
@@ -28593,7 +28993,7 @@ if not MYPY:
     class SettingMistNacArgsDict(TypedDict):
         cacerts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of PEM-encoded ca certs
+        List of PEM-encoded ca certs
         """
         default_idp_id: NotRequired[pulumi.Input[str]]
         """
@@ -28605,13 +29005,11 @@ if not MYPY:
         """
         eap_ssl_security_level: NotRequired[pulumi.Input[int]]
         """
-        eap ssl security level
-        see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+        eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
         """
         eu_only: NotRequired[pulumi.Input[bool]]
         """
-        By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-        For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+        By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
         """
         idp_machine_cert_lookup_field: NotRequired[pulumi.Input[str]]
         """
@@ -28619,8 +29017,7 @@ if not MYPY:
         """
         idp_user_cert_lookup_field: NotRequired[pulumi.Input[str]]
         """
-        allow customer to choose the EAP-TLS client certificate's field
-        to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+        allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
         """
         idps: NotRequired[pulumi.Input[Sequence[pulumi.Input['SettingMistNacIdpArgsDict']]]]
         server_cert: NotRequired[pulumi.Input['SettingMistNacServerCertArgsDict']]
@@ -28629,13 +29026,11 @@ if not MYPY:
         """
         use_ip_version: NotRequired[pulumi.Input[str]]
         """
-        by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+        by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
         """
         use_ssl_port: NotRequired[pulumi.Input[bool]]
         """
-        By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac. 
-        Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), 
-        This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+        By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
         """
 elif False:
     SettingMistNacArgsDict: TypeAlias = Mapping[str, Any]
@@ -28655,21 +29050,16 @@ class SettingMistNacArgs:
                  use_ip_version: Optional[pulumi.Input[str]] = None,
                  use_ssl_port: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: list of PEM-encoded ca certs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cacerts: List of PEM-encoded ca certs
         :param pulumi.Input[str] default_idp_id: use this IDP when no explicit realm present in the incoming username/CN OR when no IDP is explicitly mapped to the incoming realm.
         :param pulumi.Input[bool] disable_rsae_algorithms: to disable RSAE_PSS_SHA256, RSAE_PSS_SHA384, RSAE_PSS_SHA512 from server side. see https://www.openssl.org/docs/man3.0/man1/openssl-ciphers.html
-        :param pulumi.Input[int] eap_ssl_security_level: eap ssl security level
-               see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
-        :param pulumi.Input[bool] eu_only: By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-               For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+        :param pulumi.Input[int] eap_ssl_security_level: eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+        :param pulumi.Input[bool] eu_only: By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
         :param pulumi.Input[str] idp_machine_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field to use for IDP Machine Groups lookup. enum: `automatic`, `cn`, `dns`
-        :param pulumi.Input[str] idp_user_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field
-               to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+        :param pulumi.Input[str] idp_user_cert_lookup_field: allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
         :param pulumi.Input['SettingMistNacServerCertArgs'] server_cert: radius server cert to be presented in EAP TLS
-        :param pulumi.Input[str] use_ip_version: by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
-        :param pulumi.Input[bool] use_ssl_port: By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac. 
-               Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), 
-               This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+        :param pulumi.Input[str] use_ip_version: by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+        :param pulumi.Input[bool] use_ssl_port: By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
         """
         if cacerts is not None:
             pulumi.set(__self__, "cacerts", cacerts)
@@ -28698,7 +29088,7 @@ class SettingMistNacArgs:
     @pulumi.getter
     def cacerts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of PEM-encoded ca certs
+        List of PEM-encoded ca certs
         """
         return pulumi.get(self, "cacerts")
 
@@ -28734,8 +29124,7 @@ class SettingMistNacArgs:
     @pulumi.getter(name="eapSslSecurityLevel")
     def eap_ssl_security_level(self) -> Optional[pulumi.Input[int]]:
         """
-        eap ssl security level
-        see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
+        eap ssl security level, see https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set_security_level.html#DEFAULT-CALLBACK-BEHAVIOUR
         """
         return pulumi.get(self, "eap_ssl_security_level")
 
@@ -28747,8 +29136,7 @@ class SettingMistNacArgs:
     @pulumi.getter(name="euOnly")
     def eu_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        By default NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site.
-        For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
+        By default, NAC POD failover considers all NAC pods available around the globe, i.e. EU, US, or APAC based, failover happens based on geo IP of the originating site. For strict GDPR compliancy NAC POD failover would only happen between the PODs located within the EU environment, and no authentication would take place outside of EU. This is an org setting that is applicable to WLANs, switch templates, mxedge clusters that have mist_nac enabled
         """
         return pulumi.get(self, "eu_only")
 
@@ -28772,8 +29160,7 @@ class SettingMistNacArgs:
     @pulumi.getter(name="idpUserCertLookupField")
     def idp_user_cert_lookup_field(self) -> Optional[pulumi.Input[str]]:
         """
-        allow customer to choose the EAP-TLS client certificate's field
-        to use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
+        allow customer to choose the EAP-TLS client certificate's field. To use for IDP User Groups lookup. enum: `automatic`, `cn`, `email`, `upn`
         """
         return pulumi.get(self, "idp_user_cert_lookup_field")
 
@@ -28806,7 +29193,7 @@ class SettingMistNacArgs:
     @pulumi.getter(name="useIpVersion")
     def use_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        by default NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
+        by default, NAS devices(switches/aps) and proxies(mxedge) are configured to reach mist-nac via IPv4. enum: `v4`, `v6`
         """
         return pulumi.get(self, "use_ip_version")
 
@@ -28818,9 +29205,7 @@ class SettingMistNacArgs:
     @pulumi.getter(name="useSslPort")
     def use_ssl_port(self) -> Optional[pulumi.Input[bool]]:
         """
-        By default NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(radsec) to reach mist-nac. 
-        Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), 
-        This is a org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
+        By default, NAS devices (switches/aps) and proxies(mxedge) are configured to use port TCP2083(RadSec) to reach mist-nac. Set `use_ssl_port`==`true` to override that port with TCP43 (ssl), This is an org level setting that is applicable to wlans, switch_templates, and mxedge_clusters that have mist-nac enabled
         """
         return pulumi.get(self, "use_ssl_port")
 
@@ -28837,13 +29222,13 @@ if not MYPY:
         """
         user_realms: pulumi.Input[Sequence[pulumi.Input[str]]]
         """
-        which realm should trigger this IDP. User Realm is extracted from:
+        Which realm should trigger this IDP. User Realm is extracted from:
           * Username-AVP (`mist.com` from john@mist.com)
           * Cert CN
         """
         exclude_realms: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         """
 elif False:
     SettingMistNacIdpArgsDict: TypeAlias = Mapping[str, Any]
@@ -28856,10 +29241,10 @@ class SettingMistNacIdpArgs:
                  exclude_realms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] id: ID of the `mist_nacidp`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_realms: which realm should trigger this IDP. User Realm is extracted from:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_realms: Which realm should trigger this IDP. User Realm is extracted from:
                  * Username-AVP (`mist.com` from john@mist.com)
                  * Cert CN
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_realms: when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_realms: When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "user_realms", user_realms)
@@ -28882,7 +29267,7 @@ class SettingMistNacIdpArgs:
     @pulumi.getter(name="userRealms")
     def user_realms(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        which realm should trigger this IDP. User Realm is extracted from:
+        Which realm should trigger this IDP. User Realm is extracted from:
           * Username-AVP (`mist.com` from john@mist.com)
           * Cert CN
         """
@@ -28896,7 +29281,7 @@ class SettingMistNacIdpArgs:
     @pulumi.getter(name="excludeRealms")
     def exclude_realms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
+        When the IDP of mxedge_proxy type, exclude the following realms from proxying in addition to other valid home realms in this org
         """
         return pulumi.get(self, "exclude_realms")
 
@@ -29058,11 +29443,11 @@ if not MYPY:
     class SettingOpticPortConfigArgsDict(TypedDict):
         channelized: NotRequired[pulumi.Input[bool]]
         """
-        enable channelization
+        Enable channelization
         """
         speed: NotRequired[pulumi.Input[str]]
         """
-        interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+        Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
         """
 elif False:
     SettingOpticPortConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -29073,8 +29458,8 @@ class SettingOpticPortConfigArgs:
                  channelized: Optional[pulumi.Input[bool]] = None,
                  speed: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] channelized: enable channelization
-        :param pulumi.Input[str] speed: interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+        :param pulumi.Input[bool] channelized: Enable channelization
+        :param pulumi.Input[str] speed: Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
         """
         if channelized is not None:
             pulumi.set(__self__, "channelized", channelized)
@@ -29085,7 +29470,7 @@ class SettingOpticPortConfigArgs:
     @pulumi.getter
     def channelized(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable channelization
+        Enable channelization
         """
         return pulumi.get(self, "channelized")
 
@@ -29097,7 +29482,7 @@ class SettingOpticPortConfigArgs:
     @pulumi.getter
     def speed(self) -> Optional[pulumi.Input[str]]:
         """
-        interface speed (e.g. `25g`, `50g`), use the chassis speed by default
+        Interface speed (e.g. `25g`, `50g`), use the chassis speed by default
         """
         return pulumi.get(self, "speed")
 
@@ -29110,7 +29495,7 @@ if not MYPY:
     class SettingPasswordPolicyArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether the policy is enabled
+        Whether the policy is enabled
         """
         expiry_in_days: NotRequired[pulumi.Input[int]]
         """
@@ -29118,15 +29503,15 @@ if not MYPY:
         """
         min_length: NotRequired[pulumi.Input[int]]
         """
-        required password length
+        Required password length
         """
         requires_special_char: NotRequired[pulumi.Input[bool]]
         """
-        whether to require special character
+        Whether to require special character
         """
         requires_two_factor_auth: NotRequired[pulumi.Input[bool]]
         """
-        whether to require two-factor auth
+        Whether to require two-factor auth
         """
 elif False:
     SettingPasswordPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -29140,11 +29525,11 @@ class SettingPasswordPolicyArgs:
                  requires_special_char: Optional[pulumi.Input[bool]] = None,
                  requires_two_factor_auth: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether the policy is enabled
+        :param pulumi.Input[bool] enabled: Whether the policy is enabled
         :param pulumi.Input[int] expiry_in_days: password expiry in days
-        :param pulumi.Input[int] min_length: required password length
-        :param pulumi.Input[bool] requires_special_char: whether to require special character
-        :param pulumi.Input[bool] requires_two_factor_auth: whether to require two-factor auth
+        :param pulumi.Input[int] min_length: Required password length
+        :param pulumi.Input[bool] requires_special_char: Whether to require special character
+        :param pulumi.Input[bool] requires_two_factor_auth: Whether to require two-factor auth
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -29161,7 +29546,7 @@ class SettingPasswordPolicyArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether the policy is enabled
+        Whether the policy is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -29185,7 +29570,7 @@ class SettingPasswordPolicyArgs:
     @pulumi.getter(name="minLength")
     def min_length(self) -> Optional[pulumi.Input[int]]:
         """
-        required password length
+        Required password length
         """
         return pulumi.get(self, "min_length")
 
@@ -29197,7 +29582,7 @@ class SettingPasswordPolicyArgs:
     @pulumi.getter(name="requiresSpecialChar")
     def requires_special_char(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to require special character
+        Whether to require special character
         """
         return pulumi.get(self, "requires_special_char")
 
@@ -29209,7 +29594,7 @@ class SettingPasswordPolicyArgs:
     @pulumi.getter(name="requiresTwoFactorAuth")
     def requires_two_factor_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to require two-factor auth
+        Whether to require two-factor auth
         """
         return pulumi.get(self, "requires_two_factor_auth")
 
@@ -29223,7 +29608,7 @@ if not MYPY:
         bucket: NotRequired[pulumi.Input[str]]
         max_pkt_len: NotRequired[pulumi.Input[int]]
         """
-        max_len of non-management packets to capture
+        Max_len of non-management packets to capture
         """
 elif False:
     SettingPcapArgsDict: TypeAlias = Mapping[str, Any]
@@ -29234,7 +29619,7 @@ class SettingPcapArgs:
                  bucket: Optional[pulumi.Input[str]] = None,
                  max_pkt_len: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_pkt_len: max_len of non-management packets to capture
+        :param pulumi.Input[int] max_pkt_len: Max_len of non-management packets to capture
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -29254,7 +29639,7 @@ class SettingPcapArgs:
     @pulumi.getter(name="maxPktLen")
     def max_pkt_len(self) -> Optional[pulumi.Input[int]]:
         """
-        max_len of non-management packets to capture
+        Max_len of non-management packets to capture
         """
         return pulumi.get(self, "max_pkt_len")
 
@@ -29267,7 +29652,7 @@ if not MYPY:
     class SettingSecurityArgsDict(TypedDict):
         disable_local_ssh: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+        Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
         """
         fips_zeroize_password: NotRequired[pulumi.Input[str]]
         """
@@ -29275,7 +29660,7 @@ if not MYPY:
         """
         limit_ssh_access: NotRequired[pulumi.Input[bool]]
         """
-        whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+        Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
         """
 elif False:
     SettingSecurityArgsDict: TypeAlias = Mapping[str, Any]
@@ -29287,9 +29672,9 @@ class SettingSecurityArgs:
                  fips_zeroize_password: Optional[pulumi.Input[str]] = None,
                  limit_ssh_access: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] disable_local_ssh: whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+        :param pulumi.Input[bool] disable_local_ssh: Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
         :param pulumi.Input[str] fips_zeroize_password: password required to zeroize devices (FIPS) on site level
-        :param pulumi.Input[bool] limit_ssh_access: whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+        :param pulumi.Input[bool] limit_ssh_access: Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
         """
         if disable_local_ssh is not None:
             pulumi.set(__self__, "disable_local_ssh", disable_local_ssh)
@@ -29302,7 +29687,7 @@ class SettingSecurityArgs:
     @pulumi.getter(name="disableLocalSsh")
     def disable_local_ssh(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
+        Whether to disable local SSH (by default, local SSH is enabled with allow_mist in Org is enabled
         """
         return pulumi.get(self, "disable_local_ssh")
 
@@ -29326,7 +29711,7 @@ class SettingSecurityArgs:
     @pulumi.getter(name="limitSshAccess")
     def limit_ssh_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
+        Whether to allow certain SSH keys to SSH into the AP (see Site:Setting)
         """
         return pulumi.get(self, "limit_ssh_access")
 
@@ -29421,7 +29806,7 @@ if not MYPY:
         custom_test_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         disabled: NotRequired[pulumi.Input[bool]]
         """
-        for some vlans where we don't want this to run
+        For some vlans where we don't want this to run
         """
         vlan_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
 elif False:
@@ -29434,7 +29819,7 @@ class SettingSyntheticTestVlanArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  vlan_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[bool] disabled: for some vlans where we don't want this to run
+        :param pulumi.Input[bool] disabled: For some vlans where we don't want this to run
         """
         if custom_test_urls is not None:
             pulumi.set(__self__, "custom_test_urls", custom_test_urls)
@@ -29456,7 +29841,7 @@ class SettingSyntheticTestVlanArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        for some vlans where we don't want this to run
+        For some vlans where we don't want this to run
         """
         return pulumi.get(self, "disabled")
 
@@ -29479,7 +29864,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         time_of_day: NotRequired[pulumi.Input[str]]
         """
-        any / HH:MM (24-hour format)
+        `any` / HH:MM (24-hour format)
         """
 elif False:
     SettingSyntheticTestWanSpeedtestArgsDict: TypeAlias = Mapping[str, Any]
@@ -29490,7 +29875,7 @@ class SettingSyntheticTestWanSpeedtestArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  time_of_day: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] time_of_day: any / HH:MM (24-hour format)
+        :param pulumi.Input[str] time_of_day: `any` / HH:MM (24-hour format)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -29510,7 +29895,7 @@ class SettingSyntheticTestWanSpeedtestArgs:
     @pulumi.getter(name="timeOfDay")
     def time_of_day(self) -> Optional[pulumi.Input[str]]:
         """
-        any / HH:MM (24-hour format)
+        `any` / HH:MM (24-hour format)
         """
         return pulumi.get(self, "time_of_day")
 
@@ -29851,11 +30236,11 @@ if not MYPY:
     class WlanAcctServerArgsDict(TypedDict):
         host: pulumi.Input[str]
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         secret: pulumi.Input[str]
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         keywrap_enabled: NotRequired[pulumi.Input[bool]]
         keywrap_format: NotRequired[pulumi.Input[str]]
@@ -29882,8 +30267,8 @@ class WlanAcctServerArgs:
                  keywrap_mack: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] host: ip / hostname of RADIUS server
-        :param pulumi.Input[str] secret: secret of RADIUS server
+        :param pulumi.Input[str] host: IP/ hostname of RADIUS server
+        :param pulumi.Input[str] secret: Secretof RADIUS server
         :param pulumi.Input[str] keywrap_format: enum: `ascii`, `hex`
         :param pulumi.Input[int] port: Acct port of RADIUS server
         """
@@ -29904,7 +30289,7 @@ class WlanAcctServerArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         return pulumi.get(self, "host")
 
@@ -29916,7 +30301,7 @@ class WlanAcctServerArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         return pulumi.get(self, "secret")
 
@@ -29984,16 +30369,16 @@ if not MYPY:
         """
         console_url: NotRequired[pulumi.Input[str]]
         """
-        console URL
+        Console URL
         """
         enabled: NotRequired[pulumi.Input[bool]]
         password: NotRequired[pulumi.Input[str]]
         """
-        password
+        Password
         """
         username: NotRequired[pulumi.Input[str]]
         """
-        username
+        Username
         """
 elif False:
     WlanAirwatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -30008,9 +30393,9 @@ class WlanAirwatchArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] api_key: API Key
-        :param pulumi.Input[str] console_url: console URL
-        :param pulumi.Input[str] password: password
-        :param pulumi.Input[str] username: username
+        :param pulumi.Input[str] console_url: Console URL
+        :param pulumi.Input[str] password: Password
+        :param pulumi.Input[str] username: Username
         """
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
@@ -30039,7 +30424,7 @@ class WlanAirwatchArgs:
     @pulumi.getter(name="consoleUrl")
     def console_url(self) -> Optional[pulumi.Input[str]]:
         """
-        console URL
+        Console URL
         """
         return pulumi.get(self, "console_url")
 
@@ -30060,7 +30445,7 @@ class WlanAirwatchArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        password
+        Password
         """
         return pulumi.get(self, "password")
 
@@ -30072,7 +30457,7 @@ class WlanAirwatchArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        username
+        Username
         """
         return pulumi.get(self, "username")
 
@@ -30203,11 +30588,11 @@ if not MYPY:
         dscp: NotRequired[pulumi.Input[int]]
         dst_subnet: NotRequired[pulumi.Input[str]]
         """
-        subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         """
         src_subnet: NotRequired[pulumi.Input[str]]
         """
-        subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         """
 elif False:
     WlanAppQosAppsArgsDict: TypeAlias = Mapping[str, Any]
@@ -30219,8 +30604,8 @@ class WlanAppQosAppsArgs:
                  dst_subnet: Optional[pulumi.Input[str]] = None,
                  src_subnet: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] dst_subnet: subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
-        :param pulumi.Input[str] src_subnet: subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        :param pulumi.Input[str] dst_subnet: Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        :param pulumi.Input[str] src_subnet: Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         """
         if dscp is not None:
             pulumi.set(__self__, "dscp", dscp)
@@ -30242,7 +30627,7 @@ class WlanAppQosAppsArgs:
     @pulumi.getter(name="dstSubnet")
     def dst_subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         """
         return pulumi.get(self, "dst_subnet")
 
@@ -30254,7 +30639,7 @@ class WlanAppQosAppsArgs:
     @pulumi.getter(name="srcSubnet")
     def src_subnet(self) -> Optional[pulumi.Input[str]]:
         """
-        subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
+        Subnet filter is not required but helps AP to only inspect certain traffic (thus reducing AP load)
         """
         return pulumi.get(self, "src_subnet")
 
@@ -30346,23 +30731,23 @@ if not MYPY:
         """
         eap_reauth: NotRequired[pulumi.Input[bool]]
         """
-        whether to trigger EAP reauth when the session ends
+        Whether to trigger EAP reauth when the session ends
         """
         enable_mac_auth: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable MAC Auth, uses the same auth_servers
+        Whether to enable MAC Auth, uses the same auth_servers
         """
         key_idx: NotRequired[pulumi.Input[int]]
         """
-        when `type`==`wep`
+        When `type`==`wep`
         """
         keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
         """
         multi_psk_only: NotRequired[pulumi.Input[bool]]
         """
-        when `type`==`psk`, whether to only use multi_psk
+        When `type`==`psk`, whether to only use multi_psk
         """
         owe: NotRequired[pulumi.Input[str]]
         """
@@ -30370,15 +30755,15 @@ if not MYPY:
         """
         pairwises: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
         """
         private_wlan: NotRequired[pulumi.Input[bool]]
         """
-        when `multi_psk_only`==`true`, whether private wlan is enabled
+        When `multi_psk_only`==`true`, whether private wlan is enabled
         """
         psk: NotRequired[pulumi.Input[str]]
         """
-        when `type`==`psk`, 8-64 characters, or 64 hex characters
+        When `type`==`psk`, 8-64 characters, or 64 hex characters
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -30386,7 +30771,7 @@ if not MYPY:
         """
         wep_as_secondary_auth: NotRequired[pulumi.Input[bool]]
         """
-        enable WEP as secondary auth
+        Enable WEP as secondary auth
         """
 elif False:
     WlanAuthArgsDict: TypeAlias = Mapping[str, Any]
@@ -30408,17 +30793,17 @@ class WlanAuthArgs:
                  wep_as_secondary_auth: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] anticlog_threshold: SAE anti-clogging token threshold
-        :param pulumi.Input[bool] eap_reauth: whether to trigger EAP reauth when the session ends
-        :param pulumi.Input[bool] enable_mac_auth: whether to enable MAC Auth, uses the same auth_servers
-        :param pulumi.Input[int] key_idx: when `type`==`wep`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
-        :param pulumi.Input[bool] multi_psk_only: when `type`==`psk`, whether to only use multi_psk
+        :param pulumi.Input[bool] eap_reauth: Whether to trigger EAP reauth when the session ends
+        :param pulumi.Input[bool] enable_mac_auth: Whether to enable MAC Auth, uses the same auth_servers
+        :param pulumi.Input[int] key_idx: When `type`==`wep`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] keys: When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        :param pulumi.Input[bool] multi_psk_only: When `type`==`psk`, whether to only use multi_psk
         :param pulumi.Input[str] owe: if `type`==`open`. enum: `disabled`, `enabled` (means transition mode), `required`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pairwises: when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
-        :param pulumi.Input[bool] private_wlan: when `multi_psk_only`==`true`, whether private wlan is enabled
-        :param pulumi.Input[str] psk: when `type`==`psk`, 8-64 characters, or 64 hex characters
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pairwises: When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        :param pulumi.Input[bool] private_wlan: When `multi_psk_only`==`true`, whether private wlan is enabled
+        :param pulumi.Input[str] psk: When `type`==`psk`, 8-64 characters, or 64 hex characters
         :param pulumi.Input[str] type: enum: `eap`, `eap192`, `open`, `psk`, `psk-tkip`, `psk-wpa2-tkip`, `wep`
-        :param pulumi.Input[bool] wep_as_secondary_auth: enable WEP as secondary auth
+        :param pulumi.Input[bool] wep_as_secondary_auth: Enable WEP as secondary auth
         """
         if anticlog_threshold is not None:
             pulumi.set(__self__, "anticlog_threshold", anticlog_threshold)
@@ -30461,7 +30846,7 @@ class WlanAuthArgs:
     @pulumi.getter(name="eapReauth")
     def eap_reauth(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to trigger EAP reauth when the session ends
+        Whether to trigger EAP reauth when the session ends
         """
         return pulumi.get(self, "eap_reauth")
 
@@ -30473,7 +30858,7 @@ class WlanAuthArgs:
     @pulumi.getter(name="enableMacAuth")
     def enable_mac_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable MAC Auth, uses the same auth_servers
+        Whether to enable MAC Auth, uses the same auth_servers
         """
         return pulumi.get(self, "enable_mac_auth")
 
@@ -30485,7 +30870,7 @@ class WlanAuthArgs:
     @pulumi.getter(name="keyIdx")
     def key_idx(self) -> Optional[pulumi.Input[int]]:
         """
-        when `type`==`wep`
+        When `type`==`wep`
         """
         return pulumi.get(self, "key_idx")
 
@@ -30497,7 +30882,7 @@ class WlanAuthArgs:
     @pulumi.getter
     def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
+        When type=wep, four 10-character or 26-character hex string, null can be used. All keys, if provided, have to be in the same length
         """
         return pulumi.get(self, "keys")
 
@@ -30509,7 +30894,7 @@ class WlanAuthArgs:
     @pulumi.getter(name="multiPskOnly")
     def multi_psk_only(self) -> Optional[pulumi.Input[bool]]:
         """
-        when `type`==`psk`, whether to only use multi_psk
+        When `type`==`psk`, whether to only use multi_psk
         """
         return pulumi.get(self, "multi_psk_only")
 
@@ -30533,7 +30918,7 @@ class WlanAuthArgs:
     @pulumi.getter
     def pairwises(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        when `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
+        When `type`=`psk` or `type`=`eap`, one or more of `wpa1-ccmp`, `wpa1-tkip`, `wpa2-ccmp`, `wpa2-tkip`, `wpa3`
         """
         return pulumi.get(self, "pairwises")
 
@@ -30545,7 +30930,7 @@ class WlanAuthArgs:
     @pulumi.getter(name="privateWlan")
     def private_wlan(self) -> Optional[pulumi.Input[bool]]:
         """
-        when `multi_psk_only`==`true`, whether private wlan is enabled
+        When `multi_psk_only`==`true`, whether private wlan is enabled
         """
         return pulumi.get(self, "private_wlan")
 
@@ -30557,7 +30942,7 @@ class WlanAuthArgs:
     @pulumi.getter
     def psk(self) -> Optional[pulumi.Input[str]]:
         """
-        when `type`==`psk`, 8-64 characters, or 64 hex characters
+        When `type`==`psk`, 8-64 characters, or 64 hex characters
         """
         return pulumi.get(self, "psk")
 
@@ -30581,7 +30966,7 @@ class WlanAuthArgs:
     @pulumi.getter(name="wepAsSecondaryAuth")
     def wep_as_secondary_auth(self) -> Optional[pulumi.Input[bool]]:
         """
-        enable WEP as secondary auth
+        Enable WEP as secondary auth
         """
         return pulumi.get(self, "wep_as_secondary_auth")
 
@@ -30594,11 +30979,11 @@ if not MYPY:
     class WlanAuthServerArgsDict(TypedDict):
         host: pulumi.Input[str]
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         secret: pulumi.Input[str]
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         keywrap_enabled: NotRequired[pulumi.Input[bool]]
         keywrap_format: NotRequired[pulumi.Input[str]]
@@ -30613,7 +30998,7 @@ if not MYPY:
         """
         require_message_authenticator: NotRequired[pulumi.Input[bool]]
         """
-        whether to require Message-Authenticator in requests
+        Whether to require Message-Authenticator in requests
         """
 elif False:
     WlanAuthServerArgsDict: TypeAlias = Mapping[str, Any]
@@ -30630,11 +31015,11 @@ class WlanAuthServerArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  require_message_authenticator: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] host: ip / hostname of RADIUS server
-        :param pulumi.Input[str] secret: secret of RADIUS server
+        :param pulumi.Input[str] host: IP/ hostname of RADIUS server
+        :param pulumi.Input[str] secret: Secretof RADIUS server
         :param pulumi.Input[str] keywrap_format: enum: `ascii`, `hex`
         :param pulumi.Input[int] port: Auth port of RADIUS server
-        :param pulumi.Input[bool] require_message_authenticator: whether to require Message-Authenticator in requests
+        :param pulumi.Input[bool] require_message_authenticator: Whether to require Message-Authenticator in requests
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "secret", secret)
@@ -30655,7 +31040,7 @@ class WlanAuthServerArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        ip / hostname of RADIUS server
+        IP/ hostname of RADIUS server
         """
         return pulumi.get(self, "host")
 
@@ -30667,7 +31052,7 @@ class WlanAuthServerArgs:
     @pulumi.getter
     def secret(self) -> pulumi.Input[str]:
         """
-        secret of RADIUS server
+        Secretof RADIUS server
         """
         return pulumi.get(self, "secret")
 
@@ -30730,7 +31115,7 @@ class WlanAuthServerArgs:
     @pulumi.getter(name="requireMessageAuthenticator")
     def require_message_authenticator(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to require Message-Authenticator in requests
+        Whether to require Message-Authenticator in requests
         """
         return pulumi.get(self, "require_message_authenticator")
 
@@ -30747,12 +31132,12 @@ if not MYPY:
         """
         services: pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgsDict']]]
         """
-        what services are allowed. 
+        What services are allowed. 
         Property key is the service name
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         """
 elif False:
     WlanBonjourArgsDict: TypeAlias = Mapping[str, Any]
@@ -30765,9 +31150,9 @@ class WlanBonjourArgs:
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_vlan_ids: additional VLAN IDs (on the LAN side or from other WLANs) should we be forwarding bonjour queries/responses
-        :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: what services are allowed. 
+        :param pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]] services: What services are allowed. 
                Property key is the service name
-        :param pulumi.Input[bool] enabled: whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        :param pulumi.Input[bool] enabled: Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         """
         pulumi.set(__self__, "additional_vlan_ids", additional_vlan_ids)
         pulumi.set(__self__, "services", services)
@@ -30790,7 +31175,7 @@ class WlanBonjourArgs:
     @pulumi.getter
     def services(self) -> pulumi.Input[Mapping[str, pulumi.Input['WlanBonjourServicesArgs']]]:
         """
-        what services are allowed. 
+        What services are allowed. 
         Property key is the service name
         """
         return pulumi.get(self, "services")
@@ -30803,7 +31188,7 @@ class WlanBonjourArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
+        Whether to enable bonjour for this WLAN. Once enabled, limit_bcast is assumed true, allow_mdns is assumed false
         """
         return pulumi.get(self, "enabled")
 
@@ -30816,11 +31201,11 @@ if not MYPY:
     class WlanBonjourServicesArgsDict(TypedDict):
         disable_local: NotRequired[pulumi.Input[bool]]
         """
-        whether to prevent wireless clients to discover bonjour devices on the same WLAN
+        Whether to prevent wireless clients to discover bonjour devices on the same WLAN
         """
         radius_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        optional, if the service is further restricted for certain RADIUS groups
+        Optional, if the service is further restricted for certain RADIUS groups
         """
         scope: NotRequired[pulumi.Input[str]]
         """
@@ -30836,8 +31221,8 @@ class WlanBonjourServicesArgs:
                  radius_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] disable_local: whether to prevent wireless clients to discover bonjour devices on the same WLAN
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] radius_groups: optional, if the service is further restricted for certain RADIUS groups
+        :param pulumi.Input[bool] disable_local: Whether to prevent wireless clients to discover bonjour devices on the same WLAN
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] radius_groups: Optional, if the service is further restricted for certain RADIUS groups
         :param pulumi.Input[str] scope: how bonjour services should be discovered for the same WLAN. enum: `same_ap`, `same_map`, `same_site`
         """
         if disable_local is not None:
@@ -30851,7 +31236,7 @@ class WlanBonjourServicesArgs:
     @pulumi.getter(name="disableLocal")
     def disable_local(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to prevent wireless clients to discover bonjour devices on the same WLAN
+        Whether to prevent wireless clients to discover bonjour devices on the same WLAN
         """
         return pulumi.get(self, "disable_local")
 
@@ -30863,7 +31248,7 @@ class WlanBonjourServicesArgs:
     @pulumi.getter(name="radiusGroups")
     def radius_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        optional, if the service is further restricted for certain RADIUS groups
+        Optional, if the service is further restricted for certain RADIUS groups
         """
         return pulumi.get(self, "radius_groups")
 
@@ -30888,15 +31273,15 @@ if not MYPY:
     class WlanCiscoCwaArgsDict(TypedDict):
         allowed_hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of hostnames without http(s):// (matched by substring)
+        List of hostnames without http(s):// (matched by substring)
         """
         allowed_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of CIDRs
+        List of CIDRs
         """
         blocked_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of blocked CIDRs
+        List of blocked CIDRs
         """
         enabled: NotRequired[pulumi.Input[bool]]
 elif False:
@@ -30910,9 +31295,9 @@ class WlanCiscoCwaArgs:
                  blocked_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hostnames: list of hostnames without http(s):// (matched by substring)
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_subnets: list of CIDRs
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_subnets: list of blocked CIDRs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_hostnames: List of hostnames without http(s):// (matched by substring)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_subnets: List of CIDRs
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_subnets: List of blocked CIDRs
         """
         if allowed_hostnames is not None:
             pulumi.set(__self__, "allowed_hostnames", allowed_hostnames)
@@ -30927,7 +31312,7 @@ class WlanCiscoCwaArgs:
     @pulumi.getter(name="allowedHostnames")
     def allowed_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of hostnames without http(s):// (matched by substring)
+        List of hostnames without http(s):// (matched by substring)
         """
         return pulumi.get(self, "allowed_hostnames")
 
@@ -30939,7 +31324,7 @@ class WlanCiscoCwaArgs:
     @pulumi.getter(name="allowedSubnets")
     def allowed_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of CIDRs
+        List of CIDRs
         """
         return pulumi.get(self, "allowed_subnets")
 
@@ -30951,7 +31336,7 @@ class WlanCiscoCwaArgs:
     @pulumi.getter(name="blockedSubnets")
     def blocked_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of blocked CIDRs
+        List of blocked CIDRs
         """
         return pulumi.get(self, "blocked_subnets")
 
@@ -30975,7 +31360,7 @@ if not MYPY:
         secret: pulumi.Input[str]
         disable_event_timestamp_check: NotRequired[pulumi.Input[bool]]
         """
-        whether to disable Event-Timestamp Check
+        Whether to disable Event-Timestamp Check
         """
         enabled: NotRequired[pulumi.Input[bool]]
         port: NotRequired[pulumi.Input[int]]
@@ -30991,7 +31376,7 @@ class WlanCoaServerArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[bool] disable_event_timestamp_check: whether to disable Event-Timestamp Check
+        :param pulumi.Input[bool] disable_event_timestamp_check: Whether to disable Event-Timestamp Check
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "secret", secret)
@@ -31024,7 +31409,7 @@ class WlanCoaServerArgs:
     @pulumi.getter(name="disableEventTimestampCheck")
     def disable_event_timestamp_check(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to disable Event-Timestamp Check
+        Whether to disable Event-Timestamp Check
         """
         return pulumi.get(self, "disable_event_timestamp_check")
 
@@ -31056,7 +31441,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         radius_groups: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+        Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         """
 elif False:
     WlanDnsServerRewriteArgsDict: TypeAlias = Mapping[str, Any]
@@ -31067,7 +31452,7 @@ class WlanDnsServerRewriteArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  radius_groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] radius_groups: map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] radius_groups: Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -31087,7 +31472,7 @@ class WlanDnsServerRewriteArgs:
     @pulumi.getter(name="radiusGroups")
     def radius_groups(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
+        Map between radius_group and the desired DNS server (IPv4 only). Property key is the RADIUS group, property value is the desired DNS Server
         """
         return pulumi.get(self, "radius_groups")
 
@@ -31100,13 +31485,13 @@ if not MYPY:
     class WlanDynamicPskArgsDict(TypedDict):
         default_psk: NotRequired[pulumi.Input[str]]
         """
-        default PSK to use if cloud WLC is not available, 8-63 characters
+        Default PSK to use if cloud WLC is not available, 8-63 characters
         """
         default_vlan_id: NotRequired[pulumi.Input[str]]
         enabled: NotRequired[pulumi.Input[bool]]
         force_lookup: NotRequired[pulumi.Input[bool]]
         """
-        when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         """
         source: NotRequired[pulumi.Input[str]]
         """
@@ -31124,8 +31509,8 @@ class WlanDynamicPskArgs:
                  force_lookup: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] default_psk: default PSK to use if cloud WLC is not available, 8-63 characters
-        :param pulumi.Input[bool] force_lookup: when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        :param pulumi.Input[str] default_psk: Default PSK to use if cloud WLC is not available, 8-63 characters
+        :param pulumi.Input[bool] force_lookup: When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         :param pulumi.Input[str] source: enum: `cloud_psks`, `radius`
         """
         if default_psk is not None:
@@ -31143,7 +31528,7 @@ class WlanDynamicPskArgs:
     @pulumi.getter(name="defaultPsk")
     def default_psk(self) -> Optional[pulumi.Input[str]]:
         """
-        default PSK to use if cloud WLC is not available, 8-63 characters
+        Default PSK to use if cloud WLC is not available, 8-63 characters
         """
         return pulumi.get(self, "default_psk")
 
@@ -31173,7 +31558,7 @@ class WlanDynamicPskArgs:
     @pulumi.getter(name="forceLookup")
     def force_lookup(self) -> Optional[pulumi.Input[bool]]:
         """
-        when 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
+        When 11r is enabled, we'll try to use the cached PMK, this can be disabled. `false` means auto
         """
         return pulumi.get(self, "force_lookup")
 
@@ -31206,7 +31591,7 @@ if not MYPY:
         """
         local_vlan_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        vlan_ids to be locally bridged
+        VLAN_ids to be locally bridged
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -31214,7 +31599,7 @@ if not MYPY:
         """
         vlans: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+        Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
           * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
           * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         """
@@ -31232,9 +31617,9 @@ class WlanDynamicVlanArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] default_vlan_ids: Default VLAN ID(s) can be a number, a range of VLAN IDs, a variable or multiple numbers, ranges or variables as a VLAN pool. Default VLAN as a pool of VLANS requires 0.14.x or newer firmware
         :param pulumi.Input[bool] enabled: Requires `vlan_enabled`==`true` to be set to `true`. Whether to enable dynamic vlan
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] local_vlan_ids: vlan_ids to be locally bridged
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] local_vlan_ids: VLAN_ids to be locally bridged
         :param pulumi.Input[str] type: standard (using Tunnel-Private-Group-ID, widely supported), airespace-interface-name (Airespace/Cisco). enum: `airespace-interface-name`, `standard`
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vlans: map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vlans: Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
                  * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
                  * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         """
@@ -31276,7 +31661,7 @@ class WlanDynamicVlanArgs:
     @pulumi.getter(name="localVlanIds")
     def local_vlan_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        vlan_ids to be locally bridged
+        VLAN_ids to be locally bridged
         """
         return pulumi.get(self, "local_vlan_ids")
 
@@ -31300,7 +31685,7 @@ class WlanDynamicVlanArgs:
     @pulumi.getter
     def vlans(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
+        Map between vlan_id (as string) to airespace interface names (comma-separated) or null for stndard mapping
           * if `dynamic_vlan.type`==`standard`, property key is the Vlan ID and property value is \\"\\"
           * if `dynamic_vlan.type`==`airespace-interface-name`, property key is the Vlan ID and property value is the Airespace Interface Name
         """
@@ -31316,17 +31701,17 @@ if not MYPY:
         domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to enable hotspot 2.0 config
+        Whether to enable hotspot 2.0 config
         """
         nai_realms: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         operators: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of operators to support
+        List of operators to support
         """
         rcois: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         venue_name: NotRequired[pulumi.Input[str]]
         """
-        venue name, default is site name
+        Venue name, default is site name
         """
 elif False:
     WlanHotspot20ArgsDict: TypeAlias = Mapping[str, Any]
@@ -31341,9 +31726,9 @@ class WlanHotspot20Args:
                  rcois: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  venue_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enabled: whether to enable hotspot 2.0 config
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] operators: list of operators to support
-        :param pulumi.Input[str] venue_name: venue name, default is site name
+        :param pulumi.Input[bool] enabled: Whether to enable hotspot 2.0 config
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] operators: List of operators to support
+        :param pulumi.Input[str] venue_name: Venue name, default is site name
         """
         if domain_names is not None:
             pulumi.set(__self__, "domain_names", domain_names)
@@ -31371,7 +31756,7 @@ class WlanHotspot20Args:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to enable hotspot 2.0 config
+        Whether to enable hotspot 2.0 config
         """
         return pulumi.get(self, "enabled")
 
@@ -31392,7 +31777,7 @@ class WlanHotspot20Args:
     @pulumi.getter
     def operators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of operators to support
+        List of operators to support
         """
         return pulumi.get(self, "operators")
 
@@ -31413,7 +31798,7 @@ class WlanHotspot20Args:
     @pulumi.getter(name="venueName")
     def venue_name(self) -> Optional[pulumi.Input[str]]:
         """
-        venue name, default is site name
+        Venue name, default is site name
         """
         return pulumi.get(self, "venue_name")
 
@@ -31426,7 +31811,7 @@ if not MYPY:
     class WlanInjectDhcpOption82ArgsDict(TypedDict):
         circuit_id: NotRequired[pulumi.Input[str]]
         """
-        information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+        Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
           * {{AP_MAC}}
           * {{AP_MAC_DASHED}}
           * {{AP_MODEL}}
@@ -31436,7 +31821,7 @@ if not MYPY:
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to inject option 82 when forwarding DHCP packets
+        Whether to inject option 82 when forwarding DHCP packets
         """
 elif False:
     WlanInjectDhcpOption82ArgsDict: TypeAlias = Mapping[str, Any]
@@ -31447,14 +31832,14 @@ class WlanInjectDhcpOption82Args:
                  circuit_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] circuit_id: information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+        :param pulumi.Input[str] circuit_id: Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
                  * {{AP_MAC}}
                  * {{AP_MAC_DASHED}}
                  * {{AP_MODEL}}
                  * {{AP_NAME}}
                  * {{SITE_NAME}}
                  * {{SSID}}
-        :param pulumi.Input[bool] enabled: whether to inject option 82 when forwarding DHCP packets
+        :param pulumi.Input[bool] enabled: Whether to inject option 82 when forwarding DHCP packets
         """
         if circuit_id is not None:
             pulumi.set(__self__, "circuit_id", circuit_id)
@@ -31465,7 +31850,7 @@ class WlanInjectDhcpOption82Args:
     @pulumi.getter(name="circuitId")
     def circuit_id(self) -> Optional[pulumi.Input[str]]:
         """
-        information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
+        Information to set in the `circuit_id` field of the DHCP Option 82. It is possible to use static string or the following variables (e.g. `{{SSID}}:{{AP_MAC}}`):
           * {{AP_MAC}}
           * {{AP_MAC_DASHED}}
           * {{AP_MODEL}}
@@ -31483,7 +31868,7 @@ class WlanInjectDhcpOption82Args:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to inject option 82 when forwarding DHCP packets
+        Whether to inject option 82 when forwarding DHCP packets
         """
         return pulumi.get(self, "enabled")
 
@@ -31496,13 +31881,13 @@ if not MYPY:
     class WlanMistNacArgsDict(TypedDict):
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        when enabled:
+        When enabled:
           * `auth_servers` is ignored
           * `acct_servers` is ignored
           * `auth_servers_*` are ignored
           * `coa_servers` is ignored
           * `radsec` is ignored
-          * `coa_enabled` is assumed'
+          * `coa_enabled` is assumed
         """
 elif False:
     WlanMistNacArgsDict: TypeAlias = Mapping[str, Any]
@@ -31512,13 +31897,13 @@ class WlanMistNacArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enabled: when enabled:
+        :param pulumi.Input[bool] enabled: When enabled:
                  * `auth_servers` is ignored
                  * `acct_servers` is ignored
                  * `auth_servers_*` are ignored
                  * `coa_servers` is ignored
                  * `radsec` is ignored
-                 * `coa_enabled` is assumed'
+                 * `coa_enabled` is assumed
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -31527,13 +31912,13 @@ class WlanMistNacArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        when enabled:
+        When enabled:
           * `auth_servers` is ignored
           * `acct_servers` is ignored
           * `auth_servers_*` are ignored
           * `coa_servers` is ignored
           * `radsec` is ignored
-          * `coa_enabled` is assumed'
+          * `coa_enabled` is assumed
         """
         return pulumi.get(self, "enabled")
 
@@ -31562,7 +31947,7 @@ if not MYPY:
         """
         amazon_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether amazon is enabled as a login method
+        Whether amazon is enabled as a login method
         """
         amazon_expire: NotRequired[pulumi.Input[int]]
         """
@@ -31582,11 +31967,11 @@ if not MYPY:
         """
         azure_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether Azure Active Directory is enabled as a login method
+        Whether Azure Active Directory is enabled as a login method
         """
         azure_expire: NotRequired[pulumi.Input[int]]
         """
-        interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+        Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         """
         azure_tenant_id: NotRequired[pulumi.Input[str]]
         """
@@ -31606,7 +31991,7 @@ if not MYPY:
         """
         bypass_when_cloud_down: NotRequired[pulumi.Input[bool]]
         """
-        whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+        Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
         """
         clickatell_api_key: NotRequired[pulumi.Input[str]]
         """
@@ -31614,19 +31999,19 @@ if not MYPY:
         """
         cross_site: NotRequired[pulumi.Input[bool]]
         """
-        whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
         """
         email_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether email (access code verification) is enabled as a login method
+        Whether email (access code verification) is enabled as a login method
         """
         enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether guest portal is enabled
+        Whether guest portal is enabled
         """
         expire: NotRequired[pulumi.Input[int]]
         """
-        how long to remain authorized, in minutes
+        How long to remain authorized, in minutes
         """
         external_portal_url: NotRequired[pulumi.Input[str]]
         """
@@ -31646,7 +32031,7 @@ if not MYPY:
         """
         facebook_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether facebook is enabled as a login method
+        Whether facebook is enabled as a login method
         """
         facebook_expire: NotRequired[pulumi.Input[int]]
         """
@@ -31654,11 +32039,11 @@ if not MYPY:
         """
         forward: NotRequired[pulumi.Input[bool]]
         """
-        whether to forward the user to another URL after authorized
+        Whether to forward the user to another URL after authorized
         """
         forward_url: NotRequired[pulumi.Input[str]]
         """
-        the URL to forward the user to
+        URL to forward the user to
         """
         google_client_id: NotRequired[pulumi.Input[str]]
         """
@@ -31674,11 +32059,11 @@ if not MYPY:
         """
         google_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether google is enabled as login method
+        Whether Google is enabled as login method
         """
         google_expire: NotRequired[pulumi.Input[int]]
         """
-        Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         """
         gupshup_password: NotRequired[pulumi.Input[str]]
         """
@@ -31702,7 +32087,7 @@ if not MYPY:
         """
         microsoft_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether microsoft 365 is enabled as a login method
+        Whether microsoft 365 is enabled as a login method
         """
         microsoft_expire: NotRequired[pulumi.Input[int]]
         """
@@ -31722,11 +32107,11 @@ if not MYPY:
         """
         predefined_sponsors_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
         """
         predefined_sponsors_hide_email: NotRequired[pulumi.Input[bool]]
         """
-        whether to hide sponsor’s email from list of sponsors
+        Whether to hide sponsor’s email from list of sponsors
         """
         privacy: NotRequired[pulumi.Input[bool]]
         puzzel_password: NotRequired[pulumi.Input[str]]
@@ -31743,7 +32128,7 @@ if not MYPY:
         """
         sms_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether sms is enabled as a login method
+        Whether sms is enabled as a login method
         """
         sms_expire: NotRequired[pulumi.Input[int]]
         """
@@ -31763,11 +32148,11 @@ if not MYPY:
         """
         sponsor_email_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         """
         sponsor_enabled: NotRequired[pulumi.Input[bool]]
         """
-        whether sponsor is enabled
+        Whether sponsor is enabled
         """
         sponsor_expire: NotRequired[pulumi.Input[int]]
         """
@@ -31925,58 +32310,58 @@ class WlanPortalArgs:
         :param pulumi.Input[str] amazon_client_id: Optional if `amazon_enabled`==`true`. Amazon OAuth2 client id. This is optional. If not provided, it will use a default one.
         :param pulumi.Input[str] amazon_client_secret: Optional if `amazon_enabled`==`true`. Amazon OAuth2 client secret. If amazon_client_id was provided, provide a correspoinding value. Else leave blank.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] amazon_email_domains: Optional if `amazon_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
-        :param pulumi.Input[bool] amazon_enabled: whether amazon is enabled as a login method
+        :param pulumi.Input[bool] amazon_enabled: Whether amazon is enabled as a login method
         :param pulumi.Input[int] amazon_expire: Optional if `amazon_enabled`==`true`. Interval for which guest remains authorized using amazon auth (in minutes), if not provided, uses expire`
         :param pulumi.Input[str] auth: authentication scheme. enum: `amazon`, `azure`, `email`, `external`, `facebook`, `google`, `microsoft`, `multi`, `none`, `password`, `sponsor`, `sso`
         :param pulumi.Input[str] azure_client_id: Required if `azure_enabled`==`true`. Azure active directory app client id
         :param pulumi.Input[str] azure_client_secret: Required if `azure_enabled`==`true`. Azure active directory app client secret
-        :param pulumi.Input[bool] azure_enabled: whether Azure Active Directory is enabled as a login method
-        :param pulumi.Input[int] azure_expire: interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+        :param pulumi.Input[bool] azure_enabled: Whether Azure Active Directory is enabled as a login method
+        :param pulumi.Input[int] azure_expire: Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         :param pulumi.Input[str] azure_tenant_id: Required if `azure_enabled`==`true`. Azure active directory tenant id.
         :param pulumi.Input[str] broadnet_password: Required if `sms_provider`==`broadnet`
         :param pulumi.Input[str] broadnet_sid: Required if `sms_provider`==`broadnet`
         :param pulumi.Input[str] broadnet_user_id: Required if `sms_provider`==`broadnet`
-        :param pulumi.Input[bool] bypass_when_cloud_down: whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+        :param pulumi.Input[bool] bypass_when_cloud_down: Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
         :param pulumi.Input[str] clickatell_api_key: Required if `sms_provider`==`clickatell`
-        :param pulumi.Input[bool] cross_site: whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
-        :param pulumi.Input[bool] email_enabled: whether email (access code verification) is enabled as a login method
-        :param pulumi.Input[bool] enabled: whether guest portal is enabled
-        :param pulumi.Input[int] expire: how long to remain authorized, in minutes
+        :param pulumi.Input[bool] cross_site: Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        :param pulumi.Input[bool] email_enabled: Whether email (access code verification) is enabled as a login method
+        :param pulumi.Input[bool] enabled: Whether guest portal is enabled
+        :param pulumi.Input[int] expire: How long to remain authorized, in minutes
         :param pulumi.Input[str] external_portal_url: Required if `wlan_portal_auth`==`external`. External portal URL (e.g. https://host/url) where we can append our query parameters to
         :param pulumi.Input[str] facebook_client_id: Required if `facebook_enabled`==`true`. Facebook OAuth2 app id. This is optional. If not provided, it will use a default one.
         :param pulumi.Input[str] facebook_client_secret: Required if `facebook_enabled`==`true`. Facebook OAuth2 app secret. If facebook_client_id was provided, provide a correspoinding value. Else leave blank.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] facebook_email_domains: Optional if `facebook_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
-        :param pulumi.Input[bool] facebook_enabled: whether facebook is enabled as a login method
+        :param pulumi.Input[bool] facebook_enabled: Whether facebook is enabled as a login method
         :param pulumi.Input[int] facebook_expire: Optional if `facebook_enabled`==`true`. Interval for which guest remains authorized using facebook auth (in minutes), if not provided, uses expire`
-        :param pulumi.Input[bool] forward: whether to forward the user to another URL after authorized
-        :param pulumi.Input[str] forward_url: the URL to forward the user to
+        :param pulumi.Input[bool] forward: Whether to forward the user to another URL after authorized
+        :param pulumi.Input[str] forward_url: URL to forward the user to
         :param pulumi.Input[str] google_client_id: Google OAuth2 app id. This is optional. If not provided, it will use a default one.
         :param pulumi.Input[str] google_client_secret: Optional if `google_enabled`==`true`. Google OAuth2 app secret. If google_client_id was provided, provide a correspoinding value. Else leave blank.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] google_email_domains: Optional if `google_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
-        :param pulumi.Input[bool] google_enabled: whether google is enabled as login method
-        :param pulumi.Input[int] google_expire: Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        :param pulumi.Input[bool] google_enabled: Whether Google is enabled as login method
+        :param pulumi.Input[int] google_expire: Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         :param pulumi.Input[str] gupshup_password: Required if `sms_provider`==`gupshup`
         :param pulumi.Input[str] gupshup_userid: Required if `sms_provider`==`gupshup`
         :param pulumi.Input[str] microsoft_client_id: Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client id. This is optional. If not provided, it will use a default one.
         :param pulumi.Input[str] microsoft_client_secret: Optional if `microsoft_enabled`==`true`. Microsoft 365 OAuth2 client secret. If microsoft_client_id was provided, provide a correspoinding value. Else leave blank.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] microsoft_email_domains: Optional if `microsoft_enabled`==`true`. Matches authenticated user email against provided domains. If null or [], all authenticated emails will be allowed.
-        :param pulumi.Input[bool] microsoft_enabled: whether microsoft 365 is enabled as a login method
+        :param pulumi.Input[bool] microsoft_enabled: Whether microsoft 365 is enabled as a login method
         :param pulumi.Input[int] microsoft_expire: Optional if `microsoft_enabled`==`true`. Interval for which guest remains authorized using microsoft auth (in minutes), if not provided, uses expire`
         :param pulumi.Input[bool] passphrase_enabled: Whether password is enabled
         :param pulumi.Input[int] passphrase_expire: Optional if `passphrase_enabled`==`true`. Interval for which guest remains authorized using passphrase auth (in minutes), if not provided, uses `expire`
         :param pulumi.Input[str] password: Required if `passphrase_enabled`==`true`.
-        :param pulumi.Input[bool] predefined_sponsors_enabled: whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
-        :param pulumi.Input[bool] predefined_sponsors_hide_email: whether to hide sponsor’s email from list of sponsors
+        :param pulumi.Input[bool] predefined_sponsors_enabled: Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        :param pulumi.Input[bool] predefined_sponsors_hide_email: Whether to hide sponsor’s email from list of sponsors
         :param pulumi.Input[str] puzzel_password: Required if `sms_provider`==`puzzel`
         :param pulumi.Input[str] puzzel_service_id: Required if `sms_provider`==`puzzel`
         :param pulumi.Input[str] puzzel_username: Required if `sms_provider`==`puzzel`
-        :param pulumi.Input[bool] sms_enabled: whether sms is enabled as a login method
+        :param pulumi.Input[bool] sms_enabled: Whether sms is enabled as a login method
         :param pulumi.Input[int] sms_expire: Optional if `sms_enabled`==`true`. Interval for which guest remains authorized using sms auth (in minutes), if not provided, uses expire`
         :param pulumi.Input[str] sms_message_format: Optional if `sms_enabled`==`true`. SMS Message format
         :param pulumi.Input[str] sms_provider: Optioanl if `sms_enabled`==`true`. enum: `broadnet`, `clickatell`, `gupshup`, `manual`, `puzzel`, `telstra`, `twilio`
         :param pulumi.Input[bool] sponsor_auto_approve: Optional if `sponsor_enabled`==`true`. Whether to automatically approve guest and allow sponsor to revoke guest access, needs predefined_sponsors_enabled enabled and sponsor_notify_all disabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sponsor_email_domains: list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
-        :param pulumi.Input[bool] sponsor_enabled: whether sponsor is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sponsor_email_domains: List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        :param pulumi.Input[bool] sponsor_enabled: Whether sponsor is enabled
         :param pulumi.Input[int] sponsor_expire: Optional if `sponsor_enabled`==`true`. Interval for which guest remains authorized using sponsor auth (in minutes), if not provided, uses expire`
         :param pulumi.Input[str] sponsor_link_validity_duration: Optional if `sponsor_enabled`==`true`. How long to remain valid sponsored guest request approve/deny link received in email, in minutes.
         :param pulumi.Input[bool] sponsor_notify_all: Optional if `sponsor_enabled`==`true`. whether to notify all sponsors that are mentioned in `sponsors` object. Both `sponsor_notify_all` and `predefined_sponsors_enabled` should be true in order to notify sponsors. If true, email sent to 10 sponsors in no particular order.
@@ -32199,7 +32584,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="amazonEnabled")
     def amazon_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether amazon is enabled as a login method
+        Whether amazon is enabled as a login method
         """
         return pulumi.get(self, "amazon_enabled")
 
@@ -32259,7 +32644,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="azureEnabled")
     def azure_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether Azure Active Directory is enabled as a login method
+        Whether Azure Active Directory is enabled as a login method
         """
         return pulumi.get(self, "azure_enabled")
 
@@ -32271,7 +32656,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="azureExpire")
     def azure_expire(self) -> Optional[pulumi.Input[int]]:
         """
-        interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
+        Interval for which guest remains authorized using azure auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "azure_expire")
 
@@ -32331,7 +32716,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="bypassWhenCloudDown")
     def bypass_when_cloud_down(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to bypass the guest portal when cloud not reachable (and apply the default policies)
+        Whether to bypass the guest portal when cloud not reachable (and apply the default policies)
         """
         return pulumi.get(self, "bypass_when_cloud_down")
 
@@ -32355,7 +32740,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="crossSite")
     def cross_site(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
+        Whether to allow guest to roam between WLANs (with same `WLAN.ssid`, regardless of variables) of different sites of same org without reauthentication (disable random_mac for seamless roaming)
         """
         return pulumi.get(self, "cross_site")
 
@@ -32367,7 +32752,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="emailEnabled")
     def email_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether email (access code verification) is enabled as a login method
+        Whether email (access code verification) is enabled as a login method
         """
         return pulumi.get(self, "email_enabled")
 
@@ -32379,7 +32764,7 @@ class WlanPortalArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether guest portal is enabled
+        Whether guest portal is enabled
         """
         return pulumi.get(self, "enabled")
 
@@ -32391,7 +32776,7 @@ class WlanPortalArgs:
     @pulumi.getter
     def expire(self) -> Optional[pulumi.Input[int]]:
         """
-        how long to remain authorized, in minutes
+        How long to remain authorized, in minutes
         """
         return pulumi.get(self, "expire")
 
@@ -32451,7 +32836,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="facebookEnabled")
     def facebook_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether facebook is enabled as a login method
+        Whether facebook is enabled as a login method
         """
         return pulumi.get(self, "facebook_enabled")
 
@@ -32475,7 +32860,7 @@ class WlanPortalArgs:
     @pulumi.getter
     def forward(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to forward the user to another URL after authorized
+        Whether to forward the user to another URL after authorized
         """
         return pulumi.get(self, "forward")
 
@@ -32487,7 +32872,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="forwardUrl")
     def forward_url(self) -> Optional[pulumi.Input[str]]:
         """
-        the URL to forward the user to
+        URL to forward the user to
         """
         return pulumi.get(self, "forward_url")
 
@@ -32535,7 +32920,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="googleEnabled")
     def google_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether google is enabled as login method
+        Whether Google is enabled as login method
         """
         return pulumi.get(self, "google_enabled")
 
@@ -32547,7 +32932,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="googleExpire")
     def google_expire(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional if `google_enabled`==`true`. Interval for which guest remains authorized using google auth (in minutes), if not provided, uses expire`
+        Optional if `google_enabled`==`true`. Interval for which guest remains authorized using Google Auth (in minutes), if not provided, uses expire`
         """
         return pulumi.get(self, "google_expire")
 
@@ -32619,7 +33004,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="microsoftEnabled")
     def microsoft_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether microsoft 365 is enabled as a login method
+        Whether microsoft 365 is enabled as a login method
         """
         return pulumi.get(self, "microsoft_enabled")
 
@@ -32679,7 +33064,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="predefinedSponsorsEnabled")
     def predefined_sponsors_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
+        Whether to show list of sponsor emails mentioned in `sponsors` object as a dropdown. If both `sponsor_notify_all` and `predefined_sponsors_enabled` are false, behaviour is acc to `sponsor_email_domains`
         """
         return pulumi.get(self, "predefined_sponsors_enabled")
 
@@ -32691,7 +33076,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="predefinedSponsorsHideEmail")
     def predefined_sponsors_hide_email(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to hide sponsor’s email from list of sponsors
+        Whether to hide sponsor’s email from list of sponsors
         """
         return pulumi.get(self, "predefined_sponsors_hide_email")
 
@@ -32748,7 +33133,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="smsEnabled")
     def sms_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether sms is enabled as a login method
+        Whether sms is enabled as a login method
         """
         return pulumi.get(self, "sms_enabled")
 
@@ -32808,7 +33193,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="sponsorEmailDomains")
     def sponsor_email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        list of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
+        List of domain allowed for sponsor email. Required if `sponsor_enabled` is `true` and `sponsors` is empty.
         """
         return pulumi.get(self, "sponsor_email_domains")
 
@@ -32820,7 +33205,7 @@ class WlanPortalArgs:
     @pulumi.getter(name="sponsorEnabled")
     def sponsor_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether sponsor is enabled
+        Whether sponsor is enabled
         """
         return pulumi.get(self, "sponsor_enabled")
 
@@ -33045,44 +33430,44 @@ if not MYPY:
         """
         auth_button_amazon: NotRequired[pulumi.Input[str]]
         """
-        label for Amazon auth button
+        Label for Amazon auth button
         """
         auth_button_azure: NotRequired[pulumi.Input[str]]
         """
-        label for Azure auth button
+        Label for Azure auth button
         """
         auth_button_email: NotRequired[pulumi.Input[str]]
         """
-        label for Email auth button
+        Label for Email auth button
         """
         auth_button_facebook: NotRequired[pulumi.Input[str]]
         """
-        label for Facebook auth button
+        Label for Facebook auth button
         """
         auth_button_google: NotRequired[pulumi.Input[str]]
         """
-        label for Google auth button
+        Label for Google auth button
         """
         auth_button_microsoft: NotRequired[pulumi.Input[str]]
         """
-        label for Microsoft auth button
+        Label for Microsoft auth button
         """
         auth_button_passphrase: NotRequired[pulumi.Input[str]]
         """
-        label for passphrase auth button
+        Label for passphrase auth button
         """
         auth_button_sms: NotRequired[pulumi.Input[str]]
         """
-        label for SMS auth button
+        Label for SMS auth button
         """
         auth_button_sponsor: NotRequired[pulumi.Input[str]]
         """
-        label for Sponsor auth button
+        Label for Sponsor auth button
         """
         auth_label: NotRequired[pulumi.Input[str]]
         back_link: NotRequired[pulumi.Input[str]]
         """
-        label of the link to go back to /logon
+        Label of the link to go back to /logon
         """
         color: NotRequired[pulumi.Input[str]]
         """
@@ -33092,23 +33477,23 @@ if not MYPY:
         color_light: NotRequired[pulumi.Input[str]]
         company: NotRequired[pulumi.Input[bool]]
         """
-        whether company field is required
+        Whether company field is required
         """
         company_error: NotRequired[pulumi.Input[str]]
         """
-        error message when company not provided
+        Error message when company not provided
         """
         company_label: NotRequired[pulumi.Input[str]]
         """
-        label of company field
+        Label of company field
         """
         email: NotRequired[pulumi.Input[bool]]
         """
-        whether email field is required
+        Whether email field is required
         """
         email_access_domain_error: NotRequired[pulumi.Input[str]]
         """
-        error message when a user has valid social login but doesn't match specified email domains.
+        Error message when a user has valid social login but doesn't match specified email domains.
         """
         email_cancel: NotRequired[pulumi.Input[str]]
         """
@@ -33122,12 +33507,12 @@ if not MYPY:
         email_code_title: NotRequired[pulumi.Input[str]]
         email_error: NotRequired[pulumi.Input[str]]
         """
-        error message when email not provided
+        Error message when email not provided
         """
         email_field_label: NotRequired[pulumi.Input[str]]
         email_label: NotRequired[pulumi.Input[str]]
         """
-        label of email field
+        Label of email field
         """
         email_message: NotRequired[pulumi.Input[str]]
         email_submit: NotRequired[pulumi.Input[str]]
@@ -33140,67 +33525,67 @@ if not MYPY:
         """
         field1: NotRequired[pulumi.Input[bool]]
         """
-        whether to ask field1
+        Whether to ask field1
         """
         field1error: NotRequired[pulumi.Input[str]]
         """
-        error message when field1 not provided
+        Error message when field1 not provided
         """
         field1label: NotRequired[pulumi.Input[str]]
         """
-        label of field1
+        Label of field1
         """
         field1required: NotRequired[pulumi.Input[bool]]
         """
-        whether field1 is required field
+        Whether field1 is required field
         """
         field2: NotRequired[pulumi.Input[bool]]
         """
-        whether to ask field2
+        Whether to ask field2
         """
         field2error: NotRequired[pulumi.Input[str]]
         """
-        error message when field2 not provided
+        Error message when field2 not provided
         """
         field2label: NotRequired[pulumi.Input[str]]
         """
-        label of field2
+        Label of field2
         """
         field2required: NotRequired[pulumi.Input[bool]]
         """
-        whether field2 is required field
+        Whether field2 is required field
         """
         field3: NotRequired[pulumi.Input[bool]]
         """
-        whether to ask field3
+        Whether to ask field3
         """
         field3error: NotRequired[pulumi.Input[str]]
         """
-        error message when field3 not provided
+        Error message when field3 not provided
         """
         field3label: NotRequired[pulumi.Input[str]]
         """
-        label of field3
+        Label of field3
         """
         field3required: NotRequired[pulumi.Input[bool]]
         """
-        whether field3 is required field
+        Whether field3 is required field
         """
         field4: NotRequired[pulumi.Input[bool]]
         """
-        whether to ask field4
+        Whether to ask field4
         """
         field4error: NotRequired[pulumi.Input[str]]
         """
-        error message when field4 not provided
+        Error message when field4 not provided
         """
         field4label: NotRequired[pulumi.Input[str]]
         """
-        label of field4
+        Label of field4
         """
         field4required: NotRequired[pulumi.Input[bool]]
         """
-        whether field4 is required field
+        Whether field4 is required field
         """
         locales: NotRequired[pulumi.Input[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgsDict']]]]
         """
@@ -33218,15 +33603,15 @@ if not MYPY:
         multi_auth: NotRequired[pulumi.Input[bool]]
         name: NotRequired[pulumi.Input[bool]]
         """
-        whether name field is required
+        Whether name field is required
         """
         name_error: NotRequired[pulumi.Input[str]]
         """
-        error message when name not provided
+        Error message when name not provided
         """
         name_label: NotRequired[pulumi.Input[str]]
         """
-        label of name field
+        Label of name field
         """
         opt_out_default: NotRequired[pulumi.Input[bool]]
         """
@@ -33234,11 +33619,11 @@ if not MYPY:
         """
         optout: NotRequired[pulumi.Input[bool]]
         """
-        whether to display Do Not Store My Personal Information
+        Whether to display Do Not Store My Personal Information
         """
         optout_label: NotRequired[pulumi.Input[str]]
         """
-        label for Do Not Store My Personal Information
+        Label for Do Not Store My Personal Information
         """
         page_title: NotRequired[pulumi.Input[str]]
         passphrase_cancel: NotRequired[pulumi.Input[str]]
@@ -33247,7 +33632,7 @@ if not MYPY:
         """
         passphrase_error: NotRequired[pulumi.Input[str]]
         """
-        error message when invalid passphrase is provided
+        Error message when invalid passphrase is provided
         """
         passphrase_label: NotRequired[pulumi.Input[str]]
         """
@@ -33264,42 +33649,42 @@ if not MYPY:
         """
         powered_by: NotRequired[pulumi.Input[bool]]
         """
-        whether to show \\"Powered by Mist\\"
+        Whether to show \\"Powered by Mist\\"
         """
         privacy: NotRequired[pulumi.Input[bool]]
         """
-        wheter to require the Privacy Term acceptance
+        Whether to require the Privacy Term acceptance
         """
         privacy_policy_accept_label: NotRequired[pulumi.Input[str]]
         """
-        prefix of the label of the link to go to Privacy Policy
+        Prefix of the label of the link to go to Privacy Policy
         """
         privacy_policy_error: NotRequired[pulumi.Input[str]]
         """
-        error message when Privacy Policy not accepted
+        Error message when Privacy Policy not accepted
         """
         privacy_policy_link: NotRequired[pulumi.Input[str]]
         """
-        label of the link to go to Privacy Policy
+        Label of the link to go to Privacy Policy
         """
         privacy_policy_text: NotRequired[pulumi.Input[str]]
         """
-        text of the Privacy Policy
+        Text of the Privacy Policy
         """
         required_field_label: NotRequired[pulumi.Input[str]]
         """
-        label to denote required field
+        Label to denote required field
         """
         responsive_layout: NotRequired[pulumi.Input[bool]]
         sign_in_label: NotRequired[pulumi.Input[str]]
         """
-        label of the button to /signin
+        Label of the button to /signin
         """
         sms_carrier_default: NotRequired[pulumi.Input[str]]
         sms_carrier_error: NotRequired[pulumi.Input[str]]
         sms_carrier_field_label: NotRequired[pulumi.Input[str]]
         """
-        label for mobile carrier drop-down list
+        Label for mobile carrier drop-down list
         """
         sms_code_cancel: NotRequired[pulumi.Input[str]]
         """
@@ -33307,7 +33692,7 @@ if not MYPY:
         """
         sms_code_error: NotRequired[pulumi.Input[str]]
         """
-        error message when confirmation code is invalid
+        Error message when confirmation code is invalid
         """
         sms_code_field_label: NotRequired[pulumi.Input[str]]
         sms_code_message: NotRequired[pulumi.Input[str]]
@@ -33325,22 +33710,22 @@ if not MYPY:
         sms_is_twilio: NotRequired[pulumi.Input[bool]]
         sms_message_format: NotRequired[pulumi.Input[str]]
         """
-        format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         """
         sms_number_cancel: NotRequired[pulumi.Input[str]]
         """
-        label for canceling mobile details for SMS auth
+        Label for canceling mobile details for SMS auth
         """
         sms_number_error: NotRequired[pulumi.Input[str]]
         sms_number_field_label: NotRequired[pulumi.Input[str]]
         """
-        label for field to provide mobile number
+        Label for field to provide mobile number
         """
         sms_number_format: NotRequired[pulumi.Input[str]]
         sms_number_message: NotRequired[pulumi.Input[str]]
         sms_number_submit: NotRequired[pulumi.Input[str]]
         """
-        label for submit button for code generation
+        Label for submit button for code generation
         """
         sms_number_title: NotRequired[pulumi.Input[str]]
         """
@@ -33349,18 +33734,18 @@ if not MYPY:
         sms_username_format: NotRequired[pulumi.Input[str]]
         sms_validity_duration: NotRequired[pulumi.Input[int]]
         """
-        how long confirmation code should be considered valid (in minutes)
+        How long confirmation code should be considered valid (in minutes)
         """
         sponsor_back_link: NotRequired[pulumi.Input[str]]
         sponsor_cancel: NotRequired[pulumi.Input[str]]
         sponsor_email: NotRequired[pulumi.Input[str]]
         """
-        label for Sponsor Email
+        Label for Sponsor Email
         """
         sponsor_email_error: NotRequired[pulumi.Input[str]]
         sponsor_email_template: NotRequired[pulumi.Input[str]]
         """
-        html template to replace/override default sponsor email template 
+        HTML template to replace/override default sponsor email template 
         Sponsor Email Template supports following template variables:
           * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
           * `deny_url`: Renders URL to reject the request
@@ -33376,48 +33761,48 @@ if not MYPY:
         sponsor_info_pending: NotRequired[pulumi.Input[str]]
         sponsor_name: NotRequired[pulumi.Input[str]]
         """
-        label for Sponsor Name
+        Label for Sponsor Name
         """
         sponsor_name_error: NotRequired[pulumi.Input[str]]
         sponsor_note_pending: NotRequired[pulumi.Input[str]]
         sponsor_request_access: NotRequired[pulumi.Input[str]]
         """
-        submit button label request Wifi Access and notify sponsor about guest request
+        Submit button label request Wifi Access and notify sponsor about guest request
         """
         sponsor_status_approved: NotRequired[pulumi.Input[str]]
         """
-        text to display if sponsor approves request
+        Text to display if sponsor approves request
         """
         sponsor_status_denied: NotRequired[pulumi.Input[str]]
         """
-        text to display when sponsor denies request
+        Text to display when sponsor denies request
         """
         sponsor_status_pending: NotRequired[pulumi.Input[str]]
         """
-        text to display if request is still pending
+        Text to display if request is still pending
         """
         sponsor_submit: NotRequired[pulumi.Input[str]]
         """
-        submit button label to notify sponsor about guest request
+        Submit button label to notify sponsor about guest request
         """
         sponsors_error: NotRequired[pulumi.Input[str]]
         sponsors_field_label: NotRequired[pulumi.Input[str]]
         tos: NotRequired[pulumi.Input[bool]]
         tos_accept_label: NotRequired[pulumi.Input[str]]
         """
-        prefix of the label of the link to go to tos
+        Prefix of the label of the link to go to tos
         """
         tos_error: NotRequired[pulumi.Input[str]]
         """
-        error message when tos not accepted
+        Error message when tos not accepted
         """
         tos_link: NotRequired[pulumi.Input[str]]
         """
-        label of the link to go to tos
+        Label of the link to go to tos
         """
         tos_text: NotRequired[pulumi.Input[str]]
         """
-        text of the Terms of Service
+        Text of the Terms of Service
         """
 elif False:
     WlanPortalTemplatePortalTemplateArgsDict: TypeAlias = Mapping[str, Any]
@@ -33549,81 +33934,81 @@ class WlanPortalTemplatePortalTemplateArgs:
                  tos_text: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] alignment: defines alignment on portal. enum: `center`, `left`, `right`
-        :param pulumi.Input[str] auth_button_amazon: label for Amazon auth button
-        :param pulumi.Input[str] auth_button_azure: label for Azure auth button
-        :param pulumi.Input[str] auth_button_email: label for Email auth button
-        :param pulumi.Input[str] auth_button_facebook: label for Facebook auth button
-        :param pulumi.Input[str] auth_button_google: label for Google auth button
-        :param pulumi.Input[str] auth_button_microsoft: label for Microsoft auth button
-        :param pulumi.Input[str] auth_button_passphrase: label for passphrase auth button
-        :param pulumi.Input[str] auth_button_sms: label for SMS auth button
-        :param pulumi.Input[str] auth_button_sponsor: label for Sponsor auth button
-        :param pulumi.Input[str] back_link: label of the link to go back to /logon
+        :param pulumi.Input[str] auth_button_amazon: Label for Amazon auth button
+        :param pulumi.Input[str] auth_button_azure: Label for Azure auth button
+        :param pulumi.Input[str] auth_button_email: Label for Email auth button
+        :param pulumi.Input[str] auth_button_facebook: Label for Facebook auth button
+        :param pulumi.Input[str] auth_button_google: Label for Google auth button
+        :param pulumi.Input[str] auth_button_microsoft: Label for Microsoft auth button
+        :param pulumi.Input[str] auth_button_passphrase: Label for passphrase auth button
+        :param pulumi.Input[str] auth_button_sms: Label for SMS auth button
+        :param pulumi.Input[str] auth_button_sponsor: Label for Sponsor auth button
+        :param pulumi.Input[str] back_link: Label of the link to go back to /logon
         :param pulumi.Input[str] color: Portal main color
-        :param pulumi.Input[bool] company: whether company field is required
-        :param pulumi.Input[str] company_error: error message when company not provided
-        :param pulumi.Input[str] company_label: label of company field
-        :param pulumi.Input[bool] email: whether email field is required
-        :param pulumi.Input[str] email_access_domain_error: error message when a user has valid social login but doesn't match specified email domains.
+        :param pulumi.Input[bool] company: Whether company field is required
+        :param pulumi.Input[str] company_error: Error message when company not provided
+        :param pulumi.Input[str] company_label: Label of company field
+        :param pulumi.Input[bool] email: Whether email field is required
+        :param pulumi.Input[str] email_access_domain_error: Error message when a user has valid social login but doesn't match specified email domains.
         :param pulumi.Input[str] email_cancel: Label for cancel confirmation code submission using email auth
-        :param pulumi.Input[str] email_error: error message when email not provided
-        :param pulumi.Input[str] email_label: label of email field
+        :param pulumi.Input[str] email_error: Error message when email not provided
+        :param pulumi.Input[str] email_label: Label of email field
         :param pulumi.Input[str] email_submit: Label for confirmation code submit button using email auth
         :param pulumi.Input[str] email_title: Title for the Email registration
-        :param pulumi.Input[bool] field1: whether to ask field1
-        :param pulumi.Input[str] field1error: error message when field1 not provided
-        :param pulumi.Input[str] field1label: label of field1
-        :param pulumi.Input[bool] field1required: whether field1 is required field
-        :param pulumi.Input[bool] field2: whether to ask field2
-        :param pulumi.Input[str] field2error: error message when field2 not provided
-        :param pulumi.Input[str] field2label: label of field2
-        :param pulumi.Input[bool] field2required: whether field2 is required field
-        :param pulumi.Input[bool] field3: whether to ask field3
-        :param pulumi.Input[str] field3error: error message when field3 not provided
-        :param pulumi.Input[str] field3label: label of field3
-        :param pulumi.Input[bool] field3required: whether field3 is required field
-        :param pulumi.Input[bool] field4: whether to ask field4
-        :param pulumi.Input[str] field4error: error message when field4 not provided
-        :param pulumi.Input[str] field4label: label of field4
-        :param pulumi.Input[bool] field4required: whether field4 is required field
+        :param pulumi.Input[bool] field1: Whether to ask field1
+        :param pulumi.Input[str] field1error: Error message when field1 not provided
+        :param pulumi.Input[str] field1label: Label of field1
+        :param pulumi.Input[bool] field1required: Whether field1 is required field
+        :param pulumi.Input[bool] field2: Whether to ask field2
+        :param pulumi.Input[str] field2error: Error message when field2 not provided
+        :param pulumi.Input[str] field2label: Label of field2
+        :param pulumi.Input[bool] field2required: Whether field2 is required field
+        :param pulumi.Input[bool] field3: Whether to ask field3
+        :param pulumi.Input[str] field3error: Error message when field3 not provided
+        :param pulumi.Input[str] field3label: Label of field3
+        :param pulumi.Input[bool] field3required: Whether field3 is required field
+        :param pulumi.Input[bool] field4: Whether to ask field4
+        :param pulumi.Input[str] field4error: Error message when field4 not provided
+        :param pulumi.Input[str] field4label: Label of field4
+        :param pulumi.Input[bool] field4required: Whether field4 is required field
         :param pulumi.Input[Mapping[str, pulumi.Input['WlanPortalTemplatePortalTemplateLocalesArgs']]] locales: Can be used to localize the portal based on the User Agent. Allowed property key values are:
                  `ar`, `ca-ES`, `cs-CZ`, `da-DK`, `de-DE`, `el-GR`, `en-GB`, `en-US`, `es-ES`, `fi-FI`, `fr-FR`, 
                  `he-IL`, `hi-IN`, `hr-HR`, `hu-HU`, `id-ID`, `it-IT`, `ja-J^`, `ko-KT`, `ms-MY`, `nb-NO`, `nl-NL`, 
                  `pl-PL`, `pt-BR`, `pt-PT`, `ro-RO`, `ru-RU`, `sk-SK`, `sv-SE`, `th-TH`, `tr-TR`, `uk-UA`, `vi-VN`, 
                  `zh-Hans`, `zh-Hant`
         :param pulumi.Input[str] logo: path to the background image file. File must be a `png` image less than 100kB and image dimension must be less 500px x 200px (width x height).
-        :param pulumi.Input[bool] name: whether name field is required
-        :param pulumi.Input[str] name_error: error message when name not provided
-        :param pulumi.Input[str] name_label: label of name field
+        :param pulumi.Input[bool] name: Whether name field is required
+        :param pulumi.Input[str] name_error: Error message when name not provided
+        :param pulumi.Input[str] name_label: Label of name field
         :param pulumi.Input[bool] opt_out_default: Default value for the `Do not store` checkbox
-        :param pulumi.Input[bool] optout: whether to display Do Not Store My Personal Information
-        :param pulumi.Input[str] optout_label: label for Do Not Store My Personal Information
+        :param pulumi.Input[bool] optout: Whether to display Do Not Store My Personal Information
+        :param pulumi.Input[str] optout_label: Label for Do Not Store My Personal Information
         :param pulumi.Input[str] passphrase_cancel: Label for the Passphrase cancel button
-        :param pulumi.Input[str] passphrase_error: error message when invalid passphrase is provided
+        :param pulumi.Input[str] passphrase_error: Error message when invalid passphrase is provided
         :param pulumi.Input[str] passphrase_label: Passphrase
         :param pulumi.Input[str] passphrase_submit: Label for the Passphrase submit button
         :param pulumi.Input[str] passphrase_title: Title for passphrase details page
-        :param pulumi.Input[bool] powered_by: whether to show \\"Powered by Mist\\"
-        :param pulumi.Input[bool] privacy: wheter to require the Privacy Term acceptance
-        :param pulumi.Input[str] privacy_policy_accept_label: prefix of the label of the link to go to Privacy Policy
-        :param pulumi.Input[str] privacy_policy_error: error message when Privacy Policy not accepted
-        :param pulumi.Input[str] privacy_policy_link: label of the link to go to Privacy Policy
-        :param pulumi.Input[str] privacy_policy_text: text of the Privacy Policy
-        :param pulumi.Input[str] required_field_label: label to denote required field
-        :param pulumi.Input[str] sign_in_label: label of the button to /signin
-        :param pulumi.Input[str] sms_carrier_field_label: label for mobile carrier drop-down list
+        :param pulumi.Input[bool] powered_by: Whether to show \\"Powered by Mist\\"
+        :param pulumi.Input[bool] privacy: Whether to require the Privacy Term acceptance
+        :param pulumi.Input[str] privacy_policy_accept_label: Prefix of the label of the link to go to Privacy Policy
+        :param pulumi.Input[str] privacy_policy_error: Error message when Privacy Policy not accepted
+        :param pulumi.Input[str] privacy_policy_link: Label of the link to go to Privacy Policy
+        :param pulumi.Input[str] privacy_policy_text: Text of the Privacy Policy
+        :param pulumi.Input[str] required_field_label: Label to denote required field
+        :param pulumi.Input[str] sign_in_label: Label of the button to /signin
+        :param pulumi.Input[str] sms_carrier_field_label: Label for mobile carrier drop-down list
         :param pulumi.Input[str] sms_code_cancel: Label for cancel confirmation code submission
-        :param pulumi.Input[str] sms_code_error: error message when confirmation code is invalid
+        :param pulumi.Input[str] sms_code_error: Error message when confirmation code is invalid
         :param pulumi.Input[str] sms_code_submit: Label for confirmation code submit button
         :param pulumi.Input[str] sms_have_access_code: Label for checkbox to specify that the user has access code
-        :param pulumi.Input[str] sms_message_format: format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
-        :param pulumi.Input[str] sms_number_cancel: label for canceling mobile details for SMS auth
-        :param pulumi.Input[str] sms_number_field_label: label for field to provide mobile number
-        :param pulumi.Input[str] sms_number_submit: label for submit button for code generation
+        :param pulumi.Input[str] sms_message_format: Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
+        :param pulumi.Input[str] sms_number_cancel: Label for canceling mobile details for SMS auth
+        :param pulumi.Input[str] sms_number_field_label: Label for field to provide mobile number
+        :param pulumi.Input[str] sms_number_submit: Label for submit button for code generation
         :param pulumi.Input[str] sms_number_title: Title for phone number details
-        :param pulumi.Input[int] sms_validity_duration: how long confirmation code should be considered valid (in minutes)
-        :param pulumi.Input[str] sponsor_email: label for Sponsor Email
-        :param pulumi.Input[str] sponsor_email_template: html template to replace/override default sponsor email template 
+        :param pulumi.Input[int] sms_validity_duration: How long confirmation code should be considered valid (in minutes)
+        :param pulumi.Input[str] sponsor_email: Label for Sponsor Email
+        :param pulumi.Input[str] sponsor_email_template: HTML template to replace/override default sponsor email template 
                Sponsor Email Template supports following template variables:
                  * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
                  * `deny_url`: Renders URL to reject the request
@@ -33633,16 +34018,16 @@ class WlanPortalTemplatePortalTemplateArgs:
                  * `field2`: Renders value of the Custom Field 2
                  * `sponsor_link_validity_duration`: Renders validity time of the request (i.e. Approve/Deny URL)
                  * `auth_expire_minutes`: Renders Wlan-level configured Guest Authorization Expiration time period (in minutes), If not configured then default (1 day in minutes)
-        :param pulumi.Input[str] sponsor_name: label for Sponsor Name
-        :param pulumi.Input[str] sponsor_request_access: submit button label request Wifi Access and notify sponsor about guest request
-        :param pulumi.Input[str] sponsor_status_approved: text to display if sponsor approves request
-        :param pulumi.Input[str] sponsor_status_denied: text to display when sponsor denies request
-        :param pulumi.Input[str] sponsor_status_pending: text to display if request is still pending
-        :param pulumi.Input[str] sponsor_submit: submit button label to notify sponsor about guest request
-        :param pulumi.Input[str] tos_accept_label: prefix of the label of the link to go to tos
-        :param pulumi.Input[str] tos_error: error message when tos not accepted
-        :param pulumi.Input[str] tos_link: label of the link to go to tos
-        :param pulumi.Input[str] tos_text: text of the Terms of Service
+        :param pulumi.Input[str] sponsor_name: Label for Sponsor Name
+        :param pulumi.Input[str] sponsor_request_access: Submit button label request Wifi Access and notify sponsor about guest request
+        :param pulumi.Input[str] sponsor_status_approved: Text to display if sponsor approves request
+        :param pulumi.Input[str] sponsor_status_denied: Text to display when sponsor denies request
+        :param pulumi.Input[str] sponsor_status_pending: Text to display if request is still pending
+        :param pulumi.Input[str] sponsor_submit: Submit button label to notify sponsor about guest request
+        :param pulumi.Input[str] tos_accept_label: Prefix of the label of the link to go to tos
+        :param pulumi.Input[str] tos_error: Error message when tos not accepted
+        :param pulumi.Input[str] tos_link: Label of the link to go to tos
+        :param pulumi.Input[str] tos_text: Text of the Terms of Service
         """
         if access_code_alternate_email is not None:
             pulumi.set(__self__, "access_code_alternate_email", access_code_alternate_email)
@@ -33914,7 +34299,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonAmazon")
     def auth_button_amazon(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Amazon auth button
+        Label for Amazon auth button
         """
         return pulumi.get(self, "auth_button_amazon")
 
@@ -33926,7 +34311,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonAzure")
     def auth_button_azure(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Azure auth button
+        Label for Azure auth button
         """
         return pulumi.get(self, "auth_button_azure")
 
@@ -33938,7 +34323,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonEmail")
     def auth_button_email(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Email auth button
+        Label for Email auth button
         """
         return pulumi.get(self, "auth_button_email")
 
@@ -33950,7 +34335,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonFacebook")
     def auth_button_facebook(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Facebook auth button
+        Label for Facebook auth button
         """
         return pulumi.get(self, "auth_button_facebook")
 
@@ -33962,7 +34347,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonGoogle")
     def auth_button_google(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Google auth button
+        Label for Google auth button
         """
         return pulumi.get(self, "auth_button_google")
 
@@ -33974,7 +34359,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonMicrosoft")
     def auth_button_microsoft(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Microsoft auth button
+        Label for Microsoft auth button
         """
         return pulumi.get(self, "auth_button_microsoft")
 
@@ -33986,7 +34371,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonPassphrase")
     def auth_button_passphrase(self) -> Optional[pulumi.Input[str]]:
         """
-        label for passphrase auth button
+        Label for passphrase auth button
         """
         return pulumi.get(self, "auth_button_passphrase")
 
@@ -33998,7 +34383,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonSms")
     def auth_button_sms(self) -> Optional[pulumi.Input[str]]:
         """
-        label for SMS auth button
+        Label for SMS auth button
         """
         return pulumi.get(self, "auth_button_sms")
 
@@ -34010,7 +34395,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="authButtonSponsor")
     def auth_button_sponsor(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Sponsor auth button
+        Label for Sponsor auth button
         """
         return pulumi.get(self, "auth_button_sponsor")
 
@@ -34031,7 +34416,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="backLink")
     def back_link(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the link to go back to /logon
+        Label of the link to go back to /logon
         """
         return pulumi.get(self, "back_link")
 
@@ -34073,7 +34458,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether company field is required
+        Whether company field is required
         """
         return pulumi.get(self, "company")
 
@@ -34085,7 +34470,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="companyError")
     def company_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when company not provided
+        Error message when company not provided
         """
         return pulumi.get(self, "company_error")
 
@@ -34097,7 +34482,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="companyLabel")
     def company_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of company field
+        Label of company field
         """
         return pulumi.get(self, "company_label")
 
@@ -34109,7 +34494,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether email field is required
+        Whether email field is required
         """
         return pulumi.get(self, "email")
 
@@ -34121,7 +34506,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="emailAccessDomainError")
     def email_access_domain_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when a user has valid social login but doesn't match specified email domains.
+        Error message when a user has valid social login but doesn't match specified email domains.
         """
         return pulumi.get(self, "email_access_domain_error")
 
@@ -34199,7 +34584,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="emailError")
     def email_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when email not provided
+        Error message when email not provided
         """
         return pulumi.get(self, "email_error")
 
@@ -34220,7 +34605,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="emailLabel")
     def email_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of email field
+        Label of email field
         """
         return pulumi.get(self, "email_label")
 
@@ -34265,7 +34650,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field1(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to ask field1
+        Whether to ask field1
         """
         return pulumi.get(self, "field1")
 
@@ -34277,7 +34662,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field1error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field1 not provided
+        Error message when field1 not provided
         """
         return pulumi.get(self, "field1error")
 
@@ -34289,7 +34674,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field1label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field1
+        Label of field1
         """
         return pulumi.get(self, "field1label")
 
@@ -34301,7 +34686,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field1required(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether field1 is required field
+        Whether field1 is required field
         """
         return pulumi.get(self, "field1required")
 
@@ -34313,7 +34698,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field2(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to ask field2
+        Whether to ask field2
         """
         return pulumi.get(self, "field2")
 
@@ -34325,7 +34710,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field2error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field2 not provided
+        Error message when field2 not provided
         """
         return pulumi.get(self, "field2error")
 
@@ -34337,7 +34722,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field2label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field2
+        Label of field2
         """
         return pulumi.get(self, "field2label")
 
@@ -34349,7 +34734,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field2required(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether field2 is required field
+        Whether field2 is required field
         """
         return pulumi.get(self, "field2required")
 
@@ -34361,7 +34746,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field3(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to ask field3
+        Whether to ask field3
         """
         return pulumi.get(self, "field3")
 
@@ -34373,7 +34758,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field3error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field3 not provided
+        Error message when field3 not provided
         """
         return pulumi.get(self, "field3error")
 
@@ -34385,7 +34770,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field3label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field3
+        Label of field3
         """
         return pulumi.get(self, "field3label")
 
@@ -34397,7 +34782,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field3required(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether field3 is required field
+        Whether field3 is required field
         """
         return pulumi.get(self, "field3required")
 
@@ -34409,7 +34794,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field4(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to ask field4
+        Whether to ask field4
         """
         return pulumi.get(self, "field4")
 
@@ -34421,7 +34806,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field4error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field4 not provided
+        Error message when field4 not provided
         """
         return pulumi.get(self, "field4error")
 
@@ -34433,7 +34818,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field4label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field4
+        Label of field4
         """
         return pulumi.get(self, "field4label")
 
@@ -34445,7 +34830,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def field4required(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether field4 is required field
+        Whether field4 is required field
         """
         return pulumi.get(self, "field4required")
 
@@ -34503,7 +34888,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether name field is required
+        Whether name field is required
         """
         return pulumi.get(self, "name")
 
@@ -34515,7 +34900,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="nameError")
     def name_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when name not provided
+        Error message when name not provided
         """
         return pulumi.get(self, "name_error")
 
@@ -34527,7 +34912,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="nameLabel")
     def name_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of name field
+        Label of name field
         """
         return pulumi.get(self, "name_label")
 
@@ -34551,7 +34936,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def optout(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to display Do Not Store My Personal Information
+        Whether to display Do Not Store My Personal Information
         """
         return pulumi.get(self, "optout")
 
@@ -34563,7 +34948,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="optoutLabel")
     def optout_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Do Not Store My Personal Information
+        Label for Do Not Store My Personal Information
         """
         return pulumi.get(self, "optout_label")
 
@@ -34596,7 +34981,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="passphraseError")
     def passphrase_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when invalid passphrase is provided
+        Error message when invalid passphrase is provided
         """
         return pulumi.get(self, "passphrase_error")
 
@@ -34653,7 +35038,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="poweredBy")
     def powered_by(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to show \\"Powered by Mist\\"
+        Whether to show \\"Powered by Mist\\"
         """
         return pulumi.get(self, "powered_by")
 
@@ -34665,7 +35050,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter
     def privacy(self) -> Optional[pulumi.Input[bool]]:
         """
-        wheter to require the Privacy Term acceptance
+        Whether to require the Privacy Term acceptance
         """
         return pulumi.get(self, "privacy")
 
@@ -34677,7 +35062,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="privacyPolicyAcceptLabel")
     def privacy_policy_accept_label(self) -> Optional[pulumi.Input[str]]:
         """
-        prefix of the label of the link to go to Privacy Policy
+        Prefix of the label of the link to go to Privacy Policy
         """
         return pulumi.get(self, "privacy_policy_accept_label")
 
@@ -34689,7 +35074,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="privacyPolicyError")
     def privacy_policy_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when Privacy Policy not accepted
+        Error message when Privacy Policy not accepted
         """
         return pulumi.get(self, "privacy_policy_error")
 
@@ -34701,7 +35086,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="privacyPolicyLink")
     def privacy_policy_link(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the link to go to Privacy Policy
+        Label of the link to go to Privacy Policy
         """
         return pulumi.get(self, "privacy_policy_link")
 
@@ -34713,7 +35098,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="privacyPolicyText")
     def privacy_policy_text(self) -> Optional[pulumi.Input[str]]:
         """
-        text of the Privacy Policy
+        Text of the Privacy Policy
         """
         return pulumi.get(self, "privacy_policy_text")
 
@@ -34725,7 +35110,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="requiredFieldLabel")
     def required_field_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label to denote required field
+        Label to denote required field
         """
         return pulumi.get(self, "required_field_label")
 
@@ -34746,7 +35131,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="signInLabel")
     def sign_in_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the button to /signin
+        Label of the button to /signin
         """
         return pulumi.get(self, "sign_in_label")
 
@@ -34776,7 +35161,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsCarrierFieldLabel")
     def sms_carrier_field_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label for mobile carrier drop-down list
+        Label for mobile carrier drop-down list
         """
         return pulumi.get(self, "sms_carrier_field_label")
 
@@ -34800,7 +35185,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsCodeError")
     def sms_code_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when confirmation code is invalid
+        Error message when confirmation code is invalid
         """
         return pulumi.get(self, "sms_code_error")
 
@@ -34890,7 +35275,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsMessageFormat")
     def sms_message_format(self) -> Optional[pulumi.Input[str]]:
         """
-        format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         """
         return pulumi.get(self, "sms_message_format")
 
@@ -34902,7 +35287,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsNumberCancel")
     def sms_number_cancel(self) -> Optional[pulumi.Input[str]]:
         """
-        label for canceling mobile details for SMS auth
+        Label for canceling mobile details for SMS auth
         """
         return pulumi.get(self, "sms_number_cancel")
 
@@ -34923,7 +35308,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsNumberFieldLabel")
     def sms_number_field_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label for field to provide mobile number
+        Label for field to provide mobile number
         """
         return pulumi.get(self, "sms_number_field_label")
 
@@ -34953,7 +35338,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsNumberSubmit")
     def sms_number_submit(self) -> Optional[pulumi.Input[str]]:
         """
-        label for submit button for code generation
+        Label for submit button for code generation
         """
         return pulumi.get(self, "sms_number_submit")
 
@@ -34986,7 +35371,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="smsValidityDuration")
     def sms_validity_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        how long confirmation code should be considered valid (in minutes)
+        How long confirmation code should be considered valid (in minutes)
         """
         return pulumi.get(self, "sms_validity_duration")
 
@@ -35016,7 +35401,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorEmail")
     def sponsor_email(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Sponsor Email
+        Label for Sponsor Email
         """
         return pulumi.get(self, "sponsor_email")
 
@@ -35037,7 +35422,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorEmailTemplate")
     def sponsor_email_template(self) -> Optional[pulumi.Input[str]]:
         """
-        html template to replace/override default sponsor email template 
+        HTML template to replace/override default sponsor email template 
         Sponsor Email Template supports following template variables:
           * `approve_url`: Renders URL to approve the request; optionally &minutes=N query param can be appended to change the Authorization period of the guest, where N is a valid integer denoting number of minutes a guest remains authorized
           * `deny_url`: Renders URL to reject the request
@@ -35085,7 +35470,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorName")
     def sponsor_name(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Sponsor Name
+        Label for Sponsor Name
         """
         return pulumi.get(self, "sponsor_name")
 
@@ -35115,7 +35500,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorRequestAccess")
     def sponsor_request_access(self) -> Optional[pulumi.Input[str]]:
         """
-        submit button label request Wifi Access and notify sponsor about guest request
+        Submit button label request Wifi Access and notify sponsor about guest request
         """
         return pulumi.get(self, "sponsor_request_access")
 
@@ -35127,7 +35512,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorStatusApproved")
     def sponsor_status_approved(self) -> Optional[pulumi.Input[str]]:
         """
-        text to display if sponsor approves request
+        Text to display if sponsor approves request
         """
         return pulumi.get(self, "sponsor_status_approved")
 
@@ -35139,7 +35524,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorStatusDenied")
     def sponsor_status_denied(self) -> Optional[pulumi.Input[str]]:
         """
-        text to display when sponsor denies request
+        Text to display when sponsor denies request
         """
         return pulumi.get(self, "sponsor_status_denied")
 
@@ -35151,7 +35536,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorStatusPending")
     def sponsor_status_pending(self) -> Optional[pulumi.Input[str]]:
         """
-        text to display if request is still pending
+        Text to display if request is still pending
         """
         return pulumi.get(self, "sponsor_status_pending")
 
@@ -35163,7 +35548,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="sponsorSubmit")
     def sponsor_submit(self) -> Optional[pulumi.Input[str]]:
         """
-        submit button label to notify sponsor about guest request
+        Submit button label to notify sponsor about guest request
         """
         return pulumi.get(self, "sponsor_submit")
 
@@ -35202,7 +35587,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="tosAcceptLabel")
     def tos_accept_label(self) -> Optional[pulumi.Input[str]]:
         """
-        prefix of the label of the link to go to tos
+        Prefix of the label of the link to go to tos
         """
         return pulumi.get(self, "tos_accept_label")
 
@@ -35214,7 +35599,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="tosError")
     def tos_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when tos not accepted
+        Error message when tos not accepted
         """
         return pulumi.get(self, "tos_error")
 
@@ -35226,7 +35611,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="tosLink")
     def tos_link(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the link to go to tos
+        Label of the link to go to tos
         """
         return pulumi.get(self, "tos_link")
 
@@ -35238,7 +35623,7 @@ class WlanPortalTemplatePortalTemplateArgs:
     @pulumi.getter(name="tosText")
     def tos_text(self) -> Optional[pulumi.Input[str]]:
         """
-        text of the Terms of Service
+        Text of the Terms of Service
         """
         return pulumi.get(self, "tos_text")
 
@@ -35251,56 +35636,56 @@ if not MYPY:
     class WlanPortalTemplatePortalTemplateLocalesArgsDict(TypedDict):
         auth_button_amazon: NotRequired[pulumi.Input[str]]
         """
-        label for Amazon auth button
+        Label for Amazon auth button
         """
         auth_button_azure: NotRequired[pulumi.Input[str]]
         """
-        label for Azure auth button
+        Label for Azure auth button
         """
         auth_button_email: NotRequired[pulumi.Input[str]]
         """
-        label for Email auth button
+        Label for Email auth button
         """
         auth_button_facebook: NotRequired[pulumi.Input[str]]
         """
-        label for Facebook auth button
+        Label for Facebook auth button
         """
         auth_button_google: NotRequired[pulumi.Input[str]]
         """
-        label for Google auth button
+        Label for Google auth button
         """
         auth_button_microsoft: NotRequired[pulumi.Input[str]]
         """
-        label for Microsoft auth button
+        Label for Microsoft auth button
         """
         auth_button_passphrase: NotRequired[pulumi.Input[str]]
         """
-        label for passphrase auth button
+        Label for passphrase auth button
         """
         auth_button_sms: NotRequired[pulumi.Input[str]]
         """
-        label for SMS auth button
+        Label for SMS auth button
         """
         auth_button_sponsor: NotRequired[pulumi.Input[str]]
         """
-        label for Sponsor auth button
+        Label for Sponsor auth button
         """
         auth_label: NotRequired[pulumi.Input[str]]
         back_link: NotRequired[pulumi.Input[str]]
         """
-        label of the link to go back to /logon
+        Label of the link to go back to /logon
         """
         company_error: NotRequired[pulumi.Input[str]]
         """
-        error message when company not provided
+        Error message when company not provided
         """
         company_label: NotRequired[pulumi.Input[str]]
         """
-        label of company field
+        Label of company field
         """
         email_access_domain_error: NotRequired[pulumi.Input[str]]
         """
-        error message when a user has valid social login but doesn't match specified email domains.
+        Error message when a user has valid social login but doesn't match specified email domains.
         """
         email_cancel: NotRequired[pulumi.Input[str]]
         """
@@ -35314,12 +35699,12 @@ if not MYPY:
         email_code_title: NotRequired[pulumi.Input[str]]
         email_error: NotRequired[pulumi.Input[str]]
         """
-        error message when email not provided
+        Error message when email not provided
         """
         email_field_label: NotRequired[pulumi.Input[str]]
         email_label: NotRequired[pulumi.Input[str]]
         """
-        label of email field
+        Label of email field
         """
         email_message: NotRequired[pulumi.Input[str]]
         email_submit: NotRequired[pulumi.Input[str]]
@@ -35332,48 +35717,48 @@ if not MYPY:
         """
         field1error: NotRequired[pulumi.Input[str]]
         """
-        error message when field1 not provided
+        Error message when field1 not provided
         """
         field1label: NotRequired[pulumi.Input[str]]
         """
-        label of field1
+        Label of field1
         """
         field2error: NotRequired[pulumi.Input[str]]
         """
-        error message when field2 not provided
+        Error message when field2 not provided
         """
         field2label: NotRequired[pulumi.Input[str]]
         """
-        label of field2
+        Label of field2
         """
         field3error: NotRequired[pulumi.Input[str]]
         """
-        error message when field3 not provided
+        Error message when field3 not provided
         """
         field3label: NotRequired[pulumi.Input[str]]
         """
-        label of field3
+        Label of field3
         """
         field4error: NotRequired[pulumi.Input[str]]
         """
-        error message when field4 not provided
+        Error message when field4 not provided
         """
         field4label: NotRequired[pulumi.Input[str]]
         """
-        label of field4
+        Label of field4
         """
         message: NotRequired[pulumi.Input[str]]
         name_error: NotRequired[pulumi.Input[str]]
         """
-        error message when name not provided
+        Error message when name not provided
         """
         name_label: NotRequired[pulumi.Input[str]]
         """
-        label of name field
+        Label of name field
         """
         optout_label: NotRequired[pulumi.Input[str]]
         """
-        label for Do Not Store My Personal Information
+        Label for Do Not Store My Personal Information
         """
         page_title: NotRequired[pulumi.Input[str]]
         passphrase_cancel: NotRequired[pulumi.Input[str]]
@@ -35382,7 +35767,7 @@ if not MYPY:
         """
         passphrase_error: NotRequired[pulumi.Input[str]]
         """
-        error message when invalid passphrase is provided
+        Error message when invalid passphrase is provided
         """
         passphrase_label: NotRequired[pulumi.Input[str]]
         """
@@ -35399,33 +35784,33 @@ if not MYPY:
         """
         privacy_policy_accept_label: NotRequired[pulumi.Input[str]]
         """
-        prefix of the label of the link to go to Privacy Policy
+        Prefix of the label of the link to go to Privacy Policy
         """
         privacy_policy_error: NotRequired[pulumi.Input[str]]
         """
-        error message when Privacy Policy not accepted
+        Error message when Privacy Policy not accepted
         """
         privacy_policy_link: NotRequired[pulumi.Input[str]]
         """
-        label of the link to go to Privacy Policy
+        Label of the link to go to Privacy Policy
         """
         privacy_policy_text: NotRequired[pulumi.Input[str]]
         """
-        text of the Privacy Policy
+        Text of the Privacy Policy
         """
         required_field_label: NotRequired[pulumi.Input[str]]
         """
-        label to denote required field
+        Label to denote required field
         """
         sign_in_label: NotRequired[pulumi.Input[str]]
         """
-        label of the button to /signin
+        Label of the button to /signin
         """
         sms_carrier_default: NotRequired[pulumi.Input[str]]
         sms_carrier_error: NotRequired[pulumi.Input[str]]
         sms_carrier_field_label: NotRequired[pulumi.Input[str]]
         """
-        label for mobile carrier drop-down list
+        Label for mobile carrier drop-down list
         """
         sms_code_cancel: NotRequired[pulumi.Input[str]]
         """
@@ -35433,7 +35818,7 @@ if not MYPY:
         """
         sms_code_error: NotRequired[pulumi.Input[str]]
         """
-        error message when confirmation code is invalid
+        Error message when confirmation code is invalid
         """
         sms_code_field_label: NotRequired[pulumi.Input[str]]
         sms_code_message: NotRequired[pulumi.Input[str]]
@@ -35450,22 +35835,22 @@ if not MYPY:
         """
         sms_message_format: NotRequired[pulumi.Input[str]]
         """
-        format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         """
         sms_number_cancel: NotRequired[pulumi.Input[str]]
         """
-        label for canceling mobile details for SMS auth
+        Label for canceling mobile details for SMS auth
         """
         sms_number_error: NotRequired[pulumi.Input[str]]
         sms_number_field_label: NotRequired[pulumi.Input[str]]
         """
-        label for field to provide mobile number
+        Label for field to provide mobile number
         """
         sms_number_format: NotRequired[pulumi.Input[str]]
         sms_number_message: NotRequired[pulumi.Input[str]]
         sms_number_submit: NotRequired[pulumi.Input[str]]
         """
-        label for submit button for code generation
+        Label for submit button for code generation
         """
         sms_number_title: NotRequired[pulumi.Input[str]]
         """
@@ -35476,7 +35861,7 @@ if not MYPY:
         sponsor_cancel: NotRequired[pulumi.Input[str]]
         sponsor_email: NotRequired[pulumi.Input[str]]
         """
-        label for Sponsor Email
+        Label for Sponsor Email
         """
         sponsor_email_error: NotRequired[pulumi.Input[str]]
         sponsor_info_approved: NotRequired[pulumi.Input[str]]
@@ -35484,47 +35869,47 @@ if not MYPY:
         sponsor_info_pending: NotRequired[pulumi.Input[str]]
         sponsor_name: NotRequired[pulumi.Input[str]]
         """
-        label for Sponsor Name
+        Label for Sponsor Name
         """
         sponsor_name_error: NotRequired[pulumi.Input[str]]
         sponsor_note_pending: NotRequired[pulumi.Input[str]]
         sponsor_request_access: NotRequired[pulumi.Input[str]]
         """
-        submit button label request Wifi Access and notify sponsor about guest request
+        Submit button label request Wifi Access and notify sponsor about guest request
         """
         sponsor_status_approved: NotRequired[pulumi.Input[str]]
         """
-        text to display if sponsor approves request
+        Text to display if sponsor approves request
         """
         sponsor_status_denied: NotRequired[pulumi.Input[str]]
         """
-        text to display when sponsor denies request
+        Text to display when sponsor denies request
         """
         sponsor_status_pending: NotRequired[pulumi.Input[str]]
         """
-        text to display if request is still pending
+        Text to display if request is still pending
         """
         sponsor_submit: NotRequired[pulumi.Input[str]]
         """
-        submit button label to notify sponsor about guest request
+        Submit button label to notify sponsor about guest request
         """
         sponsors_error: NotRequired[pulumi.Input[str]]
         sponsors_field_label: NotRequired[pulumi.Input[str]]
         tos_accept_label: NotRequired[pulumi.Input[str]]
         """
-        prefix of the label of the link to go to tos
+        Prefix of the label of the link to go to tos
         """
         tos_error: NotRequired[pulumi.Input[str]]
         """
-        error message when tos not accepted
+        Error message when tos not accepted
         """
         tos_link: NotRequired[pulumi.Input[str]]
         """
-        label of the link to go to tos
+        Label of the link to go to tos
         """
         tos_text: NotRequired[pulumi.Input[str]]
         """
-        text of the Terms of Service
+        Text of the Terms of Service
         """
 elif False:
     WlanPortalTemplatePortalTemplateLocalesArgsDict: TypeAlias = Mapping[str, Any]
@@ -35627,67 +36012,67 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
                  tos_link: Optional[pulumi.Input[str]] = None,
                  tos_text: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] auth_button_amazon: label for Amazon auth button
-        :param pulumi.Input[str] auth_button_azure: label for Azure auth button
-        :param pulumi.Input[str] auth_button_email: label for Email auth button
-        :param pulumi.Input[str] auth_button_facebook: label for Facebook auth button
-        :param pulumi.Input[str] auth_button_google: label for Google auth button
-        :param pulumi.Input[str] auth_button_microsoft: label for Microsoft auth button
-        :param pulumi.Input[str] auth_button_passphrase: label for passphrase auth button
-        :param pulumi.Input[str] auth_button_sms: label for SMS auth button
-        :param pulumi.Input[str] auth_button_sponsor: label for Sponsor auth button
-        :param pulumi.Input[str] back_link: label of the link to go back to /logon
-        :param pulumi.Input[str] company_error: error message when company not provided
-        :param pulumi.Input[str] company_label: label of company field
-        :param pulumi.Input[str] email_access_domain_error: error message when a user has valid social login but doesn't match specified email domains.
+        :param pulumi.Input[str] auth_button_amazon: Label for Amazon auth button
+        :param pulumi.Input[str] auth_button_azure: Label for Azure auth button
+        :param pulumi.Input[str] auth_button_email: Label for Email auth button
+        :param pulumi.Input[str] auth_button_facebook: Label for Facebook auth button
+        :param pulumi.Input[str] auth_button_google: Label for Google auth button
+        :param pulumi.Input[str] auth_button_microsoft: Label for Microsoft auth button
+        :param pulumi.Input[str] auth_button_passphrase: Label for passphrase auth button
+        :param pulumi.Input[str] auth_button_sms: Label for SMS auth button
+        :param pulumi.Input[str] auth_button_sponsor: Label for Sponsor auth button
+        :param pulumi.Input[str] back_link: Label of the link to go back to /logon
+        :param pulumi.Input[str] company_error: Error message when company not provided
+        :param pulumi.Input[str] company_label: Label of company field
+        :param pulumi.Input[str] email_access_domain_error: Error message when a user has valid social login but doesn't match specified email domains.
         :param pulumi.Input[str] email_cancel: Label for cancel confirmation code submission using email auth
-        :param pulumi.Input[str] email_error: error message when email not provided
-        :param pulumi.Input[str] email_label: label of email field
+        :param pulumi.Input[str] email_error: Error message when email not provided
+        :param pulumi.Input[str] email_label: Label of email field
         :param pulumi.Input[str] email_submit: Label for confirmation code submit button using email auth
         :param pulumi.Input[str] email_title: Title for the Email registration
-        :param pulumi.Input[str] field1error: error message when field1 not provided
-        :param pulumi.Input[str] field1label: label of field1
-        :param pulumi.Input[str] field2error: error message when field2 not provided
-        :param pulumi.Input[str] field2label: label of field2
-        :param pulumi.Input[str] field3error: error message when field3 not provided
-        :param pulumi.Input[str] field3label: label of field3
-        :param pulumi.Input[str] field4error: error message when field4 not provided
-        :param pulumi.Input[str] field4label: label of field4
-        :param pulumi.Input[str] name_error: error message when name not provided
-        :param pulumi.Input[str] name_label: label of name field
-        :param pulumi.Input[str] optout_label: label for Do Not Store My Personal Information
+        :param pulumi.Input[str] field1error: Error message when field1 not provided
+        :param pulumi.Input[str] field1label: Label of field1
+        :param pulumi.Input[str] field2error: Error message when field2 not provided
+        :param pulumi.Input[str] field2label: Label of field2
+        :param pulumi.Input[str] field3error: Error message when field3 not provided
+        :param pulumi.Input[str] field3label: Label of field3
+        :param pulumi.Input[str] field4error: Error message when field4 not provided
+        :param pulumi.Input[str] field4label: Label of field4
+        :param pulumi.Input[str] name_error: Error message when name not provided
+        :param pulumi.Input[str] name_label: Label of name field
+        :param pulumi.Input[str] optout_label: Label for Do Not Store My Personal Information
         :param pulumi.Input[str] passphrase_cancel: Label for the Passphrase cancel button
-        :param pulumi.Input[str] passphrase_error: error message when invalid passphrase is provided
+        :param pulumi.Input[str] passphrase_error: Error message when invalid passphrase is provided
         :param pulumi.Input[str] passphrase_label: Passphrase
         :param pulumi.Input[str] passphrase_submit: Label for the Passphrase submit button
         :param pulumi.Input[str] passphrase_title: Title for passphrase details page
-        :param pulumi.Input[str] privacy_policy_accept_label: prefix of the label of the link to go to Privacy Policy
-        :param pulumi.Input[str] privacy_policy_error: error message when Privacy Policy not accepted
-        :param pulumi.Input[str] privacy_policy_link: label of the link to go to Privacy Policy
-        :param pulumi.Input[str] privacy_policy_text: text of the Privacy Policy
-        :param pulumi.Input[str] required_field_label: label to denote required field
-        :param pulumi.Input[str] sign_in_label: label of the button to /signin
-        :param pulumi.Input[str] sms_carrier_field_label: label for mobile carrier drop-down list
+        :param pulumi.Input[str] privacy_policy_accept_label: Prefix of the label of the link to go to Privacy Policy
+        :param pulumi.Input[str] privacy_policy_error: Error message when Privacy Policy not accepted
+        :param pulumi.Input[str] privacy_policy_link: Label of the link to go to Privacy Policy
+        :param pulumi.Input[str] privacy_policy_text: Text of the Privacy Policy
+        :param pulumi.Input[str] required_field_label: Label to denote required field
+        :param pulumi.Input[str] sign_in_label: Label of the button to /signin
+        :param pulumi.Input[str] sms_carrier_field_label: Label for mobile carrier drop-down list
         :param pulumi.Input[str] sms_code_cancel: Label for cancel confirmation code submission
-        :param pulumi.Input[str] sms_code_error: error message when confirmation code is invalid
+        :param pulumi.Input[str] sms_code_error: Error message when confirmation code is invalid
         :param pulumi.Input[str] sms_code_submit: Label for confirmation code submit button
         :param pulumi.Input[str] sms_have_access_code: Label for checkbox to specify that the user has access code
-        :param pulumi.Input[str] sms_message_format: format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
-        :param pulumi.Input[str] sms_number_cancel: label for canceling mobile details for SMS auth
-        :param pulumi.Input[str] sms_number_field_label: label for field to provide mobile number
-        :param pulumi.Input[str] sms_number_submit: label for submit button for code generation
+        :param pulumi.Input[str] sms_message_format: Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
+        :param pulumi.Input[str] sms_number_cancel: Label for canceling mobile details for SMS auth
+        :param pulumi.Input[str] sms_number_field_label: Label for field to provide mobile number
+        :param pulumi.Input[str] sms_number_submit: Label for submit button for code generation
         :param pulumi.Input[str] sms_number_title: Title for phone number details
-        :param pulumi.Input[str] sponsor_email: label for Sponsor Email
-        :param pulumi.Input[str] sponsor_name: label for Sponsor Name
-        :param pulumi.Input[str] sponsor_request_access: submit button label request Wifi Access and notify sponsor about guest request
-        :param pulumi.Input[str] sponsor_status_approved: text to display if sponsor approves request
-        :param pulumi.Input[str] sponsor_status_denied: text to display when sponsor denies request
-        :param pulumi.Input[str] sponsor_status_pending: text to display if request is still pending
-        :param pulumi.Input[str] sponsor_submit: submit button label to notify sponsor about guest request
-        :param pulumi.Input[str] tos_accept_label: prefix of the label of the link to go to tos
-        :param pulumi.Input[str] tos_error: error message when tos not accepted
-        :param pulumi.Input[str] tos_link: label of the link to go to tos
-        :param pulumi.Input[str] tos_text: text of the Terms of Service
+        :param pulumi.Input[str] sponsor_email: Label for Sponsor Email
+        :param pulumi.Input[str] sponsor_name: Label for Sponsor Name
+        :param pulumi.Input[str] sponsor_request_access: Submit button label request Wifi Access and notify sponsor about guest request
+        :param pulumi.Input[str] sponsor_status_approved: Text to display if sponsor approves request
+        :param pulumi.Input[str] sponsor_status_denied: Text to display when sponsor denies request
+        :param pulumi.Input[str] sponsor_status_pending: Text to display if request is still pending
+        :param pulumi.Input[str] sponsor_submit: Submit button label to notify sponsor about guest request
+        :param pulumi.Input[str] tos_accept_label: Prefix of the label of the link to go to tos
+        :param pulumi.Input[str] tos_error: Error message when tos not accepted
+        :param pulumi.Input[str] tos_link: Label of the link to go to tos
+        :param pulumi.Input[str] tos_text: Text of the Terms of Service
         """
         if auth_button_amazon is not None:
             pulumi.set(__self__, "auth_button_amazon", auth_button_amazon)
@@ -35882,7 +36267,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonAmazon")
     def auth_button_amazon(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Amazon auth button
+        Label for Amazon auth button
         """
         return pulumi.get(self, "auth_button_amazon")
 
@@ -35894,7 +36279,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonAzure")
     def auth_button_azure(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Azure auth button
+        Label for Azure auth button
         """
         return pulumi.get(self, "auth_button_azure")
 
@@ -35906,7 +36291,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonEmail")
     def auth_button_email(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Email auth button
+        Label for Email auth button
         """
         return pulumi.get(self, "auth_button_email")
 
@@ -35918,7 +36303,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonFacebook")
     def auth_button_facebook(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Facebook auth button
+        Label for Facebook auth button
         """
         return pulumi.get(self, "auth_button_facebook")
 
@@ -35930,7 +36315,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonGoogle")
     def auth_button_google(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Google auth button
+        Label for Google auth button
         """
         return pulumi.get(self, "auth_button_google")
 
@@ -35942,7 +36327,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonMicrosoft")
     def auth_button_microsoft(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Microsoft auth button
+        Label for Microsoft auth button
         """
         return pulumi.get(self, "auth_button_microsoft")
 
@@ -35954,7 +36339,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonPassphrase")
     def auth_button_passphrase(self) -> Optional[pulumi.Input[str]]:
         """
-        label for passphrase auth button
+        Label for passphrase auth button
         """
         return pulumi.get(self, "auth_button_passphrase")
 
@@ -35966,7 +36351,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonSms")
     def auth_button_sms(self) -> Optional[pulumi.Input[str]]:
         """
-        label for SMS auth button
+        Label for SMS auth button
         """
         return pulumi.get(self, "auth_button_sms")
 
@@ -35978,7 +36363,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="authButtonSponsor")
     def auth_button_sponsor(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Sponsor auth button
+        Label for Sponsor auth button
         """
         return pulumi.get(self, "auth_button_sponsor")
 
@@ -35999,7 +36384,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="backLink")
     def back_link(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the link to go back to /logon
+        Label of the link to go back to /logon
         """
         return pulumi.get(self, "back_link")
 
@@ -36011,7 +36396,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="companyError")
     def company_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when company not provided
+        Error message when company not provided
         """
         return pulumi.get(self, "company_error")
 
@@ -36023,7 +36408,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="companyLabel")
     def company_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of company field
+        Label of company field
         """
         return pulumi.get(self, "company_label")
 
@@ -36035,7 +36420,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="emailAccessDomainError")
     def email_access_domain_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when a user has valid social login but doesn't match specified email domains.
+        Error message when a user has valid social login but doesn't match specified email domains.
         """
         return pulumi.get(self, "email_access_domain_error")
 
@@ -36113,7 +36498,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="emailError")
     def email_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when email not provided
+        Error message when email not provided
         """
         return pulumi.get(self, "email_error")
 
@@ -36134,7 +36519,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="emailLabel")
     def email_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of email field
+        Label of email field
         """
         return pulumi.get(self, "email_label")
 
@@ -36179,7 +36564,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field1error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field1 not provided
+        Error message when field1 not provided
         """
         return pulumi.get(self, "field1error")
 
@@ -36191,7 +36576,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field1label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field1
+        Label of field1
         """
         return pulumi.get(self, "field1label")
 
@@ -36203,7 +36588,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field2error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field2 not provided
+        Error message when field2 not provided
         """
         return pulumi.get(self, "field2error")
 
@@ -36215,7 +36600,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field2label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field2
+        Label of field2
         """
         return pulumi.get(self, "field2label")
 
@@ -36227,7 +36612,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field3error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field3 not provided
+        Error message when field3 not provided
         """
         return pulumi.get(self, "field3error")
 
@@ -36239,7 +36624,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field3label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field3
+        Label of field3
         """
         return pulumi.get(self, "field3label")
 
@@ -36251,7 +36636,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field4error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when field4 not provided
+        Error message when field4 not provided
         """
         return pulumi.get(self, "field4error")
 
@@ -36263,7 +36648,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter
     def field4label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of field4
+        Label of field4
         """
         return pulumi.get(self, "field4label")
 
@@ -36284,7 +36669,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="nameError")
     def name_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when name not provided
+        Error message when name not provided
         """
         return pulumi.get(self, "name_error")
 
@@ -36296,7 +36681,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="nameLabel")
     def name_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of name field
+        Label of name field
         """
         return pulumi.get(self, "name_label")
 
@@ -36308,7 +36693,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="optoutLabel")
     def optout_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Do Not Store My Personal Information
+        Label for Do Not Store My Personal Information
         """
         return pulumi.get(self, "optout_label")
 
@@ -36341,7 +36726,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="passphraseError")
     def passphrase_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when invalid passphrase is provided
+        Error message when invalid passphrase is provided
         """
         return pulumi.get(self, "passphrase_error")
 
@@ -36398,7 +36783,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="privacyPolicyAcceptLabel")
     def privacy_policy_accept_label(self) -> Optional[pulumi.Input[str]]:
         """
-        prefix of the label of the link to go to Privacy Policy
+        Prefix of the label of the link to go to Privacy Policy
         """
         return pulumi.get(self, "privacy_policy_accept_label")
 
@@ -36410,7 +36795,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="privacyPolicyError")
     def privacy_policy_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when Privacy Policy not accepted
+        Error message when Privacy Policy not accepted
         """
         return pulumi.get(self, "privacy_policy_error")
 
@@ -36422,7 +36807,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="privacyPolicyLink")
     def privacy_policy_link(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the link to go to Privacy Policy
+        Label of the link to go to Privacy Policy
         """
         return pulumi.get(self, "privacy_policy_link")
 
@@ -36434,7 +36819,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="privacyPolicyText")
     def privacy_policy_text(self) -> Optional[pulumi.Input[str]]:
         """
-        text of the Privacy Policy
+        Text of the Privacy Policy
         """
         return pulumi.get(self, "privacy_policy_text")
 
@@ -36446,7 +36831,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="requiredFieldLabel")
     def required_field_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label to denote required field
+        Label to denote required field
         """
         return pulumi.get(self, "required_field_label")
 
@@ -36458,7 +36843,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="signInLabel")
     def sign_in_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the button to /signin
+        Label of the button to /signin
         """
         return pulumi.get(self, "sign_in_label")
 
@@ -36488,7 +36873,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="smsCarrierFieldLabel")
     def sms_carrier_field_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label for mobile carrier drop-down list
+        Label for mobile carrier drop-down list
         """
         return pulumi.get(self, "sms_carrier_field_label")
 
@@ -36512,7 +36897,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="smsCodeError")
     def sms_code_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when confirmation code is invalid
+        Error message when confirmation code is invalid
         """
         return pulumi.get(self, "sms_code_error")
 
@@ -36593,7 +36978,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="smsMessageFormat")
     def sms_message_format(self) -> Optional[pulumi.Input[str]]:
         """
-        format of access code sms message. {{code}} and {{duration}} are place holders and should be retained as is.
+        Format of access code sms message. {{code}} and {{duration}} are placeholders and should be retained as is.
         """
         return pulumi.get(self, "sms_message_format")
 
@@ -36605,7 +36990,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="smsNumberCancel")
     def sms_number_cancel(self) -> Optional[pulumi.Input[str]]:
         """
-        label for canceling mobile details for SMS auth
+        Label for canceling mobile details for SMS auth
         """
         return pulumi.get(self, "sms_number_cancel")
 
@@ -36626,7 +37011,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="smsNumberFieldLabel")
     def sms_number_field_label(self) -> Optional[pulumi.Input[str]]:
         """
-        label for field to provide mobile number
+        Label for field to provide mobile number
         """
         return pulumi.get(self, "sms_number_field_label")
 
@@ -36656,7 +37041,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="smsNumberSubmit")
     def sms_number_submit(self) -> Optional[pulumi.Input[str]]:
         """
-        label for submit button for code generation
+        Label for submit button for code generation
         """
         return pulumi.get(self, "sms_number_submit")
 
@@ -36707,7 +37092,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorEmail")
     def sponsor_email(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Sponsor Email
+        Label for Sponsor Email
         """
         return pulumi.get(self, "sponsor_email")
 
@@ -36755,7 +37140,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorName")
     def sponsor_name(self) -> Optional[pulumi.Input[str]]:
         """
-        label for Sponsor Name
+        Label for Sponsor Name
         """
         return pulumi.get(self, "sponsor_name")
 
@@ -36785,7 +37170,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorRequestAccess")
     def sponsor_request_access(self) -> Optional[pulumi.Input[str]]:
         """
-        submit button label request Wifi Access and notify sponsor about guest request
+        Submit button label request Wifi Access and notify sponsor about guest request
         """
         return pulumi.get(self, "sponsor_request_access")
 
@@ -36797,7 +37182,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorStatusApproved")
     def sponsor_status_approved(self) -> Optional[pulumi.Input[str]]:
         """
-        text to display if sponsor approves request
+        Text to display if sponsor approves request
         """
         return pulumi.get(self, "sponsor_status_approved")
 
@@ -36809,7 +37194,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorStatusDenied")
     def sponsor_status_denied(self) -> Optional[pulumi.Input[str]]:
         """
-        text to display when sponsor denies request
+        Text to display when sponsor denies request
         """
         return pulumi.get(self, "sponsor_status_denied")
 
@@ -36821,7 +37206,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorStatusPending")
     def sponsor_status_pending(self) -> Optional[pulumi.Input[str]]:
         """
-        text to display if request is still pending
+        Text to display if request is still pending
         """
         return pulumi.get(self, "sponsor_status_pending")
 
@@ -36833,7 +37218,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="sponsorSubmit")
     def sponsor_submit(self) -> Optional[pulumi.Input[str]]:
         """
-        submit button label to notify sponsor about guest request
+        Submit button label to notify sponsor about guest request
         """
         return pulumi.get(self, "sponsor_submit")
 
@@ -36863,7 +37248,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="tosAcceptLabel")
     def tos_accept_label(self) -> Optional[pulumi.Input[str]]:
         """
-        prefix of the label of the link to go to tos
+        Prefix of the label of the link to go to tos
         """
         return pulumi.get(self, "tos_accept_label")
 
@@ -36875,7 +37260,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="tosError")
     def tos_error(self) -> Optional[pulumi.Input[str]]:
         """
-        error message when tos not accepted
+        Error message when tos not accepted
         """
         return pulumi.get(self, "tos_error")
 
@@ -36887,7 +37272,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="tosLink")
     def tos_link(self) -> Optional[pulumi.Input[str]]:
         """
-        label of the link to go to tos
+        Label of the link to go to tos
         """
         return pulumi.get(self, "tos_link")
 
@@ -36899,7 +37284,7 @@ class WlanPortalTemplatePortalTemplateLocalesArgs:
     @pulumi.getter(name="tosText")
     def tos_text(self) -> Optional[pulumi.Input[str]]:
         """
-        text of the Terms of Service
+        Text of the Terms of Service
         """
         return pulumi.get(self, "tos_text")
 
@@ -36916,7 +37301,7 @@ if not MYPY:
         """
         overwrite: NotRequired[pulumi.Input[bool]]
         """
-        whether to overwrite QoS
+        Whether to overwrite QoS
         """
 elif False:
     WlanQosArgsDict: TypeAlias = Mapping[str, Any]
@@ -36928,7 +37313,7 @@ class WlanQosArgs:
                  overwrite: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] class_: enum: `background`, `best_effort`, `video`, `voice`
-        :param pulumi.Input[bool] overwrite: whether to overwrite QoS
+        :param pulumi.Input[bool] overwrite: Whether to overwrite QoS
         """
         if class_ is not None:
             pulumi.set(__self__, "class_", class_)
@@ -36951,7 +37336,7 @@ class WlanQosArgs:
     @pulumi.getter
     def overwrite(self) -> Optional[pulumi.Input[bool]]:
         """
-        whether to overwrite QoS
+        Whether to overwrite QoS
         """
         return pulumi.get(self, "overwrite")
 
@@ -36971,19 +37356,19 @@ if not MYPY:
         """
         proxy_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
         """
         server_name: NotRequired[pulumi.Input[str]]
         """
-        name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
         """
         servers: NotRequired[pulumi.Input[Sequence[pulumi.Input['WlanRadsecServerArgsDict']]]]
         """
-        List of Radsec Servers. Only if not Mist Edge.
+        List of RadSec Servers. Only if not Mist Edge.
         """
         use_mxedge: NotRequired[pulumi.Input[bool]]
         """
-        use mxedge(s) as radsecproxy
+        use mxedge(s) as RadSec Proxy
         """
         use_site_mxedge: NotRequired[pulumi.Input[bool]]
         """
@@ -37006,10 +37391,10 @@ class WlanRadsecArgs:
                  use_site_mxedge: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mxcluster_ids: To use Org mxedges when this WLAN does not use mxtunnel, specify their mxcluster_ids. Org mxedge(s) identified by mxcluster_ids
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_hosts: default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
-        :param pulumi.Input[str] server_name: name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
-        :param pulumi.Input[Sequence[pulumi.Input['WlanRadsecServerArgs']]] servers: List of Radsec Servers. Only if not Mist Edge.
-        :param pulumi.Input[bool] use_mxedge: use mxedge(s) as radsecproxy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_hosts: Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        :param pulumi.Input[str] server_name: Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        :param pulumi.Input[Sequence[pulumi.Input['WlanRadsecServerArgs']]] servers: List of RadSec Servers. Only if not Mist Edge.
+        :param pulumi.Input[bool] use_mxedge: use mxedge(s) as RadSec Proxy
         :param pulumi.Input[bool] use_site_mxedge: To use Site mxedges when this WLAN does not use mxtunnel
         """
         if coa_enabled is not None:
@@ -37074,7 +37459,7 @@ class WlanRadsecArgs:
     @pulumi.getter(name="proxyHosts")
     def proxy_hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
+        Default is site.mxedge.radsec.proxy_hosts which must be a superset of all `wlans[*].radsec.proxy_hosts`. When `radsec.proxy_hosts` are not used, tunnel peers (org or site mxedges) are used irrespective of `use_site_mxedge`
         """
         return pulumi.get(self, "proxy_hosts")
 
@@ -37086,7 +37471,7 @@ class WlanRadsecArgs:
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[pulumi.Input[str]]:
         """
-        name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
+        Name of the server to verify (against the cacerts in Org Setting). Only if not Mist Edge.
         """
         return pulumi.get(self, "server_name")
 
@@ -37098,7 +37483,7 @@ class WlanRadsecArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WlanRadsecServerArgs']]]]:
         """
-        List of Radsec Servers. Only if not Mist Edge.
+        List of RadSec Servers. Only if not Mist Edge.
         """
         return pulumi.get(self, "servers")
 
@@ -37110,7 +37495,7 @@ class WlanRadsecArgs:
     @pulumi.getter(name="useMxedge")
     def use_mxedge(self) -> Optional[pulumi.Input[bool]]:
         """
-        use mxedge(s) as radsecproxy
+        use mxedge(s) as RadSec Proxy
         """
         return pulumi.get(self, "use_mxedge")
 
@@ -37171,7 +37556,7 @@ if not MYPY:
     class WlanRatesetArgsDict(TypedDict):
         ht: NotRequired[pulumi.Input[str]]
         """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+        If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         """
         legacies: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -37192,7 +37577,7 @@ if not MYPY:
         """
         vht: NotRequired[pulumi.Input[str]]
         """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+        If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
         """
 elif False:
     WlanRatesetArgsDict: TypeAlias = Mapping[str, Any]
@@ -37206,7 +37591,7 @@ class WlanRatesetArgs:
                  template: Optional[pulumi.Input[str]] = None,
                  vht: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] ht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+        :param pulumi.Input[str] ht: If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] legacies: if `template`==`custom`. List of supported rates (IE=1) and extended supported rates (IE=50) for custom template, append ‘b’ at the end to indicate a rate being basic/mandatory. If `template`==`custom` is configured and legacy does not define at least one basic rate, it will use `no-legacy` default values. enum: `1`, `11`, `11b`, `12`, `12b`, `18`, `18b`, `1b`, `2`, `24`, `24b`, `2b`, `36`, `36b`, `48`, `48b`, `5.5`, `5.5b`, `54`, `54b`, `6`, `6b`, `9`, `9b`
         :param pulumi.Input[int] min_rssi: Minimum RSSI for client to connect, 0 means not enforcing
         :param pulumi.Input[str] template: Data Rates template to apply. enum: 
@@ -37215,7 +37600,7 @@ class WlanRatesetArgs:
                  * `legacy-only`: disable 802.11n and 802.11ac
                  * `high-density`: no 11b, no low rates
                  * `custom`: user defined
-        :param pulumi.Input[str] vht: if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+        :param pulumi.Input[str] vht: If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
         """
         if ht is not None:
             pulumi.set(__self__, "ht", ht)
@@ -37232,7 +37617,7 @@ class WlanRatesetArgs:
     @pulumi.getter
     def ht(self) -> Optional[pulumi.Input[str]]:
         """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
+        If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 00ff 00f0 001f limits HT rates to MCS 0-7 for 1 stream, MCS 4-7 for 2 stream (i.e. MCS 12-15), MCS 1-5 for 3 stream (i.e. MCS 16-20)
         """
         return pulumi.get(self, "ht")
 
@@ -37285,7 +37670,7 @@ class WlanRatesetArgs:
     @pulumi.getter
     def vht(self) -> Optional[pulumi.Input[str]]:
         """
-        if `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
+        If `template`==`custom`. MCS bitmasks for 4 streams (16-bit for each stream, MCS0 is least significant bit), e.g. 03ff 01ff 00ff limits VHT rates to MCS 0-9 for 1 stream, MCS 0-8 for 2 streams, and MCS 0-7 for 3 streams.
         """
         return pulumi.get(self, "vht")
 
@@ -37299,9 +37684,7 @@ if not MYPY:
         enabled: NotRequired[pulumi.Input[bool]]
         hours: NotRequired[pulumi.Input['WlanScheduleHoursArgsDict']]
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-
-        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
 elif False:
     WlanScheduleArgsDict: TypeAlias = Mapping[str, Any]
@@ -37312,9 +37695,7 @@ class WlanScheduleArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  hours: Optional[pulumi.Input['WlanScheduleHoursArgs']] = None):
         """
-        :param pulumi.Input['WlanScheduleHoursArgs'] hours: hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-               
-               **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        :param pulumi.Input['WlanScheduleHoursArgs'] hours: Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -37334,9 +37715,7 @@ class WlanScheduleArgs:
     @pulumi.getter
     def hours(self) -> Optional[pulumi.Input['WlanScheduleHoursArgs']]:
         """
-        hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun). 
-
-        **Note**: If the dow is not defined then it\\u2019\\ s treated as 00:00-23:59.
+        Days/Hours of operation filter, the available days (mon, tue, wed, thu, fri, sat, sun)
         """
         return pulumi.get(self, "hours")
 
@@ -37348,12 +37727,33 @@ class WlanScheduleArgs:
 if not MYPY:
     class WlanScheduleHoursArgsDict(TypedDict):
         fri: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         mon: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         sat: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         sun: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         thu: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         tue: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         wed: NotRequired[pulumi.Input[str]]
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
 elif False:
     WlanScheduleHoursArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -37367,6 +37767,15 @@ class WlanScheduleHoursArgs:
                  thu: Optional[pulumi.Input[str]] = None,
                  tue: Optional[pulumi.Input[str]] = None,
                  wed: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fri: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] mon: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] sat: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] sun: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] thu: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] tue: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        :param pulumi.Input[str] wed: Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         if fri is not None:
             pulumi.set(__self__, "fri", fri)
         if mon is not None:
@@ -37385,6 +37794,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def fri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "fri")
 
     @fri.setter
@@ -37394,6 +37806,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def mon(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "mon")
 
     @mon.setter
@@ -37403,6 +37818,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def sat(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "sat")
 
     @sat.setter
@@ -37412,6 +37830,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def sun(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "sun")
 
     @sun.setter
@@ -37421,6 +37842,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def thu(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "thu")
 
     @thu.setter
@@ -37430,6 +37854,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def tue(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "tue")
 
     @tue.setter
@@ -37439,6 +37866,9 @@ class WlanScheduleHoursArgs:
     @property
     @pulumi.getter
     def wed(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hour range of the day (e.g. `09:00-17:00`). If the hour is not defined then it's treated as 00:00-23:59.
+        """
         return pulumi.get(self, "wed")
 
     @wed.setter

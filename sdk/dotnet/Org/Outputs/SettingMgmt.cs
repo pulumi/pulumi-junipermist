@@ -14,15 +14,15 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class SettingMgmt
     {
         /// <summary>
-        /// list of Mist Tunnels
+        /// List of Mist Tunnels
         /// </summary>
         public readonly ImmutableArray<string> MxtunnelIds;
         /// <summary>
-        /// whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
+        /// Whether to use Mist Tunnel for mgmt connectivity, this takes precedence over use_wxtunnel
         /// </summary>
         public readonly bool? UseMxtunnel;
         /// <summary>
-        /// whether to use wxtunnel for mgmt connectivity
+        /// Whether to use wxtunnel for mgmt connectivity
         /// </summary>
         public readonly bool? UseWxtunnel;
 

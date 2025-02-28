@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeviceprofileGatewayRoutingPoliciesTerm {
     /**
-     * @return when used as import policy
+     * @return When used as import policy
      * 
      */
     private @Nullable DeviceprofileGatewayRoutingPoliciesTermAction action;
@@ -25,7 +25,7 @@ public final class DeviceprofileGatewayRoutingPoliciesTerm {
 
     private DeviceprofileGatewayRoutingPoliciesTerm() {}
     /**
-     * @return when used as import policy
+     * @return When used as import policy
      * 
      */
     public Optional<DeviceprofileGatewayRoutingPoliciesTermAction> action() {

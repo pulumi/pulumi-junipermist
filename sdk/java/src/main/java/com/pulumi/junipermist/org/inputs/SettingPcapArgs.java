@@ -24,14 +24,14 @@ public final class SettingPcapArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * max_len of non-management packets to capture
+     * Max_len of non-management packets to capture
      * 
      */
     @Import(name="maxPktLen")
     private @Nullable Output<Integer> maxPktLen;
 
     /**
-     * @return max_len of non-management packets to capture
+     * @return Max_len of non-management packets to capture
      * 
      */
     public Optional<Output<Integer>> maxPktLen() {
@@ -73,7 +73,7 @@ public final class SettingPcapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxPktLen max_len of non-management packets to capture
+         * @param maxPktLen Max_len of non-management packets to capture
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SettingPcapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxPktLen max_len of non-management packets to capture
+         * @param maxPktLen Max_len of non-management packets to capture
          * 
          * @return builder
          * 

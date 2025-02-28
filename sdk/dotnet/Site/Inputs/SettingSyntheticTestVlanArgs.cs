@@ -21,7 +21,7 @@ namespace Pulumi.JuniperMist.Site.Inputs
         }
 
         /// <summary>
-        /// for some vlans where we don't want this to run
+        /// For some vlans where we don't want this to run
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

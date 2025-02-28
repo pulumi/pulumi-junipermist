@@ -14,19 +14,19 @@ import java.util.Objects;
 public final class GetWlansOrgWlanHotspot20 {
     private List<String> domainNames;
     /**
-     * @return whether to enable hotspot 2.0 config
+     * @return Whether to enable hotspot 2.0 config
      * 
      */
     private Boolean enabled;
     private List<String> naiRealms;
     /**
-     * @return list of operators to support
+     * @return List of operators to support
      * 
      */
     private List<String> operators;
     private List<String> rcois;
     /**
-     * @return venue name, default is site name
+     * @return Venue name, default is site name
      * 
      */
     private String venueName;
@@ -36,7 +36,7 @@ public final class GetWlansOrgWlanHotspot20 {
         return this.domainNames;
     }
     /**
-     * @return whether to enable hotspot 2.0 config
+     * @return Whether to enable hotspot 2.0 config
      * 
      */
     public Boolean enabled() {
@@ -46,7 +46,7 @@ public final class GetWlansOrgWlanHotspot20 {
         return this.naiRealms;
     }
     /**
-     * @return list of operators to support
+     * @return List of operators to support
      * 
      */
     public List<String> operators() {
@@ -56,7 +56,7 @@ public final class GetWlansOrgWlanHotspot20 {
         return this.rcois;
     }
     /**
-     * @return venue name, default is site name
+     * @return Venue name, default is site name
      * 
      */
     public String venueName() {

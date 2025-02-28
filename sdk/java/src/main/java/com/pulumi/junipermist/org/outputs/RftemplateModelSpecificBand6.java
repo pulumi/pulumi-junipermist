@@ -32,22 +32,22 @@ public final class RftemplateModelSpecificBand6 {
      */
     private @Nullable List<Integer> channels;
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
      * 
      */
     private @Nullable Integer power;
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMax;
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     private @Nullable Integer powerMin;
@@ -57,7 +57,7 @@ public final class RftemplateModelSpecificBand6 {
      */
     private @Nullable String preamble;
     /**
-     * @return for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we&#39;ll fallback to Low Power Indoor if AFC failed
+     * @return For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we&#39;ll fall back to Low Power Indoor if AFC failed
      * 
      */
     private @Nullable Boolean standardPower;
@@ -91,28 +91,28 @@ public final class RftemplateModelSpecificBand6 {
         return this.channels == null ? List.of() : this.channels;
     }
     /**
-     * @return whether to disable the radio
+     * @return Whether to disable the radio
      * 
      */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return TX power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
+     * @return Tx power of the radio. For Devices, 0 means auto. -1 / -2 / -3 / …: treated as 0 / -1 / -2 / …
      * 
      */
     public Optional<Integer> power() {
         return Optional.ofNullable(this.power);
     }
     /**
-     * @return when power=0, max tx power to use, HW-specific values will be used if not set
+     * @return When power=0, max tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMax() {
         return Optional.ofNullable(this.powerMax);
     }
     /**
-     * @return when power=0, min tx power to use, HW-specific values will be used if not set
+     * @return When power=0, min tx power to use, HW-specific values will be used if not set
      * 
      */
     public Optional<Integer> powerMin() {
@@ -126,7 +126,7 @@ public final class RftemplateModelSpecificBand6 {
         return Optional.ofNullable(this.preamble);
     }
     /**
-     * @return for 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed and we&#39;ll fallback to Low Power Indoor if AFC failed
+     * @return For 6GHz Only, standard-power operation, AFC (Automatic Frequency Coordination) will be performed, and we&#39;ll fall back to Low Power Indoor if AFC failed
      * 
      */
     public Optional<Boolean> standardPower() {

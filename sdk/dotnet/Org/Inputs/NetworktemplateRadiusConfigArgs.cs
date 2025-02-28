@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class NetworktemplateRadiusConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// how frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
+        /// How frequently should interim accounting be reported, 60-65535. default is 0 (use one specified in Access-Accept request from RADIUS Server). Very frequent messages can affect the performance of the radius server, 600 and up is recommended when enabled
         /// </summary>
         [Input("acctInterimInterval")]
         public Input<int>? AcctInterimInterval { get; set; }
@@ -35,25 +35,25 @@ namespace Pulumi.JuniperMist.Org.Inputs
         }
 
         /// <summary>
-        /// radius auth session retries
+        /// Radius auth session retries
         /// </summary>
         [Input("authServersRetries")]
         public Input<int>? AuthServersRetries { get; set; }
 
         /// <summary>
-        /// radius auth session timeout
+        /// Radius auth session timeout
         /// </summary>
         [Input("authServersTimeout")]
         public Input<int>? AuthServersTimeout { get; set; }
 
         /// <summary>
-        /// use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
+        /// Use `network`or `source_ip`. Which network the RADIUS server resides, if there's static IP for this network, we'd use it as source-ip
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// use `network`or `source_ip`
+        /// Use `network`or `source_ip`
         /// </summary>
         [Input("sourceIp")]
         public Input<string>? SourceIp { get; set; }

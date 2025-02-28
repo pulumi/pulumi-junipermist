@@ -76,19 +76,19 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      */
     public readonly bleConfig!: pulumi.Output<outputs.org.DeviceprofileApBleConfig | undefined>;
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      */
     public readonly disableEth1!: pulumi.Output<boolean>;
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      */
     public readonly disableEth2!: pulumi.Output<boolean>;
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      */
     public readonly disableEth3!: pulumi.Output<boolean>;
     /**
-     * whether to disable module port
+     * Whether to disable module port
      */
     public readonly disableModule!: pulumi.Output<boolean>;
     public readonly eslConfig!: pulumi.Output<outputs.org.DeviceprofileApEslConfig | undefined>;
@@ -108,11 +108,11 @@ export class DeviceprofileAp extends pulumi.CustomResource {
     public readonly ntpServers!: pulumi.Output<string[] | undefined>;
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     public readonly poePassthrough!: pulumi.Output<boolean>;
     /**
-     * power related configs
+     * Power related configs
      */
     public readonly pwrConfig!: pulumi.Output<outputs.org.DeviceprofileApPwrConfig | undefined>;
     /**
@@ -124,15 +124,17 @@ export class DeviceprofileAp extends pulumi.CustomResource {
      * Device Type. enum: `ap`
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * AP Uplink port configuration
+     */
     public readonly uplinkPortConfig!: pulumi.Output<outputs.org.DeviceprofileApUplinkPortConfig | undefined>;
     /**
-     * USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      */
     public readonly usbConfig!: pulumi.Output<outputs.org.DeviceprofileApUsbConfig | undefined>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     public readonly vars!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -215,19 +217,19 @@ export interface DeviceprofileApState {
      */
     bleConfig?: pulumi.Input<inputs.org.DeviceprofileApBleConfig>;
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      */
     disableEth1?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      */
     disableEth2?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      */
     disableEth3?: pulumi.Input<boolean>;
     /**
-     * whether to disable module port
+     * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean>;
     eslConfig?: pulumi.Input<inputs.org.DeviceprofileApEslConfig>;
@@ -247,11 +249,11 @@ export interface DeviceprofileApState {
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     orgId?: pulumi.Input<string>;
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * power related configs
+     * Power related configs
      */
     pwrConfig?: pulumi.Input<inputs.org.DeviceprofileApPwrConfig>;
     /**
@@ -263,15 +265,17 @@ export interface DeviceprofileApState {
      * Device Type. enum: `ap`
      */
     type?: pulumi.Input<string>;
+    /**
+     * AP Uplink port configuration
+     */
     uplinkPortConfig?: pulumi.Input<inputs.org.DeviceprofileApUplinkPortConfig>;
     /**
-     * USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      */
     usbConfig?: pulumi.Input<inputs.org.DeviceprofileApUsbConfig>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -289,19 +293,19 @@ export interface DeviceprofileApArgs {
      */
     bleConfig?: pulumi.Input<inputs.org.DeviceprofileApBleConfig>;
     /**
-     * whether to disable eth1 port
+     * Whether to disable eth1 port
      */
     disableEth1?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth2 port
+     * Whether to disable eth2 port
      */
     disableEth2?: pulumi.Input<boolean>;
     /**
-     * whether to disable eth3 port
+     * Whether to disable eth3 port
      */
     disableEth3?: pulumi.Input<boolean>;
     /**
-     * whether to disable module port
+     * Whether to disable module port
      */
     disableModule?: pulumi.Input<boolean>;
     eslConfig?: pulumi.Input<inputs.org.DeviceprofileApEslConfig>;
@@ -321,11 +325,11 @@ export interface DeviceprofileApArgs {
     ntpServers?: pulumi.Input<pulumi.Input<string>[]>;
     orgId: pulumi.Input<string>;
     /**
-     * whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+     * Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
      */
     poePassthrough?: pulumi.Input<boolean>;
     /**
-     * power related configs
+     * Power related configs
      */
     pwrConfig?: pulumi.Input<inputs.org.DeviceprofileApPwrConfig>;
     /**
@@ -333,15 +337,17 @@ export interface DeviceprofileApArgs {
      */
     radioConfig?: pulumi.Input<inputs.org.DeviceprofileApRadioConfig>;
     siteId?: pulumi.Input<string>;
+    /**
+     * AP Uplink port configuration
+     */
     uplinkPortConfig?: pulumi.Input<inputs.org.DeviceprofileApUplinkPortConfig>;
     /**
-     * USB AP settings
-     * Note: if native imagotag is enabled, BLE will be disabled automatically
-     * Note: legacy, new config moved to ESL Config.
+     * USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+     * moved to ESL Config.
      */
     usbConfig?: pulumi.Input<inputs.org.DeviceprofileApUsbConfig>;
     /**
-     * a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+     * Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
      */
     vars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

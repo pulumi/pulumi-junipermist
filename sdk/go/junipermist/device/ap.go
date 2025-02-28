@@ -35,16 +35,18 @@ type Ap struct {
 	Centrak      ApCentrakPtrOutput      `pulumi:"centrak"`
 	ClientBridge ApClientBridgePtrOutput `pulumi:"clientBridge"`
 	DeviceId     pulumi.StringOutput     `pulumi:"deviceId"`
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 pulumi.BoolOutput `pulumi:"disableEth1"`
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 pulumi.BoolOutput `pulumi:"disableEth2"`
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolOutput `pulumi:"disableEth3"`
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule pulumi.BoolOutput    `pulumi:"disableModule"`
 	EslConfig     ApEslConfigPtrOutput `pulumi:"eslConfig"`
-	// height, in meters, optional
+	// For some AP models, flowControl can be enabled to address some switch compatibility issue
+	FlowControl pulumi.BoolOutput `pulumi:"flowControl"`
+	// Height, in meters, optional
 	Height    pulumi.Float64PtrOutput `pulumi:"height"`
 	Image1Url pulumi.StringOutput     `pulumi:"image1Url"`
 	Image2Url pulumi.StringOutput     `pulumi:"image2Url"`
@@ -53,43 +55,44 @@ type Ap struct {
 	IpConfig ApIpConfigPtrOutput `pulumi:"ipConfig"`
 	// LED AP settings
 	Led ApLedPtrOutput `pulumi:"led"`
-	// whether this map is considered locked down
+	// Whether this map is considered locked down
 	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
-	// device MAC address
+	// Device MAC address
 	Mac pulumi.StringOutput `pulumi:"mac"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrOutput `pulumi:"mapId"`
 	// Mesh AP settings
 	Mesh ApMeshPtrOutput `pulumi:"mesh"`
-	// device Model
+	// Device Model
 	Model pulumi.StringOutput `pulumi:"model"`
 	Name  pulumi.StringOutput `pulumi:"name"`
-	// any notes about this AP
+	// Any notes about this AP
 	Notes      pulumi.StringPtrOutput   `pulumi:"notes"`
 	NtpServers pulumi.StringArrayOutput `pulumi:"ntpServers"`
 	OrgId      pulumi.StringOutput      `pulumi:"orgId"`
-	// orientation, 0-359, in degrees, up is 0, right is 90.
+	// Orientation, 0-359, in degrees, up is 0, right is 90.
 	Orientation pulumi.IntPtrOutput `pulumi:"orientation"`
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolOutput `pulumi:"poePassthrough"`
-	// power related configs
+	// Power related configs
 	PwrConfig ApPwrConfigPtrOutput `pulumi:"pwrConfig"`
 	// Radio AP settings
 	RadioConfig ApRadioConfigPtrOutput `pulumi:"radioConfig"`
-	// device Serial
+	// Device Serial
 	Serial pulumi.StringOutput `pulumi:"serial"`
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// Device Type. enum: `ap`
-	Type             pulumi.StringOutput         `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
+	// AP Uplink port configuration
 	UplinkPortConfig ApUplinkPortConfigPtrOutput `pulumi:"uplinkPortConfig"`
-	// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-	// to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig ApUsbConfigPtrOutput `pulumi:"usbConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapOutput `pulumi:"vars"`
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrOutput `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrOutput `pulumi:"y"`
 }
 
@@ -136,16 +139,18 @@ type apState struct {
 	Centrak      *ApCentrak      `pulumi:"centrak"`
 	ClientBridge *ApClientBridge `pulumi:"clientBridge"`
 	DeviceId     *string         `pulumi:"deviceId"`
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 *bool `pulumi:"disableEth1"`
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 *bool `pulumi:"disableEth2"`
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 *bool `pulumi:"disableEth3"`
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule *bool        `pulumi:"disableModule"`
 	EslConfig     *ApEslConfig `pulumi:"eslConfig"`
-	// height, in meters, optional
+	// For some AP models, flowControl can be enabled to address some switch compatibility issue
+	FlowControl *bool `pulumi:"flowControl"`
+	// Height, in meters, optional
 	Height    *float64 `pulumi:"height"`
 	Image1Url *string  `pulumi:"image1Url"`
 	Image2Url *string  `pulumi:"image2Url"`
@@ -154,43 +159,44 @@ type apState struct {
 	IpConfig *ApIpConfig `pulumi:"ipConfig"`
 	// LED AP settings
 	Led *ApLed `pulumi:"led"`
-	// whether this map is considered locked down
+	// Whether this map is considered locked down
 	Locked *bool `pulumi:"locked"`
-	// device MAC address
+	// Device MAC address
 	Mac *string `pulumi:"mac"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
 	// Mesh AP settings
 	Mesh *ApMesh `pulumi:"mesh"`
-	// device Model
+	// Device Model
 	Model *string `pulumi:"model"`
 	Name  *string `pulumi:"name"`
-	// any notes about this AP
+	// Any notes about this AP
 	Notes      *string  `pulumi:"notes"`
 	NtpServers []string `pulumi:"ntpServers"`
 	OrgId      *string  `pulumi:"orgId"`
-	// orientation, 0-359, in degrees, up is 0, right is 90.
+	// Orientation, 0-359, in degrees, up is 0, right is 90.
 	Orientation *int `pulumi:"orientation"`
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// power related configs
+	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
 	RadioConfig *ApRadioConfig `pulumi:"radioConfig"`
-	// device Serial
+	// Device Serial
 	Serial *string `pulumi:"serial"`
 	SiteId *string `pulumi:"siteId"`
 	// Device Type. enum: `ap`
-	Type             *string             `pulumi:"type"`
+	Type *string `pulumi:"type"`
+	// AP Uplink port configuration
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-	// to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
-	// x in pixel
+	// X in pixel
 	X *float64 `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y *float64 `pulumi:"y"`
 }
 
@@ -202,16 +208,18 @@ type ApState struct {
 	Centrak      ApCentrakPtrInput
 	ClientBridge ApClientBridgePtrInput
 	DeviceId     pulumi.StringPtrInput
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 pulumi.BoolPtrInput
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 pulumi.BoolPtrInput
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolPtrInput
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
 	EslConfig     ApEslConfigPtrInput
-	// height, in meters, optional
+	// For some AP models, flowControl can be enabled to address some switch compatibility issue
+	FlowControl pulumi.BoolPtrInput
+	// Height, in meters, optional
 	Height    pulumi.Float64PtrInput
 	Image1Url pulumi.StringPtrInput
 	Image2Url pulumi.StringPtrInput
@@ -220,43 +228,44 @@ type ApState struct {
 	IpConfig ApIpConfigPtrInput
 	// LED AP settings
 	Led ApLedPtrInput
-	// whether this map is considered locked down
+	// Whether this map is considered locked down
 	Locked pulumi.BoolPtrInput
-	// device MAC address
+	// Device MAC address
 	Mac pulumi.StringPtrInput
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
 	// Mesh AP settings
 	Mesh ApMeshPtrInput
-	// device Model
+	// Device Model
 	Model pulumi.StringPtrInput
 	Name  pulumi.StringPtrInput
-	// any notes about this AP
+	// Any notes about this AP
 	Notes      pulumi.StringPtrInput
 	NtpServers pulumi.StringArrayInput
 	OrgId      pulumi.StringPtrInput
-	// orientation, 0-359, in degrees, up is 0, right is 90.
+	// Orientation, 0-359, in degrees, up is 0, right is 90.
 	Orientation pulumi.IntPtrInput
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// power related configs
+	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
 	// Radio AP settings
 	RadioConfig ApRadioConfigPtrInput
-	// device Serial
+	// Device Serial
 	Serial pulumi.StringPtrInput
 	SiteId pulumi.StringPtrInput
 	// Device Type. enum: `ap`
-	Type             pulumi.StringPtrInput
+	Type pulumi.StringPtrInput
+	// AP Uplink port configuration
 	UplinkPortConfig ApUplinkPortConfigPtrInput
-	// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-	// to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig ApUsbConfigPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrInput
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrInput
 }
 
@@ -272,49 +281,52 @@ type apArgs struct {
 	Centrak      *ApCentrak      `pulumi:"centrak"`
 	ClientBridge *ApClientBridge `pulumi:"clientBridge"`
 	DeviceId     string          `pulumi:"deviceId"`
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 *bool `pulumi:"disableEth1"`
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 *bool `pulumi:"disableEth2"`
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 *bool `pulumi:"disableEth3"`
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule *bool        `pulumi:"disableModule"`
 	EslConfig     *ApEslConfig `pulumi:"eslConfig"`
-	// height, in meters, optional
+	// For some AP models, flowControl can be enabled to address some switch compatibility issue
+	FlowControl *bool `pulumi:"flowControl"`
+	// Height, in meters, optional
 	Height *float64 `pulumi:"height"`
 	// IP AP settings
 	IpConfig *ApIpConfig `pulumi:"ipConfig"`
 	// LED AP settings
 	Led *ApLed `pulumi:"led"`
-	// whether this map is considered locked down
+	// Whether this map is considered locked down
 	Locked *bool `pulumi:"locked"`
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId *string `pulumi:"mapId"`
 	// Mesh AP settings
 	Mesh *ApMesh `pulumi:"mesh"`
 	Name *string `pulumi:"name"`
-	// any notes about this AP
+	// Any notes about this AP
 	Notes      *string  `pulumi:"notes"`
 	NtpServers []string `pulumi:"ntpServers"`
-	// orientation, 0-359, in degrees, up is 0, right is 90.
+	// Orientation, 0-359, in degrees, up is 0, right is 90.
 	Orientation *int `pulumi:"orientation"`
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough *bool `pulumi:"poePassthrough"`
-	// power related configs
+	// Power related configs
 	PwrConfig *ApPwrConfig `pulumi:"pwrConfig"`
 	// Radio AP settings
-	RadioConfig      *ApRadioConfig      `pulumi:"radioConfig"`
-	SiteId           string              `pulumi:"siteId"`
+	RadioConfig *ApRadioConfig `pulumi:"radioConfig"`
+	SiteId      string         `pulumi:"siteId"`
+	// AP Uplink port configuration
 	UplinkPortConfig *ApUplinkPortConfig `pulumi:"uplinkPortConfig"`
-	// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-	// to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig *ApUsbConfig `pulumi:"usbConfig"`
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars map[string]string `pulumi:"vars"`
-	// x in pixel
+	// X in pixel
 	X *float64 `pulumi:"x"`
-	// y in pixel
+	// Y in pixel
 	Y *float64 `pulumi:"y"`
 }
 
@@ -327,49 +339,52 @@ type ApArgs struct {
 	Centrak      ApCentrakPtrInput
 	ClientBridge ApClientBridgePtrInput
 	DeviceId     pulumi.StringInput
-	// whether to disable eth1 port
+	// Whether to disable eth1 port
 	DisableEth1 pulumi.BoolPtrInput
-	// whether to disable eth2 port
+	// Whether to disable eth2 port
 	DisableEth2 pulumi.BoolPtrInput
-	// whether to disable eth3 port
+	// Whether to disable eth3 port
 	DisableEth3 pulumi.BoolPtrInput
-	// whether to disable module port
+	// Whether to disable module port
 	DisableModule pulumi.BoolPtrInput
 	EslConfig     ApEslConfigPtrInput
-	// height, in meters, optional
+	// For some AP models, flowControl can be enabled to address some switch compatibility issue
+	FlowControl pulumi.BoolPtrInput
+	// Height, in meters, optional
 	Height pulumi.Float64PtrInput
 	// IP AP settings
 	IpConfig ApIpConfigPtrInput
 	// LED AP settings
 	Led ApLedPtrInput
-	// whether this map is considered locked down
+	// Whether this map is considered locked down
 	Locked pulumi.BoolPtrInput
-	// map where the device belongs to
+	// Map where the device belongs to
 	MapId pulumi.StringPtrInput
 	// Mesh AP settings
 	Mesh ApMeshPtrInput
 	Name pulumi.StringPtrInput
-	// any notes about this AP
+	// Any notes about this AP
 	Notes      pulumi.StringPtrInput
 	NtpServers pulumi.StringArrayInput
-	// orientation, 0-359, in degrees, up is 0, right is 90.
+	// Orientation, 0-359, in degrees, up is 0, right is 90.
 	Orientation pulumi.IntPtrInput
-	// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+	// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 	PoePassthrough pulumi.BoolPtrInput
-	// power related configs
+	// Power related configs
 	PwrConfig ApPwrConfigPtrInput
 	// Radio AP settings
-	RadioConfig      ApRadioConfigPtrInput
-	SiteId           pulumi.StringInput
+	RadioConfig ApRadioConfigPtrInput
+	SiteId      pulumi.StringInput
+	// AP Uplink port configuration
 	UplinkPortConfig ApUplinkPortConfigPtrInput
-	// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-	// to ESL Config.
+	// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+	// moved to ESL Config.
 	UsbConfig ApUsbConfigPtrInput
-	// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+	// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 	Vars pulumi.StringMapInput
-	// x in pixel
+	// X in pixel
 	X pulumi.Float64PtrInput
-	// y in pixel
+	// Y in pixel
 	Y pulumi.Float64PtrInput
 }
 
@@ -482,22 +497,22 @@ func (o ApOutput) DeviceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
 }
 
-// whether to disable eth1 port
+// Whether to disable eth1 port
 func (o ApOutput) DisableEth1() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.DisableEth1 }).(pulumi.BoolOutput)
 }
 
-// whether to disable eth2 port
+// Whether to disable eth2 port
 func (o ApOutput) DisableEth2() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.DisableEth2 }).(pulumi.BoolOutput)
 }
 
-// whether to disable eth3 port
+// Whether to disable eth3 port
 func (o ApOutput) DisableEth3() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.DisableEth3 }).(pulumi.BoolOutput)
 }
 
-// whether to disable module port
+// Whether to disable module port
 func (o ApOutput) DisableModule() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.DisableModule }).(pulumi.BoolOutput)
 }
@@ -506,7 +521,12 @@ func (o ApOutput) EslConfig() ApEslConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApEslConfigPtrOutput { return v.EslConfig }).(ApEslConfigPtrOutput)
 }
 
-// height, in meters, optional
+// For some AP models, flowControl can be enabled to address some switch compatibility issue
+func (o ApOutput) FlowControl() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.FlowControl }).(pulumi.BoolOutput)
+}
+
+// Height, in meters, optional
 func (o ApOutput) Height() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.Height }).(pulumi.Float64PtrOutput)
 }
@@ -533,17 +553,17 @@ func (o ApOutput) Led() ApLedPtrOutput {
 	return o.ApplyT(func(v *Ap) ApLedPtrOutput { return v.Led }).(ApLedPtrOutput)
 }
 
-// whether this map is considered locked down
+// Whether this map is considered locked down
 func (o ApOutput) Locked() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
-// device MAC address
+// Device MAC address
 func (o ApOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-// map where the device belongs to
+// Map where the device belongs to
 func (o ApOutput) MapId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringPtrOutput { return v.MapId }).(pulumi.StringPtrOutput)
 }
@@ -553,7 +573,7 @@ func (o ApOutput) Mesh() ApMeshPtrOutput {
 	return o.ApplyT(func(v *Ap) ApMeshPtrOutput { return v.Mesh }).(ApMeshPtrOutput)
 }
 
-// device Model
+// Device Model
 func (o ApOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
 }
@@ -562,7 +582,7 @@ func (o ApOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// any notes about this AP
+// Any notes about this AP
 func (o ApOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
@@ -575,17 +595,17 @@ func (o ApOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// orientation, 0-359, in degrees, up is 0, right is 90.
+// Orientation, 0-359, in degrees, up is 0, right is 90.
 func (o ApOutput) Orientation() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.IntPtrOutput { return v.Orientation }).(pulumi.IntPtrOutput)
 }
 
-// whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
+// Whether to enable power out through module port (for APH) or eth1 (for APL/BT11)
 func (o ApOutput) PoePassthrough() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Ap) pulumi.BoolOutput { return v.PoePassthrough }).(pulumi.BoolOutput)
 }
 
-// power related configs
+// Power related configs
 func (o ApOutput) PwrConfig() ApPwrConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApPwrConfigPtrOutput { return v.PwrConfig }).(ApPwrConfigPtrOutput)
 }
@@ -595,7 +615,7 @@ func (o ApOutput) RadioConfig() ApRadioConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApRadioConfigPtrOutput { return v.RadioConfig }).(ApRadioConfigPtrOutput)
 }
 
-// device Serial
+// Device Serial
 func (o ApOutput) Serial() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Serial }).(pulumi.StringOutput)
 }
@@ -609,27 +629,28 @@ func (o ApOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
+// AP Uplink port configuration
 func (o ApOutput) UplinkPortConfig() ApUplinkPortConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUplinkPortConfigPtrOutput { return v.UplinkPortConfig }).(ApUplinkPortConfigPtrOutput)
 }
 
-// USB AP settings Note: if native imagotag is enabled, BLE will be disabled automatically Note: legacy, new config moved
-// to ESL Config.
+// USB AP settings - Note: if native imagotag is enabled, BLE will be disabled automatically - Note: legacy, new config
+// moved to ESL Config.
 func (o ApOutput) UsbConfig() ApUsbConfigPtrOutput {
 	return o.ApplyT(func(v *Ap) ApUsbConfigPtrOutput { return v.UsbConfig }).(ApUsbConfigPtrOutput)
 }
 
-// a dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
+// Dictionary of name->value, the vars can then be used in Wlans. This can overwrite those from Site Vars
 func (o ApOutput) Vars() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Ap) pulumi.StringMapOutput { return v.Vars }).(pulumi.StringMapOutput)
 }
 
-// x in pixel
+// X in pixel
 func (o ApOutput) X() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.X }).(pulumi.Float64PtrOutput)
 }
 
-// y in pixel
+// Y in pixel
 func (o ApOutput) Y() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Ap) pulumi.Float64PtrOutput { return v.Y }).(pulumi.Float64PtrOutput)
 }

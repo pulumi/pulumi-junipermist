@@ -24,14 +24,14 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
     }
 
     /**
-     * any / HH:MM (24-hour format)
+     * `any` / HH:MM (24-hour format)
      * 
      */
     @Import(name="timeOfDay")
     private @Nullable Output<String> timeOfDay;
 
     /**
-     * @return any / HH:MM (24-hour format)
+     * @return `any` / HH:MM (24-hour format)
      * 
      */
     public Optional<Output<String>> timeOfDay() {
@@ -73,7 +73,7 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
         }
 
         /**
-         * @param timeOfDay any / HH:MM (24-hour format)
+         * @param timeOfDay `any` / HH:MM (24-hour format)
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class SettingSyntheticTestWanSpeedtestArgs extends com.pulumi.resou
         }
 
         /**
-         * @param timeOfDay any / HH:MM (24-hour format)
+         * @param timeOfDay `any` / HH:MM (24-hour format)
          * 
          * @return builder
          * 

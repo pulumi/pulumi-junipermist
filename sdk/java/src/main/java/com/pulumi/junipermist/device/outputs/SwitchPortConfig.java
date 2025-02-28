@@ -25,19 +25,19 @@ public final class SwitchPortConfig {
      */
     private @Nullable Integer aeIdx;
     /**
-     * @return to use fast timeout
+     * @return To use fast timeout
      * 
      */
     private @Nullable Boolean aeLacpSlow;
     private @Nullable Boolean aggregated;
     /**
-     * @return if want to generate port up/down alarm
+     * @return To generate port up/down alarm
      * 
      */
     private @Nullable Boolean critical;
     private @Nullable String description;
     /**
-     * @return if `speed` and `duplex` are specified, whether to disable autonegotiation
+     * @return If `speed` and `duplex` are specified, whether to disable autonegotiation
      * 
      */
     private @Nullable Boolean disableAutoneg;
@@ -53,12 +53,12 @@ public final class SwitchPortConfig {
     private @Nullable String dynamicUsage;
     private @Nullable Boolean esilag;
     /**
-     * @return media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+     * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
      * 
      */
     private @Nullable Integer mtu;
     /**
-     * @return prevent helpdesk to override the port config
+     * @return Prevent helpdesk to override the port config
      * 
      */
     private @Nullable Boolean noLocalOverwrite;
@@ -69,7 +69,7 @@ public final class SwitchPortConfig {
      */
     private @Nullable String speed;
     /**
-     * @return port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     private String usage;
@@ -90,7 +90,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.aeIdx);
     }
     /**
-     * @return to use fast timeout
+     * @return To use fast timeout
      * 
      */
     public Optional<Boolean> aeLacpSlow() {
@@ -100,7 +100,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.aggregated);
     }
     /**
-     * @return if want to generate port up/down alarm
+     * @return To generate port up/down alarm
      * 
      */
     public Optional<Boolean> critical() {
@@ -110,7 +110,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return if `speed` and `duplex` are specified, whether to disable autonegotiation
+     * @return If `speed` and `duplex` are specified, whether to disable autonegotiation
      * 
      */
     public Optional<Boolean> disableAutoneg() {
@@ -134,14 +134,14 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.esilag);
     }
     /**
-     * @return media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+     * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
      * 
      */
     public Optional<Integer> mtu() {
         return Optional.ofNullable(this.mtu);
     }
     /**
-     * @return prevent helpdesk to override the port config
+     * @return Prevent helpdesk to override the port config
      * 
      */
     public Optional<Boolean> noLocalOverwrite() {
@@ -158,7 +158,7 @@ public final class SwitchPortConfig {
         return Optional.ofNullable(this.speed);
     }
     /**
-     * @return port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     public String usage() {

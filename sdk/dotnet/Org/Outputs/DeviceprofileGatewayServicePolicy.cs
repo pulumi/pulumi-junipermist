@@ -18,6 +18,10 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Action;
         /// <summary>
+        /// For SRX-only
+        /// </summary>
+        public readonly Outputs.DeviceprofileGatewayServicePolicyAntivirus? Antivirus;
+        /// <summary>
         /// For SRX Only
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayServicePolicyAppqoe? Appqoe;
@@ -32,17 +36,21 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// by default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
+        /// By default, we derive all paths available and use them. Optionally, you can customize by using `path_preference`
         /// </summary>
         public readonly string? PathPreference;
         /// <summary>
-        /// used to link servicepolicy defined at org level and overwrite some attributes
+        /// Used to link servicepolicy defined at org level and overwrite some attributes
         /// </summary>
         public readonly string? ServicepolicyId;
         /// <summary>
         /// Required when `servicepolicy_id` is not defined. List of Applications / Desctinations
         /// </summary>
         public readonly ImmutableArray<string> Services;
+        /// <summary>
+        /// For SRX-only
+        /// </summary>
+        public readonly Outputs.DeviceprofileGatewayServicePolicySslProxy? SslProxy;
         /// <summary>
         /// Required when `servicepolicy_id` is not defined. List of Networks / Users
         /// </summary>
@@ -51,6 +59,8 @@ namespace Pulumi.JuniperMist.Org.Outputs
         [OutputConstructor]
         private DeviceprofileGatewayServicePolicy(
             string? action,
+
+            Outputs.DeviceprofileGatewayServicePolicyAntivirus? antivirus,
 
             Outputs.DeviceprofileGatewayServicePolicyAppqoe? appqoe,
 
@@ -68,9 +78,12 @@ namespace Pulumi.JuniperMist.Org.Outputs
 
             ImmutableArray<string> services,
 
+            Outputs.DeviceprofileGatewayServicePolicySslProxy? sslProxy,
+
             ImmutableArray<string> tenants)
         {
             Action = action;
+            Antivirus = antivirus;
             Appqoe = appqoe;
             Ewfs = ewfs;
             Idp = idp;
@@ -79,6 +92,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
             PathPreference = pathPreference;
             ServicepolicyId = servicepolicyId;
             Services = services;
+            SslProxy = sslProxy;
             Tenants = tenants;
         }
     }

@@ -16,7 +16,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         private InputList<Inputs.SwitchVirtualChassisMemberArgs>? _members;
 
         /// <summary>
-        /// list of Virtual Chassis members
+        /// List of Virtual Chassis members
         /// </summary>
         public InputList<Inputs.SwitchVirtualChassisMemberArgs> Members
         {
@@ -25,7 +25,7 @@ namespace Pulumi.JuniperMist.Device.Inputs
         }
 
         /// <summary>
-        /// to configure whether the VC is preprovisioned or nonprovisioned
+        /// To configure whether the VC is preprovisioned or nonprovisioned
         /// </summary>
         [Input("preprovisioned")]
         public Input<bool>? Preprovisioned { get; set; }

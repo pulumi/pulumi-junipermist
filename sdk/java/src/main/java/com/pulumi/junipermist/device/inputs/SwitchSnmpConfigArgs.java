@@ -50,17 +50,9 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-     * 
-     */
     @Import(name="engineId")
     private @Nullable Output<String> engineId;
 
-    /**
-     * @return enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-     * 
-     */
     public Optional<Output<String>> engineId() {
         return Optional.ofNullable(this.engineId);
     }
@@ -189,23 +181,11 @@ public final class SwitchSnmpConfigArgs extends com.pulumi.resources.ResourceArg
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param engineId enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-         * 
-         * @return builder
-         * 
-         */
         public Builder engineId(@Nullable Output<String> engineId) {
             $.engineId = engineId;
             return this;
         }
 
-        /**
-         * @param engineId enum: `engine-id-suffix`, `local`, `use-default-ip-address`, `use_mac-address`
-         * 
-         * @return builder
-         * 
-         */
         public Builder engineId(String engineId) {
             return engineId(Output.of(engineId));
         }

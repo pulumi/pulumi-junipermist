@@ -18,7 +18,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         /// </summary>
         public readonly string? Class;
         /// <summary>
-        /// whether to overwrite QoS
+        /// Whether to overwrite QoS
         /// </summary>
         public readonly bool? Overwrite;
 

@@ -17,14 +17,14 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     public static final SettingPasswordPolicyArgs Empty = new SettingPasswordPolicyArgs();
 
     /**
-     * whether the policy is enabled
+     * Whether the policy is enabled
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return whether the policy is enabled
+     * @return Whether the policy is enabled
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +47,14 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * required password length
+     * Required password length
      * 
      */
     @Import(name="minLength")
     private @Nullable Output<Integer> minLength;
 
     /**
-     * @return required password length
+     * @return Required password length
      * 
      */
     public Optional<Output<Integer>> minLength() {
@@ -62,14 +62,14 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * whether to require special character
+     * Whether to require special character
      * 
      */
     @Import(name="requiresSpecialChar")
     private @Nullable Output<Boolean> requiresSpecialChar;
 
     /**
-     * @return whether to require special character
+     * @return Whether to require special character
      * 
      */
     public Optional<Output<Boolean>> requiresSpecialChar() {
@@ -77,14 +77,14 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * whether to require two-factor auth
+     * Whether to require two-factor auth
      * 
      */
     @Import(name="requiresTwoFactorAuth")
     private @Nullable Output<Boolean> requiresTwoFactorAuth;
 
     /**
-     * @return whether to require two-factor auth
+     * @return Whether to require two-factor auth
      * 
      */
     public Optional<Output<Boolean>> requiresTwoFactorAuth() {
@@ -120,7 +120,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled whether the policy is enabled
+         * @param enabled Whether the policy is enabled
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled whether the policy is enabled
+         * @param enabled Whether the policy is enabled
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param minLength required password length
+         * @param minLength Required password length
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param minLength required password length
+         * @param minLength Required password length
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requiresSpecialChar whether to require special character
+         * @param requiresSpecialChar Whether to require special character
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requiresSpecialChar whether to require special character
+         * @param requiresSpecialChar Whether to require special character
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requiresTwoFactorAuth whether to require two-factor auth
+         * @param requiresTwoFactorAuth Whether to require two-factor auth
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class SettingPasswordPolicyArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param requiresTwoFactorAuth whether to require two-factor auth
+         * @param requiresTwoFactorAuth Whether to require two-factor auth
          * 
          * @return builder
          * 

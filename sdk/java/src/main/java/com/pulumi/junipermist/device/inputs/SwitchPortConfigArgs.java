@@ -49,14 +49,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * to use fast timeout
+     * To use fast timeout
      * 
      */
     @Import(name="aeLacpSlow")
     private @Nullable Output<Boolean> aeLacpSlow;
 
     /**
-     * @return to use fast timeout
+     * @return To use fast timeout
      * 
      */
     public Optional<Output<Boolean>> aeLacpSlow() {
@@ -71,14 +71,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * if want to generate port up/down alarm
+     * To generate port up/down alarm
      * 
      */
     @Import(name="critical")
     private @Nullable Output<Boolean> critical;
 
     /**
-     * @return if want to generate port up/down alarm
+     * @return To generate port up/down alarm
      * 
      */
     public Optional<Output<Boolean>> critical() {
@@ -93,14 +93,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * if `speed` and `duplex` are specified, whether to disable autonegotiation
+     * If `speed` and `duplex` are specified, whether to disable autonegotiation
      * 
      */
     @Import(name="disableAutoneg")
     private @Nullable Output<Boolean> disableAutoneg;
 
     /**
-     * @return if `speed` and `duplex` are specified, whether to disable autonegotiation
+     * @return If `speed` and `duplex` are specified, whether to disable autonegotiation
      * 
      */
     public Optional<Output<Boolean>> disableAutoneg() {
@@ -145,14 +145,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+     * Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+     * @return Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -160,14 +160,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * prevent helpdesk to override the port config
+     * Prevent helpdesk to override the port config
      * 
      */
     @Import(name="noLocalOverwrite")
     private @Nullable Output<Boolean> noLocalOverwrite;
 
     /**
-     * @return prevent helpdesk to override the port config
+     * @return Prevent helpdesk to override the port config
      * 
      */
     public Optional<Output<Boolean>> noLocalOverwrite() {
@@ -197,14 +197,14 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     @Import(name="usage", required=true)
     private Output<String> usage;
 
     /**
-     * @return port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+     * @return Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
      * 
      */
     public Output<String> usage() {
@@ -292,7 +292,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aeLacpSlow to use fast timeout
+         * @param aeLacpSlow To use fast timeout
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param aeLacpSlow to use fast timeout
+         * @param aeLacpSlow To use fast timeout
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param critical if want to generate port up/down alarm
+         * @param critical To generate port up/down alarm
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param critical if want to generate port up/down alarm
+         * @param critical To generate port up/down alarm
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableAutoneg if `speed` and `duplex` are specified, whether to disable autonegotiation
+         * @param disableAutoneg If `speed` and `duplex` are specified, whether to disable autonegotiation
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disableAutoneg if `speed` and `duplex` are specified, whether to disable autonegotiation
+         * @param disableAutoneg If `speed` and `duplex` are specified, whether to disable autonegotiation
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mtu media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+         * @param mtu Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param mtu media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
+         * @param mtu Media maximum transmission unit (MTU) is the largest data unit that can be forwarded without fragmentation
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param noLocalOverwrite prevent helpdesk to override the port config
+         * @param noLocalOverwrite Prevent helpdesk to override the port config
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param noLocalOverwrite prevent helpdesk to override the port config
+         * @param noLocalOverwrite Prevent helpdesk to override the port config
          * 
          * @return builder
          * 
@@ -496,7 +496,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usage port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+         * @param usage Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class SwitchPortConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usage port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
+         * @param usage Port usage name. If EVPN is used, use `evpn_uplink`or `evpn_downlink`
          * 
          * @return builder
          * 

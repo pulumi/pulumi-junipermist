@@ -13,7 +13,7 @@ namespace Pulumi.JuniperMist.Org.Inputs
     public sealed class SettingPasswordPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// whether the policy is enabled
+        /// Whether the policy is enabled
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -25,19 +25,19 @@ namespace Pulumi.JuniperMist.Org.Inputs
         public Input<int>? ExpiryInDays { get; set; }
 
         /// <summary>
-        /// required password length
+        /// Required password length
         /// </summary>
         [Input("minLength")]
         public Input<int>? MinLength { get; set; }
 
         /// <summary>
-        /// whether to require special character
+        /// Whether to require special character
         /// </summary>
         [Input("requiresSpecialChar")]
         public Input<bool>? RequiresSpecialChar { get; set; }
 
         /// <summary>
-        /// whether to require two-factor auth
+        /// Whether to require two-factor auth
         /// </summary>
         [Input("requiresTwoFactorAuth")]
         public Input<bool>? RequiresTwoFactorAuth { get; set; }

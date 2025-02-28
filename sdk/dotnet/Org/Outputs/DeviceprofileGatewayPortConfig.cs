@@ -14,11 +14,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
     public sealed class DeviceprofileGatewayPortConfig
     {
         /// <summary>
-        /// if `aggregated`==`true`. To disable LCP support for the AE interface
+        /// If `aggregated`==`true`. To disable LCP support for the AE interface
         /// </summary>
         public readonly bool? AeDisableLacp;
         /// <summary>
-        /// if `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
+        /// If `aggregated`==`true`. Users could force to use the designated AE name (must be an integer between 0 and 127)
         /// </summary>
         public readonly string? AeIdx;
         /// <summary>
@@ -27,7 +27,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly bool? AeLacpForceUp;
         public readonly bool? Aggregated;
         /// <summary>
-        /// if want to generate port up/down alarm, set it to true
+        /// To generate port up/down alarm, set it to true
         /// </summary>
         public readonly bool? Critical;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? Description;
         public readonly bool? DisableAutoneg;
         /// <summary>
-        /// port admin up (true) / down (false)
+        /// Port admin up (true) / down (false)
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
@@ -44,11 +44,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly string? DslType;
         /// <summary>
-        /// if `wan_type`==`dsl`, 16 bit int
+        /// If `wan_type`==`dsl`, 16 bit int
         /// </summary>
         public readonly int? DslVci;
         /// <summary>
-        /// if `wan_type`==`dsl`, 8 bit int
+        /// If `wan_type`==`dsl`, 8 bit int
         /// </summary>
         public readonly int? DslVpi;
         /// <summary>
@@ -60,7 +60,7 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly Outputs.DeviceprofileGatewayPortConfigIpConfig? IpConfig;
         /// <summary>
-        /// if `wan_type`==`lte`
+        /// If `wan_type`==`lte`
         /// </summary>
         public readonly string? LteApn;
         /// <summary>
@@ -69,16 +69,16 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly string? LteAuth;
         public readonly bool? LteBackup;
         /// <summary>
-        /// if `wan_type`==`lte`
+        /// If `wan_type`==`lte`
         /// </summary>
         public readonly string? LtePassword;
         /// <summary>
-        /// if `wan_type`==`lte`
+        /// If `wan_type`==`lte`
         /// </summary>
         public readonly string? LteUsername;
         public readonly int? Mtu;
         /// <summary>
-        /// name that we'll use to derive config
+        /// Name that we'll use to derive config
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -86,28 +86,28 @@ namespace Pulumi.JuniperMist.Org.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Networks;
         /// <summary>
-        /// for Q-in-Q
+        /// For Q-in-Q
         /// </summary>
         public readonly int? OuterVlanId;
         public readonly bool? PoeDisabled;
         /// <summary>
-        /// Only for SRX and if `usage`==`lan`, the Untagged VLAN Network
+        /// Only for SRX and if `usage`==`lan`, the name of the Network to be used as the Untagged VLAN
         /// </summary>
         public readonly string? PortNetwork;
         /// <summary>
-        /// whether to preserve dscp when sending traffic over VPN (SSR-only)
+        /// Whether to preserve dscp when sending traffic over VPN (SSR-only)
         /// </summary>
         public readonly bool? PreserveDscp;
         /// <summary>
-        /// if HA mode
+        /// If HA mode
         /// </summary>
         public readonly bool? Redundant;
         /// <summary>
-        /// if HA mode
+        /// If HA mode
         /// </summary>
         public readonly int? RethIdx;
         /// <summary>
-        /// if HA mode
+        /// If HA mode
         /// </summary>
         public readonly string? RethNode;
         /// <summary>
@@ -116,11 +116,11 @@ namespace Pulumi.JuniperMist.Org.Outputs
         public readonly ImmutableArray<string> RethNodes;
         public readonly string? Speed;
         /// <summary>
-        /// when SSR is running as VM, this is required on certain hosting platforms
+        /// When SSR is running as VM, this is required on certain hosting platforms
         /// </summary>
         public readonly bool? SsrNoVirtualMac;
         /// <summary>
-        /// for SSR only
+        /// For SSR only
         /// </summary>
         public readonly string? SvrPortRange;
         public readonly Outputs.DeviceprofileGatewayPortConfigTrafficShaping? TrafficShaping;

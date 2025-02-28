@@ -5,11 +5,10 @@ package com.pulumi.junipermist.device.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,37 +19,37 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
      * fpc0, same as the mac of device_id
      * 
      */
-    @Import(name="mac")
-    private @Nullable Output<String> mac;
+    @Import(name="mac", required=true)
+    private Output<String> mac;
 
     /**
      * @return fpc0, same as the mac of device_id
      * 
      */
-    public Optional<Output<String>> mac() {
-        return Optional.ofNullable(this.mac);
+    public Output<String> mac() {
+        return this.mac;
     }
 
-    @Import(name="memberId")
-    private @Nullable Output<Integer> memberId;
+    @Import(name="memberId", required=true)
+    private Output<Integer> memberId;
 
-    public Optional<Output<Integer>> memberId() {
-        return Optional.ofNullable(this.memberId);
+    public Output<Integer> memberId() {
+        return this.memberId;
     }
 
     /**
      * Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
-    @Import(name="vcRole")
-    private @Nullable Output<String> vcRole;
+    @Import(name="vcRole", required=true)
+    private Output<String> vcRole;
 
     /**
      * @return Both vc_role master and backup will be matched to routing-engine role in Junos preprovisioned VC config. enum: `backup`, `linecard`, `master`
      * 
      */
-    public Optional<Output<String>> vcRole() {
-        return Optional.ofNullable(this.vcRole);
+    public Output<String> vcRole() {
+        return this.vcRole;
     }
 
     private SwitchVirtualChassisMemberArgs() {}
@@ -85,7 +84,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder mac(@Nullable Output<String> mac) {
+        public Builder mac(Output<String> mac) {
             $.mac = mac;
             return this;
         }
@@ -100,7 +99,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
             return mac(Output.of(mac));
         }
 
-        public Builder memberId(@Nullable Output<Integer> memberId) {
+        public Builder memberId(Output<Integer> memberId) {
             $.memberId = memberId;
             return this;
         }
@@ -115,7 +114,7 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder vcRole(@Nullable Output<String> vcRole) {
+        public Builder vcRole(Output<String> vcRole) {
             $.vcRole = vcRole;
             return this;
         }
@@ -131,6 +130,15 @@ public final class SwitchVirtualChassisMemberArgs extends com.pulumi.resources.R
         }
 
         public SwitchVirtualChassisMemberArgs build() {
+            if ($.mac == null) {
+                throw new MissingRequiredPropertyException("SwitchVirtualChassisMemberArgs", "mac");
+            }
+            if ($.memberId == null) {
+                throw new MissingRequiredPropertyException("SwitchVirtualChassisMemberArgs", "memberId");
+            }
+            if ($.vcRole == null) {
+                throw new MissingRequiredPropertyException("SwitchVirtualChassisMemberArgs", "vcRole");
+            }
             return $;
         }
     }

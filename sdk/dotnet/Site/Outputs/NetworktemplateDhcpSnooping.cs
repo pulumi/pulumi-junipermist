@@ -24,7 +24,7 @@ namespace Pulumi.JuniperMist.Site.Outputs
         public readonly bool? EnableIpSourceGuard;
         public readonly bool? Enabled;
         /// <summary>
-        /// if `all_networks`==`false`, list of network with DHCP snooping enabled
+        /// If `all_networks`==`false`, list of network with DHCP snooping enabled
         /// </summary>
         public readonly ImmutableArray<string> Networks;
 
